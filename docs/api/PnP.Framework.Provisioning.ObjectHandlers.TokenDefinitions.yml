@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  commentId: N:PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  id: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  children:
+  - PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.DateNowToken
+  - PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.FqdnToken
+  - PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.HostUrlToken
+  - PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.SimpleTokenDefinition
+  - PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.TokenDefinition
+  - PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.VolatileTokenDefinition
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  nameWithType: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.DateNowToken
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.DateNowToken
+  name: DateNowToken
+  nameWithType: DateNowToken
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.DateNowToken
+- uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.FqdnToken
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.FqdnToken
+  name: FqdnToken
+  nameWithType: FqdnToken
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.FqdnToken
+- uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.HostUrlToken
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.HostUrlToken
+  name: HostUrlToken
+  nameWithType: HostUrlToken
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.HostUrlToken
+- uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.SimpleTokenDefinition
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.SimpleTokenDefinition
+  name: SimpleTokenDefinition
+  nameWithType: SimpleTokenDefinition
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.SimpleTokenDefinition
+- uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.TokenDefinition
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.TokenDefinition
+  parent: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  name: TokenDefinition
+  nameWithType: TokenDefinition
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.TokenDefinition
+- uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.VolatileTokenDefinition
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.VolatileTokenDefinition
+  name: VolatileTokenDefinition
+  nameWithType: VolatileTokenDefinition
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions.VolatileTokenDefinition
+- uid: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  commentId: N:PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  name: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  nameWithType: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions

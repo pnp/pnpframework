@@ -28,7 +28,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         s => s.AllowSaveDeclarativeWorkflowAsTemplate,
                         s => s.AllowSavePublishDeclarativeWorkflow,
                         s => s.SocialBarOnSitePagesDisabled,
-                        s => s.SearchBoxInNavBar
+                        s => s.SearchBoxInNavBar,
+                        s => s.ShowPeoplePickerSuggestionsForGuestUsers
                         );
 
                     // Configure the output SiteSettings object
@@ -40,7 +41,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         AllowSavePublishDeclarativeWorkflow = site.AllowSavePublishDeclarativeWorkflow,
                         SocialBarOnSitePagesDisabled = site.SocialBarOnSitePagesDisabled,
                         SearchBoxInNavBar = (SearchBoxInNavBar)Enum.Parse(typeof(SearchBoxInNavBar), site.SearchBoxInNavBar.ToString()),
-                        SearchCenterUrl = site.RootWeb.GetSiteCollectionSearchCenterUrl()
+                        SearchCenterUrl = site.RootWeb.GetSiteCollectionSearchCenterUrl(),
+                        ShowPeoplePickerSuggestionsForGuestUsers = site.ShowPeoplePickerSuggestionsForGuestUsers
                     };
 
                     // Update the provisioning template accordingly
@@ -93,6 +95,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             site.RootWeb.SetSiteCollectionSearchCenterUrl(template.SiteSettings.SearchCenterUrl);
                         }
+
+                        site.ShowPeoplePickerSuggestionsForGuestUsers = template.SiteSettings.ShowPeoplePickerSuggestionsForGuestUsers;
                     }
                 }
             }

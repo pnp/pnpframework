@@ -1,0 +1,2797 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  id: OpenXMLConnector
+  parent: PnP.Framework.Provisioning.Connectors
+  children:
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.#ctor(System.IO.Stream)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.#ctor(System.String,PnP.Framework.Provisioning.Connectors.FileConnectorBase,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Commit
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile(System.String)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile(System.String,System.String)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile(System.String)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile(System.String,System.String)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFilenamePart(System.String)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles(System.String)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream(System.String)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream(System.String,System.String)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders(System.String)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Info
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream(System.String,System.IO.Stream)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream(System.String,System.String,System.IO.Stream)
+  langs:
+  - csharp
+  - vb
+  name: OpenXMLConnector
+  nameWithType: OpenXMLConnector
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OpenXMLConnector
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 17
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nConnector that stores all the files into a unique .PNP OpenXML package\n"
+  example: []
+  syntax:
+    content: 'public class OpenXMLConnector : FileConnectorBase, ICommitableFileConnector'
+    content.vb: >-
+      Public Class OpenXMLConnector
+          Inherits FileConnectorBase
+          Implements ICommitableFileConnector
+  inheritance:
+  - System.Object
+  - PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  implements:
+  - PnP.Framework.Provisioning.Connectors.ICommitableFileConnector
+  inheritedMembers:
+  - PnP.Framework.Provisioning.Connectors.FileConnectorBase.CONNECTIONSTRING
+  - PnP.Framework.Provisioning.Connectors.FileConnectorBase.CONTAINER
+  - PnP.Framework.Provisioning.Connectors.FileConnectorBase.Parameters
+  - PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameterAsString(System.String,System.String)
+  - PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameter(System.String,System.Object)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Connectors.OpenXMLConnector,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.#ctor(System.IO.Stream)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.#ctor(System.IO.Stream)
+  id: '#ctor(System.IO.Stream)'
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: OpenXMLConnector(Stream)
+  nameWithType: OpenXMLConnector.OpenXMLConnector(Stream)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.OpenXMLConnector(System.IO.Stream)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 29
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nOpenXMLConnector constructor. Allows to manage a .PNP OpenXML package through an in memory stream.\n"
+  example: []
+  syntax:
+    content: public OpenXMLConnector(Stream packageStream)
+    parameters:
+    - id: packageStream
+      type: System.IO.Stream
+      description: The package stream
+    content.vb: Public Sub New(packageStream As Stream)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.#ctor(System.String,PnP.Framework.Provisioning.Connectors.FileConnectorBase,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.#ctor(System.String,PnP.Framework.Provisioning.Connectors.FileConnectorBase,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String)
+  id: '#ctor(System.String,PnP.Framework.Provisioning.Connectors.FileConnectorBase,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String)'
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: OpenXMLConnector(String, FileConnectorBase, String, X509Certificate2, String)
+  nameWithType: OpenXMLConnector.OpenXMLConnector(String, FileConnectorBase, String, X509Certificate2, String)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.OpenXMLConnector(System.String, PnP.Framework.Provisioning.Connectors.FileConnectorBase, System.String, System.Security.Cryptography.X509Certificates.X509Certificate2, System.String)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 54
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nOpenXMLConnector constructor. Allows to manage a .PNP OpenXML package file through a supporting persistence connector.\n"
+  example: []
+  syntax:
+    content: public OpenXMLConnector(string packageFileName, FileConnectorBase persistenceConnector, string author = null, X509Certificate2 signingCertificate = null, string templateFileName = null)
+    parameters:
+    - id: packageFileName
+      type: System.String
+      description: The name of the .PNP package file. If the .PNP extension is missing, it will be added
+    - id: persistenceConnector
+      type: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+      description: The FileConnector object that will be used for physical persistence of the file
+    - id: author
+      type: System.String
+      description: The Author of the .PNP package file, if any. Optional
+    - id: signingCertificate
+      type: System.Security.Cryptography.X509Certificates.X509Certificate2
+      description: The X.509 certificate to use for digital signature of the template, optional
+    - id: templateFileName
+      type: System.String
+      description: The name of the tempalte file, optional
+    content.vb: Public Sub New(packageFileName As String, persistenceConnector As FileConnectorBase, author As String = Nothing, signingCertificate As X509Certificate2 = Nothing, templateFileName As String = Nothing)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles
+  id: GetFiles
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: GetFiles()
+  nameWithType: OpenXMLConnector.GetFiles()
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFiles
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 113
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nGet the files available in the default container\n"
+  example: []
+  syntax:
+    content: public override List<string> GetFiles()
+    return:
+      type: System.Collections.Generic.List{System.String}
+      description: List of files
+    content.vb: Public Overrides Function GetFiles As List(Of String)
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles(System.String)
+  id: GetFiles(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: GetFiles(String)
+  nameWithType: OpenXMLConnector.GetFiles(String)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFiles
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 123
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nGet the files available in the specified container\n"
+  example: []
+  syntax:
+    content: public override List<string> GetFiles(string container)
+    parameters:
+    - id: container
+      type: System.String
+      description: 'Name of the container to get the files from (something like: &quot;\images\subfolder&quot;)'
+    return:
+      type: System.Collections.Generic.List{System.String}
+      description: List of files
+    content.vb: Public Overrides Function GetFiles(container As String) As List(Of String)
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles(System.String)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders
+  id: GetFolders
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: GetFolders()
+  nameWithType: OpenXMLConnector.GetFolders()
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFolders
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 141
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nGet the folders of the default container\n"
+  example: []
+  syntax:
+    content: public override List<string> GetFolders()
+    return:
+      type: System.Collections.Generic.List{System.String}
+      description: List of folders
+    content.vb: Public Overrides Function GetFolders As List(Of String)
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders(System.String)
+  id: GetFolders(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: GetFolders(String)
+  nameWithType: OpenXMLConnector.GetFolders(String)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFolders
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 151
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nGet the folders of a specified container\n"
+  example: []
+  syntax:
+    content: public override List<string> GetFolders(string container)
+    parameters:
+    - id: container
+      type: System.String
+      description: Name of the container to get the folders from
+    return:
+      type: System.Collections.Generic.List{System.String}
+      description: List of folders
+    content.vb: Public Overrides Function GetFolders(container As String) As List(Of String)
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders(System.String)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile(System.String)
+  id: GetFile(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: GetFile(String)
+  nameWithType: OpenXMLConnector.GetFile(String)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFile
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 171
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nGets a file as string from the default container\n"
+  example: []
+  syntax:
+    content: public override string GetFile(string fileName)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Name of the file to get
+    return:
+      type: System.String
+      description: String containing the file contents
+    content.vb: Public Overrides Function GetFile(fileName As String) As String
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFilenamePart(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFilenamePart(System.String)
+  id: GetFilenamePart(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: GetFilenamePart(String)
+  nameWithType: OpenXMLConnector.GetFilenamePart(String)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFilenamePart(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFilenamePart
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 181
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nReturns a filename without a path\n"
+  example: []
+  syntax:
+    content: public override string GetFilenamePart(string fileName)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Name of the file to get
+    return:
+      type: System.String
+      description: Returns a filename without a path
+    content.vb: Public Overrides Function GetFilenamePart(fileName As String) As String
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFilenamePart(System.String)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFilenamePart*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile(System.String,System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile(System.String,System.String)
+  id: GetFile(System.String,System.String)
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: GetFile(String, String)
+  nameWithType: OpenXMLConnector.GetFile(String, String)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFile
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 192
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nGets a file as string from the specified container\n"
+  example: []
+  syntax:
+    content: public override string GetFile(string fileName, string container)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Name of the file to get
+    - id: container
+      type: System.String
+      description: Name of the container to get the file from
+    return:
+      type: System.String
+      description: String containing the file contents
+    content.vb: Public Overrides Function GetFile(fileName As String, container As String) As String
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String,System.String)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream(System.String)
+  id: GetFileStream(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: GetFileStream(String)
+  nameWithType: OpenXMLConnector.GetFileStream(String)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFileStream
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 233
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nGets a file as stream from the default container\n"
+  example: []
+  syntax:
+    content: public override Stream GetFileStream(string fileName)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Name of the file to get
+    return:
+      type: System.IO.Stream
+      description: String containing the file contents
+    content.vb: Public Overrides Function GetFileStream(fileName As String) As Stream
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream(System.String,System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream(System.String,System.String)
+  id: GetFileStream(System.String,System.String)
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: GetFileStream(String, String)
+  nameWithType: OpenXMLConnector.GetFileStream(String, String)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFileStream
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 244
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nGets a file as stream from the specified container\n"
+  example: []
+  syntax:
+    content: public override Stream GetFileStream(string fileName, string container)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Name of the file to get
+    - id: container
+      type: System.String
+      description: Name of the container to get the file from
+    return:
+      type: System.IO.Stream
+      description: String containing the file contents
+    content.vb: Public Overrides Function GetFileStream(fileName As String, container As String) As Stream
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String,System.String)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream(System.String,System.IO.Stream)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream(System.String,System.IO.Stream)
+  id: SaveFileStream(System.String,System.IO.Stream)
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: SaveFileStream(String, Stream)
+  nameWithType: OpenXMLConnector.SaveFileStream(String, Stream)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream(System.String, System.IO.Stream)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SaveFileStream
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 264
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nSaves a stream to the default container with the given name. If the file exists it will be overwritten\n"
+  example: []
+  syntax:
+    content: public override void SaveFileStream(string fileName, Stream stream)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Name of the file to save
+    - id: stream
+      type: System.IO.Stream
+      description: Stream containing the file contents
+    content.vb: Public Overrides Sub SaveFileStream(fileName As String, stream As Stream)
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String,System.IO.Stream)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream(System.String,System.String,System.IO.Stream)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream(System.String,System.String,System.IO.Stream)
+  id: SaveFileStream(System.String,System.String,System.IO.Stream)
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: SaveFileStream(String, String, Stream)
+  nameWithType: OpenXMLConnector.SaveFileStream(String, String, Stream)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream(System.String, System.String, System.IO.Stream)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SaveFileStream
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 275
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nSaves a stream to the specified container with the given name. If the file exists it will be overwritten\n"
+  example: []
+  syntax:
+    content: public override void SaveFileStream(string fileName, string container, Stream stream)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Name of the file to save
+    - id: container
+      type: System.String
+      description: Name of the container to save the file to
+    - id: stream
+      type: System.IO.Stream
+      description: Stream containing the file contents
+    content.vb: Public Overrides Sub SaveFileStream(fileName As String, container As String, stream As Stream)
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String,System.String,System.IO.Stream)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile(System.String)
+  id: DeleteFile(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: DeleteFile(String)
+  nameWithType: OpenXMLConnector.DeleteFile(String)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteFile
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 329
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nDeletes a file from the default container\n"
+  example: []
+  syntax:
+    content: public override void DeleteFile(string fileName)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Name of the file to delete
+    content.vb: Public Overrides Sub DeleteFile(fileName As String)
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile(System.String,System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile(System.String,System.String)
+  id: DeleteFile(System.String,System.String)
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: DeleteFile(String, String)
+  nameWithType: OpenXMLConnector.DeleteFile(String, String)
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteFile
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 339
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nDeletes a file from the specified container\n"
+  example: []
+  syntax:
+    content: public override void DeleteFile(string fileName, string container)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: Name of the file to delete
+    - id: container
+      type: System.String
+      description: Name of the container to delete the file from
+    content.vb: Public Overrides Sub DeleteFile(fileName As String, container As String)
+  overridden: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String,System.String)
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Info
+  commentId: P:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Info
+  id: Info
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: Info
+  nameWithType: OpenXMLConnector.Info
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Info
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Info
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 428
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  syntax:
+    content: public PnPInfo Info { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPInfo
+    content.vb: Public ReadOnly Property Info As PnPInfo
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Info*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Commit
+  commentId: M:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Commit
+  id: Commit
+  parent: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  langs:
+  - csharp
+  - vb
+  name: Commit()
+  nameWithType: OpenXMLConnector.Commit()
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Commit()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Commit
+    path: ../src/lib/PnP.Framework/Provisioning/Connectors/OpenXMLConnector.cs
+    startLine: 436
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Connectors
+  summary: "\nCommits the file\n"
+  example: []
+  syntax:
+    content: public void Commit()
+    content.vb: Public Sub Commit
+  overload: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Commit*
+  implements:
+  - PnP.Framework.Provisioning.Connectors.ICommitableFileConnector.Commit
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Provisioning.Connectors
+  commentId: N:PnP.Framework.Provisioning.Connectors
+  name: PnP.Framework.Provisioning.Connectors
+  nameWithType: PnP.Framework.Provisioning.Connectors
+  fullName: PnP.Framework.Provisioning.Connectors
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  commentId: T:PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  parent: PnP.Framework.Provisioning.Connectors
+  name: FileConnectorBase
+  nameWithType: FileConnectorBase
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+- uid: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector
+  commentId: T:PnP.Framework.Provisioning.Connectors.ICommitableFileConnector
+  parent: PnP.Framework.Provisioning.Connectors
+  name: ICommitableFileConnector
+  nameWithType: ICommitableFileConnector
+  fullName: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.CONNECTIONSTRING
+  commentId: F:PnP.Framework.Provisioning.Connectors.FileConnectorBase.CONNECTIONSTRING
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  name: CONNECTIONSTRING
+  nameWithType: FileConnectorBase.CONNECTIONSTRING
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.CONNECTIONSTRING
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.CONTAINER
+  commentId: F:PnP.Framework.Provisioning.Connectors.FileConnectorBase.CONTAINER
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  name: CONTAINER
+  nameWithType: FileConnectorBase.CONTAINER
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.CONTAINER
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.Parameters
+  commentId: P:PnP.Framework.Provisioning.Connectors.FileConnectorBase.Parameters
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  name: Parameters
+  nameWithType: FileConnectorBase.Parameters
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.Parameters
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameterAsString(System.String,System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameterAsString(System.String,System.String)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: AddParameterAsString(String, String)
+  nameWithType: FileConnectorBase.AddParameterAsString(String, String)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameterAsString(System.String, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameterAsString(System.String,System.String)
+    name: AddParameterAsString
+    nameWithType: FileConnectorBase.AddParameterAsString
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameterAsString
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameterAsString(System.String,System.String)
+    name: AddParameterAsString
+    nameWithType: FileConnectorBase.AddParameterAsString
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameterAsString
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameter(System.String,System.Object)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameter(System.String,System.Object)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: AddParameter(String, Object)
+  nameWithType: FileConnectorBase.AddParameter(String, Object)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameter(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameter(System.String,System.Object)
+    name: AddParameter
+    nameWithType: FileConnectorBase.AddParameter
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameter
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameter(System.String,System.Object)
+    name: AddParameter
+    nameWithType: FileConnectorBase.AddParameter
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.AddParameter
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<OpenXMLConnector>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<OpenXMLConnector>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Connectors.OpenXMLConnector>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of OpenXMLConnector)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Connectors.OpenXMLConnector)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of OpenXMLConnector)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<OpenXMLConnector>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<OpenXMLConnector>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Connectors.OpenXMLConnector>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of OpenXMLConnector)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of OpenXMLConnector)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Connectors.OpenXMLConnector)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Connectors.OpenXMLConnector,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<OpenXMLConnector, T>(Expression<Func<OpenXMLConnector, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<OpenXMLConnector, T>(Expression<Func<OpenXMLConnector, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Connectors.OpenXMLConnector, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Connectors.OpenXMLConnector, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of OpenXMLConnector, T)(Expression(Of Func(Of OpenXMLConnector, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Connectors.OpenXMLConnector, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Connectors.OpenXMLConnector, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of OpenXMLConnector, T)(Expression(Of Func(Of OpenXMLConnector, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<OpenXMLConnector, T>
+    nameWithType: ObjectExtensions.Set<OpenXMLConnector, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Connectors.OpenXMLConnector, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+    name: OpenXMLConnector
+    nameWithType: OpenXMLConnector
+    fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of OpenXMLConnector, T)
+    nameWithType: ObjectExtensions.Set(Of OpenXMLConnector, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Connectors.OpenXMLConnector, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+    name: OpenXMLConnector
+    nameWithType: OpenXMLConnector
+    fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.#ctor*
+  commentId: Overload:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.#ctor
+  name: OpenXMLConnector
+  nameWithType: OpenXMLConnector.OpenXMLConnector
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.OpenXMLConnector
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Security.Cryptography.X509Certificates.X509Certificate2
+  commentId: T:System.Security.Cryptography.X509Certificates.X509Certificate2
+  parent: System.Security.Cryptography.X509Certificates
+  isExternal: true
+  name: X509Certificate2
+  nameWithType: X509Certificate2
+  fullName: System.Security.Cryptography.X509Certificates.X509Certificate2
+- uid: System.Security.Cryptography.X509Certificates
+  commentId: N:System.Security.Cryptography.X509Certificates
+  isExternal: true
+  name: System.Security.Cryptography.X509Certificates
+  nameWithType: System.Security.Cryptography.X509Certificates
+  fullName: System.Security.Cryptography.X509Certificates
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  name: GetFiles()
+  nameWithType: FileConnectorBase.GetFiles()
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles
+    name: GetFiles
+    nameWithType: FileConnectorBase.GetFiles
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles
+    name: GetFiles
+    nameWithType: FileConnectorBase.GetFiles
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles*
+  commentId: Overload:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles
+  name: GetFiles
+  nameWithType: OpenXMLConnector.GetFiles
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFiles
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<String>
+  nameWithType: List<String>
+  fullName: System.Collections.Generic.List<System.String>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of System.String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: GetFiles(String)
+  nameWithType: FileConnectorBase.GetFiles(String)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles(System.String)
+    name: GetFiles
+    nameWithType: FileConnectorBase.GetFiles
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles(System.String)
+    name: GetFiles
+    nameWithType: FileConnectorBase.GetFiles
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFiles
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  name: GetFolders()
+  nameWithType: FileConnectorBase.GetFolders()
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders
+    name: GetFolders
+    nameWithType: FileConnectorBase.GetFolders
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders
+    name: GetFolders
+    nameWithType: FileConnectorBase.GetFolders
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders*
+  commentId: Overload:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders
+  name: GetFolders
+  nameWithType: OpenXMLConnector.GetFolders
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFolders
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: GetFolders(String)
+  nameWithType: FileConnectorBase.GetFolders(String)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders(System.String)
+    name: GetFolders
+    nameWithType: FileConnectorBase.GetFolders
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders(System.String)
+    name: GetFolders
+    nameWithType: FileConnectorBase.GetFolders
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFolders
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: GetFile(String)
+  nameWithType: FileConnectorBase.GetFile(String)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String)
+    name: GetFile
+    nameWithType: FileConnectorBase.GetFile
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String)
+    name: GetFile
+    nameWithType: FileConnectorBase.GetFile
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile*
+  commentId: Overload:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile
+  name: GetFile
+  nameWithType: OpenXMLConnector.GetFile
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFile
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFilenamePart(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFilenamePart(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: GetFilenamePart(String)
+  nameWithType: FileConnectorBase.GetFilenamePart(String)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFilenamePart(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFilenamePart(System.String)
+    name: GetFilenamePart
+    nameWithType: FileConnectorBase.GetFilenamePart
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFilenamePart
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFilenamePart(System.String)
+    name: GetFilenamePart
+    nameWithType: FileConnectorBase.GetFilenamePart
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFilenamePart
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFilenamePart*
+  commentId: Overload:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFilenamePart
+  name: GetFilenamePart
+  nameWithType: OpenXMLConnector.GetFilenamePart
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFilenamePart
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String,System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String,System.String)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: GetFile(String, String)
+  nameWithType: FileConnectorBase.GetFile(String, String)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String,System.String)
+    name: GetFile
+    nameWithType: FileConnectorBase.GetFile
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile(System.String,System.String)
+    name: GetFile
+    nameWithType: FileConnectorBase.GetFile
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFile
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: GetFileStream(String)
+  nameWithType: FileConnectorBase.GetFileStream(String)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String)
+    name: GetFileStream
+    nameWithType: FileConnectorBase.GetFileStream
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String)
+    name: GetFileStream
+    nameWithType: FileConnectorBase.GetFileStream
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream*
+  commentId: Overload:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream
+  name: GetFileStream
+  nameWithType: OpenXMLConnector.GetFileStream
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.GetFileStream
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String,System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String,System.String)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: GetFileStream(String, String)
+  nameWithType: FileConnectorBase.GetFileStream(String, String)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String,System.String)
+    name: GetFileStream
+    nameWithType: FileConnectorBase.GetFileStream
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream(System.String,System.String)
+    name: GetFileStream
+    nameWithType: FileConnectorBase.GetFileStream
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.GetFileStream
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String,System.IO.Stream)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String,System.IO.Stream)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: SaveFileStream(String, Stream)
+  nameWithType: FileConnectorBase.SaveFileStream(String, Stream)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String, System.IO.Stream)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String,System.IO.Stream)
+    name: SaveFileStream
+    nameWithType: FileConnectorBase.SaveFileStream
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String,System.IO.Stream)
+    name: SaveFileStream
+    nameWithType: FileConnectorBase.SaveFileStream
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream*
+  commentId: Overload:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream
+  name: SaveFileStream
+  nameWithType: OpenXMLConnector.SaveFileStream
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.SaveFileStream
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String,System.String,System.IO.Stream)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String,System.String,System.IO.Stream)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: SaveFileStream(String, String, Stream)
+  nameWithType: FileConnectorBase.SaveFileStream(String, String, Stream)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String, System.String, System.IO.Stream)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String,System.String,System.IO.Stream)
+    name: SaveFileStream
+    nameWithType: FileConnectorBase.SaveFileStream
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream(System.String,System.String,System.IO.Stream)
+    name: SaveFileStream
+    nameWithType: FileConnectorBase.SaveFileStream
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.SaveFileStream
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: DeleteFile(String)
+  nameWithType: FileConnectorBase.DeleteFile(String)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String)
+    name: DeleteFile
+    nameWithType: FileConnectorBase.DeleteFile
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String)
+    name: DeleteFile
+    nameWithType: FileConnectorBase.DeleteFile
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile*
+  commentId: Overload:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile
+  name: DeleteFile
+  nameWithType: OpenXMLConnector.DeleteFile
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.DeleteFile
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String,System.String)
+  commentId: M:PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String,System.String)
+  parent: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  isExternal: true
+  name: DeleteFile(String, String)
+  nameWithType: FileConnectorBase.DeleteFile(String, String)
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String,System.String)
+    name: DeleteFile
+    nameWithType: FileConnectorBase.DeleteFile
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile(System.String,System.String)
+    name: DeleteFile
+    nameWithType: FileConnectorBase.DeleteFile
+    fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase.DeleteFile
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Info*
+  commentId: Overload:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Info
+  name: Info
+  nameWithType: OpenXMLConnector.Info
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Info
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPInfo
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPInfo
+  parent: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  name: PnPInfo
+  nameWithType: PnPInfo
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPInfo
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  commentId: N:PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  name: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  nameWithType: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Commit*
+  commentId: Overload:PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Commit
+  name: Commit
+  nameWithType: OpenXMLConnector.Commit
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector.Commit
+- uid: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector.Commit
+  commentId: M:PnP.Framework.Provisioning.Connectors.ICommitableFileConnector.Commit
+  parent: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector
+  name: Commit()
+  nameWithType: ICommitableFileConnector.Commit()
+  fullName: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector.Commit()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector.Commit
+    name: Commit
+    nameWithType: ICommitableFileConnector.Commit
+    fullName: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector.Commit
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector.Commit
+    name: Commit
+    nameWithType: ICommitableFileConnector.Commit
+    fullName: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector.Commit
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )

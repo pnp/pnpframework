@@ -27,7 +27,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
     internal class ObjectListInstance : ObjectHandlerBase
     {
         private readonly FieldAndListProvisioningStepHelper.Step step;
-
+        
         public override string Name
         {
 #if DEBUG
@@ -167,6 +167,23 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     #endregion Fields
 
+                    #region Audience Targeting
+                    foreach (var listInfo in processedLists)
+                    {
+                        if (listInfo.TemplateList.EnableClassicAudienceTargeting)
+                        {
+                            listInfo.SiteList.EnableClassicAudienceTargeting();
+                        }
+
+                        if (listInfo.TemplateList.EnableAudienceTargeting)
+                        {
+                            listInfo.SiteList.EnableModernAudienceTargeting();
+                        }
+                    }
+
+                    #endregion
+
+
                     // We stop here unless we reached the last provisioning stop of the list
                     if (step == FieldAndListProvisioningStepHelper.Step.ListSettings)
                     {
@@ -199,7 +216,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             var defaultFolderValues = new List<Entities.IDefaultColumnValue>();
                             foreach (var templateListFolder in listInfo.TemplateList.Folders)
                             {
-                                var folderName = templateListFolder.Name;
+                                var folderName = parser.ParseString(templateListFolder.Name);
                                 ProcessDefaultFolders(web, listInfo, templateListFolder, folderName, defaultFolderValues, parser);
                             }
                             listInfo.SiteList.SetDefaultColumnValues(defaultFolderValues, true);
@@ -747,6 +764,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 var viewInnerXml = reader.ReadInnerXml();
 
                 var createdView = createdList.Views.Add(viewCI);
+                createdList.Update();
+                web.Context.ExecuteQueryRetry();
+
+                // Edit the view settings after creating it to avoid issues with some creation properties being ignored, for example ViewTypeKind
                 createdView.ListViewXml = viewInnerXml;
                 if (hidden) createdView.Hidden = hidden;
                 createdView.Update();
@@ -1625,9 +1646,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             listContentType = list.ContentTypes.GetById(existingContentTypeId.StringValue);
                         }
                         else
-                        {
-                            // To avoid error [Exception setting "Hidden": "Cannot change Hidden attribute for this field], add fields to list before adding the content type. #2407
-                            AddContentTypeHiddenFieldsToList(tempCT, list);
+                        {                            
                             // Add the content type
                             listContentType = list.ContentTypes.AddExistingContentType(tempCT);
                         }
@@ -1680,26 +1699,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 defaultContentType.EnsureProperty(ct => ct.Id);
                 list.SetDefaultContentType(defaultContentType.Id);
-            }
-        }
-
-        private static void AddContentTypeHiddenFieldsToList(ContentType tempCT, List list)
-        {
-            var ctx = (ClientContext)list.Context;
-            var web = ctx.Web;
-            web.EnsureProperty(w => w.AvailableFields);
-            foreach (var fieldLink in tempCT.FieldLinks)
-            {
-                if (fieldLink.Hidden && !list.FieldExistsById(fieldLink.Id))
-                {
-                    var siteField = web.AvailableFields.First(f => f.Id == fieldLink.Id);
-
-                    list.Fields.Add(siteField);
-                }
-            }
-            if (ctx.HasPendingRequest)
-            {
-                ctx.ExecuteQueryRetry();
             }
         }
 
@@ -2174,13 +2173,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         var currentFolderItem = currentFolder.ListItemAllFields;
                         parentFolder.Context.Load(currentFolderItem);
                         parentFolder.Context.ExecuteQueryRetry();
-                        foreach (var p in folder.Properties.Where(p => !p.Key.Equals("ContentTypeId")))
+                        foreach (var p in folder.Properties.Where(p => !p.Key.Equals("ContentTypeId") && !p.Key.Equals("_ModerationStatus")))
                         {
                             currentFolderItem[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
                         }
                         currentFolderItem.UpdateOverwriteVersion();
                         currentFolder.Update();
                         parentFolder.Context.ExecuteQueryRetry();
+                                 
                     }
                     catch (ServerException srex)
                     {
@@ -2228,6 +2228,38 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         else
                             throw;
                     }
+                }
+                
+                //Set Moderation status of Folder
+                //Doing it in a different request, because SharePoint doesn't allow to update properties at the same time that other properties
+                if (list.SiteList.EnableModeration && folder.Properties != null && folder.Properties.Any(p => p.Key.Equals("_ModerationStatus")))
+                {
+                    try
+                    {
+                        var currentFolderItem = currentFolder.ListItemAllFields;
+                        parentFolder.Context.Load(currentFolderItem);
+                        parentFolder.Context.ExecuteQueryRetry();
+
+                        var propertyValue = folder.Properties["_ModerationStatus"];
+                        currentFolderItem["_ModerationStatus"] = parser.ParseString(propertyValue);
+
+                        currentFolderItem.UpdateOverwriteVersion();
+                        currentFolder.Update();
+                        parentFolder.Context.ExecuteQueryRetry();
+
+                    }
+                    catch (ServerException srex)
+                    {
+                        //Handle Error To update this folder, go to the channel in Microsoft Teams
+                        if (srex.ServerErrorCode == -2130575223)
+                        {
+                            scope.LogWarning($"Moderation status on folder '{targetFolderName}' can not be changed '{srex.Message}'");
+                            WriteMessage($"Moderation status on folder '{targetFolderName}' can not be changed '{srex.Message}'", ProvisioningMessageType.Warning);
+                        }
+                        else
+                            throw;
+                    }
+                    
                 }
             }
         }
@@ -2513,7 +2545,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     list = ExtractInformationRightsManagement(web, siteList, list, creationInfo, template);
 
                     list = ExtractPropertyBagEntries(siteList, list);
-
+                                        
                     if (baseTemplateList != null)
                     {
                         // do we plan to extract items from this list?
@@ -2731,7 +2763,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         if (field.InternalName == "Editor"
                             || field.InternalName == "Author"
-                            || field.InternalName == "Title"
                             || field.InternalName == "ID"
                             || field.InternalName == "Created"
                             || field.InternalName == "Modified"
@@ -2772,12 +2803,35 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                     }
 
+                    if(field.InternalName == Constants.ModernAudienceTargetingInternalName || field.InternalName == Constants.ModernAudienceTargetingMultiLookupInternalName)
+                    {
+                        //Modern Audience Targeting
+                        list.EnableAudienceTargeting = true;
+                    }
+
+                    if (field.InternalName == Constants.ClassicAudienceTargetingInternalName)
+                    {
+                        //Classic Audience Targeting
+                        list.EnableClassicAudienceTargeting = true;
+                    }
+
+
                     if (addField)
                     {
+                        var fieldTitle = field.Title;
+                        if (creationInfo.PersistMultiLanguageResources)
+                        {
+                            var escapedFieldTitle = siteList.Title.Replace(" ", "_")+"_"+field.Title.Replace(" ", "_");
+                            if (UserResourceExtensions.PersistResourceValue(field.TitleResource, $"Field_{escapedFieldTitle}_DisplayName", template, creationInfo))
+                            {
+                                fieldTitle = $"{{res:Field_{escapedFieldTitle}_DisplayName}}";
+                            }
+                        }
+
                         list.FieldRefs.Add(new FieldRef(field.InternalName)
                         {
                             Id = field.Id,
-                            DisplayName = field.Title,
+                            DisplayName = fieldTitle,
                             Required = field.Required,
                             Hidden = field.Hidden,
                         });
@@ -3037,5 +3091,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             return _willExtract.Value;
         }
+
     }
 }

@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Diagnostics
+  commentId: N:PnP.Framework.Diagnostics
+  id: PnP.Framework.Diagnostics
+  children:
+  - PnP.Framework.Diagnostics.ILogger
+  - PnP.Framework.Diagnostics.Log
+  - PnP.Framework.Diagnostics.LogConfigurationTracingLoggerElement
+  - PnP.Framework.Diagnostics.LogConfigurationTracingSection
+  - PnP.Framework.Diagnostics.LogEntry
+  - PnP.Framework.Diagnostics.LogLevel
+  - PnP.Framework.Diagnostics.PnPMonitoredScope
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Diagnostics
+  nameWithType: PnP.Framework.Diagnostics
+  fullName: PnP.Framework.Diagnostics
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Diagnostics.ILogger
+  commentId: T:PnP.Framework.Diagnostics.ILogger
+  parent: PnP.Framework.Diagnostics
+  name: ILogger
+  nameWithType: ILogger
+  fullName: PnP.Framework.Diagnostics.ILogger
+- uid: PnP.Framework.Diagnostics.Log
+  commentId: T:PnP.Framework.Diagnostics.Log
+  name: Log
+  nameWithType: Log
+  fullName: PnP.Framework.Diagnostics.Log
+- uid: PnP.Framework.Diagnostics.LogConfigurationTracingSection
+  commentId: T:PnP.Framework.Diagnostics.LogConfigurationTracingSection
+  name: LogConfigurationTracingSection
+  nameWithType: LogConfigurationTracingSection
+  fullName: PnP.Framework.Diagnostics.LogConfigurationTracingSection
+- uid: PnP.Framework.Diagnostics.LogConfigurationTracingLoggerElement
+  commentId: T:PnP.Framework.Diagnostics.LogConfigurationTracingLoggerElement
+  parent: PnP.Framework.Diagnostics
+  name: LogConfigurationTracingLoggerElement
+  nameWithType: LogConfigurationTracingLoggerElement
+  fullName: PnP.Framework.Diagnostics.LogConfigurationTracingLoggerElement
+- uid: PnP.Framework.Diagnostics.LogEntry
+  commentId: T:PnP.Framework.Diagnostics.LogEntry
+  parent: PnP.Framework.Diagnostics
+  name: LogEntry
+  nameWithType: LogEntry
+  fullName: PnP.Framework.Diagnostics.LogEntry
+- uid: PnP.Framework.Diagnostics.LogLevel
+  commentId: T:PnP.Framework.Diagnostics.LogLevel
+  parent: PnP.Framework.Diagnostics
+  name: LogLevel
+  nameWithType: LogLevel
+  fullName: PnP.Framework.Diagnostics.LogLevel
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+  commentId: T:PnP.Framework.Diagnostics.PnPMonitoredScope
+  parent: PnP.Framework.Diagnostics
+  name: PnPMonitoredScope
+  nameWithType: PnPMonitoredScope
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope
+- uid: PnP.Framework.Diagnostics
+  commentId: N:PnP.Framework.Diagnostics
+  name: PnP.Framework.Diagnostics
+  nameWithType: PnP.Framework.Diagnostics
+  fullName: PnP.Framework.Diagnostics

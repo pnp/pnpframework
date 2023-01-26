@@ -1,0 +1,47 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.CanProvisionRules
+  commentId: N:PnP.Framework.Provisioning.CanProvisionRules
+  id: PnP.Framework.Provisioning.CanProvisionRules
+  children:
+  - PnP.Framework.Provisioning.CanProvisionRules.CanProvisionIssue
+  - PnP.Framework.Provisioning.CanProvisionRules.CanProvisionIssueTags
+  - PnP.Framework.Provisioning.CanProvisionRules.CanProvisionResult
+  - PnP.Framework.Provisioning.CanProvisionRules.CanProvisionRulesManager
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.CanProvisionRules
+  nameWithType: PnP.Framework.Provisioning.CanProvisionRules
+  fullName: PnP.Framework.Provisioning.CanProvisionRules
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionIssue
+  commentId: T:PnP.Framework.Provisioning.CanProvisionRules.CanProvisionIssue
+  name: CanProvisionIssue
+  nameWithType: CanProvisionIssue
+  fullName: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionIssue
+- uid: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionIssueTags
+  commentId: T:PnP.Framework.Provisioning.CanProvisionRules.CanProvisionIssueTags
+  parent: PnP.Framework.Provisioning.CanProvisionRules
+  name: CanProvisionIssueTags
+  nameWithType: CanProvisionIssueTags
+  fullName: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionIssueTags
+- uid: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionResult
+  commentId: T:PnP.Framework.Provisioning.CanProvisionRules.CanProvisionResult
+  parent: PnP.Framework.Provisioning.CanProvisionRules
+  name: CanProvisionResult
+  nameWithType: CanProvisionResult
+  fullName: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionResult
+- uid: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionRulesManager
+  commentId: T:PnP.Framework.Provisioning.CanProvisionRules.CanProvisionRulesManager
+  name: CanProvisionRulesManager
+  nameWithType: CanProvisionRulesManager
+  fullName: PnP.Framework.Provisioning.CanProvisionRules.CanProvisionRulesManager
+- uid: PnP.Framework.Provisioning.CanProvisionRules
+  commentId: N:PnP.Framework.Provisioning.CanProvisionRules
+  name: PnP.Framework.Provisioning.CanProvisionRules
+  nameWithType: PnP.Framework.Provisioning.CanProvisionRules
+  fullName: PnP.Framework.Provisioning.CanProvisionRules

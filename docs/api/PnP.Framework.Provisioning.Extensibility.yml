@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Extensibility
+  commentId: N:PnP.Framework.Provisioning.Extensibility
+  id: PnP.Framework.Provisioning.Extensibility
+  children:
+  - PnP.Framework.Provisioning.Extensibility.ExtensibilityManager
+  - PnP.Framework.Provisioning.Extensibility.ExtensiblityPipelineException
+  - PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityHandler
+  - PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityProvider
+  - PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityTokenProvider
+  - PnP.Framework.Provisioning.Extensibility.IProvisioningTemplateProcessor
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Extensibility
+  nameWithType: PnP.Framework.Provisioning.Extensibility
+  fullName: PnP.Framework.Provisioning.Extensibility
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Extensibility.ExtensibilityManager
+  commentId: T:PnP.Framework.Provisioning.Extensibility.ExtensibilityManager
+  name: ExtensibilityManager
+  nameWithType: ExtensibilityManager
+  fullName: PnP.Framework.Provisioning.Extensibility.ExtensibilityManager
+- uid: PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityProvider
+  commentId: T:PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityProvider
+  name: IProvisioningExtensibilityProvider
+  nameWithType: IProvisioningExtensibilityProvider
+  fullName: PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityProvider
+- uid: PnP.Framework.Provisioning.Extensibility.ExtensiblityPipelineException
+  commentId: T:PnP.Framework.Provisioning.Extensibility.ExtensiblityPipelineException
+  name: ExtensiblityPipelineException
+  nameWithType: ExtensiblityPipelineException
+  fullName: PnP.Framework.Provisioning.Extensibility.ExtensiblityPipelineException
+- uid: PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityHandler
+  commentId: T:PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityHandler
+  name: IProvisioningExtensibilityHandler
+  nameWithType: IProvisioningExtensibilityHandler
+  fullName: PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityHandler
+- uid: PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityTokenProvider
+  commentId: T:PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityTokenProvider
+  parent: PnP.Framework.Provisioning.Extensibility
+  name: IProvisioningExtensibilityTokenProvider
+  nameWithType: IProvisioningExtensibilityTokenProvider
+  fullName: PnP.Framework.Provisioning.Extensibility.IProvisioningExtensibilityTokenProvider
+- uid: PnP.Framework.Provisioning.Extensibility.IProvisioningTemplateProcessor
+  commentId: T:PnP.Framework.Provisioning.Extensibility.IProvisioningTemplateProcessor
+  name: IProvisioningTemplateProcessor
+  nameWithType: IProvisioningTemplateProcessor
+  fullName: PnP.Framework.Provisioning.Extensibility.IProvisioningTemplateProcessor
+- uid: PnP.Framework.Provisioning.Extensibility
+  commentId: N:PnP.Framework.Provisioning.Extensibility
+  name: PnP.Framework.Provisioning.Extensibility
+  nameWithType: PnP.Framework.Provisioning.Extensibility
+  fullName: PnP.Framework.Provisioning.Extensibility

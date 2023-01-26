@@ -109,15 +109,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             var termSetIdElement = element.XPathSelectElement("./Customization/ArrayOfProperty/Property[Name = 'TermSetId']/Value");
             if (termSetIdElement != null)
             {
-                Guid termSetId = Guid.Parse(termSetIdElement.Value);
-                if (termSetId != Guid.Empty)
+                Guid termSetId;
+                if (Guid.TryParse(termSetIdElement.Value, out termSetId) && termSetId != Guid.Empty)
                 {
                     Microsoft.SharePoint.Client.Taxonomy.TermSet termSet = store.GetTermSet(termSetId);
                     store.Context.ExecuteQueryRetry();
 
                     if (!termSet.ServerObjectIsNull())
                     {
-                        termSet.EnsureProperties(ts => ts.Name, ts => ts.Group);
+                        termSet.EnsureProperties(ts => ts.Name, ts => ts.Group.Name, ts => ts.Group.IsSiteCollectionGroup);
 
                         termSetIdElement.Value = String.Format("{{termsetid:{0}:{1}}}", termSet.Group.IsSiteCollectionGroup ? "{sitecollectiontermgroupname}" : termSet.Group.Name, termSet.Name);
                     }

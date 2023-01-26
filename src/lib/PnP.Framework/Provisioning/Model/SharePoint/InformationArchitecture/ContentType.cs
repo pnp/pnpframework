@@ -99,6 +99,36 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         public bool UpdateChildren { get; set; }
 
+        /// <summary>
+        /// Declares the ID of the SPFx Client Side Component to customize the Display Form of the Content Type.
+        /// </summary>
+        public string DisplayFormClientSideComponentId { get; set; }
+
+        /// <summary>
+        /// Defines the properties of the SPFx Client Side Component to customize the Display Form of the Content Type.
+        /// </summary>
+        public string DisplayFormClientSideComponentProperties { get; set; }
+
+        /// <summary>
+        /// Declares the ID of the SPFx Client Side Component to customize the New Form of the Content Type.
+        /// </summary>
+        public string NewFormClientSideComponentId { get; set; }
+
+        /// <summary>
+        /// Defines the properties of the SPFx Client Side Component to customize the New Form of the Content Type.
+        /// </summary>
+        public string NewFormClientSideComponentProperties { get; set; }
+
+        /// <summary>
+        /// Declares the ID of the SPFx Client Side Component to customize the Edit Form of the Content Type.
+        /// </summary>
+        public string EditFormClientSideComponentId { get; set; }
+
+        /// <summary>
+        /// Defines the properties of the SPFx Client Side Component to customize the Edit Form of the Content Type.
+        /// </summary>
+        public string EditFormClientSideComponentProperties { get; set; }
+
         #endregion
 
         #region Constructors
@@ -148,7 +178,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|",
                 (this.Id != null ? this.Id.GetHashCode() : 0),
                 (this.Name != null ? this.Name.GetHashCode() : 0),
                 (this.Description != null ? this.Description.GetHashCode() : 0),
@@ -160,7 +190,13 @@ namespace PnP.Framework.Provisioning.Model
                 (this.DocumentTemplate != null ? this.DocumentTemplate.GetHashCode() : 0),
                 (this.DocumentSetTemplate != null ? this.DocumentSetTemplate.GetHashCode() : 0),
                 this.FieldRefs.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
-                this.UpdateChildren.GetHashCode()
+                this.UpdateChildren.GetHashCode(),
+                (this.DisplayFormClientSideComponentId != null ? this.DisplayFormClientSideComponentId.GetHashCode() : 0),
+                (this.DisplayFormClientSideComponentProperties != null ? this.DisplayFormClientSideComponentProperties.GetHashCode() : 0),
+                (this.NewFormClientSideComponentId != null ? this.NewFormClientSideComponentId.GetHashCode() : 0),
+                (this.NewFormClientSideComponentProperties != null ? this.NewFormClientSideComponentProperties.GetHashCode(): 0),
+                (this.EditFormClientSideComponentId != null ? this.EditFormClientSideComponentId.GetHashCode() : 0),
+                (this.EditFormClientSideComponentProperties != null ? this.EditFormClientSideComponentProperties.GetHashCode() : 0)
             ).GetHashCode());
         }
 
@@ -201,7 +237,13 @@ namespace PnP.Framework.Provisioning.Model
                     this.DocumentTemplate == other.DocumentTemplate &&
                     (this.DocumentSetTemplate != null ? this.DocumentSetTemplate.Equals(other.DocumentSetTemplate) : this.DocumentSetTemplate == null && other.DocumentSetTemplate == null ? true : false) &&
                     this.FieldRefs.DeepEquals(other.FieldRefs) &&
-                    this.UpdateChildren == other.UpdateChildren
+                    this.UpdateChildren == other.UpdateChildren &&
+                    this.DisplayFormClientSideComponentId == other.DisplayFormClientSideComponentId &&
+                    this.DisplayFormClientSideComponentProperties == other.DisplayFormClientSideComponentProperties &&
+                    this.NewFormClientSideComponentId == other.NewFormClientSideComponentId &&
+                    this.NewFormClientSideComponentProperties == other.NewFormClientSideComponentProperties &&
+                    this.EditFormClientSideComponentId == other.EditFormClientSideComponentId &&
+                    this.EditFormClientSideComponentProperties == other.EditFormClientSideComponentProperties
                 );
 
         }

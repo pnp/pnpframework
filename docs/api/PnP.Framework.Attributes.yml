@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Attributes
+  commentId: N:PnP.Framework.Attributes
+  id: PnP.Framework.Attributes
+  children:
+  - PnP.Framework.Attributes.TokenDefinitionDescriptionAttribute
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Attributes
+  nameWithType: PnP.Framework.Attributes
+  fullName: PnP.Framework.Attributes
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Attributes.TokenDefinitionDescriptionAttribute
+  commentId: T:PnP.Framework.Attributes.TokenDefinitionDescriptionAttribute
+  name: TokenDefinitionDescriptionAttribute
+  nameWithType: TokenDefinitionDescriptionAttribute
+  fullName: PnP.Framework.Attributes.TokenDefinitionDescriptionAttribute

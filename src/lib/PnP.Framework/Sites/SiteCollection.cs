@@ -539,6 +539,10 @@ namespace PnP.Framework.Sites
 
             if (group != null && !string.IsNullOrEmpty(group.SiteUrl))
             {
+                if (siteCollectionCreationInformation.Owners!=null)
+                {
+                    Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(group.GroupId, siteCollectionCreationInformation.Owners, graphAccessToken);
+                }
                 // Try to configure the site/group classification, if any
                 if (!string.IsNullOrEmpty(siteCollectionCreationInformation.Classification))
                 {
@@ -1256,8 +1260,10 @@ namespace PnP.Framework.Sites
         /// Will also enable it on a newly Groupified classic site
         /// </summary>
         /// <param name="context">Context to operate against</param>
+        /// <param name="graphAccessToken">Graph Access token</param>
+        /// <param name="azureEnvironment">Azure environment to operate</param>
         /// <returns></returns>
-        public static async Task<string> TeamifySiteAsync(ClientContext context)
+        public static async Task<string> TeamifySiteAsync(ClientContext context, string graphAccessToken = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             string responseString = null;
 
@@ -1273,13 +1279,56 @@ namespace PnP.Framework.Sites
             }
             else
             {
-                var result = await context.Web.ExecutePostAsync("/_api/groupsitemanager/EnsureTeamForGroup", string.Empty);
+                if (!string.IsNullOrEmpty(graphAccessToken))
+                {
+                    var createTeamEndPoint = $"{Graph.GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{context.Site.GroupId}/team";
+                    bool wait = true;
+                    int iterations = 0;
+                    while (wait)
+                    {
+                        iterations++;
+                        try
+                        {
+                            await Task.Run(() =>
+                            {
+                                var teamid = HttpHelper.MakePutRequestForString(createTeamEndPoint, new { }, "application/json", graphAccessToken);
+                                if (!string.IsNullOrEmpty(teamid))
+                                {
+                                    wait = false;
+                                    responseString = teamid;
+                                }
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            // Don't wait more than the requested timeout in seconds
+                            if (iterations * 30 >= 300)
+                            {
+                                wait = false;
+                                throw;
+                            }
+                            else
+                            {
+                                // In case of exception wait for 30 secs
+                                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
+                                await Task.Delay(TimeSpan.FromSeconds(30));
+                            }
+                        }
+                    }
+                    
+                    return await Task.Run(() => responseString);
+                }
+                else
+                {
+                    var result = await context.Web.ExecutePostAsync("/_api/groupsitemanager/EnsureTeamForGroup", string.Empty);
 
-                var teamId = JObject.Parse(result);
+                    var teamId = JObject.Parse(result);
 
-                responseString = Convert.ToString(teamId["value"]);
+                    responseString = Convert.ToString(teamId["value"]);
 
-                return await Task.Run(() => responseString);
+                    return await Task.Run(() => responseString);
+                }
+                
             }
         }
 

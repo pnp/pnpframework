@@ -41,7 +41,7 @@ namespace PnP.Framework.Modernization.Transform
                         {
                             // $0 in the replacement value is replaced by the input...need to escape it first to avoid getting into a recursive loop
                             // See https://stackoverflow.com/questions/41227351/trouble-with-0-in-regex-replace-c-sharp/41229868#41229868
-                            input = regex.Replace(input, property.Value.Replace("$0", "$$0"));
+                            input = regex.Replace(input, property.Value.Replace("$", "$$"));
                         }
                     }
                 }

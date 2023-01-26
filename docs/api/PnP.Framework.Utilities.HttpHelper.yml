@@ -1,0 +1,1302 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.HttpHelper
+  commentId: T:PnP.Framework.Utilities.HttpHelper
+  id: HttpHelper
+  parent: PnP.Framework.Utilities
+  children:
+  - PnP.Framework.Utilities.HttpHelper.JsonContentType
+  - PnP.Framework.Utilities.HttpHelper.MakeDeleteRequest(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStream(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStreamWithResponseHeaders(System.String,System.String,System.Net.Http.Headers.HttpResponseHeaders@,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Utilities.HttpHelper.MakeGetRequestForString(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Utilities.HttpHelper.MakePatchRequestForString(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Utilities.HttpHelper.MakePostRequest(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Utilities.HttpHelper.MakePostRequestForHeaders(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Utilities.HttpHelper.MakePostRequestForString(System.String,System.Object,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Utilities.HttpHelper.MakePutRequest(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Utilities.HttpHelper.MakePutRequestForString(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  langs:
+  - csharp
+  - vb
+  name: HttpHelper
+  nameWithType: HttpHelper
+  fullName: PnP.Framework.Utilities.HttpHelper
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HttpHelper
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nStatic class full of helper methods to make HTTP requests\n"
+  example: []
+  syntax:
+    content: public static class HttpHelper
+    content.vb: Public Module HttpHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Utilities.HttpHelper.JsonContentType
+  commentId: F:PnP.Framework.Utilities.HttpHelper.JsonContentType
+  id: JsonContentType
+  parent: PnP.Framework.Utilities.HttpHelper
+  langs:
+  - csharp
+  - vb
+  name: JsonContentType
+  nameWithType: HttpHelper.JsonContentType
+  fullName: PnP.Framework.Utilities.HttpHelper.JsonContentType
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: JsonContentType
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 17
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  syntax:
+    content: public const string JsonContentType = "application/json"
+    return:
+      type: System.String
+    content.vb: Public Const JsonContentType As String = "application/json"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForString(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Utilities.HttpHelper.MakeGetRequestForString(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  id: MakeGetRequestForString(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Utilities.HttpHelper
+  langs:
+  - csharp
+  - vb
+  name: MakeGetRequestForString(String, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  nameWithType: HttpHelper.MakeGetRequestForString(String, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  fullName: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForString(System.String, System.String, System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>, System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakeGetRequestForString
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 32
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nThis helper method makes an HTTP GET request and returns the result as a String\n"
+  example: []
+  syntax:
+    content: public static string MakeGetRequestForString(string requestUrl, string accessToken = null, string accept = null, Dictionary<string, string> requestHeaders = null, Dictionary<string, string> cookies = null, int retryCount = 1, int delay = 500, string userAgent = null, ClientContext spContext = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token for the request, if authorization is required
+    - id: accept
+      type: System.String
+      description: The value for the accept header in the request
+    - id: requestHeaders
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: A collection of any custom request headers
+    - id: cookies
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Any request cookies values
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;
+    - id: spContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: An optional SharePoint client context
+    return:
+      type: System.String
+      description: The String value of the result
+    content.vb: Public Shared Function MakeGetRequestForString(requestUrl As String, accessToken As String = Nothing, accept As String = Nothing, requestHeaders As Dictionary(Of String, String) = Nothing, cookies As Dictionary(Of String, String) = Nothing, retryCount As Integer = 1, delay As Integer = 500, userAgent As String = Nothing, spContext As ClientContext = Nothing) As String
+  overload: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForString*
+  nameWithType.vb: HttpHelper.MakeGetRequestForString(String, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForString(System.String, System.String, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String), System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  name.vb: MakeGetRequestForString(String, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+- uid: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStream(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStream(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  id: MakeGetRequestForStream(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Utilities.HttpHelper
+  langs:
+  - csharp
+  - vb
+  name: MakeGetRequestForStream(String, String, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  nameWithType: HttpHelper.MakeGetRequestForStream(String, String, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  fullName: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStream(System.String, System.String, System.String, System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>, System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakeGetRequestForStream
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 70
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nThis helper method makes an HTTP GET request and returns the result as a String\n"
+  example: []
+  syntax:
+    content: public static Stream MakeGetRequestForStream(string requestUrl, string accept, string accessToken = null, string referer = null, Dictionary<string, string> requestHeaders = null, Dictionary<string, string> cookies = null, int retryCount = 1, int delay = 500, string userAgent = null, ClientContext spContext = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: accept
+      type: System.String
+      description: The accept header for the response
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token for the request, if authorization is required
+    - id: referer
+      type: System.String
+      description: The URL Referer for the request
+    - id: requestHeaders
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: A collection of any custom request headers
+    - id: cookies
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Any request cookies values
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;
+    - id: spContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: An optional SharePoint client context
+    return:
+      type: System.IO.Stream
+      description: The Stream  of the result
+    content.vb: Public Shared Function MakeGetRequestForStream(requestUrl As String, accept As String, accessToken As String = Nothing, referer As String = Nothing, requestHeaders As Dictionary(Of String, String) = Nothing, cookies As Dictionary(Of String, String) = Nothing, retryCount As Integer = 1, delay As Integer = 500, userAgent As String = Nothing, spContext As ClientContext = Nothing) As Stream
+  overload: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStream*
+  nameWithType.vb: HttpHelper.MakeGetRequestForStream(String, String, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStream(System.String, System.String, System.String, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String), System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  name.vb: MakeGetRequestForStream(String, String, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+- uid: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStreamWithResponseHeaders(System.String,System.String,System.Net.Http.Headers.HttpResponseHeaders@,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStreamWithResponseHeaders(System.String,System.String,System.Net.Http.Headers.HttpResponseHeaders@,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  id: MakeGetRequestForStreamWithResponseHeaders(System.String,System.String,System.Net.Http.Headers.HttpResponseHeaders@,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Utilities.HttpHelper
+  langs:
+  - csharp
+  - vb
+  name: MakeGetRequestForStreamWithResponseHeaders(String, String, out HttpResponseHeaders, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  nameWithType: HttpHelper.MakeGetRequestForStreamWithResponseHeaders(String, String, out HttpResponseHeaders, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  fullName: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStreamWithResponseHeaders(System.String, System.String, out System.Net.Http.Headers.HttpResponseHeaders, System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>, System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakeGetRequestForStreamWithResponseHeaders
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 110
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nThis helper method makes an HTTP GET request and returns the result as a String\n"
+  example: []
+  syntax:
+    content: public static Stream MakeGetRequestForStreamWithResponseHeaders(string requestUrl, string accept, out HttpResponseHeaders responseHeaders, string accessToken = null, Dictionary<string, string> requestHeaders = null, Dictionary<string, string> cookies = null, int retryCount = 1, int delay = 500, string userAgent = null, ClientContext spContext = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: accept
+      type: System.String
+      description: The accept header for the response
+    - id: responseHeaders
+      type: System.Net.Http.Headers.HttpResponseHeaders
+      description: The response headers of the HTTP request (output argument)
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token for the request, if authorization is required
+    - id: requestHeaders
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: A collection of any custom request headers
+    - id: cookies
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Any request cookies values
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;
+    - id: spContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: An optional SharePoint client context
+    return:
+      type: System.IO.Stream
+      description: The Stream  of the result
+    content.vb: Public Shared Function MakeGetRequestForStreamWithResponseHeaders(requestUrl As String, accept As String, ByRef responseHeaders As HttpResponseHeaders, accessToken As String = Nothing, requestHeaders As Dictionary(Of String, String) = Nothing, cookies As Dictionary(Of String, String) = Nothing, retryCount As Integer = 1, delay As Integer = 500, userAgent As String = Nothing, spContext As ClientContext = Nothing) As Stream
+  overload: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStreamWithResponseHeaders*
+  nameWithType.vb: HttpHelper.MakeGetRequestForStreamWithResponseHeaders(String, String, ByRef HttpResponseHeaders, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStreamWithResponseHeaders(System.String, System.String, ByRef System.Net.Http.Headers.HttpResponseHeaders, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String), System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  name.vb: MakeGetRequestForStreamWithResponseHeaders(String, String, ByRef HttpResponseHeaders, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+- uid: PnP.Framework.Utilities.HttpHelper.MakePostRequest(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Utilities.HttpHelper.MakePostRequest(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  id: MakePostRequest(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Utilities.HttpHelper
+  langs:
+  - csharp
+  - vb
+  name: MakePostRequest(String, Object, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  nameWithType: HttpHelper.MakePostRequest(String, Object, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePostRequest(System.String, System.Object, System.String, System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>, System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakePostRequest
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 149
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nThis helper method makes an HTTP POST request without a response\n"
+  example: []
+  syntax:
+    content: public static void MakePostRequest(string requestUrl, object content = null, string contentType = null, string accessToken = null, Dictionary<string, string> requestHeaders = null, Dictionary<string, string> cookies = null, int retryCount = 1, int delay = 500, string userAgent = null, ClientContext spContext = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: content
+      type: System.Object
+      description: The content of the request
+    - id: contentType
+      type: System.String
+      description: The content/type of the request
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token for the request, if authorization is required
+    - id: requestHeaders
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: A collection of any custom request headers
+    - id: cookies
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Any request cookies values
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;
+    - id: spContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: An optional SharePoint client context
+    content.vb: Public Shared Sub MakePostRequest(requestUrl As String, content As Object = Nothing, contentType As String = Nothing, accessToken As String = Nothing, requestHeaders As Dictionary(Of String, String) = Nothing, cookies As Dictionary(Of String, String) = Nothing, retryCount As Integer = 1, delay As Integer = 500, userAgent As String = Nothing, spContext As ClientContext = Nothing)
+  overload: PnP.Framework.Utilities.HttpHelper.MakePostRequest*
+  nameWithType.vb: HttpHelper.MakePostRequest(String, Object, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.HttpHelper.MakePostRequest(System.String, System.Object, System.String, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String), System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  name.vb: MakePostRequest(String, Object, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+- uid: PnP.Framework.Utilities.HttpHelper.MakePostRequestForString(System.String,System.Object,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Utilities.HttpHelper.MakePostRequestForString(System.String,System.Object,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  id: MakePostRequestForString(System.String,System.Object,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Utilities.HttpHelper
+  langs:
+  - csharp
+  - vb
+  name: MakePostRequestForString(String, Object, String, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  nameWithType: HttpHelper.MakePostRequestForString(String, Object, String, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePostRequestForString(System.String, System.Object, System.String, System.String, System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>, System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakePostRequestForString
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 189
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nThis helper method makes an HTTP POST request and returns the result as a String\n"
+  example: []
+  syntax:
+    content: public static string MakePostRequestForString(string requestUrl, object content = null, string contentType = null, string accessToken = null, string accept = null, Dictionary<string, string> requestHeaders = null, Dictionary<string, string> cookies = null, int retryCount = 1, int delay = 500, string userAgent = null, ClientContext spContext = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: content
+      type: System.Object
+      description: The content of the request
+    - id: contentType
+      type: System.String
+      description: The content/type of the request
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token for the request, if authorization is required
+    - id: accept
+      type: System.String
+      description: The value for the accept header in the request
+    - id: requestHeaders
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: A collection of any custom request headers
+    - id: cookies
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Any request cookies values
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;
+    - id: spContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: An optional SharePoint client context
+    return:
+      type: System.String
+      description: The String value of the result
+    content.vb: Public Shared Function MakePostRequestForString(requestUrl As String, content As Object = Nothing, contentType As String = Nothing, accessToken As String = Nothing, accept As String = Nothing, requestHeaders As Dictionary(Of String, String) = Nothing, cookies As Dictionary(Of String, String) = Nothing, retryCount As Integer = 1, delay As Integer = 500, userAgent As String = Nothing, spContext As ClientContext = Nothing) As String
+  overload: PnP.Framework.Utilities.HttpHelper.MakePostRequestForString*
+  nameWithType.vb: HttpHelper.MakePostRequestForString(String, Object, String, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.HttpHelper.MakePostRequestForString(System.String, System.Object, System.String, System.String, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String), System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  name.vb: MakePostRequestForString(String, Object, String, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+- uid: PnP.Framework.Utilities.HttpHelper.MakePostRequestForHeaders(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Utilities.HttpHelper.MakePostRequestForHeaders(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  id: MakePostRequestForHeaders(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Utilities.HttpHelper
+  langs:
+  - csharp
+  - vb
+  name: MakePostRequestForHeaders(String, Object, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  nameWithType: HttpHelper.MakePostRequestForHeaders(String, Object, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePostRequestForHeaders(System.String, System.Object, System.String, System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>, System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakePostRequestForHeaders
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 231
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nThis helper method makes an HTTP GET request and returns the result as a String\n"
+  example: []
+  syntax:
+    content: public static HttpResponseHeaders MakePostRequestForHeaders(string requestUrl, object content = null, string contentType = null, string accessToken = null, Dictionary<string, string> requestHeaders = null, Dictionary<string, string> cookies = null, int retryCount = 1, int delay = 500, string userAgent = null, ClientContext spContext = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: content
+      type: System.Object
+      description: The content of the request
+    - id: contentType
+      type: System.String
+      description: The content type for the request
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token for the request, if authorization is required
+    - id: requestHeaders
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: A collection of any custom request headers
+    - id: cookies
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Any request cookies values
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;
+    - id: spContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: An optional SharePoint client context
+    return:
+      type: System.Net.Http.Headers.HttpResponseHeaders
+      description: The Stream  of the result
+    content.vb: Public Shared Function MakePostRequestForHeaders(requestUrl As String, content As Object = Nothing, contentType As String = Nothing, accessToken As String = Nothing, requestHeaders As Dictionary(Of String, String) = Nothing, cookies As Dictionary(Of String, String) = Nothing, retryCount As Integer = 1, delay As Integer = 500, userAgent As String = Nothing, spContext As ClientContext = Nothing) As HttpResponseHeaders
+  overload: PnP.Framework.Utilities.HttpHelper.MakePostRequestForHeaders*
+  nameWithType.vb: HttpHelper.MakePostRequestForHeaders(String, Object, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.HttpHelper.MakePostRequestForHeaders(System.String, System.Object, System.String, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String), System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  name.vb: MakePostRequestForHeaders(String, Object, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+- uid: PnP.Framework.Utilities.HttpHelper.MakePutRequest(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Utilities.HttpHelper.MakePutRequest(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  id: MakePutRequest(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Utilities.HttpHelper
+  langs:
+  - csharp
+  - vb
+  name: MakePutRequest(String, Object, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  nameWithType: HttpHelper.MakePutRequest(String, Object, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePutRequest(System.String, System.Object, System.String, System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>, System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakePutRequest
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 270
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nThis helper method makes an HTTP PUT request without a response\n"
+  example: []
+  syntax:
+    content: public static void MakePutRequest(string requestUrl, object content = null, string contentType = null, string accessToken = null, Dictionary<string, string> requestHeaders = null, Dictionary<string, string> cookies = null, int retryCount = 1, int delay = 500, string userAgent = null, ClientContext spContext = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: content
+      type: System.Object
+      description: The content of the request
+    - id: contentType
+      type: System.String
+      description: The content/type of the request
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token for the request, if authorization is required
+    - id: requestHeaders
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: A collection of any custom request headers
+    - id: cookies
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Any request cookies values
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;
+    - id: spContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: An optional SharePoint client context
+    content.vb: Public Shared Sub MakePutRequest(requestUrl As String, content As Object = Nothing, contentType As String = Nothing, accessToken As String = Nothing, requestHeaders As Dictionary(Of String, String) = Nothing, cookies As Dictionary(Of String, String) = Nothing, retryCount As Integer = 1, delay As Integer = 500, userAgent As String = Nothing, spContext As ClientContext = Nothing)
+  overload: PnP.Framework.Utilities.HttpHelper.MakePutRequest*
+  nameWithType.vb: HttpHelper.MakePutRequest(String, Object, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.HttpHelper.MakePutRequest(System.String, System.Object, System.String, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String), System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  name.vb: MakePutRequest(String, Object, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+- uid: PnP.Framework.Utilities.HttpHelper.MakePutRequestForString(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Utilities.HttpHelper.MakePutRequestForString(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  id: MakePutRequestForString(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Utilities.HttpHelper
+  langs:
+  - csharp
+  - vb
+  name: MakePutRequestForString(String, Object, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  nameWithType: HttpHelper.MakePutRequestForString(String, Object, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePutRequestForString(System.String, System.Object, System.String, System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>, System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakePutRequestForString
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 309
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nThis helper method makes an HTTP PUT request and returns the result as a String\n"
+  example: []
+  syntax:
+    content: public static string MakePutRequestForString(string requestUrl, object content = null, string contentType = null, string accessToken = null, Dictionary<string, string> requestHeaders = null, Dictionary<string, string> cookies = null, int retryCount = 1, int delay = 500, string userAgent = null, ClientContext spContext = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: content
+      type: System.Object
+      description: The content of the request
+    - id: contentType
+      type: System.String
+      description: The content/type of the request
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token for the request, if authorization is required
+    - id: requestHeaders
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: A collection of any custom request headers
+    - id: cookies
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Any request cookies values
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;
+    - id: spContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: An optional SharePoint client context
+    return:
+      type: System.String
+      description: The String value of the result
+    content.vb: Public Shared Function MakePutRequestForString(requestUrl As String, content As Object = Nothing, contentType As String = Nothing, accessToken As String = Nothing, requestHeaders As Dictionary(Of String, String) = Nothing, cookies As Dictionary(Of String, String) = Nothing, retryCount As Integer = 1, delay As Integer = 500, userAgent As String = Nothing, spContext As ClientContext = Nothing) As String
+  overload: PnP.Framework.Utilities.HttpHelper.MakePutRequestForString*
+  nameWithType.vb: HttpHelper.MakePutRequestForString(String, Object, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.HttpHelper.MakePutRequestForString(System.String, System.Object, System.String, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String), System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  name.vb: MakePutRequestForString(String, Object, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+- uid: PnP.Framework.Utilities.HttpHelper.MakePatchRequestForString(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Utilities.HttpHelper.MakePatchRequestForString(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  id: MakePatchRequestForString(System.String,System.Object,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Utilities.HttpHelper
+  langs:
+  - csharp
+  - vb
+  name: MakePatchRequestForString(String, Object, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  nameWithType: HttpHelper.MakePatchRequestForString(String, Object, String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePatchRequestForString(System.String, System.Object, System.String, System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>, System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakePatchRequestForString
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 349
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nThis helper method makes an HTTP PATCH request and returns the result as a String\n"
+  example: []
+  syntax:
+    content: public static string MakePatchRequestForString(string requestUrl, object content = null, string contentType = null, string accessToken = null, Dictionary<string, string> requestHeaders = null, Dictionary<string, string> cookies = null, int retryCount = 1, int delay = 500, string userAgent = null, ClientContext spContext = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: content
+      type: System.Object
+      description: The content of the request
+    - id: contentType
+      type: System.String
+      description: The content/type of the request
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token for the request, if authorization is required
+    - id: requestHeaders
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: A collection of any custom request headers
+    - id: cookies
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Any request cookies values
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;
+    - id: spContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: An optional SharePoint client context
+    return:
+      type: System.String
+      description: The String value of the result
+    content.vb: Public Shared Function MakePatchRequestForString(requestUrl As String, content As Object = Nothing, contentType As String = Nothing, accessToken As String = Nothing, requestHeaders As Dictionary(Of String, String) = Nothing, cookies As Dictionary(Of String, String) = Nothing, retryCount As Integer = 1, delay As Integer = 500, userAgent As String = Nothing, spContext As ClientContext = Nothing) As String
+  overload: PnP.Framework.Utilities.HttpHelper.MakePatchRequestForString*
+  nameWithType.vb: HttpHelper.MakePatchRequestForString(String, Object, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.HttpHelper.MakePatchRequestForString(System.String, System.Object, System.String, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String), System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  name.vb: MakePatchRequestForString(String, Object, String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+- uid: PnP.Framework.Utilities.HttpHelper.MakeDeleteRequest(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Utilities.HttpHelper.MakeDeleteRequest(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  id: MakeDeleteRequest(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Int32,System.String,Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Utilities.HttpHelper
+  langs:
+  - csharp
+  - vb
+  name: MakeDeleteRequest(String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  nameWithType: HttpHelper.MakeDeleteRequest(String, String, Dictionary<String, String>, Dictionary<String, String>, Int32, Int32, String, ClientContext)
+  fullName: PnP.Framework.Utilities.HttpHelper.MakeDeleteRequest(System.String, System.String, System.Collections.Generic.Dictionary<System.String, System.String>, System.Collections.Generic.Dictionary<System.String, System.String>, System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/HttpHelper.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MakeDeleteRequest
+    path: ../src/lib/PnP.Framework/Utilities/HttpHelper.cs
+    startLine: 387
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nThis helper method makes an HTTP DELETE request\n"
+  example: []
+  syntax:
+    content: public static void MakeDeleteRequest(string requestUrl, string accessToken = null, Dictionary<string, string> requestHeaders = null, Dictionary<string, string> cookies = null, int retryCount = 1, int delay = 500, string userAgent = null, ClientContext spContext = null)
+    parameters:
+    - id: requestUrl
+      type: System.String
+      description: The URL of the request
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token for the request, if authorization is required
+    - id: requestHeaders
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: A collection of any custom request headers
+    - id: cookies
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Any request cookies values
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;
+    - id: spContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: An optional SharePoint client context
+    content.vb: Public Shared Sub MakeDeleteRequest(requestUrl As String, accessToken As String = Nothing, requestHeaders As Dictionary(Of String, String) = Nothing, cookies As Dictionary(Of String, String) = Nothing, retryCount As Integer = 1, delay As Integer = 500, userAgent As String = Nothing, spContext As ClientContext = Nothing)
+  overload: PnP.Framework.Utilities.HttpHelper.MakeDeleteRequest*
+  nameWithType.vb: HttpHelper.MakeDeleteRequest(String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.HttpHelper.MakeDeleteRequest(System.String, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String), System.Collections.Generic.Dictionary(Of System.String, System.String), System.Int32, System.Int32, System.String, Microsoft.SharePoint.Client.ClientContext)
+  name.vb: MakeDeleteRequest(String, String, Dictionary(Of String, String), Dictionary(Of String, String), Int32, Int32, String, ClientContext)
+references:
+- uid: PnP.Framework.Utilities
+  commentId: N:PnP.Framework.Utilities
+  name: PnP.Framework.Utilities
+  nameWithType: PnP.Framework.Utilities
+  fullName: PnP.Framework.Utilities
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForString*
+  commentId: Overload:PnP.Framework.Utilities.HttpHelper.MakeGetRequestForString
+  name: MakeGetRequestForString
+  nameWithType: HttpHelper.MakeGetRequestForString
+  fullName: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForString
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, String>
+  nameWithType: Dictionary<String, String>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.String>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Microsoft.SharePoint.Client.ClientContext
+  commentId: T:Microsoft.SharePoint.Client.ClientContext
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ClientContext
+  nameWithType: ClientContext
+  fullName: Microsoft.SharePoint.Client.ClientContext
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStream*
+  commentId: Overload:PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStream
+  name: MakeGetRequestForStream
+  nameWithType: HttpHelper.MakeGetRequestForStream
+  fullName: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStream
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+- uid: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStreamWithResponseHeaders*
+  commentId: Overload:PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStreamWithResponseHeaders
+  name: MakeGetRequestForStreamWithResponseHeaders
+  nameWithType: HttpHelper.MakeGetRequestForStreamWithResponseHeaders
+  fullName: PnP.Framework.Utilities.HttpHelper.MakeGetRequestForStreamWithResponseHeaders
+- uid: System.Net.Http.Headers.HttpResponseHeaders
+  commentId: T:System.Net.Http.Headers.HttpResponseHeaders
+  parent: System.Net.Http.Headers
+  isExternal: true
+  name: HttpResponseHeaders
+  nameWithType: HttpResponseHeaders
+  fullName: System.Net.Http.Headers.HttpResponseHeaders
+- uid: System.Net.Http.Headers
+  commentId: N:System.Net.Http.Headers
+  isExternal: true
+  name: System.Net.Http.Headers
+  nameWithType: System.Net.Http.Headers
+  fullName: System.Net.Http.Headers
+- uid: PnP.Framework.Utilities.HttpHelper.MakePostRequest*
+  commentId: Overload:PnP.Framework.Utilities.HttpHelper.MakePostRequest
+  name: MakePostRequest
+  nameWithType: HttpHelper.MakePostRequest
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePostRequest
+- uid: PnP.Framework.Utilities.HttpHelper.MakePostRequestForString*
+  commentId: Overload:PnP.Framework.Utilities.HttpHelper.MakePostRequestForString
+  name: MakePostRequestForString
+  nameWithType: HttpHelper.MakePostRequestForString
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePostRequestForString
+- uid: PnP.Framework.Utilities.HttpHelper.MakePostRequestForHeaders*
+  commentId: Overload:PnP.Framework.Utilities.HttpHelper.MakePostRequestForHeaders
+  name: MakePostRequestForHeaders
+  nameWithType: HttpHelper.MakePostRequestForHeaders
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePostRequestForHeaders
+- uid: PnP.Framework.Utilities.HttpHelper.MakePutRequest*
+  commentId: Overload:PnP.Framework.Utilities.HttpHelper.MakePutRequest
+  name: MakePutRequest
+  nameWithType: HttpHelper.MakePutRequest
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePutRequest
+- uid: PnP.Framework.Utilities.HttpHelper.MakePutRequestForString*
+  commentId: Overload:PnP.Framework.Utilities.HttpHelper.MakePutRequestForString
+  name: MakePutRequestForString
+  nameWithType: HttpHelper.MakePutRequestForString
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePutRequestForString
+- uid: PnP.Framework.Utilities.HttpHelper.MakePatchRequestForString*
+  commentId: Overload:PnP.Framework.Utilities.HttpHelper.MakePatchRequestForString
+  name: MakePatchRequestForString
+  nameWithType: HttpHelper.MakePatchRequestForString
+  fullName: PnP.Framework.Utilities.HttpHelper.MakePatchRequestForString
+- uid: PnP.Framework.Utilities.HttpHelper.MakeDeleteRequest*
+  commentId: Overload:PnP.Framework.Utilities.HttpHelper.MakeDeleteRequest
+  name: MakeDeleteRequest
+  nameWithType: HttpHelper.MakeDeleteRequest
+  fullName: PnP.Framework.Utilities.HttpHelper.MakeDeleteRequest

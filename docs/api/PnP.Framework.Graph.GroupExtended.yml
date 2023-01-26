@@ -1,0 +1,1854 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Graph.GroupExtended
+  commentId: T:PnP.Framework.Graph.GroupExtended
+  id: GroupExtended
+  parent: PnP.Framework.Graph
+  children:
+  - PnP.Framework.Graph.GroupExtended.MembersODataBind
+  - PnP.Framework.Graph.GroupExtended.OwnersODataBind
+  langs:
+  - csharp
+  - vb
+  name: GroupExtended
+  nameWithType: GroupExtended
+  fullName: PnP.Framework.Graph.GroupExtended
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GroupExtended
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 16
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  syntax:
+    content: 'public class GroupExtended : Group'
+    content.vb: >-
+      Public Class GroupExtended
+          Inherits Group
+  inheritance:
+  - System.Object
+  - Microsoft.Graph.Entity
+  - Microsoft.Graph.DirectoryObject
+  - Microsoft.Graph.Group
+  inheritedMembers:
+  - Microsoft.Graph.Group.AssignedLabels
+  - Microsoft.Graph.Group.AssignedLicenses
+  - Microsoft.Graph.Group.Classification
+  - Microsoft.Graph.Group.CreatedDateTime
+  - Microsoft.Graph.Group.Description
+  - Microsoft.Graph.Group.DisplayName
+  - Microsoft.Graph.Group.ExpirationDateTime
+  - Microsoft.Graph.Group.GroupTypes
+  - Microsoft.Graph.Group.HasMembersWithLicenseErrors
+  - Microsoft.Graph.Group.LicenseProcessingState
+  - Microsoft.Graph.Group.Mail
+  - Microsoft.Graph.Group.MailEnabled
+  - Microsoft.Graph.Group.MailNickname
+  - Microsoft.Graph.Group.MembershipRule
+  - Microsoft.Graph.Group.MembershipRuleProcessingState
+  - Microsoft.Graph.Group.OnPremisesDomainName
+  - Microsoft.Graph.Group.OnPremisesLastSyncDateTime
+  - Microsoft.Graph.Group.OnPremisesNetBiosName
+  - Microsoft.Graph.Group.OnPremisesProvisioningErrors
+  - Microsoft.Graph.Group.OnPremisesSamAccountName
+  - Microsoft.Graph.Group.OnPremisesSecurityIdentifier
+  - Microsoft.Graph.Group.OnPremisesSyncEnabled
+  - Microsoft.Graph.Group.PreferredDataLocation
+  - Microsoft.Graph.Group.PreferredLanguage
+  - Microsoft.Graph.Group.ProxyAddresses
+  - Microsoft.Graph.Group.RenewedDateTime
+  - Microsoft.Graph.Group.SecurityEnabled
+  - Microsoft.Graph.Group.SecurityIdentifier
+  - Microsoft.Graph.Group.Theme
+  - Microsoft.Graph.Group.Visibility
+  - Microsoft.Graph.Group.AllowExternalSenders
+  - Microsoft.Graph.Group.AutoSubscribeNewMembers
+  - Microsoft.Graph.Group.HideFromAddressLists
+  - Microsoft.Graph.Group.HideFromOutlookClients
+  - Microsoft.Graph.Group.IsSubscribedByMail
+  - Microsoft.Graph.Group.UnseenCount
+  - Microsoft.Graph.Group.IsArchived
+  - Microsoft.Graph.Group.AppRoleAssignments
+  - Microsoft.Graph.Group.CreatedOnBehalfOf
+  - Microsoft.Graph.Group.MemberOf
+  - Microsoft.Graph.Group.Members
+  - Microsoft.Graph.Group.MembersWithLicenseErrors
+  - Microsoft.Graph.Group.Owners
+  - Microsoft.Graph.Group.PermissionGrants
+  - Microsoft.Graph.Group.Settings
+  - Microsoft.Graph.Group.TransitiveMemberOf
+  - Microsoft.Graph.Group.TransitiveMembers
+  - Microsoft.Graph.Group.AcceptedSenders
+  - Microsoft.Graph.Group.Calendar
+  - Microsoft.Graph.Group.CalendarView
+  - Microsoft.Graph.Group.Conversations
+  - Microsoft.Graph.Group.Events
+  - Microsoft.Graph.Group.Photo
+  - Microsoft.Graph.Group.Photos
+  - Microsoft.Graph.Group.RejectedSenders
+  - Microsoft.Graph.Group.Threads
+  - Microsoft.Graph.Group.Drive
+  - Microsoft.Graph.Group.Drives
+  - Microsoft.Graph.Group.Sites
+  - Microsoft.Graph.Group.Extensions
+  - Microsoft.Graph.Group.GroupLifecyclePolicies
+  - Microsoft.Graph.Group.Planner
+  - Microsoft.Graph.Group.Onenote
+  - Microsoft.Graph.Group.Team
+  - Microsoft.Graph.DirectoryObject.DeletedDateTime
+  - Microsoft.Graph.Entity.Id
+  - Microsoft.Graph.Entity.ODataType
+  - Microsoft.Graph.Entity.AdditionalData
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Graph.GroupExtended.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Graph.GroupExtended.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Graph.GroupExtended,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Graph.GroupExtended.OwnersODataBind
+  commentId: P:PnP.Framework.Graph.GroupExtended.OwnersODataBind
+  id: OwnersODataBind
+  parent: PnP.Framework.Graph.GroupExtended
+  langs:
+  - csharp
+  - vb
+  name: OwnersODataBind
+  nameWithType: GroupExtended.OwnersODataBind
+  fullName: PnP.Framework.Graph.GroupExtended.OwnersODataBind
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OwnersODataBind
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 19
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  syntax:
+    content: >-
+      [JsonProperty("owners@odata.bind", NullValueHandling = NullValueHandling.Ignore)]
+
+      public string[] OwnersODataBind { get; set; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: >-
+      <JsonProperty("owners@odata.bind", NullValueHandling:=NullValueHandling.Ignore)>
+
+      Public Property OwnersODataBind As String()
+  overload: PnP.Framework.Graph.GroupExtended.OwnersODataBind*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: owners@odata.bind
+    namedArguments:
+    - name: NullValueHandling
+      type: Newtonsoft.Json.NullValueHandling
+      value: 1
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Graph.GroupExtended.MembersODataBind
+  commentId: P:PnP.Framework.Graph.GroupExtended.MembersODataBind
+  id: MembersODataBind
+  parent: PnP.Framework.Graph.GroupExtended
+  langs:
+  - csharp
+  - vb
+  name: MembersODataBind
+  nameWithType: GroupExtended.MembersODataBind
+  fullName: PnP.Framework.Graph.GroupExtended.MembersODataBind
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MembersODataBind
+    path: ../src/lib/PnP.Framework/Graph/UnifiedGroupsUtility.cs
+    startLine: 21
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  syntax:
+    content: >-
+      [JsonProperty("members@odata.bind", NullValueHandling = NullValueHandling.Ignore)]
+
+      public string[] MembersODataBind { get; set; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: >-
+      <JsonProperty("members@odata.bind", NullValueHandling:=NullValueHandling.Ignore)>
+
+      Public Property MembersODataBind As String()
+  overload: PnP.Framework.Graph.GroupExtended.MembersODataBind*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: members@odata.bind
+    namedArguments:
+    - name: NullValueHandling
+      type: Newtonsoft.Json.NullValueHandling
+      value: 1
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Graph
+  commentId: N:PnP.Framework.Graph
+  name: PnP.Framework.Graph
+  nameWithType: PnP.Framework.Graph
+  fullName: PnP.Framework.Graph
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Microsoft.Graph.Entity
+  commentId: T:Microsoft.Graph.Entity
+  parent: Microsoft.Graph
+  isExternal: true
+  name: Entity
+  nameWithType: Entity
+  fullName: Microsoft.Graph.Entity
+- uid: Microsoft.Graph.DirectoryObject
+  commentId: T:Microsoft.Graph.DirectoryObject
+  parent: Microsoft.Graph
+  isExternal: true
+  name: DirectoryObject
+  nameWithType: DirectoryObject
+  fullName: Microsoft.Graph.DirectoryObject
+- uid: Microsoft.Graph.Group
+  commentId: T:Microsoft.Graph.Group
+  parent: Microsoft.Graph
+  isExternal: true
+  name: Group
+  nameWithType: Group
+  fullName: Microsoft.Graph.Group
+- uid: Microsoft.Graph.Group.AssignedLabels
+  commentId: P:Microsoft.Graph.Group.AssignedLabels
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: AssignedLabels
+  nameWithType: Group.AssignedLabels
+  fullName: Microsoft.Graph.Group.AssignedLabels
+- uid: Microsoft.Graph.Group.AssignedLicenses
+  commentId: P:Microsoft.Graph.Group.AssignedLicenses
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: AssignedLicenses
+  nameWithType: Group.AssignedLicenses
+  fullName: Microsoft.Graph.Group.AssignedLicenses
+- uid: Microsoft.Graph.Group.Classification
+  commentId: P:Microsoft.Graph.Group.Classification
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Classification
+  nameWithType: Group.Classification
+  fullName: Microsoft.Graph.Group.Classification
+- uid: Microsoft.Graph.Group.CreatedDateTime
+  commentId: P:Microsoft.Graph.Group.CreatedDateTime
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: CreatedDateTime
+  nameWithType: Group.CreatedDateTime
+  fullName: Microsoft.Graph.Group.CreatedDateTime
+- uid: Microsoft.Graph.Group.Description
+  commentId: P:Microsoft.Graph.Group.Description
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Description
+  nameWithType: Group.Description
+  fullName: Microsoft.Graph.Group.Description
+- uid: Microsoft.Graph.Group.DisplayName
+  commentId: P:Microsoft.Graph.Group.DisplayName
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: DisplayName
+  nameWithType: Group.DisplayName
+  fullName: Microsoft.Graph.Group.DisplayName
+- uid: Microsoft.Graph.Group.ExpirationDateTime
+  commentId: P:Microsoft.Graph.Group.ExpirationDateTime
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: ExpirationDateTime
+  nameWithType: Group.ExpirationDateTime
+  fullName: Microsoft.Graph.Group.ExpirationDateTime
+- uid: Microsoft.Graph.Group.GroupTypes
+  commentId: P:Microsoft.Graph.Group.GroupTypes
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: GroupTypes
+  nameWithType: Group.GroupTypes
+  fullName: Microsoft.Graph.Group.GroupTypes
+- uid: Microsoft.Graph.Group.HasMembersWithLicenseErrors
+  commentId: P:Microsoft.Graph.Group.HasMembersWithLicenseErrors
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: HasMembersWithLicenseErrors
+  nameWithType: Group.HasMembersWithLicenseErrors
+  fullName: Microsoft.Graph.Group.HasMembersWithLicenseErrors
+- uid: Microsoft.Graph.Group.LicenseProcessingState
+  commentId: P:Microsoft.Graph.Group.LicenseProcessingState
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: LicenseProcessingState
+  nameWithType: Group.LicenseProcessingState
+  fullName: Microsoft.Graph.Group.LicenseProcessingState
+- uid: Microsoft.Graph.Group.Mail
+  commentId: P:Microsoft.Graph.Group.Mail
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Mail
+  nameWithType: Group.Mail
+  fullName: Microsoft.Graph.Group.Mail
+- uid: Microsoft.Graph.Group.MailEnabled
+  commentId: P:Microsoft.Graph.Group.MailEnabled
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: MailEnabled
+  nameWithType: Group.MailEnabled
+  fullName: Microsoft.Graph.Group.MailEnabled
+- uid: Microsoft.Graph.Group.MailNickname
+  commentId: P:Microsoft.Graph.Group.MailNickname
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: MailNickname
+  nameWithType: Group.MailNickname
+  fullName: Microsoft.Graph.Group.MailNickname
+- uid: Microsoft.Graph.Group.MembershipRule
+  commentId: P:Microsoft.Graph.Group.MembershipRule
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: MembershipRule
+  nameWithType: Group.MembershipRule
+  fullName: Microsoft.Graph.Group.MembershipRule
+- uid: Microsoft.Graph.Group.MembershipRuleProcessingState
+  commentId: P:Microsoft.Graph.Group.MembershipRuleProcessingState
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: MembershipRuleProcessingState
+  nameWithType: Group.MembershipRuleProcessingState
+  fullName: Microsoft.Graph.Group.MembershipRuleProcessingState
+- uid: Microsoft.Graph.Group.OnPremisesDomainName
+  commentId: P:Microsoft.Graph.Group.OnPremisesDomainName
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: OnPremisesDomainName
+  nameWithType: Group.OnPremisesDomainName
+  fullName: Microsoft.Graph.Group.OnPremisesDomainName
+- uid: Microsoft.Graph.Group.OnPremisesLastSyncDateTime
+  commentId: P:Microsoft.Graph.Group.OnPremisesLastSyncDateTime
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: OnPremisesLastSyncDateTime
+  nameWithType: Group.OnPremisesLastSyncDateTime
+  fullName: Microsoft.Graph.Group.OnPremisesLastSyncDateTime
+- uid: Microsoft.Graph.Group.OnPremisesNetBiosName
+  commentId: P:Microsoft.Graph.Group.OnPremisesNetBiosName
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: OnPremisesNetBiosName
+  nameWithType: Group.OnPremisesNetBiosName
+  fullName: Microsoft.Graph.Group.OnPremisesNetBiosName
+- uid: Microsoft.Graph.Group.OnPremisesProvisioningErrors
+  commentId: P:Microsoft.Graph.Group.OnPremisesProvisioningErrors
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: OnPremisesProvisioningErrors
+  nameWithType: Group.OnPremisesProvisioningErrors
+  fullName: Microsoft.Graph.Group.OnPremisesProvisioningErrors
+- uid: Microsoft.Graph.Group.OnPremisesSamAccountName
+  commentId: P:Microsoft.Graph.Group.OnPremisesSamAccountName
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: OnPremisesSamAccountName
+  nameWithType: Group.OnPremisesSamAccountName
+  fullName: Microsoft.Graph.Group.OnPremisesSamAccountName
+- uid: Microsoft.Graph.Group.OnPremisesSecurityIdentifier
+  commentId: P:Microsoft.Graph.Group.OnPremisesSecurityIdentifier
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: OnPremisesSecurityIdentifier
+  nameWithType: Group.OnPremisesSecurityIdentifier
+  fullName: Microsoft.Graph.Group.OnPremisesSecurityIdentifier
+- uid: Microsoft.Graph.Group.OnPremisesSyncEnabled
+  commentId: P:Microsoft.Graph.Group.OnPremisesSyncEnabled
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: OnPremisesSyncEnabled
+  nameWithType: Group.OnPremisesSyncEnabled
+  fullName: Microsoft.Graph.Group.OnPremisesSyncEnabled
+- uid: Microsoft.Graph.Group.PreferredDataLocation
+  commentId: P:Microsoft.Graph.Group.PreferredDataLocation
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: PreferredDataLocation
+  nameWithType: Group.PreferredDataLocation
+  fullName: Microsoft.Graph.Group.PreferredDataLocation
+- uid: Microsoft.Graph.Group.PreferredLanguage
+  commentId: P:Microsoft.Graph.Group.PreferredLanguage
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: PreferredLanguage
+  nameWithType: Group.PreferredLanguage
+  fullName: Microsoft.Graph.Group.PreferredLanguage
+- uid: Microsoft.Graph.Group.ProxyAddresses
+  commentId: P:Microsoft.Graph.Group.ProxyAddresses
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: ProxyAddresses
+  nameWithType: Group.ProxyAddresses
+  fullName: Microsoft.Graph.Group.ProxyAddresses
+- uid: Microsoft.Graph.Group.RenewedDateTime
+  commentId: P:Microsoft.Graph.Group.RenewedDateTime
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: RenewedDateTime
+  nameWithType: Group.RenewedDateTime
+  fullName: Microsoft.Graph.Group.RenewedDateTime
+- uid: Microsoft.Graph.Group.SecurityEnabled
+  commentId: P:Microsoft.Graph.Group.SecurityEnabled
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: SecurityEnabled
+  nameWithType: Group.SecurityEnabled
+  fullName: Microsoft.Graph.Group.SecurityEnabled
+- uid: Microsoft.Graph.Group.SecurityIdentifier
+  commentId: P:Microsoft.Graph.Group.SecurityIdentifier
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: SecurityIdentifier
+  nameWithType: Group.SecurityIdentifier
+  fullName: Microsoft.Graph.Group.SecurityIdentifier
+- uid: Microsoft.Graph.Group.Theme
+  commentId: P:Microsoft.Graph.Group.Theme
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Theme
+  nameWithType: Group.Theme
+  fullName: Microsoft.Graph.Group.Theme
+- uid: Microsoft.Graph.Group.Visibility
+  commentId: P:Microsoft.Graph.Group.Visibility
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Visibility
+  nameWithType: Group.Visibility
+  fullName: Microsoft.Graph.Group.Visibility
+- uid: Microsoft.Graph.Group.AllowExternalSenders
+  commentId: P:Microsoft.Graph.Group.AllowExternalSenders
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: AllowExternalSenders
+  nameWithType: Group.AllowExternalSenders
+  fullName: Microsoft.Graph.Group.AllowExternalSenders
+- uid: Microsoft.Graph.Group.AutoSubscribeNewMembers
+  commentId: P:Microsoft.Graph.Group.AutoSubscribeNewMembers
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: AutoSubscribeNewMembers
+  nameWithType: Group.AutoSubscribeNewMembers
+  fullName: Microsoft.Graph.Group.AutoSubscribeNewMembers
+- uid: Microsoft.Graph.Group.HideFromAddressLists
+  commentId: P:Microsoft.Graph.Group.HideFromAddressLists
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: HideFromAddressLists
+  nameWithType: Group.HideFromAddressLists
+  fullName: Microsoft.Graph.Group.HideFromAddressLists
+- uid: Microsoft.Graph.Group.HideFromOutlookClients
+  commentId: P:Microsoft.Graph.Group.HideFromOutlookClients
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: HideFromOutlookClients
+  nameWithType: Group.HideFromOutlookClients
+  fullName: Microsoft.Graph.Group.HideFromOutlookClients
+- uid: Microsoft.Graph.Group.IsSubscribedByMail
+  commentId: P:Microsoft.Graph.Group.IsSubscribedByMail
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: IsSubscribedByMail
+  nameWithType: Group.IsSubscribedByMail
+  fullName: Microsoft.Graph.Group.IsSubscribedByMail
+- uid: Microsoft.Graph.Group.UnseenCount
+  commentId: P:Microsoft.Graph.Group.UnseenCount
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: UnseenCount
+  nameWithType: Group.UnseenCount
+  fullName: Microsoft.Graph.Group.UnseenCount
+- uid: Microsoft.Graph.Group.IsArchived
+  commentId: P:Microsoft.Graph.Group.IsArchived
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: IsArchived
+  nameWithType: Group.IsArchived
+  fullName: Microsoft.Graph.Group.IsArchived
+- uid: Microsoft.Graph.Group.AppRoleAssignments
+  commentId: P:Microsoft.Graph.Group.AppRoleAssignments
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: AppRoleAssignments
+  nameWithType: Group.AppRoleAssignments
+  fullName: Microsoft.Graph.Group.AppRoleAssignments
+- uid: Microsoft.Graph.Group.CreatedOnBehalfOf
+  commentId: P:Microsoft.Graph.Group.CreatedOnBehalfOf
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: CreatedOnBehalfOf
+  nameWithType: Group.CreatedOnBehalfOf
+  fullName: Microsoft.Graph.Group.CreatedOnBehalfOf
+- uid: Microsoft.Graph.Group.MemberOf
+  commentId: P:Microsoft.Graph.Group.MemberOf
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: MemberOf
+  nameWithType: Group.MemberOf
+  fullName: Microsoft.Graph.Group.MemberOf
+- uid: Microsoft.Graph.Group.Members
+  commentId: P:Microsoft.Graph.Group.Members
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Members
+  nameWithType: Group.Members
+  fullName: Microsoft.Graph.Group.Members
+- uid: Microsoft.Graph.Group.MembersWithLicenseErrors
+  commentId: P:Microsoft.Graph.Group.MembersWithLicenseErrors
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: MembersWithLicenseErrors
+  nameWithType: Group.MembersWithLicenseErrors
+  fullName: Microsoft.Graph.Group.MembersWithLicenseErrors
+- uid: Microsoft.Graph.Group.Owners
+  commentId: P:Microsoft.Graph.Group.Owners
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Owners
+  nameWithType: Group.Owners
+  fullName: Microsoft.Graph.Group.Owners
+- uid: Microsoft.Graph.Group.PermissionGrants
+  commentId: P:Microsoft.Graph.Group.PermissionGrants
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: PermissionGrants
+  nameWithType: Group.PermissionGrants
+  fullName: Microsoft.Graph.Group.PermissionGrants
+- uid: Microsoft.Graph.Group.Settings
+  commentId: P:Microsoft.Graph.Group.Settings
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Settings
+  nameWithType: Group.Settings
+  fullName: Microsoft.Graph.Group.Settings
+- uid: Microsoft.Graph.Group.TransitiveMemberOf
+  commentId: P:Microsoft.Graph.Group.TransitiveMemberOf
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: TransitiveMemberOf
+  nameWithType: Group.TransitiveMemberOf
+  fullName: Microsoft.Graph.Group.TransitiveMemberOf
+- uid: Microsoft.Graph.Group.TransitiveMembers
+  commentId: P:Microsoft.Graph.Group.TransitiveMembers
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: TransitiveMembers
+  nameWithType: Group.TransitiveMembers
+  fullName: Microsoft.Graph.Group.TransitiveMembers
+- uid: Microsoft.Graph.Group.AcceptedSenders
+  commentId: P:Microsoft.Graph.Group.AcceptedSenders
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: AcceptedSenders
+  nameWithType: Group.AcceptedSenders
+  fullName: Microsoft.Graph.Group.AcceptedSenders
+- uid: Microsoft.Graph.Group.Calendar
+  commentId: P:Microsoft.Graph.Group.Calendar
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Calendar
+  nameWithType: Group.Calendar
+  fullName: Microsoft.Graph.Group.Calendar
+- uid: Microsoft.Graph.Group.CalendarView
+  commentId: P:Microsoft.Graph.Group.CalendarView
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: CalendarView
+  nameWithType: Group.CalendarView
+  fullName: Microsoft.Graph.Group.CalendarView
+- uid: Microsoft.Graph.Group.Conversations
+  commentId: P:Microsoft.Graph.Group.Conversations
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Conversations
+  nameWithType: Group.Conversations
+  fullName: Microsoft.Graph.Group.Conversations
+- uid: Microsoft.Graph.Group.Events
+  commentId: P:Microsoft.Graph.Group.Events
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Events
+  nameWithType: Group.Events
+  fullName: Microsoft.Graph.Group.Events
+- uid: Microsoft.Graph.Group.Photo
+  commentId: P:Microsoft.Graph.Group.Photo
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Photo
+  nameWithType: Group.Photo
+  fullName: Microsoft.Graph.Group.Photo
+- uid: Microsoft.Graph.Group.Photos
+  commentId: P:Microsoft.Graph.Group.Photos
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Photos
+  nameWithType: Group.Photos
+  fullName: Microsoft.Graph.Group.Photos
+- uid: Microsoft.Graph.Group.RejectedSenders
+  commentId: P:Microsoft.Graph.Group.RejectedSenders
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: RejectedSenders
+  nameWithType: Group.RejectedSenders
+  fullName: Microsoft.Graph.Group.RejectedSenders
+- uid: Microsoft.Graph.Group.Threads
+  commentId: P:Microsoft.Graph.Group.Threads
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Threads
+  nameWithType: Group.Threads
+  fullName: Microsoft.Graph.Group.Threads
+- uid: Microsoft.Graph.Group.Drive
+  commentId: P:Microsoft.Graph.Group.Drive
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Drive
+  nameWithType: Group.Drive
+  fullName: Microsoft.Graph.Group.Drive
+- uid: Microsoft.Graph.Group.Drives
+  commentId: P:Microsoft.Graph.Group.Drives
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Drives
+  nameWithType: Group.Drives
+  fullName: Microsoft.Graph.Group.Drives
+- uid: Microsoft.Graph.Group.Sites
+  commentId: P:Microsoft.Graph.Group.Sites
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Sites
+  nameWithType: Group.Sites
+  fullName: Microsoft.Graph.Group.Sites
+- uid: Microsoft.Graph.Group.Extensions
+  commentId: P:Microsoft.Graph.Group.Extensions
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Extensions
+  nameWithType: Group.Extensions
+  fullName: Microsoft.Graph.Group.Extensions
+- uid: Microsoft.Graph.Group.GroupLifecyclePolicies
+  commentId: P:Microsoft.Graph.Group.GroupLifecyclePolicies
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: GroupLifecyclePolicies
+  nameWithType: Group.GroupLifecyclePolicies
+  fullName: Microsoft.Graph.Group.GroupLifecyclePolicies
+- uid: Microsoft.Graph.Group.Planner
+  commentId: P:Microsoft.Graph.Group.Planner
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Planner
+  nameWithType: Group.Planner
+  fullName: Microsoft.Graph.Group.Planner
+- uid: Microsoft.Graph.Group.Onenote
+  commentId: P:Microsoft.Graph.Group.Onenote
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Onenote
+  nameWithType: Group.Onenote
+  fullName: Microsoft.Graph.Group.Onenote
+- uid: Microsoft.Graph.Group.Team
+  commentId: P:Microsoft.Graph.Group.Team
+  parent: Microsoft.Graph.Group
+  isExternal: true
+  name: Team
+  nameWithType: Group.Team
+  fullName: Microsoft.Graph.Group.Team
+- uid: Microsoft.Graph.DirectoryObject.DeletedDateTime
+  commentId: P:Microsoft.Graph.DirectoryObject.DeletedDateTime
+  parent: Microsoft.Graph.DirectoryObject
+  isExternal: true
+  name: DeletedDateTime
+  nameWithType: DirectoryObject.DeletedDateTime
+  fullName: Microsoft.Graph.DirectoryObject.DeletedDateTime
+- uid: Microsoft.Graph.Entity.Id
+  commentId: P:Microsoft.Graph.Entity.Id
+  parent: Microsoft.Graph.Entity
+  isExternal: true
+  name: Id
+  nameWithType: Entity.Id
+  fullName: Microsoft.Graph.Entity.Id
+- uid: Microsoft.Graph.Entity.ODataType
+  commentId: P:Microsoft.Graph.Entity.ODataType
+  parent: Microsoft.Graph.Entity
+  isExternal: true
+  name: ODataType
+  nameWithType: Entity.ODataType
+  fullName: Microsoft.Graph.Entity.ODataType
+- uid: Microsoft.Graph.Entity.AdditionalData
+  commentId: P:Microsoft.Graph.Entity.AdditionalData
+  parent: Microsoft.Graph.Entity
+  isExternal: true
+  name: AdditionalData
+  nameWithType: Entity.AdditionalData
+  fullName: Microsoft.Graph.Entity.AdditionalData
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Graph.GroupExtended.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<GroupExtended>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<GroupExtended>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Graph.GroupExtended>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of GroupExtended)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Graph.GroupExtended)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of GroupExtended)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<GroupExtended>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<GroupExtended>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Graph.GroupExtended>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of GroupExtended)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of GroupExtended)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Graph.GroupExtended)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Graph.GroupExtended.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Graph.GroupExtended,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<GroupExtended, T>(Expression<Func<GroupExtended, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<GroupExtended, T>(Expression<Func<GroupExtended, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Graph.GroupExtended, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Graph.GroupExtended, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of GroupExtended, T)(Expression(Of Func(Of GroupExtended, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Graph.GroupExtended, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Graph.GroupExtended, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of GroupExtended, T)(Expression(Of Func(Of GroupExtended, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<GroupExtended, T>
+    nameWithType: ObjectExtensions.Set<GroupExtended, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Graph.GroupExtended, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Graph.GroupExtended
+    name: GroupExtended
+    nameWithType: GroupExtended
+    fullName: PnP.Framework.Graph.GroupExtended
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of GroupExtended, T)
+    nameWithType: ObjectExtensions.Set(Of GroupExtended, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Graph.GroupExtended, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Graph.GroupExtended
+    name: GroupExtended
+    nameWithType: GroupExtended
+    fullName: PnP.Framework.Graph.GroupExtended
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.Graph
+  commentId: N:Microsoft.Graph
+  isExternal: true
+  name: Microsoft.Graph
+  nameWithType: Microsoft.Graph
+  fullName: Microsoft.Graph
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Graph.GroupExtended.OwnersODataBind*
+  commentId: Overload:PnP.Framework.Graph.GroupExtended.OwnersODataBind
+  name: OwnersODataBind
+  nameWithType: GroupExtended.OwnersODataBind
+  fullName: PnP.Framework.Graph.GroupExtended.OwnersODataBind
+- uid: System.String[]
+  isExternal: true
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  nameWithType.vb: String()
+  fullName.vb: System.String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Graph.GroupExtended.MembersODataBind*
+  commentId: Overload:PnP.Framework.Graph.GroupExtended.MembersODataBind
+  name: MembersODataBind
+  nameWithType: GroupExtended.MembersODataBind
+  fullName: PnP.Framework.Graph.GroupExtended.MembersODataBind

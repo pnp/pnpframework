@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.WebParts.Processors
+  commentId: N:PnP.Framework.Utilities.WebParts.Processors
+  id: PnP.Framework.Utilities.WebParts.Processors
+  children:
+  - PnP.Framework.Utilities.WebParts.Processors.PassThroughProcessor
+  - PnP.Framework.Utilities.WebParts.Processors.XsltWebPartPostProcessor
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.WebParts.Processors
+  nameWithType: PnP.Framework.Utilities.WebParts.Processors
+  fullName: PnP.Framework.Utilities.WebParts.Processors
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.WebParts.Processors.PassThroughProcessor
+  commentId: T:PnP.Framework.Utilities.WebParts.Processors.PassThroughProcessor
+  name: PassThroughProcessor
+  nameWithType: PassThroughProcessor
+  fullName: PnP.Framework.Utilities.WebParts.Processors.PassThroughProcessor
+- uid: PnP.Framework.Utilities.WebParts.Processors.XsltWebPartPostProcessor
+  commentId: T:PnP.Framework.Utilities.WebParts.Processors.XsltWebPartPostProcessor
+  name: XsltWebPartPostProcessor
+  nameWithType: XsltWebPartPostProcessor
+  fullName: PnP.Framework.Utilities.WebParts.Processors.XsltWebPartPostProcessor

@@ -1,0 +1,52 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Providers.Json
+  commentId: N:PnP.Framework.Provisioning.Providers.Json
+  id: PnP.Framework.Provisioning.Providers.Json
+  children:
+  - PnP.Framework.Provisioning.Providers.Json.JsonFileSystemTemplateProvider
+  - PnP.Framework.Provisioning.Providers.Json.JsonOpenXMLTemplateProvider
+  - PnP.Framework.Provisioning.Providers.Json.JsonPnPFormatter
+  - PnP.Framework.Provisioning.Providers.Json.JsonSharePointTemplateProvider
+  - PnP.Framework.Provisioning.Providers.Json.JsonTemplateProvider
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Providers.Json
+  nameWithType: PnP.Framework.Provisioning.Providers.Json
+  fullName: PnP.Framework.Provisioning.Providers.Json
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Providers.Json.JsonFileSystemTemplateProvider
+  commentId: T:PnP.Framework.Provisioning.Providers.Json.JsonFileSystemTemplateProvider
+  name: JsonFileSystemTemplateProvider
+  nameWithType: JsonFileSystemTemplateProvider
+  fullName: PnP.Framework.Provisioning.Providers.Json.JsonFileSystemTemplateProvider
+- uid: PnP.Framework.Provisioning.Providers.Json.JsonOpenXMLTemplateProvider
+  commentId: T:PnP.Framework.Provisioning.Providers.Json.JsonOpenXMLTemplateProvider
+  name: JsonOpenXMLTemplateProvider
+  nameWithType: JsonOpenXMLTemplateProvider
+  fullName: PnP.Framework.Provisioning.Providers.Json.JsonOpenXMLTemplateProvider
+- uid: PnP.Framework.Provisioning.Providers.Json.JsonPnPFormatter
+  commentId: T:PnP.Framework.Provisioning.Providers.Json.JsonPnPFormatter
+  name: JsonPnPFormatter
+  nameWithType: JsonPnPFormatter
+  fullName: PnP.Framework.Provisioning.Providers.Json.JsonPnPFormatter
+- uid: PnP.Framework.Provisioning.Providers.Json.JsonSharePointTemplateProvider
+  commentId: T:PnP.Framework.Provisioning.Providers.Json.JsonSharePointTemplateProvider
+  name: JsonSharePointTemplateProvider
+  nameWithType: JsonSharePointTemplateProvider
+  fullName: PnP.Framework.Provisioning.Providers.Json.JsonSharePointTemplateProvider
+- uid: PnP.Framework.Provisioning.Providers.Json.JsonTemplateProvider
+  commentId: T:PnP.Framework.Provisioning.Providers.Json.JsonTemplateProvider
+  parent: PnP.Framework.Provisioning.Providers.Json
+  name: JsonTemplateProvider
+  nameWithType: JsonTemplateProvider
+  fullName: PnP.Framework.Provisioning.Providers.Json.JsonTemplateProvider
+- uid: PnP.Framework.Provisioning.Providers.Json
+  commentId: N:PnP.Framework.Provisioning.Providers.Json
+  name: PnP.Framework.Provisioning.Providers.Json
+  nameWithType: PnP.Framework.Provisioning.Providers.Json
+  fullName: PnP.Framework.Provisioning.Providers.Json

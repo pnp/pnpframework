@@ -1,0 +1,1939 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.CAML
+  commentId: T:PnP.Framework.Utilities.CAML
+  id: CAML
+  parent: PnP.Framework.Utilities
+  children:
+  - PnP.Framework.Utilities.CAML.And(System.String,System.String[])
+  - PnP.Framework.Utilities.CAML.BeginsWith(System.String)
+  - PnP.Framework.Utilities.CAML.Contains(System.String)
+  - PnP.Framework.Utilities.CAML.DateRangesOverlap(System.String)
+  - PnP.Framework.Utilities.CAML.Eq(System.String)
+  - PnP.Framework.Utilities.CAML.FieldRef(System.String)
+  - PnP.Framework.Utilities.CAML.FieldValue(System.Guid,System.String,System.String,System.String)
+  - PnP.Framework.Utilities.CAML.FieldValue(System.String,System.String,System.String,System.String)
+  - PnP.Framework.Utilities.CAML.Geq(System.String)
+  - PnP.Framework.Utilities.CAML.Gt(System.String)
+  - PnP.Framework.Utilities.CAML.In(System.String)
+  - PnP.Framework.Utilities.CAML.In(System.String,System.String[])
+  - PnP.Framework.Utilities.CAML.Includes(System.String)
+  - PnP.Framework.Utilities.CAML.IsNotNull(System.String)
+  - PnP.Framework.Utilities.CAML.IsNull(System.String)
+  - PnP.Framework.Utilities.CAML.Leq(System.String)
+  - PnP.Framework.Utilities.CAML.Lt(System.String)
+  - PnP.Framework.Utilities.CAML.Me
+  - PnP.Framework.Utilities.CAML.Month
+  - PnP.Framework.Utilities.CAML.Neq(System.String)
+  - PnP.Framework.Utilities.CAML.NotIncludes(System.String)
+  - PnP.Framework.Utilities.CAML.Now
+  - PnP.Framework.Utilities.CAML.Or(System.String,System.String[])
+  - PnP.Framework.Utilities.CAML.OrderBy(PnP.Framework.Utilities.OrderByField[])
+  - PnP.Framework.Utilities.CAML.Today(System.Nullable{System.Int32})
+  - PnP.Framework.Utilities.CAML.Value(System.String,System.String)
+  - PnP.Framework.Utilities.CAML.ViewFields(System.String[])
+  - PnP.Framework.Utilities.CAML.ViewQuery(Microsoft.SharePoint.Client.ViewScope,System.String,System.String,System.String,System.Int32)
+  - PnP.Framework.Utilities.CAML.ViewQuery(System.String,System.String,System.Int32)
+  - PnP.Framework.Utilities.CAML.Where(System.String)
+  langs:
+  - csharp
+  - vb
+  name: CAML
+  nameWithType: CAML
+  fullName: PnP.Framework.Utilities.CAML
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CAML
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 24
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nUse this class to build your CAML xml and avoid XML issues.\n"
+  example:
+  - "\nCAML.ViewQuery(\nCAML.Where(\n    CAML.And(\n        CAML.Eq(CAML.FieldValue(&quot;Project&quot;, &quot;Integer&quot;, &quot;{0}&quot;)),\n        CAML.Geq(CAML.FieldValue(&quot;StartDate&quot;,&quot;DateTime&quot;, CAML.Today()))\n    )\n),\nCAML.OrderBy(\n    new OrderByField(&quot;StartDate&quot;, false),\n    new OrderByField(&quot;Title&quot;)\n),\nrowLimit: 5\n);\n"
+  syntax:
+    content: public static class CAML
+    content.vb: Public Module CAML
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Utilities.CAML.Me
+  commentId: F:PnP.Framework.Utilities.CAML.Me
+  id: Me
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Me
+  nameWithType: CAML.Me
+  fullName: PnP.Framework.Utilities.CAML.Me
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Me
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 37
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  syntax:
+    content: public static readonly string Me
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Me As String
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: PnP.Framework.Utilities.CAML.Month
+  commentId: F:PnP.Framework.Utilities.CAML.Month
+  id: Month
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Month
+  nameWithType: CAML.Month
+  fullName: PnP.Framework.Utilities.CAML.Month
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Month
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 38
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  syntax:
+    content: public static readonly string Month
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Month As String
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: PnP.Framework.Utilities.CAML.Now
+  commentId: F:PnP.Framework.Utilities.CAML.Now
+  id: Now
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Now
+  nameWithType: CAML.Now
+  fullName: PnP.Framework.Utilities.CAML.Now
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Now
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 39
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  syntax:
+    content: public static readonly string Now
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Now As String
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: PnP.Framework.Utilities.CAML.Today(System.Nullable{System.Int32})
+  commentId: M:PnP.Framework.Utilities.CAML.Today(System.Nullable{System.Int32})
+  id: Today(System.Nullable{System.Int32})
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Today(Nullable<Int32>)
+  nameWithType: CAML.Today(Nullable<Int32>)
+  fullName: PnP.Framework.Utilities.CAML.Today(System.Nullable<System.Int32>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Today
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 46
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates the &lt;Today /> node.\n"
+  example: []
+  syntax:
+    content: public static string Today(int? offset = null)
+    parameters:
+    - id: offset
+      type: System.Nullable{System.Int32}
+      description: Time offset from today (+5 days or -5 days, for example).
+    return:
+      type: System.String
+      description: Returns &lt;Today /> node based on offset value
+    content.vb: Public Shared Function Today(offset As Integer? = Nothing) As String
+  overload: PnP.Framework.Utilities.CAML.Today*
+  nameWithType.vb: CAML.Today(Nullable(Of Int32))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.CAML.Today(System.Nullable(Of System.Int32))
+  name.vb: Today(Nullable(Of Int32))
+- uid: PnP.Framework.Utilities.CAML.ViewQuery(System.String,System.String,System.Int32)
+  commentId: M:PnP.Framework.Utilities.CAML.ViewQuery(System.String,System.String,System.Int32)
+  id: ViewQuery(System.String,System.String,System.Int32)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: ViewQuery(String, String, Int32)
+  nameWithType: CAML.ViewQuery(String, String, Int32)
+  fullName: PnP.Framework.Utilities.CAML.ViewQuery(System.String, System.String, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ViewQuery
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 60
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nRoot &lt;View> and &lt;Query> nodes.\n"
+  example: []
+  syntax:
+    content: public static string ViewQuery(string whereClause = "", string orderByClause = "", int rowLimit = 100)
+    parameters:
+    - id: whereClause
+      type: System.String
+      description: '&lt;Where> node.'
+    - id: orderByClause
+      type: System.String
+      description: '&lt;OrderBy> node.'
+    - id: rowLimit
+      type: System.Int32
+      description: '&lt;RowLimit> node.'
+    return:
+      type: System.String
+      description: String to be used in CAML queries
+    content.vb: Public Shared Function ViewQuery(whereClause As String = "", orderByClause As String = "", rowLimit As Integer = 100) As String
+  overload: PnP.Framework.Utilities.CAML.ViewQuery*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.ViewQuery(Microsoft.SharePoint.Client.ViewScope,System.String,System.String,System.String,System.Int32)
+  commentId: M:PnP.Framework.Utilities.CAML.ViewQuery(Microsoft.SharePoint.Client.ViewScope,System.String,System.String,System.String,System.Int32)
+  id: ViewQuery(Microsoft.SharePoint.Client.ViewScope,System.String,System.String,System.String,System.Int32)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: ViewQuery(ViewScope, String, String, String, Int32)
+  nameWithType: CAML.ViewQuery(ViewScope, String, String, String, Int32)
+  fullName: PnP.Framework.Utilities.CAML.ViewQuery(Microsoft.SharePoint.Client.ViewScope, System.String, System.String, System.String, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ViewQuery
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 74
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nRoot &lt;View> and &lt;Query> nodes.\n"
+  example: []
+  syntax:
+    content: public static string ViewQuery(ViewScope scope, string whereClause = "", string orderByClause = "", string viewFields = "", int rowLimit = 100)
+    parameters:
+    - id: scope
+      type: Microsoft.SharePoint.Client.ViewScope
+      description: View scope
+    - id: whereClause
+      type: System.String
+      description: '&lt;Where> node.'
+    - id: orderByClause
+      type: System.String
+      description: '&lt;OrderBy> node.'
+    - id: viewFields
+      type: System.String
+      description: '&lt;ViewFields> node.'
+    - id: rowLimit
+      type: System.Int32
+      description: '&lt;RowLimit> node.'
+    return:
+      type: System.String
+      description: String to be used in CAML queries
+    content.vb: Public Shared Function ViewQuery(scope As ViewScope, whereClause As String = "", orderByClause As String = "", viewFields As String = "", rowLimit As Integer = 100) As String
+  overload: PnP.Framework.Utilities.CAML.ViewQuery*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.Value(System.String,System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.Value(System.String,System.String)
+  id: Value(System.String,System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Value(String, String)
+  nameWithType: CAML.Value(String, String)
+  fullName: PnP.Framework.Utilities.CAML.Value(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Value
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 86
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates a &lt;Value> node for In comparison clauses.\n"
+  example: []
+  syntax:
+    content: public static string Value(string value, string fieldValueType)
+    parameters:
+    - id: value
+      type: System.String
+      description: Value of the field
+    - id: fieldValueType
+      type: System.String
+      description: Value type of the field
+    return:
+      type: System.String
+      description: Value string to be used for In comparisions in CAML queries
+    content.vb: Public Shared Function Value(value As String, fieldValueType As String) As String
+  overload: PnP.Framework.Utilities.CAML.Value*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.FieldValue(System.String,System.String,System.String,System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.FieldValue(System.String,System.String,System.String,System.String)
+  id: FieldValue(System.String,System.String,System.String,System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: FieldValue(String, String, String, String)
+  nameWithType: CAML.FieldValue(String, String, String, String)
+  fullName: PnP.Framework.Utilities.CAML.FieldValue(System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldValue
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 99
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates both a &lt;FieldRef> and &lt;Value> nodes combination for Where clauses.\n"
+  example: []
+  syntax:
+    content: public static string FieldValue(string fieldName, string fieldValueType, string value, string additionalFieldRefParams = "")
+    parameters:
+    - id: fieldName
+      type: System.String
+      description: Name of the field
+    - id: fieldValueType
+      type: System.String
+      description: Value type of the field
+    - id: value
+      type: System.String
+      description: Value of the field
+    - id: additionalFieldRefParams
+      type: System.String
+      description: Additional FieldRef Parameters
+    return:
+      type: System.String
+      description: Returns FieldValue string to be used in CAML queries
+    content.vb: Public Shared Function FieldValue(fieldName As String, fieldValueType As String, value As String, additionalFieldRefParams As String = "") As String
+  overload: PnP.Framework.Utilities.CAML.FieldValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.FieldValue(System.Guid,System.String,System.String,System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.FieldValue(System.Guid,System.String,System.String,System.String)
+  id: FieldValue(System.Guid,System.String,System.String,System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: FieldValue(Guid, String, String, String)
+  nameWithType: CAML.FieldValue(Guid, String, String, String)
+  fullName: PnP.Framework.Utilities.CAML.FieldValue(System.Guid, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldValue
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 112
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates both a &lt;FieldRef> and &lt;Value> nodes combination for Where clauses.\n"
+  example: []
+  syntax:
+    content: public static string FieldValue(Guid fieldId, string fieldValueType, string value, string additionalFieldRefParams = "")
+    parameters:
+    - id: fieldId
+      type: System.Guid
+      description: Id of the field
+    - id: fieldValueType
+      type: System.String
+      description: Value type of the field
+    - id: value
+      type: System.String
+      description: Value of the field
+    - id: additionalFieldRefParams
+      type: System.String
+      description: Additional FieldRef Parameters
+    return:
+      type: System.String
+      description: Returns FieldValue string to be used in CAML queries
+    content.vb: Public Shared Function FieldValue(fieldId As Guid, fieldValueType As String, value As String, additionalFieldRefParams As String = "") As String
+  overload: PnP.Framework.Utilities.CAML.FieldValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.FieldRef(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.FieldRef(System.String)
+  id: FieldRef(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: FieldRef(String)
+  nameWithType: CAML.FieldRef(String)
+  fullName: PnP.Framework.Utilities.CAML.FieldRef(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldRef
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 122
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates a &lt;FieldRef> node for ViewFields clause\n"
+  example: []
+  syntax:
+    content: public static string FieldRef(string fieldName)
+    parameters:
+    - id: fieldName
+      type: System.String
+      description: Name of the field
+    return:
+      type: System.String
+      description: Returns FieldRef string to be used in CAML queries
+    content.vb: Public Shared Function FieldRef(fieldName As String) As String
+  overload: PnP.Framework.Utilities.CAML.FieldRef*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.OrderBy(PnP.Framework.Utilities.OrderByField[])
+  commentId: M:PnP.Framework.Utilities.CAML.OrderBy(PnP.Framework.Utilities.OrderByField[])
+  id: OrderBy(PnP.Framework.Utilities.OrderByField[])
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: OrderBy(OrderByField[])
+  nameWithType: CAML.OrderBy(OrderByField[])
+  fullName: PnP.Framework.Utilities.CAML.OrderBy(PnP.Framework.Utilities.OrderByField[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OrderBy
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 132
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;OrederBy> node for sorting by field\n"
+  example: []
+  syntax:
+    content: public static string OrderBy(params OrderByField[] fieldRefs)
+    parameters:
+    - id: fieldRefs
+      type: PnP.Framework.Utilities.OrderByField[]
+      description: Field References
+    return:
+      type: System.String
+      description: Returns string to be used in CAML queries
+    content.vb: Public Shared Function OrderBy(ParamArray fieldRefs As OrderByField()) As String
+  overload: PnP.Framework.Utilities.CAML.OrderBy*
+  nameWithType.vb: CAML.OrderBy(OrderByField())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.CAML.OrderBy(PnP.Framework.Utilities.OrderByField())
+  name.vb: OrderBy(OrderByField())
+- uid: PnP.Framework.Utilities.CAML.Where(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.Where(System.String)
+  id: Where(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Where(String)
+  nameWithType: CAML.Where(String)
+  fullName: PnP.Framework.Utilities.CAML.Where(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Where
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 147
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;Where> node for Where clause\n"
+  example: []
+  syntax:
+    content: public static string Where(string conditionClause)
+    parameters:
+    - id: conditionClause
+      type: System.String
+      description: The Clause condition
+    return:
+      type: System.String
+      description: Returns string to be used in CAML queries
+    content.vb: Public Shared Function Where(conditionClause As String) As String
+  overload: PnP.Framework.Utilities.CAML.Where*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.ViewFields(System.String[])
+  commentId: M:PnP.Framework.Utilities.CAML.ViewFields(System.String[])
+  id: ViewFields(System.String[])
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: ViewFields(String[])
+  nameWithType: CAML.ViewFields(String[])
+  fullName: PnP.Framework.Utilities.CAML.ViewFields(System.String[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ViewFields
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 157
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;ViewFields> node for ViewFields clause\n"
+  example: []
+  syntax:
+    content: public static string ViewFields(params string[] fieldRefs)
+    parameters:
+    - id: fieldRefs
+      type: System.String[]
+      description: Field References
+    return:
+      type: System.String
+      description: Returns string to be used in CAML queries
+    content.vb: Public Shared Function ViewFields(ParamArray fieldRefs As String()) As String
+  overload: PnP.Framework.Utilities.CAML.ViewFields*
+  nameWithType.vb: CAML.ViewFields(String())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.CAML.ViewFields(System.String())
+  name.vb: ViewFields(String())
+- uid: PnP.Framework.Utilities.CAML.And(System.String,System.String[])
+  commentId: M:PnP.Framework.Utilities.CAML.And(System.String,System.String[])
+  id: And(System.String,System.String[])
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: And(String, String[])
+  nameWithType: CAML.And(String, String[])
+  fullName: PnP.Framework.Utilities.CAML.And(System.String, System.String[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: And
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 175
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;And> node \n"
+  example: []
+  syntax:
+    content: public static string And(string clause1, params string[] conditionClauses)
+    parameters:
+    - id: clause1
+      type: System.String
+      description: Clause
+    - id: conditionClauses
+      type: System.String[]
+      description: Clause Condition
+    return:
+      type: System.String
+      description: Returns Condition string to be used in CAML queries
+    content.vb: Public Shared Function And(clause1 As String, ParamArray conditionClauses As String()) As String
+  overload: PnP.Framework.Utilities.CAML.And*
+  nameWithType.vb: CAML.And(String, String())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.CAML.And(System.String, System.String())
+  name.vb: And(String, String())
+- uid: PnP.Framework.Utilities.CAML.Or(System.String,System.String[])
+  commentId: M:PnP.Framework.Utilities.CAML.Or(System.String,System.String[])
+  id: Or(System.String,System.String[])
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Or(String, String[])
+  nameWithType: CAML.Or(String, String[])
+  fullName: PnP.Framework.Utilities.CAML.Or(System.String, System.String[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Or
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 186
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;Or> node\n"
+  example: []
+  syntax:
+    content: public static string Or(string clause1, params string[] conditionClauses)
+    parameters:
+    - id: clause1
+      type: System.String
+      description: Clause
+    - id: conditionClauses
+      type: System.String[]
+      description: Clause Condition
+    return:
+      type: System.String
+      description: Returns Condition string to be used in CAML queries
+    content.vb: Public Shared Function Or(clause1 As String, ParamArray conditionClauses As String()) As String
+  overload: PnP.Framework.Utilities.CAML.Or*
+  nameWithType.vb: CAML.Or(String, String())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.CAML.Or(System.String, System.String())
+  name.vb: Or(String, String())
+- uid: PnP.Framework.Utilities.CAML.BeginsWith(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.BeginsWith(System.String)
+  id: BeginsWith(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: BeginsWith(String)
+  nameWithType: CAML.BeginsWith(String)
+  fullName: PnP.Framework.Utilities.CAML.BeginsWith(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BeginsWith
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 198
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;BeginsWith> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string BeginsWith(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function BeginsWith(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.BeginsWith*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.Contains(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.Contains(System.String)
+  id: Contains(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Contains(String)
+  nameWithType: CAML.Contains(String)
+  fullName: PnP.Framework.Utilities.CAML.Contains(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Contains
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 207
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;Contains> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string Contains(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function Contains(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.Contains*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.DateRangesOverlap(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.DateRangesOverlap(System.String)
+  id: DateRangesOverlap(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: DateRangesOverlap(String)
+  nameWithType: CAML.DateRangesOverlap(String)
+  fullName: PnP.Framework.Utilities.CAML.DateRangesOverlap(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DateRangesOverlap
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 216
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;DateRangesOverlap> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string DateRangesOverlap(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function DateRangesOverlap(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.DateRangesOverlap*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.Eq(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.Eq(System.String)
+  id: Eq(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Eq(String)
+  nameWithType: CAML.Eq(String)
+  fullName: PnP.Framework.Utilities.CAML.Eq(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Eq
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 225
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;Eq> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string Eq(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function Eq(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.Eq*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.Geq(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.Geq(System.String)
+  id: Geq(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Geq(String)
+  nameWithType: CAML.Geq(String)
+  fullName: PnP.Framework.Utilities.CAML.Geq(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Geq
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 234
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;Geq> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string Geq(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function Geq(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.Geq*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.Gt(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.Gt(System.String)
+  id: Gt(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Gt(String)
+  nameWithType: CAML.Gt(String)
+  fullName: PnP.Framework.Utilities.CAML.Gt(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Gt
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 243
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;Gt> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string Gt(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function Gt(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.Gt*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.In(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.In(System.String)
+  id: In(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: In(String)
+  nameWithType: CAML.In(String)
+  fullName: PnP.Framework.Utilities.CAML.In(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: In
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 252
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;In> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string In(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function In(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.In*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.In(System.String,System.String[])
+  commentId: M:PnP.Framework.Utilities.CAML.In(System.String,System.String[])
+  id: In(System.String,System.String[])
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: In(String, String[])
+  nameWithType: CAML.In(String, String[])
+  fullName: PnP.Framework.Utilities.CAML.In(System.String, System.String[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: In
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 262
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;In> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string In(string fieldRef, params string[] values)
+    parameters:
+    - id: fieldRef
+      type: System.String
+      description: Field Reference
+    - id: values
+      type: System.String[]
+      description: Value strings to be included inside the &lt;In>-clause
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function In(fieldRef As String, ParamArray values As String()) As String
+  overload: PnP.Framework.Utilities.CAML.In*
+  nameWithType.vb: CAML.In(String, String())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Utilities.CAML.In(System.String, System.String())
+  name.vb: In(String, String())
+- uid: PnP.Framework.Utilities.CAML.Includes(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.Includes(System.String)
+  id: Includes(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Includes(String)
+  nameWithType: CAML.Includes(String)
+  fullName: PnP.Framework.Utilities.CAML.Includes(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Includes
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 278
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;Includes> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string Includes(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function Includes(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.Includes*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.IsNotNull(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.IsNotNull(System.String)
+  id: IsNotNull(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: IsNotNull(String)
+  nameWithType: CAML.IsNotNull(String)
+  fullName: PnP.Framework.Utilities.CAML.IsNotNull(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsNotNull
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 287
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;IsNotNull> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string IsNotNull(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function IsNotNull(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.IsNotNull*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.IsNull(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.IsNull(System.String)
+  id: IsNull(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: IsNull(String)
+  nameWithType: CAML.IsNull(String)
+  fullName: PnP.Framework.Utilities.CAML.IsNull(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsNull
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 296
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;IsNull> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string IsNull(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function IsNull(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.IsNull*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.Leq(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.Leq(System.String)
+  id: Leq(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Leq(String)
+  nameWithType: CAML.Leq(String)
+  fullName: PnP.Framework.Utilities.CAML.Leq(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Leq
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 305
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;Leq> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string Leq(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function Leq(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.Leq*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.Lt(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.Lt(System.String)
+  id: Lt(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Lt(String)
+  nameWithType: CAML.Lt(String)
+  fullName: PnP.Framework.Utilities.CAML.Lt(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Lt
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 314
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;Lt> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string Lt(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function Lt(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.Lt*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.Neq(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.Neq(System.String)
+  id: Neq(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: Neq(String)
+  nameWithType: CAML.Neq(String)
+  fullName: PnP.Framework.Utilities.CAML.Neq(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Neq
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 323
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;Neq> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string Neq(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function Neq(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.Neq*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.CAML.NotIncludes(System.String)
+  commentId: M:PnP.Framework.Utilities.CAML.NotIncludes(System.String)
+  id: NotIncludes(System.String)
+  parent: PnP.Framework.Utilities.CAML
+  langs:
+  - csharp
+  - vb
+  name: NotIncludes(String)
+  nameWithType: CAML.NotIncludes(String)
+  fullName: PnP.Framework.Utilities.CAML.NotIncludes(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Caml.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NotIncludes
+    path: ../src/lib/PnP.Framework/Utilities/Caml.cs
+    startLine: 332
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities
+  summary: "\nCreates &lt;NotIncludes> node for Comparison\n"
+  example: []
+  syntax:
+    content: public static string NotIncludes(string fieldValue)
+    parameters:
+    - id: fieldValue
+      type: System.String
+      description: Value of the field
+    return:
+      type: System.String
+      description: Returns Comparison string to be used in CAML queries
+    content.vb: Public Shared Function NotIncludes(fieldValue As String) As String
+  overload: PnP.Framework.Utilities.CAML.NotIncludes*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Utilities
+  commentId: N:PnP.Framework.Utilities
+  name: PnP.Framework.Utilities
+  nameWithType: PnP.Framework.Utilities
+  fullName: PnP.Framework.Utilities
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Utilities.CAML.Today*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Today
+  name: Today
+  nameWithType: CAML.Today
+  fullName: PnP.Framework.Utilities.CAML.Today
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Utilities.CAML.ViewQuery*
+  commentId: Overload:PnP.Framework.Utilities.CAML.ViewQuery
+  name: ViewQuery
+  nameWithType: CAML.ViewQuery
+  fullName: PnP.Framework.Utilities.CAML.ViewQuery
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Microsoft.SharePoint.Client.ViewScope
+  commentId: T:Microsoft.SharePoint.Client.ViewScope
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ViewScope
+  nameWithType: ViewScope
+  fullName: Microsoft.SharePoint.Client.ViewScope
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: PnP.Framework.Utilities.CAML.Value*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Value
+  name: Value
+  nameWithType: CAML.Value
+  fullName: PnP.Framework.Utilities.CAML.Value
+- uid: PnP.Framework.Utilities.CAML.FieldValue*
+  commentId: Overload:PnP.Framework.Utilities.CAML.FieldValue
+  name: FieldValue
+  nameWithType: CAML.FieldValue
+  fullName: PnP.Framework.Utilities.CAML.FieldValue
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: PnP.Framework.Utilities.CAML.FieldRef*
+  commentId: Overload:PnP.Framework.Utilities.CAML.FieldRef
+  name: FieldRef
+  nameWithType: CAML.FieldRef
+  fullName: PnP.Framework.Utilities.CAML.FieldRef
+- uid: PnP.Framework.Utilities.CAML.OrderBy*
+  commentId: Overload:PnP.Framework.Utilities.CAML.OrderBy
+  name: OrderBy
+  nameWithType: CAML.OrderBy
+  fullName: PnP.Framework.Utilities.CAML.OrderBy
+- uid: PnP.Framework.Utilities.OrderByField[]
+  isExternal: true
+  name: OrderByField[]
+  nameWithType: OrderByField[]
+  fullName: PnP.Framework.Utilities.OrderByField[]
+  nameWithType.vb: OrderByField()
+  fullName.vb: PnP.Framework.Utilities.OrderByField()
+  name.vb: OrderByField()
+  spec.csharp:
+  - uid: PnP.Framework.Utilities.OrderByField
+    name: OrderByField
+    nameWithType: OrderByField
+    fullName: PnP.Framework.Utilities.OrderByField
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Utilities.OrderByField
+    name: OrderByField
+    nameWithType: OrderByField
+    fullName: PnP.Framework.Utilities.OrderByField
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Utilities.CAML.Where*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Where
+  name: Where
+  nameWithType: CAML.Where
+  fullName: PnP.Framework.Utilities.CAML.Where
+- uid: PnP.Framework.Utilities.CAML.ViewFields*
+  commentId: Overload:PnP.Framework.Utilities.CAML.ViewFields
+  name: ViewFields
+  nameWithType: CAML.ViewFields
+  fullName: PnP.Framework.Utilities.CAML.ViewFields
+- uid: System.String[]
+  isExternal: true
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  nameWithType.vb: String()
+  fullName.vb: System.String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Utilities.CAML.And*
+  commentId: Overload:PnP.Framework.Utilities.CAML.And
+  name: And
+  nameWithType: CAML.And
+  fullName: PnP.Framework.Utilities.CAML.And
+- uid: PnP.Framework.Utilities.CAML.Or*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Or
+  name: Or
+  nameWithType: CAML.Or
+  fullName: PnP.Framework.Utilities.CAML.Or
+- uid: PnP.Framework.Utilities.CAML.BeginsWith*
+  commentId: Overload:PnP.Framework.Utilities.CAML.BeginsWith
+  name: BeginsWith
+  nameWithType: CAML.BeginsWith
+  fullName: PnP.Framework.Utilities.CAML.BeginsWith
+- uid: PnP.Framework.Utilities.CAML.Contains*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Contains
+  name: Contains
+  nameWithType: CAML.Contains
+  fullName: PnP.Framework.Utilities.CAML.Contains
+- uid: PnP.Framework.Utilities.CAML.DateRangesOverlap*
+  commentId: Overload:PnP.Framework.Utilities.CAML.DateRangesOverlap
+  name: DateRangesOverlap
+  nameWithType: CAML.DateRangesOverlap
+  fullName: PnP.Framework.Utilities.CAML.DateRangesOverlap
+- uid: PnP.Framework.Utilities.CAML.Eq*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Eq
+  name: Eq
+  nameWithType: CAML.Eq
+  fullName: PnP.Framework.Utilities.CAML.Eq
+- uid: PnP.Framework.Utilities.CAML.Geq*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Geq
+  name: Geq
+  nameWithType: CAML.Geq
+  fullName: PnP.Framework.Utilities.CAML.Geq
+- uid: PnP.Framework.Utilities.CAML.Gt*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Gt
+  name: Gt
+  nameWithType: CAML.Gt
+  fullName: PnP.Framework.Utilities.CAML.Gt
+- uid: PnP.Framework.Utilities.CAML.In*
+  commentId: Overload:PnP.Framework.Utilities.CAML.In
+  name: In
+  nameWithType: CAML.In
+  fullName: PnP.Framework.Utilities.CAML.In
+- uid: PnP.Framework.Utilities.CAML.Includes*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Includes
+  name: Includes
+  nameWithType: CAML.Includes
+  fullName: PnP.Framework.Utilities.CAML.Includes
+- uid: PnP.Framework.Utilities.CAML.IsNotNull*
+  commentId: Overload:PnP.Framework.Utilities.CAML.IsNotNull
+  name: IsNotNull
+  nameWithType: CAML.IsNotNull
+  fullName: PnP.Framework.Utilities.CAML.IsNotNull
+- uid: PnP.Framework.Utilities.CAML.IsNull*
+  commentId: Overload:PnP.Framework.Utilities.CAML.IsNull
+  name: IsNull
+  nameWithType: CAML.IsNull
+  fullName: PnP.Framework.Utilities.CAML.IsNull
+- uid: PnP.Framework.Utilities.CAML.Leq*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Leq
+  name: Leq
+  nameWithType: CAML.Leq
+  fullName: PnP.Framework.Utilities.CAML.Leq
+- uid: PnP.Framework.Utilities.CAML.Lt*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Lt
+  name: Lt
+  nameWithType: CAML.Lt
+  fullName: PnP.Framework.Utilities.CAML.Lt
+- uid: PnP.Framework.Utilities.CAML.Neq*
+  commentId: Overload:PnP.Framework.Utilities.CAML.Neq
+  name: Neq
+  nameWithType: CAML.Neq
+  fullName: PnP.Framework.Utilities.CAML.Neq
+- uid: PnP.Framework.Utilities.CAML.NotIncludes*
+  commentId: Overload:PnP.Framework.Utilities.CAML.NotIncludes
+  name: NotIncludes
+  nameWithType: CAML.NotIncludes
+  fullName: PnP.Framework.Utilities.CAML.NotIncludes

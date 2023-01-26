@@ -1,0 +1,1782 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.Constants
+  commentId: T:PnP.Framework.Modernization.Constants
+  id: Constants
+  parent: PnP.Framework.Modernization
+  children:
+  - PnP.Framework.Modernization.Constants.AllowedAssetFileExtensions
+  - PnP.Framework.Modernization.Constants.AudienceField
+  - PnP.Framework.Modernization.Constants.BannerImageUrlField
+  - PnP.Framework.Modernization.Constants.BlockedAssetFileExtensions
+  - PnP.Framework.Modernization.Constants.BodyField
+  - PnP.Framework.Modernization.Constants.CAMLQueryByExtension
+  - PnP.Framework.Modernization.Constants.CAMLQueryByExtensionAndName
+  - PnP.Framework.Modernization.Constants.CAMLQueryByNameForBlog
+  - PnP.Framework.Modernization.Constants.CanvasContentField
+  - PnP.Framework.Modernization.Constants.ClientSideApplicationIdField
+  - PnP.Framework.Modernization.Constants.ContentTypeIdField
+  - PnP.Framework.Modernization.Constants.CreatedByField
+  - PnP.Framework.Modernization.Constants.CreatedField
+  - PnP.Framework.Modernization.Constants.FeatureId_Web_ModernPage
+  - PnP.Framework.Modernization.Constants.FileDirRefField
+  - PnP.Framework.Modernization.Constants.FileLeafRefField
+  - PnP.Framework.Modernization.Constants.FileRefField
+  - PnP.Framework.Modernization.Constants.FileTitleField
+  - PnP.Framework.Modernization.Constants.FileTypeField
+  - PnP.Framework.Modernization.Constants.FirstPublishedDateField
+  - PnP.Framework.Modernization.Constants.HtmlFileTypeField
+  - PnP.Framework.Modernization.Constants.IDField
+  - PnP.Framework.Modernization.Constants.ModernPageContentTypeId
+  - PnP.Framework.Modernization.Constants.ModifiedByField
+  - PnP.Framework.Modernization.Constants.ModifiedField
+  - PnP.Framework.Modernization.Constants.OobPublishingPageLayouts
+  - PnP.Framework.Modernization.Constants.PageLayoutBaseContentTypeId
+  - PnP.Framework.Modernization.Constants.PageLayoutMappingSchema
+  - PnP.Framework.Modernization.Constants.PageTransformationSchema
+  - PnP.Framework.Modernization.Constants.PostCategory
+  - PnP.Framework.Modernization.Constants.PromotedStateField
+  - PnP.Framework.Modernization.Constants.PublishedDateField
+  - PnP.Framework.Modernization.Constants.PublishingAssociatedContentTypeField
+  - PnP.Framework.Modernization.Constants.PublishingPageLayoutField
+  - PnP.Framework.Modernization.Constants.PublishingRollupImageField
+  - PnP.Framework.Modernization.Constants.SPSitePageFlagsField
+  - PnP.Framework.Modernization.Constants.SummaryLinksToQuickLinksMappingProperty
+  - PnP.Framework.Modernization.Constants.TitleField
+  - PnP.Framework.Modernization.Constants.UseCommunityScriptEditorMappingProperty
+  - PnP.Framework.Modernization.Constants.WebPropertyKeyPagesListId
+  - PnP.Framework.Modernization.Constants.WikiField
+  langs:
+  - csharp
+  - vb
+  name: Constants
+  nameWithType: Constants
+  fullName: PnP.Framework.Modernization.Constants
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Constants
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 7
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  summary: "\nConstants used \n"
+  example: []
+  syntax:
+    content: public static class Constants
+    content.vb: Public Module Constants
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Modernization.Constants.WebPropertyKeyPagesListId
+  commentId: F:PnP.Framework.Modernization.Constants.WebPropertyKeyPagesListId
+  id: WebPropertyKeyPagesListId
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: WebPropertyKeyPagesListId
+  nameWithType: Constants.WebPropertyKeyPagesListId
+  fullName: PnP.Framework.Modernization.Constants.WebPropertyKeyPagesListId
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebPropertyKeyPagesListId
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string WebPropertyKeyPagesListId = "__PagesListId"
+    return:
+      type: System.String
+    content.vb: Public Const WebPropertyKeyPagesListId As String = "__PagesListId"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.PageTransformationSchema
+  commentId: F:PnP.Framework.Modernization.Constants.PageTransformationSchema
+  id: PageTransformationSchema
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: PageTransformationSchema
+  nameWithType: Constants.PageTransformationSchema
+  fullName: PnP.Framework.Modernization.Constants.PageTransformationSchema
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageTransformationSchema
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 13
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PageTransformationSchema = "http://schemas.dev.office.com/PnP/2018/01/PageTransformationSchema"
+    return:
+      type: System.String
+    content.vb: Public Const PageTransformationSchema As String = "http://schemas.dev.office.com/PnP/2018/01/PageTransformationSchema"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.PageLayoutMappingSchema
+  commentId: F:PnP.Framework.Modernization.Constants.PageLayoutMappingSchema
+  id: PageLayoutMappingSchema
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: PageLayoutMappingSchema
+  nameWithType: Constants.PageLayoutMappingSchema
+  fullName: PnP.Framework.Modernization.Constants.PageLayoutMappingSchema
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageLayoutMappingSchema
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 14
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PageLayoutMappingSchema = "http://schemas.dev.office.com/PnP/2019/03/PublishingPageTransformationSchema"
+    return:
+      type: System.String
+    content.vb: Public Const PageLayoutMappingSchema As String = "http://schemas.dev.office.com/PnP/2019/03/PublishingPageTransformationSchema"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.FileRefField
+  commentId: F:PnP.Framework.Modernization.Constants.FileRefField
+  id: FileRefField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: FileRefField
+  nameWithType: Constants.FileRefField
+  fullName: PnP.Framework.Modernization.Constants.FileRefField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FileRefField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 17
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string FileRefField = "FileRef"
+    return:
+      type: System.String
+    content.vb: Public Const FileRefField As String = "FileRef"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.FileDirRefField
+  commentId: F:PnP.Framework.Modernization.Constants.FileDirRefField
+  id: FileDirRefField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: FileDirRefField
+  nameWithType: Constants.FileDirRefField
+  fullName: PnP.Framework.Modernization.Constants.FileDirRefField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FileDirRefField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 18
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string FileDirRefField = "FileDirRef"
+    return:
+      type: System.String
+    content.vb: Public Const FileDirRefField As String = "FileDirRef"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.FileLeafRefField
+  commentId: F:PnP.Framework.Modernization.Constants.FileLeafRefField
+  id: FileLeafRefField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: FileLeafRefField
+  nameWithType: Constants.FileLeafRefField
+  fullName: PnP.Framework.Modernization.Constants.FileLeafRefField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FileLeafRefField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 19
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string FileLeafRefField = "FileLeafRef"
+    return:
+      type: System.String
+    content.vb: Public Const FileLeafRefField As String = "FileLeafRef"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.FileTitleField
+  commentId: F:PnP.Framework.Modernization.Constants.FileTitleField
+  id: FileTitleField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: FileTitleField
+  nameWithType: Constants.FileTitleField
+  fullName: PnP.Framework.Modernization.Constants.FileTitleField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FileTitleField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 20
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string FileTitleField = "Title"
+    return:
+      type: System.String
+    content.vb: Public Const FileTitleField As String = "Title"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.ClientSideApplicationIdField
+  commentId: F:PnP.Framework.Modernization.Constants.ClientSideApplicationIdField
+  id: ClientSideApplicationIdField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: ClientSideApplicationIdField
+  nameWithType: Constants.ClientSideApplicationIdField
+  fullName: PnP.Framework.Modernization.Constants.ClientSideApplicationIdField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClientSideApplicationIdField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 21
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ClientSideApplicationIdField = "ClientSideApplicationId"
+    return:
+      type: System.String
+    content.vb: Public Const ClientSideApplicationIdField As String = "ClientSideApplicationId"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.HtmlFileTypeField
+  commentId: F:PnP.Framework.Modernization.Constants.HtmlFileTypeField
+  id: HtmlFileTypeField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: HtmlFileTypeField
+  nameWithType: Constants.HtmlFileTypeField
+  fullName: PnP.Framework.Modernization.Constants.HtmlFileTypeField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HtmlFileTypeField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 22
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string HtmlFileTypeField = "HTML_x0020_File_x0020_Type"
+    return:
+      type: System.String
+    content.vb: Public Const HtmlFileTypeField As String = "HTML_x0020_File_x0020_Type"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.WikiField
+  commentId: F:PnP.Framework.Modernization.Constants.WikiField
+  id: WikiField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: WikiField
+  nameWithType: Constants.WikiField
+  fullName: PnP.Framework.Modernization.Constants.WikiField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WikiField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string WikiField = "WikiField"
+    return:
+      type: System.String
+    content.vb: Public Const WikiField As String = "WikiField"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.ModifiedField
+  commentId: F:PnP.Framework.Modernization.Constants.ModifiedField
+  id: ModifiedField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: ModifiedField
+  nameWithType: Constants.ModifiedField
+  fullName: PnP.Framework.Modernization.Constants.ModifiedField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ModifiedField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 24
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ModifiedField = "Modified"
+    return:
+      type: System.String
+    content.vb: Public Const ModifiedField As String = "Modified"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.ModifiedByField
+  commentId: F:PnP.Framework.Modernization.Constants.ModifiedByField
+  id: ModifiedByField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: ModifiedByField
+  nameWithType: Constants.ModifiedByField
+  fullName: PnP.Framework.Modernization.Constants.ModifiedByField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ModifiedByField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 25
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ModifiedByField = "Editor"
+    return:
+      type: System.String
+    content.vb: Public Const ModifiedByField As String = "Editor"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.CreatedField
+  commentId: F:PnP.Framework.Modernization.Constants.CreatedField
+  id: CreatedField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: CreatedField
+  nameWithType: Constants.CreatedField
+  fullName: PnP.Framework.Modernization.Constants.CreatedField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreatedField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 26
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string CreatedField = "Created"
+    return:
+      type: System.String
+    content.vb: Public Const CreatedField As String = "Created"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.CreatedByField
+  commentId: F:PnP.Framework.Modernization.Constants.CreatedByField
+  id: CreatedByField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: CreatedByField
+  nameWithType: Constants.CreatedByField
+  fullName: PnP.Framework.Modernization.Constants.CreatedByField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreatedByField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 27
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string CreatedByField = "Author"
+    return:
+      type: System.String
+    content.vb: Public Const CreatedByField As String = "Author"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.ContentTypeIdField
+  commentId: F:PnP.Framework.Modernization.Constants.ContentTypeIdField
+  id: ContentTypeIdField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: ContentTypeIdField
+  nameWithType: Constants.ContentTypeIdField
+  fullName: PnP.Framework.Modernization.Constants.ContentTypeIdField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentTypeIdField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 28
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ContentTypeIdField = "ContentTypeId"
+    return:
+      type: System.String
+    content.vb: Public Const ContentTypeIdField As String = "ContentTypeId"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.PublishingPageLayoutField
+  commentId: F:PnP.Framework.Modernization.Constants.PublishingPageLayoutField
+  id: PublishingPageLayoutField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: PublishingPageLayoutField
+  nameWithType: Constants.PublishingPageLayoutField
+  fullName: PnP.Framework.Modernization.Constants.PublishingPageLayoutField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PublishingPageLayoutField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 29
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PublishingPageLayoutField = "PublishingPageLayout"
+    return:
+      type: System.String
+    content.vb: Public Const PublishingPageLayoutField As String = "PublishingPageLayout"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.AudienceField
+  commentId: F:PnP.Framework.Modernization.Constants.AudienceField
+  id: AudienceField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: AudienceField
+  nameWithType: Constants.AudienceField
+  fullName: PnP.Framework.Modernization.Constants.AudienceField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AudienceField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 30
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string AudienceField = "Audience"
+    return:
+      type: System.String
+    content.vb: Public Const AudienceField As String = "Audience"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.PublishingRollupImageField
+  commentId: F:PnP.Framework.Modernization.Constants.PublishingRollupImageField
+  id: PublishingRollupImageField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: PublishingRollupImageField
+  nameWithType: Constants.PublishingRollupImageField
+  fullName: PnP.Framework.Modernization.Constants.PublishingRollupImageField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PublishingRollupImageField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 31
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PublishingRollupImageField = "PublishingRollupImage"
+    return:
+      type: System.String
+    content.vb: Public Const PublishingRollupImageField As String = "PublishingRollupImage"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.TitleField
+  commentId: F:PnP.Framework.Modernization.Constants.TitleField
+  id: TitleField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: TitleField
+  nameWithType: Constants.TitleField
+  fullName: PnP.Framework.Modernization.Constants.TitleField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TitleField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 32
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string TitleField = "Title"
+    return:
+      type: System.String
+    content.vb: Public Const TitleField As String = "Title"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.PublishingAssociatedContentTypeField
+  commentId: F:PnP.Framework.Modernization.Constants.PublishingAssociatedContentTypeField
+  id: PublishingAssociatedContentTypeField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: PublishingAssociatedContentTypeField
+  nameWithType: Constants.PublishingAssociatedContentTypeField
+  fullName: PnP.Framework.Modernization.Constants.PublishingAssociatedContentTypeField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PublishingAssociatedContentTypeField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 33
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PublishingAssociatedContentTypeField = "PublishingAssociatedContentType"
+    return:
+      type: System.String
+    content.vb: Public Const PublishingAssociatedContentTypeField As String = "PublishingAssociatedContentType"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.SPSitePageFlagsField
+  commentId: F:PnP.Framework.Modernization.Constants.SPSitePageFlagsField
+  id: SPSitePageFlagsField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: SPSitePageFlagsField
+  nameWithType: Constants.SPSitePageFlagsField
+  fullName: PnP.Framework.Modernization.Constants.SPSitePageFlagsField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SPSitePageFlagsField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 34
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SPSitePageFlagsField = "_SPSitePageFlags"
+    return:
+      type: System.String
+    content.vb: Public Const SPSitePageFlagsField As String = "_SPSitePageFlags"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.PromotedStateField
+  commentId: F:PnP.Framework.Modernization.Constants.PromotedStateField
+  id: PromotedStateField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: PromotedStateField
+  nameWithType: Constants.PromotedStateField
+  fullName: PnP.Framework.Modernization.Constants.PromotedStateField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PromotedStateField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 35
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PromotedStateField = "PromotedState"
+    return:
+      type: System.String
+    content.vb: Public Const PromotedStateField As String = "PromotedState"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.FirstPublishedDateField
+  commentId: F:PnP.Framework.Modernization.Constants.FirstPublishedDateField
+  id: FirstPublishedDateField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: FirstPublishedDateField
+  nameWithType: Constants.FirstPublishedDateField
+  fullName: PnP.Framework.Modernization.Constants.FirstPublishedDateField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FirstPublishedDateField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 36
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string FirstPublishedDateField = "FirstPublishedDate"
+    return:
+      type: System.String
+    content.vb: Public Const FirstPublishedDateField As String = "FirstPublishedDate"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.BannerImageUrlField
+  commentId: F:PnP.Framework.Modernization.Constants.BannerImageUrlField
+  id: BannerImageUrlField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: BannerImageUrlField
+  nameWithType: Constants.BannerImageUrlField
+  fullName: PnP.Framework.Modernization.Constants.BannerImageUrlField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BannerImageUrlField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 37
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BannerImageUrlField = "BannerImageUrl"
+    return:
+      type: System.String
+    content.vb: Public Const BannerImageUrlField As String = "BannerImageUrl"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.CanvasContentField
+  commentId: F:PnP.Framework.Modernization.Constants.CanvasContentField
+  id: CanvasContentField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: CanvasContentField
+  nameWithType: Constants.CanvasContentField
+  fullName: PnP.Framework.Modernization.Constants.CanvasContentField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CanvasContentField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 38
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string CanvasContentField = "CanvasContent1"
+    return:
+      type: System.String
+    content.vb: Public Const CanvasContentField As String = "CanvasContent1"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.IDField
+  commentId: F:PnP.Framework.Modernization.Constants.IDField
+  id: IDField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: IDField
+  nameWithType: Constants.IDField
+  fullName: PnP.Framework.Modernization.Constants.IDField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IDField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 39
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string IDField = "ID"
+    return:
+      type: System.String
+    content.vb: Public Const IDField As String = "ID"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.BodyField
+  commentId: F:PnP.Framework.Modernization.Constants.BodyField
+  id: BodyField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: BodyField
+  nameWithType: Constants.BodyField
+  fullName: PnP.Framework.Modernization.Constants.BodyField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BodyField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 40
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BodyField = "Body"
+    return:
+      type: System.String
+    content.vb: Public Const BodyField As String = "Body"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.PublishedDateField
+  commentId: F:PnP.Framework.Modernization.Constants.PublishedDateField
+  id: PublishedDateField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: PublishedDateField
+  nameWithType: Constants.PublishedDateField
+  fullName: PnP.Framework.Modernization.Constants.PublishedDateField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PublishedDateField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 41
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PublishedDateField = "PublishedDate"
+    return:
+      type: System.String
+    content.vb: Public Const PublishedDateField As String = "PublishedDate"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.FileTypeField
+  commentId: F:PnP.Framework.Modernization.Constants.FileTypeField
+  id: FileTypeField
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: FileTypeField
+  nameWithType: Constants.FileTypeField
+  fullName: PnP.Framework.Modernization.Constants.FileTypeField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FileTypeField
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 42
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string FileTypeField = "File_x0020_Type"
+    return:
+      type: System.String
+    content.vb: Public Const FileTypeField As String = "File_x0020_Type"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.PageLayoutBaseContentTypeId
+  commentId: F:PnP.Framework.Modernization.Constants.PageLayoutBaseContentTypeId
+  id: PageLayoutBaseContentTypeId
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: PageLayoutBaseContentTypeId
+  nameWithType: Constants.PageLayoutBaseContentTypeId
+  fullName: PnP.Framework.Modernization.Constants.PageLayoutBaseContentTypeId
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageLayoutBaseContentTypeId
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 45
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PageLayoutBaseContentTypeId = "0x01010007FF3E057FA8AB4AA42FCB67B453FFC1"
+    return:
+      type: System.String
+    content.vb: Public Const PageLayoutBaseContentTypeId As String = "0x01010007FF3E057FA8AB4AA42FCB67B453FFC1"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.ModernPageContentTypeId
+  commentId: F:PnP.Framework.Modernization.Constants.ModernPageContentTypeId
+  id: ModernPageContentTypeId
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: ModernPageContentTypeId
+  nameWithType: Constants.ModernPageContentTypeId
+  fullName: PnP.Framework.Modernization.Constants.ModernPageContentTypeId
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ModernPageContentTypeId
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 46
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ModernPageContentTypeId = "0x0101009D1CB255DA76424F860D91F20E6C4118"
+    return:
+      type: System.String
+    content.vb: Public Const ModernPageContentTypeId As String = "0x0101009D1CB255DA76424F860D91F20E6C4118"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.PostCategory
+  commentId: F:PnP.Framework.Modernization.Constants.PostCategory
+  id: PostCategory
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: PostCategory
+  nameWithType: Constants.PostCategory
+  fullName: PnP.Framework.Modernization.Constants.PostCategory
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PostCategory
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 49
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public static readonly Guid PostCategory
+    return:
+      type: System.Guid
+    content.vb: Public Shared ReadOnly PostCategory As Guid
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: PnP.Framework.Modernization.Constants.FeatureId_Web_ModernPage
+  commentId: F:PnP.Framework.Modernization.Constants.FeatureId_Web_ModernPage
+  id: FeatureId_Web_ModernPage
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: FeatureId_Web_ModernPage
+  nameWithType: Constants.FeatureId_Web_ModernPage
+  fullName: PnP.Framework.Modernization.Constants.FeatureId_Web_ModernPage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FeatureId_Web_ModernPage
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 52
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public static readonly Guid FeatureId_Web_ModernPage
+    return:
+      type: System.Guid
+    content.vb: Public Shared ReadOnly FeatureId_Web_ModernPage As Guid
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: PnP.Framework.Modernization.Constants.UseCommunityScriptEditorMappingProperty
+  commentId: F:PnP.Framework.Modernization.Constants.UseCommunityScriptEditorMappingProperty
+  id: UseCommunityScriptEditorMappingProperty
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: UseCommunityScriptEditorMappingProperty
+  nameWithType: Constants.UseCommunityScriptEditorMappingProperty
+  fullName: PnP.Framework.Modernization.Constants.UseCommunityScriptEditorMappingProperty
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseCommunityScriptEditorMappingProperty
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 55
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string UseCommunityScriptEditorMappingProperty = "UseCommunityScriptEditor"
+    return:
+      type: System.String
+    content.vb: Public Const UseCommunityScriptEditorMappingProperty As String = "UseCommunityScriptEditor"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.SummaryLinksToQuickLinksMappingProperty
+  commentId: F:PnP.Framework.Modernization.Constants.SummaryLinksToQuickLinksMappingProperty
+  id: SummaryLinksToQuickLinksMappingProperty
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: SummaryLinksToQuickLinksMappingProperty
+  nameWithType: Constants.SummaryLinksToQuickLinksMappingProperty
+  fullName: PnP.Framework.Modernization.Constants.SummaryLinksToQuickLinksMappingProperty
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SummaryLinksToQuickLinksMappingProperty
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 56
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SummaryLinksToQuickLinksMappingProperty = "SummaryLinksToQuickLinks"
+    return:
+      type: System.String
+    content.vb: Public Const SummaryLinksToQuickLinksMappingProperty As String = "SummaryLinksToQuickLinks"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.CAMLQueryByExtension
+  commentId: F:PnP.Framework.Modernization.Constants.CAMLQueryByExtension
+  id: CAMLQueryByExtension
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: CAMLQueryByExtension
+  nameWithType: Constants.CAMLQueryByExtension
+  fullName: PnP.Framework.Modernization.Constants.CAMLQueryByExtension
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CAMLQueryByExtension
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 59
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string CAMLQueryByExtension = "\r\n                <View Scope='Recursive'>\r\n                  <Query>\r\n                    <Where>\r\n                      <Contains>\r\n                        <FieldRef Name='File_x0020_Type'/>\r\n                        <Value Type='text'>aspx</Value>\r\n                      </Contains>\r\n                    </Where>\r\n                  </Query>\r\n                </View>"
+    return:
+      type: System.String
+    content.vb: Public Const CAMLQueryByExtension As String = vbCrLf & "                <View Scope='Recursive'>" & vbCrLf & "                  <Query>" & vbCrLf & "                    <Where>" & vbCrLf & "                      <Contains>" & vbCrLf & "                        <FieldRef Name='File_x0020_Type'/>" & vbCrLf & "                        <Value Type='text'>aspx</Value>" & vbCrLf & "                      </Contains>" & vbCrLf & "                    </Where>" & vbCrLf & "                  </Query>" & vbCrLf & "                </View>"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.CAMLQueryByExtensionAndName
+  commentId: F:PnP.Framework.Modernization.Constants.CAMLQueryByExtensionAndName
+  id: CAMLQueryByExtensionAndName
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: CAMLQueryByExtensionAndName
+  nameWithType: Constants.CAMLQueryByExtensionAndName
+  fullName: PnP.Framework.Modernization.Constants.CAMLQueryByExtensionAndName
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CAMLQueryByExtensionAndName
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 70
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string CAMLQueryByExtensionAndName = "\r\n                <View Scope='Recursive'>\r\n                  <Query>\r\n                    <Where>\r\n                      <And>\r\n                        <Contains>\r\n                          <FieldRef Name='File_x0020_Type'/>\r\n                          <Value Type='text'>aspx</Value>\r\n                        </Contains>\r\n                        <BeginsWith>\r\n                          <FieldRef Name='FileLeafRef'/>\r\n                          <Value Type='text'>{0}</Value>\r\n                        </BeginsWith>\r\n                      </And>\r\n                    </Where>\r\n                  </Query>\r\n                </View>"
+    return:
+      type: System.String
+    content.vb: Public Const CAMLQueryByExtensionAndName As String = vbCrLf & "                <View Scope='Recursive'>" & vbCrLf & "                  <Query>" & vbCrLf & "                    <Where>" & vbCrLf & "                      <And>" & vbCrLf & "                        <Contains>" & vbCrLf & "                          <FieldRef Name='File_x0020_Type'/>" & vbCrLf & "                          <Value Type='text'>aspx</Value>" & vbCrLf & "                        </Contains>" & vbCrLf & "                        <BeginsWith>" & vbCrLf & "                          <FieldRef Name='FileLeafRef'/>" & vbCrLf & "                          <Value Type='text'>{0}</Value>" & vbCrLf & "                        </BeginsWith>" & vbCrLf & "                      </And>" & vbCrLf & "                    </Where>" & vbCrLf & "                  </Query>" & vbCrLf & "                </View>"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.CAMLQueryByNameForBlog
+  commentId: F:PnP.Framework.Modernization.Constants.CAMLQueryByNameForBlog
+  id: CAMLQueryByNameForBlog
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: CAMLQueryByNameForBlog
+  nameWithType: Constants.CAMLQueryByNameForBlog
+  fullName: PnP.Framework.Modernization.Constants.CAMLQueryByNameForBlog
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CAMLQueryByNameForBlog
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 87
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string CAMLQueryByNameForBlog = "\r\n                <View Scope='Recursive'>\r\n                  <Query>\r\n                    <Where>\r\n                      <BeginsWith>\r\n                        <FieldRef Name='Title'/>\r\n                        <Value Type='text'>{0}</Value>\r\n                      </BeginsWith>\r\n                    </Where>\r\n                  </Query>\r\n                </View>"
+    return:
+      type: System.String
+    content.vb: Public Const CAMLQueryByNameForBlog As String = vbCrLf & "                <View Scope='Recursive'>" & vbCrLf & "                  <Query>" & vbCrLf & "                    <Where>" & vbCrLf & "                      <BeginsWith>" & vbCrLf & "                        <FieldRef Name='Title'/>" & vbCrLf & "                        <Value Type='text'>{0}</Value>" & vbCrLf & "                      </BeginsWith>" & vbCrLf & "                    </Where>" & vbCrLf & "                  </Query>" & vbCrLf & "                </View>"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.Constants.AllowedAssetFileExtensions
+  commentId: F:PnP.Framework.Modernization.Constants.AllowedAssetFileExtensions
+  id: AllowedAssetFileExtensions
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: AllowedAssetFileExtensions
+  nameWithType: Constants.AllowedAssetFileExtensions
+  fullName: PnP.Framework.Modernization.Constants.AllowedAssetFileExtensions
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AllowedAssetFileExtensions
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 100
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public static string[] AllowedAssetFileExtensions
+    return:
+      type: System.String[]
+    content.vb: Public Shared AllowedAssetFileExtensions As String()
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Modernization.Constants.BlockedAssetFileExtensions
+  commentId: F:PnP.Framework.Modernization.Constants.BlockedAssetFileExtensions
+  id: BlockedAssetFileExtensions
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: BlockedAssetFileExtensions
+  nameWithType: Constants.BlockedAssetFileExtensions
+  fullName: PnP.Framework.Modernization.Constants.BlockedAssetFileExtensions
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BlockedAssetFileExtensions
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 102
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public static string[] BlockedAssetFileExtensions
+    return:
+      type: System.String[]
+    content.vb: Public Shared BlockedAssetFileExtensions As String()
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Modernization.Constants.OobPublishingPageLayouts
+  commentId: F:PnP.Framework.Modernization.Constants.OobPublishingPageLayouts
+  id: OobPublishingPageLayouts
+  parent: PnP.Framework.Modernization.Constants
+  langs:
+  - csharp
+  - vb
+  name: OobPublishingPageLayouts
+  nameWithType: Constants.OobPublishingPageLayouts
+  fullName: PnP.Framework.Modernization.Constants.OobPublishingPageLayouts
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Constants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OobPublishingPageLayouts
+    path: ../src/lib/PnP.Framework/Modernization/Constants.cs
+    startLine: 104
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public static string[] OobPublishingPageLayouts
+    return:
+      type: System.String[]
+    content.vb: Public Shared OobPublishingPageLayouts As String()
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Modernization
+  commentId: N:PnP.Framework.Modernization
+  name: PnP.Framework.Modernization
+  nameWithType: PnP.Framework.Modernization
+  fullName: PnP.Framework.Modernization
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: System.String[]
+  isExternal: true
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  nameWithType.vb: String()
+  fullName.vb: System.String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()

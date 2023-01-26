@@ -1,0 +1,3647 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.WebParts
+  commentId: T:PnP.Framework.Modernization.WebParts
+  id: WebParts
+  parent: PnP.Framework.Modernization
+  children:
+  - PnP.Framework.Modernization.WebParts.AboutUs
+  - PnP.Framework.Modernization.WebParts.AdvancedSearchBox
+  - PnP.Framework.Modernization.WebParts.AnnouncementTiles
+  - PnP.Framework.Modernization.WebParts.ApplyFilters
+  - PnP.Framework.Modernization.WebParts.BlogAdmin
+  - PnP.Framework.Modernization.WebParts.BlogLinks
+  - PnP.Framework.Modernization.WebParts.BlogMonthQuickLaunch
+  - PnP.Framework.Modernization.WebParts.BlogYearArchive
+  - PnP.Framework.Modernization.WebParts.BrowserForm
+  - PnP.Framework.Modernization.WebParts.BusinessDataActions
+  - PnP.Framework.Modernization.WebParts.BusinessDataAssociation
+  - PnP.Framework.Modernization.WebParts.BusinessDataDetails
+  - PnP.Framework.Modernization.WebParts.BusinessDataFilter
+  - PnP.Framework.Modernization.WebParts.BusinessDataItemBuilder
+  - PnP.Framework.Modernization.WebParts.BusinessDataList
+  - PnP.Framework.Modernization.WebParts.CatalogItemReuse
+  - PnP.Framework.Modernization.WebParts.Category
+  - PnP.Framework.Modernization.WebParts.CategoryResults
+  - PnP.Framework.Modernization.WebParts.Chart
+  - PnP.Framework.Modernization.WebParts.Client
+  - PnP.Framework.Modernization.WebParts.ClientSide
+  - PnP.Framework.Modernization.WebParts.CommunityAdmin
+  - PnP.Framework.Modernization.WebParts.CommunityJoin
+  - PnP.Framework.Modernization.WebParts.ContactField
+  - PnP.Framework.Modernization.WebParts.ContentByQuery
+  - PnP.Framework.Modernization.WebParts.ContentBySearch
+  - PnP.Framework.Modernization.WebParts.ContentEditor
+  - PnP.Framework.Modernization.WebParts.Dashboard
+  - PnP.Framework.Modernization.WebParts.DataForm
+  - PnP.Framework.Modernization.WebParts.DateFilter
+  - PnP.Framework.Modernization.WebParts.DocIdSearch
+  - PnP.Framework.Modernization.WebParts.DocumentSetContents
+  - PnP.Framework.Modernization.WebParts.DocumentSetProperties
+  - PnP.Framework.Modernization.WebParts.Error
+  - PnP.Framework.Modernization.WebParts.ExcelWebRenderer
+  - PnP.Framework.Modernization.WebParts.GetListOfWebParts(System.String)
+  - PnP.Framework.Modernization.WebParts.GettingStarted
+  - PnP.Framework.Modernization.WebParts.GettingStartedWithAppCatalogSite
+  - PnP.Framework.Modernization.WebParts.Image
+  - PnP.Framework.Modernization.WebParts.Indicator
+  - PnP.Framework.Modernization.WebParts.KPIList
+  - PnP.Framework.Modernization.WebParts.ListView
+  - PnP.Framework.Modernization.WebParts.Media
+  - PnP.Framework.Modernization.WebParts.Members
+  - PnP.Framework.Modernization.WebParts.MyMembership
+  - PnP.Framework.Modernization.WebParts.OWACalendar
+  - PnP.Framework.Modernization.WebParts.OWAContacts
+  - PnP.Framework.Modernization.WebParts.OWAInbox
+  - PnP.Framework.Modernization.WebParts.OWATasks
+  - PnP.Framework.Modernization.WebParts.PageAcceptanceBanner
+  - PnP.Framework.Modernization.WebParts.PageContextFilter
+  - PnP.Framework.Modernization.WebParts.PageProperties
+  - PnP.Framework.Modernization.WebParts.PageViewer
+  - PnP.Framework.Modernization.WebParts.PictureLibrarySlideshow
+  - PnP.Framework.Modernization.WebParts.ProfileBrowser
+  - PnP.Framework.Modernization.WebParts.ProjectSummary
+  - PnP.Framework.Modernization.WebParts.QueryStringFilter
+  - PnP.Framework.Modernization.WebParts.RefinementScript
+  - PnP.Framework.Modernization.WebParts.ResultScript
+  - PnP.Framework.Modernization.WebParts.RSSAggregator
+  - PnP.Framework.Modernization.WebParts.ScorecardFilter
+  - PnP.Framework.Modernization.WebParts.ScriptEditor
+  - PnP.Framework.Modernization.WebParts.SearchBoxScript
+  - PnP.Framework.Modernization.WebParts.SearchNavigation
+  - PnP.Framework.Modernization.WebParts.Silverlight
+  - PnP.Framework.Modernization.WebParts.SimpleForm
+  - PnP.Framework.Modernization.WebParts.SiteDocuments
+  - PnP.Framework.Modernization.WebParts.SiteFeed
+  - PnP.Framework.Modernization.WebParts.SocialComment
+  - PnP.Framework.Modernization.WebParts.SpListFilter
+  - PnP.Framework.Modernization.WebParts.SPSlicerChoices
+  - PnP.Framework.Modernization.WebParts.SPSlicerText
+  - PnP.Framework.Modernization.WebParts.SPTimeline
+  - PnP.Framework.Modernization.WebParts.SPUserCode
+  - PnP.Framework.Modernization.WebParts.SummaryLink
+  - PnP.Framework.Modernization.WebParts.TableOfContents
+  - PnP.Framework.Modernization.WebParts.TagCloud
+  - PnP.Framework.Modernization.WebParts.TasksAndTools
+  - PnP.Framework.Modernization.WebParts.TaxonomyRefinementScript
+  - PnP.Framework.Modernization.WebParts.TermProperty
+  - PnP.Framework.Modernization.WebParts.ThisWeekInPictures
+  - PnP.Framework.Modernization.WebParts.TitleBar
+  - PnP.Framework.Modernization.WebParts.UserContextFilter
+  - PnP.Framework.Modernization.WebParts.UserDocs
+  - PnP.Framework.Modernization.WebParts.UserTasks
+  - PnP.Framework.Modernization.WebParts.VisioWebAccess
+  - PnP.Framework.Modernization.WebParts.WhatsPopular
+  - PnP.Framework.Modernization.WebParts.WikiContent
+  - PnP.Framework.Modernization.WebParts.WikiEmbed
+  - PnP.Framework.Modernization.WebParts.WikiImage
+  - PnP.Framework.Modernization.WebParts.WikiText
+  - PnP.Framework.Modernization.WebParts.WikiVideo
+  - PnP.Framework.Modernization.WebParts.Xml
+  - PnP.Framework.Modernization.WebParts.XsltListView
+  langs:
+  - csharp
+  - vb
+  name: WebParts
+  nameWithType: WebParts
+  fullName: PnP.Framework.Modernization.WebParts
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebParts
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 7
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  summary: "\nWeb part type constants\n"
+  example: []
+  syntax:
+    content: public static class WebParts
+    content.vb: Public Module WebParts
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Modernization.WebParts.WikiText
+  commentId: F:PnP.Framework.Modernization.WebParts.WikiText
+  id: WikiText
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: WikiText
+  nameWithType: WebParts.WikiText
+  fullName: PnP.Framework.Modernization.WebParts.WikiText
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WikiText
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 9
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string WikiText = "SharePointPnP.Modernization.WikiTextPart"
+    return:
+      type: System.String
+    content.vb: Public Const WikiText As String = "SharePointPnP.Modernization.WikiTextPart"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.WikiImage
+  commentId: F:PnP.Framework.Modernization.WebParts.WikiImage
+  id: WikiImage
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: WikiImage
+  nameWithType: WebParts.WikiImage
+  fullName: PnP.Framework.Modernization.WebParts.WikiImage
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WikiImage
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string WikiImage = "SharePointPnP.Modernization.WikiImagePart"
+    return:
+      type: System.String
+    content.vb: Public Const WikiImage As String = "SharePointPnP.Modernization.WikiImagePart"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.WikiVideo
+  commentId: F:PnP.Framework.Modernization.WebParts.WikiVideo
+  id: WikiVideo
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: WikiVideo
+  nameWithType: WebParts.WikiVideo
+  fullName: PnP.Framework.Modernization.WebParts.WikiVideo
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WikiVideo
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 11
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string WikiVideo = "SharePointPnP.Modernization.WikiVideoPart"
+    return:
+      type: System.String
+    content.vb: Public Const WikiVideo As String = "SharePointPnP.Modernization.WikiVideoPart"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.WikiEmbed
+  commentId: F:PnP.Framework.Modernization.WebParts.WikiEmbed
+  id: WikiEmbed
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: WikiEmbed
+  nameWithType: WebParts.WikiEmbed
+  fullName: PnP.Framework.Modernization.WebParts.WikiEmbed
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WikiEmbed
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 12
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string WikiEmbed = "SharePointPnP.Modernization.WikiEmbedPart"
+    return:
+      type: System.String
+    content.vb: Public Const WikiEmbed As String = "SharePointPnP.Modernization.WikiEmbedPart"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.PageProperties
+  commentId: F:PnP.Framework.Modernization.WebParts.PageProperties
+  id: PageProperties
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: PageProperties
+  nameWithType: WebParts.PageProperties
+  fullName: PnP.Framework.Modernization.WebParts.PageProperties
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageProperties
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 13
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PageProperties = "SharePointPnP.Modernization.PageProperties"
+    return:
+      type: System.String
+    content.vb: Public Const PageProperties As String = "SharePointPnP.Modernization.PageProperties"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.PageAcceptanceBanner
+  commentId: F:PnP.Framework.Modernization.WebParts.PageAcceptanceBanner
+  id: PageAcceptanceBanner
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: PageAcceptanceBanner
+  nameWithType: WebParts.PageAcceptanceBanner
+  fullName: PnP.Framework.Modernization.WebParts.PageAcceptanceBanner
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageAcceptanceBanner
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 14
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PageAcceptanceBanner = "SharePointPnP.Modernization.PageAcceptanceBanner"
+    return:
+      type: System.String
+    content.vb: Public Const PageAcceptanceBanner As String = "SharePointPnP.Modernization.PageAcceptanceBanner"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.XsltListView
+  commentId: F:PnP.Framework.Modernization.WebParts.XsltListView
+  id: XsltListView
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: XsltListView
+  nameWithType: WebParts.XsltListView
+  fullName: PnP.Framework.Modernization.WebParts.XsltListView
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: XsltListView
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string XsltListView = "Microsoft.SharePoint.WebPartPages.XsltListViewWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const XsltListView As String = "Microsoft.SharePoint.WebPartPages.XsltListViewWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SiteFeed
+  commentId: F:PnP.Framework.Modernization.WebParts.SiteFeed
+  id: SiteFeed
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SiteFeed
+  nameWithType: WebParts.SiteFeed
+  fullName: PnP.Framework.Modernization.WebParts.SiteFeed
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteFeed
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 16
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SiteFeed = "Microsoft.SharePoint.Portal.WebControls.SiteFeedWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SiteFeed As String = "Microsoft.SharePoint.Portal.WebControls.SiteFeedWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ContentEditor
+  commentId: F:PnP.Framework.Modernization.WebParts.ContentEditor
+  id: ContentEditor
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ContentEditor
+  nameWithType: WebParts.ContentEditor
+  fullName: PnP.Framework.Modernization.WebParts.ContentEditor
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentEditor
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 17
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ContentEditor = "Microsoft.SharePoint.WebPartPages.ContentEditorWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ContentEditor As String = "Microsoft.SharePoint.WebPartPages.ContentEditorWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ScriptEditor
+  commentId: F:PnP.Framework.Modernization.WebParts.ScriptEditor
+  id: ScriptEditor
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ScriptEditor
+  nameWithType: WebParts.ScriptEditor
+  fullName: PnP.Framework.Modernization.WebParts.ScriptEditor
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ScriptEditor
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 18
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ScriptEditor = "Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ScriptEditor As String = "Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.Image
+  commentId: F:PnP.Framework.Modernization.WebParts.Image
+  id: Image
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: Image
+  nameWithType: WebParts.Image
+  fullName: PnP.Framework.Modernization.WebParts.Image
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Image
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 19
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string Image = "Microsoft.SharePoint.WebPartPages.ImageWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const Image As String = "Microsoft.SharePoint.WebPartPages.ImageWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ContentByQuery
+  commentId: F:PnP.Framework.Modernization.WebParts.ContentByQuery
+  id: ContentByQuery
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ContentByQuery
+  nameWithType: WebParts.ContentByQuery
+  fullName: PnP.Framework.Modernization.WebParts.ContentByQuery
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentByQuery
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 20
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ContentByQuery = "Microsoft.SharePoint.Publishing.WebControls.ContentByQueryWebPart, Microsoft.SharePoint.Publishing, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ContentByQuery As String = "Microsoft.SharePoint.Publishing.WebControls.ContentByQueryWebPart, Microsoft.SharePoint.Publishing, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ContentBySearch
+  commentId: F:PnP.Framework.Modernization.WebParts.ContentBySearch
+  id: ContentBySearch
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ContentBySearch
+  nameWithType: WebParts.ContentBySearch
+  fullName: PnP.Framework.Modernization.WebParts.ContentBySearch
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContentBySearch
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 21
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ContentBySearch = "Microsoft.Office.Server.Search.WebControls.ContentBySearchWebPart, Microsoft.Office.Server.Search, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ContentBySearch As String = "Microsoft.Office.Server.Search.WebControls.ContentBySearchWebPart, Microsoft.Office.Server.Search, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ResultScript
+  commentId: F:PnP.Framework.Modernization.WebParts.ResultScript
+  id: ResultScript
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ResultScript
+  nameWithType: WebParts.ResultScript
+  fullName: PnP.Framework.Modernization.WebParts.ResultScript
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ResultScript
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 22
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ResultScript = "Microsoft.Office.Server.Search.WebControls.ResultScriptWebPart, Microsoft.Office.Server.Search, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ResultScript As String = "Microsoft.Office.Server.Search.WebControls.ResultScriptWebPart, Microsoft.Office.Server.Search, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SearchNavigation
+  commentId: F:PnP.Framework.Modernization.WebParts.SearchNavigation
+  id: SearchNavigation
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SearchNavigation
+  nameWithType: WebParts.SearchNavigation
+  fullName: PnP.Framework.Modernization.WebParts.SearchNavigation
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SearchNavigation
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SearchNavigation = "Microsoft.Office.Server.Search.WebControls.SearchNavigationWebPart, Microsoft.Office.Server.Search,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SearchNavigation As String = "Microsoft.Office.Server.Search.WebControls.SearchNavigationWebPart, Microsoft.Office.Server.Search,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.CatalogItemReuse
+  commentId: F:PnP.Framework.Modernization.WebParts.CatalogItemReuse
+  id: CatalogItemReuse
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: CatalogItemReuse
+  nameWithType: WebParts.CatalogItemReuse
+  fullName: PnP.Framework.Modernization.WebParts.CatalogItemReuse
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CatalogItemReuse
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 24
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string CatalogItemReuse = "Microsoft.Office.Server.Search.WebControls.CatalogItemReuseWebPart, Microsoft.Office.Server.Search,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const CatalogItemReuse As String = "Microsoft.Office.Server.Search.WebControls.CatalogItemReuseWebPart, Microsoft.Office.Server.Search,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.TaxonomyRefinementScript
+  commentId: F:PnP.Framework.Modernization.WebParts.TaxonomyRefinementScript
+  id: TaxonomyRefinementScript
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: TaxonomyRefinementScript
+  nameWithType: WebParts.TaxonomyRefinementScript
+  fullName: PnP.Framework.Modernization.WebParts.TaxonomyRefinementScript
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TaxonomyRefinementScript
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 25
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string TaxonomyRefinementScript = "Microsoft.Office.Server.Search.WebControls.TaxonomyRefinementScriptWebPart, Microsoft.Office.Server.Search,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const TaxonomyRefinementScript As String = "Microsoft.Office.Server.Search.WebControls.TaxonomyRefinementScriptWebPart, Microsoft.Office.Server.Search,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.AdvancedSearchBox
+  commentId: F:PnP.Framework.Modernization.WebParts.AdvancedSearchBox
+  id: AdvancedSearchBox
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: AdvancedSearchBox
+  nameWithType: WebParts.AdvancedSearchBox
+  fullName: PnP.Framework.Modernization.WebParts.AdvancedSearchBox
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AdvancedSearchBox
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 26
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string AdvancedSearchBox = "Microsoft.Office.Server.Search.WebControls.AdvancedSearchBox, Microsoft.Office.Server.Search, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const AdvancedSearchBox As String = "Microsoft.Office.Server.Search.WebControls.AdvancedSearchBox, Microsoft.Office.Server.Search, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SearchBoxScript
+  commentId: F:PnP.Framework.Modernization.WebParts.SearchBoxScript
+  id: SearchBoxScript
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SearchBoxScript
+  nameWithType: WebParts.SearchBoxScript
+  fullName: PnP.Framework.Modernization.WebParts.SearchBoxScript
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SearchBoxScript
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 27
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SearchBoxScript = "Microsoft.Office.Server.Search.WebControls.SearchBoxScriptWebPart, Microsoft.Office.Server.Search,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SearchBoxScript As String = "Microsoft.Office.Server.Search.WebControls.SearchBoxScriptWebPart, Microsoft.Office.Server.Search,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.RefinementScript
+  commentId: F:PnP.Framework.Modernization.WebParts.RefinementScript
+  id: RefinementScript
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: RefinementScript
+  nameWithType: WebParts.RefinementScript
+  fullName: PnP.Framework.Modernization.WebParts.RefinementScript
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RefinementScript
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 28
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string RefinementScript = "Microsoft.Office.Server.Search.WebControls.RefinementScriptWebPart, Microsoft.Office.Server.Search,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const RefinementScript As String = "Microsoft.Office.Server.Search.WebControls.RefinementScriptWebPart, Microsoft.Office.Server.Search,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.Xml
+  commentId: F:PnP.Framework.Modernization.WebParts.Xml
+  id: Xml
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: Xml
+  nameWithType: WebParts.Xml
+  fullName: PnP.Framework.Modernization.WebParts.Xml
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Xml
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 29
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string Xml = "Microsoft.SharePoint.WebPartPages.XmlWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const Xml As String = "Microsoft.SharePoint.WebPartPages.XmlWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ListView
+  commentId: F:PnP.Framework.Modernization.WebParts.ListView
+  id: ListView
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ListView
+  nameWithType: WebParts.ListView
+  fullName: PnP.Framework.Modernization.WebParts.ListView
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListView
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 30
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ListView = "Microsoft.SharePoint.WebPartPages.ListViewWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ListView As String = "Microsoft.SharePoint.WebPartPages.ListViewWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.DataForm
+  commentId: F:PnP.Framework.Modernization.WebParts.DataForm
+  id: DataForm
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: DataForm
+  nameWithType: WebParts.DataForm
+  fullName: PnP.Framework.Modernization.WebParts.DataForm
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DataForm
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 31
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string DataForm = "Microsoft.SharePoint.WebPartPages.DataFormWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const DataForm As String = "Microsoft.SharePoint.WebPartPages.DataFormWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.RSSAggregator
+  commentId: F:PnP.Framework.Modernization.WebParts.RSSAggregator
+  id: RSSAggregator
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: RSSAggregator
+  nameWithType: WebParts.RSSAggregator
+  fullName: PnP.Framework.Modernization.WebParts.RSSAggregator
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RSSAggregator
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 32
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string RSSAggregator = "Microsoft.SharePoint.Portal.WebControls.RSSAggregatorWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const RSSAggregator As String = "Microsoft.SharePoint.Portal.WebControls.RSSAggregatorWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.WikiContent
+  commentId: F:PnP.Framework.Modernization.WebParts.WikiContent
+  id: WikiContent
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: WikiContent
+  nameWithType: WebParts.WikiContent
+  fullName: PnP.Framework.Modernization.WebParts.WikiContent
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WikiContent
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 33
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string WikiContent = "Microsoft.SharePoint.WebPartPages.WikiContentWebpart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const WikiContent As String = "Microsoft.SharePoint.WebPartPages.WikiContentWebpart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.PageViewer
+  commentId: F:PnP.Framework.Modernization.WebParts.PageViewer
+  id: PageViewer
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: PageViewer
+  nameWithType: WebParts.PageViewer
+  fullName: PnP.Framework.Modernization.WebParts.PageViewer
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageViewer
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 34
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PageViewer = "Microsoft.SharePoint.WebPartPages.PageViewerWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const PageViewer As String = "Microsoft.SharePoint.WebPartPages.PageViewerWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.Media
+  commentId: F:PnP.Framework.Modernization.WebParts.Media
+  id: Media
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: Media
+  nameWithType: WebParts.Media
+  fullName: PnP.Framework.Modernization.WebParts.Media
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Media
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 35
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string Media = "Microsoft.SharePoint.Publishing.WebControls.MediaWebPart, Microsoft.SharePoint.Publishing, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const Media As String = "Microsoft.SharePoint.Publishing.WebControls.MediaWebPart, Microsoft.SharePoint.Publishing, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.TableOfContents
+  commentId: F:PnP.Framework.Modernization.WebParts.TableOfContents
+  id: TableOfContents
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: TableOfContents
+  nameWithType: WebParts.TableOfContents
+  fullName: PnP.Framework.Modernization.WebParts.TableOfContents
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TableOfContents
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 36
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string TableOfContents = "Microsoft.SharePoint.Publishing.WebControls.TableOfContentsWebPart, Microsoft.SharePoint.Publishing, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const TableOfContents As String = "Microsoft.SharePoint.Publishing.WebControls.TableOfContentsWebPart, Microsoft.SharePoint.Publishing, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SummaryLink
+  commentId: F:PnP.Framework.Modernization.WebParts.SummaryLink
+  id: SummaryLink
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SummaryLink
+  nameWithType: WebParts.SummaryLink
+  fullName: PnP.Framework.Modernization.WebParts.SummaryLink
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SummaryLink
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 37
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SummaryLink = "Microsoft.SharePoint.Publishing.WebControls.SummaryLinkWebPart, Microsoft.SharePoint.Publishing, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SummaryLink As String = "Microsoft.SharePoint.Publishing.WebControls.SummaryLinkWebPart, Microsoft.SharePoint.Publishing, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ContactField
+  commentId: F:PnP.Framework.Modernization.WebParts.ContactField
+  id: ContactField
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ContactField
+  nameWithType: WebParts.ContactField
+  fullName: PnP.Framework.Modernization.WebParts.ContactField
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ContactField
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 38
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ContactField = "Microsoft.SharePoint.Portal.WebControls.ContactFieldControl, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ContactField As String = "Microsoft.SharePoint.Portal.WebControls.ContactFieldControl, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ExcelWebRenderer
+  commentId: F:PnP.Framework.Modernization.WebParts.ExcelWebRenderer
+  id: ExcelWebRenderer
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ExcelWebRenderer
+  nameWithType: WebParts.ExcelWebRenderer
+  fullName: PnP.Framework.Modernization.WebParts.ExcelWebRenderer
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExcelWebRenderer
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 39
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ExcelWebRenderer = "Microsoft.Office.Excel.WebUI.ExcelWebRenderer, Microsoft.Office.Excel.WebUI, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ExcelWebRenderer As String = "Microsoft.Office.Excel.WebUI.ExcelWebRenderer, Microsoft.Office.Excel.WebUI, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.VisioWebAccess
+  commentId: F:PnP.Framework.Modernization.WebParts.VisioWebAccess
+  id: VisioWebAccess
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: VisioWebAccess
+  nameWithType: WebParts.VisioWebAccess
+  fullName: PnP.Framework.Modernization.WebParts.VisioWebAccess
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: VisioWebAccess
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 40
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string VisioWebAccess = "Microsoft.Office.Visio.Server.WebControls.VisioWebAccess, Microsoft.Office.Visio.Server, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const VisioWebAccess As String = "Microsoft.Office.Visio.Server.WebControls.VisioWebAccess, Microsoft.Office.Visio.Server, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SocialComment
+  commentId: F:PnP.Framework.Modernization.WebParts.SocialComment
+  id: SocialComment
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SocialComment
+  nameWithType: WebParts.SocialComment
+  fullName: PnP.Framework.Modernization.WebParts.SocialComment
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SocialComment
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 41
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SocialComment = "Microsoft.SharePoint.Portal.WebControls.SocialCommentWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SocialComment As String = "Microsoft.SharePoint.Portal.WebControls.SocialCommentWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ProfileBrowser
+  commentId: F:PnP.Framework.Modernization.WebParts.ProfileBrowser
+  id: ProfileBrowser
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ProfileBrowser
+  nameWithType: WebParts.ProfileBrowser
+  fullName: PnP.Framework.Modernization.WebParts.ProfileBrowser
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ProfileBrowser
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 42
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ProfileBrowser = "Microsoft.SharePoint.Portal.WebControls.ProfileBrowser, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ProfileBrowser As String = "Microsoft.SharePoint.Portal.WebControls.ProfileBrowser, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.UserTasks
+  commentId: F:PnP.Framework.Modernization.WebParts.UserTasks
+  id: UserTasks
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: UserTasks
+  nameWithType: WebParts.UserTasks
+  fullName: PnP.Framework.Modernization.WebParts.UserTasks
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UserTasks
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 43
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string UserTasks = "Microsoft.SharePoint.WebPartPages.UserTasksWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const UserTasks As String = "Microsoft.SharePoint.WebPartPages.UserTasksWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.PictureLibrarySlideshow
+  commentId: F:PnP.Framework.Modernization.WebParts.PictureLibrarySlideshow
+  id: PictureLibrarySlideshow
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: PictureLibrarySlideshow
+  nameWithType: WebParts.PictureLibrarySlideshow
+  fullName: PnP.Framework.Modernization.WebParts.PictureLibrarySlideshow
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PictureLibrarySlideshow
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 44
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PictureLibrarySlideshow = "Microsoft.SharePoint.WebPartPages.PictureLibrarySlideshowWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const PictureLibrarySlideshow As String = "Microsoft.SharePoint.WebPartPages.PictureLibrarySlideshowWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.Silverlight
+  commentId: F:PnP.Framework.Modernization.WebParts.Silverlight
+  id: Silverlight
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: Silverlight
+  nameWithType: WebParts.Silverlight
+  fullName: PnP.Framework.Modernization.WebParts.Silverlight
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Silverlight
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 45
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string Silverlight = "Microsoft.SharePoint.WebPartPages.SilverlightWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const Silverlight As String = "Microsoft.SharePoint.WebPartPages.SilverlightWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SimpleForm
+  commentId: F:PnP.Framework.Modernization.WebParts.SimpleForm
+  id: SimpleForm
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SimpleForm
+  nameWithType: WebParts.SimpleForm
+  fullName: PnP.Framework.Modernization.WebParts.SimpleForm
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SimpleForm
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 46
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SimpleForm = "Microsoft.SharePoint.WebPartPages.SimpleFormWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SimpleForm As String = "Microsoft.SharePoint.WebPartPages.SimpleFormWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.BrowserForm
+  commentId: F:PnP.Framework.Modernization.WebParts.BrowserForm
+  id: BrowserForm
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: BrowserForm
+  nameWithType: WebParts.BrowserForm
+  fullName: PnP.Framework.Modernization.WebParts.BrowserForm
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BrowserForm
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 47
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BrowserForm = "Microsoft.Office.InfoPath.Server.Controls.WebUI.BrowserFormWebPart, Microsoft.Office.InfoPath.Server, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const BrowserForm As String = "Microsoft.Office.InfoPath.Server.Controls.WebUI.BrowserFormWebPart, Microsoft.Office.InfoPath.Server, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SPTimeline
+  commentId: F:PnP.Framework.Modernization.WebParts.SPTimeline
+  id: SPTimeline
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SPTimeline
+  nameWithType: WebParts.SPTimeline
+  fullName: PnP.Framework.Modernization.WebParts.SPTimeline
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SPTimeline
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 48
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SPTimeline = "Microsoft.SharePoint.WebPartPages.SPTimelineWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SPTimeline As String = "Microsoft.SharePoint.WebPartPages.SPTimelineWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.TermProperty
+  commentId: F:PnP.Framework.Modernization.WebParts.TermProperty
+  id: TermProperty
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: TermProperty
+  nameWithType: WebParts.TermProperty
+  fullName: PnP.Framework.Modernization.WebParts.TermProperty
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TermProperty
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 49
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string TermProperty = "Microsoft.SharePoint.Taxonomy.TermProperty, Microsoft.SharePoint.Taxonomy, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const TermProperty As String = "Microsoft.SharePoint.Taxonomy.TermProperty, Microsoft.SharePoint.Taxonomy, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.UserDocs
+  commentId: F:PnP.Framework.Modernization.WebParts.UserDocs
+  id: UserDocs
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: UserDocs
+  nameWithType: WebParts.UserDocs
+  fullName: PnP.Framework.Modernization.WebParts.UserDocs
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UserDocs
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 50
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string UserDocs = "Microsoft.SharePoint.WebPartPages.UserDocsWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const UserDocs As String = "Microsoft.SharePoint.WebPartPages.UserDocsWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SiteDocuments
+  commentId: F:PnP.Framework.Modernization.WebParts.SiteDocuments
+  id: SiteDocuments
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SiteDocuments
+  nameWithType: WebParts.SiteDocuments
+  fullName: PnP.Framework.Modernization.WebParts.SiteDocuments
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteDocuments
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 51
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SiteDocuments = "Microsoft.SharePoint.Portal.WebControls.SiteDocuments, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SiteDocuments As String = "Microsoft.SharePoint.Portal.WebControls.SiteDocuments, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.GettingStarted
+  commentId: F:PnP.Framework.Modernization.WebParts.GettingStarted
+  id: GettingStarted
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: GettingStarted
+  nameWithType: WebParts.GettingStarted
+  fullName: PnP.Framework.Modernization.WebParts.GettingStarted
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GettingStarted
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 52
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string GettingStarted = "Microsoft.SharePoint.WebPartPages.GettingStartedWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const GettingStarted As String = "Microsoft.SharePoint.WebPartPages.GettingStartedWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.TagCloud
+  commentId: F:PnP.Framework.Modernization.WebParts.TagCloud
+  id: TagCloud
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: TagCloud
+  nameWithType: WebParts.TagCloud
+  fullName: PnP.Framework.Modernization.WebParts.TagCloud
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TagCloud
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 53
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string TagCloud = "Microsoft.SharePoint.Portal.WebControls.TagCloudWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const TagCloud As String = "Microsoft.SharePoint.Portal.WebControls.TagCloudWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.BusinessDataList
+  commentId: F:PnP.Framework.Modernization.WebParts.BusinessDataList
+  id: BusinessDataList
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: BusinessDataList
+  nameWithType: WebParts.BusinessDataList
+  fullName: PnP.Framework.Modernization.WebParts.BusinessDataList
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BusinessDataList
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 54
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BusinessDataList = "Microsoft.SharePoint.Portal.WebControls.BusinessDataListWebPart, Microsoft.SharePoint.Portal,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const BusinessDataList As String = "Microsoft.SharePoint.Portal.WebControls.BusinessDataListWebPart, Microsoft.SharePoint.Portal,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.BusinessDataFilter
+  commentId: F:PnP.Framework.Modernization.WebParts.BusinessDataFilter
+  id: BusinessDataFilter
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: BusinessDataFilter
+  nameWithType: WebParts.BusinessDataFilter
+  fullName: PnP.Framework.Modernization.WebParts.BusinessDataFilter
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BusinessDataFilter
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 55
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BusinessDataFilter = "Microsoft.SharePoint.Portal.WebControls.BusinessDataFilterWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const BusinessDataFilter As String = "Microsoft.SharePoint.Portal.WebControls.BusinessDataFilterWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.BusinessDataDetails
+  commentId: F:PnP.Framework.Modernization.WebParts.BusinessDataDetails
+  id: BusinessDataDetails
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: BusinessDataDetails
+  nameWithType: WebParts.BusinessDataDetails
+  fullName: PnP.Framework.Modernization.WebParts.BusinessDataDetails
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BusinessDataDetails
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 56
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BusinessDataDetails = "Microsoft.SharePoint.Portal.WebControls.BusinessDataDetailsWebPart, Microsoft.SharePoint.Portal,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const BusinessDataDetails As String = "Microsoft.SharePoint.Portal.WebControls.BusinessDataDetailsWebPart, Microsoft.SharePoint.Portal,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.BusinessDataAssociation
+  commentId: F:PnP.Framework.Modernization.WebParts.BusinessDataAssociation
+  id: BusinessDataAssociation
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: BusinessDataAssociation
+  nameWithType: WebParts.BusinessDataAssociation
+  fullName: PnP.Framework.Modernization.WebParts.BusinessDataAssociation
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BusinessDataAssociation
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 57
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BusinessDataAssociation = "Microsoft.SharePoint.Portal.WebControls.BusinessDataAssociationWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const BusinessDataAssociation As String = "Microsoft.SharePoint.Portal.WebControls.BusinessDataAssociationWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.BusinessDataActions
+  commentId: F:PnP.Framework.Modernization.WebParts.BusinessDataActions
+  id: BusinessDataActions
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: BusinessDataActions
+  nameWithType: WebParts.BusinessDataActions
+  fullName: PnP.Framework.Modernization.WebParts.BusinessDataActions
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BusinessDataActions
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 58
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BusinessDataActions = "Microsoft.SharePoint.Portal.WebControls.BusinessDataActionsWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const BusinessDataActions As String = "Microsoft.SharePoint.Portal.WebControls.BusinessDataActionsWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.BusinessDataItemBuilder
+  commentId: F:PnP.Framework.Modernization.WebParts.BusinessDataItemBuilder
+  id: BusinessDataItemBuilder
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: BusinessDataItemBuilder
+  nameWithType: WebParts.BusinessDataItemBuilder
+  fullName: PnP.Framework.Modernization.WebParts.BusinessDataItemBuilder
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BusinessDataItemBuilder
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 59
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BusinessDataItemBuilder = "Microsoft.SharePoint.Portal.WebControls.BusinessDataItemBuilder, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const BusinessDataItemBuilder As String = "Microsoft.SharePoint.Portal.WebControls.BusinessDataItemBuilder, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ScorecardFilter
+  commentId: F:PnP.Framework.Modernization.WebParts.ScorecardFilter
+  id: ScorecardFilter
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ScorecardFilter
+  nameWithType: WebParts.ScorecardFilter
+  fullName: PnP.Framework.Modernization.WebParts.ScorecardFilter
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ScorecardFilter
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 60
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ScorecardFilter = "Microsoft.SharePoint.Portal.WebControls.ScorecardFilterWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ScorecardFilter As String = "Microsoft.SharePoint.Portal.WebControls.ScorecardFilterWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ApplyFilters
+  commentId: F:PnP.Framework.Modernization.WebParts.ApplyFilters
+  id: ApplyFilters
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ApplyFilters
+  nameWithType: WebParts.ApplyFilters
+  fullName: PnP.Framework.Modernization.WebParts.ApplyFilters
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ApplyFilters
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 61
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ApplyFilters = "Microsoft.SharePoint.Portal.WebControls.ApplyFiltersWebPart, Microsoft.Office.Server.FilterControls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ApplyFilters As String = "Microsoft.SharePoint.Portal.WebControls.ApplyFiltersWebPart, Microsoft.Office.Server.FilterControls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.DateFilter
+  commentId: F:PnP.Framework.Modernization.WebParts.DateFilter
+  id: DateFilter
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: DateFilter
+  nameWithType: WebParts.DateFilter
+  fullName: PnP.Framework.Modernization.WebParts.DateFilter
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DateFilter
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 62
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string DateFilter = "Microsoft.SharePoint.Portal.WebControls.DateFilterWebPart, Microsoft.Office.Server.FilterControls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const DateFilter As String = "Microsoft.SharePoint.Portal.WebControls.DateFilterWebPart, Microsoft.Office.Server.FilterControls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.UserContextFilter
+  commentId: F:PnP.Framework.Modernization.WebParts.UserContextFilter
+  id: UserContextFilter
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: UserContextFilter
+  nameWithType: WebParts.UserContextFilter
+  fullName: PnP.Framework.Modernization.WebParts.UserContextFilter
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UserContextFilter
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 63
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string UserContextFilter = "Microsoft.SharePoint.Portal.WebControls.UserContextFilterWebPart, Microsoft.Office.Server.FilterControls,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const UserContextFilter As String = "Microsoft.SharePoint.Portal.WebControls.UserContextFilterWebPart, Microsoft.Office.Server.FilterControls,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SPSlicerText
+  commentId: F:PnP.Framework.Modernization.WebParts.SPSlicerText
+  id: SPSlicerText
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SPSlicerText
+  nameWithType: WebParts.SPSlicerText
+  fullName: PnP.Framework.Modernization.WebParts.SPSlicerText
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SPSlicerText
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 64
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SPSlicerText = "Microsoft.SharePoint.Portal.WebControls.SPSlicerTextWebPart, Microsoft.Office.Server.FilterControls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SPSlicerText As String = "Microsoft.SharePoint.Portal.WebControls.SPSlicerTextWebPart, Microsoft.Office.Server.FilterControls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SpListFilter
+  commentId: F:PnP.Framework.Modernization.WebParts.SpListFilter
+  id: SpListFilter
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SpListFilter
+  nameWithType: WebParts.SpListFilter
+  fullName: PnP.Framework.Modernization.WebParts.SpListFilter
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SpListFilter
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 65
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SpListFilter = "Microsoft.SharePoint.Portal.WebControls.SpListFilterWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SpListFilter As String = "Microsoft.SharePoint.Portal.WebControls.SpListFilterWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.QueryStringFilter
+  commentId: F:PnP.Framework.Modernization.WebParts.QueryStringFilter
+  id: QueryStringFilter
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: QueryStringFilter
+  nameWithType: WebParts.QueryStringFilter
+  fullName: PnP.Framework.Modernization.WebParts.QueryStringFilter
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: QueryStringFilter
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 66
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string QueryStringFilter = "Microsoft.SharePoint.Portal.WebControls.QueryStringFilterWebPart, Microsoft.Office.Server.FilterControls,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const QueryStringFilter As String = "Microsoft.SharePoint.Portal.WebControls.QueryStringFilterWebPart, Microsoft.Office.Server.FilterControls,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.PageContextFilter
+  commentId: F:PnP.Framework.Modernization.WebParts.PageContextFilter
+  id: PageContextFilter
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: PageContextFilter
+  nameWithType: WebParts.PageContextFilter
+  fullName: PnP.Framework.Modernization.WebParts.PageContextFilter
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageContextFilter
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 67
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string PageContextFilter = "Microsoft.SharePoint.Portal.WebControls.PageContextFilterWebPart, Microsoft.Office.Server.FilterControls,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const PageContextFilter As String = "Microsoft.SharePoint.Portal.WebControls.PageContextFilterWebPart, Microsoft.Office.Server.FilterControls,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SPSlicerChoices
+  commentId: F:PnP.Framework.Modernization.WebParts.SPSlicerChoices
+  id: SPSlicerChoices
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SPSlicerChoices
+  nameWithType: WebParts.SPSlicerChoices
+  fullName: PnP.Framework.Modernization.WebParts.SPSlicerChoices
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SPSlicerChoices
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 68
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SPSlicerChoices = "Microsoft.SharePoint.Portal.WebControls.SPSlicerChoicesWebPart,Microsoft.Office.Server.FilterControls,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SPSlicerChoices As String = "Microsoft.SharePoint.Portal.WebControls.SPSlicerChoicesWebPart,Microsoft.Office.Server.FilterControls,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.BlogLinks
+  commentId: F:PnP.Framework.Modernization.WebParts.BlogLinks
+  id: BlogLinks
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: BlogLinks
+  nameWithType: WebParts.BlogLinks
+  fullName: PnP.Framework.Modernization.WebParts.BlogLinks
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BlogLinks
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 69
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BlogLinks = "Microsoft.SharePoint.WebPartPages.BlogLinksWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const BlogLinks As String = "Microsoft.SharePoint.WebPartPages.BlogLinksWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.BlogAdmin
+  commentId: F:PnP.Framework.Modernization.WebParts.BlogAdmin
+  id: BlogAdmin
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: BlogAdmin
+  nameWithType: WebParts.BlogAdmin
+  fullName: PnP.Framework.Modernization.WebParts.BlogAdmin
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BlogAdmin
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 70
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BlogAdmin = "Microsoft.SharePoint.WebPartPages.BlogAdminWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const BlogAdmin As String = "Microsoft.SharePoint.WebPartPages.BlogAdminWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.BlogMonthQuickLaunch
+  commentId: F:PnP.Framework.Modernization.WebParts.BlogMonthQuickLaunch
+  id: BlogMonthQuickLaunch
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: BlogMonthQuickLaunch
+  nameWithType: WebParts.BlogMonthQuickLaunch
+  fullName: PnP.Framework.Modernization.WebParts.BlogMonthQuickLaunch
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BlogMonthQuickLaunch
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 71
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BlogMonthQuickLaunch = "Microsoft.SharePoint.WebPartPages.BlogMonthQuickLaunch, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const BlogMonthQuickLaunch As String = "Microsoft.SharePoint.WebPartPages.BlogMonthQuickLaunch, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.BlogYearArchive
+  commentId: F:PnP.Framework.Modernization.WebParts.BlogYearArchive
+  id: BlogYearArchive
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: BlogYearArchive
+  nameWithType: WebParts.BlogYearArchive
+  fullName: PnP.Framework.Modernization.WebParts.BlogYearArchive
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BlogYearArchive
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 72
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string BlogYearArchive = "Microsoft.SharePoint.WebPartPages.BlogYearArchive, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const BlogYearArchive As String = "Microsoft.SharePoint.WebPartPages.BlogYearArchive, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.Members
+  commentId: F:PnP.Framework.Modernization.WebParts.Members
+  id: Members
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: Members
+  nameWithType: WebParts.Members
+  fullName: PnP.Framework.Modernization.WebParts.Members
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Members
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 73
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string Members = "Microsoft.SharePoint.WebPartPages.MembersWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const Members As String = "Microsoft.SharePoint.WebPartPages.MembersWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ProjectSummary
+  commentId: F:PnP.Framework.Modernization.WebParts.ProjectSummary
+  id: ProjectSummary
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ProjectSummary
+  nameWithType: WebParts.ProjectSummary
+  fullName: PnP.Framework.Modernization.WebParts.ProjectSummary
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ProjectSummary
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 74
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ProjectSummary = "Microsoft.SharePoint.Portal.WebControls.ProjectSummaryWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ProjectSummary As String = "Microsoft.SharePoint.Portal.WebControls.ProjectSummaryWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.Indicator
+  commentId: F:PnP.Framework.Modernization.WebParts.Indicator
+  id: Indicator
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: Indicator
+  nameWithType: WebParts.Indicator
+  fullName: PnP.Framework.Modernization.WebParts.Indicator
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Indicator
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 75
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string Indicator = "Microsoft.SharePoint.Portal.WebControls.IndicatorWebpart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const Indicator As String = "Microsoft.SharePoint.Portal.WebControls.IndicatorWebpart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.KPIList
+  commentId: F:PnP.Framework.Modernization.WebParts.KPIList
+  id: KPIList
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: KPIList
+  nameWithType: WebParts.KPIList
+  fullName: PnP.Framework.Modernization.WebParts.KPIList
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: KPIList
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 76
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string KPIList = "Microsoft.SharePoint.Portal.WebControls.KPIListWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const KPIList As String = "Microsoft.SharePoint.Portal.WebControls.KPIListWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.CommunityAdmin
+  commentId: F:PnP.Framework.Modernization.WebParts.CommunityAdmin
+  id: CommunityAdmin
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: CommunityAdmin
+  nameWithType: WebParts.CommunityAdmin
+  fullName: PnP.Framework.Modernization.WebParts.CommunityAdmin
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CommunityAdmin
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 77
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string CommunityAdmin = "Microsoft.SharePoint.Portal.WebControls.CommunityAdminWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const CommunityAdmin As String = "Microsoft.SharePoint.Portal.WebControls.CommunityAdminWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.CommunityJoin
+  commentId: F:PnP.Framework.Modernization.WebParts.CommunityJoin
+  id: CommunityJoin
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: CommunityJoin
+  nameWithType: WebParts.CommunityJoin
+  fullName: PnP.Framework.Modernization.WebParts.CommunityJoin
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CommunityJoin
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 78
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string CommunityJoin = "Microsoft.SharePoint.Portal.WebControls.CommunityJoinWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const CommunityJoin As String = "Microsoft.SharePoint.Portal.WebControls.CommunityJoinWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.Dashboard
+  commentId: F:PnP.Framework.Modernization.WebParts.Dashboard
+  id: Dashboard
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: Dashboard
+  nameWithType: WebParts.Dashboard
+  fullName: PnP.Framework.Modernization.WebParts.Dashboard
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Dashboard
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 79
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string Dashboard = "Microsoft.SharePoint.Portal.WebControls.DashboardWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const Dashboard As String = "Microsoft.SharePoint.Portal.WebControls.DashboardWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.AboutUs
+  commentId: F:PnP.Framework.Modernization.WebParts.AboutUs
+  id: AboutUs
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: AboutUs
+  nameWithType: WebParts.AboutUs
+  fullName: PnP.Framework.Modernization.WebParts.AboutUs
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AboutUs
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 80
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string AboutUs = "Microsoft.SharePoint.Portal.WebControls.AboutUsWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const AboutUs As String = "Microsoft.SharePoint.Portal.WebControls.AboutUsWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.MyMembership
+  commentId: F:PnP.Framework.Modernization.WebParts.MyMembership
+  id: MyMembership
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: MyMembership
+  nameWithType: WebParts.MyMembership
+  fullName: PnP.Framework.Modernization.WebParts.MyMembership
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MyMembership
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 81
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string MyMembership = "Microsoft.SharePoint.Portal.WebControls.MyMembershipWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const MyMembership As String = "Microsoft.SharePoint.Portal.WebControls.MyMembershipWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.DocIdSearch
+  commentId: F:PnP.Framework.Modernization.WebParts.DocIdSearch
+  id: DocIdSearch
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: DocIdSearch
+  nameWithType: WebParts.DocIdSearch
+  fullName: PnP.Framework.Modernization.WebParts.DocIdSearch
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DocIdSearch
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 82
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string DocIdSearch = "Microsoft.Office.Server.WebControls.DocIdSearchWebPart, Microsoft.Office.DocumentManagement, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const DocIdSearch As String = "Microsoft.Office.Server.WebControls.DocIdSearchWebPart, Microsoft.Office.DocumentManagement, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.DocumentSetProperties
+  commentId: F:PnP.Framework.Modernization.WebParts.DocumentSetProperties
+  id: DocumentSetProperties
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: DocumentSetProperties
+  nameWithType: WebParts.DocumentSetProperties
+  fullName: PnP.Framework.Modernization.WebParts.DocumentSetProperties
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DocumentSetProperties
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 83
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string DocumentSetProperties = "Microsoft.Office.Server.WebControls.DocumentSetPropertiesWebPart, Microsoft.Office.DocumentManagement, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const DocumentSetProperties As String = "Microsoft.Office.Server.WebControls.DocumentSetPropertiesWebPart, Microsoft.Office.DocumentManagement, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.DocumentSetContents
+  commentId: F:PnP.Framework.Modernization.WebParts.DocumentSetContents
+  id: DocumentSetContents
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: DocumentSetContents
+  nameWithType: WebParts.DocumentSetContents
+  fullName: PnP.Framework.Modernization.WebParts.DocumentSetContents
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DocumentSetContents
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 84
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string DocumentSetContents = "Microsoft.Office.Server.WebControls.DocumentSetContentsWebPart, Microsoft.Office.DocumentManagement, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const DocumentSetContents As String = "Microsoft.Office.Server.WebControls.DocumentSetContentsWebPart, Microsoft.Office.DocumentManagement, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.OWAInbox
+  commentId: F:PnP.Framework.Modernization.WebParts.OWAInbox
+  id: OWAInbox
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: OWAInbox
+  nameWithType: WebParts.OWAInbox
+  fullName: PnP.Framework.Modernization.WebParts.OWAInbox
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OWAInbox
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 85
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string OWAInbox = "Microsoft.SharePoint.Portal.WebControls.OWAInboxPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const OWAInbox As String = "Microsoft.SharePoint.Portal.WebControls.OWAInboxPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.OWACalendar
+  commentId: F:PnP.Framework.Modernization.WebParts.OWACalendar
+  id: OWACalendar
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: OWACalendar
+  nameWithType: WebParts.OWACalendar
+  fullName: PnP.Framework.Modernization.WebParts.OWACalendar
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OWACalendar
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 86
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string OWACalendar = "Microsoft.SharePoint.Portal.WebControls.OWACalendarPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const OWACalendar As String = "Microsoft.SharePoint.Portal.WebControls.OWACalendarPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.OWAContacts
+  commentId: F:PnP.Framework.Modernization.WebParts.OWAContacts
+  id: OWAContacts
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: OWAContacts
+  nameWithType: WebParts.OWAContacts
+  fullName: PnP.Framework.Modernization.WebParts.OWAContacts
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OWAContacts
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 87
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string OWAContacts = "Microsoft.SharePoint.Portal.WebControls.OWAContactsPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const OWAContacts As String = "Microsoft.SharePoint.Portal.WebControls.OWAContactsPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.OWATasks
+  commentId: F:PnP.Framework.Modernization.WebParts.OWATasks
+  id: OWATasks
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: OWATasks
+  nameWithType: WebParts.OWATasks
+  fullName: PnP.Framework.Modernization.WebParts.OWATasks
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OWATasks
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 88
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string OWATasks = "Microsoft.SharePoint.Portal.WebControls.OWATasksPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const OWATasks As String = "Microsoft.SharePoint.Portal.WebControls.OWATasksPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.Category
+  commentId: F:PnP.Framework.Modernization.WebParts.Category
+  id: Category
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: Category
+  nameWithType: WebParts.Category
+  fullName: PnP.Framework.Modernization.WebParts.Category
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Category
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 89
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string Category = "Microsoft.SharePoint.Portal.WebControls.CategoryWebPart, Microsoft.SharePoint.Portal,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const Category As String = "Microsoft.SharePoint.Portal.WebControls.CategoryWebPart, Microsoft.SharePoint.Portal,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.CategoryResults
+  commentId: F:PnP.Framework.Modernization.WebParts.CategoryResults
+  id: CategoryResults
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: CategoryResults
+  nameWithType: WebParts.CategoryResults
+  fullName: PnP.Framework.Modernization.WebParts.CategoryResults
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CategoryResults
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 90
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string CategoryResults = "Microsoft.SharePoint.Portal.WebControls.CategoryResultsWebPart, Microsoft.SharePoint.Portal,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const CategoryResults As String = "Microsoft.SharePoint.Portal.WebControls.CategoryResultsWebPart, Microsoft.SharePoint.Portal,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.AnnouncementTiles
+  commentId: F:PnP.Framework.Modernization.WebParts.AnnouncementTiles
+  id: AnnouncementTiles
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: AnnouncementTiles
+  nameWithType: WebParts.AnnouncementTiles
+  fullName: PnP.Framework.Modernization.WebParts.AnnouncementTiles
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AnnouncementTiles
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 91
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string AnnouncementTiles = "Microsoft.SharePoint.Portal.WebControls.AnnouncementTilesWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const AnnouncementTiles As String = "Microsoft.SharePoint.Portal.WebControls.AnnouncementTilesWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.TasksAndTools
+  commentId: F:PnP.Framework.Modernization.WebParts.TasksAndTools
+  id: TasksAndTools
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: TasksAndTools
+  nameWithType: WebParts.TasksAndTools
+  fullName: PnP.Framework.Modernization.WebParts.TasksAndTools
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TasksAndTools
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 92
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string TasksAndTools = "Microsoft.SharePoint.Portal.WebControls.TasksAndToolsWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const TasksAndTools As String = "Microsoft.SharePoint.Portal.WebControls.TasksAndToolsWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ThisWeekInPictures
+  commentId: F:PnP.Framework.Modernization.WebParts.ThisWeekInPictures
+  id: ThisWeekInPictures
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ThisWeekInPictures
+  nameWithType: WebParts.ThisWeekInPictures
+  fullName: PnP.Framework.Modernization.WebParts.ThisWeekInPictures
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ThisWeekInPictures
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 93
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ThisWeekInPictures = "Microsoft.SharePoint.Portal.WebControls.ThisWeekInPicturesWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ThisWeekInPictures As String = "Microsoft.SharePoint.Portal.WebControls.ThisWeekInPicturesWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.WhatsPopular
+  commentId: F:PnP.Framework.Modernization.WebParts.WhatsPopular
+  id: WhatsPopular
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: WhatsPopular
+  nameWithType: WebParts.WhatsPopular
+  fullName: PnP.Framework.Modernization.WebParts.WhatsPopular
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WhatsPopular
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 94
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string WhatsPopular = "Microsoft.Office.Server.WebAnalytics.Reporting.WhatsPopularWebPart, Microsoft.Office.Server.WebAnalytics.UI, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const WhatsPopular As String = "Microsoft.Office.Server.WebAnalytics.Reporting.WhatsPopularWebPart, Microsoft.Office.Server.WebAnalytics.UI, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.Chart
+  commentId: F:PnP.Framework.Modernization.WebParts.Chart
+  id: Chart
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: Chart
+  nameWithType: WebParts.Chart
+  fullName: PnP.Framework.Modernization.WebParts.Chart
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Chart
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 95
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string Chart = "Microsoft.Office.Server.WebControls.ChartWebPart, Microsoft.Office.Server.Chart, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const Chart As String = "Microsoft.Office.Server.WebControls.ChartWebPart, Microsoft.Office.Server.Chart, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.Error
+  commentId: F:PnP.Framework.Modernization.WebParts.Error
+  id: Error
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: WebParts.Error
+  fullName: PnP.Framework.Modernization.WebParts.Error
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Error
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 96
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string Error = "Microsoft.SharePoint.WebPartPages.ErrorWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const Error As String = "Microsoft.SharePoint.WebPartPages.ErrorWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.TitleBar
+  commentId: F:PnP.Framework.Modernization.WebParts.TitleBar
+  id: TitleBar
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: TitleBar
+  nameWithType: WebParts.TitleBar
+  fullName: PnP.Framework.Modernization.WebParts.TitleBar
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TitleBar
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 97
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string TitleBar = "Microsoft.SharePoint.WebPartPages.TitleBarWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const TitleBar As String = "Microsoft.SharePoint.WebPartPages.TitleBarWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.GettingStartedWithAppCatalogSite
+  commentId: F:PnP.Framework.Modernization.WebParts.GettingStartedWithAppCatalogSite
+  id: GettingStartedWithAppCatalogSite
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: GettingStartedWithAppCatalogSite
+  nameWithType: WebParts.GettingStartedWithAppCatalogSite
+  fullName: PnP.Framework.Modernization.WebParts.GettingStartedWithAppCatalogSite
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GettingStartedWithAppCatalogSite
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 98
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string GettingStartedWithAppCatalogSite = "Microsoft.SharePoint.WebPartPages.GettingStartedWithAppCatalogSiteWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const GettingStartedWithAppCatalogSite As String = "Microsoft.SharePoint.WebPartPages.GettingStartedWithAppCatalogSiteWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.SPUserCode
+  commentId: F:PnP.Framework.Modernization.WebParts.SPUserCode
+  id: SPUserCode
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: SPUserCode
+  nameWithType: WebParts.SPUserCode
+  fullName: PnP.Framework.Modernization.WebParts.SPUserCode
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SPUserCode
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 99
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string SPUserCode = "Microsoft.SharePoint.WebPartPages.SPUserCodeWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const SPUserCode As String = "Microsoft.SharePoint.WebPartPages.SPUserCodeWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.ClientSide
+  commentId: F:PnP.Framework.Modernization.WebParts.ClientSide
+  id: ClientSide
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: ClientSide
+  nameWithType: WebParts.ClientSide
+  fullName: PnP.Framework.Modernization.WebParts.ClientSide
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClientSide
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 100
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string ClientSide = "Microsoft.SharePoint.WebPartPages.ClientSideWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const ClientSide As String = "Microsoft.SharePoint.WebPartPages.ClientSideWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.Client
+  commentId: F:PnP.Framework.Modernization.WebParts.Client
+  id: Client
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: Client
+  nameWithType: WebParts.Client
+  fullName: PnP.Framework.Modernization.WebParts.Client
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Client
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 101
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  syntax:
+    content: public const string Client = "Microsoft.SharePoint.WebPartPages.ClientWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+    return:
+      type: System.String
+    content.vb: Public Const Client As String = "Microsoft.SharePoint.WebPartPages.ClientWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Modernization.WebParts.GetListOfWebParts(System.String)
+  commentId: M:PnP.Framework.Modernization.WebParts.GetListOfWebParts(System.String)
+  id: GetListOfWebParts(System.String)
+  parent: PnP.Framework.Modernization.WebParts
+  langs:
+  - csharp
+  - vb
+  name: GetListOfWebParts(String)
+  nameWithType: WebParts.GetListOfWebParts(String)
+  fullName: PnP.Framework.Modernization.WebParts.GetListOfWebParts(System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/WebParts.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetListOfWebParts
+    path: ../src/lib/PnP.Framework/Modernization/WebParts.cs
+    startLine: 107
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization
+  summary: "\nUse reflection to read the object fields in a list of strings\n"
+  example: []
+  syntax:
+    content: public static List<string> GetListOfWebParts(string InNameSpace = "")
+    parameters:
+    - id: InNameSpace
+      type: System.String
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Shared Function GetListOfWebParts(InNameSpace As String = "") As List(Of String)
+  overload: PnP.Framework.Modernization.WebParts.GetListOfWebParts*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Modernization
+  commentId: N:PnP.Framework.Modernization
+  name: PnP.Framework.Modernization
+  nameWithType: PnP.Framework.Modernization
+  fullName: PnP.Framework.Modernization
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Modernization.WebParts.GetListOfWebParts*
+  commentId: Overload:PnP.Framework.Modernization.WebParts.GetListOfWebParts
+  name: GetListOfWebParts
+  nameWithType: WebParts.GetListOfWebParts
+  fullName: PnP.Framework.Modernization.WebParts.GetListOfWebParts
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<String>
+  nameWithType: List<String>
+  fullName: System.Collections.Generic.List<System.String>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of System.String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic

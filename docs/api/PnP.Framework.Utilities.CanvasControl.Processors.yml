@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.CanvasControl.Processors
+  commentId: N:PnP.Framework.Utilities.CanvasControl.Processors
+  id: PnP.Framework.Utilities.CanvasControl.Processors
+  children:
+  - PnP.Framework.Utilities.CanvasControl.Processors.CanvasControlPassThroughProcessor
+  - PnP.Framework.Utilities.CanvasControl.Processors.ListControlPostProcessor
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.CanvasControl.Processors
+  nameWithType: PnP.Framework.Utilities.CanvasControl.Processors
+  fullName: PnP.Framework.Utilities.CanvasControl.Processors
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.CanvasControl.Processors.ListControlPostProcessor
+  commentId: T:PnP.Framework.Utilities.CanvasControl.Processors.ListControlPostProcessor
+  name: ListControlPostProcessor
+  nameWithType: ListControlPostProcessor
+  fullName: PnP.Framework.Utilities.CanvasControl.Processors.ListControlPostProcessor
+- uid: PnP.Framework.Utilities.CanvasControl.Processors.CanvasControlPassThroughProcessor
+  commentId: T:PnP.Framework.Utilities.CanvasControl.Processors.CanvasControlPassThroughProcessor
+  name: CanvasControlPassThroughProcessor
+  nameWithType: CanvasControlPassThroughProcessor
+  fullName: PnP.Framework.Utilities.CanvasControl.Processors.CanvasControlPassThroughProcessor

@@ -1,0 +1,280 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Diagnostics.Tree
+  commentId: N:PnP.Framework.Diagnostics.Tree
+  id: PnP.Framework.Diagnostics.Tree
+  children:
+  - PnP.Framework.Diagnostics.Tree.DepthBreadthTraversalType
+  - PnP.Framework.Diagnostics.Tree.ITreeNode
+  - PnP.Framework.Diagnostics.Tree.ITreeNode`1
+  - PnP.Framework.Diagnostics.Tree.ITreeNodeAware`1
+  - PnP.Framework.Diagnostics.Tree.ITreeNodeList`1
+  - PnP.Framework.Diagnostics.Tree.NodeChangeType
+  - PnP.Framework.Diagnostics.Tree.NodeRelationType
+  - PnP.Framework.Diagnostics.Tree.Tree`1
+  - PnP.Framework.Diagnostics.Tree.TreeNode`1
+  - PnP.Framework.Diagnostics.Tree.TreeNodeList`1
+  - PnP.Framework.Diagnostics.Tree.UpDownTraversalType
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Diagnostics.Tree
+  nameWithType: PnP.Framework.Diagnostics.Tree
+  fullName: PnP.Framework.Diagnostics.Tree
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Diagnostics.Tree.UpDownTraversalType
+  commentId: T:PnP.Framework.Diagnostics.Tree.UpDownTraversalType
+  parent: PnP.Framework.Diagnostics.Tree
+  name: UpDownTraversalType
+  nameWithType: UpDownTraversalType
+  fullName: PnP.Framework.Diagnostics.Tree.UpDownTraversalType
+- uid: PnP.Framework.Diagnostics.Tree.DepthBreadthTraversalType
+  commentId: T:PnP.Framework.Diagnostics.Tree.DepthBreadthTraversalType
+  parent: PnP.Framework.Diagnostics.Tree
+  name: DepthBreadthTraversalType
+  nameWithType: DepthBreadthTraversalType
+  fullName: PnP.Framework.Diagnostics.Tree.DepthBreadthTraversalType
+- uid: PnP.Framework.Diagnostics.Tree.NodeChangeType
+  commentId: T:PnP.Framework.Diagnostics.Tree.NodeChangeType
+  parent: PnP.Framework.Diagnostics.Tree
+  name: NodeChangeType
+  nameWithType: NodeChangeType
+  fullName: PnP.Framework.Diagnostics.Tree.NodeChangeType
+- uid: PnP.Framework.Diagnostics.Tree.NodeRelationType
+  commentId: T:PnP.Framework.Diagnostics.Tree.NodeRelationType
+  parent: PnP.Framework.Diagnostics.Tree
+  name: NodeRelationType
+  nameWithType: NodeRelationType
+  fullName: PnP.Framework.Diagnostics.Tree.NodeRelationType
+- uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+  commentId: T:PnP.Framework.Diagnostics.Tree.ITreeNode`1
+  parent: PnP.Framework.Diagnostics.Tree
+  name: ITreeNode<T>
+  nameWithType: ITreeNode<T>
+  fullName: PnP.Framework.Diagnostics.Tree.ITreeNode<T>
+  nameWithType.vb: ITreeNode(Of T)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.ITreeNode(Of T)
+  name.vb: ITreeNode(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+    name: ITreeNode
+    nameWithType: ITreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNode`1
+    name: ITreeNode
+    nameWithType: ITreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree.ITreeNode
+  commentId: T:PnP.Framework.Diagnostics.Tree.ITreeNode
+  parent: PnP.Framework.Diagnostics.Tree
+  name: ITreeNode
+  nameWithType: ITreeNode
+  fullName: PnP.Framework.Diagnostics.Tree.ITreeNode
+- uid: PnP.Framework.Diagnostics.Tree.ITreeNodeAware`1
+  commentId: T:PnP.Framework.Diagnostics.Tree.ITreeNodeAware`1
+  name: ITreeNodeAware<T>
+  nameWithType: ITreeNodeAware<T>
+  fullName: PnP.Framework.Diagnostics.Tree.ITreeNodeAware<T>
+  nameWithType.vb: ITreeNodeAware(Of T)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.ITreeNodeAware(Of T)
+  name.vb: ITreeNodeAware(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNodeAware`1
+    name: ITreeNodeAware
+    nameWithType: ITreeNodeAware
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNodeAware
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNodeAware`1
+    name: ITreeNodeAware
+    nameWithType: ITreeNodeAware
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNodeAware
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree.ITreeNodeList`1
+  commentId: T:PnP.Framework.Diagnostics.Tree.ITreeNodeList`1
+  name: ITreeNodeList<T>
+  nameWithType: ITreeNodeList<T>
+  fullName: PnP.Framework.Diagnostics.Tree.ITreeNodeList<T>
+  nameWithType.vb: ITreeNodeList(Of T)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.ITreeNodeList(Of T)
+  name.vb: ITreeNodeList(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNodeList`1
+    name: ITreeNodeList
+    nameWithType: ITreeNodeList
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNodeList
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.ITreeNodeList`1
+    name: ITreeNodeList
+    nameWithType: ITreeNodeList
+    fullName: PnP.Framework.Diagnostics.Tree.ITreeNodeList
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree.Tree`1
+  commentId: T:PnP.Framework.Diagnostics.Tree.Tree`1
+  name: Tree<T>
+  nameWithType: Tree<T>
+  fullName: PnP.Framework.Diagnostics.Tree.Tree<T>
+  nameWithType.vb: Tree(Of T)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.Tree(Of T)
+  name.vb: Tree(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.Tree`1
+    name: Tree
+    nameWithType: Tree
+    fullName: PnP.Framework.Diagnostics.Tree.Tree
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.Tree`1
+    name: Tree
+    nameWithType: Tree
+    fullName: PnP.Framework.Diagnostics.Tree.Tree
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree.TreeNode`1
+  commentId: T:PnP.Framework.Diagnostics.Tree.TreeNode`1
+  parent: PnP.Framework.Diagnostics.Tree
+  name: TreeNode<T>
+  nameWithType: TreeNode<T>
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNode<T>
+  nameWithType.vb: TreeNode(Of T)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNode(Of T)
+  name.vb: TreeNode(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1
+    name: TreeNode
+    nameWithType: TreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNode`1
+    name: TreeNode
+    nameWithType: TreeNode
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNode
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree.TreeNodeList`1
+  commentId: T:PnP.Framework.Diagnostics.Tree.TreeNodeList`1
+  name: TreeNodeList<T>
+  nameWithType: TreeNodeList<T>
+  fullName: PnP.Framework.Diagnostics.Tree.TreeNodeList<T>
+  nameWithType.vb: TreeNodeList(Of T)
+  fullName.vb: PnP.Framework.Diagnostics.Tree.TreeNodeList(Of T)
+  name.vb: TreeNodeList(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNodeList`1
+    name: TreeNodeList
+    nameWithType: TreeNodeList
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNodeList
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Diagnostics.Tree.TreeNodeList`1
+    name: TreeNodeList
+    nameWithType: TreeNodeList
+    fullName: PnP.Framework.Diagnostics.Tree.TreeNodeList
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Diagnostics.Tree
+  commentId: N:PnP.Framework.Diagnostics.Tree
+  name: PnP.Framework.Diagnostics.Tree
+  nameWithType: PnP.Framework.Diagnostics.Tree
+  fullName: PnP.Framework.Diagnostics.Tree

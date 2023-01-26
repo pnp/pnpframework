@@ -1,0 +1,63 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  commentId: N:PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  id: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  children:
+  - PnP.Framework.Provisioning.Model.AzureActiveDirectory.PasswordProfile
+  - PnP.Framework.Provisioning.Model.AzureActiveDirectory.ProvisioningAzureActiveDirectory
+  - PnP.Framework.Provisioning.Model.AzureActiveDirectory.User
+  - PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserCollection
+  - PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserLicense
+  - PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserLicenseCollection
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  nameWithType: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  fullName: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.PasswordProfile
+  commentId: T:PnP.Framework.Provisioning.Model.AzureActiveDirectory.PasswordProfile
+  parent: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  name: PasswordProfile
+  nameWithType: PasswordProfile
+  fullName: PnP.Framework.Provisioning.Model.AzureActiveDirectory.PasswordProfile
+- uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.ProvisioningAzureActiveDirectory
+  commentId: T:PnP.Framework.Provisioning.Model.AzureActiveDirectory.ProvisioningAzureActiveDirectory
+  parent: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  name: ProvisioningAzureActiveDirectory
+  nameWithType: ProvisioningAzureActiveDirectory
+  fullName: PnP.Framework.Provisioning.Model.AzureActiveDirectory.ProvisioningAzureActiveDirectory
+- uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.User
+  commentId: T:PnP.Framework.Provisioning.Model.AzureActiveDirectory.User
+  parent: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  name: User
+  nameWithType: User
+  fullName: PnP.Framework.Provisioning.Model.AzureActiveDirectory.User
+- uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserCollection
+  commentId: T:PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserCollection
+  parent: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  name: UserCollection
+  nameWithType: UserCollection
+  fullName: PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserCollection
+- uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserLicense
+  commentId: T:PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserLicense
+  parent: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  name: UserLicense
+  nameWithType: UserLicense
+  fullName: PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserLicense
+- uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserLicenseCollection
+  commentId: T:PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserLicenseCollection
+  parent: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  name: UserLicenseCollection
+  nameWithType: UserLicenseCollection
+  fullName: PnP.Framework.Provisioning.Model.AzureActiveDirectory.UserLicenseCollection
+- uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  commentId: N:PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  name: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  nameWithType: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  fullName: PnP.Framework.Provisioning.Model.AzureActiveDirectory

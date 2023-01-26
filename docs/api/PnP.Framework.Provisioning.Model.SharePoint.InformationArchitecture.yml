@@ -1,0 +1,35 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  commentId: N:PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  id: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  children:
+  - PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture.DataRowAttachment
+  - PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture.DataRowAttachmentCollection
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  nameWithType: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  fullName: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture.DataRowAttachment
+  commentId: T:PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture.DataRowAttachment
+  parent: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  name: DataRowAttachment
+  nameWithType: DataRowAttachment
+  fullName: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture.DataRowAttachment
+- uid: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture.DataRowAttachmentCollection
+  commentId: T:PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture.DataRowAttachmentCollection
+  parent: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  name: DataRowAttachmentCollection
+  nameWithType: DataRowAttachmentCollection
+  fullName: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture.DataRowAttachmentCollection
+- uid: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  commentId: N:PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  name: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  nameWithType: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture
+  fullName: PnP.Framework.Provisioning.Model.SharePoint.InformationArchitecture

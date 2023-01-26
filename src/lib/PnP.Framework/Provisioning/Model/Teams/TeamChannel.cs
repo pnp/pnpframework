@@ -49,7 +49,36 @@ namespace PnP.Framework.Provisioning.Model.Teams
         /// <summary>
         /// Declares whether the Channel is private or not
         /// </summary>
-        public bool Private { get; set; } = false;
+        // [Obsolete("Please use the new MembershipType property instead of this boolean property, which is now obsolete (since September 2022).")]
+        public bool Private {
+            get { return this.MembershipType == MembershipType.Private; }
+            set { this.MembershipType = value ? MembershipType.Private : MembershipType.Standard; } 
+        }
+
+        /// <summary>
+        /// Declares whether the Channel is Public, Private, or Shared, optional attribute (default public).
+        /// </summary>
+        public MembershipType MembershipType { get; set; }
+
+        /// <summary>
+        /// Declares whether the Channel allows messages from BOTs or not, optional attribute (default false).
+        /// </summary>
+        public bool AllowNewMessageFromBots { get; set; }
+
+        /// <summary>
+        /// Declares whether the Channel allows messages from Connectors or not, optional attribute (default false).
+        /// </summary>
+        public bool AllowNewMessageFromConnectors { get; set; }
+
+        /// <summary>
+        /// Declares the Channel reply restrictions, optional attribute (default everyone).
+        /// </summary>
+        public ReplyRestriction ReplyRestriction { get; set; }
+
+        /// <summary>
+        /// Declares the Channel reply restrictions, optional attribute (default everyone).
+        /// </summary>
+        public UserNewMessageRestriction UserNewMessageRestriction { get; set; }
 
         #endregion
 
@@ -75,14 +104,19 @@ namespace PnP.Framework.Provisioning.Model.Teams
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|",
                 Tabs.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 TabResources.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 Messages.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 DisplayName?.GetHashCode() ?? 0,
                 Description?.GetHashCode() ?? 0,
                 IsFavoriteByDefault.GetHashCode(),
-                ID?.GetHashCode() ?? 0
+                ID?.GetHashCode() ?? 0,
+                MembershipType.GetHashCode(),
+                AllowNewMessageFromBots.GetHashCode(),
+                AllowNewMessageFromConnectors.GetHashCode(),
+                ReplyRestriction.GetHashCode(),
+                UserNewMessageRestriction.GetHashCode()
             ).GetHashCode());
         }
 
@@ -118,10 +152,68 @@ namespace PnP.Framework.Provisioning.Model.Teams
                 this.DisplayName == other.DisplayName &&
                 this.Description == other.Description &&
                 this.IsFavoriteByDefault == other.IsFavoriteByDefault &&
-                this.ID == other.ID
+                this.ID == other.ID &&
+                this.MembershipType == other.MembershipType &&
+                this.AllowNewMessageFromBots == other.AllowNewMessageFromBots &&
+                this.AllowNewMessageFromConnectors == other.AllowNewMessageFromConnectors &&
+                this.ReplyRestriction == other.ReplyRestriction &&
+                this.UserNewMessageRestriction == other.UserNewMessageRestriction
                 );
         }
 
         #endregion
+    }
+
+    /// <summary>
+    /// Declares whether the Channel is Public, Private, or Shared, optional attribute (default public).
+    /// </summary>
+    public enum MembershipType
+    {
+        /// <summary>
+        /// The channel is Standard (i.e. Public)
+        /// </summary>
+        Standard,
+        /// <summary>
+        /// The channel is Private
+        /// </summary>
+        Private,
+        /// <summary>
+        /// The channel is Shared
+        /// </summary>
+        Shared,
+    }
+
+    /// <summary>
+    /// Declares the Channel reply restrictions, optional attribute (default everyone).
+    /// </summary>
+    public enum ReplyRestriction
+    {
+        /// <summary>
+        /// Everyone is allowed to reply to the teams channel.
+        /// </summary>
+        Everyone,
+        /// <summary>
+        /// Authors and Moderators are allowed to reply to the teams channel.
+        /// </summary>
+        AuthorAndModerators
+    }
+
+    /// <summary>
+    /// Declares the Channel reply restrictions, optional attribute (default everyone).
+    /// </summary>
+    public enum UserNewMessageRestriction
+    {
+        /// <summary>
+        /// Everyone is allowed to post messages to teams channel.
+        /// </summary>
+        Everyone,
+        /// <summary>
+        /// Everyone except Guests is allowed to post messages to teams channel.
+        /// </summary>
+        EveryoneExceptGuests,
+        /// <summary>
+        /// Moderators are allowed to post messages to teams channel.
+        /// </summary>
+        Moderators
     }
 }

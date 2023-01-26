@@ -216,7 +216,13 @@ namespace Microsoft.SharePoint.Client
                             errorSb.AppendLine($"SocketErrorCode: {socketEx.SocketErrorCode}"); //ConnectionReset
                             errorSb.AppendLine($"Message: {socketEx.Message}"); //An existing connection was forcibly closed by the remote host
                             Log.Error(Constants.LOGGING_SOURCE, CoreResources.ClientContextExtensions_ExecuteQueryRetryException, errorSb.ToString());
-                            
+
+                            // Hostname unknown error code 11001 should not be retried
+                            if(socketEx.ErrorCode == 11001)
+                            {
+                                throw;
+                            }
+
                             //retry
                             wrapper = (ClientRequestWrapper)wex.Data["ClientRequest"];
                             retry = true;
@@ -635,6 +641,29 @@ namespace Microsoft.SharePoint.Client
                 }
                 else
                 {
+                    // Get User Agent String
+                    string userAgentFromConfig = null;
+                    try
+                    {
+                        userAgentFromConfig = ConfigurationManager.AppSettings["SharePointPnPUserAgent"];
+                    }
+                    catch // throws exception if being called from a .NET Standard 2.0 application
+                    {
+
+                    }
+
+                    // Get user Agent String if being called from a .NET Standard 2.0 application or is missing
+                    if (string.IsNullOrWhiteSpace(userAgentFromConfig))
+                    {
+                        userAgentFromConfig = Environment.GetEnvironmentVariable("SharePointPnPUserAgent", EnvironmentVariableTarget.Process);
+                    }
+
+                    // Use Default User Agent String
+                    if (string.IsNullOrWhiteSpace(userAgentFromConfig))
+                    {
+                        userAgentFromConfig = PnPCoreUtilities.PnPCoreUserAgent;
+                    }
+
                     EventHandler<WebRequestEventArgs> handler = (s, e) =>
                     {
                         string authorization = e.WebRequestExecutor.RequestHeaders["Authorization"];
@@ -642,6 +671,8 @@ namespace Microsoft.SharePoint.Client
                         {
                             accessToken = authorization.Replace("Bearer ", string.Empty);
                         }
+
+                        e.WebRequestExecutor.WebRequest.UserAgent = string.IsNullOrEmpty(userAgentFromConfig) ? $"{PnPCoreUtilities.PnPCoreUserAgent}" : userAgentFromConfig;
                     };
                     // Issue a dummy request to get it from the Authorization header
                     clientContext.ExecutingWebRequest += handler;
@@ -1060,12 +1091,13 @@ namespace Microsoft.SharePoint.Client
         /// Enable MS Teams team on a group connected team site
         /// </summary>
         /// <param name="clientContext"></param>
+        /// <param name="graphAccessToken"></param>
         /// <returns></returns>
-        public static async Task<string> TeamifyAsync(this ClientContext clientContext)
+        public static async Task<string> TeamifyAsync(this ClientContext clientContext, string graphAccessToken = null)
         {
             await new SynchronizationContextRemover();
 
-            return await SiteCollection.TeamifySiteAsync(clientContext);
+            return await SiteCollection.TeamifySiteAsync(clientContext, graphAccessToken);
         }
 
 

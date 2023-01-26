@@ -44,6 +44,11 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         public string SearchCenterUrl { get; set; }
 
+        /// <summary>
+        /// Defines whether to show people picker suggestions for guest users in this site collection, optional attribute.
+        /// </summary>
+        public bool ShowPeoplePickerSuggestionsForGuestUsers { get; set; }
+
         #endregion
 
         #region Constructors
@@ -61,14 +66,15 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns hash code in integer</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|",
                 this.AllowDesigner.GetHashCode(),
                 this.AllowCreateDeclarativeWorkflow.GetHashCode(),
                 this.AllowSaveDeclarativeWorkflowAsTemplate.GetHashCode(),
                 this.AllowSavePublishDeclarativeWorkflow.GetHashCode(),
                 this.SocialBarOnSitePagesDisabled.GetHashCode(),
                 this.SearchBoxInNavBar.GetHashCode(),
-                this.SearchCenterUrl.GetHashCode()
+                this.SearchCenterUrl.GetHashCode(),
+                this.ShowPeoplePickerSuggestionsForGuestUsers.GetHashCode()
             ).GetHashCode());
         }
 
@@ -104,7 +110,8 @@ namespace PnP.Framework.Provisioning.Model
                     this.AllowSavePublishDeclarativeWorkflow == other.AllowSavePublishDeclarativeWorkflow &&
                     this.SocialBarOnSitePagesDisabled == other.SocialBarOnSitePagesDisabled &&
                     this.SearchBoxInNavBar == other.SearchBoxInNavBar &&
-                    this.SearchCenterUrl == other.SearchCenterUrl
+                    this.SearchCenterUrl == other.SearchCenterUrl &&
+                    this.ShowPeoplePickerSuggestionsForGuestUsers == other.ShowPeoplePickerSuggestionsForGuestUsers
                 );
         }
 

@@ -1,0 +1,1751 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions
+  commentId: T:Microsoft.SharePoint.Client.InformationManagementExtensions
+  id: InformationManagementExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicy(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicyAsync(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicy(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDate(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDateAsync(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDate(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDateAsync(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicies(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePoliciesAsync(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByName(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByNameAsync(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyApplied(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyAppliedAsync(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicy(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicy(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicy(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  langs:
+  - csharp
+  - vb
+  name: InformationManagementExtensions
+  nameWithType: InformationManagementExtensions
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: InformationManagementExtensions
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 14
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClass that deals with information management features\n"
+  example: []
+  syntax:
+    content: public static class InformationManagementExtensions
+    content.vb: Public Module InformationManagementExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyApplied(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyApplied(Microsoft.SharePoint.Client.Web)
+  id: HasSitePolicyApplied(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: HasSitePolicyApplied(Web)
+  nameWithType: InformationManagementExtensions.HasSitePolicyApplied(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyApplied(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HasSitePolicyApplied
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 22
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDoes this web have a site policy applied?\n"
+  example: []
+  syntax:
+    content: public static bool HasSitePolicyApplied(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.Boolean
+      description: True if a policy has been applied, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function HasSitePolicyApplied(web As Web) As Boolean
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyApplied*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyAppliedAsync(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyAppliedAsync(Microsoft.SharePoint.Client.Web)
+  id: HasSitePolicyAppliedAsync(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: HasSitePolicyAppliedAsync(Web)
+  nameWithType: InformationManagementExtensions.HasSitePolicyAppliedAsync(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyAppliedAsync(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HasSitePolicyAppliedAsync
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 32
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDoes this web have a site policy applied?\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> HasSitePolicyAppliedAsync(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if a policy has been applied, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function HasSitePolicyAppliedAsync(web As Web) As Task(Of Boolean)
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyAppliedAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDate(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDate(Microsoft.SharePoint.Client.Web)
+  id: GetSiteExpirationDate(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSiteExpirationDate(Web)
+  nameWithType: InformationManagementExtensions.GetSiteExpirationDate(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDate(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSiteExpirationDate
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 55
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the site expiration date\n"
+  example: []
+  syntax:
+    content: public static DateTime GetSiteExpirationDate(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.DateTime
+      description: DateTime value holding the expiration date, DateTime.MinValue in case there was no policy applied
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSiteExpirationDate(web As Web) As Date
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDate*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDateAsync(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDateAsync(Microsoft.SharePoint.Client.Web)
+  id: GetSiteExpirationDateAsync(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSiteExpirationDateAsync(Web)
+  nameWithType: InformationManagementExtensions.GetSiteExpirationDateAsync(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDateAsync(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSiteExpirationDateAsync
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 65
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the site expiration date\n"
+  example: []
+  syntax:
+    content: public static async Task<DateTime> GetSiteExpirationDateAsync(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.Threading.Tasks.Task{System.DateTime}
+      description: DateTime value holding the expiration date, DateTime.MinValue in case there was no policy applied
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSiteExpirationDateAsync(web As Web) As Task(Of Date)
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDateAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDate(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDate(Microsoft.SharePoint.Client.Web)
+  id: GetSiteCloseDate(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSiteCloseDate(Web)
+  nameWithType: InformationManagementExtensions.GetSiteCloseDate(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDate(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSiteCloseDate
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 95
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the site closure date\n"
+  example: []
+  syntax:
+    content: public static DateTime GetSiteCloseDate(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.DateTime
+      description: DateTime value holding the closure date, DateTime.MinValue in case there was no policy applied
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSiteCloseDate(web As Web) As Date
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDate*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDateAsync(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDateAsync(Microsoft.SharePoint.Client.Web)
+  id: GetSiteCloseDateAsync(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSiteCloseDateAsync(Web)
+  nameWithType: InformationManagementExtensions.GetSiteCloseDateAsync(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDateAsync(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSiteCloseDateAsync
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 105
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the site closure date\n"
+  example: []
+  syntax:
+    content: public static async Task<DateTime> GetSiteCloseDateAsync(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.Threading.Tasks.Task{System.DateTime}
+      description: DateTime value holding the closure date, DateTime.MinValue in case there was no policy applied
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSiteCloseDateAsync(web As Web) As Task(Of Date)
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDateAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicies(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicies(Microsoft.SharePoint.Client.Web)
+  id: GetSitePolicies(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSitePolicies(Web)
+  nameWithType: InformationManagementExtensions.GetSitePolicies(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicies(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSitePolicies
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 135
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets a list of the available site policies\n"
+  example: []
+  syntax:
+    content: public static List<SitePolicyEntity> GetSitePolicies(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.SitePolicyEntity}
+      description: A list of <xref href="PnP.Framework.Entities.SitePolicyEntity" data-throw-if-not-resolved="false"></xref> objects
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSitePolicies(web As Web) As List(Of SitePolicyEntity)
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicies*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePoliciesAsync(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePoliciesAsync(Microsoft.SharePoint.Client.Web)
+  id: GetSitePoliciesAsync(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSitePoliciesAsync(Web)
+  nameWithType: InformationManagementExtensions.GetSitePoliciesAsync(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePoliciesAsync(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSitePoliciesAsync
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 145
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets a list of the available site policies\n"
+  example: []
+  syntax:
+    content: public static async Task<List<SitePolicyEntity>> GetSitePoliciesAsync(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{PnP.Framework.Entities.SitePolicyEntity}}
+      description: A list of <xref href="PnP.Framework.Entities.SitePolicyEntity" data-throw-if-not-resolved="false"></xref> objects
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSitePoliciesAsync(web As Web) As Task(Of List(Of SitePolicyEntity))
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePoliciesAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicy(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicy(Microsoft.SharePoint.Client.Web)
+  id: GetAppliedSitePolicy(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAppliedSitePolicy(Web)
+  nameWithType: InformationManagementExtensions.GetAppliedSitePolicy(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicy(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAppliedSitePolicy
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 187
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the site policy that currently is applied\n"
+  example: []
+  syntax:
+    content: public static SitePolicyEntity GetAppliedSitePolicy(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: PnP.Framework.Entities.SitePolicyEntity
+      description: A <xref href="PnP.Framework.Entities.SitePolicyEntity" data-throw-if-not-resolved="false"></xref> object holding the applied policy
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetAppliedSitePolicy(web As Web) As SitePolicyEntity
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicy*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  id: GetAppliedSitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAppliedSitePolicyAsync(Web)
+  nameWithType: InformationManagementExtensions.GetAppliedSitePolicyAsync(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAppliedSitePolicyAsync
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 197
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the site policy that currently is applied\n"
+  example: []
+  syntax:
+    content: public static async Task<SitePolicyEntity> GetAppliedSitePolicyAsync(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.Threading.Tasks.Task{PnP.Framework.Entities.SitePolicyEntity}
+      description: A <xref href="PnP.Framework.Entities.SitePolicyEntity" data-throw-if-not-resolved="false"></xref> object holding the applied policy
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetAppliedSitePolicyAsync(web As Web) As Task(Of SitePolicyEntity)
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicyAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByName(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByName(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetSitePolicyByName(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSitePolicyByName(Web, String)
+  nameWithType: InformationManagementExtensions.GetSitePolicyByName(Web, String)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByName(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSitePolicyByName
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 242
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the site policy with the given name\n"
+  example: []
+  syntax:
+    content: public static SitePolicyEntity GetSitePolicyByName(this Web web, string sitePolicy)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    - id: sitePolicy
+      type: System.String
+      description: Site policy to fetch
+    return:
+      type: PnP.Framework.Entities.SitePolicyEntity
+      description: A <xref href="PnP.Framework.Entities.SitePolicyEntity" data-throw-if-not-resolved="false"></xref> object holding the fetched policy
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSitePolicyByName(web As Web, sitePolicy As String) As SitePolicyEntity
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByNameAsync(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByNameAsync(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetSitePolicyByNameAsync(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSitePolicyByNameAsync(Web, String)
+  nameWithType: InformationManagementExtensions.GetSitePolicyByNameAsync(Web, String)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByNameAsync(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSitePolicyByNameAsync
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 253
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets the site policy with the given name\n"
+  example: []
+  syntax:
+    content: public static async Task<SitePolicyEntity> GetSitePolicyByNameAsync(this Web web, string sitePolicy)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    - id: sitePolicy
+      type: System.String
+      description: Site policy to fetch
+    return:
+      type: System.Threading.Tasks.Task{PnP.Framework.Entities.SitePolicyEntity}
+      description: A <xref href="PnP.Framework.Entities.SitePolicyEntity" data-throw-if-not-resolved="false"></xref> object holding the fetched policy
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSitePolicyByNameAsync(web As Web, sitePolicy As String) As Task(Of SitePolicyEntity)
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByNameAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicy(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicy(Microsoft.SharePoint.Client.Web,System.String)
+  id: ApplySitePolicy(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: ApplySitePolicy(Web, String)
+  nameWithType: InformationManagementExtensions.ApplySitePolicy(Web, String)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicy(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ApplySitePolicy
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 286
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nApply a policy to a site\n"
+  example: []
+  syntax:
+    content: public static bool ApplySitePolicy(this Web web, string sitePolicy)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    - id: sitePolicy
+      type: System.String
+      description: Policy to apply
+    return:
+      type: System.Boolean
+      description: True if applied, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ApplySitePolicy(web As Web, sitePolicy As String) As Boolean
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicy*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicyAsync(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicyAsync(Microsoft.SharePoint.Client.Web,System.String)
+  id: ApplySitePolicyAsync(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: ApplySitePolicyAsync(Web, String)
+  nameWithType: InformationManagementExtensions.ApplySitePolicyAsync(Web, String)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicyAsync(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ApplySitePolicyAsync
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 297
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nApply a policy to a site\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> ApplySitePolicyAsync(this Web web, string sitePolicy)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    - id: sitePolicy
+      type: System.String
+      description: Policy to apply
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if applied, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ApplySitePolicyAsync(web As Web, sitePolicy As String) As Task(Of Boolean)
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicyAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicy(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicy(Microsoft.SharePoint.Client.Web)
+  id: IsClosedBySitePolicy(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsClosedBySitePolicy(Web)
+  nameWithType: InformationManagementExtensions.IsClosedBySitePolicy(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicy(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsClosedBySitePolicy
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 337
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCheck if a site is closed\n"
+  example: []
+  syntax:
+    content: public static bool IsClosedBySitePolicy(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.Boolean
+      description: True if site is closed, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsClosedBySitePolicy(web As Web) As Boolean
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicy*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  id: IsClosedBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsClosedBySitePolicyAsync(Web)
+  nameWithType: InformationManagementExtensions.IsClosedBySitePolicyAsync(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsClosedBySitePolicyAsync
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 347
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nCheck if a site is closed\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> IsClosedBySitePolicyAsync(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate on
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if site is closed, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsClosedBySitePolicyAsync(web As Web) As Task(Of Boolean)
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicyAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicy(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicy(Microsoft.SharePoint.Client.Web)
+  id: SetClosedBySitePolicy(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetClosedBySitePolicy(Web)
+  nameWithType: InformationManagementExtensions.SetClosedBySitePolicy(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicy(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetClosedBySitePolicy
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 370
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClose a site, if it has a site policy applied and is currently not closed\n"
+  example: []
+  syntax:
+    content: public static bool SetClosedBySitePolicy(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: ''
+    return:
+      type: System.Boolean
+      description: True if site was closed, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetClosedBySitePolicy(web As Web) As Boolean
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicy*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  id: SetClosedBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetClosedBySitePolicyAsync(Web)
+  nameWithType: InformationManagementExtensions.SetClosedBySitePolicyAsync(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetClosedBySitePolicyAsync
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 380
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClose a site, if it has a site policy applied and is currently not closed\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> SetClosedBySitePolicyAsync(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if site was closed, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetClosedBySitePolicyAsync(web As Web) As Task(Of Boolean)
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicyAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicy(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicy(Microsoft.SharePoint.Client.Web)
+  id: SetOpenBySitePolicy(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetOpenBySitePolicy(Web)
+  nameWithType: InformationManagementExtensions.SetOpenBySitePolicy(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicy(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetOpenBySitePolicy
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 406
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nOpen a site, if it has a site policy applied and is currently closed\n"
+  example: []
+  syntax:
+    content: public static bool SetOpenBySitePolicy(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: ''
+    return:
+      type: System.Boolean
+      description: True if site was opened, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetOpenBySitePolicy(web As Web) As Boolean
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicy*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  id: SetOpenBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.InformationManagementExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetOpenBySitePolicyAsync(Web)
+  nameWithType: InformationManagementExtensions.SetOpenBySitePolicyAsync(Web)
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicyAsync(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetOpenBySitePolicyAsync
+    path: ../src/lib/PnP.Framework/Extensions/InformationManagementExtensions.cs
+    startLine: 416
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nOpen a site, if it has a site policy applied and is currently closed\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> SetOpenBySitePolicyAsync(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if site was opened, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetOpenBySitePolicyAsync(web As Web) As Task(Of Boolean)
+  overload: Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicyAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyApplied*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyApplied
+  name: HasSitePolicyApplied
+  nameWithType: InformationManagementExtensions.HasSitePolicyApplied
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyApplied
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyAppliedAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyAppliedAsync
+  name: HasSitePolicyAppliedAsync
+  nameWithType: InformationManagementExtensions.HasSitePolicyAppliedAsync
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.HasSitePolicyAppliedAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Boolean>
+  nameWithType: Task<Boolean>
+  fullName: System.Threading.Tasks.Task<System.Boolean>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of System.Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDate*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDate
+  name: GetSiteExpirationDate
+  nameWithType: InformationManagementExtensions.GetSiteExpirationDate
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDate
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDateAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDateAsync
+  name: GetSiteExpirationDateAsync
+  nameWithType: InformationManagementExtensions.GetSiteExpirationDateAsync
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteExpirationDateAsync
+- uid: System.Threading.Tasks.Task{System.DateTime}
+  commentId: T:System.Threading.Tasks.Task{System.DateTime}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<DateTime>
+  nameWithType: Task<DateTime>
+  fullName: System.Threading.Tasks.Task<System.DateTime>
+  nameWithType.vb: Task(Of DateTime)
+  fullName.vb: System.Threading.Tasks.Task(Of System.DateTime)
+  name.vb: Task(Of DateTime)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: System.DateTime
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: System.DateTime
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDate*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDate
+  name: GetSiteCloseDate
+  nameWithType: InformationManagementExtensions.GetSiteCloseDate
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDate
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDateAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDateAsync
+  name: GetSiteCloseDateAsync
+  nameWithType: InformationManagementExtensions.GetSiteCloseDateAsync
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSiteCloseDateAsync
+- uid: PnP.Framework.Entities.SitePolicyEntity
+  commentId: T:PnP.Framework.Entities.SitePolicyEntity
+  parent: PnP.Framework.Entities
+  name: SitePolicyEntity
+  nameWithType: SitePolicyEntity
+  fullName: PnP.Framework.Entities.SitePolicyEntity
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicies*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicies
+  name: GetSitePolicies
+  nameWithType: InformationManagementExtensions.GetSitePolicies
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicies
+- uid: System.Collections.Generic.List{PnP.Framework.Entities.SitePolicyEntity}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Entities.SitePolicyEntity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<SitePolicyEntity>
+  nameWithType: List<SitePolicyEntity>
+  fullName: System.Collections.Generic.List<PnP.Framework.Entities.SitePolicyEntity>
+  nameWithType.vb: List(Of SitePolicyEntity)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Entities.SitePolicyEntity)
+  name.vb: List(Of SitePolicyEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.SitePolicyEntity
+    name: SitePolicyEntity
+    nameWithType: SitePolicyEntity
+    fullName: PnP.Framework.Entities.SitePolicyEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.SitePolicyEntity
+    name: SitePolicyEntity
+    nameWithType: SitePolicyEntity
+    fullName: PnP.Framework.Entities.SitePolicyEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePoliciesAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePoliciesAsync
+  name: GetSitePoliciesAsync
+  nameWithType: InformationManagementExtensions.GetSitePoliciesAsync
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePoliciesAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{PnP.Framework.Entities.SitePolicyEntity}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{PnP.Framework.Entities.SitePolicyEntity}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<List<SitePolicyEntity>>
+  nameWithType: Task<List<SitePolicyEntity>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<PnP.Framework.Entities.SitePolicyEntity>>
+  nameWithType.vb: Task(Of List(Of SitePolicyEntity))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of PnP.Framework.Entities.SitePolicyEntity))
+  name.vb: Task(Of List(Of SitePolicyEntity))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.SitePolicyEntity
+    name: SitePolicyEntity
+    nameWithType: SitePolicyEntity
+    fullName: PnP.Framework.Entities.SitePolicyEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.SitePolicyEntity
+    name: SitePolicyEntity
+    nameWithType: SitePolicyEntity
+    fullName: PnP.Framework.Entities.SitePolicyEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicy*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicy
+  name: GetAppliedSitePolicy
+  nameWithType: InformationManagementExtensions.GetAppliedSitePolicy
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicy
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicyAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicyAsync
+  name: GetAppliedSitePolicyAsync
+  nameWithType: InformationManagementExtensions.GetAppliedSitePolicyAsync
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetAppliedSitePolicyAsync
+- uid: System.Threading.Tasks.Task{PnP.Framework.Entities.SitePolicyEntity}
+  commentId: T:System.Threading.Tasks.Task{PnP.Framework.Entities.SitePolicyEntity}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<SitePolicyEntity>
+  nameWithType: Task<SitePolicyEntity>
+  fullName: System.Threading.Tasks.Task<PnP.Framework.Entities.SitePolicyEntity>
+  nameWithType.vb: Task(Of SitePolicyEntity)
+  fullName.vb: System.Threading.Tasks.Task(Of PnP.Framework.Entities.SitePolicyEntity)
+  name.vb: Task(Of SitePolicyEntity)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.SitePolicyEntity
+    name: SitePolicyEntity
+    nameWithType: SitePolicyEntity
+    fullName: PnP.Framework.Entities.SitePolicyEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.SitePolicyEntity
+    name: SitePolicyEntity
+    nameWithType: SitePolicyEntity
+    fullName: PnP.Framework.Entities.SitePolicyEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByName*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByName
+  name: GetSitePolicyByName
+  nameWithType: InformationManagementExtensions.GetSitePolicyByName
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByNameAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByNameAsync
+  name: GetSitePolicyByNameAsync
+  nameWithType: InformationManagementExtensions.GetSitePolicyByNameAsync
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.GetSitePolicyByNameAsync
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicy*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicy
+  name: ApplySitePolicy
+  nameWithType: InformationManagementExtensions.ApplySitePolicy
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicy
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicyAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicyAsync
+  name: ApplySitePolicyAsync
+  nameWithType: InformationManagementExtensions.ApplySitePolicyAsync
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.ApplySitePolicyAsync
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicy*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicy
+  name: IsClosedBySitePolicy
+  nameWithType: InformationManagementExtensions.IsClosedBySitePolicy
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicy
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicyAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicyAsync
+  name: IsClosedBySitePolicyAsync
+  nameWithType: InformationManagementExtensions.IsClosedBySitePolicyAsync
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.IsClosedBySitePolicyAsync
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicy*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicy
+  name: SetClosedBySitePolicy
+  nameWithType: InformationManagementExtensions.SetClosedBySitePolicy
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicy
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicyAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicyAsync
+  name: SetClosedBySitePolicyAsync
+  nameWithType: InformationManagementExtensions.SetClosedBySitePolicyAsync
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.SetClosedBySitePolicyAsync
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicy*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicy
+  name: SetOpenBySitePolicy
+  nameWithType: InformationManagementExtensions.SetOpenBySitePolicy
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicy
+- uid: Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicyAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicyAsync
+  name: SetOpenBySitePolicyAsync
+  nameWithType: InformationManagementExtensions.SetOpenBySitePolicyAsync
+  fullName: Microsoft.SharePoint.Client.InformationManagementExtensions.SetOpenBySitePolicyAsync

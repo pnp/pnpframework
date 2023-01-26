@@ -42,6 +42,11 @@ namespace PnP.Framework.Provisioning.Model
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Defines the Background Emphasis of the Header
+        /// </summary>
+        public Emphasis BackgroundEmphasis { get; set; }
+
+        /// <summary>
         /// Defines the Footer Links for the target site
         /// </summary>
         public SiteFooterLinkCollection FooterLinks { get; private set; }
@@ -68,14 +73,15 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|",
                 Enabled.GetHashCode(),
                 Logo?.GetHashCode() ?? 0,
                 Name?.GetHashCode(),
                 RemoveExistingNodes.GetHashCode(),
                 FooterLinks.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 Layout.GetHashCode(),
-                DisplayName.GetHashCode()
+                DisplayName.GetHashCode(),
+                BackgroundEmphasis.GetHashCode()
             ).GetHashCode());
         }
 
@@ -111,7 +117,8 @@ namespace PnP.Framework.Provisioning.Model
                 this.RemoveExistingNodes == other.RemoveExistingNodes &&
                 this.FooterLinks.DeepEquals(other.FooterLinks) &&
                 this.Layout == other.Layout &&
-                this.DisplayName == other.DisplayName
+                this.DisplayName == other.DisplayName && 
+                this.BackgroundEmphasis == other.BackgroundEmphasis
                 );
         }
 

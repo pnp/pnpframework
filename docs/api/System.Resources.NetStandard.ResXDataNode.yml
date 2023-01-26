@@ -1,0 +1,1944 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Resources.NetStandard.ResXDataNode
+  commentId: T:System.Resources.NetStandard.ResXDataNode
+  id: ResXDataNode
+  parent: System.Resources.NetStandard
+  children:
+  - System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Object)
+  - System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Object,System.Func{System.Type,System.String})
+  - System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Resources.NetStandard.ResXFileRef)
+  - System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Resources.NetStandard.ResXFileRef,System.Func{System.Type,System.String})
+  - System.Resources.NetStandard.ResXDataNode.Comment
+  - System.Resources.NetStandard.ResXDataNode.FileRef
+  - System.Resources.NetStandard.ResXDataNode.GetNodePosition
+  - System.Resources.NetStandard.ResXDataNode.GetValue(System.ComponentModel.Design.ITypeResolutionService)
+  - System.Resources.NetStandard.ResXDataNode.GetValue(System.Reflection.AssemblyName[])
+  - System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.ComponentModel.Design.ITypeResolutionService)
+  - System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.Reflection.AssemblyName[])
+  - System.Resources.NetStandard.ResXDataNode.Name
+  - System.Resources.NetStandard.ResXDataNode.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  langs:
+  - csharp
+  - vb
+  name: ResXDataNode
+  nameWithType: ResXDataNode
+  fullName: System.Resources.NetStandard.ResXDataNode
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ResXDataNode
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  syntax:
+    content: 'public sealed class ResXDataNode : ISerializable'
+    content.vb: >-
+      Public NotInheritable Class ResXDataNode
+          Implements ISerializable
+  inheritance:
+  - System.Object
+  implements:
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Resources.NetStandard.ResXDataNode.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - System.Resources.NetStandard.ResXDataNode.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{System.Resources.NetStandard.ResXDataNode,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Object)
+  commentId: M:System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Object)
+  id: '#ctor(System.String,System.Object)'
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: ResXDataNode(String, Object)
+  nameWithType: ResXDataNode.ResXDataNode(String, Object)
+  fullName: System.Resources.NetStandard.ResXDataNode.ResXDataNode(System.String, System.Object)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 75
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  syntax:
+    content: public ResXDataNode(string name, object value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.Object
+    content.vb: Public Sub New(name As String, value As Object)
+  overload: System.Resources.NetStandard.ResXDataNode.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Object,System.Func{System.Type,System.String})
+  commentId: M:System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Object,System.Func{System.Type,System.String})
+  id: '#ctor(System.String,System.Object,System.Func{System.Type,System.String})'
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: ResXDataNode(String, Object, Func<Type, String>)
+  nameWithType: ResXDataNode.ResXDataNode(String, Object, Func<Type, String>)
+  fullName: System.Resources.NetStandard.ResXDataNode.ResXDataNode(System.String, System.Object, System.Func<System.Type, System.String>)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 79
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  syntax:
+    content: public ResXDataNode(string name, object value, Func<Type, string> typeNameConverter)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.Object
+    - id: typeNameConverter
+      type: System.Func{System.Type,System.String}
+    content.vb: Public Sub New(name As String, value As Object, typeNameConverter As Func(Of Type, String))
+  overload: System.Resources.NetStandard.ResXDataNode.#ctor*
+  nameWithType.vb: ResXDataNode.ResXDataNode(String, Object, Func(Of Type, String))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: System.Resources.NetStandard.ResXDataNode.ResXDataNode(System.String, System.Object, System.Func(Of System.Type, System.String))
+  name.vb: ResXDataNode(String, Object, Func(Of Type, String))
+- uid: System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Resources.NetStandard.ResXFileRef)
+  commentId: M:System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Resources.NetStandard.ResXFileRef)
+  id: '#ctor(System.String,System.Resources.NetStandard.ResXFileRef)'
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: ResXDataNode(String, ResXFileRef)
+  nameWithType: ResXDataNode.ResXDataNode(String, ResXFileRef)
+  fullName: System.Resources.NetStandard.ResXDataNode.ResXDataNode(System.String, System.Resources.NetStandard.ResXFileRef)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 106
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  syntax:
+    content: public ResXDataNode(string name, ResXFileRef fileRef)
+    parameters:
+    - id: name
+      type: System.String
+    - id: fileRef
+      type: System.Resources.NetStandard.ResXFileRef
+    content.vb: Public Sub New(name As String, fileRef As ResXFileRef)
+  overload: System.Resources.NetStandard.ResXDataNode.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Resources.NetStandard.ResXFileRef,System.Func{System.Type,System.String})
+  commentId: M:System.Resources.NetStandard.ResXDataNode.#ctor(System.String,System.Resources.NetStandard.ResXFileRef,System.Func{System.Type,System.String})
+  id: '#ctor(System.String,System.Resources.NetStandard.ResXFileRef,System.Func{System.Type,System.String})'
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: ResXDataNode(String, ResXFileRef, Func<Type, String>)
+  nameWithType: ResXDataNode.ResXDataNode(String, ResXFileRef, Func<Type, String>)
+  fullName: System.Resources.NetStandard.ResXDataNode.ResXDataNode(System.String, System.Resources.NetStandard.ResXFileRef, System.Func<System.Type, System.String>)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 110
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  syntax:
+    content: public ResXDataNode(string name, ResXFileRef fileRef, Func<Type, string> typeNameConverter)
+    parameters:
+    - id: name
+      type: System.String
+    - id: fileRef
+      type: System.Resources.NetStandard.ResXFileRef
+    - id: typeNameConverter
+      type: System.Func{System.Type,System.String}
+    content.vb: Public Sub New(name As String, fileRef As ResXFileRef, typeNameConverter As Func(Of Type, String))
+  overload: System.Resources.NetStandard.ResXDataNode.#ctor*
+  nameWithType.vb: ResXDataNode.ResXDataNode(String, ResXFileRef, Func(Of Type, String))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: System.Resources.NetStandard.ResXDataNode.ResXDataNode(System.String, System.Resources.NetStandard.ResXFileRef, System.Func(Of System.Type, System.String))
+  name.vb: ResXDataNode(String, ResXFileRef, Func(Of Type, String))
+- uid: System.Resources.NetStandard.ResXDataNode.Comment
+  commentId: P:System.Resources.NetStandard.ResXDataNode.Comment
+  id: Comment
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: Comment
+  nameWithType: ResXDataNode.Comment
+  fullName: System.Resources.NetStandard.ResXDataNode.Comment
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Comment
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 165
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  summary: "\n"
+  example: []
+  syntax:
+    content: public string Comment { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Comment As String
+  overload: System.Resources.NetStandard.ResXDataNode.Comment*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: System.Resources.NetStandard.ResXDataNode.Name
+  commentId: P:System.Resources.NetStandard.ResXDataNode.Name
+  id: Name
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: ResXDataNode.Name
+  fullName: System.Resources.NetStandard.ResXDataNode.Name
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Name
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 184
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  summary: "\n"
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: System.Resources.NetStandard.ResXDataNode.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: System.Resources.NetStandard.ResXDataNode.FileRef
+  commentId: P:System.Resources.NetStandard.ResXDataNode.FileRef
+  id: FileRef
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: FileRef
+  nameWithType: ResXDataNode.FileRef
+  fullName: System.Resources.NetStandard.ResXDataNode.FileRef
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FileRef
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 209
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  syntax:
+    content: public ResXFileRef FileRef { get; }
+    parameters: []
+    return:
+      type: System.Resources.NetStandard.ResXFileRef
+    content.vb: Public ReadOnly Property FileRef As ResXFileRef
+  overload: System.Resources.NetStandard.ResXDataNode.FileRef*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: System.Resources.NetStandard.ResXDataNode.GetNodePosition
+  commentId: M:System.Resources.NetStandard.ResXDataNode.GetNodePosition
+  id: GetNodePosition
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: GetNodePosition()
+  nameWithType: ResXDataNode.GetNodePosition()
+  fullName: System.Resources.NetStandard.ResXDataNode.GetNodePosition()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetNodePosition
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 527
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  summary: "\nMight return the position in the resx file of the current node, if known\notherwise, will return Point(0,0) since point is a struct\n"
+  example: []
+  syntax:
+    content: public Point GetNodePosition()
+    return:
+      type: System.Drawing.Point
+    content.vb: Public Function GetNodePosition As Point
+  overload: System.Resources.NetStandard.ResXDataNode.GetNodePosition*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.ComponentModel.Design.ITypeResolutionService)
+  commentId: M:System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.ComponentModel.Design.ITypeResolutionService)
+  id: GetValueTypeName(System.ComponentModel.Design.ITypeResolutionService)
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: GetValueTypeName(ITypeResolutionService)
+  nameWithType: ResXDataNode.GetValueTypeName(ITypeResolutionService)
+  fullName: System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.ComponentModel.Design.ITypeResolutionService)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetValueTypeName
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 536
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  summary: "\nGet the FQ type name for this datanode.\nWe return typeof(object) for ResXNullRef\n"
+  example: []
+  syntax:
+    content: public string GetValueTypeName(ITypeResolutionService typeResolver)
+    parameters:
+    - id: typeResolver
+      type: System.ComponentModel.Design.ITypeResolutionService
+    return:
+      type: System.String
+    content.vb: Public Function GetValueTypeName(typeResolver As ITypeResolutionService) As String
+  overload: System.Resources.NetStandard.ResXDataNode.GetValueTypeName*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.Reflection.AssemblyName[])
+  commentId: M:System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.Reflection.AssemblyName[])
+  id: GetValueTypeName(System.Reflection.AssemblyName[])
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: GetValueTypeName(AssemblyName[])
+  nameWithType: ResXDataNode.GetValueTypeName(AssemblyName[])
+  fullName: System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.Reflection.AssemblyName[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetValueTypeName
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 616
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  summary: "\nGet the FQ type name for this datanode\n"
+  example: []
+  syntax:
+    content: public string GetValueTypeName(AssemblyName[] names)
+    parameters:
+    - id: names
+      type: System.Reflection.AssemblyName[]
+    return:
+      type: System.String
+    content.vb: Public Function GetValueTypeName(names As AssemblyName()) As String
+  overload: System.Resources.NetStandard.ResXDataNode.GetValueTypeName*
+  nameWithType.vb: ResXDataNode.GetValueTypeName(AssemblyName())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: System.Resources.NetStandard.ResXDataNode.GetValueTypeName(System.Reflection.AssemblyName())
+  name.vb: GetValueTypeName(AssemblyName())
+- uid: System.Resources.NetStandard.ResXDataNode.GetValue(System.ComponentModel.Design.ITypeResolutionService)
+  commentId: M:System.Resources.NetStandard.ResXDataNode.GetValue(System.ComponentModel.Design.ITypeResolutionService)
+  id: GetValue(System.ComponentModel.Design.ITypeResolutionService)
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: GetValue(ITypeResolutionService)
+  nameWithType: ResXDataNode.GetValue(ITypeResolutionService)
+  fullName: System.Resources.NetStandard.ResXDataNode.GetValue(System.ComponentModel.Design.ITypeResolutionService)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetValue
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 624
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  summary: "\nGet the value contained in this datanode\n"
+  example: []
+  syntax:
+    content: public object GetValue(ITypeResolutionService typeResolver)
+    parameters:
+    - id: typeResolver
+      type: System.ComponentModel.Design.ITypeResolutionService
+    return:
+      type: System.Object
+    content.vb: Public Function GetValue(typeResolver As ITypeResolutionService) As Object
+  overload: System.Resources.NetStandard.ResXDataNode.GetValue*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: System.Resources.NetStandard.ResXDataNode.GetValue(System.Reflection.AssemblyName[])
+  commentId: M:System.Resources.NetStandard.ResXDataNode.GetValue(System.Reflection.AssemblyName[])
+  id: GetValue(System.Reflection.AssemblyName[])
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: GetValue(AssemblyName[])
+  nameWithType: ResXDataNode.GetValue(AssemblyName[])
+  fullName: System.Resources.NetStandard.ResXDataNode.GetValue(System.Reflection.AssemblyName[])
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetValue
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 670
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  summary: "\nGet the value contained in this datanode\n"
+  example: []
+  syntax:
+    content: public object GetValue(AssemblyName[] names)
+    parameters:
+    - id: names
+      type: System.Reflection.AssemblyName[]
+    return:
+      type: System.Object
+    content.vb: Public Function GetValue(names As AssemblyName()) As Object
+  overload: System.Resources.NetStandard.ResXDataNode.GetValue*
+  nameWithType.vb: ResXDataNode.GetValue(AssemblyName())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: System.Resources.NetStandard.ResXDataNode.GetValue(System.Reflection.AssemblyName())
+  name.vb: GetValue(AssemblyName())
+- uid: System.Resources.NetStandard.ResXDataNode.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  commentId: M:System.Resources.NetStandard.ResXDataNode.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  isEii: true
+  parent: System.Resources.NetStandard.ResXDataNode
+  langs:
+  - csharp
+  - vb
+  name: ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+  nameWithType: ResXDataNode.ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+  fullName: System.Resources.NetStandard.ResXDataNode.System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: System.Runtime.Serialization.ISerializable.GetObjectData
+    path: ../src/lib/PnP.Framework/SystemResources/ResXDataNode.cs
+    startLine: 736
+  assemblies:
+  - PnP.Framework
+  namespace: System.Resources.NetStandard
+  summary: "\nGet the value contained in this datanode\n"
+  example: []
+  syntax:
+    content: void ISerializable.GetObjectData(SerializationInfo si, StreamingContext context)
+    parameters:
+    - id: si
+      type: System.Runtime.Serialization.SerializationInfo
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+    content.vb: Sub System.Runtime.Serialization.ISerializable.GetObjectData(si As SerializationInfo, context As StreamingContext) Implements ISerializable.GetObjectData
+  overload: System.Resources.NetStandard.ResXDataNode.System#Runtime#Serialization#ISerializable#GetObjectData*
+  implements:
+  - System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  nameWithType.vb: ResXDataNode.System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+  name.vb: System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+references:
+- uid: System.Resources.NetStandard
+  commentId: N:System.Resources.NetStandard
+  name: System.Resources.NetStandard
+  nameWithType: System.Resources.NetStandard
+  fullName: System.Resources.NetStandard
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Runtime.Serialization.ISerializable
+  commentId: T:System.Runtime.Serialization.ISerializable
+  parent: System.Runtime.Serialization
+  isExternal: true
+  name: ISerializable
+  nameWithType: ISerializable
+  fullName: System.Runtime.Serialization.ISerializable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Resources.NetStandard.ResXDataNode.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<ResXDataNode>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ResXDataNode>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<System.Resources.NetStandard.ResXDataNode>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of ResXDataNode)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of System.Resources.NetStandard.ResXDataNode)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of ResXDataNode)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<ResXDataNode>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ResXDataNode>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<System.Resources.NetStandard.ResXDataNode>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of ResXDataNode)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of ResXDataNode)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of System.Resources.NetStandard.ResXDataNode)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Resources.NetStandard.ResXDataNode.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{System.Resources.NetStandard.ResXDataNode,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<ResXDataNode, T>(Expression<Func<ResXDataNode, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<ResXDataNode, T>(Expression<Func<ResXDataNode, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<System.Resources.NetStandard.ResXDataNode, T>(System.Linq.Expressions.Expression<System.Func<System.Resources.NetStandard.ResXDataNode, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of ResXDataNode, T)(Expression(Of Func(Of ResXDataNode, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of System.Resources.NetStandard.ResXDataNode, T)(System.Linq.Expressions.Expression(Of System.Func(Of System.Resources.NetStandard.ResXDataNode, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of ResXDataNode, T)(Expression(Of Func(Of ResXDataNode, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<ResXDataNode, T>
+    nameWithType: ObjectExtensions.Set<ResXDataNode, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<System.Resources.NetStandard.ResXDataNode, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Resources.NetStandard.ResXDataNode
+    name: ResXDataNode
+    nameWithType: ResXDataNode
+    fullName: System.Resources.NetStandard.ResXDataNode
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of ResXDataNode, T)
+    nameWithType: ObjectExtensions.Set(Of ResXDataNode, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of System.Resources.NetStandard.ResXDataNode, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Resources.NetStandard.ResXDataNode
+    name: ResXDataNode
+    nameWithType: ResXDataNode
+    fullName: System.Resources.NetStandard.ResXDataNode
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Runtime.Serialization
+  commentId: N:System.Runtime.Serialization
+  isExternal: true
+  name: System.Runtime.Serialization
+  nameWithType: System.Runtime.Serialization
+  fullName: System.Runtime.Serialization
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: System.Resources.NetStandard.ResXDataNode.#ctor*
+  commentId: Overload:System.Resources.NetStandard.ResXDataNode.#ctor
+  name: ResXDataNode
+  nameWithType: ResXDataNode.ResXDataNode
+  fullName: System.Resources.NetStandard.ResXDataNode.ResXDataNode
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Func{System.Type,System.String}
+  commentId: T:System.Func{System.Type,System.String}
+  parent: System
+  definition: System.Func`2
+  name: Func<Type, String>
+  nameWithType: Func<Type, String>
+  fullName: System.Func<System.Type, System.String>
+  nameWithType.vb: Func(Of Type, String)
+  fullName.vb: System.Func(Of System.Type, System.String)
+  name.vb: Func(Of Type, String)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: System.Type
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: System.Type
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Resources.NetStandard.ResXFileRef
+  commentId: T:System.Resources.NetStandard.ResXFileRef
+  parent: System.Resources.NetStandard
+  name: ResXFileRef
+  nameWithType: ResXFileRef
+  fullName: System.Resources.NetStandard.ResXFileRef
+- uid: System.Resources.NetStandard.ResXDataNode.Comment*
+  commentId: Overload:System.Resources.NetStandard.ResXDataNode.Comment
+  name: Comment
+  nameWithType: ResXDataNode.Comment
+  fullName: System.Resources.NetStandard.ResXDataNode.Comment
+- uid: System.Resources.NetStandard.ResXDataNode.Name*
+  commentId: Overload:System.Resources.NetStandard.ResXDataNode.Name
+  name: Name
+  nameWithType: ResXDataNode.Name
+  fullName: System.Resources.NetStandard.ResXDataNode.Name
+- uid: System.Resources.NetStandard.ResXDataNode.FileRef*
+  commentId: Overload:System.Resources.NetStandard.ResXDataNode.FileRef
+  name: FileRef
+  nameWithType: ResXDataNode.FileRef
+  fullName: System.Resources.NetStandard.ResXDataNode.FileRef
+- uid: System.Resources.NetStandard.ResXDataNode.GetNodePosition*
+  commentId: Overload:System.Resources.NetStandard.ResXDataNode.GetNodePosition
+  name: GetNodePosition
+  nameWithType: ResXDataNode.GetNodePosition
+  fullName: System.Resources.NetStandard.ResXDataNode.GetNodePosition
+- uid: System.Drawing.Point
+  commentId: T:System.Drawing.Point
+  parent: System.Drawing
+  isExternal: true
+  name: Point
+  nameWithType: Point
+  fullName: System.Drawing.Point
+- uid: System.Drawing
+  commentId: N:System.Drawing
+  isExternal: true
+  name: System.Drawing
+  nameWithType: System.Drawing
+  fullName: System.Drawing
+- uid: System.Resources.NetStandard.ResXDataNode.GetValueTypeName*
+  commentId: Overload:System.Resources.NetStandard.ResXDataNode.GetValueTypeName
+  name: GetValueTypeName
+  nameWithType: ResXDataNode.GetValueTypeName
+  fullName: System.Resources.NetStandard.ResXDataNode.GetValueTypeName
+- uid: System.ComponentModel.Design.ITypeResolutionService
+  commentId: T:System.ComponentModel.Design.ITypeResolutionService
+  parent: System.ComponentModel.Design
+  isExternal: true
+  name: ITypeResolutionService
+  nameWithType: ITypeResolutionService
+  fullName: System.ComponentModel.Design.ITypeResolutionService
+- uid: System.ComponentModel.Design
+  commentId: N:System.ComponentModel.Design
+  isExternal: true
+  name: System.ComponentModel.Design
+  nameWithType: System.ComponentModel.Design
+  fullName: System.ComponentModel.Design
+- uid: System.Reflection.AssemblyName[]
+  isExternal: true
+  name: AssemblyName[]
+  nameWithType: AssemblyName[]
+  fullName: System.Reflection.AssemblyName[]
+  nameWithType.vb: AssemblyName()
+  fullName.vb: System.Reflection.AssemblyName()
+  name.vb: AssemblyName()
+  spec.csharp:
+  - uid: System.Reflection.AssemblyName
+    name: AssemblyName
+    nameWithType: AssemblyName
+    fullName: System.Reflection.AssemblyName
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Reflection.AssemblyName
+    name: AssemblyName
+    nameWithType: AssemblyName
+    fullName: System.Reflection.AssemblyName
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: System.Resources.NetStandard.ResXDataNode.GetValue*
+  commentId: Overload:System.Resources.NetStandard.ResXDataNode.GetValue
+  name: GetValue
+  nameWithType: ResXDataNode.GetValue
+  fullName: System.Resources.NetStandard.ResXDataNode.GetValue
+- uid: System.Resources.NetStandard.ResXDataNode.System#Runtime#Serialization#ISerializable#GetObjectData*
+  commentId: Overload:System.Resources.NetStandard.ResXDataNode.System#Runtime#Serialization#ISerializable#GetObjectData
+  name: ISerializable.GetObjectData
+  nameWithType: ResXDataNode.ISerializable.GetObjectData
+  fullName: System.Resources.NetStandard.ResXDataNode.System.Runtime.Serialization.ISerializable.GetObjectData
+  nameWithType.vb: ResXDataNode.System.Runtime.Serialization.ISerializable.GetObjectData
+  name.vb: System.Runtime.Serialization.ISerializable.GetObjectData
+- uid: System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  commentId: M:System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Runtime.Serialization.ISerializable
+  isExternal: true
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  nameWithType: ISerializable.GetObjectData(SerializationInfo, StreamingContext)
+  fullName: System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  spec.csharp:
+  - uid: System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    nameWithType: ISerializable.GetObjectData
+    fullName: System.Runtime.Serialization.ISerializable.GetObjectData
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    nameWithType: SerializationInfo
+    fullName: System.Runtime.Serialization.SerializationInfo
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    nameWithType: StreamingContext
+    fullName: System.Runtime.Serialization.StreamingContext
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    nameWithType: ISerializable.GetObjectData
+    fullName: System.Runtime.Serialization.ISerializable.GetObjectData
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    nameWithType: SerializationInfo
+    fullName: System.Runtime.Serialization.SerializationInfo
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    nameWithType: StreamingContext
+    fullName: System.Runtime.Serialization.StreamingContext
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Runtime.Serialization.SerializationInfo
+  commentId: T:System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: true
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  commentId: T:System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: true
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext

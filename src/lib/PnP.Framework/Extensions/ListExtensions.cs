@@ -1989,12 +1989,11 @@ namespace Microsoft.SharePoint.Client
             var defaultValuesFileName = "client_LocationBasedDefaults.html";
             using (var clientContext = (ClientContext)list.Context)
             {
-                clientContext.Load(list.RootFolder);
-                clientContext.Load(list.RootFolder.Folders);
+                clientContext.Load(list.RootFolder, r => r.ServerRelativeUrl);
                 clientContext.ExecuteQueryRetry();
-
+                
                 // Check if default values file is present
-                var formsFolder = list.RootFolder.Folders.FirstOrDefault(x => x.Name == "Forms");
+                var formsFolder = GetFormsFolderFromList(list, clientContext);
                 if (formsFolder != null)
                 {
                     var configFile = formsFolder.Files.GetByUrl(defaultValuesFileName);
@@ -2029,12 +2028,11 @@ namespace Microsoft.SharePoint.Client
             var defaultValuesFileName = "client_LocationBasedDefaults.html";
             using (var clientContext = (ClientContext)list.Context)
             {
-                clientContext.Load(list.RootFolder);
-                clientContext.Load(list.RootFolder.Folders);
+                clientContext.Load(list.RootFolder, r => r.ServerRelativeUrl);
                 clientContext.ExecuteQueryRetry();
                 TaxonomySession taxSession = TaxonomySession.GetTaxonomySession(clientContext);
                 // Check if default values file is present
-                var formsFolder = list.RootFolder.Folders.FirstOrDefault(x => x.Name == "Forms");
+                var formsFolder = GetFormsFolderFromList(list, clientContext);
                 List<IDefaultColumnValue> remainingValues = new List<IDefaultColumnValue>();
 
                 if (formsFolder != null)
@@ -2266,6 +2264,105 @@ namespace Microsoft.SharePoint.Client
             catch (ServerUnauthorizedAccessException)
             {
                 Log.Warning(Constants.LOGGING_SOURCE, CoreResources.ListExtensions_SkipNoCrawlLists);
+            }
+        }
+    
+
+        /// <summary>
+        /// Enable Classic Audience Targeting on a List
+        /// </summary>
+        /// <param name="list"></param>
+        public static void EnableClassicAudienceTargeting(this List list)
+        {
+            if (!list.FieldExistsByName(PnP.Framework.Constants.ClassicAudienceTargetingInternalName))
+            {
+                var sourceId = list.Id.ToString();
+                var addOptions = list.ContentTypesEnabled
+                       ? AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToNoContentType
+                       : AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToDefaultContentType;
+
+                // When comparing in SharePoint the IDs can be hard coded, they are always the same.
+                // TODO: Need to consider multi-linugal versions of the display name (possibly internal name eek!)
+                var classicFieldXml = @$"
+                    <Field ID=""{{61cbb965-1e04-4273-b658-eedaa662f48d}}"" Type=""TargetTo"" Name=""Target_x0020_Audiences""
+                        DisplayName=""Target Audiences"" Required=""FALSE"" SourceID=""{sourceId}""
+                        StaticName=""Target_x0020_Audiences""   Version=""2"">
+                        <Customization><ArrayOfProperty>
+                            <Property><Name>AllowGlobalAudience</Name><Value xmlns:q1=""http://www.w3.org/2001/XMLSchema"" p4:type=""q1:boolean"" xmlns:p4=""http://www.w3.org/2001/XMLSchema-instance"" >true</Value></Property>
+                            <Property><Name>AllowDL</Name><Value xmlns:q2=""http://www.w3.org/2001/XMLSchema"" p4:type=""q2:boolean"" xmlns:p4=""http://www.w3.org/2001/XMLSchema-instance"" >true</Value></Property>
+                            <Property><Name>AllowSPGroup</Name><Value xmlns:q3=""http://www.w3.org/2001/XMLSchema"" p4:type=""q3:boolean"" xmlns:p4=""http://www.w3.org/2001/XMLSchema-instance"" >true</Value></Property>
+                            </ArrayOfProperty>
+                        </Customization>
+                    </Field>
+                ";
+
+                Field firstField = list.Fields.AddFieldAsXml(classicFieldXml, false, addOptions);
+                list.Context.Load(firstField);
+                list.Context.ExecuteQueryRetry();
+            }
+        }
+
+        public static void EnableModernAudienceTargeting(this List list)
+        {
+            // TODO Need to add filter for Site Pages and Documents Library only for modern targeting.
+            if (!list.FieldExistsByName(Constants.ModernAudienceTargetingInternalName) &&
+                   !list.FieldExistsByName(Constants.ModernAudienceTargetingMultiLookupInternalName))
+            {
+                list.EnsureProperties(l => l.Id, l => l.ContentTypesEnabled);
+
+                var web = list.ParentWeb;
+                
+                var sourceId = list.Id.ToString("B");
+                var addOptions = list.ContentTypesEnabled
+                        ? AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToNoContentType
+                        : AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToDefaultContentType;
+
+                web.EnsureProperties(w => w.Id);
+
+                // When comparing in SharePoint the IDs can be hard coded, they are always the same.
+                var firstModernTargetingFieldXml = @$"
+                    <Field ID=""{{7f759147-c861-4cd6-a11f-5aa3037d9634}}"" Type=""UserMulti"" List=""UserInfo"" Name=""_ModernAudienceTargetUserField"" 
+                        StaticName=""_ModernAudienceTargetUserField"" DisplayName=""Audience"" Required=""FALSE"" 
+                        SourceID=""{sourceId}"" ColName=""int2"" RowOrdinal=""0"" ShowField=""ImnName"" ShowInDisplayForm=""TRUE"" ShowInListSettings=""FALSE"" UserSelectionMode=""GroupsOnly"" 
+                        UserSelectionScope=""0"" Mult=""TRUE"" Sortable=""FALSE"" Version=""1""/>";
+
+                Field firstField = list.Fields.AddFieldAsXml(firstModernTargetingFieldXml, false, addOptions);
+                list.Context.Load(firstField);
+
+                var userInformationList = web.Lists.GetByTitle("User Information List");
+                list.Context.Load(userInformationList, l => l.Id);
+                list.Context.ExecuteQueryRetry();
+
+                // ID is unique for this field type
+                var secondModernTargetingFieldFormat = @$"
+                    <Field Type=""LookupMulti"" DisplayName=""AudienceIds"" 
+                        List=""{userInformationList.Id:B}"" WebId=""{web.Id}"" FieldRef=""7f759147-c861-4cd6-a11f-5aa3037d9634"" ReadOnly=""TRUE"" Mult=""TRUE"" Sortable=""FALSE"" 
+                        UnlimitedLengthInDocumentLibrary=""FALSE"" ID=""{Guid.NewGuid():B}"" SourceID=""{sourceId}"" StaticName=""_ModernAudienceAadObjectIds"" 
+                        Name=""_ModernAudienceAadObjectIds"" ShowField=""_AadObjectIdForUser"" ShowInListSettings=""FALSE"" Version=""1""/>";
+
+                Field secondField = list.Fields.AddFieldAsXml(secondModernTargetingFieldFormat, false, addOptions);
+                list.Context.Load(secondField);
+
+                list.EventReceivers.Add(new EventReceiverDefinitionCreationInformation()
+                {
+                    EventType = EventReceiverType.ItemAdding,
+                    ReceiverName = "",
+                    ReceiverAssembly = "Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c",
+                    ReceiverClass = "Microsoft.SharePoint.Portal.AudienceEventRecevier",
+                    Synchronization = EventReceiverSynchronization.Synchronous,
+                    SequenceNumber = 10000
+                });
+                list.EventReceivers.Add(new EventReceiverDefinitionCreationInformation()
+                {
+                    EventType = EventReceiverType.ItemUpdating,
+                    ReceiverName = "",
+                    ReceiverAssembly = "Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c",
+                    ReceiverClass = "Microsoft.SharePoint.Portal.AudienceEventRecevier",
+                    Synchronization = EventReceiverSynchronization.Synchronous,
+                    SequenceNumber = 10000
+                });
+                list.Update();
+                list.Context.ExecuteQueryRetry();
             }
         }
     }

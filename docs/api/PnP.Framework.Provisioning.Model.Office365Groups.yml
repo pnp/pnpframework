@@ -1,0 +1,49 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Office365Groups
+  commentId: N:PnP.Framework.Provisioning.Model.Office365Groups
+  id: PnP.Framework.Provisioning.Model.Office365Groups
+  children:
+  - PnP.Framework.Provisioning.Model.Office365Groups.ManagedGroupTypes
+  - PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupLifecyclePolicy
+  - PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupLifecyclePolicyCollection
+  - PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupsSettings
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Office365Groups
+  nameWithType: PnP.Framework.Provisioning.Model.Office365Groups
+  fullName: PnP.Framework.Provisioning.Model.Office365Groups
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupLifecyclePolicy
+  commentId: T:PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupLifecyclePolicy
+  parent: PnP.Framework.Provisioning.Model.Office365Groups
+  name: Office365GroupLifecyclePolicy
+  nameWithType: Office365GroupLifecyclePolicy
+  fullName: PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupLifecyclePolicy
+- uid: PnP.Framework.Provisioning.Model.Office365Groups.ManagedGroupTypes
+  commentId: T:PnP.Framework.Provisioning.Model.Office365Groups.ManagedGroupTypes
+  parent: PnP.Framework.Provisioning.Model.Office365Groups
+  name: ManagedGroupTypes
+  nameWithType: ManagedGroupTypes
+  fullName: PnP.Framework.Provisioning.Model.Office365Groups.ManagedGroupTypes
+- uid: PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupLifecyclePolicyCollection
+  commentId: T:PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupLifecyclePolicyCollection
+  parent: PnP.Framework.Provisioning.Model.Office365Groups
+  name: Office365GroupLifecyclePolicyCollection
+  nameWithType: Office365GroupLifecyclePolicyCollection
+  fullName: PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupLifecyclePolicyCollection
+- uid: PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupsSettings
+  commentId: T:PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupsSettings
+  parent: PnP.Framework.Provisioning.Model.Office365Groups
+  name: Office365GroupsSettings
+  nameWithType: Office365GroupsSettings
+  fullName: PnP.Framework.Provisioning.Model.Office365Groups.Office365GroupsSettings
+- uid: PnP.Framework.Provisioning.Model.Office365Groups
+  commentId: N:PnP.Framework.Provisioning.Model.Office365Groups
+  name: PnP.Framework.Provisioning.Model.Office365Groups
+  nameWithType: PnP.Framework.Provisioning.Model.Office365Groups
+  fullName: PnP.Framework.Provisioning.Model.Office365Groups

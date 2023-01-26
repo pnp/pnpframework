@@ -1,0 +1,4479 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Enums.TimeZone
+  commentId: T:PnP.Framework.Enums.TimeZone
+  id: TimeZone
+  parent: PnP.Framework.Enums
+  children:
+  - PnP.Framework.Enums.TimeZone.None
+  - PnP.Framework.Enums.TimeZone.UTC_CASABLANCA
+  - PnP.Framework.Enums.TimeZone.UTC_COORDINATED_UNIVERSAL_TIME
+  - PnP.Framework.Enums.TimeZone.UTC_GREENWICH_MEAN_TIME_DUBLIN_EDINBURGH_LISBON_LONDON
+  - PnP.Framework.Enums.TimeZone.UTC_MONROVIA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0100_AZORES
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0100_CAPE_VERDE_ISLANDS
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0200_MID_ATLANTIC
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0300_BRASILIA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0300_BUENOS_AIRES
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0300_CAYENNE
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0300_GREENLAND
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0300_MONTEVIDEO
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0330_NEWFOUNDLAND_AND_LABRADOR
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0400_ASUNCION
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0400_ATLANTIC_TIME_CANADA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0400_GEORGETOWN_LA_PAZ_SAN_JUAN
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0400_MANAUS
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0400_SANTIAGO
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0430_CARACAS
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0500_BOGOTA_LIMA_QUITO
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0500_EASTERN_TIME_US_AND_CANADA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0500_INDIANA_EAST
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0600_CENTRAL_AMERICA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0600_CENTRAL_TIME_US_AND_CANADA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0600_GUADALAJARA_MEXICO_CITY_MONTERREY
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0600_SASKATCHEWAN
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0700_ARIZONA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0700_CHIHUAHUA_LA_PAZ_MAZATLAN
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0700_MOUNTAIN_TIME_US_AND_CANADA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0800_PACIFIC_TIME_US_AND_CANADA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0800_TIJUANA_BAJA_CALFORNIA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0800_ULAANBAATAR
+  - PnP.Framework.Enums.TimeZone.UTCMINUS0900_ALASKA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS1000_HAWAII
+  - PnP.Framework.Enums.TimeZone.UTCMINUS1100_MIDWAY_ISLAND_SAMOA
+  - PnP.Framework.Enums.TimeZone.UTCMINUS1200_INTERNATIONAL_DATE_LINE_WEST
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0100_AMSTERDAM_BERLIN_BERN_ROME_STOCKHOLM_VIENNA
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0100_BELGRADE_BRATISLAVA_BUDAPEST_LJUBLJANA_PRAGUE
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0100_BRUSSELS_COPENHAGEN_MADRID_PARIS
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0100_SARAJEVO_SKOPJE_WARSAW_ZAGREB
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0100_WEST_CENTRAL_AFRICA
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0200_AMMAN
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0200_ATHENS_BUCHAREST_ISTANBUL
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0200_BEIRUT
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0200_CAIRO
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0200_HARARE_PRETORIA
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0200_HELSINKI_KYIV_RIGA_SOFIA_TALLINN_VILNIUS
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0200_JERUSALEM
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0200_MINSK
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0200_WINDHOEK
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0300_BAGHDAD
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0300_KUWAIT_RIYADH
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0300_MOSCOW_STPETERSBURG_VOLGOGRAD
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0300_NAIROBI
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0330_TEHRAN
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0400_ABU_DHABI_MUSCAT
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0400_BAKU
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0400_PORT_LOUIS
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0400_TBILISI
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0400_YEREVAN
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0430_KABUL
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0500_EKATERINBURG
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0500_ISLAMABAD_KARACHI
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0500_TASHKENT
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0530_CHENNAI_KOLKATA_MUMBAI_NEW_DELHI
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0530_SRI_JAYAWARDENEPURA
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0545_KATHMANDU
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0600_ASTANA_DHAKA
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0600_NOVOSIBIRSK
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0630_YANGON_RANGOON
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0700_BANGKOK_HANOI_JAKARTA
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0700_KRASNOYARSK
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0800_BEIJING_CHONGQING_HONG_KONG_SAR_URUMQI
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0800_IRKUTSK
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0800_KUALA_LUMPUR_SINGAPORE
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0800_PERTH
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0800_TAIPEI
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0900_OSAKA_SAPPORO_TOKYO
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0900_SEOUL
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0900_YAKUTSK
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0930_ADELAIDE
+  - PnP.Framework.Enums.TimeZone.UTCPLUS0930_DARWIN
+  - PnP.Framework.Enums.TimeZone.UTCPLUS1000_BRISBANE
+  - PnP.Framework.Enums.TimeZone.UTCPLUS1000_CANBERRA_MELBOURNE_SYDNEY
+  - PnP.Framework.Enums.TimeZone.UTCPLUS1000_GUAM_PORT_MORESBY
+  - PnP.Framework.Enums.TimeZone.UTCPLUS1000_HOBART
+  - PnP.Framework.Enums.TimeZone.UTCPLUS1000_VLADIVOSTOK
+  - PnP.Framework.Enums.TimeZone.UTCPLUS1100_MADAGAN_SOLOMON_ISLANDS_NEW_CALENDONIA
+  - PnP.Framework.Enums.TimeZone.UTCPLUS1200_AUCKLAND_WELLINGTON
+  - PnP.Framework.Enums.TimeZone.UTCPLUS1200_FIJI_ISLANDS_MARSHALL_ISLANDS
+  - PnP.Framework.Enums.TimeZone.UTCPLUS1200_PETROPAVLOVSK_KACHATSKY
+  - PnP.Framework.Enums.TimeZone.UTCPLUS1300_NUKU_ALOFA
+  langs:
+  - csharp
+  - vb
+  name: TimeZone
+  nameWithType: TimeZone
+  fullName: PnP.Framework.Enums.TimeZone
+  type: Enum
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TimeZone
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 6
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezones to use when creating sitecollections\nFormat UTC[PLUS|MINUS][HH:MM]_[DESCRIPTION]\n"
+  example: []
+  syntax:
+    content: public enum TimeZone
+    content.vb: Public Enum TimeZone
+  extensionMethods:
+  - System.Enum.System.EnumerationExtensions.Include``1({T})
+  - System.Enum.System.EnumerationExtensions.Remove``1({T})
+  - System.Enum.System.EnumerationExtensions.Has``1({T})
+  - System.Enum.System.EnumerationExtensions.Missing``1({T})
+  - PnP.Framework.Enums.TimeZone.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Enums.TimeZone.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Enums.TimeZone,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: PnP.Framework.Enums.TimeZone.None
+  commentId: F:PnP.Framework.Enums.TimeZone.None
+  id: None
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: TimeZone.None
+  fullName: PnP.Framework.Enums.TimeZone.None
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: None
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 11
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nNo Timezone\n"
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTC_GREENWICH_MEAN_TIME_DUBLIN_EDINBURGH_LISBON_LONDON
+  commentId: F:PnP.Framework.Enums.TimeZone.UTC_GREENWICH_MEAN_TIME_DUBLIN_EDINBURGH_LISBON_LONDON
+  id: UTC_GREENWICH_MEAN_TIME_DUBLIN_EDINBURGH_LISBON_LONDON
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTC_GREENWICH_MEAN_TIME_DUBLIN_EDINBURGH_LISBON_LONDON
+  nameWithType: TimeZone.UTC_GREENWICH_MEAN_TIME_DUBLIN_EDINBURGH_LISBON_LONDON
+  fullName: PnP.Framework.Enums.TimeZone.UTC_GREENWICH_MEAN_TIME_DUBLIN_EDINBURGH_LISBON_LONDON
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTC_GREENWICH_MEAN_TIME_DUBLIN_EDINBURGH_LISBON_LONDON
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for GREENWICH, DUBLIN, EDINBURGH, LISBON and LONDON\n"
+  example: []
+  syntax:
+    content: UTC_GREENWICH_MEAN_TIME_DUBLIN_EDINBURGH_LISBON_LONDON = 2
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0100_BRUSSELS_COPENHAGEN_MADRID_PARIS
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0100_BRUSSELS_COPENHAGEN_MADRID_PARIS
+  id: UTCPLUS0100_BRUSSELS_COPENHAGEN_MADRID_PARIS
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0100_BRUSSELS_COPENHAGEN_MADRID_PARIS
+  nameWithType: TimeZone.UTCPLUS0100_BRUSSELS_COPENHAGEN_MADRID_PARIS
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0100_BRUSSELS_COPENHAGEN_MADRID_PARIS
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0100_BRUSSELS_COPENHAGEN_MADRID_PARIS
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 19
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for BRUSSELS, COPENHAGEN, MADRID and PARIS\n"
+  example: []
+  syntax:
+    content: UTCPLUS0100_BRUSSELS_COPENHAGEN_MADRID_PARIS = 3
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0100_AMSTERDAM_BERLIN_BERN_ROME_STOCKHOLM_VIENNA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0100_AMSTERDAM_BERLIN_BERN_ROME_STOCKHOLM_VIENNA
+  id: UTCPLUS0100_AMSTERDAM_BERLIN_BERN_ROME_STOCKHOLM_VIENNA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0100_AMSTERDAM_BERLIN_BERN_ROME_STOCKHOLM_VIENNA
+  nameWithType: TimeZone.UTCPLUS0100_AMSTERDAM_BERLIN_BERN_ROME_STOCKHOLM_VIENNA
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0100_AMSTERDAM_BERLIN_BERN_ROME_STOCKHOLM_VIENNA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0100_AMSTERDAM_BERLIN_BERN_ROME_STOCKHOLM_VIENNA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for AMSTERDAM, BERLIN, BERN, ROME, STOCKHOLM and VIENNA\n"
+  example: []
+  syntax:
+    content: UTCPLUS0100_AMSTERDAM_BERLIN_BERN_ROME_STOCKHOLM_VIENNA = 4
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0200_ATHENS_BUCHAREST_ISTANBUL
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0200_ATHENS_BUCHAREST_ISTANBUL
+  id: UTCPLUS0200_ATHENS_BUCHAREST_ISTANBUL
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0200_ATHENS_BUCHAREST_ISTANBUL
+  nameWithType: TimeZone.UTCPLUS0200_ATHENS_BUCHAREST_ISTANBUL
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0200_ATHENS_BUCHAREST_ISTANBUL
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0200_ATHENS_BUCHAREST_ISTANBUL
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 27
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for ATHENS, BUCHAREST and ISTANBUL\n"
+  example: []
+  syntax:
+    content: UTCPLUS0200_ATHENS_BUCHAREST_ISTANBUL = 5
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0100_BELGRADE_BRATISLAVA_BUDAPEST_LJUBLJANA_PRAGUE
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0100_BELGRADE_BRATISLAVA_BUDAPEST_LJUBLJANA_PRAGUE
+  id: UTCPLUS0100_BELGRADE_BRATISLAVA_BUDAPEST_LJUBLJANA_PRAGUE
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0100_BELGRADE_BRATISLAVA_BUDAPEST_LJUBLJANA_PRAGUE
+  nameWithType: TimeZone.UTCPLUS0100_BELGRADE_BRATISLAVA_BUDAPEST_LJUBLJANA_PRAGUE
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0100_BELGRADE_BRATISLAVA_BUDAPEST_LJUBLJANA_PRAGUE
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0100_BELGRADE_BRATISLAVA_BUDAPEST_LJUBLJANA_PRAGUE
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 31
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for BELGRADE, BRATISLAVA, BUDAPEST, LJUBLJANA and PRAGUE\n"
+  example: []
+  syntax:
+    content: UTCPLUS0100_BELGRADE_BRATISLAVA_BUDAPEST_LJUBLJANA_PRAGUE = 6
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0200_MINSK
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0200_MINSK
+  id: UTCPLUS0200_MINSK
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0200_MINSK
+  nameWithType: TimeZone.UTCPLUS0200_MINSK
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0200_MINSK
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0200_MINSK
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 35
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for MINSK \n"
+  example: []
+  syntax:
+    content: UTCPLUS0200_MINSK = 7
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0300_BRASILIA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0300_BRASILIA
+  id: UTCMINUS0300_BRASILIA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0300_BRASILIA
+  nameWithType: TimeZone.UTCMINUS0300_BRASILIA
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0300_BRASILIA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0300_BRASILIA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 39
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for BRASILIA\n"
+  example: []
+  syntax:
+    content: UTCMINUS0300_BRASILIA = 8
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0400_ATLANTIC_TIME_CANADA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0400_ATLANTIC_TIME_CANADA
+  id: UTCMINUS0400_ATLANTIC_TIME_CANADA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0400_ATLANTIC_TIME_CANADA
+  nameWithType: TimeZone.UTCMINUS0400_ATLANTIC_TIME_CANADA
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0400_ATLANTIC_TIME_CANADA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0400_ATLANTIC_TIME_CANADA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 43
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for ATLANTIC CANADA\n"
+  example: []
+  syntax:
+    content: UTCMINUS0400_ATLANTIC_TIME_CANADA = 9
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0500_EASTERN_TIME_US_AND_CANADA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0500_EASTERN_TIME_US_AND_CANADA
+  id: UTCMINUS0500_EASTERN_TIME_US_AND_CANADA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0500_EASTERN_TIME_US_AND_CANADA
+  nameWithType: TimeZone.UTCMINUS0500_EASTERN_TIME_US_AND_CANADA
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0500_EASTERN_TIME_US_AND_CANADA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0500_EASTERN_TIME_US_AND_CANADA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 47
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for EASTERN US and CANADA\n"
+  example: []
+  syntax:
+    content: UTCMINUS0500_EASTERN_TIME_US_AND_CANADA = 10
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0600_CENTRAL_TIME_US_AND_CANADA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0600_CENTRAL_TIME_US_AND_CANADA
+  id: UTCMINUS0600_CENTRAL_TIME_US_AND_CANADA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0600_CENTRAL_TIME_US_AND_CANADA
+  nameWithType: TimeZone.UTCMINUS0600_CENTRAL_TIME_US_AND_CANADA
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0600_CENTRAL_TIME_US_AND_CANADA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0600_CENTRAL_TIME_US_AND_CANADA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 51
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for CENTRAL US and CANADA\n"
+  example: []
+  syntax:
+    content: UTCMINUS0600_CENTRAL_TIME_US_AND_CANADA = 11
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0700_MOUNTAIN_TIME_US_AND_CANADA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0700_MOUNTAIN_TIME_US_AND_CANADA
+  id: UTCMINUS0700_MOUNTAIN_TIME_US_AND_CANADA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0700_MOUNTAIN_TIME_US_AND_CANADA
+  nameWithType: TimeZone.UTCMINUS0700_MOUNTAIN_TIME_US_AND_CANADA
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0700_MOUNTAIN_TIME_US_AND_CANADA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0700_MOUNTAIN_TIME_US_AND_CANADA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 55
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for MOUNTAIN US and CANADA\n"
+  example: []
+  syntax:
+    content: UTCMINUS0700_MOUNTAIN_TIME_US_AND_CANADA = 12
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0800_PACIFIC_TIME_US_AND_CANADA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0800_PACIFIC_TIME_US_AND_CANADA
+  id: UTCMINUS0800_PACIFIC_TIME_US_AND_CANADA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0800_PACIFIC_TIME_US_AND_CANADA
+  nameWithType: TimeZone.UTCMINUS0800_PACIFIC_TIME_US_AND_CANADA
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0800_PACIFIC_TIME_US_AND_CANADA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0800_PACIFIC_TIME_US_AND_CANADA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 59
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for PACIFIC US and CANADA\n"
+  example: []
+  syntax:
+    content: UTCMINUS0800_PACIFIC_TIME_US_AND_CANADA = 13
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0900_ALASKA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0900_ALASKA
+  id: UTCMINUS0900_ALASKA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0900_ALASKA
+  nameWithType: TimeZone.UTCMINUS0900_ALASKA
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0900_ALASKA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0900_ALASKA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 63
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for ALASKA\n"
+  example: []
+  syntax:
+    content: UTCMINUS0900_ALASKA = 14
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS1000_HAWAII
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS1000_HAWAII
+  id: UTCMINUS1000_HAWAII
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS1000_HAWAII
+  nameWithType: TimeZone.UTCMINUS1000_HAWAII
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS1000_HAWAII
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS1000_HAWAII
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 67
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for HAWAII\n"
+  example: []
+  syntax:
+    content: UTCMINUS1000_HAWAII = 15
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS1100_MIDWAY_ISLAND_SAMOA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS1100_MIDWAY_ISLAND_SAMOA
+  id: UTCMINUS1100_MIDWAY_ISLAND_SAMOA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS1100_MIDWAY_ISLAND_SAMOA
+  nameWithType: TimeZone.UTCMINUS1100_MIDWAY_ISLAND_SAMOA
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS1100_MIDWAY_ISLAND_SAMOA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS1100_MIDWAY_ISLAND_SAMOA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 71
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for MIDWAY ISLAND and SAMOA\n"
+  example: []
+  syntax:
+    content: UTCMINUS1100_MIDWAY_ISLAND_SAMOA = 16
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS1200_AUCKLAND_WELLINGTON
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS1200_AUCKLAND_WELLINGTON
+  id: UTCPLUS1200_AUCKLAND_WELLINGTON
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS1200_AUCKLAND_WELLINGTON
+  nameWithType: TimeZone.UTCPLUS1200_AUCKLAND_WELLINGTON
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS1200_AUCKLAND_WELLINGTON
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS1200_AUCKLAND_WELLINGTON
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 75
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for AUCKLAND and WELLINGTON\n"
+  example: []
+  syntax:
+    content: UTCPLUS1200_AUCKLAND_WELLINGTON = 17
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS1000_BRISBANE
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS1000_BRISBANE
+  id: UTCPLUS1000_BRISBANE
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS1000_BRISBANE
+  nameWithType: TimeZone.UTCPLUS1000_BRISBANE
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS1000_BRISBANE
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS1000_BRISBANE
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 79
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for BRISBANE\n"
+  example: []
+  syntax:
+    content: UTCPLUS1000_BRISBANE = 18
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0930_ADELAIDE
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0930_ADELAIDE
+  id: UTCPLUS0930_ADELAIDE
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0930_ADELAIDE
+  nameWithType: TimeZone.UTCPLUS0930_ADELAIDE
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0930_ADELAIDE
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0930_ADELAIDE
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 83
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for ADELAIDE\n"
+  example: []
+  syntax:
+    content: UTCPLUS0930_ADELAIDE = 19
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0900_OSAKA_SAPPORO_TOKYO
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0900_OSAKA_SAPPORO_TOKYO
+  id: UTCPLUS0900_OSAKA_SAPPORO_TOKYO
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0900_OSAKA_SAPPORO_TOKYO
+  nameWithType: TimeZone.UTCPLUS0900_OSAKA_SAPPORO_TOKYO
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0900_OSAKA_SAPPORO_TOKYO
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0900_OSAKA_SAPPORO_TOKYO
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 87
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for OSAKA, SAPPORO and TOKYO\n"
+  example: []
+  syntax:
+    content: UTCPLUS0900_OSAKA_SAPPORO_TOKYO = 20
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0800_KUALA_LUMPUR_SINGAPORE
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0800_KUALA_LUMPUR_SINGAPORE
+  id: UTCPLUS0800_KUALA_LUMPUR_SINGAPORE
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0800_KUALA_LUMPUR_SINGAPORE
+  nameWithType: TimeZone.UTCPLUS0800_KUALA_LUMPUR_SINGAPORE
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0800_KUALA_LUMPUR_SINGAPORE
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0800_KUALA_LUMPUR_SINGAPORE
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 91
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for KUALA LUMPUR and SINGAPORE\n"
+  example: []
+  syntax:
+    content: UTCPLUS0800_KUALA_LUMPUR_SINGAPORE = 21
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0700_BANGKOK_HANOI_JAKARTA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0700_BANGKOK_HANOI_JAKARTA
+  id: UTCPLUS0700_BANGKOK_HANOI_JAKARTA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0700_BANGKOK_HANOI_JAKARTA
+  nameWithType: TimeZone.UTCPLUS0700_BANGKOK_HANOI_JAKARTA
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0700_BANGKOK_HANOI_JAKARTA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0700_BANGKOK_HANOI_JAKARTA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 95
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for BANGKOK, HANOI and JAKARTA\n"
+  example: []
+  syntax:
+    content: UTCPLUS0700_BANGKOK_HANOI_JAKARTA = 22
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0530_CHENNAI_KOLKATA_MUMBAI_NEW_DELHI
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0530_CHENNAI_KOLKATA_MUMBAI_NEW_DELHI
+  id: UTCPLUS0530_CHENNAI_KOLKATA_MUMBAI_NEW_DELHI
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0530_CHENNAI_KOLKATA_MUMBAI_NEW_DELHI
+  nameWithType: TimeZone.UTCPLUS0530_CHENNAI_KOLKATA_MUMBAI_NEW_DELHI
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0530_CHENNAI_KOLKATA_MUMBAI_NEW_DELHI
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0530_CHENNAI_KOLKATA_MUMBAI_NEW_DELHI
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 99
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for CHENNAI, KOLKATA, MUMBAI and NEW DELHI\n"
+  example: []
+  syntax:
+    content: UTCPLUS0530_CHENNAI_KOLKATA_MUMBAI_NEW_DELHI = 23
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0400_ABU_DHABI_MUSCAT
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0400_ABU_DHABI_MUSCAT
+  id: UTCPLUS0400_ABU_DHABI_MUSCAT
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0400_ABU_DHABI_MUSCAT
+  nameWithType: TimeZone.UTCPLUS0400_ABU_DHABI_MUSCAT
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0400_ABU_DHABI_MUSCAT
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0400_ABU_DHABI_MUSCAT
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 103
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for ABU DHABI and MUSCAT\n"
+  example: []
+  syntax:
+    content: UTCPLUS0400_ABU_DHABI_MUSCAT = 24
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0330_TEHRAN
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0330_TEHRAN
+  id: UTCPLUS0330_TEHRAN
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0330_TEHRAN
+  nameWithType: TimeZone.UTCPLUS0330_TEHRAN
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0330_TEHRAN
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0330_TEHRAN
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 107
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for TEHRAN\n"
+  example: []
+  syntax:
+    content: UTCPLUS0330_TEHRAN = 25
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0300_BAGHDAD
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0300_BAGHDAD
+  id: UTCPLUS0300_BAGHDAD
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0300_BAGHDAD
+  nameWithType: TimeZone.UTCPLUS0300_BAGHDAD
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0300_BAGHDAD
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0300_BAGHDAD
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 111
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for BAGHDAD\n"
+  example: []
+  syntax:
+    content: UTCPLUS0300_BAGHDAD = 26
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0200_JERUSALEM
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0200_JERUSALEM
+  id: UTCPLUS0200_JERUSALEM
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0200_JERUSALEM
+  nameWithType: TimeZone.UTCPLUS0200_JERUSALEM
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0200_JERUSALEM
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0200_JERUSALEM
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 115
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for JERUSALEM\n"
+  example: []
+  syntax:
+    content: UTCPLUS0200_JERUSALEM = 27
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0330_NEWFOUNDLAND_AND_LABRADOR
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0330_NEWFOUNDLAND_AND_LABRADOR
+  id: UTCMINUS0330_NEWFOUNDLAND_AND_LABRADOR
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0330_NEWFOUNDLAND_AND_LABRADOR
+  nameWithType: TimeZone.UTCMINUS0330_NEWFOUNDLAND_AND_LABRADOR
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0330_NEWFOUNDLAND_AND_LABRADOR
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0330_NEWFOUNDLAND_AND_LABRADOR
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 119
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for NEWFOUNDLAND and LABRADOR\n"
+  example: []
+  syntax:
+    content: UTCMINUS0330_NEWFOUNDLAND_AND_LABRADOR = 28
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0100_AZORES
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0100_AZORES
+  id: UTCMINUS0100_AZORES
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0100_AZORES
+  nameWithType: TimeZone.UTCMINUS0100_AZORES
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0100_AZORES
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0100_AZORES
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 123
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for AZORES\n"
+  example: []
+  syntax:
+    content: UTCMINUS0100_AZORES = 29
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0200_MID_ATLANTIC
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0200_MID_ATLANTIC
+  id: UTCMINUS0200_MID_ATLANTIC
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0200_MID_ATLANTIC
+  nameWithType: TimeZone.UTCMINUS0200_MID_ATLANTIC
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0200_MID_ATLANTIC
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0200_MID_ATLANTIC
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 127
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for MIDATLANTIC\n"
+  example: []
+  syntax:
+    content: UTCMINUS0200_MID_ATLANTIC = 30
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTC_MONROVIA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTC_MONROVIA
+  id: UTC_MONROVIA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTC_MONROVIA
+  nameWithType: TimeZone.UTC_MONROVIA
+  fullName: PnP.Framework.Enums.TimeZone.UTC_MONROVIA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTC_MONROVIA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 131
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for MONROVIA\n"
+  example: []
+  syntax:
+    content: UTC_MONROVIA = 31
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0300_CAYENNE
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0300_CAYENNE
+  id: UTCMINUS0300_CAYENNE
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0300_CAYENNE
+  nameWithType: TimeZone.UTCMINUS0300_CAYENNE
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0300_CAYENNE
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0300_CAYENNE
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 135
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for CAYENNE\n"
+  example: []
+  syntax:
+    content: UTCMINUS0300_CAYENNE = 32
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0400_GEORGETOWN_LA_PAZ_SAN_JUAN
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0400_GEORGETOWN_LA_PAZ_SAN_JUAN
+  id: UTCMINUS0400_GEORGETOWN_LA_PAZ_SAN_JUAN
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0400_GEORGETOWN_LA_PAZ_SAN_JUAN
+  nameWithType: TimeZone.UTCMINUS0400_GEORGETOWN_LA_PAZ_SAN_JUAN
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0400_GEORGETOWN_LA_PAZ_SAN_JUAN
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0400_GEORGETOWN_LA_PAZ_SAN_JUAN
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 139
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for GEORGETOWN and LA PAZ - SAN JUAN\n"
+  example: []
+  syntax:
+    content: UTCMINUS0400_GEORGETOWN_LA_PAZ_SAN_JUAN = 33
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0500_INDIANA_EAST
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0500_INDIANA_EAST
+  id: UTCMINUS0500_INDIANA_EAST
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0500_INDIANA_EAST
+  nameWithType: TimeZone.UTCMINUS0500_INDIANA_EAST
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0500_INDIANA_EAST
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0500_INDIANA_EAST
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 143
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for INDIANA EAST\n"
+  example: []
+  syntax:
+    content: UTCMINUS0500_INDIANA_EAST = 34
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0500_BOGOTA_LIMA_QUITO
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0500_BOGOTA_LIMA_QUITO
+  id: UTCMINUS0500_BOGOTA_LIMA_QUITO
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0500_BOGOTA_LIMA_QUITO
+  nameWithType: TimeZone.UTCMINUS0500_BOGOTA_LIMA_QUITO
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0500_BOGOTA_LIMA_QUITO
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0500_BOGOTA_LIMA_QUITO
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 147
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for BOGOTA, LIMA and QUITO\n"
+  example: []
+  syntax:
+    content: UTCMINUS0500_BOGOTA_LIMA_QUITO = 35
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0600_SASKATCHEWAN
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0600_SASKATCHEWAN
+  id: UTCMINUS0600_SASKATCHEWAN
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0600_SASKATCHEWAN
+  nameWithType: TimeZone.UTCMINUS0600_SASKATCHEWAN
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0600_SASKATCHEWAN
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0600_SASKATCHEWAN
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 151
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for SASKATCHEWAN\n"
+  example: []
+  syntax:
+    content: UTCMINUS0600_SASKATCHEWAN = 36
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0600_GUADALAJARA_MEXICO_CITY_MONTERREY
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0600_GUADALAJARA_MEXICO_CITY_MONTERREY
+  id: UTCMINUS0600_GUADALAJARA_MEXICO_CITY_MONTERREY
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0600_GUADALAJARA_MEXICO_CITY_MONTERREY
+  nameWithType: TimeZone.UTCMINUS0600_GUADALAJARA_MEXICO_CITY_MONTERREY
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0600_GUADALAJARA_MEXICO_CITY_MONTERREY
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0600_GUADALAJARA_MEXICO_CITY_MONTERREY
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 155
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for GUADALAJARA, MEXICO CITY and MONTERREY\n"
+  example: []
+  syntax:
+    content: UTCMINUS0600_GUADALAJARA_MEXICO_CITY_MONTERREY = 37
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0700_ARIZONA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0700_ARIZONA
+  id: UTCMINUS0700_ARIZONA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0700_ARIZONA
+  nameWithType: TimeZone.UTCMINUS0700_ARIZONA
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0700_ARIZONA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0700_ARIZONA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 159
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for ARIZONA\n"
+  example: []
+  syntax:
+    content: UTCMINUS0700_ARIZONA = 38
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS1200_INTERNATIONAL_DATE_LINE_WEST
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS1200_INTERNATIONAL_DATE_LINE_WEST
+  id: UTCMINUS1200_INTERNATIONAL_DATE_LINE_WEST
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS1200_INTERNATIONAL_DATE_LINE_WEST
+  nameWithType: TimeZone.UTCMINUS1200_INTERNATIONAL_DATE_LINE_WEST
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS1200_INTERNATIONAL_DATE_LINE_WEST
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS1200_INTERNATIONAL_DATE_LINE_WEST
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 163
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for INTERNATIONAL DATE LINE WEST\n"
+  example: []
+  syntax:
+    content: UTCMINUS1200_INTERNATIONAL_DATE_LINE_WEST = 39
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS1200_FIJI_ISLANDS_MARSHALL_ISLANDS
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS1200_FIJI_ISLANDS_MARSHALL_ISLANDS
+  id: UTCPLUS1200_FIJI_ISLANDS_MARSHALL_ISLANDS
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS1200_FIJI_ISLANDS_MARSHALL_ISLANDS
+  nameWithType: TimeZone.UTCPLUS1200_FIJI_ISLANDS_MARSHALL_ISLANDS
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS1200_FIJI_ISLANDS_MARSHALL_ISLANDS
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS1200_FIJI_ISLANDS_MARSHALL_ISLANDS
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 167
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for FIJI ISLANDS and MARSHALL ISLAND\n"
+  example: []
+  syntax:
+    content: UTCPLUS1200_FIJI_ISLANDS_MARSHALL_ISLANDS = 40
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS1100_MADAGAN_SOLOMON_ISLANDS_NEW_CALENDONIA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS1100_MADAGAN_SOLOMON_ISLANDS_NEW_CALENDONIA
+  id: UTCPLUS1100_MADAGAN_SOLOMON_ISLANDS_NEW_CALENDONIA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS1100_MADAGAN_SOLOMON_ISLANDS_NEW_CALENDONIA
+  nameWithType: TimeZone.UTCPLUS1100_MADAGAN_SOLOMON_ISLANDS_NEW_CALENDONIA
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS1100_MADAGAN_SOLOMON_ISLANDS_NEW_CALENDONIA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS1100_MADAGAN_SOLOMON_ISLANDS_NEW_CALENDONIA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 171
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for MADAGAN, SOLOMON ISLANDS and NEW CALENDONIA\n"
+  example: []
+  syntax:
+    content: UTCPLUS1100_MADAGAN_SOLOMON_ISLANDS_NEW_CALENDONIA = 41
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS1000_HOBART
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS1000_HOBART
+  id: UTCPLUS1000_HOBART
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS1000_HOBART
+  nameWithType: TimeZone.UTCPLUS1000_HOBART
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS1000_HOBART
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS1000_HOBART
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 175
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for HOBART\n"
+  example: []
+  syntax:
+    content: UTCPLUS1000_HOBART = 42
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS1000_GUAM_PORT_MORESBY
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS1000_GUAM_PORT_MORESBY
+  id: UTCPLUS1000_GUAM_PORT_MORESBY
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS1000_GUAM_PORT_MORESBY
+  nameWithType: TimeZone.UTCPLUS1000_GUAM_PORT_MORESBY
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS1000_GUAM_PORT_MORESBY
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS1000_GUAM_PORT_MORESBY
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 179
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for GUAM and PORT MORESBY\n"
+  example: []
+  syntax:
+    content: UTCPLUS1000_GUAM_PORT_MORESBY = 43
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0930_DARWIN
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0930_DARWIN
+  id: UTCPLUS0930_DARWIN
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0930_DARWIN
+  nameWithType: TimeZone.UTCPLUS0930_DARWIN
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0930_DARWIN
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0930_DARWIN
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 183
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for DARWIN\n"
+  example: []
+  syntax:
+    content: UTCPLUS0930_DARWIN = 44
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0800_BEIJING_CHONGQING_HONG_KONG_SAR_URUMQI
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0800_BEIJING_CHONGQING_HONG_KONG_SAR_URUMQI
+  id: UTCPLUS0800_BEIJING_CHONGQING_HONG_KONG_SAR_URUMQI
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0800_BEIJING_CHONGQING_HONG_KONG_SAR_URUMQI
+  nameWithType: TimeZone.UTCPLUS0800_BEIJING_CHONGQING_HONG_KONG_SAR_URUMQI
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0800_BEIJING_CHONGQING_HONG_KONG_SAR_URUMQI
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0800_BEIJING_CHONGQING_HONG_KONG_SAR_URUMQI
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 187
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for BEIJING, CHONGQING, HONG KONG and SAR URUMQI\n"
+  example: []
+  syntax:
+    content: UTCPLUS0800_BEIJING_CHONGQING_HONG_KONG_SAR_URUMQI = 45
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0600_NOVOSIBIRSK
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0600_NOVOSIBIRSK
+  id: UTCPLUS0600_NOVOSIBIRSK
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0600_NOVOSIBIRSK
+  nameWithType: TimeZone.UTCPLUS0600_NOVOSIBIRSK
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0600_NOVOSIBIRSK
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0600_NOVOSIBIRSK
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 191
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for NOVOSIBIRSK\n"
+  example: []
+  syntax:
+    content: UTCPLUS0600_NOVOSIBIRSK = 46
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0500_TASHKENT
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0500_TASHKENT
+  id: UTCPLUS0500_TASHKENT
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0500_TASHKENT
+  nameWithType: TimeZone.UTCPLUS0500_TASHKENT
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0500_TASHKENT
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0500_TASHKENT
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 195
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for TASHKENT\n"
+  example: []
+  syntax:
+    content: UTCPLUS0500_TASHKENT = 47
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0430_KABUL
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0430_KABUL
+  id: UTCPLUS0430_KABUL
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0430_KABUL
+  nameWithType: TimeZone.UTCPLUS0430_KABUL
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0430_KABUL
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0430_KABUL
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 199
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for KABUL\n"
+  example: []
+  syntax:
+    content: UTCPLUS0430_KABUL = 48
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0200_CAIRO
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0200_CAIRO
+  id: UTCPLUS0200_CAIRO
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0200_CAIRO
+  nameWithType: TimeZone.UTCPLUS0200_CAIRO
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0200_CAIRO
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0200_CAIRO
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 203
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for CAIRO\n"
+  example: []
+  syntax:
+    content: UTCPLUS0200_CAIRO = 49
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0200_HARARE_PRETORIA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0200_HARARE_PRETORIA
+  id: UTCPLUS0200_HARARE_PRETORIA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0200_HARARE_PRETORIA
+  nameWithType: TimeZone.UTCPLUS0200_HARARE_PRETORIA
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0200_HARARE_PRETORIA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0200_HARARE_PRETORIA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 207
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for HARARE and PRETORIA\n"
+  example: []
+  syntax:
+    content: UTCPLUS0200_HARARE_PRETORIA = 50
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0300_MOSCOW_STPETERSBURG_VOLGOGRAD
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0300_MOSCOW_STPETERSBURG_VOLGOGRAD
+  id: UTCPLUS0300_MOSCOW_STPETERSBURG_VOLGOGRAD
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0300_MOSCOW_STPETERSBURG_VOLGOGRAD
+  nameWithType: TimeZone.UTCPLUS0300_MOSCOW_STPETERSBURG_VOLGOGRAD
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0300_MOSCOW_STPETERSBURG_VOLGOGRAD
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0300_MOSCOW_STPETERSBURG_VOLGOGRAD
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 211
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for MOSCOW, ST PETERSBURG and VOLGOGRAD\n"
+  example: []
+  syntax:
+    content: UTCPLUS0300_MOSCOW_STPETERSBURG_VOLGOGRAD = 51
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0100_CAPE_VERDE_ISLANDS
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0100_CAPE_VERDE_ISLANDS
+  id: UTCMINUS0100_CAPE_VERDE_ISLANDS
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0100_CAPE_VERDE_ISLANDS
+  nameWithType: TimeZone.UTCMINUS0100_CAPE_VERDE_ISLANDS
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0100_CAPE_VERDE_ISLANDS
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0100_CAPE_VERDE_ISLANDS
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 215
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for CAPE VERDE ISLANDS\n"
+  example: []
+  syntax:
+    content: UTCMINUS0100_CAPE_VERDE_ISLANDS = 53
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0400_BAKU
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0400_BAKU
+  id: UTCPLUS0400_BAKU
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0400_BAKU
+  nameWithType: TimeZone.UTCPLUS0400_BAKU
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0400_BAKU
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0400_BAKU
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 219
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for BAKU\n"
+  example: []
+  syntax:
+    content: UTCPLUS0400_BAKU = 54
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0600_CENTRAL_AMERICA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0600_CENTRAL_AMERICA
+  id: UTCMINUS0600_CENTRAL_AMERICA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0600_CENTRAL_AMERICA
+  nameWithType: TimeZone.UTCMINUS0600_CENTRAL_AMERICA
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0600_CENTRAL_AMERICA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0600_CENTRAL_AMERICA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 223
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for CENTRAL AMERICA\n"
+  example: []
+  syntax:
+    content: UTCMINUS0600_CENTRAL_AMERICA = 55
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0300_NAIROBI
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0300_NAIROBI
+  id: UTCPLUS0300_NAIROBI
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0300_NAIROBI
+  nameWithType: TimeZone.UTCPLUS0300_NAIROBI
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0300_NAIROBI
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0300_NAIROBI
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 227
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for NAIROBI\n"
+  example: []
+  syntax:
+    content: UTCPLUS0300_NAIROBI = 56
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0100_SARAJEVO_SKOPJE_WARSAW_ZAGREB
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0100_SARAJEVO_SKOPJE_WARSAW_ZAGREB
+  id: UTCPLUS0100_SARAJEVO_SKOPJE_WARSAW_ZAGREB
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0100_SARAJEVO_SKOPJE_WARSAW_ZAGREB
+  nameWithType: TimeZone.UTCPLUS0100_SARAJEVO_SKOPJE_WARSAW_ZAGREB
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0100_SARAJEVO_SKOPJE_WARSAW_ZAGREB
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0100_SARAJEVO_SKOPJE_WARSAW_ZAGREB
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 231
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for SARAJEVO, SKOPJE, WARSAW and ZAGREB\n"
+  example: []
+  syntax:
+    content: UTCPLUS0100_SARAJEVO_SKOPJE_WARSAW_ZAGREB = 57
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0500_EKATERINBURG
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0500_EKATERINBURG
+  id: UTCPLUS0500_EKATERINBURG
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0500_EKATERINBURG
+  nameWithType: TimeZone.UTCPLUS0500_EKATERINBURG
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0500_EKATERINBURG
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0500_EKATERINBURG
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 235
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for EKATERINBURG\n"
+  example: []
+  syntax:
+    content: UTCPLUS0500_EKATERINBURG = 58
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0200_HELSINKI_KYIV_RIGA_SOFIA_TALLINN_VILNIUS
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0200_HELSINKI_KYIV_RIGA_SOFIA_TALLINN_VILNIUS
+  id: UTCPLUS0200_HELSINKI_KYIV_RIGA_SOFIA_TALLINN_VILNIUS
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0200_HELSINKI_KYIV_RIGA_SOFIA_TALLINN_VILNIUS
+  nameWithType: TimeZone.UTCPLUS0200_HELSINKI_KYIV_RIGA_SOFIA_TALLINN_VILNIUS
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0200_HELSINKI_KYIV_RIGA_SOFIA_TALLINN_VILNIUS
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0200_HELSINKI_KYIV_RIGA_SOFIA_TALLINN_VILNIUS
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 239
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for HELSINKI, KYIV, RIGA, SOFIA, TALLINN and VILNIUS\n"
+  example: []
+  syntax:
+    content: UTCPLUS0200_HELSINKI_KYIV_RIGA_SOFIA_TALLINN_VILNIUS = 59
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0300_GREENLAND
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0300_GREENLAND
+  id: UTCMINUS0300_GREENLAND
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0300_GREENLAND
+  nameWithType: TimeZone.UTCMINUS0300_GREENLAND
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0300_GREENLAND
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0300_GREENLAND
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 243
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for GREENLAND\n"
+  example: []
+  syntax:
+    content: UTCMINUS0300_GREENLAND = 60
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0630_YANGON_RANGOON
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0630_YANGON_RANGOON
+  id: UTCPLUS0630_YANGON_RANGOON
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0630_YANGON_RANGOON
+  nameWithType: TimeZone.UTCPLUS0630_YANGON_RANGOON
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0630_YANGON_RANGOON
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0630_YANGON_RANGOON
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 247
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for YANGON and RANGOON\n"
+  example: []
+  syntax:
+    content: UTCPLUS0630_YANGON_RANGOON = 61
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0545_KATHMANDU
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0545_KATHMANDU
+  id: UTCPLUS0545_KATHMANDU
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0545_KATHMANDU
+  nameWithType: TimeZone.UTCPLUS0545_KATHMANDU
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0545_KATHMANDU
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0545_KATHMANDU
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 251
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for KATHMANDU\n"
+  example: []
+  syntax:
+    content: UTCPLUS0545_KATHMANDU = 62
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0800_IRKUTSK
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0800_IRKUTSK
+  id: UTCPLUS0800_IRKUTSK
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0800_IRKUTSK
+  nameWithType: TimeZone.UTCPLUS0800_IRKUTSK
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0800_IRKUTSK
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0800_IRKUTSK
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 255
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for IRKUTSK\n"
+  example: []
+  syntax:
+    content: UTCPLUS0800_IRKUTSK = 63
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0700_KRASNOYARSK
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0700_KRASNOYARSK
+  id: UTCPLUS0700_KRASNOYARSK
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0700_KRASNOYARSK
+  nameWithType: TimeZone.UTCPLUS0700_KRASNOYARSK
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0700_KRASNOYARSK
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0700_KRASNOYARSK
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 259
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for KRASNOYARSK\n"
+  example: []
+  syntax:
+    content: UTCPLUS0700_KRASNOYARSK = 64
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0400_SANTIAGO
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0400_SANTIAGO
+  id: UTCMINUS0400_SANTIAGO
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0400_SANTIAGO
+  nameWithType: TimeZone.UTCMINUS0400_SANTIAGO
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0400_SANTIAGO
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0400_SANTIAGO
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 263
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for SANTIAGO\n"
+  example: []
+  syntax:
+    content: UTCMINUS0400_SANTIAGO = 65
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0530_SRI_JAYAWARDENEPURA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0530_SRI_JAYAWARDENEPURA
+  id: UTCPLUS0530_SRI_JAYAWARDENEPURA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0530_SRI_JAYAWARDENEPURA
+  nameWithType: TimeZone.UTCPLUS0530_SRI_JAYAWARDENEPURA
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0530_SRI_JAYAWARDENEPURA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0530_SRI_JAYAWARDENEPURA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 267
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for SRI JAYAWARDENEPURA\n"
+  example: []
+  syntax:
+    content: UTCPLUS0530_SRI_JAYAWARDENEPURA = 66
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS1300_NUKU_ALOFA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS1300_NUKU_ALOFA
+  id: UTCPLUS1300_NUKU_ALOFA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS1300_NUKU_ALOFA
+  nameWithType: TimeZone.UTCPLUS1300_NUKU_ALOFA
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS1300_NUKU_ALOFA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS1300_NUKU_ALOFA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 271
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for NUKU and ALOFA\n"
+  example: []
+  syntax:
+    content: UTCPLUS1300_NUKU_ALOFA = 67
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS1000_VLADIVOSTOK
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS1000_VLADIVOSTOK
+  id: UTCPLUS1000_VLADIVOSTOK
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS1000_VLADIVOSTOK
+  nameWithType: TimeZone.UTCPLUS1000_VLADIVOSTOK
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS1000_VLADIVOSTOK
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS1000_VLADIVOSTOK
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 275
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for VLADIVOSTOK\n"
+  example: []
+  syntax:
+    content: UTCPLUS1000_VLADIVOSTOK = 68
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0100_WEST_CENTRAL_AFRICA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0100_WEST_CENTRAL_AFRICA
+  id: UTCPLUS0100_WEST_CENTRAL_AFRICA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0100_WEST_CENTRAL_AFRICA
+  nameWithType: TimeZone.UTCPLUS0100_WEST_CENTRAL_AFRICA
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0100_WEST_CENTRAL_AFRICA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0100_WEST_CENTRAL_AFRICA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 279
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for WEST CENTRAL AFRICA \n"
+  example: []
+  syntax:
+    content: UTCPLUS0100_WEST_CENTRAL_AFRICA = 69
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0900_YAKUTSK
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0900_YAKUTSK
+  id: UTCPLUS0900_YAKUTSK
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0900_YAKUTSK
+  nameWithType: TimeZone.UTCPLUS0900_YAKUTSK
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0900_YAKUTSK
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0900_YAKUTSK
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 283
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for YAKUTSK\n"
+  example: []
+  syntax:
+    content: UTCPLUS0900_YAKUTSK = 70
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0600_ASTANA_DHAKA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0600_ASTANA_DHAKA
+  id: UTCPLUS0600_ASTANA_DHAKA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0600_ASTANA_DHAKA
+  nameWithType: TimeZone.UTCPLUS0600_ASTANA_DHAKA
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0600_ASTANA_DHAKA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0600_ASTANA_DHAKA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 287
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for ASTANA and DHAKA\n"
+  example: []
+  syntax:
+    content: UTCPLUS0600_ASTANA_DHAKA = 71
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0900_SEOUL
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0900_SEOUL
+  id: UTCPLUS0900_SEOUL
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0900_SEOUL
+  nameWithType: TimeZone.UTCPLUS0900_SEOUL
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0900_SEOUL
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0900_SEOUL
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 291
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for SEOUL \n"
+  example: []
+  syntax:
+    content: UTCPLUS0900_SEOUL = 72
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0800_PERTH
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0800_PERTH
+  id: UTCPLUS0800_PERTH
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0800_PERTH
+  nameWithType: TimeZone.UTCPLUS0800_PERTH
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0800_PERTH
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0800_PERTH
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 295
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for PERTH\n"
+  example: []
+  syntax:
+    content: UTCPLUS0800_PERTH = 73
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0300_KUWAIT_RIYADH
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0300_KUWAIT_RIYADH
+  id: UTCPLUS0300_KUWAIT_RIYADH
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0300_KUWAIT_RIYADH
+  nameWithType: TimeZone.UTCPLUS0300_KUWAIT_RIYADH
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0300_KUWAIT_RIYADH
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0300_KUWAIT_RIYADH
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 299
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for KUWAIT and RIYADH\n"
+  example: []
+  syntax:
+    content: UTCPLUS0300_KUWAIT_RIYADH = 74
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0800_TAIPEI
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0800_TAIPEI
+  id: UTCPLUS0800_TAIPEI
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0800_TAIPEI
+  nameWithType: TimeZone.UTCPLUS0800_TAIPEI
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0800_TAIPEI
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0800_TAIPEI
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 303
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for TAIPEI\n"
+  example: []
+  syntax:
+    content: UTCPLUS0800_TAIPEI = 75
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS1000_CANBERRA_MELBOURNE_SYDNEY
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS1000_CANBERRA_MELBOURNE_SYDNEY
+  id: UTCPLUS1000_CANBERRA_MELBOURNE_SYDNEY
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS1000_CANBERRA_MELBOURNE_SYDNEY
+  nameWithType: TimeZone.UTCPLUS1000_CANBERRA_MELBOURNE_SYDNEY
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS1000_CANBERRA_MELBOURNE_SYDNEY
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS1000_CANBERRA_MELBOURNE_SYDNEY
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 307
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for CANBERRA, MELBOURNE and SYDNEY\n"
+  example: []
+  syntax:
+    content: UTCPLUS1000_CANBERRA_MELBOURNE_SYDNEY = 76
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0700_CHIHUAHUA_LA_PAZ_MAZATLAN
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0700_CHIHUAHUA_LA_PAZ_MAZATLAN
+  id: UTCMINUS0700_CHIHUAHUA_LA_PAZ_MAZATLAN
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0700_CHIHUAHUA_LA_PAZ_MAZATLAN
+  nameWithType: TimeZone.UTCMINUS0700_CHIHUAHUA_LA_PAZ_MAZATLAN
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0700_CHIHUAHUA_LA_PAZ_MAZATLAN
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0700_CHIHUAHUA_LA_PAZ_MAZATLAN
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 311
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for CHIHUAHUA and LA PAZ - MAZATLAN\n"
+  example: []
+  syntax:
+    content: UTCMINUS0700_CHIHUAHUA_LA_PAZ_MAZATLAN = 77
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0800_TIJUANA_BAJA_CALFORNIA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0800_TIJUANA_BAJA_CALFORNIA
+  id: UTCMINUS0800_TIJUANA_BAJA_CALFORNIA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0800_TIJUANA_BAJA_CALFORNIA
+  nameWithType: TimeZone.UTCMINUS0800_TIJUANA_BAJA_CALFORNIA
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0800_TIJUANA_BAJA_CALFORNIA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0800_TIJUANA_BAJA_CALFORNIA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 315
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for TIJUANA, BAJA and CALFORNIA\n"
+  example: []
+  syntax:
+    content: UTCMINUS0800_TIJUANA_BAJA_CALFORNIA = 78
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0200_AMMAN
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0200_AMMAN
+  id: UTCPLUS0200_AMMAN
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0200_AMMAN
+  nameWithType: TimeZone.UTCPLUS0200_AMMAN
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0200_AMMAN
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0200_AMMAN
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 319
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for AMMAN\n"
+  example: []
+  syntax:
+    content: UTCPLUS0200_AMMAN = 79
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0200_BEIRUT
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0200_BEIRUT
+  id: UTCPLUS0200_BEIRUT
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0200_BEIRUT
+  nameWithType: TimeZone.UTCPLUS0200_BEIRUT
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0200_BEIRUT
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0200_BEIRUT
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 323
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for BEIRUT\n"
+  example: []
+  syntax:
+    content: UTCPLUS0200_BEIRUT = 80
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0400_MANAUS
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0400_MANAUS
+  id: UTCMINUS0400_MANAUS
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0400_MANAUS
+  nameWithType: TimeZone.UTCMINUS0400_MANAUS
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0400_MANAUS
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0400_MANAUS
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 327
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for MANAUS\n"
+  example: []
+  syntax:
+    content: UTCMINUS0400_MANAUS = 81
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0400_TBILISI
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0400_TBILISI
+  id: UTCPLUS0400_TBILISI
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0400_TBILISI
+  nameWithType: TimeZone.UTCPLUS0400_TBILISI
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0400_TBILISI
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0400_TBILISI
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 331
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for TBILISI\n"
+  example: []
+  syntax:
+    content: UTCPLUS0400_TBILISI = 82
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0200_WINDHOEK
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0200_WINDHOEK
+  id: UTCPLUS0200_WINDHOEK
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0200_WINDHOEK
+  nameWithType: TimeZone.UTCPLUS0200_WINDHOEK
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0200_WINDHOEK
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0200_WINDHOEK
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 335
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for WINDHOEK\n"
+  example: []
+  syntax:
+    content: UTCPLUS0200_WINDHOEK = 83
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0400_YEREVAN
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0400_YEREVAN
+  id: UTCPLUS0400_YEREVAN
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0400_YEREVAN
+  nameWithType: TimeZone.UTCPLUS0400_YEREVAN
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0400_YEREVAN
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0400_YEREVAN
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 339
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for YEREVAN\n"
+  example: []
+  syntax:
+    content: UTCPLUS0400_YEREVAN = 84
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0300_BUENOS_AIRES
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0300_BUENOS_AIRES
+  id: UTCMINUS0300_BUENOS_AIRES
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0300_BUENOS_AIRES
+  nameWithType: TimeZone.UTCMINUS0300_BUENOS_AIRES
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0300_BUENOS_AIRES
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0300_BUENOS_AIRES
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 343
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for BUENOS AIRES\n"
+  example: []
+  syntax:
+    content: UTCMINUS0300_BUENOS_AIRES = 85
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTC_CASABLANCA
+  commentId: F:PnP.Framework.Enums.TimeZone.UTC_CASABLANCA
+  id: UTC_CASABLANCA
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTC_CASABLANCA
+  nameWithType: TimeZone.UTC_CASABLANCA
+  fullName: PnP.Framework.Enums.TimeZone.UTC_CASABLANCA
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTC_CASABLANCA
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 347
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for CASABLANCA\n"
+  example: []
+  syntax:
+    content: UTC_CASABLANCA = 86
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0500_ISLAMABAD_KARACHI
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0500_ISLAMABAD_KARACHI
+  id: UTCPLUS0500_ISLAMABAD_KARACHI
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0500_ISLAMABAD_KARACHI
+  nameWithType: TimeZone.UTCPLUS0500_ISLAMABAD_KARACHI
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0500_ISLAMABAD_KARACHI
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0500_ISLAMABAD_KARACHI
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 351
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for ISLAMABAD and KARACHI\n"
+  example: []
+  syntax:
+    content: UTCPLUS0500_ISLAMABAD_KARACHI = 87
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0430_CARACAS
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0430_CARACAS
+  id: UTCMINUS0430_CARACAS
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0430_CARACAS
+  nameWithType: TimeZone.UTCMINUS0430_CARACAS
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0430_CARACAS
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0430_CARACAS
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 355
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for CARACAS\n"
+  example: []
+  syntax:
+    content: UTCMINUS0430_CARACAS = 88
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS0400_PORT_LOUIS
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS0400_PORT_LOUIS
+  id: UTCPLUS0400_PORT_LOUIS
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS0400_PORT_LOUIS
+  nameWithType: TimeZone.UTCPLUS0400_PORT_LOUIS
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS0400_PORT_LOUIS
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS0400_PORT_LOUIS
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 359
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for PORT LOUIS\n"
+  example: []
+  syntax:
+    content: UTCPLUS0400_PORT_LOUIS = 89
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0300_MONTEVIDEO
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0300_MONTEVIDEO
+  id: UTCMINUS0300_MONTEVIDEO
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0300_MONTEVIDEO
+  nameWithType: TimeZone.UTCMINUS0300_MONTEVIDEO
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0300_MONTEVIDEO
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0300_MONTEVIDEO
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 363
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for MONTEVIDEO\n"
+  example: []
+  syntax:
+    content: UTCMINUS0300_MONTEVIDEO = 90
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0400_ASUNCION
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0400_ASUNCION
+  id: UTCMINUS0400_ASUNCION
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0400_ASUNCION
+  nameWithType: TimeZone.UTCMINUS0400_ASUNCION
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0400_ASUNCION
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0400_ASUNCION
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 367
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for ASUNCION\n"
+  example: []
+  syntax:
+    content: UTCMINUS0400_ASUNCION = 91
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCPLUS1200_PETROPAVLOVSK_KACHATSKY
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCPLUS1200_PETROPAVLOVSK_KACHATSKY
+  id: UTCPLUS1200_PETROPAVLOVSK_KACHATSKY
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCPLUS1200_PETROPAVLOVSK_KACHATSKY
+  nameWithType: TimeZone.UTCPLUS1200_PETROPAVLOVSK_KACHATSKY
+  fullName: PnP.Framework.Enums.TimeZone.UTCPLUS1200_PETROPAVLOVSK_KACHATSKY
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCPLUS1200_PETROPAVLOVSK_KACHATSKY
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 371
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for PETROPAVLOVSK and KACHATSKY\n"
+  example: []
+  syntax:
+    content: UTCPLUS1200_PETROPAVLOVSK_KACHATSKY = 92
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTC_COORDINATED_UNIVERSAL_TIME
+  commentId: F:PnP.Framework.Enums.TimeZone.UTC_COORDINATED_UNIVERSAL_TIME
+  id: UTC_COORDINATED_UNIVERSAL_TIME
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTC_COORDINATED_UNIVERSAL_TIME
+  nameWithType: TimeZone.UTC_COORDINATED_UNIVERSAL_TIME
+  fullName: PnP.Framework.Enums.TimeZone.UTC_COORDINATED_UNIVERSAL_TIME
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTC_COORDINATED_UNIVERSAL_TIME
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 375
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nCOORDINATED UNIVERSAL TIME\n"
+  example: []
+  syntax:
+    content: UTC_COORDINATED_UNIVERSAL_TIME = 93
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Enums.TimeZone.UTCMINUS0800_ULAANBAATAR
+  commentId: F:PnP.Framework.Enums.TimeZone.UTCMINUS0800_ULAANBAATAR
+  id: UTCMINUS0800_ULAANBAATAR
+  parent: PnP.Framework.Enums.TimeZone
+  langs:
+  - csharp
+  - vb
+  name: UTCMINUS0800_ULAANBAATAR
+  nameWithType: TimeZone.UTCMINUS0800_ULAANBAATAR
+  fullName: PnP.Framework.Enums.TimeZone.UTCMINUS0800_ULAANBAATAR
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Enums/TimeZone.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UTCMINUS0800_ULAANBAATAR
+    path: ../src/lib/PnP.Framework/Enums/TimeZone.cs
+    startLine: 379
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Enums
+  summary: "\nTimezone for ULAANBAATAR\n"
+  example: []
+  syntax:
+    content: UTCMINUS0800_ULAANBAATAR = 94
+    return:
+      type: PnP.Framework.Enums.TimeZone
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: PnP.Framework.Enums
+  commentId: N:PnP.Framework.Enums
+  name: PnP.Framework.Enums
+  nameWithType: PnP.Framework.Enums
+  fullName: PnP.Framework.Enums
+- uid: System.Enum.System.EnumerationExtensions.Include``1({T})
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  name: Include<T>(T)
+  nameWithType: EnumerationExtensions.Include<T>(T)
+  fullName: System.EnumerationExtensions.Include<T>(T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(T)
+  name.vb: Include(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Remove``1({T})
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  name: Remove<T>(T)
+  nameWithType: EnumerationExtensions.Remove<T>(T)
+  fullName: System.EnumerationExtensions.Remove<T>(T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(T)
+  name.vb: Remove(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Has``1({T})
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  name: Has<T>(T)
+  nameWithType: EnumerationExtensions.Has<T>(T)
+  fullName: System.EnumerationExtensions.Has<T>(T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(T)
+  name.vb: Has(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Missing``1({T})
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  name: Missing<T>(T)
+  nameWithType: EnumerationExtensions.Missing<T>(T)
+  fullName: System.EnumerationExtensions.Missing<T>(T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(T)
+  name.vb: Missing(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Enums.TimeZone.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<TimeZone>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<TimeZone>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Enums.TimeZone>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of TimeZone)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Enums.TimeZone)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of TimeZone)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<TimeZone>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<TimeZone>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Enums.TimeZone>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of TimeZone)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of TimeZone)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Enums.TimeZone)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Enums.TimeZone.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Enums.TimeZone,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<TimeZone, T>(Expression<Func<TimeZone, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TimeZone, T>(Expression<Func<TimeZone, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Enums.TimeZone, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Enums.TimeZone, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TimeZone, T)(Expression(Of Func(Of TimeZone, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Enums.TimeZone, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Enums.TimeZone, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TimeZone, T)(Expression(Of Func(Of TimeZone, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TimeZone, T>
+    nameWithType: ObjectExtensions.Set<TimeZone, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Enums.TimeZone, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Enums.TimeZone
+    name: TimeZone
+    nameWithType: TimeZone
+    fullName: PnP.Framework.Enums.TimeZone
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TimeZone, T)
+    nameWithType: ObjectExtensions.Set(Of TimeZone, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Enums.TimeZone, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Enums.TimeZone
+    name: TimeZone
+    nameWithType: TimeZone
+    fullName: PnP.Framework.Enums.TimeZone
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  isExternal: true
+  name: Include<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Include<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Include<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(System.Enum, T)
+  name.vb: Include(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions
+  commentId: T:System.EnumerationExtensions
+  parent: System
+  name: EnumerationExtensions
+  nameWithType: EnumerationExtensions
+  fullName: System.EnumerationExtensions
+- uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  isExternal: true
+  name: Remove<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Remove<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Remove<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(System.Enum, T)
+  name.vb: Remove(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  isExternal: true
+  name: Has<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Has<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Has<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(System.Enum, T)
+  name.vb: Has(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  isExternal: true
+  name: Missing<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Missing<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Missing<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(System.Enum, T)
+  name.vb: Missing(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Enums.TimeZone
+  commentId: T:PnP.Framework.Enums.TimeZone
+  parent: PnP.Framework.Enums
+  name: TimeZone
+  nameWithType: TimeZone
+  fullName: PnP.Framework.Enums.TimeZone

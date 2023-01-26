@@ -1,0 +1,467 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.ObjectHandlers.WebhookSender
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.WebhookSender
+  id: WebhookSender
+  parent: PnP.Framework.Provisioning.ObjectHandlers
+  children:
+  - PnP.Framework.Provisioning.ObjectHandlers.WebhookSender.InvokeWebhook(PnP.Framework.Provisioning.Model.ProvisioningWebhookBase,System.Net.Http.HttpClient,PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookKind,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,System.String,System.Exception,PnP.Framework.Diagnostics.PnPMonitoredScope)
+  langs:
+  - csharp
+  - vb
+  name: WebhookSender
+  nameWithType: WebhookSender
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.WebhookSender
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/WebhookSender.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebhookSender
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/WebhookSender.cs
+    startLine: 17
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nStatic class that provides basic functionalities to deliver webhook notifications\n"
+  example: []
+  syntax:
+    content: public static class WebhookSender
+    content.vb: Public Module WebhookSender
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Provisioning.ObjectHandlers.WebhookSender.InvokeWebhook(PnP.Framework.Provisioning.Model.ProvisioningWebhookBase,System.Net.Http.HttpClient,PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookKind,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,System.String,System.Exception,PnP.Framework.Diagnostics.PnPMonitoredScope)
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.WebhookSender.InvokeWebhook(PnP.Framework.Provisioning.Model.ProvisioningWebhookBase,System.Net.Http.HttpClient,PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookKind,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,System.String,System.Exception,PnP.Framework.Diagnostics.PnPMonitoredScope)
+  id: InvokeWebhook(PnP.Framework.Provisioning.Model.ProvisioningWebhookBase,System.Net.Http.HttpClient,PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookKind,PnP.Framework.Provisioning.ObjectHandlers.TokenParser,System.String,System.Exception,PnP.Framework.Diagnostics.PnPMonitoredScope)
+  parent: PnP.Framework.Provisioning.ObjectHandlers.WebhookSender
+  langs:
+  - csharp
+  - vb
+  name: InvokeWebhook(ProvisioningWebhookBase, HttpClient, ProvisioningTemplateWebhookKind, TokenParser, String, Exception, PnPMonitoredScope)
+  nameWithType: WebhookSender.InvokeWebhook(ProvisioningWebhookBase, HttpClient, ProvisioningTemplateWebhookKind, TokenParser, String, Exception, PnPMonitoredScope)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.WebhookSender.InvokeWebhook(PnP.Framework.Provisioning.Model.ProvisioningWebhookBase, System.Net.Http.HttpClient, PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookKind, PnP.Framework.Provisioning.ObjectHandlers.TokenParser, System.String, System.Exception, PnP.Framework.Diagnostics.PnPMonitoredScope)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/WebhookSender.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: InvokeWebhook
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/WebhookSender.cs
+    startLine: 29
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nPublic method to send a Webhook notification\n"
+  example: []
+  syntax:
+    content: public static void InvokeWebhook(ProvisioningWebhookBase webhook, HttpClient httpClient, ProvisioningTemplateWebhookKind kind, TokenParser parser = null, string objectHandler = null, Exception exception = null, PnPMonitoredScope scope = null)
+    parameters:
+    - id: webhook
+      type: PnP.Framework.Provisioning.Model.ProvisioningWebhookBase
+      description: The reference webhook to notify
+    - id: httpClient
+      type: System.Net.Http.HttpClient
+      description: The HttpClient instance to use to send the notification
+    - id: kind
+      type: PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookKind
+      description: The Kind of webhook
+    - id: parser
+      type: PnP.Framework.Provisioning.ObjectHandlers.TokenParser
+      description: The parser to use for parsing parameters, optional
+    - id: objectHandler
+      type: System.String
+      description: The objectHandler name, optional
+    - id: exception
+      type: System.Exception
+      description: The exception, optional
+    - id: scope
+      type: PnP.Framework.Diagnostics.PnPMonitoredScope
+      description: The PnP Provisioning Scope, if any, optional
+    content.vb: Public Shared Sub InvokeWebhook(webhook As ProvisioningWebhookBase, httpClient As HttpClient, kind As ProvisioningTemplateWebhookKind, parser As TokenParser = Nothing, objectHandler As String = Nothing, exception As Exception = Nothing, scope As PnPMonitoredScope = Nothing)
+  overload: PnP.Framework.Provisioning.ObjectHandlers.WebhookSender.InvokeWebhook*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Provisioning.ObjectHandlers
+  commentId: N:PnP.Framework.Provisioning.ObjectHandlers
+  name: PnP.Framework.Provisioning.ObjectHandlers
+  nameWithType: PnP.Framework.Provisioning.ObjectHandlers
+  fullName: PnP.Framework.Provisioning.ObjectHandlers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Provisioning.ObjectHandlers.WebhookSender.InvokeWebhook*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.WebhookSender.InvokeWebhook
+  name: InvokeWebhook
+  nameWithType: WebhookSender.InvokeWebhook
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.WebhookSender.InvokeWebhook
+- uid: PnP.Framework.Provisioning.Model.ProvisioningWebhookBase
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningWebhookBase
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningWebhookBase
+  nameWithType: ProvisioningWebhookBase
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningWebhookBase
+- uid: System.Net.Http.HttpClient
+  commentId: T:System.Net.Http.HttpClient
+  parent: System.Net.Http
+  isExternal: true
+  name: HttpClient
+  nameWithType: HttpClient
+  fullName: System.Net.Http.HttpClient
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookKind
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookKind
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningTemplateWebhookKind
+  nameWithType: ProvisioningTemplateWebhookKind
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplateWebhookKind
+- uid: PnP.Framework.Provisioning.ObjectHandlers.TokenParser
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.TokenParser
+  parent: PnP.Framework.Provisioning.ObjectHandlers
+  name: TokenParser
+  nameWithType: TokenParser
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.TokenParser
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: PnP.Framework.Diagnostics.PnPMonitoredScope
+  commentId: T:PnP.Framework.Diagnostics.PnPMonitoredScope
+  parent: PnP.Framework.Diagnostics
+  name: PnPMonitoredScope
+  nameWithType: PnPMonitoredScope
+  fullName: PnP.Framework.Diagnostics.PnPMonitoredScope
+- uid: PnP.Framework.Provisioning.Model
+  commentId: N:PnP.Framework.Provisioning.Model
+  name: PnP.Framework.Provisioning.Model
+  nameWithType: PnP.Framework.Provisioning.Model
+  fullName: PnP.Framework.Provisioning.Model
+- uid: System.Net.Http
+  commentId: N:System.Net.Http
+  isExternal: true
+  name: System.Net.Http
+  nameWithType: System.Net.Http
+  fullName: System.Net.Http
+- uid: PnP.Framework.Diagnostics
+  commentId: N:PnP.Framework.Diagnostics
+  name: PnP.Framework.Diagnostics
+  nameWithType: PnP.Framework.Diagnostics
+  fullName: PnP.Framework.Diagnostics

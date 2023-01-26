@@ -1,5 +1,6 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
+using PnP.Core.Services;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
@@ -476,6 +477,45 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             else
                             {
                                 web.SiteLogoUrl = logoUrl;
+                            }
+                        }
+                    }
+                    if (webSettings.SiteLogoThumbnail != null)
+                    {
+                        // SiteLogoThumbnail handling via PnP Core SDK
+                        // https://pnp.github.io/pnpcore/using-the-sdk/branding-intro.html#set-and-reset-the-site-logo-and-site-logo-thumbnail
+
+                        // Try to get the logo thumbnail
+                        var logoThumbnailUrl = parser.ParseString(webSettings.SiteLogoThumbnail);
+
+                        // And try to get the logo thumbnail filename
+                        var logoThumbnailFilename = logoThumbnailUrl.IndexOf('/') > 0 ?
+                            logoThumbnailUrl.Substring(logoThumbnailUrl.LastIndexOf('/') + 1) :
+                            (logoThumbnailUrl.IndexOf('\\') > 0 ?
+                            logoThumbnailUrl.Substring(logoThumbnailUrl.LastIndexOf('\\') + 1) :
+                            "logo-thumbnail.jpg"); // __siteIcon__
+
+                        var fileBytes = ConnectorFileHelper.GetFileBytes(template.Connector, logoThumbnailUrl);
+                        if (fileBytes != null && fileBytes.Length > 0)
+                        {
+                            // Get the file stream
+                            using (var fileStream = new MemoryStream())
+                            {
+                                fileStream.Write(fileBytes, 0, fileBytes.Length);
+                                fileStream.Position = 0;
+
+                                // Move to the PnP Core SDK context
+                                using (var pnpCoreContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
+                                {
+                                    // Get the Chrome options
+                                    var chrome = pnpCoreContext.Web.GetBrandingManager().GetChromeOptions();
+
+                                    // And configure the new site logo thumbnail
+                                    chrome.Header.SetSiteLogoThumbnail(logoThumbnailFilename, fileStream, true);
+                                    chrome.Header.HideTitle = !template.Header.ShowSiteTitle || String.IsNullOrEmpty(webSettings.Title);
+
+                                    pnpCoreContext.Web.GetBrandingManager().SetChromeOptions(chrome);
+                                }
                             }
                         }
                     }

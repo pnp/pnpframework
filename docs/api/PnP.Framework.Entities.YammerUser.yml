@@ -1,0 +1,3038 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Entities.YammerUser
+  commentId: T:PnP.Framework.Entities.YammerUser
+  id: YammerUser
+  parent: PnP.Framework.Entities
+  children:
+  - PnP.Framework.Entities.YammerUser.activated_at
+  - PnP.Framework.Entities.YammerUser.admin
+  - PnP.Framework.Entities.YammerUser.birth_date
+  - PnP.Framework.Entities.YammerUser.can_broadcast
+  - PnP.Framework.Entities.YammerUser.contact
+  - PnP.Framework.Entities.YammerUser.department
+  - PnP.Framework.Entities.YammerUser.expertise
+  - PnP.Framework.Entities.YammerUser.external_urls
+  - PnP.Framework.Entities.YammerUser.first_name
+  - PnP.Framework.Entities.YammerUser.follow_general_messages
+  - PnP.Framework.Entities.YammerUser.full_name
+  - PnP.Framework.Entities.YammerUser.guid
+  - PnP.Framework.Entities.YammerUser.hire_date
+  - PnP.Framework.Entities.YammerUser.id
+  - PnP.Framework.Entities.YammerUser.interests
+  - PnP.Framework.Entities.YammerUser.job_title
+  - PnP.Framework.Entities.YammerUser.kids_names
+  - PnP.Framework.Entities.YammerUser.last_name
+  - PnP.Framework.Entities.YammerUser.location
+  - PnP.Framework.Entities.YammerUser.mugshot_url
+  - PnP.Framework.Entities.YammerUser.mugshot_url_template
+  - PnP.Framework.Entities.YammerUser.name
+  - PnP.Framework.Entities.YammerUser.network_domains
+  - PnP.Framework.Entities.YammerUser.network_id
+  - PnP.Framework.Entities.YammerUser.network_name
+  - PnP.Framework.Entities.YammerUser.previous_companies
+  - PnP.Framework.Entities.YammerUser.schools
+  - PnP.Framework.Entities.YammerUser.settings
+  - PnP.Framework.Entities.YammerUser.show_ask_for_photo
+  - PnP.Framework.Entities.YammerUser.significant_other
+  - PnP.Framework.Entities.YammerUser.state
+  - PnP.Framework.Entities.YammerUser.stats
+  - PnP.Framework.Entities.YammerUser.summary
+  - PnP.Framework.Entities.YammerUser.timezone
+  - PnP.Framework.Entities.YammerUser.type
+  - PnP.Framework.Entities.YammerUser.url
+  - PnP.Framework.Entities.YammerUser.verified_admin
+  - PnP.Framework.Entities.YammerUser.web_oauth_access_token
+  - PnP.Framework.Entities.YammerUser.web_preferences
+  - PnP.Framework.Entities.YammerUser.web_url
+  langs:
+  - csharp
+  - vb
+  name: YammerUser
+  nameWithType: YammerUser
+  fullName: PnP.Framework.Entities.YammerUser
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: YammerUser
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents YammerUser\nGenerated based on Yammer response on 30th of June 2014 and using http://json2csharp.com/ service \n"
+  example: []
+  syntax:
+    content: public class YammerUser
+    content.vb: Public Class YammerUser
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Entities.YammerUser.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Entities.YammerUser.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Entities.YammerUser,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Entities.YammerUser.type
+  commentId: P:PnP.Framework.Entities.YammerUser.type
+  id: type
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: type
+  nameWithType: YammerUser.type
+  fullName: PnP.Framework.Entities.YammerUser.type
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: type
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user type\n"
+  example: []
+  syntax:
+    content: public string type { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property type As String
+  overload: PnP.Framework.Entities.YammerUser.type*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.id
+  commentId: P:PnP.Framework.Entities.YammerUser.id
+  id: id
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: id
+  nameWithType: YammerUser.id
+  fullName: PnP.Framework.Entities.YammerUser.id
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: id
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 19
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user id\n"
+  example: []
+  syntax:
+    content: public int id { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property id As Integer
+  overload: PnP.Framework.Entities.YammerUser.id*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.network_id
+  commentId: P:PnP.Framework.Entities.YammerUser.network_id
+  id: network_id
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: network_id
+  nameWithType: YammerUser.network_id
+  fullName: PnP.Framework.Entities.YammerUser.network_id
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: network_id
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user network id\n"
+  example: []
+  syntax:
+    content: public int network_id { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property network_id As Integer
+  overload: PnP.Framework.Entities.YammerUser.network_id*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.state
+  commentId: P:PnP.Framework.Entities.YammerUser.state
+  id: state
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: state
+  nameWithType: YammerUser.state
+  fullName: PnP.Framework.Entities.YammerUser.state
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: state
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 27
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user state\n"
+  example: []
+  syntax:
+    content: public string state { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property state As String
+  overload: PnP.Framework.Entities.YammerUser.state*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.guid
+  commentId: P:PnP.Framework.Entities.YammerUser.guid
+  id: guid
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: guid
+  nameWithType: YammerUser.guid
+  fullName: PnP.Framework.Entities.YammerUser.guid
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: guid
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 32
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user Guid\n"
+  example: []
+  syntax:
+    content: public object guid { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property guid As Object
+  overload: PnP.Framework.Entities.YammerUser.guid*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.job_title
+  commentId: P:PnP.Framework.Entities.YammerUser.job_title
+  id: job_title
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: job_title
+  nameWithType: YammerUser.job_title
+  fullName: PnP.Framework.Entities.YammerUser.job_title
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: job_title
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 37
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user job title\n"
+  example: []
+  syntax:
+    content: public string job_title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property job_title As String
+  overload: PnP.Framework.Entities.YammerUser.job_title*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.location
+  commentId: P:PnP.Framework.Entities.YammerUser.location
+  id: location
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: location
+  nameWithType: YammerUser.location
+  fullName: PnP.Framework.Entities.YammerUser.location
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: location
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 41
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user location\n"
+  example: []
+  syntax:
+    content: public object location { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property location As Object
+  overload: PnP.Framework.Entities.YammerUser.location*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.significant_other
+  commentId: P:PnP.Framework.Entities.YammerUser.significant_other
+  id: significant_other
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: significant_other
+  nameWithType: YammerUser.significant_other
+  fullName: PnP.Framework.Entities.YammerUser.significant_other
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: significant_other
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 45
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user other significant\n"
+  example: []
+  syntax:
+    content: public object significant_other { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property significant_other As Object
+  overload: PnP.Framework.Entities.YammerUser.significant_other*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.kids_names
+  commentId: P:PnP.Framework.Entities.YammerUser.kids_names
+  id: kids_names
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: kids_names
+  nameWithType: YammerUser.kids_names
+  fullName: PnP.Framework.Entities.YammerUser.kids_names
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: kids_names
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 49
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user kids names\n"
+  example: []
+  syntax:
+    content: public object kids_names { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property kids_names As Object
+  overload: PnP.Framework.Entities.YammerUser.kids_names*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.interests
+  commentId: P:PnP.Framework.Entities.YammerUser.interests
+  id: interests
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: interests
+  nameWithType: YammerUser.interests
+  fullName: PnP.Framework.Entities.YammerUser.interests
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: interests
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 53
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user interests\n"
+  example: []
+  syntax:
+    content: public object interests { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property interests As Object
+  overload: PnP.Framework.Entities.YammerUser.interests*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.summary
+  commentId: P:PnP.Framework.Entities.YammerUser.summary
+  id: summary
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: summary
+  nameWithType: YammerUser.summary
+  fullName: PnP.Framework.Entities.YammerUser.summary
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: summary
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 57
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user summary\n"
+  example: []
+  syntax:
+    content: public object summary { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property summary As Object
+  overload: PnP.Framework.Entities.YammerUser.summary*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.expertise
+  commentId: P:PnP.Framework.Entities.YammerUser.expertise
+  id: expertise
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: expertise
+  nameWithType: YammerUser.expertise
+  fullName: PnP.Framework.Entities.YammerUser.expertise
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: expertise
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 61
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user expertise\n"
+  example: []
+  syntax:
+    content: public object expertise { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property expertise As Object
+  overload: PnP.Framework.Entities.YammerUser.expertise*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.full_name
+  commentId: P:PnP.Framework.Entities.YammerUser.full_name
+  id: full_name
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: full_name
+  nameWithType: YammerUser.full_name
+  fullName: PnP.Framework.Entities.YammerUser.full_name
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: full_name
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 65
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user full name\n"
+  example: []
+  syntax:
+    content: public string full_name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property full_name As String
+  overload: PnP.Framework.Entities.YammerUser.full_name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.activated_at
+  commentId: P:PnP.Framework.Entities.YammerUser.activated_at
+  id: activated_at
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: activated_at
+  nameWithType: YammerUser.activated_at
+  fullName: PnP.Framework.Entities.YammerUser.activated_at
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: activated_at
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 69
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user activated information\n"
+  example: []
+  syntax:
+    content: public string activated_at { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property activated_at As String
+  overload: PnP.Framework.Entities.YammerUser.activated_at*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.show_ask_for_photo
+  commentId: P:PnP.Framework.Entities.YammerUser.show_ask_for_photo
+  id: show_ask_for_photo
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: show_ask_for_photo
+  nameWithType: YammerUser.show_ask_for_photo
+  fullName: PnP.Framework.Entities.YammerUser.show_ask_for_photo
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: show_ask_for_photo
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 73
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user preferred show ask for photo option or not\n"
+  example: []
+  syntax:
+    content: public bool show_ask_for_photo { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property show_ask_for_photo As Boolean
+  overload: PnP.Framework.Entities.YammerUser.show_ask_for_photo*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.first_name
+  commentId: P:PnP.Framework.Entities.YammerUser.first_name
+  id: first_name
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: first_name
+  nameWithType: YammerUser.first_name
+  fullName: PnP.Framework.Entities.YammerUser.first_name
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: first_name
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 77
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user first name\n"
+  example: []
+  syntax:
+    content: public string first_name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property first_name As String
+  overload: PnP.Framework.Entities.YammerUser.first_name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.last_name
+  commentId: P:PnP.Framework.Entities.YammerUser.last_name
+  id: last_name
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: last_name
+  nameWithType: YammerUser.last_name
+  fullName: PnP.Framework.Entities.YammerUser.last_name
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: last_name
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 81
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user last name\n"
+  example: []
+  syntax:
+    content: public string last_name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property last_name As String
+  overload: PnP.Framework.Entities.YammerUser.last_name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.network_name
+  commentId: P:PnP.Framework.Entities.YammerUser.network_name
+  id: network_name
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: network_name
+  nameWithType: YammerUser.network_name
+  fullName: PnP.Framework.Entities.YammerUser.network_name
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: network_name
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 85
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user network name\n"
+  example: []
+  syntax:
+    content: public string network_name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property network_name As String
+  overload: PnP.Framework.Entities.YammerUser.network_name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.network_domains
+  commentId: P:PnP.Framework.Entities.YammerUser.network_domains
+  id: network_domains
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: network_domains
+  nameWithType: YammerUser.network_domains
+  fullName: PnP.Framework.Entities.YammerUser.network_domains
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: network_domains
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 89
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user list of network domains\n"
+  example: []
+  syntax:
+    content: public IList<string> network_domains { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IList{System.String}
+    content.vb: Public Property network_domains As IList(Of String)
+  overload: PnP.Framework.Entities.YammerUser.network_domains*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.url
+  commentId: P:PnP.Framework.Entities.YammerUser.url
+  id: url
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: url
+  nameWithType: YammerUser.url
+  fullName: PnP.Framework.Entities.YammerUser.url
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: url
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 94
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user url\n"
+  example: []
+  syntax:
+    content: public string url { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property url As String
+  overload: PnP.Framework.Entities.YammerUser.url*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.web_url
+  commentId: P:PnP.Framework.Entities.YammerUser.web_url
+  id: web_url
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: web_url
+  nameWithType: YammerUser.web_url
+  fullName: PnP.Framework.Entities.YammerUser.web_url
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: web_url
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 98
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user web url\n"
+  example: []
+  syntax:
+    content: public string web_url { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property web_url As String
+  overload: PnP.Framework.Entities.YammerUser.web_url*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.name
+  commentId: P:PnP.Framework.Entities.YammerUser.name
+  id: name
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: name
+  nameWithType: YammerUser.name
+  fullName: PnP.Framework.Entities.YammerUser.name
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: name
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 102
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user name\n"
+  example: []
+  syntax:
+    content: public string name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property name As String
+  overload: PnP.Framework.Entities.YammerUser.name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.mugshot_url
+  commentId: P:PnP.Framework.Entities.YammerUser.mugshot_url
+  id: mugshot_url
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: mugshot_url
+  nameWithType: YammerUser.mugshot_url
+  fullName: PnP.Framework.Entities.YammerUser.mugshot_url
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: mugshot_url
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 106
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user mugshot url\n"
+  example: []
+  syntax:
+    content: public string mugshot_url { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property mugshot_url As String
+  overload: PnP.Framework.Entities.YammerUser.mugshot_url*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.mugshot_url_template
+  commentId: P:PnP.Framework.Entities.YammerUser.mugshot_url_template
+  id: mugshot_url_template
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: mugshot_url_template
+  nameWithType: YammerUser.mugshot_url_template
+  fullName: PnP.Framework.Entities.YammerUser.mugshot_url_template
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: mugshot_url_template
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 110
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user mugshot url template\n"
+  example: []
+  syntax:
+    content: public string mugshot_url_template { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property mugshot_url_template As String
+  overload: PnP.Framework.Entities.YammerUser.mugshot_url_template*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.hire_date
+  commentId: P:PnP.Framework.Entities.YammerUser.hire_date
+  id: hire_date
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: hire_date
+  nameWithType: YammerUser.hire_date
+  fullName: PnP.Framework.Entities.YammerUser.hire_date
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: hire_date
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 114
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user hire date\n"
+  example: []
+  syntax:
+    content: public object hire_date { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property hire_date As Object
+  overload: PnP.Framework.Entities.YammerUser.hire_date*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.birth_date
+  commentId: P:PnP.Framework.Entities.YammerUser.birth_date
+  id: birth_date
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: birth_date
+  nameWithType: YammerUser.birth_date
+  fullName: PnP.Framework.Entities.YammerUser.birth_date
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: birth_date
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 118
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user birth date\n"
+  example: []
+  syntax:
+    content: public string birth_date { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property birth_date As String
+  overload: PnP.Framework.Entities.YammerUser.birth_date*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.timezone
+  commentId: P:PnP.Framework.Entities.YammerUser.timezone
+  id: timezone
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: timezone
+  nameWithType: YammerUser.timezone
+  fullName: PnP.Framework.Entities.YammerUser.timezone
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: timezone
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 122
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user time zone\n"
+  example: []
+  syntax:
+    content: public string timezone { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property timezone As String
+  overload: PnP.Framework.Entities.YammerUser.timezone*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.external_urls
+  commentId: P:PnP.Framework.Entities.YammerUser.external_urls
+  id: external_urls
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: external_urls
+  nameWithType: YammerUser.external_urls
+  fullName: PnP.Framework.Entities.YammerUser.external_urls
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: external_urls
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 126
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user list of external urls\n"
+  example: []
+  syntax:
+    content: public IList<object> external_urls { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IList{System.Object}
+    content.vb: Public Property external_urls As IList(Of Object)
+  overload: PnP.Framework.Entities.YammerUser.external_urls*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.admin
+  commentId: P:PnP.Framework.Entities.YammerUser.admin
+  id: admin
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: admin
+  nameWithType: YammerUser.admin
+  fullName: PnP.Framework.Entities.YammerUser.admin
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: admin
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 131
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user admin\n"
+  example: []
+  syntax:
+    content: public string admin { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property admin As String
+  overload: PnP.Framework.Entities.YammerUser.admin*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.verified_admin
+  commentId: P:PnP.Framework.Entities.YammerUser.verified_admin
+  id: verified_admin
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: verified_admin
+  nameWithType: YammerUser.verified_admin
+  fullName: PnP.Framework.Entities.YammerUser.verified_admin
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: verified_admin
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 135
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user verified admin\n"
+  example: []
+  syntax:
+    content: public string verified_admin { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property verified_admin As String
+  overload: PnP.Framework.Entities.YammerUser.verified_admin*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.can_broadcast
+  commentId: P:PnP.Framework.Entities.YammerUser.can_broadcast
+  id: can_broadcast
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: can_broadcast
+  nameWithType: YammerUser.can_broadcast
+  fullName: PnP.Framework.Entities.YammerUser.can_broadcast
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: can_broadcast
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 139
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user broadcast details\n"
+  example: []
+  syntax:
+    content: public string can_broadcast { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property can_broadcast As String
+  overload: PnP.Framework.Entities.YammerUser.can_broadcast*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.department
+  commentId: P:PnP.Framework.Entities.YammerUser.department
+  id: department
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: department
+  nameWithType: YammerUser.department
+  fullName: PnP.Framework.Entities.YammerUser.department
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: department
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 143
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user department\n"
+  example: []
+  syntax:
+    content: public string department { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property department As String
+  overload: PnP.Framework.Entities.YammerUser.department*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.previous_companies
+  commentId: P:PnP.Framework.Entities.YammerUser.previous_companies
+  id: previous_companies
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: previous_companies
+  nameWithType: YammerUser.previous_companies
+  fullName: PnP.Framework.Entities.YammerUser.previous_companies
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: previous_companies
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 147
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user list of previous companies\n"
+  example: []
+  syntax:
+    content: public IList<object> previous_companies { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IList{System.Object}
+    content.vb: Public Property previous_companies As IList(Of Object)
+  overload: PnP.Framework.Entities.YammerUser.previous_companies*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.schools
+  commentId: P:PnP.Framework.Entities.YammerUser.schools
+  id: schools
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: schools
+  nameWithType: YammerUser.schools
+  fullName: PnP.Framework.Entities.YammerUser.schools
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: schools
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 152
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user list of schools\n"
+  example: []
+  syntax:
+    content: public IList<object> schools { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IList{System.Object}
+    content.vb: Public Property schools As IList(Of Object)
+  overload: PnP.Framework.Entities.YammerUser.schools*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.contact
+  commentId: P:PnP.Framework.Entities.YammerUser.contact
+  id: contact
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: contact
+  nameWithType: YammerUser.contact
+  fullName: PnP.Framework.Entities.YammerUser.contact
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: contact
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 157
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user contact details\n"
+  example: []
+  syntax:
+    content: public YammerUserContact contact { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Entities.YammerUserContact
+    content.vb: Public Property contact As YammerUserContact
+  overload: PnP.Framework.Entities.YammerUser.contact*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.stats
+  commentId: P:PnP.Framework.Entities.YammerUser.stats
+  id: stats
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: stats
+  nameWithType: YammerUser.stats
+  fullName: PnP.Framework.Entities.YammerUser.stats
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: stats
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 161
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user statistics information\n"
+  example: []
+  syntax:
+    content: public YammerUserStats stats { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Entities.YammerUserStats
+    content.vb: Public Property stats As YammerUserStats
+  overload: PnP.Framework.Entities.YammerUser.stats*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.settings
+  commentId: P:PnP.Framework.Entities.YammerUser.settings
+  id: settings
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: settings
+  nameWithType: YammerUser.settings
+  fullName: PnP.Framework.Entities.YammerUser.settings
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: settings
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 165
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user settings information\n"
+  example: []
+  syntax:
+    content: public YammerUserSettings settings { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Entities.YammerUserSettings
+    content.vb: Public Property settings As YammerUserSettings
+  overload: PnP.Framework.Entities.YammerUser.settings*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.web_preferences
+  commentId: P:PnP.Framework.Entities.YammerUser.web_preferences
+  id: web_preferences
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: web_preferences
+  nameWithType: YammerUser.web_preferences
+  fullName: PnP.Framework.Entities.YammerUser.web_preferences
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: web_preferences
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 169
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user web preference information\n"
+  example: []
+  syntax:
+    content: public YammerUserWebPreferences web_preferences { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Entities.YammerUserWebPreferences
+    content.vb: Public Property web_preferences As YammerUserWebPreferences
+  overload: PnP.Framework.Entities.YammerUser.web_preferences*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.follow_general_messages
+  commentId: P:PnP.Framework.Entities.YammerUser.follow_general_messages
+  id: follow_general_messages
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: follow_general_messages
+  nameWithType: YammerUser.follow_general_messages
+  fullName: PnP.Framework.Entities.YammerUser.follow_general_messages
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: follow_general_messages
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 173
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user follows general messages or not \n"
+  example: []
+  syntax:
+    content: public bool follow_general_messages { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property follow_general_messages As Boolean
+  overload: PnP.Framework.Entities.YammerUser.follow_general_messages*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Entities.YammerUser.web_oauth_access_token
+  commentId: P:PnP.Framework.Entities.YammerUser.web_oauth_access_token
+  id: web_oauth_access_token
+  parent: PnP.Framework.Entities.YammerUser
+  langs:
+  - csharp
+  - vb
+  name: web_oauth_access_token
+  nameWithType: YammerUser.web_oauth_access_token
+  fullName: PnP.Framework.Entities.YammerUser.web_oauth_access_token
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Entities/YammerUser.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: web_oauth_access_token
+    path: ../src/lib/PnP.Framework/Entities/YammerUser.cs
+    startLine: 177
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Entities
+  summary: "\nRepresents yammer user web auth access token\n"
+  example: []
+  syntax:
+    content: public string web_oauth_access_token { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property web_oauth_access_token As String
+  overload: PnP.Framework.Entities.YammerUser.web_oauth_access_token*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Entities.YammerUser.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<YammerUser>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<YammerUser>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Entities.YammerUser>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of YammerUser)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Entities.YammerUser)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of YammerUser)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<YammerUser>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<YammerUser>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Entities.YammerUser>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of YammerUser)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of YammerUser)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Entities.YammerUser)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Entities.YammerUser.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Entities.YammerUser,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<YammerUser, T>(Expression<Func<YammerUser, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<YammerUser, T>(Expression<Func<YammerUser, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Entities.YammerUser, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Entities.YammerUser, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of YammerUser, T)(Expression(Of Func(Of YammerUser, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Entities.YammerUser, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Entities.YammerUser, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of YammerUser, T)(Expression(Of Func(Of YammerUser, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<YammerUser, T>
+    nameWithType: ObjectExtensions.Set<YammerUser, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Entities.YammerUser, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.YammerUser
+    name: YammerUser
+    nameWithType: YammerUser
+    fullName: PnP.Framework.Entities.YammerUser
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of YammerUser, T)
+    nameWithType: ObjectExtensions.Set(Of YammerUser, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Entities.YammerUser, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.YammerUser
+    name: YammerUser
+    nameWithType: YammerUser
+    fullName: PnP.Framework.Entities.YammerUser
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Entities.YammerUser.type*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.type
+  name: type
+  nameWithType: YammerUser.type
+  fullName: PnP.Framework.Entities.YammerUser.type
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Entities.YammerUser.id*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.id
+  name: id
+  nameWithType: YammerUser.id
+  fullName: PnP.Framework.Entities.YammerUser.id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.Entities.YammerUser.network_id*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.network_id
+  name: network_id
+  nameWithType: YammerUser.network_id
+  fullName: PnP.Framework.Entities.YammerUser.network_id
+- uid: PnP.Framework.Entities.YammerUser.state*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.state
+  name: state
+  nameWithType: YammerUser.state
+  fullName: PnP.Framework.Entities.YammerUser.state
+- uid: PnP.Framework.Entities.YammerUser.guid*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.guid
+  name: guid
+  nameWithType: YammerUser.guid
+  fullName: PnP.Framework.Entities.YammerUser.guid
+- uid: PnP.Framework.Entities.YammerUser.job_title*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.job_title
+  name: job_title
+  nameWithType: YammerUser.job_title
+  fullName: PnP.Framework.Entities.YammerUser.job_title
+- uid: PnP.Framework.Entities.YammerUser.location*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.location
+  name: location
+  nameWithType: YammerUser.location
+  fullName: PnP.Framework.Entities.YammerUser.location
+- uid: PnP.Framework.Entities.YammerUser.significant_other*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.significant_other
+  name: significant_other
+  nameWithType: YammerUser.significant_other
+  fullName: PnP.Framework.Entities.YammerUser.significant_other
+- uid: PnP.Framework.Entities.YammerUser.kids_names*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.kids_names
+  name: kids_names
+  nameWithType: YammerUser.kids_names
+  fullName: PnP.Framework.Entities.YammerUser.kids_names
+- uid: PnP.Framework.Entities.YammerUser.interests*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.interests
+  name: interests
+  nameWithType: YammerUser.interests
+  fullName: PnP.Framework.Entities.YammerUser.interests
+- uid: PnP.Framework.Entities.YammerUser.summary*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.summary
+  name: summary
+  nameWithType: YammerUser.summary
+  fullName: PnP.Framework.Entities.YammerUser.summary
+- uid: PnP.Framework.Entities.YammerUser.expertise*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.expertise
+  name: expertise
+  nameWithType: YammerUser.expertise
+  fullName: PnP.Framework.Entities.YammerUser.expertise
+- uid: PnP.Framework.Entities.YammerUser.full_name*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.full_name
+  name: full_name
+  nameWithType: YammerUser.full_name
+  fullName: PnP.Framework.Entities.YammerUser.full_name
+- uid: PnP.Framework.Entities.YammerUser.activated_at*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.activated_at
+  name: activated_at
+  nameWithType: YammerUser.activated_at
+  fullName: PnP.Framework.Entities.YammerUser.activated_at
+- uid: PnP.Framework.Entities.YammerUser.show_ask_for_photo*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.show_ask_for_photo
+  name: show_ask_for_photo
+  nameWithType: YammerUser.show_ask_for_photo
+  fullName: PnP.Framework.Entities.YammerUser.show_ask_for_photo
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Entities.YammerUser.first_name*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.first_name
+  name: first_name
+  nameWithType: YammerUser.first_name
+  fullName: PnP.Framework.Entities.YammerUser.first_name
+- uid: PnP.Framework.Entities.YammerUser.last_name*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.last_name
+  name: last_name
+  nameWithType: YammerUser.last_name
+  fullName: PnP.Framework.Entities.YammerUser.last_name
+- uid: PnP.Framework.Entities.YammerUser.network_name*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.network_name
+  name: network_name
+  nameWithType: YammerUser.network_name
+  fullName: PnP.Framework.Entities.YammerUser.network_name
+- uid: PnP.Framework.Entities.YammerUser.network_domains*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.network_domains
+  name: network_domains
+  nameWithType: YammerUser.network_domains
+  fullName: PnP.Framework.Entities.YammerUser.network_domains
+- uid: System.Collections.Generic.IList{System.String}
+  commentId: T:System.Collections.Generic.IList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  name: IList<String>
+  nameWithType: IList<String>
+  fullName: System.Collections.Generic.IList<System.String>
+  nameWithType.vb: IList(Of String)
+  fullName.vb: System.Collections.Generic.IList(Of System.String)
+  name.vb: IList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Entities.YammerUser.url*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.url
+  name: url
+  nameWithType: YammerUser.url
+  fullName: PnP.Framework.Entities.YammerUser.url
+- uid: PnP.Framework.Entities.YammerUser.web_url*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.web_url
+  name: web_url
+  nameWithType: YammerUser.web_url
+  fullName: PnP.Framework.Entities.YammerUser.web_url
+- uid: PnP.Framework.Entities.YammerUser.name*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.name
+  name: name
+  nameWithType: YammerUser.name
+  fullName: PnP.Framework.Entities.YammerUser.name
+- uid: PnP.Framework.Entities.YammerUser.mugshot_url*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.mugshot_url
+  name: mugshot_url
+  nameWithType: YammerUser.mugshot_url
+  fullName: PnP.Framework.Entities.YammerUser.mugshot_url
+- uid: PnP.Framework.Entities.YammerUser.mugshot_url_template*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.mugshot_url_template
+  name: mugshot_url_template
+  nameWithType: YammerUser.mugshot_url_template
+  fullName: PnP.Framework.Entities.YammerUser.mugshot_url_template
+- uid: PnP.Framework.Entities.YammerUser.hire_date*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.hire_date
+  name: hire_date
+  nameWithType: YammerUser.hire_date
+  fullName: PnP.Framework.Entities.YammerUser.hire_date
+- uid: PnP.Framework.Entities.YammerUser.birth_date*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.birth_date
+  name: birth_date
+  nameWithType: YammerUser.birth_date
+  fullName: PnP.Framework.Entities.YammerUser.birth_date
+- uid: PnP.Framework.Entities.YammerUser.timezone*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.timezone
+  name: timezone
+  nameWithType: YammerUser.timezone
+  fullName: PnP.Framework.Entities.YammerUser.timezone
+- uid: PnP.Framework.Entities.YammerUser.external_urls*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.external_urls
+  name: external_urls
+  nameWithType: YammerUser.external_urls
+  fullName: PnP.Framework.Entities.YammerUser.external_urls
+- uid: System.Collections.Generic.IList{System.Object}
+  commentId: T:System.Collections.Generic.IList{System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  name: IList<Object>
+  nameWithType: IList<Object>
+  fullName: System.Collections.Generic.IList<System.Object>
+  nameWithType.vb: IList(Of Object)
+  fullName.vb: System.Collections.Generic.IList(Of System.Object)
+  name.vb: IList(Of Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: System.Collections.Generic.IList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Entities.YammerUser.admin*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.admin
+  name: admin
+  nameWithType: YammerUser.admin
+  fullName: PnP.Framework.Entities.YammerUser.admin
+- uid: PnP.Framework.Entities.YammerUser.verified_admin*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.verified_admin
+  name: verified_admin
+  nameWithType: YammerUser.verified_admin
+  fullName: PnP.Framework.Entities.YammerUser.verified_admin
+- uid: PnP.Framework.Entities.YammerUser.can_broadcast*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.can_broadcast
+  name: can_broadcast
+  nameWithType: YammerUser.can_broadcast
+  fullName: PnP.Framework.Entities.YammerUser.can_broadcast
+- uid: PnP.Framework.Entities.YammerUser.department*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.department
+  name: department
+  nameWithType: YammerUser.department
+  fullName: PnP.Framework.Entities.YammerUser.department
+- uid: PnP.Framework.Entities.YammerUser.previous_companies*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.previous_companies
+  name: previous_companies
+  nameWithType: YammerUser.previous_companies
+  fullName: PnP.Framework.Entities.YammerUser.previous_companies
+- uid: PnP.Framework.Entities.YammerUser.schools*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.schools
+  name: schools
+  nameWithType: YammerUser.schools
+  fullName: PnP.Framework.Entities.YammerUser.schools
+- uid: PnP.Framework.Entities.YammerUser.contact*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.contact
+  name: contact
+  nameWithType: YammerUser.contact
+  fullName: PnP.Framework.Entities.YammerUser.contact
+- uid: PnP.Framework.Entities.YammerUserContact
+  commentId: T:PnP.Framework.Entities.YammerUserContact
+  parent: PnP.Framework.Entities
+  name: YammerUserContact
+  nameWithType: YammerUserContact
+  fullName: PnP.Framework.Entities.YammerUserContact
+- uid: PnP.Framework.Entities.YammerUser.stats*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.stats
+  name: stats
+  nameWithType: YammerUser.stats
+  fullName: PnP.Framework.Entities.YammerUser.stats
+- uid: PnP.Framework.Entities.YammerUserStats
+  commentId: T:PnP.Framework.Entities.YammerUserStats
+  parent: PnP.Framework.Entities
+  name: YammerUserStats
+  nameWithType: YammerUserStats
+  fullName: PnP.Framework.Entities.YammerUserStats
+- uid: PnP.Framework.Entities.YammerUser.settings*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.settings
+  name: settings
+  nameWithType: YammerUser.settings
+  fullName: PnP.Framework.Entities.YammerUser.settings
+- uid: PnP.Framework.Entities.YammerUserSettings
+  commentId: T:PnP.Framework.Entities.YammerUserSettings
+  parent: PnP.Framework.Entities
+  name: YammerUserSettings
+  nameWithType: YammerUserSettings
+  fullName: PnP.Framework.Entities.YammerUserSettings
+- uid: PnP.Framework.Entities.YammerUser.web_preferences*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.web_preferences
+  name: web_preferences
+  nameWithType: YammerUser.web_preferences
+  fullName: PnP.Framework.Entities.YammerUser.web_preferences
+- uid: PnP.Framework.Entities.YammerUserWebPreferences
+  commentId: T:PnP.Framework.Entities.YammerUserWebPreferences
+  parent: PnP.Framework.Entities
+  name: YammerUserWebPreferences
+  nameWithType: YammerUserWebPreferences
+  fullName: PnP.Framework.Entities.YammerUserWebPreferences
+- uid: PnP.Framework.Entities.YammerUser.follow_general_messages*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.follow_general_messages
+  name: follow_general_messages
+  nameWithType: YammerUser.follow_general_messages
+  fullName: PnP.Framework.Entities.YammerUser.follow_general_messages
+- uid: PnP.Framework.Entities.YammerUser.web_oauth_access_token*
+  commentId: Overload:PnP.Framework.Entities.YammerUser.web_oauth_access_token
+  name: web_oauth_access_token
+  nameWithType: YammerUser.web_oauth_access_token
+  fullName: PnP.Framework.Entities.YammerUser.web_oauth_access_token

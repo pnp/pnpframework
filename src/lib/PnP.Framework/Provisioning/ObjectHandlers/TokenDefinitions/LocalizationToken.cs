@@ -14,10 +14,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
     internal class LocalizationToken : TokenDefinition
     {
         private readonly List<ResourceEntry> _resourceEntries;
-        public LocalizationToken(Web web, string key, List<ResourceEntry> resourceEntries)
+        private readonly int? _defaultLCID;
+
+        public LocalizationToken(Web web, string key, List<ResourceEntry> resourceEntries, int? defaultLCID)
             : base(web, $"{{loc:{Regex.Escape(key)}}}", $"{{localize:{Regex.Escape(key)}}}", $"{{localization:{Regex.Escape(key)}}}", $"{{resource:{Regex.Escape(key)}}}", $"{{res:{Regex.Escape(key)}}}")
         {
             _resourceEntries = resourceEntries;
+            _defaultLCID = defaultLCID;
         }
 
         public override string GetReplaceValue()
@@ -29,8 +32,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
             }
             else
             {
-                // fallback
-                return _resourceEntries.First().Value;
+                // fallback to default LCID or to the first resource string
+                var defaultEntry = _defaultLCID.HasValue ?
+                    _resourceEntries.FirstOrDefault(r => r.LCID == _defaultLCID) :
+                    _resourceEntries.First();
+
+                if (defaultEntry != null)
+                {
+                    return defaultEntry.Value;
+                }
+                else
+                {
+                    return _resourceEntries.First().Value; //fallback to old logic as for me _defaultLCID has always a Value i.e. 0 or the correct LCID
+                }
             }
 
         }

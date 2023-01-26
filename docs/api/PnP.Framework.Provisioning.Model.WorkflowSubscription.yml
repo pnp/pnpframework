@@ -1,0 +1,2202 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  commentId: T:PnP.Framework.Provisioning.Model.WorkflowSubscription
+  id: WorkflowSubscription
+  parent: PnP.Framework.Provisioning.Model
+  children:
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.#ctor
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.DefinitionId
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.Enabled
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals(PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals(System.Object)
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.EventSourceId
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.EventTypes
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.GetHashCode
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.ListId
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.ManualStartBypassesActivationLimit
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.Name
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.ParentContentTypeId
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.PropertyDefinitions
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.StatusFieldName
+  langs:
+  - csharp
+  - vb
+  name: WorkflowSubscription
+  nameWithType: WorkflowSubscription
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WorkflowSubscription
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a Workflow Subscription to provision\n"
+  example: []
+  syntax:
+    content: 'public class WorkflowSubscription : BaseModel, IProvisioningTemplateDescendant, IEquatable<WorkflowSubscription>'
+    content.vb: >-
+      Public Class WorkflowSubscription
+          Inherits BaseModel
+          Implements IProvisioningTemplateDescendant, IEquatable(Of WorkflowSubscription)
+  inheritance:
+  - System.Object
+  - PnP.Framework.Provisioning.Model.BaseModel
+  implements:
+  - PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  - System.IEquatable{PnP.Framework.Provisioning.Model.WorkflowSubscription}
+  inheritedMembers:
+  - PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Model.WorkflowSubscription.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.WorkflowSubscription,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.#ctor
+  commentId: M:PnP.Framework.Provisioning.Model.WorkflowSubscription.#ctor
+  id: '#ctor'
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: WorkflowSubscription()
+  nameWithType: WorkflowSubscription.WorkflowSubscription()
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.WorkflowSubscription()
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefault Constructor\n"
+  example: []
+  syntax:
+    content: public WorkflowSubscription()
+    content.vb: Public Sub New
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})
+  commentId: M:PnP.Framework.Provisioning.Model.WorkflowSubscription.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})
+  id: '#ctor(System.Collections.Generic.Dictionary{System.String,System.String})'
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: WorkflowSubscription(Dictionary<String, String>)
+  nameWithType: WorkflowSubscription.WorkflowSubscription(Dictionary<String, String>)
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.WorkflowSubscription(System.Collections.Generic.Dictionary<System.String, System.String>)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 29
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nConstructor\n"
+  example: []
+  syntax:
+    content: public WorkflowSubscription(Dictionary<string, string> propertyDefinitions)
+    parameters:
+    - id: propertyDefinitions
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: 'Dictionary Key-Value pair of property definitions '
+    content.vb: Public Sub New(propertyDefinitions As Dictionary(Of String, String))
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.#ctor*
+  nameWithType.vb: WorkflowSubscription.WorkflowSubscription(Dictionary(Of String, String))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Provisioning.Model.WorkflowSubscription.WorkflowSubscription(System.Collections.Generic.Dictionary(Of System.String, System.String))
+  name.vb: WorkflowSubscription(Dictionary(Of String, String))
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.PropertyDefinitions
+  commentId: P:PnP.Framework.Provisioning.Model.WorkflowSubscription.PropertyDefinitions
+  id: PropertyDefinitions
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: PropertyDefinitions
+  nameWithType: WorkflowSubscription.PropertyDefinitions
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.PropertyDefinitions
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PropertyDefinitions
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 44
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Property Definitions of the Workflows to provision\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, string> PropertyDefinitions { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public ReadOnly Property PropertyDefinitions As Dictionary(Of String, String)
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.PropertyDefinitions*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.DefinitionId
+  commentId: P:PnP.Framework.Provisioning.Model.WorkflowSubscription.DefinitionId
+  id: DefinitionId
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: DefinitionId
+  nameWithType: WorkflowSubscription.DefinitionId
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.DefinitionId
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DefinitionId
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 53
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the ID of the Workflow Definition for the current Subscription\n"
+  example: []
+  syntax:
+    content: public Guid DefinitionId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property DefinitionId As Guid
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.DefinitionId*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.ListId
+  commentId: P:PnP.Framework.Provisioning.Model.WorkflowSubscription.ListId
+  id: ListId
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: ListId
+  nameWithType: WorkflowSubscription.ListId
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.ListId
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListId
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 62
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the ID of the target list/library for the current Subscription, \n"
+  remarks: "\nOptional and if it is missing, the workflow subscription will \nbe at Site level\n"
+  example: []
+  syntax:
+    content: public string ListId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ListId As String
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.ListId*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.Enabled
+  commentId: P:PnP.Framework.Provisioning.Model.WorkflowSubscription.Enabled
+  id: Enabled
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: Enabled
+  nameWithType: WorkflowSubscription.Enabled
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.Enabled
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Enabled
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 67
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines if the Workflow Definition is enabled for the current Subscription\n"
+  example: []
+  syntax:
+    content: public bool Enabled { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Enabled As Boolean
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.Enabled*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.EventSourceId
+  commentId: P:PnP.Framework.Provisioning.Model.WorkflowSubscription.EventSourceId
+  id: EventSourceId
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: EventSourceId
+  nameWithType: WorkflowSubscription.EventSourceId
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.EventSourceId
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EventSourceId
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 72
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the ID of the Event Source for the current Subscription\n"
+  example: []
+  syntax:
+    content: public string EventSourceId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property EventSourceId As String
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.EventSourceId*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.EventTypes
+  commentId: P:PnP.Framework.Provisioning.Model.WorkflowSubscription.EventTypes
+  id: EventTypes
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: EventTypes
+  nameWithType: WorkflowSubscription.EventTypes
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.EventTypes
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EventTypes
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 80
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the list of events that will start the workflow instance\n"
+  remarks: "\nPossible values in the list: WorkflowStartEvent, ItemAddedEvent, ItemUpdatedEvent\n"
+  example: []
+  syntax:
+    content: public List<string> EventTypes { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Property EventTypes As List(Of String)
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.EventTypes*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.ManualStartBypassesActivationLimit
+  commentId: P:PnP.Framework.Provisioning.Model.WorkflowSubscription.ManualStartBypassesActivationLimit
+  id: ManualStartBypassesActivationLimit
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: ManualStartBypassesActivationLimit
+  nameWithType: WorkflowSubscription.ManualStartBypassesActivationLimit
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.ManualStartBypassesActivationLimit
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ManualStartBypassesActivationLimit
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 89
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines if the Workflow can be manually started bypassing the activation limit\n"
+  example: []
+  syntax:
+    content: public bool ManualStartBypassesActivationLimit { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ManualStartBypassesActivationLimit As Boolean
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.ManualStartBypassesActivationLimit*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.Name
+  commentId: P:PnP.Framework.Provisioning.Model.WorkflowSubscription.Name
+  id: Name
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: WorkflowSubscription.Name
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.Name
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Name
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 94
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Name of the Workflow Subscription\n"
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.ParentContentTypeId
+  commentId: P:PnP.Framework.Provisioning.Model.WorkflowSubscription.ParentContentTypeId
+  id: ParentContentTypeId
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: ParentContentTypeId
+  nameWithType: WorkflowSubscription.ParentContentTypeId
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.ParentContentTypeId
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ParentContentTypeId
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 99
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Parent ContentType Id of the Workflow Subscription\n"
+  example: []
+  syntax:
+    content: public string ParentContentTypeId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ParentContentTypeId As String
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.ParentContentTypeId*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.StatusFieldName
+  commentId: P:PnP.Framework.Provisioning.Model.WorkflowSubscription.StatusFieldName
+  id: StatusFieldName
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: StatusFieldName
+  nameWithType: WorkflowSubscription.StatusFieldName
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.StatusFieldName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: StatusFieldName
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 104
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Status Field Name of the Workflow Subscription\n"
+  example: []
+  syntax:
+    content: public string StatusFieldName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property StatusFieldName As String
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.StatusFieldName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.GetHashCode
+  commentId: M:PnP.Framework.Provisioning.Model.WorkflowSubscription.GetHashCode
+  id: GetHashCode
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: WorkflowSubscription.GetHashCode()
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetHashCode
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 114
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets hash code of workflow subscription\n"
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: Returns hash code in integer
+    content.vb: Public Overrides Function GetHashCode As Integer
+  overridden: System.Object.GetHashCode
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.GetHashCode*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals(System.Object)
+  commentId: M:PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: Equals(Object)
+  nameWithType: WorkflowSubscription.Equals(Object)
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals(System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Equals
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 135
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nComapres given workflow subscription object which is to be provisioned\n"
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: WorkflowSubscription Object
+    return:
+      type: System.Boolean
+      description: true if the specified object is equal to the current object; otherwise, false.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.Object.Equals(System.Object)
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals(PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  commentId: M:PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals(PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  id: Equals(PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  parent: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  langs:
+  - csharp
+  - vb
+  name: Equals(WorkflowSubscription)
+  nameWithType: WorkflowSubscription.Equals(WorkflowSubscription)
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals(PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Equals
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Workflows/WorkflowSubscription.cs
+    startLine: 149
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nComapres given workflow subscription object which is to be provisioned\n"
+  example: []
+  syntax:
+    content: public bool Equals(WorkflowSubscription other)
+    parameters:
+    - id: other
+      type: PnP.Framework.Provisioning.Model.WorkflowSubscription
+      description: WorkflowSubscription Object
+    return:
+      type: System.Boolean
+      description: true if the WorkflowSubscription object is equal to the current object; otherwise, false.
+    content.vb: Public Function Equals(other As WorkflowSubscription) As Boolean
+  overload: PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals*
+  implements:
+  - System.IEquatable{PnP.Framework.Provisioning.Model.WorkflowSubscription}.Equals(PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Provisioning.Model
+  commentId: N:PnP.Framework.Provisioning.Model
+  name: PnP.Framework.Provisioning.Model
+  nameWithType: PnP.Framework.Provisioning.Model
+  fullName: PnP.Framework.Provisioning.Model
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: PnP.Framework.Provisioning.Model.BaseModel
+  commentId: T:PnP.Framework.Provisioning.Model.BaseModel
+  parent: PnP.Framework.Provisioning.Model
+  name: BaseModel
+  nameWithType: BaseModel
+  fullName: PnP.Framework.Provisioning.Model.BaseModel
+- uid: PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  commentId: T:PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  parent: PnP.Framework.Provisioning.Model
+  name: IProvisioningTemplateDescendant
+  nameWithType: IProvisioningTemplateDescendant
+  fullName: PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+- uid: System.IEquatable{PnP.Framework.Provisioning.Model.WorkflowSubscription}
+  commentId: T:System.IEquatable{PnP.Framework.Provisioning.Model.WorkflowSubscription}
+  parent: System
+  definition: System.IEquatable`1
+  name: IEquatable<WorkflowSubscription>
+  nameWithType: IEquatable<WorkflowSubscription>
+  fullName: System.IEquatable<PnP.Framework.Provisioning.Model.WorkflowSubscription>
+  nameWithType.vb: IEquatable(Of WorkflowSubscription)
+  fullName.vb: System.IEquatable(Of PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  name.vb: IEquatable(Of WorkflowSubscription)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.WorkflowSubscription
+    name: WorkflowSubscription
+    nameWithType: WorkflowSubscription
+    fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.WorkflowSubscription
+    name: WorkflowSubscription
+    nameWithType: WorkflowSubscription
+    fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  commentId: P:PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  parent: PnP.Framework.Provisioning.Model.BaseModel
+  name: ParentTemplate
+  nameWithType: BaseModel.ParentTemplate
+  fullName: PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<WorkflowSubscription>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<WorkflowSubscription>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.WorkflowSubscription>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of WorkflowSubscription)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.WorkflowSubscription)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of WorkflowSubscription)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<WorkflowSubscription>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<WorkflowSubscription>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.WorkflowSubscription>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of WorkflowSubscription)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of WorkflowSubscription)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.WorkflowSubscription,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<WorkflowSubscription, T>(Expression<Func<WorkflowSubscription, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<WorkflowSubscription, T>(Expression<Func<WorkflowSubscription, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.WorkflowSubscription, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Model.WorkflowSubscription, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of WorkflowSubscription, T)(Expression(Of Func(Of WorkflowSubscription, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.WorkflowSubscription, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Model.WorkflowSubscription, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of WorkflowSubscription, T)(Expression(Of Func(Of WorkflowSubscription, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<WorkflowSubscription, T>
+    nameWithType: ObjectExtensions.Set<WorkflowSubscription, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.WorkflowSubscription, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.WorkflowSubscription
+    name: WorkflowSubscription
+    nameWithType: WorkflowSubscription
+    fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of WorkflowSubscription, T)
+    nameWithType: ObjectExtensions.Set(Of WorkflowSubscription, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.WorkflowSubscription, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.WorkflowSubscription
+    name: WorkflowSubscription
+    nameWithType: WorkflowSubscription
+    fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.#ctor*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.#ctor
+  name: WorkflowSubscription
+  nameWithType: WorkflowSubscription.WorkflowSubscription
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.WorkflowSubscription
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, String>
+  nameWithType: Dictionary<String, String>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.String>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.PropertyDefinitions*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.PropertyDefinitions
+  name: PropertyDefinitions
+  nameWithType: WorkflowSubscription.PropertyDefinitions
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.PropertyDefinitions
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.DefinitionId*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.DefinitionId
+  name: DefinitionId
+  nameWithType: WorkflowSubscription.DefinitionId
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.DefinitionId
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.ListId*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.ListId
+  name: ListId
+  nameWithType: WorkflowSubscription.ListId
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.ListId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.Enabled*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.Enabled
+  name: Enabled
+  nameWithType: WorkflowSubscription.Enabled
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.Enabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.EventSourceId*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.EventSourceId
+  name: EventSourceId
+  nameWithType: WorkflowSubscription.EventSourceId
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.EventSourceId
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.EventTypes*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.EventTypes
+  name: EventTypes
+  nameWithType: WorkflowSubscription.EventTypes
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.EventTypes
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<String>
+  nameWithType: List<String>
+  fullName: System.Collections.Generic.List<System.String>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of System.String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.ManualStartBypassesActivationLimit*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.ManualStartBypassesActivationLimit
+  name: ManualStartBypassesActivationLimit
+  nameWithType: WorkflowSubscription.ManualStartBypassesActivationLimit
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.ManualStartBypassesActivationLimit
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.Name*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.Name
+  name: Name
+  nameWithType: WorkflowSubscription.Name
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.Name
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.ParentContentTypeId*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.ParentContentTypeId
+  name: ParentContentTypeId
+  nameWithType: WorkflowSubscription.ParentContentTypeId
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.ParentContentTypeId
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.StatusFieldName*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.StatusFieldName
+  name: StatusFieldName
+  nameWithType: WorkflowSubscription.StatusFieldName
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.StatusFieldName
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.GetHashCode*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.GetHashCode
+  name: GetHashCode
+  nameWithType: WorkflowSubscription.GetHashCode
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals*
+  commentId: Overload:PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals
+  name: Equals
+  nameWithType: WorkflowSubscription.Equals
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription.Equals
+- uid: System.IEquatable{PnP.Framework.Provisioning.Model.WorkflowSubscription}.Equals(PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  commentId: M:System.IEquatable{PnP.Framework.Provisioning.Model.WorkflowSubscription}.Equals(PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  parent: System.IEquatable{PnP.Framework.Provisioning.Model.WorkflowSubscription}
+  definition: System.IEquatable`1.Equals(`0)
+  name: Equals(WorkflowSubscription)
+  nameWithType: IEquatable<WorkflowSubscription>.Equals(WorkflowSubscription)
+  fullName: System.IEquatable<PnP.Framework.Provisioning.Model.WorkflowSubscription>.Equals(PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  nameWithType.vb: IEquatable(Of WorkflowSubscription).Equals(WorkflowSubscription)
+  fullName.vb: System.IEquatable(Of PnP.Framework.Provisioning.Model.WorkflowSubscription).Equals(PnP.Framework.Provisioning.Model.WorkflowSubscription)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable<WorkflowSubscription>.Equals
+    fullName: System.IEquatable<PnP.Framework.Provisioning.Model.WorkflowSubscription>.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.WorkflowSubscription
+    name: WorkflowSubscription
+    nameWithType: WorkflowSubscription
+    fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable(Of WorkflowSubscription).Equals
+    fullName: System.IEquatable(Of PnP.Framework.Provisioning.Model.WorkflowSubscription).Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.WorkflowSubscription
+    name: WorkflowSubscription
+    nameWithType: WorkflowSubscription
+    fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.WorkflowSubscription
+  commentId: T:PnP.Framework.Provisioning.Model.WorkflowSubscription
+  parent: PnP.Framework.Provisioning.Model
+  name: WorkflowSubscription
+  nameWithType: WorkflowSubscription
+  fullName: PnP.Framework.Provisioning.Model.WorkflowSubscription
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable<T>.Equals
+    fullName: System.IEquatable<T>.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable(Of T).Equals
+    fullName: System.IEquatable(Of T).Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )

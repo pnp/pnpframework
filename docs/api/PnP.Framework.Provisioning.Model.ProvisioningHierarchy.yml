@@ -1,0 +1,2069 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  id: ProvisioningHierarchy
+  parent: PnP.Framework.Provisioning.Model
+  children:
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.#ctor
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Author
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.AzureActiveDirectory
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Connector
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Description
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.DisplayName
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Drive
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Generator
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ImagePreviewUrl
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Localizations
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Parameters
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ProvisioningWebhooks
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Sequences
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Teams
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Templates
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Tenant
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Version
+  langs:
+  - csharp
+  - vb
+  name: ProvisioningHierarchy
+  nameWithType: ProvisioningHierarchy
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ProvisioningHierarchy
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 8
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the root node of the Provisioning Domain Model\n"
+  example: []
+  syntax:
+    content: public class ProvisioningHierarchy
+    content.vb: Public Class ProvisioningHierarchy
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Model.ProvisioningHierarchy.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.ProvisioningHierarchy,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.#ctor
+  commentId: M:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.#ctor
+  id: '#ctor'
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: ProvisioningHierarchy()
+  nameWithType: ProvisioningHierarchy.ProvisioningHierarchy()
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ProvisioningHierarchy()
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 12
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  syntax:
+    content: public ProvisioningHierarchy()
+    content.vb: Public Sub New
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Parameters
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Parameters
+  id: Parameters
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Parameters
+  nameWithType: ProvisioningHierarchy.Parameters
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Parameters
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Parameters
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 31
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nAny parameters that can be used throughout the template\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, string> Parameters { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public ReadOnly Property Parameters As Dictionary(Of String, String)
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Parameters*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Localizations
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Localizations
+  id: Localizations
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Localizations
+  nameWithType: ProvisioningHierarchy.Localizations
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Localizations
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Localizations
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 36
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the Localizations\n"
+  example: []
+  syntax:
+    content: public LocalizationCollection Localizations { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.LocalizationCollection
+    content.vb: Public ReadOnly Property Localizations As LocalizationCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Localizations*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Tenant
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Tenant
+  id: Tenant
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Tenant
+  nameWithType: ProvisioningHierarchy.Tenant
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Tenant
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Tenant
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 41
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Tenant-wide settings for the template\n"
+  example: []
+  syntax:
+    content: public ProvisioningTenant Tenant { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ProvisioningTenant
+    content.vb: Public Property Tenant As ProvisioningTenant
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Tenant*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Version
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Version
+  id: Version
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Version
+  nameWithType: ProvisioningHierarchy.Version
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Version
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Version
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 46
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the Provisioning File Version number\n"
+  example: []
+  syntax:
+    content: public double Version { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Version As Double
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Version*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Author
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Author
+  id: Author
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Author
+  nameWithType: ProvisioningHierarchy.Author
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Author
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Author
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 51
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the Provisioning File Author name\n"
+  example: []
+  syntax:
+    content: public string Author { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Author As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Author*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Generator
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Generator
+  id: Generator
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Generator
+  nameWithType: ProvisioningHierarchy.Generator
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Generator
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Generator
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 56
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the Name of the tool generating this Provisioning File\n"
+  example: []
+  syntax:
+    content: public string Generator { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Generator As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Generator*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Description
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Description
+  id: Description
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: ProvisioningHierarchy.Description
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Description
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Description
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 61
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Description of the Provisioning File\n"
+  example: []
+  syntax:
+    content: public string Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Description*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.DisplayName
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.DisplayName
+  id: DisplayName
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: ProvisioningHierarchy.DisplayName
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.DisplayName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisplayName
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 66
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Display Name of the Provisioning File\n"
+  example: []
+  syntax:
+    content: public string DisplayName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DisplayName As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.DisplayName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ImagePreviewUrl
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ImagePreviewUrl
+  id: ImagePreviewUrl
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: ImagePreviewUrl
+  nameWithType: ProvisioningHierarchy.ImagePreviewUrl
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ImagePreviewUrl
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ImagePreviewUrl
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 71
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Image Preview Url of the Provisioning File\n"
+  example: []
+  syntax:
+    content: public string ImagePreviewUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ImagePreviewUrl As String
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ImagePreviewUrl*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Connector
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Connector
+  id: Connector
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Connector
+  nameWithType: ProvisioningHierarchy.Connector
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Connector
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Connector
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 76
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Connector which can be used to retrieve or save related artifacts\n"
+  example: []
+  syntax:
+    content: public FileConnectorBase Connector { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+    content.vb: Public Property Connector As FileConnectorBase
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Connector*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Templates
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Templates
+  id: Templates
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Templates
+  nameWithType: ProvisioningHierarchy.Templates
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Templates
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Templates
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 81
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nA collection of Provisioning Template objects, if any\n"
+  example: []
+  syntax:
+    content: public ProvisioningTemplateCollection Templates { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ProvisioningTemplateCollection
+    content.vb: Public ReadOnly Property Templates As ProvisioningTemplateCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Templates*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Sequences
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Sequences
+  id: Sequences
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Sequences
+  nameWithType: ProvisioningHierarchy.Sequences
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Sequences
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Sequences
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 86
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nA collection of Provisioning Sequence objects, if any\n"
+  example: []
+  syntax:
+    content: public ProvisioningSequenceCollection Sequences { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ProvisioningSequenceCollection
+    content.vb: Public ReadOnly Property Sequences As ProvisioningSequenceCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Sequences*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Teams
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Teams
+  id: Teams
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Teams
+  nameWithType: ProvisioningHierarchy.Teams
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Teams
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Teams
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 91
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nSettings for provisioning Teams objects, if any\n"
+  example: []
+  syntax:
+    content: public ProvisioningTeams Teams { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.Teams.ProvisioningTeams
+    content.vb: Public ReadOnly Property Teams As ProvisioningTeams
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Teams*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.AzureActiveDirectory
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.AzureActiveDirectory
+  id: AzureActiveDirectory
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: AzureActiveDirectory
+  nameWithType: ProvisioningHierarchy.AzureActiveDirectory
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.AzureActiveDirectory
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AzureActiveDirectory
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 96
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nSettings for provisioning Azure Active Directory objects, if any\n"
+  example: []
+  syntax:
+    content: public ProvisioningAzureActiveDirectory AzureActiveDirectory { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.AzureActiveDirectory.ProvisioningAzureActiveDirectory
+    content.vb: Public ReadOnly Property AzureActiveDirectory As ProvisioningAzureActiveDirectory
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.AzureActiveDirectory*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Drive
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Drive
+  id: Drive
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: Drive
+  nameWithType: ProvisioningHierarchy.Drive
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Drive
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Drive
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 101
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nSettings for provisioning Drive objects, if any\n"
+  example: []
+  syntax:
+    content: public Drive Drive { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.Drive.Drive
+    content.vb: Public ReadOnly Property Drive As Drive
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Drive*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ProvisioningWebhooks
+  commentId: P:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ProvisioningWebhooks
+  id: ProvisioningWebhooks
+  parent: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  langs:
+  - csharp
+  - vb
+  name: ProvisioningWebhooks
+  nameWithType: ProvisioningHierarchy.ProvisioningWebhooks
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ProvisioningWebhooks
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ProvisioningWebhooks
+    path: ../src/lib/PnP.Framework/Provisioning/Model/ProvisioningHierarchy.cs
+    startLine: 106
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nA collection of Provisioning Webhooks\n"
+  example: []
+  syntax:
+    content: public ProvisioningWebhookCollection ProvisioningWebhooks { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ProvisioningWebhookCollection
+    content.vb: Public ReadOnly Property ProvisioningWebhooks As ProvisioningWebhookCollection
+  overload: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ProvisioningWebhooks*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: PnP.Framework.Provisioning.Model
+  commentId: N:PnP.Framework.Provisioning.Model
+  name: PnP.Framework.Provisioning.Model
+  nameWithType: PnP.Framework.Provisioning.Model
+  fullName: PnP.Framework.Provisioning.Model
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<ProvisioningHierarchy>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ProvisioningHierarchy>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.ProvisioningHierarchy>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of ProvisioningHierarchy)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.ProvisioningHierarchy)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of ProvisioningHierarchy)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<ProvisioningHierarchy>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ProvisioningHierarchy>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.ProvisioningHierarchy>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of ProvisioningHierarchy)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of ProvisioningHierarchy)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.ProvisioningHierarchy)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.ProvisioningHierarchy,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<ProvisioningHierarchy, T>(Expression<Func<ProvisioningHierarchy, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<ProvisioningHierarchy, T>(Expression<Func<ProvisioningHierarchy, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.ProvisioningHierarchy, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Model.ProvisioningHierarchy, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of ProvisioningHierarchy, T)(Expression(Of Func(Of ProvisioningHierarchy, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.ProvisioningHierarchy, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Model.ProvisioningHierarchy, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of ProvisioningHierarchy, T)(Expression(Of Func(Of ProvisioningHierarchy, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<ProvisioningHierarchy, T>
+    nameWithType: ObjectExtensions.Set<ProvisioningHierarchy, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.ProvisioningHierarchy, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+    name: ProvisioningHierarchy
+    nameWithType: ProvisioningHierarchy
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of ProvisioningHierarchy, T)
+    nameWithType: ObjectExtensions.Set(Of ProvisioningHierarchy, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.ProvisioningHierarchy, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+    name: ProvisioningHierarchy
+    nameWithType: ProvisioningHierarchy
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.#ctor*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.#ctor
+  name: ProvisioningHierarchy
+  nameWithType: ProvisioningHierarchy.ProvisioningHierarchy
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ProvisioningHierarchy
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Parameters*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Parameters
+  name: Parameters
+  nameWithType: ProvisioningHierarchy.Parameters
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Parameters
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, String>
+  nameWithType: Dictionary<String, String>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.String>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Localizations*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Localizations
+  name: Localizations
+  nameWithType: ProvisioningHierarchy.Localizations
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Localizations
+- uid: PnP.Framework.Provisioning.Model.LocalizationCollection
+  commentId: T:PnP.Framework.Provisioning.Model.LocalizationCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: LocalizationCollection
+  nameWithType: LocalizationCollection
+  fullName: PnP.Framework.Provisioning.Model.LocalizationCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Tenant*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Tenant
+  name: Tenant
+  nameWithType: ProvisioningHierarchy.Tenant
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Tenant
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTenant
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningTenant
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningTenant
+  nameWithType: ProvisioningTenant
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTenant
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Version*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Version
+  name: Version
+  nameWithType: ProvisioningHierarchy.Version
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Version
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: Double
+  nameWithType: Double
+  fullName: System.Double
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Author*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Author
+  name: Author
+  nameWithType: ProvisioningHierarchy.Author
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Author
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Generator*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Generator
+  name: Generator
+  nameWithType: ProvisioningHierarchy.Generator
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Generator
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Description*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Description
+  name: Description
+  nameWithType: ProvisioningHierarchy.Description
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Description
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.DisplayName*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.DisplayName
+  name: DisplayName
+  nameWithType: ProvisioningHierarchy.DisplayName
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.DisplayName
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ImagePreviewUrl*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ImagePreviewUrl
+  name: ImagePreviewUrl
+  nameWithType: ProvisioningHierarchy.ImagePreviewUrl
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ImagePreviewUrl
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Connector*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Connector
+  name: Connector
+  nameWithType: ProvisioningHierarchy.Connector
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Connector
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  commentId: T:PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  parent: PnP.Framework.Provisioning.Connectors
+  name: FileConnectorBase
+  nameWithType: FileConnectorBase
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+- uid: PnP.Framework.Provisioning.Connectors
+  commentId: N:PnP.Framework.Provisioning.Connectors
+  name: PnP.Framework.Provisioning.Connectors
+  nameWithType: PnP.Framework.Provisioning.Connectors
+  fullName: PnP.Framework.Provisioning.Connectors
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Templates*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Templates
+  name: Templates
+  nameWithType: ProvisioningHierarchy.Templates
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Templates
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplateCollection
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningTemplateCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningTemplateCollection
+  nameWithType: ProvisioningTemplateCollection
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplateCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Sequences*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Sequences
+  name: Sequences
+  nameWithType: ProvisioningHierarchy.Sequences
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Sequences
+- uid: PnP.Framework.Provisioning.Model.ProvisioningSequenceCollection
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningSequenceCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningSequenceCollection
+  nameWithType: ProvisioningSequenceCollection
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningSequenceCollection
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Teams*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Teams
+  name: Teams
+  nameWithType: ProvisioningHierarchy.Teams
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Teams
+- uid: PnP.Framework.Provisioning.Model.Teams.ProvisioningTeams
+  commentId: T:PnP.Framework.Provisioning.Model.Teams.ProvisioningTeams
+  parent: PnP.Framework.Provisioning.Model.Teams
+  name: ProvisioningTeams
+  nameWithType: ProvisioningTeams
+  fullName: PnP.Framework.Provisioning.Model.Teams.ProvisioningTeams
+- uid: PnP.Framework.Provisioning.Model.Teams
+  commentId: N:PnP.Framework.Provisioning.Model.Teams
+  name: PnP.Framework.Provisioning.Model.Teams
+  nameWithType: PnP.Framework.Provisioning.Model.Teams
+  fullName: PnP.Framework.Provisioning.Model.Teams
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.AzureActiveDirectory*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.AzureActiveDirectory
+  name: AzureActiveDirectory
+  nameWithType: ProvisioningHierarchy.AzureActiveDirectory
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.AzureActiveDirectory
+- uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory.ProvisioningAzureActiveDirectory
+  commentId: T:PnP.Framework.Provisioning.Model.AzureActiveDirectory.ProvisioningAzureActiveDirectory
+  parent: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  name: ProvisioningAzureActiveDirectory
+  nameWithType: ProvisioningAzureActiveDirectory
+  fullName: PnP.Framework.Provisioning.Model.AzureActiveDirectory.ProvisioningAzureActiveDirectory
+- uid: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  commentId: N:PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  name: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  nameWithType: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+  fullName: PnP.Framework.Provisioning.Model.AzureActiveDirectory
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Drive*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Drive
+  name: Drive
+  nameWithType: ProvisioningHierarchy.Drive
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.Drive
+- uid: PnP.Framework.Provisioning.Model.Drive.Drive
+  commentId: T:PnP.Framework.Provisioning.Model.Drive.Drive
+  parent: PnP.Framework.Provisioning.Model.Drive
+  name: Drive
+  nameWithType: Drive
+  fullName: PnP.Framework.Provisioning.Model.Drive.Drive
+- uid: PnP.Framework.Provisioning.Model.Drive
+  commentId: N:PnP.Framework.Provisioning.Model.Drive
+  name: PnP.Framework.Provisioning.Model.Drive
+  nameWithType: PnP.Framework.Provisioning.Model.Drive
+  fullName: PnP.Framework.Provisioning.Model.Drive
+- uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ProvisioningWebhooks*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ProvisioningWebhooks
+  name: ProvisioningWebhooks
+  nameWithType: ProvisioningHierarchy.ProvisioningWebhooks
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy.ProvisioningWebhooks
+- uid: PnP.Framework.Provisioning.Model.ProvisioningWebhookCollection
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningWebhookCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningWebhookCollection
+  nameWithType: ProvisioningWebhookCollection
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningWebhookCollection

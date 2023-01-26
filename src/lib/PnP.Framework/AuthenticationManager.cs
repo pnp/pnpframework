@@ -694,7 +694,7 @@ namespace PnP.Framework
         /// <returns></returns>
         public async Task<string> GetAccessTokenAsync(string[] scopes, Prompt prompt = default)
         {
-            return await GetAccessTokenAsync(scopes, CancellationToken.None, prompt);
+            return await GetAccessTokenAsync(scopes, CancellationToken.None, prompt).ConfigureAwait(false);
         }
 
 
@@ -714,24 +714,24 @@ namespace PnP.Framework
             {
                 case ClientContextType.AzureADCredentials:
                     {
-                        var accounts = await publicClientApplication.GetAccountsAsync();
+                        var accounts = await publicClientApplication.GetAccountsAsync().ConfigureAwait(false);
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken);
+                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         break;
                     }
                 case ClientContextType.AzureADInteractive:
                     {
-                        var accounts = await publicClientApplication.GetAccountsAsync();
+                        var accounts = await publicClientApplication.GetAccountsAsync().ConfigureAwait(false);
 
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         catch
                         {
@@ -744,50 +744,50 @@ namespace PnP.Framework
                             {
                                 builder.WithPrompt(prompt);
                             }
-                            authResult = await builder.ExecuteAsync(cancellationToken);
+                            authResult = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         break;
                     }
                 case ClientContextType.AzureADCertificate:
                     {
-                        var accounts = await confidentialClientApplication.GetAccountsAsync();
+                        var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
 
                         try
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         catch
                         {
                             var builder = confidentialClientApplication.AcquireTokenForClient(scopes);
 
-                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken);
+                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         break;
                     }
                 case ClientContextType.DeviceLogin:
                     {
-                        var accounts = await publicClientApplication.GetAccountsAsync();
+                        var accounts = await publicClientApplication.GetAccountsAsync().ConfigureAwait(false);
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync(cancellationToken);
+                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         break;
                     }
                 case ClientContextType.AzureOnBehalfOf:
                     {
-                        var accounts = await confidentialClientApplication.GetAccountsAsync();
+                        var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
 
                         try
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         catch
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync(cancellationToken);
+                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         break;
                     }
@@ -805,7 +805,7 @@ namespace PnP.Framework
                     }
                 case ClientContextType.PnPCoreSdk:
                     {
-                        return await this.authenticationProvider.GetAccessTokenAsync(uri, scopes);
+                        return await this.authenticationProvider.GetAccessTokenAsync(uri, scopes).ConfigureAwait(false);
                     }
             }
             if (authResult?.AccessToken != null)
@@ -866,14 +866,14 @@ namespace PnP.Framework
             {
                 case ClientContextType.AzureADCredentials:
                     {
-                        var accounts = await publicClientApplication.GetAccountsAsync();
+                        var accounts = await publicClientApplication.GetAccountsAsync().ConfigureAwait(false);
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken);
+                            authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -883,11 +883,11 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AzureADInteractive:
                     {
-                        var accounts = await publicClientApplication.GetAccountsAsync();
+                        var accounts = await publicClientApplication.GetAccountsAsync().ConfigureAwait(false);
 
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         catch
                         {
@@ -896,7 +896,7 @@ namespace PnP.Framework
                             {
                                 builder = builder.WithCustomWebUi(customWebUi);
                             }
-                            authResult = await builder.ExecuteAsync(cancellationToken);
+                            authResult = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -906,15 +906,15 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AzureADCertificate:
                     {
-                        var accounts = await confidentialClientApplication.GetAccountsAsync();
+                        var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
 
                         try
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         catch
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken);
+                            authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -924,15 +924,15 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AzureOnBehalfOf:
                     {
-                        var accounts = await confidentialClientApplication.GetAccountsAsync();
+                        var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
 
                         try
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                            authResult = await confidentialClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         catch
                         {
-                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync(cancellationToken);
+                            authResult = await confidentialClientApplication.AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -942,15 +942,15 @@ namespace PnP.Framework
                     }
                 case ClientContextType.DeviceLogin:
                     {
-                        var accounts = await publicClientApplication.GetAccountsAsync();
+                        var accounts = await publicClientApplication.GetAccountsAsync().ConfigureAwait(false);
 
                         try
                         {
-                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken);
+                            authResult = await publicClientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         catch
                         {
-                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync(cancellationToken);
+                            authResult = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, deviceCodeCallback).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -1460,20 +1460,20 @@ namespace PnP.Framework
         {
             if (publicClientApplication != null)
             {
-                var accounts = (await publicClientApplication.GetAccountsAsync()).ToList();
+                var accounts = (await publicClientApplication.GetAccountsAsync().ConfigureAwait(false)).ToList();
                 while (accounts.Any())
                 {
-                    await publicClientApplication.RemoveAsync(accounts.First());
-                    accounts = (await publicClientApplication.GetAccountsAsync()).ToList();
+                    await publicClientApplication.RemoveAsync(accounts.First()).ConfigureAwait(false);
+                    accounts = (await publicClientApplication.GetAccountsAsync().ConfigureAwait(false)).ToList();
                 }
             }
             if (confidentialClientApplication != null)
             {
-                var accounts = (await confidentialClientApplication.GetAccountsAsync()).ToList();
+                var accounts = (await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false)).ToList();
                 while (accounts.Any())
                 {
-                    await confidentialClientApplication.RemoveAsync(accounts.First());
-                    accounts = (await confidentialClientApplication.GetAccountsAsync()).ToList();
+                    await confidentialClientApplication.RemoveAsync(accounts.First()).ConfigureAwait(false);
+                    accounts = (await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false)).ToList();
                 }
             }
         }

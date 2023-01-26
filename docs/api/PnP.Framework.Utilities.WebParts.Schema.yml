@@ -1,0 +1,74 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.WebParts.Schema
+  commentId: N:PnP.Framework.Utilities.WebParts.Schema
+  id: PnP.Framework.Utilities.WebParts.Schema
+  children:
+  - PnP.Framework.Utilities.WebParts.Schema.PropertyContainerType
+  - PnP.Framework.Utilities.WebParts.Schema.PropertyContainerTypeIpersonalizable
+  - PnP.Framework.Utilities.WebParts.Schema.PropertyType
+  - PnP.Framework.Utilities.WebParts.Schema.WebPart
+  - PnP.Framework.Utilities.WebParts.Schema.WebPartData
+  - PnP.Framework.Utilities.WebParts.Schema.WebPartMetaData
+  - PnP.Framework.Utilities.WebParts.Schema.WebPartMetaDataType
+  - PnP.Framework.Utilities.WebParts.Schema.WebParts
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.WebParts.Schema
+  nameWithType: PnP.Framework.Utilities.WebParts.Schema
+  fullName: PnP.Framework.Utilities.WebParts.Schema
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.WebParts.Schema.WebParts
+  commentId: T:PnP.Framework.Utilities.WebParts.Schema.WebParts
+  name: WebParts
+  nameWithType: WebParts
+  fullName: PnP.Framework.Utilities.WebParts.Schema.WebParts
+- uid: PnP.Framework.Utilities.WebParts.Schema.WebPart
+  commentId: T:PnP.Framework.Utilities.WebParts.Schema.WebPart
+  parent: PnP.Framework.Utilities.WebParts.Schema
+  name: WebPart
+  nameWithType: WebPart
+  fullName: PnP.Framework.Utilities.WebParts.Schema.WebPart
+- uid: PnP.Framework.Utilities.WebParts.Schema.WebPartMetaData
+  commentId: T:PnP.Framework.Utilities.WebParts.Schema.WebPartMetaData
+  parent: PnP.Framework.Utilities.WebParts.Schema
+  name: WebPartMetaData
+  nameWithType: WebPartMetaData
+  fullName: PnP.Framework.Utilities.WebParts.Schema.WebPartMetaData
+- uid: PnP.Framework.Utilities.WebParts.Schema.WebPartMetaDataType
+  commentId: T:PnP.Framework.Utilities.WebParts.Schema.WebPartMetaDataType
+  parent: PnP.Framework.Utilities.WebParts.Schema
+  name: WebPartMetaDataType
+  nameWithType: WebPartMetaDataType
+  fullName: PnP.Framework.Utilities.WebParts.Schema.WebPartMetaDataType
+- uid: PnP.Framework.Utilities.WebParts.Schema.WebPartData
+  commentId: T:PnP.Framework.Utilities.WebParts.Schema.WebPartData
+  parent: PnP.Framework.Utilities.WebParts.Schema
+  name: WebPartData
+  nameWithType: WebPartData
+  fullName: PnP.Framework.Utilities.WebParts.Schema.WebPartData
+- uid: PnP.Framework.Utilities.WebParts.Schema.PropertyContainerType
+  commentId: T:PnP.Framework.Utilities.WebParts.Schema.PropertyContainerType
+  parent: PnP.Framework.Utilities.WebParts.Schema
+  name: PropertyContainerType
+  nameWithType: PropertyContainerType
+  fullName: PnP.Framework.Utilities.WebParts.Schema.PropertyContainerType
+- uid: PnP.Framework.Utilities.WebParts.Schema.PropertyType
+  commentId: T:PnP.Framework.Utilities.WebParts.Schema.PropertyType
+  name: PropertyType
+  nameWithType: PropertyType
+  fullName: PnP.Framework.Utilities.WebParts.Schema.PropertyType
+- uid: PnP.Framework.Utilities.WebParts.Schema.PropertyContainerTypeIpersonalizable
+  commentId: T:PnP.Framework.Utilities.WebParts.Schema.PropertyContainerTypeIpersonalizable
+  name: PropertyContainerTypeIpersonalizable
+  nameWithType: PropertyContainerTypeIpersonalizable
+  fullName: PnP.Framework.Utilities.WebParts.Schema.PropertyContainerTypeIpersonalizable
+- uid: PnP.Framework.Utilities.WebParts.Schema
+  commentId: N:PnP.Framework.Utilities.WebParts.Schema
+  name: PnP.Framework.Utilities.WebParts.Schema
+  nameWithType: PnP.Framework.Utilities.WebParts.Schema
+  fullName: PnP.Framework.Utilities.WebParts.Schema

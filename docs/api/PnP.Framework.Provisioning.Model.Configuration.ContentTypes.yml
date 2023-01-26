@@ -1,0 +1,35 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  id: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.ContentTypes.ApplyContentTypeConfiguration
+  - PnP.Framework.Provisioning.Model.Configuration.ContentTypes.ExtractContentTypeConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  fullName: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.ContentTypes.ApplyContentTypeConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.ContentTypes.ApplyContentTypeConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  name: ApplyContentTypeConfiguration
+  nameWithType: ApplyContentTypeConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.ContentTypes.ApplyContentTypeConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.ContentTypes.ExtractContentTypeConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.ContentTypes.ExtractContentTypeConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  name: ExtractContentTypeConfiguration
+  nameWithType: ExtractContentTypeConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.ContentTypes.ExtractContentTypeConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  name: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.ContentTypes
+  fullName: PnP.Framework.Provisioning.Model.Configuration.ContentTypes

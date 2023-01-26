@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Fields
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Fields
+  id: PnP.Framework.Provisioning.Model.Configuration.Fields
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.Fields.ApplyFieldsConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.Fields
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Fields
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Fields
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Fields.ApplyFieldsConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Fields.ApplyFieldsConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Fields
+  name: ApplyFieldsConfiguration
+  nameWithType: ApplyFieldsConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Fields.ApplyFieldsConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Fields
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Fields
+  name: PnP.Framework.Provisioning.Model.Configuration.Fields
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Fields
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Fields

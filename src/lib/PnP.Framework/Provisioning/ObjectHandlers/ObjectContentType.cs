@@ -222,6 +222,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
 
+            // Set the SPFx form customizer settings, if any
+            SetContentTypeFormCustomizerSettings(templateContentType, parser, existingContentType);
+
             if (templateContentType.Name.ContainsResourceToken())
             {
                 existingContentType.NameResource.SetUserResourceValue(templateContentType.Name, parser);
@@ -367,12 +370,25 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var ctItem in templateContentType.DocumentSetTemplate.AllowedContentTypes)
                     {
                         // Validate if the content type is not part of the document set content types yet
-                        if (documentSetTemplate.AllowedContentTypes.All(d => d.StringValue != ctItem.ContentTypeId))
+                        // and if we do not have to remove it
+                        if (documentSetTemplate.AllowedContentTypes.All(d => d.StringValue != ctItem.ContentTypeId)
+                            && !ctItem.Remove)
                         {
                             Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctItem.ContentTypeId);
                             if (ct != null)
                             {
                                 documentSetTemplate.AllowedContentTypes.Add(ct.Id);
+                                documentSetIsDirty = true;
+                            }
+                        }
+                        // Otherwise, check if we need to remove the already existing content type
+                        else if (documentSetTemplate.AllowedContentTypes.Any(d => d.StringValue == ctItem.ContentTypeId)
+                            && ctItem.Remove)
+                        {
+                            Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctItem.ContentTypeId);
+                            if (ct != null)
+                            {
+                                documentSetTemplate.AllowedContentTypes.Remove(ct.Id);
                                 documentSetIsDirty = true;
                             }
                         }
@@ -410,12 +426,25 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var sharedField in templateContentType.DocumentSetTemplate.SharedFields)
                     {
                         // Ensure the shared field is not part of the document set yet
-                        if (documentSetTemplate.SharedFields.All(f => f.Id != sharedField.Id))
+                        // and if we do not have to remove it
+                        if (documentSetTemplate.SharedFields.All(f => f.Id != sharedField.Id)
+                            && !sharedField.Remove)
                         {
                             Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField.Id);
                             if (field != null)
                             {
                                 documentSetTemplate.SharedFields.Add(field);
+                                documentSetIsDirty = true;
+                            }
+                        }
+                        // Otherwise, check if we need to remove the already existing shared field
+                        else if (documentSetTemplate.SharedFields.Any(f => f.Id != sharedField.Id)
+                            && sharedField.Remove)
+                        {
+                            Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField.Id);
+                            if (field != null)
+                            {
+                                documentSetTemplate.SharedFields.Remove(field);
                                 documentSetIsDirty = true;
                             }
                         }
@@ -438,7 +467,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     if (documentSetIsDirty)
                     {
-                        documentSetTemplate.Update(true);
+                        documentSetTemplate.Update(templateContentType.DocumentSetTemplate.UpdateChildren);
                         isDirty = true;
                     }
                 }
@@ -617,6 +646,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
 
+            // Set the SPFx form customizer settings, if any
+            SetContentTypeFormCustomizerSettings(templateContentType, parser, createdCT);
+
             createdCT.Update(true);
             web.Context.ExecuteQueryRetry();
 
@@ -643,12 +675,21 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     Microsoft.SharePoint.Client.ContentType ct = existingCTs.FirstOrDefault(c => c.StringId == ctItem.ContentTypeId);
                     if (ct != null)
                     {
-                        if (ct.Id.StringValue.Equals("0x0101", StringComparison.InvariantCultureIgnoreCase))
+                        // Check if we need to remove the Content Type
+                        if (ctItem.Remove)
                         {
-                            hasDefaultDocumentContentTypeInTemplate = true;
+                            documentSetTemplate.AllowedContentTypes.Remove(ct.Id);
                         }
+                        // Otherwise add it
+                        else
+                        {
+                            if (ct.Id.StringValue.Equals("0x0101", StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                hasDefaultDocumentContentTypeInTemplate = true;
+                            }
 
-                        documentSetTemplate.AllowedContentTypes.Add(ct.Id);
+                            documentSetTemplate.AllowedContentTypes.Add(ct.Id);
+                        }
                     }
                 }
                 // If the default document content type (0x0101) is not in our definition then remove it
@@ -688,7 +729,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     Microsoft.SharePoint.Client.Field field = existingFields.FirstOrDefault(f => f.Id == sharedField.Id);
                     if (field != null)
                     {
-                        documentSetTemplate.SharedFields.Add(field);
+                        // Check if we need to remove the Content Type
+                        if (sharedField.Remove)
+                        {
+                            documentSetTemplate.SharedFields.Remove(field);
+                        }
+                        // Otherwise add it
+                        else
+                        {
+                            documentSetTemplate.SharedFields.Add(field);
+                        }
                     }
                 }
 
@@ -701,7 +751,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                 }
 
-                documentSetTemplate.Update(true);
+                documentSetTemplate.Update(templateContentType.DocumentSetTemplate.UpdateChildren);
                 web.Context.ExecuteQueryRetry();
             }
             else if (templateContentType.Id.StartsWith(BuiltInContentTypeId.Workflow2013Task + "00"))
@@ -734,6 +784,39 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return createdCT;
         }
 
+        private static void SetContentTypeFormCustomizerSettings(ContentType templateContentType, TokenParser parser, Microsoft.SharePoint.Client.ContentType createdCT)
+        {
+            // Display Form Customizer
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.DisplayFormClientSideComponentId)))
+            {
+                createdCT.DisplayFormClientSideComponentId = parser.ParseString(templateContentType.DisplayFormClientSideComponentId);
+            }
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.DisplayFormClientSideComponentProperties)))
+            {
+                createdCT.DisplayFormClientSideComponentProperties = parser.ParseString(templateContentType.DisplayFormClientSideComponentProperties);
+            }
+
+            // New Form Customizer
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.NewFormClientSideComponentId)))
+            {
+                createdCT.NewFormClientSideComponentId = parser.ParseString(templateContentType.NewFormClientSideComponentId);
+            }
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.NewFormClientSideComponentProperties)))
+            {
+                createdCT.NewFormClientSideComponentProperties = parser.ParseString(templateContentType.NewFormClientSideComponentProperties);
+            }
+
+            // Edit Form Customizer
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.EditFormClientSideComponentId)))
+            {
+                createdCT.EditFormClientSideComponentId = parser.ParseString(templateContentType.EditFormClientSideComponentId);
+            }
+            if (!string.IsNullOrEmpty(parser.ParseString(templateContentType.EditFormClientSideComponentProperties)))
+            {
+                createdCT.EditFormClientSideComponentProperties = parser.ParseString(templateContentType.EditFormClientSideComponentProperties);
+            }
+        }
+
         public override ProvisioningTemplate ExtractObjects(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
             using (var scope = new PnPMonitoredScope(this.Name))
@@ -754,6 +837,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             var cts = web.ContentTypes;
             web.Context.Load(cts,
                 ctCollection => ctCollection.IncludeWithDefaultProperties(
+                    ct => ct.DisplayFormClientSideComponentId,
+                    ct => ct.DisplayFormClientSideComponentProperties,
+                    ct => ct.NewFormClientSideComponentId,
+                    ct => ct.NewFormClientSideComponentProperties,
+                    ct => ct.EditFormClientSideComponentId,
+                    ct => ct.EditFormClientSideComponentProperties,
                     ct => ct.FieldLinks,
                     ct => ct.SchemaXmlWithResourceTokens,
                     ct => ct.FieldLinks.IncludeWithDefaultProperties(
@@ -850,6 +939,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         DisplayFormUrl = ct.DisplayFormUrl,
                         EditFormUrl = ct.EditFormUrl,
                         NewFormUrl = ct.NewFormUrl,
+                        DisplayFormClientSideComponentId = ct.DisplayFormClientSideComponentId,
+                        DisplayFormClientSideComponentProperties = ct.DisplayFormClientSideComponentProperties,
+                        NewFormClientSideComponentId = ct.NewFormClientSideComponentId,
+                        NewFormClientSideComponentProperties = ct.NewFormClientSideComponentProperties,
+                        EditFormClientSideComponentId = ct.EditFormClientSideComponentId,
+                        EditFormClientSideComponentProperties = ct.EditFormClientSideComponentProperties,
                     };
 
                     if (creationInfo.PersistMultiLanguageResources)

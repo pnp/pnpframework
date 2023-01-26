@@ -1,0 +1,2630 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.SecurityExtensions
+  commentId: T:Microsoft.SharePoint.Client.SecurityExtensions
+  id: SecurityExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddAdministrators(Microsoft.SharePoint.Client.Web,System.Collections.Generic.List{PnP.Framework.Entities.UserEntity},System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddGroup(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess(Microsoft.SharePoint.Client.Web,PnP.Framework.Enums.BuiltInIdentity)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.User)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,System.String)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,System.Int32,System.String)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.SecurityExtensions.AssociateDefaultGroups(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.Group)
+  - Microsoft.SharePoint.Client.SecurityExtensions.GetAdministrators(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.SecurityExtensions.GetAllUniqueRoleAssignments(Microsoft.SharePoint.Client.Web,System.Int32)
+  - Microsoft.SharePoint.Client.SecurityExtensions.GetAuthenticationRealm(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.SecurityExtensions.GetEveryoneExceptExternalUsersClaimName(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersForSiteTenant(Microsoft.SharePoint.Client.Web,System.Uri)
+  - Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersTenant(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.SecurityExtensions.GetGroupID(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.SecurityExtensions.GetPrincipalUniqueRoleAssignments(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Principal,System.Int32)
+  - Microsoft.SharePoint.Client.SecurityExtensions.GetSharingCapabilitiesTenant(Microsoft.SharePoint.Client.Web,System.Uri)
+  - Microsoft.SharePoint.Client.SecurityExtensions.GroupExists(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.SecurityExtensions.IsUserInGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  - Microsoft.SharePoint.Client.SecurityExtensions.RemoveAdministrator(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.UserEntity)
+  - Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group)
+  - Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  - Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.User)
+  - Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: SecurityExtensions
+  nameWithType: SecurityExtensions
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SecurityExtensions
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 17
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nThis manager class holds security related methods\n"
+  example: []
+  syntax:
+    content: public static class SecurityExtensions
+    content.vb: Public Module SecurityExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetAdministrators(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.GetAdministrators(Microsoft.SharePoint.Client.Web)
+  id: GetAdministrators(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAdministrators(Web)
+  nameWithType: SecurityExtensions.GetAdministrators(Web)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetAdministrators(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAdministrators
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 25
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet a list of site collection administrators\n"
+  example: []
+  syntax:
+    content: public static List<UserEntity> GetAdministrators(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to operate on
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UserEntity}
+      description: List of <xref href="PnP.Framework.Entities.UserEntity" data-throw-if-not-resolved="false"></xref> objects
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetAdministrators(web As Web) As List(Of UserEntity)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.GetAdministrators*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddAdministrators(Microsoft.SharePoint.Client.Web,System.Collections.Generic.List{PnP.Framework.Entities.UserEntity},System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddAdministrators(Microsoft.SharePoint.Client.Web,System.Collections.Generic.List{PnP.Framework.Entities.UserEntity},System.Boolean)
+  id: AddAdministrators(Microsoft.SharePoint.Client.Web,System.Collections.Generic.List{PnP.Framework.Entities.UserEntity},System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddAdministrators(Web, List<UserEntity>, Boolean)
+  nameWithType: SecurityExtensions.AddAdministrators(Web, List<UserEntity>, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddAdministrators(Microsoft.SharePoint.Client.Web, System.Collections.Generic.List<PnP.Framework.Entities.UserEntity>, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddAdministrators
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 59
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd a site collection administrator to a site collection\n"
+  example: []
+  syntax:
+    content: public static void AddAdministrators(this Web web, List<UserEntity> adminLogins, bool addToOwnersGroup = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to operate on
+    - id: adminLogins
+      type: System.Collections.Generic.List{PnP.Framework.Entities.UserEntity}
+      description: Array of admins loginnames to add
+    - id: addToOwnersGroup
+      type: System.Boolean
+      description: Optionally the added admins can also be added to the Site owners group
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddAdministrators(web As Web, adminLogins As List(Of UserEntity), addToOwnersGroup As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddAdministrators*
+  nameWithType.vb: SecurityExtensions.AddAdministrators(Web, List(Of UserEntity), Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.SecurityExtensions.AddAdministrators(Microsoft.SharePoint.Client.Web, System.Collections.Generic.List(Of PnP.Framework.Entities.UserEntity), System.Boolean)
+  name.vb: AddAdministrators(Web, List(Of UserEntity), Boolean)
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemoveAdministrator(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.UserEntity)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.RemoveAdministrator(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.UserEntity)
+  id: RemoveAdministrator(Microsoft.SharePoint.Client.Web,PnP.Framework.Entities.UserEntity)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemoveAdministrator(Web, UserEntity)
+  nameWithType: SecurityExtensions.RemoveAdministrator(Web, UserEntity)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemoveAdministrator(Microsoft.SharePoint.Client.Web, PnP.Framework.Entities.UserEntity)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveAdministrator
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 93
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves an administrators from the site collection\n"
+  example: []
+  syntax:
+    content: public static void RemoveAdministrator(this Web web, UserEntity admin)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to operate on
+    - id: admin
+      type: PnP.Framework.Entities.UserEntity
+      description: <xref href="PnP.Framework.Entities.UserEntity" data-throw-if-not-resolved="false"></xref> that describes the admin to be removed
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemoveAdministrator(web As Web, admin As UserEntity)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.RemoveAdministrator*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess(Microsoft.SharePoint.Client.Web)
+  id: AddReaderAccess(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddReaderAccess(Web)
+  nameWithType: SecurityExtensions.AddReaderAccess(Web)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddReaderAccess
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 123
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd read access to the group &quot;Everyone except external users&quot;.\n"
+  example: []
+  syntax:
+    content: public static User AddReaderAccess(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    return:
+      type: Microsoft.SharePoint.Client.User
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddReaderAccess(web As Web) As User
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess(Microsoft.SharePoint.Client.Web,PnP.Framework.Enums.BuiltInIdentity)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess(Microsoft.SharePoint.Client.Web,PnP.Framework.Enums.BuiltInIdentity)
+  id: AddReaderAccess(Microsoft.SharePoint.Client.Web,PnP.Framework.Enums.BuiltInIdentity)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddReaderAccess(Web, BuiltInIdentity)
+  nameWithType: SecurityExtensions.AddReaderAccess(Web, BuiltInIdentity)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess(Microsoft.SharePoint.Client.Web, PnP.Framework.Enums.BuiltInIdentity)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddReaderAccess
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 133
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd read access to the group &quot;Everyone except external users&quot;.\n"
+  example: []
+  syntax:
+    content: public static User AddReaderAccess(this Web web, BuiltInIdentity user)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: user
+      type: PnP.Framework.Enums.BuiltInIdentity
+      description: Built in user to add to the visitors group
+    return:
+      type: Microsoft.SharePoint.Client.User
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddReaderAccess(web As Web, user As BuiltInIdentity) As User
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetEveryoneExceptExternalUsersClaimName(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.GetEveryoneExceptExternalUsersClaimName(Microsoft.SharePoint.Client.Web)
+  id: GetEveryoneExceptExternalUsersClaimName(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetEveryoneExceptExternalUsersClaimName(Web)
+  nameWithType: SecurityExtensions.GetEveryoneExceptExternalUsersClaimName(Web)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetEveryoneExceptExternalUsersClaimName(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetEveryoneExceptExternalUsersClaimName
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 199
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the correct value of the &quot;Everyone except external users&quot; string value\n"
+  example: []
+  syntax:
+    content: public static string GetEveryoneExceptExternalUsersClaimName(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to get the language from
+    return:
+      type: System.String
+      description: String in correct translation
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetEveryoneExceptExternalUsersClaimName(web As Web) As String
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.GetEveryoneExceptExternalUsersClaimName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetSharingCapabilitiesTenant(Microsoft.SharePoint.Client.Web,System.Uri)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.GetSharingCapabilitiesTenant(Microsoft.SharePoint.Client.Web,System.Uri)
+  id: GetSharingCapabilitiesTenant(Microsoft.SharePoint.Client.Web,System.Uri)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSharingCapabilitiesTenant(Web, Uri)
+  nameWithType: SecurityExtensions.GetSharingCapabilitiesTenant(Web, Uri)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetSharingCapabilitiesTenant(Microsoft.SharePoint.Client.Web, System.Uri)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSharingCapabilitiesTenant
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 353
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet the external sharing settings for the provided site. Only works in Office 365 Multi-Tenant\n"
+  example: []
+  syntax:
+    content: public static string GetSharingCapabilitiesTenant(this Web web, Uri siteUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Tenant administration web
+    - id: siteUrl
+      type: System.Uri
+      description: Site to get the sharing capabilities from
+    return:
+      type: System.String
+      description: Sharing capabilities of the site collection
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSharingCapabilitiesTenant(web As Web, siteUrl As Uri) As String
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.GetSharingCapabilitiesTenant*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersTenant(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersTenant(Microsoft.SharePoint.Client.Web)
+  id: GetExternalUsersTenant(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetExternalUsersTenant(Web)
+  nameWithType: SecurityExtensions.GetExternalUsersTenant(Web)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersTenant(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetExternalUsersTenant
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 370
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns a list all external users in your tenant\n"
+  example: []
+  syntax:
+    content: public static List<ExternalUserEntity> GetExternalUsersTenant(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Tenant administration web
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.ExternalUserEntity}
+      description: A list of <xref href="PnP.Framework.Entities.ExternalUserEntity" data-throw-if-not-resolved="false"></xref> objects
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetExternalUsersTenant(web As Web) As List(Of ExternalUserEntity)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersTenant*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersForSiteTenant(Microsoft.SharePoint.Client.Web,System.Uri)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersForSiteTenant(Microsoft.SharePoint.Client.Web,System.Uri)
+  id: GetExternalUsersForSiteTenant(Microsoft.SharePoint.Client.Web,System.Uri)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetExternalUsersForSiteTenant(Web, Uri)
+  nameWithType: SecurityExtensions.GetExternalUsersForSiteTenant(Web, Uri)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersForSiteTenant(Microsoft.SharePoint.Client.Web, System.Uri)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetExternalUsersForSiteTenant
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 416
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns a list all external users for a given site that have at least the viewpages permission\n"
+  example: []
+  syntax:
+    content: public static List<ExternalUserEntity> GetExternalUsersForSiteTenant(this Web web, Uri siteUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Tenant administration web
+    - id: siteUrl
+      type: System.Uri
+      description: Url of the site fetch the external users for
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Entities.ExternalUserEntity}
+      description: A list of <xref href="PnP.Framework.Entities.ExternalUserEntity" data-throw-if-not-resolved="false"></xref> objects
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetExternalUsersForSiteTenant(web As Web, siteUrl As Uri) As List(Of ExternalUserEntity)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersForSiteTenant*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetGroupID(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.GetGroupID(Microsoft.SharePoint.Client.Web,System.String)
+  id: GetGroupID(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetGroupID(Web, String)
+  nameWithType: SecurityExtensions.GetGroupID(Web, String)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetGroupID(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetGroupID
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 481
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the integer ID for a given group name\n"
+  example: []
+  syntax:
+    content: public static int GetGroupID(this Web web, string groupName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to be processed - can be root web or sub site
+    - id: groupName
+      type: System.String
+      description: SharePoint group name
+    return:
+      type: System.Int32
+      description: Integer group ID
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetGroupID(web As Web, groupName As String) As Integer
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.GetGroupID*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddGroup(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddGroup(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  id: AddGroup(Microsoft.SharePoint.Client.Web,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddGroup(Web, String, String, Boolean, Boolean, Boolean)
+  nameWithType: SecurityExtensions.AddGroup(Web, String, String, Boolean, Boolean, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddGroup(Microsoft.SharePoint.Client.Web, System.String, System.String, System.Boolean, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 509
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a group\n"
+  example: []
+  syntax:
+    content: public static Group AddGroup(this Web web, string groupName, string groupDescription, bool groupIsOwner, bool updateAndExecuteQuery = true, bool onlyAllowMembersViewMembership = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to add the group to
+    - id: groupName
+      type: System.String
+      description: Name of the group
+    - id: groupDescription
+      type: System.String
+      description: Description of the group
+    - id: groupIsOwner
+      type: System.Boolean
+      description: Sets the created group as group owner if true
+    - id: updateAndExecuteQuery
+      type: System.Boolean
+      description: Set to false to postpone the executequery call
+    - id: onlyAllowMembersViewMembership
+      type: System.Boolean
+      description: Set whether members are allowed to see group membership, defaults to false
+    return:
+      type: Microsoft.SharePoint.Client.Group
+      description: The created group
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddGroup(web As Web, groupName As String, groupDescription As String, groupIsOwner As Boolean, updateAndExecuteQuery As Boolean = True, onlyAllowMembersViewMembership As Boolean = False) As Group
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AssociateDefaultGroups(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.Group)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AssociateDefaultGroups(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.Group)
+  id: AssociateDefaultGroups(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.Group)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AssociateDefaultGroups(Web, Group, Group, Group)
+  nameWithType: SecurityExtensions.AssociateDefaultGroups(Web, Group, Group, Group)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AssociateDefaultGroups(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Group, Microsoft.SharePoint.Client.Group, Microsoft.SharePoint.Client.Group)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AssociateDefaultGroups
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 544
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAssociate the provided groups as default owners, members or visitors groups. If a group is null then the\nassociation is not done\n"
+  example: []
+  syntax:
+    content: public static void AssociateDefaultGroups(this Web web, Group owners, Group members, Group visitors)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Site to operate on
+    - id: owners
+      type: Microsoft.SharePoint.Client.Group
+      description: Owners group
+    - id: members
+      type: Microsoft.SharePoint.Client.Group
+      description: Members group
+    - id: visitors
+      type: Microsoft.SharePoint.Client.Group
+      description: Visitors group
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AssociateDefaultGroups(web As Web, owners As Group, members As Group, visitors As Group)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AssociateDefaultGroups*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: AddUserToGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddUserToGroup(Web, String, String)
+  nameWithType: SecurityExtensions.AddUserToGroup(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddUserToGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 572
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a user to a group\n"
+  example: []
+  syntax:
+    content: public static void AddUserToGroup(this Web web, string groupName, string userLoginName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: web to operate against
+    - id: groupName
+      type: System.String
+      description: Name of the group
+    - id: userLoginName
+      type: System.String
+      description: Loginname of the user
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddUserToGroup(web As Web, groupName As String, userLoginName As String)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,System.Int32,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,System.Int32,System.String)
+  id: AddUserToGroup(Microsoft.SharePoint.Client.Web,System.Int32,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddUserToGroup(Web, Int32, String)
+  nameWithType: SecurityExtensions.AddUserToGroup(Web, Int32, String)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web, System.Int32, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddUserToGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 605
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a user to a group\n"
+  example: []
+  syntax:
+    content: public static void AddUserToGroup(this Web web, int groupId, string userLoginName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: web to operate against
+    - id: groupId
+      type: System.Int32
+      description: Id of the group
+    - id: userLoginName
+      type: System.String
+      description: Login name of the user
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddUserToGroup(web As Web, groupId As Integer, userLoginName As String)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.User)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.User)
+  id: AddUserToGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.User)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddUserToGroup(Web, Group, User)
+  nameWithType: SecurityExtensions.AddUserToGroup(Web, Group, User)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Group, Microsoft.SharePoint.Client.User)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddUserToGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 627
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a user to a group\n"
+  example: []
+  syntax:
+    content: public static void AddUserToGroup(this Web web, Group group, User user)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    - id: group
+      type: Microsoft.SharePoint.Client.Group
+      description: Group object representing the group
+    - id: user
+      type: Microsoft.SharePoint.Client.User
+      description: User object representing the user
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddUserToGroup(web As Web, group As Group, user As User)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,System.String)
+  id: AddUserToGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddUserToGroup(Web, Group, String)
+  nameWithType: SecurityExtensions.AddUserToGroup(Web, Group, String)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Group, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddUserToGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 645
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdds a user to a group\n"
+  example: []
+  syntax:
+    content: public static void AddUserToGroup(this Web web, Group group, string userLoginName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    - id: group
+      type: Microsoft.SharePoint.Client.Group
+      description: Group object representing the group
+    - id: userLoginName
+      type: System.String
+      description: Login name of the user
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddUserToGroup(web As Web, group As Group, userLoginName As String)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  id: AddPermissionLevelToUser(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddPermissionLevelToUser(SecurableObject, String, RoleType, Boolean)
+  nameWithType: SecurityExtensions.AddPermissionLevelToUser(SecurableObject, String, RoleType, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser(Microsoft.SharePoint.Client.SecurableObject, System.String, Microsoft.SharePoint.Client.RoleType, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddPermissionLevelToUser
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 669
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd a permission level (e.g.Contribute, Reader,...) to a user\n"
+  example: []
+  syntax:
+    content: public static void AddPermissionLevelToUser(this SecurableObject securableObject, string userLoginName, RoleType permissionLevel, bool removeExistingPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: userLoginName
+      type: System.String
+      description: Loginname of the user
+    - id: permissionLevel
+      type: Microsoft.SharePoint.Client.RoleType
+      description: Permission level to add
+    - id: removeExistingPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all other permission levels for that user
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddPermissionLevelToUser(securableObject As SecurableObject, userLoginName As String, permissionLevel As RoleType, removeExistingPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  id: AddPermissionLevelToUser(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddPermissionLevelToUser(SecurableObject, String, String, Boolean)
+  nameWithType: SecurityExtensions.AddPermissionLevelToUser(SecurableObject, String, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser(Microsoft.SharePoint.Client.SecurableObject, System.String, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddPermissionLevelToUser
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 687
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd a role definition (e.g.Contribute, Read, Approve) to a user\n"
+  example: []
+  syntax:
+    content: public static void AddPermissionLevelToUser(this SecurableObject securableObject, string userLoginName, string roleDefinitionName, bool removeExistingPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: userLoginName
+      type: System.String
+      description: Loginname of the user
+    - id: roleDefinitionName
+      type: System.String
+      description: Name of the role definition to add, Full Control|Design|Contribute|Read|Approve|Manage Hierarchy|Restricted Read. Use the correct name of the language of the root site you are using
+    - id: removeExistingPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all other permission levels for that user
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddPermissionLevelToUser(securableObject As SecurableObject, userLoginName As String, roleDefinitionName As String, removeExistingPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  id: AddPermissionLevelToGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddPermissionLevelToGroup(SecurableObject, String, RoleType, Boolean)
+  nameWithType: SecurityExtensions.AddPermissionLevelToGroup(SecurableObject, String, RoleType, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup(Microsoft.SharePoint.Client.SecurableObject, System.String, Microsoft.SharePoint.Client.RoleType, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddPermissionLevelToGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 708
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd a permission level (e.g.Contribute, Reader,...) to a group\n"
+  example: []
+  syntax:
+    content: public static void AddPermissionLevelToGroup(this SecurableObject securableObject, string groupName, RoleType permissionLevel, bool removeExistingPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: groupName
+      type: System.String
+      description: Name of the group
+    - id: permissionLevel
+      type: Microsoft.SharePoint.Client.RoleType
+      description: Permission level to add
+    - id: removeExistingPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all other permission levels for that group
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddPermissionLevelToGroup(securableObject As SecurableObject, groupName As String, permissionLevel As RoleType, removeExistingPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  id: AddPermissionLevelToPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddPermissionLevelToPrincipal(SecurableObject, Principal, RoleType, Boolean)
+  nameWithType: SecurityExtensions.AddPermissionLevelToPrincipal(SecurableObject, Principal, RoleType, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal(Microsoft.SharePoint.Client.SecurableObject, Microsoft.SharePoint.Client.Principal, Microsoft.SharePoint.Client.RoleType, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddPermissionLevelToPrincipal
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 727
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd a permission level (e.g.Contribute, Reader,...) to a group\n"
+  example: []
+  syntax:
+    content: public static void AddPermissionLevelToPrincipal(this SecurableObject securableObject, Principal principal, RoleType permissionLevel, bool removeExistingPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: principal
+      type: Microsoft.SharePoint.Client.Principal
+      description: Principal to add permission to
+    - id: permissionLevel
+      type: Microsoft.SharePoint.Client.RoleType
+      description: Permission level to add
+    - id: removeExistingPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all other permission levels for that group
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddPermissionLevelToPrincipal(securableObject As SecurableObject, principal As Principal, permissionLevel As RoleType, removeExistingPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  id: AddPermissionLevelToGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddPermissionLevelToGroup(SecurableObject, String, String, Boolean)
+  nameWithType: SecurityExtensions.AddPermissionLevelToGroup(SecurableObject, String, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup(Microsoft.SharePoint.Client.SecurableObject, System.String, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddPermissionLevelToGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 747
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd a role definition (e.g.Contribute, Read, Approve) to a group\n"
+  example: []
+  syntax:
+    content: public static void AddPermissionLevelToGroup(this SecurableObject securableObject, string groupName, string roleDefinitionName, bool removeExistingPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: groupName
+      type: System.String
+      description: Name of the group
+    - id: roleDefinitionName
+      type: System.String
+      description: Name of the role definition to add, Full Control|Design|Contribute|Read|Approve|Manage Hierarchy|Restricted Read. Use the correct name of the language of the root site you are using
+    - id: removeExistingPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all other permission levels for that group
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddPermissionLevelToGroup(securableObject As SecurableObject, groupName As String, roleDefinitionName As String, removeExistingPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,System.String,System.Boolean)
+  id: AddPermissionLevelToPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddPermissionLevelToPrincipal(SecurableObject, Principal, String, Boolean)
+  nameWithType: SecurityExtensions.AddPermissionLevelToPrincipal(SecurableObject, Principal, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal(Microsoft.SharePoint.Client.SecurableObject, Microsoft.SharePoint.Client.Principal, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddPermissionLevelToPrincipal
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 769
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nAdd a role definition (e.g.Contribute, Read, Approve) to a group\n"
+  example: []
+  syntax:
+    content: public static void AddPermissionLevelToPrincipal(this SecurableObject securableObject, Principal principal, string roleDefinitionName, bool removeExistingPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: principal
+      type: Microsoft.SharePoint.Client.Principal
+      description: Principal to add permission to
+    - id: roleDefinitionName
+      type: System.String
+      description: Name of the role definition to add, Full Control|Design|Contribute|Read|Approve|Manage Hierarchy|Restricted Read. Use the correct name of the language of the root site you are using
+    - id: removeExistingPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all other permission levels for that group
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub AddPermissionLevelToPrincipal(securableObject As SecurableObject, principal As Principal, roleDefinitionName As String, removeExistingPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  id: RemovePermissionLevelFromUser(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemovePermissionLevelFromUser(SecurableObject, String, RoleType, Boolean)
+  nameWithType: SecurityExtensions.RemovePermissionLevelFromUser(SecurableObject, String, RoleType, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser(Microsoft.SharePoint.Client.SecurableObject, System.String, Microsoft.SharePoint.Client.RoleType, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemovePermissionLevelFromUser
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 840
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a permission level from a user\n"
+  example: []
+  syntax:
+    content: public static void RemovePermissionLevelFromUser(this SecurableObject securableObject, string userLoginName, RoleType permissionLevel, bool removeAllPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: userLoginName
+      type: System.String
+      description: Loginname of user
+    - id: permissionLevel
+      type: Microsoft.SharePoint.Client.RoleType
+      description: Permission level to remove. If null all permission levels are removed
+    - id: removeAllPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all permission level.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemovePermissionLevelFromUser(securableObject As SecurableObject, userLoginName As String, permissionLevel As RoleType, removeAllPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  id: RemovePermissionLevelFromPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemovePermissionLevelFromPrincipal(SecurableObject, Principal, RoleType, Boolean)
+  nameWithType: SecurityExtensions.RemovePermissionLevelFromPrincipal(SecurableObject, Principal, RoleType, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal(Microsoft.SharePoint.Client.SecurableObject, Microsoft.SharePoint.Client.Principal, Microsoft.SharePoint.Client.RoleType, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemovePermissionLevelFromPrincipal
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 859
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a permission level from a user\n"
+  example: []
+  syntax:
+    content: public static void RemovePermissionLevelFromPrincipal(this SecurableObject securableObject, Principal principal, RoleType permissionLevel, bool removeAllPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: principal
+      type: Microsoft.SharePoint.Client.Principal
+      description: Principal to remove permission from
+    - id: permissionLevel
+      type: Microsoft.SharePoint.Client.RoleType
+      description: Permission level to remove. If null all permission levels are removed
+    - id: removeAllPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all permission level.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemovePermissionLevelFromPrincipal(securableObject As SecurableObject, principal As Principal, permissionLevel As RoleType, removeAllPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  id: RemovePermissionLevelFromUser(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemovePermissionLevelFromUser(SecurableObject, String, String, Boolean)
+  nameWithType: SecurityExtensions.RemovePermissionLevelFromUser(SecurableObject, String, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser(Microsoft.SharePoint.Client.SecurableObject, System.String, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemovePermissionLevelFromUser
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 880
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a permission level from a user\n"
+  example: []
+  syntax:
+    content: public static void RemovePermissionLevelFromUser(this SecurableObject securableObject, string userLoginName, string roleDefinitionName, bool removeAllPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: userLoginName
+      type: System.String
+      description: Loginname of user
+    - id: roleDefinitionName
+      type: System.String
+      description: Name of the role definition to add, Full Control|Design|Contribute|Read|Approve|Manage Heirarchy|Restricted Read. Use the correct name of the language of the site you are using
+    - id: removeAllPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all permission level.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemovePermissionLevelFromUser(securableObject As SecurableObject, userLoginName As String, roleDefinitionName As String, removeAllPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,System.String,System.Boolean)
+  id: RemovePermissionLevelFromPrincipal(Microsoft.SharePoint.Client.SecurableObject,Microsoft.SharePoint.Client.Principal,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemovePermissionLevelFromPrincipal(SecurableObject, Principal, String, Boolean)
+  nameWithType: SecurityExtensions.RemovePermissionLevelFromPrincipal(SecurableObject, Principal, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal(Microsoft.SharePoint.Client.SecurableObject, Microsoft.SharePoint.Client.Principal, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemovePermissionLevelFromPrincipal
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 899
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a permission level from a user\n"
+  example: []
+  syntax:
+    content: public static void RemovePermissionLevelFromPrincipal(this SecurableObject securableObject, Principal principal, string roleDefinitionName, bool removeAllPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: principal
+      type: Microsoft.SharePoint.Client.Principal
+      description: Principal to remove permission from
+    - id: roleDefinitionName
+      type: System.String
+      description: Name of the role definition to add, Full Control|Design|Contribute|Read|Approve|Manage Heirarchy|Restricted Read. Use the correct name of the language of the site you are using
+    - id: removeAllPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all permission level.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemovePermissionLevelFromPrincipal(securableObject As SecurableObject, principal As Principal, roleDefinitionName As String, removeAllPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  id: RemovePermissionLevelFromGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,Microsoft.SharePoint.Client.RoleType,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemovePermissionLevelFromGroup(SecurableObject, String, RoleType, Boolean)
+  nameWithType: SecurityExtensions.RemovePermissionLevelFromGroup(SecurableObject, String, RoleType, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup(Microsoft.SharePoint.Client.SecurableObject, System.String, Microsoft.SharePoint.Client.RoleType, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemovePermissionLevelFromGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 920
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a permission level from a group\n"
+  example: []
+  syntax:
+    content: public static void RemovePermissionLevelFromGroup(this SecurableObject securableObject, string groupName, RoleType permissionLevel, bool removeAllPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: groupName
+      type: System.String
+      description: name of the group
+    - id: permissionLevel
+      type: Microsoft.SharePoint.Client.RoleType
+      description: Permission level to remove. If null all permission levels are removed
+    - id: removeAllPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all permission level.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemovePermissionLevelFromGroup(securableObject As SecurableObject, groupName As String, permissionLevel As RoleType, removeAllPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  id: RemovePermissionLevelFromGroup(Microsoft.SharePoint.Client.SecurableObject,System.String,System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemovePermissionLevelFromGroup(SecurableObject, String, String, Boolean)
+  nameWithType: SecurityExtensions.RemovePermissionLevelFromGroup(SecurableObject, String, String, Boolean)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup(Microsoft.SharePoint.Client.SecurableObject, System.String, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemovePermissionLevelFromGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 941
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a permission level from a group\n"
+  example: []
+  syntax:
+    content: public static void RemovePermissionLevelFromGroup(this SecurableObject securableObject, string groupName, string roleDefinitionName, bool removeAllPermissionLevels = false)
+    parameters:
+    - id: securableObject
+      type: Microsoft.SharePoint.Client.SecurableObject
+      description: Web/List/Item to operate against
+    - id: groupName
+      type: System.String
+      description: name of the group
+    - id: roleDefinitionName
+      type: System.String
+      description: Name of the role definition to add, Full Control|Design|Contribute|Read|Approve|Manage Heirarchy|Restricted Read. Use the correct name of the language of the site you are using
+    - id: removeAllPermissionLevels
+      type: System.Boolean
+      description: Set to true to remove all permission level.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemovePermissionLevelFromGroup(securableObject As SecurableObject, groupName As String, roleDefinitionName As String, removeAllPermissionLevels As Boolean = False)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: RemoveUserFromGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemoveUserFromGroup(Web, String, String)
+  nameWithType: SecurityExtensions.RemoveUserFromGroup(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveUserFromGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 1029
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a user from a group\n"
+  example: []
+  syntax:
+    content: public static void RemoveUserFromGroup(this Web web, string groupName, string userLoginName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    - id: groupName
+      type: System.String
+      description: Name of the group
+    - id: userLoginName
+      type: System.String
+      description: Loginname of the user
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemoveUserFromGroup(web As Web, groupName As String, userLoginName As String)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.User)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.User)
+  id: RemoveUserFromGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group,Microsoft.SharePoint.Client.User)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemoveUserFromGroup(Web, Group, User)
+  nameWithType: SecurityExtensions.RemoveUserFromGroup(Web, Group, User)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Group, Microsoft.SharePoint.Client.User)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveUserFromGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 1060
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemoves a user from a group\n"
+  example: []
+  syntax:
+    content: public static void RemoveUserFromGroup(this Web web, Group group, User user)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    - id: group
+      type: Microsoft.SharePoint.Client.Group
+      description: Group object to operate against
+    - id: user
+      type: Microsoft.SharePoint.Client.User
+      description: User object that needs to be removed
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemoveUserFromGroup(web As Web, group As Group, user As User)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup(Microsoft.SharePoint.Client.Web,System.String)
+  id: RemoveGroup(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemoveGroup(Web, String)
+  nameWithType: SecurityExtensions.RemoveGroup(Web, String)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 1078
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemove a group\n"
+  example: []
+  syntax:
+    content: public static void RemoveGroup(this Web web, string groupName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    - id: groupName
+      type: System.String
+      description: Name of the group
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemoveGroup(web As Web, groupName As String)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group)
+  id: RemoveGroup(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Group)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemoveGroup(Web, Group)
+  nameWithType: SecurityExtensions.RemoveGroup(Web, Group)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Group)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RemoveGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 1097
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRemove a group\n"
+  example: []
+  syntax:
+    content: public static void RemoveGroup(this Web web, Group group)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    - id: group
+      type: Microsoft.SharePoint.Client.Group
+      description: Group object to remove
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RemoveGroup(web As Web, group As Group)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.IsUserInGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.IsUserInGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  id: IsUserInGroup(Microsoft.SharePoint.Client.Web,System.String,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsUserInGroup(Web, String, String)
+  nameWithType: SecurityExtensions.IsUserInGroup(Web, String, String)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.IsUserInGroup(Microsoft.SharePoint.Client.Web, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsUserInGroup
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 1114
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if a user is member of a group\n"
+  example: []
+  syntax:
+    content: public static bool IsUserInGroup(this Web web, string groupName, string userLoginName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    - id: groupName
+      type: System.String
+      description: Name of the group
+    - id: userLoginName
+      type: System.String
+      description: Loginname of the user
+    return:
+      type: System.Boolean
+      description: True if the user is in the group, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsUserInGroup(web As Web, groupName As String, userLoginName As String) As Boolean
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.IsUserInGroup*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GroupExists(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.GroupExists(Microsoft.SharePoint.Client.Web,System.String)
+  id: GroupExists(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: GroupExists(Web, String)
+  nameWithType: SecurityExtensions.GroupExists(Web, String)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GroupExists(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GroupExists
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 1146
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if a group exists\n"
+  example: []
+  syntax:
+    content: public static bool GroupExists(this Web web, string groupName)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: Web to operate against
+    - id: groupName
+      type: System.String
+      description: Name of the group
+    return:
+      type: System.Boolean
+      description: True if the group exists, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GroupExists(web As Web, groupName As String) As Boolean
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.GroupExists*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetAuthenticationRealm(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.GetAuthenticationRealm(Microsoft.SharePoint.Client.Web)
+  id: GetAuthenticationRealm(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAuthenticationRealm(Web)
+  nameWithType: SecurityExtensions.GetAuthenticationRealm(Web)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetAuthenticationRealm(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAuthenticationRealm
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 1206
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the authentication realm for the current web\n"
+  example: []
+  syntax:
+    content: public static Guid GetAuthenticationRealm(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The Current site
+    return:
+      type: System.Guid
+      description: Returns Realm in Guid
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetAuthenticationRealm(web As Web) As Guid
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.GetAuthenticationRealm*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetAllUniqueRoleAssignments(Microsoft.SharePoint.Client.Web,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.GetAllUniqueRoleAssignments(Microsoft.SharePoint.Client.Web,System.Int32)
+  id: GetAllUniqueRoleAssignments(Microsoft.SharePoint.Client.Web,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAllUniqueRoleAssignments(Web, Int32)
+  nameWithType: SecurityExtensions.GetAllUniqueRoleAssignments(Web, Int32)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetAllUniqueRoleAssignments(Microsoft.SharePoint.Client.Web, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAllUniqueRoleAssignments
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 1449
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet all unique role assignments for a web object and all its descendents down to document or list item level.\n"
+  example: []
+  syntax:
+    content: public static IEnumerable<RoleAssignmentEntity> GetAllUniqueRoleAssignments(this Web web, int leafBreadthLimit = 2147483647)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The current web object to be processed.
+    - id: leafBreadthLimit
+      type: System.Int32
+      description: Skip further visiting on this branch if the number of child items or documents with unique role assignments exceeded leafBreadthLimit. When setting to 0, the process will stop at list / document library level.
+    return:
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Entities.RoleAssignmentEntity}
+      description: Returns all role assignments
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetAllUniqueRoleAssignments(web As Web, leafBreadthLimit As Integer = 2147483647) As IEnumerable(Of RoleAssignmentEntity)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.GetAllUniqueRoleAssignments*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetPrincipalUniqueRoleAssignments(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Principal,System.Int32)
+  commentId: M:Microsoft.SharePoint.Client.SecurityExtensions.GetPrincipalUniqueRoleAssignments(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Principal,System.Int32)
+  id: GetPrincipalUniqueRoleAssignments(Microsoft.SharePoint.Client.Web,Microsoft.SharePoint.Client.Principal,System.Int32)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SecurityExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetPrincipalUniqueRoleAssignments(Web, Principal, Int32)
+  nameWithType: SecurityExtensions.GetPrincipalUniqueRoleAssignments(Web, Principal, Int32)
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetPrincipalUniqueRoleAssignments(Microsoft.SharePoint.Client.Web, Microsoft.SharePoint.Client.Principal, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetPrincipalUniqueRoleAssignments
+    path: ../src/lib/PnP.Framework/Extensions/SecurityExtensions.cs
+    startLine: 1513
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet all unique role assignments for a user or a group in a web object and all its descendents down to document or list item level.\n"
+  example: []
+  syntax:
+    content: public static IEnumerable<RoleAssignmentEntity> GetPrincipalUniqueRoleAssignments(this Web web, Principal principal, int leafBreadthLimit = 2147483647)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: The current web object to be processed.
+    - id: principal
+      type: Microsoft.SharePoint.Client.Principal
+      description: The current web object to be processed.
+    - id: leafBreadthLimit
+      type: System.Int32
+      description: Skip further visiting on this branch if the number of child items or documents with unique role assignments exceeded leafBreadthLimit. When setting to 0, the process will stop at list / document library level.
+    return:
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Entities.RoleAssignmentEntity}
+      description: Returns all role assignments
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetPrincipalUniqueRoleAssignments(web As Web, principal As Principal, leafBreadthLimit As Integer = 2147483647) As IEnumerable(Of RoleAssignmentEntity)
+  overload: Microsoft.SharePoint.Client.SecurityExtensions.GetPrincipalUniqueRoleAssignments*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Entities.UserEntity
+  commentId: T:PnP.Framework.Entities.UserEntity
+  parent: PnP.Framework.Entities
+  name: UserEntity
+  nameWithType: UserEntity
+  fullName: PnP.Framework.Entities.UserEntity
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetAdministrators*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.GetAdministrators
+  name: GetAdministrators
+  nameWithType: SecurityExtensions.GetAdministrators
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetAdministrators
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: System.Collections.Generic.List{PnP.Framework.Entities.UserEntity}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Entities.UserEntity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<UserEntity>
+  nameWithType: List<UserEntity>
+  fullName: System.Collections.Generic.List<PnP.Framework.Entities.UserEntity>
+  nameWithType.vb: List(Of UserEntity)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Entities.UserEntity)
+  name.vb: List(Of UserEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.UserEntity
+    name: UserEntity
+    nameWithType: UserEntity
+    fullName: PnP.Framework.Entities.UserEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.UserEntity
+    name: UserEntity
+    nameWithType: UserEntity
+    fullName: PnP.Framework.Entities.UserEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Entities
+  commentId: N:PnP.Framework.Entities
+  name: PnP.Framework.Entities
+  nameWithType: PnP.Framework.Entities
+  fullName: PnP.Framework.Entities
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddAdministrators*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.AddAdministrators
+  name: AddAdministrators
+  nameWithType: SecurityExtensions.AddAdministrators
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddAdministrators
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemoveAdministrator*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.RemoveAdministrator
+  name: RemoveAdministrator
+  nameWithType: SecurityExtensions.RemoveAdministrator
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemoveAdministrator
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess
+  name: AddReaderAccess
+  nameWithType: SecurityExtensions.AddReaderAccess
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddReaderAccess
+- uid: Microsoft.SharePoint.Client.User
+  commentId: T:Microsoft.SharePoint.Client.User
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: User
+  nameWithType: User
+  fullName: Microsoft.SharePoint.Client.User
+- uid: PnP.Framework.Enums.BuiltInIdentity
+  commentId: T:PnP.Framework.Enums.BuiltInIdentity
+  parent: PnP.Framework.Enums
+  name: BuiltInIdentity
+  nameWithType: BuiltInIdentity
+  fullName: PnP.Framework.Enums.BuiltInIdentity
+- uid: PnP.Framework.Enums
+  commentId: N:PnP.Framework.Enums
+  name: PnP.Framework.Enums
+  nameWithType: PnP.Framework.Enums
+  fullName: PnP.Framework.Enums
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetEveryoneExceptExternalUsersClaimName*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.GetEveryoneExceptExternalUsersClaimName
+  name: GetEveryoneExceptExternalUsersClaimName
+  nameWithType: SecurityExtensions.GetEveryoneExceptExternalUsersClaimName
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetEveryoneExceptExternalUsersClaimName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetSharingCapabilitiesTenant*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.GetSharingCapabilitiesTenant
+  name: GetSharingCapabilitiesTenant
+  nameWithType: SecurityExtensions.GetSharingCapabilitiesTenant
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetSharingCapabilitiesTenant
+- uid: System.Uri
+  commentId: T:System.Uri
+  parent: System
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: PnP.Framework.Entities.ExternalUserEntity
+  commentId: T:PnP.Framework.Entities.ExternalUserEntity
+  name: ExternalUserEntity
+  nameWithType: ExternalUserEntity
+  fullName: PnP.Framework.Entities.ExternalUserEntity
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersTenant*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersTenant
+  name: GetExternalUsersTenant
+  nameWithType: SecurityExtensions.GetExternalUsersTenant
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersTenant
+- uid: System.Collections.Generic.List{PnP.Framework.Entities.ExternalUserEntity}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Entities.ExternalUserEntity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<ExternalUserEntity>
+  nameWithType: List<ExternalUserEntity>
+  fullName: System.Collections.Generic.List<PnP.Framework.Entities.ExternalUserEntity>
+  nameWithType.vb: List(Of ExternalUserEntity)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Entities.ExternalUserEntity)
+  name.vb: List(Of ExternalUserEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.ExternalUserEntity
+    name: ExternalUserEntity
+    nameWithType: ExternalUserEntity
+    fullName: PnP.Framework.Entities.ExternalUserEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.ExternalUserEntity
+    name: ExternalUserEntity
+    nameWithType: ExternalUserEntity
+    fullName: PnP.Framework.Entities.ExternalUserEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersForSiteTenant*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersForSiteTenant
+  name: GetExternalUsersForSiteTenant
+  nameWithType: SecurityExtensions.GetExternalUsersForSiteTenant
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetExternalUsersForSiteTenant
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetGroupID*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.GetGroupID
+  name: GetGroupID
+  nameWithType: SecurityExtensions.GetGroupID
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetGroupID
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddGroup*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.AddGroup
+  name: AddGroup
+  nameWithType: SecurityExtensions.AddGroup
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddGroup
+- uid: Microsoft.SharePoint.Client.Group
+  commentId: T:Microsoft.SharePoint.Client.Group
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Group
+  nameWithType: Group
+  fullName: Microsoft.SharePoint.Client.Group
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AssociateDefaultGroups*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.AssociateDefaultGroups
+  name: AssociateDefaultGroups
+  nameWithType: SecurityExtensions.AssociateDefaultGroups
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AssociateDefaultGroups
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup
+  name: AddUserToGroup
+  nameWithType: SecurityExtensions.AddUserToGroup
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddUserToGroup
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser
+  name: AddPermissionLevelToUser
+  nameWithType: SecurityExtensions.AddPermissionLevelToUser
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToUser
+- uid: Microsoft.SharePoint.Client.SecurableObject
+  commentId: T:Microsoft.SharePoint.Client.SecurableObject
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: SecurableObject
+  nameWithType: SecurableObject
+  fullName: Microsoft.SharePoint.Client.SecurableObject
+- uid: Microsoft.SharePoint.Client.RoleType
+  commentId: T:Microsoft.SharePoint.Client.RoleType
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: RoleType
+  nameWithType: RoleType
+  fullName: Microsoft.SharePoint.Client.RoleType
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup
+  name: AddPermissionLevelToGroup
+  nameWithType: SecurityExtensions.AddPermissionLevelToGroup
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToGroup
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal
+  name: AddPermissionLevelToPrincipal
+  nameWithType: SecurityExtensions.AddPermissionLevelToPrincipal
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.AddPermissionLevelToPrincipal
+- uid: Microsoft.SharePoint.Client.Principal
+  commentId: T:Microsoft.SharePoint.Client.Principal
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Principal
+  nameWithType: Principal
+  fullName: Microsoft.SharePoint.Client.Principal
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser
+  name: RemovePermissionLevelFromUser
+  nameWithType: SecurityExtensions.RemovePermissionLevelFromUser
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromUser
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal
+  name: RemovePermissionLevelFromPrincipal
+  nameWithType: SecurityExtensions.RemovePermissionLevelFromPrincipal
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromPrincipal
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup
+  name: RemovePermissionLevelFromGroup
+  nameWithType: SecurityExtensions.RemovePermissionLevelFromGroup
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemovePermissionLevelFromGroup
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup
+  name: RemoveUserFromGroup
+  nameWithType: SecurityExtensions.RemoveUserFromGroup
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemoveUserFromGroup
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup
+  name: RemoveGroup
+  nameWithType: SecurityExtensions.RemoveGroup
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.RemoveGroup
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.IsUserInGroup*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.IsUserInGroup
+  name: IsUserInGroup
+  nameWithType: SecurityExtensions.IsUserInGroup
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.IsUserInGroup
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GroupExists*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.GroupExists
+  name: GroupExists
+  nameWithType: SecurityExtensions.GroupExists
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GroupExists
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetAuthenticationRealm*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.GetAuthenticationRealm
+  name: GetAuthenticationRealm
+  nameWithType: SecurityExtensions.GetAuthenticationRealm
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetAuthenticationRealm
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetAllUniqueRoleAssignments*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.GetAllUniqueRoleAssignments
+  name: GetAllUniqueRoleAssignments
+  nameWithType: SecurityExtensions.GetAllUniqueRoleAssignments
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetAllUniqueRoleAssignments
+- uid: System.Collections.Generic.IEnumerable{PnP.Framework.Entities.RoleAssignmentEntity}
+  commentId: T:System.Collections.Generic.IEnumerable{PnP.Framework.Entities.RoleAssignmentEntity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<RoleAssignmentEntity>
+  nameWithType: IEnumerable<RoleAssignmentEntity>
+  fullName: System.Collections.Generic.IEnumerable<PnP.Framework.Entities.RoleAssignmentEntity>
+  nameWithType.vb: IEnumerable(Of RoleAssignmentEntity)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of PnP.Framework.Entities.RoleAssignmentEntity)
+  name.vb: IEnumerable(Of RoleAssignmentEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Entities.RoleAssignmentEntity
+    name: RoleAssignmentEntity
+    nameWithType: RoleAssignmentEntity
+    fullName: PnP.Framework.Entities.RoleAssignmentEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Entities.RoleAssignmentEntity
+    name: RoleAssignmentEntity
+    nameWithType: RoleAssignmentEntity
+    fullName: PnP.Framework.Entities.RoleAssignmentEntity
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.SecurityExtensions.GetPrincipalUniqueRoleAssignments*
+  commentId: Overload:Microsoft.SharePoint.Client.SecurityExtensions.GetPrincipalUniqueRoleAssignments
+  name: GetPrincipalUniqueRoleAssignments
+  nameWithType: SecurityExtensions.GetPrincipalUniqueRoleAssignments
+  fullName: Microsoft.SharePoint.Client.SecurityExtensions.GetPrincipalUniqueRoleAssignments

@@ -6,6 +6,75 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+## Added
+
+## Changed
+
+- When `PnPContext` is created with a existing, externally provided, `IPnPContextFactory` then this `IPnPContextFactory` will be used for all PnP Framework internal `PnPContext` creations [jansenbe - Bert Jansen]
+- Fix ViewTypeKind property being ignored when provisioning views #816 [jackpoz - Giacomo Pozzoni]
+- Fix page transformation asset transfer when source asset url contains characters that are encoded [jansenbe - Bert Jansen]
+- Updated build script to support .NET 7 #824 [stokuri - Suman Tokori]
+- Added optionally providing BCC addresses to send a mail #823 [koenzomers - Koen Zomers]
+
+## [1.11.0]
+
+### Added
+
+- Added .NET 7 binaries [jansenbe - Bert Jansen]
+- Moved to C# 10 [jansenbe - Bert Jansen]
+- Adding support to export ListInstance-FieldRef displayName with multilanguages #775 [magarma - Miguel Angel García Martínez]
+
+### Changed
+
+- Fix fileuniqueid and pageuniqueid export #692 [rjbooden - Ronald Booden]
+- Added null check for checking if members array is not null #694 [danielpastoor - Daniel Pastoor]
+- Add optional parameter to disable welcome message #700 [ohaak2 - Ole Rühaak]
+- Calculated field should be created after other fields #627 [friendbool]
+- Schema Implementation: ShowPeoplePickerSuggestionsForGuestUsers [pkbullock]
+- Schema Implementation: Audience Targeting Classic/Moder [pkbullock]
+- Add geo locations that has been recently added #732 [patrikhellgren - Patrik Hellgren]
+- Fix ClearDefaultColumnValues working on large lists #717 [cebud - Martin Dubec]
+- Export calculated field formula based on title instead of internal name #721 [madsmai - Mads Maibohm]
+- Allowing to create PnPContext from ClientContext with existing IPnPContextFactory #762 [heinrich-ulbricht - Heinrich Ulbricht]
+- Add support to exporting renamed Title columns to a PnP template #776 [jackpoz - Giacomo Pozzoni]
+- Drop unused Microsoft.Extensions.Logging.Abstractions reference [jansenbe - Bert Jansen]
+- Check owners if null before calling AddUnifiedGroupMembers #769 [magarma - Miguel Angel García Martínez]
+- Fixes for the EnableModernAudienceTargeting method #773 [patrikhellgren - Patrik Hellgren]
+- Fix for creating private channels #778 [patrikhellgren - Patrik Hellgren]
+- Fix for infinite loop in Replacing Tokens when property values contain the Regex special char "$" #777 [Autophanous]
+- Fix LocalizationToken.GetReplaceValue: fallback to old logic #785 [czullu - Christian Zuellig]
+- Fix: Failed to resolve termsetid token #786 [czullu - Christian Zuellig]
+- Token Regex for fileuniqueid* matches too broadly #751 #763 [heinrich-ulbricht - Heinrich Ulbricht]
+
+## [1.10.0]
+
+### Added
+
+- Added async counterparts for PnP SDK interop. #639 [s-KaiNet - Sergei Sergeev]
+- Added GetSitePropertiesById functionality to TenantExtensions #638 [koenzomers - Koen Zomers]
+
+### Changed
+
+- Exporting/Provisioning _ModerationStatus for folders #654 [magarma - Miguel Angel García Martínez]
+- Do not try to tokenize non Guid termsetids as they already are tokenized #659 [czullu - Christian Zuellig]
+- Adding token parsing of folder name before setting default field values #664 [eduardpaul - Eduard Paul]
+- Add ConfigureAwait(false) to AuthenticationManager #665 [RiccardoGDev]
+- Fix for using passed PnPMonitoredScope in async method #666 [patrikhellgren - Patrik Hellgren]
+- Change to not re-throw caught exception during provisioning #668 [patrikhellgren - Patrik Hellgren]
+- Extend timeouts and add retries to teams provisioning #669 [patrikhellgren - Patrik Hellgren]
+- Implement show / hide of site title in header using SetChromeOptions #670 [eduardpaul - Eduard Paul]
+- Improve folder creation in EnsureFolderPath method #673 [gautamdsheth - Gautam Sheth]
+- Add UserAgent to CSOM based access token retrieval in GetAccessToken #642 [andregouveia8 - André Gouveia]
+- Remove AddContentTypeHiddenFieldsToList #679 [magarma - Miguel Angel García Martínez]
+- Add owners as members too when creating group connected team site using application permissions #680 [gautamdsheth - Gautam Sheth]
+- Fix for empty PnP:Templates in the xml #677 [danielpastoor - Daniel Pastoor]
+- Fix for getting the teams photo when using application permissions #678 [danielpastoor - Daniel Pastoor]
+- Ensure correct PnPContext is returned from the passed ClientContext #676 [danielpastoor - Daniel Pastoor]
+- Fix #1696 - issue with team creation , use graph token if possible #681 [gautamdsheth - Gautam Sheth]
+- Avoid retrying when the hostname cannot be found #686 [koenzomers - Koen Zomers]
+
 ## [1.9.0]
 
 ### Added

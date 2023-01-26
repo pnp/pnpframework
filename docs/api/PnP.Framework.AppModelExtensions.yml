@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.AppModelExtensions
+  commentId: N:PnP.Framework.AppModelExtensions
+  id: PnP.Framework.AppModelExtensions
+  children:
+  - PnP.Framework.AppModelExtensions.VariationExtensions
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.AppModelExtensions
+  nameWithType: PnP.Framework.AppModelExtensions
+  fullName: PnP.Framework.AppModelExtensions
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.AppModelExtensions.VariationExtensions
+  commentId: T:PnP.Framework.AppModelExtensions.VariationExtensions
+  name: VariationExtensions
+  nameWithType: VariationExtensions
+  fullName: PnP.Framework.AppModelExtensions.VariationExtensions

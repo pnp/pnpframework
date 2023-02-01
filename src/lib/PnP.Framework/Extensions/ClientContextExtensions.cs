@@ -1166,8 +1166,6 @@ namespace Microsoft.SharePoint.Client
                 }
                 if (authCookies != null)
                 {
-                    var siteUri = new Uri(context.Url);
-                    var extension = siteUri.Host.Substring(siteUri.Host.LastIndexOf('.') + 1);
                     var cookieCollection = new CookieCollection();
                     foreach (var cookie in authCookies)
                     {
@@ -1175,8 +1173,9 @@ namespace Microsoft.SharePoint.Client
                         var cookieValue = cookie.Substring(cookieName.Length + 1);
                         cookieCollection.Add(new Cookie(cookieName, cookieValue));
                     }
+                    var siteUri = new Uri(context.Url);
                     authCookiesContainer.Add(new Uri($"{siteUri.Scheme}://{siteUri.Host}"), cookieCollection);
-                    var adminSiteUri = new Uri(siteUri.Scheme + "://" + siteUri.Authority.Replace($".sharepoint.{extension}", $"-admin.sharepoint.{extension}"));
+                    var adminSiteUri = PnP.Framework.AuthenticationManager.GetTenantAdministrationUri(context.Url);
                     authCookiesContainer.Add(adminSiteUri, cookieCollection);
                 }
             }

@@ -60,12 +60,8 @@ namespace PnP.Framework.Utilities
         public static string GetTenantAdministrationUrl(this Web web)
         {
             var url = web.EnsureProperty(w => w.Url);
-            var uri = new Uri(url);
-            var uriParts = uri.Host.Split('.');
-            if (uriParts[0].EndsWith("-admin")) return uri.OriginalString;
-            if (!uriParts[0].EndsWith("-admin"))
-                return $"https://{uriParts[0]}-admin.{string.Join(".", uriParts.Skip(1))}";
-            return null;
+
+            return AuthenticationManager.GetTenantAdministrationUrl(url);
         }
     }
 }

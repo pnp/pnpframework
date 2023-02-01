@@ -1446,6 +1446,65 @@ namespace PnP.Framework
         }
 
         /// <summary>
+        /// Returns the equivalent SharePoint Admin url for the passed in SharePoint url
+        /// </summary>
+        /// <param name="url">Any SharePoint url for the tenant you need to SharePoint Admin Center URL for</param>
+        /// <returns>SharePoint Admin Center URL</returns>
+        public static string GetTenantAdministrationUrl(string url)
+        {
+            var uri = new Uri(url);
+            var uriParts = uri.Host.Split('.');
+
+            if (uriParts[0].EndsWith("-admin"))
+            {
+                // The url was already an admin site url 
+                return $"https://{uriParts[0]}.{string.Join(".", uriParts.Skip(1))}";
+            }
+
+            if (!uriParts[0].EndsWith("-admin"))
+            {
+                return $"https://{uriParts[0]}-admin.{string.Join(".", uriParts.Skip(1))}";
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the equivalent SharePoint Admin url for the passed in SharePoint url
+        /// </summary>
+        /// <param name="url">Any SharePoint url for the tenant you need to SharePoint Admin Center URL for</param>
+        /// <returns>SharePoint Admin Center URL</returns>
+        public static Uri GetTenantAdministrationUri(string url)
+        {
+            string adminUrl = GetTenantAdministrationUrl(url);
+            if (adminUrl != null)
+            {
+                return new Uri(adminUrl);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Is the provided URL an SharePoint Admin center URL
+        /// </summary>
+        /// <param name="url">SharePoint URL to check</param>
+        /// <returns>True if Admin Center URL, false otherwise</returns>
+        public static bool IsTenantAdministrationUrl(string url)
+        {
+            return url.ToLowerInvariant().Contains("-admin.sharepoint");
+        }
+
+        /// <summary>
+        /// Is the provided URL an SharePoint Admin center URL
+        /// </summary>
+        /// <param name="uri">SharePoint URL to check</param>
+        /// <returns>True if Admin Center URL, false otherwise</returns>
+        public static bool IsTenantAdministrationUri(Uri uri)
+        {
+            return IsTenantAdministrationUrl(uri.ToString());
+        }
+
+        /// <summary>
         /// Clears the internal in-memory token cache used by MSAL
         /// </summary>
         public void ClearTokenCache()

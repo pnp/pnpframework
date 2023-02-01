@@ -1355,7 +1355,7 @@ namespace Microsoft.SharePoint.Client
         /// <returns></returns>
         public static bool IsAdminSite(this Web web)
         {
-            return web.Url.Contains("-admin.sharepoint.com");
+            return AuthenticationManager.IsTenantAdministrationUrl(web.Url);
         }
 
         #endregion

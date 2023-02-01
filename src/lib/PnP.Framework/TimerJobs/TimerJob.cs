@@ -1544,17 +1544,13 @@ namespace PnP.Framework.TimerJobs
         /// <returns>The tenant admin site</returns>
         private string GetTenantAdminSite(string site)
         {
-            if (!String.IsNullOrEmpty(this.tenantAdminSite))
+            if (!string.IsNullOrEmpty(this.tenantAdminSite))
             {
                 return this.tenantAdminSite;
             }
             else
             {
-                Uri u = new Uri(GetTopLevelSite(site.Replace("*", "")));
-                string tenantName = u.DnsSafeHost.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries)[0];
-                var parts = u.DnsSafeHost.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
-                string domainExtension = parts[parts.Length - 1];
-                return $"https://{tenantName}-admin.sharepoint.{domainExtension}";
+                return AuthenticationManager.GetTenantAdministrationUrl(GetTopLevelSite(site.Replace("*", "")));
             }
         }
 

@@ -1018,7 +1018,7 @@ namespace Microsoft.SharePoint.Client
             site.EnsureProperty(s => s.Url); // PAOLO: We can't do that ... if we're not admins ...
 
             // If we are already with a context for the Admin Site, all good, the user is an admin
-            if (site.Url.Contains("-admin.sharepoint.com"))
+            if (PnP.Framework.AuthenticationManager.IsTenantAdministrationUrl(site.Url))
             {
                 return (true);
             }
@@ -1479,7 +1479,7 @@ namespace Microsoft.SharePoint.Client
 
         private static string GetTenantNameFromUrl(string tenantUrl)
         {
-            if (tenantUrl.ToLower().Contains("-admin.sharepoint."))
+            if (PnP.Framework.AuthenticationManager.IsTenantAdministrationUrl(tenantUrl))
             {
                 return GetSubstringFromMiddle(tenantUrl, "https://", "-admin.sharepoint.");
             }

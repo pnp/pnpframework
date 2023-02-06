@@ -293,14 +293,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     if (groupSiteInfo == null)
                                     {                                        
                                         if (PnPProvisioningContext.Current != null)
-                                        {
+                                        {                                            
+                                            var graphBaseURI = AuthenticationManager.GetGraphBaseEndPoint(tenant.Context.GetAzureEnvironment());
                                             try
                                             {
-                                                graphAccessToken = PnPProvisioningContext.Current.AcquireCookie(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI);
+                                                graphAccessToken = PnPProvisioningContext.Current.AcquireCookie(graphBaseURI.ToString());
                                             }
                                             catch
                                             {
-                                                graphAccessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, null);
+                                                graphAccessToken = PnPProvisioningContext.Current.AcquireToken(graphBaseURI.Authority, null);
                                             }
                                         }
                                         WriteMessage($"Creating Team Site {siteInfo.Alias}", ProvisioningMessageType.Progress);

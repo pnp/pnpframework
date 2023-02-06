@@ -305,7 +305,7 @@ namespace PnP.Framework
         /// <param name="password">The password to use for authentication</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string username, SecureString password, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this(GetKnownClientId(KnownClientId.PnPManagementShell), username, password, "https://login.microsoftonline.com/common/oauth2/nativeclient", azureEnvironment, tokenCacheCallback)
+        public AuthenticationManager(string username, SecureString password, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this(GetKnownClientId(KnownClientId.PnPManagementShell), username, password, $"{GetAzureADLoginEndPointStatic(azureEnvironment)}/common/oauth2/nativeclient", azureEnvironment, tokenCacheCallback)
         {
         }
 
@@ -1368,6 +1368,11 @@ namespace PnP.Framework
         /// <returns>Azure AD login endpoint</returns>
         public string GetAzureADLoginEndPoint(AzureEnvironment environment)
         {
+            return GetAzureADLoginEndPointStatic(environment);
+        }
+
+        public static string GetAzureADLoginEndPointStatic(AzureEnvironment environment)
+        {
             return (environment) switch
             {
                 AzureEnvironment.Production => "https://login.microsoftonline.com",
@@ -1424,6 +1429,16 @@ namespace PnP.Framework
                         return "graph.microsoft.com";
                     }
             }
+        }
+
+        /// <summary>
+        /// Gets the URI to use for making Graph calls based upon the environment
+        /// </summary>
+        /// <param name="environment">Environment to get the Graph URI for</param>
+        /// <returns>Graph URI for given environment</returns>
+        public static Uri GetGraphBaseEndPoint(AzureEnvironment environment)
+        {
+            return new Uri($"https://{GetGraphEndPoint(environment)}");
         }
 
         /// <summary>

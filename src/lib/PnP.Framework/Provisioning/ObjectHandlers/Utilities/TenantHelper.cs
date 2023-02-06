@@ -752,7 +752,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     try
                     {
                         // Get a fresh Access Token for every request
-                        accessToken = PnPProvisioningContext.Current.AcquireToken(GraphHelper.MicrosoftGraphBaseURI, "Directory.ReadWrite.All");
+                        var microsoftGraphBaseUri = AuthenticationManager.GetGraphBaseEndPoint(tenant.Context.GetAzureEnvironment());
+
+                        accessToken = PnPProvisioningContext.Current.AcquireToken(microsoftGraphBaseUri.ToString(), "Directory.ReadWrite.All");
 
                         if (accessToken != null)
                         {

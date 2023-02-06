@@ -985,9 +985,10 @@ namespace Microsoft.SharePoint.Client
                 }
                 var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri($"https://{graphEndPoint}/").Authority, null);
 
-                var customHeaders = new Dictionary<string, string>();
-                customHeaders.Add("ConsistencyLevel", "eventual");
-
+                var customHeaders = new Dictionary<string, string>
+                {
+                    { "ConsistencyLevel", "eventual" }
+                };
 
                 // Retrieve (using the Microsoft Graph) the current user's roles
                 string jsonResponse = HttpHelper.MakeGetRequestForString(
@@ -1463,18 +1464,17 @@ namespace Microsoft.SharePoint.Client
             var tenantName = GetTenantNameFromUrl(tenantUrl);
             if (tenantName == null) return null;
 
-            var url = $"https://login.microsoftonline.com/{tenantName}.onmicrosoft.com/.well-known/openid-configuration";
+            var url = $"{PnP.Framework.AuthenticationManager.GetAzureADLoginEndPointStatic(azureEnvironment)}/{tenantName}.onmicrosoft.com/.well-known/openid-configuration";
             if (azureEnvironment != AzureEnvironment.Production)
-            {
-                using var authenticationManager = new PnP.Framework.AuthenticationManager();
-                var endpoint = authenticationManager.GetAzureADLoginEndPoint(azureEnvironment);
+            {                
+                var endpoint = PnP.Framework.AuthenticationManager.GetAzureADLoginEndPointStatic(azureEnvironment);
                 url = $"{endpoint}/{tenantName}.onmicrosoft.com/.well-known/openid-configuration";
             }
             var response = HttpHelper.MakeGetRequestForString(url);
             var json = JsonSerializer.Deserialize<JsonElement>(response);
 
             var tokenEndpointUrl = json.GetProperty("token_endpoint").GetString();
-            return GetTenantIdFromAadEndpointUrl(tokenEndpointUrl);
+            return GetTenantIdFromAadEndpointUrl(tokenEndpointUrl, PnP.Framework.AuthenticationManager.GetAzureADLoginEndPointStatic(azureEnvironment));
         }
 
         private static string GetTenantNameFromUrl(string tenantUrl)
@@ -1489,9 +1489,9 @@ namespace Microsoft.SharePoint.Client
             }
         }
 
-        private static string GetTenantIdFromAadEndpointUrl(string aadEndpointUrl)
+        private static string GetTenantIdFromAadEndpointUrl(string aadEndpointUrl, string endpoint)
         {
-            return GetSubstringFromMiddle(aadEndpointUrl, "https://login.microsoftonline.com/", "/oauth2/");
+            return GetSubstringFromMiddle(aadEndpointUrl, $"{endpoint}/", "/oauth2/");
         }
 
         private static string GetSubstringFromMiddle(string originalString, string prefix, string suffix)

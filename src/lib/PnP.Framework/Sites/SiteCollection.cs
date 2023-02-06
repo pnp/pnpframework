@@ -547,6 +547,7 @@ namespace PnP.Framework.Sites
                 if (!string.IsNullOrEmpty(siteCollectionCreationInformation.Classification))
                 {
                     await SetTeamSiteClassification(
+                        clientContext,
                         siteCollectionCreationInformation.Classification,
                         group.GroupId,
                         graphAccessToken
@@ -559,11 +560,14 @@ namespace PnP.Framework.Sites
             return responseContext;
         }
 
-        private static async Task SetTeamSiteClassification(string classification, string groupId, string graphAccessToken)
+        private static async Task SetTeamSiteClassification(ClientContext clientContext, string classification, string groupId, string graphAccessToken)
         {
             // Patch the created group
             var httpClient = PnPHttpClient.Instance.GetHttpClient();
-            string requestUrl = $"https://graph.microsoft.com/v1.0/groups/{groupId}";
+
+            var microsoftGraphBaseUri = AuthenticationManager.GetGraphBaseEndPoint(clientContext.GetAzureEnvironment());
+
+            string requestUrl = $"{microsoftGraphBaseUri}v1.0/groups/{groupId}";
 
             // Serialize request object to JSON
             var jsonBody = JsonConvert.SerializeObject(new { classification });

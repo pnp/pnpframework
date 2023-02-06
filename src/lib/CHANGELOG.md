@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Updated build script to support .NET 7 #824 [stokuri - Suman Tokori]
 - Added optionally providing BCC addresses to send a mail #823 [koenzomers - Koen Zomers]
 - Centralize the logic to get and validate the Admin Center URL [jansenbe - Bert Jansen]
+- No hardcoded references anymore to graph.microsoft.com and *.microsoftonline.com to help with supporting non default cloud environments [jansenbe - Bert Jansen]
 
 ## [1.11.0]
 

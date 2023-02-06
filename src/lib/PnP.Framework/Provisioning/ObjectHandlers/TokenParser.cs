@@ -484,7 +484,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             if (PnPProvisioningContext.Current?.AcquireTokenAsync != null)
             {
-                accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+                var microsoftGraphBaseUri = AuthenticationManager.GetGraphBaseEndPoint(web.Context.GetAzureEnvironment());
+
+                accessToken = PnPProvisioningContext.Current.AcquireToken(microsoftGraphBaseUri.Authority, "Group.Read.All");
                 if (!string.IsNullOrEmpty(accessToken))
                 {
                     try

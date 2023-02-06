@@ -366,7 +366,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.SharePoint.Client.InternalClientContextExtensions.html",
-          "hash": "Af/XY5PJFzbTgplrwlPkrca99tbW0VxnxMUiTHA3W2U="
+          "hash": "qmh9rfxikwEgr/e30nMu6LVZnA9HTfyPXB2bvNeEbEo="
         }
       },
       "is_incremental": false,
@@ -534,7 +534,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.SharePoint.Client.SiteExtensions.html",
-          "hash": "L9rkwM0yxJG6GtQJKp5O4E6KpkiIWb//qU6kbcuFOUw="
+          "hash": "McbvkK4SqvGNdUtuCG4ZbJV19jdpVneRq9yDq8Poeio="
         }
       },
       "is_incremental": false,
@@ -570,7 +570,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.SharePoint.Client.TenantExtensions.html",
-          "hash": "uUWcOmJhwMKxSxWogs4geXo1t3R6pRWCrpCLbuj8JfM="
+          "hash": "3KKiLLRuQ6kkc1IvZO9M8Qp2XJuzlFf9kwgylpluM2c="
         }
       },
       "is_incremental": false,
@@ -714,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.AuthenticationManager.html",
-          "hash": "qtzOuXaO88jcXegvDQAJbZSKawIfHAgpOxA6vBLke2Y="
+          "hash": "wpjeeTWDkHEOanZNJPN7gom8zLmCms2+/c/349kF1f8="
         }
       },
       "is_incremental": false,
@@ -1782,7 +1782,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Graph.GroupsUtility.html",
-          "hash": "RI3ecoFtQ8nYZw+9YXP5x0fKITd3vxzMz/dizmZ4Jbk="
+          "hash": "tDhRqnD3fMvToS0Yxw/8P/CWvO1p649WAGXzKfZeUUI="
         }
       },
       "is_incremental": false,
@@ -8610,7 +8610,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Provisioning.ObjectHandlers.TokenParser.html",
-          "hash": "KGcRw7nnWeWPs0KhEfb6PV+HRStbCXlwmFNkb68goBk="
+          "hash": "6FGEDrPD/BUz1mZOeehBXnHVxHdadx9U5TXJ6qOOSw4="
         }
       },
       "is_incremental": false,
@@ -20742,7 +20742,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Sites.SiteCollection.html",
-          "hash": "uxu4mSDLTHrTIkuDTI05xu6fZcIIAkV/fmDZfK3pQiU="
+          "hash": "MOKbk6kOwIQFBfFxaOzrM1EH4O1jZeXTCRxq6VdWaZU="
         }
       },
       "is_incremental": false,

@@ -87,7 +87,7 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="PnP.Framework.Graph.GroupsUtility">
                   <div class="contribution-panel mobile-hide pull-right">
-                      <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L21" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L19" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
                       <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
                   </div>
                       <h1 id="PnP_Framework_Graph_GroupsUtility" data-uid="PnP.Framework.Graph.GroupsUtility">Class GroupsUtility
@@ -121,24 +121,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.AddGroupMembers(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.AddGroupMembers(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L807" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L813" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_AddGroupMembers_" data-uid="PnP.Framework.Graph.GroupsUtility.AddGroupMembers*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.AddGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" class="expander" data-toggle="collapse">AddGroupMembers(String, String[], String, Boolean, Int32, Int32)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.AddGroupMembers(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">AddGroupMembers(String, String[], String, Boolean, Int32, Int32, AzureEnvironment)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupMembers_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
   <div class="markdown level1 summary"><p>Adds members to an Azure Active Directory group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void AddGroupMembers(string groupId, string[] members, string accessToken, bool removeExistingMembers = false, int retryCount = 10, int delay = 500)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void AddGroupMembers(string groupId, string[] members, string accessToken, bool removeExistingMembers = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -191,6 +191,14 @@
 </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to use, needed to get the correct Microsoft Graph URL</p>
+</p>
+      </td>
+    </tr>
   </table>
   
   
@@ -207,24 +215,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.AddGroupOwners(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.AddGroupOwners(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Boolean%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L774" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L779" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_AddGroupOwners_" data-uid="PnP.Framework.Graph.GroupsUtility.AddGroupOwners*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.AddGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" class="expander" data-toggle="collapse">AddGroupOwners(String, String[], String, Boolean, Int32, Int32)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.AddGroupOwners(System.String,System.String[],System.String,System.Boolean,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">AddGroupOwners(String, String[], String, Boolean, Int32, Int32, AzureEnvironment)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_AddGroupOwners_System_String_System_String___System_String_System_Boolean_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
   <div class="markdown level1 summary"><p>Adds owners to an Azure Active Directory group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void AddGroupOwners(string groupId, string[] owners, string accessToken, bool removeExistingOwners = false, int retryCount = 10, int delay = 500)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void AddGroupOwners(string groupId, string[] owners, string accessToken, bool removeExistingOwners = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -277,6 +285,14 @@
 </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to use, needed to get the correct Microsoft Graph URL</p>
+</p>
+      </td>
+    </tr>
   </table>
   
   
@@ -296,7 +312,7 @@
     <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_ClearGroupMembers_System_String_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.ClearGroupMembers(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L972" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L980" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_ClearGroupMembers_" data-uid="PnP.Framework.Graph.GroupsUtility.ClearGroupMembers*"></a>
@@ -366,7 +382,7 @@
     <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_ClearGroupOwners_System_String_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.ClearGroupOwners(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L946" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L954" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_ClearGroupOwners_" data-uid="PnP.Framework.Graph.GroupsUtility.ClearGroupOwners*"></a>
@@ -433,7 +449,7 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.CreateGroup(System.String%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean%2CSystem.String%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.CreateGroup(System.String%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Boolean%2CSystem.String%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L68" title="View Source"><i class="fa fa-code"></i></a>
@@ -441,16 +457,16 @@
   
   <a id="PnP_Framework_Graph_GroupsUtility_CreateGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.CreateGroup*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.CreateGroup(System.String,System.String,System.String,System.Boolean,System.Boolean,System.String,System.String[],System.String[],System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_" class="expander" data-toggle="collapse">CreateGroup(String, String, String, Boolean, Boolean, String, String[], String[], Int32, Int32)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.CreateGroup(System.String,System.String,System.String,System.Boolean,System.Boolean,System.String,System.String[],System.String[],System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">CreateGroup(String, String, String, Boolean, Boolean, String, String[], String[], Int32, Int32, AzureEnvironment)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_CreateGroup_System_String_System_String_System_String_System_Boolean_System_Boolean_System_String_System_String___System_String___System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
   <div class="markdown level1 summary"><p>Creates a new Azure Active Directory Group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GroupEntity CreateGroup(string displayName, string description, string mailNickname, bool mailEnabled, bool securityEnabled, string accessToken, string[] owners = null, string[] members = null, int retryCount = 10, int delay = 500)</code></pre>
+    <pre><code class="lang-csharp hljs">public static GroupEntity CreateGroup(string displayName, string description, string mailNickname, bool mailEnabled, bool securityEnabled, string accessToken, string[] owners = null, string[] members = null, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -535,6 +551,14 @@
 </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to use, needed to get the correct Microsoft Graph URL</p>
+</p>
+      </td>
+    </tr>
   </table>
   
   <h5 class="returns">Returns</h5>
@@ -561,24 +585,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.DeleteGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.DeleteGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L499" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L500" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_DeleteGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.DeleteGroup*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.DeleteGroup(System.String,System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">DeleteGroup(String, String, Int32, Int32)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.DeleteGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">DeleteGroup(String, String, Int32, Int32, AzureEnvironment)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_DeleteGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
   <div class="markdown level1 summary"><p>Deletes an Azure Active Directory Group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void DeleteGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void DeleteGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -615,6 +639,14 @@
 </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to use, needed to get the correct Microsoft Graph URL</p>
+</p>
+      </td>
+    </tr>
   </table>
   
   
@@ -631,24 +663,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetDeletedGroup(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_Uri_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetDeletedGroup(System.String%2CSystem.String%2CUri)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1207" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1217" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.GetDeletedGroup*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_" data-uid="PnP.Framework.Graph.GroupsUtility.GetDeletedGroup(System.String,System.String)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_" class="expander" data-toggle="collapse">GetDeletedGroup(String, String)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_Uri_" data-uid="PnP.Framework.Graph.GroupsUtility.GetDeletedGroup(System.String,System.String,Uri)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_Uri_" class="expander" data-toggle="collapse">GetDeletedGroup(String, String, Uri)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetDeletedGroup_System_String_System_String_Uri_" class="collapse in">
   <div class="markdown level1 summary"><p>Gets one deleted Azure Active Directory group based on its ID</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GroupEntity GetDeletedGroup(string groupId, string accessToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public static GroupEntity GetDeletedGroup(string groupId, string accessToken, Uri graphBaseUri = null)</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -666,6 +698,14 @@
         <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
         <span class="parametername">accessToken</span>
         <p><p>Access token for accessing Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">Uri</span></span>
+        <span class="parametername">graphBaseUri</span>
+        <p><p>The Microsoft Graph URI to use</p>
 </p>
       </td>
     </tr>
@@ -695,24 +735,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L535" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L537" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_GetGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroup*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroup(System.String,System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">GetGroup(String, String, Int32, Int32)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroup(System.String,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetGroup(String, String, Int32, Int32, AzureEnvironment)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroup_System_String_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
   <div class="markdown level1 summary"><p>Get an Azure Active Directory Group by Id</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GroupEntity GetGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+    <pre><code class="lang-csharp hljs">public static GroupEntity GetGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -749,6 +789,14 @@
 </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to use, needed to get the correct Microsoft Graph URL</p>
+</p>
+      </td>
+    </tr>
   </table>
   
   <h5 class="returns">Returns</h5>
@@ -775,24 +823,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroupMembers(PnP.Framework.Entities.GroupEntity%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroupMembers(PnP.Framework.Entities.GroupEntity%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L683" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L687" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_GetGroupMembers_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroupMembers*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroupMembers(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">GetGroupMembers(GroupEntity, String, Int32, Int32)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroupMembers(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetGroupMembers(GroupEntity, String, Int32, Int32, AzureEnvironment)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupMembers_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
   <div class="markdown level1 summary"><p>Returns all the Members of an Azure Active Directory group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;GroupUser&gt; GetGroupMembers(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+    <pre><code class="lang-csharp hljs">public static List&lt;GroupUser&gt; GetGroupMembers(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -829,6 +877,14 @@
 </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to use, needed to get the correct Microsoft Graph URL</p>
+</p>
+      </td>
+    </tr>
   </table>
   
   <h5 class="returns">Returns</h5>
@@ -855,24 +911,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroupOwners(PnP.Framework.Entities.GroupEntity%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroupOwners(PnP.Framework.Entities.GroupEntity%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1001" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1010" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_GetGroupOwners_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroupOwners*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroupOwners(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">GetGroupOwners(GroupEntity, String, Int32, Int32)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroupOwners(PnP.Framework.Entities.GroupEntity,System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetGroupOwners(GroupEntity, String, Int32, Int32, AzureEnvironment)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroupOwners_PnP_Framework_Entities_GroupEntity_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
   <div class="markdown level1 summary"><p>Returns all the Owners of an Azure Active Directory group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;GroupUser&gt; GetGroupOwners(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+    <pre><code class="lang-csharp hljs">public static List&lt;GroupUser&gt; GetGroupOwners(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -909,6 +965,14 @@
 </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to use, needed to get the correct Microsoft Graph URL</p>
+</p>
+      </td>
+    </tr>
   </table>
   
   <h5 class="returns">Returns</h5>
@@ -935,24 +999,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroups(System.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.GetGroups(System.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L595" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L598" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_GetGroups_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroups*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_" class="expander" data-toggle="collapse">GetGroups(String, String, String, Int32, Nullable&lt;Int32&gt;, Int32, Int32, Int32)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.GetGroups(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">GetGroups(String, String, String, Int32, Nullable&lt;Int32&gt;, Int32, Int32, Int32, AzureEnvironment)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_GetGroups_System_String_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_Int32_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
   <div class="markdown level1 summary"><p>Returns all the Azure Active Directory Groups in the current Tenant based on a startIndex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;GroupEntity&gt; GetGroups(string accessToken, string displayName = null, string mailNickname = null, int startIndex = 0, int? endIndex = null, int retryCount = 10, int delay = 500, int pageSize = 999)</code></pre>
+    <pre><code class="lang-csharp hljs">public static List&lt;GroupEntity&gt; GetGroups(string accessToken, string displayName = null, string mailNickname = null, int startIndex = 0, int? endIndex = null, int retryCount = 10, int delay = 500, int pageSize = 999, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -1021,6 +1085,14 @@
 </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to use, needed to get the correct Microsoft Graph URL</p>
+</p>
+      </td>
+    </tr>
   </table>
   
   <h5 class="returns">Returns</h5>
@@ -1047,24 +1119,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.ListDeletedGroups(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_Uri_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.ListDeletedGroups(System.String%2CUri)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1241" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1257" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_" data-uid="PnP.Framework.Graph.GroupsUtility.ListDeletedGroups*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_" data-uid="PnP.Framework.Graph.GroupsUtility.ListDeletedGroups(System.String)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_" class="expander" data-toggle="collapse">ListDeletedGroups(String)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_Uri_" data-uid="PnP.Framework.Graph.GroupsUtility.ListDeletedGroups(System.String,Uri)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_Uri_" class="expander" data-toggle="collapse">ListDeletedGroups(String, Uri)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_ListDeletedGroups_System_String_Uri_" class="collapse in">
   <div class="markdown level1 summary"><p>Lists deleted Azure Active Directory groups</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;GroupEntity&gt; ListDeletedGroups(string accessToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public static List&lt;GroupEntity&gt; ListDeletedGroups(string accessToken, Uri graphBaseUri = null)</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -1074,6 +1146,14 @@
         <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
         <span class="parametername">accessToken</span>
         <p><p>Access token for accessing Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">Uri</span></span>
+        <span class="parametername">graphBaseUri</span>
+        <p><p>The Microsoft Graph URI to use</p>
 </p>
       </td>
     </tr>
@@ -1103,24 +1183,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_Uri_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup(System.String%2CSystem.String%2CUri)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1309" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1338" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_" data-uid="PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup(System.String,System.String)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_" class="expander" data-toggle="collapse">PermanentlyDeleteGroup(String, String)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_Uri_" data-uid="PnP.Framework.Graph.GroupsUtility.PermanentlyDeleteGroup(System.String,System.String,Uri)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_Uri_" class="expander" data-toggle="collapse">PermanentlyDeleteGroup(String, String, Uri)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_PermanentlyDeleteGroup_System_String_System_String_Uri_" class="collapse in">
   <div class="markdown level1 summary"><p>Permanently deletes one deleted Azure Active Directory group based on its ID</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void PermanentlyDeleteGroup(string groupId, string accessToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void PermanentlyDeleteGroup(string groupId, string accessToken, Uri graphBaseUri = null)</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -1141,6 +1221,14 @@
 </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">Uri</span></span>
+        <span class="parametername">graphBaseUri</span>
+        <p><p>The Microsoft Graph URI to use</p>
+</p>
+      </td>
+    </tr>
   </table>
   
   
@@ -1157,24 +1245,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L839" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L846" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_" data-uid="PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">RemoveGroupMembers(String, String[], String, Int32, Int32)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.RemoveGroupMembers(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">RemoveGroupMembers(String, String[], String, Int32, Int32, AzureEnvironment)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupMembers_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
   <div class="markdown level1 summary"><p>Removes members from an Azure Active Directory group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void RemoveGroupMembers(string groupId, string[] members, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void RemoveGroupMembers(string groupId, string[] members, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -1219,6 +1307,14 @@
 </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to use, needed to get the correct Microsoft Graph URL</p>
+</p>
+      </td>
+    </tr>
   </table>
   
   
@@ -1235,24 +1331,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners(System.String%2CSystem.String%5B%5D%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L900" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L908" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_" data-uid="PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_" data-uid="PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_" class="expander" data-toggle="collapse">RemoveGroupOwners(String, String[], String, Int32, Int32)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.RemoveGroupOwners(System.String,System.String[],System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">RemoveGroupOwners(String, String[], String, Int32, Int32, AzureEnvironment)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_RemoveGroupOwners_System_String_System_String___System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_" class="collapse in">
   <div class="markdown level1 summary"><p>Removes owners from an Azure Active Directory group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void RemoveGroupOwners(string groupId, string[] owners, string accessToken, int retryCount = 10, int delay = 500)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void RemoveGroupOwners(string groupId, string[] owners, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -1297,6 +1393,14 @@
 </p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to use, needed to get the correct Microsoft Graph URL</p>
+</p>
+      </td>
+    </tr>
   </table>
   
   
@@ -1313,24 +1417,24 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_Uri_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup(System.String%2CSystem.String%2CUri)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1290" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L1313" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_" data-uid="PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup(System.String,System.String)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_" class="expander" data-toggle="collapse">RestoreDeletedGroup(String, String)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_Uri_" data-uid="PnP.Framework.Graph.GroupsUtility.RestoreDeletedGroup(System.String,System.String,Uri)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_Uri_" class="expander" data-toggle="collapse">RestoreDeletedGroup(String, String, Uri)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_RestoreDeletedGroup_System_String_System_String_Uri_" class="collapse in">
   <div class="markdown level1 summary"><p>Restores one deleted Azure Active Directory group based on its ID</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void RestoreDeletedGroup(string groupId, string accessToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void RestoreDeletedGroup(string groupId, string accessToken, Uri graphBaseUri = null)</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -1348,6 +1452,14 @@
         <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></span>
         <span class="parametername">accessToken</span>
         <p><p>Access token for accessing Microsoft Graph</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">Uri</span></span>
+        <span class="parametername">graphBaseUri</span>
+        <p><p>The Microsoft Graph URI to use</p>
 </p>
       </td>
     </tr>
@@ -1445,7 +1557,7 @@
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.UpdateGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Nullable%7BSystem.Boolean%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GroupsUtility.UpdateGroup(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Nullable%7BSystem.Boolean%7D%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GroupsUtility.cs/#L396" title="View Source"><i class="fa fa-code"></i></a>
@@ -1453,16 +1565,16 @@
   
   <a id="PnP_Framework_Graph_GroupsUtility_UpdateGroup_" data-uid="PnP.Framework.Graph.GroupsUtility.UpdateGroup*"></a>
   
-  <h4 id="PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__" data-uid="PnP.Framework.Graph.GroupsUtility.UpdateGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.Nullable{System.Boolean},System.Nullable{System.Boolean})"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__" class="expander" data-toggle="collapse">UpdateGroup(String, String, Int32, Int32, String, String, String[], String[], Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;)</a></h4>
+  <h4 id="PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_" data-uid="PnP.Framework.Graph.GroupsUtility.UpdateGroup(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String[],System.String[],System.Nullable{System.Boolean},System.Nullable{System.Boolean},PnP.Framework.AzureEnvironment)"><a href="#collapsible-PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_" class="expander" data-toggle="collapse">UpdateGroup(String, String, Int32, Int32, String, String, String[], String[], Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;, AzureEnvironment)</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__" class="collapse in">
+  <div id="collapsible-PnP_Framework_Graph_GroupsUtility_UpdateGroup_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String___System_String___System_Nullable_System_Boolean__System_Nullable_System_Boolean__PnP_Framework_AzureEnvironment_" class="collapse in">
   <div class="markdown level1 summary"><p>Updates the Azure Active Directory Group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool UpdateGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, string displayName = null, string description = null, string[] owners = null, string[] members = null, bool? securityEnabled = null, bool? mailEnabled = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool UpdateGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, string displayName = null, string description = null, string[] owners = null, string[] members = null, bool? securityEnabled = null, bool? mailEnabled = null, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -1544,6 +1656,14 @@
         <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</span>
         <span class="parametername">mailEnabled</span>
         <p><p>Boolean indicating if the group is enabled for distributing mail</p>
+</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
+        <span class="parametername">azureEnvironment</span>
+        <p><p>Azure environment to use, needed to get the correct Microsoft Graph URL</p>
 </p>
       </td>
     </tr>

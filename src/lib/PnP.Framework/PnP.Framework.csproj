@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net5.0;net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net6.0;net7.0</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
@@ -29,7 +29,6 @@
 		<IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
 		<!-- Set the PnPCoreSdkPath and PnPCoreSdkPathNet5 to non published PnP Core SDK binaries to load them instead of the nuget ones -->
 		<PnPCoreSdkPath Condition="'$(PnPCoreSdkPath)' == ''"></PnPCoreSdkPath>
-		<PnPCoreSdkPathNet5 Condition="'$(PnPCoreSdkPathNet5)' == ''"></PnPCoreSdkPathNet5>
 		<PnPCoreSdkPathNet6 Condition="'$(PnPCoreSdkPathNet6)' == ''"></PnPCoreSdkPathNet6>
 		<PnPCoreSdkPathNet7 Condition="'$(PnPCoreSdkPathNet7)' == ''"></PnPCoreSdkPathNet7>
 		<SignAssembly>true</SignAssembly>
@@ -202,18 +201,6 @@
 		<PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net5.0' ">
-		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.16.0" />
-		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="5.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
-		<PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
-		<PackageReference Include="System.DirectoryServices" Version="5.0.0" />
-		<PackageReference Include="System.IO.Packaging" Version="5.0.0" />
-	</ItemGroup>
-
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
 		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.16.0" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.0" />
@@ -264,14 +251,6 @@
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
 		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'netstandard2.0'">
 			<HintPath>$(PnPCoreSdkPath)</HintPath>
-			<Private>true</Private>
-			<SpecificVersion>false</SpecificVersion>
-		</Reference>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(PnPCoreSdkPathNet5)' != ''">
-		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net5.0'">
-			<HintPath>$(PnPCoreSdkPathNet5)</HintPath>
 			<Private>true</Private>
 			<SpecificVersion>false</SpecificVersion>
 		</Reference>

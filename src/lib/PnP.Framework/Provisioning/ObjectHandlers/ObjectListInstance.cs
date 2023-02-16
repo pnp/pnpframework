@@ -2838,7 +2838,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         if (field.TypeAsString.StartsWith("TaxonomyField"))
                         {
                             // find the corresponding taxonomy field and include it anyway
-                            var taxField = (TaxonomyField)field;
+                            var taxField = web.Context.CastTo<TaxonomyField>(field);
+
                             taxField.EnsureProperties(f => f.TextField, f => f.Id);
 
                             var noteField = siteList.Fields.GetById(taxField.TextField);

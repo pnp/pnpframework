@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Centralize the logic to get and validate the Admin Center URL [jansenbe - Bert Jansen]
 - No hardcoded references anymore to graph.microsoft.com and *.microsoftonline.com to help with supporting non default cloud environments [jansenbe - Bert Jansen]
 - Dropped .NET 5 support as it's not supported anymore [jansenbe - Bert Jansen]
+- Chars ' and . are allowed in alias and urls #834 [magarma - Miguel Angel García Martínez]
 
 ## [1.11.0]
 

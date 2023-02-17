@@ -443,7 +443,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         {
                             throw;
                         }
-
                     }
                     var termTerms = term.Terms;
                     if (termTerms.Any())

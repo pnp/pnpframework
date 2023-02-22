@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Dropped .NET 5 support as it's not supported anymore [jansenbe - Bert Jansen]
 - Chars ' and . are allowed in alias and urls #834 [magarma - Miguel Angel García Martínez]
 - Cast TaxonoxyField with appropriate method from web context #831 [BollietMZK - Jerome Bolliet]
+- Skip setting DefaultColumnValues if there are none specified in the provisioning template #840 [jackpoz - Giacomo Pozzoni]
 
 ## [1.11.0]
 

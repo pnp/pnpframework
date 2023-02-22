@@ -221,7 +221,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             }
 
                             if (defaultFolderValues.Any())
+                            {
                                 listInfo.SiteList.SetDefaultColumnValues(defaultFolderValues, true);
+                            }
                         }
 
                         #endregion Column default values

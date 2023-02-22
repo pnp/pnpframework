@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ## Added
 
+- Added UndoCheckOutFile extension #842 [rompenar - Arnaud ROMPEN]
+
 ## Changed
 
 - When `PnPContext` is created with a existing, externally provided, `IPnPContextFactory` then this `IPnPContextFactory` will be used for all PnP Framework internal `PnPContext` creations [jansenbe - Bert Jansen]

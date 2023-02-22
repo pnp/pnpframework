@@ -159,6 +159,52 @@ namespace Microsoft.SharePoint.Client
             }
         }
 
+        /// <summary>
+        /// Discard changes to a file
+        /// </summary>
+        /// <param name="web">The web to process</param>
+        /// <param name="serverRelativeUrl">The server relative URL of the file to dicard changes</param>
+        public static void UndoCheckOutFile(this Web web, string serverRelativeUrl)
+        {
+            Task.Run(() => web.UndoCheckOutFileImplementation(serverRelativeUrl)).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Discard changes to a file
+        /// </summary>
+        /// <param name="web">The web to process</param>
+        /// <param name="serverRelativeUrl">The server relative URL of the file to dicard changes</param>
+        public static async Task UndoCheckOutFileAsync(this Web web, string serverRelativeUrl)
+        {
+            await new SynchronizationContextRemover();
+            await web.UndoCheckOutFileImplementation(serverRelativeUrl);
+        }
+
+        /// <summary>
+        /// Discard changes to a file
+        /// </summary>
+        /// <param name="web">The web to process</param>
+        /// <param name="serverRelativeUrl">The server relative URL of the file to dicard changes</param>
+        private static async Task UndoCheckOutFileImplementation(this Web web, string serverRelativeUrl)
+        {
+            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativeUrl));
+            await web.Context.ExecuteQueryAsync();
+
+            var scope = new ConditionalScope(web.Context, () => !file.ServerObjectIsNull.Value && file.Exists && file.CheckOutType != CheckOutType.None);
+
+            using (scope.StartScope())
+            {
+                web.Context.Load(file);
+            }
+            await web.Context.ExecuteQueryAsync();
+
+            if (scope.TestResult.Value)
+            {
+                file.UndoCheckOut();
+                web.Context.ExecuteQueryRetry();
+            }
+        }
+
         private static void CopyStream(Stream source, Stream destination)
         {
             byte[] buffer = new byte[32768];

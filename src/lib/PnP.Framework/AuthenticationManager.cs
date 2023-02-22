@@ -94,6 +94,8 @@ namespace PnP.Framework
         private readonly SecureString accessToken;
         private readonly IAuthenticationProvider authenticationProvider;
         private readonly PnPContext pnpContext;
+        private readonly string userToken;
+        private string sessionKey;
 
         public CookieContainer CookieContainer { get; set; }
 
@@ -253,6 +255,20 @@ namespace PnP.Framework
         public static AuthenticationManager CreateWithOnBehalfOf(string clientId, string clientSecret, UserAssertion userAssertion, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
         {
             return new AuthenticationManager(clientId, clientSecret, userAssertion, tenantId, azureEnvironment, tokenCacheCallback);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContext.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication.</param>
+        /// <param name="clientSecret">The client secret of the Azure AD application to use for authentication.</param>
+        /// <param name="tenantId">Optional tenant id or tenant url</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="userToken">The user token of the user on whose behalf to acquire the context</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        public static AuthenticationManager CreateWithLongRunningOnBehalfOf(string clientId, string clientSecret, string userToken, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
+        {
+            return new AuthenticationManager(clientId, clientSecret, userToken, tenantId, azureEnvironment, tokenCacheCallback);
         }
 
         /// <summary>
@@ -609,6 +625,45 @@ namespace PnP.Framework
         }
 
         /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContext.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication.</param>
+        /// <param name="clientSecret">The client secret of the Azure AD application to use for authentication.</param>
+        /// <param name="tenantId">Optional tenant id or tenant url</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="userToken">The user token of the user on whose behalf to acquire the context</param>
+        /// <param name="tokenCacheCallback"></param>
+        public AuthenticationManager(string clientId, string clientSecret, string userToken, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this()
+        {
+            this.azureEnvironment = azureEnvironment;
+            var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
+
+            ConfidentialClientApplicationBuilder builder;
+            if (azureEnvironment != AzureEnvironment.Production)
+            {
+                if (tenantId == null)
+                {
+                    throw new ArgumentException("tenantId is required", nameof(tenantId));
+                }
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority(azureADEndPoint, tenantId, true).WithHttpClientFactory(HttpClientFactory);
+            }
+            else
+            {
+                builder = ConfidentialClientApplicationBuilder.Create(clientId).WithClientSecret(clientSecret).WithAuthority($"{azureADEndPoint}/organizations/").WithHttpClientFactory(HttpClientFactory);
+                if (!string.IsNullOrEmpty(tenantId))
+                {
+                    builder = builder.WithTenantId(tenantId);
+                }
+            }
+            this.userToken = userToken;
+            confidentialClientApplication = builder.Build();
+
+            // register tokencache if callback provided
+            tokenCacheCallback?.Invoke(confidentialClientApplication.UserTokenCache);
+            authenticationType = ClientContextType.AzureLongRunningOnBehalfOf;
+        }
+
+        /// <summary>
         /// Creates an AuthenticationManager for the given PnP Core SDK <see cref="IAuthenticationProvider"/>.
         /// </summary>
         /// <param name="authenticationProvider">PnP Core SDK <see cref="IAuthenticationProvider"/></param>
@@ -791,6 +846,18 @@ namespace PnP.Framework
                         }
                         break;
                     }
+                case ClientContextType.AzureLongRunningOnBehalfOf:
+                    {
+                        try
+                        {
+                            authResult = await ((ILongRunningWebApi)confidentialClientApplication).AcquireTokenInLongRunningProcess(scopes, sessionKey).ExecuteAsync(cancellationToken);
+                        }
+                        catch
+                        {
+                            authResult = await ((ILongRunningWebApi)confidentialClientApplication).InitiateLongRunningProcessInWebApi(scopes, userToken, ref sessionKey).ExecuteAsync(cancellationToken);
+                        }
+                        break;
+                    }
                 case ClientContextType.SharePointACSAppOnly:
                     {
                         if (acsTokenGenerator == null)
@@ -937,6 +1004,18 @@ namespace PnP.Framework
                         if (authResult.AccessToken != null)
                         {
                             return BuildClientContext(confidentialClientApplication, siteUrl, scopes, authenticationType);
+                        }
+                        break;
+                    }
+                 case ClientContextType.AzureLongRunningOnBehalfOf:
+                    {
+                        try
+                        {
+                            authResult = await ((ILongRunningWebApi)confidentialClientApplication).AcquireTokenInLongRunningProcess(scopes, sessionKey).ExecuteAsync(cancellationToken);
+                        }
+                        catch
+                        {
+                            authResult = await ((ILongRunningWebApi)confidentialClientApplication).InitiateLongRunningProcessInWebApi(scopes, userToken, ref sessionKey).ExecuteAsync(cancellationToken);
                         }
                         break;
                     }
@@ -1104,6 +1183,18 @@ namespace PnP.Framework
                         case ClientContextType.AzureOnBehalfOf:
                             {
                                 ar = ((IConfidentialClientApplication)application).AcquireTokenOnBehalfOf(scopes, assertion).ExecuteAsync().GetAwaiter().GetResult();
+                                break;
+                            }
+                        case ClientContextType.AzureLongRunningOnBehalfOf:
+                            {
+                                if (sessionKey != null)
+                                {
+                                    ar = ((ILongRunningWebApi)application).AcquireTokenInLongRunningProcess(scopes, sessionKey).ExecuteAsync().GetAwaiter().GetResult();
+                                }
+                                else
+                                {
+                                    ar = ((ILongRunningWebApi)application).InitiateLongRunningProcessInWebApi(scopes, userToken, ref sessionKey).ExecuteAsync().GetAwaiter().GetResult();
+                                }
                                 break;
                             }
                         case ClientContextType.DeviceLogin:

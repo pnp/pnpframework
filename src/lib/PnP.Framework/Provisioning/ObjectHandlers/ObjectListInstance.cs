@@ -219,7 +219,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 var folderName = parser.ParseString(templateListFolder.Name);
                                 ProcessDefaultFolders(web, listInfo, templateListFolder, folderName, defaultFolderValues, parser);
                             }
-                            listInfo.SiteList.SetDefaultColumnValues(defaultFolderValues, true);
+
+                            if (defaultFolderValues.Any())
+                                listInfo.SiteList.SetDefaultColumnValues(defaultFolderValues, true);
                         }
 
                         #endregion Column default values

@@ -444,7 +444,7 @@ namespace PnP.Framework.Test.Framework.ProvisioningTemplates
         {
             using (Stream _formattedTemplate = new FileStream(this._provisioningTemplatePath7, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                ITemplateFormatter formatter = new JsonPnPFormatter();
+                ITemplateFormatter formatter = new JsonPnPSchemaFormatter();
 
                 JsonTemplateProvider provider =
                     new JsonFileSystemTemplateProvider(

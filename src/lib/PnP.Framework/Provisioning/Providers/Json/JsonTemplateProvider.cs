@@ -25,11 +25,43 @@ namespace PnP.Framework.Provisioning.Providers.Json
 
         #region Base class overrides
 
+        public override ProvisioningHierarchy GetHierarchy(string uri)
+        {
+            return this.GetHierarchy(uri, null);
+        }
+        
+        public override ProvisioningHierarchy GetHierarchy(string uri, IProvisioningHierarchyFormatter formatter)
+        {
+            if (uri == null)
+            {
+                throw new ArgumentNullException(nameof(uri));
+            }
+
+            if (formatter is null)
+            {
+                var latestFormatter = JsonPnPSchemaFormatter.LatestFormatter();
+                latestFormatter.Initialize(this);
+                formatter = (IProvisioningHierarchyFormatter)latestFormatter;
+            }
+
+            ProvisioningHierarchy result = null;
+
+            var stream = this.Connector.GetFileStream(uri);
+
+            if (stream != null)
+            {
+                result = formatter.ToProvisioningHierarchy(stream);
+            }
+
+            return (result);
+
+        }
+
         public override List<ProvisioningTemplate> GetTemplates()
         {
-            var formatter = new JsonPnPFormatter();
+            var formatter = new JsonPnPSchemaFormatter();
             formatter.Initialize(this);
-            return (this.GetTemplates(formatter));
+            return this.GetTemplates(formatter);
         }
 
         public override List<ProvisioningTemplate> GetTemplates(ITemplateFormatter formatter)
@@ -56,11 +88,6 @@ namespace PnP.Framework.Provisioning.Providers.Json
             }
 
             return (result);
-        }
-
-        public override ProvisioningHierarchy GetHierarchy(string uri)
-        {
-            throw new NotImplementedException();
         }
 
         public override ProvisioningTemplate GetTemplate(string uri)
@@ -97,7 +124,7 @@ namespace PnP.Framework.Provisioning.Providers.Json
 
             if (formatter == null)
             {
-                formatter = new JsonPnPFormatter();
+                formatter = new JsonPnPSchemaFormatter();
                 formatter.Initialize(this);
             }
 
@@ -158,7 +185,7 @@ namespace PnP.Framework.Provisioning.Providers.Json
 
             if (formatter == null)
             {
-                formatter = new JsonPnPFormatter();
+                formatter = new JsonPnPSchemaFormatter();
                 formatter.Initialize(this);
             }
 
@@ -179,7 +206,34 @@ namespace PnP.Framework.Provisioning.Providers.Json
 
         public override void Save(ProvisioningHierarchy hierarchy)
         {
-            throw new NotImplementedException();
+          this.SaveAs(hierarchy, this.Uri);
+        }
+
+        public override void SaveAs(ProvisioningHierarchy hierarchy, string uri, ITemplateFormatter formatter = null)
+        {
+            if (hierarchy is null)
+            {
+                throw new ArgumentNullException(nameof(hierarchy));
+            }
+
+            if (uri == null)
+            {
+                throw new ArgumentNullException(nameof(uri));
+            }
+
+            if (formatter is null)
+            {
+                formatter = JsonPnPSchemaFormatter.LatestFormatter();
+            }
+
+            var stream = ((IProvisioningHierarchyFormatter)formatter).ToFormattedHierarchy(hierarchy);
+
+            this.Connector.SaveFileStream(uri, stream);
+
+            if (this.Connector is ICommitableFileConnector)
+            {
+                ((ICommitableFileConnector)this.Connector).Commit();
+            }
         }
 
         public override void Save(ProvisioningTemplate template)
@@ -200,11 +254,6 @@ namespace PnP.Framework.Provisioning.Providers.Json
         public override void Save(ProvisioningTemplate template, ITemplateFormatter formatter, ITemplateProviderExtension[] extensions = null)
         {
             this.SaveAs(template, this.Uri, formatter, extensions);
-        }
-
-        public override void SaveAs(ProvisioningHierarchy hierarchy, string uri, ITemplateFormatter formatter = null)
-        {
-            throw new NotImplementedException();
         }
 
         public override void SaveAs(ProvisioningTemplate template, string uri)
@@ -236,7 +285,7 @@ namespace PnP.Framework.Provisioning.Providers.Json
 
             if (formatter == null)
             {
-                formatter = new JsonPnPFormatter();
+                formatter = new JsonPnPSchemaFormatter();
             }
 
             SaveToConnector(template, uri, formatter, extensions);

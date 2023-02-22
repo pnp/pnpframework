@@ -29,6 +29,36 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
         #region Base class overrides
 
+        public override ProvisioningHierarchy GetHierarchy(string uri)
+        {
+            return this.GetHierarchy(uri, null);
+        }
+
+        public override ProvisioningHierarchy GetHierarchy(string uri, IProvisioningHierarchyFormatter formatter)
+        {
+            if (uri == null)
+            {
+                throw new ArgumentNullException(nameof(uri));
+            }
+
+            ProvisioningHierarchy result = null;
+
+            var stream = this.Connector.GetFileStream(uri);
+
+            if (stream != null)
+            {
+                if (formatter == null)
+                {
+                    ITemplateFormatter specificFormatter = new XMLPnPSchemaFormatter().GetSpecificFormatterInternal(ref stream);
+                    specificFormatter.Initialize(this);
+
+                    formatter = (IProvisioningHierarchyFormatter)specificFormatter;
+                }
+                result = formatter.ToProvisioningHierarchy(stream);
+            }
+            return (result);
+        }
+
         public override List<ProvisioningTemplate> GetTemplates()
         {
             var formatter = new XMLPnPSchemaFormatter();
@@ -66,29 +96,6 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                         result.Add(provisioningTemplate);
                     }
                 }
-            }
-
-            return (result);
-        }
-
-        public override ProvisioningHierarchy GetHierarchy(string uri)
-        {
-            if (uri == null)
-            {
-                throw new ArgumentNullException(nameof(uri));
-            }
-
-            ProvisioningHierarchy result = null;
-
-            var stream = this.Connector.GetFileStream(uri);
-
-            if (stream != null)
-            {
-                var formatter = new XMLPnPSchemaFormatter();
-
-                ITemplateFormatter specificFormatter = formatter.GetSpecificFormatterInternal(ref stream);
-                specificFormatter.Initialize(this);
-                result = ((IProvisioningHierarchyFormatter)specificFormatter).ToProvisioningHierarchy(stream);
             }
 
             return (result);

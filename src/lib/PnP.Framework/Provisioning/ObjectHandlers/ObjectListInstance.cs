@@ -261,7 +261,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 if (!string.IsNullOrEmpty(fieldValue))
                 {
                     var field = listInfo.SiteList.Fields.GetByInternalNameOrTitle(fieldName);
-                    var defaultValue = field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, new[] { fieldValue });
+                    var defaultValue = field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, TermIdsToProcess(fieldValue).ToArray());
                     defaultFolderValues.Add(defaultValue);
                 }
             }
@@ -270,6 +270,20 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 var childFolderName = folderName + "/" + folder.Name;
                 ProcessDefaultFolders(web, listInfo, folder, childFolderName, defaultFolderValues, parser);
             }
+        }
+
+        private static List<string> TermIdsToProcess(string value)
+        {
+            var terms = value.Split(new[] { ";#" }, StringSplitOptions.None);
+            var termDefaultValuesParsed = new List<string>();
+            for (int q = 0; q < terms.Length; q += 2)
+            {
+                var splitData = terms[q + 1].Split(new char[] { '|' });
+                var termIdString = splitData[1];
+                termDefaultValuesParsed.Add(termIdString);
+            }
+
+            return termDefaultValuesParsed;
         }
 
         private static void ProcessIRMSettings(Web web, ListInfo list)

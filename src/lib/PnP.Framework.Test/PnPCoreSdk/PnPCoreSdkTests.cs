@@ -50,5 +50,18 @@ namespace PnP.Framework.Test
             }
         }
 
+        [TestMethod]
+        public void PassAzureEnvironmentTest()
+        {
+            using (var cc = TestCommon.CreateClientContext(AzureEnvironment.Custom))
+            {
+                using (PnPContext context = PnPCoreSdk.Instance.GetPnPContext(cc))
+                {
+                    var web = context.Web.GetAsync().GetAwaiter().GetResult();
+                    Assert.IsTrue(web.Title != null);
+                }
+            }
+        }
+
     }
 }

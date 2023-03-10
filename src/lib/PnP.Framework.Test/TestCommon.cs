@@ -260,6 +260,11 @@ namespace PnP.Framework.Test
             return CreateContext(TenantUrl);
         }
 
+        public static ClientContext CreateClientContext(AzureEnvironment azureEnvironment)
+        {
+            return CreateContext(DevSiteUrl, azureEnvironment);
+        }
+
         public static PnPClientContext CreatePnPClientContext(int retryCount = 10, int delay = 500)
         {
             PnPClientContext context;
@@ -314,7 +319,7 @@ namespace PnP.Framework.Test
         }
 
 
-        private static ClientContext CreateContext(string contextUrl)
+        private static ClientContext CreateContext(string contextUrl, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
 
             ClientContext context = null;
@@ -327,8 +332,14 @@ namespace PnP.Framework.Test
             }
             else
             {
-                using (AuthenticationManager am = new AuthenticationManager(UserName, Password))
+                using (AuthenticationManager am = new AuthenticationManager(UserName, Password, azureEnvironment))
                 {
+
+                    if (azureEnvironment == AzureEnvironment.Custom) 
+                    {
+                        am.SetEndPointsForCustomAzureEnvironmentConfiguration(AppSetting("MicrosoftGraphEndPoint"), AppSetting("AzureADLoginEndPoint"));
+                    }
+
                     context = am.GetContext(contextUrl);
                 }
             }

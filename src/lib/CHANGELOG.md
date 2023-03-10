@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ## Added
 
 - Added UndoCheckOutFile extension #842 [rompenar - Arnaud ROMPEN]
+- Custom Azure environments are supported via using the `AzureEnvironment.Custom` enviroment + setting the custom Graph authority and Azure AD login endpoint [jansenbe - Bert Jansen]
 
 ## Changed
 
@@ -25,6 +26,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Chars ' and . are allowed in alias and urls #834 [magarma - Miguel Angel García Martínez]
 - Cast TaxonoxyField with appropriate method from web context #831 [BollietMZK - Jerome Bolliet]
 - Skip setting DefaultColumnValues if there are none specified in the provisioning template #840 [jackpoz - Giacomo Pozzoni]
+- When a `PnPContext` (for using PnP Core SDK) is created from a `ClientContext` we now adhere to the set Azure configuration (graph URL, login URL) [jansenbe - Bert Jansen]
 
 ## [1.11.0]
 

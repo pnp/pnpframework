@@ -5,6 +5,7 @@ using PnP.Core.Services;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Context;
 using System;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Security;
@@ -46,7 +47,12 @@ namespace PnP.Framework
         /// <summary>
         /// 
         /// </summary>
-        USGovernmentDoD = 6
+        USGovernmentDoD = 6,
+        
+        /// <summary>
+        /// Custom cloud configuration, specify the endpoints manually
+        /// </summary>
+        Custom = 100
     }
 
 
@@ -81,8 +87,13 @@ namespace PnP.Framework
 
         private readonly IPublicClientApplication publicClientApplication;
         private readonly IConfidentialClientApplication confidentialClientApplication;
-        //private readonly string azureADEndPoint;
+        
+        // Azure environment setup
         private readonly AzureEnvironment azureEnvironment;
+        // When azureEnvironment = Custom then use these strings to keep track of the respective URLs to use 
+        private string microsoftGraphEndPoint;
+        private string azureADLoginEndPoint;
+        
         private readonly ClientContextType authenticationType;
         private readonly string username;
         private readonly SecureString password;
@@ -95,7 +106,7 @@ namespace PnP.Framework
         private readonly IAuthenticationProvider authenticationProvider;
         private readonly PnPContext pnpContext;
 
-        public CookieContainer CookieContainer { get; set; }
+        public CookieContainer CookieContainer { get; set; }            
 
         private IMsalHttpClientFactory HttpClientFactory
         {
@@ -975,7 +986,8 @@ namespace PnP.Framework
                         {
                             Type = ClientContextType.SharePointACSAppOnly,
                             SiteUrl = siteUrl,
-                            AuthenticationManager = this
+                            AuthenticationManager = this,
+                            Environment = this.azureEnvironment
                         };
                         context.AddContextSettings(clientContextSettings);
 
@@ -993,7 +1005,8 @@ namespace PnP.Framework
                         {
                             Type = ClientContextType.AccessToken,
                             SiteUrl = siteUrl,
-                            AuthenticationManager = this
+                            AuthenticationManager = this,
+                            Environment = this.azureEnvironment
                         };
                         context.AddContextSettings(clientContextSettings);
 
@@ -1015,7 +1028,8 @@ namespace PnP.Framework
                         {
                             Type = ClientContextType.PnPCoreSdk,
                             SiteUrl = siteUrl,
-                            AuthenticationManager = this
+                            AuthenticationManager = this,
+                            Environment = this.azureEnvironment
                         };
                         context.AddContextSettings(clientContextSettings);
 
@@ -1124,6 +1138,7 @@ namespace PnP.Framework
                 Type = contextType,
                 SiteUrl = siteUrl,
                 AuthenticationManager = this,
+                Environment = this.azureEnvironment
             };
 
             clientContext.AddContextSettings(clientContextSettings);
@@ -1268,7 +1283,8 @@ namespace PnP.Framework
                 ClientId = appId,
                 ClientSecret = appSecret,
                 AcsHostUrl = acsHostUrl,
-                GlobalEndPointPrefix = globalEndPointPrefix
+                GlobalEndPointPrefix = globalEndPointPrefix,
+                Environment = this.azureEnvironment
             };
 
             clientContext.AddContextSettings(clientContextSettings);
@@ -1368,7 +1384,14 @@ namespace PnP.Framework
         /// <returns>Azure AD login endpoint</returns>
         public string GetAzureADLoginEndPoint(AzureEnvironment environment)
         {
-            return GetAzureADLoginEndPointStatic(environment);
+            if (environment == AzureEnvironment.Custom)
+            {
+                return GetAzureAdLoginEndPointForCustomAzureEnvironmentConfiguration();
+            }
+            else
+            {
+                return GetAzureADLoginEndPointStatic(environment);
+            }
         }
 
         public static string GetAzureADLoginEndPointStatic(AzureEnvironment environment)
@@ -1392,7 +1415,14 @@ namespace PnP.Framework
         /// <returns></returns>
         public string GetGraphEndPoint()
         {
-            return GetGraphEndPoint(this.azureEnvironment);
+            if (this.azureEnvironment == AzureEnvironment.Custom)
+            {
+                return GetGraphEndPointForCustomAzureEnvironmentConfiguration();
+            }
+            else
+            {
+                return GetGraphEndPoint(this.azureEnvironment);
+            }
         }
 
         /// <summary>
@@ -1517,6 +1547,66 @@ namespace PnP.Framework
         public static bool IsTenantAdministrationUri(Uri uri)
         {
             return IsTenantAdministrationUrl(uri.ToString());
+        }
+
+        public string GetGraphEndPointForCustomAzureEnvironmentConfiguration()
+        {
+            if (string.IsNullOrEmpty(microsoftGraphEndPoint))
+            {
+                microsoftGraphEndPoint = LoadConfiguration("MicrosoftGraphEndPoint");
+            }
+
+            if (string.IsNullOrEmpty(microsoftGraphEndPoint))
+            {
+                return "graph.microsoft.com";
+            }
+            else
+            {
+                return microsoftGraphEndPoint;
+            }
+        }
+
+        public string GetAzureAdLoginEndPointForCustomAzureEnvironmentConfiguration()
+        {
+            if (string.IsNullOrEmpty(azureADLoginEndPoint))
+            {
+                azureADLoginEndPoint = LoadConfiguration("AzureADLoginEndPoint");
+            }
+
+            if (string.IsNullOrEmpty(azureADLoginEndPoint))
+            {
+                return "https://login.microsoftonline.com";
+            }
+            else
+            {
+                return azureADLoginEndPoint;
+            }
+        }
+
+        public void SetEndPointsForCustomAzureEnvironmentConfiguration(string microsoftGraphEndPoint, string azureADLoginEndPoint)
+        {
+            this.microsoftGraphEndPoint = microsoftGraphEndPoint;
+            this.azureADLoginEndPoint = azureADLoginEndPoint;
+        }
+
+        private static string LoadConfiguration(string appSetting)
+        {            
+            string loadedAppSetting = null;
+            try
+            {
+                loadedAppSetting = ConfigurationManager.AppSettings[appSetting];
+            }
+            catch // throws exception if being called from a .NET Standard 2.0 application
+            {
+
+            }
+
+            if (string.IsNullOrWhiteSpace(loadedAppSetting))
+            {
+                loadedAppSetting = Environment.GetEnvironmentVariable(appSetting, EnvironmentVariableTarget.Process);
+            }
+
+            return loadedAppSetting;
         }
 
         /// <summary>

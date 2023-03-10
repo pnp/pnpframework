@@ -89,7 +89,7 @@ namespace PnP.Framework
         private readonly IConfidentialClientApplication confidentialClientApplication;
         
         // Azure environment setup
-        private readonly AzureEnvironment azureEnvironment;
+        private AzureEnvironment azureEnvironment;
         // When azureEnvironment = Custom then use these strings to keep track of the respective URLs to use 
         private string microsoftGraphEndPoint;
         private string azureADLoginEndPoint;
@@ -627,7 +627,7 @@ namespace PnP.Framework
         {
             this.authenticationProvider = authenticationProvider;
             this.pnpContext = null;
-            authenticationType = ClientContextType.PnPCoreSdk;
+            authenticationType = ClientContextType.PnPCoreSdk;            
         }
 
         /// <summary>
@@ -639,6 +639,31 @@ namespace PnP.Framework
             this.authenticationProvider = pnPContext.AuthenticationProvider;
             this.pnpContext = pnPContext;
             authenticationType = ClientContextType.PnPCoreSdk;
+            ConfigureAuthenticationManagerEnvironmentSettings(pnPContext);
+        }
+
+        private void ConfigureAuthenticationManagerEnvironmentSettings(PnPContext pnPContext)
+        {
+            if (pnPContext.Environment == Microsoft365Environment.Custom)
+            {
+                this.azureEnvironment = AzureEnvironment.Custom;
+                this.microsoftGraphEndPoint = pnPContext.MicrosoftGraphAuthority;
+                this.azureADLoginEndPoint = $"https://{pnPContext.AzureADLoginAuthority}";
+            }
+            else
+            {
+                this.azureEnvironment = pnPContext.Environment switch
+                {
+                    Microsoft365Environment.Production => AzureEnvironment.Production,
+                    Microsoft365Environment.Germany => AzureEnvironment.Germany,
+                    Microsoft365Environment.China => AzureEnvironment.China,
+                    Microsoft365Environment.USGovernment => AzureEnvironment.USGovernment,
+                    Microsoft365Environment.USGovernmentHigh => AzureEnvironment.USGovernmentHigh,
+                    Microsoft365Environment.USGovernmentDoD => AzureEnvironment.USGovernmentDoD,
+                    Microsoft365Environment.PreProduction => AzureEnvironment.PPE,
+                    _ => AzureEnvironment.Production
+                };
+            }
         }
         #endregion
 

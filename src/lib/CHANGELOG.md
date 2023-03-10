@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Cast TaxonoxyField with appropriate method from web context #831 [BollietMZK - Jerome Bolliet]
 - Skip setting DefaultColumnValues if there are none specified in the provisioning template #840 [jackpoz - Giacomo Pozzoni]
 - When a `PnPContext` (for using PnP Core SDK) is created from a `ClientContext` we now adhere to the set Azure configuration (graph URL, login URL) [jansenbe - Bert Jansen]
+- When a `ClientContext` (for using with CSOM) is created from a `PnPContext` we now adhere to the set Azure configuration (graph URL, login URL) [jansenbe - Bert Jansen]
 
 ## [1.11.0]
 

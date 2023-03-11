@@ -306,7 +306,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         }
                                         WriteMessage($"Creating Team Site {siteInfo.Alias}", ProvisioningMessageType.Progress);
 #pragma warning disable CS0618
-                                        siteContext = Sites.SiteCollection.Create(rootSiteContext, siteInfo, configuration.Tenant.DelayAfterModernSiteCreation, noWait: nowait, graphAccessToken: graphAccessToken);
+                                        siteContext = Sites.SiteCollection.Create(rootSiteContext, siteInfo, configuration.Tenant.DelayAfterModernSiteCreation, noWait: nowait, graphAccessToken: graphAccessToken, azureEnvironment: tenant.Context.GetAzureEnvironment());
 #pragma warning restore CS0618
                                     }
                                     else

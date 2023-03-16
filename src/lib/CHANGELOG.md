@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - When a `ClientContext` (for using with CSOM) is created from a `PnPContext` we now adhere to the set Azure configuration (graph URL, login URL) [jansenbe - Bert Jansen]
 - Adding code to support multiple default values at folder level. #850 [roberAlb - Roberto Ramon]
 - MailUtility: fixed memory leak + improved authentication options #853 [koenzomers - Koen Zomers]
+- Adding support for vanity domain tenants to SearchExtensions #854 [koenzomers - Koen Zomers]
 
 ## [1.11.0]
 

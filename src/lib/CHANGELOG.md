@@ -31,6 +31,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Adding code to support multiple default values at folder level. #850 [roberAlb - Roberto Ramon]
 - MailUtility: fixed memory leak + improved authentication options #853 [koenzomers - Koen Zomers]
 - Adding support for vanity domain tenants to SearchExtensions #854 [koenzomers - Koen Zomers]
+- Support for different azure environment for team site creation #855 [gautamdsheth - Gautam Sheth]
 
 ## [1.11.0]
 

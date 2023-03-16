@@ -1,4 +1,5 @@
 ﻿using Microsoft.Graph;
+using Microsoft.Graph.Models;
 using Newtonsoft.Json;
 using PnP.Framework.Diagnostics;
 using System;
@@ -160,9 +161,9 @@ namespace PnP.Framework.Graph
                     return users;
                 }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (Exception ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
             return result;
@@ -282,9 +283,9 @@ namespace PnP.Framework.Graph
                     return usersDelta;
                 }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (Exception ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
             return result;
@@ -395,9 +396,9 @@ namespace PnP.Framework.Graph
                 return accessPassResponse;
 
             }
-            catch (ServiceException ex)
+            catch (Exception ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
         }        

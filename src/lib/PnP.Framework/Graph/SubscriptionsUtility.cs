@@ -1,4 +1,6 @@
 ﻿using Microsoft.Graph;
+using Microsoft.Graph.Models;
+using Microsoft.Graph.Models.ODataErrors;
 using PnP.Framework.Diagnostics;
 using System;
 using System.Collections.Generic;
@@ -33,7 +35,6 @@ namespace PnP.Framework.Graph
                     var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
 
                     var subscription = await graphClient.Subscriptions[subscriptionId.ToString()]
-                        .Request()
                         .GetAsync();
 
                     var subscriptionModel = MapGraphEntityToModel(subscription);
@@ -42,7 +43,7 @@ namespace PnP.Framework.Graph
 
                 return result;
             }
-            catch (ServiceException ex)
+            catch (ODataError ex)
             {
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
                 throw;
@@ -76,42 +77,22 @@ namespace PnP.Framework.Graph
 
                     var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
 
-                    var pagedSubscriptions = await graphClient.Subscriptions
-                        .Request()
-                        .GetAsync();
+                    var pagedSubscriptions = await graphClient.Subscriptions                        
+                        .GetAsync();                    
 
-                    int pageCount = 0;
-                    int currentIndex = 0;
-
-                    while (true)
+                    var pageIterator = PageIterator<Subscription, SubscriptionCollectionResponse>.CreatePageIterator(graphClient, pagedSubscriptions, (subscription) => 
                     {
-                        pageCount++;
+                        var subscriptionModel = MapGraphEntityToModel(subscription);
+                        subscriptions.Add(subscriptionModel);
+                        return true; 
+                    });
 
-                        foreach (var s in pagedSubscriptions)
-                        {
-                            currentIndex++;
-
-                            if (currentIndex >= startIndex)
-                            {
-                                var subscription = MapGraphEntityToModel(s);
-                                subscriptions.Add(subscription);
-                            }
-                        }
-
-                        if (pagedSubscriptions.NextPageRequest != null && currentIndex < endIndex)
-                        {
-                            pagedSubscriptions = await pagedSubscriptions.NextPageRequest.GetAsync();
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
+                    await pageIterator.IterateAsync();
 
                     return subscriptions;
                 }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (ODataError ex)
             {
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
                 throw;
@@ -165,9 +146,8 @@ namespace PnP.Framework.Graph
                         ClientState = clientState
                     };
 
-                    var subscription = await graphClient.Subscriptions
-                                                        .Request()
-                                                        .AddAsync(newSubscription);
+                    var subscription = await graphClient.Subscriptions                                                        
+                                                        .PostAsync(newSubscription);
 
                     if (subscription == null)
                     {
@@ -179,7 +159,7 @@ namespace PnP.Framework.Graph
 
                 }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (ODataError ex)
             {
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
                 throw;
@@ -219,9 +199,8 @@ namespace PnP.Framework.Graph
                         ExpirationDateTime = expirationDateTime
                     };
 
-                    var subscription = await graphClient.Subscriptions[subscriptionId]
-                                                        .Request()
-                                                        .UpdateAsync(updatedSubscription);
+                    var subscription = await graphClient.Subscriptions[subscriptionId]                                                        
+                                                        .PatchAsync(updatedSubscription);
 
                     if (subscription == null)
                     {
@@ -233,7 +212,7 @@ namespace PnP.Framework.Graph
 
                 }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (ODataError ex)
             {
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
                 throw;
@@ -263,13 +242,12 @@ namespace PnP.Framework.Graph
                 {
                     var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay);
 
-                    await graphClient.Subscriptions[subscriptionId]
-                                     .Request()
+                    await graphClient.Subscriptions[subscriptionId]                                     
                                      .DeleteAsync();
 
                 }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (ODataError ex)
             {
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
                 throw;

@@ -1,11 +1,28 @@
 ﻿using Microsoft.Graph;
+using Microsoft.Graph.Models;
+using Microsoft.Graph.Models.ODataErrors;
+using Microsoft.Kiota.Abstractions.Authentication;
 using PnP.Framework.Diagnostics;
 using System;
-using System.Net.Http.Headers;
+using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph
 {
+    public class TokenProvider : IAccessTokenProvider
+    {
+        public Task<string> GetAuthorizationTokenAsync(Uri uri, Dictionary<string, object> additionalAuthenticationContext = default,
+            CancellationToken cancellationToken = default)
+        {
+            var token = AccessToken;
+            // get the token and return it in your own way
+            return Task.FromResult(token);
+        }
+        public string AccessToken { get; set; }
+        public AllowedHostsValidator AllowedHostsValidator { get; }
+    }
+
     /// <summary>
     /// Utility class to perform Graph operations.
     /// </summary>
@@ -30,18 +47,24 @@ namespace PnP.Framework.Graph
             // Creates a new GraphServiceClient instance using a custom PnPHttpProvider
             // which natively supports retry logic for throttled requests
             // Default are 10 retries with a base delay of 500ms
-            var result = new GraphServiceClient(baseUrl, new DelegateAuthenticationProvider(
-                        async (requestMessage) =>
-                        {
-                            await Task.Run(() =>
-                            {
-                                if (!string.IsNullOrEmpty(accessToken))
-                                {
-                                    // Configure the HTTP bearer Authorization Header
-                                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
-                                }
-                            });
-                        }), new PnPHttpProvider(retryCount, delay));
+            //var result = new GraphServiceClient(baseUrl, new DelegateAuthenticationProvider(
+            //            async (requestMessage) =>
+            //            {
+            //                await Task.Run(() =>
+            //                {
+            //                    if (!string.IsNullOrEmpty(accessToken))
+            //                    {
+            //                        // Configure the HTTP bearer Authorization Header
+            //                        requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
+            //                    }
+            //                });
+            //            }), new PnPHttpProvider(retryCount, delay));
+
+            var tokenProvider = new TokenProvider();
+            tokenProvider.AccessToken = accessToken;
+
+            var authenticationProvider = new BaseBearerTokenAuthenticationProvider(tokenProvider);
+            var result = new GraphServiceClient(authenticationProvider, baseUrl);
 
             return (result);
         }
@@ -86,9 +109,9 @@ namespace PnP.Framework.Graph
 
                 // Create the graph client and send the invitation.
                 GraphServiceClient graphClient = CreateGraphClient(accessToken, azureEnvironment: azureEnvironment);
-                inviteUserResponse = graphClient.Invitations.Request().AddAsync(invite).Result;
+                inviteUserResponse = graphClient.Invitations.PostAsync(invite).Result;
             }
-            catch (ServiceException ex)
+            catch (ODataError ex)
             {
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
                 throw;

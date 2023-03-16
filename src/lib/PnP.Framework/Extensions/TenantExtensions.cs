@@ -132,7 +132,7 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="tenant">A tenant object pointing to the context of a Tenant Administration site</param>
         /// <param name="siteId">The id of the site collection</param>
-        /// <param name="detailed">Boolean indicating if detailed information should be returned of the site (true - default) or only the basics (false)
+        /// <param name="detailed">Boolean indicating if detailed information should be returned of the site (true - default) or only the basics (false)</param>
         /// <returns>SiteProperties of the site collection or NULL of no site collection found with the provided Id</returns>
         public static SiteProperties GetSitePropertiesById(this Tenant tenant, Guid siteId, bool detailed = true)
         {

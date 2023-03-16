@@ -757,7 +757,9 @@ namespace PnP.Framework
                         }
                         catch
                         {
+#pragma warning disable CS0618 // Type or member is obsolete
                             authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken).ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
                         }
                         break;
                     }
@@ -786,7 +788,9 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AzureADCertificate:
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
 
                         try
                         {
@@ -815,7 +819,9 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AzureOnBehalfOf:
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
 
                         try
                         {
@@ -909,7 +915,9 @@ namespace PnP.Framework
                         }
                         catch
                         {
+#pragma warning disable CS0618 // Type or member is obsolete
                             authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken).ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -942,7 +950,9 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AzureADCertificate:
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
 
                         try
                         {
@@ -960,7 +970,9 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AzureOnBehalfOf:
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
 
                         try
                         {
@@ -1127,7 +1139,9 @@ namespace PnP.Framework
                             }
                         case ClientContextType.AzureADCredentials:
                             {
+#pragma warning disable CS0618 // Type or member is obsolete
                                 ar = ((IPublicClientApplication)application).AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync().GetAwaiter().GetResult();
+#pragma warning restore CS0618 // Type or member is obsolete
                                 break;
                             }
                         case ClientContextType.AzureADInteractive:
@@ -1658,11 +1672,15 @@ namespace PnP.Framework
             }
             if (confidentialClientApplication != null)
             {
+#pragma warning disable CS0618 // Type or member is obsolete
                 var accounts = (await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false)).ToList();
+#pragma warning restore CS0618 // Type or member is obsolete
                 while (accounts.Any())
                 {
                     await confidentialClientApplication.RemoveAsync(accounts.First()).ConfigureAwait(false);
+#pragma warning disable CS0618 // Type or member is obsolete
                     accounts = (await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false)).ToList();
+#pragma warning restore CS0618 // Type or member is obsolete
                 }
             }
         }

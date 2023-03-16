@@ -235,7 +235,7 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="2.26.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1-*" PrivateAssets="All" />
-		<PackageReference Include="AngleSharp" Version="1.0.1" />
+		<PackageReference Include="AngleSharp" Version="0.17.0" />
 		<PackageReference Include="AngleSharp.Css" Version="0.17.0" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />		
 		<PackageReference Include="Microsoft.Graph" Version="3.33.0" />

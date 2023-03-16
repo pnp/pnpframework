@@ -207,17 +207,17 @@ namespace Microsoft.SharePoint.Client
             context.ExecuteQueryRetry();
         }
 
-        public static void SetSearchBoxPlaceholderText(this Site site, string placeholderText)
+        public static void SetSearchBoxPlaceholderText(this Site site, string placeholderText, string tenantAdminUrl = null)
         {
-            SetSearchBoxPlaceholderTextImpl(site.RootWeb, placeholderText, true);
+            SetSearchBoxPlaceholderTextImpl(site.RootWeb, placeholderText, true, tenantAdminUrl);
         }
 
-        public static void SetSearchBoxPlaceholderText(this Web web, string placeholderText)
+        public static void SetSearchBoxPlaceholderText(this Web web, string placeholderText, string tenantAdminUrl = null)
         {
-            SetSearchBoxPlaceholderTextImpl(web, placeholderText, false);
+            SetSearchBoxPlaceholderTextImpl(web, placeholderText, false, tenantAdminUrl);
         }
 
-        private static void SetSearchBoxPlaceholderTextImpl(Web web, string placeholderText, bool siteScope)
+        private static void SetSearchBoxPlaceholderTextImpl(Web web, string placeholderText, bool siteScope, string tenantAdminUrl = null)
         {
             if (placeholderText == null)
             {
@@ -237,7 +237,7 @@ namespace Microsoft.SharePoint.Client
             if (ctx.Web.IsNoScriptSite() && TenantExtensions.IsCurrentUserTenantAdmin(ctx))
             {
                 site.EnsureProperty(s => s.Url);
-                var adminSiteUrl = web.GetTenantAdministrationUrl();
+                var adminSiteUrl = tenantAdminUrl ?? web.GetTenantAdministrationUrl();
                 adminContext = ctx.Clone(adminSiteUrl);
                 tenant = new Tenant(adminContext);
                 tenant.SetSiteProperties(site.Url, noScriptSite: false);
@@ -275,7 +275,8 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="web">SharePoint site - root web</param>
         /// <param name="searchCenterUrl">Search center URL</param>
-        public static void SetSiteCollectionSearchCenterUrl(this Web web, string searchCenterUrl)
+        /// <param name="tenantAdminUrl">Url to the tenant admin site. Optional. Will try to determine automatically if omitted.</param>
+        public static void SetSiteCollectionSearchCenterUrl(this Web web, string searchCenterUrl, string tenantAdminUrl = null)
         {
             if (searchCenterUrl == null)
             {
@@ -298,7 +299,7 @@ namespace Microsoft.SharePoint.Client
                 site = ((ClientContext)web.Context).Site;
                 site.EnsureProperty(s => s.Url);
 
-                var adminSiteUrl = web.GetTenantAdministrationUrl();
+                var adminSiteUrl = tenantAdminUrl ?? web.GetTenantAdministrationUrl();
                 adminContext = web.Context.Clone(adminSiteUrl);
                 tenant = new Tenant(adminContext);
                 tenant.SetSiteProperties(site.Url, noScriptSite: false);
@@ -354,7 +355,8 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="web">SharePoint current web</param>
         /// <param name="searchCenterUrl">Search results page URL</param>
-        public static void SetWebSearchCenterUrl(this Web web, string searchCenterUrl)
+        /// <param name="tenantAdminUrl">Url to the tenant admin site. Optional. Will try to determine automatically if omitted.</param>
+        public static void SetWebSearchCenterUrl(this Web web, string searchCenterUrl, string tenantAdminUrl = null)
         {
             if (searchCenterUrl == null)
             {
@@ -373,7 +375,7 @@ namespace Microsoft.SharePoint.Client
                 site = ((ClientContext)web.Context).Site;
                 site.EnsureProperty(s => s.Url);
 
-                var adminSiteUrl = web.GetTenantAdministrationUrl();
+                var adminSiteUrl = tenantAdminUrl ?? web.GetTenantAdministrationUrl();
                 adminContext = web.Context.Clone(adminSiteUrl);
                 tenant = new Tenant(adminContext);
                 tenant.SetSiteProperties(site.Url, noScriptSite: false);

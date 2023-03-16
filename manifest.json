@@ -570,7 +570,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.SharePoint.Client.TenantExtensions.html",
-          "hash": "KCpsqRKkPQJeXRIndaKM3TxTfipQodsTTRrUBw8KAFI="
+          "hash": "j8/x27M1GiG5AN7L1DC3fcZdzZJR05zrd72J2KjdsjA="
         }
       },
       "is_incremental": false,
@@ -714,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.AuthenticationManager.html",
-          "hash": "YLsO4eU0RYEDhWRHxYf4/UwHPFhqXSR0T6ZUy9GfuMg="
+          "hash": "m1++AZWk4qKwAaT4CUMuSJaet8COwYo0wZIubRXNbC8="
         }
       },
       "is_incremental": false,
@@ -1974,7 +1974,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Graph.UnifiedGroupsUtility.html",
-          "hash": "+77ZiGKKnK1GglsfFLGvRMSv2Md7segOWfrHiPhEQr4="
+          "hash": "gLC9AsIba8a2p+AlwyH4c4F1e71FxMPzWQx5ZAItHAU="
         }
       },
       "is_incremental": false,
@@ -2994,7 +2994,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Publishing.PublishingBuiltIn.html",
-          "hash": "VMs4oLZ4PPlGQbii0leY04fTQ5Zqf7C4cCTO97F2z9Q="
+          "hash": "ztlTXqlu3lYXzHtT+2aYJdoUeBIA33L+y/4xJ9yfT8E="
         }
       },
       "is_incremental": false,
@@ -3318,7 +3318,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Telemetry.PageTelemetry.html",
-          "hash": "3+7T5orb3C8tMrH3j3k4NG2e2N4+OfwDCeqPb5fgU1I="
+          "hash": "BSbezTl71SOFgnP4OGpXNQvuJEXOPK173jU1YQJ19c4="
         }
       },
       "is_incremental": false,

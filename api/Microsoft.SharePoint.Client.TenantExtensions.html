@@ -1664,7 +1664,8 @@ Status is irrelevant for sub sites</p>
   <h4 id="Microsoft_SharePoint_Client_TenantExtensions_GetSitePropertiesById_Tenant_Guid_System_Boolean_" data-uid="Microsoft.SharePoint.Client.TenantExtensions.GetSitePropertiesById(Tenant,Guid,System.Boolean)"><a href="#collapsible-Microsoft_SharePoint_Client_TenantExtensions_GetSitePropertiesById_Tenant_Guid_System_Boolean_" class="expander" data-toggle="collapse">GetSitePropertiesById(Tenant, Guid, Boolean)</a></h4>
   
   <div id="collapsible-Microsoft_SharePoint_Client_TenantExtensions_GetSitePropertiesById_Tenant_Guid_System_Boolean_" class="collapse in">
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns details of a site collection by its site collection Id</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
@@ -1678,21 +1679,24 @@ Status is irrelevant for sub sites</p>
       <td>
         <span class="pull-right"><span class="xref">Tenant</span></span>
         <span class="parametername">tenant</span>
-        <p>
+        <p><p>A tenant object pointing to the context of a Tenant Administration site</p>
+</p>
       </td>
     </tr>
     <tr>
       <td>
         <span class="pull-right"><span class="xref">Guid</span></span>
         <span class="parametername">siteId</span>
-        <p>
+        <p><p>The id of the site collection</p>
+</p>
       </td>
     </tr>
     <tr>
       <td>
         <span class="pull-right"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></span>
         <span class="parametername">detailed</span>
-        <p>
+        <p><p>Boolean indicating if detailed information should be returned of the site (true - default) or only the basics (false)</p>
+</p>
       </td>
     </tr>
   </table>
@@ -1702,7 +1706,8 @@ Status is irrelevant for sub sites</p>
     <tr>
       <td>
         <span class="xref">SiteProperties</span>
-        <p>
+        <p><p>SiteProperties of the site collection or NULL of no site collection found with the provided Id</p>
+</p>
       </td>
     </tr>
   </table>

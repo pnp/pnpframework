@@ -11,7 +11,7 @@ namespace ConsoleApp2
             Console.WriteLine("Hello, World!");
 
             var username = "gautam@gautamdev.onmicrosoft.com";
-            var pass = "wQ5FROvgTNp121mVUNhrdrPOuyUa9OiO";
+            var pass = "";
 
             var securePassword = new SecureString();
             

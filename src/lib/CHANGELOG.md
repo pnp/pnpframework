@@ -28,6 +28,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Skip setting DefaultColumnValues if there are none specified in the provisioning template #840 [jackpoz - Giacomo Pozzoni]
 - When a `PnPContext` (for using PnP Core SDK) is created from a `ClientContext` we now adhere to the set Azure configuration (graph URL, login URL) [jansenbe - Bert Jansen]
 - When a `ClientContext` (for using with CSOM) is created from a `PnPContext` we now adhere to the set Azure configuration (graph URL, login URL) [jansenbe - Bert Jansen]
+- Adding code to support multiple default values at folder level. #850 [roberAlb - Roberto Ramon]
+- MailUtility: fixed memory leak + improved authentication options #853 [koenzomers - Koen Zomers]
+- Adding support for vanity domain tenants to SearchExtensions #854 [koenzomers - Koen Zomers]
+- Support for different azure environment for team site creation #855 [gautamdsheth - Gautam Sheth]
+- Bump Nuget package version dependencies to align with PnP PS needs #856 [gautamdsheth - Gautam Sheth]
 
 ## [1.11.0]
 

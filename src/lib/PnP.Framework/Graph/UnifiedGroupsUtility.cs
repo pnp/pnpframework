@@ -39,6 +39,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to configure the HTTP bearer Authorization Header</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request.</param>
+        /// <param name="azureEnvironment">Azure environment to use</param>
         /// <returns></returns>
         private static GraphServiceClient CreateGraphClient(String accessToken, int retryCount = defaultRetryCount, int delay = defaultDelay, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {

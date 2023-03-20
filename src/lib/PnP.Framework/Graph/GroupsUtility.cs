@@ -99,7 +99,7 @@ namespace PnP.Framework.Graph
                     var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     // Prepare the group resource object
-                    var newGroup = new Group
+                    var newGroup = new GroupExtended
                     {
                         DisplayName = displayName,
                         Description = string.IsNullOrEmpty(description) ? null : description,
@@ -113,7 +113,7 @@ namespace PnP.Framework.Graph
                         var users = GetUsers(graphClient, owners);
                         if (users != null && users.Count > 0)
                         {
-                            newGroup.Owners = users;
+                            newGroup.OwnersODataBind = users.Select(u => string.Format("{1}/users/{0}", u.Id, baseUrl)).ToArray();
                         }
                     }
 
@@ -122,7 +122,7 @@ namespace PnP.Framework.Graph
                         var users = GetUsers(graphClient, members);
                         if (users != null && users.Count > 0)
                         {
-                            newGroup.Members = users.Select(u => string.Format("{1}/users/{0}", u.Id, baseUrl)).ToArray();
+                            newGroup.MembersODataBind = users.Select(u => string.Format("{1}/users/{0}", u.Id, baseUrl)).ToArray();
                         }
                     }
 
@@ -311,45 +311,38 @@ namespace PnP.Framework.Graph
             }
 
             // Remove any leftover owner
-            var fullListOfOwners = await graphClient.Groups[groupId].Owners.Request().Select("userPrincipalName, Id").GetAsync();
-            var pageExists = true;
+            var fullListOfOwners = await graphClient.Groups[groupId].Owners
+                                         .GetAsync(requestConfiguration =>
+                                         {
+                                             requestConfiguration.QueryParameters.Select = new string[] { "userPrincipalName", "Id" };
+                                         });
 
-            while (pageExists)
+            var pageIterator = PageIterator<DirectoryObject, DirectoryObjectCollectionResponse>.CreatePageIterator(graphClient, fullListOfOwners, (owner) =>
             {
-                foreach (var owner in fullListOfOwners)
+                var currentOwnerPrincipalName = (owner as Microsoft.Graph.Models.User)?.UserPrincipalName;
+                if (!string.IsNullOrEmpty(currentOwnerPrincipalName) &&
+                    !owners.Contains(currentOwnerPrincipalName, StringComparer.InvariantCultureIgnoreCase))
                 {
-                    var currentOwnerPrincipalName = (owner as Microsoft.Graph.Models.User)?.UserPrincipalName;
-                    if (!string.IsNullOrEmpty(currentOwnerPrincipalName) &&
-                        !owners.Contains(currentOwnerPrincipalName, StringComparer.InvariantCultureIgnoreCase))
+                    try
                     {
-                        try
+                        // If it is not in the list of current owners, just remove it
+                        graphClient.Groups[groupId].Owners[owner.Id].Ref.DeleteAsync().GetAwaiter().GetResult();
+                    }
+                    catch (ODataError ex)
+                    {
+                        if (ex.Error.Code == "Request_BadRequest")
                         {
-                            // If it is not in the list of current owners, just remove it
-                            await graphClient.Groups[groupId].Owners[owner.Id].Reference.Request().DeleteAsync();
+                            // Skip any failing removal
                         }
-                        catch (ODataError ex)
+                        else
                         {
-                            if (ex.Error.Code == "Request_BadRequest")
-                            {
-                                // Skip any failing removal
-                            }
-                            else
-                            {
-                                throw ex;
-                            }
+                            throw ex;
                         }
                     }
                 }
-
-                if (fullListOfOwners.NextPageRequest != null)
-                {
-                    fullListOfOwners = await fullListOfOwners.NextPageRequest.GetAsync();
-                }
-                else
-                {
-                    pageExists = false;
-                }
-            }
+                return true;
+            });
+            await pageIterator.IterateAsync();
         }
 
         /// <summary>
@@ -638,49 +631,30 @@ namespace PnP.Framework.Graph
                     var mailNicknameFilter = !string.IsNullOrEmpty(mailNickname) ? $"(MailNickname eq '{Uri.EscapeDataString(mailNickname.Replace("'", "''"))}')" : string.Empty;
 
                     var pagedGroups = await graphClient.Groups
-                        .Request()
-                        .Filter($"{displayNameFilter}{(!string.IsNullOrEmpty(displayNameFilter) && !string.IsNullOrEmpty(mailNicknameFilter) ? " and " : "")}{mailNicknameFilter}")
-                        .Top(pageSize)
-                        .GetAsync();
+                                            .GetAsync(requestConfiguration =>
+                                            {
+                                                requestConfiguration.QueryParameters.Filter = $"{displayNameFilter}{(!string.IsNullOrEmpty(displayNameFilter) && !string.IsNullOrEmpty(mailNicknameFilter) ? " and " : "")}{mailNicknameFilter}";
+                                                requestConfiguration.QueryParameters.Top = pageSize;
+                                            });
 
-                    Int32 pageCount = 0;
-                    Int32 currentIndex = 0;
-
-                    while (true)
+                    var pageIterator = PageIterator<Group, GroupCollectionResponse>.CreatePageIterator(graphClient, pagedGroups, (g) =>
                     {
-                        pageCount++;
-
-                        foreach (var g in pagedGroups)
+                        var group = new GroupEntity
                         {
-                            currentIndex++;
+                            GroupId = g.Id,
+                            DisplayName = g.DisplayName,
+                            Description = g.Description,
+                            Mail = g.Mail,
+                            MailNickname = g.MailNickname,
+                            MailEnabled = g.MailEnabled,
+                            SecurityEnabled = g.SecurityEnabled,
+                            GroupTypes = g.GroupTypes != null ? g.GroupTypes.ToArray() : null
+                        };
+                        groups.Add(group);
+                        return true;
+                    });
 
-                            if (currentIndex >= startIndex)
-                            {
-                                var group = new GroupEntity
-                                {
-                                    GroupId = g.Id,
-                                    DisplayName = g.DisplayName,
-                                    Description = g.Description,
-                                    Mail = g.Mail,
-                                    MailNickname = g.MailNickname,
-                                    MailEnabled = g.MailEnabled,
-                                    SecurityEnabled = g.SecurityEnabled,
-                                    GroupTypes = g.GroupTypes != null ? g.GroupTypes.ToArray() : null
-                                };
-
-                                groups.Add(group);
-                            }
-                        }
-
-                        if (pagedGroups.NextPageRequest != null && (endIndex == null || groups.Count < endIndex))
-                        {
-                            pagedGroups = await pagedGroups.NextPageRequest.GetAsync();
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
+                    await pageIterator.IterateAsync();
 
                     return (groups);
                 }).GetAwaiter().GetResult();
@@ -704,9 +678,7 @@ namespace PnP.Framework.Graph
         /// <returns>Members of an Azure Active Directory group</returns>
         public static List<GroupUser> GetGroupMembers(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            List<GroupUser> groupUsers = null;
-            List<DirectoryObject> groupGraphUsers = null;
-            IGroupMembersCollectionWithReferencesPage groupUsersCollection = null;
+            List<GroupUser> groupUsers = new List<GroupUser>();            
 
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -723,55 +695,35 @@ namespace PnP.Framework.Graph
                 {
                     var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
-                    // Get the members of the group
-                    groupUsersCollection = await graphClient.Groups[group.GroupId].Members.GetAsync();
-                    if (groupUsersCollection.CurrentPage != null && groupUsersCollection.CurrentPage.Count > 0)
-                    {
-                        groupGraphUsers = new List<DirectoryObject>();
-                        groupGraphUsers.AddRange(groupUsersCollection.CurrentPage);
-                        //GenerateGraphUserCollection(groupUsersCollection.CurrentPage, groupGraphUsers);
-                    }
+                    var groupUsersCollection = await graphClient.Groups[group.GroupId].Members.GetAsync();
 
-                    // Retrieve users when the results are paged.
-                    while (groupUsersCollection.NextPageRequest != null)
+                    var iterator = PageIterator<DirectoryObject, DirectoryObjectCollectionResponse>.CreatePageIterator(graphClient, groupUsersCollection, (usr) =>
                     {
-                        groupUsersCollection = groupUsersCollection.NextPageRequest.GetAsync().GetAwaiter().GetResult();
-                        if (groupUsersCollection.CurrentPage != null && groupUsersCollection.CurrentPage.Count > 0)
+                        switch (usr)
                         {
-                            groupGraphUsers.AddRange(groupUsersCollection.CurrentPage);
-                            //GenerateGraphUserCollection(groupUsersCollection.CurrentPage, groupGraphUsers);
-                        }
-                    }
-
-                    // Create the collection of type OfficeDevPnP groupuser after all users are retrieved, including paged data.
-                    if (groupGraphUsers != null && groupGraphUsers.Count > 0)
-                    {
-                        groupUsers = new List<GroupUser>();
-                        foreach (DirectoryObject usr in groupGraphUsers)
-                        {
-                            switch(usr)
-                            {
-                                case Microsoft.Graph.Models.User userType:
-                                    groupUsers.Add(new GroupUser
-                                    {
-                                        UserPrincipalName = userType.UserPrincipalName != null ? userType.UserPrincipalName : string.Empty,
-                                        DisplayName = userType.DisplayName != null ? userType.DisplayName : string.Empty,
-                                        Type = Enums.GroupUserType.User
-                                    });
+                            case Microsoft.Graph.Models.User userType:
+                                groupUsers.Add(new GroupUser
+                                {
+                                    UserPrincipalName = userType.UserPrincipalName != null ? userType.UserPrincipalName : string.Empty,
+                                    DisplayName = userType.DisplayName != null ? userType.DisplayName : string.Empty,
+                                    Type = Enums.GroupUserType.User
+                                });
                                 break;
 
-                                case Microsoft.Graph.Models.Group groupType:
-                                    groupUsers.Add(new GroupUser
-                                    {
-                                        UserPrincipalName = groupType.Id != null ? groupType.Id : string.Empty,
-                                        DisplayName = groupType.DisplayName != null ? groupType.DisplayName : string.Empty,
-                                        Type = Enums.GroupUserType.Group
-                                    });
-                                    break;
-                            }
-
+                            case Microsoft.Graph.Models.Group groupType:
+                                groupUsers.Add(new GroupUser
+                                {
+                                    UserPrincipalName = groupType.Id != null ? groupType.Id : string.Empty,
+                                    DisplayName = groupType.DisplayName != null ? groupType.DisplayName : string.Empty,
+                                    Type = Enums.GroupUserType.Group
+                                });
+                                break;
                         }
-                    }
+                        return true;
+                    });
+
+                    await iterator.IterateAsync();
+                    
                     return groupUsers;
 
                 }).GetAwaiter().GetResult();
@@ -1030,8 +982,6 @@ namespace PnP.Framework.Graph
         public static List<GroupUser> GetGroupOwners(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             List<GroupUser> groupUsers = null;
-            List<User> groupGraphUsers = null;
-            IGroupOwnersCollectionWithReferencesPage groupUsersCollection = null;
 
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -1045,52 +995,35 @@ namespace PnP.Framework.Graph
                     var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     // Get the owners of an Office 365 group.
-                    groupUsersCollection = await graphClient.Groups[group.GroupId].Owners.GetAsync();
-                    if (groupUsersCollection.CurrentPage != null && groupUsersCollection.CurrentPage.Count > 0)
-                    {
-                        groupGraphUsers = new List<User>();
-                        GenerateGraphUserCollection(groupUsersCollection.CurrentPage, groupGraphUsers);
-                    }
+                    var groupUsersCollection = await graphClient.Groups[group.GroupId].Owners.GetAsync();
 
-                    // Retrieve users when the results are paged.
-                    while (groupUsersCollection.NextPageRequest != null)
+                    var pageIterator = PageIterator<DirectoryObject, DirectoryObjectCollectionResponse>.CreatePageIterator(graphClient, groupUsersCollection, (usr) =>
                     {
-                        groupUsersCollection = groupUsersCollection.NextPageRequest.GetAsync().GetAwaiter().GetResult();
-                        if (groupUsersCollection.CurrentPage != null && groupUsersCollection.CurrentPage.Count > 0)
+                        switch (usr)
                         {
-                            GenerateGraphUserCollection(groupUsersCollection.CurrentPage, groupGraphUsers);
-                        }
-                    }
-
-                    // Create the collection of type OfficeDevPnP 'UnifiedGroupUser' after all users are retrieved, including paged data.
-                    if (groupGraphUsers != null && groupGraphUsers.Count > 0)
-                    {
-                        groupUsers = new List<GroupUser>();
-                        foreach (DirectoryObject usr in groupGraphUsers)
-                        {
-                            switch(usr)
-                            {
-                                case Microsoft.Graph.Models.User userType:
-                                    groupUsers.Add(new GroupUser
-                                    {
-                                        UserPrincipalName = userType.UserPrincipalName != null ? userType.UserPrincipalName : string.Empty,
-                                        DisplayName = userType.DisplayName != null ? userType.DisplayName : string.Empty,
-                                        Type = Enums.GroupUserType.User
-                                    });
+                            case Microsoft.Graph.Models.User userType:
+                                groupUsers.Add(new GroupUser
+                                {
+                                    UserPrincipalName = userType.UserPrincipalName != null ? userType.UserPrincipalName : string.Empty,
+                                    DisplayName = userType.DisplayName != null ? userType.DisplayName : string.Empty,
+                                    Type = Enums.GroupUserType.User
+                                });
                                 break;
 
-                                case Microsoft.Graph.Models.Group groupType:
-                                    groupUsers.Add(new GroupUser
-                                    {
-                                        UserPrincipalName = groupType.Id != null ? groupType.Id : string.Empty,
-                                        DisplayName = groupType.DisplayName != null ? groupType.DisplayName : string.Empty,
-                                        Type = Enums.GroupUserType.Group
-                                    });
-                                    break;
-                            }
-
+                            case Microsoft.Graph.Models.Group groupType:
+                                groupUsers.Add(new GroupUser
+                                {
+                                    UserPrincipalName = groupType.Id != null ? groupType.Id : string.Empty,
+                                    DisplayName = groupType.DisplayName != null ? groupType.DisplayName : string.Empty,
+                                    Type = Enums.GroupUserType.Group
+                                });
+                                break;
                         }
-                    }
+                        return true;
+                    });
+
+                    await pageIterator.IterateAsync();
+
                     return groupUsers;
 
                 }).GetAwaiter().GetResult();
@@ -1205,13 +1138,14 @@ namespace PnP.Framework.Graph
                     try
                     {
                         // Search for the user object
-                        IGraphServiceUsersCollectionPage userQuery = await graphClient.Users
-                                            .Request()
-                                            .Select("Id")
-                                            .Filter($"userPrincipalName eq '{Uri.EscapeDataString(groupUser.Replace("'", "''"))}'")
-                                            .GetAsync();
+                        var userQuery = await graphClient.Users
+                                              .GetAsync(requestConfiguration =>
+                                              {
+                                                  requestConfiguration.QueryParameters.Select = new string[] { "Id" };
+                                                  requestConfiguration.QueryParameters.Filter = $"userPrincipalName eq '{Uri.EscapeDataString(groupUser.Replace("'", "''"))}'";
+                                              });
 
-                        User user = userQuery.FirstOrDefault();
+                        User user = userQuery?.Value.FirstOrDefault();
                         if (user != null)
                         {
                             usersResult.Add(user);

@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnP.Framework.Test", "PnP.F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnP.Framework.Modernization.Test", "PnP.Framework.Modernization.Test\PnP.Framework.Modernization.Test.csproj", "{2185B0F4-9423-4458-BFB6-7502D98A4259}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{3DC23543-2BB5-4FDF-842C-CE9058EFF25E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,10 +32,6 @@ Global
 		{2185B0F4-9423-4458-BFB6-7502D98A4259}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2185B0F4-9423-4458-BFB6-7502D98A4259}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2185B0F4-9423-4458-BFB6-7502D98A4259}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DC23543-2BB5-4FDF-842C-CE9058EFF25E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DC23543-2BB5-4FDF-842C-CE9058EFF25E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DC23543-2BB5-4FDF-842C-CE9058EFF25E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DC23543-2BB5-4FDF-842C-CE9058EFF25E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

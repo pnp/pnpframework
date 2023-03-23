@@ -268,6 +268,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             var context = item.Context as ClientContext;
             var list = item.ParentList;
             context.Web.EnsureProperty(w => w.Url);
+            context.Load(list, listProperty => listProperty.BaseType, listProperty => listProperty.RootFolder);
+            context.ExecuteQueryRetry();
 
             bool isDocLib = list.EnsureProperty(l => l.BaseType) == BaseType.DocumentLibrary;
             bool isPagesLib = list.EnsureProperty(l => l.RootFolder).Name.Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);

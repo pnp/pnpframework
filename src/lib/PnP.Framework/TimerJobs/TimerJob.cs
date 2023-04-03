@@ -960,7 +960,7 @@ namespace PnP.Framework.TimerJobs
                 }
                 else if (this.AuthenticationType == AuthenticationType.AppOnly || this.AuthenticationType == AuthenticationType.AccessToken)
                 {
-                    am = new AuthenticationManager();
+                    am = new AuthenticationManager(this.AzureEnvironment);
                 }
 
                 this.authenticationManagers.TryAdd(uri.Host, am);

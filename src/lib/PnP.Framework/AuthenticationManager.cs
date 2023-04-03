@@ -127,7 +127,12 @@ namespace PnP.Framework
             return new AuthenticationManager(accessToken);
         }
 
-        /// <summary>
+	public static AuthenticationManager CreateWithAzureEnvironment(AzureEnvironment azureEnvironment)
+        {
+            return new AuthenticationManager(azureEnvironment);
+        }
+
+	/// <summary>
         /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts through device code authentication
         /// </summary>
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
@@ -297,12 +302,25 @@ namespace PnP.Framework
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
         }
 
+	public AuthenticationManager(AzureEnvironment azureEnvironment)
+        {
+            // Set the TLS preference. Needed on some server os's to work when Office 365 removes support for TLS 1.0
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+	    this.azureEnvironment = azureEnvironment;
+        }
+
         private AuthenticationManager(ACSTokenGenerator oAuthAuthenticationProvider) : this()
         {
             this.acsTokenGenerator = oAuthAuthenticationProvider;
             authenticationType = ClientContextType.SharePointACSAppOnly;
         }
 
+        private AuthenticationManager(ACSTokenGenerator oAuthAuthenticationProvider, AzureEnvironment azureEnvironment) : this()
+        {
+            this.acsTokenGenerator = oAuthAuthenticationProvider;
+	    this.azureEnvironment = azureEnvironment;
+            authenticationType = ClientContextType.SharePointACSAppOnly;
+        }
 
         public AuthenticationManager(SecureString accessToken)
         {
@@ -1310,7 +1328,8 @@ namespace PnP.Framework
         public ClientContext GetACSAppOnlyContext(string siteUrl, string realm, string appId, string appSecret, string acsHostUrl = "accesscontrol.windows.net", string globalEndPointPrefix = "accounts")
         {
             var acsTokenProvider = ACSTokenGenerator.GetACSAuthenticationProvider(new Uri(siteUrl), realm, appId, appSecret, acsHostUrl, globalEndPointPrefix);
-            var am = new AuthenticationManager(acsTokenProvider);
+	    // Provide the correct azureEnvironment.
+	    var am = new AuthenticationManager(acsTokenProvider, this.azureEnvironment);
             ClientContext clientContext = am.GetContext(siteUrl);
 
             ClientContextSettings clientContextSettings = new ClientContextSettings()

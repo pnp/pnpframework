@@ -44,7 +44,7 @@ There is guidance in this [contributing](contrinbuting/readme.md) part of the do
 - Setup the Repo and the Tooling
 - Writing documentation
 - writing tests
-- Getting Recognised
+- Getting recognised
 
 **Community rocks, sharing is caring!**
 

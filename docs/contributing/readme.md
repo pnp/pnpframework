@@ -1,8 +1,5 @@
 # PnP Framework
 
-> [!Note]
-> This is draft content , we are reviewing and preparing up this article
-
 ## Where is the code?
 
 The PnP Framework is maintained in the PnP GitHub repository: https://github.com/pnp/pnpframework, you'll find:

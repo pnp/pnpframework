@@ -1,8 +1,5 @@
 # Writing documentation
 
-> [!Note]
-> This is draft content , we are reviewing and preparing up this article
-
 The documentation system is based on [DocFX](https://dotnet.github.io/docfx/), and combines inline code comments (the so called triple slash comments) with articles written in MD format. The resulting generated documentation is hosted on https://pnp.github.io/pnpcore. To extend documentation you can:
 
 - Author articles

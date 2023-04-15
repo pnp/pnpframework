@@ -1,8 +1,5 @@
 # Setting up your environment for development
 
-> [!Note]
-> This is draft content, we are reviewing and preparing up this article
-
 ## Pulling down the source code
 
 The PnP Framework source code lives in the https://github.com/pnp/pnpframework repository. If you want contribute to it you'll need to issue pull requests against the **dev branch** and for doing that, you need to first fork the repo:

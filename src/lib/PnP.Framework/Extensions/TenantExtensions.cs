@@ -132,7 +132,7 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="tenant">A tenant object pointing to the context of a Tenant Administration site</param>
         /// <param name="siteId">The id of the site collection</param>
-        /// <param name="detailed">Boolean indicating if detailed information should be returned of the site (true - default) or only the basics (false)
+        /// <param name="detailed">Boolean indicating if detailed information should be returned of the site (true - default) or only the basics (false)</param>
         /// <returns>SiteProperties of the site collection or NULL of no site collection found with the provided Id</returns>
         public static SiteProperties GetSitePropertiesById(this Tenant tenant, Guid siteId, bool detailed = true)
         {
@@ -985,9 +985,10 @@ namespace Microsoft.SharePoint.Client
                 }
                 var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri($"https://{graphEndPoint}/").Authority, null);
 
-                var customHeaders = new Dictionary<string, string>();
-                customHeaders.Add("ConsistencyLevel", "eventual");
-
+                var customHeaders = new Dictionary<string, string>
+                {
+                    { "ConsistencyLevel", "eventual" }
+                };
 
                 // Retrieve (using the Microsoft Graph) the current user's roles
                 string jsonResponse = HttpHelper.MakeGetRequestForString(
@@ -1018,7 +1019,7 @@ namespace Microsoft.SharePoint.Client
             site.EnsureProperty(s => s.Url); // PAOLO: We can't do that ... if we're not admins ...
 
             // If we are already with a context for the Admin Site, all good, the user is an admin
-            if (site.Url.Contains("-admin.sharepoint.com"))
+            if (PnP.Framework.AuthenticationManager.IsTenantAdministrationUrl(site.Url))
             {
                 return (true);
             }
@@ -1463,23 +1464,22 @@ namespace Microsoft.SharePoint.Client
             var tenantName = GetTenantNameFromUrl(tenantUrl);
             if (tenantName == null) return null;
 
-            var url = $"https://login.microsoftonline.com/{tenantName}.onmicrosoft.com/.well-known/openid-configuration";
+            var url = $"{PnP.Framework.AuthenticationManager.GetAzureADLoginEndPointStatic(azureEnvironment)}/{tenantName}.onmicrosoft.com/.well-known/openid-configuration";
             if (azureEnvironment != AzureEnvironment.Production)
-            {
-                using var authenticationManager = new PnP.Framework.AuthenticationManager();
-                var endpoint = authenticationManager.GetAzureADLoginEndPoint(azureEnvironment);
+            {                
+                var endpoint = PnP.Framework.AuthenticationManager.GetAzureADLoginEndPointStatic(azureEnvironment);
                 url = $"{endpoint}/{tenantName}.onmicrosoft.com/.well-known/openid-configuration";
             }
             var response = HttpHelper.MakeGetRequestForString(url);
             var json = JsonSerializer.Deserialize<JsonElement>(response);
 
             var tokenEndpointUrl = json.GetProperty("token_endpoint").GetString();
-            return GetTenantIdFromAadEndpointUrl(tokenEndpointUrl);
+            return GetTenantIdFromAadEndpointUrl(tokenEndpointUrl, PnP.Framework.AuthenticationManager.GetAzureADLoginEndPointStatic(azureEnvironment));
         }
 
         private static string GetTenantNameFromUrl(string tenantUrl)
         {
-            if (tenantUrl.ToLower().Contains("-admin.sharepoint."))
+            if (PnP.Framework.AuthenticationManager.IsTenantAdministrationUrl(tenantUrl))
             {
                 return GetSubstringFromMiddle(tenantUrl, "https://", "-admin.sharepoint.");
             }
@@ -1489,9 +1489,9 @@ namespace Microsoft.SharePoint.Client
             }
         }
 
-        private static string GetTenantIdFromAadEndpointUrl(string aadEndpointUrl)
+        private static string GetTenantIdFromAadEndpointUrl(string aadEndpointUrl, string endpoint)
         {
-            return GetSubstringFromMiddle(aadEndpointUrl, "https://login.microsoftonline.com/", "/oauth2/");
+            return GetSubstringFromMiddle(aadEndpointUrl, $"{endpoint}/", "/oauth2/");
         }
 
         private static string GetSubstringFromMiddle(string originalString, string prefix, string suffix)

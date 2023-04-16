@@ -6,13 +6,33 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [1.12.0]
 
 ## Added
+
+- Added UndoCheckOutFile extension #842 [rompenar - Arnaud ROMPEN]
+- Custom Azure environments are supported via using the `AzureEnvironment.Custom` enviroment + setting the custom Graph authority and Azure AD login endpoint [jansenbe - Bert Jansen]
 
 ## Changed
 
 - When `PnPContext` is created with a existing, externally provided, `IPnPContextFactory` then this `IPnPContextFactory` will be used for all PnP Framework internal `PnPContext` creations [jansenbe - Bert Jansen]
+- Fix ViewTypeKind property being ignored when provisioning views #816 [jackpoz - Giacomo Pozzoni]
+- Fix page transformation asset transfer when source asset url contains characters that are encoded [jansenbe - Bert Jansen]
+- Updated build script to support .NET 7 #824 [stokuri - Suman Tokori]
+- Added optionally providing BCC addresses to send a mail #823 [koenzomers - Koen Zomers]
+- Centralize the logic to get and validate the Admin Center URL [jansenbe - Bert Jansen]
+- No hardcoded references anymore to graph.microsoft.com and *.microsoftonline.com to help with supporting non default cloud environments [jansenbe - Bert Jansen]
+- Dropped .NET 5 support as it's not supported anymore [jansenbe - Bert Jansen]
+- Chars ' and . are allowed in alias and urls #834 [magarma - Miguel Angel García Martínez]
+- Cast TaxonoxyField with appropriate method from web context #831 [BollietMZK - Jerome Bolliet]
+- Skip setting DefaultColumnValues if there are none specified in the provisioning template #840 [jackpoz - Giacomo Pozzoni]
+- When a `PnPContext` (for using PnP Core SDK) is created from a `ClientContext` we now adhere to the set Azure configuration (graph URL, login URL) [jansenbe - Bert Jansen]
+- When a `ClientContext` (for using with CSOM) is created from a `PnPContext` we now adhere to the set Azure configuration (graph URL, login URL) [jansenbe - Bert Jansen]
+- Adding code to support multiple default values at folder level. #850 [roberAlb - Roberto Ramon]
+- MailUtility: fixed memory leak + improved authentication options #853 [koenzomers - Koen Zomers]
+- Adding support for vanity domain tenants to SearchExtensions #854 [koenzomers - Koen Zomers]
+- Support for different azure environment for team site creation #855 [gautamdsheth - Gautam Sheth]
+- Bump Nuget package version dependencies to align with PnP PS needs #856 [gautamdsheth - Gautam Sheth]
 
 ## [1.11.0]
 

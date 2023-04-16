@@ -41,7 +41,9 @@ namespace PnP.Framework.Modernization.Telemetry
             {
                 this.version = version;
 
+#pragma warning disable CS0618 // Type or member is obsolete
                 this.telemetryConfiguration.InstrumentationKey = "373400f5-a9cc-48f3-8298-3fd7f4c063d6";
+#pragma warning restore CS0618 // Type or member is obsolete
 
                 this.telemetryClient = new TelemetryClient(this.telemetryConfiguration);
                 

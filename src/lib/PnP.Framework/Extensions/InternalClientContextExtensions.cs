@@ -1,4 +1,6 @@
-﻿using PnP.Framework.Utilities.Context;
+﻿using PnP.Framework;
+using PnP.Framework.Utilities.Context;
+using System;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -23,5 +25,36 @@ namespace Microsoft.SharePoint.Client
 
             return (ClientContextSettings)settingsObject;
         }
+
+        public static AzureEnvironment GetAzureEnvironment(this ClientRuntimeContext clientContext)
+        {
+            if (!clientContext.StaticObjects.TryGetValue(PnPSettingsKey, out object settingsObject))
+            {
+                // Do a best effort guess by determining the Environment based upon the url (if available)
+
+                if (!string.IsNullOrEmpty(clientContext.Url))
+                {
+                    var url = new Uri(clientContext.Url);
+                    var dnsDomain = url.Authority.Substring(url.Authority.LastIndexOf('.') + 1);
+
+                    return dnsDomain switch
+                    {
+                        "com" => AzureEnvironment.Production,
+                        "us" => AzureEnvironment.USGovernment,
+                        "de" => AzureEnvironment.Germany,
+                        "cn" => AzureEnvironment.China,
+                        _ => AzureEnvironment.Production,
+                    };
+                }
+            }
+            else
+            {
+                return ((ClientContextSettings)settingsObject).Environment;
+            }
+
+            // If all fails, we assume production
+            return AzureEnvironment.Production;
+        }
+
     }
 }

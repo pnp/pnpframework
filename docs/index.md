@@ -39,7 +39,7 @@ This library is open-source and community provided component with active communi
 
 ## Building and contributing
 
-There is guidance in this [contributing](contrinbuting/readme.md) part of the document, where you can learn to:
+There is guidance in this [contributing](contributing/readme.md) part of the document, where you can learn to:
 
 - Setup the Repo and the Tooling
 - Writing documentation

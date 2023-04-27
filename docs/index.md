@@ -16,14 +16,13 @@ Nuget package | Description | Latest release | Latest nightly development versio
 --------------|-------------|----------------|------------------------------------
 PnP.Framework | The PnP Framework library | [![PnP.Framework Nuget package](https://img.shields.io/nuget/v/PnP.Framework.svg)](https://www.nuget.org/packages/PnP.Framework/) | [![PnP.Framework Nuget package](https://img.shields.io/nuget/vpre/PnP.Framework.svg)](https://www.nuget.org/packages/PnP.Framework/)
 
-> Note - PUT EXAMPLES HERE
-
 ### YouTube Content
 
 To help you understand the PnP.Framework, we have the following YouTube content to help you learn:
 
-> Note - ADD YOUTUBE LINKS, PLAYLISTS
-
+- [Using PnP Libraries to simplify SharePoint solution design and implementation](https://www.youtube.com/watch?v=MLHMjJNHehE)
+- [SharePoint site provisioning with Microsoft Teams Notifications using Bot Framework
+](https://www.youtube.com/watch?v=x7nrzafsbAw)
 
 ## Migrating from PnP Sites Core
 

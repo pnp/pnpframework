@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## [unreleased]
+
+### Added
+
+### Changed
+
+- Set Webpart Title and Description during page creation #868 [magarma - Miguel Angel García Martínez]
+
 ## [1.12.0]
 
 ## Added

@@ -96,7 +96,7 @@ Paste this copied values in a safe place, because you will need them later on to
 
 PnP Framework is for 90% identical to PnP Sites Core, we did drop some legacy components and everything that was specific for on-premises but most folks will not be impacted by that. The main change that will require changes in your code is due to authentication: the underlying CSOM for .NET Standard library only supports access token based authentication so we had to refactor the AuthenticationManager class so that we use Microsoft Azure AD based OAuth to authenticate.
 
-We unified authentication between PnP Framework, PnP PowerShell and PnP Core SDK to use [Microsoft.Identity.Client (MSAL)](https://github.com/AzureAD/ microsoft-authentication-library-for-dotnet) as underlying model. Whereas in PnP Sites Core you would provide the needed auth information when invoking an AuthenticationManager method call you now pass that information via the constructor and then use a generic method to request an access token:
+We unified authentication between PnP Framework, PnP PowerShell and PnP Core SDK to use [Microsoft.Identity.Client (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) as underlying model. Whereas in PnP Sites Core you would provide the needed auth information when invoking an AuthenticationManager method call you now pass that information via the constructor and then use a generic method to request an access token:
 
 ### Delegated authentication
 

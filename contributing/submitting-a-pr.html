@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>PnP Framework | PnP Framework </title>
+    <title>Create a PR with your changes | PnP Framework </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="PnP Framework | PnP Framework ">
+    <meta name="title" content="Create a PR with your changes | PnP Framework ">
     <meta name="generator" content="docfx 2.59.3.0">
     <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
     <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
@@ -85,33 +85,41 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
                   <div class="contribution-panel mobile-hide pull-right">
-                      <a href="https://github.com/pnp/pnpframework/blob/dev/docs/contributing/readme.md/#L1" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                      <a href="https://github.com/pnp/pnpframework/blob/dev/docs/contributing/submitting-a-pr.md/#L1" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
                   </div>
-                    <h1 id="pnp-framework">PnP Framework</h1>
+                    <h1 id="create-a-pr-with-your-changes">Create a PR with your changes</h1>
 
-<h2 id="where-is-the-code">Where is the code?</h2>
-<p>The PnP Framework is maintained in the PnP GitHub repository: <a href="https://github.com/pnp/pnpframework">https://github.com/pnp/pnpframework</a>, you'll find:</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>When you want to make changes it's recommended to isolate each change in a separate PR and that's best done by creating a branch per change. Having a branch per change allows you to work on multiple changes while you still can submit them as individual PR's. To create a new branch starting from the dev branch you can use <code>git checkout -b mybranch dev</code>. To push this branch to GitHub you can use <code>git push -u mybranch</code>.</p>
+</div>
+<p>Once you've coded and tested your contribution you'll need to create a pull request (PR) again the dev branch of the <a href="https://github.com/pnp/pnpframework">https://github.com/pnp/pnpframework</a> repository:</p>
 <ul>
-<li>The code of the PnP Framework in the <code>src\lib</code> folder</li>
-<li>The source of the documentation you are reading right now in the <code>docs</code> folder</li>
-<li>The source for the tests are located in <code>src/lib/PnP.Framework.Tests</code></li>
+<li><p>Go to <strong>Pull requests</strong> in your fork and click on the green <strong>New pull request</strong> button</p>
+</li>
+<li><p>Ensure you've configured the base repository to be the <code>pnp/pnpframework</code> repo using the <code>dev</code> branch</p>
+</li>
+<li><p>Click on <strong>Create pull request</strong>, provide a descriptive title and description and click on <strong>Create pull request</strong></p>
+</li>
+<li><p>Ensure all <strong>checks</strong> have passed</p>
+</li>
 </ul>
-<h2 id="getting-started-contributing">Getting Started Contributing</h2>
-<p>To build PnP Framework you need the following minimal components installed:</p>
-<ul>
-<li><a href="https://visualstudio.microsoft.com/vs/">Visual Studio 2022</a></li>
-<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/7.0">.NET SDK version 7.0</a></li>
-</ul>
-<h3 id="next-steps">Next steps</h3>
-<p>You can:</p>
-<ul>
-<li><a href="setup.html">learn how to setup the project</a></li>
-<li><a href="writing-documentation.html">writing documentation</a></li>
-<li>fixing bugs/issues or adding new features</li>
-<li><a href="writing-tests.html">writing tests to help us improve the quality of the framework</a></li>
-</ul>
-<h2 id="having-problems">Having problems</h2>
-<p>If you are having problems contributing, please reach out by creating an issue in the [PnP Framework GitHub Repository}(https://github.com/pnp/pnpframework/issues), it would help to ensure the quality of the documentation is good enough to help folks get started.</p>
+<blockquote>
+<p>![Note]
+Please be sure to remove all of your password, usernames and tenant addresses from the sample scripts - this is to maintain the security of your tenant. Examples include replacing the &gt; organisation name with Contoso e.g. <a href="https://contoso.sharepoint.com">https://contoso.sharepoint.com</a> giving the details of the type of address but hiding the key information.</p>
+</blockquote>
+<h2 id="how-you-are-recognized-for-your-submissions">How you are recognized for your submissions</h2>
+<p>In PnP, we are all about community and we want to recognize your contributions. We have a few ways to do this</p>
+<h2 id="community-calls">Community Calls</h2>
+<p>Your submission is announced on the next &quot;Microsoft 365 &amp; Power Platform Development Community call&quot;, Bi-weekly on Thursdays 7:00 AM PT / 3:00 PM GMT.
+You are invited to join the call and we will provide a mention of your submission as a Thank you! - Join here: <a href="https://aka.ms/spdev-sig-call-join">https://aka.ms/spdev-sig-call-join</a></p>
+<h2 id="pnp-blog">PnP Blog</h2>
+<p>We run a monthly blog post on the <a href="https://pnp.github.io/blog/">PnP blog</a>, where we highlight the submissions we received in the previous month. You will be mentioned in the blog post and we will list your sample and name.</p>
+<h2 id="social-media">Social Media</h2>
+<p>We will share your submission on our social media channels, typically Twitter, when they are processed by the team.</p>
+<h2 id="badges">Badges!</h2>
+<p>Finally, as a Thank you for your contributions, we invite you to opt-in into the PnP Recognition Program. This will give you access to a badge that you can use on your social media profiles, blog posts, and other places to show that you are a PnP contributor. You can opt-in here: <a href="https://pnp.github.io/recognitionprogram/">https://pnp.github.io/recognitionprogram/</a></p>
+<p>You will receive a badge in a batch run (might be a few weeks) when you have submitted your first sample - that's it.</p>
 </article>
           </div>
           <div class="hidden-sm col-md-2" role="complementary">

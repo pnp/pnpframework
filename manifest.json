@@ -22734,7 +22734,7 @@
       "output": {
         ".html": {
           "relative_path": "contributing/readme.html",
-          "hash": "mAa3yz3miSIrOgtc/w4xV+CnoM4aGys/OWrLclGQGHE="
+          "hash": "NbbsUOPvdBFgXnQNopu6r4HkVx0QpAGtQiaWC56OavY="
         }
       },
       "is_incremental": false,
@@ -22746,7 +22746,19 @@
       "output": {
         ".html": {
           "relative_path": "contributing/setup.html",
-          "hash": "VNMMqtElaI/+upeKC3N1AqkV5ZpGbC8ho+0wXIoRWAg="
+          "hash": "3LZbyJvWIKxc1PSMsUAW1ObOXFzZ2KTzFun6h2NVG5k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "contributing/submitting-a-pr.md",
+      "output": {
+        ".html": {
+          "relative_path": "contributing/submitting-a-pr.html",
+          "hash": "1qm5SEZGH3ZvbqcRQQn2b6dvwKLOnnK4RW8KJB3luYY="
         }
       },
       "is_incremental": false,
@@ -22758,7 +22770,7 @@
       "output": {
         ".html": {
           "relative_path": "contributing/toc.html",
-          "hash": "r0rip5V8C8ZgkP0MVVhZZq0REAP2muRg/PrjUJLguSE="
+          "hash": "9fvh+9nycA+Yi9+4qOY4WS3Z0faB+gr+cIDsshtPeps="
         }
       },
       "is_incremental": false,
@@ -22770,7 +22782,7 @@
       "output": {
         ".html": {
           "relative_path": "contributing/writing-documentation.html",
-          "hash": "LyonE3MYmt2NXuhrS+HbztMBiq/t+ORemZxEDuT1uRM="
+          "hash": "jTQ7XWSnC8i5BwhFW40AQwL47YJ1Z1aDxXN6GiRG/OA="
         }
       },
       "is_incremental": false,
@@ -22782,7 +22794,7 @@
       "output": {
         ".html": {
           "relative_path": "contributing/writing-tests.html",
-          "hash": "Eq4CAvF9s2/costTsm/1iMlWAVISmdPvx4ZwYdt9g/M="
+          "hash": "Dbdr45FIj4rXIg/TolWpLLx2zqOUrZDQD7aK9rTs5xI="
         }
       },
       "is_incremental": false,
@@ -22816,7 +22828,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "JWY+0y33gld0JspfWbveXIzCtSAE98HCPdF57pCCwgc="
+          "hash": "Gx24EaU/zsATYIDhW3+dedUUNHl8UfzekKhHBAVDN5E="
         }
       },
       "is_incremental": false,
@@ -22921,7 +22933,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 12,
+          "total_file_count": 13,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {

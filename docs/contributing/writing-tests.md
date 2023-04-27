@@ -12,5 +12,5 @@ Ensure that you have gone through the steps in the [Setup](setup.md) article.
 
 There are a series of existing tests that you can use as a reference; all the tests rely on an element of setup in the tenant and you will need a live tenant to run this against.
 
-> ![WARN]
+> [!Warn]
 > Do not run the tests against a production tenant, some of the tests access tenant wide features that could impact on existing setup.

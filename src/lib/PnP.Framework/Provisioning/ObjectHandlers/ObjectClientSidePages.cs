@@ -724,6 +724,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                                 myWebPart.InstanceId = instanceId;
                                             }
                                         }
+                                        if (json["title"] != null && json["title"].Type != JTokenType.Null)
+                                        {
+                                            myWebPart.Title = parser.ParseString(json["title"].Value<string>());
+                                        }
+                                        if (json["description"] != null && json["description"].Type != JTokenType.Null)
+                                        {
+                                            myWebPart.Description = parser.ParseString(json["description"].Value<string>());
+                                        }
                                     }
 
                                     // Reduce column number by 1 due 0 start indexing
@@ -788,6 +796,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                             {
                                                 myWebPart.InstanceId = instanceId;
                                             }
+                                        }
+                                        if (json["title"] != null && json["title"].Type != JTokenType.Null)
+                                        {
+                                            myWebPart.Title = parser.ParseString(json["title"].Value<string>());
+                                        }
+                                        if (json["description"] != null && json["description"].Type != JTokenType.Null)
+                                        {
+                                            myWebPart.Description = parser.ParseString(json["description"].Value<string>());
                                         }
                                         if (json["id"] != null && json["id"].Type != JTokenType.Null)
                                         {

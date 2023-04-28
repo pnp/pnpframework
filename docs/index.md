@@ -26,7 +26,7 @@ To help you understand the PnP.Framework, we have the following YouTube content 
 
 ## Migrating from PnP Sites Core
 
-This library is the cross platform successor of the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core), see the [Migrating from PnP Sites Core to PnP Framework guide](using-the-framework/MigratingFromPnPSitesCore.md) to learn how to switch over.
+This library is the cross platform successor of the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core), see the [Migrating from PnP Sites Core to PnP Framework guide](using-the-framework/migrating-from-pnp-sites-core.md) to learn how to switch over.
 
 ## I've found a bug, where do I need to log an issue or create a PR
 

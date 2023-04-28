@@ -22794,7 +22794,7 @@
       "output": {
         ".html": {
           "relative_path": "contributing/writing-tests.html",
-          "hash": "Dbdr45FIj4rXIg/TolWpLLx2zqOUrZDQD7aK9rTs5xI="
+          "hash": "wAfs+6WEjLz0kNjkn65LNpcf0fCPj9tJ3qVYCl3x9UI="
         }
       },
       "is_incremental": false,
@@ -22828,7 +22828,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "Gx24EaU/zsATYIDhW3+dedUUNHl8UfzekKhHBAVDN5E="
+          "hash": "p5dZM3AUljeLzeqdIw5fnZoxkXAbnHEABG51hvxk5Fw="
         }
       },
       "is_incremental": false,
@@ -22841,18 +22841,6 @@
         ".html": {
           "relative_path": "toc.html",
           "hash": "ohAJegNvtN7+B9Wbjumnd+g1mmWwBdcYQQ+lq9pi6k8="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "using-the-framework/MigratingFromPnPSitesCore.md",
-      "output": {
-        ".html": {
-          "relative_path": "using-the-framework/MigratingFromPnPSitesCore.html",
-          "hash": "yAe4NLTf3zeLgj3j92rLO1XBoHF5xZQaWD3ESrKnKwM="
         }
       },
       "is_incremental": false,
@@ -22884,11 +22872,23 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "using-the-framework/migrating-from-pnp-sites-core.md",
+      "output": {
+        ".html": {
+          "relative_path": "using-the-framework/migrating-from-pnp-sites-core.html",
+          "hash": "Db3hSQ6RCJtVBY+UAOruni5s3WAzap3jvaHzKoPsuIo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "using-the-framework/readme.md",
       "output": {
         ".html": {
           "relative_path": "using-the-framework/readme.html",
-          "hash": "1ygj20W1664fKlxukjDFOH4I2sDtrb6We573Ra86N4Y="
+          "hash": "dqdXrgrbCcvJgyXEpFchbvjZUW9tN/r/4XaF+hGFULI="
         }
       },
       "is_incremental": false,
@@ -22900,7 +22900,7 @@
       "output": {
         ".html": {
           "relative_path": "using-the-framework/toc.html",
-          "hash": "U8nz47DGspe8qQUB1YZsMmyFZiZ5CBJZQiGDmbXQJok="
+          "hash": "MCzHM5kpgPFrykluU7py92BwlPvSS4a+HDrhpZRB+Yc="
         }
       },
       "is_incremental": false,

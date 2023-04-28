@@ -93,16 +93,25 @@
 <h5>Note</h5>
 <p>This is draft content , we are reviewing and preparing up this article</p>
 </div>
-<p>XXX</p>
 <h2 id="where-is-the-code">Where is the code?</h2>
 <p>The PnP Framework is maintained in the PnP GitHub repository: <a href="https://github.com/pnp/pnpframework">https://github.com/pnp/pnpframework</a>. You'll find:</p>
 <ul>
 <li>The code of the PnP Framework in the <code>src\sdk\lib</code> folder</li>
 <li>The source of the documentation you are reading right now in the <code>docs</code> folder</li>
 </ul>
-<h2 id="referencing-the-pnp-core-sdk-in-your-project">Referencing the PnP Core SDK in your project</h2>
-<p>The recommended approach is to use the preview XXXX together with the XXX.
-Each night these preview packages are refreshed, so you can always upgrade to the latest dev bits by upgrading your nuget package to the latest version.</p>
+<h2 id="referencing-the-pnp-framework-in-your-project">Referencing the PnP Framework in your project</h2>
+<p>The PnP Framework is available as a NuGet package. You can reference it in your project by adding a reference to the NuGet package.</p>
+<ul>
+<li><a href="https://www.nuget.org/packages/PnP.Framework">Nuget Package</a></li>
+</ul>
+<pre><code class="lang-dotnetcli">dotnet add package PnP.Framework --version 1.12.29-nightly
+</code></pre>
+<p>Script and polyglot notebooks</p>
+<pre><code class="lang-dotnetcli">#r &quot;nuget: PnP.Framework, 1.12.29-nightly&quot;
+</code></pre>
+<h2 id="update-cadence">Update Cadence</h2>
+<p>Each night these preview packages are refreshed, so you can always upgrade to the latest dev bits by upgrading your NuGet package to the latest version.</p>
+<img src="https://m365-visitor-stats.azurewebsites.net/pnpframework/docs/using-the-framework" aria-hidden="true">
 </article>
           </div>
           <div class="hidden-sm col-md-2" role="complementary">

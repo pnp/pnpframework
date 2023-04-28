@@ -1,9 +1,8 @@
-- name: Framework basics
-  items:
-  - name: Getting started
-    href: readme.md
-  
-- name: "Page Transformation"
-  items:
-  - name: Getting started
-    href: transformation-getting-started.md
+- name: Getting started
+  href: readme.md
+- name: Migrating from PnP Sites Core
+  href: migrating-from-pnp-sites-core.md
+# - name: "Page Transformation"
+#   items:
+#   - name: Getting started
+#     href: transformation-getting-started.md

@@ -353,3 +353,4 @@ MigrationBackup/
 /src/lib/PnP.Framework.Test/App.config
 /src/lib/PnP.Framework.Modernization.Test/App.config
 /src/lib/PnP.Framework.Test/Isolated/Doodle.cs
+docs/docfx-noapi.json

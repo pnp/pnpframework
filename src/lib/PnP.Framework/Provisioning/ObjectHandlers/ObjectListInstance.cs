@@ -2632,7 +2632,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             foreach (var ct in siteList.ContentTypes)
             {
                 web.Context.Load(ct, c => c.Parent);
+                web.Context.Load(siteList.RootFolder, rf => rf.UniqueContentTypeOrder);
                 web.Context.ExecuteQueryRetry();
+
+                bool ctypeHidden = siteList.RootFolder.UniqueContentTypeOrder != null
+                    ? siteList.RootFolder.UniqueContentTypeOrder.FirstOrDefault(c => c.StringValue.Equals(ct.Id.StringValue, StringComparison.OrdinalIgnoreCase)) == null
+                    : false;
 
                 if (ct.Parent != null)
                 {
@@ -2643,14 +2648,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     // Exclude System Content Type to prevent getting exception during import
                     if (!ct.Parent.StringId.Equals(BuiltInContentTypeId.System))
                     {
-                        list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.Parent.StringId, Default = count == 0 });
+                        list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.Parent.StringId, Default = count == 0, Hidden = ctypeHidden });
                     }
 
                     //}
                 }
                 else
                 {
-                    list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.StringId, Default = count == 0 });
+                    list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.StringId, Default = count == 0, Hidden = ctypeHidden });
                 }
 
                 web.Context.Load(ct.FieldLinks);

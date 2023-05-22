@@ -521,9 +521,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
 
-            // Ensure that Files tab is available right after Teams creation
-            InitTeamDrive(groupId, accessToken, graphBaseUri);
-
+            if (string.IsNullOrEmpty(teamId))
+            {
+                scope.LogError("Team with groupId {0} was not created. {1} attempts made.", groupId, iterations);
+                throw new Exception($"Team with group id {groupId} was not created. {iterations} attempts made.");
+            }
+            else
+            {
+                // Ensure that Files tab is available right after Teams creation
+                InitTeamDrive(groupId, accessToken, graphBaseUri);
+            }
             return (teamId);
         }
 

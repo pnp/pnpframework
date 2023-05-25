@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Set Webpart Title and Description during page creation #868 [magarma - Miguel Angel García Martínez]
+- Adding support for content types hidden in the export at list level. #882 [roberAlb - Roberto Ramon]
 
 ## [1.12.0]
 

@@ -714,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.AuthenticationManager.html",
-          "hash": "m1++AZWk4qKwAaT4CUMuSJaet8COwYo0wZIubRXNbC8="
+          "hash": "vhzKPKd7P8Bsa9N+UrpVN1mA5qsd345/B+lhz6DAoNQ="
         }
       },
       "is_incremental": false,
@@ -726,7 +726,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.AzureEnvironment.html",
-          "hash": "kUaifQCuozy/AnmQakDPZFinyysVJa2/lzKY7loSrr0="
+          "hash": "ziNWzsDdrKsJrrA5wxWguySSUyBC6/GS/0wiD3W3+uI="
         }
       },
       "is_incremental": false,
@@ -2046,7 +2046,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.KnownClientId.html",
-          "hash": "doI3eR+Qda4beUgp8iCv+awaohCa1cLQZWwDzCGWfaM="
+          "hash": "g3ABvyf5gs1oAvRlJbpYq+VzqQUViXx+pN125zYjOkI="
         }
       },
       "is_incremental": false,

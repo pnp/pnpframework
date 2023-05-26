@@ -8,6 +8,7 @@ using System;
 using System.Configuration;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
@@ -48,7 +49,7 @@ namespace PnP.Framework
         /// 
         /// </summary>
         USGovernmentDoD = 6,
-        
+
         /// <summary>
         /// Custom cloud configuration, specify the endpoints manually
         /// </summary>
@@ -87,13 +88,13 @@ namespace PnP.Framework
 
         private readonly IPublicClientApplication publicClientApplication;
         private readonly IConfidentialClientApplication confidentialClientApplication;
-        
+
         // Azure environment setup
         private AzureEnvironment azureEnvironment;
         // When azureEnvironment = Custom then use these strings to keep track of the respective URLs to use 
         private string microsoftGraphEndPoint;
         private string azureADLoginEndPoint;
-        
+
         private readonly ClientContextType authenticationType;
         private readonly string username;
         private readonly SecureString password;
@@ -106,7 +107,7 @@ namespace PnP.Framework
         private readonly IAuthenticationProvider authenticationProvider;
         private readonly PnPContext pnpContext;
 
-        public CookieContainer CookieContainer { get; set; }            
+        public CookieContainer CookieContainer { get; set; }
 
         private IMsalHttpClientFactory HttpClientFactory
         {
@@ -627,7 +628,7 @@ namespace PnP.Framework
         {
             this.authenticationProvider = authenticationProvider;
             this.pnpContext = null;
-            authenticationType = ClientContextType.PnPCoreSdk;            
+            authenticationType = ClientContextType.PnPCoreSdk;
         }
 
         /// <summary>
@@ -774,13 +775,26 @@ namespace PnP.Framework
                         catch
                         {
                             var builder = publicClientApplication.AcquireTokenInteractive(scopes);
-                            if (customWebUi != null)
+                            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                             {
-                                builder = builder.WithCustomWebUi(customWebUi);
+                                var options = new SystemWebViewOptions()
+                                {
+                                    HtmlMessageError = "<p> An error occurred: {0}. Details {1}</p>",
+                                    HtmlMessageSuccess = "<p>Succesfully acquired token. You may close this window now.</p>"
+                                };
+                                builder = builder.WithUseEmbeddedWebView(false);
+                                builder = builder.WithSystemWebViewOptions(options);
                             }
-                            if (prompt != default)
+                            else
                             {
-                                builder.WithPrompt(prompt);
+                                if (customWebUi != null)
+                                {
+                                    builder = builder.WithCustomWebUi(customWebUi);
+                                }
+                                if (prompt != default)
+                                {
+                                    builder.WithPrompt(prompt);
+                                }
                             }
                             authResult = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
@@ -936,9 +950,23 @@ namespace PnP.Framework
                         catch
                         {
                             var builder = publicClientApplication.AcquireTokenInteractive(scopes);
-                            if (customWebUi != null)
+                            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                             {
-                                builder = builder.WithCustomWebUi(customWebUi);
+                                var options = new SystemWebViewOptions()
+                                {
+                                    HtmlMessageError = "<p> An error occurred: {0}. Details {1}</p>",
+                                    HtmlMessageSuccess = "<p>Succesfully acquired token. You may close this window now.</p>"
+                                };
+                                builder = builder.WithUseEmbeddedWebView(false);
+                                builder = builder.WithSystemWebViewOptions(options);
+                            }
+                            else
+                            {
+
+                                if (customWebUi != null)
+                                {
+                                    builder = builder.WithCustomWebUi(customWebUi);
+                                }
                             }
                             authResult = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
@@ -1079,8 +1107,10 @@ namespace PnP.Framework
         /// <summary>
         /// Return same IAuthenticationProvider then the AuthenticationManager was initialized with
         /// </summary>
-        internal IAuthenticationProvider PnPCoreAuthenticationProvider { 
-            get {
+        internal IAuthenticationProvider PnPCoreAuthenticationProvider
+        {
+            get
+            {
                 if (authenticationType == ClientContextType.PnPCoreSdk && authenticationProvider != null)
                 {
                     return authenticationProvider;
@@ -1089,7 +1119,7 @@ namespace PnP.Framework
                 {
                     return null;
                 }
-            } 
+            }
         }
 
         /// <summary>
@@ -1099,7 +1129,7 @@ namespace PnP.Framework
         {
             get
             {
-                if (authenticationType == ClientContextType.PnPCoreSdk && pnpContext!=null)
+                if (authenticationType == ClientContextType.PnPCoreSdk && pnpContext != null)
                 {
                     return pnpContext;
                 }
@@ -1629,7 +1659,7 @@ namespace PnP.Framework
         }
 
         private static string LoadConfiguration(string appSetting)
-        {            
+        {
             string loadedAppSetting = null;
             try
             {

@@ -404,9 +404,10 @@ namespace Microsoft.SharePoint.Client
                         };
                         ClientContextSettings clientContextSettings = new ClientContextSettings()
                         {
-                            AuthenticationManager = authManager ?? new PnP.Framework.AuthenticationManager(),
+                            AuthenticationManager = authManager ?? new PnP.Framework.AuthenticationManager(contextSettings.Environment),
                             Type = ClientContextType.Cookie,
-                            SiteUrl = newSiteUrl
+                            SiteUrl = newSiteUrl,
+			    Environment = contextSettings.Environment
                         };
                         if (authManager != null)
                         {

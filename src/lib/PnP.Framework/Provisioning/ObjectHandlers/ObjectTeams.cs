@@ -848,7 +848,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             catch (Exception e)
             {
-                scope.LogError("Failure while trying to retrieve AllowToAddGuestsSetting", e.Message);
+                scope.LogError(e,"Failure while trying to retrieve AllowToAddGuestsSetting", e.Message);
                 return false;
             }
         }
@@ -870,7 +870,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             catch (Exception e)
             {
-                scope.LogError("Failure while retrieving the Group.Unified.Guest settings", e.Message);
+                scope.LogError(e,"Failure while retrieving the Group.Unified.Guest settings", e.Message);
                 return null;
             }
         }
@@ -892,7 +892,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             catch (Exception e)
             {
-                scope.LogError("Failure trying to set AllowToAddGuests setting", e.Message);
+                scope.LogError(e,"Failure trying to set AllowToAddGuests setting", e.Message);
             }
         }
 
@@ -915,7 +915,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             catch (Exception e)
             {
-                scope.LogError("Failure trying to update AllowToAddGuests setting", e.Message);
+                scope.LogError(e,"Failure trying to update AllowToAddGuests setting", e.Message);
             }
         }
 

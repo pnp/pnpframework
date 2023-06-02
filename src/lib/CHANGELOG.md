@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Updated exception message in provisioning of Teams [erwinvanhunen - Erwin van Hunen]
+- Updated team provisioning to require less permissions if AllowToAddGuest setting is not specified in template [erwinvanhunen - Erwin van Hunen]
 - Set Webpart Title and Description during page creation #868 [magarma - Miguel Angel García Martínez]
 - Adding support for content types hidden in the export at list level. #882 [roberAlb - Roberto Ramon]
 - Fix Azure environment issue for non-commercial clouds in create team site #885 [gautamdsheth - Gautam Sheth]

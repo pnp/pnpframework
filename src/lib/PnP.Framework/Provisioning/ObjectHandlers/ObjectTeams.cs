@@ -656,6 +656,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="graphBaseUri">The Microsoft Graph URI to use</param>
         private static bool SetGroupSecurity(PnPMonitoredScope scope, TokenParser parser, Team team, string teamId, string accessToken, Uri graphBaseUri)
         {
+      
             SetAllowToAddGuestsSetting(scope, teamId, team.Security.AllowToAddGuests, accessToken, graphBaseUri);
 
             string[] desideredOwnerIds;
@@ -822,7 +823,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 UpdateAllowToAddGuestsSetting(scope, teamId, allowToAddGuests, accessToken, graphBaseUri);
             }
             else
-            {
+            { 
                 CreateAllowToAddGuestsSetting(scope, teamId, allowToAddGuests, accessToken, graphBaseUri);
             }
         }
@@ -885,14 +886,17 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="accessToken">The OAuth 2.0 Access Token</param>
         private static void CreateAllowToAddGuestsSetting(PnPMonitoredScope scope, string teamId, bool allowToAddGuests, string accessToken, Uri graphBaseUri)
         {
-            try
+            if (allowToAddGuests)
             {
-                var body = $"{{'displayName': 'Group.Unified.Guest', 'templateId': '08d542b9-071f-4e16-94b0-74abb372e3d9', 'values': [{{'name': 'AllowToAddGuests','value': '{allowToAddGuests}'}}] }}";
-                HttpHelper.MakePostRequest($"{graphBaseUri}v1.0/groups/{teamId}/settings", body, "application/json", accessToken);
-            }
-            catch (Exception e)
-            {
-                scope.LogError(e,"Failure trying to set AllowToAddGuests setting", e.Message);
+                try
+                {
+                    var body = $"{{'displayName': 'Group.Unified.Guest', 'templateId': '08d542b9-071f-4e16-94b0-74abb372e3d9', 'values': [{{'name': 'AllowToAddGuests','value': '{allowToAddGuests}'}}] }}";
+                    HttpHelper.MakePostRequest($"{graphBaseUri}v1.0/groups/{teamId}/settings", body, "application/json", accessToken);
+                }
+                catch (Exception e)
+                {
+                    scope.LogError(e, "Failure trying to set AllowToAddGuests setting", e.Message);
+                }
             }
         }
 

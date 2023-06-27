@@ -919,14 +919,14 @@ namespace PnP.Framework.ALM
 
             var metadataRequestUrl = $"{context.Web.Url}/_api/web/{(scope == AppCatalogScope.Tenant ? "tenant" : "sitecollection")}appcatalog/AvailableApps/GetById('{id}')";
 
-            using (var metadataRequest = new HttpRequestMessage(HttpMethod.Get, metadataRequestUrl))
+            while (returnValue == null && retryCount < 5)
             {
-                metadataRequest.Headers.Add("accept", "application/json;odata=nometadata");
-
-                await PnPHttpClient.AuthenticateRequestAsync(metadataRequest, context).ConfigureAwait(false);
-
-                while (returnValue == null && retryCount < 5)
+                using (var metadataRequest = new HttpRequestMessage(HttpMethod.Get, metadataRequestUrl))
                 {
+                    metadataRequest.Headers.Add("accept", "application/json;odata=nometadata");
+    
+                    await PnPHttpClient.AuthenticateRequestAsync(metadataRequest, context).ConfigureAwait(false);
+                
                     // Perform actual post operation
                     HttpResponseMessage metadataResponse = await httpClient.SendAsync(metadataRequest, new System.Threading.CancellationToken());
 
@@ -951,8 +951,8 @@ namespace PnP.Framework.ALM
                         await Task.Delay(waitTime * 1000); // wait 10 seconds
                     }
                 }
-                return returnValue;
-            }
+            }  
+            return returnValue;
         }
         #endregion
     }

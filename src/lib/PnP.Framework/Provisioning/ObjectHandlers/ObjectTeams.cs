@@ -521,9 +521,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
 
-            // Ensure that Files tab is available right after Teams creation
-            InitTeamDrive(groupId, accessToken, graphBaseUri);
-
+            if (string.IsNullOrEmpty(teamId))
+            {
+                scope.LogError("Team with groupId {0} was not created. {1} attempts made.", groupId, iterations);
+                throw new Exception($"Team with group id {groupId} was not created. {iterations} attempts made.");
+            }
+            else
+            {
+                // Ensure that Files tab is available right after Teams creation
+                InitTeamDrive(groupId, accessToken, graphBaseUri);
+            }
             return (teamId);
         }
 
@@ -649,6 +656,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="graphBaseUri">The Microsoft Graph URI to use</param>
         private static bool SetGroupSecurity(PnPMonitoredScope scope, TokenParser parser, Team team, string teamId, string accessToken, Uri graphBaseUri)
         {
+      
             SetAllowToAddGuestsSetting(scope, teamId, team.Security.AllowToAddGuests, accessToken, graphBaseUri);
 
             string[] desideredOwnerIds;
@@ -815,7 +823,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 UpdateAllowToAddGuestsSetting(scope, teamId, allowToAddGuests, accessToken, graphBaseUri);
             }
             else
-            {
+            { 
                 CreateAllowToAddGuestsSetting(scope, teamId, allowToAddGuests, accessToken, graphBaseUri);
             }
         }
@@ -841,7 +849,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             catch (Exception e)
             {
-                scope.LogError(CoreResources.Provisioning_ObjectHandlers_Teams_Team_RemovingMemberError, e.Message);
+                scope.LogError(e,"Failure while trying to retrieve AllowToAddGuestsSetting", e.Message);
                 return false;
             }
         }
@@ -863,7 +871,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             catch (Exception e)
             {
-                scope.LogError(CoreResources.Provisioning_ObjectHandlers_Teams_Team_RemovingMemberError, e.Message);
+                scope.LogError(e,"Failure while retrieving the Group.Unified.Guest settings", e.Message);
                 return null;
             }
         }
@@ -878,14 +886,17 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="accessToken">The OAuth 2.0 Access Token</param>
         private static void CreateAllowToAddGuestsSetting(PnPMonitoredScope scope, string teamId, bool allowToAddGuests, string accessToken, Uri graphBaseUri)
         {
-            try
+            if (allowToAddGuests)
             {
-                var body = $"{{'displayName': 'Group.Unified.Guest', 'templateId': '08d542b9-071f-4e16-94b0-74abb372e3d9', 'values': [{{'name': 'AllowToAddGuests','value': '{allowToAddGuests}'}}] }}";
-                HttpHelper.MakePostRequest($"{graphBaseUri}v1.0/groups/{teamId}/settings", body, "application/json", accessToken);
-            }
-            catch (Exception e)
-            {
-                scope.LogError(CoreResources.Provisioning_ObjectHandlers_Teams_Team_RemovingMemberError, e.Message);
+                try
+                {
+                    var body = $"{{'displayName': 'Group.Unified.Guest', 'templateId': '08d542b9-071f-4e16-94b0-74abb372e3d9', 'values': [{{'name': 'AllowToAddGuests','value': '{allowToAddGuests}'}}] }}";
+                    HttpHelper.MakePostRequest($"{graphBaseUri}v1.0/groups/{teamId}/settings", body, "application/json", accessToken);
+                }
+                catch (Exception e)
+                {
+                    scope.LogError(e, "Failure trying to set AllowToAddGuests setting", e.Message);
+                }
             }
         }
 
@@ -908,7 +919,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             catch (Exception e)
             {
-                scope.LogError(CoreResources.Provisioning_ObjectHandlers_Teams_Team_RemovingMemberError, e.Message);
+                scope.LogError(e,"Failure trying to update AllowToAddGuests setting", e.Message);
             }
         }
 

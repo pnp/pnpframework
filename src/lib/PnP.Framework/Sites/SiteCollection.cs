@@ -543,7 +543,7 @@ namespace PnP.Framework.Sites
             {
                 if (siteCollectionCreationInformation.Owners!=null)
                 {
-                    Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(group.GroupId, siteCollectionCreationInformation.Owners, graphAccessToken);
+                    Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(group.GroupId, siteCollectionCreationInformation.Owners, graphAccessToken, azureEnvironment: azureEnvironment);
                 }
                 // Try to configure the site/group classification, if any
                 if (!string.IsNullOrEmpty(siteCollectionCreationInformation.Classification))

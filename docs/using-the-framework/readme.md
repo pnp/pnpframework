@@ -15,6 +15,12 @@ Pnp Framework includes a range of capabilities that simplify development for Mic
 - Incorporates the PnP Core SDK
 
 
+## I don't have access to a Microsoft 365 tenant
+
+If you don't have a Microsoft 365 tenant you can, for developer purposes, always request [a free developer tenant](https://developer.microsoft.com/en-us/microsoft-365/dev-program) and use that for developing and testing your applications. 
+
+> Note: When your organization already uses Microsoft 365 it's still a good practice to develop and test your applications on a non-production tenant.
+
 ## Referencing the PnP Framework in your project
 
 The PnP Framework is available as a NuGet package. You can reference it in your project by adding a reference to the NuGet package.

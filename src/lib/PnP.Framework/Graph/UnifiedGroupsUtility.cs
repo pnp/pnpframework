@@ -250,7 +250,7 @@ namespace PnP.Framework.Graph
 
                                             try
                                             {
-                                                groupLogoUpdated = UpdateUnifiedGroup(addedGroup.Id, accessToken, groupLogo: tempGroupLogo);
+                                                groupLogoUpdated = UpdateUnifiedGroup(addedGroup.Id, accessToken, groupLogo: tempGroupLogo, azureEnvironment: azureEnvironment);
                                             }
                                             catch
                                             {
@@ -279,7 +279,7 @@ namespace PnP.Framework.Graph
                             {
                                 try
                                 {
-                                    modernSiteUrl = GetUnifiedGroupSiteUrl(addedGroup.Id, accessToken);
+                                    modernSiteUrl = GetUnifiedGroupSiteUrl(addedGroup.Id, accessToken, azureEnvironment: azureEnvironment);
                                 }
                                 catch
                                 {
@@ -300,7 +300,7 @@ namespace PnP.Framework.Graph
 
                     if (createTeam)
                     {
-                        await CreateTeam(group.GroupId, accessToken);
+                        await CreateTeam(group.GroupId, accessToken, azureEnvironment: azureEnvironment);
                     }
 
                     return (group);

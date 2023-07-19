@@ -1,9 +1,6 @@
 - name: Getting started
   href: readme.md
 
-- name: Migrating from PnP Sites Core
-  href: migrating-from-pnp-sites-core.md
-
 - name: "PnP Provisioning"
   href: pnp-provisioning/getting-started.md
 
@@ -15,5 +12,8 @@
 
 - name: "PnP Page Transformation"
   items:
-   - name: Getting started
-     href: pnp-modernization/getting-started.md
+  - name: Getting started
+    href: pnp-modernization/getting-started.md
+
+- name: Migrating from PnP Sites Core
+  href: migrating-from-pnp-sites-core.md

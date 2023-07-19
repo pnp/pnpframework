@@ -63,3 +63,5 @@ using (var targetClientContext = GetClientContext("https://<tenant>.sharepoint.c
 
 
 > Working on it... more to come.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/pnpframework/docs/using-the-framework/pnp-modernization" aria-hidden="true" />

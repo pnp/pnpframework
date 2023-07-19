@@ -30,7 +30,7 @@
           "tutorials/**.md",
           "tutorials/toc.yml",
           "toc.yml",
-          "*.md"
+          "*.md"          
         ]
       }
       // {
@@ -48,7 +48,8 @@
         "files": [
           "images/**",
           "demos/**/*.png",
-          "tutorials/images/**"
+          "tutorials/images/**",
+          "notebooks/**"
         ]
       }
     ],

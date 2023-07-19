@@ -5,20 +5,20 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Getting started with the PnP Framework | PnP Framework </title>
+    <title>Getting Started | PnP Framework </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Getting started with the PnP Framework | PnP Framework ">
+    <meta name="title" content="Getting Started | PnP Framework ">
     <meta name="generator" content="docfx 2.59.3.0">
     <meta name="description" content="The PnP Framework is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions.">
     <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
-    <meta property="docfx:rel" content="../">
+    <meta property="docfx:rel" content="../../">
     <meta property="docfx:newtab" content="true">
     <script type="text/javascript">
       (function(c,l,a,r,i,t,y){
@@ -41,8 +41,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -85,55 +85,46 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
                   <div class="contribution-panel mobile-hide pull-right">
-                      <a href="https://github.com/pnp/pnpframework/blob/dev/docs/using-the-framework/readme.md/#L1" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+                      <a href="https://github.com/pnp/pnpframework/blob/dev/docs/using-the-framework/pnp-provisioning/getting-started.md/#L1" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
                   </div>
-                    <h1 id="getting-started-with-the-pnp-framework">Getting started with the PnP Framework</h1>
+                    <h1 id="getting-started">Getting Started</h1>
 
-<p>The PnP Framework is a collection of libraries and tools that simplify development for Microsoft 365 and SharePoint Online.</p>
-<p>The PnP Framework is open source and maintained by the SharePoint Patterns and Practices (PnP) community. It is available as a NuGet package and can be used in .NET Framework, .NET Core, and .NET Standard projects.</p>
-<h2 id="whats-in-the-pnp-framework">What's in the PnP Framework?</h2>
-<p>Pnp Framework includes a range of capabilities that simplify development for Microsoft 365, SharePoint Online, and SharePoint on-premises. It includes:</p>
+<p>The PnP Provisioning Engine is a set of libraries and tools that enable the creation and deployment of site templates and artifacts in SharePoint Online and SharePoint on-premises. The engine includes a set of .NET libraries that can be used to programmatically create and apply templates, as well as a console application that can be used to apply templates from the command line. The templates can include site columns, content types, lists, libraries, pages, and other SharePoint artifacts.</p>
+<p>Key features of PnP Provisioning include:</p>
 <ul>
-<li>Set of utility methods to extend CSOM</li>
-<li>PnP Modernization Framework</li>
-<li>PnP Provisioning Engine</li>
-<li>Helper classes and extension methods to make it easier to perform standard operations</li>
-<li>Incorporates the PnP Core SDK</li>
+<li>Create templates from existing SharePoint sites</li>
+<li>Apply templates to existing SharePoint sites</li>
+<li>Site level or tenant level provisioning</li>
+<li>Pass parameters to the templates</li>
+<li>Captures a wide range of SharePoint artifacts</li>
 </ul>
-<h2 id="i-dont-have-access-to-a-microsoft-365-tenant">I don't have access to a Microsoft 365 tenant</h2>
-<p>If you don't have a Microsoft 365 tenant you can, for developer purposes, always request <a href="https://developer.microsoft.com/en-us/microsoft-365/dev-program">a free developer tenant</a> and use that for developing and testing your applications.</p>
-<blockquote>
-<p>Note: When your organization already uses Microsoft 365 it's still a good practice to develop and test your applications on a non-production tenant.</p>
-</blockquote>
-<h2 id="referencing-the-pnp-framework-in-your-project">Referencing the PnP Framework in your project</h2>
-<p>The PnP Framework is available as a NuGet package. You can reference it in your project by adding a reference to the NuGet package.</p>
-<p>Package location: <a href="https://www.nuget.org/packages/PnP.Framework">PnP.Framework Package | Nuget</a></p>
-<pre><code class="lang-dotnetcli">dotnet add package PnP.Framework --version 1.13.xx-nightly
-</code></pre>
-<h2 id="update-cadence">Update Cadence</h2>
-<p>Each night these preview packages are refreshed, so you can always upgrade to the latest dev bits by upgrading your NuGet package to the latest version.</p>
-<h2 id="using-polyglot-notebooks">Using PolyGlot Notebooks</h2>
+<h2 id="pnp-provisioning-schema">PnP Provisioning Schema</h2>
+<p>The PnP Provisioning templates are based on an XML schema that captures the structure and content of a SharePoint site. The schema is extensible and can be used to capture a wide range of SharePoint artifacts. The schema is located here: <a href="https://github.com/pnp/PnP-Provisioning-Schema/blob/master/ProvisioningSchema-2022-09.md">Schema 09/2022 | PnP Provisioning Schema</a></p>
+<h2 id="using-the-polyglot-notebook-samples">Using the Polyglot Notebook samples</h2>
 <p>The PolyGlot samples provide working examples of how to interact with SharePoint, that can be ran against your Microsoft 365 tenant, written in C#.</p>
-<pre><code class="lang-dotnetcli">#r &quot;nuget: PnP.Framework, 1.13.xx-nightly&quot;
+<h3 id="settings-file">Settings File</h3>
+<p>To keep credentials away from the PolyGlot Notebooks, we have setup a seperate file to contain these, copy the <code>appsettings.sample.json</code> file to <code>appsettings.json</code> and update the values to match your environment.</p>
+<pre><code class="lang-json">{
+    &quot;azureAppId&quot;:&quot;&lt;app-id&gt;&quot;,
+    &quot;certificatePassword&quot;:&quot;&lt;cert-password&gt;&quot;,
+    &quot;certificatePath&quot;:&quot;C:\\temp\\PolyGlot\\pnpframework-polyglot.pfx&quot;,
+    &quot;azureTenantName&quot;:&quot;contoso.onmicrosoft.com&quot;
+}
+
 </code></pre>
-<p>The simplest way to get working samples, is to check out the notebooks, please navigate to the GitHub repository, the following notebooks are available, to use these, you will need to <em>clone the repository</em> and open the notebooks in Visual Studio Code, using the <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode">Extension - PolyGlot Notebooks by Microsoft</a>.</p>
+<p>You will need to create an Azure AD App Registration and generate a certificate, assign permissions to SharePoint within the app. For these notebooks, we have kept access to this for the time being.</p>
+<p><em>There is more coming on how to do this.</em></p>
+<h2 id="samples-available">Samples available</h2>
+<p>The simplest way to get to the notebooks, is to navigate to the GitHub repository, the following notebooks are available, to use these, you will need to <em>clone the repository</em> and open the notebooks in Visual Studio Code, using the <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode">Extension - PolyGlot Notebooks by Microsoft</a>.</p>
 <p>Examples:</p>
 <ul>
-<li><a href="https://github.com/pnp/pnpframework/tree/dev/docs/notebooks/Getting-Started-with-PnP-Framework.ipynb">Getting Started with the PnP Framework | PolyGlot Notebook</a></li>
 <li><a href="https://github.com/pnp/pnpframework/tree/dev/docs/notebooks/Getting-Started-with-PnP-Provisioning.ipynb">Getting Started with the PnP Provisioning | PolyGlot Notebook</a></li>
 </ul>
 <div class="NOTE">
 <h5>Note</h5>
 <p>These are a work in progress to provider richer samples, but these take a while to write. If you have any suggestions or wish to contribute your examples, please raise an issue in the GitHub repository.</p>
 </div>
-<p>If you feel samples should be present in the documentation, please <a href="https://github.com/pnp/pnpframework/issues">raise an issue in the GitHub repository</a>, and lets discuss your thoughts.</p>
-<h2 id="if-you-want-to-know-how-pnp-framework-is-build-here-is-the-code">If you want to know how PnP Framework is build, here is the code?</h2>
-<p>The PnP Framework is maintained in the PnP GitHub repository: <a href="https://github.com/pnp/pnpframework">https://github.com/pnp/pnpframework</a>. You'll find:</p>
-<ul>
-<li>The code of the PnP Framework in the <code>src\sdk\lib</code> folder</li>
-<li>The source of the documentation you are reading right now in the <code>docs</code> folder</li>
-</ul>
-<img src="https://m365-visitor-stats.azurewebsites.net/pnpframework/docs/using-the-framework" aria-hidden="true">
+<img src="https://m365-visitor-stats.azurewebsites.net/pnpframework/docs/using-the-framework/pnp-provisioning" aria-hidden="true">
 </article>
           </div>
           <div class="hidden-sm col-md-2" role="complementary">
@@ -158,9 +149,9 @@
         </div>
       </footer>    </div>
     
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>    
     <img src="https://m365-visitor-stats.azurewebsites.net/pnpframework/docs">
   </body>
 </html>

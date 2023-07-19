@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "Notes.html",
-          "hash": "sbbkpxgOLwx166PLsbFkdVb1aYestEa33hBlgLMrV6w="
+          "hash": "mFJEHH1BK5iCnPnuMbdZW7TWhM3cwZf/M3Vb8VTnJsc="
         }
       },
       "is_incremental": false,
@@ -22835,6 +22835,39 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "notebooks/Getting-Started-with-PnP-Framework.ipynb",
+      "output": {
+        "resource": {
+          "relative_path": "notebooks/Getting-Started-with-PnP-Framework.ipynb"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "notebooks/Getting-Started-with-PnP-Provisioning.ipynb",
+      "output": {
+        "resource": {
+          "relative_path": "notebooks/Getting-Started-with-PnP-Provisioning.ipynb"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "notebooks/appsettings.sample.json",
+      "output": {
+        "resource": {
+          "relative_path": "notebooks/appsettings.sample.json"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
@@ -22884,11 +22917,35 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "using-the-framework/pnp-modernization/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "using-the-framework/pnp-modernization/getting-started.html",
+          "hash": "SY2GyACant3QEmScowry4YBu769MeSp10G7AFu3ZfM4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "using-the-framework/pnp-provisioning/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "using-the-framework/pnp-provisioning/getting-started.html",
+          "hash": "9mXbyzeiDa9rVEhFqci+qcRKbkEzhJkq6O0evVU+DlQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "using-the-framework/readme.md",
       "output": {
         ".html": {
           "relative_path": "using-the-framework/readme.html",
-          "hash": "dqdXrgrbCcvJgyXEpFchbvjZUW9tN/r/4XaF+hGFULI="
+          "hash": "IBNfEqpDT7JykzCl2MVjNWj9marnnrAJOOEL/61mc6w="
         }
       },
       "is_incremental": false,
@@ -22900,7 +22957,7 @@
       "output": {
         ".html": {
           "relative_path": "using-the-framework/toc.html",
-          "hash": "MCzHM5kpgPFrykluU7py92BwlPvSS4a+HDrhpZRB+Yc="
+          "hash": "nv7sjneS+bD3C6LpgSeDzab1/MF0s88AyYWjIAy5ND4="
         }
       },
       "is_incremental": false,
@@ -22908,11 +22965,23 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "using-the-framework/transformation-getting-started.md",
+      "source_relative_path": "using-the-framework/working-with-sharepoint/getting-started.md",
       "output": {
         ".html": {
-          "relative_path": "using-the-framework/transformation-getting-started.html",
-          "hash": "wFw34INshIBuV3IEmjFez13uesgZgGAubrf5aHcu3zs="
+          "relative_path": "using-the-framework/working-with-sharepoint/getting-started.html",
+          "hash": "/0lgcnE9hwb8m40P6o+hmqsV1GRhJWWIhWwY7GKHf6Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "using-the-framework/working-with-teams/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "using-the-framework/working-with-teams/getting-started.html",
+          "hash": "uIYh7pgS50SWQ76c00dRSm/51BAx3/L6gDu4o1kpT8I="
         }
       },
       "is_incremental": false,
@@ -22933,7 +23002,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 13,
+          "total_file_count": 16,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {

@@ -1,6 +1,9 @@
 - name: Getting started
   href: readme.md
 
+- name: Setting up PolyGlot Notebooks
+  href: setting-up-to-use-polyglot-samples.md
+
 - name: "PnP Provisioning"
   href: pnp-provisioning/getting-started.md
 

@@ -143,6 +143,10 @@ namespace PnP.Framework.Sites
             {
                 payload.Add("PreferredDataLocation", siteCollectionCreationInformation.PreferredDataLocation.Value.ToString());
             }
+            if (siteCollectionCreationInformation.TimeZoneId.HasValue)
+            {
+                payload.Add("TimeZoneId", siteCollectionCreationInformation.TimeZoneId.Value);
+            }
 
             return await CreateAsync(clientContext, siteCollectionCreationInformation.Owner, payload, delayAfterCreation, noWait: noWait);
         }
@@ -191,6 +195,10 @@ namespace PnP.Framework.Sites
             {
                 payload.Add("SensitivityLabel", sensitivityLabelId);
                 payload["Classification"] = siteCollectionCreationInformation.SensitivityLabel;
+            }
+            if (siteCollectionCreationInformation.TimeZoneId.HasValue)
+            {
+                payload.Add("TimeZoneId", siteCollectionCreationInformation.TimeZoneId.Value);
             }
             return await CreateAsync(
                 clientContext,

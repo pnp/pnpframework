@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Added localization for modern audience fields #906 [nils-a - Nils Andresen]
+- Added support for setting TimeZoneId when creating a new site collection #907 [mmi-wp Mikkel Bukholt Mikkelsen]
 
 ## [1.13.0]
 

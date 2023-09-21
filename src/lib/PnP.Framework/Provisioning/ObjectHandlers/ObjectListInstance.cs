@@ -282,8 +282,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 if (!string.IsNullOrEmpty(fieldValue))
                 {
                     var field = listInfo.SiteList.Fields.GetByInternalNameOrTitle(fieldName);
-                    var defaultValue = field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, TermIdsToProcess(fieldValue).ToArray());
-                    defaultFolderValues.Add(defaultValue);
+                    
+                    var value = field.TypeAsString is "TaxonomyFieldType" or "TaxonomyFieldTypeMulti"
+                        ? TermIdsToProcess(fieldValue).ToArray()
+                        : new string[] { fieldValue };
+                    
+                        var defaultValue = field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, value);
+                        defaultFolderValues.Add(defaultValue);
                 }
             }
             foreach (var folder in templateListFolder.Folders)

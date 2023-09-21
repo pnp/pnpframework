@@ -304,6 +304,10 @@ namespace PnP.Framework.Modernization.Transform
             }
 
             var resolvedUser = CacheManager.Instance.GetEnsuredUser(context, userField.LookupValue);
+            if (resolvedUser == null)
+            {
+                return null;
+            }
 
             return this.RemapPrincipal(resolvedUser.LoginName);
         }

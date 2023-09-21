@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Added localization for modern audience fields #906 [nils-a - Nils Andresen]
 - Added support for setting TimeZoneId when creating a new site collection #907 [mmi-wp Mikkel Bukholt Mikkelsen]
+- Fixed non-taxonomy default folder values cause error when generating a provisioning template #915 [JakeStanger - Jake Stanger]
 
 ## [1.13.0]
 

@@ -897,6 +897,20 @@ namespace PnP.Framework.Sites
 
         private static Dictionary<string, object> GetRequestPayload(SiteCreationInformation siteCollectionCreationInformation)
         {
+            if (siteCollectionCreationInformation.Url.IndexOf("/sites/", StringComparison.InvariantCultureIgnoreCase) > -1 || siteCollectionCreationInformation.Url.IndexOf("/teams/", StringComparison.InvariantCultureIgnoreCase) > -1)
+            {
+                // Split the URL by '/'
+                string[] urlParts = siteCollectionCreationInformation.Url.Split('/');
+
+                // Get the last part of the URL after "sites"
+                string lastPart = urlParts[urlParts.Length - 1];
+
+                string newLastPart = UrlUtility.RemoveUnallowedCharacters(lastPart);
+                newLastPart = UrlUtility.ReplaceAccentedCharactersWithLatin(newLastPart);
+
+                siteCollectionCreationInformation.Url = siteCollectionCreationInformation.Url.Replace(lastPart, newLastPart);
+            }
+
             Dictionary<string, object> payload = new Dictionary<string, object>
             {
                 { "Title", siteCollectionCreationInformation.Title },

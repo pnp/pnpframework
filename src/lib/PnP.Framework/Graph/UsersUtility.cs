@@ -27,10 +27,11 @@ namespace PnP.Framework.Graph
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
         /// <param name="useBetaEndPoint">Indicates if the v1.0 (false) or beta (true) endpoint should be used at Microsoft Graph to query for the data</param>
         /// <param name="ignoreDefaultProperties">If set to true, only the properties provided through selectProperties will be loaded. The default properties will not be. Optional. Default is that the default properties will always be retrieved.</param>
+        /// <param name="azureEnvironment">The type of environment to connect to</param>
         /// <returns>List with User objects</returns>
-        public static Model.User GetUser(string accessToken, Guid userId, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false)
+        public static Model.User GetUser(string accessToken, Guid userId, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            return ListUsers(accessToken, $"id eq '{userId}'", null, selectProperties, startIndex, endIndex, retryCount, delay, ignoreDefaultProperties: ignoreDefaultProperties, useBetaEndPoint: useBetaEndPoint).FirstOrDefault();
+            return ListUsers(accessToken, $"id eq '{userId}'", null, selectProperties, startIndex, endIndex, retryCount, delay, ignoreDefaultProperties: ignoreDefaultProperties, useBetaEndPoint: useBetaEndPoint, azureEnvironment: azureEnvironment).FirstOrDefault();
         }
 
         /// <summary>
@@ -46,9 +47,9 @@ namespace PnP.Framework.Graph
         /// <param name="useBetaEndPoint">Indicates if the v1.0 (false) or beta (true) endpoint should be used at Microsoft Graph to query for the data</param>
         /// <param name="ignoreDefaultProperties">If set to true, only the properties provided through selectProperties will be loaded. The default properties will not be. Optional. Default is that the default properties will always be retrieved.</param>
         /// <returns>User object</returns>
-        public static Model.User GetUser(string accessToken, string userPrincipalName, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false)
+        public static Model.User GetUser(string accessToken, string userPrincipalName, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            return ListUsers(accessToken, $"userPrincipalName eq '{userPrincipalName}'", null, selectProperties, startIndex, endIndex, retryCount, delay, ignoreDefaultProperties: ignoreDefaultProperties, useBetaEndPoint: useBetaEndPoint).FirstOrDefault();
+            return ListUsers(accessToken, $"userPrincipalName eq '{userPrincipalName}'", null, selectProperties, startIndex, endIndex, retryCount, delay, ignoreDefaultProperties: ignoreDefaultProperties, useBetaEndPoint: useBetaEndPoint, azureEnvironment: azureEnvironment).FirstOrDefault();
         }
 
         /// <summary>
@@ -62,10 +63,11 @@ namespace PnP.Framework.Graph
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
         /// <param name="useBetaEndPoint">Indicates if the v1.0 (false) or beta (true) endpoint should be used at Microsoft Graph to query for the data</param>
         /// <param name="ignoreDefaultProperties">If set to true, only the properties provided through selectProperties will be loaded. The default properties will not be. Optional. Default is that the default properties will always be retrieved.</param>
+        /// <param name="azureEnvironment">The type of environment to connect to</param>
         /// <returns>List with User objects</returns>
-        public static List<Model.User> ListUsers(string accessToken, string[] additionalProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false)
+        public static List<Model.User> ListUsers(string accessToken, string[] additionalProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            return ListUsers(accessToken, null, null, additionalProperties, startIndex, endIndex, retryCount, delay, ignoreDefaultProperties: ignoreDefaultProperties, useBetaEndPoint: useBetaEndPoint);
+            return ListUsers(accessToken, null, null, additionalProperties, startIndex, endIndex, retryCount, delay, ignoreDefaultProperties: ignoreDefaultProperties, useBetaEndPoint: useBetaEndPoint, azureEnvironment: azureEnvironment);
         }
 
         /// <summary>
@@ -82,7 +84,7 @@ namespace PnP.Framework.Graph
         /// <param name="useBetaEndPoint">Indicates if the v1.0 (false) or beta (true) endpoint should be used at Microsoft Graph to query for the data</param>
         /// <param name="ignoreDefaultProperties">If set to true, only the properties provided through selectProperties will be loaded. The default properties will not be. Optional. Default is that the default properties will always be retrieved.</param>
         /// <returns>List with User objects</returns>
-        public static List<Model.User> ListUsers(string accessToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false)
+        public static List<Model.User> ListUsers(string accessToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -112,7 +114,7 @@ namespace PnP.Framework.Graph
                 {
                     List<Model.User> users = new List<Model.User>();
 
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, useBetaEndPoint: useBetaEndPoint);
+                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, useBetaEndPoint: useBetaEndPoint, azureEnvironment: azureEnvironment);
 
                     IGraphServiceUsersCollectionPage pagedUsers;
 
@@ -182,8 +184,9 @@ namespace PnP.Framework.Graph
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
         /// <param name="useBetaEndPoint">Indicates if the v1.0 (false) or beta (true) endpoint should be used at Microsoft Graph to query for the data</param>
         /// <param name="ignoreDefaultProperties">If set to true, only the properties provided through selectProperties will be loaded. The default properties will not be. Optional. Default is that the default properties will always be retrieved.</param>
+        /// <param name="azureEnvironment">The type of environment to connect to</param>
         /// <returns>List with User objects</returns>
-        public static Model.UserDelta ListUserDelta(string accessToken, string deltaToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false)
+        public static Model.UserDelta ListUserDelta(string accessToken, string deltaToken, string filter, string orderby, string[] selectProperties = null, int startIndex = 0, int? endIndex = 999, int retryCount = 10, int delay = 500, bool useBetaEndPoint = false, bool ignoreDefaultProperties = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -221,7 +224,7 @@ namespace PnP.Framework.Graph
                     var usersDelta = new Model.UserDelta();
                     usersDelta.Users = new List<Model.User>();
 
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, useBetaEndPoint: useBetaEndPoint);
+                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, useBetaEndPoint: useBetaEndPoint, azureEnvironment: azureEnvironment);
 
                     IUserDeltaCollectionPage pagedUsers;
 

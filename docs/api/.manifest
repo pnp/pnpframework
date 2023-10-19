@@ -6258,6 +6258,7 @@
   "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.#ctor(Microsoft.SharePoint.Client.Web)": "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.yml",
   "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.BaseTemplate": "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.yml",
   "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ContentTypeGroupsToInclude": "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.yml",
+  "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.SiteFieldGroupsToInclude": "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.yml",
   "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ExtensibilityHandlers": "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.yml",
   "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.FileConnector": "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.yml",
   "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.HandlersToProcess": "PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.yml",

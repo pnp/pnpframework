@@ -8,6 +8,7 @@ items:
   - PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.#ctor(Microsoft.SharePoint.Client.Web)
   - PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.BaseTemplate
   - PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ContentTypeGroupsToInclude
+  - PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.SiteFieldGroupsToInclude
   - PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ExtensibilityHandlers
   - PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.FileConnector
   - PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.HandlersToProcess
@@ -635,6 +636,43 @@ items:
       type: System.Collections.Generic.List{System.String}
     content.vb: Public Property ContentTypeGroupsToInclude As List(Of String)
   overload: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ContentTypeGroupsToInclude*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.SiteFieldGroupsToInclude
+  commentId: P:PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.SiteFieldGroupsToInclude
+  id: SiteFieldGroupsToInclude
+  parent: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation
+  langs:
+  - csharp
+  - vb
+  name: SiteFieldGroupsToInclude
+  nameWithType: ProvisioningTemplateCreationInformation.SiteFieldGroupsToInclude
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.SiteFieldGroupsToInclude
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/ProvisioningTemplateCreationInformation.cs
+      branch: dev
+      repo: https://github.com/wilecoyotegenius/pnpframework.git
+    id: SiteFieldGroupsToInclude
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/ProvisioningTemplateCreationInformation.cs
+    startLine: 218
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers
+  summary: "\nList of content type groups\n"
+  example: []
+  syntax:
+    content: public List<string> SiteFieldGroupsToInclude { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Property SiteFieldGroupsToInclude As List(Of String)
+  overload: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.SiteFieldGroupsToInclude*
   modifiers.csharp:
   - public
   - get
@@ -2198,6 +2236,11 @@ references:
   name: ContentTypeGroupsToInclude
   nameWithType: ProvisioningTemplateCreationInformation.ContentTypeGroupsToInclude
   fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ContentTypeGroupsToInclude
+- uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.SiteFieldGroupsToInclude*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.SiteFieldGroupsToInclude
+  name: SiteFieldGroupsToInclude
+  nameWithType: ProvisioningTemplateCreationInformation.SiteFieldGroupsToInclude
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.SiteFIeldGroupsToInclude
 - uid: System.Collections.Generic.List{System.String}
   commentId: T:System.Collections.Generic.List{System.String}
   parent: System.Collections.Generic

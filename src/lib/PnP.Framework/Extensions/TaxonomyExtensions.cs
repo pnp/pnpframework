@@ -1080,6 +1080,8 @@ namespace Microsoft.SharePoint.Client
                     {
                         importedTermIds[term.Id] = null;
                     }
+                    term.EnsureLabel(lcid, termName, true);
+
                     num++;
                 }
                 if (success && term != null)
@@ -1607,9 +1609,27 @@ namespace Microsoft.SharePoint.Client
             clientContext.Load(term.Labels);
             clientContext.ExecuteQueryRetry();
 
-            if (!term.Labels.Where(l => l.Language == lcid).Any(l => l.Value == labelName))
+            if (!term.Labels.Any(l => l.Language == lcid))
             {
                 term.CreateLabel(labelName, lcid, isDefault);
+                clientContext.ExecuteQueryRetry();
+            }
+            else if (term.Labels.Any(l => l.Language == lcid && l.Value != labelName))
+            {
+                var label = term.Labels.FirstOrDefault(l => l.Language == lcid);
+                label.Value = labelName;
+
+                if (isDefault)
+                {
+                    label.SetAsDefaultForLanguage();
+                }
+
+                clientContext.Load(term.TermStore);
+                clientContext.ExecuteQueryRetry();
+
+                term.TermStore.CommitAll();
+                term.TermStore.Context.ExecuteQueryRetryAsync();
+                label.Context.ExecuteQueryRetry();
                 clientContext.ExecuteQueryRetry();
             }
         }

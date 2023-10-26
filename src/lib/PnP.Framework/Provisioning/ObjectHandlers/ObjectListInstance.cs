@@ -282,6 +282,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 if (!string.IsNullOrEmpty(fieldValue))
                 {
                     var field = listInfo.SiteList.Fields.GetByInternalNameOrTitle(fieldName);
+                    field.EnsureProperties(f => f.TypeAsString);
                     
                     var value = field.TypeAsString is "TaxonomyFieldType" or "TaxonomyFieldTypeMulti"
                         ? TermIdsToProcess(fieldValue).ToArray()
@@ -301,7 +302,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private static List<string> TermIdsToProcess(string value)
         {
             var terms = value.Split(new[] { ";#" }, StringSplitOptions.None);
+            if (terms.Length == 1) return terms.ToList();
+
             var termDefaultValuesParsed = new List<string>();
+            
             for (int q = 0; q < terms.Length; q += 2)
             {
                 var splitData = terms[q + 1].Split(new char[] { '|' });

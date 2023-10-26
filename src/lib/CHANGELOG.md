@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fixed non-taxonomy default folder values cause error when generating a provisioning template #915 [JakeStanger - Jake Stanger]
 - Removing the accents and unallowed characters when creating modern non group connected sites #922 [gautamdsheth - Gautam Sheth]
 - Added support for users utility in the other cloud environments #924 [gautamdsheth - Gautam Sheth]
+- Fixed occasional crash when setting default values #926 [JakeStanger - Jake Stanger]
 
 ## [1.13.0]
 

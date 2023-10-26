@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Removing the accents and unallowed characters when creating modern non group connected sites #922 [gautamdsheth - Gautam Sheth]
 - Added support for users utility in the other cloud environments #924 [gautamdsheth - Gautam Sheth]
 - Fixed occasional crash when setting default values #926 [JakeStanger - Jake Stanger]
+- Escape apostrophe in alias before calling DirectorySession/Group method #933 [magarma - Miguel Angel García Martínez]
 
 ## [1.13.0]
 

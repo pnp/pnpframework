@@ -1,4 +1,6 @@
 ﻿using Microsoft.Graph;
+using Microsoft.Graph.Models;
+using Microsoft.Kiota.Abstractions;
 using Newtonsoft.Json;
 using PnP.Framework.Diagnostics;
 using System;
@@ -116,55 +118,33 @@ namespace PnP.Framework.Graph
 
                     var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, useBetaEndPoint: useBetaEndPoint, azureEnvironment: azureEnvironment);
 
-                    IGraphServiceUsersCollectionPage pagedUsers;
-
                     // Retrieve the first batch of users. 999 is the maximum amount of users that Graph allows to be trieved in 1 go. Use maximum size batches to lessen the chance of throttling when retrieving larger amounts of users.
-                    pagedUsers = await graphClient.Users.Request()
-                                                        .Select(string.Join(",", propertiesToSelect))
-                                                        .Filter(filter)
-                                                        .OrderBy(orderby)
-                                                        .Top(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)
-                                                        .GetAsync();
+                    var pagedUsers = await graphClient.Users
+                                            .GetAsync(requestConfiguration =>
+                                            {
+                                                requestConfiguration.QueryParameters.Select = propertiesToSelect.ToArray();
+                                                requestConfiguration.QueryParameters.Filter = filter;
+                                                requestConfiguration.QueryParameters.Orderby = new string[] { orderby };
+                                                requestConfiguration.QueryParameters.Top = !endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value;
+                                            });
 
-                    int pageCount = 0;
-                    int currentIndex = 0;
-
-                    while (true)
+                    var pageIterator = PageIterator<User, UserCollectionResponse>.CreatePageIterator(graphClient, pagedUsers, (graphUser) =>
                     {
-                        pageCount++;
-
-                        foreach (var pagedUser in pagedUsers)
+                        if(graphUser != null)
                         {
-                            currentIndex++;
-
-                            if(endIndex.HasValue && endIndex.Value < currentIndex)
-                            {
-                                break;
-                            }
-
-                            if (currentIndex >= startIndex)
-                            {
-                                users.Add(MapUserEntity(pagedUser, selectProperties));
-                            }
+                            users.Add(MapUserEntity(graphUser, selectProperties));
                         }
+                        return true;
+                    });
 
-                        if (pagedUsers.NextPageRequest != null && (!endIndex.HasValue || currentIndex < endIndex.Value))
-                        {
-                            // Retrieve the next batch of users. The possible oData instructions such as select and filter are already incorporated in the nextLink provided by Graph and thus do not need to be specified again.
-                            pagedUsers = await pagedUsers.NextPageRequest.GetAsync();
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
+                    await pageIterator.IterateAsync();
 
                     return users;
                 }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (Exception ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
             return result;
@@ -208,13 +188,6 @@ namespace PnP.Framework.Graph
                 }
             }
 
-            var queryOptions = new List<QueryOption>();
-
-            if(!string.IsNullOrWhiteSpace(deltaToken))
-            {
-                queryOptions.Add(new QueryOption("$skiptoken", deltaToken));
-            }
-
             Model.UserDelta result = null;
             try
             {
@@ -226,16 +199,22 @@ namespace PnP.Framework.Graph
 
                     var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, useBetaEndPoint: useBetaEndPoint, azureEnvironment: azureEnvironment);
 
-                    IUserDeltaCollectionPage pagedUsers;
-
                     // Retrieve the first batch of users. 999 is the maximum amount of users that Graph allows to be trieved in 1 go. Use maximum size batches to lessen the chance of throttling when retrieving larger amounts of users.
-                    pagedUsers = await graphClient.Users.Delta()
-                                                        .Request(queryOptions)                    
-                                                        .Select(string.Join(",", propertiesToSelect))
-                                                        .Filter(filter)
-                                                        .OrderBy(orderby)
-                                                        .Top(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)
-                                                        .GetAsync();
+                    var pagedUsers = graphClient.Users.Delta
+                                            .ToGetRequestInformation((requestConfiguration) =>
+                                            {
+                                                requestConfiguration.QueryParameters.Select = propertiesToSelect.ToArray();
+                                                requestConfiguration.QueryParameters.Filter = filter;
+                                                requestConfiguration.QueryParameters.Orderby = new string[] { orderby };
+                                                requestConfiguration.QueryParameters.Top = !endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value;                                                
+                                            });
+
+                    if (!string.IsNullOrEmpty(deltaToken))
+                    {
+                        pagedUsers.QueryParameters.Add("%24skiptoken", deltaToken);
+                    }
+
+                    var result = await graphClient.RequestAdapter.SendAsync(pagedUsers, UserCollectionResponse.CreateFromDiscriminatorValue);
 
                     int pageCount = 0;
                     int currentIndex = 0;
@@ -285,9 +264,9 @@ namespace PnP.Framework.Graph
                     return usersDelta;
                 }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (Exception ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
             return result;
@@ -398,9 +377,9 @@ namespace PnP.Framework.Graph
                 return accessPassResponse;
 
             }
-            catch (ServiceException ex)
+            catch (Exception ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
         }        

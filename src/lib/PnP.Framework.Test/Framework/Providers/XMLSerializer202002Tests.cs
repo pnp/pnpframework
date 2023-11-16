@@ -3071,8 +3071,8 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.IsTrue(ct.DocumentSetTemplate.RemoveExistingContentTypes);
             Assert.IsNotNull(ct.DocumentSetTemplate.AllowedContentTypes.FirstOrDefault(c => c.ContentTypeId == "0x01005D4F34E4BE7F4B6892AEBE088EDD215E"));
 
-            Assert.AreNotEqual(Guid.Empty, ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c.Id == new Guid("B01B3DBC-4630-4ED1-B5BA-321BC7841E3D")));
-            Assert.AreNotEqual(Guid.Empty, ct.DocumentSetTemplate.WelcomePageFields.FirstOrDefault(c => c.Id == new Guid("23203E97-3BFE-40CB-AFB4-07AA2B86BF45")));
+            Assert.AreNotEqual(null, ct.DocumentSetTemplate.SharedFields.FirstOrDefault(c => c.Id == new Guid("B01B3DBC-4630-4ED1-B5BA-321BC7841E3D")));
+            Assert.AreNotEqual(null, ct.DocumentSetTemplate.WelcomePageFields.FirstOrDefault(c => c.Id == new Guid("23203E97-3BFE-40CB-AFB4-07AA2B86BF45")));
 
             Assert.IsNotNull(ct.DocumentSetTemplate.DefaultDocuments);
 

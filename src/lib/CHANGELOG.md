@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Added Stream and XML option to load Tenant template #918 [koenzomers - Koen Zomers]
 - Implement adding labels to terms #934 [koskila - Antti K. Koskela]
+- Support for .NET 8.0 [jansenbe - Bert Jansen]
 
 ### Changed
 

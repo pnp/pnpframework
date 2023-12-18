@@ -26,4 +26,4 @@ You can:
 
 ## Having problems
 
-If you are having problems contributing, please reach out by creating an issue in the [PnP Framework GitHub Repository}(https://github.com/pnp/pnpframework/issues), it would help to ensure the quality of the documentation is good enough to help folks get started.
+If you are having problems contributing, please reach out by creating an issue in the [PnP Framework GitHub Repository](https://github.com/pnp/pnpframework/issues), it would help to ensure the quality of the documentation is good enough to help folks get started.

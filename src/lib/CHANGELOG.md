@@ -6,11 +6,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [1.14.0]
 
 ### Added
 
 - Added Stream and XML option to load Tenant template #918 [koenzomers - Koen Zomers]
+- Implement adding labels to terms #934 [koskila - Antti K. Koskela]
+- Support for .NET 8.0 [jansenbe - Bert Jansen]
 
 ### Changed
 
@@ -19,6 +21,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fixed non-taxonomy default folder values cause error when generating a provisioning template #915 [JakeStanger - Jake Stanger]
 - Removing the accents and unallowed characters when creating modern non group connected sites #922 [gautamdsheth - Gautam Sheth]
 - Added support for users utility in the other cloud environments #924 [gautamdsheth - Gautam Sheth]
+- Fixed occasional crash when setting default values #926 [JakeStanger - Jake Stanger]
+- Escape apostrophe in alias before calling DirectorySession/Group method #933 [magarma - Miguel Angel García Martínez]
+- Fixed unable to set column defaults on library root #947 [JakeStanger - Jake Stanger]
 
 ## [1.13.0]
 

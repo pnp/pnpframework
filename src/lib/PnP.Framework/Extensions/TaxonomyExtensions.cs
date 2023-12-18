@@ -1080,6 +1080,8 @@ namespace Microsoft.SharePoint.Client
                     {
                         importedTermIds[term.Id] = null;
                     }
+                    term.EnsureLabel(lcid, termName, true);
+
                     num++;
                 }
                 if (success && term != null)
@@ -1607,10 +1609,46 @@ namespace Microsoft.SharePoint.Client
             clientContext.Load(term.Labels);
             clientContext.ExecuteQueryRetry();
 
-            if (!term.Labels.Where(l => l.Language == lcid).Any(l => l.Value == labelName))
+
+            // It's quite usual to get a TermStore Exception here - we can safely retry it in that case
+            var maxRetries = 3;
+            for (var iterator = 0; iterator <= maxRetries; iterator++)
             {
-                term.CreateLabel(labelName, lcid, isDefault);
-                clientContext.ExecuteQueryRetry();
+                try
+                {
+                    if (!term.Labels.Any(l => l.Language == lcid))
+                    {
+                        term.CreateLabel(labelName, lcid, isDefault);
+                        clientContext.ExecuteQueryRetry();
+                    }
+                    else if (term.Labels.Any(l => l.Language == lcid && l.Value != labelName))
+                    {
+                        var label = term.Labels.FirstOrDefault(l => l.Language == lcid);
+                        label.Value = labelName;
+
+                        if (isDefault)
+                        {
+                            label.SetAsDefaultForLanguage();
+                        }
+
+                        clientContext.Load(term.TermStore);
+                        clientContext.ExecuteQueryRetry();
+
+                        term.TermStore.CommitAll();
+                        clientContext.ExecuteQueryRetry();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message.StartsWith("TermStoreEx:") && iterator <= (maxRetries-1)) // if this keeps happening, we'll throw at the last try
+                    {
+                        Log.Warning("TermStore operation failed, retrying. Error: {0}", ex.Message);
+                        continue;
+                    }
+
+                    Log.Error(ex, "Error ensuring label for term {0} with LCID {1}", term.Name, lcid);
+                    throw;
+                }
             }
         }
 

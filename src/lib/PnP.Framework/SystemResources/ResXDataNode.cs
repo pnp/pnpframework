@@ -39,7 +39,9 @@ namespace System.Resources.NetStandard
         private object value;
         private ResXFileRef fileRef;
 
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
         private IFormatter binaryFormatter = null;
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
 
         // this is going to be used to check if a ResXDataNode is of type ResXFileRef
         private static readonly ITypeResolutionService internalTypeResolver = new AssemblyNamesTypeResolutionService(new AssemblyName[] { new AssemblyName("System.Windows.Forms") });
@@ -341,6 +343,7 @@ namespace System.Resources.NetStandard
                 }
                 else
                 {
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
                     if (binaryFormatter == null)
                     {
                         binaryFormatter = new BinaryFormatter
@@ -351,7 +354,6 @@ namespace System.Resources.NetStandard
 
                     using (MemoryStream ms = new MemoryStream())
                     {
-#pragma warning disable SYSLIB0011 // Type or member is obsolete
                         binaryFormatter.Serialize(ms, value);
 #pragma warning restore SYSLIB0011 // Type or member is obsolete
                         nodeInfo.ValueData = ToBase64WrappedString(ms.ToArray());
@@ -374,6 +376,7 @@ namespace System.Resources.NetStandard
 
             if (!string.IsNullOrEmpty(mimeTypeName))
             {
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
                 if (string.Equals(mimeTypeName, ResXResourceWriter.BinSerializedObjectMimeType))
                 {
                     string text = dataNodeInfo.ValueData;
@@ -387,6 +390,7 @@ namespace System.Resources.NetStandard
                         };
                     }
                     IFormatter formatter = binaryFormatter;
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
                     if (serializedData != null && serializedData.Length > 0)
                     {
 #pragma warning disable SYSLIB0011 // Type or member is obsolete

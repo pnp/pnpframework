@@ -1091,6 +1091,9 @@ namespace PnP.Framework.Sites
             var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
+            // Escape single quotes, for instance, when the alias is something like "What's new", it should be escaped to "What''s new"
+            alias = alias.Replace("'", "''");
+            
             string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
             using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
             {
@@ -1152,6 +1155,9 @@ namespace PnP.Framework.Sites
             var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
+            // Escape single quotes, for instance, when the alias is something like "What's new", it should be escaped to "What''s new"
+            alias = alias.Replace("'", "''");
+            
             string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
             using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
             {

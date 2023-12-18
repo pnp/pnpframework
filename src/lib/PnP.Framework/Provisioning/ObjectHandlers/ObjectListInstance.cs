@@ -214,11 +214,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         foreach (var listInfo in processedLists)
                         {
                             var defaultFolderValues = new List<Entities.IDefaultColumnValue>();
-                            foreach (var templateListFolder in listInfo.TemplateList.Folders)
-                            {
-                                var folderName = parser.ParseString(templateListFolder.Name);
-                                ProcessDefaultFolders(web, listInfo, templateListFolder, folderName, defaultFolderValues, parser);
-                            }
+                            
+                            ProcessDefaultFolders(web, listInfo, listInfo.TemplateList.DefaultColumnValues, listInfo.TemplateList.Folders, string.Empty, defaultFolderValues, parser);
 
                             if (defaultFolderValues.Any())
                             {
@@ -272,16 +269,17 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return parser;
         }
 
-        private static void ProcessDefaultFolders(Web web, ListInfo listInfo, Model.Folder templateListFolder, string folderName,
+        private static void ProcessDefaultFolders(Web web, ListInfo listInfo,  Dictionary<string,string> defaultColumnValues, IEnumerable<Model.Folder> folders, string folderName,
             List<IDefaultColumnValue> defaultFolderValues, TokenParser parser)
         {
-            foreach (KeyValuePair<string, string> columnValue in templateListFolder.DefaultColumnValues)
+            foreach (KeyValuePair<string, string> columnValue in defaultColumnValues)
             {
                 var fieldName = parser.ParseString(columnValue.Key);
                 var fieldValue = parser.ParseString(columnValue.Value);
                 if (!string.IsNullOrEmpty(fieldValue))
                 {
                     var field = listInfo.SiteList.Fields.GetByInternalNameOrTitle(fieldName);
+                    field.EnsureProperties(f => f.TypeAsString);
                     
                     var value = field.TypeAsString is "TaxonomyFieldType" or "TaxonomyFieldTypeMulti"
                         ? TermIdsToProcess(fieldValue).ToArray()
@@ -291,17 +289,20 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         defaultFolderValues.Add(defaultValue);
                 }
             }
-            foreach (var folder in templateListFolder.Folders)
+            foreach (var folder in folders)
             {
-                var childFolderName = folderName + "/" + folder.Name;
-                ProcessDefaultFolders(web, listInfo, folder, childFolderName, defaultFolderValues, parser);
+                var childFolderName = folder.Name.Length > 0 ? folderName + "/" + folder.Name : folderName;
+                ProcessDefaultFolders(web, listInfo, folder.DefaultColumnValues, folder.Folders, childFolderName, defaultFolderValues, parser);
             }
         }
 
         private static List<string> TermIdsToProcess(string value)
         {
             var terms = value.Split(new[] { ";#" }, StringSplitOptions.None);
+            if (terms.Length == 1) return terms.ToList();
+
             var termDefaultValuesParsed = new List<string>();
+            
             for (int q = 0; q < terms.Length; q += 2)
             {
                 var splitData = terms[q + 1].Split(new char[] { '|' });

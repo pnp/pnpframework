@@ -1,6 +1,8 @@
 ﻿using Microsoft.Graph;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
+using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -283,6 +285,74 @@ namespace PnP.Framework.Graph
                     }
 
                     return usersDelta;
+                }).GetAwaiter().GetResult();
+            }
+            catch (ServiceException ex)
+            {
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                throw;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Returns deleted Users in the current domain
+        /// </summary>
+        /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
+        /// <param name="selectProperties">Allows providing the names of properties to return regarding the users. If not provided, the standard properties will be returned.</param>
+        /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
+        /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.</param>
+        /// <param name="ignoreDefaultProperties">If set to true, only the properties provided through selectProperties will be loaded. The default properties will not be. Optional. Default is that the default properties will always be retrieved.</param>
+        /// /// <param name="azureEnvironment">The type of environment to connect to</param>
+        /// <returns>List with User objects</returns>
+        public static List<Model.User> ListDeletedUsers(string accessToken, string[] selectProperties = null, int retryCount = 10, int delay = 500, bool ignoreDefaultProperties = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+        {
+            if (String.IsNullOrEmpty(accessToken))
+            {
+                throw new ArgumentNullException(nameof(accessToken));
+            }
+            // Rewrite AdditionalProperties to Additional Data
+            var propertiesToSelect = ignoreDefaultProperties ? new List<string>() : new List<string> { "BusinessPhones", "DisplayName", "GivenName", "JobTitle", "Mail", "MobilePhone", "OfficeLocation", "PreferredLanguage", "Surname", "UserPrincipalName", "Id", "AccountEnabled", "DeletedDateTime" };
+            
+            selectProperties = selectProperties?.Select(p => p == "AdditionalProperties" ? "AdditionalData" : p).ToArray();
+            
+            if(selectProperties != null)
+            {
+                foreach(var property in selectProperties)
+                {
+                    if(!propertiesToSelect.Contains(property))
+                    {
+                        propertiesToSelect.Add(property);
+                    }
+                }
+            }
+            
+            List<Model.User> result = null;
+            try
+            {
+                // Use a synchronous model to invoke the asynchronous process
+                result = Task.Run(async () =>
+                {
+                    List<Model.User> users = new List<Model.User>();
+                    var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}directory/deleteditems/microsoft.graph.user";
+                    if (propertiesToSelect.Count > 0)
+                    {
+                        requestUrl += $"?$select={string.Join(",", propertiesToSelect)}";
+                    } 
+
+                    var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+
+                    var response = JToken.Parse(responseAsString);
+                    var deletedUsers = response["value"];
+
+                    foreach (var deletedUser in deletedUsers)
+                    {
+                        var user = deletedUser.ToObject<User>();
+                        var modelUser = MapUserEntity(user, selectProperties);
+                        users.Add(modelUser);
+                    }
+
+                    return users;
                 }).GetAwaiter().GetResult();
             }
             catch (ServiceException ex)

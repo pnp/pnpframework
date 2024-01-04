@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Add Site Collection App Catalog fields to BuilIinFieldId enum #952 [wilecoyotegenius - Konrad K.]
 
 ## [1.14.0]
 

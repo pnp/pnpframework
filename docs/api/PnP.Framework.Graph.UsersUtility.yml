@@ -7,6 +7,7 @@ items:
   children:
   - PnP.Framework.Graph.UsersUtility.GetUser(System.String,System.Guid,System.String[],System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Boolean,System.Boolean)
   - PnP.Framework.Graph.UsersUtility.GetUser(System.String,System.String,System.String[],System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Boolean,System.Boolean)
+  - PnP.Framework.Graph.UsersUtility.ListDeletedUsers(System.String,System.String[],System.Int32,System.Int32,System.Boolean,PnP.Framework.AzureEnvironment)
   - PnP.Framework.Graph.UsersUtility.ListUserDelta(System.String,System.String,System.String,System.String,System.String[],System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Boolean,System.Boolean)
   - PnP.Framework.Graph.UsersUtility.ListUsers(System.String,System.String,System.String,System.String[],System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Boolean,System.Boolean)
   - PnP.Framework.Graph.UsersUtility.ListUsers(System.String,System.String[],System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Boolean,System.Boolean)
@@ -187,6 +188,65 @@ items:
   - Shared
   fullName.vb: PnP.Framework.Graph.UsersUtility.GetUser(System.String, System.String, System.String(), System.Int32, System.Nullable(Of System.Int32), System.Int32, System.Int32, System.Boolean, System.Boolean)
   name.vb: GetUser(String, String, String(), Int32, Nullable(Of Int32), Int32, Int32, Boolean, Boolean)
+- uid: PnP.Framework.Graph.UsersUtility.ListDeletedUsers(System.String,System.String[],System.Int32,System.Int32,System.Boolean,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Graph.UsersUtility.ListDeletedUsers(System.String,System.String[],System.Int32,System.Int32,System.Boolean,PnP.Framework.AzureEnvironment)
+  id: ListDeletedUsers(System.String,System.String[],System.Int32,System.Int32,System.Boolean,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Graph.UsersUtility
+  langs:
+  - csharp
+  - vb
+  name: ListDeletedUsers(System.String,System.String[],System.Int32,System.Int32,System.Boolean,PnP.Framework.AzureEnvironment)
+  nameWithType: UsersUtility.ListDeletedUsers(System.String, System.String[], System.Int32, System.Int32, System.Boolean, PnP.Framework.AzureEnvironment)
+  fullName: PnP.Framework.Graph.UsersUtility.ListDeletedUsers(System.String, System.String[], System.Int32, System.Int32, System.Boolean, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Graph/UsersUtility.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListUsers
+    path: ../src/lib/PnP.Framework/Graph/UsersUtility.cs
+    startLine: 84
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Graph
+  summary: "\nReturns deleted Users in the current domain\n"
+  example: []
+  syntax:
+    content: public static List<User> ListDeletedUsers(string accessToken, string[] selectProperties = null, int retryCount = 10, int delay = 500, bool ignoreDefaultProperties = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: accessToken
+      type: System.String
+      description: The OAuth 2.0 Access Token to use for invoking the Microsoft Graph
+    - id: selectProperties
+      type: System.String[]
+      description: Allows providing the names of properties to return regarding the users. If not provided, the standard properties will be returned.
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request in case of throttling
+    - id: delay
+      type: System.Int32
+      description: Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry.
+    - id: ignoreDefaultProperties
+      type: System.Boolean
+      description: If set to true, only the properties provided through selectProperties will be loaded. The default properties will not be. Optional. Default is that the default properties will always be retrieved.
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: The type of environment to connect to
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Graph.Model.User}
+      description: List with User objects
+    content.vb: Public Shared Function ListDeletedUsers(accessToken As String, selectProperties As String() = Nothing, retryCount As Integer = 10, delay As Integer = 500, ignoreDefaultProperties As Boolean = False, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As List(Of User)
+  overload: PnP.Framework.Graph.UsersUtility.ListDeletedUsers*
+  nameWithType.vb: UsersUtility.ListDeletedUsers(String, String(), Int32, Int32, Int32, Boolean, AzureEnvironment)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Graph.UsersUtility.ListDeletedUsers(System.String, System.String(), System.Int32, System.Int32, System.Boolean, PnP.Framework.AzureEnvironment)
+  name.vb: ListUsers(String, String(), Int32, Int32, Boolean, AzureEnvironment)
 - uid: PnP.Framework.Graph.UsersUtility.ListUsers(System.String,System.String[],System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Boolean,System.Boolean)
   commentId: M:PnP.Framework.Graph.UsersUtility.ListUsers(System.String,System.String[],System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Boolean,System.Boolean)
   id: ListUsers(System.String,System.String[],System.Int32,System.Nullable{System.Int32},System.Int32,System.Int32,System.Boolean,System.Boolean)
@@ -912,6 +972,11 @@ references:
   name: PnP.Framework.Graph.Model
   nameWithType: PnP.Framework.Graph.Model
   fullName: PnP.Framework.Graph.Model
+- uid: PnP.Framework.Graph.UsersUtility.ListDeletedUsers*
+  commentId: Overload:PnP.Framework.Graph.UsersUtility.ListDeletedUsers
+  name: ListDeletedUsers
+  nameWithType: UsersUtility.ListDeletedUsers
+  fullName: PnP.Framework.Graph.UsersUtility.ListDeletedUsers
 - uid: PnP.Framework.Graph.UsersUtility.ListUsers*
   commentId: Overload:PnP.Framework.Graph.UsersUtility.ListUsers
   name: ListUsers

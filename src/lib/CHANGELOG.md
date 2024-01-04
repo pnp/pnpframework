@@ -10,9 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Add ListDeletedUsers method to UsersUtility #956 [wilecoyotegenius - Konrad K.]
+
 ### Changed
 
-- Add ListDeletedUsers method to UsersUtility #956 [wilecoyotegenius - Konrad K.]
 
 ## [1.14.0]
 

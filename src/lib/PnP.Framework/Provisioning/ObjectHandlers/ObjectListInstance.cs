@@ -214,12 +214,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         foreach (var listInfo in processedLists)
                         {
                             var defaultFolderValues = new List<Entities.IDefaultColumnValue>();
-                            foreach (var templateListFolder in listInfo.TemplateList.Folders)
+                            
+                            ProcessDefaultFolders(web, listInfo, listInfo.TemplateList.DefaultColumnValues, listInfo.TemplateList.Folders, string.Empty, defaultFolderValues, parser);
+
+                            if (defaultFolderValues.Any())
                             {
-                                var folderName = parser.ParseString(templateListFolder.Name);
-                                ProcessDefaultFolders(web, listInfo, templateListFolder, folderName, defaultFolderValues, parser);
+                                listInfo.SiteList.SetDefaultColumnValues(defaultFolderValues, true);
                             }
-                            listInfo.SiteList.SetDefaultColumnValues(defaultFolderValues, true);
                         }
 
                         #endregion Column default values
@@ -268,25 +269,48 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return parser;
         }
 
-        private static void ProcessDefaultFolders(Web web, ListInfo listInfo, Model.Folder templateListFolder, string folderName,
+        private static void ProcessDefaultFolders(Web web, ListInfo listInfo,  Dictionary<string,string> defaultColumnValues, IEnumerable<Model.Folder> folders, string folderName,
             List<IDefaultColumnValue> defaultFolderValues, TokenParser parser)
         {
-            foreach (KeyValuePair<string, string> columnValue in templateListFolder.DefaultColumnValues)
+            foreach (KeyValuePair<string, string> columnValue in defaultColumnValues)
             {
                 var fieldName = parser.ParseString(columnValue.Key);
                 var fieldValue = parser.ParseString(columnValue.Value);
                 if (!string.IsNullOrEmpty(fieldValue))
                 {
                     var field = listInfo.SiteList.Fields.GetByInternalNameOrTitle(fieldName);
-                    var defaultValue = field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, new[] { fieldValue });
-                    defaultFolderValues.Add(defaultValue);
+                    field.EnsureProperties(f => f.TypeAsString);
+                    
+                    var value = field.TypeAsString is "TaxonomyFieldType" or "TaxonomyFieldTypeMulti"
+                        ? TermIdsToProcess(fieldValue).ToArray()
+                        : new string[] { fieldValue };
+                    
+                        var defaultValue = field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, value);
+                        defaultFolderValues.Add(defaultValue);
                 }
             }
-            foreach (var folder in templateListFolder.Folders)
+            foreach (var folder in folders)
             {
-                var childFolderName = folderName + "/" + folder.Name;
-                ProcessDefaultFolders(web, listInfo, folder, childFolderName, defaultFolderValues, parser);
+                var childFolderName = folder.Name.Length > 0 ? folderName + "/" + folder.Name : folderName;
+                ProcessDefaultFolders(web, listInfo, folder.DefaultColumnValues, folder.Folders, childFolderName, defaultFolderValues, parser);
             }
+        }
+
+        private static List<string> TermIdsToProcess(string value)
+        {
+            var terms = value.Split(new[] { ";#" }, StringSplitOptions.None);
+            if (terms.Length == 1) return terms.ToList();
+
+            var termDefaultValuesParsed = new List<string>();
+            
+            for (int q = 0; q < terms.Length; q += 2)
+            {
+                var splitData = terms[q + 1].Split(new char[] { '|' });
+                var termIdString = splitData[1];
+                termDefaultValuesParsed.Add(termIdString);
+            }
+
+            return termDefaultValuesParsed;
         }
 
         private static void ProcessIRMSettings(Web web, ListInfo list)
@@ -2664,7 +2688,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             foreach (var ct in siteList.ContentTypes)
             {
                 web.Context.Load(ct, c => c.Parent);
+                web.Context.Load(siteList.RootFolder, rf => rf.UniqueContentTypeOrder);
                 web.Context.ExecuteQueryRetry();
+
+                bool ctypeHidden = siteList.RootFolder.UniqueContentTypeOrder != null
+                    ? siteList.RootFolder.UniqueContentTypeOrder.FirstOrDefault(c => c.StringValue.Equals(ct.Id.StringValue, StringComparison.OrdinalIgnoreCase)) == null
+                    : false;
 
                 if (ct.Parent != null)
                 {
@@ -2675,14 +2704,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     // Exclude System Content Type to prevent getting exception during import
                     if (!ct.Parent.StringId.Equals(BuiltInContentTypeId.System))
                     {
-                        list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.Parent.StringId, Default = count == 0 });
+                        list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.Parent.StringId, Default = count == 0, Hidden = ctypeHidden });
                     }
 
                     //}
                 }
                 else
                 {
-                    list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.StringId, Default = count == 0 });
+                    list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.StringId, Default = count == 0, Hidden = ctypeHidden });
                 }
 
                 web.Context.Load(ct.FieldLinks);
@@ -2838,7 +2867,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         if (field.TypeAsString.StartsWith("TaxonomyField"))
                         {
                             // find the corresponding taxonomy field and include it anyway
-                            var taxField = (TaxonomyField)field;
+                            var taxField = web.Context.CastTo<TaxonomyField>(field);
+
                             taxField.EnsureProperties(f => f.TextField, f => f.Id);
 
                             var noteField = siteList.Fields.GetById(taxField.TextField);

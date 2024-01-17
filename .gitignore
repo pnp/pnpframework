@@ -349,7 +349,12 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
+# MacOS files
+.DS_Store
+
 # Custom configuration files
 /src/lib/PnP.Framework.Test/App.config
 /src/lib/PnP.Framework.Modernization.Test/App.config
 /src/lib/PnP.Framework.Test/Isolated/Doodle.cs
+docs/docfx-noapi.json
+docs/notebooks/appsettings.json

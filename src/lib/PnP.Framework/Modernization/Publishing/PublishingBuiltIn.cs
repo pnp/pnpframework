@@ -1,6 +1,5 @@
 ﻿using AngleSharp.Dom;
 using AngleSharp.Html.Parser;
-using Microsoft.Data.OData.Metadata;
 using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
 using PnP.Framework.Modernization.Functions;

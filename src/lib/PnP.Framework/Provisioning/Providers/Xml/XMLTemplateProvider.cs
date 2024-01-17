@@ -71,6 +71,52 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             return (result);
         }
 
+        public override List<ProvisioningHierarchy> GetHierarchies()
+        {
+            List<ProvisioningHierarchy> result = new();
+
+            // Retrieve the list of available template files
+            List<string> files = Connector.GetFiles();
+
+            // For each file
+            foreach (var file in files)
+            {
+                if (file.EndsWith(".xml", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ProvisioningHierarchy provisioningHierarchy;
+                    try
+                    {
+                        // Use the GetHierarchy method to share the same logic
+                        provisioningHierarchy = GetHierarchy(file);
+                    }
+                    catch (ApplicationException)
+                    {
+                        Log.Warning(Constants.LOGGING_SOURCE_FRAMEWORK_PROVISIONING, CoreResources.Provisioning_Providers_XML_InvalidFileFormat, file);
+                        continue;
+                    }
+
+                    if (provisioningHierarchy != null)
+                    {
+                        // Add the template to the result
+                        result.Add(provisioningHierarchy);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public override ProvisioningHierarchy GetHierarchy(Stream stream)
+        {
+            var formatter = new XMLPnPSchemaFormatter();
+
+            ITemplateFormatter specificFormatter = formatter.GetSpecificFormatterInternal(ref stream);
+            specificFormatter.Initialize(this);
+            var result = ((IProvisioningHierarchyFormatter)specificFormatter).ToProvisioningHierarchy(stream);
+
+            return result;
+        }
+
         public override ProvisioningHierarchy GetHierarchy(string uri)
         {
             if (uri == null)
@@ -84,14 +130,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
             if (stream != null)
             {
-                var formatter = new XMLPnPSchemaFormatter();
-
-                ITemplateFormatter specificFormatter = formatter.GetSpecificFormatterInternal(ref stream);
-                specificFormatter.Initialize(this);
-                result = ((IProvisioningHierarchyFormatter)specificFormatter).ToProvisioningHierarchy(stream);
+                result = GetHierarchy(stream);
             }
 
-            return (result);
+            return result;
         }
 
         public override ProvisioningTemplate GetTemplate(string uri)

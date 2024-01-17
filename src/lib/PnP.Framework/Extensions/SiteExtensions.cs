@@ -35,7 +35,6 @@ namespace Microsoft.SharePoint.Client
                     site.EnsureProperty(s => s.GroupId);
 
                     // Update the Classification of the Office 365 Group
-                    // PATCH https://graph.microsoft.com/beta/groups/{groupId}
                     string updateGroupUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment,true)}groups/{site.GroupId}";
                     var updateGroupResult = GraphHttpClient.MakePatchRequestForString(
                         updateGroupUrl,

@@ -37,6 +37,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to configure the HTTP bearer Authorization Header</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request.</param>
+        /// <param name="azureEnvironment">Azure environment to use</param>
         /// <returns></returns>
         private static GraphServiceClient CreateGraphClient(String accessToken, int retryCount = defaultRetryCount, int delay = defaultDelay, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
@@ -249,7 +250,7 @@ namespace PnP.Framework.Graph
 
                                             try
                                             {
-                                                groupLogoUpdated = UpdateUnifiedGroup(addedGroup.Id, accessToken, groupLogo: tempGroupLogo);
+                                                groupLogoUpdated = UpdateUnifiedGroup(addedGroup.Id, accessToken, groupLogo: tempGroupLogo, azureEnvironment: azureEnvironment);
                                             }
                                             catch
                                             {
@@ -278,7 +279,7 @@ namespace PnP.Framework.Graph
                             {
                                 try
                                 {
-                                    modernSiteUrl = GetUnifiedGroupSiteUrl(addedGroup.Id, accessToken);
+                                    modernSiteUrl = GetUnifiedGroupSiteUrl(addedGroup.Id, accessToken, azureEnvironment: azureEnvironment);
                                 }
                                 catch
                                 {
@@ -299,7 +300,7 @@ namespace PnP.Framework.Graph
 
                     if (createTeam)
                     {
-                        await CreateTeam(group.GroupId, accessToken);
+                        await CreateTeam(group.GroupId, accessToken, azureEnvironment: azureEnvironment);
                     }
 
                     return (group);

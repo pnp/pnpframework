@@ -157,6 +157,11 @@ namespace PnP.Framework.Sites
         /// </summary>
         public Enums.Office365Geography? PreferredDataLocation { get; set; }
 
+        /// <summary>
+        /// The time zone to use for the site.
+        /// </summary>
+        public int? TimeZoneId { get; set; }
+
         public SiteCreationInformation()
         {
         }

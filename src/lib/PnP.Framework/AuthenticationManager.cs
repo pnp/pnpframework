@@ -5,8 +5,10 @@ using PnP.Core.Services;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Context;
 using System;
+using System.Configuration;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
@@ -46,7 +48,12 @@ namespace PnP.Framework
         /// <summary>
         /// 
         /// </summary>
-        USGovernmentDoD = 6
+        USGovernmentDoD = 6,
+
+        /// <summary>
+        /// Custom cloud configuration, specify the endpoints manually
+        /// </summary>
+        Custom = 100
     }
 
 
@@ -81,8 +88,13 @@ namespace PnP.Framework
 
         private readonly IPublicClientApplication publicClientApplication;
         private readonly IConfidentialClientApplication confidentialClientApplication;
-        //private readonly string azureADEndPoint;
-        private readonly AzureEnvironment azureEnvironment;
+
+        // Azure environment setup
+        private AzureEnvironment azureEnvironment;
+        // When azureEnvironment = Custom then use these strings to keep track of the respective URLs to use 
+        private string microsoftGraphEndPoint;
+        private string azureADLoginEndPoint;
+
         private readonly ClientContextType authenticationType;
         private readonly string username;
         private readonly SecureString password;
@@ -305,7 +317,7 @@ namespace PnP.Framework
         /// <param name="password">The password to use for authentication</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string username, SecureString password, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this(GetKnownClientId(KnownClientId.PnPManagementShell), username, password, "https://login.microsoftonline.com/common/oauth2/nativeclient", azureEnvironment, tokenCacheCallback)
+        public AuthenticationManager(string username, SecureString password, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this(GetKnownClientId(KnownClientId.PnPManagementShell), username, password, $"{GetAzureADLoginEndPointStatic(azureEnvironment)}/common/oauth2/nativeclient", azureEnvironment, tokenCacheCallback)
         {
         }
 
@@ -628,6 +640,31 @@ namespace PnP.Framework
             this.authenticationProvider = pnPContext.AuthenticationProvider;
             this.pnpContext = pnPContext;
             authenticationType = ClientContextType.PnPCoreSdk;
+            ConfigureAuthenticationManagerEnvironmentSettings(pnPContext);
+        }
+
+        private void ConfigureAuthenticationManagerEnvironmentSettings(PnPContext pnPContext)
+        {
+            if (pnPContext.Environment == Microsoft365Environment.Custom)
+            {
+                this.azureEnvironment = AzureEnvironment.Custom;
+                this.microsoftGraphEndPoint = pnPContext.MicrosoftGraphAuthority;
+                this.azureADLoginEndPoint = $"https://{pnPContext.AzureADLoginAuthority}";
+            }
+            else
+            {
+                this.azureEnvironment = pnPContext.Environment switch
+                {
+                    Microsoft365Environment.Production => AzureEnvironment.Production,
+                    Microsoft365Environment.Germany => AzureEnvironment.Germany,
+                    Microsoft365Environment.China => AzureEnvironment.China,
+                    Microsoft365Environment.USGovernment => AzureEnvironment.USGovernment,
+                    Microsoft365Environment.USGovernmentHigh => AzureEnvironment.USGovernmentHigh,
+                    Microsoft365Environment.USGovernmentDoD => AzureEnvironment.USGovernmentDoD,
+                    Microsoft365Environment.PreProduction => AzureEnvironment.PPE,
+                    _ => AzureEnvironment.Production
+                };
+            }
         }
         #endregion
 
@@ -721,7 +758,9 @@ namespace PnP.Framework
                         }
                         catch
                         {
+#pragma warning disable CS0618 // Type or member is obsolete
                             authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken).ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
                         }
                         break;
                     }
@@ -736,13 +775,26 @@ namespace PnP.Framework
                         catch
                         {
                             var builder = publicClientApplication.AcquireTokenInteractive(scopes);
-                            if (customWebUi != null)
+                            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                             {
-                                builder = builder.WithCustomWebUi(customWebUi);
+                                var options = new SystemWebViewOptions()
+                                {
+                                    HtmlMessageError = "<p> An error occurred: {0}. Details {1}</p>",
+                                    HtmlMessageSuccess = "<p>Succesfully acquired token. You may close this window now.</p>"
+                                };
+                                builder = builder.WithUseEmbeddedWebView(false);
+                                builder = builder.WithSystemWebViewOptions(options);
                             }
-                            if (prompt != default)
+                            else
                             {
-                                builder.WithPrompt(prompt);
+                                if (customWebUi != null)
+                                {
+                                    builder = builder.WithCustomWebUi(customWebUi);
+                                }
+                                if (prompt != default)
+                                {
+                                    builder.WithPrompt(prompt);
+                                }
                             }
                             authResult = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
@@ -750,7 +802,9 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AzureADCertificate:
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
 
                         try
                         {
@@ -779,7 +833,9 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AzureOnBehalfOf:
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
 
                         try
                         {
@@ -873,7 +929,9 @@ namespace PnP.Framework
                         }
                         catch
                         {
+#pragma warning disable CS0618 // Type or member is obsolete
                             authResult = await publicClientApplication.AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync(cancellationToken).ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
                         }
                         if (authResult.AccessToken != null)
                         {
@@ -892,9 +950,23 @@ namespace PnP.Framework
                         catch
                         {
                             var builder = publicClientApplication.AcquireTokenInteractive(scopes);
-                            if (customWebUi != null)
+                            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                             {
-                                builder = builder.WithCustomWebUi(customWebUi);
+                                var options = new SystemWebViewOptions()
+                                {
+                                    HtmlMessageError = "<p> An error occurred: {0}. Details {1}</p>",
+                                    HtmlMessageSuccess = "<p>Succesfully acquired token. You may close this window now.</p>"
+                                };
+                                builder = builder.WithUseEmbeddedWebView(false);
+                                builder = builder.WithSystemWebViewOptions(options);
+                            }
+                            else
+                            {
+
+                                if (customWebUi != null)
+                                {
+                                    builder = builder.WithCustomWebUi(customWebUi);
+                                }
                             }
                             authResult = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
@@ -906,7 +978,9 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AzureADCertificate:
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
 
                         try
                         {
@@ -924,7 +998,9 @@ namespace PnP.Framework
                     }
                 case ClientContextType.AzureOnBehalfOf:
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
+#pragma warning restore CS0618 // Type or member is obsolete
 
                         try
                         {
@@ -975,7 +1051,8 @@ namespace PnP.Framework
                         {
                             Type = ClientContextType.SharePointACSAppOnly,
                             SiteUrl = siteUrl,
-                            AuthenticationManager = this
+                            AuthenticationManager = this,
+                            Environment = this.azureEnvironment
                         };
                         context.AddContextSettings(clientContextSettings);
 
@@ -993,7 +1070,8 @@ namespace PnP.Framework
                         {
                             Type = ClientContextType.AccessToken,
                             SiteUrl = siteUrl,
-                            AuthenticationManager = this
+                            AuthenticationManager = this,
+                            Environment = this.azureEnvironment
                         };
                         context.AddContextSettings(clientContextSettings);
 
@@ -1015,7 +1093,8 @@ namespace PnP.Framework
                         {
                             Type = ClientContextType.PnPCoreSdk,
                             SiteUrl = siteUrl,
-                            AuthenticationManager = this
+                            AuthenticationManager = this,
+                            Environment = this.azureEnvironment
                         };
                         context.AddContextSettings(clientContextSettings);
 
@@ -1028,8 +1107,10 @@ namespace PnP.Framework
         /// <summary>
         /// Return same IAuthenticationProvider then the AuthenticationManager was initialized with
         /// </summary>
-        internal IAuthenticationProvider PnPCoreAuthenticationProvider { 
-            get {
+        internal IAuthenticationProvider PnPCoreAuthenticationProvider
+        {
+            get
+            {
                 if (authenticationType == ClientContextType.PnPCoreSdk && authenticationProvider != null)
                 {
                     return authenticationProvider;
@@ -1038,7 +1119,7 @@ namespace PnP.Framework
                 {
                     return null;
                 }
-            } 
+            }
         }
 
         /// <summary>
@@ -1048,7 +1129,7 @@ namespace PnP.Framework
         {
             get
             {
-                if (authenticationType == ClientContextType.PnPCoreSdk && pnpContext!=null)
+                if (authenticationType == ClientContextType.PnPCoreSdk && pnpContext != null)
                 {
                     return pnpContext;
                 }
@@ -1088,7 +1169,9 @@ namespace PnP.Framework
                             }
                         case ClientContextType.AzureADCredentials:
                             {
+#pragma warning disable CS0618 // Type or member is obsolete
                                 ar = ((IPublicClientApplication)application).AcquireTokenByUsernamePassword(scopes, username, password).ExecuteAsync().GetAwaiter().GetResult();
+#pragma warning restore CS0618 // Type or member is obsolete
                                 break;
                             }
                         case ClientContextType.AzureADInteractive:
@@ -1124,6 +1207,7 @@ namespace PnP.Framework
                 Type = contextType,
                 SiteUrl = siteUrl,
                 AuthenticationManager = this,
+                Environment = this.azureEnvironment
             };
 
             clientContext.AddContextSettings(clientContextSettings);
@@ -1268,7 +1352,8 @@ namespace PnP.Framework
                 ClientId = appId,
                 ClientSecret = appSecret,
                 AcsHostUrl = acsHostUrl,
-                GlobalEndPointPrefix = globalEndPointPrefix
+                GlobalEndPointPrefix = globalEndPointPrefix,
+                Environment = this.azureEnvironment
             };
 
             clientContext.AddContextSettings(clientContextSettings);
@@ -1368,6 +1453,18 @@ namespace PnP.Framework
         /// <returns>Azure AD login endpoint</returns>
         public string GetAzureADLoginEndPoint(AzureEnvironment environment)
         {
+            if (environment == AzureEnvironment.Custom)
+            {
+                return GetAzureAdLoginEndPointForCustomAzureEnvironmentConfiguration();
+            }
+            else
+            {
+                return GetAzureADLoginEndPointStatic(environment);
+            }
+        }
+
+        public static string GetAzureADLoginEndPointStatic(AzureEnvironment environment)
+        {
             return (environment) switch
             {
                 AzureEnvironment.Production => "https://login.microsoftonline.com",
@@ -1387,7 +1484,14 @@ namespace PnP.Framework
         /// <returns></returns>
         public string GetGraphEndPoint()
         {
-            return GetGraphEndPoint(this.azureEnvironment);
+            if (this.azureEnvironment == AzureEnvironment.Custom)
+            {
+                return GetGraphEndPointForCustomAzureEnvironmentConfiguration();
+            }
+            else
+            {
+                return GetGraphEndPoint(this.azureEnvironment);
+            }
         }
 
         /// <summary>
@@ -1427,6 +1531,16 @@ namespace PnP.Framework
         }
 
         /// <summary>
+        /// Gets the URI to use for making Graph calls based upon the environment
+        /// </summary>
+        /// <param name="environment">Environment to get the Graph URI for</param>
+        /// <returns>Graph URI for given environment</returns>
+        public static Uri GetGraphBaseEndPoint(AzureEnvironment environment)
+        {
+            return new Uri($"https://{GetGraphEndPoint(environment)}");
+        }
+
+        /// <summary>
         /// Returns a domain suffix (com, us, de, cn) for an Azure Environment
         /// </summary>
         /// <param name="environment"></param>
@@ -1443,6 +1557,125 @@ namespace PnP.Framework
                 AzureEnvironment.China => "cn",
                 _ => "com"
             };
+        }
+
+        /// <summary>
+        /// Returns the equivalent SharePoint Admin url for the passed in SharePoint url
+        /// </summary>
+        /// <param name="url">Any SharePoint url for the tenant you need to SharePoint Admin Center URL for</param>
+        /// <returns>SharePoint Admin Center URL</returns>
+        public static string GetTenantAdministrationUrl(string url)
+        {
+            var uri = new Uri(url);
+            var uriParts = uri.Host.Split('.');
+
+            if (uriParts[0].EndsWith("-admin"))
+            {
+                // The url was already an admin site url 
+                return $"https://{uriParts[0]}.{string.Join(".", uriParts.Skip(1))}";
+            }
+
+            if (!uriParts[0].EndsWith("-admin"))
+            {
+                return $"https://{uriParts[0]}-admin.{string.Join(".", uriParts.Skip(1))}";
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the equivalent SharePoint Admin url for the passed in SharePoint url
+        /// </summary>
+        /// <param name="url">Any SharePoint url for the tenant you need to SharePoint Admin Center URL for</param>
+        /// <returns>SharePoint Admin Center URL</returns>
+        public static Uri GetTenantAdministrationUri(string url)
+        {
+            string adminUrl = GetTenantAdministrationUrl(url);
+            if (adminUrl != null)
+            {
+                return new Uri(adminUrl);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Is the provided URL an SharePoint Admin center URL
+        /// </summary>
+        /// <param name="url">SharePoint URL to check</param>
+        /// <returns>True if Admin Center URL, false otherwise</returns>
+        public static bool IsTenantAdministrationUrl(string url)
+        {
+            return url.ToLowerInvariant().Contains("-admin.sharepoint");
+        }
+
+        /// <summary>
+        /// Is the provided URL an SharePoint Admin center URL
+        /// </summary>
+        /// <param name="uri">SharePoint URL to check</param>
+        /// <returns>True if Admin Center URL, false otherwise</returns>
+        public static bool IsTenantAdministrationUri(Uri uri)
+        {
+            return IsTenantAdministrationUrl(uri.ToString());
+        }
+
+        public string GetGraphEndPointForCustomAzureEnvironmentConfiguration()
+        {
+            if (string.IsNullOrEmpty(microsoftGraphEndPoint))
+            {
+                microsoftGraphEndPoint = LoadConfiguration("MicrosoftGraphEndPoint");
+            }
+
+            if (string.IsNullOrEmpty(microsoftGraphEndPoint))
+            {
+                return "graph.microsoft.com";
+            }
+            else
+            {
+                return microsoftGraphEndPoint;
+            }
+        }
+
+        public string GetAzureAdLoginEndPointForCustomAzureEnvironmentConfiguration()
+        {
+            if (string.IsNullOrEmpty(azureADLoginEndPoint))
+            {
+                azureADLoginEndPoint = LoadConfiguration("AzureADLoginEndPoint");
+            }
+
+            if (string.IsNullOrEmpty(azureADLoginEndPoint))
+            {
+                return "https://login.microsoftonline.com";
+            }
+            else
+            {
+                return azureADLoginEndPoint;
+            }
+        }
+
+        public void SetEndPointsForCustomAzureEnvironmentConfiguration(string microsoftGraphEndPoint, string azureADLoginEndPoint)
+        {
+            this.microsoftGraphEndPoint = microsoftGraphEndPoint;
+            this.azureADLoginEndPoint = azureADLoginEndPoint;
+        }
+
+        private static string LoadConfiguration(string appSetting)
+        {
+            string loadedAppSetting = null;
+            try
+            {
+                loadedAppSetting = ConfigurationManager.AppSettings[appSetting];
+            }
+            catch // throws exception if being called from a .NET Standard 2.0 application
+            {
+
+            }
+
+            if (string.IsNullOrWhiteSpace(loadedAppSetting))
+            {
+                loadedAppSetting = Environment.GetEnvironmentVariable(appSetting, EnvironmentVariableTarget.Process);
+            }
+
+            return loadedAppSetting;
         }
 
         /// <summary>
@@ -1469,11 +1702,15 @@ namespace PnP.Framework
             }
             if (confidentialClientApplication != null)
             {
+#pragma warning disable CS0618 // Type or member is obsolete
                 var accounts = (await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false)).ToList();
+#pragma warning restore CS0618 // Type or member is obsolete
                 while (accounts.Any())
                 {
                     await confidentialClientApplication.RemoveAsync(accounts.First()).ConfigureAwait(false);
+#pragma warning disable CS0618 // Type or member is obsolete
                     accounts = (await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false)).ToList();
+#pragma warning restore CS0618 // Type or member is obsolete
                 }
             }
         }

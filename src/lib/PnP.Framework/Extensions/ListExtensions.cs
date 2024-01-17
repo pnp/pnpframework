@@ -2322,7 +2322,7 @@ namespace Microsoft.SharePoint.Client
                 // When comparing in SharePoint the IDs can be hard coded, they are always the same.
                 var firstModernTargetingFieldXml = @$"
                     <Field ID=""{{7f759147-c861-4cd6-a11f-5aa3037d9634}}"" Type=""UserMulti"" List=""UserInfo"" Name=""_ModernAudienceTargetUserField"" 
-                        StaticName=""_ModernAudienceTargetUserField"" DisplayName=""Audience"" Required=""FALSE"" 
+                        StaticName=""_ModernAudienceTargetUserField"" DisplayName=""$Resources:spcore,AudienceUserField_DisplayName"" Required=""FALSE"" 
                         SourceID=""{sourceId}"" ColName=""int2"" RowOrdinal=""0"" ShowField=""ImnName"" ShowInDisplayForm=""TRUE"" ShowInListSettings=""FALSE"" UserSelectionMode=""GroupsOnly"" 
                         UserSelectionScope=""0"" Mult=""TRUE"" Sortable=""FALSE"" Version=""1""/>";
 
@@ -2335,7 +2335,7 @@ namespace Microsoft.SharePoint.Client
 
                 // ID is unique for this field type
                 var secondModernTargetingFieldFormat = @$"
-                    <Field Type=""LookupMulti"" DisplayName=""AudienceIds"" 
+                    <Field Type=""LookupMulti"" DisplayName=""$Resources:spcore,AudienceLookupField_DisplayName"" 
                         List=""{userInformationList.Id:B}"" WebId=""{web.Id}"" FieldRef=""7f759147-c861-4cd6-a11f-5aa3037d9634"" ReadOnly=""TRUE"" Mult=""TRUE"" Sortable=""FALSE"" 
                         UnlimitedLengthInDocumentLibrary=""FALSE"" ID=""{Guid.NewGuid():B}"" SourceID=""{sourceId}"" StaticName=""_ModernAudienceAadObjectIds"" 
                         Name=""_ModernAudienceAadObjectIds"" ShowField=""_AadObjectIdForUser"" ShowInListSettings=""FALSE"" Version=""1""/>";

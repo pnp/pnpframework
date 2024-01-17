@@ -119,11 +119,24 @@ namespace PnP.Framework.Provisioning.Providers
         public abstract List<ProvisioningTemplate> GetTemplates(ITemplateFormatter formatter);
 
         /// <summary>
+        /// Gets list of ProvisioningHierarchies
+        /// </summary>
+        /// <returns>Returns collection of ProvisioningHierarchies</returns>
+        public abstract List<ProvisioningHierarchy> GetHierarchies();
+
+        /// <summary>
         /// Gets ProvisioningHierarchy
         /// </summary>
         /// <param name="uri">The source uri</param>
         /// <returns>Returns a ProvisioningHierarchy</returns>
         public abstract ProvisioningHierarchy GetHierarchy(string uri);
+
+        /// <summary>
+        /// Gets ProvisioningHierarchy
+        /// </summary>
+        /// <param name="stream">The source as a stream</param>
+        /// <returns>Returns a ProvisioningHierarchy</returns>
+        public abstract ProvisioningHierarchy GetHierarchy(Stream stream);
 
         /// <summary>
         /// Gets ProvisioningTemplate

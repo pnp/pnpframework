@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Add Site Collection App Catalog fields to BuilIinFieldId enum #952 [wilecoyotegenius - Konrad K.]
+- Upgrade to version 6.35.0 of System.IdentityModel.Tokens.Jwt #962 [eduardpaul - Eduard Paul]
 
 ## [1.14.0]
 

@@ -683,6 +683,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
             XMLPnPSchemaVersion currentSchemaVersion = GetCurrentSchemaVersion();
 
+            // Load all loadable types
             Type[] serializerTypes;
             try
             {
@@ -692,26 +693,6 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             {
                 serializerTypes = e.Types.Where(t => t != null).ToArray();
             }
-
-            //ICollection<Type> serializerTypes = new List<Type>();
-            //try
-            //{
-            //    serializerTypes = currentAssembly.GetTypes().Where(i => i != null && i.Assembly == currentAssembly).ToList();
-            //}
-            //catch (ReflectionTypeLoadException ex)
-            //{
-            //    foreach (Type theType in ex.Types)
-            //    {
-            //        try
-            //        {
-            //            if (theType != null && theType.Assembly == currentAssembly)
-            //                serializerTypes.Add(theType);
-            //        }
-            //        catch (BadImageFormatException)
-            //        {
-            //        }
-            //    }
-            //}
 
             // Get all the serializers
             var serializers = serializerTypes

@@ -683,8 +683,38 @@ namespace PnP.Framework.Provisioning.Providers.Xml
 
             XMLPnPSchemaVersion currentSchemaVersion = GetCurrentSchemaVersion();
 
-            var serializers = currentAssembly.GetTypes()
-                // Get all the serializers
+            Type[] serializerTypes;
+            try
+            {
+                serializerTypes = currentAssembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException e)
+            {
+                serializerTypes = e.Types.Where(t => t != null).ToArray();
+            }
+
+            //ICollection<Type> serializerTypes = new List<Type>();
+            //try
+            //{
+            //    serializerTypes = currentAssembly.GetTypes().Where(i => i != null && i.Assembly == currentAssembly).ToList();
+            //}
+            //catch (ReflectionTypeLoadException ex)
+            //{
+            //    foreach (Type theType in ex.Types)
+            //    {
+            //        try
+            //        {
+            //            if (theType != null && theType.Assembly == currentAssembly)
+            //                serializerTypes.Add(theType);
+            //        }
+            //        catch (BadImageFormatException)
+            //        {
+            //        }
+            //    }
+            //}
+
+            // Get all the serializers
+            var serializers = serializerTypes
                 .Where(t => t.GetInterface(typeof(IPnPSchemaSerializer).FullName) != null
                        && t.BaseType.Name == typeof(Xml.PnPBaseSchemaSerializer<>).Name)
                 // Filter out those that are not targeting the current schema version or that are not in scope Template

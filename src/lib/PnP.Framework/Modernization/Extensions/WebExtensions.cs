@@ -19,13 +19,18 @@ namespace Microsoft.SharePoint.Client
         /// <param name="web">Web to get the pages from</param>
         /// <param name="pageNameStartsWith">Filter to get all pages starting with</param>
         /// <param name="folder"></param>
-        /// <returns>A list of pages (ListItem intances)</returns>
+        /// <returns>A list of pages (ListItem instances)</returns>
         public static ListItemCollection GetPages(this Web web, string pageNameStartsWith = null, string folder = null)
         {
             // Get pages library
             ListCollection listCollection = web.Lists;
-            listCollection.EnsureProperties(coll => coll.Include(li => li.BaseTemplate, li => li.RootFolder));
-            var sitePagesLibrary = listCollection.Where(p => p.BaseTemplate == (int)ListTemplateType.WebPageLibrary).FirstOrDefault();
+            listCollection.EnsureProperties(coll => coll.Include(li => li.BaseTemplate, li => li.RootFolder, li => li.ListItemEntityTypeFullName));
+            var sitePagesLibrary = listCollection
+                .Where(p => p.BaseTemplate == (int)ListTemplateType.WebPageLibrary)
+                // Verify this is the "real" pages library, sites supporting Viva Connections have a second pages library (named Announcements) used to
+                // store Viva Connections announcements
+                .Where(p => p.IsPropertyAvailable(p => p.ListItemEntityTypeFullName) && p.ListItemEntityTypeFullName == "SP.Data.SitePagesItem")
+                .FirstOrDefault();
             if (sitePagesLibrary != null)
             {
                 CamlQuery query = null;
@@ -67,7 +72,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="webRelativeListName">Web relative URL of the list (e.g. SiteAssets)</param>
         /// <param name="pageNameStartsWith">Filter to get all pages starting with</param>
         /// <param name="folder">Folder to search in</param>
-        /// <returns>A list of pages (ListItem intances)</returns>
+        /// <returns>A list of pages (ListItem instances)</returns>
         public static ListItemCollection GetPagesFromList(this Web web, string webRelativeListName, string pageNameStartsWith = null, string folder = null)
         {
             // Load selected list
@@ -136,7 +141,7 @@ namespace Microsoft.SharePoint.Client
         /// <param name="webRelativeListName">Web relative URL of the blog list (e.g. Posts)</param>
         /// <param name="pageNameStartsWith">Filter to get all blogs starting with</param>
         /// <param name="folder">Folder to search in</param>
-        /// <returns>A list of pages (ListItem intances)</returns>
+        /// <returns>A list of pages (ListItem instances)</returns>
         public static ListItemCollection GetBlogsFromList(this Web web, string webRelativeListName, string pageNameStartsWith = null, string folder = null)
         {
             // Load selected list

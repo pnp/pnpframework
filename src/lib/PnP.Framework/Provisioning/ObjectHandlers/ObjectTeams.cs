@@ -48,6 +48,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             if (!string.IsNullOrWhiteSpace(team.CloneFrom))
             {
                 teamId = CloneTeam(scope, team, parser, accessToken, graphBaseUri);
+
+                // If security is configured, add the members and owners defined in the template to the Team
+                if (team.Security != null)
+                {
+                    if (!SetGroupSecurity(scope, parser, team, teamId, accessToken, graphBaseUri)) return null;
+                }
             }
             // If we start from an already existing Group
             else if (!string.IsNullOrEmpty(team.GroupId))
@@ -58,6 +64,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Check if the Group exists
                 if (GroupExistsById(scope, parsedGroupId, accessToken, graphBaseUri))
                 {
+                    // If security is configured, add the members and owners defined in the template to the Team
+                    if (team.Security != null)
+                    {
+                        if (!SetGroupSecurity(scope, parser, team, teamId, accessToken, graphBaseUri)) return null;
+                    }
+
                     // Then promote the Group into a Team or update it, if it already exists. Patching a team doesn't return an ID, so use the parsedGroupId directly (teamId and groupId are the same). 
                     teamId = CreateOrUpdateTeamFromGroup(scope, team, parser, parsedGroupId, accessToken, graphBaseUri) ?? parsedGroupId;
                 }
@@ -79,12 +91,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Wait to be sure that the Team is ready before configuring it
                 WaitForTeamToBeReady(accessToken, teamId, graphBaseUri);
 
-                // And now we configure security, channels, and apps
-                // Only configure Security, if Security is configured
-                if (team.Security != null)
-                {
-                    if (!SetGroupSecurity(scope, parser, team, teamId, accessToken, graphBaseUri)) return null;
-                }
                 if (!SetTeamApps(scope, parser, team, teamId, accessToken, graphBaseUri)) return null;
                 if (!SetTeamChannels(scope, parser, team, teamId, accessToken, graphBaseUri)) return null;
 
@@ -235,7 +241,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             // Check if the Group/Team already exists
             var alreadyExistingGroupId = GetGroupIdByMailNickname(scope, parsedMailNickname, accessToken, graphBaseUri);
 
-
             // If the Group already exists, we don't need to create it
             if (string.IsNullOrEmpty(alreadyExistingGroupId))
             {
@@ -360,6 +365,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 // Otherwise use the already existing Group ID
                 team.GroupId = alreadyExistingGroupId;
+            }
+
+            // If security is configured, add the members and owners defined in the template to the Team
+            // We need to add the owners and members at this point, because the Teamify will fail if the Group doesn't have any owner, which happens if this is run in an application (non delegate) context
+            if (team.Security != null)
+            {
+                if (!SetGroupSecurity(scope, parser, team, team.GroupId, accessToken, graphBaseUri)) return null;
             }
 
             // Then we Teamify the Group
@@ -656,7 +668,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="graphBaseUri">The Microsoft Graph URI to use</param>
         private static bool SetGroupSecurity(PnPMonitoredScope scope, TokenParser parser, Team team, string teamId, string accessToken, Uri graphBaseUri)
         {
-      
             SetAllowToAddGuestsSetting(scope, teamId, team.Security.AllowToAddGuests, accessToken, graphBaseUri);
 
             string[] desideredOwnerIds;

@@ -63,8 +63,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 try
                 {
                     ListCollection listCollection = web.Lists;
-                    listCollection.EnsureProperties(coll => coll.Include(li => li.BaseTemplate, li => li.RootFolder));
-                    sitePagesLibrary = listCollection.Where(p => p.BaseTemplate == (int)ListTemplateType.WebPageLibrary).FirstOrDefault();
+                    listCollection.EnsureProperties(coll => coll.Include(li => li.BaseTemplate, li => li.RootFolder, li => li.ListItemEntityTypeFullName));
+                    sitePagesLibrary = listCollection
+                        .Where(p => p.BaseTemplate == (int)ListTemplateType.WebPageLibrary)
+                        // Verify this is the "real" pages library, sites supporting Viva Connections have a second pages library (named Announcements) used to
+                        // store Viva Connections announcements
+                        .Where(p => p.IsPropertyAvailable(p => p.ListItemEntityTypeFullName) && p.ListItemEntityTypeFullName == "SP.Data.SitePagesItem")
+                        .FirstOrDefault();
                 }
                 catch
                 {

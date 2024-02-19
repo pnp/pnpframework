@@ -6,6 +6,38 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Added
+
+- Add ListDeletedUsers method to UsersUtility #956 [wilecoyotegenius - Konrad K.]
+
+### Changed
+
+- Add Site Collection App Catalog fields to BuilIinFieldId enum #952 [wilecoyotegenius - Konrad K.]
+- Upgrade to version 6.35.0 of System.IdentityModel.Tokens.Jwt #962 [eduardpaul - Eduard Paul]
+- Viva Announcement Library resulted in two pages libraries #975 [nils-a - Nils Andresen]
+- Fixed the GUID strings #969 [nils-a - Nils Andresen]
+
+## [1.14.0]
+
+### Added
+
+- Added Stream and XML option to load Tenant template #918 [koenzomers - Koen Zomers]
+- Implement adding labels to terms #934 [koskila - Antti K. Koskela]
+- Support for .NET 8.0 [jansenbe - Bert Jansen]
+
+### Changed
+
+- Added localization for modern audience fields #906 [nils-a - Nils Andresen]
+- Added support for setting TimeZoneId when creating a new site collection #907 [mmi-wp Mikkel Bukholt Mikkelsen]
+- Fixed non-taxonomy default folder values cause error when generating a provisioning template #915 [JakeStanger - Jake Stanger]
+- Removing the accents and unallowed characters when creating modern non group connected sites #922 [gautamdsheth - Gautam Sheth]
+- Added support for users utility in the other cloud environments #924 [gautamdsheth - Gautam Sheth]
+- Fixed occasional crash when setting default values #926 [JakeStanger - Jake Stanger]
+- Escape apostrophe in alias before calling DirectorySession/Group method #933 [magarma - Miguel Angel García Martínez]
+- Fixed unable to set column defaults on library root #947 [JakeStanger - Jake Stanger]
+
 ## [1.13.0]
 
 ### Added

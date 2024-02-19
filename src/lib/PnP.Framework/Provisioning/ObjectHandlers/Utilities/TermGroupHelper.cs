@@ -520,6 +520,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     createdTerm = ((Term)parent).ReuseTerm(preExistingTerm, false);
                 }
 
+                // Since reuseterm ignores the IsAvailableForTagging flag, we're going to ensure it will be set as it was provided in the model
+                createdTerm.IsAvailableForTagging = modelTerm.IsAvailableForTagging;
+
                 if (modelTerm.IsSourceTerm)
                 {
                     preExistingTerm.ReassignSourceTerm(createdTerm);

@@ -92,20 +92,9 @@
 <p>The following samples show how to work with Microsoft SharePoint using the PnP Framework.</p>
 <h2 id="using-the-polyglot-notebook-samples">Using the Polyglot Notebook samples</h2>
 <p>The PolyGlot samples provide working examples of how to interact with SharePoint, that can be ran against your Microsoft 365 tenant, written in C#.</p>
-<h3 id="settings-file">Settings File</h3>
-<p>To keep credentials away from the PolyGlot Notebooks, we have setup a seperate file to contain these, copy the <code>appsettings.sample.json</code> file to <code>appsettings.json</code> and update the values to match your environment.</p>
-<pre><code class="lang-json">{
-    &quot;azureAppId&quot;:&quot;&lt;app-id&gt;&quot;,
-    &quot;certificatePassword&quot;:&quot;&lt;cert-password&gt;&quot;,
-    &quot;certificatePath&quot;:&quot;C:\\temp\\PolyGlot\\pnpframework-polyglot.pfx&quot;,
-    &quot;azureTenantName&quot;:&quot;contoso.onmicrosoft.com&quot;
-}
-
-</code></pre>
-<p>You will need to create an Azure AD App Registration and generate a certificate, assign permissions to SharePoint within the app. For these notebooks, we have kept access to this for the time being.</p>
-<p><em>There is more coming on how to do this.</em></p>
 <h2 id="samples-available">Samples available</h2>
-<p>The simplest way to get to the notebooks, is to navigate to the GitHub repository, the following notebooks are available, to use these, you will need to <em>clone the repository</em> and open the notebooks in Visual Studio Code, using the <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode">Extension - PolyGlot Notebooks by Microsoft</a>.</p>
+<p>The simplest way to get to the notebooks, is to navigate to the GitHub repository, the following notebooks are available, to use these, you will need to <em>clone the repository</em> and open the notebooks and run within Visual Studio Code. To setup the notebooks, please see <a href="../setting-up-to-use-polyglot-samples.html">Setting up to run the Polyglot Notebooks</a></p>
+
 <p>Examples:</p>
 <ul>
 <li><a href="https://github.com/pnp/pnpframework/tree/dev/docs/notebooks/Getting-Started-with-PnP-Framework.ipynb">Getting Started with the PnP Framework | PolyGlot Notebook</a></li>

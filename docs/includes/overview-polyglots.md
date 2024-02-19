@@ -1,0 +1,1 @@
+The simplest way to get to the notebooks, is to navigate to the GitHub repository, the following notebooks are available, to use these, you will need to *clone the repository* and open the notebooks and run within Visual Studio Code. To setup the notebooks, please see [Setting up to run the Polyglot Notebooks](../using-the-framework/setting-up-to-use-polyglot-samples.md)

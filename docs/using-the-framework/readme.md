@@ -35,18 +35,13 @@ dotnet add package PnP.Framework --version 1.13.xx-nightly
 
 Each night these preview packages are refreshed, so you can always upgrade to the latest dev bits by upgrading your NuGet package to the latest version.
 
-## Using PolyGlot Notebooks
+## Samples use PolyGlot Notebooks
 
-The PolyGlot samples provide working examples of how to interact with SharePoint, that can be ran against your Microsoft 365 tenant, written in C#.
+The PolyGlot samples provide working examples of how to interact with SharePoint, that can be ran against your Microsoft 365 tenant, written in C# and runnable code - as an aid to understand and learning of how to use the PnP Framework.
 
+The simplest way to get working samples, is to check out the notebooks in our repo, please navigate to the [GitHub repository](https://github.com/pnp/pnpframework/tree/dev/docs/notebooks), the following notebooks are available, to use these, you will need to *clone the repository* and open the notebooks in Visual Studio Code, using the [Extension - PolyGlot Notebooks by Microsoft](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode).
 
-```dotnetcli
-#r "nuget: PnP.Framework, 1.13.xx-nightly"
-```
-
-
-The simplest way to get working samples, is to check out the notebooks, please navigate to the GitHub repository, the following notebooks are available, to use these, you will need to *clone the repository* and open the notebooks in Visual Studio Code, using the [Extension - PolyGlot Notebooks by Microsoft](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode).
-
+To get setup, please follow the instructions in the [Setting up to use Polyglot samples](setting-up-to-use-polyglot-samples.md) guide.
 
 Examples:
 
@@ -54,13 +49,12 @@ Examples:
 - [Getting Started with the PnP Provisioning | PolyGlot Notebook](https://github.com/pnp/pnpframework/tree/dev/docs/notebooks/Getting-Started-with-PnP-Provisioning.ipynb)
 
 
-> [!Note]
-> These are a work in progress to provider richer samples, but these take a while to write. If you have any suggestions or wish to contribute your examples, please raise an issue in the GitHub repository.
+_*Note: These are a work in progress to provider richer samples, but these take a while to write. If you have any suggestions or wish to contribute your examples, please raise an issue in the GitHub repository._
 
 If you feel samples should be present in the documentation, please [raise an issue in the GitHub repository](https://github.com/pnp/pnpframework/issues), and lets discuss your thoughts.
 
 
-## If you want to know how PnP Framework is build, here is the code?
+## If you want to know how PnP Framework is built, here is the code?
 
 The PnP Framework is maintained in the PnP GitHub repository: https://github.com/pnp/pnpframework. You'll find:
 

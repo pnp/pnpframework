@@ -99,6 +99,8 @@
 <h2 id="configuring-the-notebooks-for-your-tenant">Configuring the Notebooks for your tenant</h2>
 <p>The Polyglot Notebooks are designed to be run against your tenant, but you will need to configure these settings file to do this.</p>
 <h3 id="settings-file">Settings File</h3>
+<p>For these notebooks, we are using the PnP Framework to authenticate with SharePoint using the certificate. You will need to create an Azure AD App Registration and generate a certificate, assign permissions to SharePoint within the app.</p>
+<p>To setup the app quickly, we recommend using PnP PowerShell to create the app registration and certificate - <a href="https://pnp.github.io/powershell/articles/authentication.html">https://pnp.github.io/powershell/articles/authentication.html</a></p>
 <p>To keep credentials away from the PolyGlot Notebooks, we have setup a seperate file to contain these, copy the <code>appsettings.sample.json</code> file to <code>appsettings.json</code> and update the values to match your environment.</p>
 <pre><code class="lang-json">{
     &quot;azureAppId&quot;:&quot;&lt;app-id&gt;&quot;,
@@ -109,10 +111,24 @@
 }
 
 </code></pre>
-<p>You will need to create an Azure AD App Registration and generate a certificate, assign permissions to SharePoint within the app. For these notebooks, we have kept access to this for the time being.</p>
-<p><em>There is more coming on how to do this.</em></p>
+<p>Complete each variable in the <code>appsettings.json</code> file with the following values:</p>
+<ul>
+<li><strong>azureAppId</strong>: This variable represents the Azure AD App ID. You will need to create an Azure AD App Registration and obtain the App ID for your application.</li>
+<li><strong>certificatePassword</strong>: This variable represents the password for the certificate used by the Azure AD App Registration. You will need to generate a certificate and provide the corresponding password.</li>
+<li><strong>certificatePath</strong>: This variable represents the file path to the certificate used by the Azure AD App Registration. You will need to provide the correct file path where the certificate is located on your system.</li>
+<li><strong>azureTenantName</strong>: This variable represents the name of your Azure AD tenant. You will need to provide the name of your Azure AD tenant (e.g., contoso.onmicrosoft.com).</li>
+<li><strong>siteUrl</strong>: This variable represents the URL of your SharePoint site. You will need to provide the URL of your SharePoint site (e.g., <a href="https://contoso.sharepoint.com/sites/contoso">https://contoso.sharepoint.com/sites/contoso</a>).</li>
+</ul>
+<p>Make sure to replace app-id, cert-password, and other placeholder values with the actual values specific to your environment.</p>
 <h2 id="running-the-notebooks">Running the Notebooks</h2>
-<p>...</p>
+<p>Once you have configured the settings file, navigate to the <a href="https://github.com/pnp/pnpframework">PnP Framework | GitHub</a> repository, ensure you have setup a local version with git clone and open the <code>docs/notebooks</code> folder in Visual Studio Code. You will find some sample notebooks in this folder. Open the notebook you want to run and click the &quot;Run All Cells&quot; button to run the entire notebook. You can also run individual cells by clicking the &quot;Run Cell&quot; button.</p>
+<p><img src="../images/polyglot-running-screenshot.png" alt="Image of screenshot of Polyglot setup"></p>
+<p>Overtime these samples will grow and you can explore the framework, experiment and learn how to use the PnP Framework within your own projects.</p>
+<h2 id="updating-the-version-of-pnp-framework">Updating the version of PnP Framework</h2>
+<pre><code class="lang-dotnetcli">#r &quot;nuget: PnP.Framework, 1.13.xx-nightly&quot;
+</code></pre>
+<p>The code #r &quot;nuget: PnP.Framework, 1.13.xx-nightly&quot; is using the dotnetcli language specifier to specify a NuGet package reference in a .NET Interactive Notebook. It is referencing the PnP.Framework package with version 1.13.xx-nightly. This code is instructing the notebook to import the PnP.Framework package, making its functionality available for use in the notebook.</p>
+<p>This may not reflect the latest version of the PnP Framework, so you can update the version of the PnP Framework by changing the version number in the code. You can find the latest version of the PnP Framework on the <a href="https://www.nuget.org/packages/PnP.Framework">PnP.Framework Package | Nuget</a> page.</p>
 </article>
           </div>
           <div class="hidden-sm col-md-2" role="complementary">

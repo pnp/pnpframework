@@ -99,18 +99,50 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
 
                             WriteText("NB: Currently the documentation assumes you are using Content Types so it just shows the field refs", viewDetailsWriter);
                         }
-                        if (list.FieldRefs != null && list.FieldRefs.Count > 0)
-                        {
-                            WriteText("**Fields:**", detailsWriter);
-                        }
 
-                        foreach (var fieldRef in list.FieldRefs)
+                        if ((list.FieldRefs != null && list.FieldRefs.Count > 0) || (list.Fields != null && list.Fields.Count >0))
                         {
-                            var fieldDisplayName = fieldRef.DisplayName;
-                            var fieldName = fieldRef.Name;
+                            WriteHeader("Fields", 3, detailsWriter);
+                            detailsWriter.WriteLine($"| Field Name | Display Name | Site Column*/List Column | Type | Required? | Hidden? | Max Length | Read Only? | Unique Values? |");
+                            detailsWriter.WriteLine($"| :---------- | :------------: | :----------------------: | :----: | :--------: | :------: | :----------: | :---------: | :-------------: |");
 
-                            detailsWriter.WriteLine($"| {fieldDisplayName} | {fieldRef.Required.ToString()} | {fieldName} |");
+                            foreach (var fieldRef in list.FieldRefs)
+                            {
+                                var fieldDisplayName = fieldRef.DisplayName;
+                                var fieldName = fieldRef.Name;
+                                var fieldRequired = fieldRef.Required.ToString();
+
+                                detailsWriter.WriteLine($"{fieldName} | {fieldDisplayName} | Site Column* |  | {fieldRequired} |  |  |  |  |");
+
+                            }
+
+                            foreach (var field in list.Fields)
+                            {
+                                if (field.SchemaXml != null)
+                                {
+                                    var xmlField = XElement.Parse(field.SchemaXml);
+                                    var fieldName = xmlField.Attribute("Name").Value;
+                                    var fieldDisplayName = xmlField.Attribute("DisplayName").Value;
+                                    var fieldType = xmlField.Attribute("Type").Value;
+                                    var fieldRequired = xmlField.Attribute("Required").Value;
+
+                                    // These may or may not be set on the XML node
+                                    var fieldHidden = xmlField.Attribute("Hidden") != null ? xmlField.Attribute("Hidden").Value: "";
+                                    var fieldMaxLength = xmlField.Attribute("MaxLength") != null ? xmlField.Attribute("MaxLength").Value: "";
+                                    var fieldReadOnly = xmlField.Attribute("ReadOnly") != null ? xmlField.Attribute("ReadOnly").Value: "";
+                                    var fieldUniqueValues = xmlField.Attribute("EnforceUniqueValues") != null ? xmlField.Attribute("EnforceUniqueValues").Value: "";
+
+                                    detailsWriter.WriteLine($"{fieldName} | {fieldDisplayName} | List Column | {fieldType} | {fieldRequired} | {fieldHidden} | {fieldMaxLength} | {fieldReadOnly} | {fieldUniqueValues} |");
+                                }
+
+                            }
+
+                            if (list.FieldRefs != null && list.FieldRefs.Count > 0)
+                            {
+                                detailsWriter.WriteLine("\n \\* For site column information, refer to Fields section at site-level.", detailsWriter);
+                            }
                         }
+                        
                     }
                     writer.WriteLine(detailsWriter.ToString());
                     WriteNewLine(writer);

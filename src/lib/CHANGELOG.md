@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Upgrade to version 6.35.0 of System.IdentityModel.Tokens.Jwt #962 [eduardpaul - Eduard Paul]
 - Viva Announcement Library resulted in two pages libraries #975 [nils-a - Nils Andresen]
 - Fixed the GUID strings #969 [nils-a - Nils Andresen]
+- Improved list information in template MD conversion #989 [JGemkow - John Gemkow]
 
 ## [1.14.0]
 

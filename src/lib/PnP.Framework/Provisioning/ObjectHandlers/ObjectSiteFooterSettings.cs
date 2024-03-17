@@ -65,7 +65,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             if (!string.IsNullOrEmpty(titleNodeNodes[0].SimpleUrl))
                             {
-                                footer.Logo = Tokenize(titleNodeNodes[0].SimpleUrl, web.ServerRelativeUrl);
+                                footer.Logo = Tokenize(titleNodeNodes[0].SimpleUrl, web.Url);
                             }
                             if (!string.IsNullOrEmpty(titleNodeNodes[0].Title))
                             {
@@ -89,7 +89,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         var logoNode = menuState.Nodes.FirstOrDefault(n => n.Title == Constants.SITEFOOTER_LOGONODEKEY);
                         if (logoNode != null)
                         {
-                            footer.Logo = Tokenize(logoNode.SimpleUrl, web.ServerRelativeUrl);
+                            footer.Logo = Tokenize(logoNode.SimpleUrl, web.Url);
                         }
                     }
                 }
@@ -99,7 +99,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     foreach (var innerMenuNode in menuNodesNode.Nodes)
                     {
-                        footer.FooterLinks.Add(ParseNodes(innerMenuNode, template, web.ServerRelativeUrl, creationInfo.PersistMultiLanguageResources, defaultCulture, menuNodesNode.Key, creationInfo));
+                        footer.FooterLinks.Add(ParseNodes(innerMenuNode, template, web.Url, creationInfo.PersistMultiLanguageResources, defaultCulture, menuNodesNode.Key, creationInfo));
                     }
                 }
                 if (creationInfo.ExtractConfiguration != null && creationInfo.ExtractConfiguration.SiteFooter != null && creationInfo.ExtractConfiguration.SiteFooter.RemoveExistingNodes)
@@ -310,7 +310,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 destination.Write(buffer, 0, bytesRead);
             } while (bytesRead != 0);
         }
-        private SiteFooterLink ParseNodes(MenuNode node, ProvisioningTemplate template, string webServerRelativeUrl, bool persistLanguage, CultureInfo currentCulture, string parentKey, ProvisioningTemplateCreationInformation creationInfo)
+        private SiteFooterLink ParseNodes(MenuNode node, ProvisioningTemplate template, string webUrl, bool persistLanguage, CultureInfo currentCulture, string parentKey, ProvisioningTemplateCreationInformation creationInfo)
         {
             var link = new SiteFooterLink();
 
@@ -326,14 +326,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 link.DisplayName = node.Title;
             }
 
-            link.Url = Tokenize(node.SimpleUrl, webServerRelativeUrl);
+            link.Url = Tokenize(node.SimpleUrl, webUrl);
 
             if (node.Nodes.Count > 0)
             {
                 link.FooterLinks = new SiteFooterLinkCollection(template);
                 foreach (var childNode in node.Nodes)
                 {
-                    link.FooterLinks.Add(ParseNodes(childNode, template, webServerRelativeUrl, persistLanguage, currentCulture, node.Key, creationInfo));
+                    link.FooterLinks.Add(ParseNodes(childNode, template, webUrl, persistLanguage, currentCulture, node.Key, creationInfo));
                 }
             }
             return link;

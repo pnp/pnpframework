@@ -2,7 +2,7 @@
 {
     internal class ResourceEntry
     {
-        public uint LCID { get; set; }
+        public int LCID { get; set; }
         public string Value { get; set; }
     }
 }

@@ -1,8 +1,8 @@
-﻿using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -11,24 +11,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
     /// </summary>
     internal class SimpleTokenParser
     {
-        private List<SimpleTokenDefinition> _tokens;
+        private List<SimpleTokenDefinition> _tokens = new List<SimpleTokenDefinition>();
 
-        public SimpleTokenParser()
-        {
-            _tokens = new List<SimpleTokenDefinition>();
-        }
-
-        /// <summary>
-        /// List of token definitions
-        /// </summary>
-        public List<SimpleTokenDefinition> Tokens
-        {
-            get { return _tokens; }
-            private set
-            {
-                _tokens = value;
-            }
-        }
+        private readonly Dictionary<string, string> _tokenDictionary = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        
+        private static readonly Regex ReToken = new Regex(@"(?:(\{(?:\1??[^{]*?\})))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex ReTokenFallback = new Regex(@"\{.*?\}", RegexOptions.Compiled);
+        private static readonly Regex ReGuid = new Regex("(?<guid>\\{\\S{8}-\\S{4}-\\S{4}-\\S{4}-\\S{12}?\\})", RegexOptions.Compiled);
+        private static readonly char[] TokenChars = { '{', '~' };
 
         /// <summary>
         /// adds token definition
@@ -36,15 +26,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="tokenDefinition">A TokenDefinition object</param>
         public void AddToken(SimpleTokenDefinition tokenDefinition)
         {
-
             _tokens.Add(tokenDefinition);
-            // ORDER IS IMPORTANT!
-            var sortedTokens = from t in _tokens
-                               orderby t.GetTokenLength() descending
-                               select t;
+            AddToTokenCache(tokenDefinition);
 
-            _tokens = sortedTokens.ToList();
-            BuildTokenCache();
+            // ORDER IS IMPORTANT!
+            _tokens = _tokens.OrderByDescending(d => d.GetTokenLength()).ToList();
         }
 
         /// <summary>
@@ -57,50 +43,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return ParseString(input, null);
         }
 
-        static readonly Regex ReGuid = new Regex("(?<guid>\\{\\S{8}-\\S{4}-\\S{4}-\\S{4}-\\S{12}?\\})", RegexOptions.Compiled);
-        /// <summary>
-        /// Gets left over tokens
-        /// </summary>
-        /// <param name="input">input string</param>
-        /// <returns>Returns collections of left over tokens</returns>
-        public static IEnumerable<string> GetLeftOverTokens(string input)
-        {
-            List<string> values = new List<string>();
-            var matches = ReGuid.Matches(input).OfType<Match>().Select(m => m.Value);
-            foreach (var match in matches)
-            {
-                Guid gout;
-                if (!Guid.TryParse(match, out gout))
-                {
-                    values.Add(match);
-                }
-            }
-            return values;
-        }
-
-
-        private void BuildTokenCache()
-        {
-            foreach (var tokenDefinition in _tokens)
-            {
-                foreach (string token in tokenDefinition.GetTokens())
-                {
-                    var tokenKey = Regex.Unescape(token);
-                    if (TokenDictionary.ContainsKey(tokenKey)) continue;
-
-                    string value = tokenDefinition.GetReplaceValue();
-
-                    TokenDictionary[tokenKey] = value;
-                }
-            }
-        }
-
-        private static readonly Regex ReToken = new Regex(@"(?:(\{(?:\1??[^{]*?\})))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex ReTokenFallback = new Regex(@"\{.*?\}", RegexOptions.Compiled);
-
-        private static readonly char[] TokenChars = { '{', '~' };
-        private readonly Dictionary<string, string> TokenDictionary = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-
         /// <summary>
         /// Parses given string
         /// </summary>
@@ -109,14 +51,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <returns>Returns parsed string</returns>
         public string ParseString(string input, params string[] tokensToSkip)
         {
-            if (string.IsNullOrWhiteSpace(input)) return input;
-
-            if (string.IsNullOrEmpty(input) || input.IndexOfAny(TokenChars) == -1) return input;
-
-            BuildTokenCache();
+            if (string.IsNullOrWhiteSpace(input) || input.IndexOfAny(TokenChars) == -1)
+            {
+                return input;
+            }
 
             // Optimize for direct match with string search
-            if (TokenDictionary.TryGetValue(input, out string directMatch))
+            if (_tokenDictionary.TryGetValue(input, out string directMatch))
             {
                 return directMatch;
             }
@@ -130,60 +71,68 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 output = ReToken.Replace(output, match =>
                 {
                     string tokenString = match.Groups[0].Value;
-                    if (TokenDictionary.TryGetValue(tokenString, out string val))
+
+                    if (!_tokenDictionary.TryGetValue(tokenString, out string val))
                     {
-                        hasMatch = true;
-                        return val;
+                        return tokenString;
                     }
-                    return match.Groups[0].Value;
+
+                    hasMatch = true;
+                    return val;
                 });
             } while (hasMatch && input != output);
 
-            if (hasMatch) return output;
+            if (hasMatch)
+            {
+                return output;
+            }
 
             var fallbackMatches = ReTokenFallback.Matches(output);
-            if (fallbackMatches.Count == 0) return output;
+            if (fallbackMatches.Count == 0)
+            {
+                return output;
+            }
 
             // If all token constructs {...} are GUID's, we can skip the expensive fallback
             bool needFallback = false;
             foreach (Match match in fallbackMatches)
             {
-                if (!ReGuid.IsMatch(match.Value)) needFallback = true;
+                if (!ReGuid.IsMatch(match.Value))
+                {
+                    needFallback = true;
+                }
             }
 
-            if (!needFallback) return output;
+            if (!needFallback)
+            {
+                return output;
+            }
+
             // Fallback for tokens which may contain { or } as part of their name
-            foreach (var pair in TokenDictionary)
+            foreach (var pair in _tokenDictionary)
             {
                 int idx = output.IndexOf(pair.Key, StringComparison.CurrentCultureIgnoreCase);
                 if (idx != -1)
                 {
                     output = output.Remove(idx, pair.Key.Length).Insert(idx, pair.Value);
                 }
-                if (!ReTokenFallback.IsMatch(output)) break;
+
+                if (!ReTokenFallback.IsMatch(output))
+                {
+                    break;
+                }
             }
+
             return output;
         }
 
-        internal void RemoveToken<T>(T oldToken) where T : TokenDefinition
+        private void AddToTokenCache(SimpleTokenDefinition definition)
         {
-            for (int i = 0; i < _tokens.Count; i++)
+            IReadOnlyList<string> tokens = definition.GetUnescapedTokens();
+            for (var index = 0; index < tokens.Count; index++)
             {
-                var tokenDefinition = _tokens[i];
-                if (tokenDefinition.GetTokens().SequenceEqual(oldToken.GetTokens()))
-                {
-                    _tokens.RemoveAt(i);
-
-                    foreach (string token in tokenDefinition.GetTokens())
-                    {
-                        var tokenKey = Regex.Unescape(token);
-                        TokenDictionary.Remove(tokenKey);
-                    }
-
-                    break;
-                }
+                _tokenDictionary[tokens[index]] = definition.GetReplaceValue();
             }
         }
     }
 }
-

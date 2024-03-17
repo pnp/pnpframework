@@ -267,7 +267,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                 }
 
-                IEnumerable<AssociatedGroupToken> associatedGroupTokens = parser.Tokens.Where(t => t.GetType() == typeof(AssociatedGroupToken)).Cast<AssociatedGroupToken>();
+                IEnumerable<AssociatedGroupToken> associatedGroupTokens = parser.Tokens.OfType<AssociatedGroupToken>();
                 foreach (AssociatedGroupToken associatedGroupToken in associatedGroupTokens)
                 {
                     associatedGroupToken.ClearCache();

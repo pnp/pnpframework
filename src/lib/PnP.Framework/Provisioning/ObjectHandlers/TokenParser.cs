@@ -1,4 +1,10 @@
-﻿using Microsoft.Online.SharePoint.TenantAdministration;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
+using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using Newtonsoft.Json;
@@ -9,14 +15,6 @@ using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using PnP.Framework.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Xml.Linq;
-//using System.Web.UI.WebControls.WebParts;
-//using System.Web.UI.WebControls;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -25,11 +23,25 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
     /// </summary>
     public class TokenParser : ICloneable
     {
-        public Web _web;
-
+        private Web _web;
         private List<TokenDefinition> _tokens;
+        private Dictionary<string, string> _tokenDictionary;
+        private Dictionary<string, TokenDefinition> _nonCacheableTokenDictionary;
+        private Dictionary<string, TokenDefinition> _listTokenDictionary;
+        private readonly Dictionary<string, string> _listsTitles = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         private readonly bool _initializedFromHierarchy;
+        private readonly Action<TokenDefinition> _addTokenWithCacheUpdateDelegate;
+        private readonly Action<TokenDefinition> _addTokenToListDelegate;
+
+        // First group supports tokens in form '{param:value}' , second group supports nested parameters in form '{param:{xxx..'
+        private static readonly Regex ReToken = new Regex(@"(?:(\{(?:\1??[^{]*?\})))|(?:(\{(?:\1??[^{]*?:)))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex ReTokenFallback = new Regex(@"\{.*?\}", RegexOptions.Compiled);
+        private static readonly Regex ReGuid = new Regex("(?<guid>\\{\\S{8}-\\S{4}-\\S{4}-\\S{4}-\\S{12}?\\})", RegexOptions.Compiled);
+        private static readonly char[] InternalTokenDelimiters = { ':' };
+        private static readonly char[] TokenChars = { '{', '~' };
+        private static readonly char[] TokenBoundaryChars = { '{', '}' };
+        private static readonly char[] UrlSeparators = { '/' };
 
         /// <summary>
         /// List of token definitions
@@ -49,14 +61,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="tokenDefinition">A TokenDefinition object</param>
         public void AddToken(TokenDefinition tokenDefinition)
         {
-            _tokens.Add(tokenDefinition);
-            // ORDER IS IMPORTANT!
-            var sortedTokens = from t in _tokens
-                               orderby t.GetTokenLength() descending
-                               select t;
-
-            _tokens = sortedTokens.ToList();
-            BuildTokenCache();
+            AddTokenWithCacheUpdate(tokenDefinition);
         }
 
         // Lightweight rebase
@@ -67,46 +72,58 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 token.ClearCache();
             }
         }
+
         // Heavy rebase for switching templates
         public void Rebase(Web web, ProvisioningTemplate template, ProvisioningTemplateApplyingInformation applyingInformation = null)
         {
             var tokenIds = ParseTemplate(template);
             _web = web;
 
-            foreach (var token in _tokens.Where(t => t is VolatileTokenDefinition))
+            foreach (var token in _tokens.OfType<VolatileTokenDefinition>())
             {
-                ((VolatileTokenDefinition)token).ClearVolatileCache(web);
+                token.ClearVolatileCache(web);
             }
-            _tokens.RemoveAll(t => t is SiteToken);
 
+            _tokens.RemoveAll(t => t is SiteToken);
             _tokens.Add(new SiteToken(web));
 
             // remove list tokens
-            if (tokenIds.Contains("listid") || tokenIds.Contains("listurl") || tokenIds.Contains("viewid") || tokenIds.Contains("listcontenttypeid"))
+            if (tokenIds.Contains("listid")
+                || tokenIds.Contains("listurl")
+                || tokenIds.Contains("viewid")
+                || tokenIds.Contains("listcontenttypeid"))
             {
-                RebuildListTokens(web);
+                RebuildListTokens(web, _addTokenToListDelegate);
             }
+
             // remove content type tokens
             if (tokenIds.Contains("contenttypeid"))
                 AddContentTypeTokens(web);
+
             // remove field tokens
             if (tokenIds.Contains("fieldid"))
             {
                 _tokens.RemoveAll(t => t is FieldTitleToken || t is FieldIdToken);
                 AddFieldTokens(web);
             }
+
             // remove group tokens
-            if (tokenIds.Contains("groupid") || tokenIds.FirstOrDefault(t => t.StartsWith("associated")) != null)
+            if (tokenIds.Contains("groupid")
+                || tokenIds.FindIndex(t => t.StartsWith("associated", StringComparison.OrdinalIgnoreCase)) > -1)
             {
                 _tokens.RemoveAll(t => t is GroupIdToken || t is AssociatedGroupToken);
-                AddGroupTokens(web, applyingInformation);
+                AddGroupTokens(web);
             }
+
             // remove role definition tokens
             if (tokenIds.Contains("roledefinition"))
             {
                 _tokens.RemoveAll(t => t is RoleDefinitionToken || t is RoleDefinitionIdToken);
                 AddRoleDefinitionTokens(web);
             }
+
+            CalculateTokenCount(_tokens, out int cacheableCount, out int nonCacheableCount);
+            BuildTokenCache(cacheableCount, nonCacheableCount);
         }
 
         /// <summary>
@@ -118,36 +135,46 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             _web = web;
             _tokens = tokens;
+            _addTokenWithCacheUpdateDelegate = AddTokenWithCacheUpdate;
+            _addTokenToListDelegate = AddTokenToList;
+
+            CalculateTokenCount(_tokens, out int cacheableCount, out int nonCacheableCount);
+            BuildTokenCache(cacheableCount, nonCacheableCount);
         }
 
-        public TokenParser(Tenant tenant, Model.ProvisioningHierarchy hierarchy) :
+        public TokenParser(Tenant tenant, ProvisioningHierarchy hierarchy) :
             this(tenant, hierarchy, null)
         {
         }
 
-        public TokenParser(Tenant tenant, Model.ProvisioningHierarchy hierarchy, ProvisioningTemplateApplyingInformation applyingInformation)
+        public TokenParser(Tenant tenant, ProvisioningHierarchy hierarchy, ProvisioningTemplateApplyingInformation applyingInformation)
         {
-            // CHANGED: To avoid issues with low privilege users
-            Web web = null;
+            _addTokenWithCacheUpdateDelegate = AddTokenWithCacheUpdate;
+            _addTokenToListDelegate = AddTokenToList;
 
+            // CHANGED: To avoid issues with low privilege users
+            Web web;
             if (TenantExtensions.IsCurrentUserTenantAdmin((ClientContext)tenant.Context))
             {
                 web = ((ClientContext)tenant.Context).Web;
             }
             else
             {
-                var rootSiteUrl = tenant.Context.Url.Replace("-admin", "");
+                var rootSiteUrl = tenant.Context.Url.Replace("-admin", string.Empty);
                 var context = ((ClientContext)tenant.Context).Clone(rootSiteUrl);
                 web = context.Web;
             }
 
             web.EnsureProperties(w => w.ServerRelativeUrl, w => w.Url, w => w.Language);
+
             _web = web;
             _tokens = new List<TokenDefinition>();
-            foreach (var parameter in hierarchy.Parameters)
+
+            foreach (KeyValuePair<string, string> parameter in hierarchy.Parameters)
             {
                 _tokens.Add(new ParameterToken(null, parameter.Key, parameter.Value ?? string.Empty));
             }
+
             _tokens.Add(new GuidToken(null));
             _tokens.Add(new CurrentUserIdToken(web));
             _tokens.Add(new CurrentUserLoginNameToken(web));
@@ -155,7 +182,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             _tokens.Add(new AuthenticationRealmToken(web));
             _tokens.Add(new HostUrlToken(web));
             _tokens.Add(new FqdnToken(web));
+
             AddResourceTokens(web, hierarchy.Localizations, hierarchy.Connector);
+
+            CalculateTokenCount(_tokens, out int cacheableCount, out int nonCacheableCount);
+            BuildTokenCache(cacheableCount, nonCacheableCount);
+
             _initializedFromHierarchy = true;
         }
 
@@ -182,8 +214,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             web.EnsureProperties(w => w.ServerRelativeUrl, w => w.Url, w => w.Language);
 
             _web = web;
-
             _tokens = new List<TokenDefinition>();
+            _addTokenWithCacheUpdateDelegate = AddTokenWithCacheUpdate;
+            _addTokenToListDelegate = AddTokenToList;
 
             if (tokenIds.Contains("sitecollection"))
                 _tokens.Add(new SiteCollectionToken(web));
@@ -249,22 +282,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 _tokens.Add(new EveryoneButExternalUsersToken(web));
 
             if (tokenIds.Contains("listid") || tokenIds.Contains("listurl") || tokenIds.Contains("viewid"))
-                RebuildListTokens(web);
+                RebuildListTokens(web, _addTokenToListDelegate);
             if (tokenIds.Contains("contenttypeid"))
                 AddContentTypeTokens(web);
 
-            if (!_initializedFromHierarchy)
+            if (!_initializedFromHierarchy && tokenIds.Contains("parameter"))
             {
-                if (tokenIds.Contains("parameter"))
+                // Add parameters
+                foreach (var parameter in template.Parameters)
                 {
-                    // Add parameters
-                    foreach (var parameter in template.Parameters)
-                    {
-                        _tokens.Add(new ParameterToken(web, parameter.Key, parameter.Value ?? string.Empty));
-                    }
+                    _tokens.Add(new ParameterToken(web, parameter.Key, parameter.Value ?? string.Empty));
                 }
             }
-
 
             if (tokenIds.Contains("sitedesignid"))
                 AddSiteDesignTokens(web, applyingInformation);
@@ -287,108 +316,110 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             // Groups
             if (tokenIds.Contains("groupid"))
-                AddGroupTokens(web, applyingInformation);
+                AddGroupTokens(web);
 
             // AppPackages tokens
             if (tokenIds.Contains("apppackageid"))
                 AddAppPackagesTokens(web);
             if (tokenIds.Contains("pageuniqueid"))
-                AddPageUniqueIdTokens(web, applyingInformation);
+                AddPageUniqueIdTokens(web);
             if (tokenIds.Contains("propertybagvalue"))
                 AddPropertyBagTokens(web);
 
             // TermStore related tokens
             AddTermStoreTokens(web, tokenIds);
 
-            var sortedTokens = from t in _tokens
-                               orderby t.GetTokenLength() descending
-                               select t;
-
-            _tokens = sortedTokens.ToList();
+            CalculateTokenCount(_tokens, out int cacheableCount, out int nonCacheableCount);
+            BuildTokenCache(cacheableCount, nonCacheableCount);
         }
 
         private void AddResourceTokens(Web web, LocalizationCollection localizations, FileConnectorBase connector)
         {
-
-            if (localizations != null && localizations.Any())
+            if (localizations == null || localizations.Count == 0)
             {
-                if (connector == null)
-                {
-                    throw new ArgumentNullException(nameof(connector), "Template or Hierarchy File Connector cannot be null");
-                }
+                return;
+            }
 
-                //https://github.com/SharePoint/PnP-Provisioning-Schema/issues/301
-                //fixing issue to allow multiple resx files in the template. i.e:
-                //<pnp:Localization LCID="1033" Name="core" ResourceFile="core.en-us.resx" />
-                //<pnp:Localization LCID="3082" Name="core" ResourceFile="core.es-es.resx" />
-                //<pnp:Localization LCID="1033" Name="intranet" ResourceFile="intranet.en-us.resx" />
-                //<pnp:Localization LCID="3082" Name="intranet" ResourceFile="intranet.es-es.resx" />
-                var resourcesFilesCount = localizations.GroupBy(l => l.Name).Count();
+            if (connector == null)
+            {
+                throw new ArgumentNullException(nameof(connector), "Template or Hierarchy File Connector cannot be null");
+            }
 
-                // Read all resource keys in a list
-                List<Tuple<string, uint, string>> resourceEntries = new List<Tuple<string, uint, string>>();
-                foreach (var localizationEntry in localizations)
+            //https://github.com/SharePoint/PnP-Provisioning-Schema/issues/301
+            //fixing issue to allow multiple resx files in the template. i.e:
+            //<pnp:Localization LCID="1033" Name="core" ResourceFile="core.en-us.resx" />
+            //<pnp:Localization LCID="3082" Name="core" ResourceFile="core.es-es.resx" />
+            //<pnp:Localization LCID="1033" Name="intranet" ResourceFile="intranet.en-us.resx" />
+            //<pnp:Localization LCID="3082" Name="intranet" ResourceFile="intranet.es-es.resx" />
+
+            var resourceEntries = new Dictionary<string, List<ResourceEntry>>(StringComparer.InvariantCulture);
+
+            foreach (var localizationEntry in localizations)
+            {
+                string filePath = localizationEntry.ResourceFile;
+                int lcid = localizationEntry.LCID;
+
+                if (filePath.EndsWith(".resx", StringComparison.OrdinalIgnoreCase))
                 {
-                    var filePath = localizationEntry.ResourceFile;
-                    if (filePath.ToLower().EndsWith(".resx"))
+                    using (var stream = connector.GetFileStream(filePath))
                     {
-                        using (var stream = connector.GetFileStream(filePath))
+                        if (stream == null)
                         {
-                            if (stream != null)
-                            {
-                                // Use raw XML approach as the .Net Framework resxreader seems to choke on some resx files 
-                                // TODO: research this!
-                                var xElement = XElement.Load(stream);
-                                foreach (var dataElement in xElement.Descendants("data"))
-                                {
-                                    var key = dataElement.Attribute("name").Value;
-                                    var value = dataElement.Descendants().First().Value;
-                                    resourceEntries.Add(new Tuple<string, uint, string>($"{localizationEntry.Name}:{key}", (uint)localizationEntry.LCID, value.ToString().Replace("\"", "&quot;")));
-                                    resourceEntries.Add(new Tuple<string, uint, string>(key.ToString(), (uint)localizationEntry.LCID, value.ToString().Replace("\"", "&quot;")));
-                                }
+                            continue;
+                        }
 
-                                /*
-                                // are we talking a resx file or a json file?
-                                if (filePath.ToLower().EndsWith(".resx"))
+                        // Use raw XML approach as the .Net Framework resxreader seems to choke on some resx files 
+                        // TODO: research this!
+
+                        var xElement = XElement.Load(stream);
+                        foreach (var dataElement in xElement.Descendants("data"))
+                        {
+                            var key = dataElement.Attribute("name").Value;
+                            var value = dataElement.Descendants().First().Value;
+                            string escapedValue = value.Replace("\"", "&quot;");
+
+                            AddResourceEntry($"{localizationEntry.Name}:{key}", lcid, escapedValue, resourceEntries);
+                            AddResourceEntry(key, lcid, escapedValue, resourceEntries);
+                        }
+
+                        /*
+                            using (ResXResourceReader resxReader = new ResXResourceReader(stream))
+                            {
+                                foreach (DictionaryEntry entry in resxReader)
                                 {
-                                    using (ResXResourceReader resxReader = new ResXResourceReader(stream))
-                                    {
-                                        foreach (DictionaryEntry entry in resxReader)
-                                        {
-                                            // One can have multiple resource files in a single file, by adding tokens with resource file name and without we allow both scenarios to resolve
-                                            resourceEntries.Add(new Tuple<string, uint, string>($"{localizationEntry.Name}:{entry.Key}", (uint)localizationEntry.LCID, entry.Value.ToString().Replace("\"", "&quot;")));
-                                            resourceEntries.Add(new Tuple<string, uint, string>(entry.Key.ToString(), (uint)localizationEntry.LCID, entry.Value.ToString().Replace("\"", "&quot;")));
-                                        }
-                                    }
+                                    // One can have multiple resource files in a single file, by adding tokens with resource file name and without we allow both scenarios to resolve
+                                    resourceEntries.Add(new Tuple<string, uint, string>($"{localizationEntry.Name}:{entry.Key}", (uint)localizationEntry.LCID, entry.Value.ToString().Replace("\"", "&quot;")));
+                                    resourceEntries.Add(new Tuple<string, uint, string>(entry.Key.ToString(), (uint)localizationEntry.LCID, entry.Value.ToString().Replace("\"", "&quot;")));
                                 }
+                            }
                                 */
-                            }
-                        }
-                    }
-                    else if (filePath.ToLower().EndsWith(".json"))
-                    {
-                        var jsonString = connector.GetFile(filePath);
-                        if (!string.IsNullOrEmpty(jsonString))
-                        {
-                            var dict = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(jsonString);
-                            foreach (var entry in dict)
-                            {
-                                resourceEntries.Add(new Tuple<string, uint, string>($"{localizationEntry.Name}:{entry.Key}", (uint)localizationEntry.LCID, entry.Value.ToString().Replace("\"", "&quot;")));
-                                resourceEntries.Add(new Tuple<string, uint, string>(entry.Key.ToString(), (uint)localizationEntry.LCID, entry.Value.ToString().Replace("\"", "&quot;")));
-                            }
-                        }
                     }
                 }
-
-                var uniqueKeys = resourceEntries.Select(k => k.Item1).Distinct();
-                foreach (var key in uniqueKeys)
+                else if (filePath.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
                 {
-                    var matches = resourceEntries.Where(k => k.Item1 == key);
-                    var entries = matches.Select(k => new ResourceEntry() { LCID = k.Item2, Value = k.Item3 }).ToList();
-                    LocalizationToken token = new LocalizationToken(web, key, entries, localizations.DefaultLCID);
+                    var jsonString = connector.GetFile(filePath);
+                    if (string.IsNullOrEmpty(jsonString))
+                    {
+                        continue;
+                    }
 
-                    _tokens.Add(token);
+                    var dict = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(jsonString);
+                    foreach (KeyValuePair<string, string> entry in dict)
+                    {
+                        string escapedValue = entry.Value.Replace("\"", "&quot;");
+
+                        AddResourceEntry($"{localizationEntry.Name}:{entry.Key}", lcid, escapedValue, resourceEntries);
+                        AddResourceEntry(entry.Key, lcid, escapedValue, resourceEntries);
+                    }
                 }
+            }
+
+            // Ensure an additional capacity of at least the amount of tokens we want to add.
+            _tokens.Capacity = _tokens.Count + resourceEntries.Count + 1;
+
+            foreach (KeyValuePair<string, List<ResourceEntry>> pair in resourceEntries)
+            {
+                _tokens.Add(new LocalizationToken(web, pair.Key, pair.Value, localizations.DefaultLCID));
             }
         }
 
@@ -398,8 +429,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             // Add all the site columns
             var fields = web.AvailableFields;
+
             web.Context.Load(fields, flds => flds.Include(f => f.Title, f => f.InternalName, f => f.Id));
             web.Context.ExecuteQueryRetry();
+
             foreach (var field in fields)
             {
                 _tokens.Add(new FieldTitleToken(web, field.InternalName, field.Title));
@@ -436,10 +469,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private void AddRoleDefinitionTokens(Web web)
         {
             web.EnsureProperty(w => w.RoleDefinitions.Include(r => r.RoleTypeKind, r => r.Name, r => r.Id));
+
             foreach (var roleDef in web.RoleDefinitions.AsEnumerable().Where(r => r.RoleTypeKind != RoleType.None))
             {
                 _tokens.Add(new RoleDefinitionToken(web, roleDef));
             }
+
             foreach (var roleDef in web.RoleDefinitions)
             {
                 _tokens.Add(new RoleDefinitionIdToken(web, roleDef.Name, roleDef.Id));
@@ -456,13 +491,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private void AddGroupTokens(Web web, ProvisioningTemplateApplyingInformation applyingInformation)
+        private void AddGroupTokens(Web web)
         {
             web.EnsureProperty(w => w.SiteGroups.Include(g => g.Title, g => g.Id));
+
             foreach (var siteGroup in web.SiteGroups)
             {
                 _tokens.Add(new GroupIdToken(web, siteGroup.Title, siteGroup.Id.ToString()));
             }
+
             web.EnsureProperty(w => w.AssociatedVisitorGroup).EnsureProperties(g => g.Id, g => g.Title);
             web.EnsureProperty(w => w.AssociatedMemberGroup).EnsureProperties(g => g.Id, g => g.Title);
             web.EnsureProperty(w => w.AssociatedOwnerGroup).EnsureProperties(g => g.Id, g => g.Title);
@@ -471,118 +508,135 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 _tokens.Add(new GroupIdToken(web, "associatedvisitorgroup", web.AssociatedVisitorGroup.Id.ToString()));
             }
+
             if (!web.AssociatedMemberGroup.ServerObjectIsNull.Value)
             {
                 _tokens.Add(new GroupIdToken(web, "associatedmembergroup", web.AssociatedMemberGroup.Id.ToString()));
             }
+
             if (!web.AssociatedOwnerGroup.ServerObjectIsNull.Value)
             {
                 _tokens.Add(new GroupIdToken(web, "associatedownergroup", web.AssociatedOwnerGroup.Id.ToString()));
             }
 
-            string accessToken = null;
-
-            if (PnPProvisioningContext.Current?.AcquireTokenAsync != null)
+            if (PnPProvisioningContext.Current?.AcquireTokenAsync == null)
             {
-                var microsoftGraphBaseUri = AuthenticationManager.GetGraphBaseEndPoint(web.Context.GetAzureEnvironment());
+                return;
+            }
 
-                accessToken = PnPProvisioningContext.Current.AcquireToken(microsoftGraphBaseUri.Authority, "Group.Read.All");
-                if (!string.IsNullOrEmpty(accessToken))
+            var microsoftGraphBaseUri = AuthenticationManager.GetGraphBaseEndPoint(web.Context.GetAzureEnvironment());
+
+            var accessToken = PnPProvisioningContext.Current.AcquireToken(microsoftGraphBaseUri.Authority, "Group.Read.All");
+            if (string.IsNullOrEmpty(accessToken))
+            {
+                return;
+            }
+
+            try
+            {
+                // Get Office 365 Groups
+                var officeGroups = UnifiedGroupsUtility.GetUnifiedGroups(accessToken, includeSite: false);
+                foreach (var group in officeGroups)
                 {
-                    try
+                    _tokens.Add(new O365GroupIdToken(web, group.DisplayName, group.GroupId));
+                    if (!group.DisplayName.Equals(group.MailNickname))
                     {
-                        // Get Office 365 Groups
-                        var officeGroups = UnifiedGroupsUtility.GetUnifiedGroups(accessToken, includeSite: false);
-                        foreach (var group in officeGroups)
-                        {
-                            _tokens.Add(new O365GroupIdToken(web, group.DisplayName, group.GroupId));
-                            if (!group.DisplayName.Equals(group.MailNickname))
-                            {
-                                _tokens.Add(new O365GroupIdToken(web, group.MailNickname, group.GroupId));
-                            }
-                        }
-                    }
-                    catch (Microsoft.Graph.ServiceException ex)
-                    {
-                        // If we don't have permission to access the O365 groups, just skip it
-                        Log.Warning(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                        _tokens.Add(new O365GroupIdToken(web, group.MailNickname, group.GroupId));
                     }
                 }
+            }
+            catch (Microsoft.Graph.ServiceException ex)
+            {
+                // If we don't have permission to access the O365 groups, just skip it
+                Log.Warning(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
             }
         }
 
         private void AddTermStoreTokens(Web web, List<string> tokenIds)
         {
-            if (tokenIds.Contains("termstoreid") || tokenIds.Contains("termsetid") || tokenIds.Contains("sitecollectiontermgroupid") || tokenIds.Contains("sitecollectiontermgroupname") || tokenIds.Contains("sitecollectiontermsetid"))
+            if (!tokenIds.Contains("termstoreid")
+                && !tokenIds.Contains("termsetid")
+                && !tokenIds.Contains("sitecollectiontermgroupid")
+                && !tokenIds.Contains("sitecollectiontermgroupname")
+                && !tokenIds.Contains("sitecollectiontermsetid"))
             {
-                TaxonomySession session = TaxonomySession.GetTaxonomySession(web.Context);
+                return;
+            }
 
-                if (tokenIds.Contains("termstoreid"))
+            TaxonomySession session = TaxonomySession.GetTaxonomySession(web.Context);
+
+            if (tokenIds.Contains("termstoreid"))
+            {
+                var termStores = session.EnsureProperty(s => s.TermStores);
+                foreach (var ts in termStores)
                 {
-                    var termStores = session.EnsureProperty(s => s.TermStores);
-                    foreach (var ts in termStores)
+                    _tokens.Add(new TermStoreIdToken(web, ts.Name, ts.Id));
+                }
+            }
+
+            var termStore = session.GetDefaultSiteCollectionTermStore();
+            web.Context.Load(termStore);
+            web.Context.ExecuteQueryRetry();
+
+            if (tokenIds.Contains("termsetid"))
+            {
+                if (!termStore.ServerObjectIsNull.Value)
+                {
+                    web.Context.Load(termStore.Groups,
+                        g => g.Include(
+                            tg => tg.Name,
+                            tg => tg.TermSets.Include(
+                                ts => ts.Name,
+                                ts => ts.Id)
+                        ));
+                    web.Context.ExecuteQueryRetry();
+
+                    foreach (var termGroup in termStore.Groups)
                     {
-                        _tokens.Add(new TermStoreIdToken(web, ts.Name, ts.Id));
+                        foreach (var termSet in termGroup.TermSets)
+                        {
+                            _tokens.Add(new TermSetIdToken(web, termGroup.Name, termSet.Name, termSet.Id));
+                        }
                     }
                 }
-                var termStore = session.GetDefaultSiteCollectionTermStore();
-                web.Context.Load(termStore);
+            }
+
+            if (tokenIds.Contains("sitecollectiontermgroupid"))
+                _tokens.Add(new SiteCollectionTermGroupIdToken(web));
+
+            if (tokenIds.Contains("sitecollectiontermgroupname"))
+                _tokens.Add(new SiteCollectionTermGroupNameToken(web));
+
+            if (!tokenIds.Contains("sitecollectiontermsetid"))
+            {
+                return;
+            }
+
+            var site = (web.Context as ClientContext).Site;
+            var siteCollectionTermGroup = termStore.GetSiteCollectionGroup(site, true);
+            web.Context.Load(siteCollectionTermGroup);
+
+            try
+            {
                 web.Context.ExecuteQueryRetry();
-                if (tokenIds.Contains("termsetid"))
+                if (null != siteCollectionTermGroup && !siteCollectionTermGroup.ServerObjectIsNull.Value)
                 {
-                    if (!termStore.ServerObjectIsNull.Value)
+                    web.Context.Load(siteCollectionTermGroup, group => group.TermSets.Include(ts => ts.Name, ts => ts.Id));
+                    web.Context.ExecuteQueryRetry();
+                    foreach (var termSet in siteCollectionTermGroup.TermSets)
                     {
-                        web.Context.Load(termStore.Groups,
-                            g => g.Include(
-                                tg => tg.Name,
-                                tg => tg.TermSets.Include(
-                                    ts => ts.Name,
-                                    ts => ts.Id)
-                            ));
-                        web.Context.ExecuteQueryRetry();
-                        foreach (var termGroup in termStore.Groups)
-                        {
-                            foreach (var termSet in termGroup.TermSets)
-                            {
-                                _tokens.Add(new TermSetIdToken(web, termGroup.Name, termSet.Name, termSet.Id));
-                            }
-                        }
+                        _tokens.Add(new SiteCollectionTermSetIdToken(web, termSet.Name, termSet.Id));
                     }
                 }
-
-                if (tokenIds.Contains("sitecollectiontermgroupid"))
-                    _tokens.Add(new SiteCollectionTermGroupIdToken(web));
-                if (tokenIds.Contains("sitecollectiontermgroupname"))
-                    _tokens.Add(new SiteCollectionTermGroupNameToken(web));
-
-                if (tokenIds.Contains("sitecollectiontermsetid"))
-                {
-                    var site = (web.Context as ClientContext).Site;
-                    var siteCollectionTermGroup = termStore.GetSiteCollectionGroup(site, true);
-                    web.Context.Load(siteCollectionTermGroup);
-                    try
-                    {
-                        web.Context.ExecuteQueryRetry();
-                        if (null != siteCollectionTermGroup && !siteCollectionTermGroup.ServerObjectIsNull.Value)
-                        {
-                            web.Context.Load(siteCollectionTermGroup, group => group.TermSets.Include(ts => ts.Name, ts => ts.Id));
-                            web.Context.ExecuteQueryRetry();
-                            foreach (var termSet in siteCollectionTermGroup.TermSets)
-                            {
-                                _tokens.Add(new SiteCollectionTermSetIdToken(web, termSet.Name, termSet.Id));
-                            }
-                        }
-                    }
-                    catch (ServerUnauthorizedAccessException)
-                    {
-                        // If we don't have permission to access the TermGroup, just skip it
-                        Log.Warning(Constants.LOGGING_SOURCE, CoreResources.TermGroup_No_Access);
-                    }
-                    catch (NullReferenceException)
-                    {
-                        // If there isn't a default TermGroup for the Site Collection, we skip the terms in token handler
-                    }
-                }
+            }
+            catch (ServerUnauthorizedAccessException)
+            {
+                // If we don't have permission to access the TermGroup, just skip it
+                Log.Warning(Constants.LOGGING_SOURCE, CoreResources.TermGroup_No_Access);
+            }
+            catch (NullReferenceException)
+            {
+                // If there isn't a default TermGroup for the Site Collection, we skip the terms in token handler
             }
         }
 
@@ -645,22 +699,26 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private static List<StorageEntity> ParseStorageEntitiesString(string storageEntitiesIndex)
         {
             var storageEntitiesDict = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(storageEntitiesIndex);
-
-            var storageEntities = new List<StorageEntity>();
-            if (storageEntitiesDict != null)
+            if (storageEntitiesDict == null)
             {
-                foreach (var key in storageEntitiesDict.Keys)
-                {
-                    var storageEntity = new StorageEntity
-                    {
-                        Key = key,
-                        Value = storageEntitiesDict[key]["Value"],
-                        Comment = storageEntitiesDict[key]["Comment"],
-                        Description = storageEntitiesDict[key]["Description"]
-                    };
-                    storageEntities.Add(storageEntity);
-                }
+                return new List<StorageEntity>();
             }
+
+            var storageEntities = new List<StorageEntity>(storageEntitiesDict.Count + 1);
+
+            foreach (KeyValuePair<string, Dictionary<string, string>> pair in storageEntitiesDict)
+            {
+                var storageEntity = new StorageEntity
+                {
+                    Key = pair.Key,
+                    Value = pair.Value["Value"],
+                    Comment = pair.Value["Comment"],
+                    Description = pair.Value["Description"]
+                };
+
+                storageEntities.Add(storageEntity);
+            }
+
             return storageEntities;
         }
 
@@ -672,8 +730,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     var tenant = new Tenant(tenantContext);
                     var designs = tenant.GetSiteDesigns();
+
                     tenantContext.Load(designs);
                     tenantContext.ExecuteQueryRetry();
+
                     foreach (var design in designs)
                     {
                         _tokens.Add(new SiteDesignIdToken(web, design.Title, design.Id));
@@ -682,29 +742,31 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             catch
             {
-
             }
         }
 
-        private void AddPageUniqueIdTokens(Web web, ProvisioningTemplateApplyingInformation applyingInformation)
+        private void AddPageUniqueIdTokens(Web web)
         {
-
             var pagesList = web.GetListByUrl("SitePages", p => p.RootFolder);
 
             var query = new CamlQuery()
             {
-                ViewXml = $"<View><ViewFields><FieldRef Name='UniqueId'/><FieldRef Name='FileLeafRef' /></ViewFields></View><RowLimit Paging='TRUE'>100</RowLimit>"
+                ViewXml = "<View><ViewFields><FieldRef Name='UniqueId'/><FieldRef Name='FileLeafRef' /></ViewFields></View><RowLimit Paging='TRUE'>100</RowLimit>"
             };
+
             do
             {
                 var items = pagesList.GetItems(query);
+
                 web.Context.Load(items);
                 web.Context.ExecuteQueryRetry();
+
                 foreach (var item in items)
                 {
                     _tokens.Add(new PageUniqueIdToken(web, $"SitePages/{item["FileLeafRef"]}", Guid.Parse(item["UniqueId"].ToString())));
                     _tokens.Add(new PageUniqueIdEncodedToken(web, $"SitePages/{item["FileLeafRef"]}", Guid.Parse(item["UniqueId"].ToString())));
                 }
+
                 query.ListItemCollectionPosition = items.ListItemCollectionPosition;
             } while (query.ListItemCollectionPosition != null);
         }
@@ -717,8 +779,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     var tenant = new Tenant(tenantContext);
                     var scripts = tenant.GetSiteScripts();
+
                     tenantContext.Load(scripts);
                     tenantContext.ExecuteQueryRetry();
+
                     foreach (var script in scripts)
                     {
                         _tokens.Add(new SiteScriptIdToken(web, script.Title, script.Id));
@@ -727,7 +791,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             catch
             {
-
             }
         }
 
@@ -737,6 +800,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             web.Context.Load(web.AvailableContentTypes, cs => cs.Include(ct => ct.StringId, ct => ct.Name));
             web.Context.ExecuteQueryRetry();
+
             foreach (var ct in web.AvailableContentTypes)
             {
                 _tokens.Add(new ContentTypeIdToken(web, ct.Name, ct.StringId));
@@ -745,68 +809,84 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         internal void RebuildListTokens(Web web)
         {
+            RebuildListTokens(web, _addTokenWithCacheUpdateDelegate);
+        }
+
+        private void RebuildListTokens(Web web, Action<TokenDefinition> addToken)
+        {
             web.EnsureProperties(w => w.ServerRelativeUrl, w => w.Language);
 
-            //Remove tokens from TokenDictionary and ListTokenDictionary
-            Predicate<TokenDefinition> listTokenTypes = t => (t.GetType() == typeof(ListIdToken) || t.GetType() == typeof(ListUrlToken) || t.GetType() == typeof(ListViewIdToken) || t.GetType() == typeof(ListContentTypeIdToken));
+            Predicate<TokenDefinition> listTokenTypes = t => t.GetType() == typeof(ListIdToken)
+                                                             || t.GetType() == typeof(ListUrlToken)
+                                                             || t.GetType() == typeof(ListViewIdToken)
+                                                             || t.GetType() == typeof(ListContentTypeIdToken);
+
+            // Remove tokens from TokenDictionary and ListTokenDictionary
             foreach (var listToken in _tokens.FindAll(listTokenTypes))
             {
-                foreach (string token in listToken.GetTokens())
+                foreach (string token in listToken.GetUnescapedTokens())
                 {
-                    var tokenKey = Regex.Unescape(token);
-                    TokenDictionary.Remove(tokenKey);
+                    _tokenDictionary.Remove(token);
                     if (listToken is ListIdToken)
                     {
-                        ListTokenDictionary.Remove(tokenKey);
+                        _listTokenDictionary.Remove(token);
                     }
                 }
             }
+
             _tokens.RemoveAll(listTokenTypes);
 
             web.Context.Load(web.Lists, ls => ls.Include(l => l.Id, l => l.Title, l => l.RootFolder.ServerRelativeUrl, l => l.Views, l => l.ContentTypes, l => l.TitleResource));
             web.Context.ExecuteQueryRetry();
+
             foreach (var list in web.Lists)
             {
-                _tokens.Add(new ListIdToken(web, list.Title, list.Id));
-                // _tokens.Add(new ListIdToken(web, list.Title, Guid.Empty));
+                addToken(new ListIdToken(web, list.Title, list.Id));
+
                 var mainLanguageName = GetListTitleForMainLanguage(web, list.Title);
                 if (!string.IsNullOrWhiteSpace(mainLanguageName) && mainLanguageName != list.Title)
                 {
-                    _tokens.Add(new ListIdToken(web, mainLanguageName, list.Id));
+                    addToken(new ListIdToken(web, mainLanguageName, list.Id));
                 }
-                _tokens.Add(new ListUrlToken(web, list.Title, list.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd(new char[] { '/' }).Length + 1)));
+
+                addToken(new ListUrlToken(web, list.Title, list.RootFolder.ServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd(UrlSeparators).Length + 1)));
 
                 foreach (var view in list.Views)
                 {
-                    _tokens.Add(new ListViewIdToken(web, list.Title, view.Title, view.Id));
+                    addToken(new ListViewIdToken(web, list.Title, view.Title, view.Id));
                 }
 
                 foreach (var contentType in list.ContentTypes)
                 {
-                    _tokens.Add(new ListContentTypeIdToken(web, list.Title, contentType));
+                    addToken(new ListContentTypeIdToken(web, list.Title, contentType));
                 }
             }
 
-            if (web.IsSubSite())
+            if (!web.IsSubSite())
             {
-                // Add lists from rootweb
-                var rootWeb = (web.Context as ClientContext).Site.RootWeb;
-                rootWeb.EnsureProperty(w => w.ServerRelativeUrl);
-                rootWeb.Context.Load(rootWeb.Lists, ls => ls.Include(l => l.Id, l => l.Title, l => l.RootFolder.ServerRelativeUrl, l => l.Views));
-                rootWeb.Context.ExecuteQueryRetry();
-                foreach (var rootList in rootWeb.Lists)
-                {
-                    // token already there? Skip the list
-                    if (web.Lists.FirstOrDefault(l => l.Title == rootList.Title) == null)
-                    {
-                        _tokens.Add(new ListIdToken(web, rootList.Title, rootList.Id));
-                        _tokens.Add(new ListUrlToken(web, rootList.Title, rootList.RootFolder.ServerRelativeUrl.Substring(rootWeb.ServerRelativeUrl.TrimEnd(new char[] { '/' }).Length + 1)));
+                return;
+            }
 
-                        foreach (var view in rootList.Views)
-                        {
-                            _tokens.Add(new ListViewIdToken(rootWeb, rootList.Title, view.Title, view.Id));
-                        }
-                    }
+            // Add lists from rootweb
+            var rootWeb = (web.Context as ClientContext).Site.RootWeb;
+            rootWeb.EnsureProperty(w => w.ServerRelativeUrl);
+            rootWeb.Context.Load(rootWeb.Lists, ls => ls.Include(l => l.Id, l => l.Title, l => l.RootFolder.ServerRelativeUrl, l => l.Views));
+            rootWeb.Context.ExecuteQueryRetry();
+
+            foreach (var rootList in rootWeb.Lists)
+            {
+                // token already there? Skip the list
+                if (web.Lists.Any(l => l.Title == rootList.Title))
+                {
+                    continue;
+                }
+
+                addToken(new ListIdToken(web, rootList.Title, rootList.Id));
+                addToken(new ListUrlToken(web, rootList.Title, rootList.RootFolder.ServerRelativeUrl.Substring(rootWeb.ServerRelativeUrl.TrimEnd(UrlSeparators).Length + 1)));
+
+                foreach (var view in rootList.Views)
+                {
+                    addToken(new ListViewIdToken(rootWeb, rootList.Title, view.Title, view.Id));
                 }
             }
         }
@@ -818,18 +898,23 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <returns>Returns list of token resource values</returns>
         public List<Tuple<string, string>> GetResourceTokenResourceValues(string tokenValue)
         {
-            List<Tuple<string, string>> resourceValues = new List<Tuple<string, string>>();
-            tokenValue = $"{{{Regex.Escape(tokenValue.Trim(new char[] { '{', '}' }))}}}"; // since LocalizationToken are Regex.Escaped before load
-            var resourceTokens = _tokens.Where(t => t is LocalizationToken && t.GetTokens().Contains(tokenValue));
-            foreach (LocalizationToken resourceToken in resourceTokens)
+            var resourceValues = new List<Tuple<string, string>>();
+            tokenValue = $"{{{Regex.Escape(tokenValue.Trim(TokenBoundaryChars))}}}"; // since LocalizationToken are Regex.Escaped before load
+
+            foreach (var token in _tokens.OfType<LocalizationToken>())
             {
-                var entries = resourceToken.ResourceEntries;
-                foreach (var entry in entries)
+                if (Array.IndexOf(token.GetTokens(), tokenValue) == -1)
                 {
-                    CultureInfo ci = new CultureInfo((int)entry.LCID);
+                    continue;
+                }
+
+                foreach (var entry in token.ResourceEntries)
+                {
+                    var ci = new CultureInfo(entry.LCID);
                     resourceValues.Add(new Tuple<string, string>(ci.Name, ParseString(entry.Value)));
                 }
             }
+
             return resourceValues;
         }
 
@@ -843,7 +928,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return ParseString(input, null);
         }
 
-        static readonly Regex ReGuid = new Regex("(?<guid>\\{\\S{8}-\\S{4}-\\S{4}-\\S{4}-\\S{12}?\\})", RegexOptions.Compiled);
         /// <summary>
         /// Gets left over tokens
         /// </summary>
@@ -851,16 +935,17 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <returns>Returns collections of left over tokens</returns>
         public IEnumerable<string> GetLeftOverTokens(string input)
         {
-            List<string> values = new List<string>();
-            var matches = ReGuid.Matches(input).OfType<Match>().Select(m => m.Value);
-            foreach (var match in matches)
+            var values = new List<string>();
+
+            foreach (Match match in ReGuid.Matches(input))
             {
-                Guid gout;
-                if (!Guid.TryParse(match, out gout))
+                string value = match.Value;
+                if (!Guid.TryParse(value, out _))
                 {
-                    values.Add(match);
+                    values.Add(value);
                 }
             }
+
             return values;
         }
 
@@ -875,113 +960,112 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             web.EnsureProperty(x => x.Id);
 
-            var tokenChars = new[] { '{', '~' };
-            if (string.IsNullOrEmpty(input) || input.IndexOfAny(tokenChars) == -1) return input;
-
-            BuildTokenCache();
+            if (string.IsNullOrEmpty(input) || input.IndexOfAny(TokenChars) == -1)
+            {
+                return input;
+            }
 
             // Optimize for direct match with string search
-            if (TokenDictionary.TryGetValue(input, out string directMatch))
+            if (_tokenDictionary.TryGetValue(input, out string directMatch))
             {
                 return directMatch;
             }
 
             // Support for non cached tokens
-            var nonCachedTokens = BuildNonCachedTokenCache();
-            if (nonCachedTokens.TryGetValue(input, out string directMatchNonCached))
+            if (TryGetNonCacheableToken(input, out string directMatchNonCached))
             {
                 return directMatchNonCached;
             }
 
             string output = input;
             bool hasMatch = false;
+
             do
             {
                 hasMatch = false;
                 output = ReToken.Replace(output, match =>
                 {
                     string tokenString = match.Groups[0].Value;
-                    if (TokenDictionary.TryGetValue(tokenString, out string val))
+
+                    if (!_tokenDictionary.TryGetValue(tokenString, out string val))
                     {
-                        if (tokenString.IndexOf("listid", StringComparison.OrdinalIgnoreCase) != -1)
-                        {
-                            var token = ListTokenDictionary[tokenString];
-                            if (!token.Web.Id.Equals(web.Id))
-                            {
-                                return tokenString;
-                            }
-                        }
-                        hasMatch = true;
-                        return val;
+                        return tokenString;
                     }
-                    return match.Groups[0].Value;
+
+                    if (tokenString.IndexOf("listid", StringComparison.OrdinalIgnoreCase) != -1)
+                    {
+                        var token = _listTokenDictionary[tokenString];
+                        if (!token.Web.Id.Equals(web.Id))
+                        {
+                            return tokenString;
+                        }
+                    }
+
+                    hasMatch = true;
+                    return val;
                 });
             } while (hasMatch && input != output);
 
             return output;
         }
 
-        private void BuildTokenCache()
+        private void BuildTokenCache(int cacheableCount, int nonCacheableCount)
         {
-            foreach (TokenDefinition tokenDefinition in _tokens.Where(t => t.IsCacheable))
+            _tokenDictionary = new Dictionary<string, string>(capacity: cacheableCount > 0 ? cacheableCount + 1 : 0, StringComparer.OrdinalIgnoreCase);
+            _nonCacheableTokenDictionary = new Dictionary<string, TokenDefinition>(capacity: nonCacheableCount > 0 ? nonCacheableCount + 1 : 0, StringComparer.OrdinalIgnoreCase);
+            _listTokenDictionary = new Dictionary<string, TokenDefinition>(StringComparer.OrdinalIgnoreCase);
+
+            for (var index = 0; index < _tokens.Count; index++)
             {
-                foreach (string token in tokenDefinition.GetTokens())
+                AddToTokenCache(_tokens[index]);
+            }
+        }
+
+        private void AddToTokenCache(TokenDefinition definition)
+        {
+            IReadOnlyList<string> tokens = definition.GetUnescapedTokens();
+            for (var index = 0; index < tokens.Count; index++)
+            {
+                string token = tokens[index];
+
+                if (!definition.IsCacheable)
                 {
-                    var tokenKey = Regex.Unescape(token);
-                    if (TokenDictionary.ContainsKey(tokenKey)) continue;
+                    _nonCacheableTokenDictionary[token] = definition;
+                    continue;
+                }
 
-                    int before = _web.Context.PendingRequestCount();
-                    string value = tokenDefinition.GetReplaceValue();
-                    int after = _web.Context.PendingRequestCount();
+                string value = GetTokenReplacementValue(definition, token, _web.Context);
+                _tokenDictionary[token] = value;
 
-                    if (before != after)
-                    {
-                        throw new Exception($"Token {token} triggered an ExecuteQuery on the 'current' context. Please refactor this token to use the TokenContext class.");
-                    }
-
-                    TokenDictionary[tokenKey] = value;
-                    if (tokenDefinition is ListIdToken)
-                    {
-                        ListTokenDictionary[tokenKey] = tokenDefinition;
-                    }
+                if (definition is ListIdToken)
+                {
+                    _listTokenDictionary[token] = definition;
                 }
             }
         }
 
-        private Dictionary<string, string> BuildNonCachedTokenCache()
+        private bool TryGetNonCacheableToken(string input, out string value)
         {
-            Dictionary<string, string> nonCachedTokenDictionary = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-
-            foreach (TokenDefinition tokenDefinition in _tokens.Where(t => !t.IsCacheable))
+            if (_nonCacheableTokenDictionary.TryGetValue(input, out TokenDefinition definition))
             {
-                foreach (string token in tokenDefinition.GetTokens())
-                {
-                    var tokenKey = Regex.Unescape(token);
-                    if (nonCachedTokenDictionary.ContainsKey(tokenKey)) continue;
-
-                    int before = _web.Context.PendingRequestCount();
-                    string value = tokenDefinition.GetReplaceValue();
-                    int after = _web.Context.PendingRequestCount();
-
-                    if (before != after)
-                    {
-                        throw new Exception($"Token {token} triggered an ExecuteQuery on the 'current' context. Please refactor this token to use the TokenContext class.");
-                    }
-
-                    nonCachedTokenDictionary[tokenKey] = value;
-                }
+                value = GetTokenReplacementValue(definition, input, _web.Context);
+                return true;
             }
 
-            return nonCachedTokenDictionary;
+            value = null;
+            return false;
         }
 
-        // First group supports tokens in form '{param:value}' , second group supports nested parameters in form '{param:{xxx..'
-        private static readonly Regex ReToken = new Regex(@"(?:(\{(?:\1??[^{]*?\})))|(?:(\{(?:\1??[^{]*?:)))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex ReTokenFallback = new Regex(@"\{.*?\}", RegexOptions.Compiled);
+        private static string GetTokenReplacementValue(TokenDefinition definition, string tokenName, ClientRuntimeContext context)
+        {
+            int before = context.PendingRequestCount();
+            string result = definition.GetReplaceValue();
+            int after = context.PendingRequestCount();
 
-        private static readonly char[] TokenChars = { '{', '~' };
-        private readonly Dictionary<string, string> TokenDictionary = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        private readonly Dictionary<string, TokenDefinition> ListTokenDictionary = new Dictionary<string, TokenDefinition>(StringComparer.OrdinalIgnoreCase);
+            return before == after
+                ? result
+                : throw new Exception($"Token {tokenName} triggered an ExecuteQuery on the 'current' context. Please refactor this token to use the TokenContext class.");
+        }
 
         /// <summary>
         /// Parses given string
@@ -991,21 +1075,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <returns>Returns parsed string</returns>
         public string ParseString(string input, params string[] tokensToSkip)
         {
-            if (string.IsNullOrWhiteSpace(input)) return input;
-
-            if (string.IsNullOrEmpty(input) || input.IndexOfAny(TokenChars) == -1) return input;
-
-            BuildTokenCache();
+            if (string.IsNullOrWhiteSpace(input) || input.IndexOfAny(TokenChars) == -1)
+            {
+                return input;
+            }
 
             // Optimize for direct match with string search
-            if (TokenDictionary.TryGetValue(input, out string directMatch))
+            if (_tokenDictionary.TryGetValue(input, out string directMatch))
             {
                 return directMatch;
             }
 
             // Support for non cached tokens
-            var nonCachedTokens = BuildNonCachedTokenCache();
-            if (nonCachedTokens.TryGetValue(input, out string directMatchNonCached))
+            if (TryGetNonCacheableToken(input, out string directMatchNonCached))
             {
                 return directMatchNonCached;
             }
@@ -1019,38 +1101,58 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 output = ReToken.Replace(output, match =>
                 {
                     string tokenString = match.Groups[0].Value;
-                    if (TokenDictionary.TryGetValue(tokenString, out string val))
+
+                    if (!_tokenDictionary.TryGetValue(tokenString, out string val))
                     {
-                        hasMatch = true;
-                        return val;
+                        return tokenString;
                     }
-                    return match.Groups[0].Value;
+
+                    hasMatch = true;
+                    return val;
                 });
             } while (hasMatch && input != output);
 
-            if (hasMatch) return output;
+            if (hasMatch)
+            {
+                return output;
+            }
 
             var fallbackMatches = ReTokenFallback.Matches(output);
-            if (fallbackMatches.Count == 0) return output;
+            if (fallbackMatches.Count == 0)
+            {
+                return output;
+            }
 
             // If all token constructs {...} are GUID's, we can skip the expensive fallback
             bool needFallback = false;
             foreach (Match match in fallbackMatches)
             {
-                if (!ReGuid.IsMatch(match.Value)) needFallback = true;
+                if (!ReGuid.IsMatch(match.Value))
+                {
+                    needFallback = true;
+                }
             }
 
-            if (!needFallback) return output;
+            if (!needFallback)
+            {
+                return output;
+            }
+
             // Fallback for tokens which may contain { or } as part of their name
-            foreach (var pair in TokenDictionary)
+            foreach (var pair in _tokenDictionary)
             {
                 int idx = output.IndexOf(pair.Key, StringComparison.CurrentCultureIgnoreCase);
                 if (idx != -1)
                 {
                     output = output.Remove(idx, pair.Key.Length).Insert(idx, pair.Value);
                 }
-                if (!ReTokenFallback.IsMatch(output)) break;
+
+                if (!ReTokenFallback.IsMatch(output))
+                {
+                    break;
+                }
             }
+
             return output;
         }
 
@@ -1127,22 +1229,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             for (int i = 0; i < _tokens.Count; i++)
             {
                 var tokenDefinition = _tokens[i];
-                if (tokenDefinition.GetTokens().SequenceEqual(oldToken.GetTokens()))
+                if (!tokenDefinition.GetTokens().SequenceEqual(oldToken.GetTokens()))
                 {
-                    _tokens.RemoveAt(i);
-
-                    foreach (string token in tokenDefinition.GetTokens())
-                    {
-                        var tokenKey = Regex.Unescape(token);
-                        TokenDictionary.Remove(tokenKey);
-                    }
-
-                    break;
+                    continue;
                 }
+
+                _tokens.RemoveAt(i);
+
+                foreach (string token in tokenDefinition.GetUnescapedTokens())
+                {
+                    _tokenDictionary.Remove(token);
+                    _nonCacheableTokenDictionary.Remove(token);
+                }
+
+                break;
             }
         }
-
-        private static readonly Dictionary<String, String> listsTitles = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// This method retrieves the title of a list in the main language of the site
@@ -1150,55 +1252,68 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="web">The current Web</param>
         /// <param name="name">The title of the list in the current user's language</param>
         /// <returns>The title of the list in the main language of the site</returns>
-        private static string GetListTitleForMainLanguage(Web web, String name)
+        private string GetListTitleForMainLanguage(Web web, string name)
         {
-            if (listsTitles.ContainsKey(name))
+            if (_listsTitles.TryGetValue(name, out string title))
             {
-                // Return the title that we already have
-                return (listsTitles[name]);
+                return title;
             }
-            else
+
+            // Get the default culture for the current web
+            var ci = new CultureInfo((int)web.Language);
+
+            // Reset the cache of lists titles
+            _listsTitles.Clear();
+
+            const int batchSize = 20;
+            int listCount = web.Lists.Count;
+            var titles = new Tuple<string, ClientResult<string>>[batchSize];
+
+            // Add the new lists title using the main language of the site
+            for (var listIndex = 0; listIndex < listCount;)
             {
-                // Get the default culture for the current web
-                var ci = new System.Globalization.CultureInfo((int)web.Language);
-
-                // Refresh the list of lists with a lock
-                lock (typeof(ListIdToken))
+                for (int step = 0; step < batchSize; step++)
                 {
-                    // Reset the cache of lists titles
-                    TokenParser.listsTitles.Clear();
+                    var list = web.Lists[listIndex++];
+                    titles[step] = Tuple.Create(list.Title, list.TitleResource.GetValueForUICulture(ci.Name));
 
-                    // Add the new lists title using the main language of the site
-                    foreach (var list in web.Lists)
+                    if (listIndex == listCount)
                     {
-                        var titleResource = list.TitleResource.GetValueForUICulture(ci.Name);
-                        web.Context.ExecuteQueryRetry();
-                        if (!TokenParser.listsTitles.ContainsKey(list.Title))
-                        {
-                            TokenParser.listsTitles.Add(list.Title, titleResource.Value);
-                        }
+                        break;
                     }
                 }
 
-                // If now we have the list title ...
-                if (listsTitles.ContainsKey(name))
+                web.Context.ExecuteQueryRetry();
+
+                for (var index = 0; index < titles.Length; index++)
                 {
-                    // Return the title, if any
-                    return (listsTitles[name]);
+                    Tuple<string, ClientResult<string>> tuple = titles[index];
+                    if (tuple == null)
+                    {
+                        break;
+                    }
+
+                    if (!_listsTitles.ContainsKey(tuple.Item1))
+                    {
+                        _listsTitles.Add(tuple.Item1, tuple.Item2.Value);
+                    }
                 }
-                else
-                {
-                    return (null);
-                }
+
+                Array.Clear(titles, 0, titles.Length);
             }
+
+            // If now we have the list title ...
+            return _listsTitles.TryGetValue(name, out title)
+                ? title // Return the title, if any
+                : null;
         }
 
         private static List<string> ParseTemplate(ProvisioningTemplate template)
         {
-            List<string> tokenIds = new List<string>();
+            var tokenIds = new List<string>();
 
             // Add parameter tokenid if parameters are specified
-            if (template.Parameters != null && template.Parameters.Any())
+            if (template.Parameters != null && template.Parameters.Count > 0)
             {
                 tokenIds.Add("parameter");
             }
@@ -1207,8 +1322,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             if (xml.IndexOfAny(TokenChars) == -1) return tokenIds;
 
-            bool hasMatch = false;
-            string tempXml = xml;
+            bool hasMatch;
+            string tempXml;
+
             do
             {
                 hasMatch = false;
@@ -1216,38 +1332,82 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     for (int i = 0; i < match.Groups.Count; i++)
                     {
-                        if (!ReGuid.IsMatch(match.Groups[i].Value))
+                        if (ReGuid.IsMatch(match.Groups[i].Value))
                         {
-                            var originalTokenString = match.Groups[i].Value.Replace("{", "").Replace("}", "").ToLower();
+                            continue;
+                        }
 
-                            var tokenStringToAdd = originalTokenString;
-                            var colonIndex = tokenStringToAdd.IndexOf(":");
-                            if (colonIndex > -1)
-                            {
-                                tokenStringToAdd = tokenStringToAdd.Substring(0, colonIndex);
-                            }
-                            if (!tokenIds.Contains(tokenStringToAdd) && !string.IsNullOrEmpty(tokenStringToAdd))
-                            {
-                                tokenIds.Add(tokenStringToAdd);
-                            }
+                        var originalTokenString = match.Groups[i].Value.Replace("{", "").Replace("}", "").ToLower();
 
-                            // If sequencesitetoken is used we need to make sure that the corresponding site token is also loaded
-                            if (tokenStringToAdd == "sequencesitetoken")
+                        var tokenStringToAdd = originalTokenString;
+                        var colonIndex = tokenStringToAdd.IndexOf(":");
+                        if (colonIndex > -1)
+                        {
+                            tokenStringToAdd = tokenStringToAdd.Substring(0, colonIndex);
+                        }
+                        if (!tokenIds.Contains(tokenStringToAdd) && !string.IsNullOrEmpty(tokenStringToAdd))
+                        {
+                            tokenIds.Add(tokenStringToAdd);
+                        }
+
+                        // If sequencesitetoken is used we need to make sure that the corresponding site token is also loaded
+                        if (string.Equals(tokenStringToAdd, "sequencesitetoken", StringComparison.OrdinalIgnoreCase))
+                        {
+                            var sequenceSiteTokenArray = originalTokenString.Split(InternalTokenDelimiters);
+                            if (sequenceSiteTokenArray.Length > 2 && !string.IsNullOrWhiteSpace(sequenceSiteTokenArray[2]) && !tokenIds.Contains(sequenceSiteTokenArray[2]))
                             {
-                                var sequenceSiteTokenArray = originalTokenString.Split(':');
-                                if (sequenceSiteTokenArray.Length > 2 && !string.IsNullOrWhiteSpace(sequenceSiteTokenArray[2]) && !tokenIds.Contains(sequenceSiteTokenArray[2]))
-                                {
-                                    tokenIds.Add(sequenceSiteTokenArray[2]);
-                                }
+                                tokenIds.Add(sequenceSiteTokenArray[2]);
                             }
                         }
                     }
 
                     return "-";
-
                 });
             } while (hasMatch && xml != tempXml);
+
             return tokenIds;
+        }
+
+        private static void AddResourceEntry(string key, int lcid, string value, Dictionary<string, List<ResourceEntry>> dictionary)
+        {
+            if (!dictionary.TryGetValue(key, out List<ResourceEntry> entries))
+            {
+                entries = new List<ResourceEntry>();
+                dictionary.Add(key, entries);
+            }
+
+            entries.Add(new ResourceEntry { LCID = lcid, Value = value });
+        }
+
+        private static void CalculateTokenCount(IReadOnlyList<TokenDefinition> tokens, out int cacheableCount, out int nonCacheableCount)
+        {
+            cacheableCount = 0;
+            nonCacheableCount = 0;
+
+            for (var index = 0; index < tokens.Count; index++)
+            {
+                TokenDefinition definition = tokens[index];
+
+                if (definition.IsCacheable)
+                {
+                    cacheableCount += definition.TokenCount;
+                }
+                else
+                {
+                    nonCacheableCount += definition.TokenCount;
+                }
+            }
+        }
+
+        private void AddTokenWithCacheUpdate(TokenDefinition tokenDefinition)
+        {
+            _tokens.Add(tokenDefinition);
+            AddToTokenCache(tokenDefinition);
+        }
+
+        private void AddTokenToList(TokenDefinition tokenDefinition)
+        {
+            _tokens.Add(tokenDefinition);
         }
 
         /// <summary>
@@ -1260,4 +1420,3 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         }
     }
 }
-

@@ -353,6 +353,8 @@ namespace Microsoft.SharePoint.Client
         /// <returns>A ClientContext object created for the passed site URL</returns>
         internal static ClientContext Clone(this ClientRuntimeContext clientContext, ClientContext targetContext, Uri siteUrl, Dictionary<string, string> accessTokens = null)
         {
+            PnP.Framework.Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Cloning context for {siteUrl}");
+
             if (siteUrl == null)
             {
                 throw new ArgumentException(CoreResources.ClientContextExtensions_Clone_Url_of_the_site_is_required_, nameof(siteUrl));
@@ -370,9 +372,13 @@ namespace Microsoft.SharePoint.Client
             {
                 string newSiteUrl = siteUrl.ToString();
 
+                PnP.Framework.Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Checking for different audience {newSiteUrl}");
+
                 // A diffent host = different audience ==> new access token is needed
                 if (contextSettings.UsesDifferentAudience(newSiteUrl))
                 {
+
+                    PnP.Framework.Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Setting up context for different audience {contextSettings.Type}");
 
                     var authManager = contextSettings.AuthenticationManager;
                     ClientContext newClientContext = null;

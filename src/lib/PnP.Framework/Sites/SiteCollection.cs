@@ -1145,11 +1145,14 @@ namespace PnP.Framework.Sites
         /// <returns>True if in use, false otherwise</returns>
         public static async Task<Dictionary<string, string>> GetGroupInfoAsync(ClientContext context, string alias)
         {
+            Log.Debug(Constants.LOGGING_SOURCE, $"GetGroupInfoAsync");
+
             await new SynchronizationContextRemover();
 
             Dictionary<string, string> siteInfo = new Dictionary<string, string>();
 
-            context.Web.EnsureProperty(w => w.Url);
+            Log.Debug(Constants.LOGGING_SOURCE, $"GetWebUrl");
+            context.Web.EnsureProperty(w => w.Url);            
 
 #pragma warning disable CA2000 // Dispose objects before losing scope
             var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
@@ -1164,6 +1167,8 @@ namespace PnP.Framework.Sites
                 request.Headers.Add("accept", "application/json;odata.metadata=none");
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 request.Headers.Add("odata-version", "4.0");
+
+                Log.Debug(Constants.LOGGING_SOURCE, $"AuthenticateRequestAsync");
 
                 await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
 

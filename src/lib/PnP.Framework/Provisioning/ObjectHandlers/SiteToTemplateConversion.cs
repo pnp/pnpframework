@@ -167,6 +167,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                 }
 
+                Log.Debug(Constants.LOGGING_SOURCE, $"Attaching object handlers");
+
                 List<ObjectHierarchyHandlerBase> objectHandlers = new List<ObjectHierarchyHandlerBase>
                 {
                     new ObjectHierarchyTenant(),

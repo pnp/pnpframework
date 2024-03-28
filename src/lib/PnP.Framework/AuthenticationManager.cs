@@ -2,15 +2,18 @@
 using Microsoft.Identity.Client.Extensibility;
 using Microsoft.SharePoint.Client;
 using PnP.Core.Services;
+using PnP.Framework.Http;
 using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Context;
 using System;
 using System.Configuration;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -106,6 +109,26 @@ namespace PnP.Framework
         private readonly SecureString accessToken;
         private readonly IAuthenticationProvider authenticationProvider;
         private readonly PnPContext pnpContext;
+
+        /// <summary>
+        /// The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired
+        /// </summary>
+        private readonly string managedIdendityEndpoint;
+
+        /// <summary>
+        /// Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.
+        /// </summary>
+        private readonly string managedIdentityHeader;
+
+        /// <summary>
+        /// Identifier of the User Assigned Managed Identity in Azure. Used in combination with
+        /// </summary>
+        private readonly string managedIdentityUserAssignedIdentifier;
+
+        /// <summary>
+        /// The type of Managed Identity used
+        /// </summary>
+        private readonly ManagedIdentityType? managedIdentityType;
 
         public CookieContainer CookieContainer { get; set; }
 
@@ -304,12 +327,34 @@ namespace PnP.Framework
             authenticationType = ClientContextType.SharePointACSAppOnly;
         }
 
-
         public AuthenticationManager(SecureString accessToken)
         {
             this.accessToken = accessToken;
             authenticationType = ClientContextType.AccessToken;
         }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager that works with a System Assigned or User Assigned Managed Identity in Azure
+        /// </summary>
+        /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>
+        /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
+        /// <param name="managedIdentityType">Type of Managed Identity that should be used. Defaults to System Assigned Managed Identity.</param>
+        /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId. Mandatory when <paramref name="managedIdentityType"/> is not SystemAssigned. Should be omitted if it is SystemAssigned.</param>
+        public AuthenticationManager(string endpoint, string identityHeader, ManagedIdentityType managedIdentityType = ManagedIdentityType.SystemAssigned, string managedIdentityUserAssignedIdentifier = null)
+        {
+            if(managedIdentityType != ManagedIdentityType.SystemAssigned && string.IsNullOrWhiteSpace(managedIdentityUserAssignedIdentifier))
+            {
+                throw new ArgumentException($"When {nameof(managedIdentityType)} is not SystemAssigned, {nameof(managedIdentityUserAssignedIdentifier)} must be provided", nameof(managedIdentityType));
+            }
+
+            this.accessToken = new NetworkCredential("", accessToken).SecurePassword;
+            this.managedIdendityEndpoint = endpoint;
+            this.managedIdentityHeader = identityHeader;
+            this.authenticationType = managedIdentityType == ManagedIdentityType.SystemAssigned ? ClientContextType.SystemAssignedManagedIdentity : ClientContextType.UserAssignedManagedIdentity;
+            this.managedIdentityType = managedIdentityType;            
+            this.managedIdentityUserAssignedIdentifier = managedIdentityUserAssignedIdentifier;
+        }
+
         /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts. It uses the PnP Management Shell multi-tenant Azure AD application ID to authenticate. By default tokens will be cached in memory.
         /// </summary>
@@ -348,8 +393,6 @@ namespace PnP.Framework
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
             authenticationType = ClientContextType.AzureADCredentials;
         }
-
-
 
         /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire access tokens and client contexts using the Azure AD Interactive flow.
@@ -747,6 +790,9 @@ namespace PnP.Framework
         {
             AuthenticationResult authResult = null;
 
+            
+            Diagnostics.Log.Debug("GetAccessTokenAsync", $"Authentication type: {authenticationType}");
+
             switch (authenticationType)
             {
                 case ClientContextType.AzureADCredentials:
@@ -859,6 +905,15 @@ namespace PnP.Framework
                     {
                         return new NetworkCredential("", accessToken).Password;
                     }
+                case ClientContextType.SystemAssignedManagedIdentity:
+                case ClientContextType.UserAssignedManagedIdentity:
+                    {
+                        // Managed Identities only support specifying an audience to get a token for, so we're going to examine if the scope is an audience Uri or just a scope
+                        // If its a scope, we're going to have to assume it needs Microsoft Graph in which case it will take the .default as requesting specific scopes is not permitted for Managed Identities
+                        // If it is a Uri, we're going to assume the audience is the root part of the Uri, i.e. tenant.sharepoint.com
+                        var audienceUri = new Uri(scopes.FirstOrDefault(s => Uri.IsWellFormedUriString(s, UriKind.Absolute)) ?? $"https://{GetGraphEndPoint()}");
+                        return GetManagedIdentityToken($"{audienceUri.Scheme}://{audienceUri.Authority}");
+                    }                    
                 case ClientContextType.PnPCoreSdk:
                     {
                         return await this.authenticationProvider.GetAccessTokenAsync(uri, scopes).ConfigureAwait(false);
@@ -917,6 +972,8 @@ namespace PnP.Framework
             var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
 
             AuthenticationResult authResult;
+
+            Diagnostics.Log.Debug("GetContextAsync", $"Authentication type: {authenticationType} for scopes {string.Join(",", scopes)}");
 
             switch (authenticationType)
             {
@@ -1057,7 +1114,6 @@ namespace PnP.Framework
                         context.AddContextSettings(clientContextSettings);
 
                         return context;
-
                     }
 
                 case ClientContextType.AccessToken:
@@ -1077,6 +1133,26 @@ namespace PnP.Framework
 
                         return context;
                     }
+
+                case ClientContextType.SystemAssignedManagedIdentity:
+                case ClientContextType.UserAssignedManagedIdentity:
+                    {
+                        var context = GetAccessTokenContext(siteUrl, (site) =>
+                        {
+                            return GetManagedIdentityToken(site);
+                        });
+                        ClientContextSettings clientContextSettings = new ClientContextSettings()
+                        {
+                            Type = ClientContextType.AccessToken,
+                            SiteUrl = siteUrl,
+                            AuthenticationManager = this,
+                            Environment = this.azureEnvironment
+                        };
+                        context.AddContextSettings(clientContextSettings);
+
+                        return context;
+                    }
+
                 case ClientContextType.PnPCoreSdk:
                     {
                         if (authenticationProvider == null)
@@ -1447,6 +1523,86 @@ namespace PnP.Framework
         }
 
         /// <summary>
+        /// Returns an access token based on a Managed Identity. Only works within Azure components supporting managed identities such as Azure Functions and Azure Runbooks.
+        /// </summary>
+        /// <param name="audience">The resource to acquire a token for, i.e. Microsoft Graph or SharePoint Online</param>
+        /// <returns>Access token</returns>
+        private string GetManagedIdentityToken(string audience)
+        {
+            // Ensure our AuthenticationManager is set up to handle Managed Identities
+            if(!managedIdentityType.HasValue)
+            {
+                throw new InvalidOperationException("Trying to get a Managed Identity access token within a non Managed Identity authentication context is not possible");
+            }
+
+            // Construct the URL where to retrieve the access token from
+            var tokenRequestUrl = $"{managedIdendityEndpoint}?resource={audience}&api-version=2019-08-01";
+
+            // Construct the URL to call to get the token based on the type of Managed Identity in use
+            switch(managedIdentityType.Value)
+            {
+                case ManagedIdentityType.UserAssignedByClientId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with client ID: {managedIdentityUserAssignedIdentifier}");
+                    tokenRequestUrl += $"&client_id={managedIdentityUserAssignedIdentifier}";
+                    break;
+
+                case ManagedIdentityType.UserAssignedByObjectId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with object/principal ID: {managedIdentityUserAssignedIdentifier}");
+                    tokenRequestUrl += $"&object_id={managedIdentityUserAssignedIdentifier}";
+                    break;
+
+
+                case ManagedIdentityType.UserAssignedByResourceId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with Azure Resource ID: {managedIdentityUserAssignedIdentifier}");
+                    tokenRequestUrl += $"&mi_res_id={managedIdentityUserAssignedIdentifier}";
+                    break;
+
+                case ManagedIdentityType.SystemAssigned:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, "Using the system assigned managed identity");
+                    break;
+
+                default:
+                    throw new ArgumentException("Using an unsupported type of Managed Identity", nameof(managedIdentityType));
+            }
+
+            // Make the HTTP request to the Azure Managed Identity Endpoint to get the access token for the requested audience
+            using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, tokenRequestUrl))
+            {
+                requestMessage.Version = new Version(2, 0);
+                requestMessage.Headers.Add("Metadata", "true");
+                if (!string.IsNullOrEmpty(managedIdentityHeader))
+                {
+                    requestMessage.Headers.Add("X-IDENTITY-HEADER", managedIdentityHeader);
+                }
+
+                Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Sending managed identity token request to {tokenRequestUrl}");
+                 
+                var response = new HttpClient().SendAsync(requestMessage).GetAwaiter().GetResult();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+
+                    var responseElement = JsonSerializer.Deserialize<JsonElement>(responseContent);
+                    if (responseElement.TryGetProperty("access_token", out JsonElement accessTokenElement))
+                    {
+                        var accessToken = accessTokenElement.GetString();
+
+                        Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Token request was successful");
+
+                        return accessToken;
+                    }
+
+                    Diagnostics.Log.Warning(Constants.LOGGING_SOURCE, $"Failed to find the access token in the response: {responseContent}");
+                }
+
+                Diagnostics.Log.Warning(Constants.LOGGING_SOURCE, $"Token request was unsuccessful with response {response.StatusCode}");
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Gets the Azure AD login end point for the given environment
         /// </summary>
         /// <param name="environment">Environment to get the login information for</param>
@@ -1528,6 +1684,15 @@ namespace PnP.Framework
                         return "graph.microsoft.com";
                     }
             }
+        }
+
+        /// <summary>
+        /// Gets the URI to use for making Graph calls based upon the environment
+        /// </summary>
+        /// <returns>Graph URI for given environment</returns>
+        public Uri GetGraphBaseEndPoint()
+        {
+            return new Uri($"https://{GetGraphEndPoint()}");
         }
 
         /// <summary>

@@ -119,7 +119,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <returns>The Cookie for the requested resource</returns>
         public string AcquireCookie(string resource)
         {
-            return (this.AcquireCookieAsync(resource).GetAwaiter().GetResult());
+            // If there's a delegate hooked up to the cookie acquiring, trigger it, if not return a null to indicate it's not able to get a token through a cookie
+            return this.AcquireCookieAsync != null ? (this.AcquireCookieAsync(resource).GetAwaiter().GetResult()) : null;
         }
 
         ~PnPProvisioningContext()

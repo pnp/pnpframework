@@ -44,6 +44,8 @@ namespace Microsoft.SharePoint.Client
         /// <param name="configuration"></param>
         public static void ApplyTenantTemplate(this Tenant tenant, ProvisioningHierarchy tenantTemplate, string sequenceId, ApplyConfiguration configuration = null)
         {
+            Log.Debug(Constants.LOGGING_SOURCE, $"ApplyTenantTemplate");
+
             SiteToTemplateConversion engine = new SiteToTemplateConversion();
             engine.ApplyTenantTemplate(tenant, tenantTemplate, sequenceId, configuration);
         }

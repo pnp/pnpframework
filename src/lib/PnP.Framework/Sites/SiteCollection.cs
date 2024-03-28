@@ -1150,6 +1150,7 @@ namespace PnP.Framework.Sites
             Dictionary<string, string> siteInfo = new Dictionary<string, string>();
 
             context.Web.EnsureProperty(w => w.Url);
+            Log.Debug(Constants.LOGGING_SOURCE, $"Done with GetWebUrl");
 
 #pragma warning disable CA2000 // Dispose objects before losing scope
             var httpClient = PnPHttpClient.Instance.GetHttpClient(context);

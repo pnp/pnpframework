@@ -1,5 +1,7 @@
 ﻿using Microsoft.Graph;
+using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
+using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,24 +29,19 @@ namespace PnP.Framework.Graph
         {
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                var result = Task.Run(async () =>
-                {
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}subscriptions/{subscriptionId}";
 
-                    var subscription = await graphClient.Subscriptions[subscriptionId.ToString()]
-                        .Request()
-                        .GetAsync();
+                var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
 
-                    var subscriptionModel = MapGraphEntityToModel(subscription);
-                    return subscriptionModel;
-                }).GetAwaiter().GetResult();
+                var response = JToken.Parse(responseAsString);
+                var subscription = response["value"];
 
-                return result;
+                var subscriptionModel = subscription.ToObject<Model.Subscription>();
+                return subscriptionModel;
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
         }

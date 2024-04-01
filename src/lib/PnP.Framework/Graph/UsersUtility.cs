@@ -355,9 +355,9 @@ namespace PnP.Framework.Graph
                     return users;
                 }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
             return result;

@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Added
+
+- Support for using Managed Identity with PnP Framework #1002 [koenzomers - Koen Zomers]
+
+### Changed
+
 ## [1.15.0]
 
 ### Added

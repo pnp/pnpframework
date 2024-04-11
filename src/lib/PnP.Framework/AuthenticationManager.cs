@@ -1577,7 +1577,7 @@ namespace PnP.Framework
 
                 Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Sending managed identity token request to {tokenRequestUrl}");
                  
-                var response = new HttpClient().SendAsync(requestMessage).GetAwaiter().GetResult();
+                var response = PnPHttpClient.Instance.GetHttpClient().SendAsync(requestMessage).GetAwaiter().GetResult();
 
                 if (response.IsSuccessStatusCode)
                 {

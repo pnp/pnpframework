@@ -1,6 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
@@ -10,26 +10,17 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
     /// </summary>
     public abstract class TokenDefinition
     {
-        private bool _isCacheable = true;
         private ClientContext _context;
         protected string CacheValue;
         private readonly string[] _tokens;
+        private readonly string[] _unescapedTokens;
+        private readonly int _maximumTokenLength;
 
         /// <summary>
         /// Defines if a token is cacheable and should be added to the token cache during initialization of the token parser. This means that the value for a token will be returned from the cache instead from the GetReplaceValue during the provisioning run. Defaults to true.
         /// </summary>
-        public bool IsCacheable
-        {
-            get
-            {
-                return _isCacheable;
-            }
-            set
-            {
-                _isCacheable = value;
-            }
+        public bool IsCacheable { get; set; } = true;
 
-        }
         /// <summary>
         /// Constructor
         /// </summary>
@@ -37,8 +28,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
         /// <param name="token">token</param>
         public TokenDefinition(Web web, params string[] token)
         {
-            this._tokens = token;
-            this.Web = web;
+            Web = web;
+            _tokens = token;
+            _unescapedTokens = GetUnescapedTokens(token);
+            _maximumTokenLength = GetMaximumTokenLength(token);
         }
 
         /// <summary>
@@ -59,6 +52,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
         }
 
         /// <summary>
+        /// Gets the amount of tokens hold by this token definition
+        /// </summary>
+        public int TokenCount
+        {
+            get => _tokens.Length;
+        }
+
+        /// <summary>
         /// Gets tokens
         /// </summary>
         /// <returns>Returns array string of tokens</returns>
@@ -67,7 +68,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
             return _tokens;
         }
 
-        // public string[] Token { get; private set; }
+        /// <summary>
+        /// Gets the by <see cref="Regex.Unescape"/> processed tokens
+        /// </summary>
+        /// <returns>Returns array string of by <see cref="Regex.Unescape"/> processed tokens</returns>
+        public IReadOnlyList<string> GetUnescapedTokens()
+        {
+            return _unescapedTokens;
+        }
+
         /// <summary>
         /// Web is a SiteCollection or SubSite
         /// </summary>
@@ -80,16 +89,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
         [Obsolete("No longer in use")]
         public Regex[] GetRegex()
         {
-            var regexs = new Regex[this._tokens.Length];
-            for (var q = 0; q < this._tokens.Length; q++)
+            var regexs = new Regex[_tokens.Length];
+            for (var q = 0; q < _tokens.Length; q++)
             {
-                regexs[q] = new Regex(this._tokens[q], RegexOptions.IgnoreCase);
+                regexs[q] = new Regex(_tokens[q], RegexOptions.IgnoreCase);
             }
             return regexs;
         }
 
         /// <summary>
-        /// Gets regular expressionf for the given token
+        /// Gets regular expression for the given token
         /// </summary>
         /// <param name="token">token string</param>
         /// <returns>Returns RegularExpression</returns>
@@ -100,12 +109,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
         }
 
         /// <summary>
-        /// Gets token length in integer
+        /// Gets the length of the largest token
         /// </summary>
-        /// <returns>token length in integer</returns>
+        /// <returns>Length of the largest token</returns>
         public int GetTokenLength()
         {
-            return _tokens.Select(t => t.Length).Concat(new[] { 0 }).Max();
+            return _maximumTokenLength;
         }
 
         /// <summary>
@@ -119,7 +128,31 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
         /// </summary>
         public void ClearCache()
         {
-            this.CacheValue = null;
+            CacheValue = null;
+        }
+
+        private static int GetMaximumTokenLength(IReadOnlyList<string> tokens)
+        {
+            var result = 0;
+
+            for (var index = 0; index < tokens.Count; index++)
+            {
+                result = Math.Max(result, tokens[index].Length);
+            }
+
+            return result;
+        }
+
+        private static string[] GetUnescapedTokens(IReadOnlyList<string> tokens)
+        {
+            var result = new string[tokens.Count];
+
+            for (var index = 0; index < tokens.Count; index++)
+            {
+                result[index] = Regex.Unescape(tokens[index]);
+            }
+
+            return result;
         }
     }
 }

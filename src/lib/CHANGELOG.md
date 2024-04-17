@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Optimizations to "TokenParser" performance #964 [fzbm - Florian Zink]
+- Added support for vanity URLs in the `GetSitePropertiesById` extension method #1012 [koenzomers - Koen Zomers]
 
 ## [1.15.0]
 

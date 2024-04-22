@@ -1363,7 +1363,7 @@ namespace PnP.Framework
                 //       PowerShell do support SharePoint on-premises.
                 webRequestEventArgs.WebRequestExecutor.WebRequest.Credentials = (sender as ClientContext).Credentials;
                 // CSOM for .NET Standard does not handle request digest management, a POST to client.svc requires a digest, so ensuring that
-                webRequestEventArgs.WebRequestExecutor.WebRequest.Headers.Add("X-RequestDigest", (sender as ClientContext).GetOnPremisesRequestDigestAsync().GetAwaiter().GetResult());
+                webRequestEventArgs.WebRequestExecutor.RequestHeaders["X-RequestDigest"] = (sender as ClientContext).GetOnPremisesRequestDigestAsync().GetAwaiter().GetResult();
                 // Add Request Header to force Windows Authentication which avoids an issue if multiple authentication providers are enabled on a webapplication
                 webRequestEventArgs.WebRequestExecutor.RequestHeaders["X-FORMS_BASED_AUTH_ACCEPTED"] = "f";
             };

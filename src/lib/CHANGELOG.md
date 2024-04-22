@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Optimizations to "TokenParser" performance #964 [fzbm - Florian Zink]
 - Added support for vanity URLs in the `GetSitePropertiesById` extension method #1012 [koenzomers - Koen Zomers]
 - Bumped version of Microsoft.Identity.Client package version to 4.60.3 #1014 [gautamdsheth - Gautam Sheth]
+- fix issue in ConfigureOnPremisesContext causing 403 forbidden responses on on-premise environments #1011 [nathan-swannet - Nathan Swannet]
 
 ## [1.15.0]
 

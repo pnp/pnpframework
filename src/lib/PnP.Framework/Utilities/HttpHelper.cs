@@ -636,9 +636,10 @@ namespace PnP.Framework.Utilities
                 }
                 else
                 {
-                    throw new ApplicationException(
+                    throw new HttpResponseException(
                         string.Format("Exception while invoking endpoint {0}.", requestUrl),
-                        new Exception(response.Content.ReadAsStringAsync().Result));
+                        new Exception(response.Content.ReadAsStringAsync().Result),
+                        (int)response.StatusCode);
                 }
             }
 

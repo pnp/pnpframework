@@ -1389,11 +1389,13 @@ namespace PnP.Framework.Graph
                             try
                             {
                                 // If it is not in the list of current members, just remove it
-                                await graphClient.Groups[groupId].Members[member.Id].Reference.Request().DeleteAsync();
+                                //// DELETE https://graph.microsoft.com/v1.0/groups/{id}/members/{id}/$ref
+                                string deleteGroupMemberUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}/members/{member.Id}/$ref";
+                                GraphHttpClient.MakeDeleteRequest(deleteGroupMemberUrl, accessToken);
                             }
-                            catch (ServiceException ex)
+                            catch (HttpResponseException ex)
                             {
-                                if (ex.Error.Code == "Request_BadRequest")
+                                if (ex.StatusCode == 400)
                                 {
                                     // Skip any failing removal
                                 }

@@ -91,9 +91,9 @@ namespace PnP.Framework.Graph
 
                 result = Convert.ToString(response["webUrl"]);
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
             return (result);
@@ -540,9 +540,9 @@ namespace PnP.Framework.Graph
                     contentType: "application/json",
                     accessToken: accessToken);
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
         }
@@ -966,9 +966,9 @@ namespace PnP.Framework.Graph
                                     {
                                         group.SiteUrl = GetUnifiedGroupSiteUrl(g.Id, accessToken);
                                     }
-                                    catch (ServiceException e)
+                                    catch (ApplicationException e)
                                     {
-                                        group.SiteUrl = e.Error.Message;
+                                        group.SiteUrl = e.Message;
                                     }
                                 }
 
@@ -1082,9 +1082,9 @@ namespace PnP.Framework.Graph
                                     {
                                         group.SiteUrl = GetUnifiedGroupSiteUrl(g.Id, accessToken);
                                     }
-                                    catch (ServiceException e)
+                                    catch (ApplicationException e)
                                     {
-                                        group.SiteUrl = e.Error.Message;
+                                        group.SiteUrl = e.Message;
                                     }
                                 }
 
@@ -1773,9 +1773,9 @@ namespace PnP.Framework.Graph
                 }
 
             }
-            catch (ServiceException e)
+            catch (ApplicationException e)
             {
-                classification = e.Error.Message;
+                classification = e.Message;
             }
 
             return classification;
@@ -1821,9 +1821,9 @@ namespace PnP.Framework.Graph
                     }
                 }
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
 

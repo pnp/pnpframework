@@ -1,10 +1,11 @@
 ﻿using Microsoft.Graph;
-using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph
@@ -32,11 +33,10 @@ namespace PnP.Framework.Graph
                 var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}subscriptions/{subscriptionId}";
 
                 var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+                var jsonNode = JsonNode.Parse(responseAsString);
+                var subscription = jsonNode["value"];
 
-                var response = JToken.Parse(responseAsString);
-                var subscription = response["value"];
-
-                var subscriptionModel = subscription.ToObject<Model.Subscription>();
+                var subscriptionModel = subscription.Deserialize<Model.Subscription>();
                 return subscriptionModel;
             }
             catch (ApplicationException ex)

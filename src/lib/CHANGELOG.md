@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Bumped version of Microsoft.Identity.Client package version to 4.60.3 #1014 [gautamdsheth - Gautam Sheth]
 - Fix issue in ConfigureOnPremisesContext causing 403 forbidden responses on on-premise environments #1011 [nathan-swannet - Nathan Swannet]
 - Fix "The request was already sent" error when getting app metadata (using AppManager) #896 [JoaoCruz2001 - João Cruz]
+- Fix issue in `DisableRequestAccess` method where we were unable to properly set disable access request email. [luismanez- Luis Manez]
 
 ## [1.15.0]
 

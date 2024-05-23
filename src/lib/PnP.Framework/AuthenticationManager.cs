@@ -899,7 +899,7 @@ namespace PnP.Framework
                         {
                             throw new ArgumentException($"{nameof(GetAccessTokenAsync)}() called without an ACS token generator. Specify in {nameof(AuthenticationManager)} constructor the authentication parameters");
                         }
-                        return acsTokenGenerator.GetToken(null);
+                        return acsTokenGenerator.GetToken(uri);
                     }
                 case ClientContextType.AccessToken:
                     {

@@ -79,6 +79,7 @@ namespace PnP.Framework.Graph
                     var startIndexForPage = Math.Min(0, startIndex - (currentIndex));
                     var endIndexForPage = Math.Min(subscriptionsPage.Length - 1, endIndex - currentIndex);
 
+                    // Todo - test index values, might be off by 1
                     result.AddRange(subscriptionsPage[startIndexForPage .. endIndexForPage]);
 
                     currentIndex += subscriptionsPage.Length;

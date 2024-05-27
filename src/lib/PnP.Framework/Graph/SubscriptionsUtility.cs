@@ -66,6 +66,8 @@ namespace PnP.Framework.Graph
             {
                 var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}subscriptions";
 
+                int currentIndex = 0;
+
                 do
                 {
                     var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
@@ -73,7 +75,18 @@ namespace PnP.Framework.Graph
                     var subscriptionListString = jsonNode["value"];
 
                     var subscriptionsPage = subscriptionListString.Deserialize<Model.Subscription[]>();
-                    result.AddRange(subscriptionsPage);
+
+                    var startIndexForPage = Math.Min(0, startIndex - (currentIndex));
+                    var endIndexForPage = Math.Min(subscriptionsPage.Length - 1, endIndex - currentIndex);
+
+                    result.AddRange(subscriptionsPage[startIndexForPage .. endIndexForPage]);
+
+                    currentIndex += subscriptionsPage.Length;
+
+                    if (currentIndex >= endIndex)
+                    {
+                        break;
+                    }
 
                     requestUrl = jsonNode["@odata.nextLink"]?.ToString();
 

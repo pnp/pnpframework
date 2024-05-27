@@ -192,37 +192,25 @@ namespace PnP.Framework.Graph
 
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}subscriptions/{subscriptionId}";
+                var updatedSubscription = new Model.Subscription
                 {
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
+                    ExpirationDateTime = expirationDateTime
+                };
+                var contentString = JsonSerializer.Serialize(updatedSubscription);
+                var content = new StringContent(contentString);
 
-                    // Prepare the subscription resource object
-                    var updatedSubscription = new Subscription
-                    {
-                        ExpirationDateTime = expirationDateTime
-                    };
+                var responseAsString = HttpHelper.MakePatchRequestForString(requestUrl, content, "application/json", accessToken, retryCount: retryCount, delay: delay);
 
-                    var subscription = await graphClient.Subscriptions[subscriptionId]
-                                                        .Request()
-                                                        .UpdateAsync(updatedSubscription);
-
-                    if (subscription == null)
-                    {
-                        return null;
-                    }
-
-                    var subscriptionModel = MapGraphEntityToModel(subscription);
-                    return subscriptionModel;
-
-                }).GetAwaiter().GetResult();
+                // Todo - check that the returned data does actually deserialise correctly
+                var model = JsonSerializer.Deserialize<Model.Subscription>(responseAsString);
+                return model;
             }
-            catch (ServiceException ex)
+            catch (HttpRequestException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return result;
         }
 
         /// <summary>

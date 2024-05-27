@@ -4,6 +4,7 @@ using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
@@ -143,45 +144,31 @@ namespace PnP.Framework.Graph
                 throw new ArgumentNullException(nameof(resource));
             }
 
-            Model.Subscription result = null;
-
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}subscriptions";
+                var newSubscription = new
                 {
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
-
-                    // Prepare the subscription resource object
-                    var newSubscription = new Subscription
-                    {
                         ChangeType = changeType.ToString().Replace(" ", ""),
                         NotificationUrl = notificationUrl,
                         Resource = resource,
                         ExpirationDateTime = expirationDateTime,
                         ClientState = clientState
                     };
+                var stringContent = JsonSerializer.Serialize(newSubscription);
+                var content = new StringContent(stringContent);
 
-                    var subscription = await graphClient.Subscriptions
-                                                        .Request()
-                                                        .AddAsync(newSubscription);
+                var responseAsString = HttpHelper.MakePostRequestForString(requestUrl, content, "application/json", accessToken, retryCount: retryCount, delay: delay);
 
-                    if (subscription == null)
-                    {
-                        return null;
+                // Todo - check that the returned data does actually deserialise correctly
+                var model = JsonSerializer.Deserialize<Model.Subscription>(responseAsString);
+                return model;
                     }
-
-                    var subscriptionModel = MapGraphEntityToModel(subscription);
-                    return subscriptionModel;
-
-                }).GetAwaiter().GetResult();
-            }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return result;
         }
 
         /// <summary>

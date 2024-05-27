@@ -1,13 +1,10 @@
-﻿using Microsoft.Graph;
-using PnP.Framework.Diagnostics;
+﻿using PnP.Framework.Diagnostics;
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph
 {
@@ -64,54 +61,28 @@ namespace PnP.Framework.Graph
                 throw new ArgumentNullException(nameof(accessToken));
             }
 
-            List<Model.Subscription> result = null;
+            List<Model.Subscription> result = new();
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}subscriptions";
+
+                do
                 {
-                    List<Model.Subscription> subscriptions = new List<Model.Subscription>();
+                    var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+                    var jsonNode = JsonNode.Parse(responseAsString);
+                    var subscriptionListString = jsonNode["value"];
 
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
+                    var subscriptionsPage = subscriptionListString.Deserialize<Model.Subscription[]>();
+                    result.AddRange(subscriptionsPage);
 
-                    var pagedSubscriptions = await graphClient.Subscriptions
-                        .Request()
-                        .GetAsync();
+                    requestUrl = jsonNode["@odata.nextLink"]?.ToString();
 
-                    int pageCount = 0;
-                    int currentIndex = 0;
-
-                    while (true)
-                    {
-                        pageCount++;
-
-                        foreach (var s in pagedSubscriptions)
-                        {
-                            currentIndex++;
-
-                            if (currentIndex >= startIndex)
-                            {
-                                var subscription = MapGraphEntityToModel(s);
-                                subscriptions.Add(subscription);
-                            }
-                        }
-
-                        if (pagedSubscriptions.NextPageRequest != null && currentIndex < endIndex)
-                        {
-                            pagedSubscriptions = await pagedSubscriptions.NextPageRequest.GetAsync();
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-
-                    return subscriptions;
-                }).GetAwaiter().GetResult();
+                } while (!string.IsNullOrEmpty(requestUrl));
+                
             }
-            catch (ServiceException ex)
+            catch (HttpRequestException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
             return result;
@@ -239,25 +210,6 @@ namespace PnP.Framework.Graph
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-        }
-
-        /// <summary>
-        /// Maps an entity returned by Microsoft Graph to its equivallent Model maintained within this library
-        /// </summary>
-        /// <param name="subscription">Microsoft Graph Subscription entity</param>
-        /// <returns>Subscription Model</returns>
-        private static Model.Subscription MapGraphEntityToModel(Subscription subscription)
-        {
-            var subscriptionModel = new Model.Subscription
-            {
-                Id = subscription.Id,
-                ChangeType = subscription.ChangeType.Split(',').Select(ct => (Enums.GraphSubscriptionChangeType)Enum.Parse(typeof(Enums.GraphSubscriptionChangeType), ct, true)).Aggregate((prev, next) => prev | next),
-                NotificationUrl = subscription.NotificationUrl,
-                Resource = subscription.Resource,
-                ExpirationDateTime = subscription.ExpirationDateTime,
-                ClientState = subscription.ClientState
-            };
-            return subscriptionModel;
         }
     }
 }

@@ -230,20 +230,13 @@ namespace PnP.Framework.Graph
 
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                Task.Run(async () =>
-                {
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay);
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl()}subscriptions/{subscriptionId}";
 
-                    await graphClient.Subscriptions[subscriptionId]
-                                     .Request()
-                                     .DeleteAsync();
-
-                }).GetAwaiter().GetResult();
+                HttpHelper.MakeDeleteRequest(requestUrl, accessToken, retryCount: retryCount, delay: delay);
             }
-            catch (ServiceException ex)
+            catch (HttpRequestException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
         }

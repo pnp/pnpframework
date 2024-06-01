@@ -78,10 +78,9 @@ namespace PnP.Framework.Graph
                     var subscriptionsPage = subscriptionListString.Deserialize<Model.Subscription[]>();
 
                     var startIndexForPage = Math.Min(0, startIndex - (currentIndex));
-                    var endIndexForPage = Math.Min(subscriptionsPage.Length - 1, endIndex - currentIndex);
+                    var numToTake = Math.Min(subscriptionsPage.Length, endIndex - currentIndex);
 
-                    // Todo - test index values, might be off by 1
-                    result.AddRange(subscriptionsPage.Skip(startIndexForPage).Take(startIndexForPage - endIndexForPage));
+                    result.AddRange(subscriptionsPage.Skip(startIndexForPage).Take(numToTake));
 
                     currentIndex += subscriptionsPage.Length;
 

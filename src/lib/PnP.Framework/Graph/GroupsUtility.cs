@@ -316,7 +316,7 @@ namespace PnP.Framework.Graph
                             }
                             else
                             {
-                                throw ex;
+                                throw;
                             }
                         }
                     }

@@ -1082,66 +1082,6 @@ namespace PnP.Framework.Graph
         }
 
         /// <summary>
-        /// Helper method. Generates a neseted collection of Microsoft.Graph.User entity from directory objects.
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="groupGraphUsers"></param>
-        /// <param name="groupUsers"></param>
-        /// <param name="accessToken"></param>
-        /// <returns></returns>
-
-        private static List<User> GenerateNestedGraphUserCollection(IList<DirectoryObject> page, List<User> groupGraphUsers, List<GroupUser> groupUsers, string accessToken)
-        {
-            // Create a collection of Microsoft.Graph.User type
-            foreach (var usr in page)
-            {
-
-                if (usr != null)
-                {
-                    if (usr.GetType() == typeof(User))
-                    {
-                        groupGraphUsers.Add((User)usr);
-                    }
-                }
-            }
-
-            // Get groups within the group and users in that group
-            List<Group> unifiedGroupGraphGroups = new List<Group>();
-            GenerateGraphGroupCollection(page, unifiedGroupGraphGroups);
-            foreach (Group unifiedGroupGraphGroup in unifiedGroupGraphGroups)
-            {
-                var grp = GetGroup(unifiedGroupGraphGroup.Id, accessToken);
-                groupUsers.AddRange(GetGroupMembers(grp, accessToken));
-            }
-
-            return groupGraphUsers;
-        }
-
-        /// <summary>
-        /// Helper method. Generates a collection of Microsoft.Graph.Group entity from directory objects.
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="groupGraphGroups"></param>
-        /// <returns></returns>
-        private static List<Group> GenerateGraphGroupCollection(IList<DirectoryObject> page, List<Group> groupGraphGroups)
-        {
-            // Create a collection of Microsoft.Graph.Group type
-            foreach (var grp in page)
-            {
-
-                if (grp != null)
-                {
-                    if (grp.GetType() == typeof(Group))
-                    {
-                        groupGraphGroups.Add((Group)grp);
-                    }
-                }
-            }
-
-            return groupGraphGroups;
-        }
-
-        /// <summary>
         /// Helper method. Generates a collection of Microsoft.Graph.User entity from string array
         /// </summary>
         /// <param name="accessToken"></param>

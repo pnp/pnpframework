@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph
@@ -106,19 +107,19 @@ namespace PnP.Framework.Graph
 
                     if (owners != null && owners.Length > 0)
                     {
-                        var users = GetUsers(graphClient, owners);
-                        if (users != null && users.Count > 0)
+                        var userIds = GetUserIds(accessToken, owners, retryCount, delay, azureEnvironment);
+                        if (userIds != null && userIds.Count > 0)
                         {
-                            newGroup.OwnersODataBind = users.Select(u => string.Format("{1}/users/{0}", u.Id, graphClient.BaseUrl)).ToArray();
+                            newGroup.OwnersODataBind = userIds.Select(u => string.Format("{1}/users/{0}", u, graphClient.BaseUrl)).ToArray();
                         }
                     }
 
                     if (members != null && members.Length > 0)
                     {
-                        var users = GetUsers(graphClient, members);
-                        if (users != null && users.Count > 0)
+                        var userIds = GetUserIds(accessToken, members, retryCount, delay, azureEnvironment);
+                        if (userIds != null && userIds.Count > 0)
                         {
-                            newGroup.MembersODataBind = users.Select(u => string.Format("{1}/users/{0}", u.Id, graphClient.BaseUrl)).ToArray();
+                            newGroup.MembersODataBind = userIds.Select(u => string.Format("{1}/users/{0}", u, graphClient.BaseUrl)).ToArray();
                         }
                     }
 
@@ -1166,45 +1167,42 @@ namespace PnP.Framework.Graph
         /// <summary>
         /// Helper method. Generates a collection of Microsoft.Graph.User entity from string array
         /// </summary>
-        /// <param name="graphClient">Graph service client</param>
+        /// <param name="accessToken"></param>
         /// <param name="groupUsers">String array of users</param>
+        /// <param name="retryCount"></param>
+        /// <param name="delay"></param>
         /// <returns></returns>
 
-        private static List<User> GetUsers(GraphServiceClient graphClient, string[] groupUsers)
+        private static List<string> GetUserIds(string accessToken, string[] groupUsers, int retryCount, int delay, AzureEnvironment azureEnvironment)
         {
             if (groupUsers == null || groupUsers.Length == 0)
             {
-                return new List<User>();
+                return new List<string>();
             }
 
-            var result = Task.Run(async () =>
+            var usersResult = new List<string>();
+            foreach (var groupUser in groupUsers)
             {
-                var usersResult = new List<User>();
-                foreach (string groupUser in groupUsers)
+                try
                 {
-                    try
-                    {
-                        // Search for the user object
-                        IGraphServiceUsersCollectionPage userQuery = await graphClient.Users
-                                            .Request()
-                                            .Select("Id")
-                                            .Filter($"userPrincipalName eq '{Uri.EscapeDataString(groupUser.Replace("'", "''"))}'")
-                                            .GetAsync();
+                    var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users?$select=Id&$filter=userPrincipalName eq '{Uri.EscapeDataString(groupUser.Replace("'", "''"))}'";
+                    var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
 
-                        User user = userQuery.FirstOrDefault();
-                        if (user != null)
-                        {
-                            usersResult.Add(user);
-                        }
-                    }
-                    catch (ServiceException)
+                    var jsonNode = JsonNode.Parse(responseAsString);
+                    var usersArray = jsonNode["value"].AsArray();
+                    var id = usersArray.FirstOrDefault()?["id"]?.GetValue<Guid>();
+
+                    if (id != null)
                     {
-                        // skip, group provisioning shouldnt stop because of error in user object
+                        usersResult.Add(id.Value.ToString());
                     }
                 }
-                return usersResult;
-            }).GetAwaiter().GetResult();
-            return result;
+                catch (HttpResponseException)
+                {
+                    // skip, group provisioning shouldnt stop because of error in user object
+                }
+            }
+            return usersResult;
         }
 
         /// <summary>

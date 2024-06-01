@@ -1855,14 +1855,11 @@ namespace PnP.Framework.Graph
                 iterations++;
                 try
                 {
-                    await Task.Run(() =>
+                    var teamid = HttpHelper.MakePutRequestForString(createTeamEndPoint, new { }, "application/json", accessToken);
+                    if (!string.IsNullOrEmpty(teamid))
                     {
-                        var teamid = HttpHelper.MakePutRequestForString(createTeamEndPoint, new { }, "application/json", accessToken);
-                        if (!string.IsNullOrEmpty(teamid))
-                        {
-                            wait = false;
-                        }
-                    });
+                        wait = false;
+                    }
                 }
                 catch (Exception ex)
                 {

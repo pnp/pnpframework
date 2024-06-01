@@ -2,6 +2,7 @@
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -80,7 +81,7 @@ namespace PnP.Framework.Graph
                     var endIndexForPage = Math.Min(subscriptionsPage.Length - 1, endIndex - currentIndex);
 
                     // Todo - test index values, might be off by 1
-                    result.AddRange(subscriptionsPage[startIndexForPage .. endIndexForPage]);
+                    result.AddRange(subscriptionsPage.Skip(startIndexForPage).Take(startIndexForPage - endIndexForPage));
 
                     currentIndex += subscriptionsPage.Length;
 

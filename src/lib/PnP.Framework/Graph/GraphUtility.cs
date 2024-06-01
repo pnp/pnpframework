@@ -1,7 +1,9 @@
 ﻿using Microsoft.Graph;
 using PnP.Framework.Diagnostics;
-using System;
+using PnP.Framework.Graph.Model;
+using PnP.Framework.Utilities;
 using System.Net.Http.Headers;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph
@@ -57,13 +59,11 @@ namespace PnP.Framework.Graph
         /// <param name="guestUserDisplayName">Display name of the Guest user.</param>
         /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns></returns>
-        public static Invitation InviteGuestUser(string accessToken, string guestUserEmail, string redirectUri, string customizedMessage = "", string guestUserDisplayName = "", AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+        public static Invite InviteGuestUser(string accessToken, string guestUserEmail, string redirectUri, string customizedMessage = "", string guestUserDisplayName = "", AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            Invitation inviteUserResponse = null;
-
             try
             {
-                Invitation invite = new Invitation
+                var invite = new Invite
                 {
                     InvitedUserEmailAddress = guestUserEmail
                 };
@@ -77,23 +77,22 @@ namespace PnP.Framework.Graph
                 // Form the invite email message body
                 if (!string.IsNullOrWhiteSpace(customizedMessage))
                 {
-                    InvitedUserMessageInfo inviteMsgInfo = new InvitedUserMessageInfo
+                    var inviteMsgInfo = new Model.InvitedUserMessageInfo
                     {
                         CustomizedMessageBody = customizedMessage
                     };
                     invite.InvitedUserMessageInfo = inviteMsgInfo;
                 }
 
-                // Create the graph client and send the invitation.
-                GraphServiceClient graphClient = CreateGraphClient(accessToken, azureEnvironment: azureEnvironment);
-                inviteUserResponse = graphClient.Invitations.Request().AddAsync(invite).Result;
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}invitations";
+                var responseAsString = HttpHelper.MakePostRequestForString(requestUrl, accessToken);
+                return JsonSerializer.Deserialize<Invite>(responseAsString);
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return inviteUserResponse;
         }
     }
 }

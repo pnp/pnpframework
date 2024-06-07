@@ -11,12 +11,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Support for using Managed Identity with PnP Framework #1002 [koenzomers - Koen Zomers]
+- Added additional parameters to M365 Group creation to support setting SharePoint site URL, LCID, HubSiteId and SiteDesignId #1026 [gautamdsheth - Gautam Sheth]
 
 ### Changed
 
 - Optimizations to "TokenParser" performance #964 [fzbm - Florian Zink]
 - Added support for vanity URLs in the `GetSitePropertiesById` extension method #1012 [koenzomers - Koen Zomers]
-- Bumped version of Microsoft.Identity.Client package version to 4.60.3 #1014 [gautamdsheth - Gautam Sheth]
+- Bumped version of Microsoft.Identity.Client package version to 4.61.1 #1014, #1023 [gautamdsheth - Gautam Sheth]
 - Fix issue in ConfigureOnPremisesContext causing 403 forbidden responses on on-premise environments #1011 [nathan-swannet - Nathan Swannet]
 - Fix "The request was already sent" error when getting app metadata (using AppManager) #896 [JoaoCruz2001 - João Cruz]
 - Fix issue in `DisableRequestAccess` method where we were unable to properly set disable access request email. [luismanez- Luis Manez]

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.AppConfig;
 using Microsoft.Identity.Client.Extensibility;
 using Microsoft.SharePoint.Client;
 using PnP.Core.Services;
@@ -1535,71 +1536,38 @@ namespace PnP.Framework
                 throw new InvalidOperationException("Trying to get a Managed Identity access token within a non Managed Identity authentication context is not possible");
             }
 
-            // Construct the URL where to retrieve the access token from
-            var tokenRequestUrl = $"{managedIdendityEndpoint}?resource={audience}&api-version=2019-08-01";
-
+            IManagedIdentityApplication mi;
+            
             // Construct the URL to call to get the token based on the type of Managed Identity in use
             switch(managedIdentityType.Value)
             {
                 case ManagedIdentityType.UserAssignedByClientId:
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with client ID: {managedIdentityUserAssignedIdentifier}");
-                    tokenRequestUrl += $"&client_id={managedIdentityUserAssignedIdentifier}";
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedClientId(managedIdentityUserAssignedIdentifier)).Build();
                     break;
 
                 case ManagedIdentityType.UserAssignedByObjectId:
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with object/principal ID: {managedIdentityUserAssignedIdentifier}");
-                    tokenRequestUrl += $"&object_id={managedIdentityUserAssignedIdentifier}";
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedObjectId(managedIdentityUserAssignedIdentifier)).Build();
                     break;
 
 
                 case ManagedIdentityType.UserAssignedByResourceId:
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with Azure Resource ID: {managedIdentityUserAssignedIdentifier}");
-                    tokenRequestUrl += $"&mi_res_id={managedIdentityUserAssignedIdentifier}";
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedResourceId(managedIdentityUserAssignedIdentifier)).Build();
                     break;
 
                 case ManagedIdentityType.SystemAssigned:
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, "Using the system assigned managed identity");
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.SystemAssigned).Build();
                     break;
 
                 default:
                     throw new ArgumentException("Using an unsupported type of Managed Identity", nameof(managedIdentityType));
             }
 
-            // Make the HTTP request to the Azure Managed Identity Endpoint to get the access token for the requested audience
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, tokenRequestUrl))
-            {
-                requestMessage.Version = new Version(2, 0);
-                requestMessage.Headers.Add("Metadata", "true");
-                if (!string.IsNullOrEmpty(managedIdentityHeader))
-                {
-                    requestMessage.Headers.Add("X-IDENTITY-HEADER", managedIdentityHeader);
-                }
-
-                Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Sending managed identity token request to {tokenRequestUrl}");
-                 
-                var response = PnPHttpClient.Instance.GetHttpClient().SendAsync(requestMessage).GetAwaiter().GetResult();
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-
-                    var responseElement = JsonSerializer.Deserialize<JsonElement>(responseContent);
-                    if (responseElement.TryGetProperty("access_token", out JsonElement accessTokenElement))
-                    {
-                        var accessToken = accessTokenElement.GetString();
-
-                        Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Token request was successful");
-
-                        return accessToken;
-                    }
-
-                    Diagnostics.Log.Warning(Constants.LOGGING_SOURCE, $"Failed to find the access token in the response: {responseContent}");
-                }
-
-                Diagnostics.Log.Warning(Constants.LOGGING_SOURCE, $"Token request was unsuccessful with response {response.StatusCode}");
-            }
-
-            return null;
+            AuthenticationResult result = mi.AcquireTokenForManagedIdentity(audience).ExecuteAsync().GetAwaiter().GetResult();
+            return result.AccessToken;
         }
 
         /// <summary>

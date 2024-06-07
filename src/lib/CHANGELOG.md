@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Support for using Managed Identity with PnP Framework #1002 [koenzomers - Koen Zomers]
 - Added additional parameters to M365 Group creation to support setting SharePoint site URL, LCID, HubSiteId and SiteDesignId #1026 [gautamdsheth - Gautam Sheth]
+- Improve Managed Identity token acquisition process to use built-in methods which are more reliable. #1027 [gautamdsheth - Gautam Sheth]
 
 ### Changed
 

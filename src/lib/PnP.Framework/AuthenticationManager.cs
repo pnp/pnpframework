@@ -1567,7 +1567,7 @@ namespace PnP.Framework
             }
 
             AuthenticationResult result = mi.AcquireTokenForManagedIdentity(audience).ExecuteAsync().GetAwaiter().GetResult();
-            return result.AccessToken;
+            return result?.AccessToken;
         }
 
         /// <summary>

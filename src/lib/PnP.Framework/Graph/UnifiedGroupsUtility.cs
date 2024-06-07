@@ -117,11 +117,15 @@ namespace PnP.Framework.Graph
         /// <param name="preferredDataLocation">Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes.</param>
         /// <param name="assignedLabels">AIP Labels which should be applied to the group (does not work for App-Only)</param>
         /// <param name="welcomeEmailDisabled">Option to prevent sending of default welcome emails to new members.</param>
+        /// <param name="siteAlias">The SharePoint site URL alias, if not specified mailNickName will be used</param>
+        /// <param name="lcid">The LCID or default language of the SharePoint site</param>
+        /// <param name="hubSiteId">The HubSiteId of the SharePoint site</param>
+        /// <param name="siteDesignId">The SiteDesignId to be applied to SharePoint site</param>
         /// <returns>The just created Office 365 Group</returns>
         public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname,
             string accessToken, string[] owners = null, string[] members = null, Stream groupLogo = null,
             bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production,
-            Enums.Office365Geography? preferredDataLocation = null, Guid[] assignedLabels = null, bool welcomeEmailDisabled = false)
+            Enums.Office365Geography? preferredDataLocation = null, Guid[] assignedLabels = null, bool welcomeEmailDisabled = false, string siteAlias = "", uint lcid = 0, Guid hubSiteId = new Guid(), Guid siteDesignId = new Guid())
         {
             UnifiedGroupEntity result = null;
 
@@ -141,7 +145,7 @@ namespace PnP.Framework.Graph
             }
 
             var labels = new List<AssignedLabel>();
-            if(assignedLabels != null)
+            if (assignedLabels != null)
             {
                 foreach (var label in assignedLabels)
                 {
@@ -154,7 +158,7 @@ namespace PnP.Framework.Graph
                     }
                 }
             }
-            
+
 
             try
             {
@@ -174,7 +178,7 @@ namespace PnP.Framework.Graph
                         MailEnabled = true,
                         SecurityEnabled = false,
                         Visibility = isPrivate == true ? "Private" : "Public",
-                        GroupTypes = new List<string> { "Unified" }
+                        GroupTypes = new List<string> { "Unified" },
                     };
 
                     if (labels.Any())
@@ -207,12 +211,35 @@ namespace PnP.Framework.Graph
 
                     if (welcomeEmailDisabled)
                     {
-                        if (newGroup.AdditionalData == null)
-                        {
-                            newGroup.AdditionalData = new Dictionary<string, object>();
-                        }
+                        newGroup.AdditionalData ??= new Dictionary<string, object>();
                         newGroup.AdditionalData.Add("resourceBehaviorOptions", new string[] { "WelcomeEmailDisabled" });
                     }
+
+                    List<string> siteCreationOptions = new()
+                    {
+                        $"HubSiteId:{hubSiteId}"
+                    };
+
+                    if (!string.IsNullOrEmpty(siteAlias))
+                    {
+                        siteAlias = UrlUtility.RemoveUnallowedCharacters(siteAlias);
+                        siteAlias = UrlUtility.ReplaceAccentedCharactersWithLatin(siteAlias);
+
+                        siteCreationOptions.Add($"SiteAlias:{siteAlias}");
+                    }
+                    if (lcid != 0)
+                    {
+                        siteCreationOptions.Add($"SPSiteLanguage:{(int)lcid}");
+                    }
+
+                    if (siteDesignId != Guid.Empty)
+                    {
+                        siteCreationOptions.Add($"implicit_formula_292aa8a00786498a87a5ca52d9f4214a_{siteDesignId.ToString("D").ToLower()}");
+                    }
+
+                    newGroup.AdditionalData ??= new Dictionary<string, object>();
+
+                    newGroup.AdditionalData.Add("creationOptions", siteCreationOptions.ToArray());
 
                     Microsoft.Graph.Group addedGroup = null;
                     string modernSiteUrl = null;

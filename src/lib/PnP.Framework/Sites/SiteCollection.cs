@@ -545,7 +545,11 @@ namespace PnP.Framework.Sites
                 delay: retryDelay,
                 azureEnvironment: azureEnvironment,
                 preferredDataLocation: siteCollectionCreationInformation.PreferredDataLocation,
-                assignedLabels: new Guid[] { sensitivityLabelId });
+                assignedLabels: new Guid[] { sensitivityLabelId },
+                siteAlias: siteCollectionCreationInformation.SiteAlias,
+                lcid: siteCollectionCreationInformation.Lcid,
+                hubSiteId: siteCollectionCreationInformation.HubSiteId,
+                siteDesignId: siteCollectionCreationInformation.SiteDesignId.HasValue ? siteCollectionCreationInformation.SiteDesignId.Value : Guid.Empty);
 
             if (group != null && !string.IsNullOrEmpty(group.SiteUrl))
             {

@@ -322,7 +322,7 @@ namespace PnP.Framework.Graph
         /// <param name="graphClient">GraphClient instance to use to communicate with the Microsoft Graph</param>
         /// <param name="groupId">Id of the group which needs the owners added</param>
         /// <param name="removeOtherMembers">If set to true, all existing members which are not specified through <paramref name="members"/> will be removed as a member from the group</param>
-        private static async Task UpdateMembers(string[] members, GraphServiceClient graphClient, string groupId, bool removeOtherMembers)
+        private static async Task UpdateMembers(string[] members, GraphServiceClient graphClient, string groupId, bool removeOtherMembers, string accessToken, int retryCount, int delay)
         {
             if (members != null && members.Length > 0)
             {
@@ -340,7 +340,7 @@ namespace PnP.Framework.Graph
                     {
                         try
                         {
-                            // And if any, add it to the collection of group's owners
+                            // And if any, add it to the collection of group's members
                             await graphClient.Groups[groupId].Members.References.Request().AddAsync(member);
                         }
                         catch (Exception ex) when (ex.Message.Contains("Request_BadRequest") &&
@@ -371,19 +371,13 @@ namespace PnP.Framework.Graph
                     {
                         try
                         {
-                            // If it is not in the list of current owners, just remove it
-                            await graphClient.Groups[groupId].Members[member.Id].Reference.Request().DeleteAsync();
+                            // If it is not in the list of current members, just remove it
+                            var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl()}groups/{groupId}/members/{member.Id}$ref";
+                            HttpHelper.MakeDeleteRequest(requestUrl, accessToken, retryCount: retryCount, delay: delay);
                         }
-                        catch (ServiceException ex)
+                        catch (HttpResponseException ex) when (ex.StatusCode == 400)
                         {
-                            if (ex.Error.Code == "Request_BadRequest")
-                            {
-                                // Skip any failing removal
-                            }
-                            else
-                            {
-                                throw ex;
-                            }
+                            // Skip any failing removal
                         }
                     }
                 }
@@ -647,7 +641,7 @@ namespace PnP.Framework.Graph
                     if (members != null && members.Length > 0)
                     {
                         // For each and every owner
-                        await UpdateMembers(members, graphClient, groupToUpdate.Id, true);
+                        await UpdateMembers(members, graphClient, groupToUpdate.Id, true, accessToken, retryCount, delay);
                         updateGroup = true;
                     }
 
@@ -1332,7 +1326,7 @@ namespace PnP.Framework.Graph
                 {
                     var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
-                    await UpdateMembers(members, graphClient, groupId, removeExistingMembers);
+                    await UpdateMembers(members, graphClient, groupId, removeExistingMembers, accessToken, retryCount, delay);
 
                 }).GetAwaiter().GetResult();
             }

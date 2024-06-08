@@ -343,19 +343,10 @@ namespace PnP.Framework.Graph
                             // And if any, add it to the collection of group's owners
                             await graphClient.Groups[groupId].Members.References.Request().AddAsync(member);
                         }
-                        catch (Exception ex)
-                        {
-                            if (ex.Message.Contains("Request_BadRequest") &&
+                        catch (Exception ex) when (ex.Message.Contains("Request_BadRequest") &&
                                 ex.Message.Contains("added object references already exist"))
-                            {
-                                // Skip any already existing member
-                            }
-                            else
-                            {
-#pragma warning disable CA2200
-                                throw ex;
-#pragma warning restore CA2200
-                            }
+                        {
+                            // Skip any already existing member
                         }
                     }
                 }

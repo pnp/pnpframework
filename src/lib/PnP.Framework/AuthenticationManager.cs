@@ -827,7 +827,7 @@ namespace PnP.Framework
                                 var options = new SystemWebViewOptions()
                                 {
                                     HtmlMessageError = "<p> An error occurred: {0}. Details {1}</p>",
-                                    HtmlMessageSuccess = "<p>Succesfully acquired token. You may close this window now.</p>"
+                                    HtmlMessageSuccess = "<p>Successfully acquired token. You may close this window now.</p>"
                                 };
                                 builder = builder.WithUseEmbeddedWebView(false);
                                 builder = builder.WithSystemWebViewOptions(options);

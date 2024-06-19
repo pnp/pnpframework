@@ -440,6 +440,7 @@ namespace PnP.Framework.Provisioning.Connectors
                         cc.ExecuteQueryRetry();
 
                         streamResult.Value.CopyTo(stream);
+                        streamResult.Value.Dispose();
 
                         Log.Info(Constants.LOGGING_SOURCE, CoreResources.Provisioning_Connectors_SharePoint_FileRetrieved, fileName, GetConnectionString(), container);
 

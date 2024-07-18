@@ -1,8 +1,7 @@
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Attributes;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
 {
@@ -13,31 +12,38 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
      Returns = "My List Title")]
     internal class LocalizationToken : TokenDefinition
     {
-        private readonly List<ResourceEntry> _resourceEntries;
-        public LocalizationToken(Web web, string key, List<ResourceEntry> resourceEntries)
+        private readonly int _webLanguage;
+        private readonly int? _defaultLcid;
+        private readonly Dictionary<int, ResourceEntry> _entriesByLanguage;
+
+        public IReadOnlyList<ResourceEntry> ResourceEntries { get; }
+
+        public LocalizationToken(Web web, string key, List<ResourceEntry> resourceEntries, int? defaultLcid)
             : base(web, $"{{loc:{Regex.Escape(key)}}}", $"{{localize:{Regex.Escape(key)}}}", $"{{localization:{Regex.Escape(key)}}}", $"{{resource:{Regex.Escape(key)}}}", $"{{res:{Regex.Escape(key)}}}")
         {
-            _resourceEntries = resourceEntries;
+            ResourceEntries = resourceEntries;
+            _defaultLcid = defaultLcid;
+            _webLanguage = (int)web.Language;
+            _entriesByLanguage = new Dictionary<int, ResourceEntry>(capacity: resourceEntries.Count + 1);
+
+            for (var index = 0; index < resourceEntries.Count; index++)
+            {
+                var entry = resourceEntries[index];
+                _entriesByLanguage[entry.LCID] = entry;
+            }
         }
 
         public override string GetReplaceValue()
         {
-            var entry = _resourceEntries.FirstOrDefault(r => r.LCID == this.Web.Language);
-            if (entry != null)
+            if (_entriesByLanguage.TryGetValue(_webLanguage, out ResourceEntry entry)
+                // Fallback to default LCID.
+                || (_defaultLcid.HasValue && _entriesByLanguage.TryGetValue(_defaultLcid.Value, out entry)))
             {
                 return entry.Value;
             }
-            else
-            {
-                // fallback
-                return _resourceEntries.First().Value;
-            }
 
-        }
-
-        public List<ResourceEntry> ResourceEntries
-        {
-            get { return _resourceEntries; }
+            // Fallback to old logic as for me _defaultLCID has always a Value i.e. 0 or the correct LCID.
+            return ResourceEntries[0].Value;
         }
     }
 }

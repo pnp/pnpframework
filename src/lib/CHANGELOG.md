@@ -6,7 +6,128 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## Unreleased
+## [1.16.0]
+
+### Added
+
+- Support for using Managed Identity with PnP Framework #1002 [koenzomers - Koen Zomers]
+- Added additional parameters to M365 Group creation to support setting SharePoint site URL, LCID, HubSiteId and SiteDesignId #1026 [gautamdsheth - Gautam Sheth]
+- Improve Managed Identity token acquisition process to use built-in methods which are more reliable. #1027 [gautamdsheth - Gautam Sheth]
+
+### Changed
+
+- Optimizations to "TokenParser" performance #964 [fzbm - Florian Zink]
+- Added support for vanity URLs in the `GetSitePropertiesById` extension method #1012 [koenzomers - Koen Zomers]
+- Bumped version of Microsoft.Identity.Client package version to 4.61.1 #1014, #1023 [gautamdsheth - Gautam Sheth]
+- Fix issue in ConfigureOnPremisesContext causing 403 forbidden responses on on-premise environments #1011 [nathan-swannet - Nathan Swannet]
+- Fix "The request was already sent" error when getting app metadata (using AppManager) #896 [JoaoCruz2001 - João Cruz]
+- Fix issue in `DisableRequestAccess` method where we were unable to properly set disable access request email. [luismanez- Luis Manez]
+- Fix issue in Azure ACS auth for `AuthenticationManager` #1022 [dohly]
+
+## [1.15.0]
+
+### Added
+
+- Add ListDeletedUsers method to UsersUtility #956 [wilecoyotegenius - Konrad K.]
+
+### Changed
+
+- Add Site Collection App Catalog fields to BuilIinFieldId enum #952 [wilecoyotegenius - Konrad K.]
+- Upgrade to version 6.35.0 of System.IdentityModel.Tokens.Jwt #962 [eduardpaul - Eduard Paul]
+- Viva Announcement Library resulted in two pages libraries #975 [nils-a - Nils Andresen]
+- Fixed the GUID strings #969 [nils-a - Nils Andresen]
+- Improved list information in template MD conversion #989 [JGemkow - John Gemkow]
+
+## [1.14.0]
+
+### Added
+
+- Added Stream and XML option to load Tenant template #918 [koenzomers - Koen Zomers]
+- Implement adding labels to terms #934 [koskila - Antti K. Koskela]
+- Support for .NET 8.0 [jansenbe - Bert Jansen]
+
+### Changed
+
+- Added localization for modern audience fields #906 [nils-a - Nils Andresen]
+- Added support for setting TimeZoneId when creating a new site collection #907 [mmi-wp Mikkel Bukholt Mikkelsen]
+- Fixed non-taxonomy default folder values cause error when generating a provisioning template #915 [JakeStanger - Jake Stanger]
+- Removing the accents and unallowed characters when creating modern non group connected sites #922 [gautamdsheth - Gautam Sheth]
+- Added support for users utility in the other cloud environments #924 [gautamdsheth - Gautam Sheth]
+- Fixed occasional crash when setting default values #926 [JakeStanger - Jake Stanger]
+- Escape apostrophe in alias before calling DirectorySession/Group method #933 [magarma - Miguel Angel García Martínez]
+- Fixed unable to set column defaults on library root #947 [JakeStanger - Jake Stanger]
+
+## [1.13.0]
+
+### Added
+
+### Changed
+
+- Updated exception message in provisioning of Teams [erwinvanhunen - Erwin van Hunen]
+- Updated team provisioning to require less permissions if AllowToAddGuest setting is not specified in template [erwinvanhunen - Erwin van Hunen]
+- Set Webpart Title and Description during page creation #868 [magarma - Miguel Angel García Martínez]
+- Adding support for content types hidden in the export at list level. #882 [roberAlb - Roberto Ramon]
+- Fix Azure environment issue for non-commercial clouds in create team site #885 [gautamdsheth - Gautam Sheth]
+
+## [1.12.0]
+
+## Added
+
+- Added UndoCheckOutFile extension #842 [rompenar - Arnaud ROMPEN]
+- Custom Azure environments are supported via using the `AzureEnvironment.Custom` enviroment + setting the custom Graph authority and Azure AD login endpoint [jansenbe - Bert Jansen]
+
+## Changed
+
+- When `PnPContext` is created with a existing, externally provided, `IPnPContextFactory` then this `IPnPContextFactory` will be used for all PnP Framework internal `PnPContext` creations [jansenbe - Bert Jansen]
+- Fix ViewTypeKind property being ignored when provisioning views #816 [jackpoz - Giacomo Pozzoni]
+- Fix page transformation asset transfer when source asset url contains characters that are encoded [jansenbe - Bert Jansen]
+- Updated build script to support .NET 7 #824 [stokuri - Suman Tokori]
+- Added optionally providing BCC addresses to send a mail #823 [koenzomers - Koen Zomers]
+- Centralize the logic to get and validate the Admin Center URL [jansenbe - Bert Jansen]
+- No hardcoded references anymore to graph.microsoft.com and *.microsoftonline.com to help with supporting non default cloud environments [jansenbe - Bert Jansen]
+- Dropped .NET 5 support as it's not supported anymore [jansenbe - Bert Jansen]
+- Chars ' and . are allowed in alias and urls #834 [magarma - Miguel Angel García Martínez]
+- Cast TaxonoxyField with appropriate method from web context #831 [BollietMZK - Jerome Bolliet]
+- Skip setting DefaultColumnValues if there are none specified in the provisioning template #840 [jackpoz - Giacomo Pozzoni]
+- When a `PnPContext` (for using PnP Core SDK) is created from a `ClientContext` we now adhere to the set Azure configuration (graph URL, login URL) [jansenbe - Bert Jansen]
+- When a `ClientContext` (for using with CSOM) is created from a `PnPContext` we now adhere to the set Azure configuration (graph URL, login URL) [jansenbe - Bert Jansen]
+- Adding code to support multiple default values at folder level. #850 [roberAlb - Roberto Ramon]
+- MailUtility: fixed memory leak + improved authentication options #853 [koenzomers - Koen Zomers]
+- Adding support for vanity domain tenants to SearchExtensions #854 [koenzomers - Koen Zomers]
+- Support for different azure environment for team site creation #855 [gautamdsheth - Gautam Sheth]
+- Bump Nuget package version dependencies to align with PnP PS needs #856 [gautamdsheth - Gautam Sheth]
+
+## [1.11.0]
+
+### Added
+
+- Added .NET 7 binaries [jansenbe - Bert Jansen]
+- Moved to C# 10 [jansenbe - Bert Jansen]
+- Adding support to export ListInstance-FieldRef displayName with multilanguages #775 [magarma - Miguel Angel García Martínez]
+
+### Changed
+
+- Fix fileuniqueid and pageuniqueid export #692 [rjbooden - Ronald Booden]
+- Added null check for checking if members array is not null #694 [danielpastoor - Daniel Pastoor]
+- Add optional parameter to disable welcome message #700 [ohaak2 - Ole Rühaak]
+- Calculated field should be created after other fields #627 [friendbool]
+- Schema Implementation: ShowPeoplePickerSuggestionsForGuestUsers [pkbullock]
+- Schema Implementation: Audience Targeting Classic/Moder [pkbullock]
+- Add geo locations that has been recently added #732 [patrikhellgren - Patrik Hellgren]
+- Fix ClearDefaultColumnValues working on large lists #717 [cebud - Martin Dubec]
+- Export calculated field formula based on title instead of internal name #721 [madsmai - Mads Maibohm]
+- Allowing to create PnPContext from ClientContext with existing IPnPContextFactory #762 [heinrich-ulbricht - Heinrich Ulbricht]
+- Add support to exporting renamed Title columns to a PnP template #776 [jackpoz - Giacomo Pozzoni]
+- Drop unused Microsoft.Extensions.Logging.Abstractions reference [jansenbe - Bert Jansen]
+- Check owners if null before calling AddUnifiedGroupMembers #769 [magarma - Miguel Angel García Martínez]
+- Fixes for the EnableModernAudienceTargeting method #773 [patrikhellgren - Patrik Hellgren]
+- Fix for creating private channels #778 [patrikhellgren - Patrik Hellgren]
+- Fix for infinite loop in Replacing Tokens when property values contain the Regex special char "$" #777 [Autophanous]
+- Fix LocalizationToken.GetReplaceValue: fallback to old logic #785 [czullu - Christian Zuellig]
+- Fix: Failed to resolve termsetid token #786 [czullu - Christian Zuellig]
+- Token Regex for fileuniqueid* matches too broadly #751 #763 [heinrich-ulbricht - Heinrich Ulbricht]
+
+## [1.10.0]
 
 ### Added
 
@@ -15,6 +136,23 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Exporting/Provisioning _ModerationStatus for folders #654 [magarma - Miguel Angel García Martínez]
+- Do not try to tokenize non Guid termsetids as they already are tokenized #659 [czullu - Christian Zuellig]
+- Adding token parsing of folder name before setting default field values #664 [eduardpaul - Eduard Paul]
+- Add ConfigureAwait(false) to AuthenticationManager #665 [RiccardoGDev]
+- Fix for using passed PnPMonitoredScope in async method #666 [patrikhellgren - Patrik Hellgren]
+- Change to not re-throw caught exception during provisioning #668 [patrikhellgren - Patrik Hellgren]
+- Extend timeouts and add retries to teams provisioning #669 [patrikhellgren - Patrik Hellgren]
+- Implement show / hide of site title in header using SetChromeOptions #670 [eduardpaul - Eduard Paul]
+- Improve folder creation in EnsureFolderPath method #673 [gautamdsheth - Gautam Sheth]
+- Add UserAgent to CSOM based access token retrieval in GetAccessToken #642 [andregouveia8 - André Gouveia]
+- Remove AddContentTypeHiddenFieldsToList #679 [magarma - Miguel Angel García Martínez]
+- Add owners as members too when creating group connected team site using application permissions #680 [gautamdsheth - Gautam Sheth]
+- Fix for empty PnP:Templates in the xml #677 [danielpastoor - Daniel Pastoor]
+- Fix for getting the teams photo when using application permissions #678 [danielpastoor - Daniel Pastoor]
+- Ensure correct PnPContext is returned from the passed ClientContext #676 [danielpastoor - Daniel Pastoor]
+- Fix #1696 - issue with team creation , use graph token if possible #681 [gautamdsheth - Gautam Sheth]
+- Avoid retrying when the hostname cannot be found #686 [koenzomers - Koen Zomers]
 
 ## [1.9.0]
 

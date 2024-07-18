@@ -4,7 +4,6 @@ using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Entities;
 using PnP.Framework.Utilities;
-using PnP.Framework.Utilities.Graph;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,6 +37,7 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to configure the HTTP bearer Authorization Header</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request.</param>
+        /// <param name="azureEnvironment">Azure environment to use</param>
         /// <returns></returns>
         private static GraphServiceClient CreateGraphClient(String accessToken, int retryCount = defaultRetryCount, int delay = defaultDelay, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
@@ -116,10 +116,16 @@ namespace PnP.Framework.Graph
         /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <param name="preferredDataLocation">Defines the codes of geographies in which there is Office 365 presence. Used for multi-geo enabled tenants. List with available geographies is available at https://docs.microsoft.com/office365/enterprise/multi-geo-add-group-with-pdl#geo-location-codes.</param>
         /// <param name="assignedLabels">AIP Labels which should be applied to the group (does not work for App-Only)</param>
+        /// <param name="welcomeEmailDisabled">Option to prevent sending of default welcome emails to new members.</param>
+        /// <param name="siteAlias">The SharePoint site URL alias, if not specified mailNickName will be used</param>
+        /// <param name="lcid">The LCID or default language of the SharePoint site</param>
+        /// <param name="hubSiteId">The HubSiteId of the SharePoint site</param>
+        /// <param name="siteDesignId">The SiteDesignId to be applied to SharePoint site</param>
         /// <returns>The just created Office 365 Group</returns>
         public static UnifiedGroupEntity CreateUnifiedGroup(string displayName, string description, string mailNickname,
             string accessToken, string[] owners = null, string[] members = null, Stream groupLogo = null,
-            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Enums.Office365Geography? preferredDataLocation = null, Guid[] assignedLabels = null)
+            bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production,
+            Enums.Office365Geography? preferredDataLocation = null, Guid[] assignedLabels = null, bool welcomeEmailDisabled = false, string siteAlias = "", uint lcid = 0, Guid hubSiteId = new Guid(), Guid siteDesignId = new Guid())
         {
             UnifiedGroupEntity result = null;
 
@@ -139,7 +145,7 @@ namespace PnP.Framework.Graph
             }
 
             var labels = new List<AssignedLabel>();
-            if(assignedLabels != null)
+            if (assignedLabels != null)
             {
                 foreach (var label in assignedLabels)
                 {
@@ -152,7 +158,7 @@ namespace PnP.Framework.Graph
                     }
                 }
             }
-            
+
 
             try
             {
@@ -172,7 +178,7 @@ namespace PnP.Framework.Graph
                         MailEnabled = true,
                         SecurityEnabled = false,
                         Visibility = isPrivate == true ? "Private" : "Public",
-                        GroupTypes = new List<string> { "Unified" }
+                        GroupTypes = new List<string> { "Unified" },
                     };
 
                     if (labels.Any())
@@ -202,6 +208,38 @@ namespace PnP.Framework.Graph
                             newGroup.MembersODataBind = users.Select(u => $"https://{AuthenticationManager.GetGraphEndPoint(azureEnvironment)}/v1.0/users/{u.Id}").ToArray();
                         }
                     }
+
+                    if (welcomeEmailDisabled)
+                    {
+                        newGroup.AdditionalData ??= new Dictionary<string, object>();
+                        newGroup.AdditionalData.Add("resourceBehaviorOptions", new string[] { "WelcomeEmailDisabled" });
+                    }
+
+                    List<string> siteCreationOptions = new()
+                    {
+                        $"HubSiteId:{hubSiteId}"
+                    };
+
+                    if (!string.IsNullOrEmpty(siteAlias))
+                    {
+                        siteAlias = UrlUtility.RemoveUnallowedCharacters(siteAlias);
+                        siteAlias = UrlUtility.ReplaceAccentedCharactersWithLatin(siteAlias);
+
+                        siteCreationOptions.Add($"SiteAlias:{siteAlias}");
+                    }
+                    if (lcid != 0)
+                    {
+                        siteCreationOptions.Add($"SPSiteLanguage:{(int)lcid}");
+                    }
+
+                    if (siteDesignId != Guid.Empty)
+                    {
+                        siteCreationOptions.Add($"implicit_formula_292aa8a00786498a87a5ca52d9f4214a_{siteDesignId.ToString("D").ToLower()}");
+                    }
+
+                    newGroup.AdditionalData ??= new Dictionary<string, object>();
+
+                    newGroup.AdditionalData.Add("creationOptions", siteCreationOptions.ToArray());
 
                     Microsoft.Graph.Group addedGroup = null;
                     string modernSiteUrl = null;
@@ -239,7 +277,7 @@ namespace PnP.Framework.Graph
 
                                             try
                                             {
-                                                groupLogoUpdated = UpdateUnifiedGroup(addedGroup.Id, accessToken, groupLogo: tempGroupLogo);
+                                                groupLogoUpdated = UpdateUnifiedGroup(addedGroup.Id, accessToken, groupLogo: tempGroupLogo, azureEnvironment: azureEnvironment);
                                             }
                                             catch
                                             {
@@ -268,7 +306,7 @@ namespace PnP.Framework.Graph
                             {
                                 try
                                 {
-                                    modernSiteUrl = GetUnifiedGroupSiteUrl(addedGroup.Id, accessToken);
+                                    modernSiteUrl = GetUnifiedGroupSiteUrl(addedGroup.Id, accessToken, azureEnvironment: azureEnvironment);
                                 }
                                 catch
                                 {
@@ -289,7 +327,7 @@ namespace PnP.Framework.Graph
 
                     if (createTeam)
                     {
-                        await CreateTeam(group.GroupId, accessToken);
+                        await CreateTeam(group.GroupId, accessToken, azureEnvironment: azureEnvironment);
                     }
 
                     return (group);
@@ -313,40 +351,42 @@ namespace PnP.Framework.Graph
         /// <param name="removeOtherMembers">If set to true, all existing members which are not specified through <paramref name="members"/> will be removed as a member from the group</param>
         private static async Task UpdateMembers(string[] members, GraphServiceClient graphClient, string groupId, bool removeOtherMembers)
         {
-            foreach (var m in members)
+            if (members != null && members.Length > 0)
             {
-                // Search for the user object
-                var memberQuery = await graphClient.Users
-                    .Request()
-                    .Filter($"userPrincipalName eq '{Uri.EscapeDataString(m.Replace("'", "''"))}'")
-                    .GetAsync();
-
-                var member = memberQuery.FirstOrDefault();
-
-                if (member != null)
+                foreach (var m in members)
                 {
-                    try
+                    // Search for the user object
+                    var memberQuery = await graphClient.Users
+                        .Request()
+                        .Filter($"userPrincipalName eq '{Uri.EscapeDataString(m.Replace("'", "''"))}'")
+                        .GetAsync();
+
+                    var member = memberQuery.FirstOrDefault();
+
+                    if (member != null)
                     {
-                        // And if any, add it to the collection of group's owners
-                        await graphClient.Groups[groupId].Members.References.Request().AddAsync(member);
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex.Message.Contains("Request_BadRequest") &&
-                            ex.Message.Contains("added object references already exist"))
+                        try
                         {
-                            // Skip any already existing member
+                            // And if any, add it to the collection of group's owners
+                            await graphClient.Groups[groupId].Members.References.Request().AddAsync(member);
                         }
-                        else
+                        catch (Exception ex)
                         {
+                            if (ex.Message.Contains("Request_BadRequest") &&
+                                ex.Message.Contains("added object references already exist"))
+                            {
+                                // Skip any already existing member
+                            }
+                            else
+                            {
 #pragma warning disable CA2200
-                            throw ex;
+                                throw ex;
 #pragma warning restore CA2200
+                            }
                         }
                     }
                 }
             }
-
             // Check if all other members not provided should be removed
             if (!removeOtherMembers)
             {
@@ -831,35 +871,38 @@ namespace PnP.Framework.Graph
 
                     var g = await graphClient.Groups[groupId].Request().GetAsync();
 
-                    group = new UnifiedGroupEntity
+                    if (g.GroupTypes.Contains("Unified"))
                     {
-                        GroupId = g.Id,
-                        DisplayName = g.DisplayName,
-                        Description = g.Description,
-                        Mail = g.Mail,
-                        MailNickname = g.MailNickname,
-                        Visibility = g.Visibility
-                    };
-                    if (includeSite)
-                    {
-                        try
+                        group = new UnifiedGroupEntity
                         {
-                            group.SiteUrl = GetUnifiedGroupSiteUrl(groupId, accessToken);
-                        }
-                        catch (ServiceException e)
+                            GroupId = g.Id,
+                            DisplayName = g.DisplayName,
+                            Description = g.Description,
+                            Mail = g.Mail,
+                            MailNickname = g.MailNickname,
+                            Visibility = g.Visibility
+                        };
+                        if (includeSite)
                         {
-                            group.SiteUrl = e.Error.Message;
+                            try
+                            {
+                                group.SiteUrl = GetUnifiedGroupSiteUrl(groupId, accessToken);
+                            }
+                            catch (ServiceException e)
+                            {
+                                group.SiteUrl = e.Error.Message;
+                            }
                         }
-                    }
 
-                    if (includeClassification)
-                    {
-                        group.Classification = g.Classification;
-                    }
+                        if (includeClassification)
+                        {
+                            group.Classification = g.Classification;
+                        }
 
-                    if (includeHasTeam)
-                    {
-                        group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
+                        if (includeHasTeam)
+                        {
+                            group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
+                        }
                     }
 
                     return (group);

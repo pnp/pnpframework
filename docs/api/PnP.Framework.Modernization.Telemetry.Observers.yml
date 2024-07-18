@@ -1,0 +1,40 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.Telemetry.Observers
+  commentId: N:PnP.Framework.Modernization.Telemetry.Observers
+  id: PnP.Framework.Modernization.Telemetry.Observers
+  children:
+  - PnP.Framework.Modernization.Telemetry.Observers.ConsoleObserver
+  - PnP.Framework.Modernization.Telemetry.Observers.MarkdownObserver
+  - PnP.Framework.Modernization.Telemetry.Observers.MarkdownToSharePointObserver
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Modernization.Telemetry.Observers
+  nameWithType: PnP.Framework.Modernization.Telemetry.Observers
+  fullName: PnP.Framework.Modernization.Telemetry.Observers
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Modernization.Telemetry.Observers.ConsoleObserver
+  commentId: T:PnP.Framework.Modernization.Telemetry.Observers.ConsoleObserver
+  name: ConsoleObserver
+  nameWithType: ConsoleObserver
+  fullName: PnP.Framework.Modernization.Telemetry.Observers.ConsoleObserver
+- uid: PnP.Framework.Modernization.Telemetry.Observers.MarkdownObserver
+  commentId: T:PnP.Framework.Modernization.Telemetry.Observers.MarkdownObserver
+  parent: PnP.Framework.Modernization.Telemetry.Observers
+  name: MarkdownObserver
+  nameWithType: MarkdownObserver
+  fullName: PnP.Framework.Modernization.Telemetry.Observers.MarkdownObserver
+- uid: PnP.Framework.Modernization.Telemetry.Observers.MarkdownToSharePointObserver
+  commentId: T:PnP.Framework.Modernization.Telemetry.Observers.MarkdownToSharePointObserver
+  name: MarkdownToSharePointObserver
+  nameWithType: MarkdownToSharePointObserver
+  fullName: PnP.Framework.Modernization.Telemetry.Observers.MarkdownToSharePointObserver
+- uid: PnP.Framework.Modernization.Telemetry.Observers
+  commentId: N:PnP.Framework.Modernization.Telemetry.Observers
+  name: PnP.Framework.Modernization.Telemetry.Observers
+  nameWithType: PnP.Framework.Modernization.Telemetry.Observers
+  fullName: PnP.Framework.Modernization.Telemetry.Observers

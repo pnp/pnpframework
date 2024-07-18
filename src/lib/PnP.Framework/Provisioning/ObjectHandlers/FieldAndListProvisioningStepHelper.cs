@@ -17,7 +17,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 _fieldXmlDictionary[templateField] = schemaElement;
             }
             var type = (string)schemaElement.Attribute("Type");
-            if (type != "Lookup" && type != "LookupMulti")
+            if (type != "Lookup" && type != "LookupMulti" && type != "Calculated")
             {
                 return Step.ListAndStandardFields;
             }

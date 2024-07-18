@@ -9,6 +9,7 @@ using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -293,19 +294,30 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     if (groupSiteInfo == null)
                                     {                                        
                                         if (PnPProvisioningContext.Current != null)
-                                        {
-                                            try
+                                        {                                            
+                                            var graphBaseURI = AuthenticationManager.GetGraphBaseEndPoint(tenant.Context.GetAzureEnvironment());
+
+                                            // We're going to try to get an access token from a cookie first, if we have a delegate handler assigned that knows how to deal with the cookies
+                                            if (PnPProvisioningContext.Current.AcquireCookie != null)
                                             {
-                                                graphAccessToken = PnPProvisioningContext.Current.AcquireCookie(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI);
+                                                try
+                                                {
+                                                    graphAccessToken = PnPProvisioningContext.Current.AcquireCookie(graphBaseURI.ToString());
+                                                }
+                                                catch
+                                                {
+                                                }
                                             }
-                                            catch
+
+                                            // Check if we managed to get an access token, if not, we're going to try getting one from the Microsoft Online authentication endpoints
+                                            if(string.IsNullOrEmpty(graphAccessToken))
                                             {
-                                                graphAccessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, null);
+                                                graphAccessToken = PnPProvisioningContext.Current.AcquireToken(graphBaseURI.Authority, null);
                                             }
                                         }
                                         WriteMessage($"Creating Team Site {siteInfo.Alias}", ProvisioningMessageType.Progress);
 #pragma warning disable CS0618
-                                        siteContext = Sites.SiteCollection.Create(rootSiteContext, siteInfo, configuration.Tenant.DelayAfterModernSiteCreation, noWait: nowait, graphAccessToken: graphAccessToken);
+                                        siteContext = Sites.SiteCollection.Create(rootSiteContext, siteInfo, configuration.Tenant.DelayAfterModernSiteCreation, noWait: nowait, graphAccessToken: graphAccessToken, azureEnvironment: tenant.Context.GetAzureEnvironment());
 #pragma warning restore CS0618
                                     }
                                     else
@@ -367,7 +379,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         {
                                             try
                                             {
-                                                siteContext.TeamifyAsync().GetAwaiter().GetResult();
+                                                siteContext.TeamifyAsync(graphAccessToken).GetAwaiter().GetResult();
                                                 WriteMessage($"Teamifying the O365 group connected site at URL - {siteContext.Url}", ProvisioningMessageType.Progress);
                                             }
                                             catch (Exception ex)

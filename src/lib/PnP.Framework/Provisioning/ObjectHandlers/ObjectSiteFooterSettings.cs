@@ -38,6 +38,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     Enabled = web.FooterEnabled
                 };
+
+                // Move to the PnP Core SDK context
+                using (var pnpCoreContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
+                {
+                    // Get the Chrome options
+                    var chrome = pnpCoreContext.Web.GetBrandingManager().GetChromeOptions();
+
+                    footer.Enabled = chrome.Footer.Enabled;
+                    footer.DisplayName = chrome.Footer.DisplayName;
+                    footer.Layout = (PnP.Framework.Provisioning.Model.SiteFooterLayout)Enum.Parse(typeof(PnP.Framework.Provisioning.Model.SiteFooterLayout), chrome.Footer.Layout.ToString());
+                    footer.BackgroundEmphasis = (PnP.Framework.Provisioning.Model.Emphasis)Enum.Parse(typeof(PnP.Framework.Provisioning.Model.Emphasis), chrome.Footer.Emphasis.ToString());
+                }
+
                 var structureString = web.ExecuteGetAsync($"/_api/navigation/MenuState?menuNodeKey='{Constants.SITEFOOTER_NODEKEY}'", defaultCulture.Name).GetAwaiter().GetResult();
                 var menuState = JsonConvert.DeserializeObject<MenuState>(structureString);
 
@@ -340,14 +353,28 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     web.FooterEnabled = template.Footer.Enabled;
                     var defaultCulture = new CultureInfo((int)web.Language);
 
-                    var jsonRequest = new
-                    {
-                        footerEnabled = web.FooterEnabled,
-                        footerLayout = web.FooterLayout,
-                        footerEmphasis = web.FooterEmphasis
-                    };
+                    //var jsonRequest = new
+                    //{
+                    //    footerEnabled = web.FooterEnabled,
+                    //    footerLayout = web.FooterLayout,
+                    //    footerEmphasis = web.FooterEmphasis
+                    //};
 
-                    web.ExecutePostAsync("/_api/web/SetChromeOptions", System.Text.Json.JsonSerializer.Serialize(jsonRequest)).GetAwaiter().GetResult();
+                    //web.ExecutePostAsync("/_api/web/SetChromeOptions", System.Text.Json.JsonSerializer.Serialize(jsonRequest)).GetAwaiter().GetResult();
+
+                    // Move to the PnP Core SDK context
+                    using (var pnpCoreContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
+                    {
+                        // Get the Chrome options
+                        var chrome = pnpCoreContext.Web.GetBrandingManager().GetChromeOptions();
+
+                        chrome.Footer.Enabled = web.FooterEnabled;
+                        chrome.Footer.DisplayName = template.Footer.DisplayName;
+                        chrome.Footer.Layout = (PnP.Core.Model.SharePoint.FooterLayoutType)Enum.Parse(typeof(PnP.Core.Model.SharePoint.FooterLayoutType), template.Footer.Layout.ToString());
+                        chrome.Footer.Emphasis = (PnP.Core.Model.SharePoint.FooterVariantThemeType)Enum.Parse(typeof(PnP.Core.Model.SharePoint.FooterVariantThemeType), template.Footer.BackgroundEmphasis.ToString()); 
+
+                        pnpCoreContext.Web.GetBrandingManager().SetChromeOptions(chrome);
+                    }
 
                     //if (PnPProvisioningContext.Current != null)
                     //{

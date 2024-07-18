@@ -1,0 +1,2705 @@
+### YamlMime:ManagedReference
+items:
+- uid: CamlBuilder.Operator
+  commentId: T:CamlBuilder.Operator
+  id: Operator
+  parent: CamlBuilder
+  children:
+  - CamlBuilder.Operator.#ctor(CamlBuilder.OperatorType,CamlBuilder.FieldReference)
+  - CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference,CamlBuilder.Value)
+  - CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Operator.Contains(CamlBuilder.FieldReference,CamlBuilder.Value)
+  - CamlBuilder.Operator.Contains(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.Value)
+  - CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Operator.Equal(CamlBuilder.FieldReference,CamlBuilder.Value)
+  - CamlBuilder.Operator.Equal(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Operator.FieldReference
+  - CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference,CamlBuilder.Value)
+  - CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.Value)
+  - CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Operator.In(CamlBuilder.FieldReference,System.Collections.Generic.IEnumerable{CamlBuilder.Value})
+  - CamlBuilder.Operator.Includes(CamlBuilder.FieldReference,CamlBuilder.Value)
+  - CamlBuilder.Operator.Includes(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Operator.IsNotNull(CamlBuilder.FieldReference)
+  - CamlBuilder.Operator.IsNull(CamlBuilder.FieldReference)
+  - CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference,CamlBuilder.Value)
+  - CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.Value)
+  - CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Operator.Membership(CamlBuilder.FieldReference,CamlBuilder.MembershipType)
+  - CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference,CamlBuilder.Value)
+  - CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference,CamlBuilder.Value)
+  - CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Operator.OperatorType
+  langs:
+  - csharp
+  - vb
+  name: Operator
+  nameWithType: Operator
+  fullName: CamlBuilder.Operator
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Operator
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nDefines a CAML operator. This is an abstract class. To instanciate an operator use public static methods.\n"
+  example: []
+  syntax:
+    content: 'public abstract class Operator : Statement'
+    content.vb: >-
+      Public MustInherit Class Operator
+          Inherits Statement
+  inheritance:
+  - System.Object
+  - CamlBuilder.Statement
+  inheritedMembers:
+  - CamlBuilder.Statement.GetCaml
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - CamlBuilder.Operator.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - CamlBuilder.Operator.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{CamlBuilder.Operator,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: CamlBuilder.Operator.OperatorType
+  commentId: P:CamlBuilder.Operator.OperatorType
+  id: OperatorType
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: OperatorType
+  nameWithType: Operator.OperatorType
+  fullName: CamlBuilder.Operator.OperatorType
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OperatorType
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 18
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nGets the operator type. \n"
+  example: []
+  syntax:
+    content: public OperatorType OperatorType { get; }
+    parameters: []
+    return:
+      type: CamlBuilder.OperatorType
+    content.vb: Public ReadOnly Property OperatorType As OperatorType
+  overload: CamlBuilder.Operator.OperatorType*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: CamlBuilder.Operator.FieldReference
+  commentId: P:CamlBuilder.Operator.FieldReference
+  id: FieldReference
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: FieldReference
+  nameWithType: Operator.FieldReference
+  fullName: CamlBuilder.Operator.FieldReference
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FieldReference
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nGets the name of the field on which this operator acts on.\n"
+  example: []
+  syntax:
+    content: public FieldReference FieldReference { get; }
+    parameters: []
+    return:
+      type: CamlBuilder.FieldReference
+    content.vb: Public ReadOnly Property FieldReference As FieldReference
+  overload: CamlBuilder.Operator.FieldReference*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: CamlBuilder.Operator.#ctor(CamlBuilder.OperatorType,CamlBuilder.FieldReference)
+  commentId: M:CamlBuilder.Operator.#ctor(CamlBuilder.OperatorType,CamlBuilder.FieldReference)
+  id: '#ctor(CamlBuilder.OperatorType,CamlBuilder.FieldReference)'
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: Operator(OperatorType, FieldReference)
+  nameWithType: Operator.Operator(OperatorType, FieldReference)
+  fullName: CamlBuilder.Operator.Operator(CamlBuilder.OperatorType, CamlBuilder.FieldReference)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 25
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  syntax:
+    content: protected Operator(OperatorType operatorType, FieldReference fieldRef)
+    parameters:
+    - id: operatorType
+      type: CamlBuilder.OperatorType
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+    content.vb: Protected Sub New(operatorType As OperatorType, fieldRef As FieldReference)
+  overload: CamlBuilder.Operator.#ctor*
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: CamlBuilder.Operator.IsNull(CamlBuilder.FieldReference)
+  commentId: M:CamlBuilder.Operator.IsNull(CamlBuilder.FieldReference)
+  id: IsNull(CamlBuilder.FieldReference)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: IsNull(FieldReference)
+  nameWithType: Operator.IsNull(FieldReference)
+  fullName: CamlBuilder.Operator.IsNull(CamlBuilder.FieldReference)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsNull
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 73
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>IsNull</em> operator to perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator IsNull(FieldReference fieldRef)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    return:
+      type: CamlBuilder.Operator
+      description: IsNull operator instance.
+    content.vb: 'Public Shared Function IsNull(fieldRef As FieldReference) As '
+  overload: CamlBuilder.Operator.IsNull*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.IsNotNull(CamlBuilder.FieldReference)
+  commentId: M:CamlBuilder.Operator.IsNotNull(CamlBuilder.FieldReference)
+  id: IsNotNull(CamlBuilder.FieldReference)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: IsNotNull(FieldReference)
+  nameWithType: Operator.IsNotNull(FieldReference)
+  fullName: CamlBuilder.Operator.IsNotNull(CamlBuilder.FieldReference)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsNotNull
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 83
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>IsNotNull</em> operator to perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator IsNotNull(FieldReference fieldRef)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    return:
+      type: CamlBuilder.Operator
+      description: IsNotNull operator instance.
+    content.vb: 'Public Shared Function IsNotNull(fieldRef As FieldReference) As '
+  overload: CamlBuilder.Operator.IsNotNull*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.Equal(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.Equal(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  id: Equal(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: Equal(FieldReference, ValueType, Object)
+  nameWithType: Operator.Equal(FieldReference, ValueType, Object)
+  fullName: CamlBuilder.Operator.Equal(CamlBuilder.FieldReference, CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Equal
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 95
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>Equal</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator Equal(FieldReference fieldRef, ValueType valueType, object value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: valueType
+      type: CamlBuilder.ValueType
+      description: Field type
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: Equal operator instance.
+    content.vb: 'Public Shared Function Equal(fieldRef As FieldReference, valueType As ValueType, value As Object) As '
+  overload: CamlBuilder.Operator.Equal*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.Equal(CamlBuilder.FieldReference,CamlBuilder.Value)
+  commentId: M:CamlBuilder.Operator.Equal(CamlBuilder.FieldReference,CamlBuilder.Value)
+  id: Equal(CamlBuilder.FieldReference,CamlBuilder.Value)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: Equal(FieldReference, Value)
+  nameWithType: Operator.Equal(FieldReference, Value)
+  fullName: CamlBuilder.Operator.Equal(CamlBuilder.FieldReference, CamlBuilder.Value)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Equal
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 106
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>Equal</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator Equal(FieldReference fieldRef, Value value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: value
+      type: CamlBuilder.Value
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: Equal operator instance.
+    content.vb: 'Public Shared Function Equal(fieldRef As FieldReference, value As Value) As '
+  overload: CamlBuilder.Operator.Equal*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  id: NotEqual(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: NotEqual(FieldReference, ValueType, Object)
+  nameWithType: Operator.NotEqual(FieldReference, ValueType, Object)
+  fullName: CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference, CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NotEqual
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 118
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>NotEqual</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator NotEqual(FieldReference fieldRef, ValueType valueType, object value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: valueType
+      type: CamlBuilder.ValueType
+      description: Field type
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: NotEqual operator instance.
+    content.vb: 'Public Shared Function NotEqual(fieldRef As FieldReference, valueType As ValueType, value As Object) As '
+  overload: CamlBuilder.Operator.NotEqual*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference,CamlBuilder.Value)
+  commentId: M:CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference,CamlBuilder.Value)
+  id: NotEqual(CamlBuilder.FieldReference,CamlBuilder.Value)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: NotEqual(FieldReference, Value)
+  nameWithType: Operator.NotEqual(FieldReference, Value)
+  fullName: CamlBuilder.Operator.NotEqual(CamlBuilder.FieldReference, CamlBuilder.Value)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NotEqual
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 129
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>NotEqual</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator NotEqual(FieldReference fieldRef, Value value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: value
+      type: CamlBuilder.Value
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: NotEqual operator instance.
+    content.vb: 'Public Shared Function NotEqual(fieldRef As FieldReference, value As Value) As '
+  overload: CamlBuilder.Operator.NotEqual*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  id: BeginsWith(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: BeginsWith(FieldReference, ValueType, Object)
+  nameWithType: Operator.BeginsWith(FieldReference, ValueType, Object)
+  fullName: CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference, CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BeginsWith
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 141
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>BeginsWith</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator BeginsWith(FieldReference fieldRef, ValueType valueType, object value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: valueType
+      type: CamlBuilder.ValueType
+      description: Field type
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: BeginsWith operator instance.
+    content.vb: 'Public Shared Function BeginsWith(fieldRef As FieldReference, valueType As ValueType, value As Object) As '
+  overload: CamlBuilder.Operator.BeginsWith*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference,CamlBuilder.Value)
+  commentId: M:CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference,CamlBuilder.Value)
+  id: BeginsWith(CamlBuilder.FieldReference,CamlBuilder.Value)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: BeginsWith(FieldReference, Value)
+  nameWithType: Operator.BeginsWith(FieldReference, Value)
+  fullName: CamlBuilder.Operator.BeginsWith(CamlBuilder.FieldReference, CamlBuilder.Value)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BeginsWith
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 152
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>BeginsWith</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator BeginsWith(FieldReference fieldRef, Value value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: value
+      type: CamlBuilder.Value
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: BeginsWith operator instance.
+    content.vb: 'Public Shared Function BeginsWith(fieldRef As FieldReference, value As Value) As '
+  overload: CamlBuilder.Operator.BeginsWith*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.Contains(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.Contains(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  id: Contains(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: Contains(FieldReference, ValueType, Object)
+  nameWithType: Operator.Contains(FieldReference, ValueType, Object)
+  fullName: CamlBuilder.Operator.Contains(CamlBuilder.FieldReference, CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Contains
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 164
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>Contains</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator Contains(FieldReference fieldRef, ValueType valueType, object value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: valueType
+      type: CamlBuilder.ValueType
+      description: Field type
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: Contains operator instance.
+    content.vb: 'Public Shared Function Contains(fieldRef As FieldReference, valueType As ValueType, value As Object) As '
+  overload: CamlBuilder.Operator.Contains*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.Contains(CamlBuilder.FieldReference,CamlBuilder.Value)
+  commentId: M:CamlBuilder.Operator.Contains(CamlBuilder.FieldReference,CamlBuilder.Value)
+  id: Contains(CamlBuilder.FieldReference,CamlBuilder.Value)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: Contains(FieldReference, Value)
+  nameWithType: Operator.Contains(FieldReference, Value)
+  fullName: CamlBuilder.Operator.Contains(CamlBuilder.FieldReference, CamlBuilder.Value)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Contains
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 175
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>Contains</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator Contains(FieldReference fieldRef, Value value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: value
+      type: CamlBuilder.Value
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: Contains operator instance.
+    content.vb: 'Public Shared Function Contains(fieldRef As FieldReference, value As Value) As '
+  overload: CamlBuilder.Operator.Contains*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  id: DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: DateRangesOverlap(FieldReference, ValueType, Object)
+  nameWithType: Operator.DateRangesOverlap(FieldReference, ValueType, Object)
+  fullName: CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference, CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DateRangesOverlap
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 187
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>DateRangesOverlap</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator DateRangesOverlap(FieldReference fieldRef, ValueType valueType, object value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: valueType
+      type: CamlBuilder.ValueType
+      description: Field type
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: DateRangesOverlap operator instance.
+    content.vb: 'Public Shared Function DateRangesOverlap(fieldRef As FieldReference, valueType As ValueType, value As Object) As '
+  overload: CamlBuilder.Operator.DateRangesOverlap*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.Value)
+  commentId: M:CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.Value)
+  id: DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.Value)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: DateRangesOverlap(FieldReference, Value)
+  nameWithType: Operator.DateRangesOverlap(FieldReference, Value)
+  fullName: CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference, CamlBuilder.Value)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DateRangesOverlap
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 198
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>DateRangesOverlap</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator DateRangesOverlap(FieldReference fieldRef, Value value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: value
+      type: CamlBuilder.Value
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: DateRangesOverlap operator instance.
+    content.vb: 'Public Shared Function DateRangesOverlap(fieldRef As FieldReference, value As Value) As '
+  overload: CamlBuilder.Operator.DateRangesOverlap*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  id: GreaterThan(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: GreaterThan(FieldReference, ValueType, Object)
+  nameWithType: Operator.GreaterThan(FieldReference, ValueType, Object)
+  fullName: CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference, CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GreaterThan
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 210
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>GreaterThan</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator GreaterThan(FieldReference fieldRef, ValueType valueType, object value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: valueType
+      type: CamlBuilder.ValueType
+      description: Field type
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: GreaterThan operator instance.
+    content.vb: 'Public Shared Function GreaterThan(fieldRef As FieldReference, valueType As ValueType, value As Object) As '
+  overload: CamlBuilder.Operator.GreaterThan*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference,CamlBuilder.Value)
+  commentId: M:CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference,CamlBuilder.Value)
+  id: GreaterThan(CamlBuilder.FieldReference,CamlBuilder.Value)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: GreaterThan(FieldReference, Value)
+  nameWithType: Operator.GreaterThan(FieldReference, Value)
+  fullName: CamlBuilder.Operator.GreaterThan(CamlBuilder.FieldReference, CamlBuilder.Value)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GreaterThan
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 221
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>GreaterThan</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator GreaterThan(FieldReference fieldRef, Value value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: value
+      type: CamlBuilder.Value
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: GreaterThan operator instance.
+    content.vb: 'Public Shared Function GreaterThan(fieldRef As FieldReference, value As Value) As '
+  overload: CamlBuilder.Operator.GreaterThan*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  id: GreaterThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: GreaterThanOrEqualTo(FieldReference, ValueType, Object)
+  nameWithType: Operator.GreaterThanOrEqualTo(FieldReference, ValueType, Object)
+  fullName: CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference, CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GreaterThanOrEqualTo
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 233
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>GreaterThanOrEqualTo</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator GreaterThanOrEqualTo(FieldReference fieldRef, ValueType valueType, object value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: valueType
+      type: CamlBuilder.ValueType
+      description: Field type
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: GreaterThanOrEqualTo operator instance.
+    content.vb: 'Public Shared Function GreaterThanOrEqualTo(fieldRef As FieldReference, valueType As ValueType, value As Object) As '
+  overload: CamlBuilder.Operator.GreaterThanOrEqualTo*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.Value)
+  commentId: M:CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.Value)
+  id: GreaterThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.Value)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: GreaterThanOrEqualTo(FieldReference, Value)
+  nameWithType: Operator.GreaterThanOrEqualTo(FieldReference, Value)
+  fullName: CamlBuilder.Operator.GreaterThanOrEqualTo(CamlBuilder.FieldReference, CamlBuilder.Value)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GreaterThanOrEqualTo
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 244
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>GreaterThanOrEqualTo</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator GreaterThanOrEqualTo(FieldReference fieldRef, Value value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: value
+      type: CamlBuilder.Value
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: GreaterThanOrEqualTo operator instance.
+    content.vb: 'Public Shared Function GreaterThanOrEqualTo(fieldRef As FieldReference, value As Value) As '
+  overload: CamlBuilder.Operator.GreaterThanOrEqualTo*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  id: LowerThan(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: LowerThan(FieldReference, ValueType, Object)
+  nameWithType: Operator.LowerThan(FieldReference, ValueType, Object)
+  fullName: CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference, CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LowerThan
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 256
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>LowerThan</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator LowerThan(FieldReference fieldRef, ValueType valueType, object value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: valueType
+      type: CamlBuilder.ValueType
+      description: Field type
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: LowerThan operator instance.
+    content.vb: 'Public Shared Function LowerThan(fieldRef As FieldReference, valueType As ValueType, value As Object) As '
+  overload: CamlBuilder.Operator.LowerThan*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference,CamlBuilder.Value)
+  commentId: M:CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference,CamlBuilder.Value)
+  id: LowerThan(CamlBuilder.FieldReference,CamlBuilder.Value)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: LowerThan(FieldReference, Value)
+  nameWithType: Operator.LowerThan(FieldReference, Value)
+  fullName: CamlBuilder.Operator.LowerThan(CamlBuilder.FieldReference, CamlBuilder.Value)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LowerThan
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 267
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>LowerThan</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator LowerThan(FieldReference fieldRef, Value value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: value
+      type: CamlBuilder.Value
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: LowerThan operator instance.
+    content.vb: 'Public Shared Function LowerThan(fieldRef As FieldReference, value As Value) As '
+  overload: CamlBuilder.Operator.LowerThan*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  id: LowerThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: LowerThanOrEqualTo(FieldReference, ValueType, Object)
+  nameWithType: Operator.LowerThanOrEqualTo(FieldReference, ValueType, Object)
+  fullName: CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference, CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LowerThanOrEqualTo
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 279
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>LowerThanOrEqualTo</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator LowerThanOrEqualTo(FieldReference fieldRef, ValueType valueType, object value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: valueType
+      type: CamlBuilder.ValueType
+      description: Field type
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: LowerThanOrEqualTo operator instance.
+    content.vb: 'Public Shared Function LowerThanOrEqualTo(fieldRef As FieldReference, valueType As ValueType, value As Object) As '
+  overload: CamlBuilder.Operator.LowerThanOrEqualTo*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.Value)
+  commentId: M:CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.Value)
+  id: LowerThanOrEqualTo(CamlBuilder.FieldReference,CamlBuilder.Value)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: LowerThanOrEqualTo(FieldReference, Value)
+  nameWithType: Operator.LowerThanOrEqualTo(FieldReference, Value)
+  fullName: CamlBuilder.Operator.LowerThanOrEqualTo(CamlBuilder.FieldReference, CamlBuilder.Value)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LowerThanOrEqualTo
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 290
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>LowerThanOrEqualTo</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator LowerThanOrEqualTo(FieldReference fieldRef, Value value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: value
+      type: CamlBuilder.Value
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: LowerThanOrEqualTo operator instance.
+    content.vb: 'Public Shared Function LowerThanOrEqualTo(fieldRef As FieldReference, value As Value) As '
+  overload: CamlBuilder.Operator.LowerThanOrEqualTo*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.Includes(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.Includes(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  id: Includes(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: Includes(FieldReference, ValueType, Object)
+  nameWithType: Operator.Includes(FieldReference, ValueType, Object)
+  fullName: CamlBuilder.Operator.Includes(CamlBuilder.FieldReference, CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Includes
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 302
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>Includes</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator Includes(FieldReference fieldRef, ValueType valueType, object value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: valueType
+      type: CamlBuilder.ValueType
+      description: Field type
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: Includes operator instance.
+    content.vb: 'Public Shared Function Includes(fieldRef As FieldReference, valueType As ValueType, value As Object) As '
+  overload: CamlBuilder.Operator.Includes*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.Includes(CamlBuilder.FieldReference,CamlBuilder.Value)
+  commentId: M:CamlBuilder.Operator.Includes(CamlBuilder.FieldReference,CamlBuilder.Value)
+  id: Includes(CamlBuilder.FieldReference,CamlBuilder.Value)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: Includes(FieldReference, Value)
+  nameWithType: Operator.Includes(FieldReference, Value)
+  fullName: CamlBuilder.Operator.Includes(CamlBuilder.FieldReference, CamlBuilder.Value)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Includes
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 313
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>Includes</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator Includes(FieldReference fieldRef, Value value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: value
+      type: CamlBuilder.Value
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: Includes operator instance.
+    content.vb: 'Public Shared Function Includes(fieldRef As FieldReference, value As Value) As '
+  overload: CamlBuilder.Operator.Includes*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  id: NotIncludes(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: NotIncludes(FieldReference, ValueType, Object)
+  nameWithType: Operator.NotIncludes(FieldReference, ValueType, Object)
+  fullName: CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference, CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NotIncludes
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 325
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>NotIncludes</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator NotIncludes(FieldReference fieldRef, ValueType valueType, object value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: valueType
+      type: CamlBuilder.ValueType
+      description: Field type
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: NotIncludes operator instance.
+    content.vb: 'Public Shared Function NotIncludes(fieldRef As FieldReference, valueType As ValueType, value As Object) As '
+  overload: CamlBuilder.Operator.NotIncludes*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference,CamlBuilder.Value)
+  commentId: M:CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference,CamlBuilder.Value)
+  id: NotIncludes(CamlBuilder.FieldReference,CamlBuilder.Value)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: NotIncludes(FieldReference, Value)
+  nameWithType: Operator.NotIncludes(FieldReference, Value)
+  fullName: CamlBuilder.Operator.NotIncludes(CamlBuilder.FieldReference, CamlBuilder.Value)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: NotIncludes
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 336
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>NotIncludes</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator NotIncludes(FieldReference fieldRef, Value value)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: value
+      type: CamlBuilder.Value
+      description: Value against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: NotIncludes operator instance.
+    content.vb: 'Public Shared Function NotIncludes(fieldRef As FieldReference, value As Value) As '
+  overload: CamlBuilder.Operator.NotIncludes*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Operator.In(CamlBuilder.FieldReference,System.Collections.Generic.IEnumerable{CamlBuilder.Value})
+  commentId: M:CamlBuilder.Operator.In(CamlBuilder.FieldReference,System.Collections.Generic.IEnumerable{CamlBuilder.Value})
+  id: In(CamlBuilder.FieldReference,System.Collections.Generic.IEnumerable{CamlBuilder.Value})
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: In(FieldReference, IEnumerable<Value>)
+  nameWithType: Operator.In(FieldReference, IEnumerable<Value>)
+  fullName: CamlBuilder.Operator.In(CamlBuilder.FieldReference, System.Collections.Generic.IEnumerable<CamlBuilder.Value>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: In
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 347
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>In</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator In(FieldReference fieldRef, IEnumerable<Value> values)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: values
+      type: System.Collections.Generic.IEnumerable{CamlBuilder.Value}
+      description: Values against which the value returned by the field element is compared to.
+    return:
+      type: CamlBuilder.Operator
+      description: In operator instance.
+    content.vb: 'Public Shared Function In(fieldRef As FieldReference, values As IEnumerable(Of Value)) As '
+  overload: CamlBuilder.Operator.In*
+  nameWithType.vb: Operator.In(FieldReference, IEnumerable(Of Value))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: CamlBuilder.Operator.In(CamlBuilder.FieldReference, System.Collections.Generic.IEnumerable(Of CamlBuilder.Value))
+  name.vb: In(FieldReference, IEnumerable(Of Value))
+- uid: CamlBuilder.Operator.Membership(CamlBuilder.FieldReference,CamlBuilder.MembershipType)
+  commentId: M:CamlBuilder.Operator.Membership(CamlBuilder.FieldReference,CamlBuilder.MembershipType)
+  id: Membership(CamlBuilder.FieldReference,CamlBuilder.MembershipType)
+  parent: CamlBuilder.Operator
+  langs:
+  - csharp
+  - vb
+  name: Membership(FieldReference, MembershipType)
+  nameWithType: Operator.Membership(FieldReference, MembershipType)
+  fullName: CamlBuilder.Operator.Membership(CamlBuilder.FieldReference, CamlBuilder.MembershipType)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Membership
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Operator.cs
+    startLine: 358
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nInstanciates a new <em>Membership</em> operator which will perform on specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">fieldRef</code>.\n"
+  example: []
+  syntax:
+    content: public static Operator Membership(FieldReference fieldRef, MembershipType membershipType)
+    parameters:
+    - id: fieldRef
+      type: CamlBuilder.FieldReference
+      description: Reference to the field to operate on.
+    - id: membershipType
+      type: CamlBuilder.MembershipType
+      description: Type of membership for the operator to use to filter for.
+    return:
+      type: CamlBuilder.Operator
+      description: Membership operator instance.
+    content.vb: 'Public Shared Function Membership(fieldRef As FieldReference, membershipType As MembershipType) As '
+  overload: CamlBuilder.Operator.Membership*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: CamlBuilder
+  commentId: N:CamlBuilder
+  name: CamlBuilder
+  nameWithType: CamlBuilder
+  fullName: CamlBuilder
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: CamlBuilder.Statement
+  commentId: T:CamlBuilder.Statement
+  parent: CamlBuilder
+  name: Statement
+  nameWithType: Statement
+  fullName: CamlBuilder.Statement
+- uid: CamlBuilder.Statement.GetCaml
+  commentId: M:CamlBuilder.Statement.GetCaml
+  parent: CamlBuilder.Statement
+  name: GetCaml()
+  nameWithType: Statement.GetCaml()
+  fullName: CamlBuilder.Statement.GetCaml()
+  spec.csharp:
+  - uid: CamlBuilder.Statement.GetCaml
+    name: GetCaml
+    nameWithType: Statement.GetCaml
+    fullName: CamlBuilder.Statement.GetCaml
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: CamlBuilder.Statement.GetCaml
+    name: GetCaml
+    nameWithType: Statement.GetCaml
+    fullName: CamlBuilder.Statement.GetCaml
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: CamlBuilder.Operator.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<Operator>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<Operator>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<CamlBuilder.Operator>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of Operator)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of CamlBuilder.Operator)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of Operator)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<Operator>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<Operator>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<CamlBuilder.Operator>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of Operator)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of Operator)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of CamlBuilder.Operator)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: CamlBuilder.Operator.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{CamlBuilder.Operator,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<Operator, T>(Expression<Func<Operator, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<Operator, T>(Expression<Func<Operator, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<CamlBuilder.Operator, T>(System.Linq.Expressions.Expression<System.Func<CamlBuilder.Operator, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of Operator, T)(Expression(Of Func(Of Operator, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of CamlBuilder.Operator, T)(System.Linq.Expressions.Expression(Of System.Func(Of CamlBuilder.Operator, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of Operator, T)(Expression(Of Func(Of Operator, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<Operator, T>
+    nameWithType: ObjectExtensions.Set<Operator, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<CamlBuilder.Operator, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: CamlBuilder.Operator
+    name: Operator
+    nameWithType: Operator
+    fullName: CamlBuilder.Operator
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of Operator, T)
+    nameWithType: ObjectExtensions.Set(Of Operator, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of CamlBuilder.Operator, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: CamlBuilder.Operator
+    name: Operator
+    nameWithType: Operator
+    fullName: CamlBuilder.Operator
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: CamlBuilder.Operator.OperatorType*
+  commentId: Overload:CamlBuilder.Operator.OperatorType
+  name: OperatorType
+  nameWithType: Operator.OperatorType
+  fullName: CamlBuilder.Operator.OperatorType
+- uid: CamlBuilder.OperatorType
+  commentId: T:CamlBuilder.OperatorType
+  parent: CamlBuilder
+  name: OperatorType
+  nameWithType: OperatorType
+  fullName: CamlBuilder.OperatorType
+- uid: CamlBuilder.Operator.FieldReference*
+  commentId: Overload:CamlBuilder.Operator.FieldReference
+  name: FieldReference
+  nameWithType: Operator.FieldReference
+  fullName: CamlBuilder.Operator.FieldReference
+- uid: CamlBuilder.FieldReference
+  commentId: T:CamlBuilder.FieldReference
+  parent: CamlBuilder
+  name: FieldReference
+  nameWithType: FieldReference
+  fullName: CamlBuilder.FieldReference
+- uid: CamlBuilder.Operator.#ctor*
+  commentId: Overload:CamlBuilder.Operator.#ctor
+  name: Operator
+  nameWithType: Operator.Operator
+  fullName: CamlBuilder.Operator.Operator
+- uid: CamlBuilder.Operator.IsNull*
+  commentId: Overload:CamlBuilder.Operator.IsNull
+  name: IsNull
+  nameWithType: Operator.IsNull
+  fullName: CamlBuilder.Operator.IsNull
+- uid: CamlBuilder.Operator
+  commentId: T:CamlBuilder.Operator
+  parent: CamlBuilder
+  name: Operator
+  nameWithType: Operator
+  fullName: CamlBuilder.Operator
+- uid: CamlBuilder.Operator.IsNotNull*
+  commentId: Overload:CamlBuilder.Operator.IsNotNull
+  name: IsNotNull
+  nameWithType: Operator.IsNotNull
+  fullName: CamlBuilder.Operator.IsNotNull
+- uid: CamlBuilder.Operator.Equal*
+  commentId: Overload:CamlBuilder.Operator.Equal
+  name: Equal
+  nameWithType: Operator.Equal
+  fullName: CamlBuilder.Operator.Equal
+- uid: CamlBuilder.ValueType
+  commentId: T:CamlBuilder.ValueType
+  parent: CamlBuilder
+  name: ValueType
+  nameWithType: ValueType
+  fullName: CamlBuilder.ValueType
+- uid: CamlBuilder.Value
+  commentId: T:CamlBuilder.Value
+  parent: CamlBuilder
+  name: Value
+  nameWithType: Value
+  fullName: CamlBuilder.Value
+- uid: CamlBuilder.Operator.NotEqual*
+  commentId: Overload:CamlBuilder.Operator.NotEqual
+  name: NotEqual
+  nameWithType: Operator.NotEqual
+  fullName: CamlBuilder.Operator.NotEqual
+- uid: CamlBuilder.Operator.BeginsWith*
+  commentId: Overload:CamlBuilder.Operator.BeginsWith
+  name: BeginsWith
+  nameWithType: Operator.BeginsWith
+  fullName: CamlBuilder.Operator.BeginsWith
+- uid: CamlBuilder.Operator.Contains*
+  commentId: Overload:CamlBuilder.Operator.Contains
+  name: Contains
+  nameWithType: Operator.Contains
+  fullName: CamlBuilder.Operator.Contains
+- uid: CamlBuilder.Operator.DateRangesOverlap*
+  commentId: Overload:CamlBuilder.Operator.DateRangesOverlap
+  name: DateRangesOverlap
+  nameWithType: Operator.DateRangesOverlap
+  fullName: CamlBuilder.Operator.DateRangesOverlap
+- uid: CamlBuilder.Operator.GreaterThan*
+  commentId: Overload:CamlBuilder.Operator.GreaterThan
+  name: GreaterThan
+  nameWithType: Operator.GreaterThan
+  fullName: CamlBuilder.Operator.GreaterThan
+- uid: CamlBuilder.Operator.GreaterThanOrEqualTo*
+  commentId: Overload:CamlBuilder.Operator.GreaterThanOrEqualTo
+  name: GreaterThanOrEqualTo
+  nameWithType: Operator.GreaterThanOrEqualTo
+  fullName: CamlBuilder.Operator.GreaterThanOrEqualTo
+- uid: CamlBuilder.Operator.LowerThan*
+  commentId: Overload:CamlBuilder.Operator.LowerThan
+  name: LowerThan
+  nameWithType: Operator.LowerThan
+  fullName: CamlBuilder.Operator.LowerThan
+- uid: CamlBuilder.Operator.LowerThanOrEqualTo*
+  commentId: Overload:CamlBuilder.Operator.LowerThanOrEqualTo
+  name: LowerThanOrEqualTo
+  nameWithType: Operator.LowerThanOrEqualTo
+  fullName: CamlBuilder.Operator.LowerThanOrEqualTo
+- uid: CamlBuilder.Operator.Includes*
+  commentId: Overload:CamlBuilder.Operator.Includes
+  name: Includes
+  nameWithType: Operator.Includes
+  fullName: CamlBuilder.Operator.Includes
+- uid: CamlBuilder.Operator.NotIncludes*
+  commentId: Overload:CamlBuilder.Operator.NotIncludes
+  name: NotIncludes
+  nameWithType: Operator.NotIncludes
+  fullName: CamlBuilder.Operator.NotIncludes
+- uid: CamlBuilder.Operator.In*
+  commentId: Overload:CamlBuilder.Operator.In
+  name: In
+  nameWithType: Operator.In
+  fullName: CamlBuilder.Operator.In
+- uid: System.Collections.Generic.IEnumerable{CamlBuilder.Value}
+  commentId: T:System.Collections.Generic.IEnumerable{CamlBuilder.Value}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<Value>
+  nameWithType: IEnumerable<Value>
+  fullName: System.Collections.Generic.IEnumerable<CamlBuilder.Value>
+  nameWithType.vb: IEnumerable(Of Value)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of CamlBuilder.Value)
+  name.vb: IEnumerable(Of Value)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: CamlBuilder.Value
+    name: Value
+    nameWithType: Value
+    fullName: CamlBuilder.Value
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: CamlBuilder.Value
+    name: Value
+    nameWithType: Value
+    fullName: CamlBuilder.Value
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: CamlBuilder.Operator.Membership*
+  commentId: Overload:CamlBuilder.Operator.Membership
+  name: Membership
+  nameWithType: Operator.Membership
+  fullName: CamlBuilder.Operator.Membership
+- uid: CamlBuilder.MembershipType
+  commentId: T:CamlBuilder.MembershipType
+  parent: CamlBuilder
+  name: MembershipType
+  nameWithType: MembershipType
+  fullName: CamlBuilder.MembershipType

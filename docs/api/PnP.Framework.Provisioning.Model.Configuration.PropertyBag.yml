@@ -1,0 +1,35 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  id: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration
+  - PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ExtractPropertyBagConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  fullName: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  name: ApplyPropertyBagConfiguration
+  nameWithType: ApplyPropertyBagConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ExtractPropertyBagConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ExtractPropertyBagConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  name: ExtractPropertyBagConfiguration
+  nameWithType: ExtractPropertyBagConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ExtractPropertyBagConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  name: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.PropertyBag
+  fullName: PnP.Framework.Provisioning.Model.Configuration.PropertyBag

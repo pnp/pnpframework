@@ -307,6 +307,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 string replacementVal = m.Groups["token"].Value;
                                 var tokenParts = replacementVal.Trim(new char[] { '{', '}' }).Split(':');
 
+                                // note 1: the RegEx can match content that contains no valid tokens; do some basic sanity checks
+                                // note 2: checking for empty tokenParts[1] because this would return an actual folder below when calling GetFolderByServerRelativePath, which would be an error
+                                if (tokenParts.Length < 2 || string.IsNullOrWhiteSpace(tokenParts[1]))
+                                {
+                                    continue;
+                                }
+
                                 Guid UniqueId = Guid.Empty;
                                 try
                                 {

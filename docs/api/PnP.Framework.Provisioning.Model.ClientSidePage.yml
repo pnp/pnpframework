@@ -1,0 +1,1777 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage
+  commentId: T:PnP.Framework.Provisioning.Model.ClientSidePage
+  id: ClientSidePage
+  parent: PnP.Framework.Provisioning.Model
+  children:
+  - PnP.Framework.Provisioning.Model.ClientSidePage.#ctor
+  - PnP.Framework.Provisioning.Model.ClientSidePage.CreateTranslations
+  - PnP.Framework.Provisioning.Model.ClientSidePage.EqualsInherited(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  - PnP.Framework.Provisioning.Model.ClientSidePage.GetInheritedHashCode
+  - PnP.Framework.Provisioning.Model.ClientSidePage.LCID
+  - PnP.Framework.Provisioning.Model.ClientSidePage.PageName
+  - PnP.Framework.Provisioning.Model.ClientSidePage.Translations
+  langs:
+  - csharp
+  - vb
+  name: ClientSidePage
+  nameWithType: ClientSidePage
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClientSidePage
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+    startLine: 9
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines a ClientSidePage\n"
+  example: []
+  syntax:
+    content: 'public class ClientSidePage : BaseClientSidePage, IProvisioningTemplateDescendant, IEquatable<BaseClientSidePage>'
+    content.vb: >-
+      Public Class ClientSidePage
+          Inherits BaseClientSidePage
+          Implements IProvisioningTemplateDescendant, IEquatable(Of BaseClientSidePage)
+  inheritance:
+  - System.Object
+  - PnP.Framework.Provisioning.Model.BaseModel
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage
+  implements:
+  - PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  - System.IEquatable{PnP.Framework.Provisioning.Model.BaseClientSidePage}
+  inheritedMembers:
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.Sections
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.Security
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.PromoteAsNewsArticle
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.PromoteAsTemplate
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.Overwrite
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.Layout
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.Publish
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.EnableComments
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.Title
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.ContentTypeID
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.Header
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.FieldValues
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.Properties
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.ThumbnailUrl
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.GetHashCode
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(System.Object)
+  - PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  - PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.Model.ClientSidePage.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Model.ClientSidePage.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.ClientSidePage,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.Translations
+  commentId: P:PnP.Framework.Provisioning.Model.ClientSidePage.Translations
+  id: Translations
+  parent: PnP.Framework.Provisioning.Model.ClientSidePage
+  langs:
+  - csharp
+  - vb
+  name: Translations
+  nameWithType: ClientSidePage.Translations
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.Translations
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Translations
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+    startLine: 22
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the translations\n"
+  example: []
+  syntax:
+    content: public TranslatedClientSidePageCollection Translations { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.TranslatedClientSidePageCollection
+    content.vb: Public ReadOnly Property Translations As TranslatedClientSidePageCollection
+  overload: PnP.Framework.Provisioning.Model.ClientSidePage.Translations*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.PageName
+  commentId: P:PnP.Framework.Provisioning.Model.ClientSidePage.PageName
+  id: PageName
+  parent: PnP.Framework.Provisioning.Model.ClientSidePage
+  langs:
+  - csharp
+  - vb
+  name: PageName
+  nameWithType: ClientSidePage.PageName
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.PageName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PageName
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+    startLine: 31
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Page Name of the Client Side Page, required attribute.\n"
+  example: []
+  syntax:
+    content: public string PageName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PageName As String
+  overload: PnP.Framework.Provisioning.Model.ClientSidePage.PageName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.CreateTranslations
+  commentId: P:PnP.Framework.Provisioning.Model.ClientSidePage.CreateTranslations
+  id: CreateTranslations
+  parent: PnP.Framework.Provisioning.Model.ClientSidePage
+  langs:
+  - csharp
+  - vb
+  name: CreateTranslations
+  nameWithType: ClientSidePage.CreateTranslations
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.CreateTranslations
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateTranslations
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+    startLine: 36
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines whether to create translations of the current Client Side Page\n"
+  example: []
+  syntax:
+    content: public bool CreateTranslations { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property CreateTranslations As Boolean
+  overload: PnP.Framework.Provisioning.Model.ClientSidePage.CreateTranslations*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.LCID
+  commentId: P:PnP.Framework.Provisioning.Model.ClientSidePage.LCID
+  id: LCID
+  parent: PnP.Framework.Provisioning.Model.ClientSidePage
+  langs:
+  - csharp
+  - vb
+  name: LCID
+  nameWithType: ClientSidePage.LCID
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.LCID
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: LCID
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+    startLine: 41
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Locale ID of a Localization Language\n"
+  example: []
+  syntax:
+    content: public int LCID { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property LCID As Integer
+  overload: PnP.Framework.Provisioning.Model.ClientSidePage.LCID*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.#ctor
+  commentId: M:PnP.Framework.Provisioning.Model.ClientSidePage.#ctor
+  id: '#ctor'
+  parent: PnP.Framework.Provisioning.Model.ClientSidePage
+  langs:
+  - csharp
+  - vb
+  name: ClientSidePage()
+  nameWithType: ClientSidePage.ClientSidePage()
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.ClientSidePage()
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+    startLine: 50
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nConstructor for ClientSidePage class\n"
+  example: []
+  syntax:
+    content: public ClientSidePage()
+    content.vb: Public Sub New
+  overload: PnP.Framework.Provisioning.Model.ClientSidePage.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.GetInheritedHashCode
+  commentId: M:PnP.Framework.Provisioning.Model.ClientSidePage.GetInheritedHashCode
+  id: GetInheritedHashCode
+  parent: PnP.Framework.Provisioning.Model.ClientSidePage
+  langs:
+  - csharp
+  - vb
+  name: GetInheritedHashCode()
+  nameWithType: ClientSidePage.GetInheritedHashCode()
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.GetInheritedHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetInheritedHashCode
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+    startLine: 63
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets the hash code\n"
+  example: []
+  syntax:
+    content: protected override int GetInheritedHashCode()
+    return:
+      type: System.Int32
+      description: Returns HashCode
+    content.vb: Protected Overrides Function GetInheritedHashCode As Integer
+  overridden: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetInheritedHashCode
+  overload: PnP.Framework.Provisioning.Model.ClientSidePage.GetInheritedHashCode*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.EqualsInherited(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  commentId: M:PnP.Framework.Provisioning.Model.ClientSidePage.EqualsInherited(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  id: EqualsInherited(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  parent: PnP.Framework.Provisioning.Model.ClientSidePage
+  langs:
+  - csharp
+  - vb
+  name: EqualsInherited(BaseClientSidePage)
+  nameWithType: ClientSidePage.EqualsInherited(BaseClientSidePage)
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.EqualsInherited(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EqualsInherited
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/ModernExperiences/ClientSidePage.cs
+    startLine: 78
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nCompares ClientSidePage object based on PageName, CreateTranslations, and Translations\n"
+  example: []
+  syntax:
+    content: protected override bool EqualsInherited(BaseClientSidePage other)
+    parameters:
+    - id: other
+      type: PnP.Framework.Provisioning.Model.BaseClientSidePage
+      description: ClientSidePage Class object
+    return:
+      type: System.Boolean
+      description: true if the ClientSidePage object is equal to the current object; otherwise, false.
+    content.vb: Protected Overrides Function EqualsInherited(other As BaseClientSidePage) As Boolean
+  overridden: PnP.Framework.Provisioning.Model.BaseClientSidePage.EqualsInherited(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  overload: PnP.Framework.Provisioning.Model.ClientSidePage.EqualsInherited*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+references:
+- uid: PnP.Framework.Provisioning.Model
+  commentId: N:PnP.Framework.Provisioning.Model
+  name: PnP.Framework.Provisioning.Model
+  nameWithType: PnP.Framework.Provisioning.Model
+  fullName: PnP.Framework.Provisioning.Model
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: PnP.Framework.Provisioning.Model.BaseModel
+  commentId: T:PnP.Framework.Provisioning.Model.BaseModel
+  parent: PnP.Framework.Provisioning.Model
+  name: BaseModel
+  nameWithType: BaseModel
+  fullName: PnP.Framework.Provisioning.Model.BaseModel
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  commentId: T:PnP.Framework.Provisioning.Model.BaseClientSidePage
+  parent: PnP.Framework.Provisioning.Model
+  name: BaseClientSidePage
+  nameWithType: BaseClientSidePage
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage
+- uid: PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  commentId: T:PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  parent: PnP.Framework.Provisioning.Model
+  name: IProvisioningTemplateDescendant
+  nameWithType: IProvisioningTemplateDescendant
+  fullName: PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+- uid: System.IEquatable{PnP.Framework.Provisioning.Model.BaseClientSidePage}
+  commentId: T:System.IEquatable{PnP.Framework.Provisioning.Model.BaseClientSidePage}
+  parent: System
+  definition: System.IEquatable`1
+  name: IEquatable<BaseClientSidePage>
+  nameWithType: IEquatable<BaseClientSidePage>
+  fullName: System.IEquatable<PnP.Framework.Provisioning.Model.BaseClientSidePage>
+  nameWithType.vb: IEquatable(Of BaseClientSidePage)
+  fullName.vb: System.IEquatable(Of PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  name.vb: IEquatable(Of BaseClientSidePage)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage
+    name: BaseClientSidePage
+    nameWithType: BaseClientSidePage
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage
+    name: BaseClientSidePage
+    nameWithType: BaseClientSidePage
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Sections
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.Sections
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: Sections
+  nameWithType: BaseClientSidePage.Sections
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Sections
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Security
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.Security
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: Security
+  nameWithType: BaseClientSidePage.Security
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Security
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.PromoteAsNewsArticle
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.PromoteAsNewsArticle
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: PromoteAsNewsArticle
+  nameWithType: BaseClientSidePage.PromoteAsNewsArticle
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.PromoteAsNewsArticle
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.PromoteAsTemplate
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.PromoteAsTemplate
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: PromoteAsTemplate
+  nameWithType: BaseClientSidePage.PromoteAsTemplate
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.PromoteAsTemplate
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Overwrite
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.Overwrite
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: Overwrite
+  nameWithType: BaseClientSidePage.Overwrite
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Overwrite
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Layout
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.Layout
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: Layout
+  nameWithType: BaseClientSidePage.Layout
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Layout
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Publish
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.Publish
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: Publish
+  nameWithType: BaseClientSidePage.Publish
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Publish
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.EnableComments
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.EnableComments
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: EnableComments
+  nameWithType: BaseClientSidePage.EnableComments
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.EnableComments
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Title
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.Title
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: Title
+  nameWithType: BaseClientSidePage.Title
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Title
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.ContentTypeID
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.ContentTypeID
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: ContentTypeID
+  nameWithType: BaseClientSidePage.ContentTypeID
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.ContentTypeID
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Header
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.Header
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: Header
+  nameWithType: BaseClientSidePage.Header
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Header
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.FieldValues
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.FieldValues
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: FieldValues
+  nameWithType: BaseClientSidePage.FieldValues
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.FieldValues
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Properties
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.Properties
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: Properties
+  nameWithType: BaseClientSidePage.Properties
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Properties
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.ThumbnailUrl
+  commentId: P:PnP.Framework.Provisioning.Model.BaseClientSidePage.ThumbnailUrl
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: ThumbnailUrl
+  nameWithType: BaseClientSidePage.ThumbnailUrl
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.ThumbnailUrl
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetHashCode
+  commentId: M:PnP.Framework.Provisioning.Model.BaseClientSidePage.GetHashCode
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: GetHashCode()
+  nameWithType: BaseClientSidePage.GetHashCode()
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetHashCode()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetHashCode
+    name: GetHashCode
+    nameWithType: BaseClientSidePage.GetHashCode
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetHashCode
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetHashCode
+    name: GetHashCode
+    nameWithType: BaseClientSidePage.GetHashCode
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetHashCode
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(System.Object)
+  commentId: M:PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(System.Object)
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: BaseClientSidePage.Equals(Object)
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(System.Object)
+    name: Equals
+    nameWithType: BaseClientSidePage.Equals
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(System.Object)
+    name: Equals
+    nameWithType: BaseClientSidePage.Equals
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  commentId: M:PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: Equals(BaseClientSidePage)
+  nameWithType: BaseClientSidePage.Equals(BaseClientSidePage)
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+    name: Equals
+    nameWithType: BaseClientSidePage.Equals
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage
+    name: BaseClientSidePage
+    nameWithType: BaseClientSidePage
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+    name: Equals
+    nameWithType: BaseClientSidePage.Equals
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.Equals
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage
+    name: BaseClientSidePage
+    nameWithType: BaseClientSidePage
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  commentId: P:PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  parent: PnP.Framework.Provisioning.Model.BaseModel
+  name: ParentTemplate
+  nameWithType: BaseModel.ParentTemplate
+  fullName: PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<ClientSidePage>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ClientSidePage>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.ClientSidePage>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of ClientSidePage)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.ClientSidePage)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of ClientSidePage)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<ClientSidePage>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<ClientSidePage>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.ClientSidePage>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of ClientSidePage)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of ClientSidePage)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.ClientSidePage)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.ClientSidePage,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<ClientSidePage, T>(Expression<Func<ClientSidePage, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<ClientSidePage, T>(Expression<Func<ClientSidePage, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.ClientSidePage, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Model.ClientSidePage, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of ClientSidePage, T)(Expression(Of Func(Of ClientSidePage, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.ClientSidePage, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Model.ClientSidePage, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of ClientSidePage, T)(Expression(Of Func(Of ClientSidePage, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<ClientSidePage, T>
+    nameWithType: ObjectExtensions.Set<ClientSidePage, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.ClientSidePage, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.ClientSidePage
+    name: ClientSidePage
+    nameWithType: ClientSidePage
+    fullName: PnP.Framework.Provisioning.Model.ClientSidePage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of ClientSidePage, T)
+    nameWithType: ObjectExtensions.Set(Of ClientSidePage, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.ClientSidePage, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.ClientSidePage
+    name: ClientSidePage
+    nameWithType: ClientSidePage
+    fullName: PnP.Framework.Provisioning.Model.ClientSidePage
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.Translations*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ClientSidePage.Translations
+  name: Translations
+  nameWithType: ClientSidePage.Translations
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.Translations
+- uid: PnP.Framework.Provisioning.Model.TranslatedClientSidePageCollection
+  commentId: T:PnP.Framework.Provisioning.Model.TranslatedClientSidePageCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: TranslatedClientSidePageCollection
+  nameWithType: TranslatedClientSidePageCollection
+  fullName: PnP.Framework.Provisioning.Model.TranslatedClientSidePageCollection
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.PageName*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ClientSidePage.PageName
+  name: PageName
+  nameWithType: ClientSidePage.PageName
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.PageName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.CreateTranslations*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ClientSidePage.CreateTranslations
+  name: CreateTranslations
+  nameWithType: ClientSidePage.CreateTranslations
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.CreateTranslations
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.LCID*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ClientSidePage.LCID
+  name: LCID
+  nameWithType: ClientSidePage.LCID
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.LCID
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.#ctor*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ClientSidePage.#ctor
+  name: ClientSidePage
+  nameWithType: ClientSidePage.ClientSidePage
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.ClientSidePage
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetInheritedHashCode
+  commentId: M:PnP.Framework.Provisioning.Model.BaseClientSidePage.GetInheritedHashCode
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: GetInheritedHashCode()
+  nameWithType: BaseClientSidePage.GetInheritedHashCode()
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetInheritedHashCode()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetInheritedHashCode
+    name: GetInheritedHashCode
+    nameWithType: BaseClientSidePage.GetInheritedHashCode
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetInheritedHashCode
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetInheritedHashCode
+    name: GetInheritedHashCode
+    nameWithType: BaseClientSidePage.GetInheritedHashCode
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.GetInheritedHashCode
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.GetInheritedHashCode*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ClientSidePage.GetInheritedHashCode
+  name: GetInheritedHashCode
+  nameWithType: ClientSidePage.GetInheritedHashCode
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.GetInheritedHashCode
+- uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.EqualsInherited(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  commentId: M:PnP.Framework.Provisioning.Model.BaseClientSidePage.EqualsInherited(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  parent: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  name: EqualsInherited(BaseClientSidePage)
+  nameWithType: BaseClientSidePage.EqualsInherited(BaseClientSidePage)
+  fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.EqualsInherited(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.EqualsInherited(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+    name: EqualsInherited
+    nameWithType: BaseClientSidePage.EqualsInherited
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.EqualsInherited
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage
+    name: BaseClientSidePage
+    nameWithType: BaseClientSidePage
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage.EqualsInherited(PnP.Framework.Provisioning.Model.BaseClientSidePage)
+    name: EqualsInherited
+    nameWithType: BaseClientSidePage.EqualsInherited
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage.EqualsInherited
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.BaseClientSidePage
+    name: BaseClientSidePage
+    nameWithType: BaseClientSidePage
+    fullName: PnP.Framework.Provisioning.Model.BaseClientSidePage
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ClientSidePage.EqualsInherited*
+  commentId: Overload:PnP.Framework.Provisioning.Model.ClientSidePage.EqualsInherited
+  name: EqualsInherited
+  nameWithType: ClientSidePage.EqualsInherited
+  fullName: PnP.Framework.Provisioning.Model.ClientSidePage.EqualsInherited

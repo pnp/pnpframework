@@ -167,6 +167,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                 }
 
+                Log.Debug(Constants.LOGGING_SOURCE, $"Attaching object handlers");
+
                 List<ObjectHierarchyHandlerBase> objectHandlers = new List<ObjectHierarchyHandlerBase>
                 {
                     new ObjectHierarchyTenant(),
@@ -208,7 +210,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             CallWebHooks(hierarchy.Templates.FirstOrDefault(), sequenceTokenParser,
                                 ProvisioningTemplateWebhookKind.ProvisioningExceptionOccurred, handler.Name, ex);
-                            throw ex;
+                            throw;
                         }
                     }
                 }

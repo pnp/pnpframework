@@ -1,7 +1,10 @@
-﻿using Microsoft.Online.SharePoint.TenantAdministration;
+﻿using Microsoft.AspNetCore.Http.Features.Authentication;
+using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
+using PnP.Core.Model.SharePoint;
 using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Provisioning.Model.Configuration;
 using PnP.Framework.Provisioning.Model.Teams;
 using PnP.Framework.Provisioning.ObjectHandlers;
 using PnP.Framework.Utilities;
@@ -12,6 +15,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using TeamChannel = PnP.Framework.Provisioning.Model.Teams.TeamChannel;
 
 namespace PnP.Framework.Test.Framework.ObjectHandlers
 {
@@ -39,7 +43,9 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
                 var security = new TeamSecurity
                 {
                     AllowToAddGuests = false,
-                    Owners = { new TeamSecurityUser { UserPrincipalName = ConfigurationManager.AppSettings["SPOUserName"] } }
+                    Owners = { new TeamSecurityUser { UserPrincipalName = TestCommon.AppSetting("SPOUserName") } },
+                    Members = { new TeamSecurityUser { UserPrincipalName = TestCommon.AppSetting("SPOUserName") } }
+
                 };
                 var funSettings = new TeamFunSettings
                 {
@@ -130,7 +136,7 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
         {
             if (String.IsNullOrEmpty(displayName)) return null;
 
-            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.ReadWrite.All");
             var requestUrl = $"{MicrosoftGraphBaseURI}v1.0/groups?$filter=displayName eq '{HttpUtility.UrlEncode(displayName.Replace("'", "''"))}'";
             return JToken.Parse(HttpHelper.MakeGetRequestForString(requestUrl, accessToken))["value"];
         }
@@ -139,7 +145,7 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
         {
             if (String.IsNullOrEmpty(teamId)) return null;
 
-            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.ReadWrite.All");
             return JToken.Parse(HttpHelper.MakeGetRequestForString($"{MicrosoftGraphBaseURI}beta/teams/{teamId}", accessToken));
         }
 
@@ -147,7 +153,7 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
         {
             if (String.IsNullOrEmpty(teamId)) return null;
 
-            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.ReadWrite.All");
             return JToken.Parse(HttpHelper.MakeGetRequestForString($"{MicrosoftGraphBaseURI}beta/teams/{teamId}/channels", accessToken))["value"];
         }
 
@@ -156,13 +162,13 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
             if (String.IsNullOrEmpty(teamId)) return null;
             if (String.IsNullOrEmpty(channelId)) return null;
 
-            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.ReadWrite.All");
             return JToken.Parse(HttpHelper.MakeGetRequestForString($"{MicrosoftGraphBaseURI}beta/teams/{teamId}/channels/{channelId}/tabs", accessToken))["value"];
         }
 
         private static bool GetAllowToAddGuests(string teamId)
         {
-            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.Read.All");
+            var accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(PnP.Framework.Utilities.Graph.GraphHelper.MicrosoftGraphBaseURI).Authority, "Group.ReadWrite.All");
             var response = JToken.Parse(HttpHelper.MakeGetRequestForString($"{MicrosoftGraphBaseURI}v1.0/groups/{teamId}/settings", accessToken));
             var groupGuestSettings = response["value"]?.FirstOrDefault(x => x["templateId"].ToString() == "08d542b9-071f-4e16-94b0-74abb372e3d9");
             return (bool)groupGuestSettings["values"]?.FirstOrDefault(x => x["name"].ToString() == "AllowToAddGuests")["value"];
@@ -226,6 +232,89 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
             Assert.Inconclusive();
 #endif
         }
+
+        [TestMethod]
+        public void CanProvisionObjects_ChannelBetaTest()
+        {
+#if !ONPREMISES
+
+            if (TestCommon.AppOnlyTesting()) Assert.Inconclusive("This test requires a user credentials, cannot be run using app-only for now");
+
+            using (new PnPProvisioningContext((resource, scope) => Task.FromResult(TestCommon.AcquireTokenAsync(resource, scope))))
+            {
+                var template = new ProvisioningTemplate { ParentHierarchy = new ProvisioningHierarchy() };
+
+                _team.DisplayName = "Channel Beta Test 10";
+                _team.MailNickname = "ChannelBetaTest10";
+
+                var channel = _team.Channels.First();
+                channel.AllowNewMessageFromBots = false;
+                channel.AllowNewMessageFromConnectors = false;
+                channel.ReplyRestriction = ReplyRestriction.AuthorAndModerators;
+                channel.UserNewMessageRestriction = UserNewMessageRestriction.Moderators;
+
+                //template.ParentHierarchy.Teams.TeamTemplates.Add(new TeamTemplate { JsonTemplate = _jsonTemplate });
+                template.ParentHierarchy.Teams.Teams.Add(_team);
+                
+
+                Provision(template);
+
+                // Wait for groups to be provisioned
+                Thread.Sleep(5000);
+
+                // Verify if Teams have been provisioned
+                //foreach (var teamName in _teamNames)
+                //{
+                //    var teams = GetTeamsByDisplayName(teamName);
+                //    Assert.IsTrue(teams.HasValues);
+                //}
+            }
+#else
+            Assert.Inconclusive();
+#endif
+        }
+
+
+        [TestMethod]
+        public void CanExtractObjectsTeamsOnlyTest()
+        {
+#if !ONPREMISES
+
+            if (TestCommon.AppOnlyTesting()) Assert.Inconclusive("This test requires a user credentials, cannot be run using app-only for now");
+
+            using (new PnPProvisioningContext((resource, scope) => Task.FromResult(TestCommon.AcquireTokenAsync(resource, scope))))
+            {
+
+                using (var context = TestCommon.CreateTenantClientContext()) {
+
+                    var tenant = new Tenant(context);
+
+                    ProvisioningHierarchy tenantTemplate = new ProvisioningHierarchy();
+
+                    // Lets hardcode URL temporarily
+                    var siteUrl = "https://contoso.sharepoint.com/sites/channelbetatest10";
+
+
+                    ExtractConfiguration extractConfiguration = new ExtractConfiguration();
+                    //extractConfiguration.Tenant.Sequence.SiteUrls.Add(siteUrl);
+                    extractConfiguration.Tenant.Teams = new Provisioning.Model.Configuration.Tenant.Teams.ExtractTeamsConfiguration()
+                    {
+                        TeamSiteUrls = { siteUrl },
+                        IncludeMessages = false,
+                        
+                    };
+                    
+                    var result = new ObjectTeams().ExtractObjects(tenant, tenantTemplate, extractConfiguration);
+                }
+
+            }
+#else
+            Assert.Inconclusive();
+#endif
+        }
+
+
+       
 
         [TestMethod]
         public void CanUpdateObjects()

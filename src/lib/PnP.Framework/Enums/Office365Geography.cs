@@ -78,6 +78,21 @@
         /// <summary>
         /// Norway
         /// </summary>
-        NOR
+        NOR,
+
+        /// <summary>
+        /// Brazil
+        /// </summary>
+        BRA,
+
+        /// <summary>
+        /// Qatar
+        /// </summary>
+        QAT,
+
+        /// <summary>
+        /// Sweden
+        /// </summary>
+        SWE,
     }
 }

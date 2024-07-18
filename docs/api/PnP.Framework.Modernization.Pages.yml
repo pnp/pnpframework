@@ -1,0 +1,67 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.Pages
+  commentId: N:PnP.Framework.Modernization.Pages
+  id: PnP.Framework.Modernization.Pages
+  children:
+  - PnP.Framework.Modernization.Pages.BasePage
+  - PnP.Framework.Modernization.Pages.PageLayout
+  - PnP.Framework.Modernization.Pages.PublishingPage
+  - PnP.Framework.Modernization.Pages.PublishingPageOnPremises
+  - PnP.Framework.Modernization.Pages.WebPartPage
+  - PnP.Framework.Modernization.Pages.WebPartPageOnPremises
+  - PnP.Framework.Modernization.Pages.WikiPage
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Modernization.Pages
+  nameWithType: PnP.Framework.Modernization.Pages
+  fullName: PnP.Framework.Modernization.Pages
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Modernization.Pages.BasePage
+  commentId: T:PnP.Framework.Modernization.Pages.BasePage
+  parent: PnP.Framework.Modernization.Pages
+  name: BasePage
+  nameWithType: BasePage
+  fullName: PnP.Framework.Modernization.Pages.BasePage
+- uid: PnP.Framework.Modernization.Pages.PageLayout
+  commentId: T:PnP.Framework.Modernization.Pages.PageLayout
+  parent: PnP.Framework.Modernization.Pages
+  name: PageLayout
+  nameWithType: PageLayout
+  fullName: PnP.Framework.Modernization.Pages.PageLayout
+- uid: PnP.Framework.Modernization.Pages.PublishingPage
+  commentId: T:PnP.Framework.Modernization.Pages.PublishingPage
+  parent: PnP.Framework.Modernization.Pages
+  name: PublishingPage
+  nameWithType: PublishingPage
+  fullName: PnP.Framework.Modernization.Pages.PublishingPage
+- uid: PnP.Framework.Modernization.Pages.PublishingPageOnPremises
+  commentId: T:PnP.Framework.Modernization.Pages.PublishingPageOnPremises
+  name: PublishingPageOnPremises
+  nameWithType: PublishingPageOnPremises
+  fullName: PnP.Framework.Modernization.Pages.PublishingPageOnPremises
+- uid: PnP.Framework.Modernization.Pages.WebPartPage
+  commentId: T:PnP.Framework.Modernization.Pages.WebPartPage
+  parent: PnP.Framework.Modernization.Pages
+  name: WebPartPage
+  nameWithType: WebPartPage
+  fullName: PnP.Framework.Modernization.Pages.WebPartPage
+- uid: PnP.Framework.Modernization.Pages.WebPartPageOnPremises
+  commentId: T:PnP.Framework.Modernization.Pages.WebPartPageOnPremises
+  name: WebPartPageOnPremises
+  nameWithType: WebPartPageOnPremises
+  fullName: PnP.Framework.Modernization.Pages.WebPartPageOnPremises
+- uid: PnP.Framework.Modernization.Pages.WikiPage
+  commentId: T:PnP.Framework.Modernization.Pages.WikiPage
+  name: WikiPage
+  nameWithType: WikiPage
+  fullName: PnP.Framework.Modernization.Pages.WikiPage
+- uid: PnP.Framework.Modernization.Pages
+  commentId: N:PnP.Framework.Modernization.Pages
+  name: PnP.Framework.Modernization.Pages
+  nameWithType: PnP.Framework.Modernization.Pages
+  fullName: PnP.Framework.Modernization.Pages

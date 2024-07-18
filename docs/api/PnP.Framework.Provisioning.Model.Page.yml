@@ -1,0 +1,2228 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Page
+  commentId: T:PnP.Framework.Provisioning.Model.Page
+  id: Page
+  parent: PnP.Framework.Provisioning.Model
+  children:
+  - PnP.Framework.Provisioning.Model.Page.#ctor
+  - PnP.Framework.Provisioning.Model.Page.#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.Dictionary{System.String,System.String})
+  - PnP.Framework.Provisioning.Model.Page.#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},System.Boolean,PnP.Framework.Provisioning.Model.ObjectSecurity)
+  - PnP.Framework.Provisioning.Model.Page.#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},System.Boolean,PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.Dictionary{System.String,System.String})
+  - PnP.Framework.Provisioning.Model.Page.Equals(PnP.Framework.Provisioning.Model.Page)
+  - PnP.Framework.Provisioning.Model.Page.Equals(System.Object)
+  - PnP.Framework.Provisioning.Model.Page.Fields
+  - PnP.Framework.Provisioning.Model.Page.GetHashCode
+  - PnP.Framework.Provisioning.Model.Page.Layout
+  - PnP.Framework.Provisioning.Model.Page.Overwrite
+  - PnP.Framework.Provisioning.Model.Page.Security
+  - PnP.Framework.Provisioning.Model.Page.Url
+  - PnP.Framework.Provisioning.Model.Page.WebParts
+  - PnP.Framework.Provisioning.Model.Page.WelcomePage
+  langs:
+  - csharp
+  - vb
+  name: Page
+  nameWithType: Page
+  fullName: PnP.Framework.Provisioning.Model.Page
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Page
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 7
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  syntax:
+    content: 'public class Page : BaseModel, IProvisioningTemplateDescendant, IEquatable<Page>'
+    content.vb: >-
+      Public Class Page
+          Inherits BaseModel
+          Implements IProvisioningTemplateDescendant, IEquatable(Of Page)
+  inheritance:
+  - System.Object
+  - PnP.Framework.Provisioning.Model.BaseModel
+  implements:
+  - PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  - System.IEquatable{PnP.Framework.Provisioning.Model.Page}
+  inheritedMembers:
+  - PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.Model.Page.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Model.Page.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.Page,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.Model.Page.WelcomePage
+  commentId: P:PnP.Framework.Provisioning.Model.Page.WelcomePage
+  id: WelcomePage
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: WelcomePage
+  nameWithType: Page.WelcomePage
+  fullName: PnP.Framework.Provisioning.Model.Page.WelcomePage
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Deprecated/Model/Page.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WelcomePage
+    path: ../src/lib/PnP.Framework/Provisioning/Deprecated/Model/Page.deprecated.cs
+    startLine: 7
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  syntax:
+    content: >-
+      [Obsolete("Instead of this member, please use WelcomePage property of the WebSettings object. This method will be removed in the June 2016 release.")]
+
+      public bool WelcomePage { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <Obsolete("Instead of this member, please use WelcomePage property of the WebSettings object. This method will be removed in the June 2016 release.")>
+
+      Public Property WelcomePage As Boolean
+  overload: PnP.Framework.Provisioning.Model.Page.WelcomePage*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Instead of this member, please use WelcomePage property of the WebSettings object. This method will be removed in the June 2016 release.
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.Page.#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},System.Boolean,PnP.Framework.Provisioning.Model.ObjectSecurity)
+  commentId: M:PnP.Framework.Provisioning.Model.Page.#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},System.Boolean,PnP.Framework.Provisioning.Model.ObjectSecurity)
+  id: '#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},System.Boolean,PnP.Framework.Provisioning.Model.ObjectSecurity)'
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: Page(String, Boolean, WikiPageLayout, IEnumerable<WebPart>, Boolean, ObjectSecurity)
+  nameWithType: Page.Page(String, Boolean, WikiPageLayout, IEnumerable<WebPart>, Boolean, ObjectSecurity)
+  fullName: PnP.Framework.Provisioning.Model.Page.Page(System.String, System.Boolean, PnP.Framework.WikiPageLayout, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.WebPart>, System.Boolean, PnP.Framework.Provisioning.Model.ObjectSecurity)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Deprecated/Model/Page.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Deprecated/Model/Page.deprecated.cs
+    startLine: 36
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  syntax:
+    content: >-
+      [Obsolete("Instead of this constructor, please use the one without the WelcomePage property. This constructor will be removed in the June 2016 release.")]
+
+      public Page(string url, bool overwrite, WikiPageLayout layout, IEnumerable<WebPart> webParts, bool welcomePage = false, ObjectSecurity security = null)
+    parameters:
+    - id: url
+      type: System.String
+    - id: overwrite
+      type: System.Boolean
+    - id: layout
+      type: PnP.Framework.WikiPageLayout
+    - id: webParts
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart}
+    - id: welcomePage
+      type: System.Boolean
+    - id: security
+      type: PnP.Framework.Provisioning.Model.ObjectSecurity
+    content.vb: >-
+      <Obsolete("Instead of this constructor, please use the one without the WelcomePage property. This constructor will be removed in the June 2016 release.")>
+
+      Public Sub New(url As String, overwrite As Boolean, layout As WikiPageLayout, webParts As IEnumerable(Of WebPart), welcomePage As Boolean = False, security As ObjectSecurity = Nothing)
+  overload: PnP.Framework.Provisioning.Model.Page.#ctor*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Instead of this constructor, please use the one without the WelcomePage property. This constructor will be removed in the June 2016 release.
+  nameWithType.vb: Page.Page(String, Boolean, WikiPageLayout, IEnumerable(Of WebPart), Boolean, ObjectSecurity)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Provisioning.Model.Page.Page(System.String, System.Boolean, PnP.Framework.WikiPageLayout, System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.WebPart), System.Boolean, PnP.Framework.Provisioning.Model.ObjectSecurity)
+  name.vb: Page(String, Boolean, WikiPageLayout, IEnumerable(Of WebPart), Boolean, ObjectSecurity)
+- uid: PnP.Framework.Provisioning.Model.Page.#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},System.Boolean,PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.Dictionary{System.String,System.String})
+  commentId: M:PnP.Framework.Provisioning.Model.Page.#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},System.Boolean,PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.Dictionary{System.String,System.String})
+  id: '#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},System.Boolean,PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.Dictionary{System.String,System.String})'
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: Page(String, Boolean, WikiPageLayout, IEnumerable<WebPart>, Boolean, ObjectSecurity, Dictionary<String, String>)
+  nameWithType: Page.Page(String, Boolean, WikiPageLayout, IEnumerable<WebPart>, Boolean, ObjectSecurity, Dictionary<String, String>)
+  fullName: PnP.Framework.Provisioning.Model.Page.Page(System.String, System.Boolean, PnP.Framework.WikiPageLayout, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.WebPart>, System.Boolean, PnP.Framework.Provisioning.Model.ObjectSecurity, System.Collections.Generic.Dictionary<System.String, System.String>)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Deprecated/Model/Page.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Deprecated/Model/Page.deprecated.cs
+    startLine: 42
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  syntax:
+    content: >-
+      [Obsolete("Instead of this constructor, please use the one without the WelcomePage property. This constructor will be removed in the June 2016 release.")]
+
+      public Page(string url, bool overwrite, WikiPageLayout layout, IEnumerable<WebPart> webParts, bool welcomePage = false, ObjectSecurity security = null, Dictionary<string, string> fields = null)
+    parameters:
+    - id: url
+      type: System.String
+    - id: overwrite
+      type: System.Boolean
+    - id: layout
+      type: PnP.Framework.WikiPageLayout
+    - id: webParts
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart}
+    - id: welcomePage
+      type: System.Boolean
+    - id: security
+      type: PnP.Framework.Provisioning.Model.ObjectSecurity
+    - id: fields
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: >-
+      <Obsolete("Instead of this constructor, please use the one without the WelcomePage property. This constructor will be removed in the June 2016 release.")>
+
+      Public Sub New(url As String, overwrite As Boolean, layout As WikiPageLayout, webParts As IEnumerable(Of WebPart), welcomePage As Boolean = False, security As ObjectSecurity = Nothing, fields As Dictionary(Of String, String) = Nothing)
+  overload: PnP.Framework.Provisioning.Model.Page.#ctor*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Instead of this constructor, please use the one without the WelcomePage property. This constructor will be removed in the June 2016 release.
+  nameWithType.vb: Page.Page(String, Boolean, WikiPageLayout, IEnumerable(Of WebPart), Boolean, ObjectSecurity, Dictionary(Of String, String))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Provisioning.Model.Page.Page(System.String, System.Boolean, PnP.Framework.WikiPageLayout, System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.WebPart), System.Boolean, PnP.Framework.Provisioning.Model.ObjectSecurity, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  name.vb: Page(String, Boolean, WikiPageLayout, IEnumerable(Of WebPart), Boolean, ObjectSecurity, Dictionary(Of String, String))
+- uid: PnP.Framework.Provisioning.Model.Page.Url
+  commentId: P:PnP.Framework.Provisioning.Model.Page.Url
+  id: Url
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: Url
+  nameWithType: Page.Url
+  fullName: PnP.Framework.Provisioning.Model.Page.Url
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Url
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 21
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the page Url\n"
+  example: []
+  syntax:
+    content: public string Url { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Url As String
+  overload: PnP.Framework.Provisioning.Model.Page.Url*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.Page.Layout
+  commentId: P:PnP.Framework.Provisioning.Model.Page.Layout
+  id: Layout
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: Layout
+  nameWithType: Page.Layout
+  fullName: PnP.Framework.Provisioning.Model.Page.Layout
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Layout
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 26
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the WikiPage layout\n"
+  example: []
+  syntax:
+    content: public WikiPageLayout Layout { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.WikiPageLayout
+    content.vb: Public Property Layout As WikiPageLayout
+  overload: PnP.Framework.Provisioning.Model.Page.Layout*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.Page.Overwrite
+  commentId: P:PnP.Framework.Provisioning.Model.Page.Overwrite
+  id: Overwrite
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: Overwrite
+  nameWithType: Page.Overwrite
+  fullName: PnP.Framework.Provisioning.Model.Page.Overwrite
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Overwrite
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 31
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the overwrite flag for the page\n"
+  example: []
+  syntax:
+    content: public bool Overwrite { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Overwrite As Boolean
+  overload: PnP.Framework.Provisioning.Model.Page.Overwrite*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.Page.WebParts
+  commentId: P:PnP.Framework.Provisioning.Model.Page.WebParts
+  id: WebParts
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: WebParts
+  nameWithType: Page.WebParts
+  fullName: PnP.Framework.Provisioning.Model.Page.WebParts
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebParts
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 36
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets or sets the webparts of the page\n"
+  example: []
+  syntax:
+    content: public WebPartCollection WebParts { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.WebPartCollection
+    content.vb: Public ReadOnly Property WebParts As WebPartCollection
+  overload: PnP.Framework.Provisioning.Model.Page.WebParts*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.Page.Security
+  commentId: P:PnP.Framework.Provisioning.Model.Page.Security
+  id: Security
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: Security
+  nameWithType: Page.Security
+  fullName: PnP.Framework.Provisioning.Model.Page.Security
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Security
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 45
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nDefines the Security rules for the Page\n"
+  example: []
+  syntax:
+    content: public ObjectSecurity Security { get; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Model.ObjectSecurity
+    content.vb: Public ReadOnly Property Security As ObjectSecurity
+  overload: PnP.Framework.Provisioning.Model.Page.Security*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.Page.Fields
+  commentId: P:PnP.Framework.Provisioning.Model.Page.Fields
+  id: Fields
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: Fields
+  nameWithType: Page.Fields
+  fullName: PnP.Framework.Provisioning.Model.Page.Fields
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Fields
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 77
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nThe Fields to setup for the Page\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, string> Fields { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public ReadOnly Property Fields As Dictionary(Of String, String)
+  overload: PnP.Framework.Provisioning.Model.Page.Fields*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: PnP.Framework.Provisioning.Model.Page.#ctor
+  commentId: M:PnP.Framework.Provisioning.Model.Page.#ctor
+  id: '#ctor'
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: Page()
+  nameWithType: Page.Page()
+  fullName: PnP.Framework.Provisioning.Model.Page.Page()
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 89
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nConstructor for Page class\n"
+  example: []
+  syntax:
+    content: public Page()
+    content.vb: Public Sub New
+  overload: PnP.Framework.Provisioning.Model.Page.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Model.Page.#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.Dictionary{System.String,System.String})
+  commentId: M:PnP.Framework.Provisioning.Model.Page.#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.Dictionary{System.String,System.String})
+  id: '#ctor(System.String,System.Boolean,PnP.Framework.WikiPageLayout,System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart},PnP.Framework.Provisioning.Model.ObjectSecurity,System.Collections.Generic.Dictionary{System.String,System.String})'
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: Page(String, Boolean, WikiPageLayout, IEnumerable<WebPart>, ObjectSecurity, Dictionary<String, String>)
+  nameWithType: Page.Page(String, Boolean, WikiPageLayout, IEnumerable<WebPart>, ObjectSecurity, Dictionary<String, String>)
+  fullName: PnP.Framework.Provisioning.Model.Page.Page(System.String, System.Boolean, PnP.Framework.WikiPageLayout, System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.WebPart>, PnP.Framework.Provisioning.Model.ObjectSecurity, System.Collections.Generic.Dictionary<System.String, System.String>)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 103
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nConstructor for Page class\n"
+  example: []
+  syntax:
+    content: public Page(string url, bool overwrite, WikiPageLayout layout, IEnumerable<WebPart> webParts, ObjectSecurity security = null, Dictionary<string, string> fields = null)
+    parameters:
+    - id: url
+      type: System.String
+      description: Url of the page
+    - id: overwrite
+      type: System.Boolean
+      description: Overwrite flag for the page
+    - id: layout
+      type: PnP.Framework.WikiPageLayout
+      description: Page Layout
+    - id: webParts
+      type: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart}
+      description: Webparts of the page
+    - id: security
+      type: PnP.Framework.Provisioning.Model.ObjectSecurity
+      description: Security Rules for the page
+    - id: fields
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Fields used in the page
+    content.vb: Public Sub New(url As String, overwrite As Boolean, layout As WikiPageLayout, webParts As IEnumerable(Of WebPart), security As ObjectSecurity = Nothing, fields As Dictionary(Of String, String) = Nothing)
+  overload: PnP.Framework.Provisioning.Model.Page.#ctor*
+  nameWithType.vb: Page.Page(String, Boolean, WikiPageLayout, IEnumerable(Of WebPart), ObjectSecurity, Dictionary(Of String, String))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: PnP.Framework.Provisioning.Model.Page.Page(System.String, System.Boolean, PnP.Framework.WikiPageLayout, System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.WebPart), PnP.Framework.Provisioning.Model.ObjectSecurity, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  name.vb: Page(String, Boolean, WikiPageLayout, IEnumerable(Of WebPart), ObjectSecurity, Dictionary(Of String, String))
+- uid: PnP.Framework.Provisioning.Model.Page.GetHashCode
+  commentId: M:PnP.Framework.Provisioning.Model.Page.GetHashCode
+  id: GetHashCode
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: Page.GetHashCode()
+  fullName: PnP.Framework.Provisioning.Model.Page.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetHashCode
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 130
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nGets the hash code\n"
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: Returns HashCode
+    content.vb: Public Overrides Function GetHashCode As Integer
+  overridden: System.Object.GetHashCode
+  overload: PnP.Framework.Provisioning.Model.Page.GetHashCode*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Model.Page.Equals(System.Object)
+  commentId: M:PnP.Framework.Provisioning.Model.Page.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: Equals(Object)
+  nameWithType: Page.Equals(Object)
+  fullName: PnP.Framework.Provisioning.Model.Page.Equals(System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Equals
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 150
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nCompares object with Page\n"
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: Object that represents Page
+    return:
+      type: System.Boolean
+      description: true if the current object is equal to the Page
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.Object.Equals(System.Object)
+  overload: PnP.Framework.Provisioning.Model.Page.Equals*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: PnP.Framework.Provisioning.Model.Page.Equals(PnP.Framework.Provisioning.Model.Page)
+  commentId: M:PnP.Framework.Provisioning.Model.Page.Equals(PnP.Framework.Provisioning.Model.Page)
+  id: Equals(PnP.Framework.Provisioning.Model.Page)
+  parent: PnP.Framework.Provisioning.Model.Page
+  langs:
+  - csharp
+  - vb
+  name: Equals(Page)
+  nameWithType: Page.Equals(Page)
+  fullName: PnP.Framework.Provisioning.Model.Page.Equals(PnP.Framework.Provisioning.Model.Page)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Equals
+    path: ../src/lib/PnP.Framework/Provisioning/Model/SharePoint/Publishing/Page.cs
+    startLine: 164
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Model
+  summary: "\nCompares Page object based on Url, Overwrite, Layout, WelcomePage, Webparts, Security and Fields properties.\n"
+  example: []
+  syntax:
+    content: public bool Equals(Page other)
+    parameters:
+    - id: other
+      type: PnP.Framework.Provisioning.Model.Page
+      description: Page object
+    return:
+      type: System.Boolean
+      description: true if the Page object is equal to the current object; otherwise, false.
+    content.vb: Public Function Equals(other As Page) As Boolean
+  overload: PnP.Framework.Provisioning.Model.Page.Equals*
+  implements:
+  - System.IEquatable{PnP.Framework.Provisioning.Model.Page}.Equals(PnP.Framework.Provisioning.Model.Page)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Provisioning.Model
+  commentId: N:PnP.Framework.Provisioning.Model
+  name: PnP.Framework.Provisioning.Model
+  nameWithType: PnP.Framework.Provisioning.Model
+  fullName: PnP.Framework.Provisioning.Model
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: PnP.Framework.Provisioning.Model.BaseModel
+  commentId: T:PnP.Framework.Provisioning.Model.BaseModel
+  parent: PnP.Framework.Provisioning.Model
+  name: BaseModel
+  nameWithType: BaseModel
+  fullName: PnP.Framework.Provisioning.Model.BaseModel
+- uid: PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  commentId: T:PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+  parent: PnP.Framework.Provisioning.Model
+  name: IProvisioningTemplateDescendant
+  nameWithType: IProvisioningTemplateDescendant
+  fullName: PnP.Framework.Provisioning.Model.IProvisioningTemplateDescendant
+- uid: System.IEquatable{PnP.Framework.Provisioning.Model.Page}
+  commentId: T:System.IEquatable{PnP.Framework.Provisioning.Model.Page}
+  parent: System
+  definition: System.IEquatable`1
+  name: IEquatable<Page>
+  nameWithType: IEquatable<Page>
+  fullName: System.IEquatable<PnP.Framework.Provisioning.Model.Page>
+  nameWithType.vb: IEquatable(Of Page)
+  fullName.vb: System.IEquatable(Of PnP.Framework.Provisioning.Model.Page)
+  name.vb: IEquatable(Of Page)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.Page
+    name: Page
+    nameWithType: Page
+    fullName: PnP.Framework.Provisioning.Model.Page
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.Page
+    name: Page
+    nameWithType: Page
+    fullName: PnP.Framework.Provisioning.Model.Page
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  commentId: P:PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+  parent: PnP.Framework.Provisioning.Model.BaseModel
+  name: ParentTemplate
+  nameWithType: BaseModel.ParentTemplate
+  fullName: PnP.Framework.Provisioning.Model.BaseModel.ParentTemplate
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.Page.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<Page>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<Page>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.Page>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of Page)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.Page)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of Page)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<Page>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<Page>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Model.Page>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of Page)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of Page)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Model.Page)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.Page.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Model.Page,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<Page, T>(Expression<Func<Page, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<Page, T>(Expression<Func<Page, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.Page, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Model.Page, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of Page, T)(Expression(Of Func(Of Page, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.Page, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Model.Page, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of Page, T)(Expression(Of Func(Of Page, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<Page, T>
+    nameWithType: ObjectExtensions.Set<Page, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Model.Page, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.Page
+    name: Page
+    nameWithType: Page
+    fullName: PnP.Framework.Provisioning.Model.Page
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of Page, T)
+    nameWithType: ObjectExtensions.Set(Of Page, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Model.Page, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.Page
+    name: Page
+    nameWithType: Page
+    fullName: PnP.Framework.Provisioning.Model.Page
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    nameWithType: IEquatable
+    fullName: System.IEquatable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Model.Page.WelcomePage*
+  commentId: Overload:PnP.Framework.Provisioning.Model.Page.WelcomePage
+  name: WelcomePage
+  nameWithType: Page.WelcomePage
+  fullName: PnP.Framework.Provisioning.Model.Page.WelcomePage
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Provisioning.Model.Page.#ctor*
+  commentId: Overload:PnP.Framework.Provisioning.Model.Page.#ctor
+  name: Page
+  nameWithType: Page.Page
+  fullName: PnP.Framework.Provisioning.Model.Page.Page
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.WikiPageLayout
+  commentId: T:PnP.Framework.WikiPageLayout
+  parent: PnP.Framework
+  name: WikiPageLayout
+  nameWithType: WikiPageLayout
+  fullName: PnP.Framework.WikiPageLayout
+- uid: System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart}
+  commentId: T:System.Collections.Generic.IEnumerable{PnP.Framework.Provisioning.Model.WebPart}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<WebPart>
+  nameWithType: IEnumerable<WebPart>
+  fullName: System.Collections.Generic.IEnumerable<PnP.Framework.Provisioning.Model.WebPart>
+  nameWithType.vb: IEnumerable(Of WebPart)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of PnP.Framework.Provisioning.Model.WebPart)
+  name.vb: IEnumerable(Of WebPart)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.WebPart
+    name: WebPart
+    nameWithType: WebPart
+    fullName: PnP.Framework.Provisioning.Model.WebPart
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.WebPart
+    name: WebPart
+    nameWithType: WebPart
+    fullName: PnP.Framework.Provisioning.Model.WebPart
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.ObjectSecurity
+  commentId: T:PnP.Framework.Provisioning.Model.ObjectSecurity
+  parent: PnP.Framework.Provisioning.Model
+  name: ObjectSecurity
+  nameWithType: ObjectSecurity
+  fullName: PnP.Framework.Provisioning.Model.ObjectSecurity
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, String>
+  nameWithType: Dictionary<String, String>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.String>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.Page.Url*
+  commentId: Overload:PnP.Framework.Provisioning.Model.Page.Url
+  name: Url
+  nameWithType: Page.Url
+  fullName: PnP.Framework.Provisioning.Model.Page.Url
+- uid: PnP.Framework.Provisioning.Model.Page.Layout*
+  commentId: Overload:PnP.Framework.Provisioning.Model.Page.Layout
+  name: Layout
+  nameWithType: Page.Layout
+  fullName: PnP.Framework.Provisioning.Model.Page.Layout
+- uid: PnP.Framework.Provisioning.Model.Page.Overwrite*
+  commentId: Overload:PnP.Framework.Provisioning.Model.Page.Overwrite
+  name: Overwrite
+  nameWithType: Page.Overwrite
+  fullName: PnP.Framework.Provisioning.Model.Page.Overwrite
+- uid: PnP.Framework.Provisioning.Model.Page.WebParts*
+  commentId: Overload:PnP.Framework.Provisioning.Model.Page.WebParts
+  name: WebParts
+  nameWithType: Page.WebParts
+  fullName: PnP.Framework.Provisioning.Model.Page.WebParts
+- uid: PnP.Framework.Provisioning.Model.WebPartCollection
+  commentId: T:PnP.Framework.Provisioning.Model.WebPartCollection
+  parent: PnP.Framework.Provisioning.Model
+  name: WebPartCollection
+  nameWithType: WebPartCollection
+  fullName: PnP.Framework.Provisioning.Model.WebPartCollection
+- uid: PnP.Framework.Provisioning.Model.Page.Security*
+  commentId: Overload:PnP.Framework.Provisioning.Model.Page.Security
+  name: Security
+  nameWithType: Page.Security
+  fullName: PnP.Framework.Provisioning.Model.Page.Security
+- uid: PnP.Framework.Provisioning.Model.Page.Fields*
+  commentId: Overload:PnP.Framework.Provisioning.Model.Page.Fields
+  name: Fields
+  nameWithType: Page.Fields
+  fullName: PnP.Framework.Provisioning.Model.Page.Fields
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.Page.GetHashCode*
+  commentId: Overload:PnP.Framework.Provisioning.Model.Page.GetHashCode
+  name: GetHashCode
+  nameWithType: Page.GetHashCode
+  fullName: PnP.Framework.Provisioning.Model.Page.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.Page.Equals*
+  commentId: Overload:PnP.Framework.Provisioning.Model.Page.Equals
+  name: Equals
+  nameWithType: Page.Equals
+  fullName: PnP.Framework.Provisioning.Model.Page.Equals
+- uid: System.IEquatable{PnP.Framework.Provisioning.Model.Page}.Equals(PnP.Framework.Provisioning.Model.Page)
+  commentId: M:System.IEquatable{PnP.Framework.Provisioning.Model.Page}.Equals(PnP.Framework.Provisioning.Model.Page)
+  parent: System.IEquatable{PnP.Framework.Provisioning.Model.Page}
+  definition: System.IEquatable`1.Equals(`0)
+  name: Equals(Page)
+  nameWithType: IEquatable<Page>.Equals(Page)
+  fullName: System.IEquatable<PnP.Framework.Provisioning.Model.Page>.Equals(PnP.Framework.Provisioning.Model.Page)
+  nameWithType.vb: IEquatable(Of Page).Equals(Page)
+  fullName.vb: System.IEquatable(Of PnP.Framework.Provisioning.Model.Page).Equals(PnP.Framework.Provisioning.Model.Page)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable<Page>.Equals
+    fullName: System.IEquatable<PnP.Framework.Provisioning.Model.Page>.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.Page
+    name: Page
+    nameWithType: Page
+    fullName: PnP.Framework.Provisioning.Model.Page
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable(Of Page).Equals
+    fullName: System.IEquatable(Of PnP.Framework.Provisioning.Model.Page).Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.Page
+    name: Page
+    nameWithType: Page
+    fullName: PnP.Framework.Provisioning.Model.Page
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Model.Page
+  commentId: T:PnP.Framework.Provisioning.Model.Page
+  parent: PnP.Framework.Provisioning.Model
+  name: Page
+  nameWithType: Page
+  fullName: PnP.Framework.Provisioning.Model.Page
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable<T>.Equals
+    fullName: System.IEquatable<T>.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    nameWithType: IEquatable(Of T).Equals
+    fullName: System.IEquatable(Of T).Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )

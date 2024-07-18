@@ -159,6 +159,52 @@ namespace Microsoft.SharePoint.Client
             }
         }
 
+        /// <summary>
+        /// Discard changes to a file
+        /// </summary>
+        /// <param name="web">The web to process</param>
+        /// <param name="serverRelativeUrl">The server relative URL of the file to dicard changes</param>
+        public static void UndoCheckOutFile(this Web web, string serverRelativeUrl)
+        {
+            Task.Run(() => web.UndoCheckOutFileImplementation(serverRelativeUrl)).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Discard changes to a file
+        /// </summary>
+        /// <param name="web">The web to process</param>
+        /// <param name="serverRelativeUrl">The server relative URL of the file to dicard changes</param>
+        public static async Task UndoCheckOutFileAsync(this Web web, string serverRelativeUrl)
+        {
+            await new SynchronizationContextRemover();
+            await web.UndoCheckOutFileImplementation(serverRelativeUrl);
+        }
+
+        /// <summary>
+        /// Discard changes to a file
+        /// </summary>
+        /// <param name="web">The web to process</param>
+        /// <param name="serverRelativeUrl">The server relative URL of the file to dicard changes</param>
+        private static async Task UndoCheckOutFileImplementation(this Web web, string serverRelativeUrl)
+        {
+            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativeUrl));
+            await web.Context.ExecuteQueryAsync();
+
+            var scope = new ConditionalScope(web.Context, () => !file.ServerObjectIsNull.Value && file.Exists && file.CheckOutType != CheckOutType.None);
+
+            using (scope.StartScope())
+            {
+                web.Context.Load(file);
+            }
+            await web.Context.ExecuteQueryAsync();
+
+            if (scope.TestResult.Value)
+            {
+                file.UndoCheckOut();
+                web.Context.ExecuteQueryRetry();
+            }
+        }
+
         private static void CopyStream(Stream source, Stream destination)
         {
             byte[] buffer = new byte[32768];
@@ -811,12 +857,7 @@ namespace Microsoft.SharePoint.Client
             //Web root folder should be returned if webRelativeUrl is empty
             if (webRelativeUrl.Length != 0 && string.IsNullOrWhiteSpace(webRelativeUrl)) { throw new ArgumentException(CoreResources.FileFolderExtensions_EnsureFolderPath_Folder_URL_is_required_, nameof(webRelativeUrl)); }
 
-            // Check if folder exists
-            if (!web.IsPropertyAvailable("ServerRelativeUrl"))
-            {
-                web.Context.Load(web, w => w.ServerRelativeUrl);
-                await web.Context.ExecuteQueryRetryAsync();
-            }
+            await web.EnsurePropertyAsync(w => w.ServerRelativeUrl);
 
             var folderServerRelativeUrl = UrlUtility.Combine(web.ServerRelativeUrl, webRelativeUrl, "/");
 
@@ -839,7 +880,10 @@ namespace Microsoft.SharePoint.Client
 
             // Start either at the root of the list or web
             string locationType = null;
+            string listUrl = string.Empty;
+            IEnumerable<Field> titleField = null;
             string rootUrl = null;
+
             Folder currentFolder = null;
             if (containingList == null)
             {
@@ -850,8 +894,11 @@ namespace Microsoft.SharePoint.Client
             {
                 locationType = "List";
                 currentFolder = containingList.RootFolder;
+                listUrl = containingList.RootFolder.ServerRelativeUrl;
+
+                titleField = web.Context.LoadQuery(containingList.Fields.Where(f => f.Id == BuiltInFieldId.Title));
+                await web.Context.ExecuteQueryRetryAsync();
             }
-            await currentFolder.EnsurePropertyAsync(f => f.ServerRelativeUrl);
             rootUrl = currentFolder.ServerRelativeUrl;
 
             // Get remaining parts of the path and split
@@ -887,8 +934,6 @@ namespace Microsoft.SharePoint.Client
                     if (locationType == "List")
                     {
                         createPath = createPath.Substring(0, createPath.Length - folderName.Length).TrimEnd('/');
-                        var listUrl =
-                            containingList.EnsureProperty(f => f.RootFolder).EnsureProperty(r => r.ServerRelativeUrl);
 
                         var newFolderInfo = new ListItemCreationInformationUsingPath
                         {
@@ -899,15 +944,12 @@ namespace Microsoft.SharePoint.Client
 
                         ListItem newFolderItem = containingList.AddItemUsingPath(newFolderInfo);
 
-                        var titleField = web.Context.LoadQuery(containingList.Fields.Where(f => f.Id == BuiltInFieldId.Title));
-                        await web.Context.ExecuteQueryRetryAsync();
-
-                        if (titleField.Any())
+                        if (titleField != null && titleField.Any())
                         {
                             newFolderItem["Title"] = folderName;
+                            newFolderItem.Update();
                         }
-
-                        newFolderItem.Update();
+                        
                         containingList.Context.Load(newFolderItem);
                         await containingList.Context.ExecuteQueryRetryAsync();
 
@@ -1501,7 +1543,7 @@ namespace Microsoft.SharePoint.Client
                                 FileCollectionAddParameters fileCollectionAddParameters = new FileCollectionAddParameters
                                 {
                                     Overwrite = overwriteIfExists
-                                };                                
+                                };
 
                                 uploadFile = folder.Files.AddUsingPath(decodedfileName, fileCollectionAddParameters, contentStream);
 
@@ -1523,7 +1565,7 @@ namespace Microsoft.SharePoint.Client
                         else
                         {
                             ResourcePath fileServerRelativePath = ResourcePath.FromDecodedUrl(folder.ServerRelativePath.DecodedUrl + Path.AltDirectorySeparatorChar + decodedfileName.DecodedUrl);
-                            uploadFile = (folder.Context as ClientContext).Web.GetFileByServerRelativePath(fileServerRelativePath);                            
+                            uploadFile = (folder.Context as ClientContext).Web.GetFileByServerRelativePath(fileServerRelativePath);
                             if (last)
                             {
                                 // Is this the last slice of data?
@@ -1535,7 +1577,7 @@ namespace Microsoft.SharePoint.Client
                                 }
                             }
                             else
-                            {                                
+                            {
                                 using (MemoryStream s = new MemoryStream(buffer))
                                 {
                                     // Continue sliced upload.
@@ -1557,7 +1599,7 @@ namespace Microsoft.SharePoint.Client
 
             Log.Debug(Constants.LOGGING_SOURCE, "Created file with name '{0}'", fileName);
 
-            
+
             var fileUrl = folder.ServerRelativePath.DecodedUrl + Path.AltDirectorySeparatorChar + fileName;
             var finishedUploadedFile = (folder.Context as ClientContext).Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(fileUrl));
             folder.Context.Load(finishedUploadedFile);

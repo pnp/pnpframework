@@ -8,7 +8,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions
     [TokenDefinitionDescription(
      Token = "{fileuniqueid:[siteRelativePath]}",
      Description = "Returns the unique id of a file which is being provisioned by the current template.",
-     Example = "{fileuniqueid:/sitepages/home.aspx}",
+     Example = "{fileuniqueid:sitepages/home.aspx}",
      Returns = "f2cd6d5b-1391-480e-a3dc-7f7f96137382")]
     internal class FileUniqueIdToken : TokenDefinition
     {

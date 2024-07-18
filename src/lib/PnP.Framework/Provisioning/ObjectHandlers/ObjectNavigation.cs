@@ -94,6 +94,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     CreateFriendlyUrlsForNewPages = navigationSettings.CreateFriendlyUrlsForNewPages
                 };
 
+                // Retrieve the Navigation audience targeting settings
+                var enableAudienceTargeting = web.EnsureProperty(w => w.NavAudienceTargetingEnabled);
+                navigationEntity.EnableAudienceTargeting = enableAudienceTargeting;
+
                 if (creationInfo.ExtractConfiguration != null && creationInfo.ExtractConfiguration.Navigation != null && creationInfo.ExtractConfiguration.Navigation.RemoveExistingNodes)
                 {
                     if (navigationEntity.SearchNavigation != null)
@@ -148,6 +152,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     navigationSettings.AddNewPagesToNavigation = template.Navigation.AddNewPagesToNavigation;
                     navigationSettings.CreateFriendlyUrlsForNewPages = template.Navigation.CreateFriendlyUrlsForNewPages;
+
+                    // Configure the Navigation audience targeting
+                    web.NavAudienceTargetingEnabled = template.Navigation.EnableAudienceTargeting;
+                    web.Update();
+                    web.Context.ExecuteQueryRetry();
 
                     if (!isNoScriptSite)
                     {

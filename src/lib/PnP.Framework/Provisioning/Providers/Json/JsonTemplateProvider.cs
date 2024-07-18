@@ -57,6 +57,15 @@ namespace PnP.Framework.Provisioning.Providers.Json
 
             return (result);
         }
+        public override List<ProvisioningHierarchy> GetHierarchies()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ProvisioningHierarchy GetHierarchy(Stream stream)
+        {
+            throw new NotImplementedException();
+        }
 
         public override ProvisioningHierarchy GetHierarchy(string uri)
         {

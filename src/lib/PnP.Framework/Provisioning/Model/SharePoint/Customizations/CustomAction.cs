@@ -99,11 +99,6 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         public String ClientSideComponentProperties { get; set; }
 
-        /// <summary>
-        /// The Client Side Host Properties of a customizer, if any
-        /// </summary>
-        public String ClientSideHostProperties { get; set; }
-
         #endregion
 
         #region Comparison code
@@ -113,7 +108,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|",
                 (this.CommandUIExtension != null ? this.CommandUIExtension.GetHashCode() : 0),
                 (this.Description != null ? this.Description.GetHashCode() : 0),
                 this.Enabled.GetHashCode(),
@@ -131,8 +126,7 @@ namespace PnP.Framework.Provisioning.Model
                 (this.Title != null ? this.Title.GetHashCode() : 0),
                 (this.Url != null ? this.Url.GetHashCode() : 0),
                 this.ClientSideComponentId.GetHashCode(),
-                (this.ClientSideComponentProperties != null ? this.ClientSideComponentProperties.GetHashCode() : 0),
-                (this.ClientSideHostProperties != null ? this.ClientSideHostProperties.GetHashCode() : 0)
+                (this.ClientSideComponentProperties != null ? this.ClientSideComponentProperties.GetHashCode() : 0)
             ).GetHashCode());
         }
 
@@ -183,8 +177,7 @@ namespace PnP.Framework.Provisioning.Model
                 this.Title == other.Title &&
                 this.Url == other.Url &&
                 this.ClientSideComponentId == other.ClientSideComponentId &&
-                this.ClientSideComponentProperties == other.ClientSideComponentProperties &&
-                this.ClientSideHostProperties == other.ClientSideHostProperties
+                this.ClientSideComponentProperties == other.ClientSideComponentProperties
             );
         }
 

@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Connectors
+  commentId: N:PnP.Framework.Provisioning.Connectors
+  id: PnP.Framework.Provisioning.Connectors
+  children:
+  - PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  - PnP.Framework.Provisioning.Connectors.FileSystemConnector
+  - PnP.Framework.Provisioning.Connectors.ICommitableFileConnector
+  - PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  - PnP.Framework.Provisioning.Connectors.SharePointConnector
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Connectors
+  nameWithType: PnP.Framework.Provisioning.Connectors
+  fullName: PnP.Framework.Provisioning.Connectors
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  commentId: T:PnP.Framework.Provisioning.Connectors.FileConnectorBase
+  parent: PnP.Framework.Provisioning.Connectors
+  name: FileConnectorBase
+  nameWithType: FileConnectorBase
+  fullName: PnP.Framework.Provisioning.Connectors.FileConnectorBase
+- uid: PnP.Framework.Provisioning.Connectors.FileSystemConnector
+  commentId: T:PnP.Framework.Provisioning.Connectors.FileSystemConnector
+  name: FileSystemConnector
+  nameWithType: FileSystemConnector
+  fullName: PnP.Framework.Provisioning.Connectors.FileSystemConnector
+- uid: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector
+  commentId: T:PnP.Framework.Provisioning.Connectors.ICommitableFileConnector
+  parent: PnP.Framework.Provisioning.Connectors
+  name: ICommitableFileConnector
+  nameWithType: ICommitableFileConnector
+  fullName: PnP.Framework.Provisioning.Connectors.ICommitableFileConnector
+- uid: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+  parent: PnP.Framework.Provisioning.Connectors
+  name: OpenXMLConnector
+  nameWithType: OpenXMLConnector
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXMLConnector
+- uid: PnP.Framework.Provisioning.Connectors.SharePointConnector
+  commentId: T:PnP.Framework.Provisioning.Connectors.SharePointConnector
+  name: SharePointConnector
+  nameWithType: SharePointConnector
+  fullName: PnP.Framework.Provisioning.Connectors.SharePointConnector
+- uid: PnP.Framework.Provisioning.Connectors
+  commentId: N:PnP.Framework.Provisioning.Connectors
+  name: PnP.Framework.Provisioning.Connectors
+  nameWithType: PnP.Framework.Provisioning.Connectors
+  fullName: PnP.Framework.Provisioning.Connectors

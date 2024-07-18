@@ -74,6 +74,11 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         public Int32 AuthorByLineId { get; set; }
 
+        /// <summary>
+        /// Defines whether to show the page background with gradient on the current client side page.
+        /// </summary>
+        public bool ShowBackgroundGradient { get; set; }
+
         #endregion
 
         #region Comparison code
@@ -84,7 +89,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|",
                 this.Type.GetHashCode(),
                 this.ServerRelativeImageUrl?.GetHashCode() ?? 0,
                 this.TranslateX.GetHashCode(),
@@ -97,7 +102,8 @@ namespace PnP.Framework.Provisioning.Model
                 this.AlternativeText?.GetHashCode() ?? 0,
                 this.Authors?.GetHashCode() ?? 0,
                 this.AuthorByLine?.GetHashCode() ?? 0,
-                this.AuthorByLineId.GetHashCode()
+                this.AuthorByLineId.GetHashCode(),
+                this.ShowBackgroundGradient.GetHashCode()
            ).GetHashCode());
         }
 
@@ -140,7 +146,8 @@ namespace PnP.Framework.Provisioning.Model
                 this.AlternativeText == other.AlternativeText &&
                 this.Authors == other.Authors &&
                 this.AuthorByLine == other.AuthorByLine &&
-                this.AuthorByLineId == other.AuthorByLineId
+                this.AuthorByLineId == other.AuthorByLineId &&
+                this.ShowBackgroundGradient == other.ShowBackgroundGradient
                 );
         }
 

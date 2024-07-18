@@ -1,0 +1,67 @@
+### YamlMime:ManagedReference
+items:
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  commentId: N:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  id: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  children:
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenResponse
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2ErrorResponse
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2Message
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2S2SClient
+  - SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2WebRequest
+  langs:
+  - csharp
+  - vb
+  name: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  nameWithType: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  name: OAuth2AccessTokenRequest
+  nameWithType: OAuth2AccessTokenRequest
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenRequest
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenResponse
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenResponse
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  name: OAuth2AccessTokenResponse
+  nameWithType: OAuth2AccessTokenResponse
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2AccessTokenResponse
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2ErrorResponse
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2ErrorResponse
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  name: OAuth2ErrorResponse
+  nameWithType: OAuth2ErrorResponse
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2ErrorResponse
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2Message
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2Message
+  parent: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  name: OAuth2Message
+  nameWithType: OAuth2Message
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2Message
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+  name: OAuth2MessageFactory
+  nameWithType: OAuth2MessageFactory
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2MessageFactory
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2S2SClient
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2S2SClient
+  name: OAuth2S2SClient
+  nameWithType: OAuth2S2SClient
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2S2SClient
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2WebRequest
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2WebRequest
+  name: OAuth2WebRequest
+  nameWithType: OAuth2WebRequest
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2.OAuth2WebRequest
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  commentId: N:SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  name: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  nameWithType: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.Protocols.OAuth2

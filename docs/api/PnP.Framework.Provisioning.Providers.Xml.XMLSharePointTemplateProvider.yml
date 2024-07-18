@@ -1,0 +1,3139 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider
+  id: XMLSharePointTemplateProvider
+  parent: PnP.Framework.Provisioning.Providers.Xml
+  children:
+  - PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.#ctor
+  - PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.#ctor(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: XMLSharePointTemplateProvider
+  nameWithType: XMLSharePointTemplateProvider
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLSharePointTemplateProvider.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: XMLSharePointTemplateProvider
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLSharePointTemplateProvider.cs
+    startLine: 5
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml
+  syntax:
+    content: 'public class XMLSharePointTemplateProvider : XMLTemplateProvider'
+    content.vb: >-
+      Public Class XMLSharePointTemplateProvider
+          Inherits XMLTemplateProvider
+  inheritance:
+  - System.Object
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  inheritedMembers:
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates(PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetHierarchy(System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningHierarchy)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  - PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Delete(System.String)
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase.Parameters
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase.SupportsSave
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase.SupportsDelete
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase.Connector
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase.Uri
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase.SaveToConnector(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],System.IO.Stream)
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],System.IO.Stream)
+  - PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.#ctor
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.#ctor
+  id: '#ctor'
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider
+  langs:
+  - csharp
+  - vb
+  name: XMLSharePointTemplateProvider()
+  nameWithType: XMLSharePointTemplateProvider.XMLSharePointTemplateProvider()
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.XMLSharePointTemplateProvider()
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLSharePointTemplateProvider.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLSharePointTemplateProvider.cs
+    startLine: 8
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml
+  syntax:
+    content: public XMLSharePointTemplateProvider()
+    content.vb: Public Sub New
+  overload: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.#ctor(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String,System.String)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.#ctor(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String,System.String)
+  id: '#ctor(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String,System.String)'
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider
+  langs:
+  - csharp
+  - vb
+  name: XMLSharePointTemplateProvider(ClientRuntimeContext, String, String)
+  nameWithType: XMLSharePointTemplateProvider.XMLSharePointTemplateProvider(ClientRuntimeContext, String, String)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.XMLSharePointTemplateProvider(Microsoft.SharePoint.Client.ClientRuntimeContext, System.String, System.String)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLSharePointTemplateProvider.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLSharePointTemplateProvider.cs
+    startLine: 12
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml
+  syntax:
+    content: public XMLSharePointTemplateProvider(ClientRuntimeContext cc, string connectionString, string container)
+    parameters:
+    - id: cc
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+    - id: connectionString
+      type: System.String
+    - id: container
+      type: System.String
+    content.vb: Public Sub New(cc As ClientRuntimeContext, connectionString As String, container As String)
+  overload: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Provisioning.Providers.Xml
+  commentId: N:PnP.Framework.Provisioning.Providers.Xml
+  name: PnP.Framework.Provisioning.Providers.Xml
+  nameWithType: PnP.Framework.Provisioning.Providers.Xml
+  fullName: PnP.Framework.Provisioning.Providers.Xml
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  commentId: T:PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  parent: PnP.Framework.Provisioning.Providers
+  name: TemplateProviderBase
+  nameWithType: TemplateProviderBase
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  parent: PnP.Framework.Provisioning.Providers.Xml
+  name: XMLTemplateProvider
+  nameWithType: XMLTemplateProvider
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  name: GetTemplates()
+  nameWithType: XMLTemplateProvider.GetTemplates()
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates
+    name: GetTemplates
+    nameWithType: XMLTemplateProvider.GetTemplates
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates
+    name: GetTemplates
+    nameWithType: XMLTemplateProvider.GetTemplates
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates(PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates(PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  name: GetTemplates(ITemplateFormatter)
+  nameWithType: XMLTemplateProvider.GetTemplates(ITemplateFormatter)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates(PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates(PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: GetTemplates
+    nameWithType: XMLTemplateProvider.GetTemplates
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates(PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: GetTemplates
+    nameWithType: XMLTemplateProvider.GetTemplates
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplates
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetHierarchy(System.String)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetHierarchy(System.String)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetHierarchy(String)
+  nameWithType: XMLTemplateProvider.GetHierarchy(String)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetHierarchy(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetHierarchy(System.String)
+    name: GetHierarchy
+    nameWithType: XMLTemplateProvider.GetHierarchy
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetHierarchy
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetHierarchy(System.String)
+    name: GetHierarchy
+    nameWithType: XMLTemplateProvider.GetHierarchy
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetHierarchy
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(String)
+  nameWithType: XMLTemplateProvider.GetTemplate(String)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(String, ITemplateProviderExtension[])
+  nameWithType: XMLTemplateProvider.GetTemplate(String, ITemplateProviderExtension[])
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  nameWithType.vb: XMLTemplateProvider.GetTemplate(String, ITemplateProviderExtension())
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension())
+  name.vb: GetTemplate(String, ITemplateProviderExtension())
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(String, String)
+  nameWithType: XMLTemplateProvider.GetTemplate(String, String)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(String, ITemplateFormatter)
+  nameWithType: XMLTemplateProvider.GetTemplate(String, ITemplateFormatter)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(String, String, ITemplateFormatter)
+  nameWithType: XMLTemplateProvider.GetTemplate(String, String, ITemplateFormatter)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(String, String, ITemplateFormatter, ITemplateProviderExtension[])
+  nameWithType: XMLTemplateProvider.GetTemplate(String, String, ITemplateFormatter, ITemplateProviderExtension[])
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  nameWithType.vb: XMLTemplateProvider.GetTemplate(String, String, ITemplateFormatter, ITemplateProviderExtension())
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension())
+  name.vb: GetTemplate(String, String, ITemplateFormatter, ITemplateProviderExtension())
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.String,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(Stream)
+  nameWithType: XMLTemplateProvider.GetTemplate(Stream)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(Stream, ITemplateProviderExtension[])
+  nameWithType: XMLTemplateProvider.GetTemplate(Stream, ITemplateProviderExtension[])
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  nameWithType.vb: XMLTemplateProvider.GetTemplate(Stream, ITemplateProviderExtension())
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension())
+  name.vb: GetTemplate(Stream, ITemplateProviderExtension())
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(Stream, String)
+  nameWithType: XMLTemplateProvider.GetTemplate(Stream, String)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(Stream, ITemplateFormatter)
+  nameWithType: XMLTemplateProvider.GetTemplate(Stream, ITemplateFormatter)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream, PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(Stream, String, ITemplateFormatter)
+  nameWithType: XMLTemplateProvider.GetTemplate(Stream, String, ITemplateFormatter)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: GetTemplate(Stream, String, ITemplateFormatter, ITemplateProviderExtension[])
+  nameWithType: XMLTemplateProvider.GetTemplate(Stream, String, ITemplateFormatter, ITemplateProviderExtension[])
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  nameWithType.vb: XMLTemplateProvider.GetTemplate(Stream, String, ITemplateFormatter, ITemplateProviderExtension())
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension())
+  name.vb: GetTemplate(Stream, String, ITemplateFormatter, ITemplateProviderExtension())
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate(System.IO.Stream,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: GetTemplate
+    nameWithType: XMLTemplateProvider.GetTemplate
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.GetTemplate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningHierarchy)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningHierarchy)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  name: Save(ProvisioningHierarchy)
+  nameWithType: XMLTemplateProvider.Save(ProvisioningHierarchy)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningHierarchy)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningHierarchy)
+    name: Save
+    nameWithType: XMLTemplateProvider.Save
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+    name: ProvisioningHierarchy
+    nameWithType: ProvisioningHierarchy
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningHierarchy)
+    name: Save
+    nameWithType: XMLTemplateProvider.Save
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+    name: ProvisioningHierarchy
+    nameWithType: ProvisioningHierarchy
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  name: Save(ProvisioningTemplate)
+  nameWithType: XMLTemplateProvider.Save(ProvisioningTemplate)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+    name: Save
+    nameWithType: XMLTemplateProvider.Save
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+    name: Save
+    nameWithType: XMLTemplateProvider.Save
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  name: Save(ProvisioningTemplate, ITemplateProviderExtension[])
+  nameWithType: XMLTemplateProvider.Save(ProvisioningTemplate, ITemplateProviderExtension[])
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  nameWithType.vb: XMLTemplateProvider.Save(ProvisioningTemplate, ITemplateProviderExtension())
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension())
+  name.vb: Save(ProvisioningTemplate, ITemplateProviderExtension())
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: Save
+    nameWithType: XMLTemplateProvider.Save
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: Save
+    nameWithType: XMLTemplateProvider.Save
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  name: Save(ProvisioningTemplate, ITemplateFormatter)
+  nameWithType: XMLTemplateProvider.Save(ProvisioningTemplate, ITemplateFormatter)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate, PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: Save
+    nameWithType: XMLTemplateProvider.Save
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: Save
+    nameWithType: XMLTemplateProvider.Save
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  name: Save(ProvisioningTemplate, ITemplateFormatter, ITemplateProviderExtension[])
+  nameWithType: XMLTemplateProvider.Save(ProvisioningTemplate, ITemplateFormatter, ITemplateProviderExtension[])
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate, PnP.Framework.Provisioning.Providers.ITemplateFormatter, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  nameWithType.vb: XMLTemplateProvider.Save(ProvisioningTemplate, ITemplateFormatter, ITemplateProviderExtension())
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate, PnP.Framework.Provisioning.Providers.ITemplateFormatter, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension())
+  name.vb: Save(ProvisioningTemplate, ITemplateFormatter, ITemplateProviderExtension())
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: Save
+    nameWithType: XMLTemplateProvider.Save
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: Save
+    nameWithType: XMLTemplateProvider.Save
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Save
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: SaveAs(ProvisioningHierarchy, String, ITemplateFormatter)
+  nameWithType: XMLTemplateProvider.SaveAs(ProvisioningHierarchy, String, ITemplateFormatter)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningHierarchy, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: SaveAs
+    nameWithType: XMLTemplateProvider.SaveAs
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+    name: ProvisioningHierarchy
+    nameWithType: ProvisioningHierarchy
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningHierarchy,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: SaveAs
+    nameWithType: XMLTemplateProvider.SaveAs
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+    name: ProvisioningHierarchy
+    nameWithType: ProvisioningHierarchy
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningHierarchy
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: SaveAs(ProvisioningTemplate, String)
+  nameWithType: XMLTemplateProvider.SaveAs(ProvisioningTemplate, String)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String)
+    name: SaveAs
+    nameWithType: XMLTemplateProvider.SaveAs
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String)
+    name: SaveAs
+    nameWithType: XMLTemplateProvider.SaveAs
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: SaveAs(ProvisioningTemplate, String, ITemplateProviderExtension[])
+  nameWithType: XMLTemplateProvider.SaveAs(ProvisioningTemplate, String, ITemplateProviderExtension[])
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate, System.String, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  nameWithType.vb: XMLTemplateProvider.SaveAs(ProvisioningTemplate, String, ITemplateProviderExtension())
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate, System.String, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension())
+  name.vb: SaveAs(ProvisioningTemplate, String, ITemplateProviderExtension())
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: SaveAs
+    nameWithType: XMLTemplateProvider.SaveAs
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: SaveAs
+    nameWithType: XMLTemplateProvider.SaveAs
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: SaveAs(ProvisioningTemplate, String, ITemplateFormatter)
+  nameWithType: XMLTemplateProvider.SaveAs(ProvisioningTemplate, String, ITemplateFormatter)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: SaveAs
+    nameWithType: XMLTemplateProvider.SaveAs
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter)
+    name: SaveAs
+    nameWithType: XMLTemplateProvider.SaveAs
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: SaveAs(ProvisioningTemplate, String, ITemplateFormatter, ITemplateProviderExtension[])
+  nameWithType: XMLTemplateProvider.SaveAs(ProvisioningTemplate, String, ITemplateFormatter, ITemplateProviderExtension[])
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  nameWithType.vb: XMLTemplateProvider.SaveAs(ProvisioningTemplate, String, ITemplateFormatter, ITemplateProviderExtension())
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension())
+  name.vb: SaveAs(ProvisioningTemplate, String, ITemplateFormatter, ITemplateProviderExtension())
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: SaveAs
+    nameWithType: XMLTemplateProvider.SaveAs
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: SaveAs
+    nameWithType: XMLTemplateProvider.SaveAs
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.SaveAs
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Delete(System.String)
+  commentId: M:PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Delete(System.String)
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider
+  isExternal: true
+  name: Delete(String)
+  nameWithType: XMLTemplateProvider.Delete(String)
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Delete(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Delete(System.String)
+    name: Delete
+    nameWithType: XMLTemplateProvider.Delete
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Delete
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Delete(System.String)
+    name: Delete
+    nameWithType: XMLTemplateProvider.Delete
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLTemplateProvider.Delete
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.Parameters
+  commentId: P:PnP.Framework.Provisioning.Providers.TemplateProviderBase.Parameters
+  parent: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  name: Parameters
+  nameWithType: TemplateProviderBase.Parameters
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.Parameters
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.SupportsSave
+  commentId: P:PnP.Framework.Provisioning.Providers.TemplateProviderBase.SupportsSave
+  parent: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  name: SupportsSave
+  nameWithType: TemplateProviderBase.SupportsSave
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.SupportsSave
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.SupportsDelete
+  commentId: P:PnP.Framework.Provisioning.Providers.TemplateProviderBase.SupportsDelete
+  parent: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  name: SupportsDelete
+  nameWithType: TemplateProviderBase.SupportsDelete
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.SupportsDelete
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.Connector
+  commentId: P:PnP.Framework.Provisioning.Providers.TemplateProviderBase.Connector
+  parent: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  name: Connector
+  nameWithType: TemplateProviderBase.Connector
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.Connector
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.Uri
+  commentId: P:PnP.Framework.Provisioning.Providers.TemplateProviderBase.Uri
+  parent: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  name: Uri
+  nameWithType: TemplateProviderBase.Uri
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.Uri
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.SaveToConnector(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  commentId: M:PnP.Framework.Provisioning.Providers.TemplateProviderBase.SaveToConnector(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  parent: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  isExternal: true
+  name: SaveToConnector(ProvisioningTemplate, String, ITemplateFormatter, ITemplateProviderExtension[])
+  nameWithType: TemplateProviderBase.SaveToConnector(ProvisioningTemplate, String, ITemplateFormatter, ITemplateProviderExtension[])
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.SaveToConnector(PnP.Framework.Provisioning.Model.ProvisioningTemplate, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+  nameWithType.vb: TemplateProviderBase.SaveToConnector(ProvisioningTemplate, String, ITemplateFormatter, ITemplateProviderExtension())
+  fullName.vb: PnP.Framework.Provisioning.Providers.TemplateProviderBase.SaveToConnector(PnP.Framework.Provisioning.Model.ProvisioningTemplate, System.String, PnP.Framework.Provisioning.Providers.ITemplateFormatter, PnP.Framework.Provisioning.Providers.ITemplateProviderExtension())
+  name.vb: SaveToConnector(ProvisioningTemplate, String, ITemplateFormatter, ITemplateProviderExtension())
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.SaveToConnector(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: SaveToConnector
+    nameWithType: TemplateProviderBase.SaveToConnector
+    fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.SaveToConnector
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.SaveToConnector(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String,PnP.Framework.Provisioning.Providers.ITemplateFormatter,PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[])
+    name: SaveToConnector
+    nameWithType: TemplateProviderBase.SaveToConnector
+    fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.SaveToConnector
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+    name: ITemplateFormatter
+    nameWithType: ITemplateFormatter
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateFormatter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  commentId: M:PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  parent: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  name: PreProcessSaveTemplateExtensions(ITemplateProviderExtension[], ProvisioningTemplate)
+  nameWithType: TemplateProviderBase.PreProcessSaveTemplateExtensions(ITemplateProviderExtension[], ProvisioningTemplate)
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[], PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  nameWithType.vb: TemplateProviderBase.PreProcessSaveTemplateExtensions(ITemplateProviderExtension(), ProvisioningTemplate)
+  fullName.vb: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension(), PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  name.vb: PreProcessSaveTemplateExtensions(ITemplateProviderExtension(), ProvisioningTemplate)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+    name: PreProcessSaveTemplateExtensions
+    nameWithType: TemplateProviderBase.PreProcessSaveTemplateExtensions
+    fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessSaveTemplateExtensions
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+    name: PreProcessSaveTemplateExtensions
+    nameWithType: TemplateProviderBase.PreProcessSaveTemplateExtensions
+    fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessSaveTemplateExtensions
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],System.IO.Stream)
+  commentId: M:PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],System.IO.Stream)
+  parent: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  isExternal: true
+  name: PostProcessSaveTemplateExtensions(ITemplateProviderExtension[], Stream)
+  nameWithType: TemplateProviderBase.PostProcessSaveTemplateExtensions(ITemplateProviderExtension[], Stream)
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[], System.IO.Stream)
+  nameWithType.vb: TemplateProviderBase.PostProcessSaveTemplateExtensions(ITemplateProviderExtension(), Stream)
+  fullName.vb: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension(), System.IO.Stream)
+  name.vb: PostProcessSaveTemplateExtensions(ITemplateProviderExtension(), Stream)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],System.IO.Stream)
+    name: PostProcessSaveTemplateExtensions
+    nameWithType: TemplateProviderBase.PostProcessSaveTemplateExtensions
+    fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessSaveTemplateExtensions
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessSaveTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],System.IO.Stream)
+    name: PostProcessSaveTemplateExtensions
+    nameWithType: TemplateProviderBase.PostProcessSaveTemplateExtensions
+    fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessSaveTemplateExtensions
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],System.IO.Stream)
+  commentId: M:PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],System.IO.Stream)
+  parent: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  isExternal: true
+  name: PreProcessGetTemplateExtensions(ITemplateProviderExtension[], Stream)
+  nameWithType: TemplateProviderBase.PreProcessGetTemplateExtensions(ITemplateProviderExtension[], Stream)
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[], System.IO.Stream)
+  nameWithType.vb: TemplateProviderBase.PreProcessGetTemplateExtensions(ITemplateProviderExtension(), Stream)
+  fullName.vb: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension(), System.IO.Stream)
+  name.vb: PreProcessGetTemplateExtensions(ITemplateProviderExtension(), Stream)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],System.IO.Stream)
+    name: PreProcessGetTemplateExtensions
+    nameWithType: TemplateProviderBase.PreProcessGetTemplateExtensions
+    fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessGetTemplateExtensions
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],System.IO.Stream)
+    name: PreProcessGetTemplateExtensions
+    nameWithType: TemplateProviderBase.PreProcessGetTemplateExtensions
+    fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PreProcessGetTemplateExtensions
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: System.IO.Stream
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  commentId: M:PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  parent: PnP.Framework.Provisioning.Providers.TemplateProviderBase
+  name: PostProcessGetTemplateExtensions(ITemplateProviderExtension[], ProvisioningTemplate)
+  nameWithType: TemplateProviderBase.PostProcessGetTemplateExtensions(ITemplateProviderExtension[], ProvisioningTemplate)
+  fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[], PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  nameWithType.vb: TemplateProviderBase.PostProcessGetTemplateExtensions(ITemplateProviderExtension(), ProvisioningTemplate)
+  fullName.vb: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension(), PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+  name.vb: PostProcessGetTemplateExtensions(ITemplateProviderExtension(), ProvisioningTemplate)
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+    name: PostProcessGetTemplateExtensions
+    nameWithType: TemplateProviderBase.PostProcessGetTemplateExtensions
+    fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessGetTemplateExtensions
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessGetTemplateExtensions(PnP.Framework.Provisioning.Providers.ITemplateProviderExtension[],PnP.Framework.Provisioning.Model.ProvisioningTemplate)
+    name: PostProcessGetTemplateExtensions
+    nameWithType: TemplateProviderBase.PostProcessGetTemplateExtensions
+    fullName: PnP.Framework.Provisioning.Providers.TemplateProviderBase.PostProcessGetTemplateExtensions
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+    name: ITemplateProviderExtension
+    nameWithType: ITemplateProviderExtension
+    fullName: PnP.Framework.Provisioning.Providers.ITemplateProviderExtension
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    name: ProvisioningTemplate
+    nameWithType: ProvisioningTemplate
+    fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<XMLSharePointTemplateProvider>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<XMLSharePointTemplateProvider>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of XMLSharePointTemplateProvider)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of XMLSharePointTemplateProvider)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<XMLSharePointTemplateProvider>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<XMLSharePointTemplateProvider>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of XMLSharePointTemplateProvider)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of XMLSharePointTemplateProvider)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<XMLSharePointTemplateProvider, T>(Expression<Func<XMLSharePointTemplateProvider, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<XMLSharePointTemplateProvider, T>(Expression<Func<XMLSharePointTemplateProvider, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of XMLSharePointTemplateProvider, T)(Expression(Of Func(Of XMLSharePointTemplateProvider, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of XMLSharePointTemplateProvider, T)(Expression(Of Func(Of XMLSharePointTemplateProvider, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<XMLSharePointTemplateProvider, T>
+    nameWithType: ObjectExtensions.Set<XMLSharePointTemplateProvider, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider
+    name: XMLSharePointTemplateProvider
+    nameWithType: XMLSharePointTemplateProvider
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of XMLSharePointTemplateProvider, T)
+    nameWithType: ObjectExtensions.Set(Of XMLSharePointTemplateProvider, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider
+    name: XMLSharePointTemplateProvider
+    nameWithType: XMLSharePointTemplateProvider
+    fullName: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Provisioning.Providers
+  commentId: N:PnP.Framework.Provisioning.Providers
+  name: PnP.Framework.Provisioning.Providers
+  nameWithType: PnP.Framework.Provisioning.Providers
+  fullName: PnP.Framework.Provisioning.Providers
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.#ctor*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.#ctor
+  name: XMLSharePointTemplateProvider
+  nameWithType: XMLSharePointTemplateProvider.XMLSharePointTemplateProvider
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLSharePointTemplateProvider.XMLSharePointTemplateProvider
+- uid: Microsoft.SharePoint.Client.ClientRuntimeContext
+  commentId: T:Microsoft.SharePoint.Client.ClientRuntimeContext
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ClientRuntimeContext
+  nameWithType: ClientRuntimeContext
+  fullName: Microsoft.SharePoint.Client.ClientRuntimeContext
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client

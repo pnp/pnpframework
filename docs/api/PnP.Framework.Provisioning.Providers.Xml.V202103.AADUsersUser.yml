@@ -1,0 +1,1839 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  id: AADUsersUser
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  children:
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.AccountEnabled
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.DisplayName
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.GivenName
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.JobTitle
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Licenses
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MailNickname
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MobilePhone
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.OfficeLocation
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordPolicies
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordProfile
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PreferredLanguage
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.ProfilePhoto
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Surname
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UsageLocation
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UserPrincipalName
+  langs:
+  - csharp
+  - vb
+  name: AADUsersUser
+  nameWithType: AADUsersUser
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AADUsersUser
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 568
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class AADUsersUser
+    content.vb: >-
+      <Serializable>
+
+      Public Class AADUsersUser
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordProfile
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordProfile
+  id: PasswordProfile
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: PasswordProfile
+  nameWithType: AADUsersUser.PasswordProfile
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordProfile
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PasswordProfile
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 606
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public AADUsersUserPasswordProfile PasswordProfile { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserPasswordProfile
+    content.vb: Public Property PasswordProfile As AADUsersUserPasswordProfile
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordProfile*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Licenses
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Licenses
+  id: Licenses
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: Licenses
+  nameWithType: AADUsersUser.Licenses
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Licenses
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Licenses
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 616
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public AADUsersUserLicense[] Licenses { get; set; }
+    parameters: []
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserLicense[]
+    content.vb: Public Property Licenses As AADUsersUserLicense()
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Licenses*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.AccountEnabled
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.AccountEnabled
+  id: AccountEnabled
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: AccountEnabled
+  nameWithType: AADUsersUser.AccountEnabled
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.AccountEnabled
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AccountEnabled
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 627
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public bool AccountEnabled { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AccountEnabled As Boolean
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.AccountEnabled*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.DisplayName
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.DisplayName
+  id: DisplayName
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: AADUsersUser.DisplayName
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.DisplayName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DisplayName
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 638
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string DisplayName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DisplayName As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.DisplayName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MailNickname
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MailNickname
+  id: MailNickname
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: MailNickname
+  nameWithType: AADUsersUser.MailNickname
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MailNickname
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MailNickname
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 649
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string MailNickname { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property MailNickname As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MailNickname*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordPolicies
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordPolicies
+  id: PasswordPolicies
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: PasswordPolicies
+  nameWithType: AADUsersUser.PasswordPolicies
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordPolicies
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PasswordPolicies
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 660
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string PasswordPolicies { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PasswordPolicies As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordPolicies*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UserPrincipalName
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UserPrincipalName
+  id: UserPrincipalName
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: UserPrincipalName
+  nameWithType: AADUsersUser.UserPrincipalName
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UserPrincipalName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UserPrincipalName
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 671
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string UserPrincipalName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property UserPrincipalName As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UserPrincipalName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.ProfilePhoto
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.ProfilePhoto
+  id: ProfilePhoto
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: ProfilePhoto
+  nameWithType: AADUsersUser.ProfilePhoto
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.ProfilePhoto
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ProfilePhoto
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 682
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string ProfilePhoto { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ProfilePhoto As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.ProfilePhoto*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.GivenName
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.GivenName
+  id: GivenName
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: GivenName
+  nameWithType: AADUsersUser.GivenName
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.GivenName
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GivenName
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 693
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string GivenName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property GivenName As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.GivenName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Surname
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Surname
+  id: Surname
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: Surname
+  nameWithType: AADUsersUser.Surname
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Surname
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Surname
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 704
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string Surname { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Surname As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Surname*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.JobTitle
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.JobTitle
+  id: JobTitle
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: JobTitle
+  nameWithType: AADUsersUser.JobTitle
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.JobTitle
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: JobTitle
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 715
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string JobTitle { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property JobTitle As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.JobTitle*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.OfficeLocation
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.OfficeLocation
+  id: OfficeLocation
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: OfficeLocation
+  nameWithType: AADUsersUser.OfficeLocation
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.OfficeLocation
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OfficeLocation
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 726
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string OfficeLocation { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property OfficeLocation As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.OfficeLocation*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PreferredLanguage
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PreferredLanguage
+  id: PreferredLanguage
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: PreferredLanguage
+  nameWithType: AADUsersUser.PreferredLanguage
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PreferredLanguage
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PreferredLanguage
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 737
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string PreferredLanguage { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PreferredLanguage As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PreferredLanguage*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MobilePhone
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MobilePhone
+  id: MobilePhone
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: MobilePhone
+  nameWithType: AADUsersUser.MobilePhone
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MobilePhone
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: MobilePhone
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 748
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string MobilePhone { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property MobilePhone As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MobilePhone*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UsageLocation
+  commentId: P:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UsageLocation
+  id: UsageLocation
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  langs:
+  - csharp
+  - vb
+  name: UsageLocation
+  nameWithType: AADUsersUser.UsageLocation
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UsageLocation
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UsageLocation
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 759
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: public string UsageLocation { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property UsageLocation As String
+  overload: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UsageLocation*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103
+  commentId: N:PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: PnP.Framework.Provisioning.Providers.Xml.V202103
+  nameWithType: PnP.Framework.Provisioning.Providers.Xml.V202103
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<AADUsersUser>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<AADUsersUser>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of AADUsersUser)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of AADUsersUser)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<AADUsersUser>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<AADUsersUser>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of AADUsersUser)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of AADUsersUser)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<AADUsersUser, T>(Expression<Func<AADUsersUser, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<AADUsersUser, T>(Expression<Func<AADUsersUser, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of AADUsersUser, T)(Expression(Of Func(Of AADUsersUser, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of AADUsersUser, T)(Expression(Of Func(Of AADUsersUser, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<AADUsersUser, T>
+    nameWithType: ObjectExtensions.Set<AADUsersUser, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+    name: AADUsersUser
+    nameWithType: AADUsersUser
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of AADUsersUser, T)
+    nameWithType: ObjectExtensions.Set(Of AADUsersUser, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+    name: AADUsersUser
+    nameWithType: AADUsersUser
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordProfile*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordProfile
+  name: PasswordProfile
+  nameWithType: AADUsersUser.PasswordProfile
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordProfile
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserPasswordProfile
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserPasswordProfile
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: AADUsersUserPasswordProfile
+  nameWithType: AADUsersUserPasswordProfile
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserPasswordProfile
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Licenses*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Licenses
+  name: Licenses
+  nameWithType: AADUsersUser.Licenses
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Licenses
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserLicense[]
+  isExternal: true
+  name: AADUsersUserLicense[]
+  nameWithType: AADUsersUserLicense[]
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserLicense[]
+  nameWithType.vb: AADUsersUserLicense()
+  fullName.vb: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserLicense()
+  name.vb: AADUsersUserLicense()
+  spec.csharp:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserLicense
+    name: AADUsersUserLicense
+    nameWithType: AADUsersUserLicense
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserLicense
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserLicense
+    name: AADUsersUserLicense
+    nameWithType: AADUsersUserLicense
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUserLicense
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.AccountEnabled*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.AccountEnabled
+  name: AccountEnabled
+  nameWithType: AADUsersUser.AccountEnabled
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.AccountEnabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.DisplayName*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.DisplayName
+  name: DisplayName
+  nameWithType: AADUsersUser.DisplayName
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.DisplayName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MailNickname*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MailNickname
+  name: MailNickname
+  nameWithType: AADUsersUser.MailNickname
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MailNickname
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordPolicies*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordPolicies
+  name: PasswordPolicies
+  nameWithType: AADUsersUser.PasswordPolicies
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PasswordPolicies
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UserPrincipalName*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UserPrincipalName
+  name: UserPrincipalName
+  nameWithType: AADUsersUser.UserPrincipalName
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UserPrincipalName
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.ProfilePhoto*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.ProfilePhoto
+  name: ProfilePhoto
+  nameWithType: AADUsersUser.ProfilePhoto
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.ProfilePhoto
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.GivenName*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.GivenName
+  name: GivenName
+  nameWithType: AADUsersUser.GivenName
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.GivenName
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Surname*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Surname
+  name: Surname
+  nameWithType: AADUsersUser.Surname
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.Surname
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.JobTitle*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.JobTitle
+  name: JobTitle
+  nameWithType: AADUsersUser.JobTitle
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.JobTitle
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.OfficeLocation*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.OfficeLocation
+  name: OfficeLocation
+  nameWithType: AADUsersUser.OfficeLocation
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.OfficeLocation
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PreferredLanguage*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PreferredLanguage
+  name: PreferredLanguage
+  nameWithType: AADUsersUser.PreferredLanguage
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.PreferredLanguage
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MobilePhone*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MobilePhone
+  name: MobilePhone
+  nameWithType: AADUsersUser.MobilePhone
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.MobilePhone
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UsageLocation*
+  commentId: Overload:PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UsageLocation
+  name: UsageLocation
+  nameWithType: AADUsersUser.UsageLocation
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.AADUsersUser.UsageLocation

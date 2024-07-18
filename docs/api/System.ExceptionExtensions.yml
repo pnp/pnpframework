@@ -1,0 +1,572 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ExceptionExtensions
+  commentId: T:System.ExceptionExtensions
+  id: ExceptionExtensions
+  parent: System
+  children:
+  - System.ExceptionExtensions.ToDetailedString(System.Exception)
+  - System.ExceptionExtensions.ToDetailedString(System.Exception,Microsoft.SharePoint.Client.ClientRuntimeContext)
+  - System.ExceptionExtensions.ToDetailedString(System.Exception,Microsoft.SharePoint.Client.ClientRuntimeContext,System.ExceptionOptions)
+  - System.ExceptionExtensions.ToDetailedString(System.Exception,System.ExceptionOptions)
+  langs:
+  - csharp
+  - vb
+  name: ExceptionExtensions
+  nameWithType: ExceptionExtensions
+  fullName: System.ExceptionExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExceptionExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExceptionExtensions
+    path: ../src/lib/PnP.Framework/Extensions/ExceptionExtensions.cs
+    startLine: 11
+  assemblies:
+  - PnP.Framework
+  namespace: System
+  summary: "\nExtension methods to get complete exception details and to deal with exceptions easily.\n"
+  example: []
+  syntax:
+    content: public static class ExceptionExtensions
+    content.vb: Public Module ExceptionExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: System.ExceptionExtensions.ToDetailedString(System.Exception)
+  commentId: M:System.ExceptionExtensions.ToDetailedString(System.Exception)
+  id: ToDetailedString(System.Exception)
+  isExtensionMethod: true
+  parent: System.ExceptionExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToDetailedString(Exception)
+  nameWithType: ExceptionExtensions.ToDetailedString(Exception)
+  fullName: System.ExceptionExtensions.ToDetailedString(System.Exception)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExceptionExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ToDetailedString
+    path: ../src/lib/PnP.Framework/Extensions/ExceptionExtensions.cs
+    startLine: 18
+  assemblies:
+  - PnP.Framework
+  namespace: System
+  summary: "\nReturns the detailed exception\n"
+  example: []
+  syntax:
+    content: public static string ToDetailedString(this Exception exception)
+    parameters:
+    - id: exception
+      type: System.Exception
+      description: Exception object
+    return:
+      type: System.String
+      description: Returns exception as a string
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ToDetailedString(exception As Exception) As String
+  overload: System.ExceptionExtensions.ToDetailedString*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: System.ExceptionExtensions.ToDetailedString(System.Exception,Microsoft.SharePoint.Client.ClientRuntimeContext)
+  commentId: M:System.ExceptionExtensions.ToDetailedString(System.Exception,Microsoft.SharePoint.Client.ClientRuntimeContext)
+  id: ToDetailedString(System.Exception,Microsoft.SharePoint.Client.ClientRuntimeContext)
+  isExtensionMethod: true
+  parent: System.ExceptionExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToDetailedString(Exception, ClientRuntimeContext)
+  nameWithType: ExceptionExtensions.ToDetailedString(Exception, ClientRuntimeContext)
+  fullName: System.ExceptionExtensions.ToDetailedString(System.Exception, Microsoft.SharePoint.Client.ClientRuntimeContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExceptionExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ToDetailedString
+    path: ../src/lib/PnP.Framework/Extensions/ExceptionExtensions.cs
+    startLine: 34
+  assemblies:
+  - PnP.Framework
+  namespace: System
+  summary: "\nReturns exception for the given ClientRunTimeContext\n"
+  example: []
+  syntax:
+    content: public static string ToDetailedString(this Exception exception, ClientRuntimeContext cc)
+    parameters:
+    - id: exception
+      type: System.Exception
+      description: Exception object
+    - id: cc
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: ClientRuntimeContext object
+    return:
+      type: System.String
+      description: Returns exception as a string
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ToDetailedString(exception As Exception, cc As ClientRuntimeContext) As String
+  overload: System.ExceptionExtensions.ToDetailedString*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: System.ExceptionExtensions.ToDetailedString(System.Exception,System.ExceptionOptions)
+  commentId: M:System.ExceptionExtensions.ToDetailedString(System.Exception,System.ExceptionOptions)
+  id: ToDetailedString(System.Exception,System.ExceptionOptions)
+  isExtensionMethod: true
+  parent: System.ExceptionExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToDetailedString(Exception, ExceptionOptions)
+  nameWithType: ExceptionExtensions.ToDetailedString(Exception, ExceptionOptions)
+  fullName: System.ExceptionExtensions.ToDetailedString(System.Exception, System.ExceptionOptions)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExceptionExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ToDetailedString
+    path: ../src/lib/PnP.Framework/Extensions/ExceptionExtensions.cs
+    startLine: 50
+  assemblies:
+  - PnP.Framework
+  namespace: System
+  summary: "\nReturns Exception based on ExceptionOptions object\n"
+  example: []
+  syntax:
+    content: public static string ToDetailedString(this Exception exception, ExceptionOptions options)
+    parameters:
+    - id: exception
+      type: System.Exception
+      description: Exception object
+    - id: options
+      type: System.ExceptionOptions
+      description: ExceptionOptions object
+    return:
+      type: System.String
+      description: Returns exception as a string
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ToDetailedString(exception As Exception, options As ExceptionOptions) As String
+  overload: System.ExceptionExtensions.ToDetailedString*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: System.ExceptionExtensions.ToDetailedString(System.Exception,Microsoft.SharePoint.Client.ClientRuntimeContext,System.ExceptionOptions)
+  commentId: M:System.ExceptionExtensions.ToDetailedString(System.Exception,Microsoft.SharePoint.Client.ClientRuntimeContext,System.ExceptionOptions)
+  id: ToDetailedString(System.Exception,Microsoft.SharePoint.Client.ClientRuntimeContext,System.ExceptionOptions)
+  isExtensionMethod: true
+  parent: System.ExceptionExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToDetailedString(Exception, ClientRuntimeContext, ExceptionOptions)
+  nameWithType: ExceptionExtensions.ToDetailedString(Exception, ClientRuntimeContext, ExceptionOptions)
+  fullName: System.ExceptionExtensions.ToDetailedString(System.Exception, Microsoft.SharePoint.Client.ClientRuntimeContext, System.ExceptionOptions)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ExceptionExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ToDetailedString
+    path: ../src/lib/PnP.Framework/Extensions/ExceptionExtensions.cs
+    startLine: 67
+  assemblies:
+  - PnP.Framework
+  namespace: System
+  summary: "\nReturns exception based on ClientRunTimeContext and ExceptionOptions objects\n"
+  example: []
+  syntax:
+    content: public static string ToDetailedString(this Exception exception, ClientRuntimeContext cc, ExceptionOptions options)
+    parameters:
+    - id: exception
+      type: System.Exception
+      description: Exception object
+    - id: cc
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: ClientRuntimeContext object
+    - id: options
+      type: System.ExceptionOptions
+      description: ExceptionOptions object
+    return:
+      type: System.String
+      description: Returns exception as a string
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ToDetailedString(exception As Exception, cc As ClientRuntimeContext, options As ExceptionOptions) As String
+  overload: System.ExceptionExtensions.ToDetailedString*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ExceptionExtensions.ToDetailedString*
+  commentId: Overload:System.ExceptionExtensions.ToDetailedString
+  name: ToDetailedString
+  nameWithType: ExceptionExtensions.ToDetailedString
+  fullName: System.ExceptionExtensions.ToDetailedString
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client.ClientRuntimeContext
+  commentId: T:Microsoft.SharePoint.Client.ClientRuntimeContext
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ClientRuntimeContext
+  nameWithType: ClientRuntimeContext
+  fullName: Microsoft.SharePoint.Client.ClientRuntimeContext
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.ExceptionOptions
+  commentId: T:System.ExceptionOptions
+  parent: System
+  name: ExceptionOptions
+  nameWithType: ExceptionOptions
+  fullName: System.ExceptionOptions

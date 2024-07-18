@@ -1,0 +1,35 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Tenant
+  id: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.Tenant.ApplyTenantConfiguration
+  - PnP.Framework.Provisioning.Model.Configuration.Tenant.ExtractTenantConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.ApplyTenantConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Tenant.ApplyTenantConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  name: ApplyTenantConfiguration
+  nameWithType: ApplyTenantConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Tenant.ApplyTenantConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.ExtractTenantConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Tenant.ExtractTenantConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  name: ExtractTenantConfiguration
+  nameWithType: ExtractTenantConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Tenant.ExtractTenantConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Tenant
+  name: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Tenant
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Tenant

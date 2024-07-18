@@ -25,7 +25,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
         {
             get
             {
-                return (new XMLPnPSchemaV202103Serializer());
+                return (new XMLPnPSchemaV202209Serializer());
             }
         }
 
@@ -39,16 +39,18 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             switch (version)
             {
 #pragma warning disable CS0618 // Type or member is obsolete
-#pragma warning restore CS0618 // Type or member is obsolete
                 case XMLPnPSchemaVersion.V201903:
                     return (new XMLPnPSchemaV201903Serializer());
+#pragma warning restore CS0618 // Type or member is obsolete
                 case XMLPnPSchemaVersion.V201909:
                     return (new XMLPnPSchemaV201909Serializer());
                 case XMLPnPSchemaVersion.V202002:
                     return (new XMLPnPSchemaV202002Serializer());
                 case XMLPnPSchemaVersion.V202103:
-                default:
                     return (new XMLPnPSchemaV202103Serializer());
+                case XMLPnPSchemaVersion.V202209:
+                default:
+                    return (new XMLPnPSchemaV202209Serializer());
             }
         }
 
@@ -62,16 +64,18 @@ namespace PnP.Framework.Provisioning.Providers.Xml
             switch (namespaceUri)
             {
 #pragma warning disable CS0618 // Type or member is obsolete
-#pragma warning restore CS0618 // Type or member is obsolete
                 case XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_03:
                     return new XMLPnPSchemaV201903Serializer();
+#pragma warning restore CS0618 // Type or member is obsolete
                 case XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_09:
                     return new XMLPnPSchemaV201909Serializer();
                 case XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2020_02:
                     return new XMLPnPSchemaV202002Serializer();
                 case XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03:
-                default:
                     return new XMLPnPSchemaV202103Serializer();
+                case XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2022_09:
+                default:
+                    return new XMLPnPSchemaV202209Serializer();
             }
         }
 

@@ -1,0 +1,965 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.SiteExtensions
+  commentId: T:Microsoft.SharePoint.Client.SiteExtensions
+  id: SiteExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Site,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Boolean)
+  - Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Site,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Int32,System.Boolean)
+  - Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverById(Microsoft.SharePoint.Client.Site,System.Guid)
+  - Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverByName(Microsoft.SharePoint.Client.Site,System.String)
+  - Microsoft.SharePoint.Client.SiteExtensions.GetSiteClassification(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.SiteExtensions.HasTeamsTeam(Microsoft.SharePoint.Client.Site,System.String,PnP.Framework.AzureEnvironment)
+  - Microsoft.SharePoint.Client.SiteExtensions.IsCommunicationSite(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.SiteExtensions.IsModernTeamSite(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.SiteExtensions.IsTeamChannelSite(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.SiteExtensions.SetSiteClassification(Microsoft.SharePoint.Client.Site,System.String,System.String,PnP.Framework.AzureEnvironment)
+  langs:
+  - csharp
+  - vb
+  name: SiteExtensions
+  nameWithType: SiteExtensions
+  fullName: Microsoft.SharePoint.Client.SiteExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteExtensions
+    path: ../src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+    startLine: 8
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  syntax:
+    content: public static class SiteExtensions
+    content.vb: Public Module SiteExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.SiteExtensions.SetSiteClassification(Microsoft.SharePoint.Client.Site,System.String,System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:Microsoft.SharePoint.Client.SiteExtensions.SetSiteClassification(Microsoft.SharePoint.Client.Site,System.String,System.String,PnP.Framework.AzureEnvironment)
+  id: SetSiteClassification(Microsoft.SharePoint.Client.Site,System.String,System.String,PnP.Framework.AzureEnvironment)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SiteExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetSiteClassification(Site, String, String, AzureEnvironment)
+  nameWithType: SiteExtensions.SetSiteClassification(Site, String, String, AzureEnvironment)
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.SetSiteClassification(Microsoft.SharePoint.Client.Site, System.String, System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetSiteClassification
+    path: ../src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+    startLine: 19
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRetrieves the current value for the Site Classification of a Site Collection\n"
+  example: []
+  syntax:
+    content: public static void SetSiteClassification(this Site site, string classificationValue, string accessToken = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The target site
+    - id: classificationValue
+      type: System.String
+      description: The new value for the Site Classification
+    - id: accessToken
+      type: System.String
+      description: The OAuth Access Token to consume Microsoft Graph, required only for GROUP#0 site collections
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetSiteClassification(site As Site, classificationValue As String, accessToken As String = Nothing, azureEnvironment As AzureEnvironment = AzureEnvironment.Production)
+  overload: Microsoft.SharePoint.Client.SiteExtensions.SetSiteClassification*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SiteExtensions.GetSiteClassification(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.SiteExtensions.GetSiteClassification(Microsoft.SharePoint.Client.Site)
+  id: GetSiteClassification(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SiteExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSiteClassification(Site)
+  nameWithType: SiteExtensions.GetSiteClassification(Site)
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.GetSiteClassification(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSiteClassification
+    path: ../src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+    startLine: 69
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRetrieves the current value for the Site Classification of a Site Collection\n"
+  example: []
+  syntax:
+    content: public static string GetSiteClassification(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The target site
+    return:
+      type: System.String
+      description: The classification for the site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSiteClassification(site As Site) As String
+  overload: Microsoft.SharePoint.Client.SiteExtensions.GetSiteClassification*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SiteExtensions.IsCommunicationSite(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.SiteExtensions.IsCommunicationSite(Microsoft.SharePoint.Client.Site)
+  id: IsCommunicationSite(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SiteExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsCommunicationSite(Site)
+  nameWithType: SiteExtensions.IsCommunicationSite(Site)
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.IsCommunicationSite(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsCommunicationSite
+    path: ../src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+    startLine: 80
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if the current Site Collection is a &quot;modern&quot; Communication Site\n"
+  example: []
+  syntax:
+    content: public static bool IsCommunicationSite(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The target site
+    return:
+      type: System.Boolean
+      description: Returns true if the site is a Communication Site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsCommunicationSite(site As Site) As Boolean
+  overload: Microsoft.SharePoint.Client.SiteExtensions.IsCommunicationSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SiteExtensions.IsModernTeamSite(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.SiteExtensions.IsModernTeamSite(Microsoft.SharePoint.Client.Site)
+  id: IsModernTeamSite(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SiteExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsModernTeamSite(Site)
+  nameWithType: SiteExtensions.IsModernTeamSite(Site)
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.IsModernTeamSite(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsModernTeamSite
+    path: ../src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+    startLine: 105
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if the current Site Collection is a &quot;modern&quot; Team Site\n"
+  example: []
+  syntax:
+    content: public static bool IsModernTeamSite(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The target site
+    return:
+      type: System.Boolean
+      description: Returns true if the site is a Team Site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsModernTeamSite(site As Site) As Boolean
+  overload: Microsoft.SharePoint.Client.SiteExtensions.IsModernTeamSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SiteExtensions.IsTeamChannelSite(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.SiteExtensions.IsTeamChannelSite(Microsoft.SharePoint.Client.Site)
+  id: IsTeamChannelSite(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SiteExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsTeamChannelSite(Site)
+  nameWithType: SiteExtensions.IsTeamChannelSite(Site)
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.IsTeamChannelSite(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsTeamChannelSite
+    path: ../src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+    startLine: 120
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if the current Site Collection is a &quot;Teamchannel&quot; Team Site\n"
+  example: []
+  syntax:
+    content: public static bool IsTeamChannelSite(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsTeamChannelSite(site As Site) As Boolean
+  overload: Microsoft.SharePoint.Client.SiteExtensions.IsTeamChannelSite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SiteExtensions.HasTeamsTeam(Microsoft.SharePoint.Client.Site,System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:Microsoft.SharePoint.Client.SiteExtensions.HasTeamsTeam(Microsoft.SharePoint.Client.Site,System.String,PnP.Framework.AzureEnvironment)
+  id: HasTeamsTeam(Microsoft.SharePoint.Client.Site,System.String,PnP.Framework.AzureEnvironment)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SiteExtensions
+  langs:
+  - csharp
+  - vb
+  name: HasTeamsTeam(Site, String, AzureEnvironment)
+  nameWithType: SiteExtensions.HasTeamsTeam(Site, String, AzureEnvironment)
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.HasTeamsTeam(Microsoft.SharePoint.Client.Site, System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HasTeamsTeam
+    path: ../src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+    startLine: 138
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if this site collection has a Teams team linked\n"
+  example: []
+  syntax:
+    content: public static bool HasTeamsTeam(this Site site, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: Site collection
+    - id: accessToken
+      type: System.String
+      description: 'Graph access token (groups.read.all) '
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Boolean
+      description: True if there&apos;s a team
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function HasTeamsTeam(site As Site, accessToken As String, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As Boolean
+  overload: Microsoft.SharePoint.Client.SiteExtensions.HasTeamsTeam*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Site,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Site,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Boolean)
+  id: AddRemoteEventReceiver(Microsoft.SharePoint.Client.Site,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SiteExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddRemoteEventReceiver(Site, String, String, EventReceiverType, EventReceiverSynchronization, Boolean)
+  nameWithType: SiteExtensions.AddRemoteEventReceiver(Site, String, String, EventReceiverType, EventReceiverSynchronization, Boolean)
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Site, System.String, System.String, Microsoft.SharePoint.Client.EventReceiverType, Microsoft.SharePoint.Client.EventReceiverSynchronization, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddRemoteEventReceiver
+    path: ../src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+    startLine: 201
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRegisters a remote event receiver\n"
+  example: []
+  syntax:
+    content: public static EventReceiverDefinition AddRemoteEventReceiver(this Site site, string name, string url, EventReceiverType eventReceiverType, EventReceiverSynchronization synchronization, bool force)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The site collection to process
+    - id: name
+      type: System.String
+      description: The name of the event receiver (needs to be unique among the event receivers registered on this site)
+    - id: url
+      type: System.String
+      description: The URL of the remote WCF service that handles the event
+    - id: eventReceiverType
+      type: Microsoft.SharePoint.Client.EventReceiverType
+      description: ''
+    - id: synchronization
+      type: Microsoft.SharePoint.Client.EventReceiverSynchronization
+      description: ''
+    - id: force
+      type: System.Boolean
+      description: If True any event already registered with the same name will be removed first.
+    return:
+      type: Microsoft.SharePoint.Client.EventReceiverDefinition
+      description: Returns an EventReceiverDefinition if succeeded. Returns null if failed.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddRemoteEventReceiver(site As Site, name As String, url As String, eventReceiverType As EventReceiverType, synchronization As EventReceiverSynchronization, force As Boolean) As EventReceiverDefinition
+  overload: Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Site,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Int32,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Site,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Int32,System.Boolean)
+  id: AddRemoteEventReceiver(Microsoft.SharePoint.Client.Site,System.String,System.String,Microsoft.SharePoint.Client.EventReceiverType,Microsoft.SharePoint.Client.EventReceiverSynchronization,System.Int32,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SiteExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddRemoteEventReceiver(Site, String, String, EventReceiverType, EventReceiverSynchronization, Int32, Boolean)
+  nameWithType: SiteExtensions.AddRemoteEventReceiver(Site, String, String, EventReceiverType, EventReceiverSynchronization, Int32, Boolean)
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver(Microsoft.SharePoint.Client.Site, System.String, System.String, Microsoft.SharePoint.Client.EventReceiverType, Microsoft.SharePoint.Client.EventReceiverSynchronization, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddRemoteEventReceiver
+    path: ../src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+    startLine: 217
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nRegisters a remote event receiver\n"
+  example: []
+  syntax:
+    content: public static EventReceiverDefinition AddRemoteEventReceiver(this Site site, string name, string url, EventReceiverType eventReceiverType, EventReceiverSynchronization synchronization, int sequenceNumber, bool force)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: The site colletion to process
+    - id: name
+      type: System.String
+      description: The name of the event receiver (needs to be unique among the event receivers registered on this site)
+    - id: url
+      type: System.String
+      description: The URL of the remote WCF service that handles the event
+    - id: eventReceiverType
+      type: Microsoft.SharePoint.Client.EventReceiverType
+      description: The type of event for the event receiver.
+    - id: synchronization
+      type: Microsoft.SharePoint.Client.EventReceiverSynchronization
+      description: An enumeration that specifies the synchronization state for the event receiver.
+    - id: sequenceNumber
+      type: System.Int32
+      description: An integer that represents the relative sequence of the event.
+    - id: force
+      type: System.Boolean
+      description: If True any event already registered with the same name will be removed first.
+    return:
+      type: Microsoft.SharePoint.Client.EventReceiverDefinition
+      description: Returns an EventReceiverDefinition if succeeded. Returns null if failed.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddRemoteEventReceiver(site As Site, name As String, url As String, eventReceiverType As EventReceiverType, synchronization As EventReceiverSynchronization, sequenceNumber As Integer, force As Boolean) As EventReceiverDefinition
+  overload: Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverById(Microsoft.SharePoint.Client.Site,System.Guid)
+  commentId: M:Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverById(Microsoft.SharePoint.Client.Site,System.Guid)
+  id: GetEventReceiverById(Microsoft.SharePoint.Client.Site,System.Guid)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SiteExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetEventReceiverById(Site, Guid)
+  nameWithType: SiteExtensions.GetEventReceiverById(Site, Guid)
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverById(Microsoft.SharePoint.Client.Site, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetEventReceiverById
+    path: ../src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+    startLine: 259
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns an event receiver definition\n"
+  example: []
+  syntax:
+    content: public static EventReceiverDefinition GetEventReceiverById(this Site site, Guid id)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: site collection to process
+    - id: id
+      type: System.Guid
+      description: The id of event receiver
+    return:
+      type: Microsoft.SharePoint.Client.EventReceiverDefinition
+      description: Returns an EventReceiverDefinition if succeeded. Returns null if failed.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetEventReceiverById(site As Site, id As Guid) As EventReceiverDefinition
+  overload: Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverById*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverByName(Microsoft.SharePoint.Client.Site,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverByName(Microsoft.SharePoint.Client.Site,System.String)
+  id: GetEventReceiverByName(Microsoft.SharePoint.Client.Site,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SiteExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetEventReceiverByName(Site, String)
+  nameWithType: SiteExtensions.GetEventReceiverByName(Site, String)
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverByName(Microsoft.SharePoint.Client.Site, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetEventReceiverByName
+    path: ../src/lib/PnP.Framework/Extensions/SiteExtensions.cs
+    startLine: 285
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns an event receiver definition\n"
+  example: []
+  syntax:
+    content: public static EventReceiverDefinition GetEventReceiverByName(this Site site, string name)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: site collection to process
+    - id: name
+      type: System.String
+      description: The name of the receiver
+    return:
+      type: Microsoft.SharePoint.Client.EventReceiverDefinition
+      description: Returns an EventReceiverDefinition if succeeded. Returns null if failed.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetEventReceiverByName(site As Site, name As String) As EventReceiverDefinition
+  overload: Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverByName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.SharePoint.Client.SiteExtensions.SetSiteClassification*
+  commentId: Overload:Microsoft.SharePoint.Client.SiteExtensions.SetSiteClassification
+  name: SetSiteClassification
+  nameWithType: SiteExtensions.SetSiteClassification
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.SetSiteClassification
+- uid: Microsoft.SharePoint.Client.Site
+  commentId: T:Microsoft.SharePoint.Client.Site
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Site
+  nameWithType: Site
+  fullName: Microsoft.SharePoint.Client.Site
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.AzureEnvironment
+  commentId: T:PnP.Framework.AzureEnvironment
+  parent: PnP.Framework
+  name: AzureEnvironment
+  nameWithType: AzureEnvironment
+  fullName: PnP.Framework.AzureEnvironment
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: Microsoft.SharePoint.Client.SiteExtensions.GetSiteClassification*
+  commentId: Overload:Microsoft.SharePoint.Client.SiteExtensions.GetSiteClassification
+  name: GetSiteClassification
+  nameWithType: SiteExtensions.GetSiteClassification
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.GetSiteClassification
+- uid: Microsoft.SharePoint.Client.SiteExtensions.IsCommunicationSite*
+  commentId: Overload:Microsoft.SharePoint.Client.SiteExtensions.IsCommunicationSite
+  name: IsCommunicationSite
+  nameWithType: SiteExtensions.IsCommunicationSite
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.IsCommunicationSite
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client.SiteExtensions.IsModernTeamSite*
+  commentId: Overload:Microsoft.SharePoint.Client.SiteExtensions.IsModernTeamSite
+  name: IsModernTeamSite
+  nameWithType: SiteExtensions.IsModernTeamSite
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.IsModernTeamSite
+- uid: Microsoft.SharePoint.Client.SiteExtensions.IsTeamChannelSite*
+  commentId: Overload:Microsoft.SharePoint.Client.SiteExtensions.IsTeamChannelSite
+  name: IsTeamChannelSite
+  nameWithType: SiteExtensions.IsTeamChannelSite
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.IsTeamChannelSite
+- uid: Microsoft.SharePoint.Client.SiteExtensions.HasTeamsTeam*
+  commentId: Overload:Microsoft.SharePoint.Client.SiteExtensions.HasTeamsTeam
+  name: HasTeamsTeam
+  nameWithType: SiteExtensions.HasTeamsTeam
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.HasTeamsTeam
+- uid: Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver*
+  commentId: Overload:Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver
+  name: AddRemoteEventReceiver
+  nameWithType: SiteExtensions.AddRemoteEventReceiver
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.AddRemoteEventReceiver
+- uid: Microsoft.SharePoint.Client.EventReceiverType
+  commentId: T:Microsoft.SharePoint.Client.EventReceiverType
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: EventReceiverType
+  nameWithType: EventReceiverType
+  fullName: Microsoft.SharePoint.Client.EventReceiverType
+- uid: Microsoft.SharePoint.Client.EventReceiverSynchronization
+  commentId: T:Microsoft.SharePoint.Client.EventReceiverSynchronization
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: EventReceiverSynchronization
+  nameWithType: EventReceiverSynchronization
+  fullName: Microsoft.SharePoint.Client.EventReceiverSynchronization
+- uid: Microsoft.SharePoint.Client.EventReceiverDefinition
+  commentId: T:Microsoft.SharePoint.Client.EventReceiverDefinition
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: EventReceiverDefinition
+  nameWithType: EventReceiverDefinition
+  fullName: Microsoft.SharePoint.Client.EventReceiverDefinition
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverById*
+  commentId: Overload:Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverById
+  name: GetEventReceiverById
+  nameWithType: SiteExtensions.GetEventReceiverById
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverById
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverByName*
+  commentId: Overload:Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverByName
+  name: GetEventReceiverByName
+  nameWithType: SiteExtensions.GetEventReceiverByName
+  fullName: Microsoft.SharePoint.Client.SiteExtensions.GetEventReceiverByName

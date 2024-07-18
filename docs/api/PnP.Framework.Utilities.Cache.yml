@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.Cache
+  commentId: N:PnP.Framework.Utilities.Cache
+  id: PnP.Framework.Utilities.Cache
+  children:
+  - PnP.Framework.Utilities.Cache.ICacheProvider
+  - PnP.Framework.Utilities.Cache.InMemoryCacheProvider
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.Cache
+  nameWithType: PnP.Framework.Utilities.Cache
+  fullName: PnP.Framework.Utilities.Cache
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.Cache.ICacheProvider
+  commentId: T:PnP.Framework.Utilities.Cache.ICacheProvider
+  parent: PnP.Framework.Utilities.Cache
+  name: ICacheProvider
+  nameWithType: ICacheProvider
+  fullName: PnP.Framework.Utilities.Cache.ICacheProvider
+- uid: PnP.Framework.Utilities.Cache.InMemoryCacheProvider
+  commentId: T:PnP.Framework.Utilities.Cache.InMemoryCacheProvider
+  name: InMemoryCacheProvider
+  nameWithType: InMemoryCacheProvider
+  fullName: PnP.Framework.Utilities.Cache.InMemoryCacheProvider
+- uid: PnP.Framework.Utilities.Cache
+  commentId: N:PnP.Framework.Utilities.Cache
+  name: PnP.Framework.Utilities.Cache
+  nameWithType: PnP.Framework.Utilities.Cache
+  fullName: PnP.Framework.Utilities.Cache

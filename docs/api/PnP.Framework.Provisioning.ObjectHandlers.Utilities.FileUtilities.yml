@@ -1,0 +1,805 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+  commentId: T:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+  id: FileUtilities
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  children:
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetDirectoryFiles(PnP.Framework.Provisioning.Model.Directory,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}})
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Model.File)
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String)
+  - PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetMetadataProperties(PnP.Framework.Provisioning.Model.Directory)
+  langs:
+  - csharp
+  - vb
+  name: FileUtilities
+  nameWithType: FileUtilities
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/FileUtilities.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FileUtilities
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/FileUtilities.cs
+    startLine: 11
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  syntax:
+    content: public static class FileUtilities
+    content.vb: Public Module FileUtilities
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Model.File)
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Model.File)
+  id: GetFileStream(PnP.Framework.Provisioning.Model.ProvisioningTemplate,PnP.Framework.Provisioning.Model.File)
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+  langs:
+  - csharp
+  - vb
+  name: GetFileStream(ProvisioningTemplate, File)
+  nameWithType: FileUtilities.GetFileStream(ProvisioningTemplate, File)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream(PnP.Framework.Provisioning.Model.ProvisioningTemplate, PnP.Framework.Provisioning.Model.File)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/FileUtilities.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFileStream
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/FileUtilities.cs
+    startLine: 14
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  syntax:
+    content: public static Stream GetFileStream(ProvisioningTemplate template, File file)
+    parameters:
+    - id: template
+      type: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    - id: file
+      type: PnP.Framework.Provisioning.Model.File
+    return:
+      type: System.IO.Stream
+    content.vb: Public Shared Function GetFileStream(template As ProvisioningTemplate, file As File) As Stream
+  overload: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String)
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String)
+  id: GetFileStream(PnP.Framework.Provisioning.Model.ProvisioningTemplate,System.String)
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+  langs:
+  - csharp
+  - vb
+  name: GetFileStream(ProvisioningTemplate, String)
+  nameWithType: FileUtilities.GetFileStream(ProvisioningTemplate, String)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream(PnP.Framework.Provisioning.Model.ProvisioningTemplate, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/FileUtilities.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetFileStream
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/FileUtilities.cs
+    startLine: 19
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  syntax:
+    content: public static Stream GetFileStream(ProvisioningTemplate template, string fileName)
+    parameters:
+    - id: template
+      type: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+    - id: fileName
+      type: System.String
+    return:
+      type: System.IO.Stream
+    content.vb: Public Shared Function GetFileStream(template As ProvisioningTemplate, fileName As String) As Stream
+  overload: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetDirectoryFiles(PnP.Framework.Provisioning.Model.Directory,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}})
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetDirectoryFiles(PnP.Framework.Provisioning.Model.Directory,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}})
+  id: GetDirectoryFiles(PnP.Framework.Provisioning.Model.Directory,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}})
+  isExtensionMethod: true
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+  langs:
+  - csharp
+  - vb
+  name: GetDirectoryFiles(Directory, Dictionary<String, Dictionary<String, String>>)
+  nameWithType: FileUtilities.GetDirectoryFiles(Directory, Dictionary<String, Dictionary<String, String>>)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetDirectoryFiles(PnP.Framework.Provisioning.Model.Directory, System.Collections.Generic.Dictionary<System.String, System.Collections.Generic.Dictionary<System.String, System.String>>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/FileUtilities.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetDirectoryFiles
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/FileUtilities.cs
+    startLine: 60
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  syntax:
+    content: public static List<File> GetDirectoryFiles(this Directory directory, Dictionary<string, Dictionary<string, string>> metadataProperties = null)
+    parameters:
+    - id: directory
+      type: PnP.Framework.Provisioning.Model.Directory
+    - id: metadataProperties
+      type: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}}
+    return:
+      type: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.File}
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetDirectoryFiles(directory As Directory, metadataProperties As Dictionary(Of String, Dictionary(Of String, String)) = Nothing) As List(Of File)
+  overload: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetDirectoryFiles*
+  nameWithType.vb: FileUtilities.GetDirectoryFiles(Directory, Dictionary(Of String, Dictionary(Of String, String)))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetDirectoryFiles(PnP.Framework.Provisioning.Model.Directory, System.Collections.Generic.Dictionary(Of System.String, System.Collections.Generic.Dictionary(Of System.String, System.String)))
+  name.vb: GetDirectoryFiles(Directory, Dictionary(Of String, Dictionary(Of String, String)))
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetMetadataProperties(PnP.Framework.Provisioning.Model.Directory)
+  commentId: M:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetMetadataProperties(PnP.Framework.Provisioning.Model.Directory)
+  id: GetMetadataProperties(PnP.Framework.Provisioning.Model.Directory)
+  isExtensionMethod: true
+  parent: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities
+  langs:
+  - csharp
+  - vb
+  name: GetMetadataProperties(Directory)
+  nameWithType: FileUtilities.GetMetadataProperties(Directory)
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetMetadataProperties(PnP.Framework.Provisioning.Model.Directory)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/FileUtilities.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetMetadataProperties
+    path: ../src/lib/PnP.Framework/Provisioning/ObjectHandlers/Utilities/FileUtilities.cs
+    startLine: 118
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  syntax:
+    content: public static Dictionary<string, Dictionary<string, string>> GetMetadataProperties(this Directory directory)
+    parameters:
+    - id: directory
+      type: PnP.Framework.Provisioning.Model.Directory
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}}
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetMetadataProperties(directory As Directory) As Dictionary(Of String, Dictionary(Of String, String))
+  overload: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetMetadataProperties*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  commentId: N:PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  name: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  nameWithType: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream
+  name: GetFileStream
+  nameWithType: FileUtilities.GetFileStream
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetFileStream
+- uid: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  commentId: T:PnP.Framework.Provisioning.Model.ProvisioningTemplate
+  parent: PnP.Framework.Provisioning.Model
+  name: ProvisioningTemplate
+  nameWithType: ProvisioningTemplate
+  fullName: PnP.Framework.Provisioning.Model.ProvisioningTemplate
+- uid: PnP.Framework.Provisioning.Model.File
+  commentId: T:PnP.Framework.Provisioning.Model.File
+  parent: PnP.Framework.Provisioning.Model
+  name: File
+  nameWithType: File
+  fullName: PnP.Framework.Provisioning.Model.File
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: PnP.Framework.Provisioning.Model
+  commentId: N:PnP.Framework.Provisioning.Model
+  name: PnP.Framework.Provisioning.Model
+  nameWithType: PnP.Framework.Provisioning.Model
+  fullName: PnP.Framework.Provisioning.Model
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetDirectoryFiles*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetDirectoryFiles
+  name: GetDirectoryFiles
+  nameWithType: FileUtilities.GetDirectoryFiles
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetDirectoryFiles
+- uid: PnP.Framework.Provisioning.Model.Directory
+  commentId: T:PnP.Framework.Provisioning.Model.Directory
+  parent: PnP.Framework.Provisioning.Model
+  name: Directory
+  nameWithType: Directory
+  fullName: PnP.Framework.Provisioning.Model.Directory
+- uid: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, Dictionary<String, String>>
+  nameWithType: Dictionary<String, Dictionary<String, String>>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.Collections.Generic.Dictionary<System.String, System.String>>
+  nameWithType.vb: Dictionary(Of String, Dictionary(Of String, String))
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  name.vb: Dictionary(Of String, Dictionary(Of String, String))
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List{PnP.Framework.Provisioning.Model.File}
+  commentId: T:System.Collections.Generic.List{PnP.Framework.Provisioning.Model.File}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<File>
+  nameWithType: List<File>
+  fullName: System.Collections.Generic.List<PnP.Framework.Provisioning.Model.File>
+  nameWithType.vb: List(Of File)
+  fullName.vb: System.Collections.Generic.List(Of PnP.Framework.Provisioning.Model.File)
+  name.vb: List(Of File)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Model.File
+    name: File
+    nameWithType: File
+    fullName: PnP.Framework.Provisioning.Model.File
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Model.File
+    name: File
+    nameWithType: File
+    fullName: PnP.Framework.Provisioning.Model.File
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetMetadataProperties*
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetMetadataProperties
+  name: GetMetadataProperties
+  nameWithType: FileUtilities.GetMetadataProperties
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.Utilities.FileUtilities.GetMetadataProperties

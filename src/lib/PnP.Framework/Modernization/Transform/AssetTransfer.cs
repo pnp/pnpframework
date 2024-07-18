@@ -161,7 +161,8 @@ namespace PnP.Framework.Modernization.Transform
             //  Ensure the referenced assets exist within the source site collection
             var sourceSiteContextUrl = _sourceClientContext.Site.EnsureProperty(w => w.ServerRelativeUrl);
 
-            if (!sourceUrl.ContainsIgnoringCasing(sourceSiteContextUrl))
+            // SourceUrl does contain encoded characters (e.g. %20 for space), while sourceSiteContextUrl does not
+            if (!sourceUrl.ContainsIgnoringCasing(sourceSiteContextUrl.Replace(" ", "%20")))
             {
                 return false;
             }

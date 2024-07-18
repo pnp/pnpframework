@@ -1,0 +1,1900 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions
+  commentId: T:Microsoft.SharePoint.Client.ClientContextExtensions
+  id: ClientContextExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.ClientContextExtensions.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  - Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  - Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Int32,System.String)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetryAsync(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Int32,System.String)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.GetAccessToken(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext,System.Net.CookieContainer)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.GetSiteCollectionContext(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.GroupifySiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Version)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.IsAppOnly(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHidden(Microsoft.SharePoint.Client.ClientContext)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.PendingRequestCount(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  - Microsoft.SharePoint.Client.ClientContextExtensions.TeamifyAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  langs:
+  - csharp
+  - vb
+  name: ClientContextExtensions
+  nameWithType: ClientContextExtensions
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/Deprecated/ClientContextExtensions.deprecated.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ClientContextExtensions
+    path: ../src/lib/PnP.Framework/Extensions/Deprecated/ClientContextExtensions.deprecated.cs
+    startLine: 8
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClass that deals with cloning client context object, getting access token and validates server version\n"
+  example: []
+  syntax:
+    content: public static class ClientContextExtensions
+    content.vb: Public Module ClientContextExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  id: Clone(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String,System.Collections.Generic.Dictionary{System.String,System.String})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: Clone(ClientRuntimeContext, String, Dictionary<String, String>)
+  nameWithType: ClientContextExtensions.Clone(ClientRuntimeContext, String, Dictionary<String, String>)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext, System.String, System.Collections.Generic.Dictionary<System.String, System.String>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Clone
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 66
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClones a ClientContext object while &quot;taking over&quot; the security context of the existing ClientContext instance\n"
+  example: []
+  syntax:
+    content: public static ClientContext Clone(this ClientRuntimeContext clientContext, string siteUrl, Dictionary<string, string> accessTokens = null)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: ClientContext to be cloned
+    - id: siteUrl
+      type: System.String
+      description: Site URL to be used for cloned ClientContext
+    - id: accessTokens
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Dictionary of access tokens for sites URLs
+    return:
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: A ClientContext object created for the passed site URL
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Clone(clientContext As ClientRuntimeContext, siteUrl As String, accessTokens As Dictionary(Of String, String) = Nothing) As ClientContext
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.Clone*
+  nameWithType.vb: ClientContextExtensions.Clone(ClientRuntimeContext, String, Dictionary(Of String, String))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext, System.String, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  name.vb: Clone(ClientRuntimeContext, String, Dictionary(Of String, String))
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetryAsync(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Int32,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetryAsync(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Int32,System.String)
+  id: ExecuteQueryRetryAsync(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Int32,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: ExecuteQueryRetryAsync(ClientRuntimeContext, Int32, String)
+  nameWithType: ClientContextExtensions.ExecuteQueryRetryAsync(ClientRuntimeContext, Int32, String)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetryAsync(Microsoft.SharePoint.Client.ClientRuntimeContext, System.Int32, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExecuteQueryRetryAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 82
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nExecutes the current set of data retrieval queries and method invocations and retries it if needed using the Task Library.\n"
+  example: []
+  syntax:
+    content: public static Task ExecuteQueryRetryAsync(this ClientRuntimeContext clientContext, int retryCount = 10, string userAgent = null)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: clientContext to operate on
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;>
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ExecuteQueryRetryAsync(clientContext As ClientRuntimeContext, retryCount As Integer = 10, userAgent As String = Nothing) As Task
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetryAsync*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Int32,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Int32,System.String)
+  id: ExecuteQueryRetry(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Int32,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: ExecuteQueryRetry(ClientRuntimeContext, Int32, String)
+  nameWithType: ClientContextExtensions.ExecuteQueryRetry(ClientRuntimeContext, Int32, String)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry(Microsoft.SharePoint.Client.ClientRuntimeContext, System.Int32, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExecuteQueryRetry
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 94
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nExecutes the current set of data retrieval queries and method invocations and retries it if needed.\n"
+  example: []
+  syntax:
+    content: public static void ExecuteQueryRetry(this ClientRuntimeContext clientContext, int retryCount = 10, string userAgent = null)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: clientContext to operate on
+    - id: retryCount
+      type: System.Int32
+      description: Number of times to retry the request
+    - id: userAgent
+      type: System.String
+      description: UserAgent string value to insert for this request. You can define this value in your app&apos;s config file using key=&quot;SharePointPnPUserAgent&quot; value=&quot;PnPRocks&quot;>
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ExecuteQueryRetry(clientContext As ClientRuntimeContext, retryCount As Integer = 10, userAgent As String = Nothing)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  id: Clone(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: Clone(ClientRuntimeContext, Uri, Dictionary<String, String>)
+  nameWithType: ClientContextExtensions.Clone(ClientRuntimeContext, Uri, Dictionary<String, String>)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext, System.Uri, System.Collections.Generic.Dictionary<System.String, System.String>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Clone
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 341
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClones a ClientContext object while &quot;taking over&quot; the security context of the existing ClientContext instance\n"
+  example: []
+  syntax:
+    content: public static ClientContext Clone(this ClientRuntimeContext clientContext, Uri siteUrl, Dictionary<string, string> accessTokens = null)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: ClientContext to be cloned
+    - id: siteUrl
+      type: System.Uri
+      description: Site URL to be used for cloned ClientContext
+    - id: accessTokens
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: Dictionary of access tokens for sites URLs
+    return:
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: A ClientContext object created for the passed site URL
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Clone(clientContext As ClientRuntimeContext, siteUrl As Uri, accessTokens As Dictionary(Of String, String) = Nothing) As ClientContext
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.Clone*
+  nameWithType.vb: ClientContextExtensions.Clone(ClientRuntimeContext, Uri, Dictionary(Of String, String))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Microsoft.SharePoint.Client.ClientContextExtensions.Clone(Microsoft.SharePoint.Client.ClientRuntimeContext, System.Uri, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  name.vb: Clone(ClientRuntimeContext, Uri, Dictionary(Of String, String))
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.PendingRequestCount(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.PendingRequestCount(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  id: PendingRequestCount(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: PendingRequestCount(ClientRuntimeContext)
+  nameWithType: ClientContextExtensions.PendingRequestCount(ClientRuntimeContext)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.PendingRequestCount(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PendingRequestCount
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 520
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the number of pending requests\n"
+  example: []
+  syntax:
+    content: public static int PendingRequestCount(this ClientRuntimeContext clientContext)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: Client context to check the pending requests for
+    return:
+      type: System.Int32
+      description: The number of pending requests
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function PendingRequestCount(clientContext As ClientRuntimeContext) As Integer
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.PendingRequestCount*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.GetSiteCollectionContext(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.GetSiteCollectionContext(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  id: GetSiteCollectionContext(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSiteCollectionContext(ClientRuntimeContext)
+  nameWithType: ClientContextExtensions.GetSiteCollectionContext(ClientRuntimeContext)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.GetSiteCollectionContext(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSiteCollectionContext
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 546
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets a site collection context for the passed web. This site collection client context uses the same credentials\nas the passed client context\n"
+  example: []
+  syntax:
+    content: public static ClientContext GetSiteCollectionContext(this ClientRuntimeContext clientContext)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: Client context to take the credentials from
+    return:
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: A site collection client context object for the site collection
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSiteCollectionContext(clientContext As ClientRuntimeContext) As ClientContext
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.GetSiteCollectionContext*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.IsAppOnly(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.IsAppOnly(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  id: IsAppOnly(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsAppOnly(ClientRuntimeContext)
+  nameWithType: ClientContextExtensions.IsAppOnly(ClientRuntimeContext)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.IsAppOnly(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsAppOnly
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 562
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if the used ClientContext is app-only\n"
+  example: []
+  syntax:
+    content: public static bool IsAppOnly(this ClientRuntimeContext clientContext)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: The ClientContext to inspect
+    return:
+      type: System.Boolean
+      description: True if app-only, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsAppOnly(clientContext As ClientRuntimeContext) As Boolean
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.IsAppOnly*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.GetAccessToken(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.GetAccessToken(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  id: GetAccessToken(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetAccessToken(ClientRuntimeContext)
+  nameWithType: ClientContextExtensions.GetAccessToken(ClientRuntimeContext)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.GetAccessToken(Microsoft.SharePoint.Client.ClientRuntimeContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetAccessToken
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 625
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGets an access token from a <xref href=\"Microsoft.SharePoint.Client.ClientContext\" data-throw-if-not-resolved=\"false\"></xref> instance. Only works when using an add-in or app-only authentication flow.\n"
+  example: []
+  syntax:
+    content: public static string GetAccessToken(this ClientRuntimeContext clientContext)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: <xref href="Microsoft.SharePoint.Client.ClientContext" data-throw-if-not-resolved="false"></xref> instance to obtain an access token for
+    return:
+      type: System.String
+      description: Access token for the given <xref href="Microsoft.SharePoint.Client.ClientContext" data-throw-if-not-resolved="false"></xref> instance
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetAccessToken(clientContext As ClientRuntimeContext) As String
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.GetAccessToken*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String)
+  id: HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: HasMinimalServerLibraryVersion(ClientRuntimeContext, String)
+  nameWithType: ClientContextExtensions.HasMinimalServerLibraryVersion(ClientRuntimeContext, String)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HasMinimalServerLibraryVersion
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 711
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks the server library version of the context for a minimally required version\n"
+  example: []
+  syntax:
+    content: public static bool HasMinimalServerLibraryVersion(this ClientRuntimeContext clientContext, string minimallyRequiredVersion)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: clientContext to operate on
+    - id: minimallyRequiredVersion
+      type: System.String
+      description: provide version to validate
+    return:
+      type: System.Boolean
+      description: True if it has minimal required version, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function HasMinimalServerLibraryVersion(clientContext As ClientRuntimeContext, minimallyRequiredVersion As String) As Boolean
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Version)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Version)
+  id: HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext,System.Version)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: HasMinimalServerLibraryVersion(ClientRuntimeContext, Version)
+  nameWithType: ClientContextExtensions.HasMinimalServerLibraryVersion(ClientRuntimeContext, Version)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion(Microsoft.SharePoint.Client.ClientRuntimeContext, System.Version)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HasMinimalServerLibraryVersion
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 722
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks the server library version of the context for a minimally required version\n"
+  example: []
+  syntax:
+    content: public static bool HasMinimalServerLibraryVersion(this ClientRuntimeContext clientContext, Version minimallyRequiredVersion)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientRuntimeContext
+      description: clientContext to operate on
+    - id: minimallyRequiredVersion
+      type: System.Version
+      description: provide version to validate
+    return:
+      type: System.Boolean
+      description: True if it has minimal required version, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function HasMinimalServerLibraryVersion(clientContext As ClientRuntimeContext, minimallyRequiredVersion As Version) As Boolean
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext,System.Net.CookieContainer)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext,System.Net.CookieContainer)
+  id: GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext,System.Net.CookieContainer)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetRequestDigestAsync(ClientContext, CookieContainer)
+  nameWithType: ClientContextExtensions.GetRequestDigestAsync(ClientContext, CookieContainer)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext, System.Net.CookieContainer)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetRequestDigestAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 780
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the request digest from the current session/site given cookie based auth\n"
+  example: []
+  syntax:
+    content: public static async Task<string> GetRequestDigestAsync(this ClientContext context, CookieContainer cookieContainer)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ''
+    - id: cookieContainer
+      type: System.Net.CookieContainer
+      description: A cookiecontainer containing FedAuth cookies
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetRequestDigestAsync(context As ClientContext, cookieContainer As CookieContainer) As Task(Of String)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext)
+  id: GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetRequestDigestAsync(ClientContext)
+  nameWithType: ClientContextExtensions.GetRequestDigestAsync(ClientContext)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync(Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetRequestDigestAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 855
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  syntax:
+    content: public static async Task<string> GetRequestDigestAsync(this ClientContext context)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetRequestDigestAsync(context As ClientContext) As Task(Of String)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation)
+  id: CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateSiteAsync(ClientContext, CommunicationSiteCollectionCreationInformation)
+  nameWithType: ClientContextExtensions.CreateSiteAsync(ClientContext, CommunicationSiteCollectionCreationInformation)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateSiteAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 1030
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nBETA: Creates a Communication Site Collection\n"
+  example: []
+  syntax:
+    content: public static async Task<ClientContext> CreateSiteAsync(this ClientContext clientContext, CommunicationSiteCollectionCreationInformation siteCollectionCreationInformation)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ''
+    - id: siteCollectionCreationInformation
+      type: PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateSiteAsync(clientContext As ClientContext, siteCollectionCreationInformation As CommunicationSiteCollectionCreationInformation) As Task(Of ClientContext)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation)
+  id: CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateSiteAsync(ClientContext, TeamNoGroupSiteCollectionCreationInformation)
+  nameWithType: ClientContextExtensions.CreateSiteAsync(ClientContext, TeamNoGroupSiteCollectionCreationInformation)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateSiteAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 1043
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nBETA: Creates a Team Site Collection with no group\n"
+  example: []
+  syntax:
+    content: public static async Task<ClientContext> CreateSiteAsync(this ClientContext clientContext, TeamNoGroupSiteCollectionCreationInformation siteCollectionCreationInformation)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ''
+    - id: siteCollectionCreationInformation
+      type: PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateSiteAsync(clientContext As ClientContext, siteCollectionCreationInformation As TeamNoGroupSiteCollectionCreationInformation) As Task(Of ClientContext)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation)
+  id: CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateSiteAsync(ClientContext, TeamSiteCollectionCreationInformation)
+  nameWithType: ClientContextExtensions.CreateSiteAsync(ClientContext, TeamSiteCollectionCreationInformation)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.TeamSiteCollectionCreationInformation)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateSiteAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 1056
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nBETA: Creates a Team Site Collection\n"
+  example: []
+  syntax:
+    content: public static async Task<ClientContext> CreateSiteAsync(this ClientContext clientContext, TeamSiteCollectionCreationInformation siteCollectionCreationInformation)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ''
+    - id: siteCollectionCreationInformation
+      type: PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateSiteAsync(clientContext As ClientContext, siteCollectionCreationInformation As TeamSiteCollectionCreationInformation) As Task(Of ClientContext)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.GroupifySiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.GroupifySiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  id: GroupifySiteAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: GroupifySiteAsync(ClientContext, TeamSiteCollectionGroupifyInformation)
+  nameWithType: ClientContextExtensions.GroupifySiteAsync(ClientContext, TeamSiteCollectionGroupifyInformation)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.GroupifySiteAsync(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GroupifySiteAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 1069
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nBETA: Groupifies a classic Team Site Collection\n"
+  example: []
+  syntax:
+    content: public static async Task<ClientContext> GroupifySiteAsync(this ClientContext clientContext, TeamSiteCollectionGroupifyInformation siteCollectionGroupifyInformation)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext instance of the site to be groupified
+    - id: siteCollectionGroupifyInformation
+      type: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+      description: Information needed to groupify this site
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+      description: The clientcontext of the groupified site
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GroupifySiteAsync(clientContext As ClientContext, siteCollectionGroupifyInformation As TeamSiteCollectionGroupifyInformation) As Task(Of ClientContext)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.GroupifySiteAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  id: AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: AliasExistsAsync(ClientContext, String)
+  nameWithType: ClientContextExtensions.AliasExistsAsync(ClientContext, String)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AliasExistsAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 1082
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks if an alias is already used for an office 365 group or not\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> AliasExistsAsync(this ClientContext clientContext, string alias)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext of the site to operate against
+    - id: alias
+      type: System.String
+      description: Alias to verify
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if in use, false otherwise
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AliasExistsAsync(clientContext As ClientContext, alias As String) As Task(Of Boolean)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.AliasExistsAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.TeamifyAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.TeamifyAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  id: TeamifyAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: TeamifyAsync(ClientContext, String)
+  nameWithType: ClientContextExtensions.TeamifyAsync(ClientContext, String)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.TeamifyAsync(Microsoft.SharePoint.Client.ClientContext, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TeamifyAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 1095
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nEnable MS Teams team on a group connected team site\n"
+  example: []
+  syntax:
+    content: public static async Task<string> TeamifyAsync(this ClientContext clientContext, string graphAccessToken = null)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ''
+    - id: graphAccessToken
+      type: System.String
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function TeamifyAsync(clientContext As ClientContext, graphAccessToken As String = Nothing) As Task(Of String)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.TeamifyAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)
+  id: IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsTeamifyPromptHiddenAsync(ClientContext)
+  nameWithType: ClientContextExtensions.IsTeamifyPromptHiddenAsync(ClientContext)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsTeamifyPromptHiddenAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 1108
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nChecks whether the teamify prompt is hidden in O365 Group connected sites\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> IsTeamifyPromptHiddenAsync(this ClientContext clientContext)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext of the site to operate against
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function IsTeamifyPromptHiddenAsync(clientContext As ClientContext) As Task(Of Boolean)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHiddenAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHidden(Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHidden(Microsoft.SharePoint.Client.ClientContext)
+  id: IsTeamifyPromptHidden(Microsoft.SharePoint.Client.ClientContext)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: IsTeamifyPromptHidden(ClientContext)
+  nameWithType: ClientContextExtensions.IsTeamifyPromptHidden(ClientContext)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHidden(Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsTeamifyPromptHidden
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 1115
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  syntax:
+    content: >-
+      [Obsolete("Use IsTeamifyPromptHiddenAsync")]
+
+      public static async Task<bool> IsTeamifyPromptHidden(this ClientContext clientContext)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: >-
+      <Obsolete("Use IsTeamifyPromptHiddenAsync")>
+
+      <ExtensionAttribute>
+
+      Public Shared Function IsTeamifyPromptHidden(clientContext As ClientContext) As Task(Of Boolean)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHidden*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use IsTeamifyPromptHiddenAsync
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)
+  id: HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: HideTeamifyPromptAsync(ClientContext)
+  nameWithType: ClientContextExtensions.HideTeamifyPromptAsync(ClientContext)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HideTeamifyPromptAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 1126
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nHide the teamify prompt displayed in O365 group connected sites\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> HideTeamifyPromptAsync(this ClientContext clientContext)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext of the site to operate against
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function HideTeamifyPromptAsync(clientContext As ClientContext) As Task(Of Boolean)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.HideTeamifyPromptAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:Microsoft.SharePoint.Client.ClientContextExtensions.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)
+  id: DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.ClientContextExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteSiteAsync(ClientContext)
+  nameWithType: ClientContextExtensions.DeleteSiteAsync(ClientContext)
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteSiteAsync
+    path: ../src/lib/PnP.Framework/Extensions/ClientContextExtensions.cs
+    startLine: 1137
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDeletes a Communication site or a group-less Modern team site\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> DeleteSiteAsync(this ClientContext clientContext)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function DeleteSiteAsync(clientContext As ClientContext) As Task(Of Boolean)
+  overload: Microsoft.SharePoint.Client.ClientContextExtensions.DeleteSiteAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.Clone*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.Clone
+  name: Clone
+  nameWithType: ClientContextExtensions.Clone
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.Clone
+- uid: Microsoft.SharePoint.Client.ClientRuntimeContext
+  commentId: T:Microsoft.SharePoint.Client.ClientRuntimeContext
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ClientRuntimeContext
+  nameWithType: ClientRuntimeContext
+  fullName: Microsoft.SharePoint.Client.ClientRuntimeContext
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, String>
+  nameWithType: Dictionary<String, String>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.String>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.ClientContext
+  commentId: T:Microsoft.SharePoint.Client.ClientContext
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ClientContext
+  nameWithType: ClientContext
+  fullName: Microsoft.SharePoint.Client.ClientContext
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetryAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetryAsync
+  name: ExecuteQueryRetryAsync
+  nameWithType: ClientContextExtensions.ExecuteQueryRetryAsync
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetryAsync
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry
+  name: ExecuteQueryRetry
+  nameWithType: ClientContextExtensions.ExecuteQueryRetry
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry
+- uid: System.Uri
+  commentId: T:System.Uri
+  parent: System
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.PendingRequestCount*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.PendingRequestCount
+  name: PendingRequestCount
+  nameWithType: ClientContextExtensions.PendingRequestCount
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.PendingRequestCount
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.GetSiteCollectionContext*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.GetSiteCollectionContext
+  name: GetSiteCollectionContext
+  nameWithType: ClientContextExtensions.GetSiteCollectionContext
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.GetSiteCollectionContext
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.IsAppOnly*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.IsAppOnly
+  name: IsAppOnly
+  nameWithType: ClientContextExtensions.IsAppOnly
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.IsAppOnly
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.GetAccessToken*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.GetAccessToken
+  name: GetAccessToken
+  nameWithType: ClientContextExtensions.GetAccessToken
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.GetAccessToken
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion
+  name: HasMinimalServerLibraryVersion
+  nameWithType: ClientContextExtensions.HasMinimalServerLibraryVersion
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.HasMinimalServerLibraryVersion
+- uid: System.Version
+  commentId: T:System.Version
+  parent: System
+  isExternal: true
+  name: Version
+  nameWithType: Version
+  fullName: System.Version
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync
+  name: GetRequestDigestAsync
+  nameWithType: ClientContextExtensions.GetRequestDigestAsync
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.GetRequestDigestAsync
+- uid: System.Net.CookieContainer
+  commentId: T:System.Net.CookieContainer
+  parent: System.Net
+  isExternal: true
+  name: CookieContainer
+  nameWithType: CookieContainer
+  fullName: System.Net.CookieContainer
+- uid: System.Threading.Tasks.Task{System.String}
+  commentId: T:System.Threading.Tasks.Task{System.String}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<String>
+  nameWithType: Task<String>
+  fullName: System.Threading.Tasks.Task<System.String>
+  nameWithType.vb: Task(Of String)
+  fullName.vb: System.Threading.Tasks.Task(Of System.String)
+  name.vb: Task(Of String)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Net
+  commentId: N:System.Net
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync
+  name: CreateSiteAsync
+  nameWithType: ClientContextExtensions.CreateSiteAsync
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.CreateSiteAsync
+- uid: PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+  commentId: T:PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+  parent: PnP.Framework.Sites
+  name: CommunicationSiteCollectionCreationInformation
+  nameWithType: CommunicationSiteCollectionCreationInformation
+  fullName: PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+- uid: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+  commentId: T:System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<ClientContext>
+  nameWithType: Task<ClientContext>
+  fullName: System.Threading.Tasks.Task<Microsoft.SharePoint.Client.ClientContext>
+  nameWithType.vb: Task(Of ClientContext)
+  fullName.vb: System.Threading.Tasks.Task(Of Microsoft.SharePoint.Client.ClientContext)
+  name.vb: Task(Of ClientContext)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.SharePoint.Client.ClientContext
+    name: ClientContext
+    nameWithType: ClientContext
+    fullName: Microsoft.SharePoint.Client.ClientContext
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.SharePoint.Client.ClientContext
+    name: ClientContext
+    nameWithType: ClientContext
+    fullName: Microsoft.SharePoint.Client.ClientContext
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Sites
+  commentId: N:PnP.Framework.Sites
+  name: PnP.Framework.Sites
+  nameWithType: PnP.Framework.Sites
+  fullName: PnP.Framework.Sites
+- uid: PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+  commentId: T:PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+  parent: PnP.Framework.Sites
+  name: TeamNoGroupSiteCollectionCreationInformation
+  nameWithType: TeamNoGroupSiteCollectionCreationInformation
+  fullName: PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+- uid: PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+  commentId: T:PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+  parent: PnP.Framework.Sites
+  name: TeamSiteCollectionCreationInformation
+  nameWithType: TeamSiteCollectionCreationInformation
+  fullName: PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.GroupifySiteAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.GroupifySiteAsync
+  name: GroupifySiteAsync
+  nameWithType: ClientContextExtensions.GroupifySiteAsync
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.GroupifySiteAsync
+- uid: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+  commentId: T:PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+  parent: PnP.Framework.Sites
+  name: TeamSiteCollectionGroupifyInformation
+  nameWithType: TeamSiteCollectionGroupifyInformation
+  fullName: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.AliasExistsAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.AliasExistsAsync
+  name: AliasExistsAsync
+  nameWithType: ClientContextExtensions.AliasExistsAsync
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.AliasExistsAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Boolean>
+  nameWithType: Task<Boolean>
+  fullName: System.Threading.Tasks.Task<System.Boolean>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of System.Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.TeamifyAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.TeamifyAsync
+  name: TeamifyAsync
+  nameWithType: ClientContextExtensions.TeamifyAsync
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.TeamifyAsync
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHiddenAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHiddenAsync
+  name: IsTeamifyPromptHiddenAsync
+  nameWithType: ClientContextExtensions.IsTeamifyPromptHiddenAsync
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHiddenAsync
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHidden*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHidden
+  name: IsTeamifyPromptHidden
+  nameWithType: ClientContextExtensions.IsTeamifyPromptHidden
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.IsTeamifyPromptHidden
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.HideTeamifyPromptAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.HideTeamifyPromptAsync
+  name: HideTeamifyPromptAsync
+  nameWithType: ClientContextExtensions.HideTeamifyPromptAsync
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.HideTeamifyPromptAsync
+- uid: Microsoft.SharePoint.Client.ClientContextExtensions.DeleteSiteAsync*
+  commentId: Overload:Microsoft.SharePoint.Client.ClientContextExtensions.DeleteSiteAsync
+  name: DeleteSiteAsync
+  nameWithType: ClientContextExtensions.DeleteSiteAsync
+  fullName: Microsoft.SharePoint.Client.ClientContextExtensions.DeleteSiteAsync

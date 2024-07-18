@@ -1,0 +1,2529 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  id: RoleDefinitionPermission
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  children:
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddAndCustomizePages
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddDelPrivateWebParts
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddListItems
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AnonymousSearchAccessList
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AnonymousSearchAccessWebLists
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApplyStyleSheets
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApplyThemeAndBorder
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApproveItems
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.BrowseDirectories
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.BrowseUserInfo
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CancelCheckout
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateAlerts
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateGroups
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateSSCSite
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.DeleteListItems
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.DeleteVersions
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EditListItems
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EditMyUserInfo
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EmptyMask
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EnumeratePermissions
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.FullMask
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageAlerts
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageLists
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManagePermissions
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManagePersonalViews
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageSubwebs
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageWeb
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.Open
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.OpenItems
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UpdatePersonalWebParts
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UseClientIntegration
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UseRemoteAPIs
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewFormPages
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewListItems
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewPages
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewUsageData
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewVersions
+  langs:
+  - csharp
+  - vb
+  name: RoleDefinitionPermission
+  nameWithType: RoleDefinitionPermission
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  type: Enum
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: RoleDefinitionPermission
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10254
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public enum RoleDefinitionPermission
+    content.vb: >-
+      <Serializable>
+
+      Public Enum RoleDefinitionPermission
+  extensionMethods:
+  - System.Enum.System.EnumerationExtensions.Include``1({T})
+  - System.Enum.System.EnumerationExtensions.Remove``1({T})
+  - System.Enum.System.EnumerationExtensions.Has``1({T})
+  - System.Enum.System.EnumerationExtensions.Missing``1({T})
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EmptyMask
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EmptyMask
+  id: EmptyMask
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: EmptyMask
+  nameWithType: RoleDefinitionPermission.EmptyMask
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EmptyMask
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EmptyMask
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10260
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: EmptyMask = 0
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewListItems
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewListItems
+  id: ViewListItems
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ViewListItems
+  nameWithType: RoleDefinitionPermission.ViewListItems
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewListItems
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ViewListItems
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10263
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ViewListItems = 1
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddListItems
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddListItems
+  id: AddListItems
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: AddListItems
+  nameWithType: RoleDefinitionPermission.AddListItems
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddListItems
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddListItems
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10266
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: AddListItems = 2
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EditListItems
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EditListItems
+  id: EditListItems
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: EditListItems
+  nameWithType: RoleDefinitionPermission.EditListItems
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EditListItems
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EditListItems
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10269
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: EditListItems = 3
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.DeleteListItems
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.DeleteListItems
+  id: DeleteListItems
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: DeleteListItems
+  nameWithType: RoleDefinitionPermission.DeleteListItems
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.DeleteListItems
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteListItems
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10272
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: DeleteListItems = 4
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApproveItems
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApproveItems
+  id: ApproveItems
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ApproveItems
+  nameWithType: RoleDefinitionPermission.ApproveItems
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApproveItems
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ApproveItems
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10275
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ApproveItems = 5
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.OpenItems
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.OpenItems
+  id: OpenItems
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: OpenItems
+  nameWithType: RoleDefinitionPermission.OpenItems
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.OpenItems
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: OpenItems
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10278
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: OpenItems = 6
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewVersions
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewVersions
+  id: ViewVersions
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ViewVersions
+  nameWithType: RoleDefinitionPermission.ViewVersions
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewVersions
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ViewVersions
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10281
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ViewVersions = 7
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.DeleteVersions
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.DeleteVersions
+  id: DeleteVersions
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: DeleteVersions
+  nameWithType: RoleDefinitionPermission.DeleteVersions
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.DeleteVersions
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteVersions
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10284
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: DeleteVersions = 8
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CancelCheckout
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CancelCheckout
+  id: CancelCheckout
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: CancelCheckout
+  nameWithType: RoleDefinitionPermission.CancelCheckout
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CancelCheckout
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CancelCheckout
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10287
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: CancelCheckout = 9
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManagePersonalViews
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManagePersonalViews
+  id: ManagePersonalViews
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ManagePersonalViews
+  nameWithType: RoleDefinitionPermission.ManagePersonalViews
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManagePersonalViews
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ManagePersonalViews
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10290
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ManagePersonalViews = 10
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageLists
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageLists
+  id: ManageLists
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ManageLists
+  nameWithType: RoleDefinitionPermission.ManageLists
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageLists
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ManageLists
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10293
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ManageLists = 11
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewFormPages
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewFormPages
+  id: ViewFormPages
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ViewFormPages
+  nameWithType: RoleDefinitionPermission.ViewFormPages
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewFormPages
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ViewFormPages
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10296
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ViewFormPages = 12
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AnonymousSearchAccessList
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AnonymousSearchAccessList
+  id: AnonymousSearchAccessList
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: AnonymousSearchAccessList
+  nameWithType: RoleDefinitionPermission.AnonymousSearchAccessList
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AnonymousSearchAccessList
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AnonymousSearchAccessList
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10299
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: AnonymousSearchAccessList = 13
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.Open
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.Open
+  id: Open
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: Open
+  nameWithType: RoleDefinitionPermission.Open
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.Open
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Open
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10302
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: Open = 14
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewPages
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewPages
+  id: ViewPages
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ViewPages
+  nameWithType: RoleDefinitionPermission.ViewPages
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewPages
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ViewPages
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10305
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ViewPages = 15
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddAndCustomizePages
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddAndCustomizePages
+  id: AddAndCustomizePages
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: AddAndCustomizePages
+  nameWithType: RoleDefinitionPermission.AddAndCustomizePages
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddAndCustomizePages
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddAndCustomizePages
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10308
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: AddAndCustomizePages = 16
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApplyThemeAndBorder
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApplyThemeAndBorder
+  id: ApplyThemeAndBorder
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ApplyThemeAndBorder
+  nameWithType: RoleDefinitionPermission.ApplyThemeAndBorder
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApplyThemeAndBorder
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ApplyThemeAndBorder
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10311
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ApplyThemeAndBorder = 17
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApplyStyleSheets
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApplyStyleSheets
+  id: ApplyStyleSheets
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ApplyStyleSheets
+  nameWithType: RoleDefinitionPermission.ApplyStyleSheets
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ApplyStyleSheets
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ApplyStyleSheets
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10314
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ApplyStyleSheets = 18
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewUsageData
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewUsageData
+  id: ViewUsageData
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ViewUsageData
+  nameWithType: RoleDefinitionPermission.ViewUsageData
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ViewUsageData
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ViewUsageData
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10317
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ViewUsageData = 19
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateSSCSite
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateSSCSite
+  id: CreateSSCSite
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: CreateSSCSite
+  nameWithType: RoleDefinitionPermission.CreateSSCSite
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateSSCSite
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateSSCSite
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10320
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: CreateSSCSite = 20
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageSubwebs
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageSubwebs
+  id: ManageSubwebs
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ManageSubwebs
+  nameWithType: RoleDefinitionPermission.ManageSubwebs
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageSubwebs
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ManageSubwebs
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10323
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ManageSubwebs = 21
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateGroups
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateGroups
+  id: CreateGroups
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: CreateGroups
+  nameWithType: RoleDefinitionPermission.CreateGroups
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateGroups
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateGroups
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10326
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: CreateGroups = 22
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManagePermissions
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManagePermissions
+  id: ManagePermissions
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ManagePermissions
+  nameWithType: RoleDefinitionPermission.ManagePermissions
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManagePermissions
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ManagePermissions
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10329
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ManagePermissions = 23
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.BrowseDirectories
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.BrowseDirectories
+  id: BrowseDirectories
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: BrowseDirectories
+  nameWithType: RoleDefinitionPermission.BrowseDirectories
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.BrowseDirectories
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BrowseDirectories
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10332
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: BrowseDirectories = 24
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.BrowseUserInfo
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.BrowseUserInfo
+  id: BrowseUserInfo
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: BrowseUserInfo
+  nameWithType: RoleDefinitionPermission.BrowseUserInfo
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.BrowseUserInfo
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: BrowseUserInfo
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10335
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: BrowseUserInfo = 25
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddDelPrivateWebParts
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddDelPrivateWebParts
+  id: AddDelPrivateWebParts
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: AddDelPrivateWebParts
+  nameWithType: RoleDefinitionPermission.AddDelPrivateWebParts
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AddDelPrivateWebParts
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AddDelPrivateWebParts
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10338
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: AddDelPrivateWebParts = 26
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UpdatePersonalWebParts
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UpdatePersonalWebParts
+  id: UpdatePersonalWebParts
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: UpdatePersonalWebParts
+  nameWithType: RoleDefinitionPermission.UpdatePersonalWebParts
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UpdatePersonalWebParts
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UpdatePersonalWebParts
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10341
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: UpdatePersonalWebParts = 27
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageWeb
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageWeb
+  id: ManageWeb
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ManageWeb
+  nameWithType: RoleDefinitionPermission.ManageWeb
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageWeb
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ManageWeb
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10344
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ManageWeb = 28
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AnonymousSearchAccessWebLists
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AnonymousSearchAccessWebLists
+  id: AnonymousSearchAccessWebLists
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: AnonymousSearchAccessWebLists
+  nameWithType: RoleDefinitionPermission.AnonymousSearchAccessWebLists
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.AnonymousSearchAccessWebLists
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AnonymousSearchAccessWebLists
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10347
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: AnonymousSearchAccessWebLists = 29
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UseClientIntegration
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UseClientIntegration
+  id: UseClientIntegration
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: UseClientIntegration
+  nameWithType: RoleDefinitionPermission.UseClientIntegration
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UseClientIntegration
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseClientIntegration
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10350
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: UseClientIntegration = 30
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UseRemoteAPIs
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UseRemoteAPIs
+  id: UseRemoteAPIs
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: UseRemoteAPIs
+  nameWithType: RoleDefinitionPermission.UseRemoteAPIs
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.UseRemoteAPIs
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UseRemoteAPIs
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10353
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: UseRemoteAPIs = 31
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageAlerts
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageAlerts
+  id: ManageAlerts
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: ManageAlerts
+  nameWithType: RoleDefinitionPermission.ManageAlerts
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.ManageAlerts
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ManageAlerts
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10356
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: ManageAlerts = 32
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateAlerts
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateAlerts
+  id: CreateAlerts
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: CreateAlerts
+  nameWithType: RoleDefinitionPermission.CreateAlerts
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.CreateAlerts
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAlerts
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10359
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: CreateAlerts = 33
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EditMyUserInfo
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EditMyUserInfo
+  id: EditMyUserInfo
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: EditMyUserInfo
+  nameWithType: RoleDefinitionPermission.EditMyUserInfo
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EditMyUserInfo
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EditMyUserInfo
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10362
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: EditMyUserInfo = 34
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EnumeratePermissions
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EnumeratePermissions
+  id: EnumeratePermissions
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: EnumeratePermissions
+  nameWithType: RoleDefinitionPermission.EnumeratePermissions
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.EnumeratePermissions
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnumeratePermissions
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10365
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: EnumeratePermissions = 35
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.FullMask
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.FullMask
+  id: FullMask
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  langs:
+  - csharp
+  - vb
+  name: FullMask
+  nameWithType: RoleDefinitionPermission.FullMask
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.FullMask
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: FullMask
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/ProvisioningSchema-2021-03.cs
+    startLine: 10368
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml.V202103
+  remarks: ''
+  example: []
+  syntax:
+    content: FullMask = 36
+    return:
+      type: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103
+  commentId: N:PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: PnP.Framework.Provisioning.Providers.Xml.V202103
+  nameWithType: PnP.Framework.Provisioning.Providers.Xml.V202103
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103
+- uid: System.Enum.System.EnumerationExtensions.Include``1({T})
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  name: Include<T>(T)
+  nameWithType: EnumerationExtensions.Include<T>(T)
+  fullName: System.EnumerationExtensions.Include<T>(T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(T)
+  name.vb: Include(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Remove``1({T})
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  name: Remove<T>(T)
+  nameWithType: EnumerationExtensions.Remove<T>(T)
+  fullName: System.EnumerationExtensions.Remove<T>(T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(T)
+  name.vb: Remove(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Has``1({T})
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  name: Has<T>(T)
+  nameWithType: EnumerationExtensions.Has<T>(T)
+  fullName: System.EnumerationExtensions.Has<T>(T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(T)
+  name.vb: Has(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Enum.System.EnumerationExtensions.Missing``1({T})
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  parent: System.EnumerationExtensions
+  definition: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  name: Missing<T>(T)
+  nameWithType: EnumerationExtensions.Missing<T>(T)
+  fullName: System.EnumerationExtensions.Missing<T>(T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(T)
+  name.vb: Missing(Of T)(T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<RoleDefinitionPermission>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<RoleDefinitionPermission>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of RoleDefinitionPermission)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of RoleDefinitionPermission)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<RoleDefinitionPermission>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<RoleDefinitionPermission>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of RoleDefinitionPermission)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of RoleDefinitionPermission)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<RoleDefinitionPermission, T>(Expression<Func<RoleDefinitionPermission, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<RoleDefinitionPermission, T>(Expression<Func<RoleDefinitionPermission, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of RoleDefinitionPermission, T)(Expression(Of Func(Of RoleDefinitionPermission, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of RoleDefinitionPermission, T)(Expression(Of Func(Of RoleDefinitionPermission, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<RoleDefinitionPermission, T>
+    nameWithType: ObjectExtensions.Set<RoleDefinitionPermission, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+    name: RoleDefinitionPermission
+    nameWithType: RoleDefinitionPermission
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of RoleDefinitionPermission, T)
+    nameWithType: ObjectExtensions.Set(Of RoleDefinitionPermission, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+    name: RoleDefinitionPermission
+    nameWithType: RoleDefinitionPermission
+    fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Include``1(System.Enum,``0)
+  isExternal: true
+  name: Include<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Include<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Include<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Include(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Include(Of T)(System.Enum, T)
+  name.vb: Include(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include<T>
+    nameWithType: EnumerationExtensions.Include<T>
+    fullName: System.EnumerationExtensions.Include<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Include``1(System.Enum,``0)
+    name: Include(Of T)
+    nameWithType: EnumerationExtensions.Include(Of T)
+    fullName: System.EnumerationExtensions.Include(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions
+  commentId: T:System.EnumerationExtensions
+  parent: System
+  name: EnumerationExtensions
+  nameWithType: EnumerationExtensions
+  fullName: System.EnumerationExtensions
+- uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Remove``1(System.Enum,``0)
+  isExternal: true
+  name: Remove<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Remove<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Remove<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Remove(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Remove(Of T)(System.Enum, T)
+  name.vb: Remove(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove<T>
+    nameWithType: EnumerationExtensions.Remove<T>
+    fullName: System.EnumerationExtensions.Remove<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Remove``1(System.Enum,``0)
+    name: Remove(Of T)
+    nameWithType: EnumerationExtensions.Remove(Of T)
+    fullName: System.EnumerationExtensions.Remove(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Has``1(System.Enum,``0)
+  isExternal: true
+  name: Has<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Has<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Has<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Has(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Has(Of T)(System.Enum, T)
+  name.vb: Has(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has<T>
+    nameWithType: EnumerationExtensions.Has<T>
+    fullName: System.EnumerationExtensions.Has<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Has``1(System.Enum,``0)
+    name: Has(Of T)
+    nameWithType: EnumerationExtensions.Has(Of T)
+    fullName: System.EnumerationExtensions.Has(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  commentId: M:System.EnumerationExtensions.Missing``1(System.Enum,``0)
+  isExternal: true
+  name: Missing<T>(Enum, T)
+  nameWithType: EnumerationExtensions.Missing<T>(Enum, T)
+  fullName: System.EnumerationExtensions.Missing<T>(System.Enum, T)
+  nameWithType.vb: EnumerationExtensions.Missing(Of T)(Enum, T)
+  fullName.vb: System.EnumerationExtensions.Missing(Of T)(System.Enum, T)
+  name.vb: Missing(Of T)(Enum, T)
+  spec.csharp:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing<T>
+    nameWithType: EnumerationExtensions.Missing<T>
+    fullName: System.EnumerationExtensions.Missing<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.EnumerationExtensions.Missing``1(System.Enum,``0)
+    name: Missing(Of T)
+    nameWithType: EnumerationExtensions.Missing(Of T)
+    fullName: System.EnumerationExtensions.Missing(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Enum
+    name: Enum
+    nameWithType: Enum
+    fullName: System.Enum
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission
+  parent: PnP.Framework.Provisioning.Providers.Xml.V202103
+  name: RoleDefinitionPermission
+  nameWithType: RoleDefinitionPermission
+  fullName: PnP.Framework.Provisioning.Providers.Xml.V202103.RoleDefinitionPermission

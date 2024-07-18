@@ -1,0 +1,1928 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity
+  commentId: T:PnP.Framework.Modernization.Entities.WebPartEntity
+  id: WebPartEntity
+  parent: PnP.Framework.Modernization.Entities
+  children:
+  - PnP.Framework.Modernization.Entities.WebPartEntity.#ctor
+  - PnP.Framework.Modernization.Entities.WebPartEntity.Column
+  - PnP.Framework.Modernization.Entities.WebPartEntity.Hidden
+  - PnP.Framework.Modernization.Entities.WebPartEntity.Id
+  - PnP.Framework.Modernization.Entities.WebPartEntity.IsClosed
+  - PnP.Framework.Modernization.Entities.WebPartEntity.Json
+  - PnP.Framework.Modernization.Entities.WebPartEntity.Order
+  - PnP.Framework.Modernization.Entities.WebPartEntity.Properties
+  - PnP.Framework.Modernization.Entities.WebPartEntity.Row
+  - PnP.Framework.Modernization.Entities.WebPartEntity.ServerControlId
+  - PnP.Framework.Modernization.Entities.WebPartEntity.Title
+  - PnP.Framework.Modernization.Entities.WebPartEntity.Type
+  - PnP.Framework.Modernization.Entities.WebPartEntity.TypeShort
+  - PnP.Framework.Modernization.Entities.WebPartEntity.ZoneId
+  - PnP.Framework.Modernization.Entities.WebPartEntity.ZoneIndex
+  langs:
+  - csharp
+  - vb
+  name: WebPartEntity
+  nameWithType: WebPartEntity
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: WebPartEntity
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nEntity to describe a web part on a wiki or webpart page\n"
+  example: []
+  syntax:
+    content: public class WebPartEntity
+    content.vb: Public Class WebPartEntity
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Modernization.Entities.WebPartEntity.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Modernization.Entities.WebPartEntity.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Modernization.Entities.WebPartEntity,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.#ctor
+  commentId: M:PnP.Framework.Modernization.Entities.WebPartEntity.#ctor
+  id: '#ctor'
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: WebPartEntity()
+  nameWithType: WebPartEntity.WebPartEntity()
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.WebPartEntity()
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nDefault constructor\n"
+  example: []
+  syntax:
+    content: public WebPartEntity()
+    content.vb: Public Sub New
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Type
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.Type
+  id: Type
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: WebPartEntity.Type
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Type
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Type
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nWeb part type\n"
+  example: []
+  syntax:
+    content: public string Type { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Type As String
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.Type*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Id
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.Id
+  id: Id
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: WebPartEntity.Id
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Id
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Id
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 28
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nWeb part id\n"
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.Id*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.ServerControlId
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.ServerControlId
+  id: ServerControlId
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: ServerControlId
+  nameWithType: WebPartEntity.ServerControlId
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.ServerControlId
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ServerControlId
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 33
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nWeb part server control id\n"
+  example: []
+  syntax:
+    content: public string ServerControlId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ServerControlId As String
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.ServerControlId*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.ZoneId
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.ZoneId
+  id: ZoneId
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: ZoneId
+  nameWithType: WebPartEntity.ZoneId
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.ZoneId
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ZoneId
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 38
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nWeb part zone id\n"
+  example: []
+  syntax:
+    content: public string ZoneId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ZoneId As String
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.ZoneId*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Hidden
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.Hidden
+  id: Hidden
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: Hidden
+  nameWithType: WebPartEntity.Hidden
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Hidden
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Hidden
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 43
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nIs this a visible web part or not\n"
+  example: []
+  syntax:
+    content: public bool Hidden { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Hidden As Boolean
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.Hidden*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.IsClosed
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.IsClosed
+  id: IsClosed
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: IsClosed
+  nameWithType: WebPartEntity.IsClosed
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.IsClosed
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsClosed
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 48
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nIs this web part closed or not\n"
+  example: []
+  syntax:
+    content: public bool IsClosed { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsClosed As Boolean
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.IsClosed*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Title
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.Title
+  id: Title
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: WebPartEntity.Title
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Title
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Title
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 53
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nTitle of the web part\n"
+  example: []
+  syntax:
+    content: public string Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Title As String
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.Title*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Row
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.Row
+  id: Row
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: Row
+  nameWithType: WebPartEntity.Row
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Row
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Row
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 58
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nWeb part position: row\n"
+  example: []
+  syntax:
+    content: public int Row { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Row As Integer
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.Row*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Column
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.Column
+  id: Column
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: Column
+  nameWithType: WebPartEntity.Column
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Column
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Column
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 63
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nWeb part position: column\n"
+  example: []
+  syntax:
+    content: public int Column { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Column As Integer
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.Column*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Order
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.Order
+  id: Order
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: Order
+  nameWithType: WebPartEntity.Order
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Order
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Order
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 68
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nWeb part position: order\n"
+  example: []
+  syntax:
+    content: public int Order { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Order As Integer
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.Order*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.ZoneIndex
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.ZoneIndex
+  id: ZoneIndex
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: ZoneIndex
+  nameWithType: WebPartEntity.ZoneIndex
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.ZoneIndex
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ZoneIndex
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 73
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nWeb part position: zone index\n"
+  example: []
+  syntax:
+    content: public uint ZoneIndex { get; set; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public Property ZoneIndex As UInteger
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.ZoneIndex*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Properties
+  commentId: P:PnP.Framework.Modernization.Entities.WebPartEntity.Properties
+  id: Properties
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: Properties
+  nameWithType: WebPartEntity.Properties
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Properties
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Properties
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 78
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nDictionary with web part properties\n"
+  example: []
+  syntax:
+    content: public Dictionary<string, string> Properties { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public Property Properties As Dictionary(Of String, String)
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.Properties*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.TypeShort
+  commentId: M:PnP.Framework.Modernization.Entities.WebPartEntity.TypeShort
+  id: TypeShort
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: TypeShort()
+  nameWithType: WebPartEntity.TypeShort()
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.TypeShort()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TypeShort
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 84
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nReturns the shortened web part type name\n"
+  example: []
+  syntax:
+    content: public string TypeShort()
+    return:
+      type: System.String
+      description: Shortened web part type name
+    content.vb: Public Function TypeShort As String
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.TypeShort*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Json
+  commentId: M:PnP.Framework.Modernization.Entities.WebPartEntity.Json
+  id: Json
+  parent: PnP.Framework.Modernization.Entities.WebPartEntity
+  langs:
+  - csharp
+  - vb
+  name: Json()
+  nameWithType: WebPartEntity.Json()
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Json()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Json
+    path: ../src/lib/PnP.Framework/Modernization/Entities/WebPartEntity.cs
+    startLine: 93
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Modernization.Entities
+  summary: "\nReturns this instance as Json\n"
+  example: []
+  syntax:
+    content: public string Json()
+    return:
+      type: System.String
+      description: Json serialized string of this web part instance
+    content.vb: Public Function Json As String
+  overload: PnP.Framework.Modernization.Entities.WebPartEntity.Json*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: PnP.Framework.Modernization.Entities
+  commentId: N:PnP.Framework.Modernization.Entities
+  name: PnP.Framework.Modernization.Entities
+  nameWithType: PnP.Framework.Modernization.Entities
+  fullName: PnP.Framework.Modernization.Entities
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<WebPartEntity>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<WebPartEntity>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Modernization.Entities.WebPartEntity>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of WebPartEntity)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Modernization.Entities.WebPartEntity)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of WebPartEntity)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<WebPartEntity>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<WebPartEntity>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Modernization.Entities.WebPartEntity>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of WebPartEntity)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of WebPartEntity)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Modernization.Entities.WebPartEntity)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Modernization.Entities.WebPartEntity,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<WebPartEntity, T>(Expression<Func<WebPartEntity, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<WebPartEntity, T>(Expression<Func<WebPartEntity, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Modernization.Entities.WebPartEntity, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Modernization.Entities.WebPartEntity, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of WebPartEntity, T)(Expression(Of Func(Of WebPartEntity, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Modernization.Entities.WebPartEntity, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Modernization.Entities.WebPartEntity, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of WebPartEntity, T)(Expression(Of Func(Of WebPartEntity, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<WebPartEntity, T>
+    nameWithType: ObjectExtensions.Set<WebPartEntity, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Modernization.Entities.WebPartEntity, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Modernization.Entities.WebPartEntity
+    name: WebPartEntity
+    nameWithType: WebPartEntity
+    fullName: PnP.Framework.Modernization.Entities.WebPartEntity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of WebPartEntity, T)
+    nameWithType: ObjectExtensions.Set(Of WebPartEntity, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Modernization.Entities.WebPartEntity, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Modernization.Entities.WebPartEntity
+    name: WebPartEntity
+    nameWithType: WebPartEntity
+    fullName: PnP.Framework.Modernization.Entities.WebPartEntity
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.#ctor*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.#ctor
+  name: WebPartEntity
+  nameWithType: WebPartEntity.WebPartEntity
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.WebPartEntity
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Type*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.Type
+  name: Type
+  nameWithType: WebPartEntity.Type
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Type
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Id*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.Id
+  name: Id
+  nameWithType: WebPartEntity.Id
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.ServerControlId*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.ServerControlId
+  name: ServerControlId
+  nameWithType: WebPartEntity.ServerControlId
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.ServerControlId
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.ZoneId*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.ZoneId
+  name: ZoneId
+  nameWithType: WebPartEntity.ZoneId
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.ZoneId
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Hidden*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.Hidden
+  name: Hidden
+  nameWithType: WebPartEntity.Hidden
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Hidden
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.IsClosed*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.IsClosed
+  name: IsClosed
+  nameWithType: WebPartEntity.IsClosed
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.IsClosed
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Title*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.Title
+  name: Title
+  nameWithType: WebPartEntity.Title
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Title
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Row*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.Row
+  name: Row
+  nameWithType: WebPartEntity.Row
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Row
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Column*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.Column
+  name: Column
+  nameWithType: WebPartEntity.Column
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Column
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Order*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.Order
+  name: Order
+  nameWithType: WebPartEntity.Order
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Order
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.ZoneIndex*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.ZoneIndex
+  name: ZoneIndex
+  nameWithType: WebPartEntity.ZoneIndex
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.ZoneIndex
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  name: UInt32
+  nameWithType: UInt32
+  fullName: System.UInt32
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Properties*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.Properties
+  name: Properties
+  nameWithType: WebPartEntity.Properties
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Properties
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, String>
+  nameWithType: Dictionary<String, String>
+  fullName: System.Collections.Generic.Dictionary<System.String, System.String>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, System.String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.TypeShort*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.TypeShort
+  name: TypeShort
+  nameWithType: WebPartEntity.TypeShort
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.TypeShort
+- uid: PnP.Framework.Modernization.Entities.WebPartEntity.Json*
+  commentId: Overload:PnP.Framework.Modernization.Entities.WebPartEntity.Json
+  name: Json
+  nameWithType: WebPartEntity.Json
+  fullName: PnP.Framework.Modernization.Entities.WebPartEntity.Json

@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Pages
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Pages
+  id: PnP.Framework.Provisioning.Model.Configuration.Pages
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.Pages.ExtractPagesConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.Pages
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Pages
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Pages
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Pages.ExtractPagesConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Pages.ExtractPagesConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Pages
+  name: ExtractPagesConfiguration
+  nameWithType: ExtractPagesConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Pages.ExtractPagesConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Pages
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Pages
+  name: PnP.Framework.Provisioning.Model.Configuration.Pages
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Pages
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Pages

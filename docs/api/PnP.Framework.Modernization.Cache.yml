@@ -1,0 +1,55 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  id: PnP.Framework.Modernization.Cache
+  children:
+  - PnP.Framework.Modernization.Cache.CacheManager
+  - PnP.Framework.Modernization.Cache.CacheOptions
+  - PnP.Framework.Modernization.Cache.Extensions
+  - PnP.Framework.Modernization.Cache.FieldData
+  - PnP.Framework.Modernization.Cache.ICacheOptions
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Modernization.Cache.CacheManager
+  commentId: T:PnP.Framework.Modernization.Cache.CacheManager
+  parent: PnP.Framework.Modernization.Cache
+  name: CacheManager
+  nameWithType: CacheManager
+  fullName: PnP.Framework.Modernization.Cache.CacheManager
+- uid: PnP.Framework.Modernization.Cache.CacheOptions
+  commentId: T:PnP.Framework.Modernization.Cache.CacheOptions
+  name: CacheOptions
+  nameWithType: CacheOptions
+  fullName: PnP.Framework.Modernization.Cache.CacheOptions
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Modernization.Cache.FieldData
+  commentId: T:PnP.Framework.Modernization.Cache.FieldData
+  parent: PnP.Framework.Modernization.Cache
+  name: FieldData
+  nameWithType: FieldData
+  fullName: PnP.Framework.Modernization.Cache.FieldData
+- uid: PnP.Framework.Modernization.Cache.ICacheOptions
+  commentId: T:PnP.Framework.Modernization.Cache.ICacheOptions
+  parent: PnP.Framework.Modernization.Cache
+  name: ICacheOptions
+  nameWithType: ICacheOptions
+  fullName: PnP.Framework.Modernization.Cache.ICacheOptions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache

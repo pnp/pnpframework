@@ -1,0 +1,2144 @@
+### YamlMime:ManagedReference
+items:
+- uid: CamlBuilder.Value
+  commentId: T:CamlBuilder.Value
+  id: Value
+  parent: CamlBuilder
+  children:
+  - CamlBuilder.Value.#ctor(CamlBuilder.ValueType)
+  - CamlBuilder.Value.#ctor(CamlBuilder.ValueType,System.Nullable{System.Boolean})
+  - CamlBuilder.Value.GetCamlValue
+  - CamlBuilder.Value.IncludeTimeValue
+  - CamlBuilder.Value.ListProperties(CamlBuilder.ValueType,System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem})
+  - CamlBuilder.Value.ListProperties(CamlBuilder.ValueType,System.Nullable{System.Boolean},System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem})
+  - CamlBuilder.Value.Month
+  - CamlBuilder.Value.Month(System.Boolean)
+  - CamlBuilder.Value.Now
+  - CamlBuilder.Value.Now(System.Boolean)
+  - CamlBuilder.Value.ObjectValue(CamlBuilder.ValueType,System.Nullable{System.Boolean},System.Object)
+  - CamlBuilder.Value.ObjectValue(CamlBuilder.ValueType,System.Object)
+  - CamlBuilder.Value.Today
+  - CamlBuilder.Value.Today(System.Boolean)
+  - CamlBuilder.Value.Today(System.Boolean,System.Int32)
+  - CamlBuilder.Value.Today(System.Int32)
+  - CamlBuilder.Value.Type
+  - CamlBuilder.Value.UserId
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: Value
+  fullName: CamlBuilder.Value
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Value
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nDefines a CAML value. This class has no constructors available.To instanciate a\nnew value use public static methods.\n"
+  example: []
+  syntax:
+    content: public abstract class Value
+    content.vb: Public MustInherit Class Value
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - CamlBuilder.Value.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - CamlBuilder.Value.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{CamlBuilder.Value,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: CamlBuilder.Value.Type
+  commentId: P:CamlBuilder.Value.Type
+  id: Type
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: Value.Type
+  fullName: CamlBuilder.Value.Type
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Type
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nSpecifies the data type for the value contained by this element.\n"
+  example: []
+  syntax:
+    content: public ValueType Type { get; }
+    parameters: []
+    return:
+      type: CamlBuilder.ValueType
+    content.vb: Public ReadOnly Property Type As ValueType
+  overload: CamlBuilder.Value.Type*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: CamlBuilder.Value.IncludeTimeValue
+  commentId: P:CamlBuilder.Value.IncludeTimeValue
+  id: IncludeTimeValue
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: IncludeTimeValue
+  nameWithType: Value.IncludeTimeValue
+  fullName: CamlBuilder.Value.IncludeTimeValue
+  type: Property
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IncludeTimeValue
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 21
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nSpecifies to build DateTime queries based on time as well as date. If you do not set\nthis attribute, the time portion of queries that involve date and time are ignored.\n"
+  example: []
+  syntax:
+    content: public bool? IncludeTimeValue { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: Public Property IncludeTimeValue As Boolean?
+  overload: CamlBuilder.Value.IncludeTimeValue*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: CamlBuilder.Value.#ctor(CamlBuilder.ValueType)
+  commentId: M:CamlBuilder.Value.#ctor(CamlBuilder.ValueType)
+  id: '#ctor(CamlBuilder.ValueType)'
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: Value(ValueType)
+  nameWithType: Value.Value(ValueType)
+  fullName: CamlBuilder.Value.Value(CamlBuilder.ValueType)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  syntax:
+    content: protected Value(ValueType type)
+    parameters:
+    - id: type
+      type: CamlBuilder.ValueType
+    content.vb: Protected Sub New(type As ValueType)
+  overload: CamlBuilder.Value.#ctor*
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: CamlBuilder.Value.#ctor(CamlBuilder.ValueType,System.Nullable{System.Boolean})
+  commentId: M:CamlBuilder.Value.#ctor(CamlBuilder.ValueType,System.Nullable{System.Boolean})
+  id: '#ctor(CamlBuilder.ValueType,System.Nullable{System.Boolean})'
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: Value(ValueType, Nullable<Boolean>)
+  nameWithType: Value.Value(ValueType, Nullable<Boolean>)
+  fullName: CamlBuilder.Value.Value(CamlBuilder.ValueType, System.Nullable<System.Boolean>)
+  type: Constructor
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: .ctor
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 28
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  syntax:
+    content: protected Value(ValueType type, bool? includeTimeValue)
+    parameters:
+    - id: type
+      type: CamlBuilder.ValueType
+    - id: includeTimeValue
+      type: System.Nullable{System.Boolean}
+    content.vb: Protected Sub New(type As ValueType, includeTimeValue As Boolean?)
+  overload: CamlBuilder.Value.#ctor*
+  nameWithType.vb: Value.Value(ValueType, Nullable(Of Boolean))
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+  fullName.vb: CamlBuilder.Value.Value(CamlBuilder.ValueType, System.Nullable(Of System.Boolean))
+  name.vb: Value(ValueType, Nullable(Of Boolean))
+- uid: CamlBuilder.Value.GetCamlValue
+  commentId: M:CamlBuilder.Value.GetCamlValue
+  id: GetCamlValue
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: GetCamlValue()
+  nameWithType: Value.GetCamlValue()
+  fullName: CamlBuilder.Value.GetCamlValue()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetCamlValue
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 53
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  syntax:
+    content: protected abstract string GetCamlValue()
+    return:
+      type: System.String
+    content.vb: Protected MustOverride Function GetCamlValue As String
+  overload: CamlBuilder.Value.GetCamlValue*
+  modifiers.csharp:
+  - protected
+  - abstract
+  modifiers.vb:
+  - Protected
+  - MustOverride
+- uid: CamlBuilder.Value.Now
+  commentId: M:CamlBuilder.Value.Now
+  id: Now
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: Now()
+  nameWithType: Value.Now()
+  fullName: CamlBuilder.Value.Now()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Now
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 59
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nValue representng the current date and time.\n"
+  example: []
+  syntax:
+    content: public static Value Now()
+    return:
+      type: CamlBuilder.Value
+      description: Value representng the current date and time.
+    content.vb: Public Shared Function Now As Value
+  overload: CamlBuilder.Value.Now*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Value.Now(System.Boolean)
+  commentId: M:CamlBuilder.Value.Now(System.Boolean)
+  id: Now(System.Boolean)
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: Now(Boolean)
+  nameWithType: Value.Now(Boolean)
+  fullName: CamlBuilder.Value.Now(System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Now
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 69
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nValue representing the current date and time.\n"
+  example: []
+  syntax:
+    content: public static Value Now(bool includeTimeValue)
+    parameters:
+    - id: includeTimeValue
+      type: System.Boolean
+      description: True if is to be included the time part; otherwise, false
+    return:
+      type: CamlBuilder.Value
+      description: Value representng the current date and time.
+    content.vb: Public Shared Function Now(includeTimeValue As Boolean) As Value
+  overload: CamlBuilder.Value.Now*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Value.Month
+  commentId: M:CamlBuilder.Value.Month
+  id: Month
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: Month()
+  nameWithType: Value.Month()
+  fullName: CamlBuilder.Value.Month()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Month
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 81
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nValue representing the current month.\n\nCan be used in together with <xref href=\"CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference%2cCamlBuilder.ValueType%2cSystem.Object)\" data-throw-if-not-resolved=\"false\"></xref> operator\nto retrieve from a calendar all instances of a recurring event that occur within a month.\n"
+  example: []
+  syntax:
+    content: public static Value Month()
+    return:
+      type: CamlBuilder.Value
+      description: Value representing the current month.
+    content.vb: Public Shared Function Month As Value
+  overload: CamlBuilder.Value.Month*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Value.Month(System.Boolean)
+  commentId: M:CamlBuilder.Value.Month(System.Boolean)
+  id: Month(System.Boolean)
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: Month(Boolean)
+  nameWithType: Value.Month(Boolean)
+  fullName: CamlBuilder.Value.Month(System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Month
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 92
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nCan be used in together with <xref href=\"CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference%2cCamlBuilder.ValueType%2cSystem.Object)\" data-throw-if-not-resolved=\"false\"></xref> operator\nto retrieve from a calendar all instances of a recurring event that occur within a month.\n"
+  example: []
+  syntax:
+    content: public static Value Month(bool includeTimeValue)
+    parameters:
+    - id: includeTimeValue
+      type: System.Boolean
+      description: True if is to be included the time part; otherwise, false
+    return:
+      type: CamlBuilder.Value
+      description: Value representing the current month.
+    content.vb: Public Shared Function Month(includeTimeValue As Boolean) As Value
+  overload: CamlBuilder.Value.Month*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Value.Today
+  commentId: M:CamlBuilder.Value.Today
+  id: Today
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: Today()
+  nameWithType: Value.Today()
+  fullName: CamlBuilder.Value.Today()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Today
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 104
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nValue representing the current day.\n\nRenders the current date in the format that is relative to the server&apos;s local time zone. For servers in\nthe United States, the format is MM/DD/YYYY (for example, 1/21/2001).\n"
+  example: []
+  syntax:
+    content: public static Value Today()
+    return:
+      type: CamlBuilder.Value
+      description: Value representing the current day.
+    content.vb: Public Shared Function Today As Value
+  overload: CamlBuilder.Value.Today*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Value.Today(System.Int32)
+  commentId: M:CamlBuilder.Value.Today(System.Int32)
+  id: Today(System.Int32)
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: Today(Int32)
+  nameWithType: Value.Today(Int32)
+  fullName: CamlBuilder.Value.Today(System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Today
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 117
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nValue representing the current day.\n\nRenders the current date in the format that is relative to the server&apos;s local time zone. For servers in\nthe United States, the format is MM/DD/YYYY (for example, 1/21/2001).\n"
+  example: []
+  syntax:
+    content: public static Value Today(int offset)
+    parameters:
+    - id: offset
+      type: System.Int32
+      description: Adds or subtracts the number of days that are specified by the positive or negative integer value.
+    return:
+      type: CamlBuilder.Value
+      description: Value representing the current day.
+    content.vb: Public Shared Function Today(offset As Integer) As Value
+  overload: CamlBuilder.Value.Today*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Value.Today(System.Boolean)
+  commentId: M:CamlBuilder.Value.Today(System.Boolean)
+  id: Today(System.Boolean)
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: Today(Boolean)
+  nameWithType: Value.Today(Boolean)
+  fullName: CamlBuilder.Value.Today(System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Today
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 130
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nValue representing the current day.\n\nRenders the current date in the format that is relative to the server&apos;s local time zone. For servers in\nthe United States, the format is MM/DD/YYYY (for example, 1/21/2001).\n"
+  example: []
+  syntax:
+    content: public static Value Today(bool includeTimeValue)
+    parameters:
+    - id: includeTimeValue
+      type: System.Boolean
+      description: True if is to be included the time part; otherwise, false
+    return:
+      type: CamlBuilder.Value
+      description: Value representing the current day.
+    content.vb: Public Shared Function Today(includeTimeValue As Boolean) As Value
+  overload: CamlBuilder.Value.Today*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Value.Today(System.Boolean,System.Int32)
+  commentId: M:CamlBuilder.Value.Today(System.Boolean,System.Int32)
+  id: Today(System.Boolean,System.Int32)
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: Today(Boolean, Int32)
+  nameWithType: Value.Today(Boolean, Int32)
+  fullName: CamlBuilder.Value.Today(System.Boolean, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Today
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 144
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nValue representing the current day.\n\nRenders the current date in the format that is relative to the server&apos;s local time zone. For servers in\nthe United States, the format is MM/DD/YYYY (for example, 1/21/2001).\n"
+  example: []
+  syntax:
+    content: public static Value Today(bool includeTimeValue, int offset)
+    parameters:
+    - id: includeTimeValue
+      type: System.Boolean
+      description: True if is to be included the time part; otherwise, false
+    - id: offset
+      type: System.Int32
+      description: Adds or subtracts the number of days that are specified by the positive or negative integer value.
+    return:
+      type: CamlBuilder.Value
+      description: Value representing the current day.
+    content.vb: Public Shared Function Today(includeTimeValue As Boolean, offset As Integer) As Value
+  overload: CamlBuilder.Value.Today*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Value.ObjectValue(CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Value.ObjectValue(CamlBuilder.ValueType,System.Object)
+  id: ObjectValue(CamlBuilder.ValueType,System.Object)
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: ObjectValue(ValueType, Object)
+  nameWithType: Value.ObjectValue(ValueType, Object)
+  fullName: CamlBuilder.Value.ObjectValue(CamlBuilder.ValueType, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ObjectValue
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 158
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nCan be used to represent any <code data-dev-comment-type=\"paramref\" class=\"paramref\">type</code> of value.\n"
+  remarks: "\nCamlBuilder uses ToString() on top of <code data-dev-comment-type=\"paramref\" class=\"paramref\">value</code> to build the final CAML query.\n"
+  example: []
+  syntax:
+    content: public static Value ObjectValue(ValueType type, object value)
+    parameters:
+    - id: type
+      type: CamlBuilder.ValueType
+      description: Specifies the data type for the value contained by this element.
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the FieldRef element is compared
+    return:
+      type: CamlBuilder.Value
+      description: Value representing any object value.
+    content.vb: Public Shared Function ObjectValue(type As ValueType, value As Object) As Value
+  overload: CamlBuilder.Value.ObjectValue*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Value.ObjectValue(CamlBuilder.ValueType,System.Nullable{System.Boolean},System.Object)
+  commentId: M:CamlBuilder.Value.ObjectValue(CamlBuilder.ValueType,System.Nullable{System.Boolean},System.Object)
+  id: ObjectValue(CamlBuilder.ValueType,System.Nullable{System.Boolean},System.Object)
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: ObjectValue(ValueType, Nullable<Boolean>, Object)
+  nameWithType: Value.ObjectValue(ValueType, Nullable<Boolean>, Object)
+  fullName: CamlBuilder.Value.ObjectValue(CamlBuilder.ValueType, System.Nullable<System.Boolean>, System.Object)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ObjectValue
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 176
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nCan be used to represent any <code data-dev-comment-type=\"paramref\" class=\"paramref\">type</code> of value.\n"
+  remarks: "\nCamlBuilder uses ToString() on top of <code data-dev-comment-type=\"paramref\" class=\"paramref\">value</code> to build the final CAML query.\n"
+  example: []
+  syntax:
+    content: public static Value ObjectValue(ValueType type, bool? includeTimeValue, object value)
+    parameters:
+    - id: type
+      type: CamlBuilder.ValueType
+      description: Specifies the data type for the value contained by this element.
+    - id: includeTimeValue
+      type: System.Nullable{System.Boolean}
+      description: "\nSpecifies to build DateTime queries based on time as well as date. If you set this to null\nthe time portion of queries that involve date and time are ignored.\n"
+    - id: value
+      type: System.Object
+      description: Value against which the value returned by the FieldRef element is compared
+    return:
+      type: CamlBuilder.Value
+      description: Value representing any object value.
+    content.vb: Public Shared Function ObjectValue(type As ValueType, includeTimeValue As Boolean?, value As Object) As Value
+  overload: CamlBuilder.Value.ObjectValue*
+  nameWithType.vb: Value.ObjectValue(ValueType, Nullable(Of Boolean), Object)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: CamlBuilder.Value.ObjectValue(CamlBuilder.ValueType, System.Nullable(Of System.Boolean), System.Object)
+  name.vb: ObjectValue(ValueType, Nullable(Of Boolean), Object)
+- uid: CamlBuilder.Value.UserId
+  commentId: M:CamlBuilder.Value.UserId
+  id: UserId
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: UserId()
+  nameWithType: Value.UserId()
+  fullName: CamlBuilder.Value.UserId()
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: UserId
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 186
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nContains the value if the unique ID number of the currently authenticated user of a site, as\ndefined in the UserInfo table of the content database.\n"
+  example: []
+  syntax:
+    content: public static Value UserId()
+    return:
+      type: CamlBuilder.Value
+      description: Value representing the currently authenticated user unique ID number.
+    content.vb: Public Shared Function UserId As Value
+  overload: CamlBuilder.Value.UserId*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: CamlBuilder.Value.ListProperties(CamlBuilder.ValueType,System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem})
+  commentId: M:CamlBuilder.Value.ListProperties(CamlBuilder.ValueType,System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem})
+  id: ListProperties(CamlBuilder.ValueType,System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem})
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: ListProperties(ValueType, IEnumerable<ListPropertyValueItem>)
+  nameWithType: Value.ListProperties(ValueType, IEnumerable<ListPropertyValueItem>)
+  fullName: CamlBuilder.Value.ListProperties(CamlBuilder.ValueType, System.Collections.Generic.IEnumerable<CamlBuilder.ListPropertyValueItem>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListProperties
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 197
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nValue of a specified column in the List of Lists table.\n"
+  example: []
+  syntax:
+    content: public static Value ListProperties(ValueType type, IEnumerable<ListPropertyValueItem> listProperties)
+    parameters:
+    - id: type
+      type: CamlBuilder.ValueType
+      description: Specifies the data type for the value contained by this element.
+    - id: listProperties
+      type: System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem}
+      description: List of properties.
+    return:
+      type: CamlBuilder.Value
+      description: Value representing a list of lists table.
+    content.vb: Public Shared Function ListProperties(type As ValueType, listProperties As IEnumerable(Of ListPropertyValueItem)) As Value
+  overload: CamlBuilder.Value.ListProperties*
+  nameWithType.vb: Value.ListProperties(ValueType, IEnumerable(Of ListPropertyValueItem))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: CamlBuilder.Value.ListProperties(CamlBuilder.ValueType, System.Collections.Generic.IEnumerable(Of CamlBuilder.ListPropertyValueItem))
+  name.vb: ListProperties(ValueType, IEnumerable(Of ListPropertyValueItem))
+- uid: CamlBuilder.Value.ListProperties(CamlBuilder.ValueType,System.Nullable{System.Boolean},System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem})
+  commentId: M:CamlBuilder.Value.ListProperties(CamlBuilder.ValueType,System.Nullable{System.Boolean},System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem})
+  id: ListProperties(CamlBuilder.ValueType,System.Nullable{System.Boolean},System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem})
+  parent: CamlBuilder.Value
+  langs:
+  - csharp
+  - vb
+  name: ListProperties(ValueType, Nullable<Boolean>, IEnumerable<ListPropertyValueItem>)
+  nameWithType: Value.ListProperties(ValueType, Nullable<Boolean>, IEnumerable<ListPropertyValueItem>)
+  fullName: CamlBuilder.Value.ListProperties(CamlBuilder.ValueType, System.Nullable<System.Boolean>, System.Collections.Generic.IEnumerable<CamlBuilder.ListPropertyValueItem>)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Modernization/Caml/Value.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ListProperties
+    path: ../src/lib/PnP.Framework/Modernization/Caml/Value.cs
+    startLine: 214
+  assemblies:
+  - PnP.Framework
+  namespace: CamlBuilder
+  summary: "\nValue of a specified column in the List of Lists table.\n"
+  example: []
+  syntax:
+    content: public static Value ListProperties(ValueType type, bool? includeTimeValue, IEnumerable<ListPropertyValueItem> listProperties)
+    parameters:
+    - id: type
+      type: CamlBuilder.ValueType
+      description: Specifies the data type for the value contained by this element.
+    - id: includeTimeValue
+      type: System.Nullable{System.Boolean}
+      description: "\nSpecifies to build DateTime queries based on time as well as date. If you set this to null\nthe time portion of queries that involve date and time are ignored.\n"
+    - id: listProperties
+      type: System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem}
+      description: List of properties.
+    return:
+      type: CamlBuilder.Value
+      description: Value representing a list of lists table.
+    content.vb: Public Shared Function ListProperties(type As ValueType, includeTimeValue As Boolean?, listProperties As IEnumerable(Of ListPropertyValueItem)) As Value
+  overload: CamlBuilder.Value.ListProperties*
+  nameWithType.vb: Value.ListProperties(ValueType, Nullable(Of Boolean), IEnumerable(Of ListPropertyValueItem))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: CamlBuilder.Value.ListProperties(CamlBuilder.ValueType, System.Nullable(Of System.Boolean), System.Collections.Generic.IEnumerable(Of CamlBuilder.ListPropertyValueItem))
+  name.vb: ListProperties(ValueType, Nullable(Of Boolean), IEnumerable(Of ListPropertyValueItem))
+references:
+- uid: CamlBuilder
+  commentId: N:CamlBuilder
+  name: CamlBuilder
+  nameWithType: CamlBuilder
+  fullName: CamlBuilder
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: CamlBuilder.Value.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<Value>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<Value>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<CamlBuilder.Value>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of Value)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of CamlBuilder.Value)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of Value)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<Value>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<Value>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<CamlBuilder.Value>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of Value)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of Value)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of CamlBuilder.Value)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: CamlBuilder.Value.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{CamlBuilder.Value,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<Value, T>(Expression<Func<Value, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<Value, T>(Expression<Func<Value, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<CamlBuilder.Value, T>(System.Linq.Expressions.Expression<System.Func<CamlBuilder.Value, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of Value, T)(Expression(Of Func(Of Value, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of CamlBuilder.Value, T)(System.Linq.Expressions.Expression(Of System.Func(Of CamlBuilder.Value, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of Value, T)(Expression(Of Func(Of Value, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<Value, T>
+    nameWithType: ObjectExtensions.Set<Value, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<CamlBuilder.Value, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: CamlBuilder.Value
+    name: Value
+    nameWithType: Value
+    fullName: CamlBuilder.Value
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of Value, T)
+    nameWithType: ObjectExtensions.Set(Of Value, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of CamlBuilder.Value, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: CamlBuilder.Value
+    name: Value
+    nameWithType: Value
+    fullName: CamlBuilder.Value
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: CamlBuilder.Value.Type*
+  commentId: Overload:CamlBuilder.Value.Type
+  name: Type
+  nameWithType: Value.Type
+  fullName: CamlBuilder.Value.Type
+- uid: CamlBuilder.ValueType
+  commentId: T:CamlBuilder.ValueType
+  parent: CamlBuilder
+  name: ValueType
+  nameWithType: ValueType
+  fullName: CamlBuilder.ValueType
+- uid: CamlBuilder.Value.IncludeTimeValue*
+  commentId: Overload:CamlBuilder.Value.IncludeTimeValue
+  name: IncludeTimeValue
+  nameWithType: Value.IncludeTimeValue
+  fullName: CamlBuilder.Value.IncludeTimeValue
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Boolean>
+  nameWithType: Nullable<Boolean>
+  fullName: System.Nullable<System.Boolean>
+  nameWithType.vb: Nullable(Of Boolean)
+  fullName.vb: System.Nullable(Of System.Boolean)
+  name.vb: Nullable(Of Boolean)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: CamlBuilder.Value.#ctor*
+  commentId: Overload:CamlBuilder.Value.#ctor
+  name: Value
+  nameWithType: Value.Value
+  fullName: CamlBuilder.Value.Value
+- uid: CamlBuilder.Value.GetCamlValue*
+  commentId: Overload:CamlBuilder.Value.GetCamlValue
+  name: GetCamlValue
+  nameWithType: Value.GetCamlValue
+  fullName: CamlBuilder.Value.GetCamlValue
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: CamlBuilder.Value.Now*
+  commentId: Overload:CamlBuilder.Value.Now
+  name: Now
+  nameWithType: Value.Now
+  fullName: CamlBuilder.Value.Now
+- uid: CamlBuilder.Value
+  commentId: T:CamlBuilder.Value
+  parent: CamlBuilder
+  name: Value
+  nameWithType: Value
+  fullName: CamlBuilder.Value
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  commentId: M:CamlBuilder.Operator.DateRangesOverlap(CamlBuilder.FieldReference,CamlBuilder.ValueType,System.Object)
+  isExternal: true
+- uid: CamlBuilder.Value.Month*
+  commentId: Overload:CamlBuilder.Value.Month
+  name: Month
+  nameWithType: Value.Month
+  fullName: CamlBuilder.Value.Month
+- uid: CamlBuilder.Value.Today*
+  commentId: Overload:CamlBuilder.Value.Today
+  name: Today
+  nameWithType: Value.Today
+  fullName: CamlBuilder.Value.Today
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: CamlBuilder.Value.ObjectValue*
+  commentId: Overload:CamlBuilder.Value.ObjectValue
+  name: ObjectValue
+  nameWithType: Value.ObjectValue
+  fullName: CamlBuilder.Value.ObjectValue
+- uid: CamlBuilder.Value.UserId*
+  commentId: Overload:CamlBuilder.Value.UserId
+  name: UserId
+  nameWithType: Value.UserId
+  fullName: CamlBuilder.Value.UserId
+- uid: CamlBuilder.Value.ListProperties*
+  commentId: Overload:CamlBuilder.Value.ListProperties
+  name: ListProperties
+  nameWithType: Value.ListProperties
+  fullName: CamlBuilder.Value.ListProperties
+- uid: System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem}
+  commentId: T:System.Collections.Generic.IEnumerable{CamlBuilder.ListPropertyValueItem}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  name: IEnumerable<ListPropertyValueItem>
+  nameWithType: IEnumerable<ListPropertyValueItem>
+  fullName: System.Collections.Generic.IEnumerable<CamlBuilder.ListPropertyValueItem>
+  nameWithType.vb: IEnumerable(Of ListPropertyValueItem)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of CamlBuilder.ListPropertyValueItem)
+  name.vb: IEnumerable(Of ListPropertyValueItem)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: CamlBuilder.ListPropertyValueItem
+    name: ListPropertyValueItem
+    nameWithType: ListPropertyValueItem
+    fullName: CamlBuilder.ListPropertyValueItem
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: CamlBuilder.ListPropertyValueItem
+    name: ListPropertyValueItem
+    nameWithType: ListPropertyValueItem
+    fullName: CamlBuilder.ListPropertyValueItem
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: System.Collections.Generic.IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic

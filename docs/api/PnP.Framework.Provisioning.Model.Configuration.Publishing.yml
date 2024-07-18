@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Publishing
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Publishing
+  id: PnP.Framework.Provisioning.Model.Configuration.Publishing
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.Publishing.ExtractPublishingConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.Publishing
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Publishing
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Publishing
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Publishing.ExtractPublishingConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Publishing.ExtractPublishingConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Publishing
+  name: ExtractPublishingConfiguration
+  nameWithType: ExtractPublishingConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Publishing.ExtractPublishingConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Publishing
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Publishing
+  name: PnP.Framework.Provisioning.Model.Configuration.Publishing
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Publishing
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Publishing

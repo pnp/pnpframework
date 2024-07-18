@@ -1,0 +1,1980 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Sites.SiteCollection
+  commentId: T:PnP.Framework.Sites.SiteCollection
+  id: SiteCollection
+  parent: PnP.Framework.Sites
+  children:
+  - PnP.Framework.Sites.SiteCollection.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  - PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  - PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  - PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Boolean,System.String)
+  - PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  - PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  - PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Int32,System.Int32,System.Boolean,System.String,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Sites.SiteCollection.CreateTeamSiteViaGraphAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Int32,System.Int32,System.Boolean,System.String,PnP.Framework.AzureEnvironment)
+  - PnP.Framework.Sites.SiteCollection.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext,System.Guid)
+  - PnP.Framework.Sites.SiteCollection.GetGroupInfo(Microsoft.SharePoint.Client.ClientContext,System.String)
+  - PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  - PnP.Framework.Sites.SiteCollection.GetGroupInfoByGroupIdAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  - PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  - PnP.Framework.Sites.SiteCollection.GetValidSiteUrlFromAliasAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  - PnP.Framework.Sites.SiteCollection.GroupifyAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  - PnP.Framework.Sites.SiteCollection.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Sites.SiteCollection.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)
+  - PnP.Framework.Sites.SiteCollection.SetGroupImage(Microsoft.SharePoint.Client.ClientContext,System.Byte[],System.String)
+  - PnP.Framework.Sites.SiteCollection.SetGroupImageAsync(Microsoft.SharePoint.Client.ClientContext,System.Byte[],System.String)
+  - PnP.Framework.Sites.SiteCollection.TeamifySiteAsync(Microsoft.SharePoint.Client.ClientContext,System.String,PnP.Framework.AzureEnvironment)
+  langs:
+  - csharp
+  - vb
+  name: SiteCollection
+  nameWithType: SiteCollection
+  fullName: PnP.Framework.Sites.SiteCollection
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SiteCollection
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 23
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nThis class can be used to create modern site collections\n"
+  example: []
+  syntax:
+    content: public static class SiteCollection
+    content.vb: Public Module SiteCollection
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  commentId: M:PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  id: Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: Create(ClientContext, CommunicationSiteCollectionCreationInformation, Int32, Boolean)
+  nameWithType: SiteCollection.Create(ClientContext, CommunicationSiteCollectionCreationInformation, Int32, Boolean)
+  fullName: PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Create
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 33
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nCreates a new Communication Site Collection and waits for it to be created\n"
+  example: []
+  syntax:
+    content: public static ClientContext Create(ClientContext clientContext, CommunicationSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, bool noWait = false)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext object of a regular site
+    - id: siteCollectionCreationInformation
+      type: PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+      description: information about the site to create
+    - id: delayAfterCreation
+      type: System.Int32
+      description: Defines the number of seconds to wait after creation
+    - id: noWait
+      type: System.Boolean
+      description: If specified the site will be created and the process will be finished asynchronously
+    return:
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext object for the created site collection
+    content.vb: Public Shared Function Create(clientContext As ClientContext, siteCollectionCreationInformation As CommunicationSiteCollectionCreationInformation, delayAfterCreation As Integer = 0, noWait As Boolean = False) As ClientContext
+  overload: PnP.Framework.Sites.SiteCollection.Create*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  commentId: M:PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  id: Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: Create(ClientContext, TeamNoGroupSiteCollectionCreationInformation, Int32, Boolean)
+  nameWithType: SiteCollection.Create(ClientContext, TeamNoGroupSiteCollectionCreationInformation, Int32, Boolean)
+  fullName: PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Create
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 55
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nCreates a new Team Site Collection with no group and waits for it to be created\n"
+  example: []
+  syntax:
+    content: public static ClientContext Create(ClientContext clientContext, TeamNoGroupSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, bool noWait = false)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext object of a regular site
+    - id: siteCollectionCreationInformation
+      type: PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+      description: information about the site to create
+    - id: delayAfterCreation
+      type: System.Int32
+      description: Defines the number of seconds to wait after creation
+    - id: noWait
+      type: System.Boolean
+      description: If specified the site will be created and the process will be finished asynchronously
+    return:
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext object for the created site collection
+    content.vb: Public Shared Function Create(clientContext As ClientContext, siteCollectionCreationInformation As TeamNoGroupSiteCollectionCreationInformation, delayAfterCreation As Integer = 0, noWait As Boolean = False) As ClientContext
+  overload: PnP.Framework.Sites.SiteCollection.Create*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Boolean,System.String)
+  commentId: M:PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Boolean,System.String)
+  id: Create(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Boolean,System.String)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: Create(ClientContext, TeamSiteCollectionCreationInformation, Int32, Boolean, String)
+  nameWithType: SiteCollection.Create(ClientContext, TeamSiteCollectionCreationInformation, Int32, Boolean, String)
+  fullName: PnP.Framework.Sites.SiteCollection.Create(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.TeamSiteCollectionCreationInformation, System.Int32, System.Boolean, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Create
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 78
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nCreates a new Team Site Collection and waits for it to be created\n"
+  example: []
+  syntax:
+    content: public static ClientContext Create(ClientContext clientContext, TeamSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, bool noWait = false, string graphAccessToken = null)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext object of a regular site
+    - id: siteCollectionCreationInformation
+      type: PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+      description: information about the site to create
+    - id: delayAfterCreation
+      type: System.Int32
+      description: Defines the number of seconds to wait after creation
+    - id: noWait
+      type: System.Boolean
+      description: If specified the site will be created and the process will be finished asynchronously
+    - id: graphAccessToken
+      type: System.String
+      description: An optional Access Token for Microsoft Graph to use for creeating the site within an App-Only context
+    return:
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext object for the created site collection
+    content.vb: Public Shared Function Create(clientContext As ClientContext, siteCollectionCreationInformation As TeamSiteCollectionCreationInformation, delayAfterCreation As Integer = 0, noWait As Boolean = False, graphAccessToken As String = Nothing) As ClientContext
+  overload: PnP.Framework.Sites.SiteCollection.Create*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  commentId: M:PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  id: CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: CreateAsync(ClientContext, CommunicationSiteCollectionCreationInformation, Int32, Boolean)
+  nameWithType: SiteCollection.CreateAsync(ClientContext, CommunicationSiteCollectionCreationInformation, Int32, Boolean)
+  fullName: PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 97
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nCreates a new Communication Site Collection\n"
+  example: []
+  syntax:
+    content: public static async Task<ClientContext> CreateAsync(ClientContext clientContext, CommunicationSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, bool noWait = false)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext object of a regular site
+    - id: siteCollectionCreationInformation
+      type: PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+      description: information about the site to create
+    - id: delayAfterCreation
+      type: System.Int32
+      description: Defines the number of seconds to wait after creation
+    - id: noWait
+      type: System.Boolean
+      description: If specified the site will be created and the process will be finished asynchronously
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+      description: ClientContext object for the created site collection
+    content.vb: Public Shared Function CreateAsync(clientContext As ClientContext, siteCollectionCreationInformation As CommunicationSiteCollectionCreationInformation, delayAfterCreation As Integer = 0, noWait As Boolean = False) As Task(Of ClientContext)
+  overload: PnP.Framework.Sites.SiteCollection.CreateAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  commentId: M:PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  id: CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation,System.Int32,System.Boolean)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: CreateAsync(ClientContext, TeamNoGroupSiteCollectionCreationInformation, Int32, Boolean)
+  nameWithType: SiteCollection.CreateAsync(ClientContext, TeamNoGroupSiteCollectionCreationInformation, Int32, Boolean)
+  fullName: PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 155
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nCreates a new Team Site Collection with no group\n"
+  example: []
+  syntax:
+    content: public static async Task<ClientContext> CreateAsync(ClientContext clientContext, TeamNoGroupSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, bool noWait = false)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext object of a regular site
+    - id: siteCollectionCreationInformation
+      type: PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+      description: information about the site to create
+    - id: delayAfterCreation
+      type: System.Int32
+      description: Defines the number of seconds to wait after creation
+    - id: noWait
+      type: System.Boolean
+      description: If specified the site will be created and the process will be finished asynchronously
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+      description: ClientContext object for the created site collection
+    content.vb: Public Shared Function CreateAsync(clientContext As ClientContext, siteCollectionCreationInformation As TeamNoGroupSiteCollectionCreationInformation, delayAfterCreation As Integer = 0, noWait As Boolean = False) As Task(Of ClientContext)
+  overload: PnP.Framework.Sites.SiteCollection.CreateAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Int32,System.Int32,System.Boolean,System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Int32,System.Int32,System.Boolean,System.String,PnP.Framework.AzureEnvironment)
+  id: CreateAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Int32,System.Int32,System.Boolean,System.String,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: CreateAsync(ClientContext, TeamSiteCollectionCreationInformation, Int32, Int32, Int32, Boolean, String, AzureEnvironment)
+  nameWithType: SiteCollection.CreateAsync(ClientContext, TeamSiteCollectionCreationInformation, Int32, Int32, Int32, Boolean, String, AzureEnvironment)
+  fullName: PnP.Framework.Sites.SiteCollection.CreateAsync(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.TeamSiteCollectionCreationInformation, System.Int32, System.Int32, System.Int32, System.Boolean, System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 212
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nCreates a new Modern Team Site Collection (so with an Office 365 group connected)\n"
+  example: []
+  syntax:
+    content: public static async Task<ClientContext> CreateAsync(ClientContext clientContext, TeamSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, int maxRetryCount = 12, int retryDelay = 10000, bool noWait = false, string graphAccessToken = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext object of a regular site
+    - id: siteCollectionCreationInformation
+      type: PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+      description: information about the site to create
+    - id: delayAfterCreation
+      type: System.Int32
+      description: Defines the number of seconds to wait after creation
+    - id: maxRetryCount
+      type: System.Int32
+      description: Maximum number of retries for a pending site provisioning. Default 12 retries.
+    - id: retryDelay
+      type: System.Int32
+      description: Delay between retries for a pending site provisioning. Default 10 seconds.
+    - id: noWait
+      type: System.Boolean
+      description: If specified the site will be created and the process will be finished asynchronously
+    - id: graphAccessToken
+      type: System.String
+      description: An optional Access Token for Microsoft Graph to use for creeating the site within an App-Only context
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+      description: ClientContext object for the created site collection
+    content.vb: Public Shared Function CreateAsync(clientContext As ClientContext, siteCollectionCreationInformation As TeamSiteCollectionCreationInformation, delayAfterCreation As Integer = 0, maxRetryCount As Integer = 12, retryDelay As Integer = 10000, noWait As Boolean = False, graphAccessToken As String = Nothing, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As Task(Of ClientContext)
+  overload: PnP.Framework.Sites.SiteCollection.CreateAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.CreateTeamSiteViaGraphAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Int32,System.Int32,System.Boolean,System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Sites.SiteCollection.CreateTeamSiteViaGraphAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Int32,System.Int32,System.Boolean,System.String,PnP.Framework.AzureEnvironment)
+  id: CreateTeamSiteViaGraphAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionCreationInformation,System.Int32,System.Int32,System.Int32,System.Boolean,System.String,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: CreateTeamSiteViaGraphAsync(ClientContext, TeamSiteCollectionCreationInformation, Int32, Int32, Int32, Boolean, String, AzureEnvironment)
+  nameWithType: SiteCollection.CreateTeamSiteViaGraphAsync(ClientContext, TeamSiteCollectionCreationInformation, Int32, Int32, Int32, Boolean, String, AzureEnvironment)
+  fullName: PnP.Framework.Sites.SiteCollection.CreateTeamSiteViaGraphAsync(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.TeamSiteCollectionCreationInformation, System.Int32, System.Int32, System.Int32, System.Boolean, System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: CreateTeamSiteViaGraphAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 502
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nCreates a new Modern Team Site Collection (so with an Office 365 group connected) using Microsoft Graph\n"
+  example: []
+  syntax:
+    content: public static async Task<ClientContext> CreateTeamSiteViaGraphAsync(ClientContext clientContext, TeamSiteCollectionCreationInformation siteCollectionCreationInformation, int delayAfterCreation = 0, int maxRetryCount = 12, int retryDelay = 10000, bool noWait = false, string graphAccessToken = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext object of a regular site
+    - id: siteCollectionCreationInformation
+      type: PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+      description: information about the site to create
+    - id: delayAfterCreation
+      type: System.Int32
+      description: Defines the number of seconds to wait after creation
+    - id: maxRetryCount
+      type: System.Int32
+      description: Maximum number of retries for a pending site provisioning. Default 12 retries.
+    - id: retryDelay
+      type: System.Int32
+      description: Delay between retries for a pending site provisioning. Default 10 seconds.
+    - id: noWait
+      type: System.Boolean
+      description: If specified the site will be created and the process will be finished asynchronously
+    - id: graphAccessToken
+      type: System.String
+      description: An optional Access Token for Microsoft Graph to use for creeating the site within an App-Only context
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+      description: ClientContext object for the created site collection
+    content.vb: Public Shared Function CreateTeamSiteViaGraphAsync(clientContext As ClientContext, siteCollectionCreationInformation As TeamSiteCollectionCreationInformation, delayAfterCreation As Integer = 0, maxRetryCount As Integer = 12, retryDelay As Integer = 10000, noWait As Boolean = False, graphAccessToken As String = Nothing, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As Task(Of ClientContext)
+  overload: PnP.Framework.Sites.SiteCollection.CreateTeamSiteViaGraphAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.GroupifyAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  commentId: M:PnP.Framework.Sites.SiteCollection.GroupifyAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  id: GroupifyAsync(Microsoft.SharePoint.Client.ClientContext,PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: GroupifyAsync(ClientContext, TeamSiteCollectionGroupifyInformation)
+  nameWithType: SiteCollection.GroupifyAsync(ClientContext, TeamSiteCollectionGroupifyInformation)
+  fullName: PnP.Framework.Sites.SiteCollection.GroupifyAsync(Microsoft.SharePoint.Client.ClientContext, PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GroupifyAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 906
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nGroupifies a classic team site by creating a group for it and connecting the site with the newly created group\n"
+  example: []
+  syntax:
+    content: public static async Task<ClientContext> GroupifyAsync(ClientContext clientContext, TeamSiteCollectionGroupifyInformation siteCollectionGroupifyInformation)
+    parameters:
+    - id: clientContext
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext object of a regular site
+    - id: siteCollectionGroupifyInformation
+      type: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+      description: information about the site to create
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+      description: ClientContext object for the created site collection
+    content.vb: Public Shared Function GroupifyAsync(clientContext As ClientContext, siteCollectionGroupifyInformation As TeamSiteCollectionGroupifyInformation) As Task(Of ClientContext)
+  overload: PnP.Framework.Sites.SiteCollection.GroupifyAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  commentId: M:PnP.Framework.Sites.SiteCollection.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  id: AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: AliasExistsAsync(ClientContext, String)
+  nameWithType: SiteCollection.AliasExistsAsync(ClientContext, String)
+  fullName: PnP.Framework.Sites.SiteCollection.AliasExistsAsync(Microsoft.SharePoint.Client.ClientContext, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: AliasExistsAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1053
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nChecks if a given alias is already in use or not\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> AliasExistsAsync(ClientContext context, string alias)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: Context to operate against
+    - id: alias
+      type: System.String
+      description: Alias to check
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if in use, false otherwise
+    content.vb: Public Shared Function AliasExistsAsync(context As ClientContext, alias As String) As Task(Of Boolean)
+  overload: PnP.Framework.Sites.SiteCollection.AliasExistsAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.GetGroupInfo(Microsoft.SharePoint.Client.ClientContext,System.String)
+  commentId: M:PnP.Framework.Sites.SiteCollection.GetGroupInfo(Microsoft.SharePoint.Client.ClientContext,System.String)
+  id: GetGroupInfo(Microsoft.SharePoint.Client.ClientContext,System.String)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: GetGroupInfo(ClientContext, String)
+  nameWithType: SiteCollection.GetGroupInfo(ClientContext, String)
+  fullName: PnP.Framework.Sites.SiteCollection.GetGroupInfo(Microsoft.SharePoint.Client.ClientContext, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetGroupInfo
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1102
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nChecks if a given alias is already in use or not\n"
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use GetGroupInfoAsync instead of GetGroupInfo")]
+
+      public static async Task<Dictionary<string, string>> GetGroupInfo(ClientContext context, string alias)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: Context to operate against
+    - id: alias
+      type: System.String
+      description: Alias to check
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.Dictionary{System.String,System.String}}
+      description: True if in use, false otherwise
+    content.vb: >-
+      <Obsolete("Use GetGroupInfoAsync instead of GetGroupInfo")>
+
+      Public Shared Function GetGroupInfo(context As ClientContext, alias As String) As Task(Of Dictionary(Of String, String))
+  overload: PnP.Framework.Sites.SiteCollection.GetGroupInfo*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use GetGroupInfoAsync instead of GetGroupInfo
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  commentId: M:PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  id: GetGroupInfoAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: GetGroupInfoAsync(ClientContext, String)
+  nameWithType: SiteCollection.GetGroupInfoAsync(ClientContext, String)
+  fullName: PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync(Microsoft.SharePoint.Client.ClientContext, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetGroupInfoAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1114
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nChecks if a given alias is already in use or not\n"
+  example: []
+  syntax:
+    content: public static async Task<Dictionary<string, string>> GetGroupInfoAsync(ClientContext context, string alias)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: Context to operate against
+    - id: alias
+      type: System.String
+      description: Alias to check
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.Dictionary{System.String,System.String}}
+      description: True if in use, false otherwise
+    content.vb: Public Shared Function GetGroupInfoAsync(context As ClientContext, alias As String) As Task(Of Dictionary(Of String, String))
+  overload: PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.SetGroupImage(Microsoft.SharePoint.Client.ClientContext,System.Byte[],System.String)
+  commentId: M:PnP.Framework.Sites.SiteCollection.SetGroupImage(Microsoft.SharePoint.Client.ClientContext,System.Byte[],System.String)
+  id: SetGroupImage(Microsoft.SharePoint.Client.ClientContext,System.Byte[],System.String)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: SetGroupImage(ClientContext, Byte[], String)
+  nameWithType: SiteCollection.SetGroupImage(ClientContext, Byte[], String)
+  fullName: PnP.Framework.Sites.SiteCollection.SetGroupImage(Microsoft.SharePoint.Client.ClientContext, System.Byte[], System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetGroupImage
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1157
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  syntax:
+    content: >-
+      [Obsolete("Use SetGroupImageAsync instead of SetGroupImage")]
+
+      public static async Task<bool> SetGroupImage(ClientContext context, byte[] file, string mimeType)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+    - id: file
+      type: System.Byte[]
+    - id: mimeType
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: >-
+      <Obsolete("Use SetGroupImageAsync instead of SetGroupImage")>
+
+      Public Shared Function SetGroupImage(context As ClientContext, file As Byte(), mimeType As String) As Task(Of Boolean)
+  overload: PnP.Framework.Sites.SiteCollection.SetGroupImage*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use SetGroupImageAsync instead of SetGroupImage
+  nameWithType.vb: SiteCollection.SetGroupImage(ClientContext, Byte(), String)
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Sites.SiteCollection.SetGroupImage(Microsoft.SharePoint.Client.ClientContext, System.Byte(), System.String)
+  name.vb: SetGroupImage(ClientContext, Byte(), String)
+- uid: PnP.Framework.Sites.SiteCollection.SetGroupImageAsync(Microsoft.SharePoint.Client.ClientContext,System.Byte[],System.String)
+  commentId: M:PnP.Framework.Sites.SiteCollection.SetGroupImageAsync(Microsoft.SharePoint.Client.ClientContext,System.Byte[],System.String)
+  id: SetGroupImageAsync(Microsoft.SharePoint.Client.ClientContext,System.Byte[],System.String)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: SetGroupImageAsync(ClientContext, Byte[], String)
+  nameWithType: SiteCollection.SetGroupImageAsync(ClientContext, Byte[], String)
+  fullName: PnP.Framework.Sites.SiteCollection.SetGroupImageAsync(Microsoft.SharePoint.Client.ClientContext, System.Byte[], System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetGroupImageAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1170
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nSets the image for an Office 365 group\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> SetGroupImageAsync(ClientContext context, byte[] file, string mimeType)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: Context to operate on
+    - id: file
+      type: System.Byte[]
+      description: Byte array containing the group image
+    - id: mimeType
+      type: System.String
+      description: Image mime type
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: true if succeeded
+    content.vb: Public Shared Function SetGroupImageAsync(context As ClientContext, file As Byte(), mimeType As String) As Task(Of Boolean)
+  overload: PnP.Framework.Sites.SiteCollection.SetGroupImageAsync*
+  nameWithType.vb: SiteCollection.SetGroupImageAsync(ClientContext, Byte(), String)
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: PnP.Framework.Sites.SiteCollection.SetGroupImageAsync(Microsoft.SharePoint.Client.ClientContext, System.Byte(), System.String)
+  name.vb: SetGroupImageAsync(ClientContext, Byte(), String)
+- uid: PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  commentId: M:PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  id: GetIsAliasAvailableAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: GetIsAliasAvailableAsync(ClientContext, String)
+  nameWithType: SiteCollection.GetIsAliasAvailableAsync(ClientContext, String)
+  fullName: PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync(Microsoft.SharePoint.Client.ClientContext, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetIsAliasAvailableAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1206
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nAllows validation if the provided <code data-dev-comment-type=\"paramref\" class=\"paramref\">alias</code> is valid to be used to create a new site collection\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> GetIsAliasAvailableAsync(ClientContext context, string alias)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: SharePoint ClientContext to use to communicate with SharePoint
+    - id: alias
+      type: System.String
+      description: The alias to check for availability
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: True if the provided alias is available to be used, false if it is not
+    content.vb: Public Shared Function GetIsAliasAvailableAsync(context As ClientContext, alias As String) As Task(Of Boolean)
+  overload: PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.GetValidSiteUrlFromAliasAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  commentId: M:PnP.Framework.Sites.SiteCollection.GetValidSiteUrlFromAliasAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  id: GetValidSiteUrlFromAliasAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: GetValidSiteUrlFromAliasAsync(ClientContext, String)
+  nameWithType: SiteCollection.GetValidSiteUrlFromAliasAsync(ClientContext, String)
+  fullName: PnP.Framework.Sites.SiteCollection.GetValidSiteUrlFromAliasAsync(Microsoft.SharePoint.Client.ClientContext, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetValidSiteUrlFromAliasAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1218
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nChecks if the provided <code data-dev-comment-type=\"paramref\" class=\"paramref\">alias</code> is valid to be used to create a new site collection and will return an alternative available proposal if it is not. Use <xref href=\"PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync(Microsoft.SharePoint.Client.ClientContext%2cSystem.String)\" data-throw-if-not-resolved=\"false\"></xref> instead if you are just interested in knowing whether or not a certain alias is still available to be used.\n"
+  example: []
+  syntax:
+    content: public static async Task<string> GetValidSiteUrlFromAliasAsync(ClientContext context, string alias)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: SharePoint ClientContext to use to communicate with SharePoint
+    - id: alias
+      type: System.String
+      description: The alias to check for availability
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: The full SharePoint URL proposed to be used. If that URL ends with the alias you provided, it means it is still available. If its not available, it will return an alternative proposal to use.
+    content.vb: Public Shared Function GetValidSiteUrlFromAliasAsync(context As ClientContext, alias As String) As Task(Of String)
+  overload: PnP.Framework.Sites.SiteCollection.GetValidSiteUrlFromAliasAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.TeamifySiteAsync(Microsoft.SharePoint.Client.ClientContext,System.String,PnP.Framework.AzureEnvironment)
+  commentId: M:PnP.Framework.Sites.SiteCollection.TeamifySiteAsync(Microsoft.SharePoint.Client.ClientContext,System.String,PnP.Framework.AzureEnvironment)
+  id: TeamifySiteAsync(Microsoft.SharePoint.Client.ClientContext,System.String,PnP.Framework.AzureEnvironment)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: TeamifySiteAsync(ClientContext, String, AzureEnvironment)
+  nameWithType: SiteCollection.TeamifySiteAsync(ClientContext, String, AzureEnvironment)
+  fullName: PnP.Framework.Sites.SiteCollection.TeamifySiteAsync(Microsoft.SharePoint.Client.ClientContext, System.String, PnP.Framework.AzureEnvironment)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: TeamifySiteAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1265
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nEnable Microsoft Teams team in an O365 group connected team site\nWill also enable it on a newly Groupified classic site\n"
+  example: []
+  syntax:
+    content: public static async Task<string> TeamifySiteAsync(ClientContext context, string graphAccessToken = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: Context to operate against
+    - id: graphAccessToken
+      type: System.String
+      description: Graph Access token
+    - id: azureEnvironment
+      type: PnP.Framework.AzureEnvironment
+      description: Azure environment to operate
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: ''
+    content.vb: Public Shared Function TeamifySiteAsync(context As ClientContext, graphAccessToken As String = Nothing, azureEnvironment As AzureEnvironment = AzureEnvironment.Production) As Task(Of String)
+  overload: PnP.Framework.Sites.SiteCollection.TeamifySiteAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Sites.SiteCollection.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)
+  id: IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: IsTeamifyPromptHiddenAsync(ClientContext)
+  nameWithType: SiteCollection.IsTeamifyPromptHiddenAsync(ClientContext)
+  fullName: PnP.Framework.Sites.SiteCollection.IsTeamifyPromptHiddenAsync(Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsTeamifyPromptHiddenAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1339
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nChecks if the Teamify prompt/banner is displayed in the O365 group connected sites.        \n"
+  example: []
+  syntax:
+    content: public static async Task<bool> IsTeamifyPromptHiddenAsync(ClientContext context)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext of the site to operate against
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Shared Function IsTeamifyPromptHiddenAsync(context As ClientContext) As Task(Of Boolean)
+  overload: PnP.Framework.Sites.SiteCollection.IsTeamifyPromptHiddenAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Sites.SiteCollection.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)
+  id: HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: HideTeamifyPromptAsync(ClientContext)
+  nameWithType: SiteCollection.HideTeamifyPromptAsync(ClientContext)
+  fullName: PnP.Framework.Sites.SiteCollection.HideTeamifyPromptAsync(Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: HideTeamifyPromptAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1366
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nHide the teamify prompt/banner displayed in O365 group connected sites\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> HideTeamifyPromptAsync(ClientContext context)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext of the site to operate against
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Shared Function HideTeamifyPromptAsync(context As ClientContext) As Task(Of Boolean)
+  overload: PnP.Framework.Sites.SiteCollection.HideTeamifyPromptAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext)
+  id: EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: EnableCommunicationSite(ClientContext)
+  nameWithType: SiteCollection.EnableCommunicationSite(ClientContext)
+  fullName: PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableCommunicationSite
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1393
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nTurns a team site into a communication site\n"
+  example: []
+  syntax:
+    content: public static async Task EnableCommunicationSite(ClientContext context)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext of the team site to update to a communication site
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Public Shared Function EnableCommunicationSite(context As ClientContext) As Task
+  overload: PnP.Framework.Sites.SiteCollection.EnableCommunicationSite*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext,System.Guid)
+  commentId: M:PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext,System.Guid)
+  id: EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext,System.Guid)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: EnableCommunicationSite(ClientContext, Guid)
+  nameWithType: SiteCollection.EnableCommunicationSite(ClientContext, Guid)
+  fullName: PnP.Framework.Sites.SiteCollection.EnableCommunicationSite(Microsoft.SharePoint.Client.ClientContext, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: EnableCommunicationSite
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1404
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nTurns a team site into a communication site\n"
+  example: []
+  syntax:
+    content: public static async Task EnableCommunicationSite(ClientContext context, Guid designPackageId)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: ClientContext of the team site to update to a communication site
+    - id: designPackageId
+      type: System.Guid
+      description: Design package id to be applied, 96c933ac-3698-44c7-9f4a-5fd17d71af9e (Topic = default), 6142d2a0-63a5-4ba0-aede-d9fefca2c767 (Showcase) or f6cc5403-0d63-442e-96c0-285923709ffc (Blank)
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Public Shared Function EnableCommunicationSite(context As ClientContext, designPackageId As Guid) As Task
+  overload: PnP.Framework.Sites.SiteCollection.EnableCommunicationSite*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.GetGroupInfoByGroupIdAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  commentId: M:PnP.Framework.Sites.SiteCollection.GetGroupInfoByGroupIdAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  id: GetGroupInfoByGroupIdAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: GetGroupInfoByGroupIdAsync(ClientContext, String)
+  nameWithType: SiteCollection.GetGroupInfoByGroupIdAsync(ClientContext, String)
+  fullName: PnP.Framework.Sites.SiteCollection.GetGroupInfoByGroupIdAsync(Microsoft.SharePoint.Client.ClientContext, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetGroupInfoByGroupIdAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1463
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nGets group alias information by group Id\n"
+  example: []
+  syntax:
+    content: public static async Task<Dictionary<string, object>> GetGroupInfoByGroupIdAsync(ClientContext context, string groupId)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: Context to operate against
+    - id: groupId
+      type: System.String
+      description: Id of the group
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.Dictionary{System.String,System.Object}}
+      description: True if in use, false otherwise
+    content.vb: Public Shared Function GetGroupInfoByGroupIdAsync(context As ClientContext, groupId As String) As Task(Of Dictionary(Of String, Object))
+  overload: PnP.Framework.Sites.SiteCollection.GetGroupInfoByGroupIdAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Sites.SiteCollection.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)
+  commentId: M:PnP.Framework.Sites.SiteCollection.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)
+  id: DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)
+  parent: PnP.Framework.Sites.SiteCollection
+  langs:
+  - csharp
+  - vb
+  name: DeleteSiteAsync(ClientContext)
+  nameWithType: SiteCollection.DeleteSiteAsync(ClientContext)
+  fullName: PnP.Framework.Sites.SiteCollection.DeleteSiteAsync(Microsoft.SharePoint.Client.ClientContext)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Sites/SiteCollection.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteSiteAsync
+    path: ../src/lib/PnP.Framework/Sites/SiteCollection.cs
+    startLine: 1511
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Sites
+  summary: "\nDeletes a Communication site or a Group-less Modern team site.\n"
+  example: []
+  syntax:
+    content: public static async Task<bool> DeleteSiteAsync(ClientContext context)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: Context to operate against
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Shared Function DeleteSiteAsync(context As ClientContext) As Task(Of Boolean)
+  overload: PnP.Framework.Sites.SiteCollection.DeleteSiteAsync*
+  modifiers.csharp:
+  - public
+  - static
+  - async
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Sites
+  commentId: N:PnP.Framework.Sites
+  name: PnP.Framework.Sites
+  nameWithType: PnP.Framework.Sites
+  fullName: PnP.Framework.Sites
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: PnP.Framework.Sites.SiteCollection.Create*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.Create
+  name: Create
+  nameWithType: SiteCollection.Create
+  fullName: PnP.Framework.Sites.SiteCollection.Create
+- uid: Microsoft.SharePoint.Client.ClientContext
+  commentId: T:Microsoft.SharePoint.Client.ClientContext
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ClientContext
+  nameWithType: ClientContext
+  fullName: Microsoft.SharePoint.Client.ClientContext
+- uid: PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+  commentId: T:PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+  parent: PnP.Framework.Sites
+  name: CommunicationSiteCollectionCreationInformation
+  nameWithType: CommunicationSiteCollectionCreationInformation
+  fullName: PnP.Framework.Sites.CommunicationSiteCollectionCreationInformation
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+  commentId: T:PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+  parent: PnP.Framework.Sites
+  name: TeamNoGroupSiteCollectionCreationInformation
+  nameWithType: TeamNoGroupSiteCollectionCreationInformation
+  fullName: PnP.Framework.Sites.TeamNoGroupSiteCollectionCreationInformation
+- uid: PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+  commentId: T:PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+  parent: PnP.Framework.Sites
+  name: TeamSiteCollectionCreationInformation
+  nameWithType: TeamSiteCollectionCreationInformation
+  fullName: PnP.Framework.Sites.TeamSiteCollectionCreationInformation
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: PnP.Framework.Sites.SiteCollection.CreateAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.CreateAsync
+  name: CreateAsync
+  nameWithType: SiteCollection.CreateAsync
+  fullName: PnP.Framework.Sites.SiteCollection.CreateAsync
+- uid: System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+  commentId: T:System.Threading.Tasks.Task{Microsoft.SharePoint.Client.ClientContext}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<ClientContext>
+  nameWithType: Task<ClientContext>
+  fullName: System.Threading.Tasks.Task<Microsoft.SharePoint.Client.ClientContext>
+  nameWithType.vb: Task(Of ClientContext)
+  fullName.vb: System.Threading.Tasks.Task(Of Microsoft.SharePoint.Client.ClientContext)
+  name.vb: Task(Of ClientContext)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.SharePoint.Client.ClientContext
+    name: ClientContext
+    nameWithType: ClientContext
+    fullName: Microsoft.SharePoint.Client.ClientContext
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.SharePoint.Client.ClientContext
+    name: ClientContext
+    nameWithType: ClientContext
+    fullName: Microsoft.SharePoint.Client.ClientContext
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: PnP.Framework.AzureEnvironment
+  commentId: T:PnP.Framework.AzureEnvironment
+  parent: PnP.Framework
+  name: AzureEnvironment
+  nameWithType: AzureEnvironment
+  fullName: PnP.Framework.AzureEnvironment
+- uid: PnP.Framework
+  commentId: N:PnP.Framework
+  name: PnP.Framework
+  nameWithType: PnP.Framework
+  fullName: PnP.Framework
+- uid: PnP.Framework.Sites.SiteCollection.CreateTeamSiteViaGraphAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.CreateTeamSiteViaGraphAsync
+  name: CreateTeamSiteViaGraphAsync
+  nameWithType: SiteCollection.CreateTeamSiteViaGraphAsync
+  fullName: PnP.Framework.Sites.SiteCollection.CreateTeamSiteViaGraphAsync
+- uid: PnP.Framework.Sites.SiteCollection.GroupifyAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.GroupifyAsync
+  name: GroupifyAsync
+  nameWithType: SiteCollection.GroupifyAsync
+  fullName: PnP.Framework.Sites.SiteCollection.GroupifyAsync
+- uid: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+  commentId: T:PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+  parent: PnP.Framework.Sites
+  name: TeamSiteCollectionGroupifyInformation
+  nameWithType: TeamSiteCollectionGroupifyInformation
+  fullName: PnP.Framework.Sites.TeamSiteCollectionGroupifyInformation
+- uid: PnP.Framework.Sites.SiteCollection.AliasExistsAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.AliasExistsAsync
+  name: AliasExistsAsync
+  nameWithType: SiteCollection.AliasExistsAsync
+  fullName: PnP.Framework.Sites.SiteCollection.AliasExistsAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Boolean>
+  nameWithType: Task<Boolean>
+  fullName: System.Threading.Tasks.Task<System.Boolean>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of System.Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Sites.SiteCollection.GetGroupInfo*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.GetGroupInfo
+  name: GetGroupInfo
+  nameWithType: SiteCollection.GetGroupInfo
+  fullName: PnP.Framework.Sites.SiteCollection.GetGroupInfo
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.Dictionary{System.String,System.String}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.Dictionary{System.String,System.String}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Dictionary<String, String>>
+  nameWithType: Task<Dictionary<String, String>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<System.String, System.String>>
+  nameWithType.vb: Task(Of Dictionary(Of String, String))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.Dictionary(Of System.String, System.String))
+  name.vb: Task(Of Dictionary(Of String, String))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync
+  name: GetGroupInfoAsync
+  nameWithType: SiteCollection.GetGroupInfoAsync
+  fullName: PnP.Framework.Sites.SiteCollection.GetGroupInfoAsync
+- uid: PnP.Framework.Sites.SiteCollection.SetGroupImage*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.SetGroupImage
+  name: SetGroupImage
+  nameWithType: SiteCollection.SetGroupImage
+  fullName: PnP.Framework.Sites.SiteCollection.SetGroupImage
+- uid: System.Byte[]
+  isExternal: true
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: System.Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: PnP.Framework.Sites.SiteCollection.SetGroupImageAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.SetGroupImageAsync
+  name: SetGroupImageAsync
+  nameWithType: SiteCollection.SetGroupImageAsync
+  fullName: PnP.Framework.Sites.SiteCollection.SetGroupImageAsync
+- uid: PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync
+  name: GetIsAliasAvailableAsync
+  nameWithType: SiteCollection.GetIsAliasAvailableAsync
+  fullName: PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync
+- uid: PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  commentId: M:PnP.Framework.Sites.SiteCollection.GetIsAliasAvailableAsync(Microsoft.SharePoint.Client.ClientContext,System.String)
+  isExternal: true
+- uid: PnP.Framework.Sites.SiteCollection.GetValidSiteUrlFromAliasAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.GetValidSiteUrlFromAliasAsync
+  name: GetValidSiteUrlFromAliasAsync
+  nameWithType: SiteCollection.GetValidSiteUrlFromAliasAsync
+  fullName: PnP.Framework.Sites.SiteCollection.GetValidSiteUrlFromAliasAsync
+- uid: System.Threading.Tasks.Task{System.String}
+  commentId: T:System.Threading.Tasks.Task{System.String}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<String>
+  nameWithType: Task<String>
+  fullName: System.Threading.Tasks.Task<System.String>
+  nameWithType.vb: Task(Of String)
+  fullName.vb: System.Threading.Tasks.Task(Of System.String)
+  name.vb: Task(Of String)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Sites.SiteCollection.TeamifySiteAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.TeamifySiteAsync
+  name: TeamifySiteAsync
+  nameWithType: SiteCollection.TeamifySiteAsync
+  fullName: PnP.Framework.Sites.SiteCollection.TeamifySiteAsync
+- uid: PnP.Framework.Sites.SiteCollection.IsTeamifyPromptHiddenAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.IsTeamifyPromptHiddenAsync
+  name: IsTeamifyPromptHiddenAsync
+  nameWithType: SiteCollection.IsTeamifyPromptHiddenAsync
+  fullName: PnP.Framework.Sites.SiteCollection.IsTeamifyPromptHiddenAsync
+- uid: PnP.Framework.Sites.SiteCollection.HideTeamifyPromptAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.HideTeamifyPromptAsync
+  name: HideTeamifyPromptAsync
+  nameWithType: SiteCollection.HideTeamifyPromptAsync
+  fullName: PnP.Framework.Sites.SiteCollection.HideTeamifyPromptAsync
+- uid: PnP.Framework.Sites.SiteCollection.EnableCommunicationSite*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.EnableCommunicationSite
+  name: EnableCommunicationSite
+  nameWithType: SiteCollection.EnableCommunicationSite
+  fullName: PnP.Framework.Sites.SiteCollection.EnableCommunicationSite
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: PnP.Framework.Sites.SiteCollection.GetGroupInfoByGroupIdAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.GetGroupInfoByGroupIdAsync
+  name: GetGroupInfoByGroupIdAsync
+  nameWithType: SiteCollection.GetGroupInfoByGroupIdAsync
+  fullName: PnP.Framework.Sites.SiteCollection.GetGroupInfoByGroupIdAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.Dictionary{System.String,System.Object}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.Dictionary{System.String,System.Object}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Dictionary<String, Object>>
+  nameWithType: Task<Dictionary<String, Object>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<System.String, System.Object>>
+  nameWithType.vb: Task(Of Dictionary(Of String, Object))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.Dictionary(Of System.String, System.Object))
+  name.vb: Task(Of Dictionary(Of String, Object))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Sites.SiteCollection.DeleteSiteAsync*
+  commentId: Overload:PnP.Framework.Sites.SiteCollection.DeleteSiteAsync
+  name: DeleteSiteAsync
+  nameWithType: SiteCollection.DeleteSiteAsync
+  fullName: PnP.Framework.Sites.SiteCollection.DeleteSiteAsync

@@ -4326,7 +4326,6 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(UserCustomActionRegistrationType.None, ca.RegistrationType);
             Assert.AreEqual(new Guid("70056b07-3a88-4882-989f-eb2f1a74ff5f"), ca.ClientSideComponentId);
             Assert.AreEqual("{}", ca.ClientSideComponentProperties);
-            Assert.AreEqual("{}", ca.ClientSideHostProperties);
 
             ca = template.CustomActions.WebCustomActions.FirstOrDefault(c => c.Name == "CA_SUBSITE_OVERRIDE");
             Assert.IsNotNull(ca);
@@ -4387,7 +4386,6 @@ namespace PnP.Framework.Test.Framework.Providers
                 RegistrationType = UserCustomActionRegistrationType.ContentType,
                 ClientSideComponentId = new Guid("70056b07-3a88-4882-989f-eb2f1a74ff5f"),
                 ClientSideComponentProperties = "{}",
-                ClientSideHostProperties = "{}"
             };
             result.CustomActions.SiteCustomActions.Add(can);
 
@@ -4445,7 +4443,6 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(RegistrationType.ContentType, ca.RegistrationType);
             Assert.AreEqual("70056b07-3a88-4882-989f-eb2f1a74ff5f", ca.ClientSideComponentId);
             Assert.AreEqual("{}", ca.ClientSideComponentProperties);
-            Assert.AreEqual("{}", ca.ClientSideHostProperties);
             Assert.IsNull(ca.CommandUIExtension);
 
             ca = template.CustomActions.WebCustomActions.FirstOrDefault(c => c.Name == "CA_WEB_DOCLIB_MENU_SAMPLE");

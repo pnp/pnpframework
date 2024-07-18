@@ -7,10 +7,8 @@ using PnP.Framework.Utilities;
 using PnP.Framework.Utilities.Graph;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph
@@ -29,13 +27,14 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to configure the HTTP bearer Authorization Header</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request.</param>
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
         /// <returns></returns>
-        private static GraphServiceClient CreateGraphClient(String accessToken, int retryCount = defaultRetryCount, int delay = defaultDelay)
+        private static GraphServiceClient CreateGraphClient(string accessToken, int retryCount = defaultRetryCount, int delay = defaultDelay, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             // Creates a new GraphServiceClient instance using a custom PnPHttpProvider
             // which natively supports retry logic for throttled requests
             // Default are 10 retries with a base delay of 500ms
-            var result = new GraphServiceClient(new DelegateAuthenticationProvider(
+            var result = new GraphServiceClient($"{AuthenticationManager.GetGraphBaseEndPoint(azureEnvironment)}v1.0", new DelegateAuthenticationProvider(
                         async (requestMessage) =>
                         {
                             await Task.Run(() =>
@@ -64,9 +63,10 @@ namespace PnP.Framework.Graph
         /// <param name="members">A list of UPNs for group members, if any</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
         /// <returns>The just created Azure Active Directory Group</returns>
         public static GroupEntity CreateGroup(string displayName, string description, string mailNickname, bool mailEnabled, bool securityEnabled,
-            string accessToken, string[] owners = null, string[] members = null, int retryCount = 10, int delay = 500)
+            string accessToken, string[] owners = null, string[] members = null, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             GroupEntity result = null;
 
@@ -92,7 +92,7 @@ namespace PnP.Framework.Graph
                 {
                     var group = new GroupEntity();
 
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     // Prepare the group resource object
                     var newGroup = new GroupExtended
@@ -109,7 +109,7 @@ namespace PnP.Framework.Graph
                         var users = GetUsers(graphClient, owners);
                         if (users != null && users.Count > 0)
                         {
-                            newGroup.OwnersODataBind = users.Select(u => string.Format("https://graph.microsoft.com/v1.0/users/{0}", u.Id)).ToArray();
+                            newGroup.OwnersODataBind = users.Select(u => string.Format("{1}/users/{0}", u.Id, graphClient.BaseUrl)).ToArray();
                         }
                     }
 
@@ -118,7 +118,7 @@ namespace PnP.Framework.Graph
                         var users = GetUsers(graphClient, members);
                         if (users != null && users.Count > 0)
                         {
-                            newGroup.MembersODataBind = users.Select(u => string.Format("https://graph.microsoft.com/v1.0/users/{0}", u.Id)).ToArray();
+                            newGroup.MembersODataBind = users.Select(u => string.Format("{1}/users/{0}", u.Id, graphClient.BaseUrl)).ToArray();
                         }
                     }
 
@@ -358,7 +358,6 @@ namespace PnP.Framework.Graph
 
             try
             {
-                // PATCH https://graph.microsoft.com/v1.0/groups/{id}
                 string updateGroupUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
                 var groupRequest = new Model.Group
                 {
@@ -392,10 +391,11 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
         /// <returns>Boolean indicating whether the Azure Active Directory Group has been updated or not</returns>
         public static bool UpdateGroup(string groupId,
             string accessToken, int retryCount = 10, int delay = 500,
-            string displayName = null, string description = null, string[] owners = null, string[] members = null, bool? securityEnabled = null, bool? mailEnabled = null)
+            string displayName = null, string description = null, string[] owners = null, string[] members = null, bool? securityEnabled = null, bool? mailEnabled = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             bool result;
             try
@@ -403,7 +403,7 @@ namespace PnP.Framework.Graph
                 // Use a synchronous model to invoke the asynchronous process
                 result = Task.Run(async () =>
                 {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     var groupToUpdate = await graphClient.Groups[groupId]
                         .Request()
@@ -496,7 +496,8 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
-        public static void DeleteGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500)
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
+        public static void DeleteGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(groupId))
             {
@@ -512,7 +513,7 @@ namespace PnP.Framework.Graph
                 // Use a synchronous model to invoke the asynchronous process
                 Task.Run(async () =>
                 {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
                     await graphClient.Groups[groupId].Request().DeleteAsync();
 
                 }).GetAwaiter().GetResult();
@@ -531,8 +532,9 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
         /// <returns>Group instance if found</returns>
-        public static GroupEntity GetGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500)
+        public static GroupEntity GetGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(groupId))
             {
@@ -552,7 +554,7 @@ namespace PnP.Framework.Graph
                 {
                     GroupEntity group = null;
 
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     var g = await graphClient.Groups[groupId].Request().GetAsync();
 
@@ -591,11 +593,12 @@ namespace PnP.Framework.Graph
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
         /// <param name="pageSize">Page size used for the individual requests to Micrsoft Graph. Defaults to 999 which is currently the maximum value.</param>
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
         /// <returns>List of GroupEntity objects</returns>
         public static List<GroupEntity> GetGroups(string accessToken,
             string displayName = null, string mailNickname = null,
             int startIndex = 0, int? endIndex = null,
-            int retryCount = 10, int delay = 500, int pageSize = 999)
+            int retryCount = 10, int delay = 500, int pageSize = 999, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (string.IsNullOrEmpty(accessToken))
             {
@@ -610,7 +613,7 @@ namespace PnP.Framework.Graph
                 {
                     List<GroupEntity> groups = new List<GroupEntity>();
 
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     // Apply the DisplayName filter, if any
                     var displayNameFilter = !string.IsNullOrEmpty(displayName) ? $"(DisplayName eq '{Uri.EscapeDataString(displayName.Replace("'", "''"))}')" : string.Empty;
@@ -679,8 +682,9 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
         /// <returns>Members of an Azure Active Directory group</returns>
-        public static List<GroupUser> GetGroupMembers(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500)
+        public static List<GroupUser> GetGroupMembers(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             List<GroupUser> groupUsers = null;
             List<DirectoryObject> groupGraphUsers = null;
@@ -699,7 +703,7 @@ namespace PnP.Framework.Graph
             {
                 var result = Task.Run(async () =>
                 {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     // Get the members of the group
                     groupUsersCollection = await graphClient.Groups[group.GroupId].Members.Request().GetAsync();
@@ -771,7 +775,8 @@ namespace PnP.Framework.Graph
         /// <param name="removeExistingOwners">If true, all existing owners will be removed and only those provided will become owners. If false, existing owners will remain and the ones provided will be added to the list with existing owners.</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
-        public static void AddGroupOwners(string groupId, string[] owners, string accessToken, bool removeExistingOwners = false, int retryCount = 10, int delay = 500)
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
+        public static void AddGroupOwners(string groupId, string[] owners, string accessToken, bool removeExistingOwners = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -782,7 +787,7 @@ namespace PnP.Framework.Graph
             {
                 Task.Run(async () =>
                 {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     await UpdateOwners(owners, graphClient, groupId, removeExistingOwners);
 
@@ -804,7 +809,8 @@ namespace PnP.Framework.Graph
         /// <param name="removeExistingMembers">If true, all existing members will be removed and only those provided will become members. If false, existing members will remain and the ones provided will be added to the list with existing members.</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
-        public static void AddGroupMembers(string groupId, string[] members, string accessToken, bool removeExistingMembers = false, int retryCount = 10, int delay = 500)
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
+        public static void AddGroupMembers(string groupId, string[] members, string accessToken, bool removeExistingMembers = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -815,7 +821,7 @@ namespace PnP.Framework.Graph
             {
                 Task.Run(async () =>
                 {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     await UpdateMembers(members, graphClient, groupId, removeExistingMembers);
 
@@ -836,7 +842,8 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
-        public static void RemoveGroupMembers(string groupId, string[] members, string accessToken, int retryCount = 10, int delay = 500)
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
+        public static void RemoveGroupMembers(string groupId, string[] members, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -847,7 +854,7 @@ namespace PnP.Framework.Graph
             {
                 Task.Run(async () =>
                 {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     foreach (var m in members)
                     {
@@ -897,7 +904,8 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
-        public static void RemoveGroupOwners(string groupId, string[] owners, string accessToken, int retryCount = 10, int delay = 500)
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
+        public static void RemoveGroupOwners(string groupId, string[] owners, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (String.IsNullOrEmpty(accessToken))
             {
@@ -908,7 +916,7 @@ namespace PnP.Framework.Graph
             {
                 Task.Run(async () =>
                 {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     foreach (var m in owners)
                     {
@@ -997,8 +1005,9 @@ namespace PnP.Framework.Graph
         /// <param name="accessToken">The OAuth 2.0 Access Token to use for invoking the Microsoft Graph</param>
         /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
         /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="azureEnvironment">Azure environment to use, needed to get the correct Microsoft Graph URL</param>
         /// <returns>Owners of an Azure Active Directory group</returns>
-        public static List<GroupUser> GetGroupOwners(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500)
+        public static List<GroupUser> GetGroupOwners(GroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             List<GroupUser> groupUsers = null;
             List<User> groupGraphUsers = null;
@@ -1013,7 +1022,7 @@ namespace PnP.Framework.Graph
             {
                 var result = Task.Run(async () =>
                 {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay);
+                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
                     // Get the owners of an Office 365 group.
                     groupUsersCollection = await graphClient.Groups[group.GroupId].Owners.Request().GetAsync();
@@ -1203,12 +1212,18 @@ namespace PnP.Framework.Graph
         /// </summary>
         /// <param name="groupId">The ID of the deleted group.</param>
         /// <param name="accessToken">Access token for accessing Microsoft Graph</param>
+        /// <param name="graphBaseUri">The Microsoft Graph URI to use</param>
         /// <returns>The unified group object of the deleted group that matches the provided ID.</returns>
-        public static GroupEntity GetDeletedGroup(string groupId, string accessToken)
+        public static GroupEntity GetDeletedGroup(string groupId, string accessToken, Uri graphBaseUri = null)
         {
             try
             {
-                var response = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/directory/deleteditems/microsoft.graph.group/{groupId}", accessToken);
+                if (graphBaseUri == null) 
+                {
+                    graphBaseUri = new Uri(GraphHelper.MicrosoftGraphBaseURI);
+                }
+
+                var response = HttpHelper.MakeGetRequestForString($"{graphBaseUri}v1.0/directory/deleteditems/microsoft.graph.group/{groupId}", accessToken);
 
                 var group = JToken.Parse(response);
 
@@ -1237,19 +1252,26 @@ namespace PnP.Framework.Graph
         ///  Lists deleted Azure Active Directory groups
         /// </summary>
         /// <param name="accessToken">Access token for accessing Microsoft Graph</param>
+        /// <param name="graphBaseUri">The Microsoft Graph URI to use</param>
         /// <returns>A list of Azure Active Directory group objects that have been deleted</returns>
-        public static List<GroupEntity> ListDeletedGroups(string accessToken)
+        public static List<GroupEntity> ListDeletedGroups(string accessToken, Uri graphBaseUri = null)
         {
-            return ListDeletedGroups(accessToken, null, null);
+            return ListDeletedGroups(accessToken, null, null, graphBaseUri);
         }
 
-        private static List<GroupEntity> ListDeletedGroups(string accessToken, List<GroupEntity> deletedGroups, string nextPageUrl)
+        private static List<GroupEntity> ListDeletedGroups(string accessToken, List<GroupEntity> deletedGroups, string nextPageUrl, Uri graphBaseUri)
         {
             try
             {
+                if (graphBaseUri == null) 
+                {
+                    graphBaseUri = new Uri(GraphHelper.MicrosoftGraphBaseURI);                
+                }
+
+
                 if (deletedGroups == null) deletedGroups = new List<GroupEntity>();
 
-                var requestUrl = nextPageUrl ?? $"{GraphHelper.MicrosoftGraphBaseURI}beta/directory/deleteditems/microsoft.graph.group";
+                var requestUrl = nextPageUrl ?? $"{graphBaseUri}beta/directory/deleteditems/microsoft.graph.group";
                 var response = JToken.Parse(HttpHelper.MakeGetRequestForString(requestUrl, accessToken));
 
                 var groups = response["value"];
@@ -1272,7 +1294,7 @@ namespace PnP.Framework.Graph
                 }
 
                 // has paging?
-                return response["@odata.nextLink"] != null ? ListDeletedGroups(accessToken, deletedGroups, response["@odata.nextLink"].ToString()) : deletedGroups;
+                return response["@odata.nextLink"] != null ? ListDeletedGroups(accessToken, deletedGroups, response["@odata.nextLink"].ToString(), graphBaseUri) : deletedGroups;
             }
             catch (Exception e)
             {
@@ -1286,12 +1308,18 @@ namespace PnP.Framework.Graph
         /// </summary>
         /// <param name="groupId">The ID of the deleted group</param>
         /// <param name="accessToken">Access token for accessing Microsoft Graph</param>
+        /// <param name="graphBaseUri">The Microsoft Graph URI to use</param>
         /// <returns></returns>
-        public static void RestoreDeletedGroup(string groupId, string accessToken)
+        public static void RestoreDeletedGroup(string groupId, string accessToken, Uri graphBaseUri = null)
         {
             try
             {
-                HttpHelper.MakePostRequest($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/directory/deleteditems/{groupId}/restore", contentType: "application/json", accessToken: accessToken);
+                if (graphBaseUri == null)
+                {
+                    graphBaseUri = new Uri(GraphHelper.MicrosoftGraphBaseURI);
+                }
+
+                HttpHelper.MakePostRequest($"{graphBaseUri}v1.0/directory/deleteditems/{groupId}/restore", contentType: "application/json", accessToken: accessToken);
             }
             catch (Exception e)
             {
@@ -1305,12 +1333,18 @@ namespace PnP.Framework.Graph
         /// </summary>
         /// <param name="groupId">The ID of the group to permanently delete</param>
         /// <param name="accessToken">Access token for accessing Microsoft Graph</param>
+        /// <param name="graphBaseUri">The Microsoft Graph URI to use</param>
         /// <returns></returns>
-        public static void PermanentlyDeleteGroup(string groupId, string accessToken)
+        public static void PermanentlyDeleteGroup(string groupId, string accessToken, Uri graphBaseUri = null)
         {
             try
             {
-                HttpHelper.MakeDeleteRequest($"{GraphHelper.MicrosoftGraphBaseURI}v1.0/directory/deleteditems/{groupId}", accessToken);
+                if (graphBaseUri == null)
+                {
+                    graphBaseUri = new Uri(GraphHelper.MicrosoftGraphBaseURI);
+                }
+
+                HttpHelper.MakeDeleteRequest($"{graphBaseUri}v1.0/directory/deleteditems/{groupId}", accessToken);
             }
             catch (Exception e)
             {

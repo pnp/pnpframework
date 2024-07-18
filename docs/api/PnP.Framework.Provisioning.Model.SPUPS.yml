@@ -1,0 +1,35 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.SPUPS
+  commentId: N:PnP.Framework.Provisioning.Model.SPUPS
+  id: PnP.Framework.Provisioning.Model.SPUPS
+  children:
+  - PnP.Framework.Provisioning.Model.SPUPS.UserProfile
+  - PnP.Framework.Provisioning.Model.SPUPS.UserProfileCollection
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.SPUPS
+  nameWithType: PnP.Framework.Provisioning.Model.SPUPS
+  fullName: PnP.Framework.Provisioning.Model.SPUPS
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.SPUPS.UserProfile
+  commentId: T:PnP.Framework.Provisioning.Model.SPUPS.UserProfile
+  parent: PnP.Framework.Provisioning.Model.SPUPS
+  name: UserProfile
+  nameWithType: UserProfile
+  fullName: PnP.Framework.Provisioning.Model.SPUPS.UserProfile
+- uid: PnP.Framework.Provisioning.Model.SPUPS.UserProfileCollection
+  commentId: T:PnP.Framework.Provisioning.Model.SPUPS.UserProfileCollection
+  parent: PnP.Framework.Provisioning.Model.SPUPS
+  name: UserProfileCollection
+  nameWithType: UserProfileCollection
+  fullName: PnP.Framework.Provisioning.Model.SPUPS.UserProfileCollection
+- uid: PnP.Framework.Provisioning.Model.SPUPS
+  commentId: N:PnP.Framework.Provisioning.Model.SPUPS
+  name: PnP.Framework.Provisioning.Model.SPUPS
+  nameWithType: PnP.Framework.Provisioning.Model.SPUPS
+  fullName: PnP.Framework.Provisioning.Model.SPUPS

@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  id: PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.SearchSettings.ExtractSearchConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  fullName: PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.SearchSettings.ExtractSearchConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.SearchSettings.ExtractSearchConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  name: ExtractSearchConfiguration
+  nameWithType: ExtractSearchConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.SearchSettings.ExtractSearchConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  name: PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.SearchSettings
+  fullName: PnP.Framework.Provisioning.Model.Configuration.SearchSettings

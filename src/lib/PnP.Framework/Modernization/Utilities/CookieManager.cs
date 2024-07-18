@@ -61,7 +61,7 @@ namespace PnP.Framework.Modernization.Utilities
             var newContainer = new CookieContainer();
             newContainer.Add(container.GetCookies(uri));
 
-            var adminUri = new Uri($"{uri.Scheme}://{uri.Host.ToLower().Replace(".sharepoint.","-admin.sharepoint.")}");
+            var adminUri = AuthenticationManager.GetTenantAdministrationUri(uri.ToString());
             newContainer.Add(container.GetCookies(adminUri));
 
             return newContainer;

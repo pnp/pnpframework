@@ -27,7 +27,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
     internal class ObjectListInstance : ObjectHandlerBase
     {
         private readonly FieldAndListProvisioningStepHelper.Step step;
-
+        
         public override string Name
         {
 #if DEBUG
@@ -167,6 +167,23 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     #endregion Fields
 
+                    #region Audience Targeting
+                    foreach (var listInfo in processedLists)
+                    {
+                        if (listInfo.TemplateList.EnableClassicAudienceTargeting)
+                        {
+                            listInfo.SiteList.EnableClassicAudienceTargeting();
+                        }
+
+                        if (listInfo.TemplateList.EnableAudienceTargeting)
+                        {
+                            listInfo.SiteList.EnableModernAudienceTargeting();
+                        }
+                    }
+
+                    #endregion
+
+
                     // We stop here unless we reached the last provisioning stop of the list
                     if (step == FieldAndListProvisioningStepHelper.Step.ListSettings)
                     {
@@ -197,12 +214,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         foreach (var listInfo in processedLists)
                         {
                             var defaultFolderValues = new List<Entities.IDefaultColumnValue>();
-                            foreach (var templateListFolder in listInfo.TemplateList.Folders)
+                            
+                            ProcessDefaultFolders(web, listInfo, listInfo.TemplateList.DefaultColumnValues, listInfo.TemplateList.Folders, string.Empty, defaultFolderValues, parser);
+
+                            if (defaultFolderValues.Any())
                             {
-                                var folderName = templateListFolder.Name;
-                                ProcessDefaultFolders(web, listInfo, templateListFolder, folderName, defaultFolderValues, parser);
+                                listInfo.SiteList.SetDefaultColumnValues(defaultFolderValues, true);
                             }
-                            listInfo.SiteList.SetDefaultColumnValues(defaultFolderValues, true);
                         }
 
                         #endregion Column default values
@@ -251,25 +269,48 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return parser;
         }
 
-        private static void ProcessDefaultFolders(Web web, ListInfo listInfo, Model.Folder templateListFolder, string folderName,
+        private static void ProcessDefaultFolders(Web web, ListInfo listInfo,  Dictionary<string,string> defaultColumnValues, IEnumerable<Model.Folder> folders, string folderName,
             List<IDefaultColumnValue> defaultFolderValues, TokenParser parser)
         {
-            foreach (KeyValuePair<string, string> columnValue in templateListFolder.DefaultColumnValues)
+            foreach (KeyValuePair<string, string> columnValue in defaultColumnValues)
             {
                 var fieldName = parser.ParseString(columnValue.Key);
                 var fieldValue = parser.ParseString(columnValue.Value);
                 if (!string.IsNullOrEmpty(fieldValue))
                 {
                     var field = listInfo.SiteList.Fields.GetByInternalNameOrTitle(fieldName);
-                    var defaultValue = field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, new[] { fieldValue });
-                    defaultFolderValues.Add(defaultValue);
+                    field.EnsureProperties(f => f.TypeAsString);
+                    
+                    var value = field.TypeAsString is "TaxonomyFieldType" or "TaxonomyFieldTypeMulti"
+                        ? TermIdsToProcess(fieldValue).ToArray()
+                        : new string[] { fieldValue };
+                    
+                        var defaultValue = field.GetDefaultColumnValueFromField((ClientContext)web.Context, folderName, value);
+                        defaultFolderValues.Add(defaultValue);
                 }
             }
-            foreach (var folder in templateListFolder.Folders)
+            foreach (var folder in folders)
             {
-                var childFolderName = folderName + "/" + folder.Name;
-                ProcessDefaultFolders(web, listInfo, folder, childFolderName, defaultFolderValues, parser);
+                var childFolderName = folder.Name.Length > 0 ? folderName + "/" + folder.Name : folderName;
+                ProcessDefaultFolders(web, listInfo, folder.DefaultColumnValues, folder.Folders, childFolderName, defaultFolderValues, parser);
             }
+        }
+
+        private static List<string> TermIdsToProcess(string value)
+        {
+            var terms = value.Split(new[] { ";#" }, StringSplitOptions.None);
+            if (terms.Length == 1) return terms.ToList();
+
+            var termDefaultValuesParsed = new List<string>();
+            
+            for (int q = 0; q < terms.Length; q += 2)
+            {
+                var splitData = terms[q + 1].Split(new char[] { '|' });
+                var termIdString = splitData[1];
+                termDefaultValuesParsed.Add(termIdString);
+            }
+
+            return termDefaultValuesParsed;
         }
 
         private static void ProcessIRMSettings(Web web, ListInfo list)
@@ -747,6 +788,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 var viewInnerXml = reader.ReadInnerXml();
 
                 var createdView = createdList.Views.Add(viewCI);
+                createdList.Update();
+                web.Context.ExecuteQueryRetry();
+
+                // Edit the view settings after creating it to avoid issues with some creation properties being ignored, for example ViewTypeKind
                 createdView.ListViewXml = viewInnerXml;
                 if (hidden) createdView.Hidden = hidden;
                 createdView.Update();
@@ -1625,9 +1670,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             listContentType = list.ContentTypes.GetById(existingContentTypeId.StringValue);
                         }
                         else
-                        {
-                            // To avoid error [Exception setting "Hidden": "Cannot change Hidden attribute for this field], add fields to list before adding the content type. #2407
-                            AddContentTypeHiddenFieldsToList(tempCT, list);
+                        {                            
                             // Add the content type
                             listContentType = list.ContentTypes.AddExistingContentType(tempCT);
                         }
@@ -1680,26 +1723,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 defaultContentType.EnsureProperty(ct => ct.Id);
                 list.SetDefaultContentType(defaultContentType.Id);
-            }
-        }
-
-        private static void AddContentTypeHiddenFieldsToList(ContentType tempCT, List list)
-        {
-            var ctx = (ClientContext)list.Context;
-            var web = ctx.Web;
-            web.EnsureProperty(w => w.AvailableFields);
-            foreach (var fieldLink in tempCT.FieldLinks)
-            {
-                if (fieldLink.Hidden && !list.FieldExistsById(fieldLink.Id))
-                {
-                    var siteField = web.AvailableFields.First(f => f.Id == fieldLink.Id);
-
-                    list.Fields.Add(siteField);
-                }
-            }
-            if (ctx.HasPendingRequest)
-            {
-                ctx.ExecuteQueryRetry();
             }
         }
 
@@ -2174,13 +2197,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         var currentFolderItem = currentFolder.ListItemAllFields;
                         parentFolder.Context.Load(currentFolderItem);
                         parentFolder.Context.ExecuteQueryRetry();
-                        foreach (var p in folder.Properties.Where(p => !p.Key.Equals("ContentTypeId")))
+                        foreach (var p in folder.Properties.Where(p => !p.Key.Equals("ContentTypeId") && !p.Key.Equals("_ModerationStatus")))
                         {
                             currentFolderItem[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
                         }
                         currentFolderItem.UpdateOverwriteVersion();
                         currentFolder.Update();
                         parentFolder.Context.ExecuteQueryRetry();
+                                 
                     }
                     catch (ServerException srex)
                     {
@@ -2228,6 +2252,38 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         else
                             throw;
                     }
+                }
+                
+                //Set Moderation status of Folder
+                //Doing it in a different request, because SharePoint doesn't allow to update properties at the same time that other properties
+                if (list.SiteList.EnableModeration && folder.Properties != null && folder.Properties.Any(p => p.Key.Equals("_ModerationStatus")))
+                {
+                    try
+                    {
+                        var currentFolderItem = currentFolder.ListItemAllFields;
+                        parentFolder.Context.Load(currentFolderItem);
+                        parentFolder.Context.ExecuteQueryRetry();
+
+                        var propertyValue = folder.Properties["_ModerationStatus"];
+                        currentFolderItem["_ModerationStatus"] = parser.ParseString(propertyValue);
+
+                        currentFolderItem.UpdateOverwriteVersion();
+                        currentFolder.Update();
+                        parentFolder.Context.ExecuteQueryRetry();
+
+                    }
+                    catch (ServerException srex)
+                    {
+                        //Handle Error To update this folder, go to the channel in Microsoft Teams
+                        if (srex.ServerErrorCode == -2130575223)
+                        {
+                            scope.LogWarning($"Moderation status on folder '{targetFolderName}' can not be changed '{srex.Message}'");
+                            WriteMessage($"Moderation status on folder '{targetFolderName}' can not be changed '{srex.Message}'", ProvisioningMessageType.Warning);
+                        }
+                        else
+                            throw;
+                    }
+                    
                 }
             }
         }
@@ -2513,7 +2569,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     list = ExtractInformationRightsManagement(web, siteList, list, creationInfo, template);
 
                     list = ExtractPropertyBagEntries(siteList, list);
-
+                                        
                     if (baseTemplateList != null)
                     {
                         // do we plan to extract items from this list?
@@ -2632,7 +2688,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             foreach (var ct in siteList.ContentTypes)
             {
                 web.Context.Load(ct, c => c.Parent);
+                web.Context.Load(siteList.RootFolder, rf => rf.UniqueContentTypeOrder);
                 web.Context.ExecuteQueryRetry();
+
+                bool ctypeHidden = siteList.RootFolder.UniqueContentTypeOrder != null
+                    ? siteList.RootFolder.UniqueContentTypeOrder.FirstOrDefault(c => c.StringValue.Equals(ct.Id.StringValue, StringComparison.OrdinalIgnoreCase)) == null
+                    : false;
 
                 if (ct.Parent != null)
                 {
@@ -2643,14 +2704,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     // Exclude System Content Type to prevent getting exception during import
                     if (!ct.Parent.StringId.Equals(BuiltInContentTypeId.System))
                     {
-                        list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.Parent.StringId, Default = count == 0 });
+                        list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.Parent.StringId, Default = count == 0, Hidden = ctypeHidden });
                     }
 
                     //}
                 }
                 else
                 {
-                    list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.StringId, Default = count == 0 });
+                    list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.StringId, Default = count == 0, Hidden = ctypeHidden });
                 }
 
                 web.Context.Load(ct.FieldLinks);
@@ -2731,7 +2792,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         if (field.InternalName == "Editor"
                             || field.InternalName == "Author"
-                            || field.InternalName == "Title"
                             || field.InternalName == "ID"
                             || field.InternalName == "Created"
                             || field.InternalName == "Modified"
@@ -2772,19 +2832,43 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                     }
 
+                    if(field.InternalName == Constants.ModernAudienceTargetingInternalName || field.InternalName == Constants.ModernAudienceTargetingMultiLookupInternalName)
+                    {
+                        //Modern Audience Targeting
+                        list.EnableAudienceTargeting = true;
+                    }
+
+                    if (field.InternalName == Constants.ClassicAudienceTargetingInternalName)
+                    {
+                        //Classic Audience Targeting
+                        list.EnableClassicAudienceTargeting = true;
+                    }
+
+
                     if (addField)
                     {
+                        var fieldTitle = field.Title;
+                        if (creationInfo.PersistMultiLanguageResources)
+                        {
+                            var escapedFieldTitle = siteList.Title.Replace(" ", "_")+"_"+field.Title.Replace(" ", "_");
+                            if (UserResourceExtensions.PersistResourceValue(field.TitleResource, $"Field_{escapedFieldTitle}_DisplayName", template, creationInfo))
+                            {
+                                fieldTitle = $"{{res:Field_{escapedFieldTitle}_DisplayName}}";
+                            }
+                        }
+
                         list.FieldRefs.Add(new FieldRef(field.InternalName)
                         {
                             Id = field.Id,
-                            DisplayName = field.Title,
+                            DisplayName = fieldTitle,
                             Required = field.Required,
                             Hidden = field.Hidden,
                         });
                         if (field.TypeAsString.StartsWith("TaxonomyField"))
                         {
                             // find the corresponding taxonomy field and include it anyway
-                            var taxField = (TaxonomyField)field;
+                            var taxField = web.Context.CastTo<TaxonomyField>(field);
+
                             taxField.EnsureProperties(f => f.TextField, f => f.Id);
 
                             var noteField = siteList.Fields.GetById(taxField.TextField);
@@ -3037,5 +3121,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             return _willExtract.Value;
         }
+
     }
 }

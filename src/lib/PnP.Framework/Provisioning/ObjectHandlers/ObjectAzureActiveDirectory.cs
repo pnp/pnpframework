@@ -1,4 +1,5 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
+using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
@@ -23,6 +24,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
     {
         public override string Name => "AzureActiveDirectory ";
 
+        private Uri graphBaseUri;
+
         /// <summary>
         /// Creates a User in AAD and configures password and services
         /// </summary>
@@ -37,7 +40,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             var userId = GraphHelper.CreateOrUpdateGraphObject(scope,
                 HttpMethodVerb.POST,
-                $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/users",
+                $"{graphBaseUri}v1.0/users",
                 content,
                 HttpHelper.JsonContentType,
                 accessToken,
@@ -104,7 +107,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private void ManageUserLicenses(PnPMonitoredScope scope, object userId, UserLicenseCollection licenses, string accessToken)
         {
             // Get the currently assigned licenses
-            var jsoncurrentLicenses = HttpHelper.MakeGetRequestForString($"{GraphHelper.MicrosoftGraphBaseURI}beta/users/{userId}", accessToken);
+            var jsoncurrentLicenses = HttpHelper.MakeGetRequestForString($"{graphBaseUri}beta/users/{userId}", accessToken);
 
             var userElement = JsonSerializer.Deserialize<JsonElement>(jsoncurrentLicenses);
 
@@ -137,7 +140,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                   select r).ToArray()
             };
             HttpHelper.MakePostRequest(
-                $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/users/{userId}/assignLicense",
+                $"{graphBaseUri}v1.0/users/{userId}/assignLicense",
                 assignedLicenseBody, HttpHelper.JsonContentType, accessToken);
         }
 
@@ -151,7 +154,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <param name="userId">The ID of the target User</param>
         /// <param name="accessToken">The OAuth 2.0 Access Token</param>
         /// <returns>Whether the Photo has been updated or not</returns>
-        private static bool SetUserPhoto(PnPMonitoredScope scope, TokenParser parser, FileConnectorBase connector, Model.AzureActiveDirectory.User user, string userId, string accessToken)
+        private bool SetUserPhoto(PnPMonitoredScope scope, TokenParser parser, FileConnectorBase connector, Model.AzureActiveDirectory.User user, string userId, string accessToken)
         {
             Boolean result = false;
 
@@ -166,7 +169,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     mem.Position = 0;
 
                     HttpHelper.MakePostRequest(
-                        $"{GraphHelper.MicrosoftGraphBaseURI}v1.0/users/{userId}/photo/$value",
+                        $"{graphBaseUri}v1.0/users/{userId}/photo/$value",
                         mem, "image/jpeg", accessToken);
                 }
             }
@@ -201,6 +204,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Prepare a method global variable to store the Access Token
                 String accessToken = null;
 
+                // Get the needed Graph environment
+                graphBaseUri = AuthenticationManager.GetGraphBaseEndPoint(tenant.Context.GetAzureEnvironment());
+
                 // - Teams based on JSON templates
                 var users = hierarchy.AzureActiveDirectory?.Users;
                 if (users != null && users.Any())
@@ -208,7 +214,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     foreach (var u in users)
                     {
                         // Get a fresh Access Token for every request
-                        accessToken = PnPProvisioningContext.Current.AcquireToken(new Uri(GraphHelper.MicrosoftGraphBaseURI).Authority, "User.ReadWrite.All");
+                        accessToken = PnPProvisioningContext.Current.AcquireToken(graphBaseUri.Authority, "User.ReadWrite.All");
 
                         // Creates or updates the User starting from the provisioning template definition
                         var userId = CreateOrUpdateUser(scope, parser, u, accessToken);

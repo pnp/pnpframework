@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  id: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  children:
+  - PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams.ExtractTeamsConfiguration
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams.ExtractTeamsConfiguration
+  commentId: T:PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams.ExtractTeamsConfiguration
+  parent: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  name: ExtractTeamsConfiguration
+  nameWithType: ExtractTeamsConfiguration
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams.ExtractTeamsConfiguration
+- uid: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  commentId: N:PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  name: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  nameWithType: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams
+  fullName: PnP.Framework.Provisioning.Model.Configuration.Tenant.Teams

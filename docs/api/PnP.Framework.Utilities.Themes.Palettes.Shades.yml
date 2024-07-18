@@ -1,0 +1,1438 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades
+  commentId: T:PnP.Framework.Utilities.Themes.Palettes.Shades
+  id: Shades
+  parent: PnP.Framework.Utilities.Themes.Palettes
+  children:
+  - PnP.Framework.Utilities.Themes.Palettes.Shades.GetBackgroundShade(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.Shade,System.Boolean)
+  - PnP.Framework.Utilities.Themes.Palettes.Shades.GetContrastRatio(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.IColor)
+  - PnP.Framework.Utilities.Themes.Palettes.Shades.GetShade(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.Shade,System.Boolean)
+  - PnP.Framework.Utilities.Themes.Palettes.Shades.IsDark(PnP.Framework.Utilities.Themes.Palettes.IColor)
+  - PnP.Framework.Utilities.Themes.Palettes.Shades.IsValidShade(PnP.Framework.Utilities.Themes.Palettes.Shade)
+  - PnP.Framework.Utilities.Themes.Palettes.Shades.Round(System.Single)
+  langs:
+  - csharp
+  - vb
+  name: Shades
+  nameWithType: Shades
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Shades
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+    startLine: 20
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public class Shades
+    content.vb: Public Class Shades
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - PnP.Framework.Utilities.Themes.Palettes.Shades.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  - PnP.Framework.Utilities.Themes.Palettes.Shades.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Utilities.Themes.Palettes.Shades,{T}}},{T},System.Boolean,System.Boolean)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  - System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  - System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.IsValidShade(PnP.Framework.Utilities.Themes.Palettes.Shade)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Shades.IsValidShade(PnP.Framework.Utilities.Themes.Palettes.Shade)
+  id: IsValidShade(PnP.Framework.Utilities.Themes.Palettes.Shade)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Shades
+  langs:
+  - csharp
+  - vb
+  name: IsValidShade(Shade)
+  nameWithType: Shades.IsValidShade(Shade)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.IsValidShade(PnP.Framework.Utilities.Themes.Palettes.Shade)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsValidShade
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+    startLine: 36
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static bool IsValidShade(Shade shade)
+    parameters:
+    - id: shade
+      type: PnP.Framework.Utilities.Themes.Palettes.Shade
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsValidShade(shade As Shade) As Boolean
+  overload: PnP.Framework.Utilities.Themes.Palettes.Shades.IsValidShade*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.Round(System.Single)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Shades.Round(System.Single)
+  id: Round(System.Single)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Shades
+  langs:
+  - csharp
+  - vb
+  name: Round(Single)
+  nameWithType: Shades.Round(Single)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.Round(System.Single)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: Round
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+    startLine: 76
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static float Round(float n)
+    parameters:
+    - id: n
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Shared Function Round(n As Single) As Single
+  overload: PnP.Framework.Utilities.Themes.Palettes.Shades.Round*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.IsDark(PnP.Framework.Utilities.Themes.Palettes.IColor)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Shades.IsDark(PnP.Framework.Utilities.Themes.Palettes.IColor)
+  id: IsDark(PnP.Framework.Utilities.Themes.Palettes.IColor)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Shades
+  langs:
+  - csharp
+  - vb
+  name: IsDark(IColor)
+  nameWithType: Shades.IsDark(IColor)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.IsDark(PnP.Framework.Utilities.Themes.Palettes.IColor)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: IsDark
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+    startLine: 81
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public bool IsDark(IColor color)
+    parameters:
+    - id: color
+      type: PnP.Framework.Utilities.Themes.Palettes.IColor
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsDark(color As IColor) As Boolean
+  overload: PnP.Framework.Utilities.Themes.Palettes.Shades.IsDark*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.GetShade(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.Shade,System.Boolean)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Shades.GetShade(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.Shade,System.Boolean)
+  id: GetShade(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.Shade,System.Boolean)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Shades
+  langs:
+  - csharp
+  - vb
+  name: GetShade(IColor, Shade, Boolean)
+  nameWithType: Shades.GetShade(IColor, Shade, Boolean)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.GetShade(PnP.Framework.Utilities.Themes.Palettes.IColor, PnP.Framework.Utilities.Themes.Palettes.Shade, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetShade
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+    startLine: 127
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  example: []
+  syntax:
+    content: public static IColor GetShade(IColor color, Shade shade, bool isInverted = false)
+    parameters:
+    - id: color
+      type: PnP.Framework.Utilities.Themes.Palettes.IColor
+    - id: shade
+      type: PnP.Framework.Utilities.Themes.Palettes.Shade
+    - id: isInverted
+      type: System.Boolean
+    return:
+      type: PnP.Framework.Utilities.Themes.Palettes.IColor
+    content.vb: Public Shared Function GetShade(color As IColor, shade As Shade, isInverted As Boolean = False) As IColor
+  overload: PnP.Framework.Utilities.Themes.Palettes.Shades.GetShade*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.GetBackgroundShade(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.Shade,System.Boolean)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Shades.GetBackgroundShade(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.Shade,System.Boolean)
+  id: GetBackgroundShade(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.Shade,System.Boolean)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Shades
+  langs:
+  - csharp
+  - vb
+  name: GetBackgroundShade(IColor, Shade, Boolean)
+  nameWithType: Shades.GetBackgroundShade(IColor, Shade, Boolean)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.GetBackgroundShade(PnP.Framework.Utilities.Themes.Palettes.IColor, PnP.Framework.Utilities.Themes.Palettes.Shade, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetBackgroundShade
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+    startLine: 189
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static IColor GetBackgroundShade(IColor color, Shade shade, bool isInverted = false)
+    parameters:
+    - id: color
+      type: PnP.Framework.Utilities.Themes.Palettes.IColor
+    - id: shade
+      type: PnP.Framework.Utilities.Themes.Palettes.Shade
+    - id: isInverted
+      type: System.Boolean
+    return:
+      type: PnP.Framework.Utilities.Themes.Palettes.IColor
+    content.vb: Public Shared Function GetBackgroundShade(color As IColor, shade As Shade, isInverted As Boolean = False) As IColor
+  overload: PnP.Framework.Utilities.Themes.Palettes.Shades.GetBackgroundShade*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.GetContrastRatio(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.IColor)
+  commentId: M:PnP.Framework.Utilities.Themes.Palettes.Shades.GetContrastRatio(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.IColor)
+  id: GetContrastRatio(PnP.Framework.Utilities.Themes.Palettes.IColor,PnP.Framework.Utilities.Themes.Palettes.IColor)
+  parent: PnP.Framework.Utilities.Themes.Palettes.Shades
+  langs:
+  - csharp
+  - vb
+  name: GetContrastRatio(IColor, IColor)
+  nameWithType: Shades.GetContrastRatio(IColor, IColor)
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.GetContrastRatio(PnP.Framework.Utilities.Themes.Palettes.IColor, PnP.Framework.Utilities.Themes.Palettes.IColor)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetContrastRatio
+    path: ../src/lib/PnP.Framework/Utilities/Themes/Palettes/Shades.cs
+    startLine: 222
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Utilities.Themes.Palettes
+  syntax:
+    content: public static double GetContrastRatio(IColor color1, IColor color2)
+    parameters:
+    - id: color1
+      type: PnP.Framework.Utilities.Themes.Palettes.IColor
+    - id: color2
+      type: PnP.Framework.Utilities.Themes.Palettes.IColor
+    return:
+      type: System.Double
+    content.vb: Public Shared Function GetContrastRatio(color1 As IColor, color2 As IColor) As Double
+  overload: PnP.Framework.Utilities.Themes.Palettes.Shades.GetContrastRatio*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: PnP.Framework.Utilities.Themes.Palettes
+  commentId: N:PnP.Framework.Utilities.Themes.Palettes
+  name: PnP.Framework.Utilities.Themes.Palettes
+  nameWithType: PnP.Framework.Utilities.Themes.Palettes
+  fullName: PnP.Framework.Utilities.Themes.Palettes
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  parent: System.ValidationExtensions
+  definition: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  name: ValidateNotNullOrEmpty<Shades>(String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<Shades>(String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Utilities.Themes.Palettes.Shades>(System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of Shades)(String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Utilities.Themes.Palettes.Shades)(System.String)
+  name.vb: ValidateNotNullOrEmpty(Of Shades)(String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty<Shades>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<Shades>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<PnP.Framework.Utilities.Themes.Palettes.Shades>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(System.String)
+    name: ValidateNotNullOrEmpty(Of Shades)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of Shades)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of PnP.Framework.Utilities.Themes.Palettes.Shades)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{PnP.Framework.Utilities.Themes.Palettes.Shades,{T}}},{T},System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  name: Set<Shades, T>(Expression<Func<Shades, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<Shades, T>(Expression<Func<Shades, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Utilities.Themes.Palettes.Shades, T>(System.Linq.Expressions.Expression<System.Func<PnP.Framework.Utilities.Themes.Palettes.Shades, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of Shades, T)(Expression(Of Func(Of Shades, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Utilities.Themes.Palettes.Shades, T)(System.Linq.Expressions.Expression(Of System.Func(Of PnP.Framework.Utilities.Themes.Palettes.Shades, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of Shades, T)(Expression(Of Func(Of Shades, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<Shades, T>
+    nameWithType: ObjectExtensions.Set<Shades, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<PnP.Framework.Utilities.Themes.Palettes.Shades, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: PnP.Framework.Utilities.Themes.Palettes.Shades
+    name: Shades
+    nameWithType: Shades
+    fullName: PnP.Framework.Utilities.Themes.Palettes.Shades
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of Shades, T)
+    nameWithType: ObjectExtensions.Set(Of Shades, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of PnP.Framework.Utilities.Themes.Palettes.Shades, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: PnP.Framework.Utilities.Themes.Palettes.Shades
+    name: Shades
+    nameWithType: Shades
+    fullName: PnP.Framework.Utilities.Themes.Palettes.Shades
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  name: GetPublicInstancePropertyValue(String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  name: GetPublicInstanceProperty(String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  parent: PnP.Framework.Extensions.ObjectExtensions
+  definition: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  name: SetPublicInstancePropertyValue(String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  parent: PnP.Framework.Modernization.Cache.Extensions
+  definition: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  name: ToByteArray()
+  nameWithType: Extensions.ToByteArray()
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray()
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  commentId: M:System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+  isExternal: true
+  name: ValidateNotNullOrEmpty<T>(T, String)
+  nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String)
+  fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>(T, System.String)
+  nameWithType.vb: ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, String)
+  fullName.vb: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)(T, System.String)
+  name.vb: ValidateNotNullOrEmpty(Of T)(T, String)
+  spec.csharp:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty<T>
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty<T>
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty<T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.ValidationExtensions.ValidateNotNullOrEmpty``1(``0,System.String)
+    name: ValidateNotNullOrEmpty(Of T)
+    nameWithType: ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+    fullName: System.ValidationExtensions.ValidateNotNullOrEmpty(Of T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.ValidationExtensions
+  commentId: T:System.ValidationExtensions
+  parent: System
+  name: ValidationExtensions
+  nameWithType: ValidationExtensions
+  fullName: System.ValidationExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+  isExternal: true
+  name: Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  nameWithType: ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>(TObject, System.Linq.Expressions.Expression<System.Func<TObject, T>>, T, System.Boolean, System.Boolean)
+  nameWithType.vb: ObjectExtensions.Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  fullName.vb: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)(TObject, System.Linq.Expressions.Expression(Of System.Func(Of TObject, T)), T, System.Boolean, System.Boolean)
+  name.vb: Set(Of TObject, T)(TObject, Expression(Of Func(Of TObject, T)), T, Boolean, Boolean)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set<TObject, T>
+    nameWithType: ObjectExtensions.Set<TObject, T>
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set<TObject, T>
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.Set``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Boolean,System.Boolean)
+    name: Set(Of TObject, T)
+    nameWithType: ObjectExtensions.Set(Of TObject, T)
+    fullName: PnP.Framework.Extensions.ObjectExtensions.Set(Of TObject, T)
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    nameWithType: Expression
+    fullName: System.Linq.Expressions.Expression
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TObject
+    nameWithType: TObject
+    fullName: TObject
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions
+  commentId: T:PnP.Framework.Extensions.ObjectExtensions
+  parent: PnP.Framework.Extensions
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: PnP.Framework.Extensions.ObjectExtensions
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstancePropertyValue(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstancePropertyValue(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue(System.Object,System.String)
+    name: GetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.GetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+  isExternal: true
+  name: GetPublicInstanceProperty(Object, String)
+  nameWithType: ObjectExtensions.GetPublicInstanceProperty(Object, String)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object, System.String)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty(System.Object,System.String)
+    name: GetPublicInstanceProperty
+    nameWithType: ObjectExtensions.GetPublicInstanceProperty
+    fullName: PnP.Framework.Extensions.ObjectExtensions.GetPublicInstanceProperty
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  commentId: M:PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+  isExternal: true
+  name: SetPublicInstancePropertyValue(Object, String, Object)
+  nameWithType: ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object)
+  fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object, System.String, System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue(System.Object,System.String,System.Object)
+    name: SetPublicInstancePropertyValue
+    nameWithType: ObjectExtensions.SetPublicInstancePropertyValue
+    fullName: PnP.Framework.Extensions.ObjectExtensions.SetPublicInstancePropertyValue
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  commentId: M:PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  isExternal: true
+  name: ToByteArray(Object)
+  nameWithType: Extensions.ToByteArray(Object)
+  fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+  spec.csharp:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: PnP.Framework.Modernization.Cache.Extensions.ToByteArray(System.Object)
+    name: ToByteArray
+    nameWithType: Extensions.ToByteArray
+    fullName: PnP.Framework.Modernization.Cache.Extensions.ToByteArray
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Modernization.Cache.Extensions
+  commentId: T:PnP.Framework.Modernization.Cache.Extensions
+  parent: PnP.Framework.Modernization.Cache
+  name: Extensions
+  nameWithType: Extensions
+  fullName: PnP.Framework.Modernization.Cache.Extensions
+- uid: PnP.Framework.Extensions
+  commentId: N:PnP.Framework.Extensions
+  name: PnP.Framework.Extensions
+  nameWithType: PnP.Framework.Extensions
+  fullName: PnP.Framework.Extensions
+- uid: PnP.Framework.Modernization.Cache
+  commentId: N:PnP.Framework.Modernization.Cache
+  name: PnP.Framework.Modernization.Cache
+  nameWithType: PnP.Framework.Modernization.Cache
+  fullName: PnP.Framework.Modernization.Cache
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.IsValidShade*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Shades.IsValidShade
+  name: IsValidShade
+  nameWithType: Shades.IsValidShade
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.IsValidShade
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shade
+  commentId: T:PnP.Framework.Utilities.Themes.Palettes.Shade
+  parent: PnP.Framework.Utilities.Themes.Palettes
+  name: Shade
+  nameWithType: Shade
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shade
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.Round*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Shades.Round
+  name: Round
+  nameWithType: Shades.Round
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.Round
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.IsDark*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Shades.IsDark
+  name: IsDark
+  nameWithType: Shades.IsDark
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.IsDark
+- uid: PnP.Framework.Utilities.Themes.Palettes.IColor
+  commentId: T:PnP.Framework.Utilities.Themes.Palettes.IColor
+  parent: PnP.Framework.Utilities.Themes.Palettes
+  name: IColor
+  nameWithType: IColor
+  fullName: PnP.Framework.Utilities.Themes.Palettes.IColor
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.GetShade*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Shades.GetShade
+  name: GetShade
+  nameWithType: Shades.GetShade
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.GetShade
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.GetBackgroundShade*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Shades.GetBackgroundShade
+  name: GetBackgroundShade
+  nameWithType: Shades.GetBackgroundShade
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.GetBackgroundShade
+- uid: PnP.Framework.Utilities.Themes.Palettes.Shades.GetContrastRatio*
+  commentId: Overload:PnP.Framework.Utilities.Themes.Palettes.Shades.GetContrastRatio
+  name: GetContrastRatio
+  nameWithType: Shades.GetContrastRatio
+  fullName: PnP.Framework.Utilities.Themes.Palettes.Shades.GetContrastRatio
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: Double
+  nameWithType: Double
+  fullName: System.Double

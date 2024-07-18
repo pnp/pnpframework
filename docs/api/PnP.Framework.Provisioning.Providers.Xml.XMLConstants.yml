@@ -1,0 +1,565 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLConstants
+  commentId: T:PnP.Framework.Provisioning.Providers.Xml.XMLConstants
+  id: XMLConstants
+  parent: PnP.Framework.Provisioning.Providers.Xml
+  children:
+  - PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_03
+  - PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_09
+  - PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2020_02
+  - PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
+  - PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2022_09
+  - PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_PREFIX
+  langs:
+  - csharp
+  - vb
+  name: XMLConstants
+  nameWithType: XMLConstants
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLConstants
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: XMLConstants
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+    startLine: 4
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml
+  syntax:
+    content: public static class XMLConstants
+    content.vb: Public Module XMLConstants
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_PREFIX
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_PREFIX
+  id: PROVISIONING_SCHEMA_PREFIX
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLConstants
+  langs:
+  - csharp
+  - vb
+  name: PROVISIONING_SCHEMA_PREFIX
+  nameWithType: XMLConstants.PROVISIONING_SCHEMA_PREFIX
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_PREFIX
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PROVISIONING_SCHEMA_PREFIX
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+    startLine: 6
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml
+  syntax:
+    content: public const string PROVISIONING_SCHEMA_PREFIX = "pnp"
+    return:
+      type: System.String
+    content.vb: Public Const PROVISIONING_SCHEMA_PREFIX As String = "pnp"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_03
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_03
+  id: PROVISIONING_SCHEMA_NAMESPACE_2019_03
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLConstants
+  langs:
+  - csharp
+  - vb
+  name: PROVISIONING_SCHEMA_NAMESPACE_2019_03
+  nameWithType: XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_03
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_03
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PROVISIONING_SCHEMA_NAMESPACE_2019_03
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+    startLine: 10
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml
+  syntax:
+    content: >-
+      [Obsolete("The PnP Provisioning Schema v201903 is obsolete and deprecated, please use the latest version available at https://github.com/pnp/PnP-Provisioning-Schema")]
+
+      public const string PROVISIONING_SCHEMA_NAMESPACE_2019_03 = "http://schemas.dev.office.com/PnP/2019/03/ProvisioningSchema"
+    return:
+      type: System.String
+    content.vb: >-
+      <Obsolete("The PnP Provisioning Schema v201903 is obsolete and deprecated, please use the latest version available at https://github.com/pnp/PnP-Provisioning-Schema")>
+
+      Public Const PROVISIONING_SCHEMA_NAMESPACE_2019_03 As String = "http://schemas.dev.office.com/PnP/2019/03/ProvisioningSchema"
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: The PnP Provisioning Schema v201903 is obsolete and deprecated, please use the latest version available at https://github.com/pnp/PnP-Provisioning-Schema
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_09
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_09
+  id: PROVISIONING_SCHEMA_NAMESPACE_2019_09
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLConstants
+  langs:
+  - csharp
+  - vb
+  name: PROVISIONING_SCHEMA_NAMESPACE_2019_09
+  nameWithType: XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_09
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2019_09
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PROVISIONING_SCHEMA_NAMESPACE_2019_09
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+    startLine: 12
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml
+  syntax:
+    content: public const string PROVISIONING_SCHEMA_NAMESPACE_2019_09 = "http://schemas.dev.office.com/PnP/2019/09/ProvisioningSchema"
+    return:
+      type: System.String
+    content.vb: Public Const PROVISIONING_SCHEMA_NAMESPACE_2019_09 As String = "http://schemas.dev.office.com/PnP/2019/09/ProvisioningSchema"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2020_02
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2020_02
+  id: PROVISIONING_SCHEMA_NAMESPACE_2020_02
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLConstants
+  langs:
+  - csharp
+  - vb
+  name: PROVISIONING_SCHEMA_NAMESPACE_2020_02
+  nameWithType: XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2020_02
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2020_02
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PROVISIONING_SCHEMA_NAMESPACE_2020_02
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+    startLine: 13
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml
+  syntax:
+    content: public const string PROVISIONING_SCHEMA_NAMESPACE_2020_02 = "http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema"
+    return:
+      type: System.String
+    content.vb: Public Const PROVISIONING_SCHEMA_NAMESPACE_2020_02 As String = "http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
+  id: PROVISIONING_SCHEMA_NAMESPACE_2021_03
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLConstants
+  langs:
+  - csharp
+  - vb
+  name: PROVISIONING_SCHEMA_NAMESPACE_2021_03
+  nameWithType: XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PROVISIONING_SCHEMA_NAMESPACE_2021_03
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+    startLine: 14
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml
+  syntax:
+    content: public const string PROVISIONING_SCHEMA_NAMESPACE_2021_03 = "http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema"
+    return:
+      type: System.String
+    content.vb: Public Const PROVISIONING_SCHEMA_NAMESPACE_2021_03 As String = "http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2022_09
+  commentId: F:PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2022_09
+  id: PROVISIONING_SCHEMA_NAMESPACE_2022_09
+  parent: PnP.Framework.Provisioning.Providers.Xml.XMLConstants
+  langs:
+  - csharp
+  - vb
+  name: PROVISIONING_SCHEMA_NAMESPACE_2022_09
+  nameWithType: XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2022_09
+  fullName: PnP.Framework.Provisioning.Providers.Xml.XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2022_09
+  type: Field
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: PROVISIONING_SCHEMA_NAMESPACE_2022_09
+    path: ../src/lib/PnP.Framework/Provisioning/Providers/Xml/XMLConstants.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: PnP.Framework.Provisioning.Providers.Xml
+  syntax:
+    content: public const string PROVISIONING_SCHEMA_NAMESPACE_2022_09 = "http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema"
+    return:
+      type: System.String
+    content.vb: Public Const PROVISIONING_SCHEMA_NAMESPACE_2022_09 As String = "http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: PnP.Framework.Provisioning.Providers.Xml
+  commentId: N:PnP.Framework.Provisioning.Providers.Xml
+  name: PnP.Framework.Provisioning.Providers.Xml
+  nameWithType: PnP.Framework.Provisioning.Providers.Xml
+  fullName: PnP.Framework.Provisioning.Providers.Xml
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.CanvasControl
+  commentId: N:PnP.Framework.Utilities.CanvasControl
+  id: PnP.Framework.Utilities.CanvasControl
+  children:
+  - PnP.Framework.Utilities.CanvasControl.CanvasControlPostProcessorFactory
+  - PnP.Framework.Utilities.CanvasControl.ICanvasControlPostProcessor
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.CanvasControl
+  nameWithType: PnP.Framework.Utilities.CanvasControl
+  fullName: PnP.Framework.Utilities.CanvasControl
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.CanvasControl.CanvasControlPostProcessorFactory
+  commentId: T:PnP.Framework.Utilities.CanvasControl.CanvasControlPostProcessorFactory
+  name: CanvasControlPostProcessorFactory
+  nameWithType: CanvasControlPostProcessorFactory
+  fullName: PnP.Framework.Utilities.CanvasControl.CanvasControlPostProcessorFactory
+- uid: PnP.Framework.Utilities.CanvasControl.ICanvasControlPostProcessor
+  commentId: T:PnP.Framework.Utilities.CanvasControl.ICanvasControlPostProcessor
+  parent: PnP.Framework.Utilities.CanvasControl
+  name: ICanvasControlPostProcessor
+  nameWithType: ICanvasControlPostProcessor
+  fullName: PnP.Framework.Utilities.CanvasControl.ICanvasControlPostProcessor
+- uid: PnP.Framework.Utilities.CanvasControl
+  commentId: N:PnP.Framework.Utilities.CanvasControl
+  name: PnP.Framework.Utilities.CanvasControl
+  nameWithType: PnP.Framework.Utilities.CanvasControl
+  fullName: PnP.Framework.Utilities.CanvasControl

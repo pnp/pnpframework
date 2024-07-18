@@ -1,0 +1,22 @@
+- name: Getting started
+  href: readme.md
+
+- name: Setting up PolyGlot Notebooks
+  href: setting-up-to-use-polyglot-samples.md
+
+- name: "PnP Provisioning"
+  href: pnp-provisioning/getting-started.md
+
+- name: "Working with SharePoint"
+  href: working-with-sharepoint/getting-started.md
+
+- name: "Working with Microsoft Teams"
+  href: working-with-teams/getting-started.md
+
+- name: "PnP Page Transformation"
+  items:
+  - name: Getting started
+    href: pnp-modernization/getting-started.md
+
+- name: Migrating from PnP Sites Core
+  href: migrating-from-pnp-sites-core.md

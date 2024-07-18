@@ -1,0 +1,217 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Utilities.UnitTests.Model
+  commentId: N:PnP.Framework.Utilities.UnitTests.Model
+  id: PnP.Framework.Utilities.UnitTests.Model
+  children:
+  - PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath
+  - PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath`1
+  - PnP.Framework.Utilities.UnitTests.Model.BaseAction
+  - PnP.Framework.Utilities.UnitTests.Model.CSOMRequest
+  - PnP.Framework.Utilities.UnitTests.Model.Identity
+  - PnP.Framework.Utilities.UnitTests.Model.IdentityQueryAction
+  - PnP.Framework.Utilities.UnitTests.Model.MethodAction
+  - PnP.Framework.Utilities.UnitTests.Model.MethodParameter
+  - PnP.Framework.Utilities.UnitTests.Model.MockHttpResponse
+  - PnP.Framework.Utilities.UnitTests.Model.MockResponse
+  - PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry
+  - PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry`1
+  - PnP.Framework.Utilities.UnitTests.Model.ObjectPathMethod
+  - PnP.Framework.Utilities.UnitTests.Model.Parameter
+  - PnP.Framework.Utilities.UnitTests.Model.Property
+  - PnP.Framework.Utilities.UnitTests.Model.QueryAction
+  - PnP.Framework.Utilities.UnitTests.Model.RequestExecutedArgs
+  - PnP.Framework.Utilities.UnitTests.Model.ResponseHeader
+  - PnP.Framework.Utilities.UnitTests.Model.SelectQuery
+  - PnP.Framework.Utilities.UnitTests.Model.StaticMethod
+  - PnP.Framework.Utilities.UnitTests.Model.StaticProperty
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Utilities.UnitTests.Model
+  nameWithType: PnP.Framework.Utilities.UnitTests.Model
+  fullName: PnP.Framework.Utilities.UnitTests.Model
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Utilities.UnitTests.Model.BaseAction
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.BaseAction
+  parent: PnP.Framework.Utilities.UnitTests.Model
+  name: BaseAction
+  nameWithType: BaseAction
+  fullName: PnP.Framework.Utilities.UnitTests.Model.BaseAction
+- uid: PnP.Framework.Utilities.UnitTests.Model.IdentityQueryAction
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.IdentityQueryAction
+  name: IdentityQueryAction
+  nameWithType: IdentityQueryAction
+  fullName: PnP.Framework.Utilities.UnitTests.Model.IdentityQueryAction
+- uid: PnP.Framework.Utilities.UnitTests.Model.QueryAction
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.QueryAction
+  name: QueryAction
+  nameWithType: QueryAction
+  fullName: PnP.Framework.Utilities.UnitTests.Model.QueryAction
+- uid: PnP.Framework.Utilities.UnitTests.Model.Parameter
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.Parameter
+  name: Parameter
+  nameWithType: Parameter
+  fullName: PnP.Framework.Utilities.UnitTests.Model.Parameter
+- uid: PnP.Framework.Utilities.UnitTests.Model.SelectQuery
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.SelectQuery
+  parent: PnP.Framework.Utilities.UnitTests.Model
+  name: SelectQuery
+  nameWithType: SelectQuery
+  fullName: PnP.Framework.Utilities.UnitTests.Model.SelectQuery
+- uid: PnP.Framework.Utilities.UnitTests.Model.MethodAction
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.MethodAction
+  name: MethodAction
+  nameWithType: MethodAction
+  fullName: PnP.Framework.Utilities.UnitTests.Model.MethodAction
+- uid: PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath`1
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath`1
+  name: ActionObjectPath<T>
+  nameWithType: ActionObjectPath<T>
+  fullName: PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath<T>
+  nameWithType.vb: ActionObjectPath(Of T)
+  fullName.vb: PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath(Of T)
+  name.vb: ActionObjectPath(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath`1
+    name: ActionObjectPath
+    nameWithType: ActionObjectPath
+    fullName: PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath`1
+    name: ActionObjectPath
+    nameWithType: ActionObjectPath
+    fullName: PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath
+  name: ActionObjectPath
+  nameWithType: ActionObjectPath
+  fullName: PnP.Framework.Utilities.UnitTests.Model.ActionObjectPath
+- uid: PnP.Framework.Utilities.UnitTests.Model.CSOMRequest
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.CSOMRequest
+  parent: PnP.Framework.Utilities.UnitTests.Model
+  name: CSOMRequest
+  nameWithType: CSOMRequest
+  fullName: PnP.Framework.Utilities.UnitTests.Model.CSOMRequest
+- uid: PnP.Framework.Utilities.UnitTests.Model.Identity
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.Identity
+  parent: PnP.Framework.Utilities.UnitTests.Model
+  name: Identity
+  nameWithType: Identity
+  fullName: PnP.Framework.Utilities.UnitTests.Model.Identity
+- uid: PnP.Framework.Utilities.UnitTests.Model.Property
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.Property
+  parent: PnP.Framework.Utilities.UnitTests.Model
+  name: Property
+  nameWithType: Property
+  fullName: PnP.Framework.Utilities.UnitTests.Model.Property
+- uid: PnP.Framework.Utilities.UnitTests.Model.StaticProperty
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.StaticProperty
+  name: StaticProperty
+  nameWithType: StaticProperty
+  fullName: PnP.Framework.Utilities.UnitTests.Model.StaticProperty
+- uid: PnP.Framework.Utilities.UnitTests.Model.ObjectPathMethod
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.ObjectPathMethod
+  name: ObjectPathMethod
+  nameWithType: ObjectPathMethod
+  fullName: PnP.Framework.Utilities.UnitTests.Model.ObjectPathMethod
+- uid: PnP.Framework.Utilities.UnitTests.Model.MethodParameter
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.MethodParameter
+  name: MethodParameter
+  nameWithType: MethodParameter
+  fullName: PnP.Framework.Utilities.UnitTests.Model.MethodParameter
+- uid: PnP.Framework.Utilities.UnitTests.Model.StaticMethod
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.StaticMethod
+  name: StaticMethod
+  nameWithType: StaticMethod
+  fullName: PnP.Framework.Utilities.UnitTests.Model.StaticMethod
+- uid: PnP.Framework.Utilities.UnitTests.Model.MockHttpResponse
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.MockHttpResponse
+  name: MockHttpResponse
+  nameWithType: MockHttpResponse
+  fullName: PnP.Framework.Utilities.UnitTests.Model.MockHttpResponse
+- uid: PnP.Framework.Utilities.UnitTests.Model.MockResponse
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.MockResponse
+  name: MockResponse
+  nameWithType: MockResponse
+  fullName: PnP.Framework.Utilities.UnitTests.Model.MockResponse
+- uid: PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry`1
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry`1
+  name: MockResponseEntry<T>
+  nameWithType: MockResponseEntry<T>
+  fullName: PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry<T>
+  nameWithType.vb: MockResponseEntry(Of T)
+  fullName.vb: PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry(Of T)
+  name.vb: MockResponseEntry(Of T)
+  spec.csharp:
+  - uid: PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry`1
+    name: MockResponseEntry
+    nameWithType: MockResponseEntry
+    fullName: PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry`1
+    name: MockResponseEntry
+    nameWithType: MockResponseEntry
+    fullName: PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry
+  parent: PnP.Framework.Utilities.UnitTests.Model
+  name: MockResponseEntry
+  nameWithType: MockResponseEntry
+  fullName: PnP.Framework.Utilities.UnitTests.Model.MockResponseEntry
+- uid: PnP.Framework.Utilities.UnitTests.Model.RequestExecutedArgs
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.RequestExecutedArgs
+  parent: PnP.Framework.Utilities.UnitTests.Model
+  name: RequestExecutedArgs
+  nameWithType: RequestExecutedArgs
+  fullName: PnP.Framework.Utilities.UnitTests.Model.RequestExecutedArgs
+- uid: PnP.Framework.Utilities.UnitTests.Model.ResponseHeader
+  commentId: T:PnP.Framework.Utilities.UnitTests.Model.ResponseHeader
+  parent: PnP.Framework.Utilities.UnitTests.Model
+  name: ResponseHeader
+  nameWithType: ResponseHeader
+  fullName: PnP.Framework.Utilities.UnitTests.Model.ResponseHeader
+- uid: PnP.Framework.Utilities.UnitTests.Model
+  commentId: N:PnP.Framework.Utilities.UnitTests.Model
+  name: PnP.Framework.Utilities.UnitTests.Model
+  nameWithType: PnP.Framework.Utilities.UnitTests.Model
+  fullName: PnP.Framework.Utilities.UnitTests.Model

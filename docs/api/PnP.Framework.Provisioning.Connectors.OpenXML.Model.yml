@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  commentId: N:PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  id: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  children:
+  - PnP.Framework.Provisioning.Connectors.OpenXML.Model.PackageType
+  - PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPFileInfo
+  - PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPFilesMap
+  - PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPInfo
+  - PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPManifest
+  - PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPProperties
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  nameWithType: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPFileInfo
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPFileInfo
+  name: PnPFileInfo
+  nameWithType: PnPFileInfo
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPFileInfo
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPFilesMap
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPFilesMap
+  parent: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  name: PnPFilesMap
+  nameWithType: PnPFilesMap
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPFilesMap
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPInfo
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPInfo
+  parent: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  name: PnPInfo
+  nameWithType: PnPInfo
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPInfo
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPManifest
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPManifest
+  parent: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  name: PnPManifest
+  nameWithType: PnPManifest
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPManifest
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PackageType
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXML.Model.PackageType
+  parent: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  name: PackageType
+  nameWithType: PackageType
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PackageType
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPProperties
+  commentId: T:PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPProperties
+  parent: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  name: PnPProperties
+  nameWithType: PnPProperties
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.Model.PnPProperties
+- uid: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  commentId: N:PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  name: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  nameWithType: PnP.Framework.Provisioning.Connectors.OpenXML.Model
+  fullName: PnP.Framework.Provisioning.Connectors.OpenXML.Model

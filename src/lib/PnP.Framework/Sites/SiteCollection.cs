@@ -75,15 +75,17 @@ namespace PnP.Framework.Sites
         /// <param name="delayAfterCreation">Defines the number of seconds to wait after creation</param>
         /// <param name="noWait">If specified the site will be created and the process will be finished asynchronously</param>
         /// <param name="graphAccessToken">An optional Access Token for Microsoft Graph to use for creeating the site within an App-Only context</param>
+        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns>ClientContext object for the created site collection</returns>
         public static ClientContext Create(
             ClientContext clientContext,
             TeamSiteCollectionCreationInformation siteCollectionCreationInformation,
             int delayAfterCreation = 0,
             bool noWait = false,
-            string graphAccessToken = null)
+            string graphAccessToken = null,
+            AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            var context = CreateAsync(clientContext, siteCollectionCreationInformation, delayAfterCreation, noWait: noWait, graphAccessToken: graphAccessToken).GetAwaiter().GetResult();
+            var context = CreateAsync(clientContext, siteCollectionCreationInformation, delayAfterCreation, noWait: noWait, graphAccessToken: graphAccessToken, azureEnvironment: azureEnvironment).GetAwaiter().GetResult();
             return context;
         }
 
@@ -141,6 +143,10 @@ namespace PnP.Framework.Sites
             {
                 payload.Add("PreferredDataLocation", siteCollectionCreationInformation.PreferredDataLocation.Value.ToString());
             }
+            if (siteCollectionCreationInformation.TimeZoneId.HasValue)
+            {
+                payload.Add("TimeZoneId", siteCollectionCreationInformation.TimeZoneId.Value);
+            }
 
             return await CreateAsync(clientContext, siteCollectionCreationInformation.Owner, payload, delayAfterCreation, noWait: noWait);
         }
@@ -189,6 +195,10 @@ namespace PnP.Framework.Sites
             {
                 payload.Add("SensitivityLabel", sensitivityLabelId);
                 payload["Classification"] = siteCollectionCreationInformation.SensitivityLabel;
+            }
+            if (siteCollectionCreationInformation.TimeZoneId.HasValue)
+            {
+                payload.Add("TimeZoneId", siteCollectionCreationInformation.TimeZoneId.Value);
             }
             return await CreateAsync(
                 clientContext,
@@ -535,14 +545,23 @@ namespace PnP.Framework.Sites
                 delay: retryDelay,
                 azureEnvironment: azureEnvironment,
                 preferredDataLocation: siteCollectionCreationInformation.PreferredDataLocation,
-                assignedLabels: new Guid[] { sensitivityLabelId });
+                assignedLabels: new Guid[] { sensitivityLabelId },
+                siteAlias: siteCollectionCreationInformation.SiteAlias,
+                lcid: siteCollectionCreationInformation.Lcid,
+                hubSiteId: siteCollectionCreationInformation.HubSiteId,
+                siteDesignId: siteCollectionCreationInformation.SiteDesignId.HasValue ? siteCollectionCreationInformation.SiteDesignId.Value : Guid.Empty);
 
             if (group != null && !string.IsNullOrEmpty(group.SiteUrl))
             {
+                if (siteCollectionCreationInformation.Owners!=null)
+                {
+                    Graph.UnifiedGroupsUtility.AddUnifiedGroupMembers(group.GroupId, siteCollectionCreationInformation.Owners, graphAccessToken, azureEnvironment: azureEnvironment);
+                }
                 // Try to configure the site/group classification, if any
                 if (!string.IsNullOrEmpty(siteCollectionCreationInformation.Classification))
                 {
                     await SetTeamSiteClassification(
+                        clientContext,
                         siteCollectionCreationInformation.Classification,
                         group.GroupId,
                         graphAccessToken
@@ -555,11 +574,14 @@ namespace PnP.Framework.Sites
             return responseContext;
         }
 
-        private static async Task SetTeamSiteClassification(string classification, string groupId, string graphAccessToken)
+        private static async Task SetTeamSiteClassification(ClientContext clientContext, string classification, string groupId, string graphAccessToken)
         {
             // Patch the created group
             var httpClient = PnPHttpClient.Instance.GetHttpClient();
-            string requestUrl = $"https://graph.microsoft.com/v1.0/groups/{groupId}";
+
+            var microsoftGraphBaseUri = AuthenticationManager.GetGraphBaseEndPoint(clientContext.GetAzureEnvironment());
+
+            string requestUrl = $"{microsoftGraphBaseUri}v1.0/groups/{groupId}";
 
             // Serialize request object to JSON
             var jsonBody = JsonConvert.SerializeObject(new { classification });
@@ -879,6 +901,20 @@ namespace PnP.Framework.Sites
 
         private static Dictionary<string, object> GetRequestPayload(SiteCreationInformation siteCollectionCreationInformation)
         {
+            if (siteCollectionCreationInformation.Url.IndexOf("/sites/", StringComparison.InvariantCultureIgnoreCase) > -1 || siteCollectionCreationInformation.Url.IndexOf("/teams/", StringComparison.InvariantCultureIgnoreCase) > -1)
+            {
+                // Split the URL by '/'
+                string[] urlParts = siteCollectionCreationInformation.Url.Split('/');
+
+                // Get the last part of the URL after "sites"
+                string lastPart = urlParts[urlParts.Length - 1];
+
+                string newLastPart = UrlUtility.RemoveUnallowedCharacters(lastPart);
+                newLastPart = UrlUtility.ReplaceAccentedCharactersWithLatin(newLastPart);
+
+                siteCollectionCreationInformation.Url = siteCollectionCreationInformation.Url.Replace(lastPart, newLastPart);
+            }
+
             Dictionary<string, object> payload = new Dictionary<string, object>
             {
                 { "Title", siteCollectionCreationInformation.Title },
@@ -1059,6 +1095,9 @@ namespace PnP.Framework.Sites
             var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
+            // Escape single quotes, for instance, when the alias is something like "What's new", it should be escaped to "What''s new"
+            alias = alias.Replace("'", "''");
+            
             string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
             using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
             {
@@ -1110,22 +1149,30 @@ namespace PnP.Framework.Sites
         /// <returns>True if in use, false otherwise</returns>
         public static async Task<Dictionary<string, string>> GetGroupInfoAsync(ClientContext context, string alias)
         {
+            Log.Debug(Constants.LOGGING_SOURCE, $"GetGroupInfoAsync");
+
             await new SynchronizationContextRemover();
 
             Dictionary<string, string> siteInfo = new Dictionary<string, string>();
 
-            context.Web.EnsureProperty(w => w.Url);
+            Log.Debug(Constants.LOGGING_SOURCE, $"GetWebUrl");
+            context.Web.EnsureProperty(w => w.Url);            
 
 #pragma warning disable CA2000 // Dispose objects before losing scope
             var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
+            // Escape single quotes, for instance, when the alias is something like "What's new", it should be escaped to "What''s new"
+            alias = alias.Replace("'", "''");
+            
             string requestUrl = string.Format("{0}/_api/SP.Directory.DirectorySession/Group(alias='{1}')", context.Web.Url, alias);
             using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl))
             {
                 request.Headers.Add("accept", "application/json;odata.metadata=none");
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 request.Headers.Add("odata-version", "4.0");
+
+                Log.Debug(Constants.LOGGING_SOURCE, $"AuthenticateRequestAsync");
 
                 await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
 
@@ -1256,8 +1303,10 @@ namespace PnP.Framework.Sites
         /// Will also enable it on a newly Groupified classic site
         /// </summary>
         /// <param name="context">Context to operate against</param>
+        /// <param name="graphAccessToken">Graph Access token</param>
+        /// <param name="azureEnvironment">Azure environment to operate</param>
         /// <returns></returns>
-        public static async Task<string> TeamifySiteAsync(ClientContext context)
+        public static async Task<string> TeamifySiteAsync(ClientContext context, string graphAccessToken = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             string responseString = null;
 
@@ -1273,13 +1322,56 @@ namespace PnP.Framework.Sites
             }
             else
             {
-                var result = await context.Web.ExecutePostAsync("/_api/groupsitemanager/EnsureTeamForGroup", string.Empty);
+                if (!string.IsNullOrEmpty(graphAccessToken))
+                {
+                    var createTeamEndPoint = $"{Graph.GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{context.Site.GroupId}/team";
+                    bool wait = true;
+                    int iterations = 0;
+                    while (wait)
+                    {
+                        iterations++;
+                        try
+                        {
+                            await Task.Run(() =>
+                            {
+                                var teamid = HttpHelper.MakePutRequestForString(createTeamEndPoint, new { }, "application/json", graphAccessToken);
+                                if (!string.IsNullOrEmpty(teamid))
+                                {
+                                    wait = false;
+                                    responseString = teamid;
+                                }
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            // Don't wait more than the requested timeout in seconds
+                            if (iterations * 30 >= 300)
+                            {
+                                wait = false;
+                                throw;
+                            }
+                            else
+                            {
+                                // In case of exception wait for 30 secs
+                                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
+                                await Task.Delay(TimeSpan.FromSeconds(30));
+                            }
+                        }
+                    }
+                    
+                    return await Task.Run(() => responseString);
+                }
+                else
+                {
+                    var result = await context.Web.ExecutePostAsync("/_api/groupsitemanager/EnsureTeamForGroup", string.Empty);
 
-                var teamId = JObject.Parse(result);
+                    var teamId = JObject.Parse(result);
 
-                responseString = Convert.ToString(teamId["value"]);
+                    responseString = Convert.ToString(teamId["value"]);
 
-                return await Task.Run(() => responseString);
+                    return await Task.Run(() => responseString);
+                }
+                
             }
         }
 

@@ -583,7 +583,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         {
                             // Try to see if this is a file
                             var file = web.GetFileById(uniqueId);
-                            web.Context.Load(file, f => f.Level, f => f.ServerRelativePath);
+                            web.Context.Load(file, f => f.Level, f => f.ServerRelativePath, f => f.ServerRelativeUrl);
                             web.Context.ExecuteQueryRetry();
 
                             // Item1 = was file added to the template

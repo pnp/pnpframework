@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: PnP.Framework.Graph
+  commentId: N:PnP.Framework.Graph
+  id: PnP.Framework.Graph
+  children:
+  - PnP.Framework.Graph.GraphHttpClient
+  - PnP.Framework.Graph.GraphUtility
+  - PnP.Framework.Graph.GroupExtended
+  - PnP.Framework.Graph.GroupsUtility
+  - PnP.Framework.Graph.PnPHttpProvider
+  - PnP.Framework.Graph.SiteClassificationsUtility
+  - PnP.Framework.Graph.SubscriptionsUtility
+  - PnP.Framework.Graph.UnifiedGroupsUtility
+  - PnP.Framework.Graph.UsersUtility
+  langs:
+  - csharp
+  - vb
+  name: PnP.Framework.Graph
+  nameWithType: PnP.Framework.Graph
+  fullName: PnP.Framework.Graph
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: PnP.Framework.Graph.GraphHttpClient
+  commentId: T:PnP.Framework.Graph.GraphHttpClient
+  name: GraphHttpClient
+  nameWithType: GraphHttpClient
+  fullName: PnP.Framework.Graph.GraphHttpClient
+- uid: PnP.Framework.Graph.GraphUtility
+  commentId: T:PnP.Framework.Graph.GraphUtility
+  name: GraphUtility
+  nameWithType: GraphUtility
+  fullName: PnP.Framework.Graph.GraphUtility
+- uid: PnP.Framework.Graph.GroupsUtility
+  commentId: T:PnP.Framework.Graph.GroupsUtility
+  name: GroupsUtility
+  nameWithType: GroupsUtility
+  fullName: PnP.Framework.Graph.GroupsUtility
+- uid: PnP.Framework.Graph.PnPHttpProvider
+  commentId: T:PnP.Framework.Graph.PnPHttpProvider
+  name: PnPHttpProvider
+  nameWithType: PnPHttpProvider
+  fullName: PnP.Framework.Graph.PnPHttpProvider
+- uid: PnP.Framework.Graph.SiteClassificationsUtility
+  commentId: T:PnP.Framework.Graph.SiteClassificationsUtility
+  name: SiteClassificationsUtility
+  nameWithType: SiteClassificationsUtility
+  fullName: PnP.Framework.Graph.SiteClassificationsUtility
+- uid: PnP.Framework.Graph.SubscriptionsUtility
+  commentId: T:PnP.Framework.Graph.SubscriptionsUtility
+  name: SubscriptionsUtility
+  nameWithType: SubscriptionsUtility
+  fullName: PnP.Framework.Graph.SubscriptionsUtility
+- uid: PnP.Framework.Graph.GroupExtended
+  commentId: T:PnP.Framework.Graph.GroupExtended
+  name: GroupExtended
+  nameWithType: GroupExtended
+  fullName: PnP.Framework.Graph.GroupExtended
+- uid: PnP.Framework.Graph.UnifiedGroupsUtility
+  commentId: T:PnP.Framework.Graph.UnifiedGroupsUtility
+  name: UnifiedGroupsUtility
+  nameWithType: UnifiedGroupsUtility
+  fullName: PnP.Framework.Graph.UnifiedGroupsUtility
+- uid: PnP.Framework.Graph.UsersUtility
+  commentId: T:PnP.Framework.Graph.UsersUtility
+  name: UsersUtility
+  nameWithType: UsersUtility
+  fullName: PnP.Framework.Graph.UsersUtility

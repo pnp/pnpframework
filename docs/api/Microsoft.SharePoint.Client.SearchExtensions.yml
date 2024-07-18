@@ -1,0 +1,1207 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.SharePoint.Client.SearchExtensions
+  commentId: T:Microsoft.SharePoint.Client.SearchExtensions
+  id: SearchExtensions
+  parent: Microsoft.SharePoint.Client
+  children:
+  - Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration(Microsoft.SharePoint.Client.Site,System.String)
+  - Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  - Microsoft.SharePoint.Client.SearchExtensions.ExportSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  - Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration(Microsoft.SharePoint.Client.Site)
+  - Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.SearchExtensions.GetSiteCollectionSearchCenterUrl(Microsoft.SharePoint.Client.Web)
+  - Microsoft.SharePoint.Client.SearchExtensions.GetWebSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.Boolean)
+  - Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  - Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettingsConfiguration(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  - Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText(Microsoft.SharePoint.Client.Site,System.String)
+  - Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration(Microsoft.SharePoint.Client.Site,System.String)
+  - Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.SearchExtensions.SetSiteCollectionSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.String)
+  - Microsoft.SharePoint.Client.SearchExtensions.SetWebSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.String)
+  langs:
+  - csharp
+  - vb
+  name: SearchExtensions
+  nameWithType: SearchExtensions
+  fullName: Microsoft.SharePoint.Client.SearchExtensions
+  type: Class
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SearchExtensions
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 15
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nClass for Search extension methods\n"
+  example: []
+  syntax:
+    content: public static class SearchExtensions
+    content.vb: Public Module SearchExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Microsoft.SharePoint.Client.SearchExtensions.ExportSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.ExportSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  id: ExportSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: ExportSearchSettings(ClientContext, String, SearchObjectLevel)
+  nameWithType: SearchExtensions.ExportSearchSettings(ClientContext, String, SearchObjectLevel)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.ExportSearchSettings(Microsoft.SharePoint.Client.ClientContext, System.String, Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ExportSearchSettings
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 25
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nExports the search settings to file.\n"
+  example: []
+  syntax:
+    content: public static void ExportSearchSettings(this ClientContext context, string exportFilePath, SearchObjectLevel searchSettingsExportLevel)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: Context for SharePoint objects and operations
+    - id: exportFilePath
+      type: System.String
+      description: Path where to export the search settings
+    - id: searchSettingsExportLevel
+      type: Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel
+      description: >
+        Search settings export level
+
+        Reference: http://msdn.microsoft.com/en-us/library/microsoft.sharepoint.client.search.administration.searchobjectlevel(v=office.15).aspx
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ExportSearchSettings(context As ClientContext, exportFilePath As String, searchSettingsExportLevel As SearchObjectLevel)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.ExportSearchSettings*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration(Microsoft.SharePoint.Client.Web)
+  id: GetSearchConfiguration(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSearchConfiguration(Web)
+  nameWithType: SearchExtensions.GetSearchConfiguration(Web)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSearchConfiguration
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 49
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the current search configuration as as string\n"
+  example: []
+  syntax:
+    content: public static string GetSearchConfiguration(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: A SharePoint site/subsiste
+    return:
+      type: System.String
+      description: Returns search configuration
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSearchConfiguration(web As Web) As String
+  overload: Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration(Microsoft.SharePoint.Client.Site)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration(Microsoft.SharePoint.Client.Site)
+  id: GetSearchConfiguration(Microsoft.SharePoint.Client.Site)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSearchConfiguration(Site)
+  nameWithType: SearchExtensions.GetSearchConfiguration(Site)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration(Microsoft.SharePoint.Client.Site)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSearchConfiguration
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 59
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nReturns the current search configuration as as string\n"
+  example: []
+  syntax:
+    content: public static string GetSearchConfiguration(this Site site)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: A SharePoint site
+    return:
+      type: System.String
+      description: Returns search configuration
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSearchConfiguration(site As Site) As String
+  overload: Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  id: ImportSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: ImportSearchSettings(ClientContext, String, SearchObjectLevel)
+  nameWithType: SearchExtensions.ImportSearchSettings(ClientContext, String, SearchObjectLevel)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettings(Microsoft.SharePoint.Client.ClientContext, System.String, Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ImportSearchSettings
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 89
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nImports search settings from file.\n"
+  example: []
+  syntax:
+    content: public static void ImportSearchSettings(this ClientContext context, string searchSchemaImportFilePath, SearchObjectLevel searchSettingsImportLevel)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: Context for SharePoint objects and operations
+    - id: searchSchemaImportFilePath
+      type: System.String
+      description: Search schema xml file path
+    - id: searchSettingsImportLevel
+      type: Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel
+      description: >
+        Search settings import level
+
+        Reference: http://msdn.microsoft.com/en-us/library/microsoft.sharepoint.client.search.administration.searchobjectlevel(v=office.15).aspx
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ImportSearchSettings(context As ClientContext, searchSchemaImportFilePath As String, searchSettingsImportLevel As SearchObjectLevel)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettings*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettingsConfiguration(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettingsConfiguration(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  id: ImportSearchSettingsConfiguration(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: ImportSearchSettingsConfiguration(ClientContext, String, SearchObjectLevel)
+  nameWithType: SearchExtensions.ImportSearchSettingsConfiguration(ClientContext, String, SearchObjectLevel)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettingsConfiguration(Microsoft.SharePoint.Client.ClientContext, System.String, Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: ImportSearchSettingsConfiguration
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 106
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nImports search settings from configuration xml.\n"
+  example: []
+  syntax:
+    content: public static void ImportSearchSettingsConfiguration(this ClientContext context, string searchConfiguration, SearchObjectLevel searchSettingsImportLevel)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: Context for SharePoint objects and operations
+    - id: searchConfiguration
+      type: System.String
+      description: Search schema xml file path
+    - id: searchSettingsImportLevel
+      type: Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel
+      description: >
+        Search settings import level
+
+        Reference: http://msdn.microsoft.com/en-us/library/microsoft.sharepoint.client.search.administration.searchobjectlevel(v=office.15).aspx
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub ImportSearchSettingsConfiguration(context As ClientContext, searchConfiguration As String, searchSettingsImportLevel As SearchObjectLevel)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettingsConfiguration*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  id: DeleteSearchSettings(Microsoft.SharePoint.Client.ClientContext,System.String,Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteSearchSettings(ClientContext, String, SearchObjectLevel)
+  nameWithType: SearchExtensions.DeleteSearchSettings(ClientContext, String, SearchObjectLevel)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchSettings(Microsoft.SharePoint.Client.ClientContext, System.String, Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteSearchSettings
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 124
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDelete search settings from configuration xml.\n"
+  example: []
+  syntax:
+    content: public static void DeleteSearchSettings(this ClientContext context, string searchConfiguration, SearchObjectLevel searchSettingsImportLevel)
+    parameters:
+    - id: context
+      type: Microsoft.SharePoint.Client.ClientContext
+      description: Context for SharePoint objects and operations
+    - id: searchConfiguration
+      type: System.String
+      description: Search schema xml file path
+    - id: searchSettingsImportLevel
+      type: Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel
+      description: >
+        Search settings import level
+
+        Reference: http://msdn.microsoft.com/en-us/library/microsoft.sharepoint.client.search.administration.searchobjectlevel(v=office.15).aspx
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DeleteSearchSettings(context As ClientContext, searchConfiguration As String, searchSettingsImportLevel As SearchObjectLevel)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchSettings*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration(Microsoft.SharePoint.Client.Web,System.String)
+  id: SetSearchConfiguration(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetSearchConfiguration(Web, String)
+  nameWithType: SearchExtensions.SetSearchConfiguration(Web, String)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetSearchConfiguration
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 140
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets the search configuration\n"
+  example: []
+  syntax:
+    content: public static void SetSearchConfiguration(this Web web, string searchConfiguration)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: A SharePoint site/subsite
+    - id: searchConfiguration
+      type: System.String
+      description: search configuration
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetSearchConfiguration(web As Web, searchConfiguration As String)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration(Microsoft.SharePoint.Client.Site,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration(Microsoft.SharePoint.Client.Site,System.String)
+  id: SetSearchConfiguration(Microsoft.SharePoint.Client.Site,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetSearchConfiguration(Site, String)
+  nameWithType: SearchExtensions.SetSearchConfiguration(Site, String)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration(Microsoft.SharePoint.Client.Site, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetSearchConfiguration
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 150
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets the search configuration\n"
+  example: []
+  syntax:
+    content: public static void SetSearchConfiguration(this Site site, string searchConfiguration)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: A SharePoint site
+    - id: searchConfiguration
+      type: System.String
+      description: search configuration
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetSearchConfiguration(site As Site, searchConfiguration As String)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration(Microsoft.SharePoint.Client.Web,System.String)
+  id: DeleteSearchConfiguration(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteSearchConfiguration(Web, String)
+  nameWithType: SearchExtensions.DeleteSearchConfiguration(Web, String)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteSearchConfiguration
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 177
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDelete the search configuration - does not apply to managed properties.\n"
+  example: []
+  syntax:
+    content: public static void DeleteSearchConfiguration(this Web web, string searchConfiguration)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: A SharePoint site/subsite
+    - id: searchConfiguration
+      type: System.String
+      description: search configuration
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DeleteSearchConfiguration(web As Web, searchConfiguration As String)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration(Microsoft.SharePoint.Client.Site,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration(Microsoft.SharePoint.Client.Site,System.String)
+  id: DeleteSearchConfiguration(Microsoft.SharePoint.Client.Site,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: DeleteSearchConfiguration(Site, String)
+  nameWithType: SearchExtensions.DeleteSearchConfiguration(Site, String)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration(Microsoft.SharePoint.Client.Site, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: DeleteSearchConfiguration
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 187
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nDelete the search configuration - does not apply to managed properties.\n"
+  example: []
+  syntax:
+    content: public static void DeleteSearchConfiguration(this Site site, string searchConfiguration)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+      description: A SharePoint site
+    - id: searchConfiguration
+      type: System.String
+      description: search configuration
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub DeleteSearchConfiguration(site As Site, searchConfiguration As String)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText(Microsoft.SharePoint.Client.Site,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText(Microsoft.SharePoint.Client.Site,System.String)
+  id: SetSearchBoxPlaceholderText(Microsoft.SharePoint.Client.Site,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetSearchBoxPlaceholderText(Site, String)
+  nameWithType: SearchExtensions.SetSearchBoxPlaceholderText(Site, String)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText(Microsoft.SharePoint.Client.Site, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetSearchBoxPlaceholderText
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 209
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  syntax:
+    content: public static void SetSearchBoxPlaceholderText(this Site site, string placeholderText)
+    parameters:
+    - id: site
+      type: Microsoft.SharePoint.Client.Site
+    - id: placeholderText
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetSearchBoxPlaceholderText(site As Site, placeholderText As String)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText(Microsoft.SharePoint.Client.Web,System.String)
+  id: SetSearchBoxPlaceholderText(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetSearchBoxPlaceholderText(Web, String)
+  nameWithType: SearchExtensions.SetSearchBoxPlaceholderText(Web, String)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetSearchBoxPlaceholderText
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 214
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  syntax:
+    content: public static void SetSearchBoxPlaceholderText(this Web web, string placeholderText)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+    - id: placeholderText
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetSearchBoxPlaceholderText(web As Web, placeholderText As String)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.SetSiteCollectionSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.SetSiteCollectionSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.String)
+  id: SetSiteCollectionSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetSiteCollectionSearchCenterUrl(Web, String)
+  nameWithType: SearchExtensions.SetSiteCollectionSearchCenterUrl(Web, String)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.SetSiteCollectionSearchCenterUrl(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetSiteCollectionSearchCenterUrl
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 277
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets the search center URL on site collection (Site Settings -> Site collection administration --> Search Settings)\n"
+  example: []
+  syntax:
+    content: public static void SetSiteCollectionSearchCenterUrl(this Web web, string searchCenterUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: SharePoint site - root web
+    - id: searchCenterUrl
+      type: System.String
+      description: Search center URL
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetSiteCollectionSearchCenterUrl(web As Web, searchCenterUrl As String)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.SetSiteCollectionSearchCenterUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.GetSiteCollectionSearchCenterUrl(Microsoft.SharePoint.Client.Web)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.GetSiteCollectionSearchCenterUrl(Microsoft.SharePoint.Client.Web)
+  id: GetSiteCollectionSearchCenterUrl(Microsoft.SharePoint.Client.Web)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetSiteCollectionSearchCenterUrl(Web)
+  nameWithType: SearchExtensions.GetSiteCollectionSearchCenterUrl(Web)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.GetSiteCollectionSearchCenterUrl(Microsoft.SharePoint.Client.Web)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetSiteCollectionSearchCenterUrl
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 344
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet the search center URL for the site collection (Site Settings -> Site collection administration --> Search Settings)\n"
+  example: []
+  syntax:
+    content: public static string GetSiteCollectionSearchCenterUrl(this Web web)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: SharePoint site - root web
+    return:
+      type: System.String
+      description: Search center URL for web
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSiteCollectionSearchCenterUrl(web As Web) As String
+  overload: Microsoft.SharePoint.Client.SearchExtensions.GetSiteCollectionSearchCenterUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.SetWebSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.String)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.SetWebSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.String)
+  id: SetWebSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.String)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetWebSearchCenterUrl(Web, String)
+  nameWithType: SearchExtensions.SetWebSearchCenterUrl(Web, String)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.SetWebSearchCenterUrl(Microsoft.SharePoint.Client.Web, System.String)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: SetWebSearchCenterUrl
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 356
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nSets the search results page URL on current web (Site Settings -> Search --> Search Settings)\n"
+  example: []
+  syntax:
+    content: public static void SetWebSearchCenterUrl(this Web web, string searchCenterUrl)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: SharePoint current web
+    - id: searchCenterUrl
+      type: System.String
+      description: Search results page URL
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetWebSearchCenterUrl(web As Web, searchCenterUrl As String)
+  overload: Microsoft.SharePoint.Client.SearchExtensions.SetWebSearchCenterUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Microsoft.SharePoint.Client.SearchExtensions.GetWebSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.Boolean)
+  commentId: M:Microsoft.SharePoint.Client.SearchExtensions.GetWebSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.Boolean)
+  id: GetWebSearchCenterUrl(Microsoft.SharePoint.Client.Web,System.Boolean)
+  isExtensionMethod: true
+  parent: Microsoft.SharePoint.Client.SearchExtensions
+  langs:
+  - csharp
+  - vb
+  name: GetWebSearchCenterUrl(Web, Boolean)
+  nameWithType: SearchExtensions.GetWebSearchCenterUrl(Web, Boolean)
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.GetWebSearchCenterUrl(Microsoft.SharePoint.Client.Web, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+      branch: dev
+      repo: https://github.com/pkbullock/pnpframework.git
+    id: GetWebSearchCenterUrl
+    path: ../src/lib/PnP.Framework/Extensions/SearchExtensions.cs
+    startLine: 422
+  assemblies:
+  - PnP.Framework
+  namespace: Microsoft.SharePoint.Client
+  summary: "\nGet the search results page URL for the web (Site Settings -> Search --> Search Settings)\n"
+  example: []
+  syntax:
+    content: public static string GetWebSearchCenterUrl(this Web web, bool urlOnly = false)
+    parameters:
+    - id: web
+      type: Microsoft.SharePoint.Client.Web
+      description: SharePoint site - current web
+    - id: urlOnly
+      type: System.Boolean
+      description: Allows to declare to return the URL only and not the full JSON settings
+    return:
+      type: System.String
+      description: Search results page URL for web
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetWebSearchCenterUrl(web As Web, urlOnly As Boolean = False) As String
+  overload: Microsoft.SharePoint.Client.SearchExtensions.GetWebSearchCenterUrl*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Microsoft.SharePoint.Client
+  commentId: N:Microsoft.SharePoint.Client
+  name: Microsoft.SharePoint.Client
+  nameWithType: Microsoft.SharePoint.Client
+  fullName: Microsoft.SharePoint.Client
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.SharePoint.Client.SearchExtensions.ExportSearchSettings*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.ExportSearchSettings
+  name: ExportSearchSettings
+  nameWithType: SearchExtensions.ExportSearchSettings
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.ExportSearchSettings
+- uid: Microsoft.SharePoint.Client.ClientContext
+  commentId: T:Microsoft.SharePoint.Client.ClientContext
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: ClientContext
+  nameWithType: ClientContext
+  fullName: Microsoft.SharePoint.Client.ClientContext
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel
+  commentId: T:Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel
+  parent: Microsoft.SharePoint.Client.Search.Administration
+  isExternal: true
+  name: SearchObjectLevel
+  nameWithType: SearchObjectLevel
+  fullName: Microsoft.SharePoint.Client.Search.Administration.SearchObjectLevel
+- uid: Microsoft.SharePoint.Client.Search.Administration
+  commentId: N:Microsoft.SharePoint.Client.Search.Administration
+  isExternal: true
+  name: Microsoft.SharePoint.Client.Search.Administration
+  nameWithType: Microsoft.SharePoint.Client.Search.Administration
+  fullName: Microsoft.SharePoint.Client.Search.Administration
+- uid: Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration
+  name: GetSearchConfiguration
+  nameWithType: SearchExtensions.GetSearchConfiguration
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.GetSearchConfiguration
+- uid: Microsoft.SharePoint.Client.Web
+  commentId: T:Microsoft.SharePoint.Client.Web
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Web
+  nameWithType: Web
+  fullName: Microsoft.SharePoint.Client.Web
+- uid: Microsoft.SharePoint.Client.Site
+  commentId: T:Microsoft.SharePoint.Client.Site
+  parent: Microsoft.SharePoint.Client
+  isExternal: true
+  name: Site
+  nameWithType: Site
+  fullName: Microsoft.SharePoint.Client.Site
+- uid: Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettings*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettings
+  name: ImportSearchSettings
+  nameWithType: SearchExtensions.ImportSearchSettings
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettings
+- uid: Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettingsConfiguration*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettingsConfiguration
+  name: ImportSearchSettingsConfiguration
+  nameWithType: SearchExtensions.ImportSearchSettingsConfiguration
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.ImportSearchSettingsConfiguration
+- uid: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchSettings*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchSettings
+  name: DeleteSearchSettings
+  nameWithType: SearchExtensions.DeleteSearchSettings
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchSettings
+- uid: Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration
+  name: SetSearchConfiguration
+  nameWithType: SearchExtensions.SetSearchConfiguration
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.SetSearchConfiguration
+- uid: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration
+  name: DeleteSearchConfiguration
+  nameWithType: SearchExtensions.DeleteSearchConfiguration
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.DeleteSearchConfiguration
+- uid: Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText
+  name: SetSearchBoxPlaceholderText
+  nameWithType: SearchExtensions.SetSearchBoxPlaceholderText
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.SetSearchBoxPlaceholderText
+- uid: Microsoft.SharePoint.Client.SearchExtensions.SetSiteCollectionSearchCenterUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.SetSiteCollectionSearchCenterUrl
+  name: SetSiteCollectionSearchCenterUrl
+  nameWithType: SearchExtensions.SetSiteCollectionSearchCenterUrl
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.SetSiteCollectionSearchCenterUrl
+- uid: Microsoft.SharePoint.Client.SearchExtensions.GetSiteCollectionSearchCenterUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.GetSiteCollectionSearchCenterUrl
+  name: GetSiteCollectionSearchCenterUrl
+  nameWithType: SearchExtensions.GetSiteCollectionSearchCenterUrl
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.GetSiteCollectionSearchCenterUrl
+- uid: Microsoft.SharePoint.Client.SearchExtensions.SetWebSearchCenterUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.SetWebSearchCenterUrl
+  name: SetWebSearchCenterUrl
+  nameWithType: SearchExtensions.SetWebSearchCenterUrl
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.SetWebSearchCenterUrl
+- uid: Microsoft.SharePoint.Client.SearchExtensions.GetWebSearchCenterUrl*
+  commentId: Overload:Microsoft.SharePoint.Client.SearchExtensions.GetWebSearchCenterUrl
+  name: GetWebSearchCenterUrl
+  nameWithType: SearchExtensions.GetWebSearchCenterUrl
+  fullName: Microsoft.SharePoint.Client.SearchExtensions.GetWebSearchCenterUrl
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

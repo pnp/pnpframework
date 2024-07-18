@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: SharePointPnP.IdentityModel.Extensions.S2S
+  commentId: N:SharePointPnP.IdentityModel.Extensions.S2S
+  id: SharePointPnP.IdentityModel.Extensions.S2S
+  children:
+  - SharePointPnP.IdentityModel.Extensions.S2S.DateTimeUtil
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  - SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+  - SharePointPnP.IdentityModel.Extensions.S2S.EpochTime
+  langs:
+  - csharp
+  - vb
+  name: SharePointPnP.IdentityModel.Extensions.S2S
+  nameWithType: SharePointPnP.IdentityModel.Extensions.S2S
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S
+  type: Namespace
+  assemblies:
+  - PnP.Framework
+references:
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DateTimeUtil
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.DateTimeUtil
+  name: DateTimeUtil
+  nameWithType: DateTimeUtil
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DateTimeUtil
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+  name: DictionaryExtension
+  nameWithType: DictionaryExtension
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+  parent: SharePointPnP.IdentityModel.Extensions.S2S
+  name: DictionaryExtension.Encoder
+  nameWithType: DictionaryExtension.Encoder
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.DictionaryExtension.Encoder
+- uid: SharePointPnP.IdentityModel.Extensions.S2S.EpochTime
+  commentId: T:SharePointPnP.IdentityModel.Extensions.S2S.EpochTime
+  name: EpochTime
+  nameWithType: EpochTime
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S.EpochTime
+- uid: SharePointPnP.IdentityModel.Extensions.S2S
+  commentId: N:SharePointPnP.IdentityModel.Extensions.S2S
+  name: SharePointPnP.IdentityModel.Extensions.S2S
+  nameWithType: SharePointPnP.IdentityModel.Extensions.S2S
+  fullName: SharePointPnP.IdentityModel.Extensions.S2S

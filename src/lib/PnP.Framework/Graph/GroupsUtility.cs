@@ -554,9 +554,7 @@ namespace PnP.Framework.Graph
                 var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
                 var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
                 var groupJson = JsonNode.Parse(responseAsString);
-                var id = groupJson["id"];
-                var group = groupJson.Deserialize<Graph.Model.Group>();
-                group.GroupId = id.ToString();
+                var group = groupJson.Deserialize<Model.Group>();
                 return group;
             }
             catch (HttpResponseException ex)
@@ -592,68 +590,39 @@ namespace PnP.Framework.Graph
             List<GroupEntity> result = null;
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups?$top={pageSize}";
+                var filter = string.Empty;
+                filter += !string.IsNullOrEmpty(displayName) ? $"(DisplayName eq '{Uri.EscapeDataString(displayName.Replace("'", "''"))}')" : string.Empty;
+                filter += !string.IsNullOrEmpty(mailNickname) ? $"(MailNickname eq '{Uri.EscapeDataString(mailNickname.Replace("'", "''"))}')" : string.Empty;
+
+                if (!string.IsNullOrWhiteSpace(filter))
                 {
-                    List<GroupEntity> groups = new List<GroupEntity>();
+                    requestUrl += $"&$filter={filter}";
+                }
 
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
+                List<GroupEntity> groups = new List<GroupEntity>();
+                int currentIndex = 0;
+                while (requestUrl != null && (endIndex == null || groups.Count < endIndex))
+                {
+                    var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
 
-                    // Apply the DisplayName filter, if any
-                    var displayNameFilter = !string.IsNullOrEmpty(displayName) ? $"(DisplayName eq '{Uri.EscapeDataString(displayName.Replace("'", "''"))}')" : string.Empty;
-                    var mailNicknameFilter = !string.IsNullOrEmpty(mailNickname) ? $"(MailNickname eq '{Uri.EscapeDataString(mailNickname.Replace("'", "''"))}')" : string.Empty;
+                    var jsonNode = JsonNode.Parse(responseAsString);
+                    var results = jsonNode["value"].Deserialize<Model.Group[]>();
+                    requestUrl = jsonNode["@odata.nextLink"]?.ToString();
 
-                    var pagedGroups = await graphClient.Groups
-                        .Request()
-                        .Filter($"{displayNameFilter}{(!string.IsNullOrEmpty(displayNameFilter) && !string.IsNullOrEmpty(mailNicknameFilter) ? " and " : "")}{mailNicknameFilter}")
-                        .Top(pageSize)
-                        .GetAsync();
-
-                    Int32 pageCount = 0;
-                    Int32 currentIndex = 0;
-
-                    while (true)
+                    foreach (var g in results)
                     {
-                        pageCount++;
-
-                        foreach (var g in pagedGroups)
+                        if (currentIndex >= startIndex)
                         {
-                            currentIndex++;
-
-                            if (currentIndex >= startIndex)
-                            {
-                                var group = new GroupEntity
-                                {
-                                    GroupId = g.Id,
-                                    DisplayName = g.DisplayName,
-                                    Description = g.Description,
-                                    Mail = g.Mail,
-                                    MailNickname = g.MailNickname,
-                                    MailEnabled = g.MailEnabled,
-                                    SecurityEnabled = g.SecurityEnabled,
-                                    GroupTypes = g.GroupTypes != null ? g.GroupTypes.ToArray() : null
-                                };
-
-                                groups.Add(group);
-                            }
+                            groups.Add(g.AsEntity());
                         }
-
-                        if (pagedGroups.NextPageRequest != null && (endIndex == null || groups.Count < endIndex))
-                        {
-                            pagedGroups = await pagedGroups.NextPageRequest.GetAsync();
-                        }
-                        else
-                        {
-                            break;
-                        }
+                        currentIndex++;
                     }
-
-                    return (groups);
-                }).GetAwaiter().GetResult();
+                }
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
             return (result);

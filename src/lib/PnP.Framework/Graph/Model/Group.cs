@@ -1,9 +1,11 @@
-﻿using PnP.Framework.Entities;
+﻿using System.Text.Json.Serialization;
+using PnP.Framework.Entities;
 
 namespace PnP.Framework.Graph.Model
 {
     internal class Group
     {
+        [JsonPropertyName("id")]
         public string GroupId { get; set; }
         public string DisplayName { get; set; }
         public string Description { get; set; }

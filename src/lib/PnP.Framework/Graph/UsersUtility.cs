@@ -327,40 +327,34 @@ namespace PnP.Framework.Graph
                 }
             }
             
-            List<Model.User> result = null;
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                List<Model.User> users = new List<Model.User>();
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}directory/deleteditems/microsoft.graph.user";
+                if (propertiesToSelect.Count > 0)
                 {
-                    List<Model.User> users = new List<Model.User>();
-                    var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}directory/deleteditems/microsoft.graph.user";
-                    if (propertiesToSelect.Count > 0)
-                    {
-                        requestUrl += $"?$select={string.Join(",", propertiesToSelect)}";
-                    } 
+                    requestUrl += $"?$select={string.Join(",", propertiesToSelect)}";
+                } 
 
-                    var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+                var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
 
-                    var response = JToken.Parse(responseAsString);
-                    var deletedUsers = response["value"];
+                var response = JToken.Parse(responseAsString);
+                var deletedUsers = response["value"];
 
-                    foreach (var deletedUser in deletedUsers)
-                    {
-                        var user = deletedUser.ToObject<User>();
-                        var modelUser = MapUserEntity(user, selectProperties);
-                        users.Add(modelUser);
-                    }
+                foreach (var deletedUser in deletedUsers)
+                {
+                    var user = deletedUser.ToObject<User>();
+                    var modelUser = MapUserEntity(user, selectProperties);
+                    users.Add(modelUser);
+                }
 
-                    return users;
-                }).GetAwaiter().GetResult();
+                return users;
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
-            return result;
         }
 
         /// <summary>
@@ -468,9 +462,9 @@ namespace PnP.Framework.Graph
                 return accessPassResponse;
 
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
         }        

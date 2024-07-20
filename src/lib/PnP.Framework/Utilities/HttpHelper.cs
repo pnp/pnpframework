@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PnP.Framework.Utilities
 {
@@ -497,6 +498,47 @@ namespace PnP.Framework.Utilities
             string userAgent = null,
             ClientContext spContext = null)
         {
+            var result = MakeHttpRequestAsync(httpMethod, requestUrl, accessToken, accept, content, contentType, referer, resultPredicate, requestHeaders, cookies, retryCount, delay, userAgent, spContext).Result;
+            responseHeaders = result.ResponseHeaders;
+            return (result.Result);
+        }
+
+        /// <summary>
+        /// This helper method makes an HTTP request and eventually returns a result
+        /// </summary>
+        /// <param name="httpMethod">The HTTP method for the request</param>
+        /// <param name="requestUrl">The URL of the request</param>
+        /// <param name="responseHeaders">The response headers of the HTTP request (output argument)</param>
+        /// <param name="accessToken">The OAuth 2.0 Access Token for the request, if authorization is required</param>
+        /// <param name="accept">The content type of the accepted response</param>
+        /// <param name="content">The content of the request</param>
+        /// <param name="contentType">The content  type of the request</param>
+        /// <param name="referer">The URL Referer for the request</param>
+        /// <param name="resultPredicate">The predicate to retrieve the result, if any</param>
+        /// <param name="requestHeaders">A collection of any custom request headers</param>
+        /// <param name="cookies">Any request cookies values</param>
+        /// <param name="retryCount">Number of times to retry the request</param>
+        /// <param name="delay">Milliseconds to wait before retrying the request. The delay will be increased (doubled) every retry</param>
+        /// <param name="userAgent">UserAgent string value to insert for this request. You can define this value in your app's config file using key="SharePointPnPUserAgent" value="PnPRocks"</param>
+        /// <param name="spContext">An optional SharePoint client context</param>
+        /// <typeparam name="TResult">The type of the result, if any</typeparam>
+        /// <returns>The value of the result, if any</returns>
+        internal static async Task<HttpResult<TResult>> MakeHttpRequestAsync<TResult>(
+            string httpMethod,
+            string requestUrl,
+            string accessToken = null,
+            string accept = null,
+            object content = null,
+            string contentType = null,
+            string referer = null,
+            Func<HttpResponseMessage, TResult> resultPredicate = null,
+            Dictionary<string, string> requestHeaders = null,
+            Dictionary<string, string> cookies = null,
+            int retryCount = 1,
+            int delay = 500,
+            string userAgent = null,
+            ClientContext spContext = null)
+        {
             //HttpClient client = HttpHelper.httpClient;
             HttpClient client;
 
@@ -514,7 +556,7 @@ namespace PnP.Framework.Utilities
 
             // Prepare the variable to hold the result, if any
             TResult result = default;
-            responseHeaders = null;
+            HttpResponseHeaders responseHeaders = null;
 
             if (!string.IsNullOrEmpty(referer))
             {
@@ -578,7 +620,7 @@ namespace PnP.Framework.Utilities
                 }
 
                 // Fire the HTTP request
-                HttpResponseMessage response = client.SendAsync(request).Result;
+                HttpResponseMessage response = await client.SendAsync(request);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -594,13 +636,14 @@ namespace PnP.Framework.Utilities
                 }
                 else
                 {
-                    throw new ApplicationException(
+                    throw new HttpResponseException(
                         string.Format("Exception while invoking endpoint {0}.", requestUrl),
-                        new Exception(response.Content.ReadAsStringAsync().Result));
+                        new Exception(response.Content.ReadAsStringAsync().Result),
+                        (int)response.StatusCode);
                 }
             }
 
-            return (result);
+            return new HttpResult<TResult>(result, responseHeaders);
         }
 
     }

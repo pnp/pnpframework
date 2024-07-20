@@ -533,6 +533,12 @@ namespace PnP.Framework.Graph
         /// <returns>Group instance if found</returns>
         public static GroupEntity GetGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
+            var group = GetRawGroup(groupId, accessToken, retryCount, delay, azureEnvironment);
+            return group.AsEntity();
+        }
+
+        internal static PnP.Framework.Graph.Model.Group GetRawGroup(string groupId, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+        {
             if (string.IsNullOrEmpty(groupId))
             {
                 throw new ArgumentNullException(nameof(groupId));
@@ -549,7 +555,7 @@ namespace PnP.Framework.Graph
                 var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
                 var groupJson = JsonNode.Parse(responseAsString);
                 var id = groupJson["id"];
-                var group = groupJson.Deserialize<GroupEntity>();
+                var group = groupJson.Deserialize<Graph.Model.Group>();
                 group.GroupId = id.ToString();
                 return group;
             }

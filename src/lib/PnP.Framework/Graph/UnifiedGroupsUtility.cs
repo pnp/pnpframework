@@ -141,7 +141,7 @@ namespace PnP.Framework.Graph
             }
 
             var labels = new List<AssignedLabel>();
-            if(assignedLabels != null)
+            if (assignedLabels != null)
             {
                 foreach (var label in assignedLabels)
                 {
@@ -154,7 +154,7 @@ namespace PnP.Framework.Graph
                     }
                 }
             }
-            
+
 
             try
             {
@@ -813,62 +813,45 @@ namespace PnP.Framework.Graph
                 throw new ArgumentNullException(nameof(accessToken));
             }
 
-            UnifiedGroupEntity result = null;
-            try
+            var g = GroupsUtility.GetRawGroup(groupId, accessToken, retryCount, delay, azureEnvironment);
+
+            if (!g.GroupTypes.Contains("Unified"))
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                return null;
+            }
+
+            var group = new UnifiedGroupEntity
+            {
+                GroupId = g.GroupId,
+                DisplayName = g.DisplayName,
+                Description = g.Description,
+                Mail = g.Mail,
+                MailNickname = g.MailNickname,
+                Visibility = g.Visibility
+            };
+
+            if (includeSite)
+            {
+                try
                 {
-                    UnifiedGroupEntity group = null;
-
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
-
-                    var g = await graphClient.Groups[groupId].Request().GetAsync();
-
-                    if (g.GroupTypes.Contains("Unified"))
-                    {
-                        group = new UnifiedGroupEntity
-                        {
-                            GroupId = g.Id,
-                            DisplayName = g.DisplayName,
-                            Description = g.Description,
-                            Mail = g.Mail,
-                            MailNickname = g.MailNickname,
-                            Visibility = g.Visibility
-                        };
-                        if (includeSite)
-                        {
-                            try
-                            {
-                                group.SiteUrl = GetUnifiedGroupSiteUrl(groupId, accessToken);
-                            }
-                            catch (ServiceException e)
-                            {
-                                group.SiteUrl = e.Error.Message;
-                            }
-                        }
-
-                        if (includeClassification)
-                        {
-                            group.Classification = g.Classification;
-                        }
-
-                        if (includeHasTeam)
-                        {
-                            group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
-                        }
-                    }
-
-                    return (group);
-
-                }).GetAwaiter().GetResult();
+                    group.SiteUrl = GetUnifiedGroupSiteUrl(groupId, accessToken);
+                }
+                catch (ServiceException e)
+                {
+                    group.SiteUrl = e.Error.Message;
+                }
             }
-            catch (ServiceException ex)
+
+            if (includeClassification)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
-                throw;
+                group.Classification = g.Classification;
             }
-            return (result);
+
+            if (includeHasTeam)
+            {
+                group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
+            }
+            return group;
         }
 
         /// <summary>

@@ -513,7 +513,7 @@ namespace PnP.Framework.Graph
             {
                 // PATCH https://graph.microsoft.com/v1.0/groups/{id}
                 string updateGroupUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
-                var groupRequest = new Model.Group
+                var groupRequest = new Model.GroupPatchModel
                 {
                     HideFromAddressLists = hideFromAddressLists,
                     HideFromOutlookClients = hideFromOutlookClients

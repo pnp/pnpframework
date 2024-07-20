@@ -5,7 +5,7 @@ namespace PnP.Framework.Graph.Model
     /// <summary>
     /// Defines a Microsoft Graph Group
     /// </summary>
-    public class Group
+    public class GroupPatchModel
     {
         /// <summary>
         /// True if the group is not displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. Default value is false.

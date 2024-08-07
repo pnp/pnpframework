@@ -1450,7 +1450,9 @@ namespace PnP.Framework
                 AzureEnvironment.Production => "accesscontrol.windows.net",
                 AzureEnvironment.Germany => "microsoftonline.de",
                 AzureEnvironment.China => "accesscontrol.chinacloudapi.cn",
-                AzureEnvironment.USGovernment => "microsoftonline.us",
+                AzureEnvironment.USGovernment => "accesscontrol.windows.net",                
+                AzureEnvironment.USGovernmentHigh => "microsoftonline.us",
+                AzureEnvironment.USGovernmentDoD => "microsoftonline.us",
                 AzureEnvironment.PPE => "windows-ppe.net",
                 _ => "accesscontrol.windows.net"
             };
@@ -1594,7 +1596,7 @@ namespace PnP.Framework
                 AzureEnvironment.Production => "https://login.microsoftonline.com",
                 AzureEnvironment.Germany => "https://login.microsoftonline.de",
                 AzureEnvironment.China => "https://login.chinacloudapi.cn",
-                AzureEnvironment.USGovernment => "https://login.microsoftonline.us",
+                AzureEnvironment.USGovernment => "https://login.microsoftonline.com",
                 AzureEnvironment.USGovernmentHigh => "https://login.microsoftonline.us",
                 AzureEnvironment.USGovernmentDoD => "https://login.microsoftonline.us",
                 AzureEnvironment.PPE => "https://login.windows-ppe.net",
@@ -1879,6 +1881,10 @@ namespace PnP.Framework
                 switch (azureEnvironment)
                 {
                     case AzureEnvironment.USGovernment:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.AzurePublic, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
                     case AzureEnvironment.USGovernmentDoD:
                     case AzureEnvironment.USGovernmentHigh:
                         {
@@ -1918,7 +1924,11 @@ namespace PnP.Framework
             {
                 switch (azureEnvironment)
                 {
-                    case AzureEnvironment.USGovernment:
+                    case AzureEnvironment.USGovernment:                    
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.AzurePublic, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
                     case AzureEnvironment.USGovernmentDoD:
                     case AzureEnvironment.USGovernmentHigh:
                         {

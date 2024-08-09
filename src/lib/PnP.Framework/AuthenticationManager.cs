@@ -1685,7 +1685,7 @@ namespace PnP.Framework
             return (environment) switch
             {
                 AzureEnvironment.Production => "com",
-                AzureEnvironment.USGovernment => "us",
+                AzureEnvironment.USGovernment => "com",
                 AzureEnvironment.USGovernmentHigh => "us",
                 AzureEnvironment.USGovernmentDoD => "us",
                 AzureEnvironment.Germany => "de",

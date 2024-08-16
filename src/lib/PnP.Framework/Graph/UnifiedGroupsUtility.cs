@@ -91,9 +91,9 @@ namespace PnP.Framework.Graph
 
                 result = Convert.ToString(response["webUrl"]);
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
             return (result);
@@ -349,7 +349,7 @@ namespace PnP.Framework.Graph
         /// <param name="graphClient">GraphClient instance to use to communicate with the Microsoft Graph</param>
         /// <param name="groupId">Id of the group which needs the owners added</param>
         /// <param name="removeOtherMembers">If set to true, all existing members which are not specified through <paramref name="members"/> will be removed as a member from the group</param>
-        private static async Task UpdateMembers(string[] members, GraphServiceClient graphClient, string groupId, bool removeOtherMembers)
+        private static async Task UpdateMembers(string[] members, GraphServiceClient graphClient, string groupId, bool removeOtherMembers, string accessToken, int retryCount, int delay)
         {
             if (members != null && members.Length > 0)
             {
@@ -367,22 +367,13 @@ namespace PnP.Framework.Graph
                     {
                         try
                         {
-                            // And if any, add it to the collection of group's owners
+                            // And if any, add it to the collection of group's members
                             await graphClient.Groups[groupId].Members.References.Request().AddAsync(member);
                         }
-                        catch (Exception ex)
-                        {
-                            if (ex.Message.Contains("Request_BadRequest") &&
+                        catch (Exception ex) when (ex.Message.Contains("Request_BadRequest") &&
                                 ex.Message.Contains("added object references already exist"))
-                            {
-                                // Skip any already existing member
-                            }
-                            else
-                            {
-#pragma warning disable CA2200
-                                throw ex;
-#pragma warning restore CA2200
-                            }
+                        {
+                            // Skip any already existing member
                         }
                     }
                 }
@@ -407,19 +398,13 @@ namespace PnP.Framework.Graph
                     {
                         try
                         {
-                            // If it is not in the list of current owners, just remove it
-                            await graphClient.Groups[groupId].Members[member.Id].Reference.Request().DeleteAsync();
+                            // If it is not in the list of current members, just remove it
+                            var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl()}groups/{groupId}/members/{member.Id}$ref";
+                            HttpHelper.MakeDeleteRequest(requestUrl, accessToken, retryCount: retryCount, delay: delay);
                         }
-                        catch (ServiceException ex)
+                        catch (HttpResponseException ex) when (ex.StatusCode == 400)
                         {
-                            if (ex.Error.Code == "Request_BadRequest")
-                            {
-                                // Skip any failing removal
-                            }
-                            else
-                            {
-                                throw ex;
-                            }
+                            // Skip any failing removal
                         }
                     }
                 }
@@ -555,7 +540,7 @@ namespace PnP.Framework.Graph
             {
                 // PATCH https://graph.microsoft.com/v1.0/groups/{id}
                 string updateGroupUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
-                var groupRequest = new Model.Group
+                var groupRequest = new Model.GroupPatchModel
                 {
                     HideFromAddressLists = hideFromAddressLists,
                     HideFromOutlookClients = hideFromOutlookClients
@@ -567,9 +552,9 @@ namespace PnP.Framework.Graph
                     contentType: "application/json",
                     accessToken: accessToken);
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
         }
@@ -683,7 +668,7 @@ namespace PnP.Framework.Graph
                     if (members != null && members.Length > 0)
                     {
                         // For each and every owner
-                        await UpdateMembers(members, graphClient, groupToUpdate.Id, true);
+                        await UpdateMembers(members, graphClient, groupToUpdate.Id, true, accessToken, retryCount, delay);
                         updateGroup = true;
                     }
 
@@ -821,17 +806,13 @@ namespace PnP.Framework.Graph
             }
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                Task.Run(async () =>
-                {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
-                    await graphClient.Groups[groupId].Request().DeleteAsync();
-
-                }).GetAwaiter().GetResult();
+                //// DELETE https://graph.microsoft.com/v1.0/groups/{id}
+                string deleteGroupUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
+                GraphHttpClient.MakeDeleteRequest(deleteGroupUrl, accessToken);
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
         }
@@ -859,62 +840,45 @@ namespace PnP.Framework.Graph
                 throw new ArgumentNullException(nameof(accessToken));
             }
 
-            UnifiedGroupEntity result = null;
-            try
+            var g = GroupsUtility.GetRawGroup(groupId, accessToken, retryCount, delay, azureEnvironment);
+
+            if (!g.GroupTypes.Contains("Unified"))
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                return null;
+            }
+
+            var group = new UnifiedGroupEntity
+            {
+                GroupId = g.GroupId,
+                DisplayName = g.DisplayName,
+                Description = g.Description,
+                Mail = g.Mail,
+                MailNickname = g.MailNickname,
+                Visibility = g.Visibility
+            };
+
+            if (includeSite)
+            {
+                try
                 {
-                    UnifiedGroupEntity group = null;
-
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
-
-                    var g = await graphClient.Groups[groupId].Request().GetAsync();
-
-                    if (g.GroupTypes.Contains("Unified"))
-                    {
-                        group = new UnifiedGroupEntity
-                        {
-                            GroupId = g.Id,
-                            DisplayName = g.DisplayName,
-                            Description = g.Description,
-                            Mail = g.Mail,
-                            MailNickname = g.MailNickname,
-                            Visibility = g.Visibility
-                        };
-                        if (includeSite)
-                        {
-                            try
-                            {
-                                group.SiteUrl = GetUnifiedGroupSiteUrl(groupId, accessToken);
-                            }
-                            catch (ServiceException e)
-                            {
-                                group.SiteUrl = e.Error.Message;
-                            }
-                        }
-
-                        if (includeClassification)
-                        {
-                            group.Classification = g.Classification;
-                        }
-
-                        if (includeHasTeam)
-                        {
-                            group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
-                        }
-                    }
-
-                    return (group);
-
-                }).GetAwaiter().GetResult();
+                    group.SiteUrl = GetUnifiedGroupSiteUrl(groupId, accessToken);
+                }
+                catch (ServiceException e)
+                {
+                    group.SiteUrl = e.Error.Message;
+                }
             }
-            catch (ServiceException ex)
+
+            if (includeClassification)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
-                throw;
+                group.Classification = g.Classification;
             }
-            return (result);
+
+            if (includeHasTeam)
+            {
+                group.HasTeam = HasTeamsTeam(group.GroupId, accessToken, azureEnvironment);
+            }
+            return group;
         }
 
         /// <summary>
@@ -993,9 +957,9 @@ namespace PnP.Framework.Graph
                                     {
                                         group.SiteUrl = GetUnifiedGroupSiteUrl(g.Id, accessToken);
                                     }
-                                    catch (ServiceException e)
+                                    catch (ApplicationException e)
                                     {
-                                        group.SiteUrl = e.Error.Message;
+                                        group.SiteUrl = e.Message;
                                     }
                                 }
 
@@ -1109,9 +1073,9 @@ namespace PnP.Framework.Graph
                                     {
                                         group.SiteUrl = GetUnifiedGroupSiteUrl(g.Id, accessToken);
                                     }
-                                    catch (ServiceException e)
+                                    catch (ApplicationException e)
                                     {
-                                        group.SiteUrl = e.Error.Message;
+                                        group.SiteUrl = e.Message;
                                     }
                                 }
 
@@ -1372,7 +1336,7 @@ namespace PnP.Framework.Graph
                 {
                     var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
-                    await UpdateMembers(members, graphClient, groupId, removeExistingMembers);
+                    await UpdateMembers(members, graphClient, groupId, removeExistingMembers, accessToken, retryCount, delay);
 
                 }).GetAwaiter().GetResult();
             }
@@ -1420,11 +1384,13 @@ namespace PnP.Framework.Graph
                             try
                             {
                                 // If it is not in the list of current members, just remove it
-                                await graphClient.Groups[groupId].Members[member.Id].Reference.Request().DeleteAsync();
+                                //// DELETE https://graph.microsoft.com/v1.0/groups/{id}/members/{id}/$ref
+                                string deleteGroupMemberUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}/members/{member.Id}/$ref";
+                                GraphHttpClient.MakeDeleteRequest(deleteGroupMemberUrl, accessToken);
                             }
-                            catch (ServiceException ex)
+                            catch (HttpResponseException ex)
                             {
-                                if (ex.Error.Code == "Request_BadRequest")
+                                if (ex.StatusCode == 400)
                                 {
                                     // Skip any failing removal
                                 }
@@ -1800,9 +1766,9 @@ namespace PnP.Framework.Graph
                 }
 
             }
-            catch (ServiceException e)
+            catch (ApplicationException e)
             {
-                classification = e.Error.Message;
+                classification = e.Message;
             }
 
             return classification;
@@ -1848,9 +1814,9 @@ namespace PnP.Framework.Graph
                     }
                 }
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
 
@@ -1884,14 +1850,11 @@ namespace PnP.Framework.Graph
                 iterations++;
                 try
                 {
-                    await Task.Run(() =>
+                    var teamid = HttpHelper.MakePutRequestForString(createTeamEndPoint, new { }, "application/json", accessToken);
+                    if (!string.IsNullOrEmpty(teamid))
                     {
-                        var teamid = HttpHelper.MakePutRequestForString(createTeamEndPoint, new { }, "application/json", accessToken);
-                        if (!string.IsNullOrEmpty(teamid))
-                        {
-                            wait = false;
-                        }
-                    });
+                        wait = false;
+                    }
                 }
                 catch (Exception ex)
                 {

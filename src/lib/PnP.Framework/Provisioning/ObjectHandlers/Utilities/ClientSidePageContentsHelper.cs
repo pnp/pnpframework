@@ -117,11 +117,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     //if (pageToExtract.PageHeader != null && pageToExtract.LayoutType != Pages.ClientSidePageLayoutType.Topic)
                     if (pageToExtract.PageHeader != null && pageToExtract.LayoutType != PnPCore.PageLayoutType.Topic)
                     {
+                        //All Headersettings are in the PageTitle WebPart. PageTitle-WP in first section as OneColumnFullWith (Message ID: MC791596 / Roadmap ID: 386904)
+                        //need to fallback to default as we otherwise need to change xml schema
+                        var headerType = ClientSidePageHeaderType.Default;
+                        if (pageToExtract.PageHeader.Type != PnPCore.PageHeaderType.PageTitleWebPart)
+                        {
+                            headerType = (ClientSidePageHeaderType)Enum.Parse(typeof(ClientSidePageHeaderType), pageToExtract.PageHeader.Type.ToString());
+                        }
 
                         var extractedHeader = new ClientSidePageHeader()
                         {
                             //Type = (ClientSidePageHeaderType)Enum.Parse(typeof(Pages.ClientSidePageHeaderType), pageToExtract.PageHeader.Type.ToString()),
-                            Type = (ClientSidePageHeaderType)Enum.Parse(typeof(ClientSidePageHeaderType), pageToExtract.PageHeader.Type.ToString()),
+                            //Type = (ClientSidePageHeaderType)Enum.Parse(typeof(ClientSidePageHeaderType), pageToExtract.PageHeader.Type.ToString()),
+                            Type = headerType,
                             ServerRelativeImageUrl = TokenizeJsonControlData(web, pageToExtract.PageHeader.ImageServerRelativeUrl),
                             TranslateX = pageToExtract.PageHeader.TranslateX,
                             TranslateY = pageToExtract.PageHeader.TranslateY,

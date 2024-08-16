@@ -384,7 +384,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                     case ClientSidePageHeaderType.Default:
                         {
-                            page.SetDefaultPageHeader();
+                            //Message ID: MC791596 / Roadmap ID: 386904
+                            if (clientSidePage.Sections.Any() && clientSidePage.Sections.First().Type == CanvasSectionType.OneColumnFullWidth && 
+                                clientSidePage.Sections.First().Controls.Any(c => c.Type == WebPartType.PageTitle))
+                            {
+                                page.SetPageTitleWebPartPageHeader();
+                            }
+                            else
+                            {
+                                page.SetDefaultPageHeader();
+                            }
                             break;
                         }
                     case ClientSidePageHeaderType.Custom:

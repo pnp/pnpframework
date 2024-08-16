@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Update AuthenticationManager.cs for GCC (ie UsGovernment) Regions #1047, #1048 [SteveWinward - Steve Winward]
+- Updated pages export logic to support the new page header model via full width page header web part [czullu - Christian Zuellig]
 
 ## [1.16.0]
 

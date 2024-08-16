@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Update AuthenticationManager.cs for GCC (ie UsGovernment) Regions #1047, #1048 [SteveWinward - Steve Winward]
 - Updated pages export logic to support the new page header model via full width page header web part [czullu - Christian Zuellig]
+- Bump System.Text.Json versions [jansenbe - Bert Jansen]
 
 ## [1.16.0]
 

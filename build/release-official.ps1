@@ -15,7 +15,7 @@ dotnet build $PSScriptRoot\..\src\lib\PnP.Framework\PnP.Framework.csproj --confi
 
 # Sign the binaries
 Write-Host "Signing the binaries..."
-d:\github\SharePointPnP\CodeSigning\PnP\sign-pnpbinaries.ps1 -SignJson pnpframeworkassemblies
+q:\github\SharePointPnP\CodeSigning\PnP\sign-pnpbinaries.ps1 -SignJson pnpframeworkassemblies
 
 # Package the release version
 Write-Host "Packinging PnP.Framework version $version..."
@@ -30,7 +30,7 @@ $apiKey = Read-Host "NuGet API key"
 if ($apiKey.Length -gt 0)
 {
     # Push the actual package and the symbol package
-    nuget push d:\github\pnpframework\src\lib\PnP.Framework\bin\release\PnP.Framework.$version.nupkg -ApiKey $apiKey -source https://api.nuget.org/v3/index.json
+    nuget push q:\github\pnpframework\src\lib\PnP.Framework\bin\release\PnP.Framework.$version.nupkg -ApiKey $apiKey -source https://api.nuget.org/v3/index.json
 
     # Persist last used version
     Write-Host "Writing $version to git"

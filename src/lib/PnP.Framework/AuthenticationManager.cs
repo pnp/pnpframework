@@ -1,5 +1,6 @@
 ﻿using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.AppConfig;
+using Microsoft.Identity.Client.Broker;
 using Microsoft.Identity.Client.Extensibility;
 using Microsoft.SharePoint.Client;
 using PnP.Core.Services;
@@ -188,9 +189,10 @@ namespace PnP.Framework
         /// <param name="failureMessageHtml">llows you to override the failure message. Notice that a failed header message will be added and the error message will be appended.</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called to register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public static AuthenticationManager CreateWithInteractiveLogin(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successMessageHtml = null, string failureMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
+        /// <param name="useWAM">If true, uses WAM for authentication. Works only on Windows OS. Default is false</param>
+        public static AuthenticationManager CreateWithInteractiveLogin(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successMessageHtml = null, string failureMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, bool useWAM = false)
         {
-            return new AuthenticationManager(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successMessageHtml, failureMessageHtml));
+            return new AuthenticationManager(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successMessageHtml, failureMessageHtml), useWAM);
         }
 
         /// <summary>
@@ -202,9 +204,10 @@ namespace PnP.Framework
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
         /// <param name="customWebUi">Optional ICustomWebUi object to fully customize the feedback behavior</param>
-        public static AuthenticationManager CreateWithInteractiveLogin(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null)
+        /// <param name="useWAM">If true, uses WAM for authentication. Works only on Windows OS</param>
+        public static AuthenticationManager CreateWithInteractiveLogin(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null, bool useWAM = false)
         {
-            return new AuthenticationManager(clientId, redirectUrl ?? Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, customWebUi);
+            return new AuthenticationManager(clientId, redirectUrl ?? Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, customWebUi, useWAM);
         }
 
         /// <summary>
@@ -429,7 +432,8 @@ namespace PnP.Framework
         /// <param name="failureMessageHtml">llows you to override the failure message. Notice that a failed header message will be added and the error message will be appended.</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called to register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successMessageHtml = null, string failureMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successMessageHtml, failureMessageHtml))
+        /// <param name="useWAM">If true, uses WAM for authentication. Works only on Windows OS</param>
+        public AuthenticationManager(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successMessageHtml = null, string failureMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, bool useWAM = false) : this(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback , new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successMessageHtml, failureMessageHtml), useWAM = false)
         {
         }
 
@@ -442,11 +446,20 @@ namespace PnP.Framework
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
         /// <param name="customWebUi">Optional ICustomWebUi object to fully customize the feedback behavior</param>
-        public AuthenticationManager(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null) : this()
+        /// <param name="useWAM">If true, uses WAM for authentication. Works only for Windows OS platform</param>
+        public AuthenticationManager(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null, bool useWAM = false) : this()
         {
             this.azureEnvironment = azureEnvironment;
 
             var builder = PublicClientApplicationBuilder.Create(clientId).WithHttpClientFactory(HttpClientFactory);
+            if (useWAM && Environment.OSVersion.Platform == PlatformID.Win32NT)
+            {
+                BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Windows)
+                {
+                    Title = "Login with M365 PnP"
+                };
+                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(WindowHandleUtilities.GetConsoleOrTerminalWindow).WithHttpClientFactory(HttpClientFactory);                
+            }
 
             builder = GetBuilderWithAuthority(builder, azureEnvironment);
 

@@ -92,6 +92,7 @@ namespace PnP.Framework
 
         private readonly IPublicClientApplication publicClientApplication;
         private readonly IConfidentialClientApplication confidentialClientApplication;
+        private readonly IManagedIdentityApplication mi;
 
         // Azure environment setup
         private AzureEnvironment azureEnvironment;
@@ -347,13 +348,36 @@ namespace PnP.Framework
             {
                 throw new ArgumentException($"When {nameof(managedIdentityType)} is not SystemAssigned, {nameof(managedIdentityUserAssignedIdentifier)} must be provided", nameof(managedIdentityType));
             }
-
-            this.accessToken = new NetworkCredential("", accessToken).SecurePassword;
-            this.managedIdendityEndpoint = endpoint;
-            this.managedIdentityHeader = identityHeader;
-            this.authenticationType = managedIdentityType == ManagedIdentityType.SystemAssigned ? ClientContextType.SystemAssignedManagedIdentity : ClientContextType.UserAssignedManagedIdentity;
+            
+            authenticationType = managedIdentityType == ManagedIdentityType.SystemAssigned ? ClientContextType.SystemAssignedManagedIdentity : ClientContextType.UserAssignedManagedIdentity;
             this.managedIdentityType = managedIdentityType;            
-            this.managedIdentityUserAssignedIdentifier = managedIdentityUserAssignedIdentifier;
+            this.managedIdentityUserAssignedIdentifier = managedIdentityUserAssignedIdentifier;            
+
+            // Construct the URL to call to get the token based on the type of Managed Identity in use
+            switch (managedIdentityType)
+            {
+                case ManagedIdentityType.UserAssignedByClientId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with client ID: {managedIdentityUserAssignedIdentifier}");
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedClientId(managedIdentityUserAssignedIdentifier)).Build();
+                    break;
+
+                case ManagedIdentityType.UserAssignedByObjectId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with object/principal ID: {managedIdentityUserAssignedIdentifier}");
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedObjectId(managedIdentityUserAssignedIdentifier)).Build();
+                    break;
+
+
+                case ManagedIdentityType.UserAssignedByResourceId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with Azure Resource ID: {managedIdentityUserAssignedIdentifier}");
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedResourceId(managedIdentityUserAssignedIdentifier)).Build();
+                    break;
+
+                case ManagedIdentityType.SystemAssigned:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, "Using the system assigned managed identity");
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.SystemAssigned).Build();
+                    break;
+            }            
+
         }
 
         /// <summary>
@@ -1144,10 +1168,10 @@ namespace PnP.Framework
                         });
                         ClientContextSettings clientContextSettings = new ClientContextSettings()
                         {
-                            Type = ClientContextType.AccessToken,
+                            Type = managedIdentityType == ManagedIdentityType.SystemAssigned ? ClientContextType.SystemAssignedManagedIdentity : ClientContextType.UserAssignedManagedIdentity,
                             SiteUrl = siteUrl,
                             AuthenticationManager = this,
-                            Environment = this.azureEnvironment
+                            Environment = azureEnvironment
                         };
                         context.AddContextSettings(clientContextSettings);
 
@@ -1532,42 +1556,6 @@ namespace PnP.Framework
         /// <returns>Access token</returns>
         private string GetManagedIdentityToken(string audience)
         {
-            // Ensure our AuthenticationManager is set up to handle Managed Identities
-            if(!managedIdentityType.HasValue)
-            {
-                throw new InvalidOperationException("Trying to get a Managed Identity access token within a non Managed Identity authentication context is not possible");
-            }
-
-            IManagedIdentityApplication mi;
-            
-            // Construct the URL to call to get the token based on the type of Managed Identity in use
-            switch(managedIdentityType.Value)
-            {
-                case ManagedIdentityType.UserAssignedByClientId:
-                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with client ID: {managedIdentityUserAssignedIdentifier}");
-                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedClientId(managedIdentityUserAssignedIdentifier)).Build();
-                    break;
-
-                case ManagedIdentityType.UserAssignedByObjectId:
-                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with object/principal ID: {managedIdentityUserAssignedIdentifier}");
-                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedObjectId(managedIdentityUserAssignedIdentifier)).Build();
-                    break;
-
-
-                case ManagedIdentityType.UserAssignedByResourceId:
-                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with Azure Resource ID: {managedIdentityUserAssignedIdentifier}");
-                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedResourceId(managedIdentityUserAssignedIdentifier)).Build();
-                    break;
-
-                case ManagedIdentityType.SystemAssigned:
-                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, "Using the system assigned managed identity");
-                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.SystemAssigned).Build();
-                    break;
-
-                default:
-                    throw new ArgumentException("Using an unsupported type of Managed Identity", nameof(managedIdentityType));
-            }
-
             AuthenticationResult result = mi.AcquireTokenForManagedIdentity(audience).ExecuteAsync().GetAwaiter().GetResult();
             return result?.AccessToken;
         }

@@ -361,23 +361,23 @@ namespace PnP.Framework
             {
                 case ManagedIdentityType.UserAssignedByClientId:
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with client ID: {managedIdentityUserAssignedIdentifier}");
-                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedClientId(managedIdentityUserAssignedIdentifier)).Build();
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedClientId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
                     break;
 
                 case ManagedIdentityType.UserAssignedByObjectId:
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with object/principal ID: {managedIdentityUserAssignedIdentifier}");
-                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedObjectId(managedIdentityUserAssignedIdentifier)).Build();
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedObjectId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
                     break;
 
 
                 case ManagedIdentityType.UserAssignedByResourceId:
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with Azure Resource ID: {managedIdentityUserAssignedIdentifier}");
-                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedResourceId(managedIdentityUserAssignedIdentifier)).Build();
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedResourceId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
                     break;
 
                 case ManagedIdentityType.SystemAssigned:
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, "Using the system assigned managed identity");
-                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.SystemAssigned).Build();
+                    mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.SystemAssigned).WithHttpClientFactory(HttpClientFactory).Build();
                     break;
             }            
 
@@ -412,7 +412,8 @@ namespace PnP.Framework
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
-            }
+            }            
+            builder.WithLegacyCacheCompatibility(false);
             this.username = username;
             this.password = password;
             publicClientApplication = builder.Build();
@@ -471,6 +472,7 @@ namespace PnP.Framework
             {
                 builder = builder.WithTenantId(tenantId);
             }
+            builder.WithLegacyCacheCompatibility(false);
             publicClientApplication = builder.Build();
 
             this.customWebUi = customWebUi;
@@ -519,7 +521,7 @@ namespace PnP.Framework
             }
 
             builder = builder.WithHttpClientFactory(HttpClientFactory);
-
+            builder.WithLegacyCacheCompatibility(false);
             publicClientApplication = builder.Build();
 
             // register tokencache if callback provided
@@ -555,7 +557,7 @@ namespace PnP.Framework
             {
                 builder = builder.WithRedirectUri(redirectUrl);
             }
-
+            builder.WithLegacyCacheCompatibility(false);
             confidentialClientApplication = builder.Build();
 
             // register tokencache if callback provided
@@ -608,7 +610,7 @@ namespace PnP.Framework
                 {
                     builder = builder.WithRedirectUri(redirectUrl);
                 }
-
+                builder.WithLegacyCacheCompatibility(false);
                 confidentialClientApplication = builder.Build();
 
                 // register tokencache if callback provided. ApptokenCache as AcquireTokenForClient is beind called to acquire tokens.
@@ -653,7 +655,7 @@ namespace PnP.Framework
             {
                 builder = builder.WithTenantId(tenantId);
             }
-
+            builder.WithLegacyCacheCompatibility(false);
             confidentialClientApplication = builder.Build();
 
             // register tokencache if callback provided. ApptokenCache as AcquireTokenForClient is beind called to acquire tokens.
@@ -694,6 +696,7 @@ namespace PnP.Framework
                 }
             }
             this.assertion = userAssertion;
+            builder.WithLegacyCacheCompatibility(false);
             confidentialClientApplication = builder.Build();
 
             // register tokencache if callback provided

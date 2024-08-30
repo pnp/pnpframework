@@ -419,9 +419,7 @@ namespace PnP.Framework
             this.username = username;
             this.password = password;
             publicClientApplication = builder.Build();
-
-            var cacheHelper = MsalCacheHelperUtility.CreateCacheHelper();
-            cacheHelper?.RegisterCache(publicClientApplication.UserTokenCache);
+            
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
             authenticationType = ClientContextType.AzureADCredentials;
@@ -456,8 +454,12 @@ namespace PnP.Framework
         {
             this.azureEnvironment = azureEnvironment;
 
-            PublicClientApplicationBuilder builder = PublicClientApplicationBuilder.Create(clientId).WithHttpClientFactory(HttpClientFactory); ;
+            PublicClientApplicationBuilder builder = PublicClientApplicationBuilder.Create(clientId).WithHttpClientFactory(HttpClientFactory);
             builder = GetBuilderWithAuthority(builder, azureEnvironment);
+            if (!string.IsNullOrEmpty(tenantId))
+            {
+                builder = builder.WithTenantId(tenantId);
+            }
             if (useWAM && SharedUtilities.IsWindowsPlatform())
             {
                 BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Windows)
@@ -465,31 +467,19 @@ namespace PnP.Framework
                     Title = "Login with M365 PnP",
                     ListOperatingSystemAccounts = true,
                 };
-                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(WindowHandleUtilities.GetConsoleOrTerminalWindow);
-
-                if (!string.IsNullOrEmpty(tenantId))
-                {
-                    builder = builder.WithTenantId(tenantId);
-                }
+                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(WindowHandleUtilities.GetConsoleOrTerminalWindow);                
             }
             else
             {
                 if (!string.IsNullOrEmpty(redirectUrl))
                 {
                     builder = builder.WithRedirectUri(redirectUrl);
-                }
-                if (!string.IsNullOrEmpty(tenantId))
-                {
-                    builder = builder.WithTenantId(tenantId);
-                }
+                }                
                 this.customWebUi = customWebUi;
             }
             builder.WithLegacyCacheCompatibility(false);
             publicClientApplication = builder.Build();
-
-            var cacheHelper = MsalCacheHelperUtility.CreateCacheHelper();
-            cacheHelper?.RegisterCache(publicClientApplication.UserTokenCache);
-
+            
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
 
@@ -535,10 +525,7 @@ namespace PnP.Framework
 
             builder = builder.WithHttpClientFactory(HttpClientFactory);
             builder.WithLegacyCacheCompatibility(false);
-            publicClientApplication = builder.Build();
-
-            var cacheHelper = MsalCacheHelperUtility.CreateCacheHelper();
-            cacheHelper?.RegisterCache(publicClientApplication.UserTokenCache);
+            publicClientApplication = builder.Build();            
             
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);

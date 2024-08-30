@@ -2,10 +2,12 @@
 using Microsoft.Identity.Client.AppConfig;
 using Microsoft.Identity.Client.Broker;
 using Microsoft.Identity.Client.Extensibility;
+using Microsoft.Identity.Client.Extensions.Msal;
 using Microsoft.SharePoint.Client;
 using PnP.Core.Services;
 using PnP.Framework.Http;
 using PnP.Framework.Utilities;
+using PnP.Framework.Utilities.Cache;
 using PnP.Framework.Utilities.Context;
 using System;
 using System.Configuration;
@@ -347,14 +349,14 @@ namespace PnP.Framework
         /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId. Mandatory when <paramref name="managedIdentityType"/> is not SystemAssigned. Should be omitted if it is SystemAssigned.</param>
         public AuthenticationManager(string endpoint, string identityHeader, ManagedIdentityType managedIdentityType = ManagedIdentityType.SystemAssigned, string managedIdentityUserAssignedIdentifier = null)
         {
-            if(managedIdentityType != ManagedIdentityType.SystemAssigned && string.IsNullOrWhiteSpace(managedIdentityUserAssignedIdentifier))
+            if (managedIdentityType != ManagedIdentityType.SystemAssigned && string.IsNullOrWhiteSpace(managedIdentityUserAssignedIdentifier))
             {
                 throw new ArgumentException($"When {nameof(managedIdentityType)} is not SystemAssigned, {nameof(managedIdentityUserAssignedIdentifier)} must be provided", nameof(managedIdentityType));
             }
-            
+
             authenticationType = managedIdentityType == ManagedIdentityType.SystemAssigned ? ClientContextType.SystemAssignedManagedIdentity : ClientContextType.UserAssignedManagedIdentity;
-            this.managedIdentityType = managedIdentityType;            
-            this.managedIdentityUserAssignedIdentifier = managedIdentityUserAssignedIdentifier;            
+            this.managedIdentityType = managedIdentityType;
+            this.managedIdentityUserAssignedIdentifier = managedIdentityUserAssignedIdentifier;
 
             // Construct the URL to call to get the token based on the type of Managed Identity in use
             switch (managedIdentityType)
@@ -379,7 +381,7 @@ namespace PnP.Framework
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, "Using the system assigned managed identity");
                     mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.SystemAssigned).WithHttpClientFactory(HttpClientFactory).Build();
                     break;
-            }            
+            }
 
         }
 
@@ -412,12 +414,14 @@ namespace PnP.Framework
             if (!string.IsNullOrEmpty(redirectUrl))
             {
                 builder = builder.WithRedirectUri(redirectUrl);
-            }            
+            }
             builder.WithLegacyCacheCompatibility(false);
             this.username = username;
             this.password = password;
             publicClientApplication = builder.Build();
 
+            var cacheHelper = MsalCacheHelperUtility.CreateCacheHelper();
+            cacheHelper?.RegisterCache(publicClientApplication.UserTokenCache);
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
             authenticationType = ClientContextType.AzureADCredentials;
@@ -434,7 +438,7 @@ namespace PnP.Framework
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called to register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
         /// <param name="useWAM">If true, uses WAM for authentication. Works only on Windows OS</param>
-        public AuthenticationManager(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successMessageHtml = null, string failureMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, bool useWAM = false) : this(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback , new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successMessageHtml, failureMessageHtml), useWAM = false)
+        public AuthenticationManager(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successMessageHtml = null, string failureMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, bool useWAM = false) : this(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successMessageHtml, failureMessageHtml), useWAM = false)
         {
         }
 
@@ -452,30 +456,39 @@ namespace PnP.Framework
         {
             this.azureEnvironment = azureEnvironment;
 
-            var builder = PublicClientApplicationBuilder.Create(clientId).WithHttpClientFactory(HttpClientFactory);
-            if (useWAM && Environment.OSVersion.Platform == PlatformID.Win32NT)
+            PublicClientApplicationBuilder builder = PublicClientApplicationBuilder.Create(clientId).WithHttpClientFactory(HttpClientFactory); ;
+            builder = GetBuilderWithAuthority(builder, azureEnvironment);
+            if (useWAM && SharedUtilities.IsWindowsPlatform())
             {
                 BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Windows)
                 {
-                    Title = "Login with M365 PnP"
+                    Title = "Login with M365 PnP",
+                    ListOperatingSystemAccounts = true,
                 };
-                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(WindowHandleUtilities.GetConsoleOrTerminalWindow).WithHttpClientFactory(HttpClientFactory);                
-            }
+                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(WindowHandleUtilities.GetConsoleOrTerminalWindow);
 
-            builder = GetBuilderWithAuthority(builder, azureEnvironment);
-
-            if (!string.IsNullOrEmpty(redirectUrl))
-            {
-                builder = builder.WithRedirectUri(redirectUrl);
+                if (!string.IsNullOrEmpty(tenantId))
+                {
+                    builder = builder.WithTenantId(tenantId);
+                }
             }
-            if (!string.IsNullOrEmpty(tenantId))
+            else
             {
-                builder = builder.WithTenantId(tenantId);
+                if (!string.IsNullOrEmpty(redirectUrl))
+                {
+                    builder = builder.WithRedirectUri(redirectUrl);
+                }
+                if (!string.IsNullOrEmpty(tenantId))
+                {
+                    builder = builder.WithTenantId(tenantId);
+                }
+                this.customWebUi = customWebUi;
             }
             builder.WithLegacyCacheCompatibility(false);
             publicClientApplication = builder.Build();
 
-            this.customWebUi = customWebUi;
+            var cacheHelper = MsalCacheHelperUtility.CreateCacheHelper();
+            cacheHelper?.RegisterCache(publicClientApplication.UserTokenCache);
 
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
@@ -524,6 +537,9 @@ namespace PnP.Framework
             builder.WithLegacyCacheCompatibility(false);
             publicClientApplication = builder.Build();
 
+            var cacheHelper = MsalCacheHelperUtility.CreateCacheHelper();
+            cacheHelper?.RegisterCache(publicClientApplication.UserTokenCache);
+            
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
 
@@ -831,7 +847,7 @@ namespace PnP.Framework
         {
             AuthenticationResult authResult = null;
 
-            
+
             Diagnostics.Log.Debug("GetAccessTokenAsync", $"Authentication type: {authenticationType}");
 
             switch (authenticationType)
@@ -954,7 +970,7 @@ namespace PnP.Framework
                         // If it is a Uri, we're going to assume the audience is the root part of the Uri, i.e. tenant.sharepoint.com
                         var audienceUri = new Uri(scopes.FirstOrDefault(s => Uri.IsWellFormedUriString(s, UriKind.Absolute)) ?? $"https://{GetGraphEndPoint()}");
                         return GetManagedIdentityToken($"{audienceUri.Scheme}://{audienceUri.Authority}");
-                    }                    
+                    }
                 case ClientContextType.PnPCoreSdk:
                     {
                         return await this.authenticationProvider.GetAccessTokenAsync(uri, scopes).ConfigureAwait(false);
@@ -1490,7 +1506,7 @@ namespace PnP.Framework
                 AzureEnvironment.Production => "accesscontrol.windows.net",
                 AzureEnvironment.Germany => "microsoftonline.de",
                 AzureEnvironment.China => "accesscontrol.chinacloudapi.cn",
-                AzureEnvironment.USGovernment => "accesscontrol.windows.net",                
+                AzureEnvironment.USGovernment => "accesscontrol.windows.net",
                 AzureEnvironment.USGovernmentHigh => "microsoftonline.us",
                 AzureEnvironment.USGovernmentDoD => "microsoftonline.us",
                 AzureEnvironment.PPE => "windows-ppe.net",
@@ -1928,7 +1944,7 @@ namespace PnP.Framework
             {
                 switch (azureEnvironment)
                 {
-                    case AzureEnvironment.USGovernment:                    
+                    case AzureEnvironment.USGovernment:
                         {
                             builder = builder.WithAuthority(AzureCloudInstance.AzurePublic, AadAuthorityAudience.AzureAdMyOrg);
                             break;

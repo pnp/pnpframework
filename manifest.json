@@ -714,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.AuthenticationManager.html",
-          "hash": "dFBtHw0PDC2Xs9X3AAh6EyVrZnll6z/OWDST3L2mJC0="
+          "hash": "FNcB8nRksLP4v266/7WSO4BlieihD4SCanUG7BqE+lY="
         }
       },
       "is_incremental": false,
@@ -726,7 +726,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.AzureEnvironment.html",
-          "hash": "aBS2xZ7R2N8BJOMha2xVU79EDnIa/gjhffm7LUf2UII="
+          "hash": "fvlXEBPoVSTvW2I7HsfrHmPpJyM5R9CF7/qztDnkPU4="
         }
       },
       "is_incremental": false,
@@ -2046,7 +2046,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.KnownClientId.html",
-          "hash": "9EdsXNK74CezHGPPChwofFBBgSvvJi2BUCV9PfL0OP8="
+          "hash": "1ep+t9aUd+7rlHMVTAHYeJzeMHdtMaultUWOP8c188M="
         }
       },
       "is_incremental": false,
@@ -20978,11 +20978,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/PnP.Framework.Utilities.Cache.MsalCacheHelperUtility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PnP.Framework.Utilities.Cache.MsalCacheHelperUtility.html",
+          "hash": "BFqSgBOQJ45KWjAns1e9Gdvz+hM51xVyq2SB5qnTdOU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/PnP.Framework.Utilities.Cache.yml",
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Utilities.Cache.html",
-          "hash": "CXiEbn7KpUhFjIdp87AFTR2kmT4m0J66bm9GbaJBKR8="
+          "hash": "nmHYk3JYyEGN7MGt5tFe8Vr6OqV+XeL09qrdswaDzIA="
         }
       },
       "is_incremental": false,
@@ -22746,7 +22758,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "d5vSRaVKrh2a4N864jmzOPMaTPs2q1KsBlNZ7+wSoh0="
+          "hash": "rT5tzWLRMoeveakuFBiKaEuKKj5AlWn9D/6D5/5bVqY="
         }
       },
       "is_incremental": false,
@@ -23055,7 +23067,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 1892,
+          "total_file_count": 1893,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

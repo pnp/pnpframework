@@ -8727,7 +8727,7 @@
   "api/PnP.Framework.Utilities.Cache.html": {
     "href": "api/PnP.Framework.Utilities.Cache.html",
     "title": "Namespace PnP.Framework.Utilities.Cache | PnP Framework",
-    "keywords": "Namespace PnP.Framework.Utilities.Cache Classes InMemoryCacheProvider Simple in memory cache provider Interfaces ICacheProvider The interface of cache Provider"
+    "keywords": "Namespace PnP.Framework.Utilities.Cache Classes InMemoryCacheProvider Simple in memory cache provider MsalCacheHelperUtility Interfaces ICacheProvider The interface of cache Provider"
   },
   "api/PnP.Framework.Utilities.Cache.ICacheProvider.html": {
     "href": "api/PnP.Framework.Utilities.Cache.ICacheProvider.html",
@@ -8738,6 +8738,11 @@
     "href": "api/PnP.Framework.Utilities.Cache.InMemoryCacheProvider.html",
     "title": "Class InMemoryCacheProvider | PnP Framework",
     "keywords": "Class InMemoryCacheProvider Simple in memory cache provider Inheritance System.Object InMemoryCacheProvider Namespace : PnP.Framework.Utilities.Cache Assembly : PnP.Framework.dll Syntax public class InMemoryCacheProvider : object, ICacheProvider Methods Get<T>(String) Gets an item from the cache Declaration public T Get<T>(string cacheKey) Parameters System.String cacheKey Key of the object to get from cache Returns T Default type value if not found, the object otherwise Type Parameters T Type of the object to get from cache Implements ICacheProvider.Get<T>(String) Put<T>(String, T) Stores an object in the cache. If the object exists it will be updated Declaration public void Put<T>(string cacheKey, T item) Parameters System.String cacheKey Key of the object to store in the cache T item The actual object to store in the cache Type Parameters T Type of the object to store in the cache Implements ICacheProvider.Put<T>(String, T) Extension Methods ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String) ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean) ObjectExtensions.GetPublicInstancePropertyValue(Object, String) ObjectExtensions.GetPublicInstanceProperty(Object, String) ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object) Extensions.ToByteArray(Object)"
+  },
+  "api/PnP.Framework.Utilities.Cache.MsalCacheHelperUtility.html": {
+    "href": "api/PnP.Framework.Utilities.Cache.MsalCacheHelperUtility.html",
+    "title": "Class MsalCacheHelperUtility | PnP Framework",
+    "keywords": "Class MsalCacheHelperUtility Inheritance System.Object MsalCacheHelperUtility Namespace : PnP.Framework.Utilities.Cache Assembly : PnP.Framework.dll Syntax public class MsalCacheHelperUtility : object Methods CreateCacheHelper() Declaration public static MsalCacheHelper CreateCacheHelper() Returns MsalCacheHelper Extension Methods ValidationExtensions.ValidateNotNullOrEmpty<T>(T, String) ObjectExtensions.Set<TObject, T>(TObject, Expression<Func<TObject, T>>, T, Boolean, Boolean) ObjectExtensions.GetPublicInstancePropertyValue(Object, String) ObjectExtensions.GetPublicInstanceProperty(Object, String) ObjectExtensions.SetPublicInstancePropertyValue(Object, String, Object) Extensions.ToByteArray(Object)"
   },
   "api/PnP.Framework.Utilities.CAML.html": {
     "href": "api/PnP.Framework.Utilities.CAML.html",

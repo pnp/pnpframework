@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Added
+
+### Changed
+
+- Removed references to the PnP Management Shell app (`31359c7f-bd7e-475c-86db-fdb8c937548e`) [jansenbe - Bert Jansen]
+
 ## [1.17.0]
 
 ### Added

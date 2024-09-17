@@ -70,11 +70,7 @@ namespace PnP.Framework
     public enum KnownClientId
     {
         /// <summary>
-        /// 
-        /// </summary>
-        PnPManagementShell,
-        /// <summary>
-        /// 
+        /// SPO Management Shell app
         /// </summary>
         SPOManagementShell
     }
@@ -88,10 +84,6 @@ namespace PnP.Framework
         /// The client id of the Microsoft SharePoint Online Management Shell application
         /// </summary>
         public const string CLIENTID_SPOMANAGEMENTSHELL = "9bc3ab49-b65d-410a-85ad-de819febfddc";
-        /// <summary>
-        /// The client id of the Microsoft 365 Patters and Practices Management Shell application
-        /// </summary>
-        public const string CLIENTID_PNPMANAGEMENTSHELL = "31359c7f-bd7e-475c-86db-fdb8c937548e";
 
         private readonly IPublicClientApplication publicClientApplication;
         private readonly IConfidentialClientApplication confidentialClientApplication;
@@ -210,18 +202,6 @@ namespace PnP.Framework
         public static AuthenticationManager CreateWithInteractiveLogin(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null, bool useWAM = false)
         {
             return new AuthenticationManager(clientId, redirectUrl ?? Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, customWebUi, useWAM);
-        }
-
-        /// <summary>
-        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts. It uses the PnP Management Shell multi-tenant Azure AD application ID to authenticate. By default tokens will be cached in memory.
-        /// </summary>
-        /// <param name="username">The username to use for authentication</param>
-        /// <param name="password">The password to use for authentication</param>
-        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
-        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public static AuthenticationManager CreateWithCredentials(string username, SecureString password, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null)
-        {
-            return new AuthenticationManager(username, password, azureEnvironment, tokenCacheCallback);
         }
 
         /// <summary>
@@ -383,17 +363,6 @@ namespace PnP.Framework
                     break;
             }
 
-        }
-
-        /// <summary>
-        /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts. It uses the PnP Management Shell multi-tenant Azure AD application ID to authenticate. By default tokens will be cached in memory.
-        /// </summary>
-        /// <param name="username">The username to use for authentication</param>
-        /// <param name="password">The password to use for authentication</param>
-        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
-        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
-        public AuthenticationManager(string username, SecureString password, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null) : this(GetKnownClientId(KnownClientId.PnPManagementShell), username, password, $"{GetAzureADLoginEndPointStatic(azureEnvironment)}/common/oauth2/nativeclient", azureEnvironment, tokenCacheCallback)
-        {
         }
 
         /// <summary>
@@ -1339,10 +1308,6 @@ namespace PnP.Framework
         {
             switch (id)
             {
-                case KnownClientId.PnPManagementShell:
-                    {
-                        return CLIENTID_PNPMANAGEMENTSHELL;
-                    }
                 case KnownClientId.SPOManagementShell:
                     {
                         return CLIENTID_SPOMANAGEMENTSHELL;

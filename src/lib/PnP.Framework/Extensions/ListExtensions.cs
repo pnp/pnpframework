@@ -1292,6 +1292,48 @@ namespace Microsoft.SharePoint.Client
         }
 
         /// <summary>
+        /// Gets the list of the web based on site language
+        /// </summary>
+        /// <param name="web">The web.</param>
+        /// <param name="source">The source.</param>
+        /// <param name="defaultResourceFile">The defaultResourceFile.</param>
+        /// <returns>The list. Returns null if list was not found.</returns>
+        /// <exception cref="System.InvalidOperationException">
+        /// Could not load list URL name from 'defaultResourceFile' resources file.
+        /// </exception>
+        private static List GetListByLanguage(this Web web, string source, string defaultResourceFile)
+        {
+            if (web == null) throw new ArgumentNullException(nameof(web));
+
+            var context = web.Context;
+            int language = (int)web.EnsureProperty(w => w.Language);
+
+            var result = Utilities.Utility.GetLocalizedString(context, source, defaultResourceFile, language);
+            context.ExecuteQueryRetry();
+            string listName = new Regex(@"['´`]").Replace(result.Value, "");
+
+            if (string.IsNullOrEmpty(listName))
+            {
+                throw new InvalidOperationException($"Could not load list URL name from '{defaultResourceFile}' resources file.");
+            }
+
+            return web.GetListByUrl(listName) ?? web.GetListByTitle(listName);
+        }
+
+        /// <summary>
+        /// Gets the user information list of the web based on site language
+        /// </summary>
+        /// <param name="web">The web.</param>
+        /// <returns>The user information list. Returns null if library was not found.</returns>
+        /// <exception cref="System.InvalidOperationException">
+        /// Could not load pages library URL name from 'core' resources file.
+        /// </exception>
+        public static List GetUserInformationList(this Web web)
+        {
+            return web.GetListByLanguage("$Resources:userinfo_schema_listtitle", "core");
+        }
+
+        /// <summary>
         /// Gets the publishing pages library of the web based on site language
         /// </summary>
         /// <param name="web">The web.</param>
@@ -1301,22 +1343,10 @@ namespace Microsoft.SharePoint.Client
         /// </exception>
         public static List GetPagesLibrary(this Web web)
         {
-            if (web == null) throw new ArgumentNullException(nameof(web));
-
-            var context = web.Context;
-            int language = (int)web.EnsureProperty(w => w.Language);
-
-            var result = Utilities.Utility.GetLocalizedString(context, "$Resources:List_Pages_UrlName", "osrvcore", language);
-            context.ExecuteQueryRetry();
-            string pagesLibraryName = new Regex(@"['´`]").Replace(result.Value, "");
-
-            if (string.IsNullOrEmpty(pagesLibraryName))
-            {
-                throw new InvalidOperationException("Could not load pages library URL name from 'cmscore' resources file.");
-            }
-
-            return web.GetListByUrl(pagesLibraryName) ?? web.GetListByTitle(pagesLibraryName);
+            return web.GetListByLanguage("$Resources:List_Pages_UrlName", "osrvcore");
         }
+
+        
 
         /// <summary>
         /// Gets the web relative URL.
@@ -2332,7 +2362,7 @@ namespace Microsoft.SharePoint.Client
                 Field firstField = list.Fields.AddFieldAsXml(firstModernTargetingFieldXml, false, addOptions);
                 list.Context.Load(firstField);
 
-                var userInformationList = web.Lists.GetByTitle("User Information List");
+                var userInformationList = web.GetUserInformationList();
                 list.Context.Load(userInformationList, l => l.Id);
                 list.Context.ExecuteQueryRetry();
 

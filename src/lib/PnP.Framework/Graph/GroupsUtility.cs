@@ -433,16 +433,16 @@ namespace PnP.Framework.Graph
                     }
 
                     // Check if we have to update the MailEnabled property
-                    if (groupToUpdate.MailEnabled.HasValue)
+                    if (mailEnabled.HasValue && mailEnabled != groupToUpdate.MailEnabled)
                     {
-                        clonedGroup.MailEnabled = groupToUpdate.MailEnabled.Value;
+                        clonedGroup.MailEnabled = mailEnabled.Value;
                         updateGroup = true;
                     }
 
                     // Check if we have to update the SecurityEnabled property
-                    if (groupToUpdate.SecurityEnabled.HasValue)
+                    if (securityEnabled.HasValue && securityEnabled != groupToUpdate.SecurityEnabled)
                     {
-                        clonedGroup.SecurityEnabled = groupToUpdate.SecurityEnabled.Value;
+                        clonedGroup.SecurityEnabled = securityEnabled.Value;
                         updateGroup = true;
                     }
 

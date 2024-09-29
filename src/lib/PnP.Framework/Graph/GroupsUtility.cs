@@ -795,15 +795,15 @@ namespace PnP.Framework.Graph
                     var requestUrl = $"{userRequestUrl}?$filter=userPrincipalName eq '{upn}'&$select=id";
                     var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
                     var jsonNode = JsonNode.Parse(responseAsString);
-                    var memberListString = jsonNode["value"];
-                    var memberId = memberListString.AsArray().FirstOrDefault()?["id"];
+                    var userListString= jsonNode["value"];
+                    var userId = userListString.AsArray().FirstOrDefault()?["id"];
 
-                    if (memberId != null)
+                    if (userId != null)
                     {
                         try
                         {
                             // If it is not in the list of current members, just remove it
-                            var deleteGroupMemberUrl = $"{groupRequestUrl}/members/{memberId}/ref";
+                            var deleteGroupMemberUrl = $"{groupRequestUrl}/members/{userId}/ref";
                             HttpHelper.MakeDeleteRequest(deleteGroupMemberUrl, accessToken, retryCount: retryCount, delay: delay);
                         }
                         catch (HttpResponseException ex) when (ex.StatusCode == 400)

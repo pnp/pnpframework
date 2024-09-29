@@ -358,6 +358,7 @@ namespace PnP.Framework.Graph
             bool result;
             try
             {
+                var groupRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
                 // Use a synchronous model to invoke the asynchronous process
                 result = Task.Run(async () =>
                 {
@@ -368,9 +369,9 @@ namespace PnP.Framework.Graph
                         .GetAsync();
 
                     // Workaround for the PATCH request, needed after update to Graph Library
-                    var clonedGroup = new Group
+                    var clonedGroup = new Model.Group
                     {
-                        Id = groupToUpdate.Id
+                        GroupId = groupToUpdate.Id
                     };
 
                     #region Logic to update the group DisplayName and Description
@@ -425,10 +426,7 @@ namespace PnP.Framework.Graph
                     // If the Group has to be updated, just do it
                     if (updateGroup)
                     {
-                        var updatedGroup = await graphClient.Groups[groupId]
-                            .Request()
-                            .UpdateAsync(clonedGroup);
-
+                        var updatedGroup = HttpHelper.MakePatchRequestForString(groupRequestUrl, clonedGroup, accessToken, retryCount: retryCount, delay: delay);
                         groupUpdated = true;
                     }
 
@@ -439,12 +437,12 @@ namespace PnP.Framework.Graph
 
                 }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return (result);
+            return result;
         }
 
         /// <summary>

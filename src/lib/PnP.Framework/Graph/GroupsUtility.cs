@@ -788,8 +788,6 @@ namespace PnP.Framework.Graph
                 var userRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users";
                 var groupRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
 
-                var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
-
                 foreach (var m in members)
                 {
                     // Search for the user object

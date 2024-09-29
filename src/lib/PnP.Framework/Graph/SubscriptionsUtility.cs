@@ -94,7 +94,7 @@ namespace PnP.Framework.Graph
                 } while (!string.IsNullOrEmpty(requestUrl));
                 
             }
-            catch (HttpRequestException ex)
+            catch (HttpResponseException ex)
             {
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;

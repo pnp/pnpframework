@@ -838,32 +838,37 @@ namespace PnP.Framework.Graph
 
             try
             {
-                Task.Run(async () =>
+                var userRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users";
+                var groupRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
+
+                foreach (var m in owners)
                 {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
+                    // Search for the user object
+                    string upn = Uri.EscapeDataString(m.Replace("'", "''"));
+                    var requestUrl = $"{userRequestUrl}?$filter=userPrincipalName eq '{upn}'&$select=id";
+                    var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+                    var jsonNode = JsonNode.Parse(responseAsString);
+                    var userListString = jsonNode["value"];
+                    var userId = userListString.AsArray().FirstOrDefault()?["id"];
 
-                    foreach (var m in owners)
+                    if (userId != null)
                     {
-                        // Search for the user object
-                        var memberQuery = await graphClient.Users
-                            .Request()
-                            .Filter($"userPrincipalName eq '{Uri.EscapeDataString(m.Replace("'", "''"))}'")
-                            .GetAsync();
-
-                        var member = memberQuery.FirstOrDefault();
-
-                        if (member != null)
+                        try
                         {
                             // If it is not in the list of current owners, just remove it
-                            await graphClient.Groups[groupId].Owners[member.Id].Reference.Request().DeleteAsync();
+                            var deleteGroupMemberUrl = $"{groupRequestUrl}/owners/{userId}/ref";
+                            HttpHelper.MakeDeleteRequest(deleteGroupMemberUrl, accessToken, retryCount: retryCount, delay: delay);
+                        }
+                        catch (HttpResponseException ex) when (ex.StatusCode == 400)
+                        {
+                            // Skip any failing removal
                         }
                     }
-
-                }).GetAwaiter().GetResult();
+                }
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
         }

@@ -364,14 +364,14 @@ namespace PnP.Framework.Graph
                 {
                     var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
 
-                    var groupToUpdate = await graphClient.Groups[groupId]
-                        .Request()
-                        .GetAsync();
+                    var responseAsString = HttpHelper.MakeGetRequestForString(groupRequestUrl, accessToken, retryCount: retryCount, delay: delay);
+                    var groupJson = JsonNode.Parse(responseAsString);
+                    var groupToUpdate = groupJson.Deserialize<Model.Group>();
 
                     // Workaround for the PATCH request, needed after update to Graph Library
                     var clonedGroup = new Model.Group
                     {
-                        GroupId = groupToUpdate.Id
+                        GroupId = groupToUpdate.GroupId,
                     };
 
                     #region Logic to update the group DisplayName and Description
@@ -397,7 +397,7 @@ namespace PnP.Framework.Graph
                     if (owners != null && owners.Length > 0)
                     {
                         // For each and every owner
-                        await UpdateOwners(owners, graphClient, groupToUpdate.Id, true, accessToken, retryCount, delay, azureEnvironment);
+                        await UpdateOwners(owners, graphClient, groupToUpdate.GroupId, true, accessToken, retryCount, delay, azureEnvironment);
                         updateGroup = true;
                     }
 
@@ -405,7 +405,7 @@ namespace PnP.Framework.Graph
                     if (members != null && members.Length > 0)
                     {
                         // For each and every owner
-                        await UpdateMembers(members, graphClient, groupToUpdate.Id, true, accessToken, retryCount, delay, azureEnvironment);
+                        await UpdateMembers(members, graphClient, groupToUpdate.GroupId, true, accessToken, retryCount, delay, azureEnvironment);
                         updateGroup = true;
                     }
 

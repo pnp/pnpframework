@@ -8,6 +8,7 @@ using PnP.Framework.Utilities.Graph;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -89,66 +90,45 @@ namespace PnP.Framework.Graph
 
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+
+                // Prepare the group resource object
+                var newGroup = new Model.Group
                 {
-                    var group = new GroupEntity();
+                    DisplayName = displayName,
+                    Description = string.IsNullOrEmpty(description) ? null : description,
+                    MailNickname = mailNickname,
+                    MailEnabled = mailEnabled,
+                    SecurityEnabled = securityEnabled,
+                };
 
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
-
-                    // Prepare the group resource object
-                    var newGroup = new GroupExtended
+                if (owners != null && owners.Length > 0)
+                {
+                    var userIds = GetUserIds(accessToken, owners, retryCount, delay, azureEnvironment);
+                    if (userIds != null && userIds.Count > 0)
                     {
-                        DisplayName = displayName,
-                        Description = string.IsNullOrEmpty(description) ? null : description,
-                        MailNickname = mailNickname,
-                        MailEnabled = mailEnabled,
-                        SecurityEnabled = securityEnabled
-                    };
-
-                    if (owners != null && owners.Length > 0)
-                    {
-                        var userIds = GetUserIds(accessToken, owners, retryCount, delay, azureEnvironment);
-                        if (userIds != null && userIds.Count > 0)
-                        {
-                            newGroup.OwnersODataBind = userIds.Select(u => string.Format("{1}/users/{0}", u, graphClient.BaseUrl)).ToArray();
-                        }
+                        newGroup.OwnersODataBind = userIds.Select(u => string.Format("{1}/users/{0}", u, GraphHttpClient.GetGraphEndPointUrl(azureEnvironment))).ToArray();
                     }
+                }
 
-                    if (members != null && members.Length > 0)
+                if (members != null && members.Length > 0)
+                {
+                    var userIds = GetUserIds(accessToken, members, retryCount, delay, azureEnvironment);
+                    if (userIds != null && userIds.Count > 0)
                     {
-                        var userIds = GetUserIds(accessToken, members, retryCount, delay, azureEnvironment);
-                        if (userIds != null && userIds.Count > 0)
-                        {
-                            newGroup.MembersODataBind = userIds.Select(u => string.Format("{1}/users/{0}", u, graphClient.BaseUrl)).ToArray();
-                        }
+                        newGroup.MembersODataBind = userIds.Select(u => string.Format("{1}/users/{0}", u, GraphHttpClient.GetGraphEndPointUrl(azureEnvironment))).ToArray();
                     }
+                }
 
-                    // Create the group
-                    Microsoft.Graph.Group addedGroup = await graphClient.Groups.Request().AddAsync(newGroup);
-
-                    if (addedGroup != null)
-                    {
-                        group.DisplayName = addedGroup.DisplayName;
-                        group.Description = addedGroup.Description;
-                        group.GroupId = addedGroup.Id;
-                        group.Mail = addedGroup.Mail;
-                        group.MailNickname = addedGroup.MailNickname;
-                        group.MailEnabled = addedGroup.MailEnabled;
-                        group.SecurityEnabled = addedGroup.SecurityEnabled;
-                        group.GroupTypes = addedGroup.GroupTypes != null ? addedGroup.GroupTypes.ToArray() : null;
-                    }
-
-                    return (group);
-
-                }).GetAwaiter().GetResult();
+                // Create the group
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups";
+                var responseAsString = HttpHelper.MakePostRequestForString(requestUrl, newGroup, accessToken: accessToken, retryCount: retryCount, delay: delay);
+                return System.Text.Json.JsonSerializer.Deserialize<GroupEntity>(responseAsString);
             }
-            catch (ServiceException ex)
+            catch (HttpRequestException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return (result);
         }
 
         /// <summary>

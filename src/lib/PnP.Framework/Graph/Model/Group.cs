@@ -23,6 +23,13 @@ namespace PnP.Framework.Graph.Model
         public string Visibility { get; set; }
         public string Classification { get; set; }
 
+#pragma warning disable CA1819
+        [JsonPropertyName("owners@odata.bind")]
+        public string[] OwnersODataBind { get; set; }
+        [JsonPropertyName("members@odata.bind")]
+        public string[] MembersODataBind { get; set; }
+#pragma warning restore CA1819
+
         public GroupEntity AsEntity()
         {
             return new GroupEntity()

@@ -6,6 +6,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Added
+
+### Changed
+
+- Removed references to the PnP Management Shell app (`31359c7f-bd7e-475c-86db-fdb8c937548e`) [jansenbe - Bert Jansen]
+- Fix check for HeaderTypes as new PageTitle WebPart in OneColumnFullWIth is not always in first section #1066 [czullu - Christian Zuellig]
+
+## [1.17.0]
+
+### Added
+
+### Changed
+
+- Update AuthenticationManager.cs for GCC (ie UsGovernment) Regions #1047, #1048 [SteveWinward - Steve Winward]
+- Updated pages export logic to support the new page header model via full width page header web part [czullu - Christian Zuellig]
+- Bump System.Text.Json versions [jansenbe - Bert Jansen]
+
 ## [1.16.0]
 
 ### Added

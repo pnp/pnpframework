@@ -944,7 +944,7 @@ namespace PnP.Framework.TimerJobs
                 AuthenticationManager am = null;
                 if (this.AuthenticationType == AuthenticationType.Office365)
                 {
-                    am = new AuthenticationManager(this.username, this.password, this.AzureEnvironment);
+                    am = new AuthenticationManager(this.clientId, this.username, this.password, null, this.AzureEnvironment);
                 }
                 else if (this.AuthenticationType == AuthenticationType.AzureADAppOnly)
                 {

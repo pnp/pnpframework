@@ -290,7 +290,7 @@ namespace PnP.Framework.Test
             }
             else
             {
-                using (var authMgr = new AuthenticationManager(UserName, Password))
+                using (var authMgr = new AuthenticationManager(AppId, UserName, Password))
                 {
                     ClientContext clientContext = authMgr.GetContextAsync(DevSiteUrl).GetAwaiter().GetResult();
                     context = PnPClientContext.ConvertFrom(clientContext, retryCount, delay);
@@ -332,7 +332,7 @@ namespace PnP.Framework.Test
             }
             else
             {
-                using (AuthenticationManager am = new AuthenticationManager(UserName, Password, azureEnvironment))
+                using (AuthenticationManager am = new AuthenticationManager(AppId, UserName, Password, null, azureEnvironment))
                 {
 
                     if (azureEnvironment == AzureEnvironment.Custom) 

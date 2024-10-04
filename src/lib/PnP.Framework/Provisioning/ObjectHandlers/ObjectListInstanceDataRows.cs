@@ -115,7 +115,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                             }
                                             else
                                             {
-                                                listitem = existingItems[0];
+                                                listitem = existingItems.FirstOrDefault();
+                                                list.Context.Load(listitem);
+                                                list.Context.ExecuteQueryRetry();
                                                 processItem = true;
                                             }
                                         }

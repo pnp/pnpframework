@@ -15,6 +15,7 @@ using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using PnP.Framework.Utilities;
+using TermGroup = Microsoft.SharePoint.Client.Taxonomy.TermGroup;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -327,7 +328,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 AddPropertyBagTokens(web);
 
             // TermStore related tokens
-            AddTermStoreTokens(web, tokenIds);
+            AddTermStoreTokens(web, tokenIds, applyingInformation?.LoadSiteCollectionTermGroups ?? true);
 
             CalculateTokenCount(_tokens, out int cacheableCount, out int nonCacheableCount);
             BuildTokenCache(cacheableCount, nonCacheableCount);
@@ -552,7 +553,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private void AddTermStoreTokens(Web web, List<string> tokenIds)
+        private void AddTermStoreTokens(Web web, List<string> tokenIds, bool loadSiteCollectionTermGroups)
         {
             if (!tokenIds.Contains("termstoreid")
                 && !tokenIds.Contains("termsetid")
@@ -582,16 +583,36 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 if (!termStore.ServerObjectIsNull.Value)
                 {
-                    web.Context.Load(termStore.Groups,
-                        g => g.Include(
-                            tg => tg.Name,
-                            tg => tg.TermSets.Include(
-                                ts => ts.Name,
-                                ts => ts.Id)
-                        ));
+                    IEnumerable<TermGroup> termGroups;
+
+                    if (loadSiteCollectionTermGroups)
+                    {
+                        termGroups = termStore.Groups;
+
+                        web.Context.Load(
+                            termStore.Groups,
+                            groups => groups.Include(
+                                group => group.Name,
+                                group => group.TermSets.Include(
+                                    termSet => termSet.Name,
+                                    termSet => termSet.Id)
+                            ));
+                    }
+                    else
+                    {
+                        termGroups = web.Context.LoadQuery(termStore
+                            .Groups
+                            .Where(group => !group.IsSiteCollectionGroup)
+                            .Include(
+                                group => group.Name,
+                                group => group.TermSets.Include(
+                                    termSet => termSet.Name,
+                                    termSet => termSet.Id)));
+                    }
+
                     web.Context.ExecuteQueryRetry();
 
-                    foreach (var termGroup in termStore.Groups)
+                    foreach (var termGroup in termGroups)
                     {
                         foreach (var termSet in termGroup.TermSets)
                         {

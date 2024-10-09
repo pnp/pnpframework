@@ -649,6 +649,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     if (userMultiFieldValue != null)
                     {
                         value = string.Join(",", userMultiFieldValue.Select(u => u.Email).ToArray())?.TrimEnd(new char[] { ',' }).Trim(new char[] { ',' });
+                        if (userMultiFieldValue.Any(u => u.LookupValue == web.GetEveryoneExceptExternalUsersClaimName()))
+                        {
+                            value = value + ",{everyonebutexternalusers}";
+                        }
                     }
                     break;
                 case "Lookup":

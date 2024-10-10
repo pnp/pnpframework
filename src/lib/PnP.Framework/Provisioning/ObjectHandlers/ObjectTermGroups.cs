@@ -1,11 +1,10 @@
-﻿using Microsoft.SharePoint.Client;
-using Microsoft.SharePoint.Client.Taxonomy;
-using PnP.Framework.Diagnostics;
-using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
-using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.Taxonomy;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.ObjectHandlers.Utilities;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -24,22 +23,44 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 this.reusedTerms = new List<TermGroupHelper.ReusedTerm>();
 
                 TaxonomySession taxSession = TaxonomySession.GetTaxonomySession(web.Context);
-                TermStore termStore = null;
-                TermGroup siteCollectionTermGroup = null;
+                TermStore termStore;
+                TermGroup siteCollectionTermGroup;
+                IEnumerable<TermGroup> termGroups;
 
                 try
                 {
                     termStore = taxSession.GetDefaultKeywordsTermStore();
-                    web.Context.Load(termStore,
-                        ts => ts.Languages,
-                        ts => ts.DefaultLanguage,
-                        ts => ts.Groups.Include(
-                            tg => tg.Name,
-                            tg => tg.Id,
-                            tg => tg.TermSets.Include(
-                                tset => tset.Name,
-                                tset => tset.Id)));
+
+                    web.Context.Load(termStore, ts => ts.Languages, ts => ts.DefaultLanguage);
                     siteCollectionTermGroup = termStore.GetSiteCollectionGroup((web.Context as ClientContext).Site, false);
+
+                    if (applyingInformation.LoadSiteCollectionTermGroups)
+                    {
+                        termGroups = termStore.Groups;
+
+                        web.Context.Load(
+                            termStore.Groups,
+                            groups => groups.Include(
+                                group => group.Name,
+                                group => group.Id,
+                                group => group.TermSets.Include(
+                                    termSet => termSet.Name,
+                                    termSet => termSet.Id)
+                            ));
+                    }
+                    else
+                    {
+                        termGroups = web.Context.LoadQuery(termStore
+                            .Groups
+                            .Where(group => !group.IsSiteCollectionGroup)
+                            .Include(
+                                group => group.Name,
+                                group => group.Id,
+                                group => group.TermSets.Include(
+                                    termSet => termSet.Name,
+                                    termSet => termSet.Id)));
+                    }
+
                     web.Context.Load(siteCollectionTermGroup);
                     web.Context.ExecuteQueryRetry();
                 }
@@ -52,12 +73,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     return parser;
                 }
 
-                SiteCollectionTermGroupNameToken siteCollectionTermGroupNameToken =
-                    new SiteCollectionTermGroupNameToken(web);
-
                 foreach (var modelTermGroup in template.TermGroups)
                 {
-                    this.reusedTerms.AddRange(TermGroupHelper.ProcessGroup(web.Context as ClientContext, taxSession, termStore, modelTermGroup, siteCollectionTermGroup, parser, scope));
+                    this.reusedTerms.AddRange(TermGroupHelper.ProcessGroup(web.Context as ClientContext, taxSession, termStore, termGroups, modelTermGroup, siteCollectionTermGroup, parser, scope));
                 }
 
                 foreach (var reusedTerm in this.reusedTerms)

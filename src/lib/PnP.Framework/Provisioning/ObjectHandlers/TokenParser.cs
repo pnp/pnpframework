@@ -15,6 +15,7 @@ using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.ObjectHandlers.TokenDefinitions;
 using PnP.Framework.Utilities;
+using TermGroup = Microsoft.SharePoint.Client.Taxonomy.TermGroup;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -28,8 +29,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private Dictionary<string, string> _tokenDictionary;
         private Dictionary<string, TokenDefinition> _nonCacheableTokenDictionary;
         private Dictionary<string, TokenDefinition> _listTokenDictionary;
-        private readonly Dictionary<string, string> _listsTitles = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        private bool _loadSiteCollectionTermGroups;
 
+        private readonly Dictionary<string, string> _listsTitles = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         private readonly bool _initializedFromHierarchy;
         private readonly Action<TokenDefinition> _addTokenWithCacheUpdateDelegate;
         private readonly Action<TokenDefinition> _addTokenToListDelegate;
@@ -78,6 +80,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             var tokenIds = ParseTemplate(template);
             _web = web;
+            _loadSiteCollectionTermGroups = applyingInformation?.LoadSiteCollectionTermGroups ?? true;
 
             foreach (var token in _tokens.OfType<VolatileTokenDefinition>())
             {
@@ -131,12 +134,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// </summary>
         /// <param name="tokens">The list with TokenDefinitions to copy over</param>
         /// <param name="web">The Web context to copy over</param>
-        private TokenParser(Web web, List<TokenDefinition> tokens)
+        /// <param name="loadSiteCollectionTermGroups">Specifies if site collection term groups should be loaded.</param>
+        private TokenParser(Web web, List<TokenDefinition> tokens, bool loadSiteCollectionTermGroups)
         {
             _web = web;
             _tokens = tokens;
             _addTokenWithCacheUpdateDelegate = AddTokenWithCacheUpdate;
             _addTokenToListDelegate = AddTokenToList;
+            _loadSiteCollectionTermGroups = loadSiteCollectionTermGroups;
 
             CalculateTokenCount(_tokens, out int cacheableCount, out int nonCacheableCount);
             BuildTokenCache(cacheableCount, nonCacheableCount);
@@ -151,6 +156,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             _addTokenWithCacheUpdateDelegate = AddTokenWithCacheUpdate;
             _addTokenToListDelegate = AddTokenToList;
+            _loadSiteCollectionTermGroups = applyingInformation?.LoadSiteCollectionTermGroups ?? true;
 
             // CHANGED: To avoid issues with low privilege users
             Web web;
@@ -217,6 +223,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             _tokens = new List<TokenDefinition>();
             _addTokenWithCacheUpdateDelegate = AddTokenWithCacheUpdate;
             _addTokenToListDelegate = AddTokenToList;
+            _loadSiteCollectionTermGroups = applyingInformation?.LoadSiteCollectionTermGroups ?? true;
 
             if (tokenIds.Contains("sitecollection"))
                 _tokens.Add(new SiteCollectionToken(web));
@@ -578,25 +585,42 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             web.Context.Load(termStore);
             web.Context.ExecuteQueryRetry();
 
-            if (tokenIds.Contains("termsetid"))
+            if (tokenIds.Contains("termsetid") && !termStore.ServerObjectIsNull.Value)
             {
-                if (!termStore.ServerObjectIsNull.Value)
-                {
-                    web.Context.Load(termStore.Groups,
-                        g => g.Include(
-                            tg => tg.Name,
-                            tg => tg.TermSets.Include(
-                                ts => ts.Name,
-                                ts => ts.Id)
-                        ));
-                    web.Context.ExecuteQueryRetry();
+                IEnumerable<TermGroup> termGroups;
 
-                    foreach (var termGroup in termStore.Groups)
+                if (_loadSiteCollectionTermGroups)
+                {
+                    termGroups = termStore.Groups;
+
+                    web.Context.Load(
+                        termStore.Groups,
+                        groups => groups.Include(
+                            group => group.Name,
+                            group => group.TermSets.Include(
+                                termSet => termSet.Name,
+                                termSet => termSet.Id)
+                        ));
+                }
+                else
+                {
+                    termGroups = web.Context.LoadQuery(termStore
+                        .Groups
+                        .Where(group => !group.IsSiteCollectionGroup)
+                        .Include(
+                            group => group.Name,
+                            group => group.TermSets.Include(
+                                termSet => termSet.Name,
+                                termSet => termSet.Id)));
+                }
+
+                web.Context.ExecuteQueryRetry();
+
+                foreach (var termGroup in termGroups)
+                {
+                    foreach (var termSet in termGroup.TermSets)
                     {
-                        foreach (var termSet in termGroup.TermSets)
-                        {
-                            _tokens.Add(new TermSetIdToken(web, termGroup.Name, termSet.Name, termSet.Id));
-                        }
+                        _tokens.Add(new TermSetIdToken(web, termGroup.Name, termSet.Name, termSet.Id));
                     }
                 }
             }
@@ -1416,7 +1440,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// <returns>New cloned instance of the TokenParser</returns>
         public object Clone()
         {
-            return new TokenParser(_web, _tokens);
+            return new TokenParser(_web, _tokens, _loadSiteCollectionTermGroups);
         }
     }
 }

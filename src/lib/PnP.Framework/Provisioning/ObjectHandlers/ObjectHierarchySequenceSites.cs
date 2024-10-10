@@ -724,7 +724,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         //}
                                         //else
                                         //{
-                                        //    siteTokenParser.Rebase(web, provisioningTemplate);
+                                        //    siteTokenParser.Rebase(web, provisioningTemplate, provisioningTemplateApplyingInformation);
                                         //}
                                         WriteMessage($"Applying Template", ProvisioningMessageType.Progress);
                                         new SiteToTemplateConversion().ApplyRemoteTemplate(web, provisioningTemplate, provisioningTemplateApplyingInformation, true, siteTokenParser);
@@ -871,7 +871,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     provisioningTemplate.Connector = hierarchy.Connector;
                     if (tokenParser == null)
                     {
-                        tokenParser = new TokenParser(subweb, provisioningTemplate);
+                        tokenParser = new TokenParser(subweb, provisioningTemplate, provisioningTemplateApplyingInformation);
                     }
                     else
                     {

@@ -5,6 +5,7 @@ using PnP.Framework.Diagnostics;
 using PnP.Framework.Entities;
 using PnP.Framework.Graph;
 using PnP.Framework.Graph.Model;
+using PnP.Framework.Http;
 using PnP.Framework.Provisioning.Model;
 using PnP.Framework.Provisioning.Model.Configuration;
 using PnP.Framework.Provisioning.ObjectHandlers;
@@ -15,6 +16,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -1229,71 +1231,60 @@ namespace Microsoft.SharePoint.Client
         /// <returns>An enumerated type that can be: No, Yes, Recycled</returns>
         public static SiteExistence SiteExistsAnywhere(this Tenant tenant, string siteFullUrl)
         {
-            var userIsTenantAdmin = TenantExtensions.IsCurrentUserTenantAdmin((ClientContext)tenant.Context);
-
             try
             {
-                // CHANGED: Modified in order to support non privilege users
-                if (userIsTenantAdmin)
+                using (ClientContext siteContext = tenant.Context.Clone(siteFullUrl))
                 {
-                    // Get the site name
-                    var properties = tenant.GetSitePropertiesByUrl(siteFullUrl, false);
-                    tenant.Context.Load(properties);
-                    tenant.Context.ExecuteQueryRetry();
-                }
-                else
-                {
-                    // Get the site context for the current user
-                    using (var siteContext = tenant.Context.Clone(siteFullUrl))
-                    {
-                        var site = siteContext.Site;
-                        siteContext.Load(site);
-                        siteContext.ExecuteQueryRetry();
-                    }
+                    Site site = siteContext.Site;
+                    siteContext.Load(site);
+                    siteContext.ExecuteQueryRetry();
                 }
 
-                // Will cause an exception if site URL is not there. Not optimal, but the way it works.
                 return SiteExistence.Yes;
             }
             catch (Exception ex)
             {
-                if (userIsTenantAdmin && (IsCannotGetSiteException(ex) || IsUnableToAccessSiteException(ex)))
-                {
-                    if (IsUnableToAccessSiteException(ex))
-                    {
-                        //Let's retry to see if this site collection was recycled
-                        try
-                        {
-                            var deletedProperties = tenant.GetDeletedSitePropertiesByUrl(siteFullUrl);
-                            tenant.Context.Load(deletedProperties);
-                            tenant.Context.ExecuteQueryRetry();
-                            if (deletedProperties.Status.Equals("Recycled", StringComparison.OrdinalIgnoreCase))
-                            {
-                                return SiteExistence.Recycled;
-                            }
-                            else
-                            {
-                                return SiteExistence.No;
-                            }
-                        }
-                        catch
-                        {
-                            return SiteExistence.No;
-                        }
-                    }
-                    else
-                    {
-                        return SiteExistence.No;
-                    }
-                }
-                else if (IsNotFoundException(ex))
-                {
-                    return SiteExistence.No;
-                }
-                else
+                //If is unauthorized to access site collection, it means the site collection exists
+                if (IsUnauthorizedToAccessSiteException(ex))
                 {
                     return SiteExistence.Yes;
                 }
+
+                //Validate if when connect to the site the response contains 'connection: close', if it returns that, the site is recycled
+                try
+                {
+                    // Use an HTTP client to send a request to the site URL.
+                    using (HttpClient httpClient = PnPHttpClient.Instance.GetHttpClient(tenant.Context.Clone(siteFullUrl)))
+                    using (HttpRequestMessage request = new(HttpMethod.Get, siteFullUrl))
+                    {
+                        HttpResponseMessage response = httpClient.SendAsync(request, new CancellationToken()).GetAwaiter().GetResult();
+
+                        // Check if the response indicates a failure (not successful).
+                        if (response.StatusCode == HttpStatusCode.NotFound)
+                        {
+                            string responseBody = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+
+                            // Check if the response indicates that the site was not found (404 error).
+                            if (responseBody.ToUpper().Contains("404 FILE NOT FOUND"))
+                            {
+                                return SiteExistence.No;
+                            }
+                            // Check if the response indicates that the site is recycled.
+                            else if (responseBody.ToUpper().Contains("CONNECTION: CLOSE"))
+                            {
+                                return SiteExistence.Recycled;
+                            }
+                        }
+                    }
+                }
+                catch { }
+
+                if (IsNotFoundException(ex))
+                {
+                    return SiteExistence.No;
+                }
+
+                return SiteExistence.Yes;
             }
         }
 
@@ -1437,6 +1428,25 @@ namespace Microsoft.SharePoint.Client
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Check if exception Is "unauthorized" to access site collection
+        /// </summary>
+        /// <param name="ex">Exception</param>
+        /// <returns>True if yes, false if not</returns>
+        private static bool IsUnauthorizedToAccessSiteException(Exception ex)
+        {
+            if (ex is ServerException serverException && serverException.ServerErrorCode == -2147024891 && serverException.ServerErrorTypeName.Equals("System.UnauthorizedAccessException", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return true;
+            }
+
+            if (ex is System.Net.WebException { Response: System.Net.HttpWebResponse { StatusCode: HttpStatusCode.Unauthorized } })
+            {
+                return true;
+            }
+            return false;
         }
         #endregion
 

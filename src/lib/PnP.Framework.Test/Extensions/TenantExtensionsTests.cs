@@ -210,6 +210,33 @@ namespace PnP.Framework.Test.AppModelExtensions
                 Assert.IsFalse(subSiteExists4);
             }
         }
+
+        /// <summary>
+        /// Validate if site collection exists anywhere
+        /// </summary>
+        [TestMethod()]
+        [Timeout(15 * 60 * 1000)]
+        public void SiteExistsAnywhereTest()
+        {
+            using (var tenantContext = TestCommon.CreateTenantClientContext())
+            {
+                Tenant tenant = new(tenantContext);
+                IList<SiteEntity> siteCollections = tenant.GetSiteCollections(includeDetail: false);
+
+                // Grab a random site collection from the list of returned site collections
+                int siteNumberToCheck = new Random().Next(0, siteCollections.Count - 1);
+
+                SiteEntity site = siteCollections[siteNumberToCheck];
+
+                SiteExistence siteExists1 = tenant.SiteExistsAnywhere(site.Url);
+                Assert.IsTrue(siteExists1 == SiteExistence.Yes);
+
+                string devSiteUrl = TestCommon.AppSetting("SPODevSiteUrl");
+                string siteToCreateUrl = GetTestSiteCollectionName(devSiteUrl, "aaabbbccc");
+                SiteExistence siteExists2 = tenant.SiteExistsAnywhere(siteToCreateUrl);
+                Assert.IsFalse(siteExists2 == SiteExistence.No, "Invalid site returned as valid.");
+            }
+        }
         #endregion
 
         #region Site collection creation and deletion tests

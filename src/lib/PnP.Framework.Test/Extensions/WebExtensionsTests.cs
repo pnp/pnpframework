@@ -22,6 +22,9 @@ namespace Microsoft.SharePoint.Client.Tests
         const string APPNAME = "HelloWorldApp";
         const string contentTypeName = "PnP Test Content Type";
         const string contentTypeGroupName = "PnP Web Extensions Test";
+        const string siteFieldInternalName = "pnpTestSiteField";
+        const string siteFieldName = "PnP Test Site Field";
+        const string siteFieldGroupName = "PnP Web Extensions Test";
         private ClientContext clientContext;
 
         #region Test initialize and cleanup
@@ -50,8 +53,18 @@ namespace Microsoft.SharePoint.Client.Tests
             };
 
             provisionTemplate.ContentTypes.Add(contentType);
+            
+            var siteField = new PnP.Framework.Provisioning.Model.Field
+            {
+                SchemaXml = $@"<Field Type=""Text"" DisplayName=""{siteFieldName}"" StaticName=""{siteFieldInternalName}"" Name=""{siteFieldInternalName}"" ID=""{{d57adccd-45ab-4fd5-963b-63f39b7d78eb}}"" ShowInViewForms=""FALSE"" Required=""FALSE"" Hidden=""FALSE"" CanToggleHidden=""TRUE"" SourceID=""{{0c70531e-2bfd-4c54-849d-96e88c6b277a}}"" Group=""{siteFieldGroupName}"" />"
+            };
+
+            provisionTemplate.SiteFields.Add(siteField);
+            
             TokenParser parser = new TokenParser(clientContext.Web, provisionTemplate);
             new ObjectContentType(FieldAndListProvisioningStepHelper.Step.ListAndStandardFields).ProvisionObjects(clientContext.Web, provisionTemplate, parser,
+                new ProvisioningTemplateApplyingInformation());
+            new ObjectField(FieldAndListProvisioningStepHelper.Step.ListAndStandardFields).ProvisionObjects(clientContext.Web, provisionTemplate, parser,
                 new ProvisioningTemplateApplyingInformation());
         }
 
@@ -120,6 +133,13 @@ namespace Microsoft.SharePoint.Client.Tests
             if (ct != null)
             {
                 ct.DeleteObject();
+                clientContext.ExecuteQueryRetry();
+            }
+
+            var fld = clientContext.Web.GetFieldByInternalName(siteFieldInternalName);
+            if (fld != null)
+            {
+                fld.DeleteObject();
                 clientContext.ExecuteQueryRetry();
             }
 
@@ -476,6 +496,27 @@ namespace Microsoft.SharePoint.Client.Tests
         }
 
         [TestMethod]
+        public void GetProvisioningTemplateWithSelectedFieldsTest()
+        {
+            using (var clientContext = TestCommon.CreateClientContext())
+            {
+                var web = clientContext.Web;
+
+                // Arrange
+                var creationInfo = new ProvisioningTemplateCreationInformation(web);
+                creationInfo.FieldGroupsToInclude.Add(siteFieldGroupName);
+                creationInfo.HandlersToProcess = Handlers.Fields;
+
+                // Act
+                var template = web.GetProvisioningTemplate(creationInfo);
+
+                // Assert
+                Assert.AreEqual(1, template.SiteFields.Count);
+                StringAssert.Equals(siteFieldGroupName, template.SiteFields[0].SchemaXml.ElementAttributeValue("Group"));
+            }
+        }
+
+        [TestMethod]
         public void GetProvisioningTemplateWithOutSelectedContentTypesTest()
         {
             using (var clientContext = TestCommon.CreateClientContext())
@@ -493,6 +534,27 @@ namespace Microsoft.SharePoint.Client.Tests
 
                 // Assert
                 Assert.IsTrue(template.ContentTypes.Count >= 1);
+            }
+        }
+
+        [TestMethod]
+        public void GetProvisioningTemplateWithOutSelectedSiteFieldsTest()
+        {
+            using (var clientContext = TestCommon.CreateClientContext())
+            {
+                var web = clientContext.Web;
+
+                // Arrange
+                var creationInfo = new ProvisioningTemplateCreationInformation(web)
+                {
+                    HandlersToProcess = Handlers.Fields
+                };
+
+                // Act
+                var template = web.GetProvisioningTemplate(creationInfo);
+
+                // Assert
+                Assert.IsTrue(template.SiteFields.Count >= 1);
             }
         }
         #endregion

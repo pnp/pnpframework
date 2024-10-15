@@ -341,7 +341,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 // Add newly created field to token set, this allows to create a field + use it in a formula in the same provisioning template
                 parser.AddToken(new FieldTitleToken(web, field.InternalName, field.Title));
                 parser.AddToken(new FieldIdToken(web, field.InternalName, field.Id));
-
+                
                 bool isDirty = false;
 
                 if (originalFieldXml.ContainsResourceToken())
@@ -526,7 +526,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 var existingFields = web.Fields;
                 web.Context.Load(web, w => w.ServerRelativeUrl);
-                web.Context.Load(existingFields, fs => fs.Include(f => f.Id, f => f.SchemaXml, f => f.TypeAsString, f => f.InternalName, f => f.Title));
+                web.Context.Load(existingFields, fs => fs.Include(f => f.Id, f => f.SchemaXml, f => f.TypeAsString, f => f.InternalName, f => f.Title, f => f.Group));
                 web.Context.Load(web.Lists, ls => ls.Include(l => l.Id, l => l.Title));
                 web.Context.ExecuteQueryRetry();
 
@@ -539,7 +539,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     currentFieldIndex++;
                     WriteSubProgress("Field", field.InternalName, currentFieldIndex, fieldsToProcessCount);
-                    if (!BuiltInFieldId.Contains(field.Id))
+                    if (!BuiltInFieldId.Contains(field.Id) &&
+                        (creationInfo.FieldGroupsToInclude.Count == 0 || creationInfo.FieldGroupsToInclude.Contains(field.Group)))
                     {
                         var fieldXml = field.SchemaXml;
                         XElement element = XElement.Parse(fieldXml);

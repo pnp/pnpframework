@@ -184,7 +184,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 int step = 2;
 
-                TokenParser sequenceTokenParser = new TokenParser(tenant, hierarchy);
+                TokenParser sequenceTokenParser = new TokenParser(tenant, hierarchy, new ProvisioningTemplateApplyingInformation { LoadSiteCollectionTermGroups = configuration.LoadSiteCollectionTermGroups });
 
                 CallWebHooks(hierarchy.Templates.FirstOrDefault(), sequenceTokenParser,
                     ProvisioningTemplateWebhookKind.ProvisioningStarted);
@@ -414,7 +414,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 progressDelegate?.Invoke("Initializing engine", 1, count); // handlers + initializing message)
                 if (tokenParser == null)
                 {
-                    tokenParser = new TokenParser(web, template);
+                    tokenParser = new TokenParser(web, template, provisioningInfo);
                 }
                 if (provisioningInfo.HandlersToProcess.HasFlag(Handlers.ExtensibilityProviders))
                 {

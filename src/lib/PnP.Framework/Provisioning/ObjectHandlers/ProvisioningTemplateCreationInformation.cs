@@ -334,6 +334,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         public List<String> ListsToExtract { get; set; } = new List<String>();
 
         /// <summary>
+        /// Specifies whether to also load site collection term groups when initializing the <see cref="TokenParser"/>. If
+        /// <c>false</c>, only normal term groups will be loaded. This does not affect loading the site collection term group
+        /// when one of the <c>sitecollectionterm</c> tokens was found.
+        /// </summary>
+        public bool LoadSiteCollectionTermGroups { get; set; } = true;
+
+        /// <summary>
         /// List which contains information about resource tokens used and/or created during the extraction of a template.
         /// </summary>
         internal List<Tuple<string, int, string>> ResourceTokens { get; } = new List<Tuple<string, int, string>>();

@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Removed references to the PnP Management Shell app (`31359c7f-bd7e-475c-86db-fdb8c937548e`) [jansenbe - Bert Jansen]
 - Fix check for HeaderTypes as new PageTitle WebPart in OneColumnFullWIth is not always in first section #1066 [czullu - Christian Zuellig]
+- Updated assembly versions #1073 [gautamdsheth - Gautam Sheth]
 
 ## [1.17.0]
 

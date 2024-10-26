@@ -311,9 +311,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     var sortOrder = customSortOrder.Split(new[] { ':' }).ToList();
 
-                    var currentTermIndex = sortOrder.Where(i => new Guid(i) == term.Id).FirstOrDefault();
+                    var currentTermIndex = sortOrder.Where(i => !String.IsNullOrEmpty(i) && new Guid(i) == term.Id).FirstOrDefault();
                     modelTerm.CustomSortOrder = sortOrder.IndexOf(currentTermIndex) + 1;
-
                 }
             }
             termsToReturn = termsToReturn.OrderBy(t => t.CustomSortOrder).ToList();

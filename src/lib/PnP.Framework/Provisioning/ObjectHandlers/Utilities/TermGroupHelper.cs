@@ -359,6 +359,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
         {
             if (modelTerm.Labels.Any())
             {
+                RemoveLabelsFromTerm(term, termStore, context);
+
+                context.Load(term.Labels);
                 context.Load(term);
                 context.ExecuteQueryRetry();
                 termStore.CommitAll();

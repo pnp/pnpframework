@@ -177,14 +177,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 }
                                 else
                                 {
-                                    // todo: add handling for reused term?
-                                    modelTerm.Id = term.Id;
+                                    if (modelTermGroup.UpdateBehavior == Model.TermGroupUpdateBehavior.Overwrite)
+                                    {
+                                        UpdateTerm(modelTerm, term, parser, termStore, context, scope);
+                                    }
                                 }
                             }
                             else
                             {
-                                // todo: add handling for reused term?
-                                modelTerm.Id = term.Id;
+                                if (modelTermGroup.UpdateBehavior == Model.TermGroupUpdateBehavior.Overwrite)
+                                {
+                                    UpdateTerm(modelTerm, term, parser, termStore, context, scope);
+                                }
                             }
 
                             if (term != null)
@@ -351,6 +355,76 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             return Tuple.Create(modelTerm.Id, parser, reusedTerms);
         }
 
+        internal static Model.Term UpdateTerm(Model.Term modelTerm, Term term, TokenParser parser, TermStore termStore, ClientContext context, PnPMonitoredScope scope)
+        {
+            if (modelTerm.Labels.Any())
+            {
+                context.Load(term);
+                context.ExecuteQueryRetry();
+                termStore.CommitAll();
+
+                foreach (var modelLabel in modelTerm.Labels)
+                {
+                    if (((modelLabel.IsDefaultForLanguage && modelLabel.Language != termStore.DefaultLanguage) || modelLabel.IsDefaultForLanguage == false) && termStore.Languages.Contains(modelLabel.Language))
+                    {
+                        term.CreateLabel(parser.ParseString(modelLabel.Value), modelLabel.Language, modelLabel.IsDefaultForLanguage);
+                    }
+                    else
+                    {
+                        scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_TermGroups_Skipping_label__0___label_is_to_set_to_default_for_language__1__while_the_default_termstore_language_is_also__1_, modelLabel.Value, modelLabel.Language);
+                    }
+                }
+            }
+
+            context.Load(term);
+            context.ExecuteQueryRetry();
+            termStore.CommitAll();
+
+            term.Name = modelTerm.Name;
+            term.Owner = modelTerm.Owner;
+            term.SetDescription(parser.ParseString(modelTerm.Description), modelTerm.Language != null && modelTerm.Language != 0 ? modelTerm.Language.Value : termStore.DefaultLanguage);
+            term.IsAvailableForTagging = modelTerm.IsAvailableForTagging;
+
+            context.Load(term);
+            context.ExecuteQueryRetry();
+            termStore.CommitAll();
+
+            modelTerm.Id = term.Id;
+
+            return modelTerm;
+        }
+
+        private static void RemoveLabelsFromTerm(Term term, TermStore termStore, ClientContext context)
+        {
+            context.Load(term.Labels);
+            // don't change this to async! Managed Metadata Service can't keep up and CSOM will actually not load anything.
+            context.ExecuteQueryRetry();
+
+            var existingLanguages = term.Labels.Select(x => x.Language).Distinct().ToList();
+
+            foreach (var language in existingLanguages)
+            {
+                var labelsInLanguage = term.Labels.Where(x => x.Language == language);
+                foreach (var nonDefaultLabel in labelsInLanguage.Where(x => x.IsDefaultForLanguage == false))
+                {
+                    nonDefaultLabel.DeleteObject();
+                }
+
+                var defaultLabel = labelsInLanguage.Where(x => x.IsDefaultForLanguage == true).Single();
+
+                // Check if the current label is the default label for default language - that can not be deleted. All others are free game!
+                if (termStore.DefaultLanguage != defaultLabel.Language)
+                {
+                    defaultLabel.DeleteObject();
+                }
+
+                // Trying to perform multiple deletions in a batch will cause conflicts that one needs to handle so it's easier to just give up and commit changes once per label change
+                context.Load(term.Labels);
+                context.ExecuteQueryRetry();
+            }
+
+            termStore.CommitAll();
+        }
 
         private static void CreateTermLabels(Model.Term modelTerm, TermStore termStore, TokenParser parser, PnPMonitoredScope scope, Term term)
         {
@@ -629,7 +703,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     return true;
                 }
             }
-            catch(ServerException ex)
+            catch (ServerException ex)
             {
                 if (ex.ServerErrorCode == -2146232832 && ex.ServerErrorTypeName.Equals("Microsoft.SharePoint.SPException", StringComparison.InvariantCultureIgnoreCase))
                 {

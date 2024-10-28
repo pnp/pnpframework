@@ -576,7 +576,6 @@ namespace Microsoft.SharePoint.Client
         /// <returns>True if app-only, false otherwise</returns>
         public static bool IsAppOnly(this ClientRuntimeContext clientContext)
         {
-
             // Set initial result to false
             var result = false;
 
@@ -690,7 +689,18 @@ namespace Microsoft.SharePoint.Client
                     };
                     // Issue a dummy request to get it from the Authorization header
                     clientContext.ExecutingWebRequest += handler;
-                    clientContext.ExecuteQuery();
+                    try
+                    {
+                        clientContext.ExecuteQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        // This can fail for whatever reason, but if we already have the AccessToken, it doesn't matter
+                        if (String.IsNullOrEmpty(accessToken))
+                        {
+                            throw new AggregateException("Fetching the AccessToken to inspect whether the ClientContext is AppOnly or not failed. There might be more information in the InnerExceptions.", ex);
+                        }
+                    }
                     clientContext.ExecutingWebRequest -= handler;
                 }
             }

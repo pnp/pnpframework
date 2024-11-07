@@ -67,7 +67,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     // If security is configured, add the members and owners defined in the template to the Team
                     if (team.Security != null)
                     {
-                        if (!SetGroupSecurity(scope, parser, team, teamId, accessToken, graphBaseUri)) return null;
+                        if (!SetGroupSecurity(scope, parser, team, parsedGroupId, accessToken, graphBaseUri)) return null;
                     }
 
                     // Then promote the Group into a Team or update it, if it already exists. Patching a team doesn't return an ID, so use the parsedGroupId directly (teamId and groupId are the same). 
@@ -1950,6 +1950,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             var teamTabs = teamTabsJObject.ToObject<TeamTab[]>();
             foreach (var tab in teamTabs)
             {
+                if (tab.Configuration != null && tab.ID == "3ed5b337-c2c9-4d5d-b7b4-84ff09a8fc1c") {
+                    continue;
+                }  
                 if (tab.Configuration != null && string.IsNullOrEmpty(tab.Configuration.ContentUrl))
                 {
                     tab.Configuration = null;

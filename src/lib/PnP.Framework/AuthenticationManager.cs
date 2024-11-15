@@ -388,7 +388,7 @@ namespace PnP.Framework
             this.username = username;
             this.password = password;
             publicClientApplication = builder.Build();
-            
+
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
             authenticationType = ClientContextType.AzureADCredentials;
@@ -436,19 +436,19 @@ namespace PnP.Framework
                     Title = "Login with M365 PnP",
                     ListOperatingSystemAccounts = true,
                 };
-                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(WindowHandleUtilities.GetConsoleOrTerminalWindow);                
+                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(WindowHandleUtilities.GetConsoleOrTerminalWindow);
             }
             else
             {
                 if (!string.IsNullOrEmpty(redirectUrl))
                 {
                     builder = builder.WithRedirectUri(redirectUrl);
-                }                
+                }
                 this.customWebUi = customWebUi;
             }
             builder.WithLegacyCacheCompatibility(false);
             publicClientApplication = builder.Build();
-            
+
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
 
@@ -494,8 +494,8 @@ namespace PnP.Framework
 
             builder = builder.WithHttpClientFactory(HttpClientFactory);
             builder.WithLegacyCacheCompatibility(false);
-            publicClientApplication = builder.Build();            
-            
+            publicClientApplication = builder.Build();
+
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
 
@@ -838,8 +838,8 @@ namespace PnP.Framework
                             {
                                 var options = new SystemWebViewOptions()
                                 {
-                                    HtmlMessageError = "<p> An error occurred: {0}. Details {1}</p>",
-                                    HtmlMessageSuccess = "<p>Successfully acquired token. You may close this window now.</p>"
+                                    HtmlMessageError = "<p style=\"font-family: sans-serif; font-weight: bold; color: red\">An error occurred:</p><p style=\"color: black\">{0}. Details {1}</p>",
+                                    HtmlMessageSuccess = "<html><body><div style=\"display:table;background-color:#eee;width:100%\"><div style=\"padding:10px;float:left;font-family:sans-serif\"><div style=\"display:table;height:50px;width:50px;overflow:hidden;background-color:#4ec92f\"><div style=\"display:table-cell;vertical-align:middle;text-align:center;color:#fff\"><div><span style=\"font-size:40px\">&#x2713;</span></div></div></div></div><div style=\"color:#000;float:left;padding:10 0 0 10;vertical-align:text-top;font-family:sans-serif\"><span style=\"font-weight:700\">Successfully acquired token</span><p>You may close this window now.</p></div></div></body></html>"
                                 };
                                 builder = builder.WithUseEmbeddedWebView(false);
                                 builder = builder.WithSystemWebViewOptions(options);
@@ -1024,8 +1024,8 @@ namespace PnP.Framework
                             {
                                 var options = new SystemWebViewOptions()
                                 {
-                                    HtmlMessageError = "<p> An error occurred: {0}. Details {1}</p>",
-                                    HtmlMessageSuccess = "<p>Succesfully acquired token. You may close this window now.</p>"
+                                    HtmlMessageError = "<p style=\"font-family: sans-serif; font-weight: bold; color: red\">An error occurred:</p><p style=\"color: black\">{0}. Details {1}</p>",
+                                    HtmlMessageSuccess = "<html><body><div style=\"display:table;background-color:#eee;width:100%\"><div style=\"padding:10px;float:left;font-family:sans-serif\"><div style=\"display:table;height:50px;width:50px;overflow:hidden;background-color:#4ec92f\"><div style=\"display:table-cell;vertical-align:middle;text-align:center;color:#fff\"><div><span style=\"font-size:40px\">&#x2713;</span></div></div></div></div><div style=\"color:#000;float:left;padding:10 0 0 10;vertical-align:text-top;font-family:sans-serif\"><span style=\"font-weight:700\">Successfully acquired token</span><p>You may close this window now.</p></div></div></body></html>"
                                 };
                                 builder = builder.WithUseEmbeddedWebView(false);
                                 builder = builder.WithSystemWebViewOptions(options);

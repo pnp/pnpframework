@@ -2,6 +2,7 @@
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Graph.Model;
 using PnP.Framework.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Text.Json;
@@ -97,13 +98,16 @@ namespace PnP.Framework.Graph
             }
         }
 
-        public static IEnumerable<T> ReadPagedDataFromRequest<T>(string requestUrl, string accessToken, int retryCount, int delay)
+        public static IEnumerable<T> ReadPagedDataFromRequest<T>(string requestUrl, string accessToken, int retryCount, int delay, Func<JsonNode, T[]> customDeserialise = null)
         {
             while (requestUrl != null) {
                 var responseData = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
 
                 var jsonNode = JsonNode.Parse(responseData);
-                var results = jsonNode["value"].Deserialize<T[]>();
+                JsonNode valueNode = jsonNode["value"];
+                var results = customDeserialise == null
+                    ? valueNode.Deserialize<T[]>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true, })
+                    : customDeserialise(valueNode);
 
                 foreach (var r in results)
                 {

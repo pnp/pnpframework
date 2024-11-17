@@ -2,8 +2,10 @@
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Graph.Model;
 using PnP.Framework.Utilities;
+using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph
@@ -93,6 +95,23 @@ namespace PnP.Framework.Graph
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
+        }
+
+        public static IEnumerable<T> ReadPagedDataFromRequest<T>(string requestUrl, string accessToken, int retryCount, int delay)
+        {
+            while (requestUrl != null) {
+                var responseData = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+
+                var jsonNode = JsonNode.Parse(responseData);
+                var results = jsonNode["value"].Deserialize<T[]>();
+
+                foreach (var r in results)
+                {
+                    yield return r;
+                }
+
+                requestUrl = jsonNode["@odata.nextLink"]?.ToString();
+            };
         }
     }
 }

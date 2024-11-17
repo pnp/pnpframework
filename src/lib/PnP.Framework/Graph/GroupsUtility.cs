@@ -556,16 +556,12 @@ namespace PnP.Framework.Graph
 
                 List<GroupEntity> groups = new List<GroupEntity>();
                 int currentIndex = 0;
-                while (requestUrl != null && (endIndex == null || groups.Count < endIndex))
+                foreach (var g in GraphUtility.ReadPagedDataFromRequest<Model.Group>(requestUrl, accessToken, retryCount, delay))
                 {
-                    var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
-
-                    var jsonNode = JsonNode.Parse(responseAsString);
-                    var results = jsonNode["value"].Deserialize<Model.Group[]>();
-                    requestUrl = jsonNode["@odata.nextLink"]?.ToString();
-
-                    foreach (var g in results)
+                    if (groups.Count > endIndex)
                     {
+                        break;
+                    }
                         if (currentIndex >= startIndex)
                         {
                             groups.Add(g.AsEntity());
@@ -573,7 +569,6 @@ namespace PnP.Framework.Graph
                         currentIndex++;
                     }
                 }
-            }
             catch (HttpResponseException ex)
             {
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);

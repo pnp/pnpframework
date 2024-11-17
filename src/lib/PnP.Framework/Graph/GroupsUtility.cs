@@ -8,10 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph
 {
@@ -108,7 +106,7 @@ namespace PnP.Framework.Graph
         /// <param name="graphClient">GraphClient instance to use to communicate with the Microsoft Graph</param>
         /// <param name="groupId">Id of the group which needs the owners added</param>
         /// <param name="removeOtherMembers">If set to true, all existing members which are not specified through <paramref name="members"/> will be removed as a member from the group</param>
-        private static async Task UpdateMembers(string[] members, string groupId, bool removeOtherMembers, string accessToken, int retryCount, int delay, AzureEnvironment azureEnvironment)
+        private static void UpdateMembers(string[] members, string groupId, bool removeOtherMembers, string accessToken, int retryCount, int delay, AzureEnvironment azureEnvironment)
         {
             var userRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users";
             var groupRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
@@ -174,7 +172,7 @@ namespace PnP.Framework.Graph
         /// <param name="graphClient">GraphClient instance to use to communicate with the Microsoft Graph</param>
         /// <param name="groupId">Id of the group which needs the owners added</param>
         /// <param name="removeOtherOwners">If set to true, all existing owners which are not specified through <paramref name="owners"/> will be removed as an owner from the group</param>
-        private static async Task UpdateOwners(string[] owners, string groupId, bool removeOtherOwners, string accessToken, int retryCount, int delay, AzureEnvironment azureEnvironment)
+        private static void UpdateOwners(string[] owners, string groupId, bool removeOtherOwners, string accessToken, int retryCount, int delay, AzureEnvironment azureEnvironment)
         {
             var userRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users";
             var groupRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
@@ -303,81 +301,76 @@ namespace PnP.Framework.Graph
             try
             {
                 var groupRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var responseAsString = HttpHelper.MakeGetRequestForString(groupRequestUrl, accessToken, retryCount: retryCount, delay: delay);
+                var groupJson = JsonNode.Parse(responseAsString);
+                var groupToUpdate = groupJson.Deserialize<Model.Group>();
+
+                // Workaround for the PATCH request, needed after update to Graph Library
+                var clonedGroup = new Model.Group
                 {
-                    var responseAsString = HttpHelper.MakeGetRequestForString(groupRequestUrl, accessToken, retryCount: retryCount, delay: delay);
-                    var groupJson = JsonNode.Parse(responseAsString);
-                    var groupToUpdate = groupJson.Deserialize<Model.Group>();
+                    GroupId = groupToUpdate.GroupId,
+                };
 
-                    // Workaround for the PATCH request, needed after update to Graph Library
-                    var clonedGroup = new Model.Group
-                    {
-                        GroupId = groupToUpdate.GroupId,
-                    };
+                #region Logic to update the group DisplayName and Description
 
-                    #region Logic to update the group DisplayName and Description
+                var updateGroup = false;
+                var groupUpdated = false;
 
-                    var updateGroup = false;
-                    var groupUpdated = false;
+                // Check if we have to update the DisplayName
+                if (!String.IsNullOrEmpty(displayName) && groupToUpdate.DisplayName != displayName)
+                {
+                    clonedGroup.DisplayName = displayName;
+                    updateGroup = true;
+                }
 
-                    // Check if we have to update the DisplayName
-                    if (!String.IsNullOrEmpty(displayName) && groupToUpdate.DisplayName != displayName)
-                    {
-                        clonedGroup.DisplayName = displayName;
-                        updateGroup = true;
-                    }
+                // Check if we have to update the Description
+                if (!String.IsNullOrEmpty(description) && groupToUpdate.Description != description)
+                {
+                    clonedGroup.Description = description;
+                    updateGroup = true;
+                }
 
-                    // Check if we have to update the Description
-                    if (!String.IsNullOrEmpty(description) && groupToUpdate.Description != description)
-                    {
-                        clonedGroup.Description = description;
-                        updateGroup = true;
-                    }
+                // Check if we need to update owners
+                if (owners != null && owners.Length > 0)
+                {
+                    // For each and every owner
+                    UpdateOwners(owners, groupToUpdate.GroupId, true, accessToken, retryCount, delay, azureEnvironment);
+                    updateGroup = true;
+                }
 
-                    // Check if we need to update owners
-                    if (owners != null && owners.Length > 0)
-                    {
-                        // For each and every owner
-                        await UpdateOwners(owners, groupToUpdate.GroupId, true, accessToken, retryCount, delay, azureEnvironment);
-                        updateGroup = true;
-                    }
+                // Check if we need to update members
+                if (members != null && members.Length > 0)
+                {
+                    // For each and every owner
+                    UpdateMembers(members, groupToUpdate.GroupId, true, accessToken, retryCount, delay, azureEnvironment);
+                    updateGroup = true;
+                }
 
-                    // Check if we need to update members
-                    if (members != null && members.Length > 0)
-                    {
-                        // For each and every owner
-                        await UpdateMembers(members, groupToUpdate.GroupId, true, accessToken, retryCount, delay, azureEnvironment);
-                        updateGroup = true;
-                    }
+                // Check if we have to update the MailEnabled property
+                if (mailEnabled.HasValue && mailEnabled != groupToUpdate.MailEnabled)
+                {
+                    clonedGroup.MailEnabled = mailEnabled.Value;
+                    updateGroup = true;
+                }
 
-                    // Check if we have to update the MailEnabled property
-                    if (mailEnabled.HasValue && mailEnabled != groupToUpdate.MailEnabled)
-                    {
-                        clonedGroup.MailEnabled = mailEnabled.Value;
-                        updateGroup = true;
-                    }
+                // Check if we have to update the SecurityEnabled property
+                if (securityEnabled.HasValue && securityEnabled != groupToUpdate.SecurityEnabled)
+                {
+                    clonedGroup.SecurityEnabled = securityEnabled.Value;
+                    updateGroup = true;
+                }
 
-                    // Check if we have to update the SecurityEnabled property
-                    if (securityEnabled.HasValue && securityEnabled != groupToUpdate.SecurityEnabled)
-                    {
-                        clonedGroup.SecurityEnabled = securityEnabled.Value;
-                        updateGroup = true;
-                    }
+                // If the Group has to be updated, just do it
+                if (updateGroup)
+                {
+                    var updatedGroup = HttpHelper.MakePatchRequestForString(groupRequestUrl, clonedGroup, accessToken, retryCount: retryCount, delay: delay);
+                    groupUpdated = true;
+                }
 
-                    // If the Group has to be updated, just do it
-                    if (updateGroup)
-                    {
-                        var updatedGroup = HttpHelper.MakePatchRequestForString(groupRequestUrl, clonedGroup, accessToken, retryCount: retryCount, delay: delay);
-                        groupUpdated = true;
-                    }
+                #endregion
 
-                    #endregion
-
-                    // If any of the previous update actions has been completed
-                    return groupUpdated;
-
-                }).GetAwaiter().GetResult();
+                // If any of the previous update actions has been completed
+                return groupUpdated;
             }
             catch (HttpResponseException ex)
             {
@@ -579,11 +572,7 @@ namespace PnP.Framework.Graph
 
             try
             {
-                Task.Run(async () =>
-                {
-                    await UpdateOwners(owners, groupId, removeExistingOwners, accessToken, retryCount, delay, azureEnvironment);
-
-                }).GetAwaiter().GetResult();
+                UpdateOwners(owners, groupId, removeExistingOwners, accessToken, retryCount, delay, azureEnvironment);
             }
             catch (HttpResponseException ex)
             {
@@ -611,11 +600,7 @@ namespace PnP.Framework.Graph
 
             try
             {
-                Task.Run(async () =>
-                {
-                    await UpdateMembers(members, groupId, removeExistingMembers, accessToken, retryCount, delay, azureEnvironment);
-
-                }).GetAwaiter().GetResult();
+                UpdateMembers(members, groupId, removeExistingMembers, accessToken, retryCount, delay, azureEnvironment);
             }
             catch (HttpResponseException ex)
             {

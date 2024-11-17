@@ -18,9 +18,6 @@ namespace PnP.Framework.Graph
     /// </summary>
     public static class GroupsUtility
     {
-        private const int defaultRetryCount = 10;
-        private const int defaultDelay = 500;
-
         /// <summary>
         /// Creates a new Azure Active Directory Group
         /// </summary>
@@ -103,7 +100,6 @@ namespace PnP.Framework.Graph
         /// Updates the members of an Azure Active Directory Group
         /// </summary>
         /// <param name="members">UPNs of users that need to be added as a member to the group</param>
-        /// <param name="graphClient">GraphClient instance to use to communicate with the Microsoft Graph</param>
         /// <param name="groupId">Id of the group which needs the owners added</param>
         /// <param name="removeOtherMembers">If set to true, all existing members which are not specified through <paramref name="members"/> will be removed as a member from the group</param>
         private static void UpdateMembers(string[] members, string groupId, bool removeOtherMembers, string accessToken, int retryCount, int delay, AzureEnvironment azureEnvironment)

@@ -304,8 +304,10 @@ namespace PnP.Framework
         /// </summary>
         public AuthenticationManager()
         {
+#if !NET9_0
             // Set the TLS preference. Needed on some server os's to work when Office 365 removes support for TLS 1.0
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+#endif
         }
 
         private AuthenticationManager(ACSTokenGenerator oAuthAuthenticationProvider) : this()
@@ -722,7 +724,7 @@ namespace PnP.Framework
                 };
             }
         }
-        #endregion
+#endregion
 
         #region Access Token Acquisition
         /// <summary>
@@ -1238,6 +1240,8 @@ namespace PnP.Framework
                 DisableReturnValueCache = true
             };
 
+            clientContext.AddWebRequestExecutorFactory();
+
             clientContext.ExecutingWebRequest += (sender, args) =>
             {
                 AuthenticationResult ar = null;
@@ -1500,6 +1504,8 @@ namespace PnP.Framework
                 DisableReturnValueCache = true
             };
 
+            clientContext.AddWebRequestExecutorFactory();            
+
             clientContext.ExecutingWebRequest += (sender, args) =>
             {
                 Uri resourceUri = new Uri(siteUrl);
@@ -1524,6 +1530,8 @@ namespace PnP.Framework
             {
                 DisableReturnValueCache = true
             };
+
+            clientContext.AddWebRequestExecutorFactory();
 
             clientContext.ExecutingWebRequest += (sender, args) =>
             {

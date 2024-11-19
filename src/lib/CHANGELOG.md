@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Support for .NET 9.0 [jansenbe - Bert Jansen]
+- Support for Rate-Limiting in the PnP Framework + unifiqation of the throttling implementation for all http requests made [jansenbe - Bert Jansen]
+
 ### Changed
 
 - Removed references to the PnP Management Shell app (`31359c7f-bd7e-475c-86db-fdb8c937548e`) [jansenbe - Bert Jansen]

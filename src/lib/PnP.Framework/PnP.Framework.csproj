@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net8.0;net9.0</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
@@ -30,6 +30,7 @@
 		<!-- Set the PnPCoreSdkPath and PnPCoreSdkPathNet5 to non published PnP Core SDK binaries to load them instead of the nuget ones -->
 		<PnPCoreSdkPath Condition="'$(PnPCoreSdkPath)' == ''"></PnPCoreSdkPath>		
 		<PnPCoreSdkPathNet8 Condition="'$(PnPCoreSdkPathNet8)' == ''"></PnPCoreSdkPathNet8>
+		<PnPCoreSdkPathNet9 Condition="'$(PnPCoreSdkPathNet9)' == ''"></PnPCoreSdkPathNet9>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\pnp.core.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
@@ -215,9 +216,23 @@
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
 	</ItemGroup>
 
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
+		<PackageReference Include="System.Text.Json" Version="9.0.0" />
+		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="9.0.0" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.0" />
+		<PackageReference Include="System.DirectoryServices" Version="9.0.0" />
+		<PackageReference Include="System.IO.Packaging" Version="9.0.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<!-- Required -->
-		<PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0-*">
+		<PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0-*">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -248,6 +263,14 @@
 	<ItemGroup Condition="'$(PnPCoreSdkPathNet8)' != ''">
 		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net8.0'">
 			<HintPath>$(PnPCoreSdkPathNet8)</HintPath>
+			<Private>true</Private>
+			<SpecificVersion>false</SpecificVersion>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(PnPCoreSdkPathNet9)' != ''">
+		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net9.0'">
+			<HintPath>$(PnPCoreSdkPathNet9)</HintPath>
 			<Private>true</Private>
 			<SpecificVersion>false</SpecificVersion>
 		</Reference>

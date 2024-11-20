@@ -187,6 +187,22 @@ namespace PnP.Framework
         public static AuthenticationManager CreateWithInteractiveLogin(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successMessageHtml = null, string failureMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, bool useWAM = false)
         {
             return new AuthenticationManager(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successMessageHtml, failureMessageHtml), useWAM);
+        } 
+        
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire access tokens and client contexts using the Azure AD Interactive flow.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="openBrowserCallback">This callback will be called providing the URL and port to open during the authentication flow</param>
+        /// <param name="tenantId">Optional tenant id or tenant url</param>
+        /// <param name="successFullMessageHtml">Allows you to override the success message. You will have to provide the full HTML document.</param>
+        /// <param name="failureFullMessageHtml">llows you to override the failure message. You will have to provide the full HTML document.</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called to register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        /// <param name="useWAM">If true, uses WAM for authentication. Works only on Windows OS. Default is false</param>
+        public static AuthenticationManager CreateWithInteractiveWebBrowserLogin(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successFullMessageHtml = null, string failureFullMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, bool useWAM = false)
+        {
+            return new AuthenticationManager(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successFullMessageHtml, failureFullMessageHtml, true), useWAM);
         }
 
         /// <summary>
@@ -771,8 +787,8 @@ namespace PnP.Framework
         /// <param name="siteUrl"></param>
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
         /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
-        /// <param name="appName">Optional app name to show when using on MacOS
-        /// <param name="appUrl">Optional url of app to show when using on MacOS
+        /// <param name="appName">Optional app name to show when using on MacOS</param>
+        /// <param name="appUrl">Optional url of app to show when using on MacOS</param>
         /// <returns></returns>
         public string GetAccessToken(string siteUrl, CancellationToken cancellationToken, Prompt prompt = default, string appName = "PnP", string appUrl = "https://pnp.github.io")
         {
@@ -818,8 +834,8 @@ namespace PnP.Framework
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
         /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
         /// <param name="uri">for ClientContextType.PnPCoreSdk case as by interface definition needed for GetAccessTokenAsync</param>
-        /// <param name="appName">Optional app name to show when using on MacOS
-        /// <param name="appUrl">Optional url of app to show when using on MacOS
+        /// <param name="appName">Optional app name to show when using on MacOS</param>
+        /// <param name="appUrl">Optional url of app to show when using on MacOS</param>
         /// <returns></returns>
         public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken, Prompt prompt = default, Uri uri = null, string appName = "PnP", string appUrl = "https://pnp.github.io")
         {
@@ -856,7 +872,9 @@ namespace PnP.Framework
                         catch
                         {
                             var builder = publicClientApplication.AcquireTokenInteractive(scopes);
-                            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+
+                            // On MacOS we always use the browser login
+                            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) 
                             {
                                 var options = new SystemWebViewOptions()
                                 {
@@ -979,8 +997,8 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
-        /// <param name="appName">Optional app name to show when using on MacOS
-        /// <param name="appUrl">Optional url of app to show when using on MacOS
+        /// <param name="appName">Optional app name to show when using on MacOS</param>
+        /// <param name="appUrl">Optional url of app to show when using on MacOS</param>
         /// <returns></returns>
         public ClientContext GetContext(string siteUrl, CancellationToken cancellationToken, string appName = "PnP", string appUrl = "https://pnp.github.io")
         {
@@ -1002,8 +1020,8 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
-        /// <param name="appName">Optional app name to show when using on MacOS or Linux
-        /// <param name="appUrl">Optional url of app to show when using on MacOS or Linux
+        /// <param name="appName">Optional app name to show when using on MacOS</param>
+        /// <param name="appUrl">Optional url of app to show when using on MacOS</param>
         /// <returns></returns>
         public async Task<ClientContext> GetContextAsync(string siteUrl, CancellationToken cancellationToken, string appName = "PnP", string appUrl = "https://pnp.github.io")
         {

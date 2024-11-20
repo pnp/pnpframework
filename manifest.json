@@ -21158,6 +21158,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/PnP.Framework.Utilities.FileExtensionContentTypeProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PnP.Framework.Utilities.FileExtensionContentTypeProvider.html",
+          "hash": "KUsH5nk8b+F/npPhY/uq20/3DkyAbOZl0mK35JlieMc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/PnP.Framework.Utilities.HttpHelper.yml",
       "output": {
         ".html": {
@@ -22386,7 +22398,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Utilities.html",
-          "hash": "uoiskKck6VDvywLEnQWId2O+ra4GpdDJqN6+1VZQGgc="
+          "hash": "vEmBq6uV2cg2bMJA5Tlzn9lNqI4ywr8oykwaevAlusc="
         }
       },
       "is_incremental": false,
@@ -22770,7 +22782,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "TBVtn05gVdW2vPPmKLYLwReFxAtkHzsgR6jJPqdVfF8="
+          "hash": "uKbAHEDSjMxue1OHsAGIc3fx5A/kdZgtUVkX8jOmX2E="
         }
       },
       "is_incremental": false,
@@ -23079,7 +23091,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 1894,
+          "total_file_count": 1895,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

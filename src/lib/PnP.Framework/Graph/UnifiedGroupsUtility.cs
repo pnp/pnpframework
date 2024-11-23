@@ -816,91 +816,63 @@ namespace PnP.Framework.Graph
                 throw new ArgumentNullException(nameof(accessToken));
             }
 
-            List<UnifiedGroupEntity> result = null;
+            List<UnifiedGroupEntity> result = new List<UnifiedGroupEntity>();
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                // Apply the DisplayName filter, if any
+                var displayNameFilter = !string.IsNullOrEmpty(displayName) ? $" and (DisplayName eq '{Uri.EscapeDataString(displayName.Replace("'", "''"))}')" : string.Empty;
+                var mailNicknameFilter = !string.IsNullOrEmpty(mailNickname) ? $" and (MailNickname eq '{Uri.EscapeDataString(mailNickname.Replace("'", "''"))}')" : string.Empty;
+                var filterString = $"groupTypes/any(grp: grp eq 'Unified'){displayNameFilter}{mailNicknameFilter}";
+
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups?$top={endIndex}&$filter={filterString}";
+                var groups = GraphUtility.ReadPagedDataFromRequest<Model.Group>(requestUrl, accessToken, retryCount, delay);
+
+                Int32 currentIndex = 0;
+
+                foreach (var g in groups)
                 {
-                    List<UnifiedGroupEntity> groups = new List<UnifiedGroupEntity>();
-
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
-
-                    // Apply the DisplayName filter, if any
-                    var displayNameFilter = !string.IsNullOrEmpty(displayName) ? $" and (DisplayName eq '{Uri.EscapeDataString(displayName.Replace("'", "''"))}')" : string.Empty;
-                    var mailNicknameFilter = !string.IsNullOrEmpty(mailNickname) ? $" and (MailNickname eq '{Uri.EscapeDataString(mailNickname.Replace("'", "''"))}')" : string.Empty;
-
-                    var pagedGroups = await graphClient.Groups
-                        .Request()
-                        .Filter($"groupTypes/any(grp: grp eq 'Unified'){displayNameFilter}{mailNicknameFilter}")
-                        .Top(endIndex)
-                        .GetAsync();
-
-                    Int32 pageCount = 0;
-                    Int32 currentIndex = 0;
-
-                    while (true)
+                    currentIndex++;
+                    if (currentIndex >= startIndex)
                     {
-                        pageCount++;
-
-                        foreach (var g in pagedGroups)
+                        var group = new UnifiedGroupEntity
                         {
-                            currentIndex++;
+                            GroupId = g.GroupId,
+                            DisplayName = g.DisplayName,
+                            Description = g.Description,
+                            Mail = g.Mail,
+                            MailNickname = g.MailNickname,
+                            Visibility = g.Visibility
+                        };
 
-                            if (currentIndex >= startIndex)
+                        if (includeSite)
+                        {
+                            try
                             {
-                                var group = new UnifiedGroupEntity
-                                {
-                                    GroupId = g.Id,
-                                    DisplayName = g.DisplayName,
-                                    Description = g.Description,
-                                    Mail = g.Mail,
-                                    MailNickname = g.MailNickname,
-                                    Visibility = g.Visibility
-                                };
-
-                                if (includeSite)
-                                {
-                                    try
-                                    {
-                                        group.SiteUrl = GetUnifiedGroupSiteUrl(g.Id, accessToken);
-                                    }
-                                    catch (ApplicationException e)
-                                    {
-                                        group.SiteUrl = e.Message;
-                                    }
-                                }
-
-                                if (includeClassification)
-                                {
-                                    group.Classification = g.Classification;
-                                }
-
-                                if (includeHasTeam)
-                                {
-                                    group.HasTeam = HasTeamsTeam(group.GroupId, accessToken);
-                                }
-
-                                groups.Add(group);
+                                group.SiteUrl = GetUnifiedGroupSiteUrl(g.GroupId, accessToken);
+                            }
+                            catch (ApplicationException e)
+                            {
+                                group.SiteUrl = e.Message;
                             }
                         }
 
-                        if (pagedGroups.NextPageRequest != null && groups.Count < endIndex)
+                        if (includeClassification)
                         {
-                            pagedGroups = await pagedGroups.NextPageRequest.GetAsync();
+                            group.Classification = g.Classification;
                         }
-                        else
-                        {
-                            break;
-                        }
-                    }
 
-                    return (groups);
-                }).GetAwaiter().GetResult();
+                        if (includeHasTeam)
+                        {
+                            group.HasTeam = HasTeamsTeam(group.GroupId, accessToken);
+                        }
+
+                        result.Add(group);
+                    }
+                }
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
             return (result);
@@ -1371,9 +1343,9 @@ namespace PnP.Framework.Graph
                 var currentOwners = GetUnifiedGroupOwners(new UnifiedGroupEntity { GroupId = groupId }, accessToken, retryCount, delay, azureEnvironment);
                 RemoveUnifiedGroupOwners(groupId, currentOwners.Select(o => o.UserPrincipalName).ToArray(), accessToken, retryCount, delay, azureEnvironment);
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
         }
@@ -1398,9 +1370,9 @@ namespace PnP.Framework.Graph
                 var currentMembers = GetUnifiedGroupMembers(new UnifiedGroupEntity { GroupId = groupId }, accessToken, retryCount, delay, azureEnvironment);
                 RemoveUnifiedGroupMembers(groupId, currentMembers.Select(o => o.UserPrincipalName).ToArray(), accessToken, retryCount, delay, azureEnvironment);
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
         }

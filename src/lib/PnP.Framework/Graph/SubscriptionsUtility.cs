@@ -143,7 +143,7 @@ namespace PnP.Framework.Graph
                 var stringContent = JsonSerializer.Serialize(newSubscription);
                 var content = new StringContent(stringContent);
 
-                var responseAsString = HttpHelper.MakePostRequestForString(requestUrl, content, "application/json", accessToken, retryCount: retryCount, delay: delay);
+                var responseAsString = HttpHelper.MakePostRequestForString(requestUrl, content, HttpHelper.JsonContentType, accessToken, retryCount: retryCount, delay: delay);
 
                 // Todo - check that the returned data does actually deserialise correctly
                 var model = JsonSerializer.Deserialize<Model.Subscription>(responseAsString);
@@ -185,7 +185,7 @@ namespace PnP.Framework.Graph
                 var contentString = JsonSerializer.Serialize(updatedSubscription);
                 var content = new StringContent(contentString);
 
-                var responseAsString = HttpHelper.MakePatchRequestForString(requestUrl, content, "application/json", accessToken, retryCount: retryCount, delay: delay);
+                var responseAsString = HttpHelper.MakePatchRequestForString(requestUrl, content, HttpHelper.JsonContentType, accessToken, retryCount: retryCount, delay: delay);
 
                 // Todo - check that the returned data does actually deserialise correctly
                 var model = JsonSerializer.Deserialize<Model.Subscription>(responseAsString);

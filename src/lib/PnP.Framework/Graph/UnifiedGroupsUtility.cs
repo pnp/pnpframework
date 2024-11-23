@@ -487,7 +487,7 @@ namespace PnP.Framework.Graph
                 var response = GraphHttpClient.MakePatchRequestForString(
                     requestUrl: updateGroupUrl,
                     content: JsonConvert.SerializeObject(groupRequest),
-                    contentType: "application/json",
+                    contentType: HttpHelper.JsonContentType,
                     accessToken: accessToken);
             }
             catch (ApplicationException ex)
@@ -619,7 +619,7 @@ namespace PnP.Framework.Graph
                 // If the Group has to be updated, just do it
                 if (updateGroup)
                 {
-                    var updatedGroup = HttpHelper.MakePatchRequestForString(groupRequestUrl, clonedGroup, "application/json", accessToken, retryCount: retryCount, delay: delay);
+                    var updatedGroup = HttpHelper.MakePatchRequestForString(groupRequestUrl, clonedGroup, HttpHelper.JsonContentType, accessToken, retryCount: retryCount, delay: delay);
                     groupUpdated = true;
                 }
 
@@ -1746,7 +1746,7 @@ namespace PnP.Framework.Graph
                 iterations++;
                 try
                 {
-                    var teamid = HttpHelper.MakePutRequestForString(createTeamEndPoint, new { }, "application/json", accessToken);
+                    var teamid = HttpHelper.MakePutRequestForString(createTeamEndPoint, new { }, HttpHelper.JsonContentType, accessToken);
                     if (!string.IsNullOrEmpty(teamid))
                     {
                         wait = false;
@@ -1864,7 +1864,7 @@ namespace PnP.Framework.Graph
         {
             try
             {
-                HttpHelper.MakePostRequest($"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}directory/deleteditems/{groupId}/restore", contentType: "application/json", accessToken: accessToken);
+                HttpHelper.MakePostRequest($"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}directory/deleteditems/{groupId}/restore", contentType: HttpHelper.JsonContentType, accessToken: accessToken);
             }
             catch (Exception e)
             {

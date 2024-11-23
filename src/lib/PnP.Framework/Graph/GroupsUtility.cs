@@ -264,7 +264,7 @@ namespace PnP.Framework.Graph
                 var response = GraphHttpClient.MakePatchRequestForString(
                     requestUrl: updateGroupUrl,
                     content: JsonConvert.SerializeObject(groupRequest),
-                    contentType: "application/json",
+                    contentType: HttpHelper.JsonContentType,
                     accessToken: accessToken);
             }
             catch (HttpResponseException ex)
@@ -359,7 +359,7 @@ namespace PnP.Framework.Graph
                 // If the Group has to be updated, just do it
                 if (updateGroup)
                 {
-                    var updatedGroup = HttpHelper.MakePatchRequestForString(groupRequestUrl, clonedGroup, "application/json", accessToken, retryCount: retryCount, delay: delay);
+                    var updatedGroup = HttpHelper.MakePatchRequestForString(groupRequestUrl, clonedGroup, HttpHelper.JsonContentType, accessToken, retryCount: retryCount, delay: delay);
                     groupUpdated = true;
                 }
 
@@ -954,7 +954,7 @@ namespace PnP.Framework.Graph
                     graphBaseUri = new Uri(GraphHelper.MicrosoftGraphBaseURI);
                 }
 
-                HttpHelper.MakePostRequest($"{graphBaseUri}v1.0/directory/deleteditems/{groupId}/restore", contentType: "application/json", accessToken: accessToken);
+                HttpHelper.MakePostRequest($"{graphBaseUri}v1.0/directory/deleteditems/{groupId}/restore", contentType: HttpHelper.JsonContentType, accessToken: accessToken);
             }
             catch (Exception e)
             {

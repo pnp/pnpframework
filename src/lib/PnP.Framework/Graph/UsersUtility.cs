@@ -454,7 +454,7 @@ namespace PnP.Framework.Graph
                 var response = GraphHttpClient.MakePostRequestForString(
                     requestUrl: $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment, beta: true)}users/{userId}/authentication/temporaryAccessPassMethods",
                     content: temporaryAccessPassAuthenticationMethod,
-                    contentType: "application/json",
+                    contentType: HttpHelper.JsonContentType,
                     accessToken: accessToken);
 
                 // Parse and return the response

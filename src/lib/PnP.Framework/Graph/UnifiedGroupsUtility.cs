@@ -549,108 +549,103 @@ namespace PnP.Framework.Graph
             string displayName = null, string description = null, string[] owners = null, string[] members = null,
             Stream groupLogo = null, bool? isPrivate = null, bool createTeam = false, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            bool result;
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var groupRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{groupId}";
+                var responseAsString = HttpHelper.MakeGetRequestForString(groupRequestUrl, accessToken, retryCount: retryCount, delay: delay);
+                var groupJson = JsonNode.Parse(responseAsString);
+                var groupToUpdate = groupJson.Deserialize<Model.Group>();
+
+                // Workaround for the PATCH request, needed after update to Graph Library
+                var clonedGroup = new Model.Group
                 {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
+                    GroupId = groupToUpdate.GroupId
+                };
 
-                    var groupToUpdate = await graphClient.Groups[groupId]
-                        .Request()
-                        .GetAsync();
+                #region Logic to update the group DisplayName and Description
 
-                    // Workaround for the PATCH request, needed after update to Graph Library
-                    var clonedGroup = new Group
-                    {
-                        Id = groupToUpdate.Id
-                    };
+                var updateGroup = false;
+                var groupUpdated = false;
 
-                    #region Logic to update the group DisplayName and Description
+                // Check if we have to update the DisplayName
+                if (!String.IsNullOrEmpty(displayName) && groupToUpdate.DisplayName != displayName)
+                {
+                    clonedGroup.DisplayName = displayName;
+                    updateGroup = true;
+                }
 
-                    var updateGroup = false;
-                    var groupUpdated = false;
+                // Check if we have to update the Description
+                if (!String.IsNullOrEmpty(description) && groupToUpdate.Description != description)
+                {
+                    clonedGroup.Description = description;
+                    updateGroup = true;
+                }
 
-                    // Check if we have to update the DisplayName
-                    if (!String.IsNullOrEmpty(displayName) && groupToUpdate.DisplayName != displayName)
-                    {
-                        clonedGroup.DisplayName = displayName;
-                        updateGroup = true;
-                    }
+                // Check if visibility has changed for the Group
+                bool existingIsPrivate = groupToUpdate.Visibility == "Private";
+                if (isPrivate.HasValue && existingIsPrivate != isPrivate)
+                {
+                    clonedGroup.Visibility = isPrivate == true ? "Private" : "Public";
+                    updateGroup = true;
+                }
 
-                    // Check if we have to update the Description
-                    if (!String.IsNullOrEmpty(description) && groupToUpdate.Description != description)
-                    {
-                        clonedGroup.Description = description;
-                        updateGroup = true;
-                    }
+                // Check if we need to update owners
+                if (owners != null && owners.Length > 0)
+                {
+                    // For each and every owner
+                    UpdateOwners(owners, groupToUpdate.GroupId, true, accessToken, retryCount, delay, azureEnvironment);
+                    updateGroup = true;
+                }
 
-                    // Check if visibility has changed for the Group
-                    bool existingIsPrivate = groupToUpdate.Visibility == "Private";
-                    if (isPrivate.HasValue && existingIsPrivate != isPrivate)
-                    {
-                        clonedGroup.Visibility = isPrivate == true ? "Private" : "Public";
-                        updateGroup = true;
-                    }
+                // Check if we need to update members
+                if (members != null && members.Length > 0)
+                {
+                    // For each and every owner
+                    UpdateMembers(members, groupToUpdate.GroupId, true, accessToken, retryCount, delay, azureEnvironment);
+                    updateGroup = true;
+                }
 
-                    // Check if we need to update owners
-                    if (owners != null && owners.Length > 0)
-                    {
-                        // For each and every owner
-                        UpdateOwners(owners, groupToUpdate.Id, true, accessToken, retryCount, delay, azureEnvironment);
-                        updateGroup = true;
-                    }
-
-                    // Check if we need to update members
-                    if (members != null && members.Length > 0)
-                    {
-                        // For each and every owner
-                        UpdateMembers(members, groupToUpdate.Id, true, accessToken, retryCount, delay, azureEnvironment);
-                        updateGroup = true;
-                    }
-
-                    if (createTeam)
+                if (createTeam)
+                {
+                    // Use a synchronous model to invoke the asynchronous process
+                    Task.Run(async () =>
                     {
                         await CreateTeam(groupId, accessToken);
-                        updateGroup = true;
-                    }
 
-                    // If the Group has to be updated, just do it
-                    if (updateGroup)
-                    {
-                        var updatedGroup = await graphClient.Groups[groupId]
-                            .Request()
-                            .UpdateAsync(clonedGroup);
+                    }).GetAwaiter().GetResult();
+                    updateGroup = true;
+                }
 
-                        groupUpdated = true;
-                    }
+                // If the Group has to be updated, just do it
+                if (updateGroup)
+                {
+                    var updatedGroup = HttpHelper.MakePatchRequestForString(groupRequestUrl, clonedGroup, "application/json", accessToken, retryCount: retryCount, delay: delay);
+                    groupUpdated = true;
+                }
 
-                    #endregion
+                #endregion
 
-                    #region Logic to update the group Logo
+                #region Logic to update the group Logo
 
-                    var logoUpdated = false;
+                var logoUpdated = false;
 
-                    if (groupLogo != null)
-                    {
-                        await graphClient.Groups[groupId].Photo.Content.Request().PutAsync(groupLogo);
-                        logoUpdated = true;
-                    }
+                if (groupLogo != null)
+                {
+                    var photoUpdateUrl = $"{groupRequestUrl}/photo/$value";
+                    HttpHelper.MakePutRequest(photoUpdateUrl, groupLogo, "image/jpeg", accessToken, retryCount: retryCount, delay: delay);
+                    logoUpdated = true;
+                }
 
-                    #endregion
+                #endregion
 
-                    // If any of the previous update actions has been completed
-                    return (groupUpdated || logoUpdated);
-
-                }).GetAwaiter().GetResult();
+                // If any of the previous update actions has been completed
+                return (groupUpdated || logoUpdated);
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return (result);
         }
 
         /// <summary>

@@ -359,7 +359,7 @@ namespace PnP.Framework.Graph
                 // If the Group has to be updated, just do it
                 if (updateGroup)
                 {
-                    var updatedGroup = HttpHelper.MakePatchRequestForString(groupRequestUrl, clonedGroup, accessToken, retryCount: retryCount, delay: delay);
+                    var updatedGroup = HttpHelper.MakePatchRequestForString(groupRequestUrl, clonedGroup, "application/json", accessToken, retryCount: retryCount, delay: delay);
                     groupUpdated = true;
                 }
 

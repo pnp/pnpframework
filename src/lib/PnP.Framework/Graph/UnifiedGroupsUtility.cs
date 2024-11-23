@@ -15,15 +15,6 @@ using System.Threading.Tasks;
 
 namespace PnP.Framework.Graph
 {
-    public class GroupExtended : Group
-    {
-#pragma warning disable CA1819
-        [JsonProperty("owners@odata.bind", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] OwnersODataBind { get; set; }
-        [JsonProperty("members@odata.bind", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] MembersODataBind { get; set; }
-#pragma warning restore CA1819
-    }
     /// <summary>
     /// Class that deals with Unified group CRUD operations.
     /// </summary>
@@ -124,8 +115,6 @@ namespace PnP.Framework.Graph
             bool isPrivate = false, bool createTeam = false, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production,
             Enums.Office365Geography? preferredDataLocation = null, Guid[] assignedLabels = null, bool welcomeEmailDisabled = false)
         {
-            UnifiedGroupEntity result = null;
-
             if (string.IsNullOrEmpty(displayName))
             {
                 throw new ArgumentNullException(nameof(displayName));
@@ -141,14 +130,14 @@ namespace PnP.Framework.Graph
                 throw new ArgumentNullException(nameof(accessToken));
             }
 
-            var labels = new List<AssignedLabel>();
+            var labels = new List<Model.GroupLabel>();
             if (assignedLabels != null)
             {
                 foreach (var label in assignedLabels)
                 {
                     if (!Guid.Empty.Equals(label))
                     {
-                        labels.Add(new AssignedLabel
+                        labels.Add(new Model.GroupLabel
                         {
                             LabelId = label.ToString()
                         });
@@ -159,161 +148,155 @@ namespace PnP.Framework.Graph
 
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var group = new UnifiedGroupEntity();
+
+                // Prepare the group resource object
+                var newGroup = new Model.GroupExtended
                 {
-                    var group = new UnifiedGroupEntity();
+                    DisplayName = displayName,
+                    Description = string.IsNullOrEmpty(description) ? null : description,
+                    MailNickname = mailNickname,
+                    MailEnabled = true,
+                    SecurityEnabled = false,
+                    Visibility = isPrivate == true ? "Private" : "Public",
+                    GroupTypes = new string[] { "Unified" }
+                };
 
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
+                if (labels.Any())
+                {
+                    newGroup.AssignedLabels = labels;
+                }
 
-                    // Prepare the group resource object
-                    var newGroup = new GroupExtended
+                if (preferredDataLocation.HasValue)
+                {
+                    newGroup.PreferredDataLocation = preferredDataLocation.Value.ToString();
+                }
+
+                if (owners != null && owners.Length > 0)
+                {
+                    var users = GetUserIds(accessToken, owners, retryCount, delay, azureEnvironment);
+                    if (users != null && users.Count > 0)
                     {
-                        DisplayName = displayName,
-                        Description = string.IsNullOrEmpty(description) ? null : description,
-                        MailNickname = mailNickname,
-                        MailEnabled = true,
-                        SecurityEnabled = false,
-                        Visibility = isPrivate == true ? "Private" : "Public",
-                        GroupTypes = new List<string> { "Unified" }
-                    };
-
-                    if (labels.Any())
-                    {
-                        newGroup.AssignedLabels = labels;
+                        newGroup.OwnersODataBind = users.Select(u => $"https://{AuthenticationManager.GetGraphEndPoint(azureEnvironment)}/v1.0/users/{u}").ToArray();
                     }
+                }
 
-                    if (preferredDataLocation.HasValue)
+                if (members != null && members.Length > 0)
+                {
+                    var users = GetUserIds(accessToken, owners, retryCount, delay, azureEnvironment);
+                    if (users != null && users.Count > 0)
                     {
-                        newGroup.PreferredDataLocation = preferredDataLocation.Value.ToString();
+                        newGroup.MembersODataBind = users.Select(u => $"https://{AuthenticationManager.GetGraphEndPoint(azureEnvironment)}/v1.0/users/{u}").ToArray();
                     }
+                }
 
-                    if (owners != null && owners.Length > 0)
+                if (welcomeEmailDisabled)
+                {
+                    if (newGroup.AdditionalData == null)
                     {
-                        var users = GetUserIds(accessToken, owners, retryCount,delay, azureEnvironment);
-                        if (users != null && users.Count > 0)
+                        newGroup.AdditionalData = new Dictionary<string, object>();
+                    }
+                    newGroup.AdditionalData.Add("resourceBehaviorOptions", new string[] { "WelcomeEmailDisabled" });
+                }
+
+                //Microsoft.Graph.Group addedGroup = null;
+                string modernSiteUrl = null;
+
+                // Add the group to the collection of groups (if it does not exist)
+                var groupRequestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups";
+                var responseAsString = HttpHelper.MakePostRequestForString(groupRequestUrl, newGroup, HttpHelper.JsonContentType, accessToken, retryCount: retryCount, delay: delay);
+                var addedGroup = JsonConvert.DeserializeObject<Model.GroupExtended>(responseAsString);
+
+                if (addedGroup != null)
+                {
+                    group.DisplayName = addedGroup.DisplayName;
+                    group.Description = addedGroup.Description;
+                    group.GroupId = addedGroup.GroupId;
+                    group.Mail = addedGroup.Mail;
+                    group.MailNickname = addedGroup.MailNickname;
+
+                    int imageRetryCount = retryCount;
+
+                    if (groupLogo != null)
+                    {
+                        using (var memGroupLogo = new MemoryStream())
                         {
-                            newGroup.OwnersODataBind = users.Select(u => $"https://{AuthenticationManager.GetGraphEndPoint(azureEnvironment)}/v1.0/users/{u}").ToArray();
-                        }
-                    }
+                            groupLogo.CopyTo(memGroupLogo);
 
-                    if (members != null && members.Length > 0)
-                    {
-                        var users = GetUserIds(accessToken, owners, retryCount, delay, azureEnvironment);
-                        if (users != null && users.Count > 0)
-                        {
-                            newGroup.MembersODataBind = users.Select(u => $"https://{AuthenticationManager.GetGraphEndPoint(azureEnvironment)}/v1.0/users/{u}").ToArray();
-                        }
-                    }
-
-                    if (welcomeEmailDisabled)
-                    {
-                        if (newGroup.AdditionalData == null)
-                        {
-                            newGroup.AdditionalData = new Dictionary<string, object>();
-                        }
-                        newGroup.AdditionalData.Add("resourceBehaviorOptions", new string[] { "WelcomeEmailDisabled" });
-                    }
-
-                    Microsoft.Graph.Group addedGroup = null;
-                    string modernSiteUrl = null;
-
-                    // Add the group to the collection of groups (if it does not exist)
-                    if (addedGroup == null)
-                    {
-                        addedGroup = await graphClient.Groups.Request().AddAsync(newGroup);
-
-                        if (addedGroup != null)
-                        {
-                            group.DisplayName = addedGroup.DisplayName;
-                            group.Description = addedGroup.Description;
-                            group.GroupId = addedGroup.Id;
-                            group.Mail = addedGroup.Mail;
-                            group.MailNickname = addedGroup.MailNickname;
-
-                            int imageRetryCount = retryCount;
-
-                            if (groupLogo != null)
+                            while (imageRetryCount > 0)
                             {
-                                using (var memGroupLogo = new MemoryStream())
-                                {
-                                    groupLogo.CopyTo(memGroupLogo);
+                                bool groupLogoUpdated = false;
+                                memGroupLogo.Position = 0;
 
-                                    while (imageRetryCount > 0)
+                                using (var tempGroupLogo = new MemoryStream())
+                                {
+                                    memGroupLogo.CopyTo(tempGroupLogo);
+                                    tempGroupLogo.Position = 0;
+
+                                    try
                                     {
-                                        bool groupLogoUpdated = false;
-                                        memGroupLogo.Position = 0;
-
-                                        using (var tempGroupLogo = new MemoryStream())
-                                        {
-                                            memGroupLogo.CopyTo(tempGroupLogo);
-                                            tempGroupLogo.Position = 0;
-
-                                            try
-                                            {
-                                                groupLogoUpdated = UpdateUnifiedGroup(addedGroup.Id, accessToken, groupLogo: tempGroupLogo, azureEnvironment: azureEnvironment);
-                                            }
-                                            catch
-                                            {
-                                                // Skip any exception and simply retry
-                                            }
-                                        }
-
-                                        // In case of failure retry up to 10 times, with 500ms delay in between
-                                        if (!groupLogoUpdated)
-                                        {
-                                            // Pop up the delay for the group image
-                                            await Task.Delay(delay * (retryCount - imageRetryCount));
-                                            imageRetryCount--;
-                                        }
-                                        else
-                                        {
-                                            break;
-                                        }
+                                        groupLogoUpdated = UpdateUnifiedGroup(addedGroup.GroupId, accessToken, groupLogo: tempGroupLogo, azureEnvironment: azureEnvironment);
                                     }
-                                }
-                            }
-
-                            int driveRetryCount = retryCount;
-
-                            while (driveRetryCount > 0 && string.IsNullOrEmpty(modernSiteUrl))
-                            {
-                                try
-                                {
-                                    modernSiteUrl = GetUnifiedGroupSiteUrl(addedGroup.Id, accessToken, azureEnvironment: azureEnvironment);
-                                }
-                                catch
-                                {
-                                    // Skip any exception and simply retry
+                                    catch
+                                    {
+                                        // Skip any exception and simply retry
+                                    }
                                 }
 
                                 // In case of failure retry up to 10 times, with 500ms delay in between
-                                if (string.IsNullOrEmpty(modernSiteUrl))
+                                if (!groupLogoUpdated)
                                 {
-                                    await Task.Delay(delay * (retryCount - driveRetryCount));
-                                    driveRetryCount--;
+                                    // Pop up the delay for the group image
+                                    Task.Delay(delay * (retryCount - imageRetryCount)).GetAwaiter().GetResult();
+                                    imageRetryCount--;
+                                }
+                                else
+                                {
+                                    break;
                                 }
                             }
-
-                            group.SiteUrl = modernSiteUrl;
                         }
                     }
 
-                    if (createTeam)
+                    int driveRetryCount = retryCount;
+
+                    while (driveRetryCount > 0 && string.IsNullOrEmpty(modernSiteUrl))
                     {
-                        await CreateTeam(group.GroupId, accessToken, azureEnvironment: azureEnvironment);
+                        try
+                        {
+                            modernSiteUrl = GetUnifiedGroupSiteUrl(addedGroup.GroupId, accessToken, azureEnvironment: azureEnvironment);
+                        }
+                        catch
+                        {
+                            // Skip any exception and simply retry
+                        }
+
+                        // In case of failure retry up to 10 times, with 500ms delay in between
+                        if (string.IsNullOrEmpty(modernSiteUrl))
+                        {
+                            Task.Delay(delay * (retryCount - driveRetryCount)).GetAwaiter().GetResult();
+                            driveRetryCount--;
+                        }
                     }
 
-                    return (group);
+                    group.SiteUrl = modernSiteUrl;
+                }
 
-                }).GetAwaiter().GetResult();
+                if (createTeam)
+                {
+                    Task.Run(async () =>
+                    {
+                        await CreateTeam(group.GroupId, accessToken, azureEnvironment: azureEnvironment);
+                    }).GetAwaiter().GetResult();
+                }
+
+                return group;
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return (result);
         }
 
         /// <summary>

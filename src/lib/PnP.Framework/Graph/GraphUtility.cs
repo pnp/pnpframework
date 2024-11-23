@@ -9,6 +9,8 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
+// Todo - cache single instance of JsonSerializerOptions
+
 namespace PnP.Framework.Graph
 {
     /// <summary>

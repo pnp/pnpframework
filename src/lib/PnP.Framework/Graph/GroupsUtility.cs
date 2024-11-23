@@ -489,7 +489,7 @@ namespace PnP.Framework.Graph
                 int currentIndex = 0;
                 foreach (var g in GraphUtility.ReadPagedDataFromRequest<Model.Group>(requestUrl, accessToken, retryCount, delay))
                 {
-                    if (groups.Count > endIndex)
+                    if (groups.Count >= endIndex)
                     {
                         break;
                     }

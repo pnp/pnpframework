@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -357,11 +358,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 list.SiteList.Update();
                 web.Context.ExecuteQueryRetry();
 
-                var rootFolder = list.SiteList.RootFolder;
-                foreach (var folder in list.TemplateList.Folders)
-                {
-                    CreateFolderInList(list, rootFolder, folder, parser, scope);
-                }
+                var existingFolderItems = LoadAllExistingFolderListItems(list.SiteList, scope);
+                var mappedFolders = MapExistingFolderToTemplateFolders(list,existingFolderItems, parser, scope);
+                CreateFolderInListV2(list, mappedFolders, parser, scope);
+
+                //var rootFolder = list.SiteList.RootFolder;
+                //foreach (var folder in list.TemplateList.Folders)
+                //{
+                //    CreateFolderInList(list, rootFolder, folder, parser, scope);
+                //}
 
                 // Restore the value of EnableFolderCreation to what it was before if the value is different
                 if (list.SiteList.EnableFolderCreation != enableFolderCreationPreviousValue)
@@ -372,6 +377,373 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
         }
+
+        private void CreateFolderInListV2(ListInfo list, Dictionary<string, FlatFolder> mappedFolders, TokenParser parser, PnPMonitoredScope scope)
+        {
+            // Determine the folder name, parsing any token
+            list.SiteList.ParentWeb.EnsureProperties(w => w.ServerRelativeUrl);
+            list.SiteList.EnsureProperties(l => l.RootFolder);
+
+            // Handle root folder property bag
+            if (list.TemplateList.PropertyBagEntries != null && list.TemplateList.PropertyBagEntries.Count > 0)
+            {
+                foreach (var p in list.TemplateList.PropertyBagEntries)
+                {
+                    list.SiteList.RootFolder.Properties[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
+                }
+                list.SiteList.RootFolder.Update();
+            }
+
+            var ParentWebServerRelativeUrlLength = list.SiteList.ParentWeb.ServerRelativeUrl.Length;
+
+            //do we need to load list contenttypes
+            var listContentTypeOrdered = new List<ContentType>();
+            if (mappedFolders.Values.Any(f=>!string.IsNullOrWhiteSpace(f.folderTemplate.ContentTypeID)))
+            {
+                list.SiteList.Context.Load(list.SiteList, p => p.ContentTypes.Include(c => c.StringId));
+                list.SiteList.Context.ExecuteQueryRetry();
+                listContentTypeOrdered = list.SiteList.ContentTypes.OrderBy(p => p.StringId.Length).ToList();
+            }
+
+            foreach (var folderLevel in mappedFolders.GroupBy(f => f.Value.level).OrderBy(g => g.Key))
+            {
+                //same level but can have different parents
+                var loadedPathsInLevel = new List<string>();
+                #region ****** Create and Load or Load existing Folder
+                foreach (var folder in folderLevel)
+                {
+                    loadedPathsInLevel.Add(folder.Key);
+                    var pathParts = folder.Key.Split('/');
+                    var parentFolderPath = string.Join("/", pathParts.Take(pathParts.Length - 1));
+                    if (folder.Value.FolderListItem == null)
+                    {
+                        //needs to be created
+                        if (pathParts.Length == 1)
+                        {
+                            folder.Value.SPFolder = list.SiteList.RootFolder.Folders.AddUsingPath(ResourcePath.FromDecodedUrl(pathParts.Last()), new FolderCollectionAddParameters() { Overwrite = true });
+                            list.SiteList.Context.Load(folder.Value.SPFolder, f => f.Name, f => f.UniqueId, f => f.Folders, f => f.ServerRelativeUrl, f => f.ListItemAllFields, f => f.Properties);
+                        }
+                        else
+                        {
+                            folder.Value.SPFolder = mappedFolders[parentFolderPath].SPFolder.Folders.AddUsingPath(ResourcePath.FromDecodedUrl(pathParts.Last()), new FolderCollectionAddParameters() { Overwrite = true });
+                            list.SiteList.Context.Load(folder.Value.SPFolder, f => f.Name, f => f.UniqueId, f => f.Folders, f => f.ServerRelativeUrl, f => f.ListItemAllFields, f => f.Properties);
+                        }
+                    }
+                    else
+                    {
+                        //needs to be loaded
+                        if (Guid.TryParse(mappedFolders[folder.Key].FolderListItem["UniqueId"].ToString(), out var uniqueId))
+                        {
+                            mappedFolders[folder.Key].SPFolder = list.SiteList.ParentWeb.GetFolderById(uniqueId);
+                            list.SiteList.Context.Load(mappedFolders[folder.Key].SPFolder, f => f.Name, f => f.UniqueId, f => f.Folders, f => f.ServerRelativeUrl, f => f.ListItemAllFields, f => f.Properties);
+                        }
+                    }
+                }
+                #endregion //****** Create and Load or Load existing Folder
+                if (list.SiteList.Context.HasPendingRequest)
+                {
+                    list.SiteList.Context.ExecuteQuery();
+                    foreach (var path in loadedPathsInLevel)
+                    {
+                        var flatFolder = mappedFolders[path];
+                        parser.AddToken(new FileUniqueIdToken(list.SiteList.ParentWeb, flatFolder.SPFolder.ServerRelativeUrl.Substring(ParentWebServerRelativeUrlLength).TrimStart("/".ToCharArray()), mappedFolders[path].SPFolder.UniqueId));
+                        parser.AddToken(new FileUniqueIdEncodedToken(list.SiteList.ParentWeb, flatFolder.SPFolder.ServerRelativeUrl.Substring(ParentWebServerRelativeUrlLength).TrimStart("/".ToCharArray()), mappedFolders[path].SPFolder.UniqueId));
+
+                        #region ****** Set ContentType
+                        if (!string.IsNullOrWhiteSpace(flatFolder.folderTemplate.ContentTypeID))
+                        {
+                            var ct = listContentTypeOrdered.FirstOrDefault(c => c.StringId.StartsWith(flatFolder.folderTemplate.ContentTypeID));
+                            var currentFolderItem = flatFolder.SPFolder.ListItemAllFields;
+                            var needToUpdateCT = currentFolderItem.FieldExists("ContentTypeId") == false || (currentFolderItem.FieldExists("ContentTypeId") && !ct.StringId.Equals(currentFolderItem["ContentTypeId"].ToString()));
+
+                            if (needToUpdateCT)
+                            {
+                                currentFolderItem["ContentTypeId"] = ct.StringId;
+
+                                if (flatFolder.folderTemplate.ContentTypeID.StartsWith(BuiltInContentTypeId.DocumentSet, StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    currentFolderItem["HTML_x0020_File_x0020_Type"] = "Sharepoint.DocumentSet";
+                                    flatFolder.SPFolder.Properties["docset_LastRefresh"] = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
+                                    flatFolder.SPFolder.Properties["vti_contenttypeorder"] = string.Join(",", list.SiteList.ContentTypes.ToList().Where(c => c.StringId.StartsWith(BuiltInContentTypeId.Document + "00"))?.Select(c => c.StringId));
+                                }
+                                currentFolderItem.UpdateOverwriteVersion();
+                                flatFolder.SPFolder.Update();
+                                list.SiteList.Context.Load(flatFolder.SPFolder.ListItemAllFields); //if we change ContentType we can have additional fields
+
+                                //Channel Folder special treatment only on first Folder Level
+                                if (folderLevel.Key == 0)
+                                {
+                                    try
+                                    {
+                                        list.SiteList.Context.ExecuteQueryRetry();
+                                    }
+                                    catch (ServerException srex)
+                                    {
+                                        //Handle Error To update this folder, go to the channel in Microsoft Teams
+                                        if (srex.ServerErrorCode == -2130575223)
+                                        {
+                                            scope.LogWarning($"ContentType on folder '{path}' can not be changed '{srex.Message}'");
+                                            WriteMessage($"ContentType on folder '{path}' can not be changed '{srex.Message}'", ProvisioningMessageType.Warning);
+                                        }
+                                        else
+                                            throw;
+                                    }
+                                }
+                            }
+                        }
+                        #endregion //****** Set ContentType
+                    }
+                    if (folderLevel.Key > 0 && list.SiteList.Context.HasPendingRequest)
+                    {
+                        list.SiteList.Context.ExecuteQueryRetry();
+                    }
+
+                    #region ****** Set Property Fields of Folder
+                    foreach (var path in loadedPathsInLevel)
+                    {
+                        var flatFolder = mappedFolders[path];
+                        //Set Property Fields of Folder in order to handle for example OneNote Folders
+                        if (flatFolder.folderTemplate.Properties != null && flatFolder.folderTemplate.Properties.Any(p => !p.Key.Equals("ContentTypeId")))
+                        {
+                            var currentFolderItem = flatFolder.SPFolder.ListItemAllFields;
+                            foreach (var p in flatFolder.folderTemplate.Properties.Where(p => !p.Key.Equals("ContentTypeId") && !p.Key.Equals("_ModerationStatus")))
+                            {
+                                currentFolderItem[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
+                            }
+                            currentFolderItem.UpdateOverwriteVersion();
+                            flatFolder.SPFolder.Update();
+
+                            //Channel Folder special treatment only on first Folder Level
+                            if (folderLevel.Key == 0)
+                            {
+
+                                try
+                                {
+                                    list.SiteList.Context.ExecuteQueryRetry();
+                                }
+                                catch (ServerException srex)
+                                {
+                                    //Handle Error To update this folder, go to the channel in Microsoft Teams
+                                    if (srex.ServerErrorCode == -2130575223)
+                                    {
+                                        scope.LogWarning($"Properties on folder '{path}' can not be changed '{srex.Message}'");
+                                        WriteMessage($"Properties on folder '{path}' can not be changed '{srex.Message}'", ProvisioningMessageType.Warning);
+                                    }
+                                    else
+                                        throw;
+                                }
+                            }
+                        }
+                    }
+                    if (folderLevel.Key > 0 && list.SiteList.Context.HasPendingRequest)
+                    {
+                        list.SiteList.Context.ExecuteQueryRetry();
+                    }
+                    #endregion //****** Set Property Fields of Folder
+
+                    #region ****** Set Folder Security
+                    foreach (var path in loadedPathsInLevel)
+                    {
+                        var flatFolder = mappedFolders[path];
+
+                        // Handle current folder security
+                        if (flatFolder.folderTemplate.Security != null && flatFolder.folderTemplate.Security.RoleAssignments.Count != 0)
+                        {
+                            var currentFolderItem = flatFolder.SPFolder.ListItemAllFields;
+                            currentFolderItem.SetSecurity(parser, flatFolder.folderTemplate.Security, WriteMessage);
+                        }
+                    }
+                    #endregion ****** Set Folder Security
+
+                    #region ****** Set Folder PropertyBag
+                    foreach (var path in loadedPathsInLevel)
+                    {
+                        var flatFolder = mappedFolders[path];
+                        // Handle current folder property bags
+                        if (flatFolder.folderTemplate.PropertyBagEntries != null && flatFolder.folderTemplate.PropertyBagEntries.Count > 0)
+                        {
+                            foreach (var p in flatFolder.folderTemplate.PropertyBagEntries)
+                            {
+                                flatFolder.SPFolder.Properties[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
+                            }
+                            flatFolder.SPFolder.Update();
+                            list.SiteList.Context.Load(flatFolder.SPFolder);
+
+                            //Channel Folder special treatment only on first Folder Level
+                            if (folderLevel.Key == 0)
+                            {
+                                try
+                                {
+                                    list.SiteList.Context.ExecuteQueryRetry();
+                                }
+                                catch (ServerException srex)
+                                {
+                                    //Handle Error To update this folder, go to the channel in Microsoft Teams
+                                    if (srex.ServerErrorCode == -2130575223)
+                                    {
+                                        scope.LogWarning($"PropertyBagEntries on folder '{path}' can not be changed '{srex.Message}'");
+                                        WriteMessage($"PropertyBagEntries on folder '{path}' can not be changed '{srex.Message}'", ProvisioningMessageType.Warning);
+                                    }
+                                    else
+                                        throw;
+                                }
+                            }
+                        }
+                    }
+                    if (folderLevel.Key > 0 && list.SiteList.Context.HasPendingRequest)
+                    {
+                        list.SiteList.Context.ExecuteQueryRetry();
+                    }
+                    #endregion ****** Set Folder PropertyBag
+
+                    #region ****** Set Moderation status of Folder
+                    foreach (var path in loadedPathsInLevel)
+                    {
+                        var flatFolder = mappedFolders[path];
+                        //Doing it in a different request, because SharePoint doesn't allow to update properties at the same time with other properties
+                        if (list.SiteList.EnableModeration && flatFolder.folderTemplate.Properties != null && flatFolder.folderTemplate.Properties.Any(p => p.Key.Equals("_ModerationStatus")))
+                        {
+                            var currentFolderItem = flatFolder.SPFolder.ListItemAllFields;
+                            var propertyValue = flatFolder.folderTemplate.Properties["_ModerationStatus"];
+                            currentFolderItem["_ModerationStatus"] = parser.ParseString(propertyValue);
+
+                            currentFolderItem.UpdateOverwriteVersion();
+                            flatFolder.SPFolder.Update();
+
+                            //Channel Folder special treatment only on first Folder Level
+                            if (folderLevel.Key == 0)
+                            {
+                                try
+                                {
+                                    list.SiteList.Context.ExecuteQueryRetry();
+                                }
+                                catch (ServerException srex)
+                                {
+                                    //Handle Error To update this folder, go to the channel in Microsoft Teams
+                                    if (srex.ServerErrorCode == -2130575223)
+                                    {
+                                        scope.LogWarning($"Moderation status on folder '{path}' can not be changed '{srex.Message}'");
+                                        WriteMessage($"Moderation status on folder '{path}' can not be changed '{srex.Message}'", ProvisioningMessageType.Warning);
+                                    }
+                                    else
+                                        throw;
+                                }
+                            }
+                        }
+                    }
+                    if (folderLevel.Key > 0 && list.SiteList.Context.HasPendingRequest)
+                    {
+                        list.SiteList.Context.ExecuteQueryRetry();
+                    }
+                    #endregion //****** Set Moderation status of Folder
+                }
+            }
+        }
+
+        private Dictionary<string, FlatFolder> MapExistingFolderToTemplateFolders(ListInfo list, System.Collections.Generic.List<ListItem> existingFolderListItems, TokenParser parser, PnPMonitoredScope scope)
+        {
+            list.SiteList.EnsureProperties(l => l.RootFolder.ServerRelativeUrl);
+            var flatFolderList = FlatFolderList("", 0, list.TemplateList.Folders, parser, scope);
+            var foldersDestination = new Dictionary<string, FlatFolder>();
+            foreach (var folder in flatFolderList)
+            {
+                foldersDestination.Add(folder.folderPath, folder);
+            }
+            var spListRootFolderPathLength = list.SiteList.RootFolder.ServerRelativeUrl.Length + 1;
+            foreach (var folder in existingFolderListItems)
+            {
+                var folderRelativePath = folder["FileRef"].ToString().Substring(spListRootFolderPathLength).Trim('/');
+                if (foldersDestination.ContainsKey(folderRelativePath))
+                {
+                    foldersDestination[folderRelativePath].FolderListItem = folder;
+                }
+            }
+
+            return foldersDestination;
+        }
+
+        private System.Collections.Generic.List<FlatFolder> FlatFolderList(string parentfolderName, int level, Model.FolderCollection folders, TokenParser parser, PnPMonitoredScope scope)
+        {
+            var foldersSource = new System.Collections.Generic.List<FlatFolder>();
+            foreach (var folder in folders)
+            {
+                var folderPath = "";
+                if (string.IsNullOrWhiteSpace(parentfolderName))
+                    folderPath = parser.ParseString(folder.Name); 
+                else
+                    folderPath = $"{parentfolderName}/{parser.ParseString(folder.Name)}";
+
+                foldersSource.Add(new FlatFolder() { folderPath = folderPath, level = level, folderTemplate = folder });
+                if (folder.Folders.Any())
+                    foldersSource.AddRange(FlatFolderList(folderPath, level + 1, folder.Folders, parser, scope));
+            }
+
+            return foldersSource;
+        }
+
+
+        private class FlatFolder
+        {
+            public string folderPath { get; set; }
+
+            public int level { get; set; }
+
+            public Model.Folder folderTemplate { get; set; }
+
+            public ListItem FolderListItem { get; set; }
+
+            public Folder SPFolder { get; set; }
+        }
+
+        private System.Collections.Generic.List<ListItem> LoadAllExistingFolderListItems(List spList, PnPMonitoredScope scope)
+        {
+            System.Collections.Generic.List<ListItem> listItemColl = new System.Collections.Generic.List<ListItem>();
+
+            var camlQuery = new CamlQuery()
+            {
+                ViewXml = @"<View Scope='RecursiveAll' >
+                    <ViewFields>
+                      <FieldRef Name='Id' />                      
+                      <FieldRef Name='UniqueId' />
+                      <FieldRef Name='ParentUniqueId' />
+                      <FieldRef Name='FileRef' />
+                      <FieldRef Name='FileLeafRef' />
+                      <FieldRef Name='ContentTypeId' />
+                    </ViewFields>
+                    <Query>
+                      <Where>
+                        <Eq>
+                          <FieldRef Name='FSObjType'/>
+                          <Value Type='Integer'>1</Value>
+                        </Eq>
+                      </Where>
+                      <OrderBy><FieldRef Name='Id' Ascending='TRUE' /></OrderBy>
+                    </Query>
+                    <RowLimit Paged='TRUE'>200</RowLimit>
+                   </View>"
+            };
+
+            do
+            {
+                var listItems = spList.GetItems(camlQuery);
+                spList.Context.Load(listItems);
+
+                try
+                {
+                    spList.Context.ExecuteQuery();
+                    listItemColl.AddRange(listItems);
+                    camlQuery.ListItemCollectionPosition = listItems.ListItemCollectionPosition;
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidOperationException("LoadAllExistingFolderListItems: Error on paging", ex);
+                }
+            }
+            while (camlQuery.ListItemCollectionPosition != null);
+
+            return listItemColl;
+        }
+
 
         private void ProcessViews(Web web, TokenParser parser, PnPMonitoredScope scope, ListInfo listInfo)
         {

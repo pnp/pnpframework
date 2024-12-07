@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
-// Todo - cache single instance of JsonSerializerOptions
-
 namespace PnP.Framework.Graph
 {
     /// <summary>
@@ -17,6 +15,7 @@ namespace PnP.Framework.Graph
     {
         private const int defaultRetryCount = 10;
         private const int defaultDelay = 500;
+        public static JsonSerializerOptions CaseInsensitiveJsonOptions { get; } = new JsonSerializerOptions { PropertyNameCaseInsensitive = true, };
 
         /// <summary>
         /// This method sends an Azure guest user invitation to the provided email address.
@@ -72,7 +71,7 @@ namespace PnP.Framework.Graph
                 var jsonNode = JsonNode.Parse(responseData);
                 JsonNode valueNode = jsonNode["value"];
                 var results = customDeserialise == null
-                    ? valueNode.Deserialize<T[]>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true, })
+                    ? valueNode.Deserialize<T[]>(CaseInsensitiveJsonOptions)
                     : customDeserialise(valueNode);
 
                 foreach (var r in results)

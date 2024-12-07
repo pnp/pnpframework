@@ -214,7 +214,7 @@ namespace PnP.Framework.Graph
 
                     var jsonNode = JsonNode.Parse(responseData);
                     JsonNode valueNode = jsonNode["value"];
-                    var results = valueNode.Deserialize<Model.User[]>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true, });
+                    var results = valueNode.Deserialize<Model.User[]>(GraphUtility.CaseInsensitiveJsonOptions);
 
                     foreach (var r in results)
                     {

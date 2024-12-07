@@ -1032,10 +1032,6 @@ namespace PnP.Framework.Graph
         /// <returns></returns>
         public static List<UnifiedGroupUser> GetNestedUnifiedGroupMembers(UnifiedGroupEntity group, string accessToken, int retryCount = 10, int delay = 500, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            List<UnifiedGroupUser> unifiedGroupUsers = new List<UnifiedGroupUser>();
-            List<User> unifiedGroupGraphUsers = null;
-            IGroupMembersCollectionWithReferencesPage groupUsers = null;
-
             if (String.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentNullException(nameof(accessToken));
@@ -1047,60 +1043,28 @@ namespace PnP.Framework.Graph
 
             try
             {
-                var result = Task.Run(async () =>
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}groups/{group.GroupId}/transitiveMembers/microsoft.graph.user";
+                var users = GraphUtility.ReadPagedDataFromRequest<UnifiedGroupUser>(requestUrl, accessToken, retryCount: retryCount, delay: delay).ToList();
+
+                foreach (var u in users)
                 {
-                    var graphClient = CreateGraphClient(accessToken, retryCount, delay, azureEnvironment);
+                    u.UserPrincipalName ??= string.Empty;
+                    u.DisplayName ??= string.Empty;
+                    u.GivenName ??= string.Empty;
+                    u.Surname ??= string.Empty;
+                    u.Email ??= string.Empty;
+                    u.MobilePhone ??= string.Empty;
+                    u.PreferredLanguage ??= string.Empty;
+                    u.JobTitle ??= string.Empty;
+                }
 
-                    // Get the members of an Office 365 group.
-                    groupUsers = await graphClient.Groups[group.GroupId].Members.Request().GetAsync();
-                    if (groupUsers.CurrentPage != null && groupUsers.CurrentPage.Count > 0)
-                    {
-                        unifiedGroupGraphUsers = new List<User>();
-
-                        GenerateNestedGraphUserCollection(groupUsers.CurrentPage, unifiedGroupGraphUsers, unifiedGroupUsers, accessToken);
-                    }
-
-                    // Retrieve users when the results are paged.
-                    while (groupUsers.NextPageRequest != null)
-                    {
-                        groupUsers = groupUsers.NextPageRequest.GetAsync().GetAwaiter().GetResult();
-                        if (groupUsers.CurrentPage != null && groupUsers.CurrentPage.Count > 0)
-                        {
-                            GenerateNestedGraphUserCollection(groupUsers.CurrentPage, unifiedGroupGraphUsers, unifiedGroupUsers, accessToken);
-                        }
-                    }
-
-                    // Create the collection of type OfficeDevPnP 'UnifiedGroupUser' after all users are retrieved, including paged data.
-                    if (unifiedGroupGraphUsers != null && unifiedGroupGraphUsers.Count > 0)
-                    {
-                        foreach (User usr in unifiedGroupGraphUsers)
-                        {
-                            UnifiedGroupUser groupUser = new UnifiedGroupUser
-                            {
-                                Id = usr.Id,
-                                UserPrincipalName = usr.UserPrincipalName != null ? usr.UserPrincipalName : string.Empty,
-                                DisplayName = usr.DisplayName != null ? usr.DisplayName : string.Empty,
-                                GivenName = usr.GivenName != null ? usr.GivenName : string.Empty,
-                                Surname = usr.Surname != null ? usr.Surname : string.Empty,
-                                Email = usr.Mail != null ? usr.Mail : string.Empty,
-                                MobilePhone = usr.MobilePhone != null ? usr.DisplayName : string.Empty,
-                                PreferredLanguage = usr.PreferredLanguage != null ? usr.PreferredLanguage : string.Empty,
-                                JobTitle = usr.JobTitle != null ? usr.DisplayName : string.Empty,
-                                BusinessPhones = usr.BusinessPhones != null ? usr.BusinessPhones.ToArray() : null
-                            };
-                            unifiedGroupUsers.Add(groupUser);
-                        }
-                    }
-                    return unifiedGroupUsers;
-
-                }).GetAwaiter().GetResult();
+                return users.ToList();
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return unifiedGroupUsers;
         }
 
         /// <summary>

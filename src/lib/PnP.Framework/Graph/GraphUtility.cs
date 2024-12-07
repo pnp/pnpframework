@@ -1,13 +1,10 @@
-﻿using Microsoft.Graph;
-using PnP.Framework.Diagnostics;
+﻿using PnP.Framework.Diagnostics;
 using PnP.Framework.Graph.Model;
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 
 // Todo - cache single instance of JsonSerializerOptions
 
@@ -20,39 +17,6 @@ namespace PnP.Framework.Graph
     {
         private const int defaultRetryCount = 10;
         private const int defaultDelay = 500;
-
-        /// <summary>
-        ///  Creates a new GraphServiceClient instance using a custom PnPHttpProvider
-        /// </summary>
-        /// <param name="accessToken">The OAuth 2.0 Access Token to configure the HTTP bearer Authorization Header</param>
-        /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
-        /// <param name="delay">Milliseconds to wait before retrying the request.</param>
-        /// <param name="azureEnvironment">Defines the Azure Cloud deployment to use.</param>
-        /// <param name="useBetaEndPoint">Indicates if the v1.0 (false) or beta (true) endpoint should be used at Microsoft Graph</param>
-        /// <returns></returns>
-#pragma warning disable CA2000
-        public static GraphServiceClient CreateGraphClient(string accessToken, int retryCount = defaultRetryCount, int delay = defaultDelay, AzureEnvironment azureEnvironment = AzureEnvironment.Production, bool useBetaEndPoint = false)
-        {
-            var baseUrl = $"https://{AuthenticationManager.GetGraphEndPoint(azureEnvironment)}/{(useBetaEndPoint ? "beta" : "v1.0")}";
-            // Creates a new GraphServiceClient instance using a custom PnPHttpProvider
-            // which natively supports retry logic for throttled requests
-            // Default are 10 retries with a base delay of 500ms
-            var result = new GraphServiceClient(baseUrl, new DelegateAuthenticationProvider(
-                        async (requestMessage) =>
-                        {
-                            await Task.Run(() =>
-                            {
-                                if (!string.IsNullOrEmpty(accessToken))
-                                {
-                                    // Configure the HTTP bearer Authorization Header
-                                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
-                                }
-                            });
-                        }), new PnPHttpProvider(retryCount, delay));
-
-            return (result);
-        }
-#pragma warning restore CA2000
 
         /// <summary>
         /// This method sends an Azure guest user invitation to the provided email address.

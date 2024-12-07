@@ -108,68 +108,34 @@ namespace PnP.Framework.Graph
                 }
             }
 
-            List<Model.User> result = null;
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users";
+                var queryStringParams = new List<string>()
                 {
-                    List<Model.User> users = new List<Model.User>();
+                    $"$top={(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)}"
+                };
+                if (propertiesToSelect.Count > 0)
+                {
+                    queryStringParams.Add("$select=" + string.Join(",", propertiesToSelect));
+                }
+                if (!string.IsNullOrEmpty(filter))
+                {
+                    queryStringParams.Add($"$filter={filter}");
+                }
+                if (!string.IsNullOrEmpty(orderby))
+                {
+                    queryStringParams.Add($"orderby={orderby}");
+                }
+                requestUrl += $"?{string.Join("&", queryStringParams)}";
+                return GraphUtility.ReadPagedDataFromRequest<Model.User>(requestUrl, accessToken, retryCount: retryCount, delay: delay).ToList();
 
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, useBetaEndPoint: useBetaEndPoint, azureEnvironment: azureEnvironment);
-
-                    IGraphServiceUsersCollectionPage pagedUsers;
-
-                    // Retrieve the first batch of users. 999 is the maximum amount of users that Graph allows to be trieved in 1 go. Use maximum size batches to lessen the chance of throttling when retrieving larger amounts of users.
-                    pagedUsers = await graphClient.Users.Request()
-                                                        .Select(string.Join(",", propertiesToSelect))
-                                                        .Filter(filter)
-                                                        .OrderBy(orderby)
-                                                        .Top(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)
-                                                        .GetAsync();
-
-                    int pageCount = 0;
-                    int currentIndex = 0;
-
-                    while (true)
-                    {
-                        pageCount++;
-
-                        foreach (var pagedUser in pagedUsers)
-                        {
-                            currentIndex++;
-
-                            if(endIndex.HasValue && endIndex.Value < currentIndex)
-                            {
-                                break;
-                            }
-
-                            if (currentIndex >= startIndex)
-                            {
-                                users.Add(MapUserEntity(pagedUser, selectProperties));
-                            }
-                        }
-
-                        if (pagedUsers.NextPageRequest != null && (!endIndex.HasValue || currentIndex < endIndex.Value))
-                        {
-                            // Retrieve the next batch of users. The possible oData instructions such as select and filter are already incorporated in the nextLink provided by Graph and thus do not need to be specified again.
-                            pagedUsers = await pagedUsers.NextPageRequest.GetAsync();
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-
-                    return users;
-                }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return result;
         }
 
         /// <summary>

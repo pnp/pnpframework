@@ -10,19 +10,18 @@ using PnP.Framework.Graph;
 namespace PnP.Framework.Test.Graph
 {
     [TestClass]
-    public class UnifiedGroupsUtilityTests
+    public class UsersUtilityTests
     {
         [TestMethod]
-        public void GetUnifiedGroupMembers_WhenCalled_ShouldReturnData()
+        public void ListUsers_WhenCalled_ShouldReturnData()
         {
             // Arrange
             TestCommon.RegisterPnPHttpClientMock();
-            //var fakeHandler = new MockHttpHandler("");
 
             // Act
-            var results = UnifiedGroupsUtility.GetUnifiedGroupMembers(
-                new UnifiedGroupEntity() { GroupId = "abc", },
-                "testt"
+            var results = UsersUtility.ListUsers(
+                "123",
+                new[] {"postalCode"}
             );
 
             // Assert
@@ -39,7 +38,8 @@ namespace PnP.Framework.Test.Graph
                 Assert.IsTrue(
                     results.Any(r =>
                         pi.GetValue(r, null) != (pi.PropertyType.IsValueType ? Activator.CreateInstance(pi.PropertyType) : null)
-                    )
+                    ),
+                    pi.Name
                 );
             }
         }

@@ -128,7 +128,13 @@ namespace PnP.Framework.Graph
                     queryStringParams.Add($"orderby={orderby}");
                 }
                 requestUrl += $"?{string.Join("&", queryStringParams)}";
-                return GraphUtility.ReadPagedDataFromRequest<Model.User>(requestUrl, accessToken, retryCount: retryCount, delay: delay).ToList();
+                IEnumerable<Model.User> users = GraphUtility.ReadPagedDataFromRequest<Model.User>(requestUrl, accessToken, retryCount: retryCount, delay: delay)
+                                    .Skip(startIndex);
+                if (endIndex.HasValue)
+                {
+                    users = users.Take(endIndex.Value - startIndex);
+                }
+                return users.ToList();
 
             }
             catch (HttpResponseException ex)

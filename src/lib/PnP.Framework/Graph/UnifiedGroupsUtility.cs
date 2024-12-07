@@ -1364,26 +1364,6 @@ namespace PnP.Framework.Graph
         }
 
         /// <summary>
-        /// Helper method. Generates a collection of Microsoft.Graph.User entity from directory objects.
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="unifiedGroupGraphUsers"></param>
-        /// <returns>Returns a collection of Microsoft.Graph.User entity</returns>
-        private static List<User> GenerateGraphUserCollection(IList<DirectoryObject> page, List<User> unifiedGroupGraphUsers)
-        {
-            // Create a collection of Microsoft.Graph.User type
-            foreach (User usr in page)
-            {
-                if (usr != null)
-                {
-                    unifiedGroupGraphUsers.Add(usr);
-                }
-            }
-
-            return unifiedGroupGraphUsers;
-        }
-
-        /// <summary>
         /// Helper method. Generates a neseted collection of Microsoft.Graph.User entity from directory objects.
         /// </summary>
         /// <param name="page"></param>

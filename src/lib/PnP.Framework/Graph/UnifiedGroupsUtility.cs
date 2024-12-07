@@ -1,5 +1,4 @@
-﻿using Microsoft.Graph;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Entities;
@@ -8,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
@@ -22,38 +20,6 @@ namespace PnP.Framework.Graph
     {
         private const int defaultRetryCount = 10;
         private const int defaultDelay = 500;
-
-        /// <summary>
-        ///  Creates a new GraphServiceClient instance using a custom PnPHttpProvider
-        /// </summary>
-        /// <param name="accessToken">The OAuth 2.0 Access Token to configure the HTTP bearer Authorization Header</param>
-        /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
-        /// <param name="delay">Milliseconds to wait before retrying the request.</param>
-        /// <param name="azureEnvironment">Azure environment to use</param>
-        /// <returns></returns>
-        private static GraphServiceClient CreateGraphClient(String accessToken, int retryCount = defaultRetryCount, int delay = defaultDelay, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
-        {
-            // Creates a new GraphServiceClient instance using a custom PnPHttpProvider
-            // which natively supports retry logic for throttled requests
-            // Default are 10 retries with a base delay of 500ms
-
-            var baseUrl = $"https://{AuthenticationManager.GetGraphEndPoint(azureEnvironment)}/v1.0";
-
-            var result = new GraphServiceClient(baseUrl, new DelegateAuthenticationProvider(
-                        async (requestMessage) =>
-                        {
-                            await Task.Run(() =>
-                            {
-                                if (!String.IsNullOrEmpty(accessToken))
-                                {
-                                    // Configure the HTTP bearer Authorization Header
-                                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
-                                }
-                            });
-                        }), new PnPHttpProvider(retryCount, delay));
-
-            return (result);
-        }
 
         /// <summary>
         /// Returns the URL of the Modern SharePoint Site backing an Office 365 Group (i.e. Unified Group)
@@ -1325,66 +1291,6 @@ namespace PnP.Framework.Graph
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-        }
-
-        /// <summary>
-        /// Helper method. Generates a neseted collection of Microsoft.Graph.User entity from directory objects.
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="unifiedGroupGraphUsers"></param>
-        /// <param name="unifiedGroupUsers"></param>
-        /// <param name="accessToken"></param>
-        /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
-        /// <returns></returns>
-        private static List<User> GenerateNestedGraphUserCollection(IList<DirectoryObject> page, List<User> unifiedGroupGraphUsers, List<UnifiedGroupUser> unifiedGroupUsers, string accessToken, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
-        {
-            // Create a collection of Microsoft.Graph.User type
-            foreach (var usr in page)
-            {
-
-                if (usr != null)
-                {
-                    if (usr.GetType() == typeof(User))
-                    {
-                        unifiedGroupGraphUsers.Add((User)usr);
-                    }
-                }
-            }
-
-            //Get groups within the group and users in that group
-            List<Group> unifiedGroupGraphGroups = new List<Group>();
-            GenerateGraphGroupCollection(page, unifiedGroupGraphGroups);
-            foreach (Group unifiedGroupGraphGroup in unifiedGroupGraphGroups)
-            {
-                var grp = GetUnifiedGroup(unifiedGroupGraphGroup.Id, accessToken, azureEnvironment: azureEnvironment);
-                unifiedGroupUsers.AddRange(GetUnifiedGroupMembers(grp, accessToken));
-            }
-
-            return unifiedGroupGraphUsers;
-        }
-
-        /// <summary>
-        /// Helper method. Generates a collection of Microsoft.Graph.Group entity from directory objects.
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="unifiedGroupGraphGroups"></param>
-        /// <returns></returns>
-        private static List<Group> GenerateGraphGroupCollection(IList<DirectoryObject> page, List<Group> unifiedGroupGraphGroups)
-        {
-            // Create a collection of Microsoft.Graph.Group type
-            foreach (var grp in page)
-            {
-
-                if (grp != null)
-                {
-                    if (grp.GetType() == typeof(Group))
-                    {
-                        unifiedGroupGraphGroups.Add((Group)grp);
-                    }
-                }
-            }
-
-            return unifiedGroupGraphGroups;
         }
 
         /// <summary>

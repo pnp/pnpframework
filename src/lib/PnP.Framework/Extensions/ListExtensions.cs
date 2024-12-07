@@ -2304,6 +2304,9 @@ namespace Microsoft.SharePoint.Client
 
         public static void EnableModernAudienceTargeting(this List list)
         {
+            var siteContext = list.ParentWeb.Context as ClientContext;
+            siteContext.Site.ActivateFeature(new Guid("bc13eaf7-67c7-4f85-a80f-a4b0dae5e5bd"));
+
             // TODO Need to add filter for Site Pages and Documents Library only for modern targeting.
             if (!list.FieldExistsByName(Constants.ModernAudienceTargetingInternalName) &&
                    !list.FieldExistsByName(Constants.ModernAudienceTargetingMultiLookupInternalName))

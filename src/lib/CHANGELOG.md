@@ -6,6 +6,48 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+### Added
+
+- Support for .NET 9.0 [jansenbe - Bert Jansen]
+- Support for Rate-Limiting in the PnP Framework + unifiqation of the throttling implementation for all http requests made [jansenbe - Bert Jansen]
+
+### Changed
+
+- Removed references to the PnP Management Shell app (`31359c7f-bd7e-475c-86db-fdb8c937548e`) [jansenbe - Bert Jansen]
+- Fix check for HeaderTypes as new PageTitle WebPart in OneColumnFullWIth is not always in first section #1066 [czullu - Christian Zuellig]
+- Updated assembly versions #1073 [gautamdsheth - Gautam Sheth]
+- Removed dependecy on Microsoft.AspNetCore.StaticFiles #1088 [jansenbe - Bert Jansen]
+
+## [1.17.0]
+
+### Added
+
+### Changed
+
+- Update AuthenticationManager.cs for GCC (ie UsGovernment) Regions #1047, #1048 [SteveWinward - Steve Winward]
+- Updated pages export logic to support the new page header model via full width page header web part [czullu - Christian Zuellig]
+- Bump System.Text.Json versions [jansenbe - Bert Jansen]
+
+## [1.16.0]
+
+### Added
+
+- Support for using Managed Identity with PnP Framework #1002 [koenzomers - Koen Zomers]
+- Added additional parameters to M365 Group creation to support setting SharePoint site URL, LCID, HubSiteId and SiteDesignId #1026 [gautamdsheth - Gautam Sheth]
+- Improve Managed Identity token acquisition process to use built-in methods which are more reliable. #1027 [gautamdsheth - Gautam Sheth]
+
+### Changed
+
+- Optimizations to "TokenParser" performance #964 [fzbm - Florian Zink]
+- Added support for vanity URLs in the `GetSitePropertiesById` extension method #1012 [koenzomers - Koen Zomers]
+- Bumped version of Microsoft.Identity.Client package version to 4.61.1 #1014, #1023 [gautamdsheth - Gautam Sheth]
+- Fix issue in ConfigureOnPremisesContext causing 403 forbidden responses on on-premise environments #1011 [nathan-swannet - Nathan Swannet]
+- Fix "The request was already sent" error when getting app metadata (using AppManager) #896 [JoaoCruz2001 - João Cruz]
+- Fix issue in `DisableRequestAccess` method where we were unable to properly set disable access request email. [luismanez- Luis Manez]
+- Fix issue in Azure ACS auth for `AuthenticationManager` #1022 [dohly]
+
 ## [1.15.0]
 
 ### Added

@@ -9,6 +9,7 @@ using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
 {
@@ -295,11 +296,21 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         if (PnPProvisioningContext.Current != null)
                                         {                                            
                                             var graphBaseURI = AuthenticationManager.GetGraphBaseEndPoint(tenant.Context.GetAzureEnvironment());
-                                            try
+
+                                            // We're going to try to get an access token from a cookie first, if we have a delegate handler assigned that knows how to deal with the cookies
+                                            if (PnPProvisioningContext.Current.AcquireCookie != null)
                                             {
-                                                graphAccessToken = PnPProvisioningContext.Current.AcquireCookie(graphBaseURI.ToString());
+                                                try
+                                                {
+                                                    graphAccessToken = PnPProvisioningContext.Current.AcquireCookie(graphBaseURI.ToString());
+                                                }
+                                                catch
+                                                {
+                                                }
                                             }
-                                            catch
+
+                                            // Check if we managed to get an access token, if not, we're going to try getting one from the Microsoft Online authentication endpoints
+                                            if(string.IsNullOrEmpty(graphAccessToken))
                                             {
                                                 graphAccessToken = PnPProvisioningContext.Current.AcquireToken(graphBaseURI.Authority, null);
                                             }

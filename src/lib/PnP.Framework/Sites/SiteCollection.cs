@@ -545,7 +545,11 @@ namespace PnP.Framework.Sites
                 delay: retryDelay,
                 azureEnvironment: azureEnvironment,
                 preferredDataLocation: siteCollectionCreationInformation.PreferredDataLocation,
-                assignedLabels: new Guid[] { sensitivityLabelId });
+                assignedLabels: new Guid[] { sensitivityLabelId },
+                siteAlias: siteCollectionCreationInformation.SiteAlias,
+                lcid: siteCollectionCreationInformation.Lcid,
+                hubSiteId: siteCollectionCreationInformation.HubSiteId,
+                siteDesignId: siteCollectionCreationInformation.SiteDesignId.HasValue ? siteCollectionCreationInformation.SiteDesignId.Value : Guid.Empty);
 
             if (group != null && !string.IsNullOrEmpty(group.SiteUrl))
             {
@@ -900,7 +904,7 @@ namespace PnP.Framework.Sites
             if (siteCollectionCreationInformation.Url.IndexOf("/sites/", StringComparison.InvariantCultureIgnoreCase) > -1 || siteCollectionCreationInformation.Url.IndexOf("/teams/", StringComparison.InvariantCultureIgnoreCase) > -1)
             {
                 // Split the URL by '/'
-                string[] urlParts = siteCollectionCreationInformation.Url.Split('/');
+                string[] urlParts = siteCollectionCreationInformation.Url.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
 
                 // Get the last part of the URL after "sites"
                 string lastPart = urlParts[urlParts.Length - 1];
@@ -1145,11 +1149,14 @@ namespace PnP.Framework.Sites
         /// <returns>True if in use, false otherwise</returns>
         public static async Task<Dictionary<string, string>> GetGroupInfoAsync(ClientContext context, string alias)
         {
+            Log.Debug(Constants.LOGGING_SOURCE, $"GetGroupInfoAsync");
+
             await new SynchronizationContextRemover();
 
             Dictionary<string, string> siteInfo = new Dictionary<string, string>();
 
-            context.Web.EnsureProperty(w => w.Url);
+            Log.Debug(Constants.LOGGING_SOURCE, $"GetWebUrl");
+            context.Web.EnsureProperty(w => w.Url);            
 
 #pragma warning disable CA2000 // Dispose objects before losing scope
             var httpClient = PnPHttpClient.Instance.GetHttpClient(context);
@@ -1164,6 +1171,8 @@ namespace PnP.Framework.Sites
                 request.Headers.Add("accept", "application/json;odata.metadata=none");
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 request.Headers.Add("odata-version", "4.0");
+
+                Log.Debug(Constants.LOGGING_SOURCE, $"AuthenticateRequestAsync");
 
                 await PnPHttpClient.AuthenticateRequestAsync(request, context).ConfigureAwait(false);
 

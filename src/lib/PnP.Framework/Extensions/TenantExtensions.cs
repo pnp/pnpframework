@@ -44,6 +44,8 @@ namespace Microsoft.SharePoint.Client
         /// <param name="configuration"></param>
         public static void ApplyTenantTemplate(this Tenant tenant, ProvisioningHierarchy tenantTemplate, string sequenceId, ApplyConfiguration configuration = null)
         {
+            Log.Debug(Constants.LOGGING_SOURCE, $"ApplyTenantTemplate");
+
             SiteToTemplateConversion engine = new SiteToTemplateConversion();
             engine.ApplyTenantTemplate(tenant, tenantTemplate, sequenceId, configuration);
         }
@@ -133,11 +135,12 @@ namespace Microsoft.SharePoint.Client
         /// <param name="tenant">A tenant object pointing to the context of a Tenant Administration site</param>
         /// <param name="siteId">The id of the site collection</param>
         /// <param name="detailed">Boolean indicating if detailed information should be returned of the site (true - default) or only the basics (false)</param>
+        /// <param name="tenantAdminUrl">The URL to use to connect to the tenant admin site. Typically only provided in the case of a vanity domain tenant. If not provided, tenant-admin will be assumed.</param>
         /// <returns>SiteProperties of the site collection or NULL of no site collection found with the provided Id</returns>
-        public static SiteProperties GetSitePropertiesById(this Tenant tenant, Guid siteId, bool detailed = true)
+        public static SiteProperties GetSitePropertiesById(this Tenant tenant, Guid siteId, bool detailed = true, string tenantAdminUrl = null)
         {
             // Create a context to the SharePoint Online Admin site
-            using (var tenantContext = tenant.Context.Clone((tenant.Context as ClientContext).Web.GetTenantAdministrationUrl()))
+            using (var tenantContext = tenant.Context.Clone(tenantAdminUrl ?? (tenant.Context as ClientContext).Web.GetTenantAdministrationUrl()))
             {
                 // Utilize the hidden list in the SharePoint Online Admin site to search for a site collection with matching Id using a CAML Query
                 var siteList = tenantContext.Web.Lists.GetByTitle(SPO_ADMIN_SITECOL_LIST_TITLE);

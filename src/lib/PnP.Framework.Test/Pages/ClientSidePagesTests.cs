@@ -3,6 +3,7 @@ using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PnP.Core.Services;
 using PnP.Framework.ALM;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
@@ -44,6 +45,18 @@ namespace PnP.Framework.Test.Authentication
         //        cc.ExecuteQuery();
         //    }
         //}
+
+        [TestMethod]
+        public void Bert2()
+        {
+            using (var cc = TestCommon.CreateClientContext())
+            {
+                cc.Load(cc.Web, p => p.Title);
+                cc.ExecuteQueryRetry();
+                //cc.ExecuteQuery();
+                Assert.IsTrue(cc.Web.Title != null);
+            }
+        }
 
         [TestMethod]
         public void ExportPagesTest()

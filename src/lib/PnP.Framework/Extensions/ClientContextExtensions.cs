@@ -1,18 +1,9 @@
-using PnP.Framework;
-using PnP.Framework.Diagnostics;
-using PnP.Framework.Http;
-using PnP.Framework.Provisioning.ObjectHandlers;
-using PnP.Framework.Sites;
-using PnP.Framework.Utilities;
-using PnP.Framework.Utilities.Async;
-using PnP.Framework.Utilities.Context;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -21,6 +12,14 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
+using PnP.Framework;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Http;
+using PnP.Framework.Provisioning.ObjectHandlers;
+using PnP.Framework.Sites;
+using PnP.Framework.Utilities;
+using PnP.Framework.Utilities.Async;
+using PnP.Framework.Utilities.Context;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -29,10 +28,11 @@ namespace Microsoft.SharePoint.Client
     /// </summary>
     public static partial class ClientContextExtensions
     {
-        private static readonly string userAgentFromConfig = null;
+        private static readonly string UserAgentFromConfig;
+        private static readonly Lazy<PropertyInfo> PendingRequestActionsProperty = new Lazy<PropertyInfo>(GetPendingRequestActionsProperty);
 
 #pragma warning disable CS0169
-        private static ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)> requestDigestInfos = new ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)>();
+        private static readonly ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)> RequestDigestInfos = new ConcurrentDictionary<string, (string requestDigest, DateTime expiresOn)>();
 #pragma warning restore CS0169
 
         //private static bool hasAuthCookies;
@@ -45,15 +45,15 @@ namespace Microsoft.SharePoint.Client
         {
             try
             {
-                ClientContextExtensions.userAgentFromConfig = ConfigurationManager.AppSettings["SharePointPnPUserAgent"];
+                UserAgentFromConfig = ConfigurationManager.AppSettings["SharePointPnPUserAgent"];
             }
             catch // throws exception if being called from a .NET Standard 2.0 application
             {
-
             }
-            if (string.IsNullOrWhiteSpace(ClientContextExtensions.userAgentFromConfig))
+
+            if (string.IsNullOrWhiteSpace(UserAgentFromConfig))
             {
-                ClientContextExtensions.userAgentFromConfig = Environment.GetEnvironmentVariable("SharePointPnPUserAgent", EnvironmentVariableTarget.Process);
+                UserAgentFromConfig = Environment.GetEnvironmentVariable("SharePointPnPUserAgent", EnvironmentVariableTarget.Process);
             }
         }
 #pragma warning restore CA1810
@@ -102,8 +102,10 @@ namespace Microsoft.SharePoint.Client
 
             await new SynchronizationContextRemover();
 
+#if !NET9_0
             // Set the TLS preference. Needed on some server os's to work when Office 365 removes support for TLS 1.0
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+#endif
 
             var clientTag = string.Empty;
             if (clientContext is PnPClientContext)
@@ -303,9 +305,9 @@ namespace Microsoft.SharePoint.Client
                 }
                 if (overrideUserAgent)
                 {
-                    if (string.IsNullOrEmpty(customUserAgent) && !string.IsNullOrEmpty(ClientContextExtensions.userAgentFromConfig))
+                    if (string.IsNullOrEmpty(customUserAgent) && !string.IsNullOrEmpty(UserAgentFromConfig))
                     {
-                        customUserAgent = userAgentFromConfig;
+                        customUserAgent = UserAgentFromConfig;
                     }
                     e.WebRequestExecutor.WebRequest.UserAgent = string.IsNullOrEmpty(customUserAgent) ? $"{PnPCoreUtilities.PnPCoreUserAgent}" : customUserAgent;
                 }
@@ -353,6 +355,8 @@ namespace Microsoft.SharePoint.Client
         /// <returns>A ClientContext object created for the passed site URL</returns>
         internal static ClientContext Clone(this ClientRuntimeContext clientContext, ClientContext targetContext, Uri siteUrl, Dictionary<string, string> accessTokens = null)
         {
+            PnP.Framework.Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Cloning context for {siteUrl}");
+
             if (siteUrl == null)
             {
                 throw new ArgumentException(CoreResources.ClientContextExtensions_Clone_Url_of_the_site_is_required_, nameof(siteUrl));
@@ -370,9 +374,13 @@ namespace Microsoft.SharePoint.Client
             {
                 string newSiteUrl = siteUrl.ToString();
 
+                PnP.Framework.Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Checking for different audience {newSiteUrl}");
+
                 // A diffent host = different audience ==> new access token is needed
                 if (contextSettings.UsesDifferentAudience(newSiteUrl))
                 {
+
+                    PnP.Framework.Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Setting up context for different audience {contextSettings.Type}");
 
                     var authManager = contextSettings.AuthenticationManager;
                     ClientContext newClientContext = null;
@@ -518,24 +526,32 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="clientContext">Client context to check the pending requests for</param>
         /// <returns>The number of pending requests</returns>
+        /// <exception cref="NotSupportedException">The currently loaded version of CSOM is not supported.</exception>
         public static int PendingRequestCount(this ClientRuntimeContext clientContext)
         {
-            int count = 0;
-
-            if (clientContext.HasPendingRequest)
+            if (!clientContext.HasPendingRequest)
             {
-                var result = clientContext.PendingRequest.GetType().GetProperty("Actions", BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.NonPublic);
-                if (result != null)
-                {
-                    var propValue = result.GetValue(clientContext.PendingRequest);
-                    if (propValue != null)
-                    {
-                        count = (propValue as List<ClientAction>).Count;
-                    }
-                }
+                return 0;
             }
 
-            return count;
+            PropertyInfo property = PendingRequestActionsProperty.Value;
+            if (property == null)
+            {
+                return 0;
+            }
+
+            object rawValue = property.GetValue(clientContext.PendingRequest);
+            switch (rawValue)
+            {
+                case ICollection<ClientAction> actions:
+                    return actions.Count;
+
+                case null:
+                    return 0;
+
+                default:
+                    throw new NotSupportedException("The currently loaded version of CSOM is not supported.");
+            }
         }
 
         /// <summary>
@@ -783,20 +799,20 @@ namespace Microsoft.SharePoint.Client
             if (cookieContainer != null)
             {
                 var hostUrl = context.Url;
-                if (requestDigestInfos.TryGetValue(hostUrl, out (string digestToken, DateTime expiresOn) requestDigestInfo))
+                if (RequestDigestInfos.TryGetValue(hostUrl, out (string digestToken, DateTime expiresOn) requestDigestInfo))
                 {
                     // We only have to add a request digest when running in dotnet core
                     if (DateTime.Now > requestDigestInfo.expiresOn)
                     {
                         requestDigestInfo = await GetRequestDigestInfoAsync(hostUrl, cookieContainer);
-                        requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+                        RequestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
                     }
                 }
                 else
                 {
                     // admin url maybe?
                     requestDigestInfo = await GetRequestDigestInfoAsync(hostUrl, cookieContainer);
-                    requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+                    RequestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
                 }
                 return requestDigestInfo.digestToken;
             }
@@ -856,20 +872,20 @@ namespace Microsoft.SharePoint.Client
         public static async Task<string> GetRequestDigestAsync(this ClientContext context)
         {
             var hostUrl = context.Url;
-            if (requestDigestInfos.TryGetValue(hostUrl, out (string digestToken, DateTime expiresOn) requestDigestInfo))
+            if (RequestDigestInfos.TryGetValue(hostUrl, out (string digestToken, DateTime expiresOn) requestDigestInfo))
             {
                 // We only have to add a request digest when running in dotnet core
                 if (DateTime.Now > requestDigestInfo.expiresOn)
                 {
                     requestDigestInfo = await GetRequestDigestInfoAsync(context);
-                    requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+                    RequestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
                 }
             }
             else
             {
                 // admin url maybe?
                 requestDigestInfo = await GetRequestDigestInfoAsync(context);
-                requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+                RequestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
             }
             return requestDigestInfo.digestToken;
         }
@@ -932,20 +948,20 @@ namespace Microsoft.SharePoint.Client
         internal static async Task<string> GetOnPremisesRequestDigestAsync(this ClientContext context)
         {
             var hostUrl = context.Url;
-            if (requestDigestInfos.TryGetValue(hostUrl, out (string digestToken, DateTime expiresOn) requestDigestInfo))
+            if (RequestDigestInfos.TryGetValue(hostUrl, out (string digestToken, DateTime expiresOn) requestDigestInfo))
             {
                 // We only have to add a request digest when running in dotnet core
                 if (DateTime.Now > requestDigestInfo.expiresOn)
                 {
                     requestDigestInfo = await GetOnPremisesRequestDigestInfoAsync(context);
-                    requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+                    RequestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
                 }
             }
             else
             {
                 // admin url maybe?
                 requestDigestInfo = await GetOnPremisesRequestDigestInfoAsync(context);
-                requestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
+                RequestDigestInfos.AddOrUpdate(hostUrl, requestDigestInfo, (key, oldValue) => requestDigestInfo);
             }
             return requestDigestInfo.digestToken;
         }
@@ -1180,6 +1196,11 @@ namespace Microsoft.SharePoint.Client
                 }
             }
             return authCookiesContainer;
+        }
+
+        private static PropertyInfo GetPendingRequestActionsProperty()
+        {
+            return typeof(ClientRequest).GetProperty("Actions", BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.NonPublic);
         }
     }
 }

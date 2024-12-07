@@ -384,7 +384,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                     case ClientSidePageHeaderType.Default:
                         {
-                            page.SetDefaultPageHeader();
+                            //Message ID: MC791596 / Roadmap ID: 386904 =>based on #1058 the PageTitle WebPart is not always in first section
+                            if (clientSidePage.Sections.Any(s => s.Type == CanvasSectionType.OneColumnFullWidth && s.Controls.Any(c => c.Type == WebPartType.PageTitle)))
+                            {
+                                page.SetPageTitleWebPartPageHeader();
+                            }
+                            else
+                            {
+                                page.SetDefaultPageHeader();
+                            }
                             break;
                         }
                     case ClientSidePageHeaderType.Custom:

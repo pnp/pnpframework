@@ -126,19 +126,20 @@ namespace PnP.Framework.Modernization.Tests
 
             if (sourceContextMode == SourceContextMode.SPO)
             {
-                if (!string.IsNullOrEmpty(AppSetting("SPOCredentialManagerLabel")))
+                if (!string.IsNullOrEmpty(AppSetting("SPOCredentialManagerLabel")) && !String.IsNullOrEmpty(AppSetting("AppId")))
                 {
                     var tempCred = PnP.Framework.Utilities.CredentialManager.GetCredential(AppSetting("SPOCredentialManagerLabel"));
 
-                    AuthenticationManager am = new AuthenticationManager(tempCred.UserName, tempCred.SecurePassword);
+                    AuthenticationManager am = new AuthenticationManager(AppSetting("AppId"), tempCred.UserName, tempCred.SecurePassword);
                     context = am.GetContext(contextUrl);
                 }
                 else
                 {
                     if (!String.IsNullOrEmpty(AppSetting("SPOUserName")) &&
-                        !String.IsNullOrEmpty(AppSetting("SPOPassword")))
+                        !String.IsNullOrEmpty(AppSetting("SPOPassword")) &&
+                        !String.IsNullOrEmpty(AppSetting("AppId")))
                     {
-                        AuthenticationManager am = new AuthenticationManager(AppSetting("SPOUserName"), GetSecureString(AppSetting("SPOPassword")));
+                        AuthenticationManager am = new AuthenticationManager(AppSetting("AppId"), AppSetting("SPOUserName"), GetSecureString(AppSetting("SPOPassword")));
                         context = am.GetContext(contextUrl);
                     }
                     else if (!String.IsNullOrEmpty(AppSetting("AppId")) &&

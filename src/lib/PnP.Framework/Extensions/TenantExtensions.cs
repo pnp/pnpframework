@@ -66,13 +66,14 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="tenant">A tenant object pointing to the context of a Tenant Administration site</param>
         /// <param name="hubSiteUrl">The fully qualified url of the hubsite</param>
+        /// <param name="tenantAdminUrl">The URL to use to connect to the tenant admin site. Typically only provided in the case of a vanity domain tenant. If not provided, tenant-admin will be assumed.</param>
         /// <returns></returns>
-        public static List<string> GetHubSiteChildUrls(this Tenant tenant, string hubSiteUrl)
+        public static List<string> GetHubSiteChildUrls(this Tenant tenant, string hubSiteUrl, string tenantAdminUrl = null)
         {
             var properties = tenant.GetHubSitePropertiesByUrl(hubSiteUrl);
             tenant.Context.Load(properties);
             tenant.Context.ExecuteQueryRetry();
-            return GetHubSiteChildUrls(tenant, properties.ID);
+            return GetHubSiteChildUrls(tenant, properties.ID, tenantAdminUrl);
         }
 
         /// <summary>
@@ -80,11 +81,12 @@ namespace Microsoft.SharePoint.Client
         /// </summary>
         /// <param name="tenant">A tenant object pointing to the context of a Tenant Administration site</param>
         /// <param name="hubsiteId">The id of the hubsite</param>
+        /// <param name="tenantAdminUrl">The URL to use to connect to the tenant admin site. Typically only provided in the case of a vanity domain tenant. If not provided, tenant-admin will be assumed.</param>
         /// <returns></returns>
-        public static List<string> GetHubSiteChildUrls(this Tenant tenant, Guid hubsiteId)
+        public static List<string> GetHubSiteChildUrls(this Tenant tenant, Guid hubsiteId, string tenantAdminUrl = null)
         {
             List<string> urls = new List<string>();
-            using (var tenantContext = tenant.Context.Clone((tenant.Context as ClientContext).Web.GetTenantAdministrationUrl()))
+            using (var tenantContext = tenant.Context.Clone(tenantAdminUrl ?? (tenant.Context as ClientContext).Web.GetTenantAdministrationUrl()))
             {
                 var siteList = tenantContext.Web.Lists.GetByTitle(SPO_ADMIN_SITECOL_LIST_TITLE);
                 siteList.EnsureProperty(l => l.Id);

@@ -387,21 +387,38 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             // Handle root folder property bag
             if (list.TemplateList.PropertyBagEntries != null && list.TemplateList.PropertyBagEntries.Count > 0)
             {
-                foreach (var p in list.TemplateList.PropertyBagEntries)
+                foreach (var p in list.TemplateList.PropertyBagEntries.Where(pp => !pp.Key.StartsWith("docid_msft")))
                 {
                     list.SiteList.RootFolder.Properties[parser.ParseString(p.Key)] = parser.ParseString(p.Value);
                 }
                 list.SiteList.RootFolder.Update();
+
+                try
+                {
+                    list.SiteList.Context.ExecuteQueryRetry();
+                }
+                catch (ServerException srex)
+                {
+                    scope.LogWarning($"library '{list.SiteList.RootFolder.Name}' root folder properties can not be changed '{srex.Message}'");
+                }
             }
 
             var ParentWebServerRelativeUrlLength = list.SiteList.ParentWeb.ServerRelativeUrl.Length;
 
             //do we need to load list contenttypes
             var listContentTypeOrdered = new List<ContentType>();
-            if (mappedFolders.Values.Any(f=>!string.IsNullOrWhiteSpace(f.folderTemplate.ContentTypeID)))
+            if (mappedFolders.Values.Any(f => !string.IsNullOrWhiteSpace(f.folderTemplate.ContentTypeID)))
             {
                 list.SiteList.Context.Load(list.SiteList, p => p.ContentTypes.Include(c => c.StringId));
-                list.SiteList.Context.ExecuteQueryRetry();
+                try
+                {
+                    list.SiteList.Context.ExecuteQueryRetry();
+                }
+                catch (ServerException srex)
+                {
+                    scope.LogWarning($"library '{list.SiteList.RootFolder.Name}' failed to load contenttypes '{srex.Message}'");
+                    throw;
+                }
                 listContentTypeOrdered = list.SiteList.ContentTypes.OrderBy(p => p.StringId.Length).ToList();
             }
 
@@ -442,7 +459,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 #endregion //****** Create and Load or Load existing Folder
                 if (list.SiteList.Context.HasPendingRequest)
                 {
-                    list.SiteList.Context.ExecuteQuery();
+                    try
+                    {
+                        list.SiteList.Context.ExecuteQuery();
+                    }
+                    catch (ServerException srex)
+                    {
+                        scope.LogWarning($"library '{list.SiteList.RootFolder.Name}' failed to load folders on level '{folderLevel.Key}' with error '{srex.Message}'");
+                        throw;
+                    }
                     foreach (var path in loadedPathsInLevel)
                     {
                         var flatFolder = mappedFolders[path];
@@ -495,7 +520,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                     if (folderLevel.Key > 0 && list.SiteList.Context.HasPendingRequest)
                     {
-                        list.SiteList.Context.ExecuteQueryRetry();
+                        try
+                        {
+                            list.SiteList.Context.ExecuteQuery();
+                        }
+                        catch (ServerException srex)
+                        {
+                            scope.LogWarning($"library '{list.SiteList.RootFolder.Name}' failed to set contenttype on folder level '{folderLevel.Key}' with error '{srex.Message}'");
+                            throw;
+                        }
                     }
 
                     #region ****** Set Property Fields of Folder
@@ -537,7 +570,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                     if (folderLevel.Key > 0 && list.SiteList.Context.HasPendingRequest)
                     {
-                        list.SiteList.Context.ExecuteQueryRetry();
+                        try
+                        {
+                            list.SiteList.Context.ExecuteQuery();
+                        }
+                        catch (ServerException srex)
+                        {
+                            scope.LogWarning($"library '{list.SiteList.RootFolder.Name}' failed to set properties on folder level '{folderLevel.Key}' with error '{srex.Message}'");
+                            throw;
+                        }
                     }
                     #endregion //****** Set Property Fields of Folder
 
@@ -592,7 +633,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                     if (folderLevel.Key > 0 && list.SiteList.Context.HasPendingRequest)
                     {
-                        list.SiteList.Context.ExecuteQueryRetry();
+                        try
+                        {
+                            list.SiteList.Context.ExecuteQuery();
+                        }
+                        catch (ServerException srex)
+                        {
+                            scope.LogWarning($"library '{list.SiteList.RootFolder.Name}' failed to set propertybag on folder level '{folderLevel.Key}' with error '{srex.Message}'");
+                            throw;
+                        }
                     }
                     #endregion ****** Set Folder PropertyBag
 
@@ -633,7 +682,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
                     if (folderLevel.Key > 0 && list.SiteList.Context.HasPendingRequest)
                     {
-                        list.SiteList.Context.ExecuteQueryRetry();
+                        try
+                        {
+                            list.SiteList.Context.ExecuteQuery();
+                        }
+                        catch (ServerException srex)
+                        {
+                            scope.LogWarning($"library '{list.SiteList.RootFolder.Name}' failed to set _ModerationStatus on folder level '{folderLevel.Key}' with error '{srex.Message}'");
+                            throw;
+                        }
                     }
                     #endregion //****** Set Moderation status of Folder
                 }

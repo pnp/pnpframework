@@ -2329,7 +2329,9 @@ namespace Microsoft.SharePoint.Client
                 Field firstField = list.Fields.AddFieldAsXml(firstModernTargetingFieldXml, false, addOptions);
                 list.Context.Load(firstField);
 
-                var userInformationList = web.Lists.GetByTitle("User Information List");
+                web.EnsureProperties(w => w.SiteUserInfoList);
+
+                var userInformationList = web.SiteUserInfoList;
                 list.Context.Load(userInformationList, l => l.Id);
                 list.Context.ExecuteQueryRetry();
 

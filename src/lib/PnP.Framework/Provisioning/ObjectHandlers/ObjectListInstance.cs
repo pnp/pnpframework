@@ -360,14 +360,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 var existingFolderItems = LoadAllExistingFolderListItems(list.SiteList, scope);
                 var mappedFolders = MapExistingFolderToTemplateFolders(list,existingFolderItems, parser, scope);
-                CreateFolderInListV2(list, mappedFolders, parser, scope);
 
-                //var rootFolder = list.SiteList.RootFolder;
-                //foreach (var folder in list.TemplateList.Folders)
-                //{
-                //    CreateFolderInList(list, rootFolder, folder, parser, scope);
-                //}
-
+                if (list.SiteList.BaseType == BaseType.DocumentLibrary)
+                {
+                    CreateFolderInListV2(list, mappedFolders, parser, scope);
+                }
+                else
+                {
+                    var rootFolder = list.SiteList.RootFolder;
+                    foreach (var folder in list.TemplateList.Folders)
+                    {
+                        CreateFolderInList(list, rootFolder, folder, parser, scope);
+                    }
+                }
                 // Restore the value of EnableFolderCreation to what it was before if the value is different
                 if (list.SiteList.EnableFolderCreation != enableFolderCreationPreviousValue)
                 {

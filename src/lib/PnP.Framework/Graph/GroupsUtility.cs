@@ -802,7 +802,7 @@ namespace PnP.Framework.Graph
         }
 
         /// <summary>
-        /// Helper method. Generates a collection of Microsoft.Graph.User entity from string array
+        /// Helper method. Generates a collection of Ids from string array
         /// </summary>
         /// <param name="accessToken"></param>
         /// <param name="groupUsers">String array of users</param>

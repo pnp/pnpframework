@@ -237,7 +237,6 @@
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="AngleSharp" Version="0.17.0" />
 		<PackageReference Include="AngleSharp.Css" Version="0.17.0" />
-		<PackageReference Include="Microsoft.Graph.Core" Version="1.25.1" />
 		<PackageReference Include="Microsoft.Identity.Client" Version="4.66.1" />
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

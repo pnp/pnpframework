@@ -241,23 +241,16 @@
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="AngleSharp" Version="0.17.0" />
 		<PackageReference Include="AngleSharp.Css" Version="0.17.0" />
-		<PackageReference Include="Microsoft.Graph" Version="3.33.0" />
-		<PackageReference Include="Microsoft.Graph.Core" Version="1.25.1" />
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.66.1" />
+		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />		
+		<PackageReference Include="Microsoft.Graph" Version="5.1.0" />
+		<PackageReference Include="Microsoft.Graph.Core" Version="3.0.2" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.50.0" />
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="PnP.Core" Version="1.14.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
-		<PackageReference Include="Portable.Xaml" Version="0.26.0" />		
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(PnPCoreSdkPath)' != ''">		
-		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
-		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'netstandard2.0'">
-			<HintPath>$(PnPCoreSdkPath)</HintPath>
-			<Private>true</Private>
-			<SpecificVersion>false</SpecificVersion>
-		</Reference>
-	</ItemGroup>
+		<PackageReference Include="PnP.Core" Version="1.8.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
+		<PackageReference Include="Portable.Xaml" Version="0.26.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
+	</ItemGroup>	
 
 	<ItemGroup Condition="'$(PnPCoreSdkPathNet8)' != ''">
 		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net8.0'">

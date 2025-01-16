@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fix check for HeaderTypes as new PageTitle WebPart in OneColumnFullWIth is not always in first section #1066 [czullu - Christian Zuellig]
 - Updated assembly versions #1073 [gautamdsheth - Gautam Sheth]
 - Removed dependecy on Microsoft.AspNetCore.StaticFiles #1088 [jansenbe - Bert Jansen]
+- PageTitle WebPart can be on any position #1102 [czullu - Christian Zuellig]
 
 ## [1.17.0]
 

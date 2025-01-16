@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Updated assembly versions #1073 [gautamdsheth - Gautam Sheth]
 - Removed dependecy on Microsoft.AspNetCore.StaticFiles #1088 [jansenbe - Bert Jansen]
 - PageTitle WebPart can be on any position #1102 [czullu - Christian Zuellig]
+- Replacing hard coded user information list value with instance that should resolve regardless of the language of the site #1097 [koenzomers - Koen Zomers]
 
 ## [1.17.0]
 

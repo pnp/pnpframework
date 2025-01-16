@@ -384,8 +384,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                     case ClientSidePageHeaderType.Default:
                         {
-                            //Message ID: MC791596 / Roadmap ID: 386904 =>based on #1058 the PageTitle WebPart is not always in first section
-                            if (clientSidePage.Sections.Any(s => s.Type == CanvasSectionType.OneColumnFullWidth && s.Controls.Any(c => c.Type == WebPartType.PageTitle)))
+                            //Message ID: MC791596 / Roadmap ID: 386904 =>based on #1058 the PageTitle WebPart is not always in first section and section can be of any type as it seems
+                            if (clientSidePage.Sections.Any(s => s.Controls.Any(c => c.Type == WebPartType.PageTitle)))
                             {
                                 page.SetPageTitleWebPartPageHeader();
                             }

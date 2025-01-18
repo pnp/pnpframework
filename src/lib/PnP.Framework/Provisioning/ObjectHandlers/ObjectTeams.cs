@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.Online.SharePoint.TenantAdministration;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -2010,12 +2009,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
 
             var existingChannels = JToken.Parse(channels)["value"];
-
-            var existingChannel = existingChannels?.FirstOrDefault(x => x["displayName"].ToString() == "General");
+            
+            var existingChannel = existingChannels?.FirstOrDefault();
 
             if (existingChannel == null)
             {
-                throw new Exception($"Could not get General channel of team with id {teamId}.");
+                throw new Exception($"Could not get any channel for team with id {teamId}.");
             }
 
             wait = true;
@@ -2039,7 +2038,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 if (iterations > 60)
                 {
-                    throw new Exception($"Could not get drive item of General channel in team with id {teamId} within timeout.");
+                    throw new Exception($"Could not get drive item of first channel in team with id {teamId} within timeout.");
                 }
             }
         }

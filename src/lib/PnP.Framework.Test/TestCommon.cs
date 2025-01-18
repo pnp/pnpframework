@@ -332,7 +332,7 @@ namespace PnP.Framework.Test
             }
             else
             {
-                using (AuthenticationManager am = new AuthenticationManager(AppId, UserName, Password, null, azureEnvironment))
+                using (AuthenticationManager am = new AuthenticationManager(AzureADClientId, UserName, Password, null, azureEnvironment))
                 {
 
                     if (azureEnvironment == AzureEnvironment.Custom) 

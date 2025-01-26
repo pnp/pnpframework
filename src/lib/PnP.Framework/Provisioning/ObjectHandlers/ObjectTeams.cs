@@ -66,7 +66,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     // If security is configured, add the members and owners defined in the template to the Team
                     if (team.Security != null)
                     {
-                        if (!SetGroupSecurity(scope, parser, team, teamId, accessToken, graphBaseUri)) return null;
+                        if (!SetGroupSecurity(scope, parser, team, parsedGroupId, accessToken, graphBaseUri)) return null;
                     }
 
                     // Then promote the Group into a Team or update it, if it already exists. Patching a team doesn't return an ID, so use the parsedGroupId directly (teamId and groupId are the same). 
@@ -1461,7 +1461,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             var messageId = GraphHelper.CreateOrUpdateGraphObject(scope,
                 HttpMethodVerb.POST,
-                $"{graphBaseUri}beta/teams/{teamId}/channels/{channelId}/messages",
+                $"{graphBaseUri}v1.0/teams/{teamId}/channels/{channelId}/messages",
                 messageObject,
                 HttpHelper.JsonContentType,
                 accessToken,
@@ -1697,6 +1697,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             // Get a fresh Access Token for every request
                             accessToken = PnPProvisioningContext.Current.AcquireToken(graphBaseUri.ToString(), "Group.ReadWrite.All");
+                            if (accessToken == null)
+                            {
+                                accessToken = PnPProvisioningContext.Current.AcquireToken(graphBaseUri.Host, "Group.ReadWrite.All");
+                            }
 
                             if (accessToken != null)
                             {

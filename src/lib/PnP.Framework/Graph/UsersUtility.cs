@@ -1,14 +1,12 @@
-﻿using Microsoft.Graph;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using System.Web;
+using System.Text.Json.Nodes;
+using System.Text.Json;
 
 namespace PnP.Framework.Graph
 {
@@ -108,68 +106,40 @@ namespace PnP.Framework.Graph
                 }
             }
 
-            List<Model.User> result = null;
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users";
+                var queryStringParams = new List<string>()
                 {
-                    List<Model.User> users = new List<Model.User>();
+                    $"$top={(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)}"
+                };
+                if (propertiesToSelect.Count > 0)
+                {
+                    queryStringParams.Add("$select=" + string.Join(",", propertiesToSelect));
+                }
+                if (!string.IsNullOrEmpty(filter))
+                {
+                    queryStringParams.Add($"$filter={filter}");
+                }
+                if (!string.IsNullOrEmpty(orderby))
+                {
+                    queryStringParams.Add($"orderby={orderby}");
+                }
+                requestUrl += $"?{string.Join("&", queryStringParams)}";
+                IEnumerable<Model.User> users = GraphUtility.ReadPagedDataFromRequest<Model.User>(requestUrl, accessToken, retryCount: retryCount, delay: delay)
+                                    .Skip(startIndex);
+                if (endIndex.HasValue)
+                {
+                    users = users.Take(endIndex.Value - startIndex);
+                }
+                return users.ToList();
 
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, useBetaEndPoint: useBetaEndPoint, azureEnvironment: azureEnvironment);
-
-                    IGraphServiceUsersCollectionPage pagedUsers;
-
-                    // Retrieve the first batch of users. 999 is the maximum amount of users that Graph allows to be trieved in 1 go. Use maximum size batches to lessen the chance of throttling when retrieving larger amounts of users.
-                    pagedUsers = await graphClient.Users.Request()
-                                                        .Select(string.Join(",", propertiesToSelect))
-                                                        .Filter(filter)
-                                                        .OrderBy(orderby)
-                                                        .Top(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)
-                                                        .GetAsync();
-
-                    int pageCount = 0;
-                    int currentIndex = 0;
-
-                    while (true)
-                    {
-                        pageCount++;
-
-                        foreach (var pagedUser in pagedUsers)
-                        {
-                            currentIndex++;
-
-                            if(endIndex.HasValue && endIndex.Value < currentIndex)
-                            {
-                                break;
-                            }
-
-                            if (currentIndex >= startIndex)
-                            {
-                                users.Add(MapUserEntity(pagedUser, selectProperties));
-                            }
-                        }
-
-                        if (pagedUsers.NextPageRequest != null && (!endIndex.HasValue || currentIndex < endIndex.Value))
-                        {
-                            // Retrieve the next batch of users. The possible oData instructions such as select and filter are already incorporated in the nextLink provided by Graph and thus do not need to be specified again.
-                            pagedUsers = await pagedUsers.NextPageRequest.GetAsync();
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-
-                    return users;
-                }).GetAwaiter().GetResult();
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return result;
         }
 
         /// <summary>
@@ -196,103 +166,94 @@ namespace PnP.Framework.Graph
             }
             // Rewrite AdditionalProperties to Additional Data
             var propertiesToSelect = ignoreDefaultProperties ? new List<string>() : new List<string> { "BusinessPhones", "DisplayName", "GivenName", "JobTitle", "Mail", "MobilePhone", "OfficeLocation", "PreferredLanguage", "Surname", "UserPrincipalName", "Id", "AccountEnabled" };
-            
+
             selectProperties = selectProperties?.Select(p => p == "AdditionalProperties" ? "AdditionalData" : p).ToArray();
-            
-            if(selectProperties != null)
+
+            if (selectProperties != null)
             {
-                foreach(var property in selectProperties)
+                foreach (var property in selectProperties)
                 {
-                    if(!propertiesToSelect.Contains(property))
+                    if (!propertiesToSelect.Contains(property))
                     {
                         propertiesToSelect.Add(property);
                     }
                 }
             }
+            List<Model.User> users = new List<Model.User>();
 
-            var queryOptions = new List<QueryOption>();
-
-            if(!string.IsNullOrWhiteSpace(deltaToken))
+            var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users";
+            var queryStringParams = new List<string>()
+                {
+                    $"$top={(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)}",
+                    $"$skiptoken={deltaToken}",
+                };
+            if (propertiesToSelect.Count > 0)
             {
-                queryOptions.Add(new QueryOption("$skiptoken", deltaToken));
+                queryStringParams.Add("$select=" + string.Join(",", propertiesToSelect));
             }
+            if (!string.IsNullOrEmpty(filter))
+            {
+                queryStringParams.Add($"$filter={filter}");
+            }
+            if (!string.IsNullOrEmpty(orderby))
+            {
+                queryStringParams.Add($"orderby={orderby}");
+            }
+            requestUrl += $"?{string.Join("&", queryStringParams)}";
 
-            Model.UserDelta result = null;
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                int currentIndex = 0;
+                var usersDelta = new Model.UserDelta();
+                usersDelta.Users = users;
+
+
+                while (requestUrl != null)
                 {
-                    var usersDelta = new Model.UserDelta();
-                    usersDelta.Users = new List<Model.User>();
+                    var responseData = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
 
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, useBetaEndPoint: useBetaEndPoint, azureEnvironment: azureEnvironment);
+                    var jsonNode = JsonNode.Parse(responseData);
+                    JsonNode valueNode = jsonNode["value"];
+                    var results = valueNode.Deserialize<Model.User[]>(GraphUtility.CaseInsensitiveJsonOptions);
 
-                    IUserDeltaCollectionPage pagedUsers;
-
-                    // Retrieve the first batch of users. 999 is the maximum amount of users that Graph allows to be trieved in 1 go. Use maximum size batches to lessen the chance of throttling when retrieving larger amounts of users.
-                    pagedUsers = await graphClient.Users.Delta()
-                                                        .Request(queryOptions)                    
-                                                        .Select(string.Join(",", propertiesToSelect))
-                                                        .Filter(filter)
-                                                        .OrderBy(orderby)
-                                                        .Top(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)
-                                                        .GetAsync();
-
-                    int pageCount = 0;
-                    int currentIndex = 0;
-
-                    while (true)
+                    foreach (var r in results)
                     {
-                        pageCount++;
+                        currentIndex++;
 
-                        foreach (var pagedUser in pagedUsers)
+                        if (endIndex.HasValue && endIndex.Value < currentIndex)
                         {
-                            currentIndex++;
-
-                            if(endIndex.HasValue && endIndex.Value < currentIndex)
-                            {
-                                break;
-                            }
-
-                            if (currentIndex >= startIndex)
-                            {
-                                usersDelta.Users.Add(MapUserEntity(pagedUser, selectProperties));
-                            }
-                        }
-
-                        if (pagedUsers.NextPageRequest != null && (!endIndex.HasValue || currentIndex < endIndex.Value))
-                        {
-                            // Retrieve the next batch of users. The possible oData instructions such as select and filter are already incorporated in the nextLink provided by Graph and thus do not need to be specified again.
-                            pagedUsers = await pagedUsers.NextPageRequest.GetAsync();
-                        }
-                        else
-                        {
-                            // Check if the deltaLink is provided in the response
-                            if(pagedUsers.AdditionalData.TryGetValue("@odata.deltaLink", out object deltaLinkObject))
-                            {
-                                // Use a regular expression to fetch just the deltatoken part from the deltalink. The base of the URL will thereby be cut off. This is the only part we need to use it in a subsequent run.
-                                var deltaLinkMatch = System.Text.RegularExpressions.Regex.Match(deltaLinkObject.ToString(), @"(?<=\$deltatoken=)(.*?)(?=$|&)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-
-                                if(deltaLinkMatch.Success && !string.IsNullOrWhiteSpace(deltaLinkMatch.Value))
-                                {
-                                    // Successfully extracted the deltatoken part from the link, assign it to the return variable
-                                    usersDelta.DeltaToken = deltaLinkMatch.Value;
-                                }
-                            }
                             break;
+                        }
+                        if (currentIndex >= startIndex)
+                        {
+                            users.Add(r);
                         }
                     }
 
-                    return usersDelta;
-                }).GetAwaiter().GetResult();
+                    usersDelta.NextLink = jsonNode["@odata.nextLink"]?.ToString();
+                    requestUrl = (endIndex.HasValue && endIndex.Value < currentIndex) ? null : usersDelta.NextLink;
+
+                    var deltaLink = jsonNode["@odata.deltalink"]?.ToString();
+
+                    if (string.IsNullOrWhiteSpace(deltaLink))
+                    {
+                        // Use a regular expression to fetch just the deltatoken part from the deltalink. The base of the URL will thereby be cut off. This is the only part we need to use it in a subsequent run.
+                        var deltaLinkMatch = System.Text.RegularExpressions.Regex.Match(deltaLink, @"(?<=\$deltatoken=)(.*?)(?=$|&)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+                        if (deltaLinkMatch.Success && !string.IsNullOrWhiteSpace(deltaLinkMatch.Value))
+                        {
+                            // Successfully extracted the deltatoken part from the link, assign it to the return variable
+                            usersDelta.DeltaToken = deltaLinkMatch.Value;
+                        }
+                    }
+                }
+                return usersDelta;
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return result;
         }
 
         /// <summary>
@@ -327,100 +288,33 @@ namespace PnP.Framework.Graph
                 }
             }
             
-            List<Model.User> result = null;
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                List<Model.User> users = new List<Model.User>();
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}directory/deleteditems/microsoft.graph.user";
+                if (propertiesToSelect.Count > 0)
                 {
-                    List<Model.User> users = new List<Model.User>();
-                    var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}directory/deleteditems/microsoft.graph.user";
-                    if (propertiesToSelect.Count > 0)
-                    {
-                        requestUrl += $"?$select={string.Join(",", propertiesToSelect)}";
-                    } 
+                    requestUrl += $"?$select={string.Join(",", propertiesToSelect)}";
+                } 
 
-                    var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+                var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
 
-                    var response = JToken.Parse(responseAsString);
-                    var deletedUsers = response["value"];
+                var response = JToken.Parse(responseAsString);
+                var deletedUsers = response["value"];
 
-                    foreach (var deletedUser in deletedUsers)
-                    {
-                        var user = deletedUser.ToObject<User>();
-                        var modelUser = MapUserEntity(user, selectProperties);
-                        users.Add(modelUser);
-                    }
+                foreach (var deletedUser in deletedUsers)
+                {
+                    var user = deletedUser.ToObject<Model.User>();
+                    users.Add(user);
+                }
 
-                    return users;
-                }).GetAwaiter().GetResult();
+                return users;
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
-            return result;
-        }
-
-        /// <summary>
-        /// Maps a Graph User result to a local User model
-        /// </summary>
-        /// <param name="graphUser">Graph User entity</param>
-        /// <param name="selectProperties">Properties to copy over from the Graph model to the local User model</param>
-        /// <returns>Local User model filled with the information Graph User entity</returns>
-        private static Model.User MapUserEntity(User graphUser, string[] selectProperties)
-        {
-            var user = new Model.User
-            {
-                Id = Guid.TryParse(graphUser.Id, out Guid idGuid) ? (Guid?)idGuid : null,
-                DisplayName = graphUser.DisplayName,
-                GivenName = graphUser.GivenName,
-                JobTitle = graphUser.JobTitle,
-                MobilePhone = graphUser.MobilePhone,
-                OfficeLocation = graphUser.OfficeLocation,
-                PreferredLanguage = graphUser.PreferredLanguage,
-                Surname = graphUser.Surname,
-                UserPrincipalName = graphUser.UserPrincipalName,
-                BusinessPhones = graphUser.BusinessPhones,
-                AdditionalProperties = graphUser.AdditionalData,
-                Mail = graphUser.Mail,
-                AccountEnabled = graphUser.AccountEnabled,
-            };
-
-            // If additional properties have been provided, ensure their output gets added to the AdditionalProperties dictonary of the output
-            if (selectProperties != null)
-            {
-                // Ensure we have the AdditionalProperties dictionary available to fill, if necessary
-                if(user.AdditionalProperties == null)
-                {
-                    user.AdditionalProperties = new Dictionary<
-                    string, object>();
-                }
-
-                foreach (var selectProperty in selectProperties)
-                {
-                    // Ensure the requested property has been returned in the response
-                    var property = graphUser.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
-                    if (property != null)
-                    {
-                        // First check if we have the property natively on the User model
-                        var userProperty = user.GetType().GetProperty(selectProperty, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance);
-                        if(userProperty != null)
-                        {
-                            // Set the property on the User model
-                            userProperty.SetValue(user, property.GetValue(graphUser), null);
-                        }
-                        else
-                        {
-                            // Property does not exist on the User model, add the property to the AdditionalProperties dictionary
-                            user.AdditionalProperties.Add(selectProperty, property.GetValue(graphUser));
-                        }
-                    }
-                }
-            }
-
-            return user;
         }
 
         /// <summary>
@@ -460,7 +354,7 @@ namespace PnP.Framework.Graph
                 var response = GraphHttpClient.MakePostRequestForString(
                     requestUrl: $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment, beta: true)}users/{userId}/authentication/temporaryAccessPassMethods",
                     content: temporaryAccessPassAuthenticationMethod,
-                    contentType: "application/json",
+                    contentType: HttpHelper.JsonContentType,
                     accessToken: accessToken);
 
                 // Parse and return the response
@@ -468,9 +362,9 @@ namespace PnP.Framework.Graph
                 return accessPassResponse;
 
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
         }        

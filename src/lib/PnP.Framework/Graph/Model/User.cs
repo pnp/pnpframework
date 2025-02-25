@@ -73,6 +73,7 @@ namespace PnP.Framework.Graph.Model
         /// <summary>
         /// Additional properties requested regarding the user and included in the response
         /// </summary>
+        [System.Text.Json.Serialization.JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
     }
 }

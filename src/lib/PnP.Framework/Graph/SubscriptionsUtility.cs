@@ -1,9 +1,11 @@
-﻿using Microsoft.Graph;
-using PnP.Framework.Diagnostics;
+﻿using PnP.Framework.Diagnostics;
+using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Net.Http;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace PnP.Framework.Graph
 {
@@ -27,24 +29,18 @@ namespace PnP.Framework.Graph
         {
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                var result = Task.Run(async () =>
-                {
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}subscriptions/{subscriptionId}";
 
-                    var subscription = await graphClient.Subscriptions[subscriptionId.ToString()]
-                        .Request()
-                        .GetAsync();
+                var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+                var jsonNode = JsonNode.Parse(responseAsString);
+                var subscription = jsonNode["value"];
 
-                    var subscriptionModel = MapGraphEntityToModel(subscription);
-                    return subscriptionModel;
-                }).GetAwaiter().GetResult();
-
-                return result;
+                var subscriptionModel = subscription.Deserialize<Model.Subscription>();
+                return subscriptionModel;
             }
-            catch (ServiceException ex)
+            catch (ApplicationException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, ex.Message);
                 throw;
             }
         }
@@ -66,54 +62,41 @@ namespace PnP.Framework.Graph
                 throw new ArgumentNullException(nameof(accessToken));
             }
 
-            List<Model.Subscription> result = null;
+            List<Model.Subscription> result = new();
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}subscriptions";
+
+                int currentIndex = 0;
+
+                do
                 {
-                    List<Model.Subscription> subscriptions = new List<Model.Subscription>();
+                    var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+                    var jsonNode = JsonNode.Parse(responseAsString);
+                    var subscriptionListString = jsonNode["value"];
 
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
+                    var subscriptionsPage = subscriptionListString.Deserialize<Model.Subscription[]>();
 
-                    var pagedSubscriptions = await graphClient.Subscriptions
-                        .Request()
-                        .GetAsync();
+                    var startIndexForPage = Math.Min(0, startIndex - (currentIndex));
+                    var numToTake = Math.Min(subscriptionsPage.Length, endIndex - currentIndex);
 
-                    int pageCount = 0;
-                    int currentIndex = 0;
+                    result.AddRange(subscriptionsPage.Skip(startIndexForPage).Take(numToTake));
 
-                    while (true)
+                    currentIndex += subscriptionsPage.Length;
+
+                    if (currentIndex >= endIndex)
                     {
-                        pageCount++;
-
-                        foreach (var s in pagedSubscriptions)
-                        {
-                            currentIndex++;
-
-                            if (currentIndex >= startIndex)
-                            {
-                                var subscription = MapGraphEntityToModel(s);
-                                subscriptions.Add(subscription);
-                            }
-                        }
-
-                        if (pagedSubscriptions.NextPageRequest != null && currentIndex < endIndex)
-                        {
-                            pagedSubscriptions = await pagedSubscriptions.NextPageRequest.GetAsync();
-                        }
-                        else
-                        {
-                            break;
-                        }
+                        break;
                     }
 
-                    return subscriptions;
-                }).GetAwaiter().GetResult();
+                    requestUrl = jsonNode["@odata.nextLink"]?.ToString();
+
+                } while (!string.IsNullOrEmpty(requestUrl));
+                
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
             return result;
@@ -146,45 +129,31 @@ namespace PnP.Framework.Graph
                 throw new ArgumentNullException(nameof(resource));
             }
 
-            Model.Subscription result = null;
-
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}subscriptions";
+                var newSubscription = new
                 {
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
-
-                    // Prepare the subscription resource object
-                    var newSubscription = new Subscription
-                    {
                         ChangeType = changeType.ToString().Replace(" ", ""),
                         NotificationUrl = notificationUrl,
                         Resource = resource,
                         ExpirationDateTime = expirationDateTime,
                         ClientState = clientState
                     };
+                var stringContent = JsonSerializer.Serialize(newSubscription);
+                var content = new StringContent(stringContent);
 
-                    var subscription = await graphClient.Subscriptions
-                                                        .Request()
-                                                        .AddAsync(newSubscription);
+                var responseAsString = HttpHelper.MakePostRequestForString(requestUrl, content, HttpHelper.JsonContentType, accessToken, retryCount: retryCount, delay: delay);
 
-                    if (subscription == null)
-                    {
-                        return null;
+                // Todo - check that the returned data does actually deserialise correctly
+                var model = JsonSerializer.Deserialize<Model.Subscription>(responseAsString);
+                return model;
                     }
-
-                    var subscriptionModel = MapGraphEntityToModel(subscription);
-                    return subscriptionModel;
-
-                }).GetAwaiter().GetResult();
-            }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return result;
         }
 
         /// <summary>
@@ -208,37 +177,25 @@ namespace PnP.Framework.Graph
 
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                result = Task.Run(async () =>
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}subscriptions/{subscriptionId}";
+                var updatedSubscription = new Model.Subscription
                 {
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay, azureEnvironment: azureEnvironment);
+                    ExpirationDateTime = expirationDateTime
+                };
+                var contentString = JsonSerializer.Serialize(updatedSubscription);
+                var content = new StringContent(contentString);
 
-                    // Prepare the subscription resource object
-                    var updatedSubscription = new Subscription
-                    {
-                        ExpirationDateTime = expirationDateTime
-                    };
+                var responseAsString = HttpHelper.MakePatchRequestForString(requestUrl, content, HttpHelper.JsonContentType, accessToken, retryCount: retryCount, delay: delay);
 
-                    var subscription = await graphClient.Subscriptions[subscriptionId]
-                                                        .Request()
-                                                        .UpdateAsync(updatedSubscription);
-
-                    if (subscription == null)
-                    {
-                        return null;
-                    }
-
-                    var subscriptionModel = MapGraphEntityToModel(subscription);
-                    return subscriptionModel;
-
-                }).GetAwaiter().GetResult();
+                // Todo - check that the returned data does actually deserialise correctly
+                var model = JsonSerializer.Deserialize<Model.Subscription>(responseAsString);
+                return model;
             }
-            catch (ServiceException ex)
+            catch (HttpRequestException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return result;
         }
 
         /// <summary>
@@ -258,41 +215,15 @@ namespace PnP.Framework.Graph
 
             try
             {
-                // Use a synchronous model to invoke the asynchronous process
-                Task.Run(async () =>
-                {
-                    var graphClient = GraphUtility.CreateGraphClient(accessToken, retryCount, delay);
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl()}subscriptions/{subscriptionId}";
 
-                    await graphClient.Subscriptions[subscriptionId]
-                                     .Request()
-                                     .DeleteAsync();
-
-                }).GetAwaiter().GetResult();
+                HttpHelper.MakeDeleteRequest(requestUrl, accessToken, retryCount: retryCount, delay: delay);
             }
-            catch (ServiceException ex)
+            catch (HttpRequestException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-        }
-
-        /// <summary>
-        /// Maps an entity returned by Microsoft Graph to its equivallent Model maintained within this library
-        /// </summary>
-        /// <param name="subscription">Microsoft Graph Subscription entity</param>
-        /// <returns>Subscription Model</returns>
-        private static Model.Subscription MapGraphEntityToModel(Subscription subscription)
-        {
-            var subscriptionModel = new Model.Subscription
-            {
-                Id = subscription.Id,
-                ChangeType = subscription.ChangeType.Split(',').Select(ct => (Enums.GraphSubscriptionChangeType)Enum.Parse(typeof(Enums.GraphSubscriptionChangeType), ct, true)).Aggregate((prev, next) => prev | next),
-                NotificationUrl = subscription.NotificationUrl,
-                Resource = subscription.Resource,
-                ExpirationDateTime = subscription.ExpirationDateTime,
-                ClientState = subscription.ClientState
-            };
-            return subscriptionModel;
         }
     }
 }

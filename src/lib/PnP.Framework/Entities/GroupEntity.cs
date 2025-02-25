@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Entities
 {
@@ -10,6 +11,7 @@ namespace PnP.Framework.Entities
         /// <summary>
         /// Group id
         /// </summary>
+        [JsonPropertyName("id")]
         public string GroupId { get; set; }
         /// <summary>
         /// Group display name

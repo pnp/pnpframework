@@ -15,12 +15,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         public override string Name => "Term Groups";
 
         public override string InternalName => "TermGroups";
+
         public override TokenParser ProvisionObjects(Web web, Model.ProvisioningTemplate template, TokenParser parser,
             ProvisioningTemplateApplyingInformation applyingInformation)
         {
-            using (var scope = new PnPMonitoredScope(this.Name))
+            using (var scope = new PnPMonitoredScope(Name))
             {
-                this.reusedTerms = new List<TermGroupHelper.ReusedTerm>();
+                reusedTerms = new List<TermGroupHelper.ReusedTerm>();
 
                 TaxonomySession taxSession = TaxonomySession.GetTaxonomySession(web.Context);
                 TermStore termStore;
@@ -32,7 +33,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     termStore = taxSession.GetDefaultKeywordsTermStore();
 
                     web.Context.Load(termStore, ts => ts.Languages, ts => ts.DefaultLanguage);
-                    siteCollectionTermGroup = termStore.GetSiteCollectionGroup((web.Context as ClientContext).Site, false);
+                    siteCollectionTermGroup = termStore.GetSiteCollectionGroup(((ClientContext)web.Context).Site, createIfMissing: false);
 
                     if (applyingInformation.LoadSiteCollectionTermGroups)
                     {
@@ -47,22 +48,40 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     termSet => termSet.Name,
                                     termSet => termSet.Id)
                             ));
+
+                        web.Context.Load(siteCollectionTermGroup);
+                        web.Context.ExecuteQueryRetry();
                     }
                     else
                     {
-                        termGroups = web.Context.LoadQuery(termStore
-                            .Groups
-                            .Where(group => !group.IsSiteCollectionGroup)
-                            .Include(
-                                group => group.Name,
-                                group => group.Id,
-                                group => group.TermSets.Include(
-                                    termSet => termSet.Name,
-                                    termSet => termSet.Id)));
-                    }
+                        IEnumerable<TermGroup> groups = web
+                            .Context
+                            .LoadQuery(termStore
+                                .Groups
+                                .Where(group => !group.IsSiteCollectionGroup)
+                                .Include(
+                                    group => group.Name,
+                                    group => group.Id,
+                                    group => group.TermSets.Include(
+                                        termSet => termSet.Name,
+                                        termSet => termSet.Id)));
+                        web.Context.ExecuteQueryRetry();
 
-                    web.Context.Load(siteCollectionTermGroup);
-                    web.Context.ExecuteQueryRetry();
+                        // Convert the loaded term groups to a list and add the site collection one.
+                        List<TermGroup> loadedTermGroups = groups.ToList();
+                        loadedTermGroups.Add(siteCollectionTermGroup);
+
+                        web.Context.Load(
+                            siteCollectionTermGroup,
+                            group => group.Name,
+                            group => group.Id,
+                            group => group.TermSets.Include(
+                                termSet => termSet.Name,
+                                termSet => termSet.Id));
+                        web.Context.ExecuteQueryRetry();
+
+                        termGroups = loadedTermGroups;
+                    }
                 }
                 catch (ServerException)
                 {
@@ -75,10 +94,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 foreach (var modelTermGroup in template.TermGroups)
                 {
-                    this.reusedTerms.AddRange(TermGroupHelper.ProcessGroup(web.Context as ClientContext, taxSession, termStore, termGroups, modelTermGroup, siteCollectionTermGroup, parser, scope));
+                    reusedTerms.AddRange(TermGroupHelper.ProcessGroup(web.Context as ClientContext, taxSession, termStore, termGroups, modelTermGroup, siteCollectionTermGroup, parser, scope));
                 }
 
-                foreach (var reusedTerm in this.reusedTerms)
+                foreach (var reusedTerm in reusedTerms)
                 {
                     TermGroupHelper.TryReuseTerm(web.Context as ClientContext, reusedTerm.ModelTerm, reusedTerm.Parent, reusedTerm.TermStore, parser, scope);
                 }
@@ -94,7 +113,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public override Model.ProvisioningTemplate ExtractObjects(Web web, Model.ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
-            using (var scope = new PnPMonitoredScope(this.Name))
+            using (var scope = new PnPMonitoredScope(Name))
             {
                 if (creationInfo.IncludeSiteCollectionTermGroup || creationInfo.IncludeAllTermGroups)
                 {

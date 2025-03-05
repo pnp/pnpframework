@@ -375,7 +375,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             continue;
                         }
 
-                        // Use raw XML approach as the .Net Framework resxreader seems to choke on some resx files 
+                        // Use raw XML approach as the .Net Framework resxreader seems to choke on some resx files
                         // TODO: research this!
 
                         var xElement = XElement.Load(stream);
@@ -561,11 +561,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private void AddTermStoreTokens(Web web, List<string> tokenIds)
         {
+            bool siteCollectionTermSetIdTokenFound = tokenIds.Contains("sitecollectiontermsetid");
+
             if (!tokenIds.Contains("termstoreid")
                 && !tokenIds.Contains("termsetid")
                 && !tokenIds.Contains("sitecollectiontermgroupid")
                 && !tokenIds.Contains("sitecollectiontermgroupname")
-                && !tokenIds.Contains("sitecollectiontermsetid"))
+                && !siteCollectionTermSetIdTokenFound)
             {
                 return;
             }
@@ -631,23 +633,47 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             if (tokenIds.Contains("sitecollectiontermgroupname"))
                 _tokens.Add(new SiteCollectionTermGroupNameToken(web));
 
-            if (!tokenIds.Contains("sitecollectiontermsetid"))
+            // We can exit the method here, if we already loaded all term groups or the template does not contain at least
+            // one "sitecollectiontermsetid" token. Otherwise, we want to explicitly load the site collection term group
+            // and its term sets in order to support "termsetid" token referencing a site-specific term set.
+            if (_loadSiteCollectionTermGroups && !siteCollectionTermSetIdTokenFound)
             {
                 return;
             }
 
-            var site = (web.Context as ClientContext).Site;
+            // Load the site collection term group and its term sets.
+            var site = ((ClientContext)web.Context).Site;
             var siteCollectionTermGroup = termStore.GetSiteCollectionGroup(site, true);
             web.Context.Load(siteCollectionTermGroup);
 
             try
             {
                 web.Context.ExecuteQueryRetry();
-                if (null != siteCollectionTermGroup && !siteCollectionTermGroup.ServerObjectIsNull.Value)
+
+                if (siteCollectionTermGroup.ServerObjectIsNull())
                 {
-                    web.Context.Load(siteCollectionTermGroup, group => group.TermSets.Include(ts => ts.Name, ts => ts.Id));
-                    web.Context.ExecuteQueryRetry();
-                    foreach (var termSet in siteCollectionTermGroup.TermSets)
+                    return;
+                }
+
+                web.Context.Load(
+                    siteCollectionTermGroup,
+                    group => group.Name,
+                    group => group.TermSets.Include(
+                        ts => ts.Name,
+                        ts => ts.Id));
+                web.Context.ExecuteQueryRetry();
+
+                foreach (var termSet in siteCollectionTermGroup.TermSets)
+                {
+                    // Add a normal "termsetid" token if not all term groups were loaded. There might be token which
+                    // reference a site-specific term set by not using the "sitecollectiontermsetid" token.
+                    if (!_loadSiteCollectionTermGroups)
+                    {
+                        _tokens.Add(new TermSetIdToken(web, siteCollectionTermGroup.Name, termSet.Name, termSet.Id));
+                    }
+
+                    // Add a "sitecollectiontermsetid" token if at least one of those were found.
+                    if (siteCollectionTermSetIdTokenFound)
                     {
                         _tokens.Add(new SiteCollectionTermSetIdToken(web, termSet.Name, termSet.Id));
                     }

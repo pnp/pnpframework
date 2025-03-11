@@ -236,14 +236,14 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Identity.Client.Broker" Version="4.68.0" />
-		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.68.0" />
+		<PackageReference Include="Microsoft.Identity.Client.Broker" Version="4.69.1" />
+		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.69.1" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="AngleSharp" Version="0.17.0" />
 		<PackageReference Include="AngleSharp.Css" Version="0.17.0" />
 		<PackageReference Include="Microsoft.Graph" Version="3.33.0" />
 		<PackageReference Include="Microsoft.Graph.Core" Version="1.25.1" />
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.68.0" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.69.1" />
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="PnP.Core" Version="1.14.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />

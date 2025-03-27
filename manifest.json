@@ -522,7 +522,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.SharePoint.Client.SiteExistence.html",
-          "hash": "QZxBsW/0GoYFqQu1Rn0aeCX7G6vyyb0XjRf/dVRlkbY="
+          "hash": "astw29rVMfsSiDRIVl/JQmWzuF/96RmGFmgMU2l7Vak="
         }
       },
       "is_incremental": false,
@@ -570,7 +570,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.SharePoint.Client.TenantExtensions.html",
-          "hash": "LQYKKdmpUHLEQrpsDAlxIpJ2Cf2164WxOqpStGdrArU="
+          "hash": "u0GtJhUd9QvSdsR7pYrB0OQz74Xdp1wIyzsl0eKd2yc="
         }
       },
       "is_incremental": false,
@@ -8502,7 +8502,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.html",
-          "hash": "JdOvJD3wCDpzoSVE66NfxcjWkAyfbu5dzFK6Al3BOEg="
+          "hash": "GJIiicU1z9cNc302mEbpygwUpZ/vZo//e+715po5XhE="
         }
       },
       "is_incremental": false,

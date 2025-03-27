@@ -202,7 +202,7 @@ namespace PnP.Framework.Http
 				if (_response == null)
 					throw new InvalidOperationException();
 				_response.Content.Headers.TryGetValues("Content-Type", out var contentType);
-				return contentType.FirstOrDefault();
+				return contentType?.FirstOrDefault();
 			}
 		}
 

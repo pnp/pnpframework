@@ -24,6 +24,16 @@
         /// <summary>
         /// User Assigned Managed Identity in Azure
         /// </summary>
-        UserAssignedManagedIdentity = 11
+        UserAssignedManagedIdentity = 11,
+
+        /// <summary>
+        /// System Assigned Managed Identity in Azure as a Federated Credential on Entra ID/Azure AD app registration
+        /// </summary>
+        SystemAssignedManagedIdentityFederatedCredential = 12,
+
+        /// <summary>
+        /// User Assigned Managed Identity in Azure set up as a Federated Credential on Entra ID/Azure AD app registration
+        /// </summary>
+        UserAssignedManagedIdentityFederatedCredential = 13
     }
 }

@@ -410,7 +410,7 @@ namespace PnP.Framework
         }
 
         /// <summary>
-        /// Creates a new instance of the Authentication Manager that works with a System Assigned or User Assigned Managed Identity (MI) in Azure configured as a Federated Identity Credential on an Entra ID application registration.
+        /// Creates a new instance of the Authentication Manager that works with a User Assigned Managed Identity (MI) in Azure configured as a Federated Identity Credential on an Entra ID application registration.
         /// </summary>
         /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>
         /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
@@ -418,9 +418,14 @@ namespace PnP.Framework
         /// <param name="appTenantId">Tenant ID of the Entra ID application registration where the MI is added as a Federated Identity Credential</param>
         /// <param name="managedIdentityType">Type of Managed Identity that should be used. Defaults to System Assigned Managed Identity.</param>
         /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId. Mandatory when <paramref name="managedIdentityType"/> is not SystemAssigned. Should be omitted if it is SystemAssigned.</param>
-        public AuthenticationManager(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType = ManagedIdentityType.SystemAssigned, string managedIdentityUserAssignedIdentifier = null)
+        public AuthenticationManager(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType, string managedIdentityUserAssignedIdentifier)
         {
-            if (managedIdentityType != ManagedIdentityType.SystemAssigned && string.IsNullOrWhiteSpace(managedIdentityUserAssignedIdentifier))
+            if (managedIdentityType == ManagedIdentityType.SystemAssigned)
+            {
+                throw new ArgumentException($"SystemAssigned managed identity is not currently supported for federated identity credentials flow.");
+            }
+
+            if (string.IsNullOrWhiteSpace(managedIdentityUserAssignedIdentifier))
             {
                 throw new ArgumentException($"When {nameof(managedIdentityType)} is not SystemAssigned, {nameof(managedIdentityUserAssignedIdentifier)} must be provided", nameof(managedIdentityType));
             }
@@ -435,7 +440,7 @@ namespace PnP.Framework
                 throw new ArgumentException($"{nameof(appTenantId)} must be provided.");
             }
 
-            authenticationType = managedIdentityType == ManagedIdentityType.SystemAssigned ? ClientContextType.SystemAssignedManagedIdentityFederatedCredential : ClientContextType.UserAssignedManagedIdentityFederatedCredential;
+            authenticationType = ClientContextType.UserAssignedManagedIdentityFederatedCredential;
             this.managedIdentityType = managedIdentityType;
             this.managedIdentityUserAssignedIdentifier = managedIdentityUserAssignedIdentifier;
 
@@ -457,11 +462,6 @@ namespace PnP.Framework
                 case ManagedIdentityType.UserAssignedByResourceId:
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with Azure Resource ID: {managedIdentityUserAssignedIdentifier} as Federated Credential for client ID: {appClientId} in tenant: {appTenantId}");
                     managedIdentityApplication = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedResourceId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
-                    break;
-
-                case ManagedIdentityType.SystemAssigned:
-                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the system assigned managed identity as Federated Credential for client ID: {appClientId} in tenant: {appTenantId}");
-                    managedIdentityApplication = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.SystemAssigned).WithHttpClientFactory(HttpClientFactory).Build();
                     break;
             }
 
@@ -966,7 +966,6 @@ namespace PnP.Framework
                         break;
                     }
                 case ClientContextType.AzureADCertificate:
-                case ClientContextType.SystemAssignedManagedIdentityFederatedCredential:
                 case ClientContextType.UserAssignedManagedIdentityFederatedCredential:
                     {
                         #pragma warning disable CS0618 // Type or member is obsolete
@@ -1143,6 +1142,7 @@ namespace PnP.Framework
                         break;
                     }
                 case ClientContextType.AzureADCertificate:
+                case ClientContextType.UserAssignedManagedIdentityFederatedCredential:
                     {
 #pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
@@ -1350,6 +1350,7 @@ namespace PnP.Framework
                     switch (contextType)
                     {
                         case ClientContextType.AzureADCertificate:
+                        case ClientContextType.UserAssignedManagedIdentityFederatedCredential:
                             {
                                 ar = ((IConfidentialClientApplication)application).AcquireTokenForClient(scopes).ExecuteAsync().GetAwaiter().GetResult();
                                 break;

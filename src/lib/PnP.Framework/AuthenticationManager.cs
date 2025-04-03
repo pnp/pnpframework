@@ -232,16 +232,16 @@ namespace PnP.Framework
             return new AuthenticationManager(endpoint, identityHeader, managedIdentityType, managedIdentityUserAssignedIdentifier);
         }
 
-        /// <summary>
-        /// Creates a new instance of the Authentication Manager that works with a System Assigned or User Assigned Managed Identity (MI) in Azure configured as a Federated Identity Credential on an Entra ID application registration.
+        // <summary>
+        /// Creates a new instance of the Authentication Manager that works with a User Assigned Managed Identity (MI) in Azure configured as a Federated Identity Credential on an Entra ID application registration.
         /// </summary>
         /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>
         /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
-        /// <param name="appClientId">Client ID of the Entra ID application registration where the MI is added as a Federated Identity Credential</param>
-        /// <param name="appTenantId">Tenant ID of the Entra ID application registration where the MI is added as a Federated Identity Credential</param>
-        /// <param name="managedIdentityType">Type of Managed Identity that should be used. Defaults to System Assigned Managed Identity.</param>
-        /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId. Mandatory when <paramref name="managedIdentityType"/> is not SystemAssigned. Should be omitted if it is SystemAssigned.</param>
-        public static AuthenticationManager CreateWithManagedIdentityFederatedIdentityCredential(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType = ManagedIdentityType.SystemAssigned, string managedIdentityUserAssignedIdentifier = null)
+        /// <param name="appClientId">Client ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. If you intend to access Graph/SPO in another tenant, this must be a multi-tenant application. A service principal for the same app should be created/consented to in target tenant.</param>
+        /// <param name="appTenantId">Tenant ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. This must be registered in same tenant as the MI.</param>
+        /// <param name="managedIdentityType">Type of Managed Identity that should be used. Cannot be System Assigned.</param>
+        /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId.</param>
+        public static AuthenticationManager CreateWithManagedIdentityFederatedIdentityCredential(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType, string managedIdentityUserAssignedIdentifier)
         {
             return new AuthenticationManager(endpoint, identityHeader, appClientId, appTenantId, managedIdentityType, managedIdentityUserAssignedIdentifier);
         }
@@ -414,10 +414,10 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>
         /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
-        /// <param name="appClientId">Client ID of the Entra ID application registration where the MI is added as a Federated Identity Credential</param>
-        /// <param name="appTenantId">Tenant ID of the Entra ID application registration where the MI is added as a Federated Identity Credential</param>
-        /// <param name="managedIdentityType">Type of Managed Identity that should be used. Defaults to System Assigned Managed Identity.</param>
-        /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId. Mandatory when <paramref name="managedIdentityType"/> is not SystemAssigned. Should be omitted if it is SystemAssigned.</param>
+        /// <param name="appClientId">Client ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. If you intend to access Graph/SPO in another tenant, this must be a multi-tenant application. A service principal for the same app should be created/consented to in target tenant.</param>
+        /// <param name="appTenantId">Tenant ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. This must be registered in same tenant as the MI.</param>
+        /// <param name="managedIdentityType">Type of Managed Identity that should be used. Cannot be System Assigned.</param>
+        /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId.</param>
         public AuthenticationManager(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType, string managedIdentityUserAssignedIdentifier)
         {
             if (managedIdentityType == ManagedIdentityType.SystemAssigned)

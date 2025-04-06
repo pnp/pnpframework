@@ -12,6 +12,8 @@ namespace PnP.Framework.Provisioning.Connectors
     /// </summary>
     public class FileSystemConnector : FileConnectorBase
     {
+        private readonly bool useFileStreams;
+
         #region Constructors
         /// <summary>
         /// Base constructor
@@ -27,7 +29,8 @@ namespace PnP.Framework.Provisioning.Connectors
         /// </summary>
         /// <param name="connectionString">Root folder (e.g. c:\temp or .\resources or . or .\resources\templates)</param>
         /// <param name="container">Sub folder (e.g. templates or resources\templates or blank</param>
-        public FileSystemConnector(string connectionString, string container)
+        /// <param name="useFileStreams">Use FileStreams instead of MemoryStreams</param>
+        public FileSystemConnector(string connectionString, string container, bool useFileStreams = false)
             : base()
         {
             if (String.IsNullOrEmpty(connectionString))
@@ -41,6 +44,7 @@ namespace PnP.Framework.Provisioning.Connectors
             }
             container = container.Replace('/', '\\');
 
+            this.useFileStreams = useFileStreams;
             this.AddParameterAsString(CONNECTIONSTRING, connectionString);
             this.AddParameterAsString(CONTAINER, container);
         }
@@ -207,6 +211,28 @@ namespace PnP.Framework.Provisioning.Connectors
                 container = "";
             }
             container = container.Replace('/', '\\');
+
+            if (useFileStreams)
+            {
+                try
+                {
+                    string filePath = ConstructPath(fileName, container);
+                    FileStream fileStream = File.OpenRead(filePath);
+                    Log.Info(Constants.LOGGING_SOURCE, CoreResources.Provisioning_Connectors_FileSystem_FileRetrieved, fileName, container);
+                    fileStream.Position = 0;
+                    return fileStream;
+                }
+                catch (Exception ex)
+                {
+                    if (ex is FileNotFoundException || ex is DirectoryNotFoundException)
+                    {
+                        Log.Error(Constants.LOGGING_SOURCE, CoreResources.Provisioning_Connectors_FileSystem_FileNotFound, fileName, container, ex.Message);
+                        return null;
+                    }
+
+                    throw;
+                }
+            }
 
             return GetFileFromStorage(fileName, container);
         }

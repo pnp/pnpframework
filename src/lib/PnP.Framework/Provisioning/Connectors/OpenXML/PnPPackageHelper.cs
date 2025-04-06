@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.IO.Packaging;
 
 namespace PnP.Framework.Provisioning.Connectors.OpenXML
 {
@@ -28,6 +29,14 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             return stream;
         }
 
+        public static void PackTemplateToStream(this PnPInfo pnpInfo, Stream stream)
+        {
+            using (PnPPackage package = PnPPackage.Open(stream, FileMode.Create, FileAccess.Write))
+            {
+                SavePnPPackage(pnpInfo, package);
+            }
+        }
+
         /// <summary>
         /// Packs template as a stream array
         /// </summary>
@@ -39,6 +48,27 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             {
                 return stream.ToArray();
             }
+        }
+
+        /// <summary>
+        /// Unpacks template into PnP OpenXML package info object based on file stream
+        /// </summary>
+        /// <param name="stream">Stream</param>
+        /// <param name="useFileStreams">Use FileStreams</param>
+        /// <param name="pnpFilesPath">Temp pnp Files Path</param>
+        /// <returns>Returns site template</returns>
+        public static PnPInfo UnpackTemplate(this Stream stream, bool useFileStreams = false, string pnpFilesPath = null)
+        {
+            PnPInfo siteTemplate;
+            using (PnPPackage package = PnPPackage.Open(stream, FileMode.Open, FileAccess.Read))
+            {
+                if (useFileStreams) {
+                    package.UseFileStreams = useFileStreams;
+                    package.PnPFilesPath = pnpFilesPath;
+                }
+                siteTemplate = LoadPnPPackage(package);
+            }
+            return siteTemplate;
         }
 
         /// <summary>
@@ -89,6 +119,8 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
                 Manifest = package.Manifest,
                 Properties = package.Properties,
                 FilesMap = package.FilesMap,
+                UseFileStreams = package.UseFileStreams,
+                PnPFilesPath = package.PnPFilesPath,
 
                 Files = new List<PnPFileInfo>()
             };
@@ -113,20 +145,63 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
 
         private static void SavePnPPackage(PnPInfo pnpInfo, PnPPackage package)
         {
-            package.Manifest = pnpInfo.Manifest;
-            package.Properties = pnpInfo.Properties;
             Debug.Assert(pnpInfo.Files.TrueForAll(f => !string.IsNullOrWhiteSpace(f.InternalName)), "All files need an InternalFileName");
-            package.FilesMap = new PnPFilesMap(pnpInfo.Files.ToDictionary(f => f.InternalName, f => Path.Combine(f.Folder, f.OriginalName).Replace('\\', '/').TrimStart('/')));
-            package.ClearFiles();
-            if (pnpInfo.Files != null)
+            if (!pnpInfo.UseFileStreams)
             {
-                foreach (PnPFileInfo file in pnpInfo.Files)
+                package.Manifest = pnpInfo.Manifest;
+                package.Properties = pnpInfo.Properties;
+                package.FilesMap = new PnPFilesMap(pnpInfo.Files.ToDictionary(f => f.InternalName, f => Path.Combine(f.Folder, f.OriginalName).Replace('\\', '/').TrimStart('/')));
+                package.ClearFiles();
+                if (pnpInfo.Files != null)
                 {
-                    package.AddFile(file.InternalName, file.Content);
+                    foreach (PnPFileInfo file in pnpInfo.Files)
+                    {
+                        package.AddFile(file.InternalName, file.Content);
+                    }
+                }
+            }
+            else
+            {
+                // Package with Create mode does not allow reads. Prepare and write the parts along with their relations in one go.
+                // This is a workaround for(Memory leak with Append mode) https://github.com/dotnet/runtime/issues/1544
+                var uriPath = new Uri(PnPPackage.U_PROVISIONINGTEMPLATE_MANIFEST, UriKind.Relative);
+                PackagePart manifest = package.Package.CreatePart(uriPath, PnPPackage.CT_PROVISIONINGTEMPLATE_MANIFEST, PnPPackage.PACKAGE_COMPRESSION_LEVEL);
+                PnPPackage.SetXamlSerializedPackagePartValue(pnpInfo.Manifest, manifest);
+                package.Package.CreateRelationship(uriPath, TargetMode.Internal, PnPPackage.R_PROVISIONINGTEMPLATE_MANIFEST);
+
+                uriPath = new Uri(PnPPackage.U_PROVISIONINGTEMPLATE_PROPERTIES, UriKind.Relative);
+                PackagePart properties = package.Package.CreatePart(uriPath, PnPPackage.CT_PROVISIONINGTEMPLATE_PROPERTIES, PnPPackage.PACKAGE_COMPRESSION_LEVEL);
+                manifest.CreateRelationship(uriPath, TargetMode.Internal, PnPPackage.R_PROVISIONINGTEMPLATE_PROPERTIES);
+
+                uriPath = new Uri(PnPPackage.U_FILES_ORIGIN, UriKind.Relative);
+                PackagePart filesOrigin = package.Package.CreatePart(uriPath, PnPPackage.CT_ORIGIN, PnPPackage.PACKAGE_COMPRESSION_LEVEL);
+                manifest.CreateRelationship(uriPath, TargetMode.Internal, PnPPackage.R_PROVISIONINGTEMPLATE_FILES_ORIGIN);
+
+                uriPath = new Uri(PnPPackage.U_PROVISIONINGTEMPLATE_FILES_MAP, UriKind.Relative);
+                PackagePart filesMap = package.Package.CreatePart(uriPath, PnPPackage.CT_PROVISIONINGTEMPLATE_FILES_MAP, PnPPackage.PACKAGE_COMPRESSION_LEVEL);
+                PnPPackage.SetXamlSerializedPackagePartValue(new PnPFilesMap(pnpInfo.Files.ToDictionary(f => f.InternalName, f => Path.Combine(f.Folder, f.OriginalName).Replace('\\', '/').TrimStart('/'))), filesMap);
+                manifest.CreateRelationship(uriPath, TargetMode.Internal, PnPPackage.R_PROVISIONINGTEMPLATE_FILES_MAP);
+
+                if (pnpInfo.Files != null)
+                {
+                    foreach (PnPFileInfo file in pnpInfo.Files)
+                    {
+
+#if NET6_0_OR_GREATER
+                        // Set the file stream options to delete the files automatically once closed.
+                        var fileStreamOptions = new FileStreamOptions { Mode = FileMode.Open, Access = FileAccess.Read, Options = FileOptions.DeleteOnClose, Share = FileShare.Delete };
+                        using (FileStream fs = File.Open(Path.Combine(pnpInfo.PnPFilesPath, file.InternalName).Replace('\\', '/').TrimStart('/'), fileStreamOptions))
+#else
+                        using (FileStream fs = File.OpenRead(Path.Combine(pnpInfo.PnPFilesPath, file.InternalName).Replace('\\', '/').TrimStart('/')))
+#endif
+                        {
+                            package.AddFilePart(file.InternalName, fs);
+                            filesOrigin.CreateRelationship(new Uri(PnPPackage.U_DIR_FILES + file.InternalName.TrimStart('/'), UriKind.Relative), TargetMode.Internal, PnPPackage.R_PROVISIONINGTEMPLATE_FILE);
+                        }
+                    }
                 }
             }
         }
-
         #endregion
     }
 }

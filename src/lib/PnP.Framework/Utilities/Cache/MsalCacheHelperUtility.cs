@@ -9,7 +9,7 @@ namespace PnP.Framework.Utilities.Cache
     {
 
         private static MsalCacheHelper MsalCacheHelper;
-        private static readonly object ObjectLock = new();
+        private static readonly Lock ObjectLock = LockFactory.Create();
 
         private static class Config
         {

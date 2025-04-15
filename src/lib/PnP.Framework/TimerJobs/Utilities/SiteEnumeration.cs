@@ -16,7 +16,7 @@ namespace PnP.Framework.TimerJobs.Utilities
         #region Singleton implementation
         // Singleton variables
         private static volatile SiteEnumeration instance;
-        private static readonly object syncRoot = new Object();
+        private static readonly Lock syncRoot = LockFactory.Create();
 
         // Singleton private constructor
         private SiteEnumeration() { }

@@ -8,7 +8,7 @@ namespace PnP.Framework.Utilities.Cache
     public class InMemoryCacheProvider : ICacheProvider
     {
         private readonly Dictionary<string, object> _cacheStore = new Dictionary<string, object>();
-        private readonly object _syncRoot = new object();
+        private readonly Lock _syncRoot = LockFactory.Create();
 
         /// <summary>
         /// Gets an item from the cache

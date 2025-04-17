@@ -1953,6 +1953,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             var teamTabs = teamTabsJObject.ToObject<TeamTab[]>();
             foreach (var tab in teamTabs)
             {
+                if (tab.Configuration != null && tab.ID == "3ed5b337-c2c9-4d5d-b7b4-84ff09a8fc1c") {
+                    continue;
+                }  
                 if (tab.Configuration != null && string.IsNullOrEmpty(tab.Configuration.ContentUrl))
                 {
                     tab.Configuration = null;

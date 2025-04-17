@@ -5,9 +5,9 @@
 		<LangVersion>10.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
-		<Version>1.17.0</Version>
+		<Version>1.18.0</Version>
 		<Authors>PnP</Authors>
-		<Copyright>PnP 2024</Copyright>
+		<Copyright>PnP 2025</Copyright>
 		<Description>PnP Framework contains the PnP Provisioning engine and a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
 		<PackageIcon>nugeticon.png</PackageIcon>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -246,7 +246,7 @@
 		<PackageReference Include="Microsoft.Graph.Core" Version="1.25.1" />		
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="PnP.Core" Version="1.14.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
+		<PackageReference Include="PnP.Core" Version="1.15.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
 		<PackageReference Include="Portable.Xaml" Version="0.26.0" />		
 	</ItemGroup>
 

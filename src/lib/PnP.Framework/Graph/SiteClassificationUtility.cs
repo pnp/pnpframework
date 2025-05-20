@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PnP.Framework.Graph.Model;
+using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -128,7 +129,7 @@ namespace PnP.Framework.Graph
                         templateId = unifiedGroupSetting.Id,
                         values = from v in directorySettingValues select new { name = v.Key, value = v.Value },
                     },
-                    contentType: "application/json",
+                    contentType: HttpHelper.JsonContentType,
                     accessToken: accessToken);
             }
             else
@@ -261,7 +262,7 @@ namespace PnP.Framework.Graph
                         templateId = unifiedGroupSetting.Id,
                         values = from v in unifiedGroupSetting.SettingValues select new { name = v.Name, value = v.Value },
                     },
-                    contentType: "application/json",
+                    contentType: HttpHelper.JsonContentType,
                     accessToken: accessToken);
             }
             else

@@ -87,7 +87,7 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="PnP.Framework.Graph.GraphUtility">
                   <div class="contribution-panel mobile-hide pull-right">
-                      <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GraphUtility.cs/#L12" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GraphUtility.cs/#L14" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
                       <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GraphUtility.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GraphUtility%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
                   </div>
                       <h1 id="PnP_Framework_Graph_GraphUtility" data-uid="PnP.Framework.Graph.GraphUtility">Class GraphUtility
@@ -116,80 +116,39 @@
   
   
   
-  <h3 id="methods">Methods
+  <h3 id="properties">Properties
   </h3>
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
-    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GraphUtility_CreateGraphClient_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GraphUtility.CreateGraphClient(System.String%2CSystem.Int32%2CSystem.Int32%2CPnP.Framework.AzureEnvironment%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GraphUtility_CaseInsensitiveJsonOptions.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GraphUtility.CaseInsensitiveJsonOptions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GraphUtility.cs/#L27" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GraphUtility.cs/#L18" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
-  <a id="PnP_Framework_Graph_GraphUtility_CreateGraphClient_" data-uid="PnP.Framework.Graph.GraphUtility.CreateGraphClient*"></a>
+  <a id="PnP_Framework_Graph_GraphUtility_CaseInsensitiveJsonOptions_" data-uid="PnP.Framework.Graph.GraphUtility.CaseInsensitiveJsonOptions*"></a>
   
-  <h4 id="PnP_Framework_Graph_GraphUtility_CreateGraphClient_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Boolean_" data-uid="PnP.Framework.Graph.GraphUtility.CreateGraphClient(System.String,System.Int32,System.Int32,PnP.Framework.AzureEnvironment,System.Boolean)"><a href="#collapsible-PnP_Framework_Graph_GraphUtility_CreateGraphClient_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Boolean_" class="expander" data-toggle="collapse">CreateGraphClient(String, Int32, Int32, AzureEnvironment, Boolean)</a></h4>
+  <h4 id="PnP_Framework_Graph_GraphUtility_CaseInsensitiveJsonOptions" data-uid="PnP.Framework.Graph.GraphUtility.CaseInsensitiveJsonOptions"><a href="#collapsible-PnP_Framework_Graph_GraphUtility_CaseInsensitiveJsonOptions" class="expander" data-toggle="collapse">CaseInsensitiveJsonOptions</a></h4>
   
-  <div id="collapsible-PnP_Framework_Graph_GraphUtility_CreateGraphClient_System_String_System_Int32_System_Int32_PnP_Framework_AzureEnvironment_System_Boolean_" class="collapse in">
-  <div class="markdown level1 summary"><p>Creates a new GraphServiceClient instance using a custom PnPHttpProvider</p>
-</div>
+  <div id="collapsible-PnP_Framework_Graph_GraphUtility_CaseInsensitiveJsonOptions" class="collapse in">
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GraphServiceClient CreateGraphClient(string accessToken, int retryCount = null, int delay = null, AzureEnvironment azureEnvironment = default(AzureEnvironment), bool useBetaEndPoint = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public static JsonSerializerOptions CaseInsensitiveJsonOptions { get; }</code></pre>
   </div>
 
-  <h5 class="parameters">Parameters</h5>
-  <table>
-    <tr>
-      <td>
-        <span class="pull-right"><span class="xref">System.String</span></span>
-        <span class="parametername">accessToken</span>
-        <p><p>The OAuth 2.0 Access Token to configure the HTTP bearer Authorization Header</p>
-</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="pull-right"><span class="xref">System.Int32</span></span>
-        <span class="parametername">retryCount</span>
-        <p><p>Number of times to retry the request in case of throttling</p>
-</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="pull-right"><span class="xref">System.Int32</span></span>
-        <span class="parametername">delay</span>
-        <p><p>Milliseconds to wait before retrying the request.</p>
-</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="pull-right"><a class="xref" href="PnP.Framework.AzureEnvironment.html">AzureEnvironment</a></span>
-        <span class="parametername">azureEnvironment</span>
-        <p><p>Defines the Azure Cloud deployment to use.</p>
-</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="pull-right"><span class="xref">System.Boolean</span></span>
-        <span class="parametername">useBetaEndPoint</span>
-        <p><p>Indicates if the v1.0 (false) or beta (true) endpoint should be used at Microsoft Graph</p>
-</p>
-      </td>
-    </tr>
-  </table>
   
-  <h5 class="returns">Returns</h5>
+  
+  
+  
+  <h5 class="propertyValue">Property Value</h5>
   <table>
     <tr>
       <td>
-        <span class="xref">GraphServiceClient</span>
+        <span class="xref">JsonSerializerOptions</span>
         <p>
       </td>
     </tr>
@@ -201,17 +160,16 @@
   
   
   
-  
-  
-  
   </div>
+  <h3 id="methods">Methods
+  </h3>
   
   <span class="small pull-right mobile-hide">
     <span class="divider"> </span>
     <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GraphUtility_InviteGuestUser_System_String_System_String_System_String_System_String_System_String_PnP_Framework_AzureEnvironment_.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GraphUtility.InviteGuestUser(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CPnP.Framework.AzureEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GraphUtility.cs/#L60" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GraphUtility.cs/#L30" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Graph_GraphUtility_InviteGuestUser_" data-uid="PnP.Framework.Graph.GraphUtility.InviteGuestUser*"></a>
@@ -225,7 +183,7 @@
   <h5 class="decalaration">Declaration</h5>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Invitation InviteGuestUser(string accessToken, string guestUserEmail, string redirectUri, string customizedMessage = &quot;&quot;, string guestUserDisplayName = &quot;&quot;, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
+    <pre><code class="lang-csharp hljs">public static Invite InviteGuestUser(string accessToken, string guestUserEmail, string redirectUri, string customizedMessage = &quot;&quot;, string guestUserDisplayName = &quot;&quot;, AzureEnvironment azureEnvironment = default(AzureEnvironment))</code></pre>
   </div>
 
   <h5 class="parameters">Parameters</h5>
@@ -284,12 +242,102 @@
   <table>
     <tr>
       <td>
-        <span class="xref">Invitation</span>
+        <a class="xref" href="PnP.Framework.Graph.Model.Invite.html">Invite</a>
         <p>
       </td>
     </tr>
   </table>
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Graph_GraphUtility_ReadPagedDataFromRequest__1_System_String_System_String_System_Int32_System_Int32_Func_JsonNode___0____.md&amp;value=---%0Auid%3A%20PnP.Framework.Graph.GraphUtility.ReadPagedDataFromRequest%60%601(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CFunc%7BJsonNode%2C%60%600%5B%5D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Graph/GraphUtility.cs/#L66" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Graph_GraphUtility_ReadPagedDataFromRequest_" data-uid="PnP.Framework.Graph.GraphUtility.ReadPagedDataFromRequest*"></a>
+  
+  <h4 id="PnP_Framework_Graph_GraphUtility_ReadPagedDataFromRequest__1_System_String_System_String_System_Int32_System_Int32_Func_JsonNode___0____" data-uid="PnP.Framework.Graph.GraphUtility.ReadPagedDataFromRequest``1(System.String,System.String,System.Int32,System.Int32,Func{JsonNode,``0[]})"><a href="#collapsible-PnP_Framework_Graph_GraphUtility_ReadPagedDataFromRequest__1_System_String_System_String_System_Int32_System_Int32_Func_JsonNode___0____" class="expander" data-toggle="collapse">ReadPagedDataFromRequest&lt;T&gt;(String, String, Int32, Int32, Func&lt;JsonNode, T[]&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Graph_GraphUtility_ReadPagedDataFromRequest__1_System_String_System_String_System_Int32_System_Int32_Func_JsonNode___0____" class="collapse in">
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; ReadPagedDataFromRequest&lt;T&gt;(string requestUrl, string accessToken, int retryCount, int delay, Func&lt;JsonNode, T[]&gt; customDeserialise = null)</code></pre>
+  </div>
+
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">System.String</span></span>
+        <span class="parametername">requestUrl</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">System.String</span></span>
+        <span class="parametername">accessToken</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">System.Int32</span></span>
+        <span class="parametername">retryCount</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">System.Int32</span></span>
+        <span class="parametername">delay</span>
+        <p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">Func</span>&lt;<span class="xref">JsonNode</span>, T[]&gt;</span>
+        <span class="parametername">customDeserialise</span>
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="returns">Returns</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="xref">IEnumerable</span>&lt;T&gt;
+        <p>
+      </td>
+    </tr>
+  </table>
+  
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="parametername">T</span>
+        <p>
+      </td>
+    </tr>
+  </table>
   
   
   

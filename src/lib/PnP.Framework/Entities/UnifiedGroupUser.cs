@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Entities
 {
@@ -30,6 +31,7 @@ namespace PnP.Framework.Entities
         /// <summary>
         /// Group user's e-mail address
         /// </summary>
+        [JsonPropertyName("mail")]
         public string Email { get; set; }
         /// <summary>
         /// Group user's mobile phone number

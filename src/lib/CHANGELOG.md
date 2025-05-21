@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Moved to version 9.0.0 of System.Text.Json for the .NET Standard build [jansenbe - Bert Jansen]
 - Removed the dependency on Microsof.Graph packages #1003 [quails4Eva]
 
 ## [1.18.0]

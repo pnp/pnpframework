@@ -1,4 +1,5 @@
 ﻿using PnP.Framework;
+using PnP.Framework.Http;
 using PnP.Framework.Utilities.Context;
 using System;
 
@@ -14,6 +15,11 @@ namespace Microsoft.SharePoint.Client
         public static void AddContextSettings(this ClientRuntimeContext clientContext, ClientContextSettings contextData)
         {
             clientContext.StaticObjects[PnPSettingsKey] = contextData;
+        }
+
+        public static void AddWebRequestExecutorFactory(this ClientRuntimeContext clientContext)
+        {
+            clientContext.WebRequestExecutorFactory = new HttpClientWebRequestExecutorFactory(PnPHttpClient.Instance.GetHttpClient((ClientContext)clientContext));
         }
 
         public static ClientContextSettings GetContextSettings(this ClientRuntimeContext clientContext)

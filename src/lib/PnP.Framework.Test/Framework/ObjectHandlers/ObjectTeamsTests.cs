@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.Features.Authentication;
-using Microsoft.Online.SharePoint.TenantAdministration;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using PnP.Core.Model.SharePoint;

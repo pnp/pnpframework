@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PnP.Framework.Diagnostics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -15,13 +16,15 @@ namespace PnP.Framework.Http
     /// </summary>
     internal class RetryHandler : DelegatingHandler
     {
+        private readonly RateLimiter rateLimiter;
         private const string RETRY_AFTER = "Retry-After";
         private const string RETRY_ATTEMPT = "Retry-Attempt";
         internal const int MAXDELAY = 300;
 
         #region Construction
-        public RetryHandler()
+        public RetryHandler(RateLimiter limiter)
         {
+            rateLimiter = limiter;
         }
         #endregion
 
@@ -37,11 +40,21 @@ namespace PnP.Framework.Http
 
             while (true)
             {
-                HttpResponseMessage response = null;
+                HttpResponseMessage response = null;                
+
+                // Throw an exception if we've requested to cancel the operation
+                cancellationToken.ThrowIfCancellationRequested();
 
                 try
                 {
+                    if (rateLimiter != null)
+                    {
+                        await rateLimiter.WaitAsync(cancellationToken).ConfigureAwait(false);
+                    }
+
                     response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+
+                    rateLimiter?.UpdateWindow(response);
 
                     if (!ShouldRetry(response.StatusCode))
                     {
@@ -63,6 +76,8 @@ namespace PnP.Framework.Http
 
                         throw new Exception($"Too many http request retries: {retryCount}");
                     }
+
+                    Log.Info(Constants.LOGGING_SOURCE, $"Retrying request {request.RequestUri} due to status code {response.StatusCode}");
                 }
                 catch (Exception ex)
                 {
@@ -75,10 +90,20 @@ namespace PnP.Framework.Http
                         throw;
                     }
 
+                    // Hostname unknown error code 11001 should not be retried
+                    if ((innermostEx as SocketException).ErrorCode == 11001)
+                    {
+                        throw;
+                    }
+
                     if (retryCount >= MaxRetries)
                     {
                         throw;
                     }
+
+                    string errorMessage = innermostEx.Message;
+
+                    Log.Info(Constants.LOGGING_SOURCE, $"Retrying request {request.RequestUri} due to exception {innermostEx.GetType()}: {innermostEx.Message}");
                 }
 
                 // Drain response content to free connections. Need to perform this
@@ -93,7 +118,9 @@ namespace PnP.Framework.Http
                 }
 
                 // Call Delay method to get delay time from response's Retry-After header or by exponential backoff 
-                Task delay = Delay(response, retryCount, DelayInSeconds, cancellationToken);
+                TimeSpan delayTimeSpan = CalculateWaitTime(response, retryCount, DelayInSeconds);
+                Log.Info(Constants.LOGGING_SOURCE, $"Waiting {delayTimeSpan.Seconds} seconds before retrying");
+                Task delay = Task.Delay(delayTimeSpan, cancellationToken);
 
                 // general clone request with internal CloneAsync (see CloneAsync for details) extension method 
                 // do not dispose this request as that breaks the request cloning
@@ -124,7 +151,7 @@ namespace PnP.Framework.Http
             }
         }
 
-        private Task Delay(HttpResponseMessage response, int retryCount, int delay, CancellationToken cancellationToken)
+        private TimeSpan CalculateWaitTime(HttpResponseMessage response, int retryCount, int delay)
         {
             double delayInSeconds = delay;
 
@@ -132,7 +159,7 @@ namespace PnP.Framework.Http
             {
                 // Can we use the provided retry-after header?
                 string retryAfter = values.First();
-                if (Int32.TryParse(retryAfter, out int delaySeconds))
+                if (int.TryParse(retryAfter, out int delaySeconds))
                 {
                     delayInSeconds = delaySeconds;
                 }
@@ -154,9 +181,8 @@ namespace PnP.Framework.Http
             }
 
             // If the delay goes beyond our max wait time for a delay then cap it
-            TimeSpan delayTimeSpan = TimeSpan.FromSeconds(Math.Min(delayInSeconds, RetryHandler.MAXDELAY));
-
-            return Task.Delay(delayTimeSpan, cancellationToken);
+            TimeSpan delayTimeSpan = TimeSpan.FromSeconds(Math.Min(delayInSeconds, MAXDELAY));
+            return delayTimeSpan;
         }
 
         internal static bool ShouldRetry(HttpStatusCode statusCode)

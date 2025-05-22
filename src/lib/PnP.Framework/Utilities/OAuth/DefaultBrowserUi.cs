@@ -18,11 +18,13 @@ namespace PnP.Framework.Utilities.OAuth
         private Action<string, int> _openBrowserAction = null;
         private string _successMessageHtml = string.Empty;
         private string _failureMessageHtml = string.Empty;
-        public DefaultBrowserUi(Action<string, int> openBrowserAction, string successMessageHtml, string failureMessageHtml)
+        private bool _fullHtml = false;
+        public DefaultBrowserUi(Action<string, int> openBrowserAction, string successMessageHtml, string failureMessageHtml, bool fullHtml = false)
         {
             _openBrowserAction = openBrowserAction;
             _successMessageHtml = successMessageHtml;
             _failureMessageHtml = failureMessageHtml;
+            _fullHtml = fullHtml;
         }
 
         private const string SuccessMessageHtml = "You successfully authenticated. Feel free to close this browser/tab.";
@@ -107,20 +109,34 @@ namespace PnP.Framework.Utilities.OAuth
 #endif
             if (!string.IsNullOrEmpty(errorString))
             {
+                if (!_fullHtml)
+                {
 #if !NETFRAMEWORK
-                string errorDescription = authCodeQueryKeyValue.Get("error_description");
+                    string errorDescription = authCodeQueryKeyValue.Get("error_description");
 #else
                 string errorDescription = dicQueryString.ContainsKey("error_description") ? dicQueryString["error_description"] : null;
 #endif
-                return string.Format(
-                    CultureInfo.InvariantCulture,
-                    CloseWindowFailureHtml,
-                    errorString,
-                    errorDescription,
-                    string.IsNullOrEmpty(_failureMessageHtml) ? FailureMessageHtml : _failureMessageHtml);
+                    return string.Format(
+                        CultureInfo.InvariantCulture,
+                        CloseWindowFailureHtml,
+                        errorString,
+                        errorDescription,
+                        string.IsNullOrEmpty(_failureMessageHtml) ? FailureMessageHtml : _failureMessageHtml);
+                }
+                else
+                {
+                    return string.Format(_failureMessageHtml, errorString);
+                }
             }
 
-            return string.Format(CloseWindowSuccessHtml, string.IsNullOrEmpty(_successMessageHtml) ? SuccessMessageHtml : _successMessageHtml);
+            if (!_fullHtml)
+            {
+                return string.Format(CloseWindowSuccessHtml, string.IsNullOrEmpty(_successMessageHtml) ? SuccessMessageHtml : _successMessageHtml);
+            }
+            else
+            {
+                return _successMessageHtml;
+            }
         }
     }
 }

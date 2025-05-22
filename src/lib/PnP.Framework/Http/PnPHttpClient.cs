@@ -20,6 +20,7 @@ namespace PnP.Framework.Http
         //private static Configuration configuration;
         private const string PnPHttpClientName = "PnPHttpClient";
         private static readonly Lazy<PnPHttpClient> _lazyInstance = new Lazy<PnPHttpClient>(() => new PnPHttpClient(), true);
+        private static readonly SemaphoreSlim semaphoreSlimFactory = new SemaphoreSlim(1);
         private ServiceProvider serviceProvider;
         private static readonly ConcurrentDictionary<string, HttpClientHandler> credentialsHttpClients = new ConcurrentDictionary<string, HttpClientHandler>();
 
@@ -62,7 +63,7 @@ namespace PnP.Framework.Http
                     // Create a new handler, do not dispose it since we're caching it
                     var handler = new HttpClientHandler
                     {
-                        Credentials = context.Credentials
+                        Credentials = context.Credentials,
                     };
 
                     credentialsHttpClients.TryAdd(cacheKey, handler);
@@ -125,35 +126,49 @@ namespace PnP.Framework.Http
 
         private void BuildServiceFactory()
         {
-            // Use TLS 1.2 as default connection
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-
-            // Create container
-            var serviceCollection = new ServiceCollection();
-
-            // Add http handlers
-            AddHttpHandlers(serviceCollection);
-
-            // get User Agent String
-            string userAgentFromConfig = null;
             try
             {
-                userAgentFromConfig = ConfigurationManager.AppSettings["SharePointPnPUserAgent"];
+                // Ensure there's only one context factory building happening at any given time
+                semaphoreSlimFactory.Wait();
+
+                // Use TLS 1.2 as default connection
+#if !NET9_0
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+#endif
+
+                // Create container
+                var serviceCollection = new ServiceCollection();
+
+                // Add http handlers
+                AddHttpHandlers(serviceCollection);
+                // Add services
+                AddPnPServices(serviceCollection);
+
+                // get User Agent String
+                string userAgentFromConfig = null;
+                try
+                {
+                    userAgentFromConfig = ConfigurationManager.AppSettings["SharePointPnPUserAgent"];
+                }
+                catch // throws exception if being called from a .NET Standard 2.0 application
+                {
+
+                }
+                if (string.IsNullOrWhiteSpace(userAgentFromConfig))
+                {
+                    userAgentFromConfig = Environment.GetEnvironmentVariable("SharePointPnPUserAgent", EnvironmentVariableTarget.Process);
+                }
+
+                // Add http clients
+                AddHttpClients(serviceCollection, userAgentFromConfig);
+
+                // Build the container
+                serviceProvider = serviceCollection.BuildServiceProvider();
             }
-            catch // throws exception if being called from a .NET Standard 2.0 application
+            finally
             {
-
+                semaphoreSlimFactory.Release();
             }
-            if (string.IsNullOrWhiteSpace(userAgentFromConfig))
-            {
-                userAgentFromConfig = Environment.GetEnvironmentVariable("SharePointPnPUserAgent", EnvironmentVariableTarget.Process);
-            }
-
-            // Add http clients
-            AddHttpClients(serviceCollection, userAgentFromConfig);
-
-            // Build the container
-            serviceProvider = serviceCollection.BuildServiceProvider();
         }
 
         private static TimeSpan GetHttpTimeout()
@@ -223,6 +238,12 @@ namespace PnP.Framework.Http
             collection.AddTransient<RetryHandler, RetryHandler>();
 
             return collection;
+        }
+
+        private static IServiceCollection AddPnPServices(IServiceCollection collection)
+        {
+            return collection
+                   .AddSingleton<RateLimiter>();
         }
     }
 }

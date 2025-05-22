@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.Online.SharePoint.TenantAdministration;
+﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -67,7 +66,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     // If security is configured, add the members and owners defined in the template to the Team
                     if (team.Security != null)
                     {
-                        if (!SetGroupSecurity(scope, parser, team, teamId, accessToken, graphBaseUri)) return null;
+                        if (!SetGroupSecurity(scope, parser, team, parsedGroupId, accessToken, graphBaseUri)) return null;
                     }
 
                     // Then promote the Group into a Team or update it, if it already exists. Patching a team doesn't return an ID, so use the parsedGroupId directly (teamId and groupId are the same). 
@@ -1462,7 +1461,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             var messageId = GraphHelper.CreateOrUpdateGraphObject(scope,
                 HttpMethodVerb.POST,
-                $"{graphBaseUri}beta/teams/{teamId}/channels/{channelId}/messages",
+                $"{graphBaseUri}v1.0/teams/{teamId}/channels/{channelId}/messages",
                 messageObject,
                 HttpHelper.JsonContentType,
                 accessToken,
@@ -1698,6 +1697,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             // Get a fresh Access Token for every request
                             accessToken = PnPProvisioningContext.Current.AcquireToken(graphBaseUri.ToString(), "Group.ReadWrite.All");
+                            if (accessToken == null)
+                            {
+                                accessToken = PnPProvisioningContext.Current.AcquireToken(graphBaseUri.Host, "Group.ReadWrite.All");
+                            }
 
                             if (accessToken != null)
                             {
@@ -2010,12 +2013,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
 
             var existingChannels = JToken.Parse(channels)["value"];
-
-            var existingChannel = existingChannels?.FirstOrDefault(x => x["displayName"].ToString() == "General");
+            
+            var existingChannel = existingChannels?.FirstOrDefault();
 
             if (existingChannel == null)
             {
-                throw new Exception($"Could not get General channel of team with id {teamId}.");
+                throw new Exception($"Could not get any channel for team with id {teamId}.");
             }
 
             wait = true;
@@ -2039,7 +2042,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 if (iterations > 60)
                 {
-                    throw new Exception($"Could not get drive item of General channel in team with id {teamId} within timeout.");
+                    throw new Exception($"Could not get drive item of first channel in team with id {teamId} within timeout.");
                 }
             }
         }

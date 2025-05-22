@@ -193,6 +193,22 @@ namespace PnP.Framework
         /// Creates a new instance of the Authentication Manager to acquire access tokens and client contexts using the Azure AD Interactive flow.
         /// </summary>
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
+        /// <param name="openBrowserCallback">This callback will be called providing the URL and port to open during the authentication flow</param>
+        /// <param name="tenantId">Optional tenant id or tenant url</param>
+        /// <param name="successFullMessageHtml">Allows you to override the success message. You will have to provide the full HTML document.</param>
+        /// <param name="failureFullMessageHtml">llows you to override the failure message. You will have to provide the full HTML document.</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="tokenCacheCallback">If present, after setting up the base flow for authentication this callback will be called to register a custom tokencache. See https://aka.ms/msal-net-token-cache-serialization.</param>
+        /// <param name="useWAM">If true, uses WAM for authentication. Works only on Windows OS. Default is false</param>
+        public static AuthenticationManager CreateWithInteractiveWebBrowserLogin(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successFullMessageHtml = null, string failureFullMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, bool useWAM = false)
+        {
+            return new AuthenticationManager(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successFullMessageHtml, failureFullMessageHtml, true), useWAM);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager to acquire access tokens and client contexts using the Azure AD Interactive flow.
+        /// </summary>
+        /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
         /// <param name="redirectUrl">Optional redirect URL to use for authentication as set up in the Azure AD Application</param>
         /// <param name="tenantId">Optional tenant id or tenant url</param>
         /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
@@ -202,6 +218,32 @@ namespace PnP.Framework
         public static AuthenticationManager CreateWithInteractiveLogin(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null, bool useWAM = false)
         {
             return new AuthenticationManager(clientId, redirectUrl ?? Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, customWebUi, useWAM);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager that works with a System Assigned or User Assigned Managed Identity in Azure
+        /// </summary>
+        /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>
+        /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
+        /// <param name="managedIdentityType">Type of Managed Identity that should be used. Defaults to System Assigned Managed Identity.</param>
+        /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId. Mandatory when <paramref name="managedIdentityType"/> is not SystemAssigned. Should be omitted if it is SystemAssigned.</param>
+        public static AuthenticationManager CreateWithManagedIdentity(string endpoint, string identityHeader, ManagedIdentityType managedIdentityType = ManagedIdentityType.SystemAssigned, string managedIdentityUserAssignedIdentifier = null)
+        {
+            return new AuthenticationManager(endpoint, identityHeader, managedIdentityType, managedIdentityUserAssignedIdentifier);
+        }
+
+        // <summary>
+        /// Creates a new instance of the Authentication Manager that works with a User Assigned Managed Identity (MI) in Azure configured as a Federated Identity Credential on an Entra ID application registration.
+        /// </summary>
+        /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>
+        /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
+        /// <param name="appClientId">Client ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. If you intend to access Graph/SPO in another tenant, this must be a multi-tenant application. A service principal for the same app should be created/consented to in target tenant.</param>
+        /// <param name="appTenantId">Tenant ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. This must be registered in same tenant as the MI.</param>
+        /// <param name="managedIdentityType">Type of Managed Identity that should be used. Cannot be System Assigned.</param>
+        /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId.</param>
+        public static AuthenticationManager CreateWithManagedIdentityFederatedIdentityCredential(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType, string managedIdentityUserAssignedIdentifier)
+        {
+            return new AuthenticationManager(endpoint, identityHeader, appClientId, appTenantId, managedIdentityType, managedIdentityUserAssignedIdentifier);
         }
 
         /// <summary>
@@ -304,8 +346,10 @@ namespace PnP.Framework
         /// </summary>
         public AuthenticationManager()
         {
+#if !NET9_0
             // Set the TLS preference. Needed on some server os's to work when Office 365 removes support for TLS 1.0
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+#endif
         }
 
         private AuthenticationManager(ACSTokenGenerator oAuthAuthenticationProvider) : this()
@@ -366,6 +410,79 @@ namespace PnP.Framework
         }
 
         /// <summary>
+        /// Creates a new instance of the Authentication Manager that works with a User Assigned Managed Identity (MI) in Azure configured as a Federated Identity Credential on an Entra ID application registration.
+        /// </summary>
+        /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>
+        /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
+        /// <param name="appClientId">Client ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. If you intend to access Graph/SPO in another tenant, this must be a multi-tenant application. A service principal for the same app should be created/consented to in target tenant.</param>
+        /// <param name="appTenantId">Tenant ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. This must be registered in same tenant as the MI.</param>
+        /// <param name="managedIdentityType">Type of Managed Identity that should be used. Cannot be System Assigned.</param>
+        /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId.</param>
+        public AuthenticationManager(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType, string managedIdentityUserAssignedIdentifier)
+        {
+            if (managedIdentityType == ManagedIdentityType.SystemAssigned)
+            {
+                throw new ArgumentException($"SystemAssigned managed identity is not currently supported for federated identity credentials flow.");
+            }
+
+            if (string.IsNullOrWhiteSpace(managedIdentityUserAssignedIdentifier))
+            {
+                throw new ArgumentException($"When {nameof(managedIdentityType)} is not SystemAssigned, {nameof(managedIdentityUserAssignedIdentifier)} must be provided", nameof(managedIdentityType));
+            }
+
+            if (string.IsNullOrWhiteSpace(appClientId))
+            {
+                throw new ArgumentException($"{nameof(appClientId)} must be provided.");
+            }
+
+            if (string.IsNullOrWhiteSpace(appTenantId))
+            {
+                throw new ArgumentException($"{nameof(appTenantId)} must be provided.");
+            }
+
+            authenticationType = ClientContextType.UserAssignedManagedIdentityFederatedCredential;
+            this.managedIdentityType = managedIdentityType;
+            this.managedIdentityUserAssignedIdentifier = managedIdentityUserAssignedIdentifier;
+
+            // Construct the URL to call to get the token based on the type of Managed Identity in use
+            IManagedIdentityApplication managedIdentityApplication = null;
+            switch (managedIdentityType)
+            {
+                case ManagedIdentityType.UserAssignedByClientId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with client ID: {managedIdentityUserAssignedIdentifier} as Federated Credential for client ID: {appClientId} in tenant: {appTenantId}");
+                    managedIdentityApplication = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedClientId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
+                    break;
+
+                case ManagedIdentityType.UserAssignedByObjectId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with object/principal ID: {managedIdentityUserAssignedIdentifier} as Federated Credential for client ID: {appClientId} in tenant: {appTenantId}");
+                    managedIdentityApplication = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedObjectId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
+                    break;
+
+
+                case ManagedIdentityType.UserAssignedByResourceId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with Azure Resource ID: {managedIdentityUserAssignedIdentifier} as Federated Credential for client ID: {appClientId} in tenant: {appTenantId}");
+                    managedIdentityApplication = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedResourceId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
+                    break;
+            }
+
+            // Create ConfidentialClientApplication with the managed identity application used as an assertion provider with token exchange audience
+            var audience = "api://AzureADTokenExchange";
+            async Task<string> miAssertionProvider(AssertionRequestOptions _)
+            {
+                var miResult = await managedIdentityApplication.AcquireTokenForManagedIdentity(audience)
+                    .ExecuteAsync()
+                    .ConfigureAwait(false);
+                return miResult.AccessToken;
+            }
+            confidentialClientApplication = ConfidentialClientApplicationBuilder
+                .Create(appClientId)
+                .WithTenantId(appTenantId)
+                .WithClientAssertion(miAssertionProvider)
+                .WithLegacyCacheCompatibility(false)
+                .Build();
+        }
+
+        /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
         /// </summary>
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
@@ -388,7 +505,7 @@ namespace PnP.Framework
             this.username = username;
             this.password = password;
             publicClientApplication = builder.Build();
-            
+
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
             authenticationType = ClientContextType.AzureADCredentials;
@@ -436,19 +553,19 @@ namespace PnP.Framework
                     Title = "Login with M365 PnP",
                     ListOperatingSystemAccounts = true,
                 };
-                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(WindowHandleUtilities.GetConsoleOrTerminalWindow);                
+                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(WindowHandleUtilities.GetConsoleOrTerminalWindow);
             }
             else
             {
                 if (!string.IsNullOrEmpty(redirectUrl))
                 {
                     builder = builder.WithRedirectUri(redirectUrl);
-                }                
+                }
                 this.customWebUi = customWebUi;
             }
             builder.WithLegacyCacheCompatibility(false);
             publicClientApplication = builder.Build();
-            
+
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
 
@@ -494,8 +611,8 @@ namespace PnP.Framework
 
             builder = builder.WithHttpClientFactory(HttpClientFactory);
             builder.WithLegacyCacheCompatibility(false);
-            publicClientApplication = builder.Build();            
-            
+            publicClientApplication = builder.Build();
+
             // register tokencache if callback provided
             tokenCacheCallback?.Invoke(publicClientApplication.UserTokenCache);
 
@@ -834,36 +951,26 @@ namespace PnP.Framework
                         catch
                         {
                             var builder = publicClientApplication.AcquireTokenInteractive(scopes);
-                            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+
+                            if (customWebUi != null)
                             {
-                                var options = new SystemWebViewOptions()
-                                {
-                                    HtmlMessageError = "<p> An error occurred: {0}. Details {1}</p>",
-                                    HtmlMessageSuccess = "<p>Successfully acquired token. You may close this window now.</p>"
-                                };
-                                builder = builder.WithUseEmbeddedWebView(false);
-                                builder = builder.WithSystemWebViewOptions(options);
+                                builder = builder.WithCustomWebUi(customWebUi);
                             }
-                            else
+                            if (prompt != default)
                             {
-                                if (customWebUi != null)
-                                {
-                                    builder = builder.WithCustomWebUi(customWebUi);
-                                }
-                                if (prompt != default)
-                                {
-                                    builder.WithPrompt(prompt);
-                                }
+                                builder.WithPrompt(prompt);
                             }
+
                             authResult = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         break;
                     }
                 case ClientContextType.AzureADCertificate:
+                case ClientContextType.UserAssignedManagedIdentityFederatedCredential:
                     {
-#pragma warning disable CS0618 // Type or member is obsolete
+                        #pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
-#pragma warning restore CS0618 // Type or member is obsolete
+                        #pragma warning restore CS0618 // Type or member is obsolete
 
                         try
                         {
@@ -871,8 +978,6 @@ namespace PnP.Framework
                         }
                         catch
                         {
-                            var builder = confidentialClientApplication.AcquireTokenForClient(scopes);
-
                             authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         break;
@@ -977,8 +1082,10 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
+        /// <param name="appName">Optional app name to show when using on MacOS</param>
+        /// <param name="appUrl">Optional url of app to show when using on MacOS</param>
         /// <returns></returns>
-        public async Task<ClientContext> GetContextAsync(string siteUrl, CancellationToken cancellationToken)
+        public async Task<ClientContext> GetContextAsync(string siteUrl, CancellationToken cancellationToken, string appName = "PnP", string appUrl = "https://pnp.github.io")
         {
             var uri = new Uri(siteUrl);
 
@@ -1020,24 +1127,12 @@ namespace PnP.Framework
                         catch
                         {
                             var builder = publicClientApplication.AcquireTokenInteractive(scopes);
-                            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                            {
-                                var options = new SystemWebViewOptions()
-                                {
-                                    HtmlMessageError = "<p> An error occurred: {0}. Details {1}</p>",
-                                    HtmlMessageSuccess = "<p>Succesfully acquired token. You may close this window now.</p>"
-                                };
-                                builder = builder.WithUseEmbeddedWebView(false);
-                                builder = builder.WithSystemWebViewOptions(options);
-                            }
-                            else
-                            {
 
-                                if (customWebUi != null)
-                                {
-                                    builder = builder.WithCustomWebUi(customWebUi);
-                                }
+                            if (customWebUi != null)
+                            {
+                                builder = builder.WithCustomWebUi(customWebUi);
                             }
+
                             authResult = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         if (authResult.AccessToken != null)
@@ -1047,6 +1142,7 @@ namespace PnP.Framework
                         break;
                     }
                 case ClientContextType.AzureADCertificate:
+                case ClientContextType.UserAssignedManagedIdentityFederatedCredential:
                     {
 #pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
@@ -1238,6 +1334,8 @@ namespace PnP.Framework
                 DisableReturnValueCache = true
             };
 
+            clientContext.AddWebRequestExecutorFactory();
+
             clientContext.ExecutingWebRequest += (sender, args) =>
             {
                 AuthenticationResult ar = null;
@@ -1252,6 +1350,7 @@ namespace PnP.Framework
                     switch (contextType)
                     {
                         case ClientContextType.AzureADCertificate:
+                        case ClientContextType.UserAssignedManagedIdentityFederatedCredential:
                             {
                                 ar = ((IConfidentialClientApplication)application).AcquireTokenForClient(scopes).ExecuteAsync().GetAwaiter().GetResult();
                                 break;
@@ -1500,6 +1599,8 @@ namespace PnP.Framework
                 DisableReturnValueCache = true
             };
 
+            clientContext.AddWebRequestExecutorFactory();
+
             clientContext.ExecutingWebRequest += (sender, args) =>
             {
                 Uri resourceUri = new Uri(siteUrl);
@@ -1524,6 +1625,8 @@ namespace PnP.Framework
             {
                 DisableReturnValueCache = true
             };
+
+            clientContext.AddWebRequestExecutorFactory();
 
             clientContext.ExecutingWebRequest += (sender, args) =>
             {

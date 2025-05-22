@@ -25,21 +25,15 @@ $buildCmd = "dotnet build `"$PSScriptRoot/../src/lib/PnP.Framework/PnP.Framework
 if ($LocalPnPCore) {
 	# Check if available
 	$pnpCoreAssembly = Join-Path $PSScriptRoot -ChildPath "..\..\pnpcore\src\sdk\PnP.Core\bin\Debug\netstandard2.0\PnP.Core.dll"
-	$pnpCoreAssembly5 = Join-Path $PSScriptRoot -ChildPath "..\..\pnpcore\src\sdk\PnP.Core\bin\Debug\net5.0\PnP.Core.dll"
-	$pnpCoreAssembly6 = Join-Path $PSScriptRoot -ChildPath "..\..\pnpcore\src\sdk\PnP.Core\bin\Debug\net6.0\PnP.Core.dll"
-	$pnpCoreAssembly7 = Join-Path $PSScriptRoot -ChildPath "..\..\pnpcore\src\sdk\PnP.Core\bin\Debug\net7.0\PnP.Core.dll"
 	$pnpCoreAssembly8 = Join-Path $PSScriptRoot -ChildPath "..\..\pnpcore\src\sdk\PnP.Core\bin\Debug\net8.0\PnP.Core.dll"
+	$pnpCoreAssembly9 = Join-Path $PSScriptRoot -ChildPath "..\..\pnpcore\src\sdk\PnP.Core\bin\Debug\net9.0\PnP.Core.dll"
 	$pnpCoreAssembly = [System.IO.Path]::GetFullPath($pnpCoreAssembly)
-	$pnpCoreAssembly5 = [System.IO.Path]::GetFullPath($pnpCoreAssembly5)
-	$pnpCoreAssembly6 = [System.IO.Path]::GetFullPath($pnpCoreAssembly6)
-	$pnpCoreAssembly7 = [System.IO.Path]::GetFullPath($pnpCoreAssembly7)
 	$pnpCoreAssembly8 = [System.IO.Path]::GetFullPath($pnpCoreAssembly8)
+	$pnpCoreAssembly9 = [System.IO.Path]::GetFullPath($pnpCoreAssembly9)
 	if (Test-Path $pnpCoreAssembly -PathType Leaf) {
 		$buildCmd += " -p:PnPCoreSdkPath=`"$pnpCoreAssembly`""
-		$buildCmd += " -p:PnPCoreSdkPathNet5=`"$pnpCoreAssembly5`""
-		$buildCmd += " -p:PnPCoreSdkPathNet6=`"$pnpCoreAssembly6`""
-		$buildCmd += " -p:PnPCoreSdkPathNet7=`"$pnpCoreAssembly7`""
 		$buildCmd += " -p:PnPCoreSdkPathNet8=`"$pnpCoreAssembly8`""
+		$buildCmd += " -p:PnPCoreSdkPathNet9=`"$pnpCoreAssembly9`""
 	} 
 	else {
 		Write-Error -Message "PnP Core Assembly path $pnpCoreAssembly not found"

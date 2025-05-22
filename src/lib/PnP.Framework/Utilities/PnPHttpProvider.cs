@@ -48,8 +48,10 @@ namespace PnP.Framework.Utilities
         {
             this.userAgent = userAgent;
 
+#if !NET9_0
             // Use TLS 1.2 as default connection	
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+#endif
 
             this.retryHandler = new PnPHttpRetryHandler(retryCount, delay);
         }

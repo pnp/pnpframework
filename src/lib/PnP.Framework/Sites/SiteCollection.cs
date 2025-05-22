@@ -904,7 +904,7 @@ namespace PnP.Framework.Sites
             if (siteCollectionCreationInformation.Url.IndexOf("/sites/", StringComparison.InvariantCultureIgnoreCase) > -1 || siteCollectionCreationInformation.Url.IndexOf("/teams/", StringComparison.InvariantCultureIgnoreCase) > -1)
             {
                 // Split the URL by '/'
-                string[] urlParts = siteCollectionCreationInformation.Url.Split('/');
+                string[] urlParts = siteCollectionCreationInformation.Url.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
 
                 // Get the last part of the URL after "sites"
                 string lastPart = urlParts[urlParts.Length - 1];

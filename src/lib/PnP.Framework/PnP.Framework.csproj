@@ -188,6 +188,7 @@
 			
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
 		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.13.1" />
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.5" />
 		<PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
@@ -248,7 +249,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(PnPCoreSdkPath)' != ''">		
-		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.5" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
 		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'netstandard2.0'">
 			<HintPath>$(PnPCoreSdkPath)</HintPath>
 			<Private>true</Private>

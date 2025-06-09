@@ -714,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.AuthenticationManager.html",
-          "hash": "I62Q6V2xAj5BWp09XjQq3KeavUYSbQedVpqmx0rBL7c="
+          "hash": "xF71QFJQ7mQwQUl5PpeOopW6cWoG+2YxmDu8Ms2oaeo="
         }
       },
       "is_incremental": false,
@@ -726,7 +726,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.AzureEnvironment.html",
-          "hash": "fvlXEBPoVSTvW2I7HsfrHmPpJyM5R9CF7/qztDnkPU4="
+          "hash": "zp5R1MbvD8wVzKZmVqDiNmB/sTbeEj0J4SD/IassCjI="
         }
       },
       "is_incremental": false,
@@ -2082,7 +2082,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.KnownClientId.html",
-          "hash": "WHcgvtW7UsZLE8K1cvOI1WH2hsJaMuW75Zd+JIMN0xA="
+          "hash": "GejKtgMcVRCr10vd2CAysjzrSa2L3M+sJI2RsNhZtE0="
         }
       },
       "is_incremental": false,
@@ -21278,6 +21278,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/PnP.Framework.Utilities.OSHandleUtilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PnP.Framework.Utilities.OSHandleUtilities.html",
+          "hash": "KQyT9QTr/2ffVeVePoQ6zV9S/HHrpBm7BLRbWyjsNrg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/PnP.Framework.Utilities.OrderByField.yml",
       "output": {
         ".html": {
@@ -22394,18 +22406,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/PnP.Framework.Utilities.WindowHandleUtilities.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/PnP.Framework.Utilities.WindowHandleUtilities.html",
-          "hash": "6lpPWMPCKE5FZJ/ZBAT+zG0bfYASY/K9iB1ljSASpds="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/PnP.Framework.Utilities.X509CertificateUtility.yml",
       "output": {
         ".html": {
@@ -22446,7 +22446,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Utilities.html",
-          "hash": "/1IZ0vOtsvVV4+hdbCvTrWD1Jz90tzbMs0kjl7ZUwLE="
+          "hash": "qo766G9ZMyLq9etGKO4jfyqQLj+g+Xh/JJGzNVoUQXE="
         }
       },
       "is_incremental": false,
@@ -22830,7 +22830,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "+WWnfieZachaq6yHkb76MY8q5MeQcmcs/FtXS7aX6vU="
+          "hash": "O1O3LT6IPK1/z759enpek6tO3vQGOtnHQ1gEMSrLTbw="
         }
       },
       "is_incremental": false,

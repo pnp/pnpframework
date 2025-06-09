@@ -5,19 +5,14 @@ using Microsoft.Identity.Client.Extensibility;
 using Microsoft.Identity.Client.Extensions.Msal;
 using Microsoft.SharePoint.Client;
 using PnP.Core.Services;
-using PnP.Framework.Http;
 using PnP.Framework.Utilities;
-using PnP.Framework.Utilities.Cache;
 using PnP.Framework.Utilities.Context;
 using System;
 using System.Configuration;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -553,7 +548,16 @@ namespace PnP.Framework
                     Title = "Login with M365 PnP",
                     ListOperatingSystemAccounts = true,
                 };
-                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(WindowHandleUtilities.GetConsoleOrTerminalWindow);
+                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(OSHandleUtilities.GetConsoleOrTerminalWindow);
+            }
+            else if (useWAM && SharedUtilities.IsLinuxPlatform())
+            {
+                BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Linux)
+                {
+                    Title = "Login with M365 PnP",
+                    ListOperatingSystemAccounts = true,
+                };
+                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(OSHandleUtilities.GetConsoleOrTerminalLinux);
             }
             else
             {
@@ -968,9 +972,9 @@ namespace PnP.Framework
                 case ClientContextType.AzureADCertificate:
                 case ClientContextType.UserAssignedManagedIdentityFederatedCredential:
                     {
-                        #pragma warning disable CS0618 // Type or member is obsolete
+#pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
-                        #pragma warning restore CS0618 // Type or member is obsolete
+#pragma warning restore CS0618 // Type or member is obsolete
 
                         try
                         {

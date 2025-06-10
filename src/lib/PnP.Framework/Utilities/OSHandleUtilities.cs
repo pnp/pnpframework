@@ -56,12 +56,10 @@ namespace PnP.Framework.Utilities
             }
         }
 
-        public static Func<IntPtr> GetConsoleOrTerminalLinux()
+        public static IntPtr GetConsoleOrTerminalLinux()
         {
             IntPtr _parentHandle = XRootWindow(XOpenDisplay(null), 0);
-            Func<IntPtr> consoleLinuxHandleProvider = () => _parentHandle;
-
-            return consoleLinuxHandleProvider;
+            return _parentHandle;
         }
     }
 }

@@ -541,23 +541,26 @@ namespace PnP.Framework
             {
                 builder = builder.WithTenantId(tenantId);
             }
-            if (useWAM && SharedUtilities.IsWindowsPlatform())
+            if (useWAM && (SharedUtilities.IsWindowsPlatform() || SharedUtilities.IsLinuxPlatform()))
             {
-                BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Windows)
+                if (SharedUtilities.IsWindowsPlatform())
                 {
-                    Title = "Login with M365 PnP",
-                    ListOperatingSystemAccounts = true,
-                };
-                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(OSHandleUtilities.GetConsoleOrTerminalWindow);
-            }
-            else if (useWAM && SharedUtilities.IsLinuxPlatform())
-            {
-                BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Linux)
+                    BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Windows)
+                    {
+                        Title = "Login with M365 PnP",
+                        ListOperatingSystemAccounts = true,
+                    };
+                    builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(OSHandleUtilities.GetConsoleOrTerminalWindow);
+                }
+                else if (SharedUtilities.IsLinuxPlatform())
                 {
-                    Title = "Login with M365 PnP",
-                    ListOperatingSystemAccounts = true,
-                };
-                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(OSHandleUtilities.GetConsoleOrTerminalLinux);
+                    BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Linux)
+                    {
+                        Title = "Login with M365 PnP",
+                        ListOperatingSystemAccounts = true,
+                    };
+                    builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(OSHandleUtilities.GetConsoleOrTerminalLinux);
+                }
             }
             else
             {

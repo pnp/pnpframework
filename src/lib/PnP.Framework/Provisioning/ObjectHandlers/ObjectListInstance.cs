@@ -13,7 +13,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -761,11 +760,31 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             System.Collections.Generic.List<ListItem> listItemColl = new System.Collections.Generic.List<ListItem>();
 
-            var camlQuery = new CamlQuery()
+            var camlTopQuery = new CamlQuery()
             {
                 ViewXml = @"<View Scope='RecursiveAll' >
                     <ViewFields>
-                      <FieldRef Name='Id' />                      
+                      <FieldRef Name='ID' />                      
+                    </ViewFields>
+                    <Query>
+                      <OrderBy><FieldRef Name='ID' Ascending='false' /></OrderBy>
+                    </Query>
+                    <RowLimit>1</RowLimit>
+                   </View>"
+            };
+            var maxIdListItem = spList.GetItems(camlTopQuery);
+            spList.Context.Load(maxIdListItem);
+            spList.Context.ExecuteQuery();
+            var maxIdVal = (int?)maxIdListItem?.FirstOrDefault()?["ID"];
+
+            if (maxIdVal == null)
+            {
+                return listItemColl;
+            }
+            //FSObjType is not indexed and will throw error if used in a query with more than 5000 items. As Workaround we limit the filtered items by using the Indexed ID field
+            var queryXML = @"<View Scope='RecursiveAll' >
+                    <ViewFields>
+                      <FieldRef Name='ID' />                      
                       <FieldRef Name='UniqueId' />
                       <FieldRef Name='ParentUniqueId' />
                       <FieldRef Name='FileRef' />
@@ -774,38 +793,52 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     </ViewFields>
                     <Query>
                       <Where>
-                        <Eq>
-                          <FieldRef Name='FSObjType'/>
-                          <Value Type='Integer'>1</Value>
-                        </Eq>
+                        <And>
+		                    <And>
+		                        <Gt><FieldRef Name='ID'></FieldRef><Value Type='Integer'>{0}</Value></Gt>
+			                    <Lt><FieldRef Name='ID'></FieldRef><Value Type='Integer'>{1}</Value></Lt>
+		                    </And>
+                            <Eq>
+                              <FieldRef Name='FSObjType'/>
+                              <Value Type='Integer'>1</Value>
+                            </Eq>
+                        </And>
                       </Where>
-                      <OrderBy><FieldRef Name='Id' Ascending='TRUE' /></OrderBy>
+                      <OrderBy><FieldRef Name='ID' Ascending='TRUE' /></OrderBy>
                     </Query>
-                    <RowLimit Paged='TRUE'>200</RowLimit>
-                   </View>"
-            };
+                    <RowLimit Paged='TRUE'>1000</RowLimit>
+                   </View>";
+
+            var startId = 0;
 
             do
             {
-                var listItems = spList.GetItems(camlQuery);
-                spList.Context.Load(listItems);
-
-                try
+                var camlQueryFolder = new CamlQuery
                 {
-                    spList.Context.ExecuteQuery();
-                    listItemColl.AddRange(listItems);
-                    camlQuery.ListItemCollectionPosition = listItems.ListItemCollectionPosition;
-                }
-                catch (Exception ex)
+                    ViewXml = string.Format(queryXML, startId, startId + 5000),
+                };
+                do
                 {
-                    throw new InvalidOperationException("LoadAllExistingFolderListItems: Error on paging", ex);
-                }
-            }
-            while (camlQuery.ListItemCollectionPosition != null);
+                    var listItems = spList.GetItems(camlQueryFolder);
+                    spList.Context.Load(listItems);
 
+                    try
+                    {
+                        spList.Context.ExecuteQuery();
+                        listItemColl.AddRange(listItems);
+                        camlQueryFolder.ListItemCollectionPosition = listItems.ListItemCollectionPosition;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new InvalidOperationException("LoadAllExistingFolderListItems: Error on paging", ex);
+                    }
+                }
+                while (camlQueryFolder.ListItemCollectionPosition != null);
+
+                startId += 4999; //because of <Gt> and <Lt> we need to increase the startId by 4999, so in next query we will include ID 5000 in <gt>
+            } while (maxIdVal >= startId);
             return listItemColl;
         }
-
 
         private void ProcessViews(Web web, TokenParser parser, PnPMonitoredScope scope, ListInfo listInfo)
         {

@@ -236,9 +236,9 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.70.2" />
-		<PackageReference Include="Microsoft.Identity.Client.Broker" Version="4.70.2" />
-		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.70.2" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.73.0" />
+		<PackageReference Include="Microsoft.Identity.Client.Broker" Version="4.73.0" />
+		<PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.73.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="AngleSharp" Version="0.17.0" />
 		<PackageReference Include="AngleSharp.Css" Version="0.17.0" />

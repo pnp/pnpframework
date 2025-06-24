@@ -1,5 +1,6 @@
 ﻿using Microsoft.Online.SharePoint.TenantAdministration;
 using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.Taxonomy;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Http;
 using PnP.Framework.Provisioning.Model;
@@ -155,6 +156,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
                 else
                 {
+                    // Apply the configuration parameters to the hierarchy
+                    ApplyConfigurationParameters(configuration.Parameters, hierarchy.Parameters);
+
+                    // Configure all the delegates to monitor the provisioning process
                     progressDelegate = configuration.ProgressDelegate;
                     if (configuration.ProgressDelegate != null)
                     {
@@ -221,6 +226,24 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
+        private static void ApplyConfigurationParameters(Dictionary<string, string> sourceParameters, Dictionary<string, string> destParameters)
+        {
+            if (sourceParameters != null)
+            {
+                foreach (var p in sourceParameters)
+                {
+                    if (!destParameters.ContainsKey(p.Key))
+                    {
+                        destParameters.Add(p.Key, p.Value);
+                    }
+                    else
+                    {
+                        destParameters[p.Key] = p.Value;
+                    }
+                }
+            }
+        }
+
         internal static ProvisioningHierarchy GetTenantTemplate(Tenant tenant, ExtractConfiguration configuration = null)
         {
             if (configuration == null)
@@ -282,7 +305,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             using (var scope = new PnPMonitoredScope(CoreResources.Provisioning_ObjectHandlers_Provisioning))
             {
-
                 web.Context.DisableReturnValueCache = true;
 
                 ProvisioningProgressDelegate progressDelegate = null;
@@ -290,6 +312,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 ProvisioningSiteProvisionedDelegate siteProvisionedDelegate = null;
                 if (provisioningInfo != null)
                 {
+                    // Apply the configuration parameters to the template
+                    ApplyConfigurationParameters(provisioningInfo.Parameters, template.Parameters);
+
                     if (provisioningInfo.OverwriteSystemPropertyBagValues == true)
                     {
                         scope.LogInfo(CoreResources.SiteToTemplateConversion_ApplyRemoteTemplate_OverwriteSystemPropertyBagValues_is_to_true);

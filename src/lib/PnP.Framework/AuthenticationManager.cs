@@ -5,19 +5,14 @@ using Microsoft.Identity.Client.Extensibility;
 using Microsoft.Identity.Client.Extensions.Msal;
 using Microsoft.SharePoint.Client;
 using PnP.Core.Services;
-using PnP.Framework.Http;
 using PnP.Framework.Utilities;
-using PnP.Framework.Utilities.Cache;
 using PnP.Framework.Utilities.Context;
 using System;
 using System.Configuration;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -187,8 +182,8 @@ namespace PnP.Framework
         public static AuthenticationManager CreateWithInteractiveLogin(string clientId, Action<string, int> openBrowserCallback, string tenantId = null, string successMessageHtml = null, string failureMessageHtml = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, bool useWAM = false)
         {
             return new AuthenticationManager(clientId, Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, new Utilities.OAuth.DefaultBrowserUi(openBrowserCallback, successMessageHtml, failureMessageHtml), useWAM);
-        } 
-        
+        }
+
         /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire access tokens and client contexts using the Azure AD Interactive flow.
         /// </summary>
@@ -218,6 +213,32 @@ namespace PnP.Framework
         public static AuthenticationManager CreateWithInteractiveLogin(string clientId, string redirectUrl = null, string tenantId = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production, Action<ITokenCache> tokenCacheCallback = null, ICustomWebUi customWebUi = null, bool useWAM = false)
         {
             return new AuthenticationManager(clientId, redirectUrl ?? Utilities.OAuth.DefaultBrowserUi.FindFreeLocalhostRedirectUri(), tenantId, azureEnvironment, tokenCacheCallback, customWebUi, useWAM);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the Authentication Manager that works with a System Assigned or User Assigned Managed Identity in Azure
+        /// </summary>
+        /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>
+        /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
+        /// <param name="managedIdentityType">Type of Managed Identity that should be used. Defaults to System Assigned Managed Identity.</param>
+        /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId. Mandatory when <paramref name="managedIdentityType"/> is not SystemAssigned. Should be omitted if it is SystemAssigned.</param>
+        public static AuthenticationManager CreateWithManagedIdentity(string endpoint, string identityHeader, ManagedIdentityType managedIdentityType = ManagedIdentityType.SystemAssigned, string managedIdentityUserAssignedIdentifier = null)
+        {
+            return new AuthenticationManager(endpoint, identityHeader, managedIdentityType, managedIdentityUserAssignedIdentifier);
+        }
+
+        // <summary>
+        /// Creates a new instance of the Authentication Manager that works with a User Assigned Managed Identity (MI) in Azure configured as a Federated Identity Credential on an Entra ID application registration.
+        /// </summary>
+        /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>
+        /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
+        /// <param name="appClientId">Client ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. If you intend to access Graph/SPO in another tenant, this must be a multi-tenant application. A service principal for the same app should be created/consented to in target tenant.</param>
+        /// <param name="appTenantId">Tenant ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. This must be registered in same tenant as the MI.</param>
+        /// <param name="managedIdentityType">Type of Managed Identity that should be used. Cannot be System Assigned.</param>
+        /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId.</param>
+        public static AuthenticationManager CreateWithManagedIdentityFederatedIdentityCredential(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType, string managedIdentityUserAssignedIdentifier)
+        {
+            return new AuthenticationManager(endpoint, identityHeader, appClientId, appTenantId, managedIdentityType, managedIdentityUserAssignedIdentifier);
         }
 
         /// <summary>
@@ -384,6 +405,79 @@ namespace PnP.Framework
         }
 
         /// <summary>
+        /// Creates a new instance of the Authentication Manager that works with a User Assigned Managed Identity (MI) in Azure configured as a Federated Identity Credential on an Entra ID application registration.
+        /// </summary>
+        /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>
+        /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
+        /// <param name="appClientId">Client ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. If you intend to access Graph/SPO in another tenant, this must be a multi-tenant application. A service principal for the same app should be created/consented to in target tenant.</param>
+        /// <param name="appTenantId">Tenant ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. This must be registered in same tenant as the MI.</param>
+        /// <param name="managedIdentityType">Type of Managed Identity that should be used. Cannot be System Assigned.</param>
+        /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId.</param>
+        public AuthenticationManager(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType, string managedIdentityUserAssignedIdentifier)
+        {
+            if (managedIdentityType == ManagedIdentityType.SystemAssigned)
+            {
+                throw new ArgumentException($"SystemAssigned managed identity is not currently supported for federated identity credentials flow.");
+            }
+
+            if (string.IsNullOrWhiteSpace(managedIdentityUserAssignedIdentifier))
+            {
+                throw new ArgumentException($"When {nameof(managedIdentityType)} is not SystemAssigned, {nameof(managedIdentityUserAssignedIdentifier)} must be provided", nameof(managedIdentityType));
+            }
+
+            if (string.IsNullOrWhiteSpace(appClientId))
+            {
+                throw new ArgumentException($"{nameof(appClientId)} must be provided.");
+            }
+
+            if (string.IsNullOrWhiteSpace(appTenantId))
+            {
+                throw new ArgumentException($"{nameof(appTenantId)} must be provided.");
+            }
+
+            authenticationType = ClientContextType.UserAssignedManagedIdentityFederatedCredential;
+            this.managedIdentityType = managedIdentityType;
+            this.managedIdentityUserAssignedIdentifier = managedIdentityUserAssignedIdentifier;
+
+            // Construct the URL to call to get the token based on the type of Managed Identity in use
+            IManagedIdentityApplication managedIdentityApplication = null;
+            switch (managedIdentityType)
+            {
+                case ManagedIdentityType.UserAssignedByClientId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with client ID: {managedIdentityUserAssignedIdentifier} as Federated Credential for client ID: {appClientId} in tenant: {appTenantId}");
+                    managedIdentityApplication = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedClientId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
+                    break;
+
+                case ManagedIdentityType.UserAssignedByObjectId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with object/principal ID: {managedIdentityUserAssignedIdentifier} as Federated Credential for client ID: {appClientId} in tenant: {appTenantId}");
+                    managedIdentityApplication = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedObjectId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
+                    break;
+
+
+                case ManagedIdentityType.UserAssignedByResourceId:
+                    Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with Azure Resource ID: {managedIdentityUserAssignedIdentifier} as Federated Credential for client ID: {appClientId} in tenant: {appTenantId}");
+                    managedIdentityApplication = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedResourceId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
+                    break;
+            }
+
+            // Create ConfidentialClientApplication with the managed identity application used as an assertion provider with token exchange audience
+            var audience = "api://AzureADTokenExchange";
+            async Task<string> miAssertionProvider(AssertionRequestOptions _)
+            {
+                var miResult = await managedIdentityApplication.AcquireTokenForManagedIdentity(audience)
+                    .ExecuteAsync()
+                    .ConfigureAwait(false);
+                return miResult.AccessToken;
+            }
+            confidentialClientApplication = ConfidentialClientApplicationBuilder
+                .Create(appClientId)
+                .WithTenantId(appTenantId)
+                .WithClientAssertion(miAssertionProvider)
+                .WithLegacyCacheCompatibility(false)
+                .Build();
+        }
+
+        /// <summary>
         /// Creates a new instance of the Authentication Manager to acquire authenticated ClientContexts.
         /// </summary>
         /// <param name="clientId">The client id of the Azure AD application to use for authentication</param>
@@ -447,14 +541,26 @@ namespace PnP.Framework
             {
                 builder = builder.WithTenantId(tenantId);
             }
-            if (useWAM && SharedUtilities.IsWindowsPlatform())
+            if (useWAM && (SharedUtilities.IsWindowsPlatform() || SharedUtilities.IsLinuxPlatform()))
             {
-                BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Windows)
+                if (SharedUtilities.IsWindowsPlatform())
                 {
-                    Title = "Login with M365 PnP",
-                    ListOperatingSystemAccounts = true,
-                };
-                builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(WindowHandleUtilities.GetConsoleOrTerminalWindow);
+                    BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Windows)
+                    {
+                        Title = "Login with M365 PnP",
+                        ListOperatingSystemAccounts = true,
+                    };
+                    builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(OSHandleUtilities.GetConsoleOrTerminalWindow);
+                }
+                else if (SharedUtilities.IsLinuxPlatform())
+                {
+                    BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Linux)
+                    {
+                        Title = "Login with M365 PnP",
+                        ListOperatingSystemAccounts = true,
+                    };
+                    builder = builder.WithBroker(brokerOptions).WithDefaultRedirectUri().WithParentActivityOrWindow(OSHandleUtilities.GetConsoleOrTerminalLinux);
+                }
             }
             else
             {
@@ -787,24 +893,6 @@ namespace PnP.Framework
         /// <param name="siteUrl"></param>
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
         /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
-        /// <param name="appName">Optional app name to show when using on MacOS</param>
-        /// <param name="appUrl">Optional url of app to show when using on MacOS</param>
-        /// <returns></returns>
-        public string GetAccessToken(string siteUrl, CancellationToken cancellationToken, Prompt prompt = default, string appName = "PnP", string appUrl = "https://pnp.github.io")
-        {
-            var uri = new Uri(siteUrl);
-
-            var scopes = new[] { $"{uri.Scheme}://{uri.Authority}/.default" };
-
-            return GetAccessTokenAsync(scopes, cancellationToken, prompt, uri, appName, appUrl).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Returns an access token for a given site.
-        /// </summary>
-        /// <param name="siteUrl"></param>
-        /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
-        /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
         /// <returns></returns>
         public async Task<string> GetAccessTokenAsync(string siteUrl, CancellationToken cancellationToken, Prompt prompt = default)
         {
@@ -834,10 +922,8 @@ namespace PnP.Framework
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
         /// <param name="prompt">The prompt style to use. Notice that this only works with the Interactive Login flow, for all other flows this parameter is ignored.</param>
         /// <param name="uri">for ClientContextType.PnPCoreSdk case as by interface definition needed for GetAccessTokenAsync</param>
-        /// <param name="appName">Optional app name to show when using on MacOS</param>
-        /// <param name="appUrl">Optional url of app to show when using on MacOS</param>
         /// <returns></returns>
-        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken, Prompt prompt = default, Uri uri = null, string appName = "PnP", string appUrl = "https://pnp.github.io")
+        public async Task<string> GetAccessTokenAsync(string[] scopes, CancellationToken cancellationToken, Prompt prompt = default, Uri uri = null)
         {
             AuthenticationResult authResult = null;
 
@@ -873,34 +959,21 @@ namespace PnP.Framework
                         {
                             var builder = publicClientApplication.AcquireTokenInteractive(scopes);
 
-                            // On MacOS we always use the browser login
-                            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) 
+                            if (customWebUi != null)
                             {
-                                var options = new SystemWebViewOptions()
-                                {
-                                    HtmlMessageError = "<p style=\"font-family: sans-serif; font-weight: bold; color: red\">An error occurred:</p><p style=\"color: black\">{0}. Details {1}</p>",
-                                    HtmlMessageSuccess = $"<html lang=en><meta charset=utf-8><title>{appName} - Sign In</title><meta content=\"width=device-width,initial-scale=1\"name=viewport><style>html{{height:100%}}.message-container{{flex-grow:1;display:flex;align-items:center;justify-content:center;margin:0 30px}}body{{box-sizing:border-box;min-height:100%;display:flex;flex-direction:column;color:#fff;font-family:\"Segoe UI\",\"Helvetica Neue\",Helvetica,Arial,sans-serif;background-color:#2c2c32;margin:0;padding:15px 30px}}.message{{font-weight:300;font-size:1.4rem}}.branding{{background-image:url(data:image/png;base64,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);background-repeat:no-repeat;padding-left:26px;font-size:20px;letter-spacing:-.04rem;font-weight:400;color:#fff;background-position:left center;text-decoration:none}}</style><a class=branding href={appUrl}>{appName}</a><div class=message-container><div class=message>You are signed in now and can close this page.</div></div>"
+                                builder = builder.WithCustomWebUi(customWebUi);
+                            }
+                            if (prompt != default)
+                            {
+                                builder.WithPrompt(prompt);
+                            }
 
-                                };
-                                builder = builder.WithUseEmbeddedWebView(false);
-                                builder = builder.WithSystemWebViewOptions(options);
-                            }
-                            else
-                            {
-                                if (customWebUi != null)
-                                {
-                                    builder = builder.WithCustomWebUi(customWebUi);
-                                }
-                                if (prompt != default)
-                                {
-                                    builder.WithPrompt(prompt);
-                                }
-                            }
                             authResult = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         break;
                     }
                 case ClientContextType.AzureADCertificate:
+                case ClientContextType.UserAssignedManagedIdentityFederatedCredential:
                     {
 #pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
@@ -912,8 +985,6 @@ namespace PnP.Framework
                         }
                         catch
                         {
-                            var builder = confidentialClientApplication.AcquireTokenForClient(scopes);
-
                             authResult = await confidentialClientApplication.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         break;
@@ -997,12 +1068,10 @@ namespace PnP.Framework
         /// </summary>
         /// <param name="siteUrl"></param>
         /// <param name="cancellationToken">Optional cancellation token to cancel the request</param>
-        /// <param name="appName">Optional app name to show when using on MacOS</param>
-        /// <param name="appUrl">Optional url of app to show when using on MacOS</param>
         /// <returns></returns>
-        public ClientContext GetContext(string siteUrl, CancellationToken cancellationToken, string appName = "PnP", string appUrl = "https://pnp.github.io")
+        public ClientContext GetContext(string siteUrl, CancellationToken cancellationToken)
         {
-            return GetContextAsync(siteUrl, cancellationToken, appName, appUrl).GetAwaiter().GetResult();
+            return GetContextAsync(siteUrl, cancellationToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1065,24 +1134,12 @@ namespace PnP.Framework
                         catch
                         {
                             var builder = publicClientApplication.AcquireTokenInteractive(scopes);
-                            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                            {
-                                var options = new SystemWebViewOptions()
-                                {
-                                    HtmlMessageError = "<p style=\"font-family: sans-serif; font-weight: bold; color: red\">An error occurred:</p><p style=\"color: black\">{0}. Details {1}</p>",
-                                    HtmlMessageSuccess = $"<html lang=en><meta charset=utf-8><title>{appName} - Sign In</title><meta content=\"width=device-width,initial-scale=1\"name=viewport><style>html{{height:100%}}.message-container{{flex-grow:1;display:flex;align-items:center;justify-content:center;margin:0 30px}}body{{box-sizing:border-box;min-height:100%;display:flex;flex-direction:column;color:#fff;font-family:\"Segoe UI\",\"Helvetica Neue\",Helvetica,Arial,sans-serif;background-color:#2c2c32;margin:0;padding:15px 30px}}.message{{font-weight:300;font-size:1.4rem}}.branding{{background-image:url(data:image/png;base64,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);background-repeat:no-repeat;padding-left:26px;font-size:20px;letter-spacing:-.04rem;font-weight:400;color:#fff;background-position:left center;text-decoration:none}}</style><a class=branding href={appUrl}>{appName}</a><div class=message-container><div class=message>You are signed in now and can close this page.</div></div>"
-                                };
-                                builder = builder.WithUseEmbeddedWebView(false);
-                                builder = builder.WithSystemWebViewOptions(options);
-                            }
-                            else
-                            {
 
-                                if (customWebUi != null)
-                                {
-                                    builder = builder.WithCustomWebUi(customWebUi);
-                                }
+                            if (customWebUi != null)
+                            {
+                                builder = builder.WithCustomWebUi(customWebUi);
                             }
+
                             authResult = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
                         }
                         if (authResult.AccessToken != null)
@@ -1092,6 +1149,7 @@ namespace PnP.Framework
                         break;
                     }
                 case ClientContextType.AzureADCertificate:
+                case ClientContextType.UserAssignedManagedIdentityFederatedCredential:
                     {
 #pragma warning disable CS0618 // Type or member is obsolete
                         var accounts = await confidentialClientApplication.GetAccountsAsync().ConfigureAwait(false);
@@ -1299,6 +1357,7 @@ namespace PnP.Framework
                     switch (contextType)
                     {
                         case ClientContextType.AzureADCertificate:
+                        case ClientContextType.UserAssignedManagedIdentityFederatedCredential:
                             {
                                 ar = ((IConfidentialClientApplication)application).AcquireTokenForClient(scopes).ExecuteAsync().GetAwaiter().GetResult();
                                 break;

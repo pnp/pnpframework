@@ -1,8 +1,10 @@
-﻿using Microsoft.Graph;
-using PnP.Framework.Diagnostics;
+﻿using PnP.Framework.Diagnostics;
+using PnP.Framework.Graph.Model;
+using PnP.Framework.Utilities;
 using System;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace PnP.Framework.Graph
 {
@@ -13,39 +15,7 @@ namespace PnP.Framework.Graph
     {
         private const int defaultRetryCount = 10;
         private const int defaultDelay = 500;
-
-        /// <summary>
-        ///  Creates a new GraphServiceClient instance using a custom PnPHttpProvider
-        /// </summary>
-        /// <param name="accessToken">The OAuth 2.0 Access Token to configure the HTTP bearer Authorization Header</param>
-        /// <param name="retryCount">Number of times to retry the request in case of throttling</param>
-        /// <param name="delay">Milliseconds to wait before retrying the request.</param>
-        /// <param name="azureEnvironment">Defines the Azure Cloud deployment to use.</param>
-        /// <param name="useBetaEndPoint">Indicates if the v1.0 (false) or beta (true) endpoint should be used at Microsoft Graph</param>
-        /// <returns></returns>
-#pragma warning disable CA2000
-        public static GraphServiceClient CreateGraphClient(string accessToken, int retryCount = defaultRetryCount, int delay = defaultDelay, AzureEnvironment azureEnvironment = AzureEnvironment.Production, bool useBetaEndPoint = false)
-        {
-            var baseUrl = $"https://{AuthenticationManager.GetGraphEndPoint(azureEnvironment)}/{(useBetaEndPoint ? "beta" : "v1.0")}";
-            // Creates a new GraphServiceClient instance using a custom PnPHttpProvider
-            // which natively supports retry logic for throttled requests
-            // Default are 10 retries with a base delay of 500ms
-            var result = new GraphServiceClient(baseUrl, new DelegateAuthenticationProvider(
-                        async (requestMessage) =>
-                        {
-                            await Task.Run(() =>
-                            {
-                                if (!string.IsNullOrEmpty(accessToken))
-                                {
-                                    // Configure the HTTP bearer Authorization Header
-                                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
-                                }
-                            });
-                        }), new PnPHttpProvider(retryCount, delay));
-
-            return (result);
-        }
-#pragma warning restore CA2000
+        public static JsonSerializerOptions CaseInsensitiveJsonOptions { get; } = new JsonSerializerOptions { PropertyNameCaseInsensitive = true, };
 
         /// <summary>
         /// This method sends an Azure guest user invitation to the provided email address.
@@ -57,13 +27,11 @@ namespace PnP.Framework.Graph
         /// <param name="guestUserDisplayName">Display name of the Guest user.</param>
         /// <param name="azureEnvironment">Defines the Azure Cloud Deployment. This is used to determine the MS Graph EndPoint to call which differs per Azure Cloud deployments. Defaults to Production (graph.microsoft.com).</param>
         /// <returns></returns>
-        public static Invitation InviteGuestUser(string accessToken, string guestUserEmail, string redirectUri, string customizedMessage = "", string guestUserDisplayName = "", AzureEnvironment azureEnvironment = AzureEnvironment.Production)
+        public static Invite InviteGuestUser(string accessToken, string guestUserEmail, string redirectUri, string customizedMessage = "", string guestUserDisplayName = "", AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            Invitation inviteUserResponse = null;
-
             try
             {
-                Invitation invite = new Invitation
+                var invite = new Invite
                 {
                     InvitedUserEmailAddress = guestUserEmail
                 };
@@ -77,23 +45,42 @@ namespace PnP.Framework.Graph
                 // Form the invite email message body
                 if (!string.IsNullOrWhiteSpace(customizedMessage))
                 {
-                    InvitedUserMessageInfo inviteMsgInfo = new InvitedUserMessageInfo
+                    var inviteMsgInfo = new Model.InvitedUserMessageInfo
                     {
                         CustomizedMessageBody = customizedMessage
                     };
                     invite.InvitedUserMessageInfo = inviteMsgInfo;
                 }
 
-                // Create the graph client and send the invitation.
-                GraphServiceClient graphClient = CreateGraphClient(accessToken, azureEnvironment: azureEnvironment);
-                inviteUserResponse = graphClient.Invitations.Request().AddAsync(invite).Result;
+                var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}invitations";
+                var responseAsString = HttpHelper.MakePostRequestForString(requestUrl, accessToken);
+                return JsonSerializer.Deserialize<Invite>(responseAsString);
             }
-            catch (ServiceException ex)
+            catch (HttpResponseException ex)
             {
-                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Error.Message);
+                Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-            return inviteUserResponse;
+        }
+
+        public static IEnumerable<T> ReadPagedDataFromRequest<T>(string requestUrl, string accessToken, int retryCount, int delay, Func<JsonNode, T[]> customDeserialise = null)
+        {
+            while (requestUrl != null) {
+                var responseData = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+
+                var jsonNode = JsonNode.Parse(responseData);
+                JsonNode valueNode = jsonNode["value"];
+                var results = customDeserialise == null
+                    ? valueNode.Deserialize<T[]>(CaseInsensitiveJsonOptions)
+                    : customDeserialise(valueNode);
+
+                foreach (var r in results)
+                {
+                    yield return r;
+                }
+
+                requestUrl = jsonNode["@odata.nextLink"]?.ToString();
+            };
         }
     }
 }

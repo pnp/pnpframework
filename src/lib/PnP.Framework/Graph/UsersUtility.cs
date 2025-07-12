@@ -5,8 +5,8 @@ using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json.Nodes;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace PnP.Framework.Graph
 {
@@ -92,19 +92,21 @@ namespace PnP.Framework.Graph
             }
             // Rewrite AdditionalProperties to Additional Data
             var propertiesToSelect = ignoreDefaultProperties ? new List<string>() : new List<string> { "BusinessPhones", "DisplayName", "GivenName", "JobTitle", "Mail", "MobilePhone", "OfficeLocation", "PreferredLanguage", "Surname", "UserPrincipalName", "Id", "AccountEnabled" };
-            
+
             selectProperties = selectProperties?.Select(p => p == "AdditionalProperties" ? "AdditionalData" : p).ToArray();
-            
-            if(selectProperties != null)
+
+            if (selectProperties != null)
             {
-                foreach(var property in selectProperties)
+                foreach (var property in selectProperties)
                 {
-                    if(!propertiesToSelect.Contains(property))
+                    if (!propertiesToSelect.Contains(property))
                     {
                         propertiesToSelect.Add(property);
                     }
                 }
             }
+
+            Dictionary<string, string> additionalHeaders = null;
 
             try
             {
@@ -120,13 +122,19 @@ namespace PnP.Framework.Graph
                 if (!string.IsNullOrEmpty(filter))
                 {
                     queryStringParams.Add($"$filter={filter}");
+
+                    additionalHeaders = new Dictionary<string, string>
+                    {
+                        { "ConsistencyLevel", "eventual" }
+                    };
+
                 }
                 if (!string.IsNullOrEmpty(orderby))
                 {
                     queryStringParams.Add($"orderby={orderby}");
                 }
                 requestUrl += $"?{string.Join("&", queryStringParams)}";
-                IEnumerable<Model.User> users = GraphUtility.ReadPagedDataFromRequest<Model.User>(requestUrl, accessToken, retryCount: retryCount, delay: delay)
+                IEnumerable<Model.User> users = GraphUtility.ReadPagedDataFromRequest<Model.User>(requestUrl, accessToken, retryCount: retryCount, delay: delay, requestHeaders: additionalHeaders)
                                     .Skip(startIndex);
                 if (endIndex.HasValue)
                 {
@@ -181,6 +189,8 @@ namespace PnP.Framework.Graph
             }
             List<Model.User> users = new List<Model.User>();
 
+            Dictionary<string, string> additionalHeaders = null;
+
             var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users";
             var queryStringParams = new List<string>()
                 {
@@ -194,6 +204,12 @@ namespace PnP.Framework.Graph
             if (!string.IsNullOrEmpty(filter))
             {
                 queryStringParams.Add($"$filter={filter}");
+
+                additionalHeaders = new Dictionary<string, string>
+                    {
+                        { "ConsistencyLevel", "eventual" }
+                    };
+
             }
             if (!string.IsNullOrEmpty(orderby))
             {
@@ -210,7 +226,7 @@ namespace PnP.Framework.Graph
 
                 while (requestUrl != null)
                 {
-                    var responseData = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+                    var responseData = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay, requestHeaders: additionalHeaders);
 
                     var jsonNode = JsonNode.Parse(responseData);
                     JsonNode valueNode = jsonNode["value"];
@@ -274,20 +290,20 @@ namespace PnP.Framework.Graph
             }
             // Rewrite AdditionalProperties to Additional Data
             var propertiesToSelect = ignoreDefaultProperties ? new List<string>() : new List<string> { "BusinessPhones", "DisplayName", "GivenName", "JobTitle", "Mail", "MobilePhone", "OfficeLocation", "PreferredLanguage", "Surname", "UserPrincipalName", "Id", "AccountEnabled", "DeletedDateTime" };
-            
+
             selectProperties = selectProperties?.Select(p => p == "AdditionalProperties" ? "AdditionalData" : p).ToArray();
-            
-            if(selectProperties != null)
+
+            if (selectProperties != null)
             {
-                foreach(var property in selectProperties)
+                foreach (var property in selectProperties)
                 {
-                    if(!propertiesToSelect.Contains(property))
+                    if (!propertiesToSelect.Contains(property))
                     {
                         propertiesToSelect.Add(property);
                     }
                 }
             }
-            
+
             try
             {
                 List<Model.User> users = new List<Model.User>();
@@ -295,7 +311,7 @@ namespace PnP.Framework.Graph
                 if (propertiesToSelect.Count > 0)
                 {
                     requestUrl += $"?$select={string.Join(",", propertiesToSelect)}";
-                } 
+                }
 
                 var responseAsString = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
 
@@ -338,7 +354,7 @@ namespace PnP.Framework.Graph
             if (String.IsNullOrEmpty(userId))
             {
                 throw new ArgumentNullException(nameof(userId));
-            }            
+            }
 
             // Build the request body for the access pass
             var temporaryAccessPassAuthenticationMethod = new Model.TemporaryAccessPassRequest
@@ -367,6 +383,6 @@ namespace PnP.Framework.Graph
                 Log.Error(Constants.LOGGING_SOURCE, CoreResources.GraphExtensions_ErrorOccured, ex.Message);
                 throw;
             }
-        }        
+        }
     }
 }

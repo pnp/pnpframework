@@ -63,10 +63,11 @@ namespace PnP.Framework.Graph
             }
         }
 
-        public static IEnumerable<T> ReadPagedDataFromRequest<T>(string requestUrl, string accessToken, int retryCount, int delay, Func<JsonNode, T[]> customDeserialise = null)
+        public static IEnumerable<T> ReadPagedDataFromRequest<T>(string requestUrl, string accessToken, int retryCount, int delay, Func<JsonNode, T[]> customDeserialise = null, Dictionary<string, string> requestHeaders = null)
         {
-            while (requestUrl != null) {
-                var responseData = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay);
+            while (requestUrl != null)
+            {
+                var responseData = HttpHelper.MakeGetRequestForString(requestUrl, accessToken, retryCount: retryCount, delay: delay, requestHeaders: requestHeaders);
 
                 var jsonNode = JsonNode.Parse(responseData);
                 JsonNode valueNode = jsonNode["value"];
@@ -80,7 +81,8 @@ namespace PnP.Framework.Graph
                 }
 
                 requestUrl = jsonNode["@odata.nextLink"]?.ToString();
-            };
+            }
+            ;
         }
     }
 }

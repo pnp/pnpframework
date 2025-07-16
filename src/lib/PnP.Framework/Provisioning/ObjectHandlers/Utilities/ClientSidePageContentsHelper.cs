@@ -1,5 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
+using PnP.Core.Model.SharePoint;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
@@ -257,6 +258,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                             case PnPCore.CanvasSectionTemplate.ThreeColumnVerticalSection:
                                 sectionInstance.Type = CanvasSectionType.ThreeColumnVerticalSection;
                                 break;
+                            case PnPCore.CanvasSectionTemplate.FlexibleLayoutSection:
+                                //XML Schema does not support FlexibleLayoutSection, so we need to fallback to OneColumn, during loading the page we have to restore from JsonControlData (sectionFactor=100)
+                                sectionInstance.Type = CanvasSectionType.OneColumn;
+                                break;
+                            case PnPCore.CanvasSectionTemplate.FlexibleLayoutVerticalSection:
+                                //XML Schema does not support FlexibleLayoutVerticalSection, so we need to fallback to OneColumnVerticalSection, during loading the page we have to restore from JsonControlData (sectionFactor=100)
+                                sectionInstance.Type = CanvasSectionType.OneColumnVerticalSection;
+                                break;
                             default:
                                 sectionInstance.Type = CanvasSectionType.OneColumn;
                                 break;
@@ -280,7 +289,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 if (control is PnPCore.IPageText)
                                 {
                                     controlInstance.Type = WebPartType.Text;
-
+                                    (control as PnPCore.IPageText).BuildControlData((control as PnPCore.IPageText)?.Order ?? 0);
+                                    controlInstance.JsonControlData = (control as PnPCore.IPageText).JsonControlData;
                                     // Set text content
                                     controlInstance.ControlProperties = new System.Collections.Generic.Dictionary<string, string>(1)
                                         {
@@ -288,111 +298,124 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                             { "Text", TokenizeJsonTextData(web, (control as PnPCore.IPageText).Text) }
                                         };
                                 }
-                                else
+                                else if (control is PnPCore.IEmptySection)
+                                {
+                                    (control as PnPCore.IEmptySection).BuildControlData(0);
+                                    controlInstance.JsonControlData = (control as PnPCore.IEmptySection).JsonControlData;
+                                    controlInstance.Type = WebPartType.Custom;
+                                }
+                                else if (control is PnPCore.IPageWebPart)
                                 {
                                     // set ControlId to webpart id
-                                    //controlInstance.ControlId = Guid.Parse((control as Pages.ClientSideWebPart).WebPartId);
-                                    controlInstance.ControlId = Guid.Parse((control as PnPCore.IPageWebPart).WebPartId);
-                                    //var webPartType = Pages.ClientSidePage.NameToClientSideWebPartEnum((control as Pages.ClientSideWebPart).WebPartId);
-                                    var webPartType = pageToExtract.WebPartIdToDefaultWebPart((control as PnPCore.IPageWebPart).WebPartId);
-                                    switch (webPartType)
+                                    //SectionBackgroundControl has no WebPartId, so we cannot set the ControlId
+                                    if (Guid.TryParse((control as PnPCore.IPageWebPart).WebPartId, out Guid webPartId))
                                     {
-                                        case PnPCore.DefaultWebPart.ContentRollup:
-                                            controlInstance.Type = WebPartType.ContentRollup;
-                                            break;
-                                        case PnPCore.DefaultWebPart.BingMap:
-                                            controlInstance.Type = WebPartType.BingMap;
-                                            break;
-                                        case PnPCore.DefaultWebPart.Button:
-                                            controlInstance.Type = WebPartType.Button;
-                                            break;
-                                        case PnPCore.DefaultWebPart.CallToAction:
-                                            controlInstance.Type = WebPartType.CallToAction;
-                                            break;
-                                        case PnPCore.DefaultWebPart.News:
-                                            controlInstance.Type = WebPartType.News;
-                                            break;
-                                        case PnPCore.DefaultWebPart.PowerBIReportEmbed:
-                                            controlInstance.Type = WebPartType.PowerBIReportEmbed;
-                                            break;
-                                        case PnPCore.DefaultWebPart.Sites:
-                                            controlInstance.Type = WebPartType.Sites;
-                                            break;
-                                        case PnPCore.DefaultWebPart.GroupCalendar:
-                                            controlInstance.Type = WebPartType.GroupCalendar;
-                                            break;
-                                        case PnPCore.DefaultWebPart.MicrosoftForms:
-                                            controlInstance.Type = WebPartType.MicrosoftForms;
-                                            break;
-                                        case PnPCore.DefaultWebPart.ClientWebPart:
-                                            controlInstance.Type = WebPartType.ClientWebPart;
-                                            break;
-                                        case PnPCore.DefaultWebPart.ContentEmbed:
-                                            controlInstance.Type = WebPartType.ContentEmbed;
-                                            break;
-                                        case PnPCore.DefaultWebPart.DocumentEmbed:
-                                            controlInstance.Type = WebPartType.DocumentEmbed;
-                                            break;
-                                        case PnPCore.DefaultWebPart.Image:
-                                            controlInstance.Type = WebPartType.Image;
-                                            break;
-                                        case PnPCore.DefaultWebPart.ImageGallery:
-                                            controlInstance.Type = WebPartType.ImageGallery;
-                                            break;
-                                        case PnPCore.DefaultWebPart.LinkPreview:
-                                            controlInstance.Type = WebPartType.LinkPreview;
-                                            break;
-                                        case PnPCore.DefaultWebPart.NewsFeed:
-                                            controlInstance.Type = WebPartType.NewsFeed;
-                                            break;
-                                        case PnPCore.DefaultWebPart.NewsReel:
-                                            controlInstance.Type = WebPartType.NewsReel;
-                                            break;
-                                        case PnPCore.DefaultWebPart.QuickChart:
-                                            controlInstance.Type = WebPartType.QuickChart;
-                                            break;
-                                        case PnPCore.DefaultWebPart.SiteActivity:
-                                            controlInstance.Type = WebPartType.SiteActivity;
-                                            break;
-                                        case PnPCore.DefaultWebPart.VideoEmbed:
-                                            controlInstance.Type = WebPartType.VideoEmbed;
-                                            break;
-                                        case PnPCore.DefaultWebPart.YammerEmbed:
-                                            controlInstance.Type = WebPartType.YammerEmbed;
-                                            break;
-                                        case PnPCore.DefaultWebPart.Events:
-                                            controlInstance.Type = WebPartType.Events;
-                                            break;
-                                        case PnPCore.DefaultWebPart.Hero:
-                                            controlInstance.Type = WebPartType.Hero;
-                                            break;
-                                        case PnPCore.DefaultWebPart.List:
-                                            controlInstance.Type = WebPartType.List;
-                                            break;
-                                        case PnPCore.DefaultWebPart.PageTitle:
-                                            controlInstance.Type = WebPartType.PageTitle;
-                                            break;
-                                        case PnPCore.DefaultWebPart.People:
-                                            controlInstance.Type = WebPartType.People;
-                                            break;
-                                        case PnPCore.DefaultWebPart.QuickLinks:
-                                            controlInstance.Type = WebPartType.QuickLinks;
-                                            break;
-                                        case PnPCore.DefaultWebPart.CustomMessageRegion:
-                                            controlInstance.Type = WebPartType.CustomMessageRegion;
-                                            break;
-                                        case PnPCore.DefaultWebPart.Divider:
-                                            controlInstance.Type = WebPartType.Divider;
-                                            break;
-                                        case PnPCore.DefaultWebPart.Spacer:
-                                            controlInstance.Type = WebPartType.Spacer;
-                                            break;
-                                        case PnPCore.DefaultWebPart.ThirdParty:
-                                            controlInstance.Type = WebPartType.Custom;
-                                            break;
-                                        default:
-                                            controlInstance.Type = WebPartType.Custom;
-                                            break;
+                                        controlInstance.ControlId = webPartId;
+                                        var webPartType = pageToExtract.WebPartIdToDefaultWebPart(webPartId.ToString());
+                                        switch (webPartType)
+                                        {
+                                            case PnPCore.DefaultWebPart.ContentRollup:
+                                                controlInstance.Type = WebPartType.ContentRollup;
+                                                break;
+                                            case PnPCore.DefaultWebPart.BingMap:
+                                                controlInstance.Type = WebPartType.BingMap;
+                                                break;
+                                            case PnPCore.DefaultWebPart.Button:
+                                                controlInstance.Type = WebPartType.Button;
+                                                break;
+                                            case PnPCore.DefaultWebPart.CallToAction:
+                                                controlInstance.Type = WebPartType.CallToAction;
+                                                break;
+                                            case PnPCore.DefaultWebPart.News:
+                                                controlInstance.Type = WebPartType.News;
+                                                break;
+                                            case PnPCore.DefaultWebPart.PowerBIReportEmbed:
+                                                controlInstance.Type = WebPartType.PowerBIReportEmbed;
+                                                break;
+                                            case PnPCore.DefaultWebPart.Sites:
+                                                controlInstance.Type = WebPartType.Sites;
+                                                break;
+                                            case PnPCore.DefaultWebPart.GroupCalendar:
+                                                controlInstance.Type = WebPartType.GroupCalendar;
+                                                break;
+                                            case PnPCore.DefaultWebPart.MicrosoftForms:
+                                                controlInstance.Type = WebPartType.MicrosoftForms;
+                                                break;
+                                            case PnPCore.DefaultWebPart.ClientWebPart:
+                                                controlInstance.Type = WebPartType.ClientWebPart;
+                                                break;
+                                            case PnPCore.DefaultWebPart.ContentEmbed:
+                                                controlInstance.Type = WebPartType.ContentEmbed;
+                                                break;
+                                            case PnPCore.DefaultWebPart.DocumentEmbed:
+                                                controlInstance.Type = WebPartType.DocumentEmbed;
+                                                break;
+                                            case PnPCore.DefaultWebPart.Image:
+                                                controlInstance.Type = WebPartType.Image;
+                                                break;
+                                            case PnPCore.DefaultWebPart.ImageGallery:
+                                                controlInstance.Type = WebPartType.ImageGallery;
+                                                break;
+                                            case PnPCore.DefaultWebPart.LinkPreview:
+                                                controlInstance.Type = WebPartType.LinkPreview;
+                                                break;
+                                            case PnPCore.DefaultWebPart.NewsFeed:
+                                                controlInstance.Type = WebPartType.NewsFeed;
+                                                break;
+                                            case PnPCore.DefaultWebPart.NewsReel:
+                                                controlInstance.Type = WebPartType.NewsReel;
+                                                break;
+                                            case PnPCore.DefaultWebPart.QuickChart:
+                                                controlInstance.Type = WebPartType.QuickChart;
+                                                break;
+                                            case PnPCore.DefaultWebPart.SiteActivity:
+                                                controlInstance.Type = WebPartType.SiteActivity;
+                                                break;
+                                            case PnPCore.DefaultWebPart.VideoEmbed:
+                                                controlInstance.Type = WebPartType.VideoEmbed;
+                                                break;
+                                            case PnPCore.DefaultWebPart.YammerEmbed:
+                                                controlInstance.Type = WebPartType.YammerEmbed;
+                                                break;
+                                            case PnPCore.DefaultWebPart.Events:
+                                                controlInstance.Type = WebPartType.Events;
+                                                break;
+                                            case PnPCore.DefaultWebPart.Hero:
+                                                controlInstance.Type = WebPartType.Hero;
+                                                break;
+                                            case PnPCore.DefaultWebPart.List:
+                                                controlInstance.Type = WebPartType.List;
+                                                break;
+                                            case PnPCore.DefaultWebPart.PageTitle:
+                                                controlInstance.Type = WebPartType.PageTitle;
+                                                break;
+                                            case PnPCore.DefaultWebPart.People:
+                                                controlInstance.Type = WebPartType.People;
+                                                break;
+                                            case PnPCore.DefaultWebPart.QuickLinks:
+                                                controlInstance.Type = WebPartType.QuickLinks;
+                                                break;
+                                            case PnPCore.DefaultWebPart.CustomMessageRegion:
+                                                controlInstance.Type = WebPartType.CustomMessageRegion;
+                                                break;
+                                            case PnPCore.DefaultWebPart.Divider:
+                                                controlInstance.Type = WebPartType.Divider;
+                                                break;
+                                            case PnPCore.DefaultWebPart.Spacer:
+                                                controlInstance.Type = WebPartType.Spacer;
+                                                break;
+                                            case PnPCore.DefaultWebPart.ThirdParty:
+                                                controlInstance.Type = WebPartType.Custom;
+                                                break;
+                                            default:
+                                                controlInstance.Type = WebPartType.Custom;
+                                                break;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // If the WebPartId is not a valid Guid, we cannot set the ControlId // CoreResources.Provisioning_ObjectHandlers_ClientSidePageContents_InvalidWebPartId
+                                        scope.LogWarning("Has no valid Guid", (control as PnPCore.IPageWebPart).WebPartId);
                                     }
                                     if (excludeAuthorInformation)
                                     {
@@ -414,36 +437,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                         //    (control as PnPCore.IPageWebPart).PropertiesJson = properties.ToString();
                                         //}
                                     }
-                                    string jsonControlData = "\"id\": \"" + (control as PnPCore.IPageWebPart).WebPartId + "\", \"instanceId\": \"" + (control as PnPCore.IPageWebPart).InstanceId + "\", \"title\": " + JsonConvert.ToString((control as PnPCore.IPageWebPart).Title) + ", \"description\": " + JsonConvert.ToString((control as PnPCore.IPageWebPart).Description) + ", \"dataVersion\": \"" + (control as PnPCore.IPageWebPart).DataVersion + "\", \"properties\": " + (control as PnPCore.IPageWebPart).PropertiesJson + "";
 
-                                    // set the control properties
-                                    if (!(control as PnPCore.IPageWebPart).ServerProcessedContent.Equals(default))
-                                    {
-                                        // If we have serverProcessedContent then also export that one, it's important as some controls depend on this information to be present
-                                        string serverProcessedContent = (control as PnPCore.IPageWebPart).ServerProcessedContent.ToString();
-                                        jsonControlData = jsonControlData + ", \"serverProcessedContent\": " + serverProcessedContent + "";
-                                    }
-
-                                    if (!(control as PnPCore.IPageWebPart).DynamicDataPaths.Equals(default))
-                                    {
-                                        // If we have serverProcessedContent then also export that one, it's important as some controls depend on this information to be present
-                                        string dynamicDataPaths = (control as PnPCore.IPageWebPart).DynamicDataPaths.ToString();
-                                        jsonControlData = jsonControlData + ", \"dynamicDataPaths\": " + dynamicDataPaths + "";
-                                    }
-
-                                    if (!(control as PnPCore.IPageWebPart).DynamicDataValues.Equals(default))
-                                    {
-                                        // If we have serverProcessedContent then also export that one, it's important as some controls depend on this information to be present
-                                        string dynamicDataValues = (control as PnPCore.IPageWebPart).DynamicDataValues.ToString();
-                                        jsonControlData = jsonControlData + ", \"dynamicDataValues\": " + dynamicDataValues + "";
-                                    }
-
-                                    controlInstance.JsonControlData = "{" + jsonControlData + "}";
-
+                                    (control as PnPCore.IPageWebPart).BuildControlData((control as PnPCore.IPageWebPart)?.Order ?? 0);
+                                    controlInstance.JsonControlData = (control as PnPCore.IPageWebPart).JsonControlData;
                                     var untokenizedJsonControlData = controlInstance.JsonControlData;
                                     // Tokenize the JsonControlData
                                     controlInstance.JsonControlData = TokenizeJsonControlData(web, controlInstance.JsonControlData);
                                     TokenizeBeforeExport(web, template, creationInfo, scope, errorneousOrNonImageFileGuids, regexGuidPattern, regexGuidPatternEncoded, regexGuidPatternOptionalBrackets, regexSiteAssetUrls, controlInstance, untokenizedJsonControlData);
+                                }
+                                else
+                                {
+                                    // Unknown control type, set as custom
+                                    controlInstance.Type = WebPartType.Custom;
+                                    controlInstance.JsonControlData = "{}";
                                 }
                                 // add control to section
                                 sectionInstance.Controls.Add(controlInstance);

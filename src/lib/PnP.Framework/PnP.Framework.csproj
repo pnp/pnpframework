@@ -244,7 +244,6 @@
 		<PackageReference Include="AngleSharp.Css" Version="0.17.0" />
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="PnP.Core" Version="1.15.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
 		<PackageReference Include="Portable.Xaml" Version="0.26.0" />
 	</ItemGroup>
 
@@ -282,6 +281,10 @@
 	<ItemGroup>
 	  <Folder Include="Provisioning\Providers\Xml\Resolvers\V202209\" />
 	  <Folder Include="Provisioning\Providers\Xml\Serializers\V202209\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\pnpcore\src\sdk\PnP.Core\PnP.Core.csproj" />
 	</ItemGroup>
 
 </Project>

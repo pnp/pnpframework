@@ -418,6 +418,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             page.PageHeader.AuthorByLineId = clientSidePage.Header.AuthorByLineId;
                             break;
                         }
+                    case ClientSidePageHeaderType.PageTitleWebPart:
+                        {
+                            break;
+                        }
                 }
             }
 
@@ -483,6 +487,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             break;
                         case CanvasSectionType.ThreeColumnVerticalSection:
                             page.AddSection(PnPCore.CanvasSectionTemplate.ThreeColumnVerticalSection, section.Order, (int)section.BackgroundEmphasis, (int)section.VerticalSectionEmphasis);
+                            break;
+                        case CanvasSectionType.FlexibleLayoutSection:
+                            page.AddSection(PnPCore.CanvasSectionTemplate.FlexibleLayoutSection, section.Order, (int)section.BackgroundEmphasis, (int)section.VerticalSectionEmphasis);
+                            break;
+                        case CanvasSectionType.FlexibleLayoutVerticalSection:
+                            page.AddSection(PnPCore.CanvasSectionTemplate.FlexibleLayoutVerticalSection, section.Order, (int)section.BackgroundEmphasis, (int)section.VerticalSectionEmphasis);
                             break;
                         default:
                             page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, section.Order, (int)section.BackgroundEmphasis);

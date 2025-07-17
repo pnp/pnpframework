@@ -1,6 +1,5 @@
 ﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
-using PnP.Core.Model.SharePoint;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
@@ -10,7 +9,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 using PnPCore = PnP.Core.Model.SharePoint;
 
 
@@ -217,7 +215,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         {
                             Order = section.Order,
                             BackgroundEmphasis = (Emphasis)section.ZoneEmphasis,
+                            Collapsible = section.Collapsible,
+                            IsExpanded = section.IsExpanded,
+                            ShowDividerLine = section.ShowDividerLine,
+                            DisplayName = section.DisplayName,
                         };
+                        if(section.IconAlignment != null)
+                        {
+                            sectionInstance.IconAlignment = (Model.IconAlignment)section.IconAlignment;
+                        }
                         if (section.VerticalSectionColumn != null)
                         {
                             sectionInstance.VerticalSectionEmphasis = (Emphasis)section.VerticalSectionColumn.VerticalSectionEmphasis;

@@ -78,12 +78,9 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                     {
                         foreach (var section in page.Sections.Where(s=>s.Type == CanvasSectionType.OneColumn || s.Type == CanvasSectionType.OneColumnVerticalSection))
                         {
-                            if (section.Controls != null && section.Controls.Any(c=>!string.IsNullOrWhiteSpace(c.JsonControlData) && c.JsonControlData.Contains("\"sectionFactor\":100")))
+                            if (section.Controls != null && section.Controls.Any(c => !string.IsNullOrWhiteSpace(c.JsonControlData) && c.JsonControlData.Contains("\"sectionFactor\":100")))
                             {
-                                if(section.Type == CanvasSectionType.OneColumn)
-                                    section.Type= CanvasSectionType.FlexibleLayoutSection;
-                                else if (section.Type == CanvasSectionType.OneColumnVerticalSection)
-                                    section.Type = CanvasSectionType.FlexibleLayoutVerticalSection; 
+                                section.Type = section.Type == CanvasSectionType.OneColumn ? CanvasSectionType.FlexibleLayoutSection : CanvasSectionType.FlexibleLayoutVerticalSection;
                             }
                         }
                     }

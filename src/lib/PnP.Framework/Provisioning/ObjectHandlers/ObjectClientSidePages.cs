@@ -382,6 +382,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             page.RemovePageHeader();
                             break;
                         }
+                    case ClientSidePageHeaderType.PageTitleWebPart:
                     case ClientSidePageHeaderType.Default:
                         {
                             //Message ID: MC791596 / Roadmap ID: 386904 =>based on #1058 the PageTitle WebPart is not always in first section and section can be of any type as it seems
@@ -416,10 +417,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             page.PageHeader.Authors = clientSidePage.Header.Authors;
                             page.PageHeader.AuthorByLine = clientSidePage.Header.AuthorByLine;
                             page.PageHeader.AuthorByLineId = clientSidePage.Header.AuthorByLineId;
-                            break;
-                        }
-                    case ClientSidePageHeaderType.PageTitleWebPart:
-                        {
                             break;
                         }
                 }
@@ -529,11 +526,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             if (control.Type == WebPartType.Text)
                             {
                                 var textControl = page.NewTextPart();
-
+                                PnPCore.ControlFlexLayoutPosition controlFlexLayoutPosition = null;
+                                
                                 if (control.ControlProperties.Any())
                                 {
                                     var textProperty = control.ControlProperties.First();
                                     textControl.Text = parser.ParseString(textProperty.Value);
+                                    if ((section.Type == CanvasSectionType.FlexibleLayoutSection || section.Type == CanvasSectionType.FlexibleLayoutVerticalSection) && !string.IsNullOrEmpty(control.JsonControlData))
+                                    {
+                                        var json = JsonConvert.DeserializeObject<JObject>(control.JsonControlData);
+                                        controlFlexLayoutPosition = GetControlFlexLayoutPosition(json);
+                                        page.Sections[sectionCount].Columns[control.Column - 1].ZoneReflowStrategy = GetZoneReflowStrategy(json);
+                                    }
                                 }
                                 else
                                 {
@@ -548,7 +552,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     }
                                 }
                                 // Reduce column number by 1 due 0 start indexing
-                                page.AddControl(textControl, page.Sections[sectionCount].Columns[control.Column - 1], control.Order);
+                                page.AddControl(textControl, page.Sections[sectionCount].Columns[control.Column - 1], control.Order, controlFlexLayoutPosition);
 
                             }
                             // It is a web part
@@ -732,6 +736,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     //    Order = control.Order
                                     //};
 
+                                    PnPCore.ControlFlexLayoutPosition controlFlexLayoutPosition = null;
+
                                     if (!string.IsNullOrEmpty(control.JsonControlData))
                                     {
                                         var json = JsonConvert.DeserializeObject<JObject>(control.JsonControlData);
@@ -750,10 +756,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                         {
                                             myWebPart.Description = parser.ParseString(json["description"].Value<string>());
                                         }
+
+                                        if (section.Type == CanvasSectionType.FlexibleLayoutSection || section.Type == CanvasSectionType.FlexibleLayoutVerticalSection)
+                                        {
+                                            controlFlexLayoutPosition = GetControlFlexLayoutPosition(json);
+                                            page.Sections[sectionCount].Columns[control.Column - 1].ZoneReflowStrategy = GetZoneReflowStrategy(json);
+                                        }
                                     }
 
                                     // Reduce column number by 1 due 0 start indexing
-                                    page.AddControl(myWebPart, page.Sections[sectionCount].Columns[control.Column - 1], control.Order);
+                                    page.AddControl(myWebPart, page.Sections[sectionCount].Columns[control.Column - 1], control.Order, controlFlexLayoutPosition);
 
                                     // set properties using json string
                                     if (!string.IsNullOrEmpty(control.JsonControlData))
@@ -803,8 +815,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                                     PnPCore.IPageWebPart myWebPart = page.NewWebPart();
                                     myWebPart.Order = control.Order;
-                                    
 
+                                    PnPCore.ControlFlexLayoutPosition controlFlexLayoutPosition = null;
                                     if (!string.IsNullOrEmpty(control.JsonControlData))
                                     {
                                         var json = JsonConvert.DeserializeObject<JObject>(control.JsonControlData);
@@ -836,10 +848,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                                 }
                                             }
                                         }
+
+                                        if (section.Type == CanvasSectionType.FlexibleLayoutSection || section.Type == CanvasSectionType.FlexibleLayoutVerticalSection)
+                                        {
+                                            controlFlexLayoutPosition = GetControlFlexLayoutPosition(json);
+                                            page.Sections[sectionCount].Columns[control.Column - 1].ZoneReflowStrategy = GetZoneReflowStrategy(json);
+                                        }
                                     }
 
                                     // Reduce column number by 1 due 0 start indexing
-                                    page.AddControl(myWebPart, page.Sections[sectionCount].Columns[control.Column - 1], control.Order);
+                                    page.AddControl(myWebPart, page.Sections[sectionCount].Columns[control.Column - 1], control.Order, controlFlexLayoutPosition);
 
                                     // set properties using json string
                                     if (!string.IsNullOrEmpty(control.JsonControlData))
@@ -1048,6 +1066,41 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 web.Context.ExecuteQueryRetry();
                 fileAfterSave.ListItemAllFields.SetSecurity(parser, clientSidePage.Security, WriteMessage);
             }
+        }
+
+        private static PnPCore.ControlFlexLayoutPosition GetControlFlexLayoutPosition(JObject json)
+        {
+            if (json["flexibleLayoutPosition"] != null && json["flexibleLayoutPosition"].Type != JTokenType.Null)
+            {
+                return new PnPCore.ControlFlexLayoutPosition
+                {
+                    XPos = json["flexibleLayoutPosition"]["lg"]["x"]?.Value<int>() ?? 0,
+                    YPos = json["flexibleLayoutPosition"]["lg"]["y"]?.Value<int>() ?? 0,
+                    Width = json["flexibleLayoutPosition"]["lg"]["w"]?.Value<int>() ?? 0,
+                    Height = json["flexibleLayoutPosition"]["lg"]["h"]?.Value<int>() ?? 0,
+                    wpGroupId = Guid.TryParse(json["flexibleLayoutPosition"]["groupId"]?.Value<string>(), out Guid wpgroupId) ? wpgroupId : null
+                };
+            }
+            return null;
+        }
+
+        private static PnPCore.ZoneReflowStrategy GetZoneReflowStrategy(JObject json)
+        {
+            if (json["zoneReflowStrategy"] != null && json["zoneReflowStrategy"].Type != JTokenType.Null)
+            {
+                if(int.TryParse(json["zoneReflowStrategy"]["axis"]?.Value<string>(), out var axis))
+                {
+                    if(axis == 0)
+                    {
+                        return PnPCore.ZoneReflowStrategy.TopToDown;
+                    }
+                    else if(axis == 1)
+                    {
+                        return PnPCore.ZoneReflowStrategy.LeftToRight;
+                    }
+                }
+            }
+            return PnPCore.ZoneReflowStrategy.TopToDown;
         }
 
         private static string DeterminePageName(TokenParser parser, BaseClientSidePage clientSidePage)

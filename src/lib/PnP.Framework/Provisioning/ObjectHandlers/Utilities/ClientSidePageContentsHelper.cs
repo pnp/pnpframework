@@ -291,7 +291,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 };
 
                                 // Set control type
-                                //if (control.Type == typeof(Pages.ClientSideText))
                                 if (control is PnPCore.IPageText)
                                 {
                                     controlInstance.Type = WebPartType.Text;
@@ -300,7 +299,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                     // Set text content
                                     controlInstance.ControlProperties = new System.Collections.Generic.Dictionary<string, string>(1)
                                         {
-                                            //{ "Text", TokenizeJsonTextData(web, (control as Pages.ClientSideText).Text) }
                                             { "Text", TokenizeJsonTextData(web, (control as PnPCore.IPageText).Text) }
                                         };
                                 }
@@ -312,8 +310,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 }
                                 else if (control is PnPCore.IPageWebPart)
                                 {
-                                    // set ControlId to webpart id
-                                    //SectionBackgroundControl has no WebPartId, so we cannot set the ControlId
+                                    // set ControlId to webpart id, SectionBackgroundControl has no WebPartId!
                                     if (Guid.TryParse((control as PnPCore.IPageWebPart).WebPartId, out Guid webPartId))
                                     {
                                         controlInstance.ControlId = webPartId;
@@ -420,8 +417,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                     }
                                     else
                                     {
-                                        // If the WebPartId is not a valid Guid, we cannot set the ControlId // CoreResources.Provisioning_ObjectHandlers_ClientSidePageContents_InvalidWebPartId
-                                        scope.LogWarning("Has no valid Guid", (control as PnPCore.IPageWebPart).WebPartId);
+                                        if((control as PnPCore.IPageWebPart).ControlType != 14)
+                                        {
+                                            scope.LogWarning("Has no valid Guid", (control as PnPCore.IPageWebPart).ControlType);
+                                        }
                                     }
                                     if (excludeAuthorInformation)
                                     {
@@ -445,10 +444,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                     }
 
                                     (control as PnPCore.IPageWebPart).BuildControlData((control as PnPCore.IPageWebPart)?.Order ?? 0);
-                                    controlInstance.JsonControlData = (control as PnPCore.IPageWebPart).JsonControlData;
-                                    var untokenizedJsonControlData = controlInstance.JsonControlData;
+                                    var untokenizedJsonControlData = MergeSettingsIntoJsonControlDataForTemplate(control as PnPCore.IPageWebPart);
+
                                     // Tokenize the JsonControlData
-                                    controlInstance.JsonControlData = TokenizeJsonControlData(web, controlInstance.JsonControlData);
+                                    controlInstance.JsonControlData = TokenizeJsonControlData(web, untokenizedJsonControlData);
                                     TokenizeBeforeExport(web, template, creationInfo, scope, errorneousOrNonImageFileGuids, regexGuidPattern, regexGuidPatternEncoded, regexGuidPatternOptionalBrackets, regexSiteAssetUrls, controlInstance, untokenizedJsonControlData);
                                 }
                                 else
@@ -582,6 +581,33 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
         }
 
         #region Helper methods
+
+        private string MergeSettingsIntoJsonControlDataForTemplate(PnPCore.IPageWebPart webPart)
+        {
+            if(!string.IsNullOrWhiteSpace(webPart.JsonControlData))
+            {
+                // If the JsonControlData is already set, we don't need to merge it with the propertiesJson
+                var json = Newtonsoft.Json.Linq.JObject.Parse(webPart.JsonControlData);
+                if (!string.IsNullOrWhiteSpace(webPart.PropertiesJson))
+                    json.Add("properties", Newtonsoft.Json.Linq.JObject.Parse(webPart.PropertiesJson));
+
+                if (!webPart.ServerProcessedContent.Equals(default))
+                    json.Add("serverProcessedContent", Newtonsoft.Json.Linq.JObject.Parse(webPart.ServerProcessedContent.ToString()));
+
+                if (!webPart.DynamicDataPaths.Equals(default))
+                    json.Add("dynamicDataPaths", Newtonsoft.Json.Linq.JObject.Parse(webPart.DynamicDataPaths.ToString()));
+
+                if (!webPart.DynamicDataValues.Equals(default))
+                    json.Add("dynamicDataValues", Newtonsoft.Json.Linq.JObject.Parse(webPart.DynamicDataValues.ToString()));
+
+                if (!webPart.DataVersion.Equals(default))
+                    json.Add("dataVersion", webPart.DataVersion.ToString());
+
+                return json.ToString(Formatting.None);
+            }
+            return null;
+        }
+
         private void TokenizeBeforeExport(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo, PnPMonitoredScope scope, List<string> errorneousOrNonImageFileGuids, Regex regexGuidPattern, Regex regexGuidPatternEncoded, Regex regexGuidPatternOptionalBrackets, Regex regexSiteAssetUrls, CanvasControl controlInstance, string untokenizedJsonControlData)
         {
             // Export relevant files if this flag is set

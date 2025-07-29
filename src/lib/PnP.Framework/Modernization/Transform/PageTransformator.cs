@@ -293,7 +293,10 @@ namespace PnP.Framework.Modernization.Transform
                         }
                     }
 
-                    LogInfo($"{targetClientContext.Web.GetUrl()}", LogStrings.Heading_Summary, LogEntrySignificance.TargetSiteUrl);
+                    if (hasTargetContext)
+                    {
+                        LogInfo($"{targetClientContext.Web.GetUrl()}", LogStrings.Heading_Summary, LogEntrySignificance.TargetSiteUrl);
+                    }
                 }
 
                 PopulateGlobalProperties(sourceClientContext, targetClientContext);

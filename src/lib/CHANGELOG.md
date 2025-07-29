@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 - Moved to version 9.0.0 of System.Text.Json for the .NET Standard build [jansenbe - Bert Jansen]
 - Removed the dependency on Microsof.Graph packages #1003 [quails4Eva]
+- Fixed exception when trowing error message in page transformation #1158 [AlanJinTS - Yihua Jin]
 
 ## [1.18.0]
 

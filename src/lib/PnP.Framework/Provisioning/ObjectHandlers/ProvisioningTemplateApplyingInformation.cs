@@ -39,6 +39,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         public ProvisioningMessagesDelegate MessagesDelegate { get; set; }
         public ProvisioningSiteProvisionedDelegate SiteProvisionedDelegate { get; set; }
 
+        public Dictionary<string, string> Parameters { get; set; }
+
         internal ApplyConfiguration ApplyConfiguration { get; set; }
         /// <summary>
         /// If true then persists template information

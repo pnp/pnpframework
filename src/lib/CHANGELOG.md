@@ -10,6 +10,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+### Changed
+
+- Moved to version 9.0.0 of System.Text.Json for the .NET Standard build [jansenbe - Bert Jansen]
+- Removed the dependency on Microsof.Graph packages #1003 [quails4Eva]
+- Fixed exception when trowing error message in page transformation #1158 [AlanJinTS - Yihua Jin]
+
+## [1.18.0]
+
+### Added
+
 - Support for .NET 9.0 [jansenbe - Bert Jansen]
 - Support for Rate-Limiting in the PnP Framework + unifiqation of the throttling implementation for all http requests made [jansenbe - Bert Jansen]
 
@@ -21,6 +31,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Removed dependecy on Microsoft.AspNetCore.StaticFiles #1088 [jansenbe - Bert Jansen]
 - PageTitle WebPart can be on any position #1102 [czullu - Christian Zuellig]
 - Replacing hard coded user information list value with instance that should resolve regardless of the language of the site #1097 [koenzomers - Koen Zomers]
+- Fix hidding underlying error when authentication using Azure ACS fails #1121 [koenzomers - Koen Zomers]
 
 ## [1.17.0]
 

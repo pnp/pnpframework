@@ -1,5 +1,6 @@
 ﻿using PnP.Framework;
 using PnP.Framework.Graph;
+using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace Microsoft.SharePoint.Client
                         {
                             classification = classificationValue
                         },
-                        contentType: "application/json",
+                        contentType: HttpHelper.JsonContentType,
                         accessToken: accessToken);
 
                     // Still update the local value to give prompt feedback to the user

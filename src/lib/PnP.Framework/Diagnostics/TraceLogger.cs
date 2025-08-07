@@ -24,7 +24,7 @@ namespace PnP.Framework.Diagnostics
 
         public void Warning(LogEntry entry)
         {
-            Trace.TraceWarning(GetLogEntry(entry, LogLevel.Information));
+            Trace.TraceWarning(GetLogEntry(entry, LogLevel.Warning));
         }
 
         private static string GetLogEntry(LogEntry entry, LogLevel level)

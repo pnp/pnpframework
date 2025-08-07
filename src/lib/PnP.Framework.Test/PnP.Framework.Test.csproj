@@ -186,7 +186,7 @@
 		<PackageReference Include="PrivateObjectExtensions" Version="1.4.0" />
 		<PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.0" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.0" />
-		<PackageReference Include="PnP.Core" Version="1.14.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
+		<PackageReference Include="PnP.Core" Version="1.15.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
 	</ItemGroup>
 
 	<ItemGroup>

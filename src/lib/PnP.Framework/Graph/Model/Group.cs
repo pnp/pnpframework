@@ -1,22 +1,48 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using PnP.Framework.Entities;
 
 namespace PnP.Framework.Graph.Model
 {
-    /// <summary>
-    /// Defines a Microsoft Graph Group
-    /// </summary>
-    public class Group
+    internal class Group
     {
+        [JsonPropertyName("id")]
+        public string GroupId { get; set; }
+        public string DisplayName { get; set; }
+        public string Description { get; set; }
+        public string MailNickname { get; set; }
         /// <summary>
-        /// True if the group is not displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. Default value is false.
+        /// Group e-mail address
         /// </summary>
-        [JsonProperty("hideFromAddressLists", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? HideFromAddressLists { get; set; }
+        public string Mail { get; set; }
+        public bool? MailEnabled { get; set; }
+        /// <summary>
+        /// Can the group be used to set permissions
+        /// </summary>
+        public bool? SecurityEnabled { get; set; }
+        public string[] GroupTypes { get; set; }
+        public string Visibility { get; set; }
+        public string Classification { get; set; }
 
-        /// <summary>
-        /// True if the group is not displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. Default value is false.
-        /// </summary>
-        [JsonProperty("hideFromOutlookClients", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? HideFromOutlookClients { get; set; }
+#pragma warning disable CA1819
+        [JsonPropertyName("owners@odata.bind")]
+        public string[] OwnersODataBind { get; set; }
+        [JsonPropertyName("members@odata.bind")]
+        public string[] MembersODataBind { get; set; }
+#pragma warning restore CA1819
+
+        public GroupEntity AsEntity()
+        {
+            return new GroupEntity()
+            {
+                Description = Description,
+                DisplayName = DisplayName,
+                GroupId = GroupId,
+                GroupTypes = GroupTypes,
+                MailNickname = MailNickname,
+                Mail = Mail,
+                MailEnabled = MailEnabled,
+                SecurityEnabled = SecurityEnabled,
+            };
+        }
     }
 }

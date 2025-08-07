@@ -267,10 +267,54 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
             var context = item.Context as ClientContext;
             var list = item.ParentList;
-            context.Web.EnsureProperty(w => w.Url);
 
-            bool isDocLib = list.EnsureProperty(l => l.BaseType) == BaseType.DocumentLibrary;
-            bool isPagesLib = list.EnsureProperty(l => l.RootFolder).Name.Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);
+            //Ensure can have unwanted sideeffects as ExecuteQuery is called..
+            if (!context.Web.IsObjectPropertyInstantiated(w => w.Url))
+            {
+                context.Web.EnsureProperty(w => w.Url);
+            }
+
+            bool isDocLib = false;  
+            bool isPagesLib = false;
+
+            if (list.IsObjectPropertyInstantiated(l => l.BaseType))
+            {
+                // If BaseType is already loaded, use it directly
+                isDocLib = list.BaseType == BaseType.DocumentLibrary;
+            }
+            else
+            {
+                // Otherwise, ensure the property is loaded
+                try
+                {
+                    isDocLib = list.EnsureProperty(l => l.BaseType) == BaseType.DocumentLibrary;
+
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(Constants.LOGGING_SOURCE, "Error while trying to get list property 'BaseType' for {0}. Error: {1}", list.Title, ex.Message);
+                    //throw;
+                }
+            }
+
+            if (list.IsObjectPropertyInstantiated(l => l.RootFolder))
+            {
+                // If BaseType is already loaded, use it directly
+                isPagesLib = list.RootFolder.Name.Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);
+            }
+            else
+            {
+                // Otherwise, ensure the property is loaded
+                try
+                {
+                    isPagesLib = list.EnsureProperty(l => l.RootFolder).Name.Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(Constants.LOGGING_SOURCE, "Error while trying to get list property 'RootFolder' for {0}. Error: {1}", list.Title, ex.Message);
+                    //throw;
+                }
+            }
 
             var clonedContext = context.Clone(context.Web.Url);
             var web = clonedContext.Web;

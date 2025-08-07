@@ -198,6 +198,14 @@ namespace PnP.Framework.Provisioning.Model
         /// Two columns, left one is 1/3, right one 2/3, and a vertical section
         /// </summary>
         TwoColumnRightVerticalSection,
+        /// <summary>
+        /// Create a section that can provides a flexible layout
+        /// </summary>
+        FlexibleLayoutSection,
+        /// <summary>
+        /// Create a section that can provides a flexible layout with one vertical section column
+        /// </summary>
+        FlexibleLayoutVerticalSection
     }
 
     /// <summary>

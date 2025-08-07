@@ -171,6 +171,10 @@ namespace PnP.Framework.Provisioning.Model
         /// The client side page has a custom header
         /// </summary>
         Custom,
+        /// <summary>
+        /// All Headersettings are in the PageTitle WebPart. PageTitle-WP in a section as OneColumnFullWith (Message ID: MC791596 / Roadmap ID: 386904)
+        /// </summary>
+        PageTitleWebPart,
     }
 
     /// <summary>

@@ -290,7 +290,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(Constants.LOGGING_SOURCE, "Error while trying to get list property 'BaseType' for {0}. Error: {1}", list.Title, ex.Message);
+                    Log.Error(Constants.LOGGING_SOURCE, "Error while trying to get list property 'BaseType' for '{0}'. Error: {1}", list.IsPropertyAvailable("Title")?list.Title:"list title not loaded", ex.Message);
                     //throw;
                 }
             }
@@ -308,7 +308,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(Constants.LOGGING_SOURCE, "Error while trying to get list property 'RootFolder' for {0}. Error: {1}", list.Title, ex.Message);
+                    Log.Error(Constants.LOGGING_SOURCE, "Error while trying to get list property 'RootFolder' for '{0}'. Error: {1}", list.IsPropertyAvailable("Title") ? list.Title : "list title not loaded", ex.Message);
                     //throw;
                 }
             }

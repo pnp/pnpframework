@@ -1043,7 +1043,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     YPos = json["flexibleLayoutPosition"]["lg"]["y"]?.Value<int>() ?? 0,
                     Width = json["flexibleLayoutPosition"]["lg"]["w"]?.Value<int>() ?? 0,
                     Height = json["flexibleLayoutPosition"]["lg"]["h"]?.Value<int>() ?? 0,
-                    wpGroupId = Guid.TryParse(json["flexibleLayoutPosition"]["groupId"]?.Value<string>(), out Guid wpgroupId) ? wpgroupId : null
+                    WpGroupId = Guid.TryParse(json["flexibleLayoutPosition"]["groupId"]?.Value<string>(), out Guid wpgroupId) ? wpgroupId : null
                 };
             }
             return null;

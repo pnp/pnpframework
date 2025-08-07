@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Provisioning engine support for flexible sections on pages #1159 [czullu - Christian Zuellig]
+
 ### Changed
 
 - Moved to version 9.0.0 of System.Text.Json for the .NET Standard build [jansenbe - Bert Jansen]

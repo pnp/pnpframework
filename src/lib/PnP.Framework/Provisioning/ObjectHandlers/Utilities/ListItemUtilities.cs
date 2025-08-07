@@ -269,7 +269,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             var list = item.ParentList;
 
             //Ensure can have unwanted sideeffects as ExecuteQuery is called..
-            if (!context.Web.IsObjectPropertyInstantiated(w => w.Url))
+            if (!context.Web.IsPropertyAvailable("Url"))
             {
                 context.Web.EnsureProperty(w => w.Url);
             }
@@ -277,9 +277,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             bool isDocLib = false;  
             bool isPagesLib = false;
 
-            if (list.IsObjectPropertyInstantiated(l => l.BaseType))
+            if (list.IsPropertyAvailable("BaseType"))
             {
-                // If BaseType is already loaded, use it directly
                 isDocLib = list.BaseType == BaseType.DocumentLibrary;
             }
             else
@@ -288,7 +287,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 try
                 {
                     isDocLib = list.EnsureProperty(l => l.BaseType) == BaseType.DocumentLibrary;
-
                 }
                 catch (Exception ex)
                 {
@@ -297,9 +295,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 }
             }
 
-            if (list.IsObjectPropertyInstantiated(l => l.RootFolder))
+            if (list.IsObjectPropertyInstantiated("RootFolder") && list.RootFolder.IsPropertyAvailable("Name"))
             {
-                // If BaseType is already loaded, use it directly
                 isPagesLib = list.RootFolder.Name.Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);
             }
             else
@@ -307,7 +304,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 // Otherwise, ensure the property is loaded
                 try
                 {
-                    isPagesLib = list.EnsureProperty(l => l.RootFolder).Name.Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);
+                    isPagesLib = list.EnsureProperty(l => l.RootFolder.Name).Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);
                 }
                 catch (Exception ex)
                 {

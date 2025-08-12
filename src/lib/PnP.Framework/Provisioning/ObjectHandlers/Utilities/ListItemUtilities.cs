@@ -304,7 +304,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 // Otherwise, ensure the property is loaded
                 try
                 {
-                    isPagesLib = list.EnsureProperty(l => l.RootFolder.Name).Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);
+                    if(!list.IsObjectPropertyInstantiated("RootFolder"))
+                    {
+                        list.EnsureProperty(l => l.RootFolder);
+                    }
+                    if (!list.RootFolder.IsPropertyAvailable("Name"))
+                    {
+                        list.RootFolder.EnsureProperty(rf => rf.Name);
+                    }
+                    isPagesLib = list.RootFolder.Name.Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);
                 }
                 catch (Exception ex)
                 {

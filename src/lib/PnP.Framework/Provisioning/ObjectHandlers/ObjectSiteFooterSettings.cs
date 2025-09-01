@@ -49,7 +49,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     // Avoid setting a null DisplayName, which causes errors if the footer was previously enabled.
                     // This can happen when a user disables the footer after it was set.
                     // Only update if DisplayName is present in the template.
-                    if (template.Footer.DisplayName != null)
+                    if (template.Footer?.DisplayName != null)
                     {
                         chrome.Footer.DisplayName = template.Footer.DisplayName;
                     }

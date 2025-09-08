@@ -41,7 +41,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     "footeralignment",
                     "footeroverlaycolor",
                     "footeroverlayopacity",
-                    "footeroverlaygraduentdirection",
+                    "footeroverlaygradientdirection",
                     "footercolorindexinlightmode",
                     "footercolorindexindarkmode",
                     "fontoptionforsitetitle",

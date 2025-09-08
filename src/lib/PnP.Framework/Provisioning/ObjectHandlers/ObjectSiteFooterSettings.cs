@@ -398,11 +398,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                             }
                                             break;
                                         }
-                                    case "footeroverlaygraduentdirection":
+                                    case "footeroverlaygradientdirection":
                                         {
-                                            if (int.TryParse(entry.Value, out var footeroverlaygraduentdirection) && Enum.IsDefined(typeof(Core.Model.SharePoint.OverlayGradientDirectionType), footeroverlaygraduentdirection))
+                                            if (int.TryParse(entry.Value, out var footeroverlaygradientdirection) && Enum.IsDefined(typeof(Core.Model.SharePoint.OverlayGradientDirectionType), footeroverlaygradientdirection))
                                             {
-                                                chrome.Footer.OverlayGradientDirection = (Core.Model.SharePoint.OverlayGradientDirectionType)footeroverlaygraduentdirection;
+                                                chrome.Footer.OverlayGradientDirection = (Core.Model.SharePoint.OverlayGradientDirectionType)footeroverlaygradientdirection;
                                             }
                                             break;
                                         }

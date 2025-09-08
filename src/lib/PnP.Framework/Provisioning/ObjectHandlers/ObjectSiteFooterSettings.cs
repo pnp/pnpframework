@@ -359,61 +359,93 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     web.FooterEnabled = template.Footer.Enabled;
                     var defaultCulture = new CultureInfo((int)web.Language);
 
-                    //var jsonRequest = new
-                    //{
-                    //    footerEnabled = web.FooterEnabled,
-                    //    footerLayout = web.FooterLayout,
-                    //    footerEmphasis = web.FooterEmphasis
-                    //};
-
-                    //web.ExecutePostAsync("/_api/web/SetChromeOptions", System.Text.Json.JsonSerializer.Serialize(jsonRequest)).GetAwaiter().GetResult();
-
                     // Move to the PnP Core SDK context
                     using (var pnpCoreContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
                     {
                         // Get the Chrome options
-                        var chrome = pnpCoreContext.Web.GetBrandingManager().GetChromeOptions();
+                        var brandingManager = pnpCoreContext.Web.GetBrandingManager();
+                        var chrome = brandingManager.GetChromeOptions();
 
                         chrome.Footer.Enabled = web.FooterEnabled;
                         chrome.Footer.DisplayName = template.Footer.DisplayName;
                         chrome.Footer.Layout = (PnP.Core.Model.SharePoint.FooterLayoutType)Enum.Parse(typeof(PnP.Core.Model.SharePoint.FooterLayoutType), template.Footer.Layout.ToString());
-                        chrome.Footer.Emphasis = (PnP.Core.Model.SharePoint.FooterVariantThemeType)Enum.Parse(typeof(PnP.Core.Model.SharePoint.FooterVariantThemeType), template.Footer.BackgroundEmphasis.ToString()); 
+                        chrome.Footer.Emphasis = (PnP.Core.Model.SharePoint.FooterVariantThemeType)Enum.Parse(typeof(PnP.Core.Model.SharePoint.FooterVariantThemeType), template.Footer.BackgroundEmphasis.ToString());
 
-                        pnpCoreContext.Web.GetBrandingManager().SetChromeOptions(chrome);
+                        //Modern footer settings
+                        if (template?.PropertyBagEntries != null)
+                        {
+                            foreach (var entry in template.PropertyBagEntries)
+                            {
+                                if (string.IsNullOrWhiteSpace(entry.Value))
+                                {
+                                    continue;
+                                }
+                                switch (entry.Key.ToLower())
+                                {
+                                    case "footeroverlaycolor":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footeroverlaycolor) && Enum.IsDefined(typeof(OverlayColorType), footeroverlaycolor))
+                                            {
+                                                chrome.Footer.OverlayColor = (Core.Model.SharePoint.OverlayColorType)(OverlayColorType)footeroverlaycolor;
+                                            }
+                                            break;
+                                        }
+                                    case "footeroverlayopacity":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footeroverlayopacity))
+                                            {
+                                                chrome.Footer.OverlayOpacity = footeroverlayopacity;
+                                            }
+                                            break;
+                                        }
+                                    case "footeroverlaygraduentdirection":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footeroverlaygraduentdirection) && Enum.IsDefined(typeof(Core.Model.SharePoint.OverlayGradientDirectionType), footeroverlaygraduentdirection))
+                                            {
+                                                chrome.Footer.OverlayGradientDirection = (Core.Model.SharePoint.OverlayGradientDirectionType)footeroverlaygraduentdirection;
+                                            }
+                                            break;
+                                        }
+                                    case "footercolorindexinlightmode":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footercolorindexinlightmode))
+                                            {
+                                                chrome.Footer.ColorIndexInLightMode = footercolorindexinlightmode;
+                                            }
+                                            break;
+                                        }
+                                    case "footercolorindexindarkmode":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footercolorindexindarkmode))
+                                            {
+                                                chrome.Footer.ColorIndexInDarkMode = footercolorindexindarkmode;
+                                            }
+                                            break;
+                                        }
+                                    case "footeralignment":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footerAlignment) && Enum.IsDefined(typeof(Core.Model.SharePoint.FooterLinkAlignment), footerAlignment))
+                                            {
+                                                chrome.Footer.LinkAlignment = (Core.Model.SharePoint.FooterLinkAlignment)footerAlignment;
+                                            }
+                                            break;
+                                        }
+                                    case "fontoptionforsitefootertitle":
+                                        {
+                                            chrome.Font.SiteFooterTitle = System.Text.Json.JsonSerializer.Deserialize<Utilities.FontOption>(entry.Value);
+                                            break;
+                                        }
+                                    case "fontoptionforsitefooternav":
+                                        {
+                                            chrome.Font.SiteFooterNav = System.Text.Json.JsonSerializer.Deserialize<Utilities.FontOption>(entry.Value);
+                                            break;
+                                        }
+                                }
+                            }
+                        }
+
+                        brandingManager.SetChromeOptions(chrome);
                     }
-
-                    //if (PnPProvisioningContext.Current != null)
-                    //{
-                    //    // Get an Access Token for the SetChromeOptions request
-                    //    var spoResourceUri = new Uri(web.Url).Authority;
-                    //    var accessToken = PnPProvisioningContext.Current.AcquireToken(spoResourceUri, null);
-
-                    //    if (accessToken != null)
-                    //    {
-                    //        // Prepare the JSON request for SetChromeOptions
-                    //        var jsonRequest = new
-                    //        {
-                    //            footerEnabled = web.FooterEnabled,
-                    //            footerLayout = web.FooterLayout,
-                    //            footerEmphasis = web.FooterEmphasis
-                    //        };
-
-                    //        // Build the URL of the SetChromeOptions API
-                    //        var setChromeOptionsApiUrl = $"{web.Url}/_api/web/SetChromeOptions";
-
-                    //        // Make the POST request to the SetChromeOptions API
-                    //        // and fail in case of any exception
-                    //        HttpHelper.MakePostRequest(setChromeOptionsApiUrl,
-                    //            jsonRequest,
-                    //            "application/json",
-                    //            accessToken);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    web.Update();
-                    //    web.Context.ExecuteQueryRetry();
-                    //}
 
                     if (web.FooterEnabled)
                     {
@@ -570,7 +602,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             return parser;
         }
-
+ 
         public override bool WillExtract(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
             if ((web.Context as ClientContext).Site.IsCommunicationSite())

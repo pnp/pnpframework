@@ -30,6 +30,29 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     "DesignPreview"
                 });
 
+                //modern header, footer, font settings have to be set with SetChromeOptions, Set[xxxx]FontPackage (pnpContext.Web.GetBrandingManager()) in order to work as expected
+                var brandingSettings = new List<string>(new[]
+                {
+                    "headeroverlaycolor",
+                    "headeroverlayopacity",
+                    "headeroverlaygradientdirection",
+                    "headercolorindexinlightmode",
+                    "headercolorindexindarkmode",
+                    "footeralignment",
+                    "footeroverlaycolor",
+                    "footeroverlayopacity",
+                    "footeroverlaygraduentdirection",
+                    "footercolorindexinlightmode",
+                    "footercolorindexindarkmode",
+                    "fontoptionforsitetitle",
+                    "fontoptionforsitenav",
+                    "fontoptionforsitefootertitle",
+                    "fontoptionforsitefooternav",
+                    "footerbackgroundimageurl",
+                    "footerbackgroundimagefocalpoint",
+                    "backgroundimageurl"
+                });
+
                 // Check if this is not a noscript site as we're not allowed to write to the web property bag is that one
                 bool isNoScriptSite = web.IsNoScriptSite();
                 if (isNoScriptSite)
@@ -44,7 +67,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 web = newContext.Web;
 
-                foreach (var propbagEntry in template.PropertyBagEntries)
+                foreach (var propbagEntry in template.PropertyBagEntries.Where(p=> !brandingSettings.Contains(p.Key.ToLower())))
                 {
                     bool propExists = web.PropertyBagContainsKey(propbagEntry.Key);
 

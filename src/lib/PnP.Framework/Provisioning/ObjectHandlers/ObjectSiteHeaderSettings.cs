@@ -1,7 +1,9 @@
 ﻿using Microsoft.SharePoint.Client;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Utilities;
 using System;
+using System.Linq;
 using System.Text.Json;
 
 namespace PnP.Framework.Provisioning.ObjectHandlers
@@ -17,58 +19,76 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public override ProvisioningTemplate ExtractObjects(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
-            using (new PnPMonitoredScope(this.Name))
+            using (var scope = new PnPMonitoredScope(this.Name))
             {
-                web.EnsureProperties(w => w.HeaderEmphasis, w => w.HeaderLayout, w => w.MegaMenuEnabled);
-
-                var header = new SiteHeader
-                {
-                    MenuStyle = web.MegaMenuEnabled ? SiteHeaderMenuStyle.MegaMenu : SiteHeaderMenuStyle.Cascading
-                };
-
-                switch (web.HeaderLayout)
-                {
-                    case HeaderLayoutType.Compact:
-                        {
-                            header.Layout = SiteHeaderLayout.Compact;
-                            break;
-                        }
-
-                    case HeaderLayoutType.Minimal:
-                        {
-                            header.Layout = SiteHeaderLayout.Minimal;
-                            break;
-                        }
-
-                    case HeaderLayoutType.Extended:
-                        {
-                            header.Layout = SiteHeaderLayout.Extended;
-                            break;
-                        }
-
-                    default:
-                        {
-                            header.Layout = SiteHeaderLayout.Standard;
-                            break;
-                        }
-                }
-
-                if (Enum.TryParse(web.HeaderEmphasis.ToString(), out Emphasis backgroundEmphasis))
-                {
-                    header.BackgroundEmphasis = backgroundEmphasis;
-                }
+                web.EnsureProperties(w => w.AllProperties);
 
                 // Move to the PnP Core SDK context
                 using (var pnpCoreContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
                 {
                     // Get the Chrome options
                     var chrome = pnpCoreContext.Web.GetBrandingManager().GetChromeOptions();
+                    var header = new SiteHeader
+                    {
+                        ShowSiteTitle = !chrome.Header.HideTitle,
+                        ShowSiteNavigation = chrome.Navigation.Visible,
+                        MenuStyle = chrome.Navigation.MegaMenuEnabled ? SiteHeaderMenuStyle.MegaMenu : SiteHeaderMenuStyle.Cascading
+                    };
 
-                    header.ShowSiteTitle = !chrome.Header.HideTitle;
-                    header.ShowSiteNavigation = chrome.Navigation.Visible;
+                    switch(chrome.Header.Layout)
+                                            {
+                        case Core.Model.SharePoint.HeaderLayoutType.Compact:
+                            header.Layout = SiteHeaderLayout.Compact;
+                            break;
+                        case Core.Model.SharePoint.HeaderLayoutType.Minimal:
+                            header.Layout = SiteHeaderLayout.Minimal;
+                            break;
+                        case Core.Model.SharePoint.HeaderLayoutType.Extended:
+                            header.Layout = SiteHeaderLayout.Extended;
+                            break;
+                        default:
+                            header.Layout = SiteHeaderLayout.Standard;
+                            break;
+                    }
+
+                    switch(chrome.Header.Emphasis)
+                    {
+                        case Core.Model.SharePoint.VariantThemeType.Neutral:
+                            header.BackgroundEmphasis = Emphasis.Neutral;
+                            break;
+                        case Core.Model.SharePoint.VariantThemeType.Soft:
+                            header.BackgroundEmphasis = Emphasis.Soft;
+                            break;
+                        case Core.Model.SharePoint.VariantThemeType.Strong:
+                            header.BackgroundEmphasis = Emphasis.Strong;
+                            break;
+                        default:
+                            header.BackgroundEmphasis = Emphasis.None;
+                            break;
+                    }
+                    template.Header = header;
                 }
 
-                template.Header = header;
+                if (creationInfo.PersistBrandingFiles)
+                {
+                    //Header Background Image
+                    var backgroundImageUrl = web.GetPropertyBagValueString("BackgroundImageUrl", "");
+                    if (!string.IsNullOrWhiteSpace(backgroundImageUrl))
+                    {
+                        Uri webUri = new Uri(web.Url);
+                        string webUrl = $"{webUri.Scheme}://{webUri.DnsSafeHost}";
+                        backgroundImageUrl = backgroundImageUrl.Replace(webUrl, "");
+
+                        if (Utilities.FileUtilities.PersistFile(web, creationInfo, scope, this, backgroundImageUrl))
+                        {
+                            template.Files.Add(GetTemplateFile(web, backgroundImageUrl));
+                        }
+
+                        var files = template.Files.Distinct().ToList();
+                        template.Files.Clear();
+                        template.Files.AddRange(files);
+                    }
+                }
             }
 
             return template;
@@ -76,7 +96,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public override TokenParser ProvisionObjects(Web web, ProvisioningTemplate template, TokenParser parser, ProvisioningTemplateApplyingInformation applyingInformation)
         {
-            using (new PnPMonitoredScope(this.Name))
+            using (var scope=new PnPMonitoredScope(this.Name))
             {
                 if (template.Header == null)
                 {
@@ -195,6 +215,30 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     }
 
                     brandingManager.SetChromeOptions(chrome);
+
+                    //modern header background image
+                    if (template?.PropertyBagEntries != null)
+                    {
+                        try
+                        {
+                            var backgroundImageUrl = template.PropertyBagEntries.FirstOrDefault(p => "backgroundimageurl" == p.Key.ToLower())?.Value;
+                            if (!string.IsNullOrWhiteSpace(backgroundImageUrl))
+                            {
+                                var file = template.Files.FirstOrDefault(f => backgroundImageUrl.EndsWith(f.Src, StringComparison.InvariantCultureIgnoreCase));
+                                if (file != null)
+                                {
+                                    var fileName = System.IO.Path.GetFileName(backgroundImageUrl);
+                                    chrome.Header.SetHeaderBackgroundImage(fileName, Utilities.FileUtilities.GetFileStream(template, file), overwrite: true);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            // Swallowing the exception as this is not a critical operation
+                            // and we don't want to fail the whole provisioning
+                            scope.LogWarning($"An error occurred while setting the header background image: {ex.Message}");
+                        }
+                    }
                 }
             }
 
@@ -209,6 +253,29 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         public override bool WillProvision(Web web, ProvisioningTemplate template, ProvisioningTemplateApplyingInformation applyingInformation)
         {
             return template.Header != null;
+        }
+
+        private Model.File GetTemplateFile(Web web, string serverRelativeUrl)
+        {
+
+            var webServerUrl = web.EnsureProperty(w => w.Url);
+            var serverUri = new Uri(webServerUrl);
+            var serverUrl = $"{serverUri.Scheme}://{serverUri.Authority}";
+            var fullUri = new Uri(UrlUtility.Combine(serverUrl, serverRelativeUrl));
+
+            var folderPath = fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/');
+            var fileName = fullUri.Segments[fullUri.Segments.Length - 1];
+
+            // store as site relative path
+            folderPath = folderPath.Replace(web.ServerRelativeUrl, "").Trim('/');
+            var templateFile = new Model.File()
+            {
+                Folder = Tokenize(folderPath, web.Url),
+                Src = !string.IsNullOrEmpty(folderPath) ? $"{folderPath}/{fileName}" : fileName,
+                Overwrite = true,
+            };
+
+            return templateFile;
         }
     }
 }

@@ -10,11 +10,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Provisioning engine support for flexible sections on pages #1159 [czullu - Christian Zuellig]
+
 ### Changed
 
 - Moved to version 9.0.0 of System.Text.Json for the .NET Standard build [jansenbe - Bert Jansen]
 - Removed the dependency on Microsof.Graph packages #1003 [quails4Eva]
 - Fixed exception when trowing error message in page transformation #1158 [AlanJinTS - Yihua Jin]
+- Safely handle null footer DisplayName in ProvisionObjects to avoid REST API failure #1161 [vascoazevedo08 - Vasco Azevedo]
 
 ## [1.18.0]
 

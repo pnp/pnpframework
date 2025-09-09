@@ -192,11 +192,17 @@ namespace PnP.Framework.Graph
             Dictionary<string, string> additionalHeaders = null;
 
             var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users";
-            var queryStringParams = new List<string>()
-                {
-                    $"$top={(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)}",
-                    $"$skiptoken={deltaToken}",
-                };
+            var queryStringParams = new List<string>
+            {
+                $"$top={(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)}"
+            };
+
+            // Add $skiptoken only if deltaToken is not null or empty
+            if (!string.IsNullOrEmpty(deltaToken))
+            {
+                queryStringParams.Add($"$skiptoken={deltaToken}");
+            }
+
             if (propertiesToSelect.Count > 0)
             {
                 queryStringParams.Add("$select=" + string.Join(",", propertiesToSelect));

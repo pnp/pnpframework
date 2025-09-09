@@ -19,8 +19,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers.V201807
             Object result = null;
 
             // Try with the tenant-wide AppCatalog
-            var page = source as Model.ClientSidePage;
-            var security = page?.Security;
+            var security = (source as Model.ClientSidePage)?.Security;
+
+            if (security == null)
+                security = (source as Model.TranslatedClientSidePage)?.Security;
 
             // If we have security settings
             if (null != security &&

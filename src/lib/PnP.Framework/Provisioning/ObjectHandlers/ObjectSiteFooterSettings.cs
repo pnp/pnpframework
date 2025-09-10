@@ -375,7 +375,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         var chrome = pnpCoreContext.Web.GetBrandingManager().GetChromeOptions();
 
                         chrome.Footer.Enabled = web.FooterEnabled;
-                        chrome.Footer.DisplayName = template.Footer.DisplayName;
+                        // Avoid setting a null DisplayName, which causes errors if the footer was previously enabled.
+                        // This can happen when a user disables the footer after it was set.
+                        // Only update if DisplayName is present in the template.
+                        if (template.Footer.DisplayName != null)
+                        {
+                            chrome.Footer.DisplayName = template.Footer.DisplayName;
+                        }
                         chrome.Footer.Layout = (PnP.Core.Model.SharePoint.FooterLayoutType)Enum.Parse(typeof(PnP.Core.Model.SharePoint.FooterLayoutType), template.Footer.Layout.ToString());
                         chrome.Footer.Emphasis = (PnP.Core.Model.SharePoint.FooterVariantThemeType)Enum.Parse(typeof(PnP.Core.Model.SharePoint.FooterVariantThemeType), template.Footer.BackgroundEmphasis.ToString()); 
 

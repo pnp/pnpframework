@@ -129,6 +129,7 @@ namespace PnP.Framework.Http
 			{
 				_request.Headers.UserAgent.ParseAdd(_webRequest.UserAgent);
 			}
+            _requestStream = new RequestStream(GetRequestStream());
 			_requestStream.Seek(0, SeekOrigin.Begin);
 			_request.Content = new StreamContent(_requestStream);
 			if (MediaTypeHeaderValue.TryParse(_requestContentType, out var parsedValue))

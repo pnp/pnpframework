@@ -1039,10 +1039,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 return new PnPCore.ControlFlexLayoutPosition
                 {
-                    XPos = json["flexibleLayoutPosition"]["lg"]["x"]?.Value<int>() ?? 0,
-                    YPos = json["flexibleLayoutPosition"]["lg"]["y"]?.Value<int>() ?? 0,
-                    Width = json["flexibleLayoutPosition"]["lg"]["w"]?.Value<int>() ?? 0,
-                    Height = json["flexibleLayoutPosition"]["lg"]["h"]?.Value<int>() ?? 0,
+                    XPos = json["flexibleLayoutPosition"]["lg"]["x"]?.Value<double>() ?? 0,
+                    YPos = json["flexibleLayoutPosition"]["lg"]["y"]?.Value<double>() ?? 0,
+                    Width = json["flexibleLayoutPosition"]["lg"]["w"]?.Value<double>() ?? 0,
+                    Height = json["flexibleLayoutPosition"]["lg"]["h"]?.Value<double>() ?? 0,
                     WpGroupId = Guid.TryParse(json["flexibleLayoutPosition"]["groupId"]?.Value<string>(), out Guid wpgroupId) ? wpgroupId : null
                 };
             }

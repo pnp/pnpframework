@@ -237,7 +237,7 @@ namespace PnP.Framework.Modernization.Transform
                             }
                         }
                     }
-                }                
+                }
             }
         }
 
@@ -302,7 +302,7 @@ namespace PnP.Framework.Modernization.Transform
                             {
                                 item.RoleAssignments.Add(principal, roleDefinitionBindingCollection);
                             }
-                            
+
                         }
                     }
 
@@ -387,7 +387,7 @@ namespace PnP.Framework.Modernization.Transform
                             {
                                 this.targetClientContext.ExecuteQueryRetry();
                             }
-                            catch(Exception)
+                            catch (Exception)
                             {
                                 LogWarning(LogStrings.Warning_TransformGetItemPermissionsAccessDenied, LogStrings.Heading_ApplyItemLevelPermissions);
                                 return lip;
@@ -494,7 +494,7 @@ namespace PnP.Framework.Modernization.Transform
                 targetPage.Context.Load(targetSitePagesLibrary, l => l.Fields.IncludeWithDefaultProperties(f => f.Id, f => f.Title, f => f.Hidden, f => f.InternalName, f => f.DefaultValue, f => f.Required, f => f.StaticName));
                 targetPage.Context.ExecuteQueryRetry();
 
-                
+
 
                 string contentTypeId = CacheManager.Instance.GetContentTypeId(targetPage.ListItemAllFields.ParentList, pageTransformationInformation.SourcePage.ContentType.Name);
                 if (!string.IsNullOrEmpty(contentTypeId))
@@ -1146,7 +1146,7 @@ namespace PnP.Framework.Modernization.Transform
 
                 // Override the setting for keeping item level permissions
                 if (!sourceUrl.Equals(targetUrl, StringComparison.InvariantCultureIgnoreCase))
-                {   
+                {
                     // Set a global flag to indicate this is a cross farm transformation (on-prem to SPO tenant or SPO Tenant A to SPO Tenant B)
                     baseTransformationInformation.IsCrossFarmTransformation = true;
                 }
@@ -1239,6 +1239,12 @@ namespace PnP.Framework.Modernization.Transform
                     using (var clonedTargetContext = targetClientContext.Clone(targetClientContext.Web.GetUrl()))
                     {
                         var srcPageAuthor = this.userTransformator.RemapPrincipal(this.sourceClientContext, this.SourcePageAuthor);
+                        if (srcPageAuthor is null)
+                        {
+                            LogWarning($"User {this.SourcePageAuthor.LookupValue} could not be resolved.", LogStrings.Heading_ArticlePageHandling);
+                            return;
+                        }
+
                         var srcPageEditor = this.userTransformator.RemapPrincipal(this.sourceClientContext, this.SourcePageEditor);
 
                         var pageAuthorUser = clonedTargetContext.Web.EnsureUser(srcPageAuthor);

@@ -21,7 +21,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             using (var scope = new PnPMonitoredScope(this.Name))
             {
-                web.EnsureProperties(w => w.AllProperties);
+                web.EnsureProperties(w => w.AllProperties, w => w.Url);
 
                 // Move to the PnP Core SDK context
                 using (var pnpCoreContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))

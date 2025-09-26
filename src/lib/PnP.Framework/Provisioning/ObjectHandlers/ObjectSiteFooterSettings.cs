@@ -163,7 +163,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     if (!string.IsNullOrEmpty(template.Footer.Logo) && (!template.Footer.Logo.ToLowerInvariant().Contains("_api/")))
                     {
                         // Convert to server relative URL if needed (can be set to FQDN URL of a file hosted in the site (e.g. for communication sites))
-                        string footerLogoServerRelativeUrl = template.Footer.Logo.Replace(webUrl, "");
+                        string footerLogoServerRelativeUrl = Uri.UnescapeDataString(template.Footer.Logo).Replace(webUrl, "");
 
                         if (Utilities.FileUtilities.PersistFile(web, creationInfo, scope, this, footerLogoServerRelativeUrl))
                         {
@@ -175,7 +175,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     var footerBackgroundImageUrl= web.GetPropertyBagValueString("FooterBackgroundImageUrl","");
                     if (!string.IsNullOrWhiteSpace(footerBackgroundImageUrl))
                     {
-                        footerBackgroundImageUrl = footerBackgroundImageUrl.Replace(webUrl, "");
+                        footerBackgroundImageUrl = Uri.UnescapeDataString(footerBackgroundImageUrl).Replace(webUrl, "");
 
                         if (Utilities.FileUtilities.PersistFile(web, creationInfo, scope, this, footerBackgroundImageUrl))
                         {

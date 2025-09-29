@@ -3,6 +3,7 @@ using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace PnP.Framework.Test.Framework.Connectors
 {
@@ -62,7 +63,7 @@ namespace PnP.Framework.Test.Framework.Connectors
                 fileSystemConnector,
                 "OfficeDevPnP Automated Test");
 
-            SaveFileInPackage(fileSystemConnector.Parameters[FileConnectorBase.CONNECTIONSTRING] + @"\Templates\ProvisioningSchema-2015-12-FullSample-02.xml", "", openXMLConnector);
+            SaveFileInPackage(fileSystemConnector.Parameters[FileConnectorBase.CONNECTIONSTRING] + @"\Templates\ProvisioningSchema-2022-09-FullSample-01.xml", "", openXMLConnector);
             SaveFileInPackage(fileSystemConnector.Parameters[FileConnectorBase.CONNECTIONSTRING] + @"\garagelogo.png", "Images", openXMLConnector);
             SaveFileInPackage(fileSystemConnector.Parameters[FileConnectorBase.CONNECTIONSTRING] + @"\garagebg.jpg", "Images", openXMLConnector);
 
@@ -81,7 +82,7 @@ namespace PnP.Framework.Test.Framework.Connectors
                     "Templates");
 
             var openXMLConnector = new OpenXMLConnector(packageFileNameBackwardsCompatibility, fileSystemConnector);
-            var templateFile = openXMLConnector.GetFileStream("ProvisioningSchema-2019-03-FullSample-01.xml");
+            var templateFile = openXMLConnector.GetFileStream("ProvisioningSchema-2015-12-FullSample-02.xml");
 
             XMLPnPSchemaV201903Serializer formatter = new XMLPnPSchemaV201903Serializer();
             var checkTemplate = formatter.IsValid(templateFile);
@@ -209,7 +210,58 @@ namespace PnP.Framework.Test.Framework.Connectors
                     ((ICommitableFileConnector)openXMLConnector).Commit();
                 }
             }
+        }
 
+        /// <summary>
+        /// Tests that the template can be loaded successfully from the XMLOpenXMLTemplateProvider given the template filename
+        /// </summary>
+        [TestMethod]
+        public void OpenXMLFileLoadTemplateTest()
+        {
+            var fileSystemConnector = new FileSystemConnector(String.Format(@"{0}\..\..\..\Resources", AppDomain.CurrentDomain.BaseDirectory), "Templates");
+            var openXMLConnector = new OpenXMLConnector(packageFileName, fileSystemConnector);
+            var templateFileName = openXMLConnector.GetFiles().FirstOrDefault(f => f.EndsWith(".xml"));
+
+            var templateProvider = new XMLOpenXMLTemplateProvider(openXMLConnector);
+            var template = templateProvider.GetTemplate(templateFileName);
+
+            Assert.IsNotNull(template);
+        }
+
+        /// <summary>
+        /// Save a template using XMLOpenXMLTemplateProvider and ensure it is saved correctly
+        /// </summary>
+        [TestMethod]
+        public void XMLOpenXMLTemplateProvider_SaveAs()
+        {
+            string packageName = Guid.NewGuid().ToString() + ".pnp";
+            string templateName = "a" + Guid.NewGuid().ToString();
+
+            var fileSystemConnector = new FileSystemConnector(String.Format(@"{0}\..\..\..\Resources", AppDomain.CurrentDomain.BaseDirectory), "Templates");
+
+            try
+            {
+                var openXMLConnector = new OpenXMLConnector(packageName, fileSystemConnector);
+
+                var templateProvider = new XMLOpenXMLTemplateProvider(openXMLConnector);
+                var template = new Provisioning.Model.ProvisioningTemplate()
+                {
+                    Description = "Test"
+                };
+
+                //Add the template to the package
+                templateProvider.SaveAs(template, templateName);
+
+                //Re-open it and check that it has been saved with the correct template name
+                openXMLConnector = new OpenXMLConnector(packageName, fileSystemConnector);
+                template = templateProvider.GetTemplate(templateName);
+
+                Assert.AreEqual("Test", template?.Description);
+            }
+            finally
+            {
+                fileSystemConnector.DeleteFile(packageName);
+            }
         }
         #endregion
     }

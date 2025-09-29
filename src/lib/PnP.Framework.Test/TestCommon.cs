@@ -95,18 +95,15 @@ namespace PnP.Framework.Test
                 UserName = AppSetting("SPOUserName");
                 Password = EncryptionUtility.ToSecureString(AppSetting("SPOPassword"));
             }
+            else if (!String.IsNullOrEmpty(AppSetting("AppId")) &&
+                         !String.IsNullOrEmpty(AppSetting("AppSecret")))
+            {
+                AppId = AppSetting("AppId");
+                AppSecret = AppSetting("AppSecret");
+            }
             else
             {
-                if (!String.IsNullOrEmpty(AppSetting("AppId")) &&
-                         !String.IsNullOrEmpty(AppSetting("AppSecret")))
-                {
-                    AppId = AppSetting("AppId");
-                    AppSecret = AppSetting("AppSecret");
-                }
-                else
-                {
-                    throw new ConfigurationErrorsException("Tenant credentials in App.config are not set up.");
-                }
+                // Different authentication methods could be set e.g. azure AD
             }
         }
         #endregion
@@ -125,6 +122,14 @@ namespace PnP.Framework.Test
         /// Specifies the SiteOwner if needed (AppOnly Context, ...).
         /// </summary>
         public static string DefaultSiteOwner { get; set; }
+
+        public static String TenantId
+        {
+            get
+            {
+                return AppSetting("TenantId");
+            }
+        }
 
         public static string TestWebhookUrl
         {
@@ -154,6 +159,14 @@ namespace PnP.Framework.Test
             get
             {
                 return AppSetting("AzureADCertificateFilePath");
+            }
+        }
+
+        public static String AzureADCertificateThumbprint
+        {
+            get
+            {
+                return AppSetting("AzureADCertificateThumbprint");
             }
         }
 
@@ -323,7 +336,16 @@ namespace PnP.Framework.Test
         {
 
             ClientContext context = null;
-            if (!String.IsNullOrEmpty(AppId) && !String.IsNullOrEmpty(AppSecret))
+
+            if (!String.IsNullOrEmpty(AzureADClientId))
+            {
+                if (!string.IsNullOrEmpty(AzureADCertificateThumbprint))
+                {
+                    using var am = AuthenticationManager.CreateWithCertificate(AzureADClientId, System.Security.Cryptography.X509Certificates.StoreName.My, System.Security.Cryptography.X509Certificates.StoreLocation.CurrentUser, AzureADCertificateThumbprint, TenantId);
+                    context = am.GetContext(contextUrl);
+                }
+            }
+            else if (!String.IsNullOrEmpty(AppId) && !String.IsNullOrEmpty(AppSecret))
             {
                 using (AuthenticationManager am = new AuthenticationManager())
                 {

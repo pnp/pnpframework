@@ -1019,92 +1019,118 @@ namespace Microsoft.SharePoint.Client
 
         private static bool IsCurrentUserTenantAdminViaSPO(ClientContext clientContext)
         {
-            // Get the URL of the current site collection
-            var site = clientContext.Site;
-            site.EnsureProperty(s => s.Url); // PAOLO: We can't do that ... if we're not admins ...
+            try
+            {
+                // Get the URL of the current site collection
+                var site = clientContext.Site;
+                site.EnsureProperty(s => s.Url);
 
-            // If we are already with a context for the Admin Site, all good, the user is an admin
-            if (PnP.Framework.AuthenticationManager.IsTenantAdministrationUrl(site.Url))
-            {
-                return (true);
-            }
-            else
-            {
-                // Otherwise, we need to target the Admin Site
-                var adminSiteUrl = clientContext.Web.GetTenantAdministrationUrl();
-                try
+                // If we are already with a context for the Admin Site, all good, the user is an admin
+                if (PnP.Framework.AuthenticationManager.IsTenantAdministrationUrl(site.Url))
                 {
-                    // Connect to the Admin Site
-                    using (var adminContext = clientContext.Clone(adminSiteUrl))
+                    return (true);
+                }
+                else
+                {
+                    // Otherwise, we need to target the Admin Site
+                    var adminSiteUrl = clientContext.Web.GetTenantAdministrationUrl();
+                    try
                     {
-                        // Do something with the Tenant Admin Context
-                        Tenant tenant = new Tenant(adminContext);
-                        tenant.EnsureProperty(t => t.RootSiteUrl);
+                        // Connect to the Admin Site
+                        using (var adminContext = clientContext.Clone(adminSiteUrl))
+                        {
+                            // Do something with the Tenant Admin Context
+                            Tenant tenant = new Tenant(adminContext);
+                            tenant.EnsureProperty(t => t.RootSiteUrl);
 
-                        // If we've got access to the tenant admin context, 
-                        // it means that the currently connecte user is an admin
-                        return (true);
+                            // If we've got access to the tenant admin context, 
+                            // it means that the currently connected user is an admin
+                            return (true);
+                        }
+                    }
+                    catch
+                    {
+                        // In case of any connection exception, the user is not an admin
+                        return (false);
                     }
                 }
-                catch
-                {
-                    // In case of any connection exception, the user is not an admin
-                    return (false);
-                }
+            }
+            catch (ServerUnauthorizedAccessException)
+            {
+                // User doesn't have permissions to access site properties
+                return (false);
+            }
+            catch
+            {
+                // In case of any other exception, the user is not an admin
+                return (false);
             }
         }
 
         public static bool IsCurrentUserTenantAdmin(ClientContext clientContext, string tenantAdminSiteUrl)
         {
             bool result = false;
-            // Get the URL of the current site collection
-            var web = clientContext.Web;
-            var site = clientContext.Site;
-            site.EnsureProperty(s => s.Url);
-            var baseTemplateId = web.GetBaseTemplateId();
+            try
+            {
+                // Get the URL of the current site collection
+                var web = clientContext.Web;
+                var site = clientContext.Site;
+                site.EnsureProperty(s => s.Url);
+                var baseTemplateId = web.GetBaseTemplateId();
 
-            if (string.Equals(baseTemplateId, "TENANTADMIN#0", StringComparison.InvariantCultureIgnoreCase))
-            {
-                result = true;
-            }
-            else
-            {
-                // Otherwise, we need to target the Admin Site
-                // No easy way to detect tenant admin site in on-premises, so users have to specify it
-                string adminSiteUrl = tenantAdminSiteUrl;
-                if (!string.IsNullOrEmpty(adminSiteUrl))
+                if (string.Equals(baseTemplateId, "TENANTADMIN#0", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    result = CanConnectTenantAdminSite(clientContext, adminSiteUrl);
+                    result = true;
                 }
                 else
                 {
-                    //TODO: try to find a way to get the real tenant admin site url
-                    var foundAdminSiteUrl = GetTenantAdminSite(clientContext);
-                    if (!string.IsNullOrEmpty(foundAdminSiteUrl.AbsoluteUri))
+                    // Otherwise, we need to target the Admin Site
+                    // No easy way to detect tenant admin site in on-premises, so users have to specify it
+                    string adminSiteUrl = tenantAdminSiteUrl;
+                    if (!string.IsNullOrEmpty(adminSiteUrl))
                     {
-                        result = CanConnectTenantAdminSite(clientContext, foundAdminSiteUrl.AbsoluteUri);
+                        result = CanConnectTenantAdminSite(clientContext, adminSiteUrl);
                     }
                     else
                     {
-                        Uri uri = new Uri(clientContext.Url.TrimEnd(new[] { '/' }));
-                        var rootSiteUrl = $"{uri.Scheme}://{uri.DnsSafeHost}";
-
-                        var urlsToTry = new System.Collections.Generic.List<string>()
+                        //TODO: try to find a way to get the real tenant admin site url
+                        var foundAdminSiteUrl = GetTenantAdminSite(clientContext);
+                        if (!string.IsNullOrEmpty(foundAdminSiteUrl.AbsoluteUri))
                         {
-                            rootSiteUrl + "/sites/admin",
-                            rootSiteUrl + "/sites/tenantadmin"
-                        };
-
-                        foreach (var url in urlsToTry)
+                            result = CanConnectTenantAdminSite(clientContext, foundAdminSiteUrl.AbsoluteUri);
+                        }
+                        else
                         {
-                            result = CanConnectTenantAdminSite(clientContext, url);
-                            if (result)
+                            Uri uri = new Uri(clientContext.Url.TrimEnd(new[] { '/' }));
+                            var rootSiteUrl = $"{uri.Scheme}://{uri.DnsSafeHost}";
+
+                            var urlsToTry = new System.Collections.Generic.List<string>()
                             {
-                                break;
+                                rootSiteUrl + "/sites/admin",
+                                rootSiteUrl + "/sites/tenantadmin"
+                            };
+
+                            foreach (var url in urlsToTry)
+                            {
+                                result = CanConnectTenantAdminSite(clientContext, url);
+                                if (result)
+                                {
+                                    break;
+                                }
                             }
                         }
                     }
                 }
+            }
+            catch (ServerUnauthorizedAccessException)
+            {
+                // User doesn't have permissions to access site properties
+                result = false;
+            }
+            catch
+            {
+                // In case of any other exception, the user is not an admin
+                result = false;
             }
 
             return result;

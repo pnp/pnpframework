@@ -15,6 +15,7 @@ namespace PnP.Framework.Graph.Model
         public List<GroupLabel> AssignedLabels { get; set; }
         public string PreferredDataLocation { get; set; }
 
+        [JsonExtensionData]
         public Dictionary<string, object> AdditionalData { get; set; }
     }
 }

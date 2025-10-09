@@ -256,9 +256,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     ClientObjectList<Microsoft.Online.SharePoint.TenantManagement.ThemeProperties> tenantThemes = null;
                     if (TenantExtensions.IsCurrentUserTenantAdmin((ClientContext)tenant.Context))
                     {
-                        tenantThemes = tenant.GetAllTenantThemes();
-                        tenant.Context.Load(tenantThemes);
-                        tenant.Context.ExecuteQueryRetry();
+                        try
+                        {
+                            tenantThemes = tenant.GetAllTenantThemes();
+                            tenant.Context.Load(tenantThemes);
+                            tenant.Context.ExecuteQueryRetry();
+                        }
+                        catch (ServerUnauthorizedAccessException)
+                        {
+                            WriteMessage("Unauthorized getting tenant themes so skipping.", ProvisioningMessageType.Warning);
+                        }
                     }
 
                     foreach (var sitecollection in sequence.SiteCollections)

@@ -252,23 +252,30 @@ namespace PnP.Framework.Graph
 
                     int driveRetryCount = retryCount;
 
-                    while (driveRetryCount > 0 && string.IsNullOrEmpty(modernSiteUrl))
+                    if (addedGroup.AdditionalData?.TryGetValue("id", out var groupId) == true)
                     {
-                        try
+                        while (driveRetryCount > 0 && string.IsNullOrEmpty(modernSiteUrl))
                         {
-                            modernSiteUrl = GetUnifiedGroupSiteUrl(addedGroup.GroupId, accessToken, azureEnvironment: azureEnvironment);
-                        }
-                        catch
-                        {
-                            // Skip any exception and simply retry
-                        }
+                            try
+                            {
+                                    modernSiteUrl = GetUnifiedGroupSiteUrl(groupId.ToString(), accessToken, azureEnvironment: azureEnvironment);
+                            }
+                            catch
+                            {
+                                // Skip any exception and simply retry
+                            }
 
-                        // In case of failure retry up to 10 times, with 500ms delay in between
-                        if (string.IsNullOrEmpty(modernSiteUrl))
-                        {
-                            Task.Delay(delay * (retryCount - driveRetryCount)).GetAwaiter().GetResult();
-                            driveRetryCount--;
+                            // In case of failure retry up to 10 times, with 500ms delay in between
+                            if (string.IsNullOrEmpty(modernSiteUrl))
+                            {
+                                Task.Delay(delay * (retryCount - driveRetryCount)).GetAwaiter().GetResult();
+                                driveRetryCount--;
+                            }
                         }
+                    }
+                    else
+                    {
+                        throw new Exception("Could not find the group id in the additional data returned from the Graph when creating the unified group");
                     }
 
                     group.SiteUrl = modernSiteUrl;

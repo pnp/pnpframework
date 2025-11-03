@@ -1158,6 +1158,57 @@ namespace Microsoft.SharePoint.Client
             return await SiteCollection.DeleteSiteAsync(clientContext);
         }
 
+        /// <summary>
+        /// Safely assigns user email addresses to SharePoint list item user fields with automatic user resolution and error handling
+        /// </summary>
+        /// <param name="ctx">The SharePoint client context for executing operations</param>
+        /// <param name="item">The target list item to update with user field assignments</param>
+        /// <param name="fieldAssignments">Collection of field-email pairs where Field is the internal field name and Email is the user's email address</param>
+        /// <param name="clearIfNullOrWhiteSpace">If true, clears the field when email is null/empty; if false, skips the assignment</param>
+        /// <remarks>
+        /// This method queues operations using ExceptionHandlingScope but does not execute them.
+        /// The caller must call ctx.ExecuteQueryRetry() after this method to execute the queued operations.
+        /// Multiple calls can be batched together before executing.
+        /// </remarks>
+        public static void EnsureAndSetUserFields(
+            this ClientContext ctx,
+            ListItem item,
+            IEnumerable<(string Field, string Email)> fieldAssignments,
+            bool clearIfNullOrWhiteSpace)
+        {
+            foreach (var (field, email) in fieldAssignments)
+            {
+                if (string.IsNullOrWhiteSpace(email))
+                {
+                    if (clearIfNullOrWhiteSpace)
+                    {
+                        item[field] = null;
+                        item.Update();
+                    }
+
+                    continue;
+                }
+
+                var scope = new ExceptionHandlingScope(ctx);
+                using (scope.StartScope())
+                {
+                    using (scope.StartTry())
+                    {
+                        item[field] = FieldUserValue.FromUser(email);
+                        item.Update();
+                    }
+
+                    using (scope.StartCatch())
+                    {
+                        ctx.Web.EnsureUser(email);
+                        item[field] = FieldUserValue.FromUser(email);
+                        item.Update();
+                    }
+                }
+            }
+        }
+
+
         internal static CookieContainer GetAuthenticationCookies(this ClientContext context)
         {
             var authCookiesContainer = context.GetContextSettings()?.AuthenticationManager.CookieContainer;

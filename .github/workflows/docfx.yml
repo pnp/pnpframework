@@ -19,13 +19,13 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
     # Checks-out dev branch
     - name: Checkout dev branch
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with: 
         ref: dev
         path: dev
     # Checks-out gh-pages branch
-    - name: Checkout dev branch
-      uses: actions/checkout@v4
+    - name: Checkout gh-pages branch
+      uses: actions/checkout@v5
       with: 
         ref: gh-pages
         path: gh-pages

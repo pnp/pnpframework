@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
 	  <SignAssembly>true</SignAssembly>
@@ -15,7 +15,7 @@
 	<PackageReference Include="MSTest.TestAdapter" Version="3.6.3" />
 	<PackageReference Include="MSTest.TestFramework" Version="3.6.3" />
 	<PackageReference Include="coverlet.collector" Version="6.0.0" />
-	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
+	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
   </ItemGroup>
 
   <ItemGroup>

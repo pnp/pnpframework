@@ -507,6 +507,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             typeof(PnP.Core.Model.SharePoint.IconAlignment), 
                             section.IconAlignment.ToString());
                         targetSection.ShowDividerLine = section.ShowDividerLine;
+                        //XML-Schema does not support HeadingLevel-Value, so we need to get it from JsonControlData if not set through code manually
+                        if (section.HeadingLevel == 0)
+                        {
+                            SetSectionHeadingLevel(section);
+                        }
+                        if( section.HeadingLevel > 0)
+                            targetSection.HeadingLevel = section.HeadingLevel;
                     }
 
                     // Add controls to the section
@@ -1101,6 +1108,20 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         canvasColumn.ZoneReflowStrategy = PnPCore.ZoneReflowStrategy.LeftToRight;
                     }
+                }
+            }
+        }
+
+        private static void SetSectionHeadingLevel(CanvasSection section)
+        {
+            var control = section.Controls.FirstOrDefault(p => !string.IsNullOrWhiteSpace(p.JsonControlData) && p.JsonControlData.ToLower().Contains("headinglevel"));
+            if (control != null)
+            {
+                var json = JsonConvert.DeserializeObject<JObject>(control.JsonControlData);
+                var headingLevel = json.SelectToken("zoneGroupMetadata.headingLevel")?.Value<int>();
+                if (headingLevel.HasValue)
+                {
+                    section.HeadingLevel = headingLevel.Value;
                 }
             }
         }

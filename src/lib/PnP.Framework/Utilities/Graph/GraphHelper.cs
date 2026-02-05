@@ -81,7 +81,8 @@ namespace PnP.Framework.Utilities.Graph
                 if (!string.IsNullOrEmpty(alreadyExistsErrorMessage) &&
                     !string.IsNullOrEmpty(matchingFieldName) &&
                     !string.IsNullOrEmpty(matchingFieldValue) &&
-                    ex.InnerException.Message.Contains(alreadyExistsErrorMessage))
+                    (ex.InnerException?.Message.Contains(alreadyExistsErrorMessage) == true ||
+                     ex.InnerException?.InnerException?.Message.Contains(alreadyExistsErrorMessage) == true))
                 {
                     try
                     {

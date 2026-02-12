@@ -1180,7 +1180,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         public static JToken GetExistingTeamChannelTabs(string teamId, string channelId, string accessToken, Uri graphBaseUri = null)
         {
             const int maxRetryCount = 60;
-            const int retryDelay = 1000;
+            const int retryDelay = 5000; // Increased to 5 seconds
             var retryAttempt = 0;
 
             JToken response = null;
@@ -1198,7 +1198,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException != null && ex.InnerException.Message.Contains("No active channel found with channel id:"))
+                    // Check both inner exception and the main exception message for channel not found errors
+                    var exceptionMessage = ex.Message + (ex.InnerException?.Message ?? "");
+                    if (exceptionMessage.Contains("No active channel found"))
                     {
                         Thread.Sleep(retryDelay);
                     }
@@ -1213,6 +1215,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     retryAttempt++;
                 }
             } while (response == null && retryAttempt <= maxRetryCount);
+
+            if (response == null)
+            {
+                throw new Exception($"Could not get tabs for channel {channelId} in team {teamId} within timeout.");
+            }
 
             return response;
         }

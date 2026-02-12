@@ -39,7 +39,8 @@ namespace PnP.Framework.Provisioning.Connectors
             {
                 container = "";
             }
-            container = container.Replace('/', '\\');
+            container = container.Replace('/', Path.DirectorySeparatorChar)
+                                 .Replace('\\', Path.DirectorySeparatorChar);
 
             this.AddParameterAsString(CONNECTIONSTRING, connectionString);
             this.AddParameterAsString(CONTAINER, container);
@@ -68,7 +69,8 @@ namespace PnP.Framework.Provisioning.Connectors
             {
                 container = "";
             }
-            container = container.Replace('/', '\\');
+            container = container.Replace('/', Path.DirectorySeparatorChar)
+                                 .Replace('\\', Path.DirectorySeparatorChar);
 
             List<string> result = new List<string>();
 
@@ -102,7 +104,8 @@ namespace PnP.Framework.Provisioning.Connectors
             {
                 container = "";
             }
-            container = container.Replace('/', '\\');
+            container = container.Replace('/', Path.DirectorySeparatorChar)
+                                 .Replace('\\', Path.DirectorySeparatorChar);
 
             List<string> result = new List<string>();
 
@@ -153,7 +156,8 @@ namespace PnP.Framework.Provisioning.Connectors
             {
                 container = "";
             }
-            container = container.Replace('/', '\\');
+            container = container.Replace('/', Path.DirectorySeparatorChar)
+                                 .Replace('\\', Path.DirectorySeparatorChar);
 
             string result = null;
             MemoryStream stream = null;
@@ -206,7 +210,8 @@ namespace PnP.Framework.Provisioning.Connectors
             {
                 container = "";
             }
-            container = container.Replace('/', '\\');
+            container = container.Replace('/', Path.DirectorySeparatorChar)
+                                 .Replace('\\', Path.DirectorySeparatorChar);
 
             return GetFileFromStorage(fileName, container);
         }
@@ -238,7 +243,8 @@ namespace PnP.Framework.Provisioning.Connectors
             {
                 container = "";
             }
-            container = container.Replace('/', '\\');
+            container = container.Replace('/', Path.DirectorySeparatorChar)
+                                 .Replace('\\', Path.DirectorySeparatorChar);
 
             if (stream == null)
             {
@@ -292,7 +298,8 @@ namespace PnP.Framework.Provisioning.Connectors
             {
                 container = "";
             }
-            container = container.Replace('/', '\\');
+            container = container.Replace('/', Path.DirectorySeparatorChar)
+                                 .Replace('\\', Path.DirectorySeparatorChar);
 
             try
             {
@@ -349,9 +356,9 @@ namespace PnP.Framework.Provisioning.Connectors
         {
             string filePath = "";
 
-            if (container.IndexOf(@"\") > 0)
+            if (container.IndexOf(Path.DirectorySeparatorChar) > 0)
             {
-                string[] parts = container.Split(new string[] { @"\" }, StringSplitOptions.RemoveEmptyEntries);
+                string[] parts = container.Split(new[] { Path.DirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries);
                 filePath = Path.Combine(GetConnectionString(), parts[0]);
 
                 if (parts.Length > 1)

@@ -11,7 +11,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 {
     public static class FileUtilities
     {
-
         public static Stream GetFileStream(ProvisioningTemplate template, Model.File file)
         {
             return GetFileStream(template, file.Src);
@@ -24,9 +23,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             var container = String.Empty;
             if (fileName.Contains(@"\") || fileName.Contains(@"/"))
             {
-                var tempFileName = fileName.Replace(@"/", @"\");
-                container = fileName.Substring(0, tempFileName.LastIndexOf(@"\"));
-                fileName = fileName.Substring(tempFileName.LastIndexOf(@"\") + 1);
+                var tempFileName = fileName.Replace('/', Path.DirectorySeparatorChar)
+                                           .Replace('\\', Path.DirectorySeparatorChar);
+                container = fileName.Substring(0, tempFileName.LastIndexOf(Path.DirectorySeparatorChar));
+                fileName = fileName.Substring(tempFileName.LastIndexOf(Path.DirectorySeparatorChar) + 1);
             }
 
             // add the default provided container (if any)
@@ -38,7 +38,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     {
                         container = container.TrimStart("/".ToCharArray());
                     }
-                    container = $@"{template.Connector.GetContainer()}\{container}";
+                    container = Path.Combine(template.Connector.GetContainer(), container);
                 }
             }
             else
@@ -67,7 +67,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             string folderToGrabFilesFrom = directory.Src;
             if (!String.IsNullOrEmpty(directory.ParentTemplate.Connector.GetContainer()))
             {
-                folderToGrabFilesFrom = directory.ParentTemplate.Connector.GetContainer() + @"\" + directory.Src;
+                folderToGrabFilesFrom = Path.Combine(directory.ParentTemplate.Connector.GetContainer(), directory.Src);
             }
 
             var files = directory.ParentTemplate.Connector.GetFiles(folderToGrabFilesFrom);
@@ -85,13 +85,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             }
 
             result.AddRange(from file in files
+                            let filePath = Path.Combine(directory.Src, file)
                             select new Model.File(
-                                directory.Src + @"\" + file,
+                                filePath,
                                 directory.Folder,
                                 directory.Overwrite,
                                 null, // No WebPartPages are supported with this technique
-                                metadataProperties != null && metadataProperties.ContainsKey(directory.Src + @"\" + file) ?
-                                    metadataProperties[directory.Src + @"\" + file] : null,
+                                metadataProperties != null && metadataProperties.ContainsKey(filePath) ?
+                                    metadataProperties[filePath] : null,
                                 directory.Security,
                                 directory.Level
                                 ));
@@ -102,14 +103,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 var parentFolder = directory;
                 foreach (var folder in subFolders)
                 {
-                    directory.Src = parentFolder.Src + @"\" + folder;
-                    directory.Folder = parentFolder.Folder + @"\" + folder;
+                    directory.Src = Path.Combine(parentFolder.Src, folder);
+                    directory.Folder = Path.Combine(parentFolder.Folder, folder);
 
                     result.AddRange(directory.GetDirectoryFiles(metadataProperties));
 
                     //Remove the subfolder path(added above) as the second subfolder should come under its parent folder and not under its sibling
-                    parentFolder.Src = parentFolder.Src.Substring(0, parentFolder.Src.LastIndexOf(@"\"));
-                    parentFolder.Folder = parentFolder.Folder.Substring(0, parentFolder.Folder.LastIndexOf(@"\"));
+                    parentFolder.Src = parentFolder.Src.Substring(0, parentFolder.Src.LastIndexOf(Path.DirectorySeparatorChar));
+                    parentFolder.Folder = parentFolder.Folder.Substring(0, parentFolder.Folder.LastIndexOf(Path.DirectorySeparatorChar));
                 }
             }
 

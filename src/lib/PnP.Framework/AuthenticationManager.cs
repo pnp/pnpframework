@@ -228,7 +228,7 @@ namespace PnP.Framework
             return new AuthenticationManager(endpoint, identityHeader, managedIdentityType, managedIdentityUserAssignedIdentifier, azureEnvironment);
         }
 
-        // <summary>
+        /// <summary>
         /// Creates a new instance of the Authentication Manager that works with a User Assigned Managed Identity (MI) in Azure configured as a Federated Identity Credential on an Entra ID application registration.
         /// </summary>
         /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>

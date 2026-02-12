@@ -222,7 +222,7 @@ namespace PnP.Framework
         /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
         /// <param name="managedIdentityType">Type of Managed Identity that should be used. Defaults to System Assigned Managed Identity.</param>
         /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId. Mandatory when <paramref name="managedIdentityType"/> is not SystemAssigned. Should be omitted if it is SystemAssigned.</param>
-        /// <param name="azureEnvironment"></param> The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
         public static AuthenticationManager CreateWithManagedIdentity(string endpoint, string identityHeader, ManagedIdentityType managedIdentityType = ManagedIdentityType.SystemAssigned, string managedIdentityUserAssignedIdentifier = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             return new AuthenticationManager(endpoint, identityHeader, managedIdentityType, managedIdentityUserAssignedIdentifier, azureEnvironment);

@@ -2739,13 +2739,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 var siteContext = web.Context.GetSiteCollectionContext();
                 var rootWeb = siteContext.Site.RootWeb;
                 siteColumns = rootWeb.Fields;
-                siteContext.Load(siteColumns, scs => scs.Include(sc => sc.Id, sc => sc.DefaultValue, sc => sc.PinnedToFiltersPane, sc => sc.ShowInFiltersPane, sc => sc.CustomFormatter, sc => sc.AutofillInfo));
+                siteContext.Load(siteColumns, scs => scs.Include(sc => sc.Id, sc => sc.DefaultValue, sc => sc.PinnedToFiltersPane, sc => sc.ShowInFiltersPane, sc => sc.CustomFormatter, sc => sc.AutofillInfo, sc => sc.Title));
                 siteContext.ExecuteQueryRetry();
             }
             else
             {
                 siteColumns = web.Fields;
-                web.Context.Load(siteColumns, scs => scs.Include(sc => sc.Id, sc => sc.DefaultValue, sc => sc.PinnedToFiltersPane, sc => sc.ShowInFiltersPane, sc => sc.CustomFormatter, sc => sc.AutofillInfo));
+                web.Context.Load(siteColumns, scs => scs.Include(sc => sc.Id, sc => sc.DefaultValue, sc => sc.PinnedToFiltersPane, sc => sc.ShowInFiltersPane, sc => sc.CustomFormatter, sc => sc.AutofillInfo, sc => sc.Title));
                 web.Context.ExecuteQueryRetry();
             }
 
@@ -2760,6 +2760,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     //include the list field if settings on List field instance are different then the ones on the web field
                     if (siteColumn.PinnedToFiltersPane != field.PinnedToFiltersPane
+                        || siteColumn.Title != field.Title
                         || siteColumn.AutofillInfo != field.AutofillInfo
                         || siteColumn.ShowInFiltersPane != field.ShowInFiltersPane
                         || string.IsNullOrWhiteSpace(siteColumn.CustomFormatter) != string.IsNullOrWhiteSpace(field.CustomFormatter)

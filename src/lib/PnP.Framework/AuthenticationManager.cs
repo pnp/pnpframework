@@ -222,12 +222,13 @@ namespace PnP.Framework
         /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
         /// <param name="managedIdentityType">Type of Managed Identity that should be used. Defaults to System Assigned Managed Identity.</param>
         /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId. Mandatory when <paramref name="managedIdentityType"/> is not SystemAssigned. Should be omitted if it is SystemAssigned.</param>
-        public static AuthenticationManager CreateWithManagedIdentity(string endpoint, string identityHeader, ManagedIdentityType managedIdentityType = ManagedIdentityType.SystemAssigned, string managedIdentityUserAssignedIdentifier = null)
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        public static AuthenticationManager CreateWithManagedIdentity(string endpoint, string identityHeader, ManagedIdentityType managedIdentityType = ManagedIdentityType.SystemAssigned, string managedIdentityUserAssignedIdentifier = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            return new AuthenticationManager(endpoint, identityHeader, managedIdentityType, managedIdentityUserAssignedIdentifier);
+            return new AuthenticationManager(endpoint, identityHeader, managedIdentityType, managedIdentityUserAssignedIdentifier, azureEnvironment);
         }
 
-        // <summary>
+        /// <summary>
         /// Creates a new instance of the Authentication Manager that works with a User Assigned Managed Identity (MI) in Azure configured as a Federated Identity Credential on an Entra ID application registration.
         /// </summary>
         /// <param name="endpoint">The endpoint at which the Managed Identity Service is being hosted from which a token can be acquired</param>
@@ -236,9 +237,10 @@ namespace PnP.Framework
         /// <param name="appTenantId">Tenant ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. This must be registered in same tenant as the MI.</param>
         /// <param name="managedIdentityType">Type of Managed Identity that should be used. Cannot be System Assigned.</param>
         /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId.</param>
-        public static AuthenticationManager CreateWithManagedIdentityFederatedIdentityCredential(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType, string managedIdentityUserAssignedIdentifier)
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        public static AuthenticationManager CreateWithManagedIdentityFederatedIdentityCredential(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType, string managedIdentityUserAssignedIdentifier, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
-            return new AuthenticationManager(endpoint, identityHeader, appClientId, appTenantId, managedIdentityType, managedIdentityUserAssignedIdentifier);
+            return new AuthenticationManager(endpoint, identityHeader, appClientId, appTenantId, managedIdentityType, managedIdentityUserAssignedIdentifier, azureEnvironment);
         }
 
         /// <summary>
@@ -366,7 +368,8 @@ namespace PnP.Framework
         /// <param name="identityHeader">Identity header available as an environment variable in Azure. Used to help mitigate server-side request forgery (SSRF) attacks.</param>
         /// <param name="managedIdentityType">Type of Managed Identity that should be used. Defaults to System Assigned Managed Identity.</param>
         /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId. Mandatory when <paramref name="managedIdentityType"/> is not SystemAssigned. Should be omitted if it is SystemAssigned.</param>
-        public AuthenticationManager(string endpoint, string identityHeader, ManagedIdentityType managedIdentityType = ManagedIdentityType.SystemAssigned, string managedIdentityUserAssignedIdentifier = null)
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        public AuthenticationManager(string endpoint, string identityHeader, ManagedIdentityType managedIdentityType = ManagedIdentityType.SystemAssigned, string managedIdentityUserAssignedIdentifier = null, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (managedIdentityType != ManagedIdentityType.SystemAssigned && string.IsNullOrWhiteSpace(managedIdentityUserAssignedIdentifier))
             {
@@ -376,6 +379,7 @@ namespace PnP.Framework
             authenticationType = managedIdentityType == ManagedIdentityType.SystemAssigned ? ClientContextType.SystemAssignedManagedIdentity : ClientContextType.UserAssignedManagedIdentity;
             this.managedIdentityType = managedIdentityType;
             this.managedIdentityUserAssignedIdentifier = managedIdentityUserAssignedIdentifier;
+            this.azureEnvironment = azureEnvironment;
 
             // Construct the URL to call to get the token based on the type of Managed Identity in use
             switch (managedIdentityType)
@@ -389,7 +393,6 @@ namespace PnP.Framework
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with object/principal ID: {managedIdentityUserAssignedIdentifier}");
                     mi = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedObjectId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
                     break;
-
 
                 case ManagedIdentityType.UserAssignedByResourceId:
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with Azure Resource ID: {managedIdentityUserAssignedIdentifier}");
@@ -413,7 +416,8 @@ namespace PnP.Framework
         /// <param name="appTenantId">Tenant ID of the Entra ID application registration where the MI is added as a Federated Identity Credential. This must be registered in same tenant as the MI.</param>
         /// <param name="managedIdentityType">Type of Managed Identity that should be used. Cannot be System Assigned.</param>
         /// <param name="managedIdentityUserAssignedIdentifier">The identifier of the User Assigned Managed Identity. Can be the clientId, objectId or resourceId.</param>
-        public AuthenticationManager(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType, string managedIdentityUserAssignedIdentifier)
+        /// <param name="azureEnvironment">The azure environment to use. Defaults to AzureEnvironment.Production</param>
+        public AuthenticationManager(string endpoint, string identityHeader, string appClientId, string appTenantId, ManagedIdentityType managedIdentityType, string managedIdentityUserAssignedIdentifier, AzureEnvironment azureEnvironment = AzureEnvironment.Production)
         {
             if (managedIdentityType == ManagedIdentityType.SystemAssigned)
             {
@@ -438,6 +442,7 @@ namespace PnP.Framework
             authenticationType = ClientContextType.UserAssignedManagedIdentityFederatedCredential;
             this.managedIdentityType = managedIdentityType;
             this.managedIdentityUserAssignedIdentifier = managedIdentityUserAssignedIdentifier;
+            this.azureEnvironment = azureEnvironment;
 
             // Construct the URL to call to get the token based on the type of Managed Identity in use
             IManagedIdentityApplication managedIdentityApplication = null;
@@ -452,7 +457,6 @@ namespace PnP.Framework
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with object/principal ID: {managedIdentityUserAssignedIdentifier} as Federated Credential for client ID: {appClientId} in tenant: {appTenantId}");
                     managedIdentityApplication = ManagedIdentityApplicationBuilder.Create(ManagedIdentityId.WithUserAssignedObjectId(managedIdentityUserAssignedIdentifier)).WithHttpClientFactory(HttpClientFactory).Build();
                     break;
-
 
                 case ManagedIdentityType.UserAssignedByResourceId:
                     Diagnostics.Log.Debug(Constants.LOGGING_SOURCE, $"Using the user assigned managed identity with Azure Resource ID: {managedIdentityUserAssignedIdentifier} as Federated Credential for client ID: {appClientId} in tenant: {appTenantId}");

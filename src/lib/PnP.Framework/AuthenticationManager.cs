@@ -1765,7 +1765,7 @@ namespace PnP.Framework
                     }
                 case AzureEnvironment.DelosCloud:
                     {
-                        return "graph.svc.sovcloud.fr";
+                        return "graph.svc.sovcloud.de";
                     }
                 case AzureEnvironment.GovSGCloud:
                     {
@@ -2107,3 +2107,4 @@ namespace PnP.Framework
         #endregion
     }
 }
+

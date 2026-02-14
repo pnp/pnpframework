@@ -1707,8 +1707,8 @@ namespace PnP.Framework
                 AzureEnvironment.USGovernmentHigh => "https://login.microsoftonline.us",
                 AzureEnvironment.USGovernmentDoD => "https://login.microsoftonline.us",
                 AzureEnvironment.PPE => "https://login.windows-ppe.net",
-                AzureEnvironment.DelosCloud => "https://login.sovcloud-identity.fr",
-                AzureEnvironment.BleuCloud => "https://login.sovcloud-identity.de",
+                AzureEnvironment.DelosCloud => "https://login.sovcloud-identity.de",
+                AzureEnvironment.BleuCloud => "https://login.sovcloud-identity.fr",
                 AzureEnvironment.GovSGCloud => "https://login.sovcloud-identity.sg",
                 _ => "https://login.microsoftonline.com"
             };

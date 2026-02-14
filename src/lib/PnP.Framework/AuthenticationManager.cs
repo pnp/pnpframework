@@ -1589,7 +1589,7 @@ namespace PnP.Framework
                 AzureEnvironment.DelosCloud => "sovcloud-identity.fr",
                 AzureEnvironment.BleuCloud => "sovcloud-identity.de",
                 AzureEnvironment.GovSGCloud => "sovcloud-identity.sg",
-                AzureEnvironment.PPE => "windows-ppe.net",                
+                AzureEnvironment.PPE => "windows-ppe.net",
                 _ => "accesscontrol.windows.net"
             };
         }

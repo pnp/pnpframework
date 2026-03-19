@@ -352,6 +352,61 @@ namespace Microsoft.SharePoint.Client
             return false;
         }
 
+        /// <summary>
+        /// Returns true when web property bag writes should be blocked.
+        ///
+        /// On NoScript sites (DenyAddAndCustomizePages = Enabled), checks whether the
+        /// tenant-level override AllowWebPropertyBagUpdateWhenDenyAddAndCustomizePagesIsEnabled
+        /// permits property bag writes by probing the API with a sentinel write.
+        /// Does not require tenant-admin permissions.
+        /// </summary>
+        /// <param name="web">Web to verify</param>
+        /// <returns>True if property bag writes are blocked, false otherwise</returns>
+        public static bool IsPropertyBagWriteBlocked(this Web web)
+        {
+            // Fast path: if the site is not NoScript, property bag ops are always allowed.
+            if (!web.IsNoScriptSite())
+            {
+                return false;
+            }
+
+            // Probe: attempt a sentinel write to detect tenant override.
+            string sentinelKey = "_PnP_PropertyBagProbe_" + Guid.NewGuid().ToString("N");
+            try
+            {
+                var props = web.AllProperties;
+                web.Context.Load(props);
+                web.Context.ExecuteQueryRetry();
+
+                props[sentinelKey] = "probe";
+                web.Update();
+                web.Context.ExecuteQueryRetry();
+
+                // Write succeeded - tenant allows property bag updates.
+
+                // Clean up sentinel.
+                props[sentinelKey] = null;
+                web.Update();
+                web.Context.ExecuteQueryRetry();
+
+                return false;
+            }
+            catch (ServerException ex) when (
+                ex.ServerErrorCode == -2147024891      // E_ACCESSDENIED
+                || ex.ServerErrorCode == -1
+                || (ex.ServerErrorTypeName != null && ex.ServerErrorTypeName.Contains("UnauthorizedAccessException")))
+            {
+                // Write genuinely blocked.
+                return true;
+            }
+            catch
+            {
+                // Any other error (connectivity, etc.) - assume blocked to preserve
+                // the pre-existing safe-by-default behaviour.
+                return true;
+            }
+        }
+
         private static bool IsCannotGetSiteException(Exception ex)
         {
             if (ex is ServerException)
@@ -1000,9 +1055,14 @@ namespace Microsoft.SharePoint.Client
         /// Queues a web for a full crawl the next incremental/continous crawl
         /// </summary>
         /// <param name="web">Site to be processed</param>
-        public static void ReIndexWeb(this Web web)
+        /// <param name="propertyBagWriteAllowed">When provided, skips the sentinel write probe.
+        /// True means property bag writes are allowed; false means blocked. Null (default) auto-detects.</param>
+        public static void ReIndexWeb(this Web web, bool? propertyBagWriteAllowed = null)
         {
-            if (web.IsNoScriptSite())
+            var blocked = propertyBagWriteAllowed.HasValue
+                ? !propertyBagWriteAllowed.Value
+                : web.IsPropertyBagWriteBlocked();
+            if (blocked)
             {
                 // Update individual lists instead, as web bag is no (longer) accessible
                 var context = web.Context;

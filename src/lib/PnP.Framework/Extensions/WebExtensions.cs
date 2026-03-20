@@ -384,8 +384,9 @@ namespace Microsoft.SharePoint.Client
 
                 // Write succeeded - tenant allows property bag updates.
 
-                // Clean up sentinel.
+                // Clean up sentinel (both steps required — CSOM quirk, see RemovePropertyBagValueInternal).
                 props[sentinelKey] = null;
+                props.FieldValues.Remove(sentinelKey);
                 web.Update();
                 web.Context.ExecuteQueryRetry();
 

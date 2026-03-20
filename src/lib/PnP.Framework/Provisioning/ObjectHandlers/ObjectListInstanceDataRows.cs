@@ -641,7 +641,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     var userFieldValue = fieldValue.Value as Microsoft.SharePoint.Client.FieldUserValue;
                     if (userFieldValue != null)
                     {
-                        value = userFieldValue.Email;
+                        if (!string.IsNullOrEmpty(userFieldValue.Email))
+                            value = userFieldValue.Email;
+                        else if (userFieldValue.LookupValue == web.GetEveryoneExceptExternalUsersClaimName())
+                            value = "{everyonebutexternalusers}";
                     }
                     break;
                 case "UserMulti":
@@ -649,6 +652,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     if (userMultiFieldValue != null)
                     {
                         value = string.Join(",", userMultiFieldValue.Select(u => u.Email).ToArray())?.TrimEnd(new char[] { ',' }).Trim(new char[] { ',' });
+                        if (userMultiFieldValue.Any(u => u.LookupValue == web.GetEveryoneExceptExternalUsersClaimName()))
+                        {
+                            if (!string.IsNullOrEmpty(value))
+                                value = value + ",";
+                            value = value + "{everyonebutexternalusers}";
+                        }
                     }
                     break;
                 case "Lookup":

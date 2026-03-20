@@ -27,13 +27,16 @@ if ($LocalPnPCore) {
 	$pnpCoreAssembly = Join-Path $PSScriptRoot -ChildPath "..\..\pnpcore\src\sdk\PnP.Core\bin\Debug\netstandard2.0\PnP.Core.dll"
 	$pnpCoreAssembly8 = Join-Path $PSScriptRoot -ChildPath "..\..\pnpcore\src\sdk\PnP.Core\bin\Debug\net8.0\PnP.Core.dll"
 	$pnpCoreAssembly9 = Join-Path $PSScriptRoot -ChildPath "..\..\pnpcore\src\sdk\PnP.Core\bin\Debug\net9.0\PnP.Core.dll"
+	$pnpCoreAssembly10 = Join-Path $PSScriptRoot -ChildPath "..\..\pnpcore\src\sdk\PnP.Core\bin\Debug\net10.0\PnP.Core.dll"
 	$pnpCoreAssembly = [System.IO.Path]::GetFullPath($pnpCoreAssembly)
 	$pnpCoreAssembly8 = [System.IO.Path]::GetFullPath($pnpCoreAssembly8)
 	$pnpCoreAssembly9 = [System.IO.Path]::GetFullPath($pnpCoreAssembly9)
+	$pnpCoreAssembly10 = [System.IO.Path]::GetFullPath($pnpCoreAssembly10)
 	if (Test-Path $pnpCoreAssembly -PathType Leaf) {
 		$buildCmd += " -p:PnPCoreSdkPath=`"$pnpCoreAssembly`""
 		$buildCmd += " -p:PnPCoreSdkPathNet8=`"$pnpCoreAssembly8`""
 		$buildCmd += " -p:PnPCoreSdkPathNet9=`"$pnpCoreAssembly9`""
+		$buildCmd += " -p:PnPCoreSdkPathNet10=`"$pnpCoreAssembly10`""
 	} 
 	else {
 		Write-Error -Message "PnP Core Assembly path $pnpCoreAssembly not found"

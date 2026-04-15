@@ -283,9 +283,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                             foreach (var control in column.Controls)
                             {
                                 // Create control
+                                // For vertical section columns, always use section.Columns.Count as the column index.
+                                // The vertical column is always created last by CanvasSection constructor during import,
+                                // but during export (HTML parsing) it may appear at any position in the Columns list
+                                // depending on HTML control ordering.
                                 CanvasControl controlInstance = new CanvasControl()
                                 {
-                                    Column = column.IsVerticalSectionColumn ? section.Columns.IndexOf(column) + 1 : column.Order,
+                                    Column = column.IsVerticalSectionColumn ? section.Columns.Count : column.Order,
                                     ControlId = control.InstanceId,
                                     Order = control.Order,
                                 };

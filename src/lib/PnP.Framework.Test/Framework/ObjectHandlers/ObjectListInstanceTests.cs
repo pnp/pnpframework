@@ -225,7 +225,7 @@ namespace PnP.Framework.Test.Framework.ObjectHandlers
                 var template = new ProvisioningTemplate();
                 var creationInfo = new ProvisioningTemplateCreationInformation(ctx.Web);
                 creationInfo.HandlersToProcess= Handlers.Lists|Handlers.ContentTypes;
-                listName = "Working Document";
+                listName = "My Test";
                 creationInfo.ListsToExtract = new List<string> { listName };
                 template = new ObjectListInstance(FieldAndListProvisioningStepHelper.Step.Export).ExtractObjects(ctx.Web, template, creationInfo);
                 var xml = template.ToXML();

@@ -167,6 +167,17 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     #endregion Fields
 
+                    //wait for all the list fields has been created before we start to apply list content type field references.
+                    if (step == FieldAndListProvisioningStepHelper.Step.LookupFields)
+                    {
+                        foreach (var listInfo in processedLists)
+                        {
+                            ApplyListContentTypeBindingSettings(web, listInfo, scope, listInfo.TokenParser ?? parser);
+                        }
+                    }
+
+                    
+
                     #region Audience Targeting
                     foreach (var listInfo in processedLists)
                     {
@@ -1726,6 +1737,162 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
+        private static void ApplyListContentTypeBindingSettings(Web web, ListInfo listInfo, PnPMonitoredScope scope, TokenParser parser)
+        {
+            if (!listInfo.SiteList.ContentTypesEnabled || !listInfo.TemplateList.ContentTypeBindings.Any())
+            {
+                return;
+            }
+
+            listInfo.SiteList.EnsureProperties(l => l.ContentTypes.Include(ct => ct.Id, ct => ct.StringId));
+
+            foreach (var contentTypeBinding in listInfo.TemplateList.ContentTypeBindings.Where(ctb => !ctb.Remove))
+            {
+                var matchingContentTypeId = listInfo.SiteList.ContentTypes.BestMatch(contentTypeBinding.ContentTypeId);
+                if (matchingContentTypeId == null)
+                {
+                    continue;
+                }
+
+                var listContentType = listInfo.SiteList.ContentTypes.GetById(matchingContentTypeId.StringValue);
+                ApplyContentTypeBindingSettings(web, listInfo.SiteList, listContentType, contentTypeBinding, scope, parser);
+            }
+        }
+
+        private static void ApplyContentTypeBindingSettings(Web web, List list, ContentType listContentType, Model.ContentTypeBinding contentTypeBinding, PnPMonitoredScope scope, TokenParser parser)
+        {
+            bool isDirty = false;
+
+            web.Context.Load(listContentType,
+                ct => ct.DisplayFormClientSideComponentId,
+                ct => ct.DisplayFormClientSideComponentProperties,
+                ct => ct.NewFormClientSideComponentId,
+                ct => ct.NewFormClientSideComponentProperties,
+                ct => ct.EditFormClientSideComponentId,
+                ct => ct.EditFormClientSideComponentProperties,
+                ct => ct.FieldLinks.Include(fl => fl.Id, fl => fl.Name, fl => fl.Hidden, fl => fl.Required
+                    ));
+            web.Context.ExecuteQueryRetry();
+
+            if (contentTypeBinding.FieldRefs.Any())
+            {
+                var orderedFieldNames = new List<string>();
+                var orderedFieldNamesSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+                foreach (var fieldRef in contentTypeBinding.FieldRefs)
+                {
+                    var field = list.GetFieldById(fieldRef.Id) ?? web.GetFieldById(fieldRef.Id, true);
+                    if (field == null)
+                    {
+                        scope.LogWarning("Field reference {0} could not be added to list content type {1} because the field was not found.", fieldRef.Id, listContentType.StringId);
+                        continue;
+                    }
+
+                    field.EnsureProperties(f => f.InternalName);
+                    web.AddFieldToContentType(listContentType, field, fieldRef.Required, fieldRef.Hidden, false, null, null);
+
+                    if (!string.IsNullOrEmpty(field.InternalName) && orderedFieldNamesSet.Add(field.InternalName))
+                    {
+                        orderedFieldNames.Add(field.InternalName);
+                    }
+
+                }
+
+                web.Context.Load(listContentType, ct => ct.FieldLinks.Include(fl => fl.Id, fl => fl.Name, fl => fl.Hidden, fl => fl.Required));
+                web.Context.ExecuteQueryRetry();
+
+                foreach (var fieldLink in listContentType.FieldLinks)
+                {
+                    if (!string.IsNullOrEmpty(fieldLink.Name) && orderedFieldNamesSet.Add(fieldLink.Name))
+                    {
+                        orderedFieldNames.Add(fieldLink.Name);
+                    }
+                }
+
+                var currentFieldOrder = listContentType.FieldLinks
+                    .Select(fl => fl.Name)
+                    .Where(n => !string.IsNullOrEmpty(n))
+                    .ToList();
+
+                var orderChanged = currentFieldOrder.Count != orderedFieldNames.Count;
+                if (!orderChanged)
+                {
+                    for (int i = 0; i < currentFieldOrder.Count; i++)
+                    {
+                        if (!currentFieldOrder[i].Equals(orderedFieldNames[i], StringComparison.OrdinalIgnoreCase))
+                        {
+                            orderChanged = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (orderChanged && orderedFieldNames.Count > 0)
+                {
+                    listContentType.FieldLinks.Reorder(orderedFieldNames.ToArray());
+                    isDirty = true;
+                }
+
+            }
+
+            isDirty |= SetContentTypeBindingFormCustomizerSettings(contentTypeBinding, parser, listContentType);
+
+            if (isDirty)
+            {
+                listContentType.Update(false);
+                web.Context.ExecuteQueryRetry();
+            }
+        }
+
+        private static bool SetContentTypeBindingFormCustomizerSettings(Model.ContentTypeBinding contentTypeBinding, TokenParser parser, ContentType listContentType)
+        {
+            bool isDirty = false;
+
+            var parsedDisplayFormClientSideComponentId = parser.ParseString(contentTypeBinding.DisplayFormClientSideComponentId);
+            if (!string.IsNullOrEmpty(parsedDisplayFormClientSideComponentId) && !string.Equals(listContentType.DisplayFormClientSideComponentId, parsedDisplayFormClientSideComponentId, StringComparison.OrdinalIgnoreCase))
+            {
+                listContentType.DisplayFormClientSideComponentId = parsedDisplayFormClientSideComponentId;
+                isDirty = true;
+            }
+
+            var parsedDisplayFormClientSideComponentProperties = parser.ParseString(contentTypeBinding.DisplayFormClientSideComponentProperties);
+            if (!string.IsNullOrEmpty(parsedDisplayFormClientSideComponentProperties) && !string.Equals(listContentType.DisplayFormClientSideComponentProperties, parsedDisplayFormClientSideComponentProperties, StringComparison.Ordinal))
+            {
+                listContentType.DisplayFormClientSideComponentProperties = parsedDisplayFormClientSideComponentProperties;
+                isDirty = true;
+            }
+
+            var parsedNewFormClientSideComponentId = parser.ParseString(contentTypeBinding.NewFormClientSideComponentId);
+            if (!string.IsNullOrEmpty(parsedNewFormClientSideComponentId) && !string.Equals(listContentType.NewFormClientSideComponentId, parsedNewFormClientSideComponentId, StringComparison.OrdinalIgnoreCase))
+            {
+                listContentType.NewFormClientSideComponentId = parsedNewFormClientSideComponentId;
+                isDirty = true;
+            }
+
+            var parsedNewFormClientSideComponentProperties = parser.ParseString(contentTypeBinding.NewFormClientSideComponentProperties);
+            if (!string.IsNullOrEmpty(parsedNewFormClientSideComponentProperties) && !string.Equals(listContentType.NewFormClientSideComponentProperties, parsedNewFormClientSideComponentProperties, StringComparison.Ordinal))
+            {
+                listContentType.NewFormClientSideComponentProperties = parsedNewFormClientSideComponentProperties;
+                isDirty = true;
+            }
+
+            var parsedEditFormClientSideComponentId = parser.ParseString(contentTypeBinding.EditFormClientSideComponentId);
+            if (!string.IsNullOrEmpty(parsedEditFormClientSideComponentId) && !string.Equals(listContentType.EditFormClientSideComponentId, parsedEditFormClientSideComponentId, StringComparison.OrdinalIgnoreCase))
+            {
+                listContentType.EditFormClientSideComponentId = parsedEditFormClientSideComponentId;
+                isDirty = true;
+            }
+
+            var parsedEditFormClientSideComponentProperties = parser.ParseString(contentTypeBinding.EditFormClientSideComponentProperties);
+            if (!string.IsNullOrEmpty(parsedEditFormClientSideComponentProperties) && !string.Equals(listContentType.EditFormClientSideComponentProperties, parsedEditFormClientSideComponentProperties, StringComparison.Ordinal))
+            {
+                listContentType.EditFormClientSideComponentProperties = parsedEditFormClientSideComponentProperties;
+                isDirty = true;
+            }
+
+            return isDirty;
+        }
+
         private static void CreateListCustomAction(List existingList, TokenParser parser, CustomAction userCustomAction)
         {
             UserCustomAction newUserCustomAction = existingList.UserCustomActions.Add();
@@ -2687,7 +2854,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             foreach (var ct in siteList.ContentTypes)
             {
-                web.Context.Load(ct, c => c.Parent);
+                web.Context.Load(ct, 
+                    c => c.Parent,
+                    c => c.Id,
+                    c => c.DisplayFormClientSideComponentId,
+                    c => c.DisplayFormClientSideComponentProperties,
+                    c => c.NewFormClientSideComponentId,
+                    c => c.NewFormClientSideComponentProperties,
+                    c => c.EditFormClientSideComponentId,
+                    c => c.EditFormClientSideComponentProperties);
                 web.Context.Load(siteList.RootFolder, rf => rf.UniqueContentTypeOrder);
                 web.Context.ExecuteQueryRetry();
 
@@ -2695,23 +2870,28 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     ? siteList.RootFolder.UniqueContentTypeOrder.FirstOrDefault(c => c.StringValue.Equals(ct.Id.StringValue, StringComparison.OrdinalIgnoreCase)) == null
                     : false;
 
+                var listContentType = new Model.ContentTypeBinding
+                {
+                    ContentTypeId = ct.StringId,
+                    Default = count == 0,
+                    Hidden = ctypeHidden,
+                    DisplayFormClientSideComponentId = ct.DisplayFormClientSideComponentId,
+                    DisplayFormClientSideComponentProperties = ct.DisplayFormClientSideComponentProperties,
+                    NewFormClientSideComponentId = ct.NewFormClientSideComponentId,
+                    NewFormClientSideComponentProperties = ct.NewFormClientSideComponentProperties,
+                    EditFormClientSideComponentId = ct.EditFormClientSideComponentId,
+                    EditFormClientSideComponentProperties = ct.EditFormClientSideComponentProperties,
+                };
+
+                // This is a site-level or inherited content type
                 if (ct.Parent != null)
                 {
-                    // Removed this - so that we are getting full list of content types and if it's oob content type,
-                    // We are taking parent - VesaJ.
-                    //if (!BuiltInContentTypeId.Contains(ct.Parent.StringId))
-                    //{
                     // Exclude System Content Type to prevent getting exception during import
                     if (!ct.Parent.StringId.Equals(BuiltInContentTypeId.System))
                     {
-                        list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.Parent.StringId, Default = count == 0, Hidden = ctypeHidden });
+                        listContentType.ContentTypeId = ct.Parent.StringId;
+                           
                     }
-
-                    //}
-                }
-                else
-                {
-                    list.ContentTypeBindings.Add(new ContentTypeBinding { ContentTypeId = ct.StringId, Default = count == 0, Hidden = ctypeHidden });
                 }
 
                 web.Context.Load(ct.FieldLinks);
@@ -2723,8 +2903,36 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         contentTypeFields.Add(new FieldRef() { Id = fieldLink.Id });
                     }
                 }
+
+
+                siteList.Context.Load(ct.FieldLinks, fls => fls.Include(
+                    fl => fl.Id,
+                    fl => fl.Name,
+                    fl => fl.Required,
+                    fl => fl.Hidden));
+                siteList.Context.ExecuteQueryRetry();
+
+                foreach (var fieldLink in ct.FieldLinks)
+                {
+                    listContentType.FieldRefs.Add(new FieldRef
+                    {
+                        Id = fieldLink.Id,
+                        Required = fieldLink.Required,
+                        Hidden = fieldLink.Hidden,
+                        UpdateChildren = false
+                    });
+
+                    if (!fieldLink.Hidden)
+                    {
+                        contentTypeFields.Add(new FieldRef() { Id = fieldLink.Id });
+                    }
+                }
+
+                list.ContentTypeBindings.Add(listContentType);
+
                 count++;
             }
+            
 
             return list;
         }
@@ -2960,7 +3168,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     if (field.TypeAsString.StartsWith("TaxonomyField"))
                     {
                         // find the corresponding taxonomy container text field and include it too
-                        var taxField = (TaxonomyField)field;
+                        var taxField = web.Context.CastTo<TaxonomyField>(field);
                         taxField.EnsureProperties(f => f.TextField, f => f.Id);
 
                         var noteField = siteList.Fields.GetById(taxField.TextField);

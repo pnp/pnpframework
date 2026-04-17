@@ -25,7 +25,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
         {
             get
             {
-                return (new XMLPnPSchemaV202209Serializer());
+                return (new XMLPnPSchemaV202604Serializer());
             }
         }
 
@@ -49,8 +49,11 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                 case XMLPnPSchemaVersion.V202103:
                     return (new XMLPnPSchemaV202103Serializer());
                 case XMLPnPSchemaVersion.V202209:
-                default:
                     return (new XMLPnPSchemaV202209Serializer());
+                case XMLPnPSchemaVersion.V202604:
+                case XMLPnPSchemaVersion.LATEST:
+                default:
+                    return (new XMLPnPSchemaV202604Serializer());
             }
         }
 
@@ -74,6 +77,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                 case XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2021_03:
                     return new XMLPnPSchemaV202103Serializer();
                 case XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2022_09:
+                    return new XMLPnPSchemaV202209Serializer();
+                case XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2026_04:
                 default:
                     return new XMLPnPSchemaV202209Serializer();
             }

@@ -80,7 +80,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml
                     return new XMLPnPSchemaV202209Serializer();
                 case XMLConstants.PROVISIONING_SCHEMA_NAMESPACE_2026_04:
                 default:
-                    return new XMLPnPSchemaV202209Serializer();
+                    return new XMLPnPSchemaV202604Serializer();
             }
         }
 

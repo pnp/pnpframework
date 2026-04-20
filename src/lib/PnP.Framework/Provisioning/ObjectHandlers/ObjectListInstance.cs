@@ -167,16 +167,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     #endregion Fields
 
-                    //wait for all the list fields has been created before we start to apply list content type field references.
-                    if (step == FieldAndListProvisioningStepHelper.Step.LookupFields)
+                    #region ListContentType FieldRefs and ClientSideComponent Settings
+
+                    foreach (var listInfo in processedLists)
                     {
-                        foreach (var listInfo in processedLists)
-                        {
-                            ApplyListContentTypeBindingSettings(web, listInfo, scope, listInfo.TokenParser ?? parser);
-                        }
+                        ProcessListContentTypeBindingSettings(web, listInfo, scope, listInfo.TokenParser ?? parser);
                     }
 
-                    
+                    #endregion ListContentType FieldRefs and ClientSideComponent Settings
+
 
                     #region Audience Targeting
                     foreach (var listInfo in processedLists)
@@ -1737,7 +1736,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private static void ApplyListContentTypeBindingSettings(Web web, ListInfo listInfo, PnPMonitoredScope scope, TokenParser parser)
+        private static void ProcessListContentTypeBindingSettings(Web web, ListInfo listInfo, PnPMonitoredScope scope, TokenParser parser)
         {
             if (!listInfo.SiteList.ContentTypesEnabled || !listInfo.TemplateList.ContentTypeBindings.Any())
             {
@@ -1764,6 +1763,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             bool isDirty = false;
 
             web.Context.Load(listContentType,
+                ct => ct.Name,
+                ct => ct.Id,
                 ct => ct.DisplayFormClientSideComponentId,
                 ct => ct.DisplayFormClientSideComponentProperties,
                 ct => ct.NewFormClientSideComponentId,
@@ -1784,12 +1785,21 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     var field = list.GetFieldById(fieldRef.Id) ?? web.GetFieldById(fieldRef.Id, true);
                     if (field == null)
                     {
-                        scope.LogWarning("Field reference {0} could not be added to list content type {1} because the field was not found.", fieldRef.Id, listContentType.StringId);
+                        scope.LogWarning("Field reference {0} could not be added to list content type {1} because the field was not found.", fieldRef.Id, listContentType.Name);
                         continue;
                     }
 
                     field.EnsureProperties(f => f.InternalName);
-                    web.AddFieldToContentType(listContentType, field, fieldRef.Required, fieldRef.Hidden, false, null, null);
+                    scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ListInstances_Adding_field_0_To_ListContentType_1, fieldRef.Id, listContentType.Name);
+                    try
+                    {
+                        web.AddFieldToContentType(listContentType, field, fieldRef.Required, fieldRef.Hidden, false, null, null);
+                    }
+                    catch (Exception ex)
+                    {
+                        scope.LogError(CoreResources.Provisioning_ObjectHandlers_ListInstances_Adding_field_0_To_ListContentType_1_failed__2__3, fieldRef.Id, listContentType.Name, ex.Message,ex.StackTrace);
+                        throw;
+                    }
 
                     if (!string.IsNullOrEmpty(field.InternalName) && orderedFieldNamesSet.Add(field.InternalName))
                     {
@@ -1829,6 +1839,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 if (orderChanged && orderedFieldNames.Count > 0)
                 {
+                    scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ListInstances_Updating_ListContentType__0__FieldOrder__1, listContentType.Name, string.Join(", ", orderedFieldNames));
                     listContentType.FieldLinks.Reorder(orderedFieldNames.ToArray());
                     isDirty = true;
                 }

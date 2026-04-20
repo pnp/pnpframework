@@ -19,7 +19,7 @@ namespace PnP.Framework {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class CoreResources {
@@ -1624,6 +1624,25 @@ namespace PnP.Framework {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding/Updating field {0} to list content type {1}.
+        /// </summary>
+        internal static string Provisioning_ObjectHandlers_ListInstances_Adding_field_0_To_ListContentType_1 {
+            get {
+                return ResourceManager.GetString("Provisioning_ObjectHandlers_ListInstances_Adding_field_0_To_ListContentType_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding/Updating field {0} to list content type {1} failed: {2} : {3}.
+        /// </summary>
+        internal static string Provisioning_ObjectHandlers_ListInstances_Adding_field_0_To_ListContentType_1_failed__2__3 {
+            get {
+                return ResourceManager.GetString("Provisioning_ObjectHandlers_ListInstances_Adding_field_0_To_ListContentType_1_fai" +
+                        "led__2__3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adding list: {0} - {1}.
         /// </summary>
         internal static string Provisioning_ObjectHandlers_ListInstances_Adding_list___0_____1_ {
@@ -1831,6 +1850,16 @@ namespace PnP.Framework {
         internal static string Provisioning_ObjectHandlers_ListInstances_Updating_list__0__failed___1_____2_ {
             get {
                 return ResourceManager.GetString("Provisioning_ObjectHandlers_ListInstances_Updating_list__0__failed___1_____2_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating list content type {0} field order {1}.
+        /// </summary>
+        internal static string Provisioning_ObjectHandlers_ListInstances_Updating_ListContentType__0__FieldOrder__1 {
+            get {
+                return ResourceManager.GetString("Provisioning_ObjectHandlers_ListInstances_Updating_ListContentType__0__FieldOrder" +
+                        "__1", resourceCulture);
             }
         }
         

@@ -2,8 +2,9 @@ name: Nightly nuget release
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 2 * * *'
+# TODO: for now the flow will be triggered manually
+#  schedule:    
+#    - cron: '0 2 * * *'
 
 jobs:
   build:
@@ -11,24 +12,16 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
       with:
-        ref: dev
+        ref: dev-release
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
       with:
         dotnet-version: '10.0.x'
-        include-prerelease: false
-    - name: Create and publish nuget 
+    - name: publish nuget 
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
       shell: pwsh
       run: |
-        ./build/build.ps1
-    - name: Add & Commit & Push
-      uses: EndBug/add-and-commit@v6
-      with:
-        message: 'Nightly PnP Framework release'
-        push: true
-        branch: dev
-        token: ${{ secrets.GITHUB_TOKEN }}   
+        ./build/publish-nightly.ps1

@@ -2,9 +2,8 @@ name: Nightly nuget release
 
 on:
   workflow_dispatch:
-# TODO: for now the flow will be triggered manually
-#  schedule:    
-#    - cron: '0 2 * * *'
+  schedule:    
+    - cron: '0 2 * * *'
 
 jobs:
   build:
@@ -14,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v6
       with:
-        ref: dev-release
+        ref: dev
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
       with:

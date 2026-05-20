@@ -6,10 +6,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [1.19.0]
 
 ### Added
 
+- Support for .NET 10.0
 - Provisioning engine support for flexible sections on pages #1159 [czullu - Christian Zuellig]
 
 ### Changed

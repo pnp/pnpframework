@@ -5445,5 +5445,94 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("user1@contoso.com", page.Security.BreakRoleInheritance.RoleAssignment[0].Principal);
             Assert.AreEqual("Full Control", page.Security.BreakRoleInheritance.RoleAssignment[0].RoleDefinition);
         }
+
+        [TestMethod]
+        [TestCategory(TEST_CATEGORY)]
+        public void XMLSerializer_RoundTrip_ClientSidePage_OneColumnVerticalSection_WithCallToActionControls()
+        {
+            var templateXml = @"<pnp:Provisioning xmlns:pnp=""http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema"">
+  <pnp:Templates>
+    <pnp:ProvisioningTemplate ID=""TEMPLATE-ISSUE-1206"">
+      <pnp:ClientSidePages>
+        <pnp:ClientSidePage PageName=""Issue1206.aspx"" Overwrite=""true"">
+          <pnp:Sections>
+            <pnp:Section Order=""1"" Type=""OneColumnVerticalSection"" VerticalSectionEmphasis=""Soft"">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType=""CallToAction"" JsonControlData=""{&quot;position&quot;:{&quot;sectionFactor&quot;:100}}"" ControlId=""df8e44e7-edd5-46d5-90da-aca1539313b8"" Order=""1"" Column=""1"" />
+                <pnp:CanvasControl WebPartType=""Custom"" CustomWebPartName=""Custom web part"" JsonControlData=""{}"" ControlId=""7a8004cb-8a1d-4fee-831d-2780ba29554c"" Order=""1"" Column=""2"" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+      </pnp:ClientSidePages>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>";
+
+            var provider = new XMLFileSystemTemplateProvider(".", "");
+            var serializer = new TargetSerializer();
+            serializer.Initialize(provider);
+
+            using (var inputStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(templateXml)))
+            {
+                var template = serializer.ToProvisioningTemplate(inputStream);
+                var modelSection = template.ClientSidePages[0].Sections[0];
+
+                Assert.AreEqual(CanvasSectionType.OneColumnVerticalSection, modelSection.Type);
+                Assert.AreEqual(2, modelSection.Controls[1].Column);
+
+                using (var outputStream = serializer.ToFormattedTemplate(template))
+                {
+                    var xml = XDocument.Load(outputStream);
+                    XNamespace pnp = "http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema";
+                    var section = xml.Descendants(pnp + "Section").Single();
+                    var controls = section.Descendants(pnp + "CanvasControl").ToList();
+
+                    Assert.AreEqual("OneColumnVerticalSection", section.Attribute("Type")?.Value);
+                    Assert.AreEqual("2", controls[1].Attribute("Column")?.Value);
+                }
+            }
+        }
+
+        [TestMethod]
+        [TestCategory(TEST_CATEGORY)]
+        public void XMLSerializer_Deserialize_ClientSidePage_FlexibleLayoutSections_FromFallbackTypes()
+        {
+            var templateXml = @"<pnp:Provisioning xmlns:pnp=""http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema"">
+  <pnp:Templates>
+    <pnp:ProvisioningTemplate ID=""TEMPLATE-FLEXIBLE-LAYOUT"">
+      <pnp:ClientSidePages>
+        <pnp:ClientSidePage PageName=""FlexibleLayout.aspx"" Overwrite=""true"">
+          <pnp:Sections>
+            <pnp:Section Order=""1"" Type=""OneColumn"">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType=""Custom"" CustomWebPartName=""Custom web part"" JsonControlData=""{&quot;flexibleLayoutPosition&quot;:{&quot;lg&quot;:{&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:4,&quot;h&quot;:2}}}"" ControlId=""7a8004cb-8a1d-4fee-831d-2780ba29554c"" Order=""1"" Column=""1"" />
+              </pnp:Controls>
+            </pnp:Section>
+            <pnp:Section Order=""2"" Type=""OneColumnVerticalSection"">
+              <pnp:Controls>
+                <pnp:CanvasControl WebPartType=""Custom"" CustomWebPartName=""Custom web part"" JsonControlData=""{&quot;flexibleLayoutPosition&quot;:{&quot;lg&quot;:{&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:4,&quot;h&quot;:2}}}"" ControlId=""311d802e-8e1d-4c43-989a-92a8b321e207"" Order=""1"" Column=""1"" />
+              </pnp:Controls>
+            </pnp:Section>
+          </pnp:Sections>
+        </pnp:ClientSidePage>
+      </pnp:ClientSidePages>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>";
+
+            var provider = new XMLFileSystemTemplateProvider(".", "");
+            var serializer = new TargetSerializer();
+            serializer.Initialize(provider);
+
+            using (var inputStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(templateXml)))
+            {
+                var template = serializer.ToProvisioningTemplate(inputStream);
+                var sections = template.ClientSidePages[0].Sections;
+
+                Assert.AreEqual(CanvasSectionType.FlexibleLayoutSection, sections[0].Type);
+                Assert.AreEqual(CanvasSectionType.FlexibleLayoutVerticalSection, sections[1].Type);
+            }
+        }
     }
 }

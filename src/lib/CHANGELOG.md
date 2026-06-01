@@ -6,10 +6,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [1.19.0]
 
 ### Added
 
+- Support for .NET 10.0
 - Provisioning engine support for flexible sections on pages #1159 [czullu - Christian Zuellig]
 
 ### Changed
@@ -18,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Removed the dependency on Microsof.Graph packages #1003 [quails4Eva]
 - Fixed exception when trowing error message in page transformation #1158 [AlanJinTS - Yihua Jin]
 - Safely handle null footer DisplayName in ProvisionObjects to avoid REST API failure #1161 [vascoazevedo08 - Vasco Azevedo]
+- Fixed exporting vertical section controls with wrong Column #1232 [nicolaor - Rene Nicolao]
 
 ## [1.18.0]
 

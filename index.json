@@ -297,7 +297,7 @@
   "api/PnP.Framework.AzureEnvironment.html": {
     "href": "api/PnP.Framework.AzureEnvironment.html",
     "title": "Enum AzureEnvironment | PnP Framework",
-    "keywords": "Enum AzureEnvironment Enum to identify the supported Office 365 hosting environments Namespace : PnP.Framework Assembly : PnP.Framework.dll Syntax public enum AzureEnvironment : int China Custom Custom cloud configuration, specify the endpoints manually Germany GovDe GovFr GovSg PPE Production USGovernment USGovernmentDoD USGovernmentHigh Extension Methods ValidationExtensions.ValidateNotNullOrEmpty<AzureEnvironment>(String) ObjectExtensions.Set<AzureEnvironment, T>(Expression<Func<AzureEnvironment, T>>, T, Boolean, Boolean)"
+    "keywords": "Enum AzureEnvironment Enum to identify the supported Office 365 hosting environments Namespace : PnP.Framework Assembly : PnP.Framework.dll Syntax public enum AzureEnvironment : int BleuCloud China Custom Custom cloud configuration, specify the endpoints manually DelosCloud Germany GovSGCloud PPE Production USGovernment USGovernmentDoD USGovernmentHigh Extension Methods ValidationExtensions.ValidateNotNullOrEmpty<AzureEnvironment>(String) ObjectExtensions.Set<AzureEnvironment, T>(Expression<Func<AzureEnvironment, T>>, T, Boolean, Boolean)"
   },
   "api/PnP.Framework.BuiltInContentTypeId.html": {
     "href": "api/PnP.Framework.BuiltInContentTypeId.html",

@@ -2050,14 +2050,7 @@ namespace PnP.Framework
             if (azureEnvironment == AzureEnvironment.Production)
             {
                 var azureADEndPoint = GetAzureADLoginEndPoint(azureEnvironment);
-                if (!string.IsNullOrEmpty(tenantId))
-                {
-                    builder = builder.WithAuthority($"{azureADEndPoint}/organizations", tenantId);
-                }
-                else
-                {
-                    builder = builder.WithAuthority($"{azureADEndPoint}/organizations");
-                }
+                builder = builder.WithAuthority($"{azureADEndPoint}/organizations");
             }
             else
             {

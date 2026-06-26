@@ -851,7 +851,6 @@ namespace PnP.Framework
                 this.azureEnvironment = pnPContext.Environment switch
                 {
                     Microsoft365Environment.Production => AzureEnvironment.Production,
-                    Microsoft365Environment.Germany => AzureEnvironment.Germany,
                     Microsoft365Environment.China => AzureEnvironment.China,
                     Microsoft365Environment.USGovernment => AzureEnvironment.USGovernment,
                     Microsoft365Environment.USGovernmentHigh => AzureEnvironment.USGovernmentHigh,
@@ -1580,11 +1579,10 @@ namespace PnP.Framework
             return (environment) switch
             {
                 AzureEnvironment.Production => "accesscontrol.windows.net",
-                AzureEnvironment.Germany => "microsoftonline.de",
                 AzureEnvironment.China => "accesscontrol.chinacloudapi.cn",
                 AzureEnvironment.USGovernment => "accesscontrol.windows.net",
                 AzureEnvironment.USGovernmentHigh => "microsoftonline.us",
-                AzureEnvironment.USGovernmentDoD => "microsoftonline.us",
+                AzureEnvironment.USGovernmentDoD => "microsoftonline.us",                
                 AzureEnvironment.PPE => "windows-ppe.net",
                 _ => "accesscontrol.windows.net"
             };
@@ -1600,7 +1598,6 @@ namespace PnP.Framework
             return (environment) switch
             {
                 AzureEnvironment.Production => "accounts",
-                AzureEnvironment.Germany => "login",
                 AzureEnvironment.China => "accounts",
                 AzureEnvironment.USGovernment => "login",
                 AzureEnvironment.USGovernmentHigh => "login",
@@ -1697,7 +1694,6 @@ namespace PnP.Framework
             return (environment) switch
             {
                 AzureEnvironment.Production => "https://login.microsoftonline.com",
-                AzureEnvironment.Germany => "https://login.microsoftonline.de",
                 AzureEnvironment.China => "https://login.chinacloudapi.cn",
                 AzureEnvironment.USGovernment => "https://login.microsoftonline.com",
                 AzureEnvironment.USGovernmentHigh => "https://login.microsoftonline.us",
@@ -1738,11 +1734,7 @@ namespace PnP.Framework
                 case AzureEnvironment.USGovernment:
                     {
                         return "graph.microsoft.com";
-                    }
-                case AzureEnvironment.Germany:
-                    {
-                        return "graph.microsoft.de";
-                    }
+                    }                
                 case AzureEnvironment.China:
                     {
                         return "microsoftgraph.chinacloudapi.cn";
@@ -1806,7 +1798,6 @@ namespace PnP.Framework
                 AzureEnvironment.USGovernment => "com",
                 AzureEnvironment.USGovernmentHigh => "us",
                 AzureEnvironment.USGovernmentDoD => "us",
-                AzureEnvironment.Germany => "de",
                 AzureEnvironment.China => "cn",
                 AzureEnvironment.GovFr => "fr",
                 AzureEnvironment.GovDe => "de",
@@ -2011,12 +2002,7 @@ namespace PnP.Framework
                         {
                             builder = builder.WithAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMyOrg);
                             break;
-                        }
-                    case AzureEnvironment.Germany:
-                        {
-                            builder = builder.WithAuthority(AzureCloudInstance.AzureGermany, AadAuthorityAudience.AzureAdMyOrg);
-                            break;
-                        }
+                        }                    
                     case AzureEnvironment.China:
                         {
                             builder = builder.WithAuthority(AzureCloudInstance.AzureChina, AadAuthorityAudience.AzureAdMyOrg);
@@ -2071,11 +2057,6 @@ namespace PnP.Framework
                             builder = builder.WithAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
-                    case AzureEnvironment.Germany:
-                        {
-                            builder = builder.WithAuthority(AzureCloudInstance.AzureGermany, AadAuthorityAudience.AzureAdMyOrg);
-                            break;
-                        }
                     case AzureEnvironment.China:
                         {
                             builder = builder.WithAuthority(AzureCloudInstance.AzureChina, AadAuthorityAudience.AzureAdMyOrg);
@@ -2096,11 +2077,11 @@ namespace PnP.Framework
                             builder = builder.WithAuthority(AzureCloudInstance.GovSg, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
-                }                
+                }
             }
             return builder;
         }
-        
+
         #endregion
     }
 }

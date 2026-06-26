@@ -47,8 +47,10 @@ namespace Microsoft.SharePoint.Client
                     {
                         "com" => AzureEnvironment.Production,
                         "us" => AzureEnvironment.USGovernment,
-                        "de" => AzureEnvironment.Germany,
+                        "de" => AzureEnvironment.GovDe,
                         "cn" => AzureEnvironment.China,
+                        "fr" => AzureEnvironment.GovFr,
+                        "sg" => AzureEnvironment.GovSg,
                         _ => AzureEnvironment.Production,
                     };
                 }

@@ -51,7 +51,18 @@ namespace PnP.Framework
         /// 
         /// </summary>
         USGovernmentDoD = 6,
-
+        /// <summary>
+        /// 
+        /// </summary>
+        GovFr = 7,
+        /// <summary>
+        /// 
+        /// </summary>
+        GovDe = 8,
+        /// <summary>
+        /// 
+        /// </summary>
+        GovSg = 9,
         /// <summary>
         /// Custom cloud configuration, specify the endpoints manually
         /// </summary>
@@ -840,11 +851,13 @@ namespace PnP.Framework
                 this.azureEnvironment = pnPContext.Environment switch
                 {
                     Microsoft365Environment.Production => AzureEnvironment.Production,
-                    Microsoft365Environment.Germany => AzureEnvironment.Germany,
                     Microsoft365Environment.China => AzureEnvironment.China,
                     Microsoft365Environment.USGovernment => AzureEnvironment.USGovernment,
                     Microsoft365Environment.USGovernmentHigh => AzureEnvironment.USGovernmentHigh,
                     Microsoft365Environment.USGovernmentDoD => AzureEnvironment.USGovernmentDoD,
+                    Microsoft365Environment.GovFr => AzureEnvironment.GovFr,
+                    Microsoft365Environment.GovDe => AzureEnvironment.GovDe,
+                    Microsoft365Environment.GovSg => AzureEnvironment.GovSg,
                     Microsoft365Environment.PreProduction => AzureEnvironment.PPE,
                     _ => AzureEnvironment.Production
                 };
@@ -1566,11 +1579,10 @@ namespace PnP.Framework
             return (environment) switch
             {
                 AzureEnvironment.Production => "accesscontrol.windows.net",
-                AzureEnvironment.Germany => "microsoftonline.de",
                 AzureEnvironment.China => "accesscontrol.chinacloudapi.cn",
                 AzureEnvironment.USGovernment => "accesscontrol.windows.net",
                 AzureEnvironment.USGovernmentHigh => "microsoftonline.us",
-                AzureEnvironment.USGovernmentDoD => "microsoftonline.us",
+                AzureEnvironment.USGovernmentDoD => "microsoftonline.us",                
                 AzureEnvironment.PPE => "windows-ppe.net",
                 _ => "accesscontrol.windows.net"
             };
@@ -1586,11 +1598,13 @@ namespace PnP.Framework
             return (environment) switch
             {
                 AzureEnvironment.Production => "accounts",
-                AzureEnvironment.Germany => "login",
                 AzureEnvironment.China => "accounts",
                 AzureEnvironment.USGovernment => "login",
                 AzureEnvironment.USGovernmentHigh => "login",
                 AzureEnvironment.USGovernmentDoD => "login",
+                AzureEnvironment.GovFr => "login",
+                AzureEnvironment.GovDe => "login",
+                AzureEnvironment.GovSg => "login",
                 AzureEnvironment.PPE => "login",
                 _ => "accounts"
             };
@@ -1680,11 +1694,13 @@ namespace PnP.Framework
             return (environment) switch
             {
                 AzureEnvironment.Production => "https://login.microsoftonline.com",
-                AzureEnvironment.Germany => "https://login.microsoftonline.de",
                 AzureEnvironment.China => "https://login.chinacloudapi.cn",
                 AzureEnvironment.USGovernment => "https://login.microsoftonline.com",
                 AzureEnvironment.USGovernmentHigh => "https://login.microsoftonline.us",
                 AzureEnvironment.USGovernmentDoD => "https://login.microsoftonline.us",
+                AzureEnvironment.GovFr => "https://login.sovcloud-identity.fr",
+                AzureEnvironment.GovDe => "https://login.sovcloud-identity.de",
+                AzureEnvironment.GovSg => "https://login.sovcloud-identity.sg",
                 AzureEnvironment.PPE => "https://login.windows-ppe.net",
                 _ => "https://login.microsoftonline.com"
             };
@@ -1718,11 +1734,7 @@ namespace PnP.Framework
                 case AzureEnvironment.USGovernment:
                     {
                         return "graph.microsoft.com";
-                    }
-                case AzureEnvironment.Germany:
-                    {
-                        return "graph.microsoft.de";
-                    }
+                    }                
                 case AzureEnvironment.China:
                     {
                         return "microsoftgraph.chinacloudapi.cn";
@@ -1734,6 +1746,18 @@ namespace PnP.Framework
                 case AzureEnvironment.USGovernmentDoD:
                     {
                         return "dod-graph.microsoft.us";
+                    }
+                case AzureEnvironment.GovFr:
+                    {
+                        return "graph.svc.sovcloud.fr";
+                    }
+                case AzureEnvironment.GovDe:
+                    {
+                        return "graph.svc.sovcloud.de";
+                    }
+                case AzureEnvironment.GovSg:
+                    {
+                        return "graph.svc.sovcloud.sg";
                     }
                 default:
                     {
@@ -1774,8 +1798,10 @@ namespace PnP.Framework
                 AzureEnvironment.USGovernment => "com",
                 AzureEnvironment.USGovernmentHigh => "us",
                 AzureEnvironment.USGovernmentDoD => "us",
-                AzureEnvironment.Germany => "de",
                 AzureEnvironment.China => "cn",
+                AzureEnvironment.GovFr => "fr",
+                AzureEnvironment.GovDe => "de",
+                AzureEnvironment.GovSg => "sg",
                 _ => "com"
             };
         }
@@ -1976,15 +2002,25 @@ namespace PnP.Framework
                         {
                             builder = builder.WithAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMyOrg);
                             break;
-                        }
-                    case AzureEnvironment.Germany:
-                        {
-                            builder = builder.WithAuthority(AzureCloudInstance.AzureGermany, AadAuthorityAudience.AzureAdMyOrg);
-                            break;
-                        }
+                        }                    
                     case AzureEnvironment.China:
                         {
                             builder = builder.WithAuthority(AzureCloudInstance.AzureChina, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                    case AzureEnvironment.GovFr:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.GovFr, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                    case AzureEnvironment.GovDe:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.GovDe, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                    case AzureEnvironment.GovSg:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.GovSg, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
                 }
@@ -2021,14 +2057,24 @@ namespace PnP.Framework
                             builder = builder.WithAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
-                    case AzureEnvironment.Germany:
-                        {
-                            builder = builder.WithAuthority(AzureCloudInstance.AzureGermany, AadAuthorityAudience.AzureAdMyOrg);
-                            break;
-                        }
                     case AzureEnvironment.China:
                         {
                             builder = builder.WithAuthority(AzureCloudInstance.AzureChina, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                    case AzureEnvironment.GovFr:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.GovFr, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                    case AzureEnvironment.GovDe:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.GovDe, AadAuthorityAudience.AzureAdMyOrg);
+                            break;
+                        }
+                    case AzureEnvironment.GovSg:
+                        {
+                            builder = builder.WithAuthority(AzureCloudInstance.GovSg, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
                 }

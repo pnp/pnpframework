@@ -54,15 +54,15 @@ namespace PnP.Framework
         /// <summary>
         /// 
         /// </summary>
-        DelosCloud = 7,
+        GovDe = 7,
         /// <summary>
         /// 
         /// </summary>
-        BleuCloud = 8,
+        GovFr = 8,
         /// <summary>
         /// 
         /// </summary>
-        GovSGCloud = 9,
+        GovSg = 9,
 
         /// <summary>
         /// Custom cloud configuration, specify the endpoints manually
@@ -552,7 +552,7 @@ namespace PnP.Framework
             this.azureEnvironment = azureEnvironment;
 
             PublicClientApplicationBuilder builder = PublicClientApplicationBuilder.Create(clientId).WithHttpClientFactory(HttpClientFactory);
-            builder = GetBuilderWithAuthority(builder, azureEnvironment, tenantId);
+            builder = GetBuilderWithAuthority(builder, azureEnvironment);
             if (!string.IsNullOrEmpty(tenantId))
             {
                 builder = builder.WithTenantId(tenantId);
@@ -757,7 +757,7 @@ namespace PnP.Framework
 
             var builder = ConfidentialClientApplicationBuilder.Create(clientId).WithCertificate(certificate).WithTenantId(tenantId).WithHttpClientFactory(HttpClientFactory);
 
-            builder = GetBuilderWithAuthority(builder, azureEnvironment, tenantId);
+            builder = GetBuilderWithAuthority(builder, azureEnvironment);
 
             if (!string.IsNullOrEmpty(redirectUrl))
             {
@@ -858,9 +858,9 @@ namespace PnP.Framework
                     Microsoft365Environment.USGovernmentHigh => AzureEnvironment.USGovernmentHigh,
                     Microsoft365Environment.USGovernmentDoD => AzureEnvironment.USGovernmentDoD,
                     Microsoft365Environment.PreProduction => AzureEnvironment.PPE,
-                    Microsoft365Environment.DelosCloud => AzureEnvironment.DelosCloud,
-                    Microsoft365Environment.BleuCloud => AzureEnvironment.BleuCloud,
-                    Microsoft365Environment.GovSGCloud => AzureEnvironment.GovSGCloud,
+                    Microsoft365Environment.GovDe => AzureEnvironment.GovDe,
+                    Microsoft365Environment.GovFr => AzureEnvironment.GovFr,
+                    Microsoft365Environment.GovSg => AzureEnvironment.GovSg,
                     _ => AzureEnvironment.Production
                 };
             }
@@ -1586,9 +1586,9 @@ namespace PnP.Framework
                 AzureEnvironment.USGovernment => "accesscontrol.windows.net",
                 AzureEnvironment.USGovernmentHigh => "microsoftonline.us",
                 AzureEnvironment.USGovernmentDoD => "microsoftonline.us",
-                AzureEnvironment.DelosCloud => "sovcloud-identity.fr",
-                AzureEnvironment.BleuCloud => "sovcloud-identity.de",
-                AzureEnvironment.GovSGCloud => "sovcloud-identity.sg",
+                AzureEnvironment.GovDe => "sovcloud-identity.fr",
+                AzureEnvironment.GovFr => "sovcloud-identity.de",
+                AzureEnvironment.GovSg => "sovcloud-identity.sg",
                 AzureEnvironment.PPE => "windows-ppe.net",
                 _ => "accesscontrol.windows.net"
             };
@@ -1610,9 +1610,9 @@ namespace PnP.Framework
                 AzureEnvironment.USGovernmentHigh => "login",
                 AzureEnvironment.USGovernmentDoD => "login",
                 AzureEnvironment.PPE => "login",
-                AzureEnvironment.DelosCloud => "login",
-                AzureEnvironment.BleuCloud => "login",
-                AzureEnvironment.GovSGCloud => "login",
+                AzureEnvironment.GovDe => "login",
+                AzureEnvironment.GovFr => "login",
+                AzureEnvironment.GovSg => "login",
                 _ => "accounts"
             };
         }
@@ -1707,9 +1707,9 @@ namespace PnP.Framework
                 AzureEnvironment.USGovernmentHigh => "https://login.microsoftonline.us",
                 AzureEnvironment.USGovernmentDoD => "https://login.microsoftonline.us",
                 AzureEnvironment.PPE => "https://login.windows-ppe.net",
-                AzureEnvironment.DelosCloud => "https://login.sovcloud-identity.de",
-                AzureEnvironment.BleuCloud => "https://login.sovcloud-identity.fr",
-                AzureEnvironment.GovSGCloud => "https://login.sovcloud-identity.sg",
+                AzureEnvironment.GovDe => "https://login.sovcloud-identity.de",
+                AzureEnvironment.GovFr => "https://login.sovcloud-identity.fr",
+                AzureEnvironment.GovSg => "https://login.sovcloud-identity.sg",
                 _ => "https://login.microsoftonline.com"
             };
         }
@@ -1759,15 +1759,15 @@ namespace PnP.Framework
                     {
                         return "dod-graph.microsoft.us";
                     }
-                case AzureEnvironment.BleuCloud:
+                case AzureEnvironment.GovFr:
                     {
                         return "graph.svc.sovcloud.fr";
                     }
-                case AzureEnvironment.DelosCloud:
+                case AzureEnvironment.GovDe:
                     {
                         return "graph.svc.sovcloud.de";
                     }
-                case AzureEnvironment.GovSGCloud:
+                case AzureEnvironment.GovSg:
                     {
                         return "graph.svc.sovcloud.sg";
                     }
@@ -1810,10 +1810,10 @@ namespace PnP.Framework
                 AzureEnvironment.USGovernment => "com",
                 AzureEnvironment.USGovernmentHigh => "us",
                 AzureEnvironment.USGovernmentDoD => "us",
-                AzureEnvironment.DelosCloud => "de",
+                AzureEnvironment.GovDe => "de",
                 AzureEnvironment.China => "cn",
-                AzureEnvironment.GovSGCloud => "sg",
-                AzureEnvironment.BleuCloud => "fr",
+                AzureEnvironment.GovSg => "sg",
+                AzureEnvironment.GovFr => "fr",
                 _ => "com"
             };
         }
@@ -1993,7 +1993,7 @@ namespace PnP.Framework
             GC.SuppressFinalize(this);
         }
 
-        public PublicClientApplicationBuilder GetBuilderWithAuthority(PublicClientApplicationBuilder builder, AzureEnvironment azureEnvironment, string tenantId = null)
+        public PublicClientApplicationBuilder GetBuilderWithAuthority(PublicClientApplicationBuilder builder, AzureEnvironment azureEnvironment)
         {
             if (azureEnvironment == AzureEnvironment.Production)
             {
@@ -2025,19 +2025,19 @@ namespace PnP.Framework
                             builder = builder.WithAuthority(AzureCloudInstance.AzureChina, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
-                    case AzureEnvironment.BleuCloud:
+                    case AzureEnvironment.GovFr:
                         {
-                            builder = builder.WithAuthority(new Uri($"https://login.sovcloud-identity.fr/{tenantId}"));
+                            builder = builder.WithAuthority(AzureCloudInstance.GovFr, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
-                    case AzureEnvironment.DelosCloud:
+                    case AzureEnvironment.GovDe:
                         {
-                            builder = builder.WithAuthority(new Uri($"https://login.sovcloud-identity.de/{tenantId}"));
+                            builder = builder.WithAuthority(AzureCloudInstance.GovDe, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
-                    case AzureEnvironment.GovSGCloud:
+                    case AzureEnvironment.GovSg:
                         {
-                            builder = builder.WithAuthority(new Uri($"https://login.sovcloud-identity.sg/{tenantId}"));
+                            builder = builder.WithAuthority(AzureCloudInstance.GovSg, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
                 }
@@ -2045,7 +2045,7 @@ namespace PnP.Framework
             return builder;
         }
 
-        public ConfidentialClientApplicationBuilder GetBuilderWithAuthority(ConfidentialClientApplicationBuilder builder, AzureEnvironment azureEnvironment, string tenantId = "")
+        public ConfidentialClientApplicationBuilder GetBuilderWithAuthority(ConfidentialClientApplicationBuilder builder, AzureEnvironment azureEnvironment)
         {
             if (azureEnvironment == AzureEnvironment.Production)
             {
@@ -2084,19 +2084,19 @@ namespace PnP.Framework
                             builder = builder.WithAuthority(AzureCloudInstance.AzureChina, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
-                    case AzureEnvironment.BleuCloud:
+                    case AzureEnvironment.GovFr:
                         {
-                            builder = builder.WithAuthority(new Uri($"https://login.sovcloud-identity.fr/{tenantId}"));
+                            builder = builder.WithAuthority(AzureCloudInstance.GovFr, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
-                    case AzureEnvironment.DelosCloud:
+                    case AzureEnvironment.GovDe:
                         {
-                            builder = builder.WithAuthority(new Uri($"https://login.sovcloud-identity.de/{tenantId}"));
+                            builder = builder.WithAuthority(AzureCloudInstance.GovDe, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
-                    case AzureEnvironment.GovSGCloud:
+                    case AzureEnvironment.GovSg:
                         {
-                            builder = builder.WithAuthority(new Uri($"https://login.sovcloud-identity.sg/{tenantId}"));
+                            builder = builder.WithAuthority(AzureCloudInstance.GovSg, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
                 }

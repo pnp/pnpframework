@@ -2010,17 +2010,17 @@ namespace PnP.Framework
                         }
                     case AzureEnvironment.BleuCloud:
                         {
-                            builder = builder.WithAuthority(AzureCloudInstance.BleuCloud, AadAuthorityAudience.AzureAdMyOrg);
+                            builder = builder.WithAuthority(AzureCloudInstance.GovFr, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
                     case AzureEnvironment.DelosCloud:
                         {
-                            builder = builder.WithAuthority(AzureCloudInstance.DelosCloud, AadAuthorityAudience.AzureAdMyOrg);
+                            builder = builder.WithAuthority(AzureCloudInstance.GovDe, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
                     case AzureEnvironment.GovSGCloud:
                         {
-                            builder = builder.WithAuthority(AzureCloudInstance.GovSGCloud, AadAuthorityAudience.AzureAdMyOrg);
+                            builder = builder.WithAuthority(AzureCloudInstance.GovSg, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
                 }
@@ -2064,17 +2064,17 @@ namespace PnP.Framework
                         }
                     case AzureEnvironment.BleuCloud:
                         {
-                            builder = builder.WithAuthority(AzureCloudInstance.BleuCloud, AadAuthorityAudience.AzureAdMyOrg);
+                            builder = builder.WithAuthority(AzureCloudInstance.GovFr, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
                     case AzureEnvironment.DelosCloud:
                         {
-                            builder = builder.WithAuthority(AzureCloudInstance.DelosCloud, AadAuthorityAudience.AzureAdMyOrg);
+                            builder = builder.WithAuthority(AzureCloudInstance.GovDe, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
                     case AzureEnvironment.GovSGCloud:
                         {
-                            builder = builder.WithAuthority(AzureCloudInstance.GovSGCloud, AadAuthorityAudience.AzureAdMyOrg);
+                            builder = builder.WithAuthority(AzureCloudInstance.GovSg, AadAuthorityAudience.AzureAdMyOrg);
                             break;
                         }
                 }

@@ -6,10 +6,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [Current nightly]
+## 1.20.0 - Unreleased
+
+### Added
+
+### Changed
 
 - Bumped MSAL.NET to 4.85.2
 - Added support for DelosCloud, BleuCloud and GovSGCloud environment to support sovereign clouds.
+- Fixed empty section issue deployed from XML-Template #1179 [czullu - Christian Zuellig]
 
 ## [1.19.0]
 

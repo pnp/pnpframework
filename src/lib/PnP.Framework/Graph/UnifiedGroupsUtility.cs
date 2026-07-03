@@ -1162,7 +1162,7 @@ namespace PnP.Framework.Graph
                         try
                         {
                             // If it is not in the list of current members, just remove it
-                            var deleteGroupMemberUrl = $"{groupRequestUrl}/members/{userId}/ref";
+                            var deleteGroupMemberUrl = $"{groupRequestUrl}/members/{userId}/$ref";
                             HttpHelper.MakeDeleteRequest(deleteGroupMemberUrl, accessToken, retryCount: retryCount, delay: delay);
                         }
                         catch (HttpResponseException ex) when (ex.StatusCode == 400)
@@ -1215,7 +1215,7 @@ namespace PnP.Framework.Graph
                         try
                         {
                             // If it is not in the list of current owners, just remove it
-                            var deleteGroupMemberUrl = $"{groupRequestUrl}/owners/{userId}/ref";
+                            var deleteGroupMemberUrl = $"{groupRequestUrl}/owners/{userId}/$ref";
                             HttpHelper.MakeDeleteRequest(deleteGroupMemberUrl, accessToken, retryCount: retryCount, delay: delay);
                         }
                         catch (HttpResponseException ex) when (ex.StatusCode == 400)

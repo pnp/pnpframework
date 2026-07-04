@@ -12,9 +12,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- Bumped MSAL.NET to 4.85.2
-- Added support for DelosCloud, BleuCloud and GovSGCloud environment to support sovereign clouds.
+- Bumped MSAL.NET to 4.85.2 #1245
+- Added support for DelosCloud, BleuCloud and GovSGCloud environment to support sovereign clouds #1245 [gautamdsheth - Gautam Sheth]
 - Fixed empty section issue deployed from XML-Template #1179 [czullu - Christian Zuellig]
+- Fixed Owner/Member add and delete issue #1247 [singingknight - Per Jakobsen]
 
 ## [1.19.0]
 

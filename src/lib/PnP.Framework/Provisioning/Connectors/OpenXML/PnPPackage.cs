@@ -211,7 +211,10 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             {
                 Package = Package.Open(stream, mode, access)
             };
-            package.EnsureMandatoryPackageComponents();
+            if (mode != FileMode.Create)
+            {
+                package.EnsureMandatoryPackageComponents();
+            }
             return package;
         }
 
@@ -226,6 +229,21 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             string uriStr = U_DIR_FILES + fileName;
             PackagePart part = CreatePackagePart(R_PROVISIONINGTEMPLATE_FILE, CT_FILE, uriStr, FilesOriginPart);
             SetPackagePartValue(value, part);
+        }
+
+        /// <summary>
+        /// Adds file to the package
+        /// </summary>
+        /// <param name="fileName">Name of the file</param>
+        /// <param name="stream">Stream of the file</param>
+        public void AddFilePart(string fileName, Stream stream)
+        {
+            fileName = fileName.TrimStart('/');
+            string uriStr = U_DIR_FILES + fileName;
+            // create part
+            Uri uri = GetUri(uriStr);
+            PackagePart part = Package.CreatePart(uri, CT_FILE, PACKAGE_COMPRESSION_LEVEL);
+            SetPackagePartValue(stream, part);
         }
 
         /// <summary>
@@ -349,7 +367,7 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
             return obj;
         }
 
-        private void SetXamlSerializedPackagePartValue(object value, PackagePart part)
+        static public void SetXamlSerializedPackagePartValue(object value, PackagePart part)
         {
             if (value == null)
                 return;
@@ -380,6 +398,15 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML
                 //{
                 stream.Write(value, 0, value.Length);
                 //}
+            }
+        }
+
+        private void SetPackagePartValue(Stream stream, PackagePart part)
+        {
+            using (Stream destStream = part.GetStream(FileMode.OpenOrCreate))
+            {
+                stream.Position = 0;
+                stream.CopyTo(destStream);
             }
         }
 

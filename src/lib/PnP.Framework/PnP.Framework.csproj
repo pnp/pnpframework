@@ -5,7 +5,7 @@
 		<LangVersion>10.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
-		<Version>1.19.0</Version>
+		<Version>1.20.0</Version>
 		<Authors>PnP</Authors>
 		<Copyright>PnP 2025</Copyright>
 		<Description>PnP Framework contains the PnP Provisioning engine and a ton of extension methods that will make you more productive while developing for Microsoft 365.</Description>
@@ -259,7 +259,7 @@
 		<PackageReference Include="AngleSharp.Css" Version="0.17.0" />
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="PnP.Core" Version="1.16.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
+		<PackageReference Include="PnP.Core" Version="1.17.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
 		<PackageReference Include="Portable.Xaml" Version="0.26.0" />
 	</ItemGroup>
 

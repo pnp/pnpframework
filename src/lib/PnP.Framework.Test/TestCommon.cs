@@ -340,6 +340,19 @@ namespace PnP.Framework.Test
                     using var am = AuthenticationManager.CreateWithCertificate(AzureADClientId, System.Security.Cryptography.X509Certificates.StoreName.My, System.Security.Cryptography.X509Certificates.StoreLocation.CurrentUser, AzureADCertificateThumbprint, TenantId);
                     context = am.GetContext(contextUrl);
                 }
+                else
+                {
+                    // Delegated (user credentials) auth using the configured Azure AD client id
+                    using (AuthenticationManager am = new AuthenticationManager(AzureADClientId, UserName, Password, null, azureEnvironment))
+                    {
+                        if (azureEnvironment == AzureEnvironment.Custom)
+                        {
+                            am.SetEndPointsForCustomAzureEnvironmentConfiguration(AppSetting("MicrosoftGraphEndPoint"), AppSetting("AzureADLoginEndPoint"));
+                        }
+
+                        context = am.GetContext(contextUrl);
+                    }
+                }
             }
             else if (!String.IsNullOrEmpty(AppId) && !String.IsNullOrEmpty(AppSecret))
             {

@@ -31,7 +31,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             using (var scope = new PnPMonitoredScope(this.Name))
             {
-                web.EnsureProperties(w => w.FooterEnabled, w => w.ServerRelativeUrl, w => w.Url, w => w.Language);
+                web.EnsureProperties(w => w.FooterEnabled, w => w.ServerRelativeUrl, w => w.Url, w => w.Language, w => w.AllProperties);
                 var defaultCulture = new CultureInfo((int)web.Language);
 
                 var footer = new SiteFooter
@@ -150,20 +150,33 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 template.Footer = footer;
                 if (creationInfo.PersistBrandingFiles)
                 {
+                    Uri webUri = new Uri(web.Url);
+                    string webUrl = $"{webUri.Scheme}://{webUri.DnsSafeHost}";
+
                     // Extract site logo if property has been set and it's not dynamic image from _api URL
                     if (!string.IsNullOrEmpty(template.Footer.Logo) && (!template.Footer.Logo.ToLowerInvariant().Contains("_api/")))
                     {
                         // Convert to server relative URL if needed (can be set to FQDN URL of a file hosted in the site (e.g. for communication sites))
-                        Uri webUri = new Uri(web.Url);
-                        string webUrl = $"{webUri.Scheme}://{webUri.DnsSafeHost}";
-                        string footerLogoServerRelativeUrl = template.Footer.Logo.Replace(webUrl, "");
+                        string footerLogoServerRelativeUrl = Uri.UnescapeDataString(template.Footer.Logo).Replace(webUrl, "");
 
-                        if (PersistFile(web, creationInfo, scope, footerLogoServerRelativeUrl))
+                        if (Utilities.FileUtilities.PersistFile(web, creationInfo, scope, this, footerLogoServerRelativeUrl))
                         {
                             template.Files.Add(GetTemplateFile(web, footerLogoServerRelativeUrl));
                         }
                     }
                     template.Footer.Logo = Tokenize(template.Footer.Logo, web.Url, web);
+
+                    var footerBackgroundImageUrl= web.GetPropertyBagValueString("FooterBackgroundImageUrl","");
+                    if (!string.IsNullOrWhiteSpace(footerBackgroundImageUrl))
+                    {
+                        footerBackgroundImageUrl = Uri.UnescapeDataString(footerBackgroundImageUrl).Replace(webUrl, "");
+
+                        if (Utilities.FileUtilities.PersistFile(web, creationInfo, scope, this, footerBackgroundImageUrl))
+                        {
+                            template.Files.Add(GetTemplateFile(web, footerBackgroundImageUrl));
+                        }
+                    }
+
                     var files = template.Files.Distinct().ToList();
                     template.Files.Clear();
                     template.Files.AddRange(files);
@@ -184,6 +197,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
             }
         }
+
         private string TokenizeHost(Web web, string json)
         {
             // HostUrl token replacement
@@ -217,99 +231,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return templateFile;
         }
 
-        private bool PersistFile(Web web, ProvisioningTemplateCreationInformation creationInfo, PnPMonitoredScope scope, string serverRelativeUrl)
-        {
-            var success = false;
-            if (creationInfo.PersistBrandingFiles)
-            {
-                if (creationInfo.FileConnector != null)
-                {
-                    if (UrlUtility.IsIisVirtualDirectory(serverRelativeUrl))
-                    {
-                        scope.LogWarning("File is not located in the content database. Not retrieving {0}", serverRelativeUrl);
-                        return success;
-                    }
-
-                    try
-                    {
-                        var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativeUrl));
-                        string fileName = string.Empty;
-                        if (serverRelativeUrl.IndexOf("/") > -1)
-                        {
-                            fileName = serverRelativeUrl.Substring(serverRelativeUrl.LastIndexOf("/") + 1);
-                        }
-                        else
-                        {
-                            fileName = serverRelativeUrl;
-                        }
-                        web.Context.Load(file);
-                        web.Context.ExecuteQueryRetry();
-                        ClientResult<Stream> stream = file.OpenBinaryStream();
-                        web.Context.ExecuteQueryRetry();
-                        
-                        file.EnsureProperty(f => f.ServerRelativePath);
-                        var baseUri = new Uri(web.Url);
-                        var fullUri = new Uri(baseUri, file.ServerRelativePath.DecodedUrl);
-                        var folderPath = Uri.UnescapeDataString(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
-
-                        // Configure the filename to use 
-                        fileName = Uri.UnescapeDataString(fullUri.Segments[fullUri.Segments.Length - 1]);
-
-                        // Build up a site relative container URL...might end up empty as well
-                        String container = Uri.UnescapeDataString(folderPath.Replace(web.ServerRelativeUrl, "")).Trim('/').Replace("/", "\\");
-
-                        using (Stream memStream = new MemoryStream())
-                        {
-                            CopyStream(stream.Value, memStream);
-                            memStream.Position = 0;
-                            if (!string.IsNullOrEmpty(container))
-                            {
-                                creationInfo.FileConnector.SaveFileStream(fileName, container, memStream);
-                            }
-                            else
-                            {
-                                creationInfo.FileConnector.SaveFileStream(fileName, memStream);
-                            }
-                        }
-                        success = true;
-                    }
-                    catch (ServerException ex1)
-                    {
-                        // If we are referring a file from a location outside of the current web or at a location where we cannot retrieve the file an exception is thrown. We swallow this exception.
-                        if (ex1.ServerErrorCode != -2147024809)
-                        {
-                            throw;
-                        }
-                        else
-                        {
-                            scope.LogWarning("File is not necessarily located in the current web. Not retrieving {0}", serverRelativeUrl);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteMessage("No connector present to persist footer logo.", ProvisioningMessageType.Error);
-                    scope.LogError("No connector present to persist footer logo.");
-                }
-            }
-            else
-            {
-                success = true;
-            }
-            return success;
-        }
-
-        private void CopyStream(Stream source, Stream destination)
-        {
-            byte[] buffer = new byte[32768];
-            int bytesRead;
-
-            do
-            {
-                bytesRead = source.Read(buffer, 0, buffer.Length);
-                destination.Write(buffer, 0, bytesRead);
-            } while (bytesRead != 0);
-        }
         private SiteFooterLink ParseNodes(MenuNode node, ProvisioningTemplate template, string webServerRelativeUrl, bool persistLanguage, CultureInfo currentCulture, string parentKey, ProvisioningTemplateCreationInformation creationInfo)
         {
             var link = new SiteFooterLink();
@@ -353,20 +274,12 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     web.FooterEnabled = template.Footer.Enabled;
                     var defaultCulture = new CultureInfo((int)web.Language);
 
-                    //var jsonRequest = new
-                    //{
-                    //    footerEnabled = web.FooterEnabled,
-                    //    footerLayout = web.FooterLayout,
-                    //    footerEmphasis = web.FooterEmphasis
-                    //};
-
-                    //web.ExecutePostAsync("/_api/web/SetChromeOptions", System.Text.Json.JsonSerializer.Serialize(jsonRequest)).GetAwaiter().GetResult();
-
                     // Move to the PnP Core SDK context
                     using (var pnpCoreContext = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
                     {
                         // Get the Chrome options
-                        var chrome = pnpCoreContext.Web.GetBrandingManager().GetChromeOptions();
+                        var brandingManager = pnpCoreContext.Web.GetBrandingManager();
+                        var chrome = brandingManager.GetChromeOptions();
 
                         chrome.Footer.Enabled = web.FooterEnabled;
                         // Avoid setting a null DisplayName, which causes errors if the footer was previously enabled.
@@ -377,43 +290,114 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             chrome.Footer.DisplayName = template.Footer.DisplayName;
                         }
                         chrome.Footer.Layout = (PnP.Core.Model.SharePoint.FooterLayoutType)Enum.Parse(typeof(PnP.Core.Model.SharePoint.FooterLayoutType), template.Footer.Layout.ToString());
-                        chrome.Footer.Emphasis = (PnP.Core.Model.SharePoint.FooterVariantThemeType)Enum.Parse(typeof(PnP.Core.Model.SharePoint.FooterVariantThemeType), template.Footer.BackgroundEmphasis.ToString()); 
+                        chrome.Footer.Emphasis = (PnP.Core.Model.SharePoint.FooterVariantThemeType)Enum.Parse(typeof(PnP.Core.Model.SharePoint.FooterVariantThemeType), template.Footer.BackgroundEmphasis.ToString());
 
-                        pnpCoreContext.Web.GetBrandingManager().SetChromeOptions(chrome);
+                        //Modern footer settings
+                        if (template?.PropertyBagEntries != null)
+                        {
+                            foreach (var entry in template.PropertyBagEntries)
+                            {
+                                if (string.IsNullOrWhiteSpace(entry.Value))
+                                {
+                                    continue;
+                                }
+                                switch (entry.Key.ToLower())
+                                {
+                                    case "footeroverlaycolor":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footeroverlaycolor) && Enum.IsDefined(typeof(OverlayColorType), footeroverlaycolor))
+                                            {
+                                                chrome.Footer.OverlayColor = (Core.Model.SharePoint.OverlayColorType)(OverlayColorType)footeroverlaycolor;
+                                            }
+                                            break;
+                                        }
+                                    case "footeroverlayopacity":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footeroverlayopacity))
+                                            {
+                                                chrome.Footer.OverlayOpacity = footeroverlayopacity;
+                                            }
+                                            break;
+                                        }
+                                    case "footeroverlaygradientdirection":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footeroverlaygradientdirection) && Enum.IsDefined(typeof(Core.Model.SharePoint.OverlayGradientDirectionType), footeroverlaygradientdirection))
+                                            {
+                                                chrome.Footer.OverlayGradientDirection = (Core.Model.SharePoint.OverlayGradientDirectionType)footeroverlaygradientdirection;
+                                            }
+                                            break;
+                                        }
+                                    case "footercolorindexinlightmode":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footercolorindexinlightmode))
+                                            {
+                                                chrome.Footer.ColorIndexInLightMode = footercolorindexinlightmode;
+                                            }
+                                            break;
+                                        }
+                                    case "footercolorindexindarkmode":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footercolorindexindarkmode))
+                                            {
+                                                chrome.Footer.ColorIndexInDarkMode = footercolorindexindarkmode;
+                                            }
+                                            break;
+                                        }
+                                    case "footeralignment":
+                                        {
+                                            if (int.TryParse(entry.Value, out var footerAlignment) && Enum.IsDefined(typeof(Core.Model.SharePoint.FooterLinkAlignment), footerAlignment))
+                                            {
+                                                chrome.Footer.LinkAlignment = (Core.Model.SharePoint.FooterLinkAlignment)footerAlignment;
+                                            }
+                                            break;
+                                        }
+                                    case "fontoptionforsitefootertitle":
+                                        {
+                                            chrome.Font.SiteFooterTitle = System.Text.Json.JsonSerializer.Deserialize<Utilities.FontOption>(entry.Value);
+                                            break;
+                                        }
+                                    case "fontoptionforsitefooternav":
+                                        {
+                                            chrome.Font.SiteFooterNav = System.Text.Json.JsonSerializer.Deserialize<Utilities.FontOption>(entry.Value);
+                                            break;
+                                        }
+                                }
+                            }
+                        }
+
+                        brandingManager.SetChromeOptions(chrome);
+
+                        //modern header background image
+                        if (template?.PropertyBagEntries != null)
+                        {
+                            try
+                            {
+                                var footerbackgroundimageurl = template.PropertyBagEntries.FirstOrDefault(p => "footerbackgroundimageurl" == p.Key.ToLower())?.Value;
+                                if (!string.IsNullOrWhiteSpace(footerbackgroundimageurl))
+                                {
+                                    var file = template.Files.FirstOrDefault(f => footerbackgroundimageurl.EndsWith(f.Src, StringComparison.InvariantCultureIgnoreCase));
+                                    if (file != null)
+                                    {
+                                        var fileName = System.IO.Path.GetFileName(footerbackgroundimageurl);
+                                        var footerbackgroundimagefocalpoint = template.PropertyBagEntries.FirstOrDefault(p => "footerbackgroundimagefocalpoint" == p.Key.ToLower())?.Value;
+                                        if (!string.IsNullOrWhiteSpace(footerbackgroundimagefocalpoint))
+                                        {
+                                            var focalPoint = System.Text.Json.JsonSerializer.Deserialize<FocalPoint>(footerbackgroundimagefocalpoint);
+                                            chrome.Footer.SetFooterBackgroundImage(fileName, Utilities.FileUtilities.GetFileStream(template, file), focalPoint.x, focalPoint.y, overwrite: true);
+                                        }
+                                        else
+                                        {
+                                            chrome.Footer.SetFooterBackgroundImage(fileName, Utilities.FileUtilities.GetFileStream(template, file), overwrite: true);
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                scope.LogError(ex, "An error occurred while setting the footer background image");
+                            }
+                        }
                     }
-
-                    //if (PnPProvisioningContext.Current != null)
-                    //{
-                    //    // Get an Access Token for the SetChromeOptions request
-                    //    var spoResourceUri = new Uri(web.Url).Authority;
-                    //    var accessToken = PnPProvisioningContext.Current.AcquireToken(spoResourceUri, null);
-
-                    //    if (accessToken != null)
-                    //    {
-                    //        // Prepare the JSON request for SetChromeOptions
-                    //        var jsonRequest = new
-                    //        {
-                    //            footerEnabled = web.FooterEnabled,
-                    //            footerLayout = web.FooterLayout,
-                    //            footerEmphasis = web.FooterEmphasis
-                    //        };
-
-                    //        // Build the URL of the SetChromeOptions API
-                    //        var setChromeOptionsApiUrl = $"{web.Url}/_api/web/SetChromeOptions";
-
-                    //        // Make the POST request to the SetChromeOptions API
-                    //        // and fail in case of any exception
-                    //        HttpHelper.MakePostRequest(setChromeOptionsApiUrl,
-                    //            jsonRequest,
-                    //            "application/json",
-                    //            accessToken);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    web.Update();
-                    //    web.Context.ExecuteQueryRetry();
-                    //}
 
                     if (web.FooterEnabled)
                     {
@@ -570,7 +554,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
             return parser;
         }
-
+ 
         public override bool WillExtract(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo)
         {
             if ((web.Context as ClientContext).Site.IsCommunicationSite())
@@ -634,6 +618,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             [JsonProperty("menuState")]
             public MenuState MenuState { get; set; }
+        }
+
+        private class FocalPoint
+        {
+            public double x { get; set; }
+            public double y { get; set; }
+            public string hash { get; set; }
         }
     }
 }

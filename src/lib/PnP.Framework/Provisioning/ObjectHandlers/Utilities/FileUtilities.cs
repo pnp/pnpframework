@@ -1,4 +1,7 @@
-﻿using PnP.Framework.Provisioning.Model;
+﻿using Microsoft.SharePoint.Client;
+using PnP.Framework.Diagnostics;
+using PnP.Framework.Provisioning.Model;
+using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -135,6 +138,100 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             }
 
             return (result);
+        }
+
+        internal static bool PersistFile(Web web, ProvisioningTemplateCreationInformation creationInfo, PnPMonitoredScope scope, ObjectHandlerBase objectHandlerBase, string serverRelativeUrl)
+        {
+            var success = false;
+            if (creationInfo.PersistBrandingFiles)
+            {
+                if (creationInfo.FileConnector != null)
+                {
+                    if (UrlUtility.IsIisVirtualDirectory(serverRelativeUrl))
+                    {
+                        scope.LogWarning("File is not located in the content database. Not retrieving {0}", serverRelativeUrl);
+                        return success;
+                    }
+
+                    try
+                    {
+                        var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativeUrl));
+                        string fileName = string.Empty;
+                        if (serverRelativeUrl.IndexOf("/") > -1)
+                        {
+                            fileName = serverRelativeUrl.Substring(serverRelativeUrl.LastIndexOf("/") + 1);
+                        }
+                        else
+                        {
+                            fileName = serverRelativeUrl;
+                        }
+                        web.Context.Load(file);
+                        web.Context.ExecuteQueryRetry();
+                        ClientResult<Stream> stream = file.OpenBinaryStream();
+                        web.Context.ExecuteQueryRetry();
+
+                        file.EnsureProperty(f => f.ServerRelativePath);
+                        var baseUri = new Uri(web.Url);
+                        var fullUri = new Uri(baseUri, file.ServerRelativePath.DecodedUrl);
+                        var folderPath = Uri.UnescapeDataString(fullUri.Segments.Take(fullUri.Segments.Length - 1).ToArray().Aggregate((i, x) => i + x).TrimEnd('/'));
+
+                        // Configure the filename to use 
+                        fileName = Uri.UnescapeDataString(fullUri.Segments[fullUri.Segments.Length - 1]);
+
+                        // Build up a site relative container URL...might end up empty as well
+                        String container = Uri.UnescapeDataString(folderPath.Replace(web.ServerRelativeUrl, "")).Trim('/').Replace("/", "\\");
+
+                        using (Stream memStream = new MemoryStream())
+                        {
+                            CopyStream(stream.Value, memStream);
+                            memStream.Position = 0;
+                            if (!string.IsNullOrEmpty(container))
+                            {
+                                creationInfo.FileConnector.SaveFileStream(fileName, container, memStream);
+                            }
+                            else
+                            {
+                                creationInfo.FileConnector.SaveFileStream(fileName, memStream);
+                            }
+                        }
+                        success = true;
+                    }
+                    catch (ServerException ex1)
+                    {
+                        // If we are referring a file from a location outside of the current web or at a location where we cannot retrieve the file an exception is thrown. We swallow this exception.
+                        if (ex1.ServerErrorCode != -2147024809)
+                        {
+                            throw;
+                        }
+                        else
+                        {
+                            scope.LogWarning("File is not necessarily located in the current web. Not retrieving {0}", serverRelativeUrl);
+                        }
+                    }
+                }
+                else
+                {
+                    objectHandlerBase.WriteMessage("No connector present to persist footer logo.", ProvisioningMessageType.Error);
+                    scope.LogError("No connector present to persist footer logo.");
+                }
+            }
+            else
+            {
+                success = true;
+            }
+            return success;
+        }
+
+        private static void CopyStream(Stream source, Stream destination)
+        {
+            byte[] buffer = new byte[32768];
+            int bytesRead;
+
+            do
+            {
+                bytesRead = source.Read(buffer, 0, buffer.Length);
+                destination.Write(buffer, 0, bytesRead);
+            } while (bytesRead != 0);
         }
     }
 }

@@ -573,6 +573,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 web.Context.ExecuteQueryRetry();
 
+                ClientContext siteCollectionContext = null;
+                if (web.IsSubSite())
+                {
+                    siteCollectionContext = web.ParentWeb.Context as ClientContext;
+                    siteCollectionContext.Site.RootWeb.EnsureProperties(
+                        w => w.ServerRelativeUrl,
+                        w => w.Url,
+                        w => w.ContentTypes.Include(c => c.Id, c => c.Name, c => c.StringId));
+                }
+
                 //export PnPFile FieldValues
                 if (file.ListItemAllFields.FieldValues.Any())
                 {
@@ -580,17 +590,37 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     var fieldValuesAsText = file.ListItemAllFields.EnsureProperty(li => li.FieldValuesAsText).FieldValues;
 
-                    #region //**** get correct Content Type
-                    string ctId = string.Empty;
-                    foreach (var ct in web.ContentTypes.OrderByDescending(c => c.StringId.Length))
+                    if (file.ListItemAllFields.ContentType.StringId != defaultContentTypeId) // skip if it is the default content type (don't run through loops if not needed)
                     {
-                        if (file.ListItemAllFields.ContentType.StringId.StartsWith(ct.StringId) && file.ListItemAllFields.ContentType.StringId != defaultContentTypeId) // skip if it is the default content type
+                        #region //**** get correct Content Type
+                        string ctId = string.Empty;
+                        foreach (var ct in web.ContentTypes.OrderByDescending(c => c.StringId.Length))
                         {
-                            pnpFile.Properties.Add("ContentTypeId", ct.StringId);
-                            break;
+                            if (file.ListItemAllFields.ContentType.StringId.StartsWith(ct.StringId))
+                                //&& file.ListItemAllFields.ContentType.StringId != defaultContentTypeId) // skip if it is the default content type
+                            {
+                                ctId = ct.StringId;
+                                pnpFile.Properties.Add("ContentTypeId", ct.StringId);
+                                break;
+                            }
                         }
+
+                        if (string.IsNullOrEmpty(ctId)
+                            && siteCollectionContext != null)
+                        {
+                            foreach (var ct in siteCollectionContext.Site.RootWeb.ContentTypes.OrderByDescending(c => c.StringId.Length))
+                            {
+                                if (file.ListItemAllFields.ContentType.StringId.StartsWith(ct.StringId))
+                                    //&& file.ListItemAllFields.ContentType.StringId != defaultContentTypeId) // skip if it is the default content type
+                                {
+                                    ctId = ct.StringId;
+                                    pnpFile.Properties.Add("ContentTypeId", ct.StringId);
+                                    break;
+                                }
+                            }
+                        }
+                        #endregion //**** get correct Content Type
                     }
-                    #endregion //**** get correct Content Type
 
                     foreach (var fieldValue in fieldValues)
                     {
@@ -742,6 +772,17 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     w => w.ContentTypes.Include(c => c.Id, c => c.Name, c => c.StringId));
                 web.Context.ExecuteQueryRetry();
 
+                ClientContext siteCollectionContext = null;
+                if (web.IsSubSite())
+                {
+                    siteCollectionContext = web.ParentWeb.Context as ClientContext;
+                    siteCollectionContext.Site.RootWeb.EnsureProperties(
+                        w => w.ServerRelativeUrl,
+                        w => w.Url,
+                        w => w.ContentTypes.Include(c => c.Id, c => c.Name, c => c.StringId));
+                }
+
+
                 pnpFolder = new Model.Folder(spFolder.Name);
 
                 //export PnPFolder Properties
@@ -774,6 +815,19 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             pnpFolder.ContentTypeID = ct.StringId;
                             break;
+                        }
+                    }
+
+                    if (string.IsNullOrEmpty(ctId)
+                        && siteCollectionContext != null)
+                    {
+                        foreach (var ct in siteCollectionContext.Site.RootWeb.ContentTypes.OrderByDescending(c => c.StringId.Length))
+                        {
+                            if (spFolder.ListItemAllFields.ContentType.StringId.StartsWith(ct.StringId))
+                            {
+                                pnpFolder.ContentTypeID = ct.StringId;
+                                break;
+                            }
                         }
                     }
                     #endregion //**** get correct Content Type

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="CHANGELOG.md" />
+  </Folder>
+  <Project Path="PnP.Framework.Modernization.Test/PnP.Framework.Modernization.Test.csproj" />
+  <Project Path="PnP.Framework.Test/PnP.Framework.Test.csproj" />
+  <Project Path="PnP.Framework/PnP.Framework.csproj" />
+</Solution>

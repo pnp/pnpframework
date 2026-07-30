@@ -762,6 +762,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     f => f.ListItemAllFields.HasUniqueRoleAssignments,
                     f => f.ListItemAllFields.ParentList,
                     f => f.ListItemAllFields.ContentType.StringId);
+
+                web.Context.ExecuteQueryRetry();
+                /*
                 web.Context.Load(web,
                     w => w.AssociatedOwnerGroup,
                     w => w.AssociatedMemberGroup,
@@ -771,6 +774,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     w => w.RoleDefinitions.Include(r => r.RoleTypeKind, r => r.Name),
                     w => w.ContentTypes.Include(c => c.Id, c => c.Name, c => c.StringId));
                 web.Context.ExecuteQueryRetry();
+                */
+
+                web.EnsureProperties(
+                    w => w.AssociatedOwnerGroup,
+                    w => w.AssociatedMemberGroup,
+                    w => w.AssociatedVisitorGroup,
+                    w => w.Title,
+                    w => w.Url,
+                    w => w.RoleDefinitions.Include(r => r.RoleTypeKind, r => r.Name),
+                    w => w.ContentTypes.Include(c => c.Id, c => c.Name, c => c.StringId));
 
                 ClientContext siteCollectionContext = null;
                 if (web.IsSubSite())
@@ -788,7 +801,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 //export PnPFolder Properties
                 if (spFolder.Properties.FieldValues.Any())
                 {
-                    foreach (var propKey in spFolder.Properties.FieldValues.Keys.Where(k => !k.StartsWith("vti_") && !k.StartsWith("docset_")))
+                    var entries = spFolder.Properties.FieldValues.Keys.Where(k => !k.StartsWith("vti_") && !k.StartsWith("docset_"));
+                    foreach (var propKey in entries)
                     {
                         pnpFolder.PropertyBagEntries.Add(new PropertyBagEntry() { Key = propKey, Value = spFolder.Properties.FieldValues[propKey].ToString() });
                     }
@@ -813,6 +827,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         if (spFolder.ListItemAllFields.ContentType.StringId.StartsWith(ct.StringId))
                         {
+                            ctId = ct.StringId;
                             pnpFolder.ContentTypeID = ct.StringId;
                             break;
                         }
@@ -825,6 +840,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             if (spFolder.ListItemAllFields.ContentType.StringId.StartsWith(ct.StringId))
                             {
+                                ctId = ct.StringId;
                                 pnpFolder.ContentTypeID = ct.StringId;
                                 break;
                             }
@@ -837,6 +853,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         filteredFieldValues = fieldValues.Where(f => queryConfig.ViewFields.Contains(f.Key)).ToList();
                     }
+
                     foreach (var fieldValue in filteredFieldValues)
                     {
                         if (fieldValue.Value != null && !string.IsNullOrEmpty(fieldValue.Value.ToString()))
@@ -849,7 +866,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             {
                                 value = TokenizeValue(web, field.TypeAsString, fieldValue, fieldValuesAsText[field.InternalName]);
                             }
-                            
+
                             //We process moderation status, ideally this shoud be managed with a new attribute in Folder, but it requires a new schema version
                             if (fieldValue.Key.Equals("_ModerationStatus", StringComparison.InvariantCultureIgnoreCase))
                             {

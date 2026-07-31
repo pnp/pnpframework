@@ -132,7 +132,7 @@ namespace PnP.Framework.Http
                 semaphoreSlimFactory.Wait();
 
                 // Use TLS 1.2 as default connection
-#if !NET9_0
+#if !NET9_0_OR_GREATER
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 #endif
 

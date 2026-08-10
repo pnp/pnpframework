@@ -48,7 +48,7 @@ namespace PnP.Framework.Utilities
         {
             this.userAgent = userAgent;
 
-#if !NET9_0
+#if !NET9_0_OR_GREATER
             // Use TLS 1.2 as default connection	
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 #endif

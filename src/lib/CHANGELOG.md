@@ -6,6 +6,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## Current nightly
+
+### Changed
+
+- Updates AngleSharp to 1.5.2 and AngleSharp.Css to 1.0.0. [Adam-IT - Adam Wójcik]
+- Fix ListUserDelta throwing on a null delta token and never returning one [svermaak]
+- Make the provisioning field XML cache thread safe- #1257 [svermaak]
+- Stop forcing a legacy TLS preference on net10.0 [svermaak]
+- Keep ListInstance DataSource across a template round trip- #1261 [svermaak]
+
 ## [1.20.0]
 
 ### Added
@@ -15,7 +25,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Bumped MSAL.NET to 4.85.2 #1245
 - Added support for DelosCloud, BleuCloud and GovSGCloud environment to support sovereign clouds #1245 [gautamdsheth - Gautam Sheth]
 - Fixed empty section issue deployed from XML-Template #1179 [czullu - Christian Zuellig]
-- Fixed Owner/Member add and delete issue #1247 [singingknight - Per Jakobsen]
+- Fixed Owner/Member add and delete issue #1247 [singingknight - Per Jakobsen] 
 
 ## [1.19.0]
 

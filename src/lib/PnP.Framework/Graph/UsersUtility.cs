@@ -191,16 +191,19 @@ namespace PnP.Framework.Graph
 
             Dictionary<string, string> additionalHeaders = null;
 
-            var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users";
+            // Change tracking lives on the delta function. A plain users query never returns
+            // an @odata.deltaLink, so without /delta there is no token to hand back to the caller.
+            var requestUrl = $"{GraphHttpClient.GetGraphEndPointUrl(azureEnvironment)}users/delta";
             var queryStringParams = new List<string>
             {
                 $"$top={(!endIndex.HasValue ? 999 : endIndex.Value >= 999 ? 999 : endIndex.Value)}"
             };
 
-            // Add $skiptoken only if deltaToken is not null or empty
+            // Add $deltatoken only if deltaToken is not null or empty. The token was extracted
+            // from a $deltatoken URL in a previous round, so that is the parameter it belongs in.
             if (!string.IsNullOrEmpty(deltaToken))
             {
-                queryStringParams.Add($"$skiptoken={deltaToken}");
+                queryStringParams.Add($"$deltatoken={deltaToken}");
             }
 
             if (propertiesToSelect.Count > 0)
@@ -255,9 +258,10 @@ namespace PnP.Framework.Graph
                     usersDelta.NextLink = jsonNode["@odata.nextLink"]?.ToString();
                     requestUrl = (endIndex.HasValue && endIndex.Value < currentIndex) ? null : usersDelta.NextLink;
 
-                    var deltaLink = jsonNode["@odata.deltalink"]?.ToString();
+                    // Graph spells this @odata.deltaLink and JsonNode lookups are case sensitive.
+                    var deltaLink = jsonNode["@odata.deltaLink"]?.ToString() ?? jsonNode["@odata.deltalink"]?.ToString();
 
-                    if (string.IsNullOrWhiteSpace(deltaLink))
+                    if (!string.IsNullOrWhiteSpace(deltaLink))
                     {
                         // Use a regular expression to fetch just the deltatoken part from the deltalink. The base of the URL will thereby be cut off. This is the only part we need to use it in a subsequent run.
                         var deltaLinkMatch = System.Text.RegularExpressions.Regex.Match(deltaLink, @"(?<=\$deltatoken=)(.*?)(?=$|&)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);

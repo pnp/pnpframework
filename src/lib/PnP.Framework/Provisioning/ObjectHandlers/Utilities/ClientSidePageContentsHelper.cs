@@ -114,7 +114,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     extractedPageInstance.ThumbnailUrl = pageToExtract.ThumbnailUrl != null ? TokenizeJsonControlData(web, pageToExtract.ThumbnailUrl) : "";
 
                     //if (pageToExtract.PageHeader != null && pageToExtract.LayoutType != Pages.ClientSidePageLayoutType.Topic)
-                    if (pageToExtract.PageHeader != null && pageToExtract.LayoutType != PnPCore.PageLayoutType.Topic)
+                    if (pageToExtract.PageHeader != null)
                     {
                         //All Headersettings are in the PageTitle WebPart. PageTitle-WP in first section as OneColumnFullWith (Message ID: MC791596 / Roadmap ID: 386904)
                         //need to fallback to default as we otherwise need to change xml schema
@@ -482,60 +482,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         extractedPageInstance.FieldValues.Add(SpaceContentField, pageToExtract.SpaceContent);
                     }
 
-
-                    if (pageToExtract.LayoutType == PnPCore.PageLayoutType.Topic)
-                    {
-                        // Extract the topic page header controls (the controls which cannot be moved around on the page). 
-                        // These controls will be stored in a one-column section with a order of 999999. 
-                        // TODO: this requires a schema change to store these controls in a more elegant manner
-                        // Create section
-
-                        var sectionInstance = new CanvasSection()
-                        {
-                            Order = 999999,
-                            Type = CanvasSectionType.OneColumn,
-                        };
-
-                        foreach (var headerControl in pageToExtract.HeaderControls)
-                        {
-                            // Create control
-                            CanvasControl controlInstance = new CanvasControl()
-                            {
-                                Column = 1,
-                                ControlId = headerControl.InstanceId,
-                                Order = headerControl.Order,
-                            };
-
-                            controlInstance.ControlId = Guid.Parse((headerControl as PnPCore.IPageWebPart).WebPartId);
-                            controlInstance.Type = WebPartType.Custom;
-
-                            string jsonControlData = "\"id\": \"" + (headerControl as PnPCore.IPageWebPart).WebPartId + "\", \"instanceId\": \"" + (headerControl as PnPCore.IPageWebPart).InstanceId + "\", \"title\": " + JsonConvert.ToString((headerControl as PnPCore.IPageWebPart).Title) + ", \"description\": " + JsonConvert.ToString((headerControl as PnPCore.IPageWebPart).Description) + ", \"dataVersion\": \"" + (headerControl as PnPCore.IPageWebPart).DataVersion + "\", \"properties\": " + (headerControl as PnPCore.IPageWebPart).PropertiesJson + "";
-
-                            // set the control properties
-                            if (!(headerControl as PnPCore.IPageWebPart).ServerProcessedContent.Equals(default))
-                            {
-                                // If we have serverProcessedContent then also export that one, it's important as some controls depend on this information to be present
-                                string serverProcessedContent = (headerControl as PnPCore.IPageWebPart).ServerProcessedContent.ToString();
-                                jsonControlData = jsonControlData + ", \"serverProcessedContent\": " + serverProcessedContent + "";
-                            }
-
-                            controlInstance.JsonControlData = "{" + jsonControlData + "}";
-
-                            var untokenizedJsonControlData = controlInstance.JsonControlData;
-                            // Tokenize the JsonControlData
-                            controlInstance.JsonControlData = TokenizeJsonControlData(web, controlInstance.JsonControlData);
-                            TokenizeBeforeExport(web, template, creationInfo, scope, errorneousOrNonImageFileGuids, regexGuidPattern, regexGuidPatternEncoded, regexGuidPatternOptionalBrackets, regexSiteAssetUrls, controlInstance, untokenizedJsonControlData);
-                            // add control to section
-                            sectionInstance.Controls.Add(controlInstance);
-                        }
-
-                        extractedPageInstance.Sections.Add(sectionInstance);
-
-                        // Extract the topic pages fields                        
-                        extractedPageInstance.FieldValues.Add(TopicEntityId, pageToExtract.EntityId == null ? "" : pageToExtract.EntityId);
-                        extractedPageInstance.FieldValues.Add(TopicEntityType, pageToExtract.EntityType == null ? "" : pageToExtract.EntityType);
-                        extractedPageInstance.FieldValues.Add(TopicEntityRelations, pageToExtract.EntityRelations == null ? "" : pageToExtract.EntityRelations);
-                    }
 
                     // Add the page to the template
                     if (page.IsTranslation)

@@ -1,5 +1,10 @@
-﻿using System;
+﻿using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.Taxonomy;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -174,6 +179,133 @@ namespace PnP.Framework.Extensions
                 System.Reflection.BindingFlags.Public |
                 System.Reflection.BindingFlags.IgnoreCase)?
                 .SetValue(source, value);
+        }
+
+        /// <summary>
+        /// Compares two values for equality with special handling for SharePoint field types and null/empty string normalization
+        /// </summary>
+        /// <param name="a">First value to compare</param>
+        /// <param name="b">Second value to compare</param>
+        /// <param name="treatEmptyStringAsNull">Whether to treat empty/whitespace strings as null</param>
+        /// <returns>True if values are considered equal</returns>
+        public static bool ValuesEqual(object a, object b, bool treatEmptyStringAsNull = false)
+        {
+            if (ReferenceEquals(a, b))
+            {
+                return true;
+            }
+
+            if (a is null || b is null)
+            {
+                if (treatEmptyStringAsNull)
+                {
+                    if ((a is null && IsEmptyStringLike(b)) || (b is null && IsEmptyStringLike(a)))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            a = Normalize(a, treatEmptyStringAsNull);
+            b = Normalize(b, treatEmptyStringAsNull);
+
+            if (a is IStructuralEquatable seA && b is IStructuralEquatable seB)
+            {
+                return StructuralComparisons.StructuralEqualityComparer.Equals(seA, seB);
+            }
+
+            return Equals(a, b);
+        }
+
+        /// <summary>
+        /// Checks whether the provided object is an empty or whitespace string
+        /// </summary>
+        /// <param name="x">The object to check</param>
+        /// <returns>True if the object is a string that is empty or consists only of whitespace</returns>
+        private static bool IsEmptyStringLike(object x)
+        {
+            return x is string s && string.IsNullOrWhiteSpace(s);
+        }
+
+        /// <summary>
+        /// Normalizes a value for comparison
+        /// </summary>
+        /// <param name="v">The value to normalize</param>
+        /// <param name="treatEmptyStringAsNull">Whether to treat empty/whitespace strings as null</param>
+        /// <returns>The normalized value</returns>
+        private static object Normalize(object v, bool treatEmptyStringAsNull)
+        {
+            if (v == null)
+            {
+                return null;
+            }
+
+            switch (v)
+            {
+                case string s:
+                    return (treatEmptyStringAsNull && string.IsNullOrWhiteSpace(s)) ? null : s;
+
+                case bool b:
+                    return b;
+
+                case byte or sbyte or short or ushort or int or uint or long or ulong or float or double or decimal:
+                    return Convert.ToDecimal(v, CultureInfo.InvariantCulture);
+
+                case DateTime dt:
+                    var utc = (dt.Kind == DateTimeKind.Utc ? dt : DateTime.SpecifyKind(dt, DateTimeKind.Unspecified)).ToUniversalTime();
+                    return new DateTime(utc.Year, utc.Month, utc.Day, utc.Hour, utc.Minute, utc.Second, DateTimeKind.Utc);
+
+                case FieldUserValue u:
+                    return u.LookupId;
+
+                case FieldLookupValue l:
+                    return l.LookupId;
+
+                case IEnumerable<FieldLookupValue> multiLookup:
+                    return multiLookup.Select(x => x?.LookupId ?? 0).OrderBy(x => x).ToArray();
+
+                case TaxonomyFieldValue tx:
+                    return tx.TermGuid?.Trim().ToLowerInvariant();
+
+                case TaxonomyFieldValueCollection txc:
+                    return txc
+                        .Where(x => x != null && !string.IsNullOrEmpty(x.TermGuid))
+                        .Select(x => x.TermGuid.Trim().ToLowerInvariant())
+                        .OrderBy(g => g)
+                        .ToArray();
+
+                case FieldGeolocationValue geo:
+                    return new ValueTuple<double, double, double, double>(
+                        Math.Round(geo.Latitude, 6),
+                        Math.Round(geo.Longitude, 6),
+                        Math.Round(geo.Altitude, 2),
+                        Math.Round(geo.Measure, 2));
+
+                case FieldUrlValue url:
+                    return new ValueTuple<string, string>(
+                        url.Url?.Trim() ?? string.Empty,
+                        url.Description?.Trim() ?? string.Empty);
+
+                case string[] ss:
+                    return ss
+                        .Select(x => treatEmptyStringAsNull && string.IsNullOrWhiteSpace(x) ? null : x)
+                        .OrderBy(x => x, StringComparer.Ordinal)
+                        .ToArray();
+
+                case IEnumerable enumerable when v is not string:
+                    {
+                        var list = new List<object>();
+                        foreach (var e in enumerable)
+                        {
+                            list.Add(Normalize(e, treatEmptyStringAsNull));
+                        }
+                        return list.ToArray();
+                    }
+
+                default:
+                    return v;
+            }
         }
     }
 }

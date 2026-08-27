@@ -1233,4 +1233,13 @@
   <data name="FeatureExtensions_ProcessFeatureInternal_IsFeatureActiveInternalException" xml:space="preserve">
     <value>Failed to check if Feature {0} is active.</value>
   </data>
+  <data name="Provisioning_ObjectHandlers_ListInstances_Adding_field_0_To_ListContentType_1" xml:space="preserve">
+    <value>Adding/Updating field {0} to list content type {1}</value>
+  </data>
+  <data name="Provisioning_ObjectHandlers_ListInstances_Adding_field_0_To_ListContentType_1_failed__2__3" xml:space="preserve">
+    <value>Adding/Updating field {0} to list content type {1} failed: {2} : {3}</value>
+  </data>
+  <data name="Provisioning_ObjectHandlers_ListInstances_Updating_ListContentType__0__FieldOrder__1" xml:space="preserve">
+    <value>Updating list content type {0} field order {1}</value>
+  </data>
 </root>

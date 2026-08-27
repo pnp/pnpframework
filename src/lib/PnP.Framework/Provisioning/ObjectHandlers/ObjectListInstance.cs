@@ -2718,10 +2718,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 web.Context.ExecuteQueryRetry();
                 foreach (var fieldLink in ct.FieldLinks)
                 {
-                    if (!fieldLink.Hidden)
-                    {
-                        contentTypeFields.Add(new FieldRef() { Id = fieldLink.Id });
-                    }
+                    contentTypeFields.Add(new FieldRef() { Id = fieldLink.Id }); 
                 }
                 count++;
             }

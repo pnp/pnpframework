@@ -10,6 +10,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using CsomFile = Microsoft.SharePoint.Client.File;
@@ -20,7 +21,7 @@ namespace PnP.Framework.EnterpriseWiki
     {
         private const int PublishingPagesListTemplate = 850;
 
-        private static readonly string[] AdditionalFieldNames =
+        private static readonly HashSet<string> AdditionalFieldNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
             "ArticleByLine",
             "PublishingContact",
@@ -31,6 +32,14 @@ namespace PnP.Framework.EnterpriseWiki
             "SeoKeywords",
             "SeoMetaDescription",
             "Wiki_x0020_Page_x0020_Categories"
+        };
+
+        private static readonly HashSet<string> HandledFieldNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "ContentTypeId",
+            "PublishingPageContent",
+            "PublishingPageLayout",
+            "Title"
         };
 
         private static readonly string[] BrowserAssertions =
@@ -95,73 +104,51 @@ namespace PnP.Framework.EnterpriseWiki
                 .ToArray();
         }
 
-        public EnterpriseWikiMigrationPackage Capture(
+        public EnterpriseWikiExportPackage Export(
             ClientContext sourceContext,
-            ClientContext targetContext,
-            EnterpriseWikiCaptureOptions options)
+            EnterpriseWikiExportOptions options)
         {
             if (sourceContext == null)
             {
                 throw new ArgumentNullException(nameof(sourceContext));
             }
 
-            if (targetContext == null)
-            {
-                throw new ArgumentNullException(nameof(targetContext));
-            }
-
-            ValidateOptions(options);
+            ValidateExportOptions(options);
             var sourceWeb = sourceContext.Web;
-            var targetWeb = targetContext.Web;
             sourceContext.Load(sourceWeb, web => web.Url, web => web.ServerRelativeUrl, web => web.Title);
-            targetContext.Load(targetWeb, web => web.Url, web => web.ServerRelativeUrl, web => web.Title, web => web.WebTemplate, web => web.Configuration);
             sourceContext.ExecuteQueryRetry();
-            targetContext.ExecuteQueryRetry();
 
             var sourcePagePath = NormalizePagePath(sourceWeb.ServerRelativeUrl, options.SourcePageServerRelativeUrl, "Pages");
-            var targetPagePath = NormalizePagePath(targetWeb.ServerRelativeUrl, options.TargetPageServerRelativeUrl, "Pages");
             var blockers = new List<string>();
             var warnings = new List<string>();
-
             var sourceCapture = CaptureSourcePage(sourceContext, sourcePagePath, options, blockers, warnings);
             var dependencies = CaptureDependencies(
                 sourceContext,
                 sourceCapture.Identity,
                 sourceCapture.PublishingPageContent,
                 sourceCapture.WebParts,
-                new Uri(targetWeb.Url),
                 options,
-                blockers,
                 warnings);
-            var targetProbe = ProbeTarget(targetContext, targetPagePath, dependencies, blockers, warnings);
 
             if (!sourceCapture.Identity.PageLayoutUrl.EndsWith("/EnterpriseWiki.aspx", StringComparison.OrdinalIgnoreCase))
             {
-                blockers.Add($"The source page uses layout '{sourceCapture.Identity.PageLayoutUrl}'. The v1 exact profile requires EnterpriseWiki.aspx.");
-            }
-
-            if (sourceCapture.Security.HasUniqueRoleAssignments && options.RequireInheritedPermissions)
-            {
-                blockers.Add("The source page has unique role assignments. The v1 exact profile requires inherited permissions.");
-            }
-
-            var managedMetadata = sourceCapture.Fields
-                .Where(field => field.Kind == EnterpriseWikiFieldValueKind.Taxonomy || field.Kind == EnterpriseWikiFieldValueKind.TaxonomyCollection)
-                .Where(field => !string.IsNullOrWhiteSpace(field.Value))
-                .ToArray();
-            if (managedMetadata.Length > 0 && options.BlockOnManagedMetadata)
-            {
-                blockers.Add($"The source page contains {managedMetadata.Length} non-empty managed metadata field value(s), but no reviewed target term mapping was supplied.");
+                blockers.Add($"The source page uses layout '{sourceCapture.Identity.PageLayoutUrl}'. The exact profile requires EnterpriseWiki.aspx.");
             }
 
             var afterFence = ReadFence(sourceContext, sourcePagePath);
             if (!FenceEquals(sourceCapture.SourceFence, afterFence))
             {
-                blockers.Add("The source page changed while it was being captured. Discard this package and capture again.");
+                blockers.Add("The source page changed while it was being exported. Discard this snapshot and export again.");
             }
 
             var snapshot = new EnterpriseWikiSnapshot
             {
+                CapturePolicy = new EnterpriseWikiExportOptions
+                {
+                    SourcePageServerRelativeUrl = sourcePagePath,
+                    IncludeWebParts = options.IncludeWebParts,
+                    MaximumDependencyBytes = options.MaximumDependencyBytes
+                },
                 Source = sourceCapture.Identity,
                 PublishingPageContent = sourceCapture.PublishingPageContent,
                 PublishingPageContentSha256 = EnterpriseWikiPackageSerializer.ComputeSha256(sourceCapture.PublishingPageContent ?? string.Empty),
@@ -177,23 +164,102 @@ namespace PnP.Framework.EnterpriseWiki
                     .ToList(),
                 Security = sourceCapture.Security,
                 Lifecycle = sourceCapture.Lifecycle,
-                SourceFence = sourceCapture.SourceFence
+                SourceFence = sourceCapture.SourceFence,
+                Blockers = blockers.Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToList(),
+                Warnings = warnings.Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToList()
             };
-            var snapshotDigest = EnterpriseWikiPackageSerializer.ComputeSnapshotDigest(snapshot);
+
+            return new EnterpriseWikiExportPackage
+            {
+                ExportedAtUtc = DateTimeOffset.UtcNow,
+                Snapshot = snapshot,
+                SnapshotDigest = EnterpriseWikiPackageSerializer.ComputeSnapshotDigest(snapshot)
+            };
+        }
+
+        public EnterpriseWikiMigrationPackage Plan(
+            ClientContext targetContext,
+            EnterpriseWikiExportPackage exportPackage,
+            EnterpriseWikiPlanningOptions options)
+        {
+            if (targetContext == null)
+            {
+                throw new ArgumentNullException(nameof(targetContext));
+            }
+
+            EnterpriseWikiPackageSerializer.ValidateExport(exportPackage);
+            ValidatePlanningOptions(options);
+            var snapshot = exportPackage.Snapshot;
+            var targetWeb = targetContext.Web;
+            targetContext.Load(targetWeb, web => web.Url, web => web.ServerRelativeUrl, web => web.Title, web => web.WebTemplate, web => web.Configuration);
+            targetContext.ExecuteQueryRetry();
+
+            var targetPagePath = NormalizePagePath(targetWeb.ServerRelativeUrl, options.TargetPageServerRelativeUrl, "Pages");
+            var blockers = snapshot.Blockers.ToList();
+            var warnings = snapshot.Warnings.ToList();
+            if (snapshot.Security.HasUniqueRoleAssignments && options.RequireInheritedPermissions)
+            {
+                blockers.Add("The source page has unique role assignments. The exact profile requires inherited permissions.");
+            }
+
+            var managedMetadata = snapshot.Fields
+                .Where(field => field.HasValue)
+                .Where(field => AdditionalFieldNames.Contains(field.InternalName))
+                .Where(field => field.Kind == EnterpriseWikiFieldValueKind.Taxonomy || field.Kind == EnterpriseWikiFieldValueKind.TaxonomyCollection)
+                .ToArray();
+            if (managedMetadata.Length > 0 && options.BlockOnManagedMetadata)
+            {
+                blockers.Add($"The source snapshot contains {managedMetadata.Length} non-empty managed metadata field value(s), but no reviewed target term mapping was supplied.");
+            }
+
+            var targetLifecycle = DeriveTargetLifecycle(snapshot.Lifecycle);
+            var lifecycleReason = targetLifecycle == EnterpriseWikiTargetLifecycle.Published
+                ? "The source file level is Published with no conflicting checkout or moderation evidence, so the target will be published."
+                : $"The source file level is '{snapshot.Lifecycle?.Level ?? "unknown"}', so the target will remain Draft.";
+            if (snapshot.Lifecycle == null || string.IsNullOrWhiteSpace(snapshot.Lifecycle.Level))
+            {
+                warnings.Add("Source lifecycle evidence is incomplete. The conservative target lifecycle is Draft.");
+            }
+            else if (string.Equals(snapshot.Lifecycle.Level, "Published", StringComparison.OrdinalIgnoreCase)
+                && targetLifecycle == EnterpriseWikiTargetLifecycle.Draft)
+            {
+                lifecycleReason = $"The source reports Published but has conflicting checkout '{snapshot.Lifecycle.CheckOutType ?? "unknown"}' or moderation '{snapshot.Lifecycle.ModerationStatus?.ToString(CultureInfo.InvariantCulture) ?? "unknown"}' evidence, so the target will remain Draft.";
+                warnings.Add("Source lifecycle evidence is contradictory. The conservative target lifecycle is Draft.");
+            }
+
+            var replacements = BuildReplacements(snapshot.Source, targetWeb.Url, targetWeb.ServerRelativeUrl);
+            var dependencyActions = BuildDependencyActions(snapshot, targetWeb.Url, targetWeb.ServerRelativeUrl, options, blockers, warnings);
+            var targetProbe = ProbeTarget(targetContext, targetPagePath, dependencyActions, targetLifecycle, blockers, warnings);
+            var fieldActions = BuildFieldActions(targetContext, snapshot.Fields, options, blockers, warnings);
+            var expectedContent = RewriteContent(snapshot.PublishingPageContent, replacements);
+            var expectedContentDigest = EnterpriseWikiPackageSerializer.ComputeSha256(expectedContent);
             var plan = new EnterpriseWikiMigrationPlan
             {
-                SourceSnapshotDigest = snapshotDigest,
-                SourceWebUrl = sourceCapture.Identity.WebUrl,
-                SourcePageServerRelativeUrl = sourceCapture.Identity.PageServerRelativeUrl,
+                SourceSnapshotDigest = exportPackage.SnapshotDigest,
+                SourceWebUrl = snapshot.Source.WebUrl,
+                SourcePageServerRelativeUrl = snapshot.Source.PageServerRelativeUrl,
                 TargetWebUrl = targetWeb.Url.TrimEnd('/'),
                 TargetWebServerRelativeUrl = targetWeb.ServerRelativeUrl,
                 TargetPageServerRelativeUrl = targetPagePath,
                 PageLayoutName = "EnterpriseWiki",
-                Publish = options.Publish,
-                CreateOnly = true,
+                Operation = EnterpriseWikiMigrationOperation.CreatePage,
+                TargetLifecycle = targetLifecycle,
+                LifecycleReason = lifecycleReason,
+                CreateOnly = options.CreateOnly,
+                PlanningPolicy = new EnterpriseWikiPlanningOptions
+                {
+                    TargetPageServerRelativeUrl = targetPagePath,
+                    RequireInheritedPermissions = options.RequireInheritedPermissions,
+                    BlockOnManagedMetadata = options.BlockOnManagedMetadata,
+                    AllowExternalResourceReferences = options.AllowExternalResourceReferences,
+                    CreateOnly = options.CreateOnly
+                },
                 TargetProbe = targetProbe,
-                Replacements = BuildReplacements(sourceCapture.Identity, targetWeb.Url, targetWeb.ServerRelativeUrl),
-                StorageAssertions = BuildStorageAssertions(snapshot, targetPagePath),
+                FieldActions = fieldActions,
+                DependencyActions = dependencyActions,
+                Replacements = replacements,
+                ExpectedPublishingPageContentSha256 = expectedContentDigest,
+                StorageAssertions = BuildStorageAssertions(snapshot, targetPagePath, dependencyActions, expectedContentDigest, targetLifecycle),
                 BrowserAssertions = BrowserAssertions.ToList(),
                 Blockers = blockers.Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToList(),
                 Warnings = warnings.Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToList()
@@ -203,17 +269,17 @@ namespace PnP.Framework.EnterpriseWiki
             var report = new EnterpriseWikiCustomerReport
             {
                 Summary = plan.IsExecutable
-                    ? "Capture, target analysis, and deterministic planning completed. Copy requires explicit approval of the plan digest."
-                    : "The package is sealed for review but cannot be copied until every blocker is resolved and a new package is captured.",
+                    ? "Source export and target analysis completed. Import requires explicit approval of the sealed plan digest."
+                    : "The package is sealed for review but cannot be imported until every blocker is resolved and a new plan is generated.",
                 CapturedIngredients = new List<string>
                 {
                     "Page/file/list item identity and source stability fence",
                     "Enterprise Wiki content type and EnterpriseWiki.aspx layout",
-                    "PublishingPageContent and selected publishing/search metadata",
+                    $"All {snapshot.Fields.Count} source Pages-library field definitions and returned values",
                     $"{snapshot.WebParts.Count} shared Web Part export(s) with zone placement",
-                    $"{snapshot.Dependencies.Count} authored dependency/link decision(s)",
-                    "Page security inheritance and lifecycle state",
-                    "Target publishing library, Enterprise Wiki content type, layout, and create-only collision probe"
+                    $"{snapshot.Dependencies.Count} authored dependency/link snapshot(s)",
+                    "Page security inheritance and source lifecycle evidence",
+                    "Target publishing library, versioning, lifecycle, field, layout, and create-only probes"
                 },
                 Blockers = plan.Blockers.ToList(),
                 Warnings = plan.Warnings.ToList()
@@ -221,17 +287,18 @@ namespace PnP.Framework.EnterpriseWiki
 
             return new EnterpriseWikiMigrationPackage
             {
-                CreatedAtUtc = DateTimeOffset.UtcNow,
+                PlannedAtUtc = DateTimeOffset.UtcNow,
+                ExportedAtUtc = exportPackage.ExportedAtUtc,
                 State = state,
                 Snapshot = snapshot,
                 Plan = plan,
-                SnapshotDigest = snapshotDigest,
+                SnapshotDigest = exportPackage.SnapshotDigest,
                 PlanDigest = planDigest,
                 Report = report
             };
         }
 
-        public EnterpriseWikiCopyReceipt Copy(
+        public EnterpriseWikiImportReceipt Import(
             ClientContext targetContext,
             EnterpriseWikiMigrationPackage package,
             string approvedPlanDigest)
@@ -241,7 +308,8 @@ namespace PnP.Framework.EnterpriseWiki
                 throw new ArgumentNullException(nameof(targetContext));
             }
 
-            EnterpriseWikiPackageSerializer.Validate(package);
+            EnterpriseWikiPackageSerializer.ValidateMigration(package);
+            ValidateImportPlan(package);
             if (package.State != EnterpriseWikiPackageState.ApprovalReady || !package.Plan.IsExecutable)
             {
                 throw new InvalidOperationException("The Enterprise Wiki package is not approval-ready.");
@@ -267,7 +335,8 @@ namespace PnP.Framework.EnterpriseWiki
             var freshProbe = ProbeTarget(
                 targetContext,
                 package.Plan.TargetPageServerRelativeUrl,
-                package.Snapshot.Dependencies,
+                package.Plan.DependencyActions,
+                package.Plan.TargetLifecycle,
                 preflightBlockers,
                 preflightWarnings);
             if (preflightBlockers.Count > 0)
@@ -281,7 +350,7 @@ namespace PnP.Framework.EnterpriseWiki
                 throw new InvalidOperationException("The target Enterprise Wiki content type or layout changed after approval.");
             }
 
-            var materialized = MaterializeDependencies(targetContext, package.Snapshot.Dependencies);
+            var materialized = MaterializeDependencies(targetContext, package.Snapshot.Dependencies, package.Plan.DependencyActions);
             var rewrittenContent = RewriteContent(package.Snapshot.PublishingPageContent, package.Plan.Replacements);
             var pages = targetWeb.GetPagesLibrary();
             targetContext.Load(pages, list => list.EnableModeration, list => list.ForceCheckout);
@@ -290,7 +359,7 @@ namespace PnP.Framework.EnterpriseWiki
             var targetDirectory = GetDirectoryName(package.Plan.TargetPageServerRelativeUrl);
             if (!string.Equals(targetDirectory, pages.RootFolder.ServerRelativeUrl, StringComparison.OrdinalIgnoreCase))
             {
-                throw new NotSupportedException("The v1 Enterprise Wiki copy profile supports pages in the root of the target Pages library only.");
+                throw new NotSupportedException("The Enterprise Wiki import profile supports pages in the root of the target Pages library only.");
             }
 
             var targetFileName = GetFileName(package.Plan.TargetPageServerRelativeUrl);
@@ -310,9 +379,13 @@ namespace PnP.Framework.EnterpriseWiki
             targetItem["PublishingPageContent"] = rewrittenContent;
             targetItem.Update();
             targetContext.ExecuteQueryRetry();
-            ApplyAdditionalFields(targetContext, pages, targetItem, package.Snapshot.Fields, package.Plan.Replacements, preflightWarnings);
-            targetItem.Update();
-            targetContext.ExecuteQueryRetry();
+            var fieldResults = ApplyPlannedFields(
+                targetContext,
+                targetItem,
+                package.Snapshot.Fields,
+                package.Plan.FieldActions,
+                package.Plan.Replacements,
+                preflightWarnings);
 
             foreach (var webPart in package.Snapshot.WebParts)
             {
@@ -328,29 +401,38 @@ namespace PnP.Framework.EnterpriseWiki
 
             targetContext.Load(targetFile, file => file.CheckOutType);
             targetContext.ExecuteQueryRetry();
+            var plannedFieldFailure = fieldResults.Any(result => result.Attempted && !result.Succeeded);
             if (targetFile.CheckOutType != CheckOutType.None)
             {
-                targetFile.CheckIn("PnP Enterprise Wiki copy", CheckinType.MajorCheckIn);
+                var checkinType = package.Plan.TargetLifecycle == EnterpriseWikiTargetLifecycle.Published && !plannedFieldFailure
+                    ? CheckinType.MajorCheckIn
+                    : CheckinType.MinorCheckIn;
+                targetFile.CheckIn("PnP Enterprise Wiki import", checkinType);
                 targetContext.ExecuteQueryRetry();
             }
 
-            if (package.Plan.Publish)
+            if (package.Plan.TargetLifecycle == EnterpriseWikiTargetLifecycle.Published && !plannedFieldFailure)
             {
-                targetFile.Publish("PnP Enterprise Wiki copy");
+                targetFile.Publish("PnP Enterprise Wiki import");
                 targetContext.ExecuteQueryRetry();
                 if (pages.EnableModeration)
                 {
-                    targetFile.Approve("PnP Enterprise Wiki copy");
+                    targetFile.Approve("PnP Enterprise Wiki import");
                     targetContext.ExecuteQueryRetry();
                 }
             }
+            else if (plannedFieldFailure)
+            {
+                preflightWarnings.Add("One or more planned field updates failed. The page was not published.");
+            }
 
-            return ReadCopyReceipt(
+            return ReadImportReceipt(
                 targetContext,
                 package,
                 approvedPlanDigest,
                 startedAt,
                 materialized,
+                fieldResults,
                 preflightWarnings);
         }
 
@@ -363,6 +445,35 @@ namespace PnP.Framework.EnterpriseWiki
 
             return contentTypeId.StartsWith(BuiltInContentTypeId.EnterpriseWikiPage, StringComparison.OrdinalIgnoreCase)
                 && !contentTypeId.StartsWith(BuiltInContentTypeId.ProjectPage, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static void ValidateImportPlan(EnterpriseWikiMigrationPackage package)
+        {
+            if (package.Plan.Operation != EnterpriseWikiMigrationOperation.CreatePage || !package.Plan.CreateOnly)
+            {
+                throw new NotSupportedException($"Migration operation '{package.Plan.Operation}' is not executable by this importer.");
+            }
+
+            var derivedLifecycle = DeriveTargetLifecycle(package.Snapshot.Lifecycle);
+            if (package.Plan.TargetLifecycle != derivedLifecycle)
+            {
+                throw new InvalidDataException($"Planned lifecycle '{package.Plan.TargetLifecycle}' does not match the source-derived lifecycle '{derivedLifecycle}'.");
+            }
+
+            var fieldByName = package.Snapshot.Fields.ToDictionary(item => item.InternalName, StringComparer.OrdinalIgnoreCase);
+            foreach (var action in package.Plan.FieldActions.Where(item => item.Disposition == EnterpriseWikiFieldDisposition.Apply))
+            {
+                if (!AdditionalFieldNames.Contains(action.SourceInternalName)
+                    || !string.Equals(action.SourceInternalName, action.TargetInternalName, StringComparison.OrdinalIgnoreCase)
+                    || !fieldByName.TryGetValue(action.SourceInternalName, out var field)
+                    || field.ReadOnly
+                    || !field.HasValue
+                    || field.CaptureStatus != EnterpriseWikiCaptureStatus.Captured
+                    || !IsImportableFieldKind(field.Kind))
+                {
+                    throw new InvalidDataException($"Field action '{action.SourceInternalName}' is marked Apply but is not supported by the current importer.");
+                }
+            }
         }
 
         public static string RewriteContent(string value, IEnumerable<EnterpriseWikiTextReplacement> replacements)
@@ -416,7 +527,7 @@ namespace PnP.Framework.EnterpriseWiki
 
             if (typeName.EndsWith(".RSSAggregatorWebPart", StringComparison.OrdinalIgnoreCase))
             {
-                return $"type '{typeName}' is not supported by the v1 deterministic import profile and must be replaced or explicitly mapped";
+                return $"type '{typeName}' is not supported by the current deterministic import profile and must be replaced or explicitly mapped";
             }
 
             var properties = document
@@ -440,13 +551,13 @@ namespace PnP.Framework.EnterpriseWiki
                 || typeName.EndsWith(".XsltListViewWebPart", StringComparison.OrdinalIgnoreCase)
                 || typeName.EndsWith(".ListViewWebPart", StringComparison.OrdinalIgnoreCase))
             {
-                return $"type '{typeName}' is bound to a source list; the v1 profile requires a reviewed target-list and view mapping before copy";
+                return $"type '{typeName}' is bound to a source list; the exact profile requires a reviewed target-list and view mapping before import";
             }
 
             return null;
         }
 
-        private static void ValidateOptions(EnterpriseWikiCaptureOptions options)
+        private static void ValidateExportOptions(EnterpriseWikiExportOptions options)
         {
             if (options == null)
             {
@@ -458,21 +569,34 @@ namespace PnP.Framework.EnterpriseWiki
                 throw new ArgumentException("A source page path is required.", nameof(options));
             }
 
-            if (string.IsNullOrWhiteSpace(options.TargetPageServerRelativeUrl))
-            {
-                throw new ArgumentException("A target page path is required.", nameof(options));
-            }
-
             if (options.MaximumDependencyBytes <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(options), "MaximumDependencyBytes must be greater than zero.");
             }
         }
 
+        private static void ValidatePlanningOptions(EnterpriseWikiPlanningOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
+            if (string.IsNullOrWhiteSpace(options.TargetPageServerRelativeUrl))
+            {
+                throw new ArgumentException("A target page path is required.", nameof(options));
+            }
+
+            if (!options.CreateOnly)
+            {
+                throw new NotSupportedException("Only CreatePage plans are supported. Deferred-field recovery remains represented by the package schema but is not executable yet.");
+            }
+        }
+
         private static SourceCapture CaptureSourcePage(
             ClientContext context,
             string pagePath,
-            EnterpriseWikiCaptureOptions options,
+            EnterpriseWikiExportOptions options,
             ICollection<string> blockers,
             ICollection<string> warnings)
         {
@@ -541,7 +665,7 @@ namespace PnP.Framework.EnterpriseWiki
             var webParts = options.IncludeWebParts
                 ? CaptureWebParts(web, pagePath, blockers)
                 : new List<EnterpriseWikiWebPartSnapshot>();
-            var security = CaptureSecurity(context, item);
+            var security = CaptureSecurity(context, item, warnings);
             var moderationStatus = TryGetInt32(item, "_ModerationStatus");
             var lifecycle = new EnterpriseWikiLifecycleSnapshot
             {
@@ -571,28 +695,42 @@ namespace PnP.Framework.EnterpriseWiki
         {
             var parentList = item.ParentList;
             context.Load(parentList.Fields, fields => fields.Include(
+                field => field.Id,
                 field => field.InternalName,
+                field => field.Title,
                 field => field.TypeAsString,
+                field => field.SchemaXml,
                 field => field.ReadOnlyField,
                 field => field.Hidden,
                 field => field.Required));
             context.ExecuteQueryRetry();
-            var fieldByName = parentList.Fields.ToDictionary(field => field.InternalName, StringComparer.OrdinalIgnoreCase);
             var result = new List<EnterpriseWikiFieldValueSnapshot>();
-            foreach (var fieldName in AdditionalFieldNames)
+            foreach (var field in parentList.Fields.OrderBy(value => value.InternalName, StringComparer.Ordinal))
             {
-                if (!fieldByName.TryGetValue(fieldName, out var field)
-                    || !item.FieldValues.TryGetValue(fieldName, out var value)
-                    || value == null)
+                if (!item.FieldValues.TryGetValue(field.InternalName, out var value))
                 {
+                    result.Add(CreateFieldSnapshot(field, EnterpriseWikiCaptureStatus.NotReturned, EnterpriseWikiFieldValueKind.Null));
                     continue;
                 }
 
-                var snapshot = SerializeFieldValue(field, value);
-                result.Add(snapshot);
-                if (snapshot.Kind == EnterpriseWikiFieldValueKind.Unsupported && !string.IsNullOrWhiteSpace(snapshot.Value))
+                try
                 {
-                    warnings.Add($"Field '{fieldName}' has unsupported value type '{value.GetType().FullName}' and will be evidence-only.");
+                    var snapshot = SerializeFieldValue(field, value);
+                    result.Add(snapshot);
+                    if (snapshot.CaptureStatus == EnterpriseWikiCaptureStatus.CapturedWithLimitations)
+                    {
+                        warnings.Add($"Field '{field.InternalName}' has value type '{snapshot.RawType}' that was captured as recovery evidence only.");
+                    }
+                }
+                catch (Exception exception)
+                {
+                    var snapshot = CreateFieldSnapshot(field, EnterpriseWikiCaptureStatus.Failed, EnterpriseWikiFieldValueKind.Unsupported);
+                    snapshot.HasValue = value != null;
+                    snapshot.RawType = value?.GetType().FullName;
+                    snapshot.RawValue = SafeConvertToString(value);
+                    snapshot.Diagnostics.Add(exception.Message);
+                    result.Add(snapshot);
+                    warnings.Add($"Field '{field.InternalName}' could not be fully serialized and remains in the snapshot with diagnostics: {exception.Message}");
                 }
             }
 
@@ -601,58 +739,167 @@ namespace PnP.Framework.EnterpriseWiki
 
         private static EnterpriseWikiFieldValueSnapshot SerializeFieldValue(Field field, object value)
         {
-            var kind = EnterpriseWikiFieldValueKind.Unsupported;
-            string serialized;
+            var snapshot = CreateFieldSnapshot(field, EnterpriseWikiCaptureStatus.Captured, EnterpriseWikiFieldValueKind.Null);
+            snapshot.HasValue = value != null;
+            snapshot.RawType = value?.GetType().FullName;
+            snapshot.RawValue = SafeConvertToString(value);
+            snapshot.RawValueJson = TrySerializeRawValue(value, snapshot.Diagnostics);
+            if (value == null)
+            {
+                return snapshot;
+            }
+
             if (value is FieldUrlValue url)
             {
-                kind = EnterpriseWikiFieldValueKind.Url;
-                serialized = $"{url.Url ?? string.Empty}\n{url.Description ?? string.Empty}";
-            }
-            else if (value is TaxonomyFieldValue taxonomy)
-            {
-                kind = EnterpriseWikiFieldValueKind.Taxonomy;
-                serialized = $"{taxonomy.Label}|{taxonomy.TermGuid}|{taxonomy.WssId}";
+                snapshot.Kind = EnterpriseWikiFieldValueKind.Url;
+                snapshot.UrlValue = new EnterpriseWikiUrlValueSnapshot
+                {
+                    Url = url.Url,
+                    Description = url.Description
+                };
             }
             else if (value is TaxonomyFieldValueCollection taxonomyCollection)
             {
-                kind = EnterpriseWikiFieldValueKind.TaxonomyCollection;
-                serialized = string.Join(";#", taxonomyCollection.Select(term => $"{term.Label}|{term.TermGuid}|{term.WssId}"));
+                snapshot.Kind = EnterpriseWikiFieldValueKind.TaxonomyCollection;
+                snapshot.TaxonomyValues = taxonomyCollection.Select(ToTaxonomyValue).ToList();
+            }
+            else if (value is TaxonomyFieldValue taxonomy)
+            {
+                snapshot.Kind = EnterpriseWikiFieldValueKind.Taxonomy;
+                snapshot.TaxonomyValues.Add(ToTaxonomyValue(taxonomy));
+            }
+            else if (value is FieldUserValue[] users)
+            {
+                snapshot.Kind = EnterpriseWikiFieldValueKind.UserCollection;
+                snapshot.LookupValues = users.Select(ToLookupValue).ToList();
+            }
+            else if (value is FieldUserValue user)
+            {
+                snapshot.Kind = EnterpriseWikiFieldValueKind.User;
+                snapshot.LookupValues.Add(ToLookupValue(user));
+            }
+            else if (value is FieldLookupValue[] lookups)
+            {
+                snapshot.Kind = EnterpriseWikiFieldValueKind.LookupCollection;
+                snapshot.LookupValues = lookups.Select(ToLookupValue).ToList();
+            }
+            else if (value is FieldLookupValue lookup)
+            {
+                snapshot.Kind = EnterpriseWikiFieldValueKind.Lookup;
+                snapshot.LookupValues.Add(ToLookupValue(lookup));
             }
             else if (value is DateTime dateTime)
             {
-                kind = EnterpriseWikiFieldValueKind.DateTime;
-                serialized = dateTime.ToUniversalTime().ToString("O", CultureInfo.InvariantCulture);
+                snapshot.Kind = EnterpriseWikiFieldValueKind.DateTime;
+                snapshot.Value = dateTime.ToUniversalTime().ToString("O", CultureInfo.InvariantCulture);
             }
             else if (value is bool boolean)
             {
-                kind = EnterpriseWikiFieldValueKind.Boolean;
-                serialized = boolean ? "true" : "false";
+                snapshot.Kind = EnterpriseWikiFieldValueKind.Boolean;
+                snapshot.Value = boolean ? "true" : "false";
             }
             else if (value is byte || value is short || value is int || value is long || value is float || value is double || value is decimal)
             {
-                kind = EnterpriseWikiFieldValueKind.Number;
-                serialized = Convert.ToString(value, CultureInfo.InvariantCulture);
+                snapshot.Kind = EnterpriseWikiFieldValueKind.Number;
+                snapshot.Value = Convert.ToString(value, CultureInfo.InvariantCulture);
+            }
+            else if (value is Guid guid)
+            {
+                snapshot.Kind = EnterpriseWikiFieldValueKind.Guid;
+                snapshot.Value = guid.ToString("D");
+            }
+            else if (value is byte[] bytes)
+            {
+                snapshot.Kind = EnterpriseWikiFieldValueKind.ByteArray;
+                snapshot.BinaryBase64 = Convert.ToBase64String(bytes);
+            }
+            else if (value is string[] strings)
+            {
+                snapshot.Kind = EnterpriseWikiFieldValueKind.StringCollection;
+                snapshot.StringValues = strings.ToList();
             }
             else if (value is string text)
             {
-                kind = EnterpriseWikiFieldValueKind.String;
-                serialized = text;
+                snapshot.Kind = EnterpriseWikiFieldValueKind.String;
+                snapshot.Value = text;
             }
             else
             {
-                serialized = Convert.ToString(value, CultureInfo.InvariantCulture);
+                snapshot.Kind = EnterpriseWikiFieldValueKind.Unsupported;
+                snapshot.CaptureStatus = EnterpriseWikiCaptureStatus.CapturedWithLimitations;
+                snapshot.Diagnostics.Add("No typed importer is registered for this runtime value. Raw type, text, and best-effort JSON are retained for future recovery.");
             }
 
+            return snapshot;
+        }
+
+        private static EnterpriseWikiFieldValueSnapshot CreateFieldSnapshot(
+            Field field,
+            EnterpriseWikiCaptureStatus captureStatus,
+            EnterpriseWikiFieldValueKind kind)
+        {
             return new EnterpriseWikiFieldValueSnapshot
             {
+                Id = field.Id,
                 InternalName = field.InternalName,
+                Title = field.Title,
                 TypeAsString = field.TypeAsString,
-                Kind = kind,
-                Value = serialized,
+                SchemaXml = field.SchemaXml,
                 ReadOnly = field.ReadOnlyField,
                 Hidden = field.Hidden,
-                Required = field.Required
+                Required = field.Required,
+                Kind = kind,
+                CaptureStatus = captureStatus
             };
+        }
+
+        private static EnterpriseWikiLookupValueSnapshot ToLookupValue(FieldLookupValue value)
+        {
+            return new EnterpriseWikiLookupValueSnapshot
+            {
+                LookupId = value.LookupId,
+                LookupValue = value.LookupValue
+            };
+        }
+
+        private static EnterpriseWikiTaxonomyValueSnapshot ToTaxonomyValue(TaxonomyFieldValue value)
+        {
+            return new EnterpriseWikiTaxonomyValueSnapshot
+            {
+                Label = value.Label,
+                TermGuid = value.TermGuid,
+                WssId = value.WssId
+            };
+        }
+
+        private static string SafeConvertToString(object value)
+        {
+            try
+            {
+                return value == null ? null : Convert.ToString(value, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private static string TrySerializeRawValue(object value, ICollection<string> diagnostics)
+        {
+            if (value == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                return JsonSerializer.Serialize(value, value.GetType());
+            }
+            catch (Exception exception) when (exception is NotSupportedException || exception is JsonException)
+            {
+                diagnostics.Add($"Best-effort raw JSON serialization was unavailable: {exception.Message}");
+                return null;
+            }
         }
 
         private static List<EnterpriseWikiWebPartSnapshot> CaptureWebParts(Web web, string pagePath, ICollection<string> blockers)
@@ -715,7 +962,10 @@ namespace PnP.Framework.EnterpriseWiki
             return result;
         }
 
-        private static EnterpriseWikiSecuritySnapshot CaptureSecurity(ClientContext context, ListItem item)
+        private static EnterpriseWikiSecuritySnapshot CaptureSecurity(
+            ClientContext context,
+            ListItem item,
+            ICollection<string> warnings)
         {
             var result = new EnterpriseWikiSecuritySnapshot
             {
@@ -726,30 +976,56 @@ namespace PnP.Framework.EnterpriseWiki
                 return result;
             }
 
-            var assignments = item.RoleAssignments;
-            context.Load(assignments);
-            context.ExecuteQueryRetry();
-            foreach (var assignment in assignments)
+            try
             {
-                context.Load(assignment.Member, member => member.LoginName, member => member.Title);
-                context.Load(assignment.RoleDefinitionBindings, definitions => definitions.Include(definition => definition.Name));
-            }
-
-            context.ExecuteQueryRetry();
-            foreach (var assignment in assignments)
-            {
-                result.RoleAssignments.Add(new EnterpriseWikiRoleAssignmentSnapshot
+                var assignments = item.RoleAssignments;
+                context.Load(assignments);
+                context.ExecuteQueryRetry();
+                foreach (var assignment in assignments)
                 {
-                    PrincipalLoginName = assignment.Member.LoginName,
-                    PrincipalTitle = assignment.Member.Title,
-                    RoleDefinitionNames = assignment.RoleDefinitionBindings
-                        .Select(definition => definition.Name)
-                        .OrderBy(name => name, StringComparer.OrdinalIgnoreCase)
-                        .ToList()
-                });
+                    context.Load(assignment.Member, member => member.LoginName, member => member.Title);
+                    context.Load(assignment.RoleDefinitionBindings, definitions => definitions.Include(definition => definition.Name));
+                }
+
+                context.ExecuteQueryRetry();
+                foreach (var assignment in assignments)
+                {
+                    result.RoleAssignments.Add(new EnterpriseWikiRoleAssignmentSnapshot
+                    {
+                        PrincipalLoginName = assignment.Member.LoginName,
+                        PrincipalTitle = assignment.Member.Title,
+                        RoleDefinitionNames = assignment.RoleDefinitionBindings
+                            .Select(definition => definition.Name)
+                            .OrderBy(name => name, StringComparer.OrdinalIgnoreCase)
+                            .ToList()
+                    });
+                }
+            }
+            catch (Exception exception) when (IsAccessDenied(exception))
+            {
+                const string diagnostic = "The source page has unique permissions, but the current principal cannot enumerate its role assignments. Permission replay is not supported by this migration profile, so page capture continued without ACL details.";
+                warnings.Add(diagnostic);
             }
 
             return result;
+        }
+
+        private static bool IsAccessDenied(Exception exception)
+        {
+            for (var current = exception; current != null; current = current.InnerException)
+            {
+                if (current is UnauthorizedAccessException || current is ServerUnauthorizedAccessException)
+                {
+                    return true;
+                }
+
+                if (current is ServerException serverException && serverException.ServerErrorCode == -2147024891)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private static List<EnterpriseWikiDependencySnapshot> CaptureDependencies(
@@ -757,9 +1033,7 @@ namespace PnP.Framework.EnterpriseWiki
             EnterpriseWikiPageIdentity source,
             string publishingPageContent,
             IEnumerable<EnterpriseWikiWebPartSnapshot> webParts,
-            Uri targetWebUri,
-            EnterpriseWikiCaptureOptions options,
-            ICollection<string> blockers,
+            EnterpriseWikiExportOptions options,
             ICollection<string> warnings)
         {
             var candidates = ExtractDependencyCandidates(publishingPageContent);
@@ -780,59 +1054,39 @@ namespace PnP.Framework.EnterpriseWiki
                     continue;
                 }
 
-                var dependency = PlanDependency(sourceContext, sourceWebUri, targetWebUri, candidate, absoluteUri, options, blockers, warnings);
+                var dependency = CaptureDependency(sourceContext, sourceWebUri, candidate, absoluteUri, options, warnings);
                 result.Add(dependency);
             }
 
             return result;
         }
 
-        private static EnterpriseWikiDependencySnapshot PlanDependency(
+        private static EnterpriseWikiDependencySnapshot CaptureDependency(
             ClientContext sourceContext,
             Uri sourceWebUri,
-            Uri targetWebUri,
             DependencyCandidate candidate,
             Uri absoluteUri,
-            EnterpriseWikiCaptureOptions options,
-            ICollection<string> blockers,
+            EnterpriseWikiExportOptions options,
             ICollection<string> warnings)
         {
             var dependency = new EnterpriseWikiDependencySnapshot
             {
+                Id = EnterpriseWikiPackageSerializer.ComputeSha256($"{candidate.Consumer}\n{absoluteUri.AbsoluteUri}"),
                 OriginalValue = candidate.Value,
                 SourceAbsoluteUrl = absoluteUri.AbsoluteUri,
                 Consumer = candidate.Consumer,
                 Kind = candidate.Kind,
-                Disposition = EnterpriseWikiDependencyDisposition.PreserveExternal
+                IsRenderableResource = candidate.IsRenderableResource,
+                CaptureStatus = EnterpriseWikiCaptureStatus.Captured
             };
             if (!string.Equals(sourceWebUri.Host, absoluteUri.Host, StringComparison.OrdinalIgnoreCase))
             {
-                if (candidate.IsRenderableResource && !options.AllowExternalResourceReferences)
-                {
-                    dependency.Disposition = EnterpriseWikiDependencyDisposition.Block;
-                    dependency.Diagnostics.Add("External renderable resources are blocked by capture policy.");
-                    blockers.Add($"External resource '{absoluteUri}' is blocked by policy.");
-                }
                 return dependency;
             }
 
             var sourcePath = Uri.UnescapeDataString(absoluteUri.AbsolutePath);
             var sourceWebPath = Uri.UnescapeDataString(sourceWebUri.AbsolutePath).TrimEnd('/');
-            var targetWebPath = Uri.UnescapeDataString(targetWebUri.AbsolutePath).TrimEnd('/');
             dependency.SourceServerRelativeUrl = sourcePath;
-            string targetPath;
-            if (IsPathWithin(sourcePath, sourceWebPath))
-            {
-                targetPath = targetWebPath + sourcePath.Substring(sourceWebPath.Length);
-            }
-            else
-            {
-                targetPath = sourcePath;
-            }
-
-            dependency.TargetServerRelativeUrl = targetPath;
-            dependency.TargetAbsoluteUrl = targetWebUri.GetLeftPart(UriPartial.Authority) + EncodePath(targetPath) + absoluteUri.Query + absoluteUri.Fragment;
-            dependency.Disposition = EnterpriseWikiDependencyDisposition.RewriteToTarget;
             if (!candidate.IsRenderableResource || IsSharePointRuntimePath(sourcePath))
             {
                 return dependency;
@@ -840,17 +1094,13 @@ namespace PnP.Framework.EnterpriseWiki
 
             if (candidate.Kind == EnterpriseWikiDependencyKind.IFrame)
             {
-                dependency.Disposition = EnterpriseWikiDependencyDisposition.Block;
-                dependency.Diagnostics.Add("Same-tenant iframe dependencies require a separately reviewed page/application profile.");
-                blockers.Add($"Iframe dependency '{absoluteUri}' is unsupported by the v1 exact profile.");
+                dependency.Diagnostics.Add("Same-tenant iframe dependencies require a separately reviewed page/application profile during planning.");
                 return dependency;
             }
 
             if (!IsPathWithin(sourcePath, sourceWebPath))
             {
-                dependency.Disposition = EnterpriseWikiDependencyDisposition.Block;
-                dependency.Diagnostics.Add("The resource is outside the captured source web and cannot be safely materialized inside the approved target web.");
-                blockers.Add($"Same-tenant resource '{absoluteUri}' is outside the source web boundary.");
+                dependency.Diagnostics.Add("The resource is outside the captured source web boundary.");
                 return dependency;
             }
 
@@ -860,13 +1110,12 @@ namespace PnP.Framework.EnterpriseWiki
                 dependency.ContentBase64 = Convert.ToBase64String(payload);
                 dependency.ContentLength = payload.LongLength;
                 dependency.ContentSha256 = ComputeBytesSha256(payload);
-                dependency.Disposition = EnterpriseWikiDependencyDisposition.MaterializeAtTarget;
             }
             catch (Exception exception) when (exception is ServerException || exception is InvalidOperationException || exception is IOException)
             {
-                dependency.Disposition = EnterpriseWikiDependencyDisposition.Block;
+                dependency.CaptureStatus = EnterpriseWikiCaptureStatus.Failed;
                 dependency.Diagnostics.Add(exception.Message);
-                blockers.Add($"Resource '{absoluteUri}' could not be captured: {exception.Message}");
+                warnings.Add($"Resource '{absoluteUri}' could not be captured and may block a later plan: {exception.Message}");
             }
 
             return dependency;
@@ -900,10 +1149,253 @@ namespace PnP.Framework.EnterpriseWiki
             }
         }
 
+        private static List<EnterpriseWikiDependencyAction> BuildDependencyActions(
+            EnterpriseWikiSnapshot snapshot,
+            string targetWebUrl,
+            string targetWebServerRelativeUrl,
+            EnterpriseWikiPlanningOptions options,
+            ICollection<string> blockers,
+            ICollection<string> warnings)
+        {
+            var sourceWebUri = new Uri(EnsureTrailingSlash(snapshot.Source.WebUrl));
+            var targetWebUri = new Uri(EnsureTrailingSlash(targetWebUrl));
+            var sourceWebPath = Uri.UnescapeDataString(sourceWebUri.AbsolutePath).TrimEnd('/');
+            var targetWebPath = targetWebServerRelativeUrl.TrimEnd('/');
+            var result = new List<EnterpriseWikiDependencyAction>();
+            foreach (var dependency in snapshot.Dependencies)
+            {
+                var action = new EnterpriseWikiDependencyAction
+                {
+                    SnapshotDependencyId = dependency.Id,
+                    Disposition = EnterpriseWikiDependencyDisposition.PreserveExternal
+                };
+                result.Add(action);
+                if (!Uri.TryCreate(dependency.SourceAbsoluteUrl, UriKind.Absolute, out var sourceUri))
+                {
+                    action.Disposition = EnterpriseWikiDependencyDisposition.Block;
+                    action.Diagnostics.Add("The captured dependency URL is not an absolute HTTP(S) URL.");
+                    blockers.Add($"Dependency '{dependency.OriginalValue}' has an invalid captured URL.");
+                    continue;
+                }
+
+                if (!string.Equals(sourceWebUri.Host, sourceUri.Host, StringComparison.OrdinalIgnoreCase))
+                {
+                    if (dependency.IsRenderableResource && !options.AllowExternalResourceReferences)
+                    {
+                        action.Disposition = EnterpriseWikiDependencyDisposition.Block;
+                        action.Diagnostics.Add("External renderable resources are blocked by planning policy.");
+                        blockers.Add($"External resource '{sourceUri}' is blocked by policy.");
+                    }
+                    continue;
+                }
+
+                var sourcePath = dependency.SourceServerRelativeUrl ?? Uri.UnescapeDataString(sourceUri.AbsolutePath);
+                var targetPath = IsPathWithin(sourcePath, sourceWebPath)
+                    ? targetWebPath + sourcePath.Substring(sourceWebPath.Length)
+                    : sourcePath;
+                action.TargetServerRelativeUrl = targetPath;
+                action.TargetAbsoluteUrl = targetWebUri.GetLeftPart(UriPartial.Authority) + EncodePath(targetPath) + sourceUri.Query + sourceUri.Fragment;
+                action.Disposition = EnterpriseWikiDependencyDisposition.RewriteToTarget;
+                if (!dependency.IsRenderableResource || IsSharePointRuntimePath(sourcePath))
+                {
+                    continue;
+                }
+
+                if (dependency.Kind == EnterpriseWikiDependencyKind.IFrame)
+                {
+                    action.Disposition = EnterpriseWikiDependencyDisposition.Block;
+                    action.Diagnostics.Add("Same-tenant iframe dependencies require a separately reviewed page/application profile.");
+                    blockers.Add($"Iframe dependency '{sourceUri}' is unsupported by the exact profile.");
+                    continue;
+                }
+
+                if (!IsPathWithin(sourcePath, sourceWebPath))
+                {
+                    action.Disposition = EnterpriseWikiDependencyDisposition.Block;
+                    action.Diagnostics.Add("The resource is outside the captured source web and cannot be safely materialized inside the approved target web.");
+                    blockers.Add($"Same-tenant resource '{sourceUri}' is outside the source web boundary.");
+                    continue;
+                }
+
+                if (dependency.CaptureStatus == EnterpriseWikiCaptureStatus.Failed
+                    || string.IsNullOrWhiteSpace(dependency.ContentBase64)
+                    || string.IsNullOrWhiteSpace(dependency.ContentSha256))
+                {
+                    action.Disposition = EnterpriseWikiDependencyDisposition.Block;
+                    action.Diagnostics.Add("The source payload was not captured successfully.");
+                    blockers.Add($"Resource '{sourceUri}' has no restorable payload in the source snapshot.");
+                    continue;
+                }
+
+                action.Disposition = EnterpriseWikiDependencyDisposition.MaterializeAtTarget;
+            }
+
+            return result
+                .OrderBy(action => action.SnapshotDependencyId, StringComparer.Ordinal)
+                .ToList();
+        }
+
+        private static List<EnterpriseWikiFieldAction> BuildFieldActions(
+            ClientContext targetContext,
+            IEnumerable<EnterpriseWikiFieldValueSnapshot> fields,
+            EnterpriseWikiPlanningOptions options,
+            ICollection<string> blockers,
+            ICollection<string> warnings)
+        {
+            var pages = targetContext.Web.GetPagesLibrary();
+            var sourceFields = fields.OrderBy(field => field.InternalName, StringComparer.Ordinal).ToArray();
+            if (pages == null)
+            {
+                return sourceFields.Select(field => new EnterpriseWikiFieldAction
+                {
+                    SourceInternalName = field.InternalName,
+                    TargetInternalName = field.InternalName,
+                    Disposition = EnterpriseWikiFieldDisposition.Block,
+                    Reason = "The target publishing Pages library is unavailable."
+                }).ToList();
+            }
+
+            targetContext.Load(pages.Fields, values => values.Include(
+                field => field.InternalName,
+                field => field.TypeAsString,
+                field => field.ReadOnlyField));
+            targetContext.ExecuteQueryRetry();
+            var targetFields = pages.Fields.ToDictionary(field => field.InternalName, StringComparer.OrdinalIgnoreCase);
+            var result = new List<EnterpriseWikiFieldAction>();
+            foreach (var sourceField in sourceFields)
+            {
+                var action = new EnterpriseWikiFieldAction
+                {
+                    SourceInternalName = sourceField.InternalName,
+                    TargetInternalName = sourceField.InternalName
+                };
+                result.Add(action);
+                if (HandledFieldNames.Contains(sourceField.InternalName))
+                {
+                    action.Disposition = EnterpriseWikiFieldDisposition.AlreadyHandled;
+                    action.Reason = "The page creation workflow handles this field explicitly.";
+                    continue;
+                }
+
+                if (sourceField.CaptureStatus == EnterpriseWikiCaptureStatus.Failed
+                    || sourceField.CaptureStatus == EnterpriseWikiCaptureStatus.NotReturned)
+                {
+                    action.Disposition = EnterpriseWikiFieldDisposition.CaptureUnavailable;
+                    action.Reason = "The field definition is preserved, but no restorable value was captured.";
+                    continue;
+                }
+
+                if (!sourceField.HasValue || sourceField.Kind == EnterpriseWikiFieldValueKind.Null)
+                {
+                    action.Disposition = EnterpriseWikiFieldDisposition.SkipEmpty;
+                    action.Reason = "The source item has no value for this field.";
+                    continue;
+                }
+
+                if (!AdditionalFieldNames.Contains(sourceField.InternalName))
+                {
+                    action.Disposition = EnterpriseWikiFieldDisposition.EvidenceOnly;
+                    action.Reason = "The field is fully retained in the snapshot, but this importer does not recognize it yet.";
+                    continue;
+                }
+
+                if (sourceField.ReadOnly)
+                {
+                    action.Disposition = EnterpriseWikiFieldDisposition.SkipReadOnly;
+                    action.Reason = "The source field is read-only.";
+                    continue;
+                }
+
+                if (string.Equals(sourceField.TypeAsString, "Calculated", StringComparison.OrdinalIgnoreCase))
+                {
+                    action.Disposition = EnterpriseWikiFieldDisposition.SkipCalculated;
+                    action.Reason = "Calculated fields are recomputed by SharePoint.";
+                    continue;
+                }
+
+                if (!targetFields.TryGetValue(sourceField.InternalName, out var targetField))
+                {
+                    action.Disposition = EnterpriseWikiFieldDisposition.TargetFieldMissing;
+                    action.Reason = "The recognized field is not present in the target Pages library.";
+                    warnings.Add($"Recognized field '{sourceField.InternalName}' is absent from the target Pages library and will not be applied.");
+                    continue;
+                }
+
+                action.TargetInternalName = targetField.InternalName;
+                action.TargetTypeAsString = targetField.TypeAsString;
+                if (targetField.ReadOnlyField)
+                {
+                    action.Disposition = EnterpriseWikiFieldDisposition.SkipReadOnly;
+                    action.Reason = "The target field is read-only.";
+                    continue;
+                }
+
+                if (!string.Equals(sourceField.TypeAsString, targetField.TypeAsString, StringComparison.OrdinalIgnoreCase))
+                {
+                    action.Disposition = EnterpriseWikiFieldDisposition.TargetTypeMismatch;
+                    action.Reason = $"Source type '{sourceField.TypeAsString}' does not match target type '{targetField.TypeAsString}'.";
+                    warnings.Add($"Recognized field '{sourceField.InternalName}' has a target type mismatch and will not be applied.");
+                    continue;
+                }
+
+                if (sourceField.Kind == EnterpriseWikiFieldValueKind.Taxonomy
+                    || sourceField.Kind == EnterpriseWikiFieldValueKind.TaxonomyCollection
+                    || sourceField.Kind == EnterpriseWikiFieldValueKind.User
+                    || sourceField.Kind == EnterpriseWikiFieldValueKind.UserCollection
+                    || sourceField.Kind == EnterpriseWikiFieldValueKind.Lookup
+                    || sourceField.Kind == EnterpriseWikiFieldValueKind.LookupCollection)
+                {
+                    action.Disposition = EnterpriseWikiFieldDisposition.RequiresMapping;
+                    action.Reason = "The value is captured, but its source identity must be mapped before it can be safely applied to another site.";
+                    if (!(sourceField.Kind == EnterpriseWikiFieldValueKind.Taxonomy
+                        || sourceField.Kind == EnterpriseWikiFieldValueKind.TaxonomyCollection)
+                        || !options.BlockOnManagedMetadata)
+                    {
+                        warnings.Add($"Field '{sourceField.InternalName}' requires an identity or term mapping and remains evidence-only.");
+                    }
+                    continue;
+                }
+
+                if (!IsImportableFieldKind(sourceField.Kind))
+                {
+                    action.Disposition = EnterpriseWikiFieldDisposition.EvidenceOnly;
+                    action.Reason = $"No importer is registered for value kind '{sourceField.Kind}'.";
+                    continue;
+                }
+
+                action.Disposition = EnterpriseWikiFieldDisposition.Apply;
+                action.Reason = "The field is recognized, writable, type-compatible, and has a supported captured value.";
+            }
+
+            return result;
+        }
+
+        private static bool IsImportableFieldKind(EnterpriseWikiFieldValueKind kind)
+        {
+            return kind == EnterpriseWikiFieldValueKind.String
+                || kind == EnterpriseWikiFieldValueKind.StringCollection
+                || kind == EnterpriseWikiFieldValueKind.Boolean
+                || kind == EnterpriseWikiFieldValueKind.Number
+                || kind == EnterpriseWikiFieldValueKind.DateTime
+                || kind == EnterpriseWikiFieldValueKind.Guid
+                || kind == EnterpriseWikiFieldValueKind.Url;
+        }
+
+        public static EnterpriseWikiTargetLifecycle DeriveTargetLifecycle(EnterpriseWikiLifecycleSnapshot sourceLifecycle)
+        {
+            var isPublished = string.Equals(sourceLifecycle?.Level, "Published", StringComparison.OrdinalIgnoreCase)
+                && string.Equals(sourceLifecycle?.CheckOutType, "None", StringComparison.OrdinalIgnoreCase)
+                && (!sourceLifecycle.ModerationStatus.HasValue || sourceLifecycle.ModerationStatus.Value == 0);
+            return isPublished
+                ? EnterpriseWikiTargetLifecycle.Published
+                : EnterpriseWikiTargetLifecycle.Draft;
+        }
+
         private static EnterpriseWikiTargetProbe ProbeTarget(
             ClientContext context,
             string targetPagePath,
-            IEnumerable<EnterpriseWikiDependencySnapshot> dependencies,
+            IEnumerable<EnterpriseWikiDependencyAction> dependencies,
+            EnterpriseWikiTargetLifecycle targetLifecycle,
             ICollection<string> blockers,
             ICollection<string> warnings)
         {
@@ -926,15 +1418,32 @@ namespace PnP.Framework.EnterpriseWiki
                 return probe;
             }
 
-            context.Load(pages, list => list.BaseTemplate);
+            context.Load(pages,
+                list => list.BaseTemplate,
+                list => list.EnableVersioning,
+                list => list.EnableMinorVersions,
+                list => list.EnableModeration,
+                list => list.ForceCheckout,
+                list => list.DraftVersionVisibility);
             context.Load(pages.RootFolder, folder => folder.ServerRelativeUrl);
             context.Load(pages.ContentTypes, contentTypes => contentTypes.Include(contentType => contentType.Id, contentType => contentType.Name));
             context.ExecuteQueryRetry();
             probe.PagesLibraryBaseTemplate = pages.BaseTemplate;
             probe.PagesLibraryServerRelativeUrl = pages.RootFolder.ServerRelativeUrl;
+            probe.EnableVersioning = pages.EnableVersioning;
+            probe.EnableMinorVersions = pages.EnableMinorVersions;
+            probe.EnableModeration = pages.EnableModeration;
+            probe.ForceCheckout = pages.ForceCheckout;
+            probe.DraftVersionVisibility = pages.DraftVersionVisibility.ToString();
             if (pages.BaseTemplate != PublishingPagesListTemplate)
             {
                 blockers.Add($"The target Pages library has base template {pages.BaseTemplate}; publishing Pages template {PublishingPagesListTemplate} is required.");
+            }
+
+            if (targetLifecycle == EnterpriseWikiTargetLifecycle.Draft
+                && (!pages.EnableVersioning || !pages.EnableMinorVersions))
+            {
+                blockers.Add("The source maps to Draft, but the target Pages library cannot represent a checked-in minor draft deterministically.");
             }
 
             var enterpriseWikiContentType = pages.ContentTypes.FirstOrDefault(contentType => IsEnterpriseWikiContentType(contentType.Id.StringValue));
@@ -961,7 +1470,7 @@ namespace PnP.Framework.EnterpriseWiki
             var expectedDirectory = pages.RootFolder.ServerRelativeUrl;
             if (!string.Equals(GetDirectoryName(targetPagePath), expectedDirectory, StringComparison.OrdinalIgnoreCase))
             {
-                blockers.Add($"The target page must be placed in the root of '{expectedDirectory}' for the v1 profile.");
+                blockers.Add($"The target page must be placed in the root of '{expectedDirectory}' for the exact profile.");
             }
 
             probe.TargetPageExists = FileExists(context, targetPagePath);
@@ -992,28 +1501,37 @@ namespace PnP.Framework.EnterpriseWiki
             return probe;
         }
 
-        private static int MaterializeDependencies(ClientContext context, IEnumerable<EnterpriseWikiDependencySnapshot> dependencies)
+        private static int MaterializeDependencies(
+            ClientContext context,
+            IEnumerable<EnterpriseWikiDependencySnapshot> snapshots,
+            IEnumerable<EnterpriseWikiDependencyAction> actions)
         {
             var web = context.Web;
             web.EnsureProperty(value => value.ServerRelativeUrl);
+            var snapshotById = snapshots.ToDictionary(item => item.Id, StringComparer.Ordinal);
             var count = 0;
-            foreach (var dependency in dependencies
+            foreach (var action in actions
                          .Where(item => item.Disposition == EnterpriseWikiDependencyDisposition.MaterializeAtTarget)
                          .GroupBy(item => item.TargetServerRelativeUrl, StringComparer.OrdinalIgnoreCase)
                          .Select(group => group.First()))
             {
-                var bytes = Convert.FromBase64String(dependency.ContentBase64 ?? string.Empty);
-                if (!string.Equals(ComputeBytesSha256(bytes), dependency.ContentSha256, StringComparison.OrdinalIgnoreCase))
+                if (!snapshotById.TryGetValue(action.SnapshotDependencyId, out var snapshot))
                 {
-                    throw new InvalidDataException($"Dependency payload digest mismatch: {dependency.TargetServerRelativeUrl}");
+                    throw new InvalidDataException($"Dependency action references missing snapshot '{action.SnapshotDependencyId}'.");
                 }
 
-                if (!IsPathWithin(dependency.TargetServerRelativeUrl, web.ServerRelativeUrl))
+                var bytes = Convert.FromBase64String(snapshot.ContentBase64 ?? string.Empty);
+                if (!string.Equals(ComputeBytesSha256(bytes), snapshot.ContentSha256, StringComparison.OrdinalIgnoreCase))
                 {
-                    throw new InvalidOperationException($"Dependency target escapes the target web boundary: {dependency.TargetServerRelativeUrl}");
+                    throw new InvalidDataException($"Dependency payload digest mismatch: {action.TargetServerRelativeUrl}");
                 }
 
-                var relativePath = dependency.TargetServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd('/').Length).TrimStart('/');
+                if (!IsPathWithin(action.TargetServerRelativeUrl, web.ServerRelativeUrl))
+                {
+                    throw new InvalidOperationException($"Dependency target escapes the target web boundary: {action.TargetServerRelativeUrl}");
+                }
+
+                var relativePath = action.TargetServerRelativeUrl.Substring(web.ServerRelativeUrl.TrimEnd('/').Length).TrimStart('/');
                 var separator = relativePath.LastIndexOf('/');
                 var folderPath = separator < 0 ? string.Empty : relativePath.Substring(0, separator);
                 var fileName = separator < 0 ? relativePath : relativePath.Substring(separator + 1);
@@ -1028,7 +1546,7 @@ namespace PnP.Framework.EnterpriseWiki
                 context.ExecuteQueryRetry();
                 if (!created.Exists)
                 {
-                    throw new InvalidOperationException($"SharePoint did not persist dependency '{dependency.TargetServerRelativeUrl}'.");
+                    throw new InvalidOperationException($"SharePoint did not persist dependency '{action.TargetServerRelativeUrl}'.");
                 }
                 count++;
             }
@@ -1036,90 +1554,102 @@ namespace PnP.Framework.EnterpriseWiki
             return count;
         }
 
-        private static void ApplyAdditionalFields(
+        private static List<EnterpriseWikiFieldImportResult> ApplyPlannedFields(
             ClientContext context,
-            Microsoft.SharePoint.Client.List pages,
             ListItem targetItem,
             IEnumerable<EnterpriseWikiFieldValueSnapshot> fields,
+            IEnumerable<EnterpriseWikiFieldAction> actions,
             IEnumerable<EnterpriseWikiTextReplacement> replacements,
             ICollection<string> warnings)
         {
-            var applicableFields = new List<EnterpriseWikiFieldValueSnapshot>();
-            foreach (var field in fields)
+            var fieldByName = fields.ToDictionary(field => field.InternalName, StringComparer.OrdinalIgnoreCase);
+            var results = new List<EnterpriseWikiFieldImportResult>();
+            foreach (var action in actions)
             {
-                if (field.ReadOnly)
+                var result = new EnterpriseWikiFieldImportResult
+                {
+                    InternalName = action.SourceInternalName,
+                    PlannedDisposition = action.Disposition,
+                    Attempted = action.Disposition == EnterpriseWikiFieldDisposition.Apply,
+                    Succeeded = action.Disposition != EnterpriseWikiFieldDisposition.Apply,
+                    Message = action.Reason
+                };
+                results.Add(result);
+                if (!result.Attempted)
                 {
                     continue;
                 }
 
-                Field targetField;
+                if (!fieldByName.TryGetValue(action.SourceInternalName, out var field))
+                {
+                    result.Message = "The planned source field is missing from the sealed snapshot.";
+                    warnings.Add($"Planned field '{action.SourceInternalName}' is missing from the sealed snapshot.");
+                    continue;
+                }
+
                 try
                 {
-                    targetField = pages.Fields.GetByInternalNameOrTitle(field.InternalName);
-                    context.Load(targetField, value => value.InternalName, value => value.ReadOnlyField);
+                    SetFieldValue(targetItem, action.TargetInternalName, field, replacements);
+                    targetItem.Update();
                     context.ExecuteQueryRetry();
+                    result.Succeeded = true;
+                    result.Message = "Applied successfully.";
                 }
-                catch (ServerException exception)
+                catch (Exception exception)
                 {
-                    warnings.Add($"Target field '{field.InternalName}' could not be resolved and was not applied: {exception.Message}");
-                    continue;
+                    result.Message = exception.Message;
+                    warnings.Add($"Field '{action.SourceInternalName}' could not be applied: {exception.Message}");
                 }
-
-                if (targetField.ReadOnlyField)
-                {
-                    continue;
-                }
-
-                applicableFields.Add(field);
             }
 
-            foreach (var field in applicableFields)
+            return results;
+        }
+
+        private static void SetFieldValue(
+            ListItem targetItem,
+            string targetInternalName,
+            EnterpriseWikiFieldValueSnapshot field,
+            IEnumerable<EnterpriseWikiTextReplacement> replacements)
+        {
+            switch (field.Kind)
             {
-                switch (field.Kind)
-                {
-                    case EnterpriseWikiFieldValueKind.String:
-                        targetItem[field.InternalName] = RewriteContent(field.Value, replacements);
-                        break;
-                    case EnterpriseWikiFieldValueKind.Boolean:
-                        targetItem[field.InternalName] = string.Equals(field.Value, "true", StringComparison.OrdinalIgnoreCase);
-                        break;
-                    case EnterpriseWikiFieldValueKind.Number:
-                        if (double.TryParse(field.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out var number))
-                        {
-                            targetItem[field.InternalName] = number;
-                        }
-                        break;
-                    case EnterpriseWikiFieldValueKind.DateTime:
-                        if (DateTime.TryParse(field.Value, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var dateTime))
-                        {
-                            targetItem[field.InternalName] = dateTime;
-                        }
-                        break;
-                    case EnterpriseWikiFieldValueKind.Url:
-                        var parts = (field.Value ?? string.Empty).Split(new[] { '\n' }, 2);
-                        targetItem[field.InternalName] = new FieldUrlValue
-                        {
-                            Url = RewriteContent(parts[0], replacements),
-                            Description = parts.Length > 1 ? parts[1] : string.Empty
-                        };
-                        break;
-                    case EnterpriseWikiFieldValueKind.Taxonomy:
-                    case EnterpriseWikiFieldValueKind.TaxonomyCollection:
-                        warnings.Add($"Managed metadata field '{field.InternalName}' was captured but not applied because target term mapping is outside the v1 profile.");
-                        break;
-                    default:
-                        warnings.Add($"Field '{field.InternalName}' was evidence-only and was not applied.");
-                        break;
-                }
+                case EnterpriseWikiFieldValueKind.String:
+                    targetItem[targetInternalName] = RewriteContent(field.Value, replacements);
+                    break;
+                case EnterpriseWikiFieldValueKind.StringCollection:
+                    targetItem[targetInternalName] = field.StringValues.ToArray();
+                    break;
+                case EnterpriseWikiFieldValueKind.Boolean:
+                    targetItem[targetInternalName] = bool.Parse(field.Value);
+                    break;
+                case EnterpriseWikiFieldValueKind.Number:
+                    targetItem[targetInternalName] = double.Parse(field.Value, NumberStyles.Any, CultureInfo.InvariantCulture);
+                    break;
+                case EnterpriseWikiFieldValueKind.DateTime:
+                    targetItem[targetInternalName] = DateTime.Parse(field.Value, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
+                    break;
+                case EnterpriseWikiFieldValueKind.Guid:
+                    targetItem[targetInternalName] = Guid.Parse(field.Value);
+                    break;
+                case EnterpriseWikiFieldValueKind.Url:
+                    targetItem[targetInternalName] = new FieldUrlValue
+                    {
+                        Url = RewriteContent(field.UrlValue?.Url, replacements),
+                        Description = field.UrlValue?.Description
+                    };
+                    break;
+                default:
+                    throw new NotSupportedException($"Field value kind '{field.Kind}' is not importable.");
             }
         }
 
-        private static EnterpriseWikiCopyReceipt ReadCopyReceipt(
+        private static EnterpriseWikiImportReceipt ReadImportReceipt(
             ClientContext targetContext,
             EnterpriseWikiMigrationPackage package,
             string approvedPlanDigest,
             DateTimeOffset startedAt,
             int materializedDependencyCount,
+            IList<EnterpriseWikiFieldImportResult> fieldResults,
             IEnumerable<string> warnings)
         {
             using (var verificationContext = targetContext.Clone(package.Plan.TargetWebUrl))
@@ -1141,22 +1671,28 @@ namespace PnP.Framework.EnterpriseWiki
     <FieldRef Name='ID' />
     <FieldRef Name='ContentTypeId' />
     <FieldRef Name='PublishingPageContent' />
+    <FieldRef Name='_ModerationStatus' />
   </ViewFields>
   <RowLimit>1</RowLimit>
 </View>"
                 });
-                verificationContext.Load(file, value => value.Exists, value => value.UniqueId, value => value.UIVersionLabel);
+                verificationContext.Load(file,
+                    value => value.Exists,
+                    value => value.UniqueId,
+                    value => value.UIVersionLabel,
+                    value => value.Level,
+                    value => value.CheckOutType);
                 verificationContext.Load(items);
                 verificationContext.ExecuteQueryRetry();
                 if (!file.Exists)
                 {
-                    throw new InvalidOperationException("Fresh target readback could not find the copied page.");
+                    throw new InvalidOperationException("Fresh target readback could not find the imported page.");
                 }
 
                 var item = items.SingleOrDefault();
                 if (item == null)
                 {
-                    throw new InvalidOperationException("Fresh target readback could not find the copied page list item.");
+                    throw new InvalidOperationException("Fresh target readback could not find the imported page list item.");
                 }
 
                 var content = GetFieldString(item, "PublishingPageContent") ?? string.Empty;
@@ -1164,7 +1700,7 @@ namespace PnP.Framework.EnterpriseWiki
                 var webParts = verificationContext.Web.GetWebParts(package.Plan.TargetPageServerRelativeUrl).ToArray();
                 var persistedDigest = EnterpriseWikiPackageSerializer.ComputeSha256(content);
                 var receiptWarnings = warnings.Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToList();
-                var storageContentEqual = string.Equals(persistedDigest, package.Snapshot.PublishingPageContentSha256, StringComparison.OrdinalIgnoreCase);
+                var storageContentEqual = string.Equals(persistedDigest, package.Plan.ExpectedPublishingPageContentSha256, StringComparison.OrdinalIgnoreCase);
                 if (!storageContentEqual)
                 {
                     receiptWarnings.Add("PublishingPageContent storage bytes differ after SharePoint serialization; DOM + visual acceptance remains the required fidelity gate.");
@@ -1177,10 +1713,24 @@ namespace PnP.Framework.EnterpriseWiki
                     receiptWarnings.Add("Fresh target readback found empty PublishingPageContent even though the approved source snapshot was non-empty.");
                 }
 
+                var actualLevel = file.Level.ToString();
+                var actualCheckOutType = file.CheckOutType.ToString();
+                var lifecycleMatched = package.Plan.TargetLifecycle == EnterpriseWikiTargetLifecycle.Published
+                    ? string.Equals(actualLevel, "Published", StringComparison.OrdinalIgnoreCase)
+                    : string.Equals(actualLevel, "Draft", StringComparison.OrdinalIgnoreCase)
+                        && string.Equals(actualCheckOutType, "None", StringComparison.OrdinalIgnoreCase);
+                if (!lifecycleMatched)
+                {
+                    receiptWarnings.Add($"Target lifecycle mismatch. Expected {package.Plan.TargetLifecycle}; actual level is {actualLevel} and checkout state is {actualCheckOutType}.");
+                }
+
+                var plannedFieldsPassed = fieldResults.All(result => !result.Attempted || result.Succeeded);
                 var readbackPassed = IsEnterpriseWikiContentType(contentTypeId)
                     && webParts.Length == package.Snapshot.WebParts.Count
-                    && (!expectedContentPresent || persistedContentPresent);
-                return new EnterpriseWikiCopyReceipt
+                    && (!expectedContentPresent || persistedContentPresent)
+                    && lifecycleMatched
+                    && plannedFieldsPassed;
+                return new EnterpriseWikiImportReceipt
                 {
                     StartedAtUtc = startedAt,
                     CompletedAtUtc = DateTimeOffset.UtcNow,
@@ -1191,10 +1741,17 @@ namespace PnP.Framework.EnterpriseWiki
                     TargetListItemId = item.Id,
                     TargetContentTypeId = contentTypeId,
                     TargetVersionLabel = file.UIVersionLabel,
+                    ExpectedLifecycle = package.Plan.TargetLifecycle,
+                    ActualFileLevel = actualLevel,
+                    ActualCheckOutType = actualCheckOutType,
+                    ActualModerationStatus = TryGetInt32(item, "_ModerationStatus"),
+                    LifecycleMatched = lifecycleMatched,
+                    ExpectedPublishingPageContentSha256 = package.Plan.ExpectedPublishingPageContentSha256,
                     PersistedPublishingPageContentSha256 = persistedDigest,
                     StorageContentEqual = storageContentEqual,
                     ImportedWebPartCount = webParts.Length,
                     MaterializedDependencyCount = materializedDependencyCount,
+                    FieldResults = fieldResults,
                     FreshReadbackPassed = readbackPassed,
                     Warnings = receiptWarnings,
                     Succeeded = readbackPassed
@@ -1245,7 +1802,12 @@ namespace PnP.Framework.EnterpriseWiki
                 .ToList();
         }
 
-        private static IList<string> BuildStorageAssertions(EnterpriseWikiSnapshot snapshot, string targetPagePath)
+        private static IList<string> BuildStorageAssertions(
+            EnterpriseWikiSnapshot snapshot,
+            string targetPagePath,
+            IEnumerable<EnterpriseWikiDependencyAction> dependencyActions,
+            string expectedContentDigest,
+            EnterpriseWikiTargetLifecycle targetLifecycle)
         {
             var result = new List<string>
             {
@@ -1253,12 +1815,15 @@ namespace PnP.Framework.EnterpriseWiki
                 "fresh-read-target-file-identity",
                 "fresh-read-target-enterprise-wiki-content-type",
                 "fresh-read-target-version-and-lifecycle",
+                $"expected-target-lifecycle={targetLifecycle}",
                 $"source-publishing-page-content-sha256={snapshot.PublishingPageContentSha256}",
+                $"expected-target-publishing-page-content-sha256={expectedContentDigest}",
                 $"expected-shared-webparts={snapshot.WebParts.Count}"
             };
-            result.AddRange(snapshot.Dependencies
+            var dependencyById = snapshot.Dependencies.ToDictionary(item => item.Id, StringComparer.Ordinal);
+            result.AddRange(dependencyActions
                 .Where(item => item.Disposition == EnterpriseWikiDependencyDisposition.MaterializeAtTarget)
-                .Select(item => $"dependency={item.TargetServerRelativeUrl}|sha256={item.ContentSha256}"));
+                .Select(item => $"dependency={item.TargetServerRelativeUrl}|sha256={dependencyById[item.SnapshotDependencyId].ContentSha256}"));
             return result.OrderBy(item => item, StringComparer.Ordinal).ToList();
         }
 

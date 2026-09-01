@@ -1,16 +1,19 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PnP.Framework.Migration.PublishingPages;
-using PnP.Framework.Migration.PublishingPages.Capture;
-using PnP.Framework.Migration.PublishingPages.Content;
-using PnP.Framework.Migration.PublishingPages.EnterpriseWiki;
-using PnP.Framework.Migration.PublishingPages.Fields;
-using PnP.Framework.Migration.PublishingPages.Lifecycle;
-using PnP.Framework.Migration.PublishingPages.Packaging;
-using PnP.Framework.Migration.PublishingPages.Planning;
-using PnP.Framework.Migration.PublishingPages.Reporting;
-using PnP.Framework.Migration.PublishingPages.Security;
-using PnP.Framework.Migration.PublishingPages.Verification;
-using PnP.Framework.Migration.PublishingPages.WebParts;
+using PnP.Framework.Migration.Pages;
+using PnP.Framework.Migration.Pages.Capture;
+using PnP.Framework.Migration.Pages.Content;
+using PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki;
+using PnP.Framework.Migration.Pages.Fields;
+using PnP.Framework.Migration.Pages.Lifecycle;
+using PnP.Framework.Migration.Pages.Publishing.Capture;
+using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
+using PnP.Framework.Migration.Pages.Publishing.Packaging;
+using PnP.Framework.Migration.Pages.Publishing.Planning;
+using PnP.Framework.Migration.Pages.Planning;
+using PnP.Framework.Migration.Pages.Publishing.Reporting;
+using PnP.Framework.Migration.Pages.Security;
+using PnP.Framework.Migration.Pages.Publishing.Verification;
+using PnP.Framework.Migration.Pages.ClassicWebParts;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -45,7 +48,7 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 }
             };
 
-            var actual = PublishingPageContentTransformer.Rewrite(
+            var actual = PageTextTransformer.Rewrite(
                 "<a href=\"HTTPS://SOURCE.SHAREPOINT.COM/sites/source/Pages/A.aspx\">A</a>",
                 replacements);
 
@@ -96,15 +99,15 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 ModerationStatus = 0
             };
 
-            Assert.AreEqual(PublishingPageTargetLifecycle.Draft, PageLifecyclePolicy.DeriveTargetLifecycle(r11));
-            Assert.AreEqual(PublishingPageTargetLifecycle.Published, PageLifecyclePolicy.DeriveTargetLifecycle(e05));
-            Assert.AreEqual(PublishingPageTargetLifecycle.Draft, PageLifecyclePolicy.DeriveTargetLifecycle(new PageLifecycleSnapshot
+            Assert.AreEqual(PublishingPageTargetLifecycle.Draft, PublishingPageLifecyclePolicy.DeriveTargetLifecycle(r11));
+            Assert.AreEqual(PublishingPageTargetLifecycle.Published, PublishingPageLifecyclePolicy.DeriveTargetLifecycle(e05));
+            Assert.AreEqual(PublishingPageTargetLifecycle.Draft, PublishingPageLifecyclePolicy.DeriveTargetLifecycle(new PageLifecycleSnapshot
             {
                 CheckOutType = "Online",
                 Level = "Published",
                 ModerationStatus = 0
             }));
-            Assert.AreEqual(PublishingPageTargetLifecycle.Draft, PageLifecyclePolicy.DeriveTargetLifecycle(null));
+            Assert.AreEqual(PublishingPageTargetLifecycle.Draft, PublishingPageLifecyclePolicy.DeriveTargetLifecycle(null));
         }
 
         [TestMethod]
@@ -129,9 +132,9 @@ namespace PnP.Framework.Test.EnterpriseWiki
             const string rss = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.Portal.WebControls.RSSAggregatorWebPart"" /></metaData></webPart></webParts>";
             const string scriptEditor = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart"" /></metaData></webPart></webParts>";
 
-            StringAssert.Contains(PageWebPartPortabilityPolicy.GetBlocker(listView), "reviewed target-list");
-            StringAssert.Contains(PageWebPartPortabilityPolicy.GetBlocker(rss), "not supported");
-            Assert.IsNull(PageWebPartPortabilityPolicy.GetBlocker(scriptEditor));
+            StringAssert.Contains(EnterpriseWikiWebPartPolicy.GetBlocker(listView), "reviewed target-list");
+            StringAssert.Contains(EnterpriseWikiWebPartPolicy.GetBlocker(rss), "not supported");
+            Assert.IsNull(EnterpriseWikiWebPartPolicy.GetBlocker(scriptEditor));
         }
 
         [TestMethod]
@@ -144,6 +147,7 @@ namespace PnP.Framework.Test.EnterpriseWiki
 
             PublishingPagePackageValidator.ValidateMigration(roundTripped);
             Assert.AreEqual("EnterpriseWiki", roundTripped.Snapshot.SourceProfile);
+            Assert.AreEqual("https://source.sharepoint.com/_catalogs/masterpage/EnterpriseWiki.aspx", roundTripped.Snapshot.Layout.Url);
             Assert.AreEqual(package.PlanDigest, roundTripped.PlanDigest);
         }
 
@@ -152,19 +156,22 @@ namespace PnP.Framework.Test.EnterpriseWiki
             return new PublishingPageCaptureBundle
             {
                 SourceProfile = "EnterpriseWiki",
-                CapturePolicy = new PublishingPageExportOptions
+                CapturePolicy = new PageCaptureOptions
                 {
                     SourcePageServerRelativeUrl = "/sites/source/Pages/source.aspx"
                 },
-                Source = new PublishingPageIdentity
+                Source = new PageIdentity
                 {
                     WebUrl = "https://source.sharepoint.com/sites/source",
                     WebServerRelativeUrl = "/sites/source",
                     PageServerRelativeUrl = "/sites/source/Pages/source.aspx",
                     ContentTypeId = BuiltInContentTypeId.EnterpriseWikiPage,
                     ContentTypeName = "Enterprise Wiki Page",
-                    Title = "Source",
-                    PageLayoutUrl = "https://source.sharepoint.com/_catalogs/masterpage/EnterpriseWiki.aspx"
+                    Title = "Source"
+                },
+                Layout = new PublishingPageLayoutSnapshot
+                {
+                    Url = "https://source.sharepoint.com/_catalogs/masterpage/EnterpriseWiki.aspx"
                 },
                 PublishingPageContent = "<p>source</p>",
                 PublishingPageContentSha256 = PublishingPageDigest.ComputeSha256("<p>source</p>"),
@@ -211,7 +218,7 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 PageLayoutName = "EnterpriseWiki",
                 TargetLifecycle = PublishingPageTargetLifecycle.Draft,
                 LifecycleReason = "The source file level is 'Draft', so the target will remain Draft.",
-                PlanningPolicy = new PublishingPagePlanningOptions
+                PlanningPolicy = new PagePlanningOptions
                 {
                     TargetPageServerRelativeUrl = "/sites/target/Pages/source.aspx"
                 },

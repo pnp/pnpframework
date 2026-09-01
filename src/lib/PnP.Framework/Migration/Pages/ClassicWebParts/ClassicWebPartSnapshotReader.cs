@@ -51,6 +51,7 @@ namespace PnP.Framework.Migration.Pages.ClassicWebParts
                 {
                     Id = webPart.Id,
                     Title = webPart.WebPart.Title,
+                    TypeName = ClassicWebPartMetadataParser.ReadTypeName(xml),
                     ZoneId = webPart.ZoneId,
                     ZoneIndex = webPart.WebPart.ZoneIndex,
                     Hidden = webPart.WebPart.Hidden,

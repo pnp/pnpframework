@@ -14,7 +14,10 @@ using PnP.Framework.Migration.Pages.Publishing.Reporting;
 using PnP.Framework.Migration.Pages.Security;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
+using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
 using PnP.Framework.Migration.Pages.Publishing.Layouts;
+using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Evidence;
 using PnP.Framework.Migration.Packaging;
@@ -27,6 +30,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace PnP.Framework.Test.EnterpriseWiki
 {
@@ -406,6 +410,164 @@ namespace PnP.Framework.Test.EnterpriseWiki
                     Directory.Delete(root, true);
                 }
             }
+        }
+
+        [TestMethod]
+        public void ListWebPartBindingRewritesListWebViewAndPageIdentities()
+        {
+            var sourceWeb = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var sourceList = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var sourceView = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var targetWeb = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa");
+            var targetList = Guid.Parse("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb");
+            var targetView = Guid.Parse("cccccccc-cccc-cccc-cccc-cccccccccccc");
+            var exportXml = "<webParts><webPart xmlns=\"http://schemas.microsoft.com/WebPart/v3\"><metaData><type name=\"Microsoft.SharePoint.WebPartPages.XsltListViewWebPart\" /></metaData><data><properties>"
+                + "<property name=\"ListId\">" + sourceList.ToString("D") + "</property>"
+                + "<property name=\"ListName\">{" + sourceList.ToString("D") + "}</property>"
+                + "<property name=\"WebId\">00000000-0000-0000-0000-000000000000</property>"
+                + "<property name=\"TitleUrl\">/teams/source/child/Lists/Resources</property>"
+                + "<property name=\"XmlDefinition\">&lt;View Name=\"{" + sourceView.ToString("D") + "}\" Url=\"/teams/source/child/Pages/A.aspx\"&gt;&lt;JSLink&gt;clienttemplates.js&lt;/JSLink&gt;&lt;/View&gt;</property>"
+                + "</properties></data></webPart></webParts>";
+            var snapshot = new ClassicWebPartSnapshot
+            {
+                Id = Guid.Parse("44444444-4444-4444-4444-444444444444"),
+                Title = "Resources",
+                TypeName = "Microsoft.SharePoint.WebPartPages.XsltListViewWebPart",
+                ExportXml = exportXml,
+                ExportSha256 = MigrationDigest.ComputeSha256(exportXml)
+            };
+
+            var parsed = ClassicListWebPartBindingParser.Parse(
+                snapshot,
+                sourceWeb,
+                "https://source.sharepoint.com/teams/source/child",
+                "/teams/source/child/Pages/A.aspx");
+
+            Assert.IsTrue(parsed.IsExecutable, string.Join(Environment.NewLine, parsed.Issues.Select(value => value.Message)));
+            Assert.AreEqual(sourceWeb, parsed.Binding.SourceListWebId);
+            Assert.AreEqual(sourceView, parsed.Binding.SourceViewId);
+            Assert.AreEqual("clienttemplates.js", parsed.Binding.JsLink);
+
+            var rewritten = ClassicListWebPartRewriter.Rewrite(parsed.Binding, new ClassicListWebPartTargetMap
+            {
+                SourceWebId = sourceWeb,
+                SourceListId = sourceList,
+                SourceViewId = sourceView,
+                TargetWebId = targetWeb,
+                TargetListId = targetList,
+                TargetViewId = targetView,
+                TargetListServerRelativeUrl = "/sites/target/child/Lists/Resources",
+                TargetListAbsoluteUrl = "https://target.sharepoint.com/sites/target/child/Lists/Resources",
+                TargetPageServerRelativeUrl = "/sites/target/child/Pages/A.aspx"
+            });
+            var properties = XDocument.Parse(rewritten.ExportXml).Descendants()
+                .Where(value => value.Name.LocalName == "property")
+                .ToDictionary(value => (string)value.Attribute("name"), value => value.Value, StringComparer.OrdinalIgnoreCase);
+
+            Assert.AreEqual(targetWeb.ToString("D"), properties["WebId"]);
+            Assert.AreEqual(targetList.ToString("D"), properties["ListId"]);
+            Assert.AreEqual("{" + targetList.ToString("D") + "}", properties["ListName"]);
+            var view = XDocument.Parse(properties["XmlDefinition"]).Root;
+            Assert.AreEqual("{" + targetView.ToString("D") + "}", (string)view.Attribute("Name"));
+            Assert.AreEqual("/sites/target/child/Pages/A.aspx", (string)view.Attribute("Url"));
+        }
+
+        [TestMethod]
+        public void LookupDependencyGraphOrdersLookupListsAndBlocksCycles()
+        {
+            var owner = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var lookup = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var ordered = ListLookupDependencyGraph.Order(
+                new[] { owner, lookup },
+                new[]
+                {
+                    new ListLookupDependency
+                    {
+                        SourceListId = owner,
+                        LookupListId = lookup,
+                        FieldId = Guid.NewGuid(),
+                        FieldInternalName = "Lookup"
+                    }
+                });
+
+            Assert.IsTrue(ordered.IsExecutable);
+            CollectionAssert.AreEqual(new[] { lookup, owner }, ordered.OrderedSourceListIds.ToArray());
+
+            var cycle = ListLookupDependencyGraph.Order(
+                new[] { owner, lookup },
+                new[]
+                {
+                    new ListLookupDependency { SourceListId = owner, LookupListId = lookup },
+                    new ListLookupDependency { SourceListId = lookup, LookupListId = owner }
+                });
+            Assert.IsFalse(cycle.IsExecutable);
+            Assert.IsTrue(cycle.Issues.Any(value => value.Code == "LookupDependencyCycle"));
+        }
+
+        [TestMethod]
+        public void TopologyPlannerPreservesNestedWebOwnershipAndStableDigest()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var rootId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var childId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var source = new SourceSiteCollectionSnapshot
+            {
+                SiteId = siteId,
+                SiteCollectionUrl = "https://source.sharepoint.com/teams/source",
+                ServerRelativeUrl = "/teams/source",
+                RootWebId = rootId,
+                Webs = new List<SourceWebSnapshot>
+                {
+                    new SourceWebSnapshot
+                    {
+                        SiteId = siteId,
+                        WebId = childId,
+                        ParentWebId = rootId,
+                        SiteCollectionUrl = "https://source.sharepoint.com/teams/source",
+                        WebUrl = "https://source.sharepoint.com/teams/source/child",
+                        ServerRelativeUrl = "/teams/source/child",
+                        Title = "Child",
+                        WebTemplate = "CMSPUBLISHING"
+                    },
+                    new SourceWebSnapshot
+                    {
+                        SiteId = siteId,
+                        WebId = rootId,
+                        SiteCollectionUrl = "https://source.sharepoint.com/teams/source",
+                        WebUrl = "https://source.sharepoint.com/teams/source",
+                        ServerRelativeUrl = "/teams/source",
+                        Title = "Root",
+                        WebTemplate = "CMSPUBLISHING"
+                    }
+                }
+            };
+            var target = new TargetSiteCollectionSpec
+            {
+                SourceSiteId = siteId,
+                Mode = TargetSiteMode.ExistingTargetSite,
+                TargetSiteUrl = "https://target.sharepoint.com/sites/target",
+                ExpectedTargetSiteId = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                Title = "Target"
+            };
+            var policy = new TopologyPlanningPolicy
+            {
+                WebOverrides = new List<TargetWebOverride>
+                {
+                    new TargetWebOverride { SourceWebId = childId, TargetUrlSegment = "area", TargetTitle = "Area" }
+                }
+            };
+
+            var first = new TopologyPlanner().Build(new[] { source }, new[] { target }, policy);
+            var second = new TopologyPlanner().Build(new[] { source }, new[] { target }, policy);
+
+            Assert.IsTrue(first.IsExecutable, string.Join(Environment.NewLine, first.Issues.Select(value => value.Message)));
+            var child = first.Plan.SiteCollections.Single().Webs.Single(value => value.SourceWebId == childId);
+            Assert.AreEqual("/sites/target/area", child.TargetServerRelativeUrl);
+            Assert.AreEqual("/sites/target/area/Lists/Resources", TopologyPlanner.MapWebOwnedServerRelativePath(
+                "/teams/source/child/Lists/Resources",
+                "/teams/source/child",
+                child.TargetServerRelativeUrl));
+            Assert.AreEqual(first.Plan.PlanDigest, second.Plan.PlanDigest);
         }
 
         private static PublishingPageCaptureBundle CreateSnapshot()

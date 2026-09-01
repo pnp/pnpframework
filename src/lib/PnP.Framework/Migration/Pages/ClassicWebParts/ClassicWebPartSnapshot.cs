@@ -8,6 +8,8 @@ namespace PnP.Framework.Migration.Pages.ClassicWebParts
 
         public string Title { get; set; }
 
+        public string TypeName { get; set; }
+
         public string ZoneId { get; set; }
 
         public int ZoneIndex { get; set; }

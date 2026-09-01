@@ -5,6 +5,10 @@ using PnP.Framework.Migration.Pages.References;
 using PnP.Framework.Migration.Pages.Security;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
 using PnP.Framework.Migration.Pages.Publishing.Layouts;
+using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
+using PnP.Framework.Migration.Lists.Capture;
+using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Topology;
 using System.Collections.Generic;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Capture
@@ -26,6 +30,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Capture
         public IList<PageFieldValueSnapshot> Fields { get; set; } = new List<PageFieldValueSnapshot>();
 
         public IList<ClassicWebPartSnapshot> WebParts { get; set; } = new List<ClassicWebPartSnapshot>();
+
+        public IList<ClassicListWebPartBindingSnapshot> ListWebPartBindings { get; set; } = new List<ClassicListWebPartBindingSnapshot>();
+
+        public IList<ListDependencySnapshot> ListDependencies { get; set; } = new List<ListDependencySnapshot>();
+
+        public IList<ListLookupDependency> ListLookupDependencies { get; set; } = new List<ListLookupDependency>();
+
+        public SourceSiteCollectionSnapshot SourceTopology { get; set; }
 
         public IList<PageReferenceSnapshot> Dependencies { get; set; } = new List<PageReferenceSnapshot>();
 

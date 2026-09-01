@@ -60,11 +60,15 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 return !string.IsNullOrWhiteSpace(value)
                     && !string.Equals(value, Guid.Empty.ToString(), StringComparison.OrdinalIgnoreCase);
             });
-            if (hasSourceListBinding
-                || typeName.EndsWith(".XsltListViewWebPart", StringComparison.OrdinalIgnoreCase)
+            if (hasSourceListBinding)
+            {
+                return null;
+            }
+
+            if (typeName.EndsWith(".XsltListViewWebPart", StringComparison.OrdinalIgnoreCase)
                 || typeName.EndsWith(".ListViewWebPart", StringComparison.OrdinalIgnoreCase))
             {
-                return $"type '{typeName}' is bound to a source list; the exact profile requires a reviewed target-list and view mapping before import";
+                return $"type '{typeName}' is list-oriented but its export has no parseable source ListId/ListName binding";
             }
 
             return null;

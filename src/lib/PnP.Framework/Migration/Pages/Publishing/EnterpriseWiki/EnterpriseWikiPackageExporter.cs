@@ -3,6 +3,9 @@ using PnP.Framework.Migration.Pages.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Pages.References;
+using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
+using PnP.Framework.Migration.Lists.Capture;
+using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Packaging;
 using System;
 using System.Collections.Generic;
@@ -48,6 +51,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 blockers.Add($"Source ContentTypeId '{sourceCapture.Identity.ContentTypeId}' is not an Enterprise Wiki Page content type (Project Page is intentionally excluded).");
             }
 
+            var listBindings = new List<ClassicListWebPartBindingSnapshot>();
             foreach (var webPart in sourceCapture.WebParts)
             {
                 var blocker = EnterpriseWikiWebPartPolicy.GetBlocker(webPart.ExportXml);
@@ -56,6 +60,44 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                     var title = string.IsNullOrWhiteSpace(webPart.Title) ? webPart.Id.ToString() : webPart.Title;
                     blockers.Add($"Web Part '{title}' ({webPart.Id}) cannot be copied: {blocker}.");
                 }
+
+                if (!ClassicListWebPartBindingParser.IsListBound(webPart))
+                {
+                    continue;
+                }
+
+                var binding = ClassicListWebPartBindingParser.Parse(
+                    webPart,
+                    sourceCapture.Identity.WebId,
+                    sourceCapture.Identity.WebUrl,
+                    sourceCapture.Identity.PageServerRelativeUrl);
+                foreach (var issue in binding.Issues)
+                {
+                    blockers.Add(issue.Code + ": " + issue.Message);
+                }
+                if (binding.Binding != null)
+                {
+                    listBindings.Add(binding.Binding);
+                }
+            }
+
+            var listClosure = ListDependencyClosureSnapshotReader.Read(
+                sourceContext,
+                listBindings,
+                options.MaximumDependencyBytes,
+                artifactStore,
+                blockers,
+                warnings);
+            SourceSiteCollectionSnapshot sourceTopology = null;
+            try
+            {
+                sourceTopology = SourceTopologySnapshotReader.CaptureRequiredWebClosure(
+                    sourceContext,
+                    listClosure.RequiredSourceWebIds.Concat(new[] { sourceCapture.Identity.WebId }));
+            }
+            catch (Exception exception) when (exception is ServerException || exception is InvalidOperationException || exception is IOException)
+            {
+                blockers.Add("Source topology closure could not be captured: " + exception.Message);
             }
 
             var references = PageReferenceSnapshotReader.Read(
@@ -90,6 +132,12 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                     .ThenBy(webPart => webPart.ZoneIndex)
                     .ThenBy(webPart => webPart.Id)
                     .ToList(),
+                ListWebPartBindings = listBindings
+                    .OrderBy(binding => binding.SourceWebPartId)
+                    .ToList(),
+                ListDependencies = listClosure.Dependencies,
+                ListLookupDependencies = listClosure.LookupDependencies,
+                SourceTopology = sourceTopology,
                 Dependencies = references
                     .OrderBy(reference => reference.SourceAbsoluteUrl, StringComparer.OrdinalIgnoreCase)
                     .ThenBy(reference => reference.Consumer, StringComparer.Ordinal)

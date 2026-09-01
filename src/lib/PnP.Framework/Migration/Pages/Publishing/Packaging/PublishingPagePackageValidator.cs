@@ -7,6 +7,7 @@ using PnP.Framework.Migration.Pages.Publishing.Layouts.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
 using PnP.Framework.Migration.Packaging;
+using PnP.Framework.Migration.Lists.Packaging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -54,6 +55,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
 
             if (snapshot.Fields == null
                 || snapshot.WebParts == null
+                || snapshot.ListWebPartBindings == null
+                || snapshot.ListDependencies == null
+                || snapshot.ListLookupDependencies == null
                 || snapshot.Dependencies == null
                 || snapshot.Blockers == null
                 || snapshot.Warnings == null)
@@ -92,6 +96,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                     throw new InvalidDataException($"Web Part export digest mismatch: {webPart.Id}");
                 }
             }
+
+            ListDependencyPackageValidator.Validate(
+                snapshot.WebParts,
+                snapshot.ListWebPartBindings,
+                snapshot.ListDependencies,
+                snapshot.ListLookupDependencies,
+                snapshot.SourceTopology,
+                artifactStore);
 
             var duplicateDependency = snapshot.Dependencies
                 .GroupBy(item => item?.Id, StringComparer.Ordinal)

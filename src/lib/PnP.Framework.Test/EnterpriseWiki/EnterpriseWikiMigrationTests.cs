@@ -17,6 +17,7 @@ using PnP.Framework.Migration.Pages.ClassicWebParts;
 using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
 using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Lists.Items;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Evidence;
@@ -159,13 +160,13 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
-        public void WebPartPortabilityBlocksSourceListBindingsAndKnownUnsupportedTypes()
+        public void WebPartPortabilityDelegatesListBindingsAndBlocksKnownUnsupportedTypes()
         {
             const string listView = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.WebPartPages.XsltListViewWebPart"" /></metaData><data><properties><property name=""ListId"">58a84d5d-b1ee-4da0-a49b-7e597ee8ae35</property></properties></data></webPart></webParts>";
             const string rss = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.Portal.WebControls.RSSAggregatorWebPart"" /></metaData></webPart></webParts>";
             const string scriptEditor = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart"" /></metaData></webPart></webParts>";
 
-            StringAssert.Contains(EnterpriseWikiWebPartPolicy.GetBlocker(listView), "reviewed target-list");
+            Assert.IsNull(EnterpriseWikiWebPartPolicy.GetBlocker(listView));
             StringAssert.Contains(EnterpriseWikiWebPartPolicy.GetBlocker(rss), "not supported");
             Assert.IsNull(EnterpriseWikiWebPartPolicy.GetBlocker(scriptEditor));
         }
@@ -568,6 +569,22 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 "/teams/source/child",
                 child.TargetServerRelativeUrl));
             Assert.AreEqual(first.Plan.PlanDigest, second.Plan.PlanDigest);
+        }
+
+        [TestMethod]
+        public void ListItemValueCaptureKeepsUnsupportedRawEvidenceForFutureRecovery()
+        {
+            var captured = ListItemValueSerializer.Serialize("FutureField", new Dictionary<string, object>
+            {
+                ["reference"] = "OOCL-42",
+                ["sequence"] = 7
+            });
+
+            Assert.AreEqual(ListItemValueKind.Unsupported, captured.Kind);
+            Assert.AreEqual(EvidenceAvailability.Partial, captured.Availability);
+            Assert.AreEqual(typeof(Dictionary<string, object>).FullName, captured.RawType);
+            StringAssert.Contains(captured.RawValueJson, "OOCL-42");
+            Assert.IsTrue(captured.Diagnostics.Any(value => value.Contains("No typed list-item serializer")));
         }
 
         private static PublishingPageCaptureBundle CreateSnapshot()

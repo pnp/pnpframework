@@ -4,6 +4,10 @@ namespace PnP.Framework.Migration.Pages
 {
     public sealed class PageIdentity
     {
+        public Guid SiteId { get; set; }
+
+        public Guid WebId { get; set; }
+
         public string WebUrl { get; set; }
 
         public string WebServerRelativeUrl { get; set; }

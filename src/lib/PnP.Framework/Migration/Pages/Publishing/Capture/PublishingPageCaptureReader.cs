@@ -34,10 +34,12 @@ namespace PnP.Framework.Migration.Pages.Publishing.Capture
             ICollection<string> warnings)
         {
             var web = context.Web;
+            var site = context.Site;
             var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(pagePath));
             var item = file.ListItemAllFields;
             var contentType = item.ContentType;
-            context.Load(web, value => value.Url, value => value.ServerRelativeUrl);
+            context.Load(site, value => value.Id);
+            context.Load(web, value => value.Id, value => value.Url, value => value.ServerRelativeUrl);
             context.Load(file,
                 value => value.Exists,
                 value => value.UniqueId,
@@ -77,6 +79,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Capture
 
             var identity = new PageIdentity
             {
+                SiteId = site.Id,
+                WebId = web.Id,
                 WebUrl = web.Url.TrimEnd('/'),
                 WebServerRelativeUrl = web.ServerRelativeUrl,
                 PageServerRelativeUrl = file.ServerRelativeUrl,

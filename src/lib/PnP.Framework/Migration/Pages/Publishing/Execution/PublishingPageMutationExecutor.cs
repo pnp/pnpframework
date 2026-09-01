@@ -8,6 +8,7 @@ using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Schema.ContentTypes;
 using PnP.Framework.Migration.Lists.Execution;
 using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Topology.Execution;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
             Func<string, bool> isExpectedContentType)
         {
             var warnings = new List<string>();
+            var topologyReceipt = TopologyMaterializationCoordinator.Ensure(targetContext, package.Plan.Topology, recorder);
             MaterializeLayout(targetContext, package, recorder, artifactStore);
             var materializedDependencies = MaterializeDependencies(targetContext, package, recorder);
             var listReceipts = ListMaterializationCoordinator.Ensure(
@@ -44,6 +46,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                 operationId,
                 startedAt,
                 materializedDependencies,
+                topologyReceipt,
                 listReceipts.Values.OrderBy(value => value.SourceListId).ToList(),
                 writeResult.FieldResults,
                 recorder.Steps,

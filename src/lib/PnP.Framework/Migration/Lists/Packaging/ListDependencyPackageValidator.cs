@@ -6,6 +6,8 @@ using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
 using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
 using PnP.Framework.Migration.Topology;
+using PnP.Framework.Migration.Schema.ContentTypes;
+using PnP.Framework.Migration.Schema.ContentTypes.Packaging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -104,7 +106,8 @@ namespace PnP.Framework.Migration.Lists.Packaging
         {
             if (dependency == null || dependency.SourceSiteId == Guid.Empty || dependency.SourceWebId == Guid.Empty || dependency.SourceListId == Guid.Empty
                 || string.IsNullOrWhiteSpace(dependency.SourceWebUrl) || string.IsNullOrWhiteSpace(dependency.RootFolderServerRelativeUrl)
-                || dependency.Fields == null || dependency.ContentTypes == null || dependency.Views == null || dependency.Items == null || dependency.Diagnostics == null)
+                || dependency.Fields == null || dependency.ContentTypes == null || dependency.UniqueContentTypeOrder == null || dependency.SiteContentTypes == null
+                || dependency.Views == null || dependency.Items == null || dependency.Diagnostics == null)
             {
                 throw new InvalidDataException("A List dependency snapshot is missing identity, metadata, or an inventory collection.");
             }
@@ -113,6 +116,58 @@ namespace PnP.Framework.Migration.Lists.Packaging
                 || !string.Equals(MigrationDigest.ComputeSha256(value.SchemaXml ?? string.Empty), value.SchemaXmlSha256, StringComparison.OrdinalIgnoreCase)))
             {
                 throw new InvalidDataException("List '" + dependency.Title + "' contains missing, duplicate, or mutated field schema evidence.");
+            }
+            var duplicateSiteContentType = dependency.SiteContentTypes
+                .GroupBy(value => value == null ? string.Empty : value.ContentTypeId, StringComparer.OrdinalIgnoreCase)
+                .FirstOrDefault(group => string.IsNullOrWhiteSpace(group.Key) || group.Count() > 1);
+            if (duplicateSiteContentType != null)
+            {
+                throw new InvalidDataException("List '" + dependency.Title + "' contains a missing or duplicate site content type closure node.");
+            }
+            foreach (var contentType in dependency.SiteContentTypes)
+            {
+                ContentTypeSchemaContractValidator.ValidateSnapshot(contentType);
+                if (string.IsNullOrWhiteSpace(contentType.SourceScope))
+                {
+                    throw new InvalidDataException("Site content type '" + contentType.ContentTypeId + "' has no captured source scope.");
+                }
+            }
+            var duplicateListContentType = dependency.ContentTypes
+                .GroupBy(value => value == null ? string.Empty : value.Id, StringComparer.OrdinalIgnoreCase)
+                .FirstOrDefault(group => string.IsNullOrWhiteSpace(group.Key) || group.Count() > 1);
+            if (duplicateListContentType != null
+                || dependency.ContentTypes.Any(value => string.IsNullOrWhiteSpace(value.Name)
+                    || string.IsNullOrWhiteSpace(value.ParentId)
+                    || value.FieldLinks == null
+                    || value.FieldLinks.Any(link => link == null || link.FieldId == Guid.Empty)
+                    || value.FieldLinks.GroupBy(link => link.FieldId).Any(group => group.Count() > 1))
+                || dependency.ContentTypes.GroupBy(value => value.ParentId, StringComparer.OrdinalIgnoreCase).Any(group => group.Count() > 1))
+            {
+                throw new InvalidDataException("List '" + dependency.Title + "' contains missing, duplicate, or incomplete List content type evidence.");
+            }
+            var capturedSiteContentTypeIds = new HashSet<string>(dependency.SiteContentTypes.Select(value => value.ContentTypeId), StringComparer.OrdinalIgnoreCase);
+            var listContentTypeIds = new HashSet<string>(dependency.ContentTypes.Select(value => value.Id), StringComparer.OrdinalIgnoreCase);
+            if (dependency.UniqueContentTypeOrder.Any(value => string.IsNullOrWhiteSpace(value) || !listContentTypeIds.Contains(value))
+                || dependency.UniqueContentTypeOrder.Distinct(StringComparer.OrdinalIgnoreCase).Count() != dependency.UniqueContentTypeOrder.Count)
+            {
+                throw new InvalidDataException("List '" + dependency.Title + "' contains an invalid or duplicate unique content type order entry.");
+            }
+            foreach (var contentType in dependency.ContentTypes)
+            {
+                if (!string.IsNullOrWhiteSpace(contentType.ParentId)
+                    && !ContentTypeRuntimeCatalog.IsTargetRuntime(contentType.ParentId)
+                    && !capturedSiteContentTypeIds.Contains(contentType.ParentId))
+                {
+                    throw new InvalidDataException("List content type '" + contentType.Id + "' has no captured custom site-content-type parent closure.");
+                }
+            }
+            foreach (var contentType in dependency.SiteContentTypes)
+            {
+                if (!ContentTypeRuntimeCatalog.IsTargetRuntime(contentType.ParentContentTypeId)
+                    && !capturedSiteContentTypeIds.Contains(contentType.ParentContentTypeId))
+                {
+                    throw new InvalidDataException("Site content type '" + contentType.ContentTypeId + "' has an uncaptured custom parent.");
+                }
             }
             var duplicateView = dependency.Views.GroupBy(value => value == null ? Guid.Empty : value.Id).FirstOrDefault(group => group.Key == Guid.Empty || group.Count() > 1);
             if (duplicateView != null || dependency.Views.Any(value => !string.Equals(MigrationDigest.ComputeSha256(value.ListViewXml ?? string.Empty), value.ListViewXmlSha256, StringComparison.OrdinalIgnoreCase)))

@@ -7,9 +7,16 @@ using System.Linq;
 
 namespace PnP.Framework.Migration.Lists.Execution
 {
+    internal sealed class ListObjectMaterializationResult
+    {
+        public List List { get; set; }
+
+        public ListMaterializationDisposition Disposition { get; set; }
+    }
+
     internal static class ListObjectMaterializer
     {
-        public static List Ensure(ClientContext context, ListDependencySnapshot source, ListMaterializationPlan plan)
+        public static ListObjectMaterializationResult Ensure(ClientContext context, ListDependencySnapshot source, ListMaterializationPlan plan)
         {
             var fresh = ListTargetInspector.Inspect(context, source, plan);
             if (!fresh.IsAdmitted)
@@ -21,7 +28,11 @@ namespace PnP.Framework.Migration.Lists.Execution
             {
                 var existing = context.Web.Lists.GetById(fresh.TargetListId.Value);
                 Load(context, existing);
-                return existing;
+                return new ListObjectMaterializationResult
+                {
+                    List = existing,
+                    Disposition = fresh.Disposition
+                };
             }
             if (fresh.Disposition != ListMaterializationDisposition.CreateOwned)
             {
@@ -68,7 +79,11 @@ namespace PnP.Framework.Migration.Lists.Execution
             {
                 throw new InvalidOperationException("Fresh target List provenance readback differs from the sealed plan.");
             }
-            return list;
+            return new ListObjectMaterializationResult
+            {
+                List = list,
+                Disposition = fresh.Disposition
+            };
         }
 
         private static void Load(ClientContext context, List list)

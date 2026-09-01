@@ -54,6 +54,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
 
         public TopologyPlan Topology { get; set; }
 
+        public TopologyTargetAnalysis TopologyTargetAnalysis { get; set; }
+
         public ListMigrationPlanSet ListMigration { get; set; }
 
         public IList<ClassicWebPartAction> WebPartActions { get; set; } = new List<ClassicWebPartAction>();

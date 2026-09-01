@@ -20,6 +20,7 @@ using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Lists.Items;
 using PnP.Framework.Migration.Lists.Capture;
 using PnP.Framework.Migration.Lists.Fields;
+using PnP.Framework.Migration.Lists.ContentTypes;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Evidence;
@@ -159,6 +160,9 @@ namespace PnP.Framework.Test.EnterpriseWiki
             StringAssert.Contains(report, "snapshot.layout.customizedPageStatus");
             StringAssert.Contains(report, "Page Layout materialization plan");
             StringAssert.Contains(report, "Page Layout target admission");
+            StringAssert.Contains(report, "Site collection and Web topology");
+            StringAssert.Contains(report, "List dependency closure");
+            StringAssert.Contains(report, "Web Part plan actions");
         }
 
         [TestMethod]
@@ -720,6 +724,192 @@ namespace PnP.Framework.Test.EnterpriseWiki
             Assert.AreEqual("/sites/target/Lists/Items", properties["TitleUrl"]);
         }
 
+        [TestMethod]
+        public void CustomDocumentContentTypeIsCapturedAsClosureInsteadOfMisclassifiedAsRuntime()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var webId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var listId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var fieldId = Guid.Parse("44444444-4444-4444-4444-444444444444");
+            const string siteContentTypeId = "0x010100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            const string listContentTypeId = siteContentTypeId + "00BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+            var fieldSchema = "<Field ID='{44444444-4444-4444-4444-444444444444}' Name='CaseNumber' DisplayName='Case number' Type='Text' />";
+            var source = CreateListSnapshot(siteId, webId, listId, "Documents");
+            source.BaseTemplate = 101;
+            source.BaseType = "DocumentLibrary";
+            source.Fields.Add(new ListFieldSnapshot
+            {
+                Id = fieldId,
+                InternalName = "CaseNumber",
+                TypeAsString = "Text",
+                SchemaXml = fieldSchema,
+                SchemaXmlSha256 = MigrationDigest.ComputeSha256(fieldSchema),
+                PortableSchemaSha256 = FieldSchemaCanonicalizer.PortableDigest(fieldSchema)
+            });
+            source.ContentTypes.Add(new ListContentTypeSnapshot
+            {
+                Id = listContentTypeId,
+                Name = "Case document",
+                ParentId = siteContentTypeId,
+                FieldLinks = new List<ListContentTypeFieldLinkSnapshot>
+                {
+                    new ListContentTypeFieldLinkSnapshot { FieldId = fieldId, InternalName = "CaseNumber" }
+                }
+            });
+            source.SiteContentTypes.Add(new ContentTypeSchemaSnapshot
+            {
+                EvidenceState = ContentTypeSchemaEvidenceState.Readable,
+                Availability = EvidenceAvailability.Captured,
+                SourceWebUrl = "https://source.sharepoint.com/sites/source",
+                SourceScope = "/sites/source",
+                ContentTypeId = siteContentTypeId,
+                Name = "Case document",
+                Hidden = true,
+                ReadOnly = true,
+                Sealed = true,
+                ParentContentTypeId = "0x0101",
+                ParentContentTypeName = "Document",
+                RequiredFieldLinks = new List<ContentTypeFieldLinkSnapshot>
+                {
+                    new ContentTypeFieldLinkSnapshot { FieldId = fieldId, Name = "CaseNumber", Role = FieldSchemaRole.DirectBinding }
+                },
+                RequiredFieldClosure = new List<FieldSchemaSnapshot>
+                {
+                    new FieldSchemaSnapshot
+                    {
+                        Id = fieldId,
+                        InternalName = "CaseNumber",
+                        Title = "Case number",
+                        TypeAsString = "Text",
+                        SchemaXml = fieldSchema,
+                        SchemaXmlSha256 = MigrationDigest.ComputeSha256(fieldSchema),
+                        PortableSchemaSha256 = FieldSchemaCanonicalizer.PortableDigest(fieldSchema),
+                        Role = FieldSchemaRole.DirectBinding
+                    }
+                }
+            });
+
+            var plan = ListMigrationPlanFactory.Create(new[] { source }, null, CreateTopology(siteId, webId), null, null);
+            var listPlan = plan.Lists.Single();
+
+            Assert.IsFalse(ContentTypeRuntimeCatalog.IsTargetRuntime(siteContentTypeId));
+            Assert.IsTrue(plan.IsExecutable, string.Join(Environment.NewLine, listPlan.Issues.Select(value => value.Message)));
+            Assert.AreEqual(1, listPlan.SiteContentTypes.Count);
+            Assert.AreEqual(siteContentTypeId, listPlan.SiteContentTypes[0].Schema.ContentTypeId);
+            Assert.IsTrue(listPlan.SiteContentTypes[0].Schema.Hidden);
+            Assert.IsTrue(listPlan.SiteContentTypes[0].Schema.ReadOnly);
+            Assert.IsTrue(listPlan.SiteContentTypes[0].Schema.Sealed);
+            Assert.AreEqual("https://target.sharepoint.com/sites/target", listPlan.SiteContentTypes[0].TargetOwnerWebUrl);
+        }
+
+        [TestMethod]
+        public void ListSemanticDigestExcludesMutableTargetAnalysis()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var webId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var source = CreateListSnapshot(siteId, webId, Guid.Parse("33333333-3333-3333-3333-333333333333"), "Items");
+            source.SiteContentTypes.Add(new ContentTypeSchemaSnapshot
+            {
+                EvidenceState = ContentTypeSchemaEvidenceState.Readable,
+                Availability = EvidenceAvailability.Captured,
+                SourceWebUrl = "https://source.sharepoint.com/sites/source",
+                SourceScope = "/sites/source",
+                ContentTypeId = "0x0100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                Name = "Custom item",
+                ParentContentTypeId = "0x01",
+                ParentContentTypeName = "Item"
+            });
+            source.ContentTypes.Add(new ListContentTypeSnapshot
+            {
+                Id = "0x0100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA00BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+                Name = "Custom item",
+                ParentId = "0x0100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            });
+            var planSet = ListMigrationPlanFactory.Create(new[] { source }, null, CreateTopology(siteId, webId), null, null);
+            var listPlan = planSet.Lists.Single();
+            var before = listPlan.PlanDigest;
+            listPlan.SiteContentTypes[0].DeferredUntilTopologyMaterialization = true;
+            listPlan.SiteContentTypes[0].TargetProbe = new ContentTypeTargetProbe { ContentTypeId = "changed" };
+            listPlan.SiteContentTypes[0].TargetAdmission = new ContentTypeTargetAdmission
+            {
+                IsEligible = true,
+                Disposition = ContentTypeMaterializationDisposition.CreateOwned
+            };
+            listPlan.TargetProbe = new ListTargetProbe
+            {
+                TargetWebExists = true,
+                Disposition = ListMaterializationDisposition.ReuseOwned
+            };
+            ListMigrationPlanFactory.SealTargetAnalysis(planSet);
+
+            Assert.AreEqual(ListMaterializationDisposition.ReuseOwned, listPlan.Disposition);
+            Assert.AreEqual(before, ListMigrationPlanFactory.ComputePlanDigest(listPlan));
+            Assert.AreEqual(planSet.PlanDigest, ListMigrationPlanFactory.ComputeSetDigest(planSet));
+        }
+
+        [TestMethod]
+        public void ReadOnlyRuntimeListFieldsAreRequiredButTheirValuesAreNotReplayed()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var webId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var source = CreateListSnapshot(siteId, webId, Guid.Parse("33333333-3333-3333-3333-333333333333"), "Items");
+            const string schema = "<Field ID='{44444444-4444-4444-4444-444444444444}' Name='Modified' DisplayName='Modified' Type='DateTime' ReadOnly='TRUE' SourceID='http://schemas.microsoft.com/sharepoint/v3' />";
+            source.Fields.Add(new ListFieldSnapshot
+            {
+                Id = Guid.Parse("44444444-4444-4444-4444-444444444444"),
+                InternalName = "Modified",
+                Title = "Modified",
+                TypeAsString = "DateTime",
+                SchemaXml = schema,
+                SchemaXmlSha256 = MigrationDigest.ComputeSha256(schema),
+                PortableSchemaSha256 = FieldSchemaCanonicalizer.PortableDigest(schema),
+                ReadOnly = true,
+                FromBaseType = true
+            });
+            source.Items.Add(new ListItemSnapshot
+            {
+                SourceItemId = 1,
+                Values = new List<ListItemValueSnapshot>
+                {
+                    new ListItemValueSnapshot { InternalName = "Modified", Kind = ListItemValueKind.DateTime, ScalarValue = "2026-08-31T00:00:00.0000000Z" }
+                }
+            });
+            source.SourceItemCount = 1;
+
+            var plan = ListMigrationPlanFactory.Create(new[] { source }, null, CreateTopology(siteId, webId), null, null);
+
+            Assert.AreEqual(ListFieldMaterializationDisposition.RequireTargetRuntime, plan.Lists.Single().Fields.Single().Disposition);
+        }
+
+        [TestMethod]
+        public void RuntimeListFieldCompatibilityPreservesScalarAndCollectionShapes()
+        {
+            Assert.IsTrue(ListFieldTypeCompatibility.IsCompatibleRuntimeType("Note", "Text"));
+            Assert.IsTrue(ListFieldTypeCompatibility.IsCompatibleRuntimeType("Choice", "Text"));
+            Assert.IsFalse(ListFieldTypeCompatibility.IsCompatibleRuntimeType("MultiChoice", "Choice"));
+            Assert.IsFalse(ListFieldTypeCompatibility.IsCompatibleRuntimeType("UserMulti", "User"));
+            Assert.IsFalse(ListFieldTypeCompatibility.IsCompatibleRuntimeType("LookupMulti", "Lookup"));
+            Assert.IsFalse(ListFieldTypeCompatibility.IsCompatibleRuntimeType("TaxonomyFieldTypeMulti", "TaxonomyFieldType"));
+        }
+
+        [TestMethod]
+        public void CalculatedListFieldsArePlannedInFormulaDependencyOrder()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var webId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var source = CreateListSnapshot(siteId, webId, Guid.Parse("33333333-3333-3333-3333-333333333333"), "Items");
+            var alphaSchema = "<Field ID='{44444444-4444-4444-4444-444444444444}' Name='Alpha' DisplayName='Alpha Result' Type='Calculated' ReadOnly='TRUE'><Formula>=[Zulu Result]+1</Formula></Field>";
+            var zuluSchema = "<Field ID='{55555555-5555-5555-5555-555555555555}' Name='Zulu' DisplayName='Zulu Result' Type='Calculated' ReadOnly='TRUE'><Formula>=1</Formula></Field>";
+            source.Fields.Add(CalculatedListField(Guid.Parse("44444444-4444-4444-4444-444444444444"), "Alpha", "Alpha Result", alphaSchema));
+            source.Fields.Add(CalculatedListField(Guid.Parse("55555555-5555-5555-5555-555555555555"), "Zulu", "Zulu Result", zuluSchema));
+
+            var plan = ListMigrationPlanFactory.Create(new[] { source }, null, CreateTopology(siteId, webId), null, null);
+            var fields = plan.Lists.Single().Fields;
+
+            Assert.AreEqual("Zulu", fields[0].InternalName);
+            Assert.AreEqual("Alpha", fields[1].InternalName);
+        }
+
         private static ListDependencySnapshot CreateListSnapshot(Guid siteId, Guid webId, Guid listId, string title)
         {
             return new ListDependencySnapshot
@@ -733,6 +923,21 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 BaseType = "GenericList",
                 RootFolderServerRelativeUrl = "/sites/source/Lists/" + title,
                 Availability = EvidenceAvailability.Captured
+            };
+        }
+
+        private static ListFieldSnapshot CalculatedListField(Guid id, string internalName, string title, string schema)
+        {
+            return new ListFieldSnapshot
+            {
+                Id = id,
+                InternalName = internalName,
+                Title = title,
+                TypeAsString = "Calculated",
+                SchemaXml = schema,
+                SchemaXmlSha256 = MigrationDigest.ComputeSha256(schema),
+                PortableSchemaSha256 = FieldSchemaCanonicalizer.PortableDigest(schema),
+                ReadOnly = true
             };
         }
 

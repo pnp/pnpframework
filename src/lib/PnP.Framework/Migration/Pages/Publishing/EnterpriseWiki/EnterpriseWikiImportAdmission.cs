@@ -7,6 +7,9 @@ using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using PnP.Framework.Migration.Topology;
+using PnP.Framework.Migration.Lists.Planning;
 
 namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
 {
@@ -43,6 +46,21 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             }
 
             var blockers = new List<string>();
+            TopologyTargetAnalysis freshTopology = null;
+            if (package.Plan.Topology != null)
+            {
+                freshTopology = TopologyTargetInspector.Inspect(targetContext, package.Plan.Topology, targetWeb.Url);
+                blockers.AddRange(freshTopology.Issues.Select(value => value.Code + ": " + value.Message));
+            }
+            if (package.Plan.ListMigration != null)
+            {
+                var freshLists = ListMigrationTargetAnalyzer.InspectFresh(
+                    targetContext,
+                    package.Snapshot.ListDependencies,
+                    package.Plan.ListMigration,
+                    freshTopology);
+                blockers.AddRange(freshLists.Issues.Select(value => value.Code + ": " + value.Message));
+            }
             var freshLayoutProbe = PublishingPageLayoutTargetInspector.Inspect(
                 targetContext,
                 package.Plan.LayoutMaterialization);

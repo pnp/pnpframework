@@ -5,6 +5,7 @@ using PnP.Framework.Migration.Lists.Fields;
 using PnP.Framework.Migration.Lists.Items;
 using PnP.Framework.Migration.Lists.Views;
 using PnP.Framework.Migration.Packaging;
+using PnP.Framework.Migration.Schema.ContentTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,7 +55,9 @@ namespace PnP.Framework.Migration.Lists.Capture
                 value => value.EnableModeration,
                 value => value.ForceCheckout,
                 value => value.ItemCount);
-            context.Load(list.RootFolder, value => value.ServerRelativeUrl);
+            context.Load(list.RootFolder,
+                value => value.ServerRelativeUrl,
+                value => value.UniqueContentTypeOrder);
             context.Load(list.Fields, values => values.Include(
                 value => value.Id,
                 value => value.InternalName,
@@ -108,6 +111,9 @@ namespace PnP.Framework.Migration.Lists.Capture
             context.ExecuteQueryRetry();
 
             var items = ListItemSnapshotReader.Read(context, list, maximumBytes, artifactStore, warnings);
+            var listContentTypes = ListContentTypeSnapshotReader.Read(list.ContentTypes);
+            var contentTypeDiagnostics = new List<string>();
+            var siteContentTypes = ContentTypeClosureSnapshotReader.Read(context, sourceWeb, listContentTypes, contentTypeDiagnostics);
             var availability = EvidenceAvailability.Captured;
             if (items.Count != list.ItemCount || items.Any(value => value.Availability != EvidenceAvailability.Captured))
             {
@@ -135,7 +141,11 @@ namespace PnP.Framework.Migration.Lists.Capture
                 ForceCheckout = list.ForceCheckout,
                 SourceItemCount = list.ItemCount,
                 Fields = ListFieldSnapshotReader.Read(context, list.Fields),
-                ContentTypes = ListContentTypeSnapshotReader.Read(list.ContentTypes),
+                ContentTypes = listContentTypes,
+                HasExplicitUniqueContentTypeOrder = list.RootFolder.UniqueContentTypeOrder != null,
+                UniqueContentTypeOrder = (list.RootFolder.UniqueContentTypeOrder ?? new ContentTypeId[0])
+                    .Select(value => value.StringValue).ToList(),
+                SiteContentTypes = siteContentTypes,
                 Views = ListViewSnapshotReader.Read(list.Views, list.RootFolder.ServerRelativeUrl),
                 Items = items,
                 Availability = availability
@@ -144,6 +154,11 @@ namespace PnP.Framework.Migration.Lists.Capture
             {
                 snapshot.Diagnostics.Add("Captured item count " + items.Count + " differs from source List.ItemCount " + list.ItemCount + ".");
                 warnings.Add("List '" + list.Title + "' item count changed or was not captured completely.");
+            }
+            foreach (var diagnostic in contentTypeDiagnostics)
+            {
+                snapshot.Diagnostics.Add(diagnostic);
+                warnings.Add(diagnostic);
             }
             return snapshot;
         }

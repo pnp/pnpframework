@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using PnP.Framework.Migration.Schema.ContentTypes.Execution;
 
 namespace PnP.Framework.Migration.Lists.Execution
 {
@@ -37,6 +38,10 @@ namespace PnP.Framework.Migration.Lists.Execution
             }
 
             var receipts = new Dictionary<Guid, ListMaterializationReceipt>();
+            ContentTypeClosureMaterializer.Ensure(
+                anchorContext,
+                planSet.Lists.SelectMany(value => value.SiteContentTypes),
+                recorder);
             foreach (var sourceListId in planSet.OrderedSourceListIds)
             {
                 ListDependencySnapshot source;
@@ -51,22 +56,36 @@ namespace PnP.Framework.Migration.Lists.Execution
                     context.Load(context.Web, value => value.Id, value => value.Url, value => value.ServerRelativeUrl);
                     context.ExecuteQueryRetry();
                     var prefix = "list." + sourceListId.ToString("N");
-                    var targetList = recorder.Execute(
+                    var targetListResult = recorder.Execute(
                         prefix + ".object",
                         "Ensure migration-owned target List '" + plan.TargetRootFolderServerRelativeUrl + "'.",
                         () => ListObjectMaterializer.Ensure(context, source, plan),
-                        value => plan.Disposition == ListMaterializationDisposition.ReuseOwned
+                        value => value.Disposition == ListMaterializationDisposition.ReuseOwned
                             ? MutationOutcome.AlreadySatisfied
                             : MutationOutcome.Applied,
-                        value => "Target List " + value.Id.ToString("D") + " passed fresh ownership preflight and readback.");
+                        value => "Target List " + value.List.Id.ToString("D") + " passed fresh ownership preflight and readback as " + value.Disposition + ".");
+                    var targetList = targetListResult.List;
+
+                    var contentTypeIds = recorder.Execute(
+                        prefix + ".content-types.membership",
+                        "Ensure target List content type membership.",
+                        () => ListContentTypeMaterializer.EnsureMembership(context, targetList, source),
+                        values => values.Count == 0 ? MutationOutcome.AlreadySatisfied : MutationOutcome.Applied,
+                        values => "Resolved " + values.Count + " source-to-target List content type identities.");
 
                     recorder.Execute(prefix + ".fields", "Ensure approved target List field schema.", () =>
                         ListFieldMaterializer.Ensure(context, targetList, plan, receipts));
 
+                    recorder.Execute(prefix + ".content-types.field-links", "Apply approved List content type field-link settings.", () =>
+                        ListContentTypeMaterializer.EnsureFieldLinks(context, targetList, source, contentTypeIds));
+
+                    recorder.Execute(prefix + ".content-types.order", "Apply the captured List content type order.", () =>
+                        ListContentTypeMaterializer.EnsureOrder(context, targetList, source, contentTypeIds));
+
                     var itemIds = recorder.Execute(
                         prefix + ".items",
                         "Replay captured List items, documents, folders, and attachments.",
-                        () => ListItemMaterializer.Ensure(context, targetList, source, plan, receipts, artifactStore),
+                        () => ListItemMaterializer.Ensure(context, targetList, source, plan, receipts, contentTypeIds, artifactStore),
                         values => values.Count == 0 ? MutationOutcome.AlreadySatisfied : MutationOutcome.Applied,
                         values => "Resolved " + values.Count + " source-to-target List item identities.");
 
@@ -79,7 +98,7 @@ namespace PnP.Framework.Migration.Lists.Execution
 
                     context.Load(targetList, value => value.Id, value => value.RootFolder.ServerRelativeUrl);
                     context.ExecuteQueryRetry();
-                    receipts[sourceListId] = new ListMaterializationReceipt
+                    var receipt = new ListMaterializationReceipt
                     {
                         SourceWebId = source.SourceWebId,
                         SourceListId = source.SourceListId,
@@ -88,8 +107,12 @@ namespace PnP.Framework.Migration.Lists.Execution
                         TargetRootFolderServerRelativeUrl = targetList.RootFolder.ServerRelativeUrl,
                         TargetItemIds = itemIds,
                         TargetViewIds = viewIds,
+                        TargetContentTypeIds = contentTypeIds,
+                        Disposition = targetListResult.Disposition,
                         PlanDigest = plan.PlanDigest
                     };
+                    ListMaterializationVerifier.Verify(context, source, plan, receipt, receipts);
+                    receipts[sourceListId] = receipt;
                 }
             }
             return receipts;

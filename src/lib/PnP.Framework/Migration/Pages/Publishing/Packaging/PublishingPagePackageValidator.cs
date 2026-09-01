@@ -217,6 +217,29 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             {
                 throw new InvalidDataException("The topology plan digest differs from its sealed content.");
             }
+            if (plan.Topology != null)
+            {
+                if (plan.TopologyTargetAnalysis == null
+                    || !string.Equals(plan.TopologyTargetAnalysis.TopologyPlanDigest, plan.Topology.PlanDigest, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new InvalidDataException("The topology plan requires target analysis sealed against the same topology digest.");
+                }
+                var plannedWebs = new HashSet<Guid>(plan.Topology.SiteCollections.SelectMany(value => value.Webs).Select(value => value.SourceWebId));
+                var probedWebs = new HashSet<Guid>(plan.TopologyTargetAnalysis.SiteCollections.SelectMany(value => value.Webs).Select(value => value.SourceWebId));
+                var plannedWebCount = plan.Topology.SiteCollections.SelectMany(value => value.Webs).Count();
+                var probedWebCount = plan.TopologyTargetAnalysis.SiteCollections.SelectMany(value => value.Webs).Count();
+                var plannedSiteIds = plan.Topology.SiteCollections.Select(value => value.SourceSiteId).ToArray();
+                var probedSiteIds = plan.TopologyTargetAnalysis.SiteCollections.Select(value => value.SourceSiteId).ToArray();
+                if (plannedWebCount != plannedWebs.Count
+                    || probedWebCount != probedWebs.Count
+                    || plannedSiteIds.Length != plannedSiteIds.Distinct().Count()
+                    || probedSiteIds.Length != probedSiteIds.Distinct().Count()
+                    || !plannedWebs.SetEquals(probedWebs)
+                    || !new HashSet<Guid>(plannedSiteIds).SetEquals(probedSiteIds))
+                {
+                    throw new InvalidDataException("The target topology analysis must cover every planned Web exactly once.");
+                }
+            }
             ListMigrationPlanValidator.Validate(package.Snapshot.ListDependencies, plan.ListMigration);
 
             var duplicateRuntimeRequirement = plan.RuntimeVerification.Requirements

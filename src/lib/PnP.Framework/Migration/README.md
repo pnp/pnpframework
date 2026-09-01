@@ -33,6 +33,12 @@ Every migration area should preserve the following boundaries:
 | `PnP.Framework.Migration.Evidence` | Evidence availability, source lineage, and derived-artifact provenance shared by migration domains. |
 | `PnP.Framework.Migration.Execution` | Operation state, write-ahead mutation intents, step receipts, and pluggable execution journals. |
 | `PnP.Framework.Migration.Packaging` | Content-addressed artifact references, artifact-store contracts, digest helpers, and a local directory-backed content-addressed store for larger or binary evidence. |
+| `PnP.Framework.Migration.Topology` | Source SPSite/SPWeb evidence, parent-preserving target maps, collision probes, migration-owned provenance, child-Web materialization, and source-to-target runtime identity receipts. |
+| `PnP.Framework.Migration.Lists` | Page-required List/library dependency closure, lookup ordering, target planning, create-or-owned-reuse execution, and final fresh-readback results. |
+| `PnP.Framework.Migration.Lists.Fields` | Complete List field-schema evidence and List-specific schema/value planning. |
+| `PnP.Framework.Migration.Lists.ContentTypes` | List-local content types and exact FieldLink evidence. |
+| `PnP.Framework.Migration.Lists.Items` | Complete current item value evidence plus folders, current file bytes, and attachments. |
+| `PnP.Framework.Migration.Lists.Views` | Public, embedded/page-bound, and personal View evidence; personal Views remain evidence-only. |
 | `PnP.Framework.Migration.Schema.Fields` | Portable field-schema evidence, ownership classification, canonicalization, exact-ID materialization plans, and target probes. |
 | `PnP.Framework.Migration.Schema.ContentTypes` | Minimal required-field content-type closure capture, planning, target admission, exact-ID materialization, and fresh verification. |
 | `PnP.Framework.Migration.Taxonomy` | Explicit source term-store/term-set to target term-store/term-set schema mappings. |
@@ -42,6 +48,54 @@ Every migration area should preserve the following boundaries:
 | `PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki` | Enterprise Wiki classification, portability policy, target inspection, planning, and import orchestration. |
 
 Future Wiki Page and Web Part Page implementations should be sibling page families under `Pages`, reusing the shared page capabilities instead of copying publishing-page types.
+
+## Cross-site object convergence
+
+The first implementation was informed by the parallel Repro4 proof of concept, but PnP Framework does not reference, execute, or mutate Repro4. Repro4 remains a moving validation workspace. A behavior is absorbed here only after it can be expressed as a reusable object-domain contract, sealed plan decision, conservative target admission rule, and fresh-readback assertion.
+
+The dependency direction is:
+
+```text
+source evidence
+    -> Topology plan (SPSite/SPWeb ownership)
+    -> shared Schema closure (site fields/content types)
+    -> List closure (List, list CTs, fields, items/files, views)
+    -> Classic Web Part runtime rebinding
+    -> page-family write and lifecycle
+    -> storage receipt and optional external runtime acceptance
+```
+
+The object model deliberately does not place these capabilities under an `EnterpriseWiki` namespace. Enterprise Wiki is a page-profile entry point. `Topology`, `Schema`, `Lists`, `Taxonomy`, and shared `Pages.ClassicWebParts` own their respective evidence and mechanics so future Wiki Page and Web Part Page profiles can compose the same implementation.
+
+### Absorbed proof-of-concept assets
+
+| Proven behavior | PnP Framework expression |
+| --- | --- |
+| Preserve SPSite versus SPWeb identity level and child-Web ancestry. | `SourceSiteCollectionSnapshot`, `TopologyPlan`, `TopologyTargetAnalysis`, and `TopologyMaterializationReceipt`. |
+| Refuse unowned collisions and resume only exact owned work. | Per-Web and per-List original-identifier plus semantic-digest properties; create/reuse/recover/block dispositions. |
+| Capture the complete List/lookup closure required by a page. | `ListDependencySnapshot`, `ListLookupDependency`, and deterministic DAG ordering with cycle blocking. |
+| Preserve unknown item values for future recovery while writing only understood fields. | Every returned `ListItemValueSnapshot` keeps typed and raw evidence; `ListFieldMaterializationDisposition` controls replay. |
+| Recreate custom site-content-type ancestry without treating every child of Document as runtime. | Exact runtime content-type catalog plus `ContentTypeClosureSnapshotReader`, planner, and materializer. |
+| Do not pollute business content types with helper fields. | Migration-owned List fields use `AddToNoContentType`; FieldLinks are applied explicitly. |
+| Preserve List-local content-type shape and order. | Parent-based source-to-target List CT ID mapping, metadata and FieldLink replay, null-versus-explicit order evidence, filtering of disallowed Folder/UntypedDocument children, and exact readback. |
+| Create calculated fields after their calculated dependencies. | Formula-reference dependency ordering, including display-name references, with cycle blocking. |
+| Accept runtime field evolution only inside a known serialized-value family. | Shared compatibility rules allow equivalent scalar representations such as Text/Note/Choice and numeric types while keeping every single-value versus multi-value shape distinct. |
+| Never force source List/View/item/WssId values into the target. | Runtime-generated IDs are recorded in List receipts; lookup and classic Web Part consumers are rewritten through those maps; taxonomy writes ignore source WssId. |
+| Prove more than successful mutation calls. | Final topology and per-List fresh readback covers identity, settings, provenance, schema, CT metadata/order/FieldLinks, supported Views, current item values, files, and attachments. |
+
+### Deliberately open boundaries
+
+The following proof-of-concept behaviors are not silently approximated:
+
+- Site-collection creation needs a tenant-scoped executor; the current importer accepts an existing target site collection and can create/recover mapped child Webs only.
+- Child-Web feature activation is not inferred from the source template. The generic materializer uses the sealed target Web template; Publishing/Enterprise Wiki, Document ID, Document Set, asset-library, and other Feature prerequisites still need explicit capability plans.
+- A same-title template-created List is a blocker. `ListTargetOverride.TargetTitle` supports a reviewed alternate target title, but PnP does not yet rename a selected template List through the proof-of-concept's resumable claim protocol.
+- List View/Web Part `JSLink` and `XslLink` strings are captured, but custom referenced bytes do not yet have a List-rendering-resource artifact/materialization contract. Custom paths block planning.
+- Taxonomy schema can use reviewed source-store/set to target-store/set mappings, and item writes let target SharePoint resolve WssId. Creating Term Groups/Sets/Terms and retaining many-to-one source aliases is still a separate migration domain.
+- Full `ListViewXml`, View hidden/default repair in every collision shape, exact removal of extra List CT FieldLinks, and template/Feature-specific List creation remain narrower follow-up work.
+- Version history, audit identity/timestamps, unique ACLs, workflows, subscriptions, event receivers, personal Views, and browser DOM/visual acceptance remain outside the storage importer.
+
+These are named admission gaps. A future change should add evidence, a disposition, target probing, execution ownership, and verification together; it should not remove a blocker in isolation.
 
 ## Namespace and folder ownership
 

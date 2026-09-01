@@ -83,6 +83,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("name", schema.Name, "Expected exact content type name."),
                 Row("description", schema.Description, "Expected description."),
                 Row("group", schema.Group, "Expected content type group."),
+                Row("readOnly / sealed / hidden", $"{schema.ReadOnly} / {schema.Sealed} / {schema.Hidden}", "Expected exact content type flags."),
                 Row("parentContentTypeId", schema.ParentContentTypeId, "Parent must already exist at the target."),
                 Row("parentContentTypeName", schema.ParentContentTypeName, "Parent review label."),
                 Row("reason", schema.Reason, "Human-readable schema policy decision.")
@@ -126,6 +127,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("existingName", probe.ExistingName, "Existing exact-ID metadata."),
                 Row("existingDescription", probe.ExistingDescription, "Existing exact-ID metadata."),
                 Row("existingGroup", probe.ExistingGroup, "Existing exact-ID metadata."),
+                Row("existingReadOnly", probe.ExistingReadOnly, "Existing exact-ID metadata."),
+                Row("existingSealed", probe.ExistingSealed, "Existing exact-ID metadata."),
+                Row("existingHidden", probe.ExistingHidden, "Existing exact-ID metadata."),
                 Row("existingParentContentTypeId", probe.ExistingParentContentTypeId, "Existing exact-ID parent."),
                 Row("sameNameDifferentIds", Join(probe.SameNameDifferentIds), "Name collisions do not satisfy exact-ID reuse."),
                 Row("canManageContentTypes", probe.CanManageContentTypes, "Effective target permission for schema creation."),

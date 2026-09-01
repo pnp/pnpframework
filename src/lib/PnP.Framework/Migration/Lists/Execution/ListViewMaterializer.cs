@@ -18,6 +18,7 @@ namespace PnP.Framework.Migration.Lists.Execution
                 value => value.RowLimit,
                 value => value.Paged,
                 value => value.JSLink));
+            context.ExecuteQueryRetry();
             foreach (var view in list.Views)
             {
                 context.Load(view.ViewFields);
@@ -25,13 +26,20 @@ namespace PnP.Framework.Migration.Lists.Execution
             context.ExecuteQueryRetry();
             var result = new Dictionary<Guid, Guid>();
             foreach (var viewPlan in plan.Views.Where(value => value.Disposition == ListViewMaterializationDisposition.CreateOrReuseOwnedPublicView
-                || value.Disposition == ListViewMaterializationDisposition.CreateOrReuseWebPartView))
+                || value.Disposition == ListViewMaterializationDisposition.CreateOrReuseWebPartView)
+                .OrderByDescending(value => value.Source.DefaultView)
+                .ThenBy(value => value.Source.Title, StringComparer.OrdinalIgnoreCase)
+                .ThenBy(value => value.SourceViewId))
             {
                 var source = viewPlan.Source;
-                var title = viewPlan.Disposition == ListViewMaterializationDisposition.CreateOrReuseWebPartView
-                    ? "PnP migration " + source.Id.ToString("N")
-                    : source.Title;
-                var target = list.Views.AsEnumerable().FirstOrDefault(value => !value.PersonalView && string.Equals(value.Title, title, StringComparison.Ordinal));
+                var title = TargetTitle(viewPlan);
+                var candidates = list.Views.AsEnumerable().Where(value => !value.PersonalView
+                    && string.Equals(value.Title, title, StringComparison.Ordinal)).ToArray();
+                if (candidates.Length > 1)
+                {
+                    throw new InvalidOperationException("Target List contains multiple public Views named '" + title + "'.");
+                }
+                var target = candidates.SingleOrDefault();
                 if (target == null)
                 {
                     target = list.Views.Add(new ViewCreationInformation
@@ -41,7 +49,7 @@ namespace PnP.Framework.Migration.Lists.Execution
                         RowLimit = source.RowLimit,
                         Paged = source.Paged,
                         PersonalView = false,
-                        SetAsDefaultView = false,
+                        SetAsDefaultView = source.DefaultView,
                         ViewFields = source.ViewFields.ToArray(),
                         ViewTypeKind = ParseViewType(source.ViewType)
                     });
@@ -58,10 +66,12 @@ namespace PnP.Framework.Migration.Lists.Execution
                 }
                 target.Update();
                 context.ExecuteQueryRetry();
-                context.Load(target, value => value.Id, value => value.ViewQuery, value => value.RowLimit, value => value.Paged, value => value.JSLink);
+                context.Load(target, value => value.Id, value => value.Title, value => value.ViewType, value => value.ViewQuery, value => value.RowLimit, value => value.Paged, value => value.JSLink);
                 context.Load(target.ViewFields);
                 context.ExecuteQueryRetry();
-                if (!string.Equals(target.ViewQuery ?? string.Empty, source.ViewQuery ?? string.Empty, StringComparison.Ordinal)
+                if (!string.Equals(target.Title, title, StringComparison.Ordinal)
+                    || !string.Equals(target.ViewType, source.ViewType, StringComparison.OrdinalIgnoreCase)
+                    || !string.Equals(target.ViewQuery ?? string.Empty, source.ViewQuery ?? string.Empty, StringComparison.Ordinal)
                     || target.RowLimit != source.RowLimit
                     || target.Paged != source.Paged
                     || !string.Equals(target.JSLink ?? string.Empty, source.JsLink ?? string.Empty, StringComparison.Ordinal)
@@ -72,6 +82,13 @@ namespace PnP.Framework.Migration.Lists.Execution
                 result[source.Id] = target.Id;
             }
             return result;
+        }
+
+        internal static string TargetTitle(ListViewMaterializationPlan plan)
+        {
+            return plan.Disposition == ListViewMaterializationDisposition.CreateOrReuseWebPartView
+                ? "PnP migration " + plan.Source.Id.ToString("N")
+                : plan.Source.Title;
         }
 
         private static ViewType ParseViewType(string value)

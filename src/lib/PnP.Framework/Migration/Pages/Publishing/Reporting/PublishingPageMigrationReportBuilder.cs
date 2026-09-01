@@ -1,9 +1,9 @@
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Pages.Capture;
-using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
+using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
-using PnP.Framework.Migration.Pages.Planning;
+using PnP.Framework.Migration.Pages.Publishing.Reporting.Sections;
 using System;
 using System.Linq;
 
@@ -16,9 +16,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             return Build(package, null);
         }
 
-        public static string Build(
-            PublishingPageMigrationPackage package,
-            IMigrationArtifactStore artifactStore)
+        public static string Build(PublishingPageMigrationPackage package, IMigrationArtifactStore artifactStore)
         {
             PublishingPagePackageValidator.ValidateMigration(package, artifactStore);
             var snapshot = package.Snapshot;
@@ -88,8 +86,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             });
 
             PublishingPageLayoutSnapshotReportSection.Append(writer, snapshot.Layout);
+            TopologyMigrationReportSection.Append(writer, snapshot, plan);
             AppendFields(writer, snapshot, plan);
-            AppendWebParts(writer, snapshot);
+            ListDependencyMigrationReportSection.Append(writer, snapshot, plan);
+            ClassicWebPartMigrationReportSection.Append(writer, snapshot, plan);
             AppendDependencies(writer, snapshot, plan);
             AppendSecurity(writer, snapshot);
             AppendPlan(writer, plan);
@@ -113,10 +113,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             return writer.ToString();
         }
 
-        private static void AppendFields(
-            MarkdownReportWriter writer,
-            PublishingPageCaptureBundle snapshot,
-            PublishingPageMigrationPlan plan)
+        private static void AppendFields(MarkdownReportWriter writer, PublishingPageCaptureBundle snapshot, PublishingPageMigrationPlan plan)
         {
             var actionByField = plan.FieldActions.ToDictionary(item => item.SourceInternalName, StringComparer.OrdinalIgnoreCase);
             writer.Table($"Complete list-item field inventory ({snapshot.Fields.Count})",
@@ -169,24 +166,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             }
         }
 
-        private static void AppendWebParts(MarkdownReportWriter writer, PublishingPageCaptureBundle snapshot)
-        {
-            writer.Table($"Shared Web Parts ({snapshot.WebParts.Count})",
-                new[] { "ID", "Title", "Zone", "Index", "Hidden", "Export SHA-256", "Export XML" },
-                snapshot.WebParts.Select(item => Row(
-                    item.Id,
-                    item.Title,
-                    item.ZoneId,
-                    item.ZoneIndex,
-                    item.Hidden,
-                    item.ExportSha256,
-                    Summarize(item.ExportXml))));
-        }
-
-        private static void AppendDependencies(
-            MarkdownReportWriter writer,
-            PublishingPageCaptureBundle snapshot,
-            PublishingPageMigrationPlan plan)
+        private static void AppendDependencies(MarkdownReportWriter writer, PublishingPageCaptureBundle snapshot, PublishingPageMigrationPlan plan)
         {
             var actionByDependency = plan.DependencyActions.ToDictionary(item => item.SnapshotDependencyId, StringComparer.Ordinal);
             writer.Table($"Dependencies ({snapshot.Dependencies.Count})",
@@ -215,10 +195,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("roleAssignmentCount", snapshot.Security.RoleAssignments.Count, "Number of captured source role assignments.")
             });
             writer.Table("Source role assignments", new[] { "Principal login", "Principal title", "Role definitions" },
-                snapshot.Security.RoleAssignments.Select(item => Row(
-                    item.PrincipalLoginName,
-                    item.PrincipalTitle,
-                    Join(item.RoleDefinitionNames))));
+                snapshot.Security.RoleAssignments.Select(item => Row(item.PrincipalLoginName, item.PrincipalTitle, Join(item.RoleDefinitionNames))));
         }
 
         private static void AppendPlan(MarkdownReportWriter writer, PublishingPageMigrationPlan plan)
@@ -271,9 +248,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
 
         private static string DisplayProfile(string value)
         {
-            return string.Equals(value, "EnterpriseWiki", StringComparison.Ordinal)
-                ? "Enterprise Wiki"
-                : Format(value);
+            return string.Equals(value, "EnterpriseWiki", StringComparison.Ordinal) ? "Enterprise Wiki" : Format(value);
         }
 
         private static string[] Row(params object[] values) => PublishingPageReportValueFormatter.Row(values);

@@ -3,6 +3,7 @@ using PnP.Framework.Migration.Lists.ContentTypes;
 using PnP.Framework.Migration.Lists.Fields;
 using PnP.Framework.Migration.Lists.Items;
 using PnP.Framework.Migration.Lists.Views;
+using PnP.Framework.Migration.Schema.ContentTypes;
 using System;
 using System.Collections.Generic;
 
@@ -53,6 +54,12 @@ namespace PnP.Framework.Migration.Lists.Capture
         public IList<ListFieldSnapshot> Fields { get; set; } = new List<ListFieldSnapshot>();
 
         public IList<ListContentTypeSnapshot> ContentTypes { get; set; } = new List<ListContentTypeSnapshot>();
+
+        public bool HasExplicitUniqueContentTypeOrder { get; set; }
+
+        public IList<string> UniqueContentTypeOrder { get; set; } = new List<string>();
+
+        public IList<ContentTypeSchemaSnapshot> SiteContentTypes { get; set; } = new List<ContentTypeSchemaSnapshot>();
 
         public IList<ListViewSnapshot> Views { get; set; } = new List<ListViewSnapshot>();
 

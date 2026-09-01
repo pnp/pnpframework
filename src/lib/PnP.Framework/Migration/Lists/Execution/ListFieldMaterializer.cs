@@ -33,7 +33,7 @@ namespace PnP.Framework.Migration.Lists.Execution
                 {
                     if (existing == null
                         || !string.Equals(existing.InternalName, fieldPlan.InternalName, StringComparison.OrdinalIgnoreCase)
-                        || !CompatibleRuntimeType(existing.TypeAsString, fieldPlan.TypeAsString))
+                        || !ListFieldTypeCompatibility.IsCompatibleRuntimeType(existing.TypeAsString, fieldPlan.TypeAsString))
                     {
                         throw new InvalidDataException("Target List template does not expose required runtime field '" + fieldPlan.InternalName + "' (" + fieldPlan.SourceFieldId.ToString("D") + ").");
                     }
@@ -64,7 +64,10 @@ namespace PnP.Framework.Migration.Lists.Execution
                     continue;
                 }
 
-                var created = targetList.Fields.AddFieldAsXml(targetSchema, true, AddFieldOptions.AddFieldInternalNameHint);
+                var created = targetList.Fields.AddFieldAsXml(
+                    targetSchema,
+                    false,
+                    AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToNoContentType);
                 context.Load(created, value => value.Id, value => value.InternalName, value => value.TypeAsString, value => value.SchemaXml);
                 context.ExecuteQueryRetry();
                 if (created.Id != fieldPlan.SourceFieldId
@@ -77,14 +80,5 @@ namespace PnP.Framework.Migration.Lists.Execution
             }
         }
 
-        private static bool CompatibleRuntimeType(string target, string source)
-        {
-            if (string.Equals(target, source, StringComparison.OrdinalIgnoreCase))
-            {
-                return true;
-            }
-            return (string.Equals(source, "Integer", StringComparison.OrdinalIgnoreCase) && string.Equals(target, "Number", StringComparison.OrdinalIgnoreCase))
-                || (string.Equals(source, "UserMulti", StringComparison.OrdinalIgnoreCase) && string.Equals(target, "User", StringComparison.OrdinalIgnoreCase));
-        }
     }
 }

@@ -17,6 +17,12 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
 
         public string Group { get; set; }
 
+        public bool ReadOnly { get; set; }
+
+        public bool Sealed { get; set; }
+
+        public bool Hidden { get; set; }
+
         public string ParentContentTypeId { get; set; }
 
         public string ParentContentTypeName { get; set; }

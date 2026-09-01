@@ -83,11 +83,28 @@ namespace PnP.Framework.Migration.Lists.Planning
                     return probe;
                 }
             }
-            catch (ServerException exception)
+            catch (Exception exception) when (exception is ServerException || exception is ClientRequestException)
             {
                 probe.Issues.Add(Issue("TargetWebUnavailable", plan, "The mapped target Web could not be inspected: " + exception.Message));
                 return probe;
             }
+        }
+
+        public static ListTargetProbe DeferUntilTopologyMaterialization(ListMaterializationPlan plan)
+        {
+            if (plan == null)
+            {
+                throw new ArgumentNullException(nameof(plan));
+            }
+            return new ListTargetProbe
+            {
+                TargetWebUrl = plan.TargetWebUrl,
+                TargetRootFolderServerRelativeUrl = plan.TargetRootFolderServerRelativeUrl,
+                TargetWebExists = false,
+                DeferredUntilTopologyMaterialization = true,
+                CanManageLists = true,
+                Disposition = ListMaterializationDisposition.CreateOwned
+            };
         }
 
         private static string Normalize(string value)

@@ -47,7 +47,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             }
 
             if (package.Plan.IsExecutable
-                && ((package.Snapshot.ListDependencies.Count > 0
+                && ((package.Plan.Topology != null
+                        && (package.Plan.TopologyTargetAnalysis == null || !package.Plan.TopologyTargetAnalysis.IsAdmitted))
+                    || (package.Snapshot.ListDependencies.Count > 0
                         && (package.Plan.ListMigration == null || !package.Plan.ListMigration.IsExecutable))
                     || package.Plan.WebPartActions.Any(value => value.Disposition == ClassicWebPartDisposition.Block)))
             {

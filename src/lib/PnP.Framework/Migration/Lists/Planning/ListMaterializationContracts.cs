@@ -2,6 +2,7 @@ using PnP.Framework.Migration.Diagnostics;
 using PnP.Framework.Migration.Lists.Capture;
 using PnP.Framework.Migration.Lists.Views;
 using PnP.Framework.Migration.Topology;
+using PnP.Framework.Migration.Schema.ContentTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,8 @@ namespace PnP.Framework.Migration.Lists.Planning
 
         public string InternalName { get; set; }
 
+        public string Title { get; set; }
+
         public string TypeAsString { get; set; }
 
         public ListFieldMaterializationDisposition Disposition { get; set; }
@@ -94,6 +97,8 @@ namespace PnP.Framework.Migration.Lists.Planning
         public string TargetRootFolderServerRelativeUrl { get; set; }
 
         public bool TargetWebExists { get; set; }
+
+        public bool DeferredUntilTopologyMaterialization { get; set; }
 
         public Guid? TargetWebId { get; set; }
 
@@ -145,6 +150,8 @@ namespace PnP.Framework.Migration.Lists.Planning
 
         public IList<ListViewMaterializationPlan> Views { get; set; } = new List<ListViewMaterializationPlan>();
 
+        public IList<ContentTypeClosureNodePlan> SiteContentTypes { get; set; } = new List<ContentTypeClosureNodePlan>();
+
         public IList<MigrationIssue> Issues { get; set; } = new List<MigrationIssue>();
 
         public ListTargetProbe TargetProbe { get; set; }
@@ -153,6 +160,7 @@ namespace PnP.Framework.Migration.Lists.Planning
 
         public bool IsExecutable => Disposition != ListMaterializationDisposition.Block
             && Issues.All(value => value.Severity != MigrationIssueSeverity.Blocker && value.Severity != MigrationIssueSeverity.Error)
+            && SiteContentTypes.All(value => value.IsExecutable)
             && (TargetProbe == null || TargetProbe.IsAdmitted);
     }
 
@@ -188,7 +196,25 @@ namespace PnP.Framework.Migration.Lists.Planning
 
         public IDictionary<Guid, Guid> TargetViewIds { get; set; } = new Dictionary<Guid, Guid>();
 
+        public IDictionary<string, string> TargetContentTypeIds { get; set; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        public ListMaterializationDisposition Disposition { get; set; }
+
         public string PlanDigest { get; set; }
+
+        public bool FreshReadbackPassed { get; set; }
+
+        public int VerifiedFieldCount { get; set; }
+
+        public int VerifiedContentTypeCount { get; set; }
+
+        public int VerifiedViewCount { get; set; }
+
+        public int VerifiedItemCount { get; set; }
+
+        public int VerifiedDocumentCount { get; set; }
+
+        public int VerifiedAttachmentCount { get; set; }
 
         public IList<string> Diagnostics { get; set; } = new List<string>();
     }

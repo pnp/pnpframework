@@ -53,6 +53,9 @@ The following composed capabilities remain shared and can be used by future Wiki
 | `Pages.Lifecycle` | Source checkout, file-level, moderation, and timestamp evidence. |
 | `Pages.Content` | Reviewed deterministic text replacements. |
 | `Pages.Planning` | Page-wide operation and planning inputs. |
+| `Migration.Topology` | SPSite/SPWeb ancestor closure, target mapping, owned child-Web creation/recovery, and runtime Web-ID receipts. |
+| `Migration.Schema.ContentTypes` | Custom site-content-type parent/field closure used by Page Layouts and Lists. |
+| `Migration.Lists` | List/library, List content type, field, View, current item/file/attachment, and lookup-ID closure. |
 
 ## Public Enterprise Wiki entry points
 
@@ -77,6 +80,9 @@ JSON uses camel-case property names, string enum values, explicit nulls, and cas
 | Import receipt | `pnp-publishing-page-import-receipt/v1` |
 | Nested Page Layout evidence | `pnp-publishing-page-layout/v1` |
 | Nested content type schema evidence | `pnp-content-type-schema/v1` |
+| Nested source topology | `pnp-source-topology/v1` |
+| Nested topology plan / target analysis | `pnp-topology-plan/v1` / `pnp-topology-target-analysis/v1` |
+| Nested List dependency / List plan | `pnp-list-dependency/v1` / `pnp-list-migration-plan/v1` |
 
 A breaking JSON change requires a new schema version. A CLR namespace move does not itself change JSON property names, but released CLR compatibility still needs separate consideration.
 
@@ -103,6 +109,10 @@ A breaking JSON change requires a new schema version. A CLR namespace move does 
 | `publishingPageContentSha256` | Digest of the captured publishing HTML. |
 | `fields` | Every returned Pages-library field definition and typed or best-effort raw value. |
 | `webParts` | Shared classic Web Part export XML and placement when capture is enabled. |
+| `listWebPartBindings` | Parsed list-bound Web Part identity: page/list owner Webs, source List/View IDs, path, TitleUrl, XML definition, JSLink/XslLink, and exact source export. |
+| `listDependencies` | Complete current evidence for every required List/library: settings, fields, List/site content types, explicit CT order, Views, items, folders, exact file bytes, and attachments. |
+| `listLookupDependencies` | Directed lookup edges used to build the target materialization order and detect cycles before mutation. |
+| `sourceTopology` | Source SPSite plus the complete SPWeb ancestor closure needed to preserve each object's ownership boundary. |
 | `dependencies` | Authored references plus captured payload evidence when it can be obtained safely. |
 | `security` | Permission inheritance and role-assignment evidence. |
 | `lifecycle` | Source checkout type, file level, moderation status, created time, and modified time. |
@@ -147,6 +157,10 @@ The source fence detects a page that changed during capture. It is not a lock, a
 | `layoutAdmission` | Typed eligibility result and issues for layout, resource, registration, permission, collision, and content-type-schema checks. |
 | `fieldActions` | Exactly one reviewed decision for every captured field. |
 | `dependencyActions` | Exactly one reviewed decision for every captured dependency. |
+| `topology` | Parent-preserving source Site/Web to target Site/Web map, deterministic target shape, provenance identities, and semantic digest. |
+| `topologyTargetAnalysis` | Read-only target collision/ownership analysis for each mapped Site and Web. Missing child Webs can be planned for creation; existing unowned paths block. |
+| `listMigration` | Lookup-ordered per-List plans, field/View/site-CT actions, target paths/titles, ownership digests, and target probes. |
+| `webPartActions` | One action per shared Web Part. List-bound parts are replayed only after target Web/List/View IDs are available and their XML can be rebound. |
 | `replacements` | Explicit source-to-target text substitutions included in the plan digest. |
 | `expectedPublishingPageContentSha256` | Expected digest after approved replacements. |
 | `storageAssertions` | Required storage-level readback conditions. |
@@ -188,7 +202,10 @@ Large ASPX/resource payloads may remain inline in JSON or live in an `IMigration
 - every Page Layout scalar property, exact artifact metadata, registration, parsed control, field binding, zone, resource reference, resource evidence state, byte digest, source lineage, and diagnostic;
 - every associated content type and field-schema property, field link, portable digest, ownership/role, taxonomy binding, and source diagnostic;
 - every captured page-item field and its complete recovery representation plus exactly one planned field action;
-- every classic Web Part export and every authored page dependency plus its target action;
+- the complete source SPSite/SPWeb hierarchy, every approved mapping, observed target identity/shape/provenance, and create/reuse/recover/block disposition;
+- every List setting, field schema, custom site-content-type ancestor and field closure, List-local content type and FieldLink, explicit CT order, View, current item value, folder/file artifact, attachment, lookup edge, target action, target probe, and typed issue;
+- every item value's typed form plus raw runtime type/text/JSON recovery evidence, including values the current importer will not write;
+- every classic Web Part export, parsed List binding, approved copy/rebind/block action, and every authored page dependency plus its target action;
 - the layout/schema/resource materialization plan, all resource rewrites, target probes, typed admission issues, and approved taxonomy schema mappings;
 - target page/library evidence, text replacements, storage assertions, runtime-verification requirements, blockers, and warnings.
 
@@ -209,7 +226,7 @@ Large HTML, XML, JSON, ASPX, and Base64 values are represented as length, SHA-25
 | `targetPageExists` | Create-only collision check. |
 | `existingDependencyPaths` | Dependency targets already present when the plan was created. |
 
-Import rechecks critical target facts before writing so that a stale plan does not silently execute against materially changed target state.
+Import rechecks critical target facts before writing so that a stale plan does not silently execute against materially changed target state. The shared List target analyzer re-probes every List and custom site content type whose owner Web already exists; objects below a still-missing, approved child Web remain explicitly deferred and are probed immediately after topology materialization.
 
 ### Import receipt
 
@@ -231,6 +248,8 @@ Import rechecks critical target facts before writing so that a stale plan does n
 | `storageContentEqual` | Whether storage-level content matches. |
 | `importedWebPartCount` / `materializedDependencyCount` | Applied object counts. |
 | `webPartsMatched` / `webPartResults` | Per-Web-Part export digest, zone, order, and hidden-state readback results. |
+| `topologyMaterialization` / `topologyMatched` | Source-to-target Site/Web runtime IDs, execution dispositions, mapping digests, and final whole-topology readback status. |
+| `listMaterializations` / `listsMatched` | Per-List target Web/List IDs, item/View/content-type maps, verified object counts, diagnostics, and final whole-closure readback status. |
 | `fieldResults` | Per-field write result and diagnostics. |
 | `freshReadbackPassed` | Whether required fresh-readback assertions passed. |
 | `storageVerificationStatus` | `Passed` only when content digest, Web Parts, fields, content type, and lifecycle all match. |
@@ -238,6 +257,74 @@ Import rechecks critical target facts before writing so that a stale plan does n
 | `warnings` | Non-fatal import/verification findings. |
 
 The receipt records observed outcome and ordered mutation steps. It is not a promise of a cross-object transaction or automatic global rollback.
+
+## Cross-site topology and List dependency closure
+
+A list-bound Publishing Page is not portable by copying its ASPX and Web Part XML alone. The Web Part's source `WebId`, `ListId`/`ListName`, View ID, lookup item IDs, and site-local taxonomy WssIds are runtime identities. The package therefore treats them as a dependency graph:
+
+```text
+source Site/Web ancestor closure
+    -> approved target Web map
+    -> custom site fields/content types
+    -> lookup Lists before consuming Lists
+    -> List-local content types and fields
+    -> current folders/items/files/attachments
+    -> public and page-bound Views
+    -> source-to-target Web/List/View/item ID catalog
+    -> rewritten classic Web Part export XML
+    -> page write and lifecycle
+    -> final topology/List/page fresh readback
+```
+
+The current topology executor requires an existing target site collection. Its root and the explicitly connected page Web are approved hosts; missing mapped child Webs can be created with the sealed target template, and an interrupted child-Web creation can be claimed only when its exact recovery description, title, template, parent, and path agree. Every reusable created Web must then expose both the source-qualified original identifier and the exact mapping digest.
+
+List creation follows the same ownership model. A free path and title produce `CreateOwned`; an existing path is reusable only when template, target title, original identifier, and semantic plan digest all agree. A same-title List at another path is reported separately because SharePoint can reject the new List even though its path is free.
+
+### List execution and verification boundary
+
+For each List in lookup topological order, Import performs:
+
+1. materialize the de-duplicated custom site-content-type parent closure;
+2. create or exactly reuse the target List;
+3. add every required site content type and record source List-CT ID to target List-CT ID mappings;
+4. create/require fields, with lookup schema rebound to target Web/List IDs and taxonomy schema rebound only through an approved store/set mapping;
+5. apply captured List content-type metadata, FieldLink flags, and explicit New-button content-type order;
+6. materialize folders, current items/files, and attachments, then write lookup values through the target item-ID catalogs;
+7. create/reuse supported public and page-bound Views;
+8. freshly read the entire supported closure again before the page receipt can pass.
+
+Fresh List verification checks target identity and settings, ownership markers, planned fields and portable schema, List content-type parent/metadata/FieldLinks/order, supported View state, source-to-target item mappings, every written current value, taxonomy Term GUID/label rather than WssId, exact current document and attachment bytes, and object counts. A List mismatch makes `listsMatched=false`, which makes storage acceptance fail even if page creation itself succeeded.
+
+### Complete report field guide with examples
+
+The JSON package is authoritative; the Markdown report is generated from it and prints a bounded representation of every reviewable property. The following examples use representative SharePoint values and deliberately omit tenant/customer names.
+
+| Report/JSON field | Example | Interpretation |
+| --- | --- | --- |
+| `snapshot.sourceTopology.siteId` | `11111111-1111-1111-1111-111111111111` | Source SPSite evidence. It identifies the mapping input; it is never assigned to the target. |
+| `snapshot.sourceTopology.webs[].parentWebId` | root Web GUID | Proves a source child Web's parent. The target child must be under the mapped target parent, not flattened under whichever Web hosts the page command. |
+| `plan.topology.siteCollections[].targetMode` | `ExistingTargetSite` | The current importer probes an existing target site collection. `CreateTargetSite` remains blocked until a tenant-scoped executor exists. |
+| `plan.topologyTargetAnalysis...disposition` | `CreateOwned` | The target child-Web path is free and the sealed plan may create it. After creation, fresh analysis must return `ReuseOwned`. |
+| `snapshot.listDependencies[].baseTemplate` | `101` | Document library template. Templates outside the reviewed set block before mutation. |
+| `snapshot.listDependencies[].hasExplicitUniqueContentTypeOrder` | `true` | SharePoint returned an explicit New-button order. `false` is distinct: a null order means all allowed content types are visible. |
+| `snapshot.listDependencies[].uniqueContentTypeOrder[]` | source List-local custom Document CT ID | The source order is captured using source IDs, then translated to target-generated List CT IDs. Folder/UntypedDocument children are filtered because SharePoint rejects them in this property. |
+| `snapshot.listDependencies[].fields[].portableSchemaSha256` | 64-character SHA-256 | Schema equality after removing non-portable storage slots and runtime identities such as `List`, `WebId`, `SourceID`, `Version`, `ColName`, and `RowOrdinal`. |
+| `plan.listMigration.lists[].fields[].disposition` | `MapLookup` | Create/reuse this field only after its dependency List exists; rewrite its schema to target Web/List GUIDs and translate every source lookup item ID. |
+| `plan.listMigration.lists[].fields[].disposition` | `RequireTargetRuntime` for `Modified` | The target template must supply the field, but SharePoint-owned/read-only audit values are intentionally not written. |
+| `snapshot.listDependencies[].siteContentTypes[].contentTypeId` | custom child of `0x0101` | A custom Document content type remains custom. Runtime classification uses exact known IDs, not the broad `0x0101` prefix. |
+| `...requiredFieldClosure[].taxonomy.sourceTermSetId` | source TermSet GUID | Source taxonomy schema identity. Planning requires an explicit target store/set mapping; source WssId never participates. |
+| `snapshot.listDependencies[].contentTypes[].id` | source List-local CT ID | Evidence identity. Its exact site parent resolves the target List CT even when the source name was customized; metadata and known FieldLink flags are replayed, while the generated target child ID is stored in `receipt.listMaterializations[].targetContentTypeIds`. |
+| `snapshot.listDependencies[].views[].listViewXmlSha256` | 64-character SHA-256 | Digest of the complete captured View XML. Supported query/fields/paging/JSLink state is applied now; custom JSLink/XslLink resources and full XML fidelity remain explicit gaps. |
+| `snapshot.listDependencies[].items[].values[].kind` | `Unsupported` | The current serializer did not recognize the runtime object. `rawType`, `rawValue`, and `rawValueJson` retain recovery evidence; planning will not guess a write. |
+| `snapshot.listDependencies[].items[].values[].taxonomyValues[].wssId` | `269` | Source site-collection cache-row evidence only. Import writes the mapped Term through the target taxonomy field and verifies target Term GUID/label with a target-allocated WssId. |
+| `snapshot.listDependencies[].items[].document.content.artifact.sha256` | file byte digest | Exact current document bytes. The target file must read back with the same length and digest; version history is not represented by this field. |
+| `plan.listMigration.lists[].targetProbe.sameTitleDifferentPaths[]` | `/sites/target/Shared Documents` | A real SharePoint collision shape: the desired `/Documents` path can be free while a template-created library already owns title `Documents`. Strict mode blocks rather than renaming an unrelated List. |
+| `snapshot.listWebPartBindings[].sourceViewId` | source View GUID | Captured binding input. It is replaced with `targetViewIds[sourceViewId]` only after the target View passes readback. |
+| `receipt.listMaterializations[].targetItemIds` | `42 -> 7` | Source item 42 became target item 7. Lookup consumers use 7; they never attempt to preserve 42. |
+| `receipt.listMaterializations[].disposition` | `CreateOwned` or `ReuseOwned` | Actual disposition observed by the execution-time fresh preflight, which may safely advance from the planning-time state when another executor completed the same identity and digest. |
+| `receipt.listMaterializations[].freshReadbackPassed` | `true` | All currently owned List assertions passed after mutation. Counter fields report how many fields, CTs, Views, items, files/folders, and attachments were inspected. |
+
+Large XML, HTML, JSON, and Base64 cells show length, SHA-256, and a bounded preview. This is not truncation of the package: the complete value remains in JSON or its content-addressed artifact store. A report action answers “what this importer will do now”; raw evidence answers “what could a later importer recover.”
 
 ## Complete field capture, selective restore
 
@@ -326,12 +413,20 @@ The current Enterprise Wiki profile is intentionally narrow:
 
 - only create-only plans are executable; overwrite/update is refused;
 - target pages must be in the root of the target Publishing Pages library;
+- the target site collection must already exist; mapped child Webs can be created/recovered, but tenant-level site creation is not implemented;
+- child-Web template selection is sealed, but required Feature activation is not inferred or performed; Publishing/Enterprise Wiki, Document ID, Document Set, asset-library, and other Feature prerequisites must already be available or gain explicit plans;
 - unique permissions are captured but not restored;
-- user, lookup, and page-item taxonomy values still require explicit identity/value mappings; Page Layout taxonomy field *schema* supports reviewed store/set rebinding, but term/value migration is separate;
+- page-item user, lookup, and taxonomy values still require profile-specific mappings; List lookup values are mapped through target item receipts, while List taxonomy schema needs a reviewed store/set mapping and the mapped target Terms must already exist;
+- Term Group/Set/Term creation and durable many-to-one source taxonomy aliases are not implemented;
 - only recognized fields with supported values and compatible target definitions are written;
+- version history, Created/Modified/Author/Editor preservation, unique ACLs, workflows/subscriptions/event receivers, and personal Views are not restored;
+- custom List View/Web Part `JSLink` or `XslLink` paths block because their exact resource bytes do not yet have a List-rendering-resource materializer;
+- supported Views currently replay query, fields, type, row limit, paging, and JSLink; arbitrary full `ListViewXml`, XslLink, hidden state, and every existing-default-view collision shape are not yet exact;
+- strict List title collision handling is the default. An explicit target title override is supported; the resumable rename of a specifically selected empty template-created List is not;
+- List content-type membership, parent identity, name/description/group/flags, required FieldLinks, and visible order are restored, but arbitrary removal of extra target-runtime FieldLinks and every template-specific CT behavior need live validation;
 - dependency materialization happens before page creation; mutation intents and receipts are journaled, but there is no cross-object transaction or automatic global rollback;
 - replacements are reviewed and digest-sealed but are case-insensitive text substitutions rather than DOM-aware URL edits;
-- source-list-bound and known non-portable Web Parts are still blocked instead of remapped;
+- supported source-list-bound classic Web Parts are remapped through target Web/List/View receipts; known non-portable types and incomplete bindings remain blocked;
 - typed runtime verification requirements are sealed in the plan, but browser automation and its evidence receipt remain outside the library importer;
 - a source fence detects capture-time mutation but does not invalidate an export after a later source edit;
 - live-tenant behavior still requires environment-specific validation in addition to unit and contract tests.
@@ -345,7 +440,12 @@ Changes to this family should validate:
 - all target frameworks supported by `PnP.Framework` build;
 - export, migration package, and receipt JSON round trips;
 - snapshot and plan mutation invalidates the corresponding digest;
-- exactly one field action exists per captured field and one dependency action per captured dependency;
+- exactly one field action exists per captured page field, one dependency action per captured page dependency, one Web Part action per captured Web Part, and one List plan per captured List closure node;
+- topology target analysis covers each mapped Web exactly once, and duplicate Site/Web probes are rejected;
+- custom site-content-type closure terminates only at exact runtime IDs and is materialized parent-first;
+- lookup cycles and calculated-field dependency cycles block before mutation;
+- helper fields use `AddToNoContentType`, explicit List CT order round-trips through target-generated IDs, and read-only runtime values are not replayed;
+- import storage success includes final topology and List readback, not only the page file;
 - shared `Pages` code has no dependency on `Publishing` or `EnterpriseWiki`;
 - publishing lifecycle derivation remains conservative;
 - package state agrees with blocker state;

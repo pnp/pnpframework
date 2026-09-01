@@ -8,6 +8,7 @@ using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Verification;
 using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Topology;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
             Guid operationId,
             DateTimeOffset startedAt,
             int materializedDependencyCount,
+            TopologyMaterializationReceipt topologyReceipt,
             IList<ListMaterializationReceipt> listReceipts,
             IList<PageFieldImportResult> fieldResults,
             IList<MigrationMutationReceipt> steps,
@@ -122,11 +124,31 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 var plannedFieldsPassed = fieldResults.All(result => !result.Attempted || result.Succeeded);
                 var webPartsMatched = webPartResults.All(result => result.Passed)
                     && webPartResults.Count == package.Snapshot.WebParts.Count;
+                var topologyMatched = topologyReceipt != null
+                    && topologyReceipt.FreshReadbackPassed
+                    && (package.Plan.Topology == null
+                        || topologyReceipt.Webs.Count == package.Plan.Topology.SiteCollections.SelectMany(value => value.Webs).Count());
+                var listsMatched = listReceipts.Count == package.Snapshot.ListDependencies.Count
+                    && listReceipts.All(value => value.FreshReadbackPassed);
+                if (!topologyMatched)
+                {
+                    receiptWarnings.Add("Fresh topology readback did not verify every approved Site/Web mapping.");
+                }
+                foreach (var listReceipt in listReceipts.Where(value => !value.FreshReadbackPassed))
+                {
+                    receiptWarnings.AddRange(listReceipt.Diagnostics.Select(value => "List " + listReceipt.SourceListId.ToString("D") + ": " + value));
+                }
+                if (!listsMatched)
+                {
+                    receiptWarnings.Add("Fresh List readback did not verify every captured List dependency.");
+                }
                 var readbackPassed = isExpectedContentType(contentTypeId)
                     && storageContentEqual
                     && webPartsMatched
                     && lifecycleMatched
-                    && plannedFieldsPassed;
+                    && plannedFieldsPassed
+                    && topologyMatched
+                    && listsMatched;
                 var runtimeVerificationRequired = package.Plan.RuntimeVerification.Requirements.Any(item => item.Required);
                 return new PublishingPageImportReceipt
                 {
@@ -157,7 +179,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     WebPartsMatched = webPartsMatched,
                     WebPartResults = webPartResults,
                     MaterializedDependencyCount = materializedDependencyCount,
+                    TopologyMaterialization = topologyReceipt,
+                    TopologyMatched = topologyMatched,
                     ListMaterializations = listReceipts,
+                    ListsMatched = listsMatched,
                     FieldResults = fieldResults,
                     FreshReadbackPassed = readbackPassed,
                     StorageVerificationStatus = readbackPassed

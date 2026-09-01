@@ -50,6 +50,7 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 value => value.Name,
                 value => value.Description,
                 value => value.Group,
+                value => value.Scope,
                 value => value.ReadOnly,
                 value => value.Sealed,
                 value => value.Hidden,
@@ -140,6 +141,7 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
             {
                 EvidenceState = complete ? ContentTypeSchemaEvidenceState.Readable : ContentTypeSchemaEvidenceState.Partial,
                 SourceWebUrl = web.Url,
+                SourceScope = contentType.Scope,
                 ContentTypeId = contentType.Id.StringValue,
                 Name = contentType.Name,
                 Description = contentType.Description,

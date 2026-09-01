@@ -94,6 +94,9 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 if (!string.Equals(probe.ExistingName, plan.Name, StringComparison.Ordinal)
                     || !string.Equals(probe.ExistingDescription ?? string.Empty, plan.Description ?? string.Empty, StringComparison.Ordinal)
                     || !string.Equals(probe.ExistingGroup ?? string.Empty, plan.Group ?? string.Empty, StringComparison.Ordinal)
+                    || probe.ExistingReadOnly != plan.ReadOnly
+                    || probe.ExistingSealed != plan.Sealed
+                    || probe.ExistingHidden != plan.Hidden
                     || !string.Equals(probe.ExistingParentContentTypeId, plan.ParentContentTypeId, StringComparison.OrdinalIgnoreCase))
                 {
                     issues.Add(Issue("TargetContentTypeCollision", $"target-content-type:{plan.ContentTypeId}",

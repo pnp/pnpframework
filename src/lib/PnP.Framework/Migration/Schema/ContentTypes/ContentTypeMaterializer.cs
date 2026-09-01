@@ -112,22 +112,32 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                     $"SharePoint created content type ID '{createdContentType.Id.StringValue}' instead of sealed ID '{plan.ContentTypeId}'.");
             }
 
-            context.Load(createdContentType.FieldLinks, values => values.Include(value => value.Id));
+            context.Load(createdContentType.FieldLinks, values => values.Include(
+                value => value.Id,
+                value => value.Required,
+                value => value.Hidden));
             context.ExecuteQueryRetry();
-            var existingLinks = new HashSet<Guid>(createdContentType.FieldLinks.Select(value => value.Id));
+            var existingLinks = createdContentType.FieldLinks.ToDictionary(value => value.Id);
             foreach (var linkPlan in plan.RequiredFieldLinks
                          .Where(value => value.Role != FieldSchemaRole.InheritedFromParent)
-                         .Where(value => !existingLinks.Contains(value.FieldId))
                          .OrderBy(value => value.Role == FieldSchemaRole.Dependency ? 0 : 1)
                          .ThenBy(value => value.FieldId))
             {
-                var field = web.Fields.GetById(linkPlan.FieldId);
-                var createdLink = createdContentType.FieldLinks.Add(new FieldLinkCreationInformation { Field = field });
-                createdLink.Required = linkPlan.Required;
-                createdLink.Hidden = linkPlan.Hidden;
+                FieldLink link;
+                if (!existingLinks.TryGetValue(linkPlan.FieldId, out link))
+                {
+                    var field = web.Fields.GetById(linkPlan.FieldId);
+                    link = createdContentType.FieldLinks.Add(new FieldLinkCreationInformation { Field = field });
+                    existingLinks[linkPlan.FieldId] = link;
+                }
+                link.Required = linkPlan.Required;
+                link.Hidden = linkPlan.Hidden;
             }
 
-            createdContentType.Update(true);
+            createdContentType.Hidden = plan.Hidden;
+            createdContentType.ReadOnly = plan.ReadOnly;
+            createdContentType.Sealed = plan.Sealed;
+            createdContentType.Update(false);
             context.ExecuteQueryRetry();
             Verify(context, web, plan);
             return ContentTypeMaterializationDisposition.CreateOwned;

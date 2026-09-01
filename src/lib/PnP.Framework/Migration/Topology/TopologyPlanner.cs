@@ -110,6 +110,15 @@ namespace PnP.Framework.Migration.Topology
             }
         }
 
+        public static string ComputeWebMappingDigest(WebMappingPlan plan)
+        {
+            if (plan == null)
+            {
+                throw new ArgumentNullException(nameof(plan));
+            }
+            return MigrationDigest.ComputeSha256(MigrationContractSerializer.SerializeCanonical(plan));
+        }
+
         public static string MapWebOwnedServerRelativePath(
             string sourceObjectServerRelativeUrl,
             string sourceOwnerWebServerRelativeUrl,

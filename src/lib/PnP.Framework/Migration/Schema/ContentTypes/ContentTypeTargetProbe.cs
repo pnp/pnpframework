@@ -23,6 +23,12 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
 
         public string ExistingGroup { get; set; }
 
+        public bool ExistingReadOnly { get; set; }
+
+        public bool ExistingSealed { get; set; }
+
+        public bool ExistingHidden { get; set; }
+
         public string ExistingParentContentTypeId { get; set; }
 
         public IList<ContentTypeFieldLinkTargetProbe> ExistingFieldLinks { get; set; } = new List<ContentTypeFieldLinkTargetProbe>();

@@ -5,6 +5,7 @@ using PnP.Framework.Migration.Pages.Publishing.Verification;
 using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Verification;
 using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Topology;
 using System;
 using System.Collections.Generic;
 
@@ -66,7 +67,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
 
         public int MaterializedDependencyCount { get; set; }
 
+        public TopologyMaterializationReceipt TopologyMaterialization { get; set; }
+
+        public bool TopologyMatched { get; set; }
+
         public IList<ListMaterializationReceipt> ListMaterializations { get; set; } = new List<ListMaterializationReceipt>();
+
+        public bool ListsMatched { get; set; }
 
         public IList<PageFieldImportResult> FieldResults { get; set; } = new List<PageFieldImportResult>();
 

@@ -38,7 +38,10 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 value => value.Id,
                 value => value.Name,
                 value => value.Description,
-                value => value.Group));
+                value => value.Group,
+                value => value.ReadOnly,
+                value => value.Sealed,
+                value => value.Hidden));
             context.Load(availableContentTypes, values => values.Include(value => value.Id, value => value.Name));
             context.Load(fields, values => values.Include(
                 value => value.Id,
@@ -116,6 +119,9 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 ExistingName = exact?.Name,
                 ExistingDescription = exact?.Description,
                 ExistingGroup = exact?.Group,
+                ExistingReadOnly = exact != null && exact.ReadOnly,
+                ExistingSealed = exact != null && exact.Sealed,
+                ExistingHidden = exact != null && exact.Hidden,
                 ExistingParentContentTypeId = exact?.Parent?.Id.StringValue,
                 ExistingFieldLinks = exact == null ? new List<ContentTypeFieldLinkTargetProbe>() : Links(exact.FieldLinks),
                 SameNameDifferentIds = siteContentTypes

@@ -12,6 +12,8 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
 
         public string SourceWebUrl { get; set; }
 
+        public string SourceScope { get; set; }
+
         public string ContentTypeId { get; set; }
 
         public string Name { get; set; }

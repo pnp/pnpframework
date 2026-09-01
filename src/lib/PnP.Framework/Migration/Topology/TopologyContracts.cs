@@ -23,7 +23,8 @@ namespace PnP.Framework.Migration.Topology
         CreateOwned = 1,
         ReuseOwned = 2,
         ReuseApprovedHost = 3,
-        Block = 4
+        Block = 4,
+        RecoverInterruptedCreate = 5
     }
 
     public sealed class SourceWebSnapshot
@@ -189,5 +190,104 @@ namespace PnP.Framework.Migration.Topology
         public IList<MigrationIssue> Issues { get; set; } = new List<MigrationIssue>();
 
         public bool IsExecutable => Plan != null && Issues.All(issue => issue.Severity != MigrationIssueSeverity.Blocker && issue.Severity != MigrationIssueSeverity.Error);
+    }
+
+    public sealed class TopologyWebTargetProbe
+    {
+        public Guid SourceSiteId { get; set; }
+
+        public Guid SourceWebId { get; set; }
+
+        public string TargetWebUrl { get; set; }
+
+        public bool Exists { get; set; }
+
+        public Guid? TargetSiteId { get; set; }
+
+        public Guid? TargetWebId { get; set; }
+
+        public Guid? TargetParentWebId { get; set; }
+
+        public string ExistingTitle { get; set; }
+
+        public string ExistingTemplate { get; set; }
+
+        public int? ExistingConfiguration { get; set; }
+
+        public string ExistingOriginalIdentifier { get; set; }
+
+        public string ExistingPlanDigest { get; set; }
+
+        public TopologyMaterializationDisposition Disposition { get; set; }
+
+        public IList<MigrationIssue> Issues { get; set; } = new List<MigrationIssue>();
+
+        public bool IsAdmitted => Disposition != TopologyMaterializationDisposition.Block
+            && Issues.All(value => value.Severity != MigrationIssueSeverity.Blocker && value.Severity != MigrationIssueSeverity.Error);
+    }
+
+    public sealed class TopologySiteTargetProbe
+    {
+        public Guid SourceSiteId { get; set; }
+
+        public string TargetSiteCollectionUrl { get; set; }
+
+        public bool Exists { get; set; }
+
+        public Guid? TargetSiteId { get; set; }
+
+        public Guid? TargetRootWebId { get; set; }
+
+        public TopologyMaterializationDisposition Disposition { get; set; }
+
+        public IList<TopologyWebTargetProbe> Webs { get; set; } = new List<TopologyWebTargetProbe>();
+
+        public IList<MigrationIssue> Issues { get; set; } = new List<MigrationIssue>();
+
+        public bool IsAdmitted => Disposition != TopologyMaterializationDisposition.Block
+            && Issues.All(value => value.Severity != MigrationIssueSeverity.Blocker && value.Severity != MigrationIssueSeverity.Error)
+            && Webs.All(value => value.IsAdmitted);
+    }
+
+    public sealed class TopologyTargetAnalysis
+    {
+        public string SchemaVersion { get; set; } = "pnp-topology-target-analysis/v1";
+
+        public string TopologyPlanDigest { get; set; }
+
+        public IList<TopologySiteTargetProbe> SiteCollections { get; set; } = new List<TopologySiteTargetProbe>();
+
+        public IList<MigrationIssue> Issues { get; set; } = new List<MigrationIssue>();
+
+        public bool IsAdmitted => Issues.All(value => value.Severity != MigrationIssueSeverity.Blocker && value.Severity != MigrationIssueSeverity.Error)
+            && SiteCollections.All(value => value.IsAdmitted);
+    }
+
+    public sealed class TopologyWebMaterializationReceipt
+    {
+        public Guid SourceSiteId { get; set; }
+
+        public Guid SourceWebId { get; set; }
+
+        public Guid TargetSiteId { get; set; }
+
+        public Guid TargetWebId { get; set; }
+
+        public string TargetWebUrl { get; set; }
+
+        public TopologyMaterializationDisposition Disposition { get; set; }
+
+        public string MappingDigest { get; set; }
+    }
+
+    public sealed class TopologyMaterializationReceipt
+    {
+        public string TopologyPlanDigest { get; set; }
+
+        public IList<TopologyWebMaterializationReceipt> Webs { get; set; } = new List<TopologyWebMaterializationReceipt>();
+
+        public bool FreshReadbackPassed { get; set; }
+
+        public IList<string> Diagnostics { get; set; } = new List<string>();
     }
 }

@@ -5,6 +5,7 @@ using PnP.Framework.Migration.Lists.Fields;
 using PnP.Framework.Migration.Lists.Items;
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Schema.Fields;
+using PnP.Framework.Migration.Schema.ContentTypes;
 using PnP.Framework.Migration.Taxonomy;
 using PnP.Framework.Migration.Topology;
 using System;
@@ -21,11 +22,6 @@ namespace PnP.Framework.Migration.Lists.Planning
         private static readonly HashSet<string> SupportedScalarTypes = new HashSet<string>(
             new[] { "Text", "Note", "Boolean", "Number", "Currency", "Integer", "DateTime", "Guid", "URL", "Choice", "MultiChoice" },
             StringComparer.OrdinalIgnoreCase);
-
-        private static readonly string[] KnownRuntimeContentTypeIds =
-        {
-            "0x01", "0x0101", "0x0120", "0x0120D520", "0x0120D520A8", "0x0120D520A808"
-        };
 
         public static ListMigrationPlanSet Create(
             IEnumerable<ListDependencySnapshot> dependencies,
@@ -66,7 +62,7 @@ namespace PnP.Framework.Migration.Lists.Planning
                 }
                 ListTargetOverride[] candidates;
                 var targetOverride = overrides.TryGetValue(source.SourceListId, out candidates) && candidates.Length == 1 ? candidates[0] : null;
-                plans.Add(CreateListPlan(source, owner, taxonomyMappings, targetOverride));
+                plans.Add(CreateListPlan(source, owner, topology, taxonomyMappings, targetOverride));
             }
 
             var result = new ListMigrationPlanSet
@@ -83,8 +79,23 @@ namespace PnP.Framework.Migration.Lists.Planning
         {
             var value = plan.PlanDigest;
             var probe = plan.TargetProbe;
+            var disposition = plan.Disposition;
+            var contentTypeStates = plan.SiteContentTypes.Select(node => new
+            {
+                Node = node,
+                node.TargetProbe,
+                node.TargetAdmission,
+                node.DeferredUntilTopologyMaterialization
+            }).ToArray();
             plan.PlanDigest = null;
             plan.TargetProbe = null;
+            plan.Disposition = ListMaterializationDisposition.CreateOwned;
+            foreach (var state in contentTypeStates)
+            {
+                state.Node.TargetProbe = null;
+                state.Node.TargetAdmission = null;
+                state.Node.DeferredUntilTopologyMaterialization = false;
+            }
             try
             {
                 return MigrationDigest.ComputeSha256(MigrationContractSerializer.SerializeCanonical(plan));
@@ -93,6 +104,13 @@ namespace PnP.Framework.Migration.Lists.Planning
             {
                 plan.PlanDigest = value;
                 plan.TargetProbe = probe;
+                plan.Disposition = disposition;
+                foreach (var state in contentTypeStates)
+                {
+                    state.Node.TargetProbe = state.TargetProbe;
+                    state.Node.TargetAdmission = state.TargetAdmission;
+                    state.Node.DeferredUntilTopologyMaterialization = state.DeferredUntilTopologyMaterialization;
+                }
             }
         }
 
@@ -105,6 +123,7 @@ namespace PnP.Framework.Migration.Lists.Planning
             foreach (var list in plan.Lists)
             {
                 list.Disposition = list.TargetProbe == null || !list.TargetProbe.IsAdmitted
+                    || list.SiteContentTypes.Any(value => !value.IsExecutable)
                     ? ListMaterializationDisposition.Block
                     : list.TargetProbe.Disposition;
             }
@@ -128,6 +147,7 @@ namespace PnP.Framework.Migration.Lists.Planning
         private static ListMaterializationPlan CreateListPlan(
             ListDependencySnapshot source,
             WebMappingPlan owner,
+            TopologyPlan topology,
             IEnumerable<TaxonomyTargetMapping> taxonomyMappings,
             ListTargetOverride targetOverride)
         {
@@ -159,20 +179,27 @@ namespace PnP.Framework.Migration.Lists.Planning
                 }
             }
 
-            foreach (var contentType in source.ContentTypes)
+            var contentTypeClosure = ContentTypeClosurePlanner.Create(source.SiteContentTypes, topology, taxonomyMappings);
+            foreach (var issue in contentTypeClosure.Issues)
             {
-                var runtime = KnownRuntimeContentTypeIds.Any(value => string.Equals(contentType.ParentId, value, StringComparison.OrdinalIgnoreCase)
-                    || (contentType.ParentId ?? string.Empty).StartsWith(value + "00", StringComparison.OrdinalIgnoreCase));
-                if (!runtime)
-                {
-                    issues.Add(Issue("CustomListContentTypeClosureUnavailable", "content-type:" + contentType.Id,
-                        "The List uses custom content type '" + contentType.Name + "'. Its site-content-type parent closure must be materialized before this List can execute."));
-                }
+                issues.Add(issue);
+            }
+            var capturedSiteContentTypeIds = new HashSet<string>(contentTypeClosure.Nodes.Select(value => value.Schema.ContentTypeId), StringComparer.OrdinalIgnoreCase);
+            foreach (var contentType in source.ContentTypes.Where(value => !string.IsNullOrWhiteSpace(value.ParentId)
+                && !ContentTypeRuntimeCatalog.IsTargetRuntime(value.ParentId)
+                && !capturedSiteContentTypeIds.Contains(value.ParentId)))
+            {
+                issues.Add(Issue("CustomListContentTypeClosureUnavailable", "content-type:" + contentType.Id,
+                    "The List uses custom content type '" + contentType.Name + "', but its exact site-content-type parent closure is missing."));
             }
 
-            var fieldPlans = source.Fields.Select(field => CreateFieldPlan(source, field, taxonomyMappings, issues))
-                .OrderBy(value => value.Disposition == ListFieldMaterializationDisposition.CreateOrReuseOwnedCalculated ? 1 : 0)
-                .ThenBy(value => value.InternalName, StringComparer.OrdinalIgnoreCase).ToList();
+            var fieldOrder = ListCalculatedFieldOrder.Order(source.Fields.Select(field => CreateFieldPlan(source, field, taxonomyMappings, issues)));
+            var fieldPlans = fieldOrder.Fields;
+            if (fieldOrder.CycleFields.Count > 0)
+            {
+                issues.Add(Issue("CalculatedFieldDependencyCycle", "list:" + source.SourceListId.ToString("D"),
+                    "Calculated fields contain a dependency cycle: " + string.Join(", ", fieldOrder.CycleFields) + "."));
+            }
             var viewPlans = source.Views.Select(view => new ListViewMaterializationPlan
             {
                 SourceViewId = view.Id,
@@ -218,6 +245,7 @@ namespace PnP.Framework.Migration.Lists.Planning
                 Disposition = issues.Any(value => value.Severity == MigrationIssueSeverity.Blocker) ? ListMaterializationDisposition.Block : ListMaterializationDisposition.CreateOwned,
                 Fields = fieldPlans,
                 Views = viewPlans,
+                SiteContentTypes = contentTypeClosure.Nodes,
                 Issues = issues.OrderBy(value => value.Code, StringComparer.Ordinal).ThenBy(value => value.Subject, StringComparer.Ordinal).ToList()
             };
             plan.PlanDigest = ComputePlanDigest(plan);
@@ -238,11 +266,13 @@ namespace PnP.Framework.Migration.Lists.Planning
             if (targetRuntime)
             {
                 return Plan(field,
-                    SupportedScalarTypes.Contains(field.TypeAsString)
+                    !field.ReadOnly && !field.Sealed && SupportedScalarTypes.Contains(field.TypeAsString)
                         ? ListFieldMaterializationDisposition.RequireTargetRuntimeAndCopyValue
                         : ListFieldMaterializationDisposition.RequireTargetRuntime,
                     null,
-                    "The target List template owns this runtime field identity.");
+                    !field.ReadOnly && !field.Sealed && SupportedScalarTypes.Contains(field.TypeAsString)
+                        ? "The target List template owns this writable runtime field identity; copy its recognized current value."
+                        : "The target List template owns this runtime field identity; SharePoint-owned/read-only values are not replayed.");
             }
             if (field.TypeAsString.StartsWith("Lookup", StringComparison.OrdinalIgnoreCase))
             {
@@ -303,6 +333,7 @@ namespace PnP.Framework.Migration.Lists.Planning
             {
                 SourceFieldId = field.Id,
                 InternalName = field.InternalName,
+                Title = field.Title,
                 TypeAsString = field.TypeAsString,
                 Disposition = disposition,
                 SourceSchemaXml = field.SchemaXml,

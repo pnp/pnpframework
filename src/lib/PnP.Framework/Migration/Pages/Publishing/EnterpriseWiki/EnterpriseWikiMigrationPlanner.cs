@@ -118,6 +118,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 layoutTargetProbe,
                 blockers);
             TopologyPlan topology = null;
+            TopologyTargetAnalysis topologyTargetAnalysis = null;
             ListMigrationPlanSet listMigration = null;
             var webPartActions = new List<ClassicWebPartAction>();
             if (snapshot.SourceTopology != null)
@@ -144,6 +145,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 topology = topologyResult.Plan;
                 if (topology != null)
                 {
+                    topologyTargetAnalysis = TopologyTargetInspector.Inspect(targetContext, topology, targetWeb.Url);
+                    foreach (var issue in topologyTargetAnalysis.Issues)
+                    {
+                        blockers.Add(issue.Code + ": " + issue.Message);
+                    }
                     var pageWebMapping = topology.SiteCollections.SelectMany(value => value.Webs)
                         .SingleOrDefault(value => value.SourceWebId == snapshot.Source.WebId);
                     if (pageWebMapping == null || !string.Equals(pageWebMapping.TargetWebUrl.TrimEnd('/'), targetWeb.Url.TrimEnd('/'), StringComparison.OrdinalIgnoreCase))
@@ -157,27 +163,19 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                         topology,
                         options.TaxonomySchemaMappings,
                         options.ListTargetOverrides);
-                    var sourceLists = snapshot.ListDependencies.ToDictionary(value => value.SourceListId);
-                    foreach (var listPlan in listMigration.Lists)
-                    {
-                        if (listPlan.IsExecutable)
-                        {
-                            listPlan.TargetProbe = ListTargetInspector.Inspect(targetContext, sourceLists[listPlan.SourceListId], listPlan);
-                            foreach (var issue in listPlan.TargetProbe.Issues)
-                            {
-                                blockers.Add(issue.Code + ": " + issue.Message);
-                            }
-                        }
-                        foreach (var issue in listPlan.Issues)
-                        {
-                            blockers.Add(issue.Code + ": " + issue.Message);
-                        }
-                    }
-                    foreach (var issue in listMigration.Issues)
+                    var listTargetAnalysis = ListMigrationTargetAnalyzer.PopulateAndSeal(
+                        targetContext,
+                        snapshot.ListDependencies,
+                        listMigration,
+                        topologyTargetAnalysis);
+                    foreach (var issue in listTargetAnalysis.Issues)
                     {
                         blockers.Add(issue.Code + ": " + issue.Message);
                     }
-                    ListMigrationPlanFactory.SealTargetAnalysis(listMigration);
+                    foreach (var warning in listTargetAnalysis.Warnings)
+                    {
+                        warnings.Add(warning);
+                    }
                 }
             }
             else if (snapshot.ListWebPartBindings.Count > 0 || snapshot.ListDependencies.Count > 0)
@@ -276,6 +274,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 FieldActions = fieldActions,
                 DependencyActions = dependencyActions,
                 Topology = topology,
+                TopologyTargetAnalysis = topologyTargetAnalysis,
                 ListMigration = listMigration,
                 WebPartActions = webPartActions.OrderBy(value => value.SourceWebPartId).ToList(),
                 Replacements = replacements,

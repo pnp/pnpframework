@@ -3,6 +3,8 @@ using Microsoft.SharePoint.Client.WebParts;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
 using PnP.Framework.Migration.Pages.Content;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
+using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
+using PnP.Framework.Migration.Lists.Planning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,17 +17,38 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
             ClientContext context,
             string pagePath,
             IEnumerable<ClassicWebPartSnapshot> expectedWebParts,
+            IEnumerable<ClassicListWebPartBindingSnapshot> bindings,
+            IEnumerable<ClassicWebPartAction> actions,
+            IEnumerable<ListMaterializationReceipt> listReceipts,
             IEnumerable<PageTextReplacement> replacements)
         {
             var actual = Read(context, pagePath);
             var unused = actual.ToList();
             var results = new List<PublishingPageWebPartVerificationResult>();
+            var actionByWebPart = actions.ToDictionary(value => value.SourceWebPartId);
+            var bindingByWebPart = bindings.ToDictionary(value => value.SourceWebPartId);
+            var receiptByList = listReceipts.ToDictionary(value => value.SourceListId);
             foreach (var expected in expectedWebParts
                          .OrderBy(item => item.ZoneId, StringComparer.OrdinalIgnoreCase)
                          .ThenBy(item => item.ZoneIndex)
                          .ThenBy(item => item.Id))
             {
-                var expectedXml = PageTextTransformer.Rewrite(expected.ExportXml, replacements);
+                ClassicWebPartAction action;
+                ClassicListWebPartBindingSnapshot binding;
+                ListMaterializationReceipt listReceipt = null;
+                actionByWebPart.TryGetValue(expected.Id, out action);
+                bindingByWebPart.TryGetValue(expected.Id, out binding);
+                if (binding != null)
+                {
+                    receiptByList.TryGetValue(binding.SourceListId, out listReceipt);
+                }
+                var expectedXml = ClassicWebPartReplayComposer.Compose(
+                    expected,
+                    action,
+                    binding,
+                    listReceipt,
+                    pagePath,
+                    replacements);
                 var expectedDigest = PublishingPageDigest.ComputeSha256(expectedXml);
                 var match = unused.FirstOrDefault(item =>
                     string.Equals(item.ExportSha256, expectedDigest, StringComparison.OrdinalIgnoreCase)

@@ -6,6 +6,8 @@ using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Schema.ContentTypes;
+using PnP.Framework.Migration.Lists.Execution;
+using PnP.Framework.Migration.Lists.Planning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +29,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
             var warnings = new List<string>();
             MaterializeLayout(targetContext, package, recorder, artifactStore);
             var materializedDependencies = MaterializeDependencies(targetContext, package, recorder);
-            var writeResult = PublishingPageTargetWriter.Write(targetContext, package, recorder, warnings);
+            var listReceipts = ListMaterializationCoordinator.Ensure(
+                targetContext,
+                package.Snapshot.ListDependencies,
+                package.Plan.ListMigration,
+                recorder,
+                artifactStore);
+            var writeResult = PublishingPageTargetWriter.Write(targetContext, package, listReceipts, recorder, warnings);
             PublishingPageLifecycleApplier.Apply(targetContext, package, writeResult, recorder, warnings);
             var receipt = PublishingPageImportVerifier.Verify(
                 targetContext,
@@ -36,6 +44,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                 operationId,
                 startedAt,
                 materializedDependencies,
+                listReceipts.Values.OrderBy(value => value.SourceListId).ToList(),
                 writeResult.FieldResults,
                 recorder.Steps,
                 warnings,

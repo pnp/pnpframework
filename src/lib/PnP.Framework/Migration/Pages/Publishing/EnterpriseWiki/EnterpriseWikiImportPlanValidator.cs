@@ -4,6 +4,7 @@ using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
 using PnP.Framework.Migration.Pages.Planning;
+using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
 using System;
 using System.IO;
 using System.Linq;
@@ -43,6 +44,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 {
                     throw new InvalidDataException($"Field action '{action.SourceInternalName}' is marked Apply but is not supported by the Enterprise Wiki importer.");
                 }
+            }
+
+            if (package.Plan.IsExecutable
+                && ((package.Snapshot.ListDependencies.Count > 0
+                        && (package.Plan.ListMigration == null || !package.Plan.ListMigration.IsExecutable))
+                    || package.Plan.WebPartActions.Any(value => value.Disposition == ClassicWebPartDisposition.Block)))
+            {
+                throw new InvalidDataException("An executable publishing-page plan contains a blocked List or Web Part action.");
             }
         }
     }

@@ -15,6 +15,9 @@ using PnP.Framework.Migration.Pages.Publishing.Verification;
 using PnP.Framework.Migration.Verification;
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Taxonomy;
+using PnP.Framework.Migration.Topology;
+using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -62,9 +65,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             }
 
             var targetWeb = targetContext.Web;
+            var targetSite = targetContext.Site;
             var targetRootWeb = targetContext.Site.RootWeb;
             targetContext.Load(targetWeb, web => web.Url, web => web.ServerRelativeUrl);
-            targetContext.Load(targetRootWeb, web => web.Url, web => web.ServerRelativeUrl);
+            targetContext.Load(targetSite, site => site.Id);
+            targetContext.Load(targetRootWeb, web => web.Url, web => web.ServerRelativeUrl, web => web.Title, web => web.WebTemplate, web => web.Configuration);
             targetContext.ExecuteQueryRetry();
 
             var snapshot = exportPackage.Snapshot;
@@ -112,6 +117,135 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 targetLifecycle,
                 layoutTargetProbe,
                 blockers);
+            TopologyPlan topology = null;
+            ListMigrationPlanSet listMigration = null;
+            var webPartActions = new List<ClassicWebPartAction>();
+            if (snapshot.SourceTopology != null)
+            {
+                var topologyResult = new TopologyPlanner().Build(
+                    new[] { snapshot.SourceTopology },
+                    new[]
+                    {
+                        new TargetSiteCollectionSpec
+                        {
+                            SourceSiteId = snapshot.SourceTopology.SiteId,
+                            Mode = TargetSiteMode.ExistingTargetSite,
+                            TargetSiteUrl = targetRootWeb.Url,
+                            ExpectedTargetSiteId = targetSite.Id,
+                            Title = targetRootWeb.Title,
+                            Template = targetRootWeb.WebTemplate
+                        }
+                    },
+                    options.TopologyPolicy);
+                foreach (var issue in topologyResult.Issues)
+                {
+                    blockers.Add(issue.Code + ": " + issue.Message);
+                }
+                topology = topologyResult.Plan;
+                if (topology != null)
+                {
+                    var pageWebMapping = topology.SiteCollections.SelectMany(value => value.Webs)
+                        .SingleOrDefault(value => value.SourceWebId == snapshot.Source.WebId);
+                    if (pageWebMapping == null || !string.Equals(pageWebMapping.TargetWebUrl.TrimEnd('/'), targetWeb.Url.TrimEnd('/'), StringComparison.OrdinalIgnoreCase))
+                    {
+                        blockers.Add("TargetPageWebTopologyMismatch: the target connection Web must be the mapped target for the source page Web. Supply a topology override or connect to the mapped child Web.");
+                    }
+
+                    listMigration = ListMigrationPlanFactory.Create(
+                        snapshot.ListDependencies,
+                        snapshot.ListLookupDependencies,
+                        topology,
+                        options.TaxonomySchemaMappings,
+                        options.ListTargetOverrides);
+                    var sourceLists = snapshot.ListDependencies.ToDictionary(value => value.SourceListId);
+                    foreach (var listPlan in listMigration.Lists)
+                    {
+                        if (listPlan.IsExecutable)
+                        {
+                            listPlan.TargetProbe = ListTargetInspector.Inspect(targetContext, sourceLists[listPlan.SourceListId], listPlan);
+                            foreach (var issue in listPlan.TargetProbe.Issues)
+                            {
+                                blockers.Add(issue.Code + ": " + issue.Message);
+                            }
+                        }
+                        foreach (var issue in listPlan.Issues)
+                        {
+                            blockers.Add(issue.Code + ": " + issue.Message);
+                        }
+                    }
+                    foreach (var issue in listMigration.Issues)
+                    {
+                        blockers.Add(issue.Code + ": " + issue.Message);
+                    }
+                    ListMigrationPlanFactory.SealTargetAnalysis(listMigration);
+                }
+            }
+            else if (snapshot.ListWebPartBindings.Count > 0 || snapshot.ListDependencies.Count > 0)
+            {
+                blockers.Add("SourceTopologyUnavailable: list-bound Web Parts require the exact source Web ownership closure.");
+            }
+
+            var bindingByWebPart = snapshot.ListWebPartBindings.ToDictionary(value => value.SourceWebPartId);
+            var listPlans = listMigration == null
+                ? new Dictionary<Guid, ListMaterializationPlan>()
+                : listMigration.Lists.ToDictionary(value => value.SourceListId);
+            foreach (var webPart in snapshot.WebParts)
+            {
+                ClassicListWebPartBindingSnapshot binding;
+                if (!bindingByWebPart.TryGetValue(webPart.Id, out binding))
+                {
+                    webPartActions.Add(new ClassicWebPartAction
+                    {
+                        SourceWebPartId = webPart.Id,
+                        Disposition = ClassicWebPartDisposition.CopyCaptured,
+                        Reason = "Copy the portable shared Web Part export after approved text rewrites."
+                    });
+                    continue;
+                }
+                ListMaterializationPlan listPlan;
+                if (!listPlans.TryGetValue(binding.SourceListId, out listPlan) || !listPlan.IsExecutable)
+                {
+                    webPartActions.Add(new ClassicWebPartAction
+                    {
+                        SourceWebPartId = webPart.Id,
+                        Disposition = ClassicWebPartDisposition.Block,
+                        SourceListWebId = binding.SourceListWebId,
+                        SourceListId = binding.SourceListId,
+                        SourceViewId = binding.SourceViewId,
+                        Reason = "The bound source List has no executable target materialization plan."
+                    });
+                    blockers.Add("ListWebPartBindingBlocked: Web Part '" + (webPart.Title ?? webPart.Id.ToString("D")) + "' has no executable target List plan.");
+                    continue;
+                }
+                if (!binding.SourceViewId.HasValue
+                    || !listPlan.Views.Any(value => value.SourceViewId == binding.SourceViewId.Value
+                        && (value.Disposition == ListViewMaterializationDisposition.CreateOrReuseWebPartView
+                            || value.Disposition == ListViewMaterializationDisposition.CreateOrReuseOwnedPublicView)))
+                {
+                    webPartActions.Add(new ClassicWebPartAction
+                    {
+                        SourceWebPartId = webPart.Id,
+                        Disposition = ClassicWebPartDisposition.Block,
+                        SourceListWebId = binding.SourceListWebId,
+                        SourceListId = binding.SourceListId,
+                        SourceViewId = binding.SourceViewId,
+                        Reason = "The captured List Web Part View has no executable target View plan."
+                    });
+                    blockers.Add("ListWebPartViewMappingBlocked: Web Part '" + (webPart.Title ?? webPart.Id.ToString("D")) + "' has no captured executable source View identity.");
+                    continue;
+                }
+                webPartActions.Add(new ClassicWebPartAction
+                {
+                    SourceWebPartId = webPart.Id,
+                    Disposition = ClassicWebPartDisposition.RebindListAfterMaterialization,
+                    SourceListWebId = binding.SourceListWebId,
+                    SourceListId = binding.SourceListId,
+                    SourceViewId = binding.SourceViewId,
+                    TargetWebUrl = listPlan.TargetWebUrl,
+                    TargetListServerRelativeUrl = listPlan.TargetRootFolderServerRelativeUrl,
+                    Reason = "Resolve target Web/List/View runtime IDs from the verified materialization receipt, then rewrite the sealed Web Part export."
+                });
+            }
             var fieldActions = PageFieldPlanner.BuildActions(
                 targetContext,
                 snapshot.Fields,
@@ -141,6 +275,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 LayoutAdmission = layoutAdmission,
                 FieldActions = fieldActions,
                 DependencyActions = dependencyActions,
+                Topology = topology,
+                ListMigration = listMigration,
+                WebPartActions = webPartActions.OrderBy(value => value.SourceWebPartId).ToList(),
                 Replacements = replacements,
                 ExpectedPublishingPageContentSha256 = expectedContentDigest,
                 StorageAssertions = PageStorageAssertionBuilder.Build(
@@ -283,7 +420,26 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                         TargetTermStoreId = value.TargetTermStoreId,
                         TargetTermSetId = value.TargetTermSetId
                     })
-                    .ToList()
+                    .ToList(),
+                TopologyPolicy = new TopologyPlanningPolicy
+                {
+                    DefaultChildWebTemplate = options.TopologyPolicy?.DefaultChildWebTemplate,
+                    DefaultChildWebConfiguration = options.TopologyPolicy == null ? 0 : options.TopologyPolicy.DefaultChildWebConfiguration,
+                    WebOverrides = (options.TopologyPolicy?.WebOverrides ?? new List<TargetWebOverride>()).Select(value => new TargetWebOverride
+                    {
+                        SourceWebId = value.SourceWebId,
+                        TargetUrlSegment = value.TargetUrlSegment,
+                        TargetTitle = value.TargetTitle,
+                        TargetTemplate = value.TargetTemplate,
+                        TargetConfiguration = value.TargetConfiguration
+                    }).ToList()
+                },
+                ListTargetOverrides = (options.ListTargetOverrides ?? new List<ListTargetOverride>()).Select(value => new ListTargetOverride
+                {
+                    SourceListId = value.SourceListId,
+                    TargetTitle = value.TargetTitle,
+                    TargetRootFolderServerRelativeUrl = value.TargetRootFolderServerRelativeUrl
+                }).ToList()
             };
         }
 

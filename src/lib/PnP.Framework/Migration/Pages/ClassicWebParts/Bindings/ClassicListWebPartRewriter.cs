@@ -33,6 +33,10 @@ namespace PnP.Framework.Migration.Pages.ClassicWebParts.Bindings
             {
                 SetProperty(document, "TitleUrl", target.TargetListServerRelativeUrl, replacements);
             }
+            if (target.TargetViewId.HasValue)
+            {
+                SetOptionalProperty(document, "ViewGuid", target.TargetViewId.Value.ToString("D"), replacements);
+            }
 
             var definition = FindProperty(document, "XmlDefinition");
             if (definition != null)
@@ -81,6 +85,17 @@ namespace PnP.Framework.Migration.Pages.ClassicWebParts.Bindings
         {
             return document.Descendants().LastOrDefault(element => string.Equals(element.Name.LocalName, "property", StringComparison.OrdinalIgnoreCase)
                 && string.Equals((string)element.Attribute("name"), name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private static void SetOptionalProperty(XDocument document, string name, string value, IDictionary<string, string> replacements)
+        {
+            var property = FindProperty(document, name);
+            if (property == null)
+            {
+                return;
+            }
+            replacements["property:" + name + ":" + property.Value] = value;
+            property.Value = value;
         }
 
         private static void RewriteProperty(XDocument document, string name, IDictionary<string, string> rewrites, IDictionary<string, string> replacements)

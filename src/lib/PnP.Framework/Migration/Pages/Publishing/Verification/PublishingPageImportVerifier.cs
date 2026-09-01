@@ -7,6 +7,7 @@ using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Verification;
+using PnP.Framework.Migration.Lists.Planning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
             Guid operationId,
             DateTimeOffset startedAt,
             int materializedDependencyCount,
+            IList<ListMaterializationReceipt> listReceipts,
             IList<PageFieldImportResult> fieldResults,
             IList<MigrationMutationReceipt> steps,
             IEnumerable<string> warnings,
@@ -81,6 +83,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     verificationContext,
                     package.Plan.TargetPageServerRelativeUrl,
                     package.Snapshot.WebParts,
+                    package.Snapshot.ListWebPartBindings,
+                    package.Plan.WebPartActions,
+                    listReceipts,
                     package.Plan.Replacements);
                 var persistedDigest = PublishingPageDigest.ComputeSha256(content);
                 var receiptWarnings = warnings
@@ -152,6 +157,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     WebPartsMatched = webPartsMatched,
                     WebPartResults = webPartResults,
                     MaterializedDependencyCount = materializedDependencyCount,
+                    ListMaterializations = listReceipts,
                     FieldResults = fieldResults,
                     FreshReadbackPassed = readbackPassed,
                     StorageVerificationStatus = readbackPassed

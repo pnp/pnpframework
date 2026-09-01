@@ -18,6 +18,8 @@ using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
 using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Lists.Items;
+using PnP.Framework.Migration.Lists.Capture;
+using PnP.Framework.Migration.Lists.Fields;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Evidence;
@@ -426,6 +428,7 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 + "<property name=\"ListId\">" + sourceList.ToString("D") + "</property>"
                 + "<property name=\"ListName\">{" + sourceList.ToString("D") + "}</property>"
                 + "<property name=\"WebId\">00000000-0000-0000-0000-000000000000</property>"
+                + "<property name=\"ViewGuid\">" + sourceView.ToString("D") + "</property>"
                 + "<property name=\"TitleUrl\">/teams/source/child/Lists/Resources</property>"
                 + "<property name=\"XmlDefinition\">&lt;View Name=\"{" + sourceView.ToString("D") + "}\" Url=\"/teams/source/child/Pages/A.aspx\"&gt;&lt;JSLink&gt;clienttemplates.js&lt;/JSLink&gt;&lt;/View&gt;</property>"
                 + "</properties></data></webPart></webParts>";
@@ -468,6 +471,7 @@ namespace PnP.Framework.Test.EnterpriseWiki
             Assert.AreEqual(targetWeb.ToString("D"), properties["WebId"]);
             Assert.AreEqual(targetList.ToString("D"), properties["ListId"]);
             Assert.AreEqual("{" + targetList.ToString("D") + "}", properties["ListName"]);
+            Assert.AreEqual(targetView.ToString("D"), properties["ViewGuid"]);
             var view = XDocument.Parse(properties["XmlDefinition"]).Root;
             Assert.AreEqual("{" + targetView.ToString("D") + "}", (string)view.Attribute("Name"));
             Assert.AreEqual("/sites/target/child/Pages/A.aspx", (string)view.Attribute("Url"));
@@ -585,6 +589,180 @@ namespace PnP.Framework.Test.EnterpriseWiki
             Assert.AreEqual(typeof(Dictionary<string, object>).FullName, captured.RawType);
             StringAssert.Contains(captured.RawValueJson, "OOCL-42");
             Assert.IsTrue(captured.Diagnostics.Any(value => value.Contains("No typed list-item serializer")));
+        }
+
+        [TestMethod]
+        public void ListPlannerOrdersLookupClosureAndRetainsUnusedUnknownFieldsAsEvidence()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var webId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var ownerId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var lookupId = Guid.Parse("44444444-4444-4444-4444-444444444444");
+            var lookupFieldId = Guid.Parse("55555555-5555-5555-5555-555555555555");
+            var unknownFieldId = Guid.Parse("66666666-6666-6666-6666-666666666666");
+            var owner = CreateListSnapshot(siteId, webId, ownerId, "Owner");
+            owner.Fields.Add(new ListFieldSnapshot
+            {
+                Id = lookupFieldId,
+                InternalName = "Category",
+                TypeAsString = "Lookup",
+                SchemaXml = "<Field ID='{55555555-5555-5555-5555-555555555555}' Name='Category' Type='Lookup' List='{44444444-4444-4444-4444-444444444444}' ShowField='Title' />",
+                SourceLookupWebId = webId,
+                SourceLookupListId = lookupId,
+                LookupField = "Title"
+            });
+            owner.Fields.Add(new ListFieldSnapshot
+            {
+                Id = unknownFieldId,
+                InternalName = "FutureValue",
+                TypeAsString = "FutureType",
+                SchemaXml = "<Field ID='{66666666-6666-6666-6666-666666666666}' Name='FutureValue' Type='FutureType' />"
+            });
+            var lookup = CreateListSnapshot(siteId, webId, lookupId, "Lookup");
+
+            var plan = ListMigrationPlanFactory.Create(
+                new[] { owner, lookup },
+                new[] { new ListLookupDependency { SourceListId = ownerId, LookupListId = lookupId, FieldId = lookupFieldId, FieldInternalName = "Category" } },
+                CreateTopology(siteId, webId),
+                null,
+                null);
+
+            Assert.IsTrue(plan.IsExecutable, string.Join(Environment.NewLine, plan.Issues.Select(value => value.Message)));
+            CollectionAssert.AreEqual(new[] { lookupId, ownerId }, plan.OrderedSourceListIds.ToArray());
+            var ownerPlan = plan.Lists.Single(value => value.SourceListId == ownerId);
+            Assert.AreEqual(ListFieldMaterializationDisposition.MapLookup, ownerPlan.Fields.Single(value => value.SourceFieldId == lookupFieldId).Disposition);
+            Assert.AreEqual(ListFieldMaterializationDisposition.EvidenceOnly, ownerPlan.Fields.Single(value => value.SourceFieldId == unknownFieldId).Disposition);
+        }
+
+        [TestMethod]
+        public void ListPlannerBlocksNonemptyPrincipalValuesWithoutExplicitMapping()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var webId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var listId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var fieldId = Guid.Parse("44444444-4444-4444-4444-444444444444");
+            var source = CreateListSnapshot(siteId, webId, listId, "People");
+            source.Fields.Add(new ListFieldSnapshot
+            {
+                Id = fieldId,
+                InternalName = "Owner",
+                TypeAsString = "User",
+                SchemaXml = "<Field ID='{44444444-4444-4444-4444-444444444444}' Name='Owner' Type='User' />"
+            });
+            source.SourceItemCount = 1;
+            source.Items.Add(new ListItemSnapshot
+            {
+                SourceItemId = 1,
+                Values = new List<ListItemValueSnapshot>
+                {
+                    new ListItemValueSnapshot { InternalName = "Owner", Kind = ListItemValueKind.User, ScalarValue = "i:0#.f|membership|owner@example.com" }
+                }
+            });
+
+            var plan = ListMigrationPlanFactory.Create(new[] { source }, null, CreateTopology(siteId, webId), null, null);
+
+            Assert.IsFalse(plan.IsExecutable);
+            Assert.AreEqual(ListFieldMaterializationDisposition.Block, plan.Lists.Single().Fields.Single(value => value.SourceFieldId == fieldId).Disposition);
+            Assert.IsTrue(plan.Lists.Single().Issues.Any(value => value.Code == "PrincipalMappingUnavailable"));
+        }
+
+        [TestMethod]
+        public void WebPartReplayCompositionUsesMaterializedListAndViewReceipts()
+        {
+            var sourceWeb = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var sourceList = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var sourceView = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var webPartId = Guid.Parse("44444444-4444-4444-4444-444444444444");
+            var targetWeb = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa");
+            var targetList = Guid.Parse("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb");
+            var targetView = Guid.Parse("cccccccc-cccc-cccc-cccc-cccccccccccc");
+            var xml = "<webParts><webPart><data><properties>"
+                + "<property name='ListId'>" + sourceList.ToString("D") + "</property>"
+                + "<property name='ListName'>{" + sourceList.ToString("D") + "}</property>"
+                + "<property name='WebId'>" + sourceWeb.ToString("D") + "</property>"
+                + "<property name='ViewGuid'>" + sourceView.ToString("D") + "</property>"
+                + "<property name='TitleUrl'>/sites/source/Lists/Items</property>"
+                + "<property name='XmlDefinition'>&lt;View Name=\"{" + sourceView.ToString("D") + "}\" Url=\"/sites/source/Pages/A.aspx\" /&gt;</property>"
+                + "</properties></data></webPart></webParts>";
+            var captured = new ClassicWebPartSnapshot { Id = webPartId, ExportXml = xml };
+            var binding = new ClassicListWebPartBindingSnapshot
+            {
+                SourceWebPartId = webPartId,
+                SourceListWebId = sourceWeb,
+                SourceListId = sourceList,
+                SourceViewId = sourceView,
+                SourceTitleUrl = "/sites/source/Lists/Items",
+                SourceExportXml = xml
+            };
+            var receipt = new ListMaterializationReceipt
+            {
+                SourceWebId = sourceWeb,
+                SourceListId = sourceList,
+                TargetWebId = targetWeb,
+                TargetListId = targetList,
+                TargetRootFolderServerRelativeUrl = "/sites/target/Lists/Items",
+                TargetViewIds = new Dictionary<Guid, Guid> { [sourceView] = targetView }
+            };
+
+            var replay = ClassicWebPartReplayComposer.Compose(
+                captured,
+                new ClassicWebPartAction { SourceWebPartId = webPartId, Disposition = ClassicWebPartDisposition.RebindListAfterMaterialization },
+                binding,
+                receipt,
+                "/sites/target/Pages/A.aspx",
+                Array.Empty<PageTextReplacement>());
+            var properties = XDocument.Parse(replay).Descendants().Where(value => value.Name.LocalName == "property")
+                .ToDictionary(value => (string)value.Attribute("name"), value => value.Value, StringComparer.OrdinalIgnoreCase);
+
+            Assert.AreEqual(targetWeb.ToString("D"), properties["WebId"]);
+            Assert.AreEqual(targetList.ToString("D"), properties["ListId"]);
+            Assert.AreEqual(targetView.ToString("D"), properties["ViewGuid"]);
+            Assert.AreEqual("/sites/target/Lists/Items", properties["TitleUrl"]);
+        }
+
+        private static ListDependencySnapshot CreateListSnapshot(Guid siteId, Guid webId, Guid listId, string title)
+        {
+            return new ListDependencySnapshot
+            {
+                SourceSiteId = siteId,
+                SourceWebId = webId,
+                SourceWebUrl = "https://source.sharepoint.com/sites/source",
+                SourceListId = listId,
+                Title = title,
+                BaseTemplate = 100,
+                BaseType = "GenericList",
+                RootFolderServerRelativeUrl = "/sites/source/Lists/" + title,
+                Availability = EvidenceAvailability.Captured
+            };
+        }
+
+        private static TopologyPlan CreateTopology(Guid siteId, Guid webId)
+        {
+            var plan = new TopologyPlan
+            {
+                SiteCollections = new List<SiteCollectionMappingPlan>
+                {
+                    new SiteCollectionMappingPlan
+                    {
+                        SourceSiteId = siteId,
+                        TargetSiteCollectionUrl = "https://target.sharepoint.com/sites/target",
+                        Webs = new List<WebMappingPlan>
+                        {
+                            new WebMappingPlan
+                            {
+                                Kind = TopologyNodeKind.SiteCollectionRoot,
+                                SourceSiteId = siteId,
+                                SourceWebId = webId,
+                                SourceServerRelativeUrl = "/sites/source",
+                                TargetWebUrl = "https://target.sharepoint.com/sites/target",
+                                TargetServerRelativeUrl = "/sites/target"
+                            }
+                        }
+                    }
+                }
+            };
+            plan.PlanDigest = TopologyPlanner.ComputeDigest(plan);
+            return plan;
         }
 
         private static PublishingPageCaptureBundle CreateSnapshot()

@@ -1,0 +1,118 @@
+using Microsoft.SharePoint.Client;
+using PnP.Framework.Migration.Diagnostics;
+using PnP.Framework.Migration.Lists.Capture;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace PnP.Framework.Migration.Lists.Planning
+{
+    internal static class ListTargetInspector
+    {
+        public const string OriginalIdentifierPropertyName = "pnp_reserved_list_original_identifier";
+        public const string PlanDigestPropertyName = "pnp_reserved_list_migration_digest";
+
+        public static ListTargetProbe Inspect(ClientContext anchorContext, ListDependencySnapshot source, ListMaterializationPlan plan)
+        {
+            if (anchorContext == null)
+            {
+                throw new ArgumentNullException(nameof(anchorContext));
+            }
+            var probe = new ListTargetProbe
+            {
+                TargetWebUrl = plan.TargetWebUrl,
+                TargetRootFolderServerRelativeUrl = plan.TargetRootFolderServerRelativeUrl,
+                Disposition = ListMaterializationDisposition.Block
+            };
+            try
+            {
+                using (var context = anchorContext.Clone(plan.TargetWebUrl))
+                {
+                    var web = context.Web;
+                    context.Load(web, value => value.Id, value => value.Url, value => value.ServerRelativeUrl, value => value.EffectiveBasePermissions);
+                    context.Load(web.Lists, values => values.Include(
+                        value => value.Id,
+                        value => value.Title,
+                        value => value.BaseTemplate,
+                        value => value.RootFolder.ServerRelativeUrl,
+                        value => value.RootFolder.Properties));
+                    context.ExecuteQueryRetry();
+                    probe.TargetWebExists = true;
+                    probe.TargetWebId = web.Id;
+                    probe.CanManageLists = web.EffectiveBasePermissions.Has(PermissionKind.ManageLists);
+                    var exact = web.Lists.AsEnumerable().FirstOrDefault(value => string.Equals(
+                        Normalize(value.RootFolder.ServerRelativeUrl),
+                        Normalize(plan.TargetRootFolderServerRelativeUrl),
+                        StringComparison.OrdinalIgnoreCase));
+                    probe.SameTitleDifferentPaths = web.Lists.AsEnumerable()
+                        .Where(value => string.Equals(value.Title, plan.TargetTitle, StringComparison.OrdinalIgnoreCase))
+                        .Where(value => exact == null || value.Id != exact.Id)
+                        .Select(value => value.RootFolder.ServerRelativeUrl)
+                        .OrderBy(value => value, StringComparer.OrdinalIgnoreCase).ToList();
+                    if (exact == null)
+                    {
+                        if (!probe.CanManageLists)
+                        {
+                            probe.Issues.Add(Issue("TargetListWriteUnavailable", plan, "The mapped target Web does not grant ManageLists."));
+                        }
+                        if (probe.SameTitleDifferentPaths.Count > 0)
+                        {
+                            probe.Issues.Add(Issue("TargetListTitleCollision", plan,
+                                "The target already contains the same List title at different path(s): " + string.Join(", ", probe.SameTitleDifferentPaths) + "."));
+                        }
+                        probe.Disposition = probe.Issues.Count == 0 ? ListMaterializationDisposition.CreateOwned : ListMaterializationDisposition.Block;
+                        return probe;
+                    }
+
+                    probe.ListExists = true;
+                    probe.TargetListId = exact.Id;
+                    probe.ExistingTitle = exact.Title;
+                    probe.ExistingBaseTemplate = exact.BaseTemplate;
+                    probe.ExistingOriginalIdentifier = Property(exact.RootFolder.Properties, OriginalIdentifierPropertyName);
+                    probe.ExistingPlanDigest = Property(exact.RootFolder.Properties, PlanDigestPropertyName);
+                    if (exact.BaseTemplate != source.BaseTemplate || !string.Equals(exact.Title, plan.TargetTitle, StringComparison.Ordinal))
+                    {
+                        probe.Issues.Add(Issue("TargetListCollision", plan, "A List exists at the target path with different title or base template."));
+                    }
+                    if (!string.Equals(probe.ExistingOriginalIdentifier, plan.OriginalIdentifier, StringComparison.Ordinal)
+                        || !string.Equals(probe.ExistingPlanDigest, plan.PlanDigest, StringComparison.OrdinalIgnoreCase))
+                    {
+                        probe.Issues.Add(Issue("TargetListOwnershipCollision", plan, "The existing List is not claimed by this exact source identity and semantic plan digest."));
+                    }
+                    probe.Disposition = probe.Issues.Count == 0 ? ListMaterializationDisposition.ReuseOwned : ListMaterializationDisposition.Block;
+                    return probe;
+                }
+            }
+            catch (ServerException exception)
+            {
+                probe.Issues.Add(Issue("TargetWebUnavailable", plan, "The mapped target Web could not be inspected: " + exception.Message));
+                return probe;
+            }
+        }
+
+        private static string Normalize(string value)
+        {
+            return Uri.UnescapeDataString(value ?? string.Empty).TrimEnd('/');
+        }
+
+        private static string Property(PropertyValues values, string name)
+        {
+            object value;
+            return values != null && values.FieldValues.TryGetValue(name, out value) ? Convert.ToString(value) : null;
+        }
+
+        private static MigrationIssue Issue(string code, ListMaterializationPlan plan, string message)
+        {
+            return new MigrationIssue
+            {
+                Code = code,
+                Severity = MigrationIssueSeverity.Blocker,
+                Subject = "target-list:" + plan.TargetRootFolderServerRelativeUrl,
+                Ingredient = "ListDependency.TargetProbe",
+                Message = message,
+                SourceIdentity = plan.OriginalIdentifier,
+                TargetIdentity = plan.TargetRootFolderServerRelativeUrl
+            };
+        }
+    }
+}

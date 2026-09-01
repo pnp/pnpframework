@@ -4,6 +4,8 @@ using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Pages.Content;
 using PnP.Framework.Migration.Pages.Fields;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
+using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
         public static PublishingPageWriteResult Write(
             ClientContext targetContext,
             PublishingPageMigrationPackage package,
+            IDictionary<Guid, ListMaterializationReceipt> listReceipts,
             MigrationExecutionRecorder recorder,
             ICollection<string> warnings)
         {
@@ -34,7 +37,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
             EnsureCheckout(targetContext, pages, targetFile, recorder);
             WriteContent(targetContext, targetItem, package, recorder);
             var fieldResults = WriteFields(targetContext, targetItem, package, recorder, warnings);
-            WriteWebParts(targetWeb, package, recorder);
+            WriteWebParts(targetWeb, package, listReceipts, recorder);
             return new PublishingPageWriteResult
             {
                 PagesLibrary = pages,
@@ -119,6 +122,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
         private static void WriteWebParts(
             Web targetWeb,
             PublishingPageMigrationPackage package,
+            IDictionary<Guid, ListMaterializationReceipt> listReceipts,
             MigrationExecutionRecorder recorder)
         {
             if (package.Snapshot.WebParts.Count == 0)
@@ -127,9 +131,30 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                 return;
             }
 
+            var actions = package.Plan.WebPartActions.ToDictionary(value => value.SourceWebPartId);
+            var bindings = package.Snapshot.ListWebPartBindings.ToDictionary(value => value.SourceWebPartId);
             foreach (var webPart in package.Snapshot.WebParts)
             {
                 var captured = webPart;
+                ClassicWebPartAction action;
+                if (!actions.TryGetValue(captured.Id, out action))
+                {
+                    throw new InvalidOperationException("The captured Web Part has no approved replay action: " + captured.Id.ToString("D") + ".");
+                }
+                ClassicListWebPartBindingSnapshot binding;
+                bindings.TryGetValue(captured.Id, out binding);
+                ListMaterializationReceipt listReceipt = null;
+                if (binding != null && (listReceipts == null || !listReceipts.TryGetValue(binding.SourceListId, out listReceipt)))
+                {
+                    throw new InvalidOperationException("The list-bound Web Part has no materialized target List receipt: " + captured.Id.ToString("D") + ".");
+                }
+                var replayXml = ClassicWebPartReplayComposer.Compose(
+                    captured,
+                    action,
+                    binding,
+                    listReceipt,
+                    package.Plan.TargetPageServerRelativeUrl,
+                    package.Plan.Replacements);
                 recorder.Execute(
                     $"page.webpart.{captured.Id:N}",
                     $"Import Web Part '{captured.Title}' into zone '{captured.ZoneId}' at index {captured.ZoneIndex}.",
@@ -138,7 +163,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                         WebPartIndex = captured.ZoneIndex,
                         WebPartTitle = captured.Title,
                         WebPartZone = captured.ZoneId,
-                        WebPartXml = PageTextTransformer.Rewrite(captured.ExportXml, package.Plan.Replacements)
+                        WebPartXml = replayXml
                     }));
             }
         }

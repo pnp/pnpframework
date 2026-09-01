@@ -186,6 +186,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                 || plan.LayoutAdmission == null
                 || plan.FieldActions == null
                 || plan.DependencyActions == null
+                || plan.WebPartActions == null
                 || plan.Replacements == null
                 || plan.StorageAssertions == null
                 || plan.RuntimeVerification == null
@@ -196,7 +197,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                 throw new InvalidDataException("The migration plan is missing policy, target probe, or an action/assertion collection.");
             }
 
-            if (plan.PlanningPolicy.TaxonomySchemaMappings == null)
+            if (plan.PlanningPolicy.TaxonomySchemaMappings == null
+                || plan.PlanningPolicy.TopologyPolicy == null
+                || plan.PlanningPolicy.TopologyPolicy.WebOverrides == null
+                || plan.PlanningPolicy.ListTargetOverrides == null)
             {
                 throw new InvalidDataException("The planning policy contains a null taxonomy schema mapping collection.");
             }
@@ -207,6 +211,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                 plan.LayoutMaterialization,
                 plan.LayoutTargetProbe,
                 plan.LayoutAdmission);
+
+            if (package.Snapshot.SourceTopology != null && plan.Topology != null
+                && !string.Equals(Topology.TopologyPlanner.ComputeDigest(plan.Topology), plan.Topology.PlanDigest, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidDataException("The topology plan digest differs from its sealed content.");
+            }
+            ListMigrationPlanValidator.Validate(package.Snapshot.ListDependencies, plan.ListMigration);
 
             var duplicateRuntimeRequirement = plan.RuntimeVerification.Requirements
                 .GroupBy(item => item?.Id, StringComparer.Ordinal)
@@ -277,6 +288,16 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                 || !dependencyIds.SetEquals(plannedDependencyIds))
             {
                 throw new InvalidDataException("The plan must contain exactly one dependency action for every captured dependency.");
+            }
+
+            var webPartIds = new HashSet<Guid>(snapshot.WebParts.Select(item => item.Id));
+            var plannedWebPartIds = new HashSet<Guid>(plan.WebPartActions.Select(item => item == null ? Guid.Empty : item.SourceWebPartId));
+            if (plan.WebPartActions.Any(item => item == null)
+                || plan.WebPartActions.Count != webPartIds.Count
+                || plannedWebPartIds.Count != webPartIds.Count
+                || !webPartIds.SetEquals(plannedWebPartIds))
+            {
+                throw new InvalidDataException("The plan must contain exactly one Web Part action for every captured shared Web Part.");
             }
         }
 

@@ -7,6 +7,9 @@ using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Pages.References;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
 using PnP.Framework.Migration.Verification;
+using PnP.Framework.Migration.Topology;
+using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
 using System.Collections.Generic;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Planning
@@ -48,6 +51,12 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
         public IList<PageFieldAction> FieldActions { get; set; } = new List<PageFieldAction>();
 
         public IList<PageReferenceAction> DependencyActions { get; set; } = new List<PageReferenceAction>();
+
+        public TopologyPlan Topology { get; set; }
+
+        public ListMigrationPlanSet ListMigration { get; set; }
+
+        public IList<ClassicWebPartAction> WebPartActions { get; set; } = new List<ClassicWebPartAction>();
 
         public IList<PageTextReplacement> Replacements { get; set; } = new List<PageTextReplacement>();
 

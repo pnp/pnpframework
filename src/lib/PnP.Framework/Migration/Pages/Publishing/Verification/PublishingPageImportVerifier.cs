@@ -5,6 +5,8 @@ using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
+using PnP.Framework.Migration.Execution;
+using PnP.Framework.Migration.Verification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +19,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
             ClientContext targetContext,
             PublishingPageMigrationPackage package,
             string approvedPlanDigest,
+            Guid operationId,
             DateTimeOffset startedAt,
             int materializedDependencyCount,
             IList<PageFieldImportResult> fieldResults,
+            IList<MigrationMutationReceipt> steps,
             IEnumerable<string> warnings,
             Func<string, bool> isExpectedContentType)
         {
@@ -73,7 +77,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
 
                 var content = PublishingPageCaptureReader.GetFieldString(item, "PublishingPageContent") ?? string.Empty;
                 var contentTypeId = PublishingPageCaptureReader.GetFieldString(item, "ContentTypeId") ?? string.Empty;
-                var webParts = verificationContext.Web.GetWebParts(package.Plan.TargetPageServerRelativeUrl).ToArray();
+                var webPartResults = PublishingPageWebPartVerifier.Verify(
+                    verificationContext,
+                    package.Plan.TargetPageServerRelativeUrl,
+                    package.Snapshot.WebParts,
+                    package.Plan.Replacements);
                 var persistedDigest = PublishingPageDigest.ComputeSha256(content);
                 var receiptWarnings = warnings
                     .Where(value => !string.IsNullOrWhiteSpace(value))
@@ -85,7 +93,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     StringComparison.OrdinalIgnoreCase);
                 if (!storageContentEqual)
                 {
-                    receiptWarnings.Add("PublishingPageContent storage bytes differ after SharePoint serialization; DOM + visual acceptance remains the required fidelity gate.");
+                    receiptWarnings.Add("PublishingPageContent storage bytes differ from the approved digest. Storage verification failed; runtime verification cannot override this mismatch.");
                 }
 
                 var expectedContentPresent = !string.IsNullOrWhiteSpace(package.Snapshot.PublishingPageContent);
@@ -107,15 +115,24 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 }
 
                 var plannedFieldsPassed = fieldResults.All(result => !result.Attempted || result.Succeeded);
+                var webPartsMatched = webPartResults.All(result => result.Passed)
+                    && webPartResults.Count == package.Snapshot.WebParts.Count;
                 var readbackPassed = isExpectedContentType(contentTypeId)
-                    && webParts.Length == package.Snapshot.WebParts.Count
-                    && (!expectedContentPresent || persistedContentPresent)
+                    && storageContentEqual
+                    && webPartsMatched
                     && lifecycleMatched
                     && plannedFieldsPassed;
+                var runtimeVerificationRequired = package.Plan.RuntimeVerification.Requirements.Any(item => item.Required);
                 return new PublishingPageImportReceipt
                 {
                     StartedAtUtc = startedAt,
                     CompletedAtUtc = DateTimeOffset.UtcNow,
+                    OperationId = operationId,
+                    ExecutionStatus = readbackPassed
+                        ? MigrationExecutionStatus.Succeeded
+                        : MigrationExecutionStatus.FailedUnexpectedly,
+                    MutationStarted = true,
+                    Steps = steps,
                     ApprovedPlanDigest = approvedPlanDigest,
                     TargetWebUrl = package.Plan.TargetWebUrl,
                     TargetPageServerRelativeUrl = package.Plan.TargetPageServerRelativeUrl,
@@ -131,12 +148,24 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     ExpectedPublishingPageContentSha256 = package.Plan.ExpectedPublishingPageContentSha256,
                     PersistedPublishingPageContentSha256 = persistedDigest,
                     StorageContentEqual = storageContentEqual,
-                    ImportedWebPartCount = webParts.Length,
+                    ImportedWebPartCount = webPartResults.Count(result => result.TargetWebPartId.HasValue),
+                    WebPartsMatched = webPartsMatched,
+                    WebPartResults = webPartResults,
                     MaterializedDependencyCount = materializedDependencyCount,
                     FieldResults = fieldResults,
                     FreshReadbackPassed = readbackPassed,
+                    StorageVerificationStatus = readbackPassed
+                        ? StorageVerificationStatus.Passed
+                        : StorageVerificationStatus.Failed,
+                    RuntimeVerificationStatus = runtimeVerificationRequired
+                        ? RuntimeVerificationStatus.Pending
+                        : RuntimeVerificationStatus.NotRequired,
+                    AcceptanceStatus = !readbackPassed
+                        ? MigrationAcceptanceStatus.Rejected
+                        : runtimeVerificationRequired
+                            ? MigrationAcceptanceStatus.Pending
+                            : MigrationAcceptanceStatus.Accepted,
                     Warnings = receiptWarnings.Distinct(StringComparer.Ordinal).OrderBy(value => value, StringComparer.Ordinal).ToList(),
-                    Succeeded = readbackPassed
                 };
             }
         }

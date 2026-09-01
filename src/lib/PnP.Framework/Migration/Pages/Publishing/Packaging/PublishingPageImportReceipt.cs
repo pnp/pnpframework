@@ -1,6 +1,9 @@
 using PnP.Framework.Migration.Pages.Fields;
 using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
+using PnP.Framework.Migration.Pages.Publishing.Verification;
+using PnP.Framework.Migration.Execution;
+using PnP.Framework.Migration.Verification;
 using System;
 using System.Collections.Generic;
 
@@ -13,6 +16,16 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
         public DateTimeOffset StartedAtUtc { get; set; }
 
         public DateTimeOffset CompletedAtUtc { get; set; }
+
+        public Guid OperationId { get; set; }
+
+        public MigrationExecutionStatus ExecutionStatus { get; set; }
+
+        public ExecutionAdmissionFailure AdmissionFailure { get; set; }
+
+        public bool MutationStarted { get; set; }
+
+        public IList<MigrationMutationReceipt> Steps { get; set; } = new List<MigrationMutationReceipt>();
 
         public string ApprovedPlanDigest { get; set; }
 
@@ -46,14 +59,23 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
 
         public int ImportedWebPartCount { get; set; }
 
+        public bool WebPartsMatched { get; set; }
+
+        public IList<PublishingPageWebPartVerificationResult> WebPartResults { get; set; } = new List<PublishingPageWebPartVerificationResult>();
+
         public int MaterializedDependencyCount { get; set; }
 
         public IList<PageFieldImportResult> FieldResults { get; set; } = new List<PageFieldImportResult>();
 
         public bool FreshReadbackPassed { get; set; }
 
+        public StorageVerificationStatus StorageVerificationStatus { get; set; }
+
+        public RuntimeVerificationStatus RuntimeVerificationStatus { get; set; }
+
+        public MigrationAcceptanceStatus AcceptanceStatus { get; set; }
+
         public IList<string> Warnings { get; set; } = new List<string>();
 
-        public bool Succeeded { get; set; }
     }
 }

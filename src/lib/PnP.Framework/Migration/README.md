@@ -29,6 +29,11 @@ Every migration area should preserve the following boundaries:
 
 | Namespace | Scope |
 | --- | --- |
+| `PnP.Framework.Migration.Diagnostics` | Typed, stable migration issues that can be reported without parsing exception or blocker text. |
+| `PnP.Framework.Migration.Evidence` | Evidence availability, source lineage, and derived-artifact provenance shared by migration domains. |
+| `PnP.Framework.Migration.Execution` | Operation state, write-ahead mutation intents, step receipts, and pluggable execution journals. |
+| `PnP.Framework.Migration.Packaging` | Content-addressed artifact references and artifact-store contracts for larger or binary evidence. |
+| `PnP.Framework.Migration.Verification` | Storage/runtime verification states and typed external runtime-verification manifests and receipts. |
 | [`PnP.Framework.Migration.Pages`](Pages/README.md) | Shared page identity, evidence, field, reference, security, classic Web Part, content, capture, and planning capabilities. |
 | [`PnP.Framework.Migration.Pages.Publishing`](Pages/Publishing/README.md) | Classic publishing-page aggregate contracts, lifecycle policy, packages, reports, and verification. |
 | `PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki` | Enterprise Wiki classification, portability policy, target inspection, planning, and import orchestration. |
@@ -56,3 +61,9 @@ Before adding another migration area or profile:
 - document which existing PnP Framework primitives are reused.
 
 Do not add a direct source-to-target copy path that bypasses export, planning, approval, or verification.
+
+## Execution and runtime acceptance
+
+An importer records `NotStarted`, `Running`, `Succeeded`, or `FailedUnexpectedly` independently from source eligibility and plan approval. Expected admission failures return a zero-mutation receipt. Once execution starts, each mutating step writes an intent before the SharePoint operation and a receipt after the operation returns.
+
+Fresh storage verification and browser/runtime acceptance are also separate. PnP Framework owns storage readback. A browser-capable external runner consumes a typed `RuntimeVerificationManifest` and returns a digest-bound `RuntimeVerificationReceipt`; recording a requirement does not imply that it ran.

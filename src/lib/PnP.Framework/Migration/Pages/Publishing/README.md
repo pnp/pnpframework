@@ -35,6 +35,7 @@ Export deliberately has no target dependency. The resulting package can be store
 | `Pages.Publishing.Lifecycle` | Conservative target Draft/Published interpretation for Publishing Pages. Source lifecycle evidence itself remains in `Pages.Lifecycle`. |
 | `Pages.Publishing.Planning` | The target-specific Publishing Page plan that composes shared field, reference, replacement, and operation types. |
 | `Pages.Publishing.Packaging` | Versioned Publishing Page export, migration, and receipt envelopes; canonical serialization, digests, and validation. |
+| `Pages.Publishing.Execution` | Publishing-page target writes, lifecycle application, execution receipts, and failure-receipt construction. |
 | `Pages.Publishing.Reporting` | Complete Markdown review output for the source snapshot and target plan. |
 | `Pages.Publishing.Verification` | Publishing target probe, storage assertions, and fresh-readback verification. |
 | `Pages.Publishing.EnterpriseWiki` | Enterprise Wiki discovery, classification, required layout and target policy, Web Part portability policy, export, planning, import, and file-storage facade. |
@@ -143,7 +144,7 @@ The source fence detects a page that changed during capture. It is not a lock, a
 | `replacements` | Explicit source-to-target text substitutions included in the plan digest. |
 | `expectedPublishingPageContentSha256` | Expected digest after approved replacements. |
 | `storageAssertions` | Required storage-level readback conditions. |
-| `browserAssertions` | Browser checks recorded for human or external automation. |
+| `runtimeVerification` | Typed, digest-sealed requirements for an external browser/runtime verifier. Requirements are not treated as executed by the importer. |
 | `blockers` / `warnings` | Target and policy findings. `isExecutable` is derived from an empty blocker list. |
 
 Import requires the caller's `approvedPlanDigest` to match exactly. Editing a target path, action, mapping, policy input, assertion, or lifecycle decision invalidates the package until it is replanned and reviewed again.
@@ -173,6 +174,8 @@ Import rechecks critical target facts before writing so that a stale plan does n
 | --- | --- |
 | `schemaVersion` | Receipt contract version. |
 | `startedAtUtc` / `completedAtUtc` | Import execution interval. |
+| `operationId` / `executionStatus` | Independent attempt identity and `NotStarted`, `Running`, `Succeeded`, or `FailedUnexpectedly` outcome. |
+| `admissionFailure` / `mutationStarted` / `steps` | Zero-mutation admission result or the ordered write-ahead mutation receipts. |
 | `approvedPlanDigest` | Approval token actually presented to Import. |
 | `targetWebUrl` / `targetPageServerRelativeUrl` | Executed target. |
 | `targetFileUniqueId` / `targetListItemId` / `targetContentTypeId` / `targetVersionLabel` | Persisted target identity returned by fresh readback. |
@@ -182,12 +185,14 @@ Import rechecks critical target facts before writing so that a stale plan does n
 | `expectedPublishingPageContentSha256` / `persistedPublishingPageContentSha256` | Expected and read-back content digests. |
 | `storageContentEqual` | Whether storage-level content matches. |
 | `importedWebPartCount` / `materializedDependencyCount` | Applied object counts. |
+| `webPartsMatched` / `webPartResults` | Per-Web-Part export digest, zone, order, and hidden-state readback results. |
 | `fieldResults` | Per-field write result and diagnostics. |
 | `freshReadbackPassed` | Whether required fresh-readback assertions passed. |
+| `storageVerificationStatus` | `Passed` only when content digest, Web Parts, fields, content type, and lifecycle all match. |
+| `runtimeVerificationStatus` / `acceptanceStatus` | Runtime work remains `Pending` until an external verifier supplies evidence; storage success alone is not final acceptance when runtime requirements exist. |
 | `warnings` | Non-fatal import/verification findings. |
-| `succeeded` | Overall outcome after verification. |
 
-The receipt records observed outcome. It is not a rollback journal.
+The receipt records observed outcome and ordered mutation steps. It is not a promise of a cross-object transaction or automatic global rollback.
 
 ## Complete field capture, selective restore
 
@@ -278,10 +283,10 @@ The current Enterprise Wiki profile is intentionally narrow:
 - unique permissions are captured but not restored;
 - user, lookup, and taxonomy values require explicit mappings that are not implemented;
 - only recognized fields with supported values and compatible target definitions are written;
-- dependency materialization happens before page creation and has no transaction or automatic rollback journal;
+- dependency materialization happens before page creation; mutation intents and receipts are journaled, but there is no cross-object transaction or automatic global rollback;
 - replacements are reviewed and digest-sealed but are case-insensitive text substitutions rather than DOM-aware URL edits;
 - source-list-bound and known non-portable Web Parts are blocked instead of remapped;
-- browser assertions are recorded, but browser automation is outside the library importer;
+- typed runtime verification requirements are sealed in the plan, but browser automation and its evidence receipt remain outside the library importer;
 - a source fence detects capture-time mutation but does not invalidate an export after a later source edit;
 - live-tenant behavior still requires environment-specific validation in addition to unit and contract tests.
 

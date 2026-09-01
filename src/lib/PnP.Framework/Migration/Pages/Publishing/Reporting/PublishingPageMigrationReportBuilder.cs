@@ -90,7 +90,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             writer.Table("Approved text replacements", new[] { "Source", "Target", "Reason" },
                 plan.Replacements.Select(item => Row(item.Source, item.Target, item.Reason)));
             writer.List("Storage assertions", plan.StorageAssertions);
-            writer.List("Browser acceptance assertions", plan.BrowserAssertions);
+            writer.Table(
+                "Runtime verification requirements",
+                new[] { "ID", "Kind", "Required", "Description" },
+                plan.RuntimeVerification.Requirements.Select(item => Row(item.Id, item.Kind, item.Required, item.Description)));
             writer.List("Plan blockers", plan.Blockers);
             writer.List("Plan warnings", plan.Warnings);
             writer.List("Snapshot blockers", snapshot.Blockers);

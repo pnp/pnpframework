@@ -1,0 +1,124 @@
+using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.WebParts;
+using PnP.Framework.Migration.Pages.ClassicWebParts;
+using PnP.Framework.Migration.Pages.Content;
+using PnP.Framework.Migration.Pages.Publishing.Packaging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace PnP.Framework.Migration.Pages.Publishing.Verification
+{
+    internal static class PublishingPageWebPartVerifier
+    {
+        public static IList<PublishingPageWebPartVerificationResult> Verify(
+            ClientContext context,
+            string pagePath,
+            IEnumerable<ClassicWebPartSnapshot> expectedWebParts,
+            IEnumerable<PageTextReplacement> replacements)
+        {
+            var actual = Read(context, pagePath);
+            var unused = actual.ToList();
+            var results = new List<PublishingPageWebPartVerificationResult>();
+            foreach (var expected in expectedWebParts
+                         .OrderBy(item => item.ZoneId, StringComparer.OrdinalIgnoreCase)
+                         .ThenBy(item => item.ZoneIndex)
+                         .ThenBy(item => item.Id))
+            {
+                var expectedXml = PageTextTransformer.Rewrite(expected.ExportXml, replacements);
+                var expectedDigest = PublishingPageDigest.ComputeSha256(expectedXml);
+                var match = unused.FirstOrDefault(item =>
+                    string.Equals(item.ExportSha256, expectedDigest, StringComparison.OrdinalIgnoreCase)
+                    && string.Equals(item.ZoneId, expected.ZoneId, StringComparison.OrdinalIgnoreCase)
+                    && item.ZoneIndex == expected.ZoneIndex);
+                if (match == null)
+                {
+                    match = unused.FirstOrDefault(item =>
+                        string.Equals(item.ExportSha256, expectedDigest, StringComparison.OrdinalIgnoreCase));
+                }
+
+                var passed = match != null
+                    && string.Equals(match.ZoneId, expected.ZoneId, StringComparison.OrdinalIgnoreCase)
+                    && match.ZoneIndex == expected.ZoneIndex
+                    && match.Hidden == expected.Hidden;
+                results.Add(new PublishingPageWebPartVerificationResult
+                {
+                    SourceWebPartId = expected.Id,
+                    TargetWebPartId = match?.Id,
+                    ExpectedZoneId = expected.ZoneId,
+                    ExpectedZoneIndex = expected.ZoneIndex,
+                    ActualZoneId = match?.ZoneId,
+                    ActualZoneIndex = match?.ZoneIndex,
+                    ExpectedExportSha256 = expectedDigest,
+                    ActualExportSha256 = match?.ExportSha256,
+                    Passed = passed,
+                    Message = Describe(expected, match, passed)
+                });
+                if (match != null)
+                {
+                    unused.Remove(match);
+                }
+            }
+
+            foreach (var extra in unused)
+            {
+                results.Add(new PublishingPageWebPartVerificationResult
+                {
+                    TargetWebPartId = extra.Id,
+                    ActualZoneId = extra.ZoneId,
+                    ActualZoneIndex = extra.ZoneIndex,
+                    ActualExportSha256 = extra.ExportSha256,
+                    Passed = false,
+                    Message = "The target contains an unplanned shared Web Part."
+                });
+            }
+
+            return results;
+        }
+
+        private static IList<ClassicWebPartSnapshot> Read(ClientContext context, string pagePath)
+        {
+            var web = context.Web;
+            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(pagePath));
+            var manager = file.GetLimitedWebPartManager(PersonalizationScope.Shared);
+            var definitions = web.GetWebParts(pagePath).ToArray();
+            var result = new List<ClassicWebPartSnapshot>();
+            foreach (var definition in definitions)
+            {
+                var export = manager.ExportWebPart(definition.Id);
+                context.ExecuteQueryRetry();
+                var xml = export.Value ?? string.Empty;
+                result.Add(new ClassicWebPartSnapshot
+                {
+                    Id = definition.Id,
+                    Title = definition.WebPart.Title,
+                    ZoneId = definition.ZoneId,
+                    ZoneIndex = definition.WebPart.ZoneIndex,
+                    Hidden = definition.WebPart.Hidden,
+                    ExportXml = xml,
+                    ExportSha256 = PublishingPageDigest.ComputeSha256(xml)
+                });
+            }
+
+            return result;
+        }
+
+        private static string Describe(
+            ClassicWebPartSnapshot expected,
+            ClassicWebPartSnapshot actual,
+            bool passed)
+        {
+            if (actual == null)
+            {
+                return "No target Web Part has the approved export digest.";
+            }
+
+            if (passed)
+            {
+                return "Export digest, zone placement, and hidden state match.";
+            }
+
+            return $"Expected zone '{expected.ZoneId}' index {expected.ZoneIndex} hidden={expected.Hidden}; actual zone '{actual.ZoneId}' index {actual.ZoneIndex} hidden={actual.Hidden}.";
+        }
+    }
+}

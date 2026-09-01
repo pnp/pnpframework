@@ -14,6 +14,9 @@ using PnP.Framework.Migration.Pages.Publishing.Reporting;
 using PnP.Framework.Migration.Pages.Security;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
+using PnP.Framework.Migration.Execution;
+using PnP.Framework.Migration.Verification;
+using Microsoft.SharePoint.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -149,6 +152,38 @@ namespace PnP.Framework.Test.EnterpriseWiki
             Assert.AreEqual("EnterpriseWiki", roundTripped.Snapshot.SourceProfile);
             Assert.AreEqual("https://source.sharepoint.com/_catalogs/masterpage/EnterpriseWiki.aspx", roundTripped.Snapshot.Layout.Url);
             Assert.AreEqual(package.PlanDigest, roundTripped.PlanDigest);
+            Assert.AreEqual(1, roundTripped.Plan.RuntimeVerification.Requirements.Count);
+            Assert.AreEqual(RuntimeVerificationRequirementKind.AuthoredDomEquality, roundTripped.Plan.RuntimeVerification.Requirements[0].Kind);
+        }
+
+        [TestMethod]
+        public void RuntimeVerificationRequirementsAreSealedByThePlanDigest()
+        {
+            var package = CreateMigrationPackage();
+
+            package.Plan.RuntimeVerification.Requirements[0].Description = "changed after approval";
+
+            Assert.ThrowsException<InvalidDataException>(() => PublishingPagePackageValidator.ValidateMigration(package));
+        }
+
+        [TestMethod]
+        public void ImportReturnsAZeroMutationReceiptWhenThePlanDigestWasNotApproved()
+        {
+            var package = CreateMigrationPackage();
+            var journal = new InMemoryMigrationExecutionJournal();
+            using (var context = new ClientContext(package.Plan.TargetWebUrl))
+            {
+                var receipt = new EnterpriseWikiMigrationImporter().Import(context, package, "not-approved", journal);
+
+                Assert.AreEqual(MigrationExecutionStatus.NotStarted, receipt.ExecutionStatus);
+                Assert.AreEqual("PlanDigestNotApproved", receipt.AdmissionFailure.Code);
+                Assert.IsFalse(receipt.MutationStarted);
+                Assert.AreEqual(StorageVerificationStatus.NotRun, receipt.StorageVerificationStatus);
+                Assert.AreEqual(RuntimeVerificationStatus.NotRun, receipt.RuntimeVerificationStatus);
+                Assert.AreEqual(MigrationAcceptanceStatus.Rejected, receipt.AcceptanceStatus);
+                Assert.AreEqual(0, journal.Intents.Count);
+                Assert.AreEqual(1, journal.ExecutionStates.Count);
+            }
         }
 
         private static PublishingPageCaptureBundle CreateSnapshot()
@@ -233,7 +268,20 @@ namespace PnP.Framework.Test.EnterpriseWiki
                         Reason = "The field is retained for a future mapper."
                     }
                 },
-                ExpectedPublishingPageContentSha256 = snapshot.PublishingPageContentSha256
+                ExpectedPublishingPageContentSha256 = snapshot.PublishingPageContentSha256,
+                RuntimeVerification = new RuntimeVerificationManifest
+                {
+                    Requirements = new List<RuntimeVerificationRequirement>
+                    {
+                        new RuntimeVerificationRequirement
+                        {
+                            Id = "authored-dom-equality",
+                            Kind = RuntimeVerificationRequirementKind.AuthoredDomEquality,
+                            Required = true,
+                            Description = "Normalized authored DOM is equal."
+                        }
+                    }
+                }
             };
             return new PublishingPageMigrationPackage
             {

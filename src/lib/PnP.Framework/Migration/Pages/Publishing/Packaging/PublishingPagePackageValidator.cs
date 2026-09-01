@@ -156,11 +156,20 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                 || plan.DependencyActions == null
                 || plan.Replacements == null
                 || plan.StorageAssertions == null
-                || plan.BrowserAssertions == null
+                || plan.RuntimeVerification == null
+                || plan.RuntimeVerification.Requirements == null
                 || plan.Blockers == null
                 || plan.Warnings == null)
             {
                 throw new InvalidDataException("The migration plan is missing policy, target probe, or an action/assertion collection.");
+            }
+
+            var duplicateRuntimeRequirement = plan.RuntimeVerification.Requirements
+                .GroupBy(item => item?.Id, StringComparer.Ordinal)
+                .FirstOrDefault(group => string.IsNullOrWhiteSpace(group.Key) || group.Count() > 1);
+            if (duplicateRuntimeRequirement != null || plan.RuntimeVerification.Requirements.Any(item => item == null))
+            {
+                throw new InvalidDataException($"The runtime verification manifest contains a missing or duplicate requirement ID '{duplicateRuntimeRequirement?.Key}'.");
             }
 
             if (!string.Equals(plan.SourceSnapshotDigest, package.SnapshotDigest, StringComparison.OrdinalIgnoreCase))

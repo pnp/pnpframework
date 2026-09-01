@@ -11,6 +11,7 @@ using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
 using PnP.Framework.Migration.Pages.Publishing.Reporting;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
+using PnP.Framework.Migration.Verification;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -20,13 +21,15 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
 {
     public sealed class EnterpriseWikiMigrationPlanner
     {
-        private static readonly string[] BrowserAssertions =
+        private static readonly RuntimeVerificationRequirement[] RuntimeVerificationRequirements =
         {
-            "fresh-navigation-reaches-target-classic-page",
-            "no-login-access-denied-not-found-or-sharepoint-error-shell",
-            "normalized-authored-dom-equal",
-            "resource-script-and-inline-event-inventory-equal",
-            "full-page-and-authored-canvas-screenshots-captured"
+            Requirement("page-reachability", RuntimeVerificationRequirementKind.PageReachability, "Fresh navigation reaches the target classic page."),
+            Requirement("error-shell-absence", RuntimeVerificationRequirementKind.ErrorShellAbsence, "The target is not a login, access denied, not found, or SharePoint error shell."),
+            Requirement("authored-dom-equality", RuntimeVerificationRequirementKind.AuthoredDomEquality, "Normalized authored DOM is equal."),
+            Requirement("resource-inventory-equality", RuntimeVerificationRequirementKind.ResourceInventoryEquality, "Authored resource inventory is equal."),
+            Requirement("script-inventory-equality", RuntimeVerificationRequirementKind.ScriptInventoryEquality, "Authored script inventory is equal."),
+            Requirement("inline-event-inventory-equality", RuntimeVerificationRequirementKind.InlineEventInventoryEquality, "Inline event inventory is equal."),
+            Requirement("screenshot-capture", RuntimeVerificationRequirementKind.ScreenshotCapture, "Full-page and authored-canvas screenshots are captured.")
         };
 
         public PublishingPageMigrationPackage Plan(
@@ -107,7 +110,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                     dependencyActions,
                     expectedContentDigest,
                     targetLifecycle),
-                BrowserAssertions = BrowserAssertions.ToList(),
+                RuntimeVerification = new RuntimeVerificationManifest
+                {
+                    Requirements = RuntimeVerificationRequirements.Select(CopyRequirement).ToList()
+                },
                 Blockers = blockers.Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToList(),
                 Warnings = warnings.Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToList()
             };
@@ -124,6 +130,31 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             };
             PublishingPagePackageValidator.ValidateMigration(package);
             return package;
+        }
+
+        private static RuntimeVerificationRequirement Requirement(
+            string id,
+            RuntimeVerificationRequirementKind kind,
+            string description)
+        {
+            return new RuntimeVerificationRequirement
+            {
+                Id = id,
+                Kind = kind,
+                Description = description,
+                Required = true
+            };
+        }
+
+        private static RuntimeVerificationRequirement CopyRequirement(RuntimeVerificationRequirement requirement)
+        {
+            return new RuntimeVerificationRequirement
+            {
+                Id = requirement.Id,
+                Kind = requirement.Kind,
+                Required = requirement.Required,
+                Description = requirement.Description
+            };
         }
 
         private static void ValidateOptions(PagePlanningOptions options)

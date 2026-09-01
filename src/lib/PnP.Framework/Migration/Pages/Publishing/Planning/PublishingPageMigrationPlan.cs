@@ -5,6 +5,7 @@ using PnP.Framework.Migration.Pages.Planning;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
 using PnP.Framework.Migration.Pages.References;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
+using PnP.Framework.Migration.Verification;
 using System.Collections.Generic;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Planning
@@ -47,7 +48,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
 
         public IList<string> StorageAssertions { get; set; } = new List<string>();
 
-        public IList<string> BrowserAssertions { get; set; } = new List<string>();
+        public RuntimeVerificationManifest RuntimeVerification { get; set; } = new RuntimeVerificationManifest();
 
         public IList<string> Blockers { get; set; } = new List<string>();
 

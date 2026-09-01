@@ -4,6 +4,8 @@ using PnP.Framework.Migration.Pages.Fields;
 using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.Security;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
+using PnP.Framework.Migration.Pages.Publishing.Layouts;
+using PnP.Framework.Migration.Packaging;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,6 +19,17 @@ namespace PnP.Framework.Migration.Pages.Publishing.Capture
             ClientContext context,
             string pagePath,
             PageCaptureOptions options,
+            ICollection<string> blockers,
+            ICollection<string> warnings)
+        {
+            return Read(context, pagePath, options, null, blockers, warnings);
+        }
+
+        public static CapturedPublishingPage Read(
+            ClientContext context,
+            string pagePath,
+            PageCaptureOptions options,
+            IMigrationArtifactStore artifactStore,
             ICollection<string> blockers,
             ICollection<string> warnings)
         {
@@ -54,10 +67,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Capture
                 warnings.Add("PublishingPageContent is empty.");
             }
 
-            if (layout == null || string.IsNullOrWhiteSpace(layout.Url))
-            {
-                blockers.Add("PublishingPageLayout is unavailable on the source page.");
-            }
+            var layoutSnapshot = PublishingPageLayoutSnapshotReader.Read(
+                context,
+                layout?.Url,
+                layout?.Description,
+                artifactStore,
+                blockers,
+                warnings);
 
             var identity = new PageIdentity
             {
@@ -77,11 +93,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Capture
             return new CapturedPublishingPage
             {
                 Identity = identity,
-                Layout = new PublishingPageLayoutSnapshot
-                {
-                    Url = layout?.Url ?? string.Empty,
-                    Description = layout?.Description
-                },
+                Layout = layoutSnapshot,
                 PublishingPageContent = content,
                 Fields = PageFieldSnapshotReader.Read(context, item, warnings),
                 WebParts = options.IncludeWebParts

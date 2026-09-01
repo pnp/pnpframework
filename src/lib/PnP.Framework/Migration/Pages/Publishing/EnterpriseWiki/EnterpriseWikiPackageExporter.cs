@@ -3,6 +3,7 @@ using PnP.Framework.Migration.Pages.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Pages.References;
+using PnP.Framework.Migration.Packaging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
     public sealed class EnterpriseWikiPackageExporter
     {
         public PublishingPageExportPackage Export(ClientContext sourceContext, PageCaptureOptions options)
+        {
+            return Export(sourceContext, options, null);
+        }
+
+        public PublishingPageExportPackage Export(
+            ClientContext sourceContext,
+            PageCaptureOptions options,
+            IMigrationArtifactStore artifactStore)
         {
             if (sourceContext == null)
             {
@@ -27,15 +36,16 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             var sourcePagePath = PagePath.Normalize(sourceWeb.ServerRelativeUrl, options.SourcePageServerRelativeUrl, "Pages");
             var blockers = new List<string>();
             var warnings = new List<string>();
-            var sourceCapture = PublishingPageCaptureReader.Read(sourceContext, sourcePagePath, options, blockers, warnings);
+            var sourceCapture = PublishingPageCaptureReader.Read(
+                sourceContext,
+                sourcePagePath,
+                options,
+                artifactStore,
+                blockers,
+                warnings);
             if (!EnterpriseWikiMigrationProfile.IsContentType(sourceCapture.Identity.ContentTypeId))
             {
                 blockers.Add($"Source ContentTypeId '{sourceCapture.Identity.ContentTypeId}' is not an Enterprise Wiki Page content type (Project Page is intentionally excluded).");
-            }
-
-            if (!sourceCapture.Layout.Url.EndsWith("/" + EnterpriseWikiMigrationProfile.PageLayoutFileName, StringComparison.OrdinalIgnoreCase))
-            {
-                blockers.Add($"The source page uses layout '{sourceCapture.Layout.Url}'. The Enterprise Wiki profile requires {EnterpriseWikiMigrationProfile.PageLayoutFileName}.");
             }
 
             foreach (var webPart in sourceCapture.WebParts)

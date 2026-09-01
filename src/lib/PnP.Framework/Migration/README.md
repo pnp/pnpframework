@@ -32,7 +32,10 @@ Every migration area should preserve the following boundaries:
 | `PnP.Framework.Migration.Diagnostics` | Typed, stable migration issues that can be reported without parsing exception or blocker text. |
 | `PnP.Framework.Migration.Evidence` | Evidence availability, source lineage, and derived-artifact provenance shared by migration domains. |
 | `PnP.Framework.Migration.Execution` | Operation state, write-ahead mutation intents, step receipts, and pluggable execution journals. |
-| `PnP.Framework.Migration.Packaging` | Content-addressed artifact references and artifact-store contracts for larger or binary evidence. |
+| `PnP.Framework.Migration.Packaging` | Content-addressed artifact references, artifact-store contracts, digest helpers, and a local directory-backed content-addressed store for larger or binary evidence. |
+| `PnP.Framework.Migration.Schema.Fields` | Portable field-schema evidence, ownership classification, canonicalization, exact-ID materialization plans, and target probes. |
+| `PnP.Framework.Migration.Schema.ContentTypes` | Minimal required-field content-type closure capture, planning, target admission, exact-ID materialization, and fresh verification. |
+| `PnP.Framework.Migration.Taxonomy` | Explicit source term-store/term-set to target term-store/term-set schema mappings. |
 | `PnP.Framework.Migration.Verification` | Storage/runtime verification states and typed external runtime-verification manifests and receipts. |
 | [`PnP.Framework.Migration.Pages`](Pages/README.md) | Shared page identity, evidence, field, reference, security, classic Web Part, content, capture, and planning capabilities. |
 | [`PnP.Framework.Migration.Pages.Publishing`](Pages/Publishing/README.md) | Classic publishing-page aggregate contracts, lifecycle policy, packages, reports, and verification. |

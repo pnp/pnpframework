@@ -32,6 +32,7 @@ Export deliberately has no target dependency. The resulting package can be store
 | Namespace | Responsibility |
 | --- | --- |
 | `Pages.Publishing.Capture` | Publishing aggregate capture: common page identity plus `PublishingPageContent` and publishing layout evidence. |
+| `Pages.Publishing.Layouts` | Exact Page Layout bytes, parsed controls/zones/registrations/resources, associated schema closure, target planning/admission, and create-or-exact-reuse materialization. |
 | `Pages.Publishing.Lifecycle` | Conservative target Draft/Published interpretation for Publishing Pages. Source lifecycle evidence itself remains in `Pages.Lifecycle`. |
 | `Pages.Publishing.Planning` | The target-specific Publishing Page plan that composes shared field, reference, replacement, and operation types. |
 | `Pages.Publishing.Packaging` | Versioned Publishing Page export, migration, and receipt envelopes; canonical serialization, digests, and validation. |
@@ -61,7 +62,7 @@ The following composed capabilities remain shared and can be used by future Wiki
 | `EnterpriseWikiPackageExporter` | Captures a source-only `PublishingPageExportPackage` and seals its snapshot digest. |
 | `EnterpriseWikiMigrationPlanner` | Inspects the target, creates one explicit action per governed object, and seals a target-specific migration package and report. |
 | `EnterpriseWikiMigrationImporter` | Validates the package and approved plan digest, applies the exact plan, then returns a fresh-readback receipt. |
-| `EnterpriseWikiPackageFileStore` | Saves and loads export packages, migration packages, receipts, and Markdown reports. |
+| `EnterpriseWikiPackageFileStore` | Saves and loads export packages, migration packages, receipts, and Markdown reports, with optional validation against an `IMigrationArtifactStore`. |
 
 These orchestration types contain Enterprise Wiki policy. Generic page readers do not switch behavior based on an Enterprise Wiki flag.
 
@@ -74,6 +75,8 @@ JSON uses camel-case property names, string enum values, explicit nulls, and cas
 | Source export | `pnp-publishing-page-export/v1` |
 | Target-specific migration package | `pnp-publishing-page-migration-package/v1` |
 | Import receipt | `pnp-publishing-page-import-receipt/v1` |
+| Nested Page Layout evidence | `pnp-publishing-page-layout/v1` |
+| Nested content type schema evidence | `pnp-content-type-schema/v1` |
 
 A breaking JSON change requires a new schema version. A CLR namespace move does not itself change JSON property names, but released CLR compatibility still needs separate consideration.
 
@@ -95,7 +98,7 @@ A breaking JSON change requires a new schema version. A CLR namespace move does 
 | `sourceProfile` | Profile that classified the page, currently `EnterpriseWiki`. |
 | `capturePolicy` | Normalized source path, whether classic Web Parts were included, and the maximum payload size per dependency. |
 | `source` | Common `PageIdentity`: source web URL/path, page path, list-item ID, file ID, content type, version, length, modified time, and title. It intentionally contains no publishing layout field. |
-| `layout` | Publishing-specific layout URL and description captured from `PublishingPageLayout`. |
+| `layout` | Publishing-specific layout evidence: identity and gallery metadata, exact ASPX artifact, parsed server-control registrations, field-bound controls, Web Part zones, authored rendering-resource references, one evidence result per reference, and the associated content type's minimal required field-schema closure. |
 | `publishingPageContent` | Complete source `PublishingPageContent` HTML. |
 | `publishingPageContentSha256` | Digest of the captured publishing HTML. |
 | `fields` | Every returned Pages-library field definition and typed or best-effort raw value. |
@@ -132,13 +135,16 @@ The source fence detects a page that changed during capture. It is not a lock, a
 | `sourceSnapshotDigest` | Binds the plan to exactly one source snapshot. |
 | `sourceWebUrl` / `sourcePageServerRelativeUrl` | Source boundary used by reviewed mappings. |
 | `targetWebUrl` / `targetWebServerRelativeUrl` / `targetPageServerRelativeUrl` | Exact approved target web and page path. |
-| `pageLayoutName` | Target publishing layout selected by the profile. |
+| `pageLayoutName` | Target publishing layout selected by the sealed layout materialization plan. |
 | `operation` | Currently `CreatePage`. |
 | `targetLifecycle` | Derived `Draft` or `Published` result. There is no top-level publish Boolean input. |
 | `lifecycleReason` | Human-readable explanation of the derived lifecycle result. |
 | `createOnly` | Currently required to be `true`; existing target pages block the plan. |
 | `planningPolicy` | Normalized planning inputs copied into the sealed plan. |
 | `targetProbe` | Target template, Pages library, layout, lifecycle settings, target-page existence, and dependency observations. |
+| `layoutMaterialization` | Stock-reuse or deterministic digest-owned layout decision, source/target artifacts, required registrations/fields/zones, resource actions/rewrites, and associated schema plan. |
+| `layoutTargetProbe` | Fresh target evidence for the selected layout path, permissions, existing bytes/association, required schema, and each owned resource path. |
+| `layoutAdmission` | Typed eligibility result and issues for layout, resource, registration, permission, collision, and content-type-schema checks. |
 | `fieldActions` | Exactly one reviewed decision for every captured field. |
 | `dependencyActions` | Exactly one reviewed decision for every captured dependency. |
 | `replacements` | Explicit source-to-target text substitutions included in the plan digest. |
@@ -148,6 +154,45 @@ The source fence detects a page that changed during capture. It is not a lock, a
 | `blockers` / `warnings` | Target and policy findings. `isExecutable` is derived from an empty blocker list. |
 
 Import requires the caller's `approvedPlanDigest` to match exactly. Editing a target path, action, mapping, policy input, assertion, or lifecycle decision invalidates the package until it is replanned and reviewed again.
+
+### Page Layout convergence model
+
+Page Layout handling uses two deliberately different paths:
+
+| Source evidence | Target action |
+| --- | --- |
+| `EnterpriseWiki.aspx` with `customizedPageStatus=1` | Reuse the reviewed target stock layout. The source stock bytes are evidence; they are not copied over the target runtime file. |
+| Readable customized or non-stock ASPX | Create or exactly reuse `pnp-{safe-source-stem}-{source-layout-sha256-prefix}.aspx` in the target master page gallery. |
+| Missing, denied, failed, or ambiguous layout evidence | Block. |
+
+For a custom layout, capture parses field-bound controls, Web Part zones, server-control registrations, CSS/HTML/script references, and HTML-encoded Script Editor markup. Planning then:
+
+1. admits only reviewed SharePoint/platform registrations;
+2. builds the minimal associated content type and field closure actually required by the layout;
+3. requires exact target-runtime fields or creates migration-owned fields with their source GUIDs and portable schema;
+4. requires explicit term-store/term-set mappings before rebinding taxonomy field schemas;
+5. copies exact source-Web or site-collection `SiteAssets`/`Style Library` resource bytes to the corresponding target owner;
+6. reuses reviewed `/_layouts`, `/_controltemplates`, and known SharePoint Core Styles resources from the target runtime;
+7. rewrites only the sealed authored resource strings, seals the resulting target ASPX digest, and performs create-only/exact-reuse collision checks.
+
+Execution orders the custom layout prerequisites before the page: associated schema, rendering resources, layout ASPX, other page dependencies, then page creation. Every category receives its own mutation journal step and fresh readback.
+
+Large ASPX/resource payloads may remain inline in JSON or live in an `IMigrationArtifactStore`. `DirectoryMigrationArtifactStore` stores them by SHA-256 under a caller-selected directory. The JSON always keeps digest, length, media type, original name, availability, and optional lineage; package load/import can validate the supplied store before any target mutation.
+
+### Markdown review report coverage
+
+`PublishingPageMigrationReportBuilder` is the human review projection of the authoritative JSON package. It exposes every source and target decision without dumping unbounded payloads directly into Markdown:
+
+- package identity, schema versions, timestamps, state, snapshot digest, and approval plan digest;
+- source page identity, capture policy, stability fence, lifecycle evidence, publishing HTML digest, and derived lifecycle;
+- every Page Layout scalar property, exact artifact metadata, registration, parsed control, field binding, zone, resource reference, resource evidence state, byte digest, source lineage, and diagnostic;
+- every associated content type and field-schema property, field link, portable digest, ownership/role, taxonomy binding, and source diagnostic;
+- every captured page-item field and its complete recovery representation plus exactly one planned field action;
+- every classic Web Part export and every authored page dependency plus its target action;
+- the layout/schema/resource materialization plan, all resource rewrites, target probes, typed admission issues, and approved taxonomy schema mappings;
+- target page/library evidence, text replacements, storage assertions, runtime-verification requirements, blockers, and warnings.
+
+Large HTML, XML, JSON, ASPX, and Base64 values are represented as length, SHA-256, and a bounded preview. Their complete value remains in the JSON package or artifact store. A reviewer should treat `snapshotDigest` as source-evidence identity and `planDigest` as the complete approval boundary.
 
 ### Target probe
 
@@ -160,7 +205,7 @@ Import requires the caller's `approvedPlanDigest` to match exactly. Editing a ta
 | `pagesLibraryServerRelativeUrl` / `pagesLibraryBaseTemplate` | Resolved target Pages library. |
 | `enableVersioning` / `enableMinorVersions` / `enableModeration` / `forceCheckout` / `draftVersionVisibility` | Target library lifecycle behavior. |
 | `pageContentTypeId` | Target publishing page content type selected by the profile. |
-| `pageLayoutUrl` / `pageLayoutExists` | Required target publishing layout probe. |
+| `pageLayoutUrl` / `pageLayoutExists` | Compatibility summary of the layout selected by the profile. Detailed exact-byte and schema/resource evidence lives in `layoutTargetProbe`. |
 | `targetPageExists` | Create-only collision check. |
 | `existingDependencyPaths` | Dependency targets already present when the plan was created. |
 
@@ -219,7 +264,7 @@ Planning creates exactly one `PageFieldAction` per captured field:
 | `CaptureUnavailable` | The definition was captured, but no restorable value was returned. |
 | `Block` | The exact plan cannot execute. |
 
-The Enterprise Wiki profile currently recognizes a reviewed subset of publishing metadata. Unknown fields are never discarded and are never guessed into a target field. This preserves a recovery snapshot for a later mapper without weakening current import safety.
+The Enterprise Wiki profile currently recognizes a reviewed subset of publishing metadata. Unknown fields are never discarded and are never guessed into a target field. This preserves a recovery snapshot for a later mapper without weakening current import safety. Page Layout field-schema closure is a separate concern: it recreates only fields proven necessary to render the approved layout and does not imply that arbitrary source page-item values are replayed.
 
 ## Publishing lifecycle policy
 
@@ -269,6 +314,7 @@ The implementation composes established PnP Framework operations, including:
 - `AddPublishingPage` for classic publishing-page creation;
 - `GetWebParts` and `AddWebPartToWebPartPage` for shared classic Web Parts;
 - `EnsureFolderPath` and `UploadFile` for approved dependency materialization;
+- `EnsureSiteAssetsLibrary` plus list/root-folder checks for Page Layout resource ownership;
 - `ExecuteQueryRetry` for CSOM execution;
 - `UrlUtility`, `ResourcePath`, and existing page/file extensions for URL and storage handling.
 
@@ -281,11 +327,11 @@ The current Enterprise Wiki profile is intentionally narrow:
 - only create-only plans are executable; overwrite/update is refused;
 - target pages must be in the root of the target Publishing Pages library;
 - unique permissions are captured but not restored;
-- user, lookup, and taxonomy values require explicit mappings that are not implemented;
+- user, lookup, and page-item taxonomy values still require explicit identity/value mappings; Page Layout taxonomy field *schema* supports reviewed store/set rebinding, but term/value migration is separate;
 - only recognized fields with supported values and compatible target definitions are written;
 - dependency materialization happens before page creation; mutation intents and receipts are journaled, but there is no cross-object transaction or automatic global rollback;
 - replacements are reviewed and digest-sealed but are case-insensitive text substitutions rather than DOM-aware URL edits;
-- source-list-bound and known non-portable Web Parts are blocked instead of remapped;
+- source-list-bound and known non-portable Web Parts are still blocked instead of remapped;
 - typed runtime verification requirements are sealed in the plan, but browser automation and its evidence receipt remain outside the library importer;
 - a source fence detects capture-time mutation but does not invalidate an export after a later source edit;
 - live-tenant behavior still requires environment-specific validation in addition to unit and contract tests.

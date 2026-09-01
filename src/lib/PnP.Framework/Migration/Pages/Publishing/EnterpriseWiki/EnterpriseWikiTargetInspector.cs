@@ -3,6 +3,7 @@ using PnP.Framework.Migration.Pages.Capture;
 using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.References;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
+using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             string targetPagePath,
             IEnumerable<PageReferenceAction> dependencies,
             PublishingPageTargetLifecycle targetLifecycle,
+            PublishingPageLayoutTargetProbe layoutProbe,
             ICollection<string> blockers)
         {
             var web = context.Web;
@@ -74,21 +76,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 blockers.Add("The Enterprise Wiki Page content type is not available in the target Pages library.");
             }
 
-            var siteRootPath = context.Site.ServerRelativeUrl == "/"
-                ? string.Empty
-                : context.Site.ServerRelativeUrl.TrimEnd('/');
-            var layoutPath = $"{siteRootPath}/_catalogs/masterpage/{EnterpriseWikiMigrationProfile.PageLayoutFileName}";
-            var layoutFile = context.Site.RootWeb.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(layoutPath));
-            context.Load(layoutFile, file => file.Exists, file => file.ServerRelativeUrl);
-            context.ExecuteQueryRetry();
-            snapshot.PageLayoutExists = layoutFile.Exists;
-            snapshot.PageLayoutUrl = layoutFile.Exists
-                ? new Uri(new Uri(web.Url).GetLeftPart(UriPartial.Authority) + PagePath.Encode(layoutFile.ServerRelativeUrl)).AbsoluteUri
-                : null;
-            if (!layoutFile.Exists)
-            {
-                blockers.Add($"{EnterpriseWikiMigrationProfile.PageLayoutFileName} is not available in the target site collection master page gallery.");
-            }
+            snapshot.PageLayoutExists = layoutProbe?.FileExists == true;
+            snapshot.PageLayoutUrl = layoutProbe == null || string.IsNullOrWhiteSpace(layoutProbe.TargetServerRelativeUrl)
+                ? null
+                : new Uri(new Uri(web.Url).GetLeftPart(UriPartial.Authority) + PagePath.Encode(layoutProbe.TargetServerRelativeUrl)).AbsoluteUri;
 
             var expectedDirectory = pages.RootFolder.ServerRelativeUrl;
             if (!string.Equals(PagePath.GetDirectoryName(targetPagePath), expectedDirectory, StringComparison.OrdinalIgnoreCase))

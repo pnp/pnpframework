@@ -1,0 +1,93 @@
+using PnP.Framework.Migration.Packaging;
+using PnP.Framework.Migration.Schema.Fields;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace PnP.Framework.Migration.Schema.ContentTypes.Packaging
+{
+    internal static class ContentTypeSchemaContractValidator
+    {
+        public static void ValidateSnapshot(ContentTypeSchemaSnapshot schema)
+        {
+            if (schema.RequiredFieldLinks == null
+                || schema.RequiredFieldClosure == null
+                || schema.Sources == null
+                || schema.Diagnostics == null)
+            {
+                throw new InvalidDataException("The content type schema contains a null evidence collection.");
+            }
+
+            if (schema.EvidenceState == ContentTypeSchemaEvidenceState.Readable
+                && (string.IsNullOrWhiteSpace(schema.ContentTypeId)
+                    || string.IsNullOrWhiteSpace(schema.Name)
+                    || string.IsNullOrWhiteSpace(schema.ParentContentTypeId)))
+            {
+                throw new InvalidDataException("Readable content type schema evidence is missing identity or parent information.");
+            }
+
+            var duplicateLink = schema.RequiredFieldLinks
+                .GroupBy(value => value?.FieldId ?? Guid.Empty)
+                .FirstOrDefault(group => group.Key == Guid.Empty || group.Count() > 1);
+            var duplicateField = schema.RequiredFieldClosure
+                .GroupBy(value => value?.Id ?? Guid.Empty)
+                .FirstOrDefault(group => group.Key == Guid.Empty || group.Count() > 1);
+            if (duplicateLink != null || duplicateField != null)
+            {
+                throw new InvalidDataException("The content type schema contains a null, missing-ID, or duplicate field entry.");
+            }
+
+            var fieldIds = new HashSet<Guid>(schema.RequiredFieldClosure.Select(value => value.Id));
+            if (schema.RequiredFieldLinks.Any(value => !fieldIds.Contains(value.FieldId)))
+            {
+                throw new InvalidDataException("A required content type field link is absent from the captured schema closure.");
+            }
+
+            foreach (var field in schema.RequiredFieldClosure)
+            {
+                if (field.Sources == null
+                    || field.Diagnostics == null
+                    || string.IsNullOrWhiteSpace(field.InternalName)
+                    || string.IsNullOrWhiteSpace(field.TypeAsString)
+                    || string.IsNullOrWhiteSpace(field.SchemaXml)
+                    || string.IsNullOrWhiteSpace(field.SchemaXmlSha256)
+                    || string.IsNullOrWhiteSpace(field.PortableSchemaSha256))
+                {
+                    throw new InvalidDataException($"Content type field schema '{field?.Id}' is incomplete.");
+                }
+
+                if (!string.Equals(MigrationDigest.ComputeSha256(field.SchemaXml), field.SchemaXmlSha256, StringComparison.OrdinalIgnoreCase)
+                    || !string.Equals(FieldSchemaCanonicalizer.PortableDigest(field.SchemaXml), field.PortableSchemaSha256, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new InvalidDataException($"Content type field schema digest mismatch: {field.InternalName}");
+                }
+            }
+        }
+
+        public static void ValidatePlan(ContentTypeMaterializationPlan schema)
+        {
+            if (schema.RequiredFieldLinks == null || schema.Fields == null)
+            {
+                throw new InvalidDataException("The content type materialization plan contains a null collection.");
+            }
+
+            var duplicateLink = schema.RequiredFieldLinks
+                .GroupBy(value => value?.FieldId ?? Guid.Empty)
+                .FirstOrDefault(group => group.Key == Guid.Empty || group.Count() > 1);
+            var duplicateField = schema.Fields
+                .GroupBy(value => value?.FieldId ?? Guid.Empty)
+                .FirstOrDefault(group => group.Key == Guid.Empty || group.Count() > 1);
+            if (duplicateLink != null || duplicateField != null)
+            {
+                throw new InvalidDataException("The content type materialization plan contains a null, missing-ID, or duplicate field entry.");
+            }
+
+            var fieldIds = new HashSet<Guid>(schema.Fields.Select(value => value.FieldId));
+            if (schema.RequiredFieldLinks.Any(value => !fieldIds.Contains(value.FieldId)))
+            {
+                throw new InvalidDataException("A required content type field link is absent from the materialization field closure.");
+            }
+        }
+    }
+}

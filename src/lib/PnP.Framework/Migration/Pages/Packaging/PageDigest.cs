@@ -1,8 +1,5 @@
 using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
+using PnP.Framework.Migration.Packaging;
 
 namespace PnP.Framework.Migration.Pages.Packaging
 {
@@ -15,7 +12,7 @@ namespace PnP.Framework.Migration.Pages.Packaging
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return ComputeSha256(Encoding.UTF8.GetBytes(value));
+            return MigrationDigest.ComputeSha256(value);
         }
 
         public static string ComputeSha256(byte[] value)
@@ -25,11 +22,7 @@ namespace PnP.Framework.Migration.Pages.Packaging
                 throw new ArgumentNullException(nameof(value));
             }
 
-            using (var algorithm = SHA256.Create())
-            {
-                var digest = algorithm.ComputeHash(value);
-                return string.Concat(digest.Select(item => item.ToString("x2", CultureInfo.InvariantCulture)));
-            }
+            return MigrationDigest.ComputeSha256(value);
         }
     }
 }

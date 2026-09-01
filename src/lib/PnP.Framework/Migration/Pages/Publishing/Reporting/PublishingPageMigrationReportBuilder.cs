@@ -1,3 +1,4 @@
+using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Pages.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
@@ -12,7 +13,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
     {
         public static string Build(PublishingPageMigrationPackage package)
         {
-            PublishingPagePackageValidator.ValidateMigration(package);
+            return Build(package, null);
+        }
+
+        public static string Build(
+            PublishingPageMigrationPackage package,
+            IMigrationArtifactStore artifactStore)
+        {
+            PublishingPagePackageValidator.ValidateMigration(package, artifactStore);
             var snapshot = package.Snapshot;
             var plan = package.Plan;
             var report = package.Report ?? new PublishingPageMigrationReport();
@@ -47,9 +55,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("versionLabel", snapshot.Source.VersionLabel, "Version captured by the export."),
                 Row("length", snapshot.Source.Length, "Source ASPX file length in bytes."),
                 Row("modifiedUtc", snapshot.Source.ModifiedUtc, "Source file modified time at capture."),
-                Row("title", snapshot.Source.Title, "Title assigned during target page creation."),
-                Row("layout.url", snapshot.Layout.Url, "Source publishing layout URL."),
-                Row("layout.description", snapshot.Layout.Description, "Source layout description, if present.")
+                Row("title", snapshot.Source.Title, "Title assigned during target page creation.")
             });
 
             writer.Table("Capture policy and source fence", new[] { "Property", "Value", "How to read it" }, new[]
@@ -81,6 +87,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("plan.expectedPublishingPageContentSha256", plan.ExpectedPublishingPageContentSha256, "Digest expected after approved replacements and before SharePoint serialization.")
             });
 
+            PublishingPageLayoutSnapshotReportSection.Append(writer, snapshot.Layout);
             AppendFields(writer, snapshot, plan);
             AppendWebParts(writer, snapshot);
             AppendDependencies(writer, snapshot, plan);
@@ -249,6 +256,17 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("targetProbe.targetPageExists", plan.TargetProbe.TargetPageExists, "True is a blocker for CreatePage."),
                 Row("targetProbe.existingDependencyPaths", Join(plan.TargetProbe.ExistingDependencyPaths), "Create-only dependency collisions.")
             });
+
+            writer.Table("Approved taxonomy schema mappings",
+                new[] { "Source term store", "Source term set", "Target term store", "Target term set", "Interpretation" },
+                plan.PlanningPolicy.TaxonomySchemaMappings.Select(item => Row(
+                    item.SourceTermStoreId,
+                    item.SourceTermSetId,
+                    item.TargetTermStoreId,
+                    item.TargetTermSetId,
+                    "Only Page Layout field schemas with this exact source store/set pair are rebound to the listed target pair.")));
+
+            PublishingPageLayoutPlanReportSection.Append(writer, plan);
         }
 
         private static string DisplayProfile(string value)

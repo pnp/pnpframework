@@ -1,5 +1,6 @@
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Reporting;
+using PnP.Framework.Migration.Packaging;
 using System;
 using System.IO;
 using System.Text;
@@ -18,7 +19,16 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
 
         public static string SaveExport(string path, PublishingPageExportPackage package, bool overwrite = false)
         {
-            PublishingPagePackageValidator.ValidateExport(package);
+            return SaveExport(path, package, null, overwrite);
+        }
+
+        public static string SaveExport(
+            string path,
+            PublishingPageExportPackage package,
+            IMigrationArtifactStore artifactStore,
+            bool overwrite = false)
+        {
+            PublishingPagePackageValidator.ValidateExport(package, artifactStore);
             var exportPath = ResolvePath(path, DefaultExportFileName);
             SaveText(exportPath, PublishingPagePackageSerializer.Serialize(package), overwrite);
             return exportPath;
@@ -26,29 +36,48 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
 
         public static PublishingPageExportPackage LoadExport(string path)
         {
+            return LoadExport(path, null);
+        }
+
+        public static PublishingPageExportPackage LoadExport(string path, IMigrationArtifactStore artifactStore)
+        {
             var exportPath = ResolveExistingPath(path, DefaultExportFileName, "Enterprise Wiki export");
             var package = PublishingPagePackageSerializer.Deserialize<PublishingPageExportPackage>(File.ReadAllText(exportPath));
-            PublishingPagePackageValidator.ValidateExport(package);
+            PublishingPagePackageValidator.ValidateExport(package, artifactStore);
             return package;
         }
 
         public static string SaveMigration(string path, PublishingPageMigrationPackage package, bool overwrite = false)
         {
-            PublishingPagePackageValidator.ValidateMigration(package);
+            return SaveMigration(path, package, null, overwrite);
+        }
+
+        public static string SaveMigration(
+            string path,
+            PublishingPageMigrationPackage package,
+            IMigrationArtifactStore artifactStore,
+            bool overwrite = false)
+        {
+            PublishingPagePackageValidator.ValidateMigration(package, artifactStore);
             var packagePath = ResolvePath(path, DefaultPackageFileName);
             var reportPath = Path.Combine(Path.GetDirectoryName(packagePath) ?? string.Empty, DefaultReportFileName);
             EnsureWritable(packagePath, overwrite);
             EnsureWritable(reportPath, overwrite);
             SaveText(packagePath, PublishingPagePackageSerializer.Serialize(package), true);
-            SaveText(reportPath, PublishingPageMigrationReportBuilder.Build(package), true);
+            SaveText(reportPath, PublishingPageMigrationReportBuilder.Build(package, artifactStore), true);
             return packagePath;
         }
 
         public static PublishingPageMigrationPackage LoadMigration(string path)
         {
+            return LoadMigration(path, null);
+        }
+
+        public static PublishingPageMigrationPackage LoadMigration(string path, IMigrationArtifactStore artifactStore)
+        {
             var packagePath = ResolveExistingPath(path, DefaultPackageFileName, "Enterprise Wiki migration package");
             var package = PublishingPagePackageSerializer.Deserialize<PublishingPageMigrationPackage>(File.ReadAllText(packagePath));
-            PublishingPagePackageValidator.ValidateMigration(package);
+            PublishingPagePackageValidator.ValidateMigration(package, artifactStore);
             return package;
         }
 

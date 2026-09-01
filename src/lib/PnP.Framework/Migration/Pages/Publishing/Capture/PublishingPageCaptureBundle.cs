@@ -4,6 +4,7 @@ using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.References;
 using PnP.Framework.Migration.Pages.Security;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
+using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using System.Collections.Generic;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Capture

@@ -3,6 +3,7 @@ using PnP.Framework.Migration.Pages.Fields;
 using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.Planning;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
+using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Pages.References;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
 using PnP.Framework.Migration.Verification;
@@ -37,6 +38,12 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
         public PagePlanningOptions PlanningPolicy { get; set; }
 
         public PublishingPageTargetSnapshot TargetProbe { get; set; }
+
+        public PublishingPageLayoutMaterializationPlan LayoutMaterialization { get; set; }
+
+        public PublishingPageLayoutTargetProbe LayoutTargetProbe { get; set; }
+
+        public PublishingPageLayoutTargetAdmission LayoutAdmission { get; set; }
 
         public IList<PageFieldAction> FieldActions { get; set; } = new List<PageFieldAction>();
 

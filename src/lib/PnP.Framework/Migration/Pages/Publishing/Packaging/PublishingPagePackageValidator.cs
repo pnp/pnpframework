@@ -3,8 +3,10 @@ using PnP.Framework.Migration.Pages.Content;
 using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.Planning;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
+using PnP.Framework.Migration.Pages.Publishing.Layouts.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
+using PnP.Framework.Migration.Packaging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +17,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
     public static class PublishingPagePackageValidator
     {
         public static void ValidateExport(PublishingPageExportPackage package)
+        {
+            ValidateExport(package, null);
+        }
+
+        public static void ValidateExport(
+            PublishingPageExportPackage package,
+            IMigrationArtifactStore artifactStore)
         {
             if (package == null)
             {
@@ -57,6 +66,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             {
                 throw new InvalidDataException("The PublishingPageContent digest does not match the source HTML.");
             }
+
+            PublishingPageLayoutPackageValidator.ValidateSnapshot(snapshot.Layout, artifactStore);
 
             var duplicateField = snapshot.Fields
                 .GroupBy(item => item?.InternalName, StringComparer.OrdinalIgnoreCase)
@@ -121,6 +132,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
 
         public static void ValidateMigration(PublishingPageMigrationPackage package)
         {
+            ValidateMigration(package, null);
+        }
+
+        public static void ValidateMigration(
+            PublishingPageMigrationPackage package,
+            IMigrationArtifactStore artifactStore)
+        {
             if (package == null)
             {
                 throw new InvalidDataException("The publishing-page migration package is empty.");
@@ -147,11 +165,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                 ExportedAtUtc = package.ExportedAtUtc,
                 Snapshot = package.Snapshot,
                 SnapshotDigest = package.SnapshotDigest
-            });
+            }, artifactStore);
 
             var plan = package.Plan;
             if (plan.PlanningPolicy == null
                 || plan.TargetProbe == null
+                || plan.LayoutMaterialization == null
+                || plan.LayoutAdmission == null
                 || plan.FieldActions == null
                 || plan.DependencyActions == null
                 || plan.Replacements == null
@@ -163,6 +183,18 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             {
                 throw new InvalidDataException("The migration plan is missing policy, target probe, or an action/assertion collection.");
             }
+
+            if (plan.PlanningPolicy.TaxonomySchemaMappings == null)
+            {
+                throw new InvalidDataException("The planning policy contains a null taxonomy schema mapping collection.");
+            }
+
+            PublishingPageLayoutPackageValidator.ValidatePlan(
+                plan.PageLayoutName,
+                plan.IsExecutable,
+                plan.LayoutMaterialization,
+                plan.LayoutTargetProbe,
+                plan.LayoutAdmission);
 
             var duplicateRuntimeRequirement = plan.RuntimeVerification.Requirements
                 .GroupBy(item => item?.Id, StringComparer.Ordinal)
@@ -235,5 +267,6 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                 throw new InvalidDataException("The plan must contain exactly one dependency action for every captured dependency.");
             }
         }
+
     }
 }

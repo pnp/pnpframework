@@ -8,10 +8,13 @@ using PnP.Framework.Migration.Pages.Planning;
 using PnP.Framework.Migration.Pages.References;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
+using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
 using PnP.Framework.Migration.Pages.Publishing.Reporting;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
 using PnP.Framework.Migration.Verification;
+using PnP.Framework.Migration.Packaging;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -37,12 +40,21 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             PublishingPageExportPackage exportPackage,
             PagePlanningOptions options)
         {
+            return Plan(targetContext, exportPackage, options, null);
+        }
+
+        public PublishingPageMigrationPackage Plan(
+            ClientContext targetContext,
+            PublishingPageExportPackage exportPackage,
+            PagePlanningOptions options,
+            IMigrationArtifactStore artifactStore)
+        {
             if (targetContext == null)
             {
                 throw new ArgumentNullException(nameof(targetContext));
             }
 
-            PublishingPagePackageValidator.ValidateExport(exportPackage);
+            PublishingPagePackageValidator.ValidateExport(exportPackage, artifactStore);
             ValidateOptions(options);
             if (!string.Equals(exportPackage.Snapshot.SourceProfile, EnterpriseWikiMigrationProfile.SourceProfile, StringComparison.Ordinal))
             {
@@ -50,7 +62,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             }
 
             var targetWeb = targetContext.Web;
+            var targetRootWeb = targetContext.Site.RootWeb;
             targetContext.Load(targetWeb, web => web.Url, web => web.ServerRelativeUrl);
+            targetContext.Load(targetRootWeb, web => web.Url, web => web.ServerRelativeUrl);
             targetContext.ExecuteQueryRetry();
 
             var snapshot = exportPackage.Snapshot;
@@ -59,6 +73,27 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             var warnings = snapshot.Warnings.ToList();
             AddSecurityPolicyDecision(snapshot, options, blockers);
             AddManagedMetadataDecision(snapshot, options, blockers);
+
+            var layoutMaterialization = PublishingPageLayoutPlanFactory.Create(
+                snapshot.Layout,
+                new Uri(snapshot.Source.WebUrl),
+                new Uri(targetWeb.Url),
+                new Uri(targetRootWeb.Url),
+                EnterpriseWikiMigrationProfile.PageLayoutFileName,
+                options.TaxonomySchemaMappings,
+                artifactStore);
+            var layoutTargetProbe = layoutMaterialization.Disposition == PublishingPageLayoutMaterializationDisposition.Block
+                ? null
+                : PublishingPageLayoutTargetInspector.Inspect(targetContext, layoutMaterialization);
+            var layoutAdmission = PublishingPageLayoutTargetAdmissionEvaluator.Evaluate(layoutMaterialization, layoutTargetProbe);
+            foreach (var issue in layoutAdmission.Issues)
+            {
+                blockers.Add($"{issue.Code}: {issue.Message}");
+            }
+            foreach (var warning in layoutAdmission.Warnings)
+            {
+                warnings.Add(warning);
+            }
 
             var targetLifecycle = PublishingPageLifecyclePolicy.DeriveTargetLifecycle(snapshot.Lifecycle);
             var lifecycleReason = DescribeLifecycleDecision(snapshot.Lifecycle, targetLifecycle, warnings);
@@ -75,6 +110,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 targetPagePath,
                 dependencyActions,
                 targetLifecycle,
+                layoutTargetProbe,
                 blockers);
             var fieldActions = PageFieldPlanner.BuildActions(
                 targetContext,
@@ -93,13 +129,16 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 TargetWebUrl = targetWeb.Url.TrimEnd('/'),
                 TargetWebServerRelativeUrl = targetWeb.ServerRelativeUrl,
                 TargetPageServerRelativeUrl = targetPagePath,
-                PageLayoutName = EnterpriseWikiMigrationProfile.PageLayoutName,
+                PageLayoutName = layoutMaterialization.TargetPageLayoutName,
                 Operation = PageMigrationOperation.CreatePage,
                 TargetLifecycle = targetLifecycle,
                 LifecycleReason = lifecycleReason,
                 CreateOnly = options.CreateOnly,
                 PlanningPolicy = CopyOptions(options, targetPagePath),
                 TargetProbe = targetProbe,
+                LayoutMaterialization = layoutMaterialization,
+                LayoutTargetProbe = layoutTargetProbe,
+                LayoutAdmission = layoutAdmission,
                 FieldActions = fieldActions,
                 DependencyActions = dependencyActions,
                 Replacements = replacements,
@@ -235,7 +274,16 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 RequireInheritedPermissions = options.RequireInheritedPermissions,
                 BlockOnManagedMetadata = options.BlockOnManagedMetadata,
                 AllowExternalResourceReferences = options.AllowExternalResourceReferences,
-                CreateOnly = options.CreateOnly
+                CreateOnly = options.CreateOnly,
+                TaxonomySchemaMappings = (options.TaxonomySchemaMappings ?? new List<TaxonomyTargetMapping>())
+                    .Select(value => new TaxonomyTargetMapping
+                    {
+                        SourceTermStoreId = value.SourceTermStoreId,
+                        SourceTermSetId = value.SourceTermSetId,
+                        TargetTermStoreId = value.TargetTermStoreId,
+                        TargetTermSetId = value.TargetTermSetId
+                    })
+                    .ToList()
             };
         }
 

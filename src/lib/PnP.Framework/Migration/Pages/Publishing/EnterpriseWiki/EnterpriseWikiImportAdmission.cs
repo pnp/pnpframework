@@ -3,6 +3,7 @@ using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Pages;
 using PnP.Framework.Migration.Pages.Publishing.Execution;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
+using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
 using System;
 using System.Collections.Generic;
@@ -42,11 +43,23 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             }
 
             var blockers = new List<string>();
+            var freshLayoutProbe = PublishingPageLayoutTargetInspector.Inspect(
+                targetContext,
+                package.Plan.LayoutMaterialization);
+            var freshLayoutAdmission = PublishingPageLayoutTargetAdmissionEvaluator.Evaluate(
+                package.Plan.LayoutMaterialization,
+                freshLayoutProbe);
+            foreach (var issue in freshLayoutAdmission.Issues)
+            {
+                blockers.Add($"{issue.Code}: {issue.Message}");
+            }
+
             var freshProbe = EnterpriseWikiTargetInspector.Inspect(
                 targetContext,
                 package.Plan.TargetPageServerRelativeUrl,
                 package.Plan.DependencyActions,
                 package.Plan.TargetLifecycle,
+                freshLayoutProbe,
                 blockers);
             if (blockers.Count > 0)
             {

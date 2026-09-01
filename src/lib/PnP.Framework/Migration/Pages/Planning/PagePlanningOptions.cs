@@ -1,3 +1,6 @@
+using PnP.Framework.Migration.Taxonomy;
+using System.Collections.Generic;
+
 namespace PnP.Framework.Migration.Pages.Planning
 {
     public sealed class PagePlanningOptions
@@ -11,5 +14,7 @@ namespace PnP.Framework.Migration.Pages.Planning
         public bool AllowExternalResourceReferences { get; set; } = true;
 
         public bool CreateOnly { get; set; } = true;
+
+        public IList<TaxonomyTargetMapping> TaxonomySchemaMappings { get; set; } = new List<TaxonomyTargetMapping>();
     }
 }

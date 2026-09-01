@@ -1,6 +1,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Migration.PublishingPages;
+using PnP.Framework.Migration.PublishingPages.Capture;
+using PnP.Framework.Migration.PublishingPages.Content;
 using PnP.Framework.Migration.PublishingPages.EnterpriseWiki;
+using PnP.Framework.Migration.PublishingPages.Fields;
+using PnP.Framework.Migration.PublishingPages.Lifecycle;
+using PnP.Framework.Migration.PublishingPages.Packaging;
+using PnP.Framework.Migration.PublishingPages.Planning;
+using PnP.Framework.Migration.PublishingPages.Reporting;
+using PnP.Framework.Migration.PublishingPages.Security;
+using PnP.Framework.Migration.PublishingPages.Verification;
+using PnP.Framework.Migration.PublishingPages.WebParts;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -1,4 +1,13 @@
 using Microsoft.SharePoint.Client;
+using PnP.Framework.Migration.PublishingPages.Capture;
+using PnP.Framework.Migration.PublishingPages.Content;
+using PnP.Framework.Migration.PublishingPages.Fields;
+using PnP.Framework.Migration.PublishingPages.Lifecycle;
+using PnP.Framework.Migration.PublishingPages.Packaging;
+using PnP.Framework.Migration.PublishingPages.Planning;
+using PnP.Framework.Migration.PublishingPages.References;
+using PnP.Framework.Migration.PublishingPages.Reporting;
+using PnP.Framework.Migration.PublishingPages.Verification;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

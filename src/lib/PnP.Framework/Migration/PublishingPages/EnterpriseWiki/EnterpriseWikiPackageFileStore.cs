@@ -1,3 +1,5 @@
+using PnP.Framework.Migration.PublishingPages.Packaging;
+using PnP.Framework.Migration.PublishingPages.Reporting;
 using System;
 using System.IO;
 using System.Text;

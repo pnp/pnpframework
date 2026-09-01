@@ -1,4 +1,8 @@
 using Microsoft.SharePoint.Client;
+using PnP.Framework.Migration.PublishingPages.Capture;
+using PnP.Framework.Migration.PublishingPages.Lifecycle;
+using PnP.Framework.Migration.PublishingPages.References;
+using PnP.Framework.Migration.PublishingPages.Verification;
 using System;
 using System.Collections.Generic;
 using System.Linq;

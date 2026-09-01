@@ -1,3 +1,8 @@
+using PnP.Framework.Migration.PublishingPages.Capture;
+using PnP.Framework.Migration.PublishingPages.Fields;
+using PnP.Framework.Migration.PublishingPages.Lifecycle;
+using PnP.Framework.Migration.PublishingPages.Packaging;
+using PnP.Framework.Migration.PublishingPages.Planning;
 using System;
 using System.IO;
 using System.Linq;

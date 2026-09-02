@@ -1,4 +1,5 @@
 using PnP.Framework.Migration.Pages.Capture;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Collections.Generic;
 
@@ -35,6 +36,10 @@ namespace PnP.Framework.Migration.Pages.Fields
         public IList<PageLookupValueSnapshot> LookupValues { get; set; } = new List<PageLookupValueSnapshot>();
 
         public IList<PageTaxonomyValueSnapshot> TaxonomyValues { get; set; } = new List<PageTaxonomyValueSnapshot>();
+
+        public TaxonomyFieldRelationshipBindingSnapshot TaxonomyBinding { get; set; }
+
+        public string TaxonomyValueSetSha256 { get; set; }
 
         public string BinaryBase64 { get; set; }
 

@@ -17,6 +17,7 @@ The documents describe the current implementation and its intended invariants. T
 4. [Object lifecycle](object-lifecycle.md) follows each governed object from captured evidence through action selection, target resolution, execution, and verification.
 5. [Execution and verification](execution-and-verification.md) defines admission, journaling, retry, receipt, fresh-readback, and acceptance semantics.
 6. [Page classification and ingredient policy](page-classification-and-ingredient-policy.md) defines CLR runtime selection, non-exclusive profiles, validation cohorts, ingredient actions, dependency release, and aggregate outcomes.
+7. [Taxonomy relationship fidelity](taxonomy-relationship-fidelity.md) defines exact capture and reproduction of valid, outside-bound, and dangling taxonomy relationships without Term repair.
 
 ## Document roles
 
@@ -62,6 +63,7 @@ An item labelled **Implemented** exists in the current code. **Planned** identif
 | External artifact manifest | `pnp-migration-artifacts/v1` |
 | Runtime verification manifest | `pnp-migration-runtime-verification/v1` |
 | Runtime verification receipt | `pnp-migration-runtime-verification-receipt/v1` |
+| Taxonomy value relationship | `pnp-taxonomy-value-relationship/v1` |
 
 These contracts are under development. A CLR type being public does not by itself declare the contract stable or released.
 

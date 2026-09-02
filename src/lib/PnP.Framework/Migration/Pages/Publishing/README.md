@@ -272,7 +272,8 @@ Import rechecks critical target facts before writing so that a stale plan does n
 | `webPartsMatched` / `webPartResults` | Per-Web-Part export digest, zone, order, and hidden-state readback results. |
 | `topologyMaterialization` / `topologyMatched` | Source-to-target Site/Web runtime IDs, execution dispositions, mapping digests, and final whole-topology readback status. |
 | `listMaterializations` / `listsMatched` | Per-List target Web/List IDs, item/View/content-type maps, verified object counts, diagnostics, and final whole-closure readback status. |
-| `fieldResults` | Per-field write result and diagnostics. |
+| `fieldResults` | Per-field write result and diagnostics, including target-local taxonomy WssId materialization receipts. |
+| `taxonomyRelationshipsMatched` / `taxonomyRelationshipResults` | Per-executed-value fresh verification of exact Term state, page value, hidden-list identity, and `TaxCatchAll`; evidence-only relationships make no target claim and are omitted. |
 | `freshReadbackPassed` | Whether required fresh-readback assertions passed. |
 | `storageVerificationStatus` | `Passed` only when required topology, List, content, Web Part, field, content-type, and lifecycle readback all match. |
 | `runtimeVerificationStatus` / `acceptanceStatus` | Runtime work remains `Pending` when runtime requirements exist. The runtime receipt contract is defined, but the library does not yet reconcile it into a new final acceptance record. |
@@ -340,6 +341,13 @@ The JSON package is authoritative; the Markdown report is generated from it and 
 | `snapshot.listDependencies[].views[].listViewXmlSha256` | 64-character SHA-256 | Digest of the complete captured View XML. Supported query/fields/paging/JSLink state is applied now; custom JSLink/XslLink resources and full XML fidelity remain explicit gaps. |
 | `snapshot.listDependencies[].items[].values[].kind` | `Unsupported` | The current serializer did not recognize the runtime object. `rawType`, `rawValue`, and `rawValueJson` retain recovery evidence; planning will not guess a write. |
 | `snapshot.listDependencies[].items[].values[].taxonomyValues[].wssId` | `269` | Source site-collection cache-row evidence only. Import writes the mapped Term through the target taxonomy field and verifies target Term GUID/label with a target-allocated WssId. |
+| `snapshot.fields[].taxonomyBinding.boundTermSetId` | source Wiki Categories TermSet GUID | The field's source binding. It is mapped explicitly and is not changed merely to make an invalid value valid. |
+| `snapshot.fields[].taxonomyValues[].relationship.state` | `LiveOutsideBoundTermSet` | The GUID is live, but not in the field's bound TermSet. This is source data to reproduce, not an instruction to move or recreate the Term. |
+| `snapshot.fields[].taxonomyValues[].relationship.valueHiddenListEntry` | WssId plus store/set/term, localized label/path and CatchAll data | Exact source site-collection cache evidence used to allocate and verify a target-local WssId. |
+| `snapshot.fields[].taxonomyValues[].relationship.evidenceSha256` | 64-character SHA-256 | Binds the value relationship to the complete field value set, field binding, live resolution, hidden rows, timestamp, and diagnostics. |
+| `plan.taxonomyRelationshipActions[].disposition` | `PreserveDanglingTermAbsent` | Keep the Term absent and reproduce the invalid relationship. A newly live target Term with that GUID makes fresh admission fail. |
+| `plan.taxonomyRelationshipActions[].disposition` | `RetainEvidenceOnly` | The owning field is not selected for replay. The exact relationship proof stays sealed for later recovery, but this plan does not probe, materialize, or verify a target taxonomy relationship. |
+| `receipt.taxonomyRelationshipResults[].relationshipStateMatched` | `true` | A fresh context confirmed that the target relationship is still live-in-bound, live-outside-bound, or dangling exactly as approved. |
 | `snapshot.listDependencies[].items[].document.content.artifact.sha256` | file byte digest | Exact current document bytes. The target file must read back with the same length and digest; version history is not represented by this field. |
 | `plan.listMigration.lists[].targetProbe.sameTitleDifferentPaths[]` | `/sites/target/Shared Documents` | A real SharePoint collision shape: the desired `/Documents` path can be free while a template-created library already owns title `Documents`. Strict mode blocks rather than renaming an unrelated List. |
 | `snapshot.listWebPartBindings[].sourceViewId` | source View GUID | Captured binding input. It is replaced with `targetViewIds[sourceViewId]` only after the target View passes readback. |
@@ -363,18 +371,21 @@ Planning creates exactly one `PageFieldAction` per captured field:
 | Disposition | Interpretation |
 | --- | --- |
 | `Apply` | Recognized, non-empty, writable, target-present, type-compatible, and supported; Import writes it. |
+| `ApplyTaxonomyRelationships` | Every taxonomy value has a separately reviewed executable relationship action. Import reproduces those exact relationships without creating or substituting Terms. |
 | `AlreadyHandled` | Page creation, content, or layout logic owns the property. |
 | `SkipEmpty` | No source value needs restoring. |
 | `SkipReadOnly` | SharePoint owns the source or target field. |
 | `SkipCalculated` | SharePoint recomputes the value. |
 | `TargetFieldMissing` | A recognized source field is absent at the target. |
 | `TargetTypeMismatch` | Source and target field types differ. |
-| `RequiresMapping` | User, lookup, or taxonomy identity cannot be copied safely across sites without an explicit mapping. |
+| `RequiresMapping` | User or lookup identity cannot be copied safely across sites without an explicit mapping. Taxonomy uses typed per-value relationship actions and blocks when they are incomplete. |
 | `EvidenceOnly` | The snapshot retains complete evidence, but the current importer does not own restoration. |
 | `CaptureUnavailable` | The definition was captured, but no restorable value was returned. |
 | `Block` | The exact plan cannot execute. |
 
 The Enterprise Wiki v1 workflow currently recognizes a reviewed subset of publishing metadata. Unknown fields are never discarded and are never guessed into a target field. This preserves a recovery snapshot for a later mapper without weakening current import safety. Page Layout field-schema closure is a separate concern: it recreates only fields proven necessary to render the approved layout and does not imply that arbitrary source page-item values are replayed.
+
+Taxonomy follows the same capture-wide/restore-narrow rule at value granularity. Every captured taxonomy value has one relationship action. Values owned by a selected field receive strict target-aware replay or block actions; values in an unselected field receive `RetainEvidenceOnly`, project as delegated evidence, and do not trigger target taxonomy admission.
 
 ## Publishing lifecycle policy
 

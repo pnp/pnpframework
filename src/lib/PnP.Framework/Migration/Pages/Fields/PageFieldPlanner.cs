@@ -1,6 +1,8 @@
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Migration.Pages.Capture;
 using PnP.Framework.Migration.Pages.Planning;
+using PnP.Framework.Migration.Pages.Fields.Taxonomy;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,19 +17,34 @@ namespace PnP.Framework.Migration.Pages.Fields
             ISet<string> handledFieldNames,
             ISet<string> recognizedFieldNames,
             PagePlanningOptions options,
+            ICollection<TaxonomyRelationshipAction> taxonomyRelationshipActions,
+            ICollection<string> blockers,
             ICollection<string> warnings)
         {
             var pages = targetContext.Web.GetPagesLibrary();
             var sourceFields = fields.OrderBy(field => field.InternalName, StringComparer.Ordinal).ToArray();
+            var eligibleTaxonomyFieldNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            var result = new List<PageFieldAction>();
             if (pages == null)
             {
-                return sourceFields.Select(field => new PageFieldAction
+                result.AddRange(sourceFields.Select(field => new PageFieldAction
                 {
                     SourceInternalName = field.InternalName,
                     TargetInternalName = field.InternalName,
                     Disposition = PageFieldDisposition.Block,
                     Reason = "The target publishing Pages library is unavailable."
-                }).ToList();
+                }));
+                AddTaxonomyRelationshipActions(
+                    PageTaxonomyRelationshipPlanner.BuildActions(
+                        targetContext,
+                        pages,
+                        sourceFields,
+                        eligibleTaxonomyFieldNames,
+                        options,
+                        blockers,
+                        warnings),
+                    taxonomyRelationshipActions);
+                return result;
             }
 
             targetContext.Load(pages.Fields, values => values.Include(
@@ -36,7 +53,6 @@ namespace PnP.Framework.Migration.Pages.Fields
                 field => field.ReadOnlyField));
             targetContext.ExecuteQueryRetry();
             var targetFields = pages.Fields.ToDictionary(field => field.InternalName, StringComparer.OrdinalIgnoreCase);
-            var result = new List<PageFieldAction>();
             foreach (var sourceField in sourceFields)
             {
                 var action = new PageFieldAction
@@ -60,7 +76,9 @@ namespace PnP.Framework.Migration.Pages.Fields
                     continue;
                 }
 
-                if (!sourceField.HasValue || sourceField.Kind == PageFieldValueKind.Null)
+                if (!sourceField.HasValue
+                    || sourceField.Kind == PageFieldValueKind.Null
+                    || (IsTaxonomy(sourceField.Kind) && sourceField.TaxonomyValues.Count == 0))
                 {
                     action.Disposition = PageFieldDisposition.SkipEmpty;
                     action.Reason = "The source item has no value for this field.";
@@ -115,12 +133,17 @@ namespace PnP.Framework.Migration.Pages.Fields
 
                 if (RequiresIdentityMapping(sourceField.Kind))
                 {
+                    if (IsTaxonomy(sourceField.Kind))
+                    {
+                        eligibleTaxonomyFieldNames.Add(sourceField.InternalName);
+                        action.Disposition = PageFieldDisposition.RequiresMapping;
+                        action.Reason = "The field is eligible for replay, pending an exact action for every sealed taxonomy relationship.";
+                        continue;
+                    }
+
                     action.Disposition = PageFieldDisposition.RequiresMapping;
                     action.Reason = "The value is captured, but its source identity must be mapped before it can be safely applied to another site.";
-                    if (!IsTaxonomy(sourceField.Kind) || !options.BlockOnManagedMetadata)
-                    {
-                        warnings.Add($"Field '{sourceField.InternalName}' requires an identity or term mapping and remains evidence-only.");
-                    }
+                    warnings.Add($"Field '{sourceField.InternalName}' requires an identity mapping and remains evidence-only.");
 
                     continue;
                 }
@@ -136,7 +159,47 @@ namespace PnP.Framework.Migration.Pages.Fields
                 action.Reason = "The field is recognized, writable, type-compatible, and has a supported captured value.";
             }
 
+            var plannedTaxonomyRelationships = PageTaxonomyRelationshipPlanner.BuildActions(
+                targetContext,
+                pages,
+                sourceFields,
+                eligibleTaxonomyFieldNames,
+                options,
+                blockers,
+                warnings);
+            AddTaxonomyRelationshipActions(plannedTaxonomyRelationships, taxonomyRelationshipActions);
+            foreach (var action in result.Where(value => eligibleTaxonomyFieldNames.Contains(value.SourceInternalName)))
+            {
+                var sourceField = sourceFields.Single(value =>
+                    string.Equals(value.InternalName, action.SourceInternalName, StringComparison.OrdinalIgnoreCase));
+                var relationships = plannedTaxonomyRelationships
+                    .Where(value => value.SourceFieldId == sourceField.Id)
+                    .ToArray();
+                if (relationships.Length == sourceField.TaxonomyValues.Count
+                    && relationships.Length > 0
+                    && relationships.All(value => value.IsExecutable))
+                {
+                    action.Disposition = PageFieldDisposition.ApplyTaxonomyRelationships;
+                    action.Reason = "Every taxonomy value has an exact reviewed relationship action. The importer will reproduce those relationships without creating or substituting Terms.";
+                }
+                else
+                {
+                    action.Disposition = PageFieldDisposition.Block;
+                    action.Reason = "One or more taxonomy values lack an exact executable relationship action.";
+                }
+            }
+
             return result;
+        }
+
+        private static void AddTaxonomyRelationshipActions(
+            IEnumerable<TaxonomyRelationshipAction> planned,
+            ICollection<TaxonomyRelationshipAction> destination)
+        {
+            foreach (var action in planned)
+            {
+                destination.Add(action);
+            }
         }
 
         public static bool IsImportableKind(PageFieldValueKind kind)
@@ -159,7 +222,7 @@ namespace PnP.Framework.Migration.Pages.Fields
                 || kind == PageFieldValueKind.LookupCollection;
         }
 
-        private static bool IsTaxonomy(PageFieldValueKind kind)
+        internal static bool IsTaxonomy(PageFieldValueKind kind)
         {
             return kind == PageFieldValueKind.Taxonomy || kind == PageFieldValueKind.TaxonomyCollection;
         }

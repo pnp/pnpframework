@@ -112,7 +112,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
             return recorder.Execute(
                 "page.fields",
                 "Apply approved page field actions.",
-                () => PageFieldWriter.Apply(context, targetItem, package.Snapshot.Fields, package.Plan.FieldActions, package.Plan.Replacements, warnings),
+                () => PageFieldWriter.Apply(
+                    context,
+                    targetItem,
+                    package.Snapshot.Fields,
+                    package.Plan.FieldActions,
+                    package.Plan.TaxonomyRelationshipActions,
+                    package.Plan.Replacements,
+                    warnings),
                 results => results.Any(result => result.Attempted)
                     ? results.Any(result => result.Attempted && !result.Succeeded) ? MutationOutcome.Failed : MutationOutcome.Applied
                     : MutationOutcome.AlreadySatisfied,

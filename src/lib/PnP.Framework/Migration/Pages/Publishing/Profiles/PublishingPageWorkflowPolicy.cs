@@ -15,8 +15,6 @@ namespace PnP.Framework.Migration.Pages.Publishing.Profiles
 
         public ISet<string> RecognizedPageFields { get; set; }
 
-        public ISet<string> ManagedMetadataPageFields { get; set; }
-
         public Func<string, ValidationCohortAssessment> AssessValidationCohort { get; set; }
 
         public PublishingPageWorkflowSelection Select(string sourceContentTypeId)

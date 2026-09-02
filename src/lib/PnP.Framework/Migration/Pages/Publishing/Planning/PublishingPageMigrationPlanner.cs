@@ -93,7 +93,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
             {
                 blockers.Add($"The detected runtime adapter '{snapshot.Runtime?.AdapterId ?? PageRuntimeAdapterIds.Unknown}' is not executable by the Publishing Page planner.");
             }
-            PublishingPagePlanningPolicy.AddSnapshotDecisions(snapshot, workflowPolicy, options, blockers);
+            PublishingPagePlanningPolicy.AddSnapshotDecisions(snapshot, options, blockers);
 
             var layoutMaterialization = PublishingPageLayoutPlanFactory.Create(
                 snapshot.Layout,
@@ -143,12 +143,15 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
                 options,
                 blockers,
                 warnings);
+            var taxonomyRelationshipActions = new List<TaxonomyRelationshipAction>();
             var fieldActions = PageFieldPlanner.BuildActions(
                 targetContext,
                 snapshot.Fields,
                 workflowPolicy.FieldsHandledByPageWriter,
                 workflowPolicy.RecognizedPageFields,
                 options,
+                taxonomyRelationshipActions,
+                blockers,
                 warnings);
             var expectedContent = PageTextTransformer.Rewrite(snapshot.PublishingPageContent, replacements);
             var expectedContentDigest = PublishingPageDigest.ComputeSha256(expectedContent);
@@ -171,6 +174,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
                 LayoutTargetProbe = layoutTargetProbe,
                 LayoutAdmission = layoutAdmission,
                 FieldActions = fieldActions,
+                TaxonomyRelationshipActions = taxonomyRelationshipActions,
                 DependencyActions = dependencyActions,
                 Topology = dependencyPlan.Topology,
                 TopologyTargetAnalysis = dependencyPlan.TopologyTargetAnalysis,

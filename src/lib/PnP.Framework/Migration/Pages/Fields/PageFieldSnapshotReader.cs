@@ -1,5 +1,6 @@
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Migration.Pages.Capture;
+using PnP.Framework.Migration.Pages.Fields.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,10 @@ namespace PnP.Framework.Migration.Pages.Fields
 {
     internal static class PageFieldSnapshotReader
     {
-        public static List<PageFieldValueSnapshot> Read(ClientContext context, ListItem item, ICollection<string> warnings)
+        public static List<PageFieldValueSnapshot> Read(
+            ClientContext context,
+            ListItem item,
+            ICollection<string> warnings)
         {
             var parentList = item.ParentList;
             context.Load(parentList.Fields, fields => fields.Include(
@@ -52,6 +56,7 @@ namespace PnP.Framework.Migration.Pages.Fields
                 }
             }
 
+            PageTaxonomyRelationshipSnapshotReader.Enrich(context, item, result, warnings);
             return result;
         }
     }

@@ -28,18 +28,6 @@ namespace PnP.Framework.Migration.Pages.Publishing.Profiles
                 "SeoMetaDescription",
                 "Wiki_x0020_Page_x0020_Categories"
             },
-            ManagedMetadataPageFields = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-            {
-                "ArticleByLine",
-                "PublishingContact",
-                "PublishingPageDescription",
-                "PublishingPageImage",
-                "PublishingRollupImage",
-                "SeoBrowserTitle",
-                "SeoKeywords",
-                "SeoMetaDescription",
-                "Wiki_x0020_Page_x0020_Categories"
-            },
             AssessValidationCohort = EnterpriseWikiV1CohortPolicy.Assess
         };
     }

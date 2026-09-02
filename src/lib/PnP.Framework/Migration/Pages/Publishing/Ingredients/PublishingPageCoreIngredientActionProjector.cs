@@ -4,6 +4,7 @@ using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
 using PnP.Framework.Migration.Pages.Runtime;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             AddRuntimeAndArtifact(snapshot, plan, actions);
             AddContentSecurityAndLifecycle(snapshot, plan, actions);
             AddFields(snapshot, plan, actions);
+            AddTaxonomyRelationships(snapshot, plan, actions);
         }
 
         private static void AddRuntimeAndArtifact(
@@ -136,6 +138,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             {
                 case PageFieldDisposition.Apply:
                     return (IngredientCapability.Available, IngredientDisposition.Preserve, "map-one-to-one");
+                case PageFieldDisposition.ApplyTaxonomyRelationships:
+                    return (IngredientCapability.Available, IngredientDisposition.Transform, "reproduce-reviewed-taxonomy-relationships");
                 case PageFieldDisposition.AlreadyHandled:
                     return (IngredientCapability.Available, IngredientDisposition.Preserve, "handled-by-page-writer");
                 case PageFieldDisposition.SkipEmpty:
@@ -153,6 +157,73 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                     return (hasValue ? IngredientCapability.Incompatible : IngredientCapability.Unknown, IngredientDisposition.Block, "none");
                 default:
                     return (IngredientCapability.Unknown, IngredientDisposition.Block, "none");
+            }
+        }
+
+        private static void AddTaxonomyRelationships(
+            PublishingPageCaptureBundle snapshot,
+            PublishingPageMigrationPlan plan,
+            IDictionary<string, PageIngredientAction> actions)
+        {
+            var planned = (plan.TaxonomyRelationshipActions ?? Array.Empty<TaxonomyRelationshipAction>())
+                .ToDictionary(
+                    action => RelationshipKey(action.SourceFieldId, action.SourceTermId, action.SourceWssId),
+                    StringComparer.Ordinal);
+            foreach (var field in snapshot.Fields.Where(field => field != null))
+            {
+                foreach (var value in (field.TaxonomyValues ?? Array.Empty<PageTaxonomyValueSnapshot>()).Where(value => value != null))
+                {
+                    Guid termId;
+                    Guid.TryParse(value.TermGuid, out termId);
+                    var ingredientId = PublishingPageIngredientIds.TaxonomyRelationship(field.Id, termId, value.WssId);
+                    planned.TryGetValue(RelationshipKey(field.Id, termId, value.WssId), out var relationshipAction);
+                    var executable = relationshipAction != null && relationshipAction.IsExecutable;
+                    var evidenceOnly = relationshipAction?.Disposition == TaxonomyRelationshipDisposition.RetainEvidenceOnly;
+                    var realization = relationshipAction == null
+                        ? "none"
+                        : Realization(relationshipAction.Disposition);
+                    PublishingPageIngredientActionFactory.Add(actions, PublishingPageIngredientActionFactory.Create(
+                        ingredientId,
+                        executable
+                            ? IngredientCapability.Available
+                            : evidenceOnly
+                                ? IngredientCapability.Unknown
+                                : IngredientCapability.Incompatible,
+                        executable
+                            ? IngredientDisposition.Transform
+                            : evidenceOnly
+                                ? IngredientDisposition.Delegate
+                                : IngredientDisposition.Block,
+                        realization,
+                        "policy.taxonomy-relationship.fidelity",
+                        relationshipAction?.Reason ?? "No exact target taxonomy relationship action was sealed.",
+                        relationshipAction == null || !relationshipAction.IsExecutable
+                            ? null
+                            : relationshipAction.TargetTermStoreId.ToString("D") + "/" + relationshipAction.TargetBoundTermSetId.ToString("D") + "/" + relationshipAction.SourceTermId.ToString("D"),
+                        relationshipAction?.VerificationAssertions?.ToArray() ?? Array.Empty<string>()));
+                }
+            }
+        }
+
+        private static string RelationshipKey(Guid fieldId, Guid termId, int wssId)
+        {
+            return fieldId.ToString("D") + "/" + termId.ToString("D") + "/" + wssId;
+        }
+
+        private static string Realization(TaxonomyRelationshipDisposition disposition)
+        {
+            switch (disposition)
+            {
+                case TaxonomyRelationshipDisposition.ReuseLiveInBoundTermSet:
+                    return "reuse-live-term-in-mapped-bound-set";
+                case TaxonomyRelationshipDisposition.PreserveLiveOutsideBoundTermSet:
+                    return "reproduce-live-term-outside-mapped-bound-set";
+                case TaxonomyRelationshipDisposition.PreserveDanglingTermAbsent:
+                    return "reproduce-dangling-term-with-target-local-wssid";
+                case TaxonomyRelationshipDisposition.RetainEvidenceOnly:
+                    return "retain-sealed-relationship-evidence";
+                default:
+                    return "none";
             }
         }
     }

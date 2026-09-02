@@ -12,6 +12,7 @@ using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
 using PnP.Framework.Migration.Pages.Ingredients;
 using PnP.Framework.Migration.Diagnostics;
+using PnP.Framework.Migration.Taxonomy;
 using System.Collections.Generic;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Planning
@@ -51,6 +52,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
         public PublishingPageLayoutTargetAdmission LayoutAdmission { get; set; }
 
         public IList<PageFieldAction> FieldActions { get; set; } = new List<PageFieldAction>();
+
+        public IList<TaxonomyRelationshipAction> TaxonomyRelationshipActions { get; set; } = new List<TaxonomyRelationshipAction>();
 
         public IList<PageReferenceAction> DependencyActions { get; set; } = new List<PageReferenceAction>();
 

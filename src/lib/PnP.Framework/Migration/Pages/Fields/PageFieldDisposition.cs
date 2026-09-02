@@ -12,6 +12,7 @@ namespace PnP.Framework.Migration.Pages.Fields
         RequiresMapping = 7,
         EvidenceOnly = 8,
         CaptureUnavailable = 9,
-        Block = 10
+        Block = 10,
+        ApplyTaxonomyRelationships = 11
     }
 }

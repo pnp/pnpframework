@@ -120,6 +120,45 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                 {
                     graph.Edges.Add(Edge(PublishingPageIngredientIds.Layout, id, PageIngredientRelationship.BindsTo, PageIngredientRequirement.Required));
                 }
+
+                AddTaxonomyRelationships(field, id, snapshot, graph);
+            }
+        }
+
+        private static void AddTaxonomyRelationships(
+            PageFieldValueSnapshot field,
+            string fieldIngredientId,
+            PublishingPageCaptureBundle snapshot,
+            CanonicalPageIngredientGraph graph)
+        {
+            if (field.Kind != PageFieldValueKind.Taxonomy
+                && field.Kind != PageFieldValueKind.TaxonomyCollection)
+            {
+                return;
+            }
+
+            foreach (var value in (field.TaxonomyValues ?? Array.Empty<PageTaxonomyValueSnapshot>())
+                         .Where(item => item != null)
+                         .OrderBy(item => item.TermGuid, StringComparer.OrdinalIgnoreCase)
+                         .ThenBy(item => item.WssId))
+            {
+                Guid termId;
+                Guid.TryParse(value.TermGuid, out termId);
+                var relationshipId = PublishingPageIngredientIds.TaxonomyRelationship(field.Id, termId, value.WssId);
+                graph.Nodes.Add(Node(
+                    relationshipId,
+                    PageIngredientKind.Taxonomy,
+                    field.InternalName + ":" + value.TermGuid,
+                    true,
+                    PageIngredientOwnership.Shared,
+                    "Taxonomy field binding, live Term resolution, TaxonomyHiddenList and TaxCatchAll relationship",
+                    value.Relationship?.EvidenceSha256,
+                    snapshot.Runtime?.AdapterId));
+                graph.Edges.Add(Edge(
+                    fieldIngredientId,
+                    relationshipId,
+                    PageIngredientRelationship.BindsTo,
+                    PageIngredientRequirement.Required));
             }
         }
     }

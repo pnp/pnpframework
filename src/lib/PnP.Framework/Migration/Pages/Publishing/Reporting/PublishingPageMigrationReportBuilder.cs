@@ -5,6 +5,8 @@ using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
 using PnP.Framework.Migration.Pages.Publishing.Reporting.Sections;
 using PnP.Framework.Migration.Pages.Markup;
+using PnP.Framework.Migration.Pages.Fields;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Linq;
 
@@ -120,7 +122,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             writer.List("Report warnings", report.Warnings);
             writer.List("Captured ingredients", report.CapturedIngredients);
             writer.Heading(2, "Field-action legend");
-            writer.Paragraph("`Apply` is written by Import. `AlreadyHandled` is handled by page creation/content/layout logic. `EvidenceOnly` remains available for future recovery. `RequiresMapping` needs an explicit cross-site identity mapping. `Skip*`, `Target*`, and `CaptureUnavailable` are retained but not written. `Block` makes the plan non-executable.");
+            writer.Paragraph("`Apply` writes a supported scalar value. `ApplyTaxonomyRelationships` executes the separately reviewed relationship actions and never creates or substitutes a Term. A taxonomy relationship action of `RetainEvidenceOnly` preserves its sealed source proof without asserting target capability. `AlreadyHandled` is handled by page creation/content/layout logic. `EvidenceOnly` remains available for future recovery. `RequiresMapping` needs an explicit cross-site identity mapping. `Skip*`, `Target*`, and `CaptureUnavailable` are retained but not written. `Block` makes the plan non-executable.");
             writer.Heading(2, "Ingredient-action legend");
             writer.Paragraph("`Preserve` retains the ingredient's semantics, `Transform` deliberately changes representation, `Substitute` lets the target runtime supply an equivalent, `Drop` records reviewed loss, `Delegate` keeps evidence for another workflow, and `Block` prevents import. A retained ingredient may only drop a required dependency when its transform explicitly releases that dependency.");
             return writer.ToString();
@@ -280,6 +282,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                     Row("urlValue", field.UrlValue == null ? null : $"url={Format(field.UrlValue.Url)}; description={Format(field.UrlValue.Description)}"),
                     Row("lookupValues", Join(field.LookupValues.Select(value => $"id={value.LookupId}; value={Format(value.LookupValue)}"))),
                     Row("taxonomyValues", Join(field.TaxonomyValues.Select(value => $"label={Format(value.Label)}; termGuid={Format(value.TermGuid)}; wssId={value.WssId}"))),
+                    Row("taxonomyBinding", field.TaxonomyBinding == null ? null : $"field={field.TaxonomyBinding.FieldId:D}/{Format(field.TaxonomyBinding.FieldInternalName)}; store={field.TaxonomyBinding.TermStoreId:D}; boundSet={field.TaxonomyBinding.BoundTermSetId:D}; textField={field.TaxonomyBinding.TextFieldId:D}; open={field.TaxonomyBinding.Open}"),
+                    Row("taxonomyValueSetSha256", field.TaxonomyValueSetSha256),
                     Row("binaryBase64", Summarize(field.BinaryBase64)),
                     Row("rawType", field.RawType),
                     Row("rawValue", Summarize(field.RawValue)),
@@ -288,6 +292,35 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                     Row("diagnostics", Join(field.Diagnostics))
                 });
             }
+
+            var relationshipActions = plan.TaxonomyRelationshipActions.ToDictionary(
+                value => TaxonomyRelationshipKey(value.SourceFieldId, value.SourceTermId, value.SourceWssId),
+                StringComparer.Ordinal);
+            writer.Table("Taxonomy relationship evidence and target actions",
+                new[] { "Field / Term", "Source relationship", "Live Term evidence", "Value hidden row", "TaxCatchAll hidden row", "Proof", "Target action", "Target identities", "Verification / reason" },
+                snapshot.Fields
+                    .Where(field => field.Kind == PageFieldValueKind.Taxonomy || field.Kind == PageFieldValueKind.TaxonomyCollection)
+                    .SelectMany(field => field.TaxonomyValues.Select(value =>
+                    {
+                        Guid termId;
+                        Guid.TryParse(value.TermGuid, out termId);
+                        relationshipActions.TryGetValue(TaxonomyRelationshipKey(field.Id, termId, value.WssId), out var action);
+                        var relationship = value.Relationship;
+                        return Row(
+                            $"{field.InternalName}; fieldId={field.Id:D}; term={Format(value.TermGuid)}; sourceWssId={value.WssId}; label={Format(value.Label)}",
+                            relationship?.State,
+                            relationship == null ? null : $"set={Format(relationship.LiveTermSetId)}; setName={Format(relationship.LiveTermSetName)}; label={Format(relationship.LiveTermLabel)}; path={Format(relationship.LiveTermPath)}; taggable={Format(relationship.LiveTermAvailableForTagging)}",
+                            FormatHiddenListEntry(relationship?.ValueHiddenListEntry, value.Label),
+                            FormatHiddenListEntry(relationship?.TaxCatchAllHiddenListEntry, value.Label),
+                            relationship == null ? null : $"fieldValueSetSha256={Format(relationship.SourceFieldValueSetSha256)}; evidenceSha256={Format(relationship.EvidenceSha256)}; capturedAt={relationship.CapturedAtUtc:O}; diagnostics={Join(relationship.Diagnostics)}",
+                            action?.Disposition,
+                            action == null
+                                ? null
+                                : action.Disposition == TaxonomyRelationshipDisposition.RetainEvidenceOnly
+                                    ? "none; sealed source evidence only"
+                                    : $"field={action.TargetFieldId:D}; textField={action.TargetTextFieldId:D}; open={Format(action.TargetFieldOpen)}; store={action.TargetTermStoreId:D}; boundSet={action.TargetBoundTermSetId:D}; liveSet={Format(action.TargetLiveTermSetId)}; valueHiddenSet={Format(action.TargetValueHiddenListTermSetId)}; taxCatchAllSet={Format(action.TargetTaxCatchAllHiddenListTermSetId)}",
+                            action == null ? null : $"assertions={Join(action.VerificationAssertions)}; reason={Format(action.Reason)}");
+                    })));
         }
 
         private static void AppendDependencies(MarkdownReportWriter writer, PublishingPageCaptureBundle snapshot, PublishingPageMigrationPlan plan)
@@ -337,7 +370,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("plan.createOnly", plan.CreateOnly, "Existing pages and dependency files are blockers."),
                 Row("planningPolicy.targetPageServerRelativeUrl", plan.PlanningPolicy.TargetPageServerRelativeUrl, "Normalized requested target page."),
                 Row("planningPolicy.requireInheritedPermissions", plan.PlanningPolicy.RequireInheritedPermissions, "Blocks source pages with unique permissions when true."),
-                Row("planningPolicy.blockOnManagedMetadata", plan.PlanningPolicy.BlockOnManagedMetadata, "Blocks non-empty taxonomy values without a reviewed term mapping when true."),
+                Row("planningPolicy.blockOnManagedMetadata", plan.PlanningPolicy.BlockOnManagedMetadata, "Legacy compatibility input. It cannot bypass relationship evidence, reviewed mappings, target-state admission, or the no-Term-repair invariant."),
                 Row("planningPolicy.allowExternalResourceReferences", plan.PlanningPolicy.AllowExternalResourceReferences, "Allows external authored resource references to remain external when true."),
                 Row("planningPolicy.createOnly", plan.PlanningPolicy.CreateOnly, "Disallows replacing target files when true."),
                 Row("targetProbe.webUrl", plan.TargetProbe.WebUrl, "Web actually probed while planning."),
@@ -365,7 +398,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                     item.SourceTermSetId,
                     item.TargetTermStoreId,
                     item.TargetTermSetId,
-                    "Only Page Layout field schemas with this exact source store/set pair are rebound to the listed target pair.")));
+                    "This exact source store/set identity maps to the reviewed target pair for Page Layout schema and page taxonomy-relationship planning.")));
 
             PublishingPageLayoutPlanReportSection.Append(writer, plan);
         }
@@ -384,5 +417,17 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
         private static string Join(System.Collections.Generic.IEnumerable<string> values) => PublishingPageReportValueFormatter.Join(values);
 
         private static string Summarize(string value) => PublishingPageReportValueFormatter.SummarizePayload(value);
+
+        private static string TaxonomyRelationshipKey(Guid fieldId, Guid termId, int sourceWssId)
+        {
+            return fieldId.ToString("D") + "/" + termId.ToString("D") + "/" + sourceWssId;
+        }
+
+        private static string FormatHiddenListEntry(PnP.Framework.Migration.Taxonomy.TaxonomyHiddenListEntrySnapshot entry, string capturedLabel)
+        {
+            return entry == null
+                ? null
+                : $"wssId={entry.WssId}; store={entry.TermStoreId:D}; set={entry.TermSetId:D}; term={entry.TermId:D}; title={Format(entry.Title)}; termText={Format(entry.PreferredTerm(capturedLabel))}; path={Format(entry.PreferredPath(capturedLabel))}; catchAllData={Format(entry.CatchAllData)}; catchAllDataLabel={Format(entry.CatchAllDataLabel)}";
+        }
     }
 }

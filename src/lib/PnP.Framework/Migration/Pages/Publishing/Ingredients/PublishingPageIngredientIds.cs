@@ -23,6 +23,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             return "field:" + (internalName ?? string.Empty);
         }
 
+        public static string TaxonomyRelationship(Guid sourceFieldId, Guid sourceTermId, int sourceWssId)
+        {
+            return "taxonomy-relationship:" + sourceFieldId.ToString("D") + "/" + sourceTermId.ToString("D") + "/" + sourceWssId;
+        }
+
         public static string WebPart(Guid id)
         {
             return "webpart:" + id.ToString("D");

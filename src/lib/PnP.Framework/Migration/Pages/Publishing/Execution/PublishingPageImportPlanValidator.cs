@@ -11,6 +11,7 @@ using System.Linq;
 using PnP.Framework.Migration.Pages.Cohorts;
 using PnP.Framework.Migration.Pages.Runtime;
 using PnP.Framework.Migration.Pages.Publishing.Profiles;
+using PnP.Framework.Migration.Taxonomy;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Execution
 {
@@ -67,6 +68,26 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                     || !PageFieldPlanner.IsImportableKind(field.Kind))
                 {
                     throw new InvalidDataException($"Field action '{action.SourceInternalName}' is marked Apply but is not supported by the Publishing Page importer.");
+                }
+            }
+            foreach (var action in package.Plan.FieldActions.Where(item => item.Disposition == PageFieldDisposition.ApplyTaxonomyRelationships))
+            {
+                if (!string.Equals(action.SourceInternalName, action.TargetInternalName, StringComparison.OrdinalIgnoreCase)
+                    || !fieldByName.TryGetValue(action.SourceInternalName, out var field)
+                    || field.ReadOnly
+                    || !field.HasValue
+                    || field.CaptureStatus != PageCaptureStatus.Captured
+                    || !PageFieldPlanner.IsTaxonomy(field.Kind))
+                {
+                    throw new InvalidDataException($"Field action '{action.SourceInternalName}' is marked for taxonomy replay but is not supported by the Publishing Page importer.");
+                }
+                var relationshipActions = package.Plan.TaxonomyRelationshipActions
+                    .Where(value => value.SourceFieldId == field.Id)
+                    .ToArray();
+                if (relationshipActions.Length != field.TaxonomyValues.Count
+                    || relationshipActions.Any(value => !value.IsExecutable))
+                {
+                    throw new InvalidDataException($"Field action '{action.SourceInternalName}' has incomplete or blocked taxonomy relationship actions.");
                 }
             }
 

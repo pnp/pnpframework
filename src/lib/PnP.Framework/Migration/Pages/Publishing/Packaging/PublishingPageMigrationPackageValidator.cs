@@ -7,6 +7,7 @@ using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Ingredients;
 using PnP.Framework.Migration.Pages.Publishing.Layouts.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
+using PnP.Framework.Migration.Pages.Publishing.Packaging.Taxonomy;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
 using System;
 using System.Collections.Generic;
@@ -103,6 +104,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                 || plan.LayoutMaterialization == null
                 || plan.LayoutAdmission == null
                 || plan.FieldActions == null
+                || plan.TaxonomyRelationshipActions == null
                 || plan.DependencyActions == null
                 || plan.WebPartActions == null
                 || plan.Replacements == null
@@ -246,6 +248,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             {
                 throw new InvalidDataException("The plan must contain exactly one field action for every captured source field.");
             }
+            PublishingPageTaxonomyPlanValidator.Validate(snapshot, plan);
             var dependencyIds = new HashSet<string>(snapshot.Dependencies.Select(item => item.Id), StringComparer.Ordinal);
             var plannedDependencyIds = new HashSet<string>(plan.DependencyActions.Select(item => item?.SnapshotDependencyId), StringComparer.Ordinal);
             if (plan.DependencyActions.Any(item => item == null)

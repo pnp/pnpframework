@@ -37,6 +37,8 @@ using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Schema.ContentTypes;
 using PnP.Framework.Migration.Schema.Fields;
 using PnP.Framework.Migration.Verification;
+using PnP.Framework.Migration.Taxonomy;
+using PnP.Framework.Migration.Pages.Fields.Taxonomy;
 using Microsoft.SharePoint.Client;
 using System;
 using System.Collections.Generic;
@@ -186,6 +188,277 @@ namespace PnP.Framework.Test.EnterpriseWiki
             };
 
             Assert.AreEqual(PageMigrationOutcome.Exact, PageIngredientPlanEvaluator.Evaluate(graph, actions).Outcome);
+        }
+
+        [TestMethod]
+        public void DanglingTaxonomyRelationshipIsSealedToExactFieldValuesAndHiddenIdentity()
+        {
+            var field = CreateDanglingTaxonomyField();
+
+            Assert.AreEqual(0, PageTaxonomyRelationshipEvidence.ValidateSealedField(field).Count);
+            Assert.AreEqual(0, PageTaxonomyRelationshipEvidence.GetFidelityErrors(field, field.TaxonomyValues.Single()).Count);
+            Assert.AreEqual(TaxonomyRelationshipState.DanglingTermAbsent, field.TaxonomyValues.Single().Relationship.State);
+            Assert.IsFalse(string.IsNullOrWhiteSpace(field.TaxonomyValueSetSha256));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(field.TaxonomyValues.Single().Relationship.EvidenceSha256));
+
+            field.TaxonomyValues.Single().Label = "healed-label";
+
+            Assert.IsTrue(PageTaxonomyRelationshipEvidence.ValidateSealedField(field).Any(value =>
+                value.Contains("digest", StringComparison.OrdinalIgnoreCase)
+                || value.Contains("proof", StringComparison.OrdinalIgnoreCase)));
+        }
+
+        [TestMethod]
+        public void ConflictedTaxonomyBindingRemainsExportableButNotExecutable()
+        {
+            var snapshot = CreateSnapshot();
+            var field = CreateDanglingTaxonomyField();
+            field.TaxonomyBinding.TermStoreId = Guid.Empty;
+            field.TaxonomyBinding.BoundTermSetId = Guid.Empty;
+            field.TaxonomyBinding.TextFieldId = Guid.Empty;
+            var relationship = field.TaxonomyValues.Single().Relationship;
+            relationship.State = TaxonomyRelationshipState.Conflict;
+            relationship.Diagnostics.Add("The source taxonomy field binding could not be read.");
+            PageTaxonomyRelationshipProof.Seal(field);
+            snapshot.Fields.Add(field);
+            snapshot.ProfileSignals = PublishingPageProfileSignalProjector.Project(snapshot.Source, snapshot.Layout, snapshot.Fields);
+            snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(snapshot);
+            var export = new PublishingPageExportPackage
+            {
+                ExportedAtUtc = DateTimeOffset.UtcNow,
+                Selection = CreateSelection(),
+                SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(CreateSelection()),
+                Snapshot = snapshot,
+                SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot)
+            };
+
+            PublishingPagePackageValidator.ValidateExport(export);
+
+            Assert.AreEqual(0, PageTaxonomyRelationshipEvidence.ValidateSealedField(field).Count);
+            Assert.IsTrue(PageTaxonomyRelationshipEvidence.GetFidelityErrors(
+                field,
+                field.TaxonomyValues.Single()).Any(value =>
+                    value.Contains("incomplete", StringComparison.OrdinalIgnoreCase)
+                    || value.Contains("Conflict", StringComparison.OrdinalIgnoreCase)));
+        }
+
+        [TestMethod]
+        public void TaxonomyHiddenListLocalizationPreservesCapturedLcidValues()
+        {
+            var entry = new TaxonomyHiddenListEntrySnapshot
+            {
+                Title = "Category",
+                Terms = new List<TaxonomyLocalizedTextSnapshot>
+                {
+                    new TaxonomyLocalizedTextSnapshot { FieldInternalName = "Term1033", Value = "Category" },
+                    new TaxonomyLocalizedTextSnapshot { FieldInternalName = "Term2052", Value = "Category ZH" }
+                },
+                Paths = new List<TaxonomyLocalizedTextSnapshot>
+                {
+                    new TaxonomyLocalizedTextSnapshot { FieldInternalName = "Path1033", Value = "Root;Category" },
+                    new TaxonomyLocalizedTextSnapshot { FieldInternalName = "Path2052", Value = "Root ZH;Category ZH" }
+                }
+            };
+            var targetValues = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                ["Term1033"] = "Category",
+                ["Term2052"] = "Category ZH",
+                ["Path1033"] = "Root;Category",
+                ["Path2052"] = "Root ZH;Category ZH"
+            };
+
+            Assert.AreEqual("Root ZH;Category ZH", entry.PreferredPath("Category ZH"));
+            Assert.AreEqual(0, PageTaxonomyHiddenListLocalization.GetTargetCoverageErrors(
+                entry,
+                new[] { "Term1033", "Term2052" },
+                new[] { "Path1033", "Path2052" }).Count);
+            Assert.IsTrue(PageTaxonomyHiddenListLocalization.MatchesCapturedValues(
+                entry,
+                new[] { "Term1033", "Term2052" },
+                new[] { "Path1033", "Path2052" },
+                fieldName => targetValues[fieldName]));
+            Assert.IsTrue(PageTaxonomyHiddenListLocalization.GetTargetCoverageErrors(
+                entry,
+                new[] { "Term1033", "Term2052" },
+                new[] { "Path1033" }).Any(value => value.Contains("Path2052", StringComparison.Ordinal)));
+        }
+
+        [TestMethod]
+        public void TaxonomyRelationshipIsARequiredIngredientOfThePageField()
+        {
+            var snapshot = CreateSnapshot();
+            var field = CreateDanglingTaxonomyField();
+            snapshot.Fields.Add(field);
+            snapshot.ProfileSignals = PublishingPageProfileSignalProjector.Project(snapshot.Source, snapshot.Layout, snapshot.Fields);
+            snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(snapshot);
+            var termId = Guid.Parse(field.TaxonomyValues.Single().TermGuid);
+            var relationshipId = PublishingPageIngredientIds.TaxonomyRelationship(field.Id, termId, field.TaxonomyValues.Single().WssId);
+
+            var node = snapshot.IngredientGraph.Nodes.Single(value => value.Id == relationshipId);
+            var edge = snapshot.IngredientGraph.Edges.Single(value =>
+                value.FromIngredientId == PublishingPageIngredientIds.Field(field.InternalName)
+                && value.ToIngredientId == relationshipId);
+
+            Assert.AreEqual(PageIngredientKind.Taxonomy, node.Kind);
+            Assert.AreEqual(field.TaxonomyValues.Single().Relationship.EvidenceSha256, node.EvidenceDigest);
+            Assert.AreEqual(PageIngredientRequirement.Required, edge.Requirement);
+        }
+
+        [TestMethod]
+        public void ExportValidationRejectsRedigestedTaxonomyRelationshipTampering()
+        {
+            var snapshot = CreateSnapshot();
+            var field = CreateDanglingTaxonomyField();
+            snapshot.Fields.Add(field);
+            snapshot.ProfileSignals = PublishingPageProfileSignalProjector.Project(snapshot.Source, snapshot.Layout, snapshot.Fields);
+            snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(snapshot);
+            var export = new PublishingPageExportPackage
+            {
+                ExportedAtUtc = DateTimeOffset.UtcNow,
+                Selection = CreateSelection(),
+                SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(CreateSelection()),
+                Snapshot = snapshot,
+                SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot)
+            };
+            PublishingPagePackageValidator.ValidateExport(export);
+
+            field.TaxonomyValues.Single().Relationship.ValueHiddenListEntry.Paths.Single().Value = "different/path";
+            export.SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot);
+
+            Assert.ThrowsException<InvalidDataException>(() => PublishingPagePackageValidator.ValidateExport(export));
+        }
+
+        [TestMethod]
+        public void InvalidTaxonomyRelationshipProjectsAsExplicitTransformationWithoutRepair()
+        {
+            var package = CreateMigrationPackage();
+            var field = CreateDanglingTaxonomyField();
+            var value = field.TaxonomyValues.Single();
+            var termId = Guid.Parse(value.TermGuid);
+            package.Snapshot.Fields.Add(field);
+            package.Snapshot.ProfileSignals = PublishingPageProfileSignalProjector.Project(
+                package.Snapshot.Source,
+                package.Snapshot.Layout,
+                package.Snapshot.Fields);
+            package.Snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(package.Snapshot);
+            package.Plan.FieldActions.Add(new PageFieldAction
+            {
+                SourceInternalName = field.InternalName,
+                TargetInternalName = field.InternalName,
+                TargetTypeAsString = field.TypeAsString,
+                Disposition = PageFieldDisposition.ApplyTaxonomyRelationships,
+                Reason = "Reproduce exact relationship."
+            });
+            package.Plan.TaxonomyRelationshipActions.Add(new TaxonomyRelationshipAction
+            {
+                SourceFieldId = field.Id,
+                SourceFieldInternalName = field.InternalName,
+                SourceTermId = termId,
+                SourceWssId = value.WssId,
+                SourceEvidenceSha256 = value.Relationship.EvidenceSha256,
+                SourceState = TaxonomyRelationshipState.DanglingTermAbsent,
+                Disposition = TaxonomyRelationshipDisposition.PreserveDanglingTermAbsent,
+                TargetFieldId = field.Id,
+                TargetTextFieldId = Guid.Parse("dddddddd-1111-2222-3333-eeeeeeeeeeee"),
+                TargetFieldOpen = field.TaxonomyBinding.Open,
+                TargetTermStoreId = Guid.Parse("aaaaaaaa-1111-2222-3333-bbbbbbbbbbbb"),
+                TargetBoundTermSetId = Guid.Parse("cccccccc-1111-2222-3333-dddddddddddd"),
+                TargetValueHiddenListTermSetId = Guid.Parse("cccccccc-1111-2222-3333-dddddddddddd"),
+                TargetTaxCatchAllHiddenListTermSetId = Guid.Parse("cccccccc-1111-2222-3333-dddddddddddd"),
+                Reason = "Keep the Term absent and reproduce the dangling relationship.",
+                VerificationAssertions = new List<string>
+                {
+                    "The Term remains absent.",
+                    "The target-local WssId resolves to the sealed hidden identity."
+                }
+            });
+
+            var actions = PublishingPageIngredientActionProjector.Project(package.Snapshot, package.Plan);
+            var relationship = actions.Single(action => action.IngredientId ==
+                PublishingPageIngredientIds.TaxonomyRelationship(field.Id, termId, value.WssId));
+
+            Assert.AreEqual(IngredientDisposition.Transform, relationship.Disposition);
+            Assert.AreEqual("reproduce-dangling-term-with-target-local-wssid", relationship.Realization);
+            StringAssert.Contains(relationship.Reason, "absent");
+        }
+
+        [TestMethod]
+        public void UnselectedTaxonomyRelationshipRetainsSealedEvidenceWithoutTargetClaims()
+        {
+            var package = CreateMigrationPackage();
+            var field = CreateDanglingTaxonomyField();
+            var value = field.TaxonomyValues.Single();
+            var termId = Guid.Parse(value.TermGuid);
+            package.Snapshot.Fields.Add(field);
+            package.Snapshot.ProfileSignals = PublishingPageProfileSignalProjector.Project(
+                package.Snapshot.Source,
+                package.Snapshot.Layout,
+                package.Snapshot.Fields);
+            package.Snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(package.Snapshot);
+            package.SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(package.Snapshot);
+            package.Plan.SourceSnapshotDigest = package.SnapshotDigest;
+            package.Plan.FieldActions.Add(new PageFieldAction
+            {
+                SourceInternalName = field.InternalName,
+                TargetInternalName = field.InternalName,
+                Disposition = PageFieldDisposition.EvidenceOnly,
+                Reason = "The importer does not own this field."
+            });
+            package.Plan.TaxonomyRelationshipActions.Add(new TaxonomyRelationshipAction
+            {
+                SourceFieldId = field.Id,
+                SourceFieldInternalName = field.InternalName,
+                SourceTermId = termId,
+                SourceWssId = value.WssId,
+                SourceEvidenceSha256 = value.Relationship.EvidenceSha256,
+                SourceState = value.Relationship.State,
+                Disposition = TaxonomyRelationshipDisposition.RetainEvidenceOnly,
+                Reason = "The owning page field is not selected for replay; its exact taxonomy relationship evidence remains sealed in the snapshot."
+            });
+            package.Plan.IngredientActions = PublishingPageIngredientActionProjector.Project(package.Snapshot, package.Plan);
+            var evaluation = PageIngredientPlanEvaluator.Evaluate(
+                package.Snapshot.IngredientGraph,
+                package.Plan.IngredientActions);
+            package.Plan.MigrationOutcome = evaluation.Outcome;
+            package.Plan.IngredientIssues = evaluation.Issues;
+            package.State = PublishingPagePackageState.ApprovalReady;
+            package.PlanDigest = PublishingPageDigest.ComputePlanDigest(package.Plan);
+
+            PublishingPagePackageValidator.ValidateMigration(package);
+            var relationship = package.Plan.IngredientActions.Single(action => action.IngredientId ==
+                PublishingPageIngredientIds.TaxonomyRelationship(field.Id, termId, value.WssId));
+
+            Assert.AreEqual(IngredientCapability.Unknown, relationship.Capability);
+            Assert.AreEqual(IngredientDisposition.Delegate, relationship.Disposition);
+            Assert.AreEqual("retain-sealed-relationship-evidence", relationship.Realization);
+            Assert.IsNull(relationship.TargetIdentity);
+            Assert.AreEqual(PageMigrationOutcome.ExecutableWithLoss, package.Plan.MigrationOutcome);
+
+            package.Plan.TaxonomyRelationshipActions.Single().TargetTermStoreId =
+                Guid.Parse("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee");
+            package.PlanDigest = PublishingPageDigest.ComputePlanDigest(package.Plan);
+
+            Assert.ThrowsException<InvalidDataException>(() =>
+                PublishingPagePackageValidator.ValidateMigration(package));
+        }
+
+        [TestMethod]
+        public void MigrationPackageRequiresOneSealedActionPerTaxonomyRelationship()
+        {
+            var package = CreateMigrationPackage();
+            var field = CreateDanglingTaxonomyField();
+            AddDanglingTaxonomyPlan(package, field);
+
+            PublishingPagePackageValidator.ValidateMigration(package);
+            var report = PublishingPageMigrationReportBuilder.Build(package);
+            StringAssert.Contains(report, "DanglingTermAbsent");
+            StringAssert.Contains(report, "PreserveDanglingTermAbsent");
+            StringAssert.Contains(report, "evidenceSha256");
+
+            package.Plan.TaxonomyRelationshipActions.Clear();
+            package.PlanDigest = PublishingPageDigest.ComputePlanDigest(package.Plan);
+
+            Assert.ThrowsException<InvalidDataException>(() => PublishingPagePackageValidator.ValidateMigration(package));
         }
 
         [TestMethod]
@@ -1501,6 +1774,145 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 snapshot.Fields);
             snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(snapshot);
             return snapshot;
+        }
+
+        private static PageFieldValueSnapshot CreateDanglingTaxonomyField()
+        {
+            var fieldId = Guid.Parse("e1a5b98c-dd71-426d-acb6-e478c7a5882f");
+            var storeId = Guid.Parse("11111111-2222-3333-4444-555555555555");
+            var setId = Guid.Parse("66666666-7777-8888-9999-aaaaaaaaaaaa");
+            var termId = Guid.Parse("bbbbbbbb-cccc-dddd-eeee-ffffffffffff");
+            var catchAllData = string.Join("|",
+                Convert.ToBase64String(storeId.ToByteArray()),
+                Convert.ToBase64String(setId.ToByteArray()),
+                Convert.ToBase64String(termId.ToByteArray()));
+            var hidden = new TaxonomyHiddenListEntrySnapshot
+            {
+                WssId = 42,
+                TermStoreId = storeId,
+                TermSetId = setId,
+                TermId = termId,
+                Title = "Retired category",
+                CatchAllData = catchAllData,
+                CatchAllDataLabel = "Retired category",
+                Terms = new List<TaxonomyLocalizedTextSnapshot>
+                {
+                    new TaxonomyLocalizedTextSnapshot
+                    {
+                        FieldInternalName = "Term1033",
+                        Value = "Retired category"
+                    }
+                },
+                Paths = new List<TaxonomyLocalizedTextSnapshot>
+                {
+                    new TaxonomyLocalizedTextSnapshot
+                    {
+                        FieldInternalName = "Path1033",
+                        Value = "Retired category"
+                    }
+                }
+            };
+            var field = new PageFieldValueSnapshot
+            {
+                Id = fieldId,
+                InternalName = "Wiki_x0020_Page_x0020_Categories",
+                Title = "Wiki Categories",
+                TypeAsString = "TaxonomyFieldTypeMulti",
+                SchemaXml = "<Field Name=\"Wiki_x0020_Page_x0020_Categories\" Type=\"TaxonomyFieldTypeMulti\" />",
+                HasValue = true,
+                Kind = PageFieldValueKind.TaxonomyCollection,
+                CaptureStatus = PageCaptureStatus.Captured,
+                TaxonomyBinding = new TaxonomyFieldRelationshipBindingSnapshot
+                {
+                    FieldId = fieldId,
+                    FieldInternalName = "Wiki_x0020_Page_x0020_Categories",
+                    TermStoreId = storeId,
+                    BoundTermSetId = setId,
+                    TextFieldId = Guid.Parse("12345678-1234-1234-1234-123456789012")
+                },
+                TaxonomyValues = new List<PageTaxonomyValueSnapshot>
+                {
+                    new PageTaxonomyValueSnapshot
+                    {
+                        Label = "Retired category",
+                        TermGuid = termId.ToString("D"),
+                        WssId = 42,
+                        Relationship = new TaxonomyValueRelationshipSnapshot
+                        {
+                            CapturedAtUtc = new DateTimeOffset(2026, 8, 31, 1, 2, 3, TimeSpan.Zero),
+                            State = TaxonomyRelationshipState.DanglingTermAbsent,
+                            ValueHiddenListEntry = hidden,
+                            TaxCatchAllHiddenListEntry = hidden
+                        }
+                    }
+                }
+            };
+            PageTaxonomyRelationshipProof.Seal(field);
+            return field;
+        }
+
+        private static void AddDanglingTaxonomyPlan(
+            PublishingPageMigrationPackage package,
+            PageFieldValueSnapshot field)
+        {
+            var value = field.TaxonomyValues.Single();
+            var termId = Guid.Parse(value.TermGuid);
+            var targetStoreId = Guid.Parse("aaaaaaaa-1111-2222-3333-bbbbbbbbbbbb");
+            var targetSetId = Guid.Parse("cccccccc-1111-2222-3333-dddddddddddd");
+            package.Snapshot.Fields.Add(field);
+            package.Snapshot.ProfileSignals = PublishingPageProfileSignalProjector.Project(
+                package.Snapshot.Source,
+                package.Snapshot.Layout,
+                package.Snapshot.Fields);
+            package.Snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(package.Snapshot);
+            package.SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(package.Snapshot);
+            package.Plan.SourceSnapshotDigest = package.SnapshotDigest;
+            package.Plan.PlanningPolicy.TaxonomySchemaMappings.Add(new TaxonomyTargetMapping
+            {
+                SourceTermStoreId = field.TaxonomyBinding.TermStoreId,
+                SourceTermSetId = field.TaxonomyBinding.BoundTermSetId,
+                TargetTermStoreId = targetStoreId,
+                TargetTermSetId = targetSetId
+            });
+            package.Plan.FieldActions.Add(new PageFieldAction
+            {
+                SourceInternalName = field.InternalName,
+                TargetInternalName = field.InternalName,
+                TargetTypeAsString = field.TypeAsString,
+                Disposition = PageFieldDisposition.ApplyTaxonomyRelationships,
+                Reason = "Reproduce exact relationship."
+            });
+            package.Plan.TaxonomyRelationshipActions.Add(new TaxonomyRelationshipAction
+            {
+                SourceFieldId = field.Id,
+                SourceFieldInternalName = field.InternalName,
+                SourceTermId = termId,
+                SourceWssId = value.WssId,
+                SourceEvidenceSha256 = value.Relationship.EvidenceSha256,
+                SourceState = TaxonomyRelationshipState.DanglingTermAbsent,
+                Disposition = TaxonomyRelationshipDisposition.PreserveDanglingTermAbsent,
+                TargetFieldId = field.Id,
+                TargetTextFieldId = Guid.Parse("dddddddd-1111-2222-3333-eeeeeeeeeeee"),
+                TargetFieldOpen = field.TaxonomyBinding.Open,
+                TargetTermStoreId = targetStoreId,
+                TargetBoundTermSetId = targetSetId,
+                TargetValueHiddenListTermSetId = targetSetId,
+                TargetTaxCatchAllHiddenListTermSetId = targetSetId,
+                Reason = "Keep the Term absent and reproduce the dangling relationship.",
+                VerificationAssertions = new List<string>
+                {
+                    "The Term remains absent.",
+                    "The target-local WssId resolves to the sealed hidden identity."
+                }
+            });
+            package.Plan.IngredientActions = PublishingPageIngredientActionProjector.Project(package.Snapshot, package.Plan);
+            var evaluation = PageIngredientPlanEvaluator.Evaluate(
+                package.Snapshot.IngredientGraph,
+                package.Plan.IngredientActions);
+            package.Plan.MigrationOutcome = evaluation.Outcome;
+            package.Plan.IngredientIssues = evaluation.Issues;
+            package.State = PublishingPagePackageState.ApprovalReady;
+            package.PlanDigest = PublishingPageDigest.ComputePlanDigest(package.Plan);
         }
 
         private static PublishingPageLayoutSnapshot CreateStockLayout()

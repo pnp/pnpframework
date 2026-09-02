@@ -10,6 +10,8 @@ using PnP.Framework.Migration.Pages.Publishing.Ingredients;
 using PnP.Framework.Migration.Pages.Publishing.Layouts.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Profiles;
 using PnP.Framework.Migration.Pages.Runtime;
+using PnP.Framework.Migration.Pages.Fields;
+using PnP.Framework.Migration.Pages.Fields.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -222,6 +224,28 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             if (duplicateField != null)
             {
                 throw new InvalidDataException($"The source field inventory contains a missing or duplicate internal name '{duplicateField.Key}'.");
+            }
+
+            foreach (var field in snapshot.Fields.Where(item => item != null))
+            {
+                if (field.StringValues == null
+                    || field.LookupValues == null
+                    || field.TaxonomyValues == null
+                    || field.Diagnostics == null)
+                {
+                    throw new InvalidDataException($"Field '{field.InternalName}' contains a null value or diagnostics collection.");
+                }
+                if (field.Kind != PageFieldValueKind.Taxonomy
+                    && field.Kind != PageFieldValueKind.TaxonomyCollection)
+                {
+                    continue;
+                }
+
+                var errors = PageTaxonomyRelationshipEvidence.ValidateSealedField(field);
+                if (errors.Count > 0)
+                {
+                    throw new InvalidDataException(string.Join(" ", errors));
+                }
             }
         }
 

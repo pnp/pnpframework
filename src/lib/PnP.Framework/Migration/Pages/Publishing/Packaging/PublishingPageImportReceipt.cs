@@ -6,6 +6,7 @@ using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Verification;
 using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Topology;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Collections.Generic;
 
@@ -78,6 +79,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
         public bool ListsMatched { get; set; }
 
         public IList<PageFieldImportResult> FieldResults { get; set; } = new List<PageFieldImportResult>();
+
+        public bool TaxonomyRelationshipsMatched { get; set; }
+
+        public IList<TaxonomyRelationshipVerificationResult> TaxonomyRelationshipResults { get; set; } = new List<TaxonomyRelationshipVerificationResult>();
 
         public bool FreshReadbackPassed { get; set; }
 

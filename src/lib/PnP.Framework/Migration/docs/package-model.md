@@ -35,6 +35,7 @@ The migration package embeds the source snapshot, so Import does not need to rec
 | `CanonicalPageIngredientGraph` | `pnp-page-ingredient-graph/v1` |
 | `RuntimeVerificationManifest` | `pnp-migration-runtime-verification/v1` |
 | `RuntimeVerificationReceipt` | `pnp-migration-runtime-verification-receipt/v1` |
+| `TaxonomyValueRelationshipSnapshot` | `pnp-taxonomy-value-relationship/v1` |
 
 Nested snapshots and plans have their own schema identifiers where independent evolution or validation is required.
 
@@ -109,7 +110,7 @@ Changing any snapshot evidence after sealing invalidates `snapshotDigest`.
 | `layout` | Publishing Page Layout identity, exact artifact, parsed controls/zones/registrations/resources, and associated schema closure. |
 | `publishingPageContent` | Complete source `PublishingPageContent` HTML. |
 | `publishingPageContentSha256` | Digest of captured publishing HTML. |
-| `fields` | Every returned Pages-library field definition plus typed or raw value evidence. |
+| `fields` | Every returned Pages-library field definition plus typed or raw value evidence. Taxonomy fields additionally carry their exact binding, field-value-set digest, live-resolution state, `TaxonomyHiddenList`/`TaxCatchAll` evidence, and per-value relationship proof. |
 | `webParts` | Captured classic Web Part export XML, identity, placement, hidden state, and digest. |
 | `listWebPartBindings` | Parsed source Web/List/View bindings and relevant XML/path evidence. |
 | `listDependencies` | Required Lists/libraries, settings, fields, site/List content types, Views, current items, folders, files, and attachments. Every returned item field has a value snapshot; unknown runtime types retain best-effort raw evidence and may be marked `Partial`. |
@@ -163,6 +164,7 @@ The bundle is not a list of writes. A value may be captured even when its later 
 | `layoutTargetProbe` | Detailed target evidence for layout bytes, schema, permissions, and resources. |
 | `layoutAdmission` | Typed eligibility result and issues for the layout closure. |
 | `fieldActions` | Exactly one result for every captured governed page field. |
+| `taxonomyRelationshipActions` | Exactly one action for every captured taxonomy value. A selected field seals the exact target field/text-field binding and reuses an exact live-in-bound Term, reproduces an exact live-outside-bound or dangling relationship, or blocks. An unselected field uses `RetainEvidenceOnly`, which preserves sealed source evidence without making a target claim. No action authorizes Term creation/substitution. |
 | `dependencyActions` | Exactly one result for every captured governed reference. |
 | `topology` | Source Site/Web to target Site/Web mapping and topology semantic digest. |
 | `topologyTargetAnalysis` | Target existence, identity, parent, template, ownership, disposition, and issues for each mapped Site/Web. |
@@ -210,7 +212,8 @@ The package stores planning probes because they are review evidence. Import must
 | Web Part fields | Imported count and per-part fresh-readback results. |
 | `topologyMaterialization`, `topologyMatched` | Runtime Web mappings, actual dispositions, mapping digests, diagnostics, and topology readback. |
 | `listMaterializations`, `listsMatched` | Runtime Web/List/item/View/content-type maps, actual List dispositions, verified counts, diagnostics, and closure readback. |
-| `fieldResults` | Per-page-field execution result. |
+| `fieldResults` | Per-page-field execution result, including target-local taxonomy materialization receipts where applicable. |
+| `taxonomyRelationshipsMatched` / `taxonomyRelationshipResults` | Aggregate and per-executed-value fresh readback of field binding, page value, live/absent Term state, hidden-list identity, and `TaxCatchAll`. Evidence-only relationships are not target assertions. |
 | `freshReadbackPassed` | Aggregate required readback result. |
 | Storage/runtime/acceptance statuses | Distinguish library-owned verification from external runtime work and final acceptance. |
 | `warnings` | Non-fatal execution or verification findings. |

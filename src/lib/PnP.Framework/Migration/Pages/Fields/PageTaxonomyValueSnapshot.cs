@@ -1,3 +1,5 @@
+using PnP.Framework.Migration.Taxonomy;
+
 namespace PnP.Framework.Migration.Pages.Fields
 {
     public sealed class PageTaxonomyValueSnapshot
@@ -7,5 +9,7 @@ namespace PnP.Framework.Migration.Pages.Fields
         public string TermGuid { get; set; }
 
         public int WssId { get; set; }
+
+        public TaxonomyValueRelationshipSnapshot Relationship { get; set; }
     }
 }

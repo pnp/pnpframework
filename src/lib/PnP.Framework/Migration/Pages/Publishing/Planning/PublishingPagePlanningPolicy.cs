@@ -1,9 +1,7 @@
-using PnP.Framework.Migration.Pages.Fields;
 using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.Planning;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
-using PnP.Framework.Migration.Pages.Publishing.Profiles;
 using PnP.Framework.Migration.Taxonomy;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Lists.Planning;
@@ -36,7 +34,6 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
 
         public static void AddSnapshotDecisions(
             PublishingPageCaptureBundle snapshot,
-            PublishingPageWorkflowPolicy workflowPolicy,
             PagePlanningOptions options,
             ICollection<string> blockers)
         {
@@ -45,15 +42,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
                 blockers.Add("The source page has unique role assignments, but the selected planning policy requires inherited target permissions.");
             }
 
-            var managedMetadata = snapshot.Fields
-                .Where(field => field.HasValue)
-                .Where(field => workflowPolicy.ManagedMetadataPageFields.Contains(field.InternalName))
-                .Where(field => field.Kind == PageFieldValueKind.Taxonomy || field.Kind == PageFieldValueKind.TaxonomyCollection)
-                .ToArray();
-            if (managedMetadata.Length > 0 && options.BlockOnManagedMetadata)
-            {
-                blockers.Add($"The source snapshot contains {managedMetadata.Length} non-empty managed metadata field value(s), but no reviewed target term mapping was supplied.");
-            }
+            // Managed metadata is admitted per captured relationship ingredient. A broad
+            // field-level override must never turn missing or invalid evidence into a repair.
         }
 
         public static string DescribeLifecycleDecision(

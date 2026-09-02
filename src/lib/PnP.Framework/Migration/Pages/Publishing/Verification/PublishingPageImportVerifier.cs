@@ -9,6 +9,7 @@ using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Verification;
 using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Topology;
+using PnP.Framework.Migration.Pages.Fields.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,20 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 }
 
                 var file = verificationContext.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(package.Plan.TargetPageServerRelativeUrl));
+                var executableTaxonomyActions = package.Plan.TaxonomyRelationshipActions
+                    .Where(value => value.IsExecutable)
+                    .ToArray();
+                var taxonomyViewFields = string.Join(
+                    Environment.NewLine,
+                    executableTaxonomyActions
+                        .Select(value => value.SourceFieldInternalName)
+                        .Where(value => !string.IsNullOrWhiteSpace(value))
+                        .Distinct(StringComparer.OrdinalIgnoreCase)
+                        .OrderBy(value => value, StringComparer.Ordinal)
+                        .Select(value => "    <FieldRef Name='" + System.Security.SecurityElement.Escape(value) + "' />"));
+                var taxCatchAllViewField = executableTaxonomyActions.Length > 0
+                    ? "    <FieldRef Name='TaxCatchAll' />"
+                    : string.Empty;
                 var items = pages.GetItems(new CamlQuery
                 {
                     ViewXml = $@"<View Scope='RecursiveAll'>
@@ -56,6 +71,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
     <FieldRef Name='ContentTypeId' />
     <FieldRef Name='PublishingPageContent' />
     <FieldRef Name='_ModerationStatus' />
+{taxonomyViewFields}
+{taxCatchAllViewField}
   </ViewFields>
   <RowLimit>1</RowLimit>
 </View>"
@@ -132,6 +149,22 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 }
 
                 var plannedFieldsPassed = fieldResults.All(result => !result.Attempted || result.Succeeded);
+                var taxonomyRelationshipResults = PageTaxonomyRelationshipVerifier.Verify(
+                    verificationContext,
+                    pages,
+                    item,
+                    package.Snapshot.Fields,
+                    executableTaxonomyActions,
+                    fieldResults);
+                var taxonomyRelationshipsMatched = taxonomyRelationshipResults.All(value => value.Passed)
+                    && taxonomyRelationshipResults.Count == executableTaxonomyActions.Length;
+                if (!taxonomyRelationshipsMatched)
+                {
+                    receiptWarnings.Add("Fresh taxonomy readback did not reproduce every sealed relationship exactly.");
+                    receiptWarnings.AddRange(taxonomyRelationshipResults
+                        .Where(value => !value.Passed)
+                        .Select(value => value.SourceFieldInternalName + ":" + value.SourceTermId.ToString("D") + ": " + value.Message));
+                }
                 var webPartsMatched = webPartResults.All(result => result.Passed)
                     && webPartResults.Count == package.Snapshot.WebParts.Count;
                 var topologyMatched = topologyReceipt != null
@@ -164,6 +197,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     && lifecycleMatched
                     && securityMatched
                     && plannedFieldsPassed
+                    && taxonomyRelationshipsMatched
                     && topologyMatched
                     && listsMatched;
                 var runtimeVerificationRequired = package.Plan.RuntimeVerification.Requirements.Any(item => item.Required);
@@ -202,6 +236,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     ListMaterializations = listReceipts,
                     ListsMatched = listsMatched,
                     FieldResults = fieldResults,
+                    TaxonomyRelationshipsMatched = taxonomyRelationshipsMatched,
+                    TaxonomyRelationshipResults = taxonomyRelationshipResults,
                     FreshReadbackPassed = readbackPassed,
                     StorageVerificationStatus = readbackPassed
                         ? StorageVerificationStatus.Passed

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Pages.Fields.Taxonomy;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Execution
 {
@@ -46,6 +47,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
             }
 
             var blockers = new List<string>();
+            blockers.AddRange(PageTaxonomyRelationshipPlanner.ValidateFresh(
+                targetContext,
+                package.Snapshot.Fields,
+                package.Plan.TaxonomyRelationshipActions,
+                package.Plan.PlanningPolicy));
             TopologyTargetAnalysis freshTopology = null;
             if (package.Plan.Topology != null)
             {

@@ -12,6 +12,7 @@ namespace PnP.Framework.Migration.Pages.Fields
 
         public string Reason { get; set; }
 
-        public bool WillApply => Disposition == PageFieldDisposition.Apply;
+        public bool WillApply => Disposition == PageFieldDisposition.Apply
+            || Disposition == PageFieldDisposition.ApplyTaxonomyRelationships;
     }
 }

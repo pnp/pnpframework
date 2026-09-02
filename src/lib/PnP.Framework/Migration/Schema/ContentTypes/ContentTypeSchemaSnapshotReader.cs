@@ -147,7 +147,18 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 }
 
                 var snapshot = CreateFieldSnapshot(context, sourceField, link.Role);
-                closure.Add(snapshot);
+                var existingIndex = closure.FindIndex(value => value.Id == snapshot.Id);
+                if (existingIndex < 0)
+                {
+                    closure.Add(snapshot);
+                }
+                else if (closure[existingIndex].Role == FieldSchemaRole.Dependency
+                    && snapshot.Role != FieldSchemaRole.Dependency)
+                {
+                    // A taxonomy hidden-text dependency can also be an explicit Content Type
+                    // field link. Keep one logical field node and promote its direct role.
+                    closure[existingIndex] = snapshot;
+                }
                 if (snapshot.Taxonomy != null
                     && snapshot.Taxonomy.HiddenTextFieldId != Guid.Empty
                     && fieldsById.TryGetValue(snapshot.Taxonomy.HiddenTextFieldId, out var hiddenField)

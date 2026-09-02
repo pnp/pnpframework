@@ -135,14 +135,31 @@ namespace PnP.Framework.Migration.Lists.Packaging
             var duplicateListContentType = dependency.ContentTypes
                 .GroupBy(value => value == null ? string.Empty : value.Id, StringComparer.OrdinalIgnoreCase)
                 .FirstOrDefault(group => string.IsNullOrWhiteSpace(group.Key) || group.Count() > 1);
-            if (duplicateListContentType != null
-                || dependency.ContentTypes.Any(value => string.IsNullOrWhiteSpace(value.Name)
-                    || string.IsNullOrWhiteSpace(value.ParentId)
-                    || value.FieldLinks == null
-                    || value.FieldLinks.Any(link => link == null || link.FieldId == Guid.Empty)
-                    || value.FieldLinks.GroupBy(link => link.FieldId).Any(group => group.Count() > 1)))
+            if (duplicateListContentType != null)
             {
-                throw new InvalidDataException("List '" + dependency.Title + "' contains missing, duplicate, or incomplete List content type evidence.");
+                throw new InvalidDataException("List '" + dependency.Title + "' contains a missing or duplicate List content type ID '" + duplicateListContentType.Key + "'.");
+            }
+            var incompleteListContentType = dependency.ContentTypes.FirstOrDefault(value =>
+                string.IsNullOrWhiteSpace(value.Name)
+                || string.IsNullOrWhiteSpace(value.ParentId)
+                || value.FieldLinks == null);
+            if (incompleteListContentType != null)
+            {
+                throw new InvalidDataException("List content type '" + incompleteListContentType.Id + "' in List '" + dependency.Title + "' is missing its name, parent ID, or field-link collection.");
+            }
+            foreach (var contentType in dependency.ContentTypes)
+            {
+                if (contentType.FieldLinks.Any(link => link == null || link.FieldId == Guid.Empty))
+                {
+                    throw new InvalidDataException("List content type '" + contentType.Id + "' in List '" + dependency.Title + "' contains a null or missing-ID field link.");
+                }
+                var duplicateLink = contentType.FieldLinks
+                    .GroupBy(link => link.FieldId)
+                    .FirstOrDefault(group => group.Count() > 1);
+                if (duplicateLink != null)
+                {
+                    throw new InvalidDataException("List content type '" + contentType.Id + "' in List '" + dependency.Title + "' contains duplicate field link '" + duplicateLink.Key.ToString("D") + "'.");
+                }
             }
             var capturedSiteContentTypeIds = new HashSet<string>(dependency.SiteContentTypes.Select(value => value.ContentTypeId), StringComparer.OrdinalIgnoreCase);
             var listContentTypeIds = new HashSet<string>(dependency.ContentTypes.Select(value => value.Id), StringComparer.OrdinalIgnoreCase);

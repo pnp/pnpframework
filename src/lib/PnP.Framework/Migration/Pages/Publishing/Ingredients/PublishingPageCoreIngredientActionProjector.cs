@@ -155,9 +155,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                 case PageFieldDisposition.RequiresMapping:
                 case PageFieldDisposition.CaptureUnavailable:
                 case PageFieldDisposition.Block:
-                    return (hasValue ? IngredientCapability.Incompatible : IngredientCapability.Unknown, IngredientDisposition.Block, "none");
+                    return hasValue
+                        ? (IngredientCapability.Incompatible, IngredientDisposition.Block, "none")
+                        : (IngredientCapability.Unknown, IngredientDisposition.Drop, "discard-no-source-value");
                 default:
-                    return (IngredientCapability.Unknown, IngredientDisposition.Block, "none");
+                    return hasValue
+                        ? (IngredientCapability.Unknown, IngredientDisposition.Block, "none")
+                        : (IngredientCapability.Unknown, IngredientDisposition.Drop, "discard-no-source-value");
             }
         }
 

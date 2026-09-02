@@ -192,6 +192,37 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
+        public void EmptyUnavailableFieldProjectsAsDropInsteadOfBlock()
+        {
+            var package = CreateMigrationPackage();
+            var field = package.Snapshot.Fields.Single(value => value.InternalName == "OOCLReference");
+            field.HasValue = false;
+            field.Kind = PageFieldValueKind.Null;
+            field.RawType = null;
+            field.RawValue = null;
+            field.RawValueJson = null;
+            field.CaptureStatus = PageCaptureStatus.NotReturned;
+            package.Snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(package.Snapshot);
+            package.Plan.FieldActions.Clear();
+            package.Plan.FieldActions.Add(new PageFieldAction
+            {
+                SourceInternalName = field.InternalName,
+                TargetInternalName = field.InternalName,
+                Disposition = PageFieldDisposition.CaptureUnavailable,
+                Reason = "The field definition was captured, but no source value was returned."
+            });
+
+            var actions = PublishingPageIngredientActionProjector.Project(package.Snapshot, package.Plan);
+            var fieldAction = actions.Single(value => value.IngredientId == "field:OOCLReference");
+            var evaluation = PageIngredientPlanEvaluator.Evaluate(package.Snapshot.IngredientGraph, actions);
+
+            Assert.AreEqual(IngredientCapability.Unknown, fieldAction.Capability);
+            Assert.AreEqual(IngredientDisposition.Drop, fieldAction.Disposition);
+            Assert.AreEqual("discard-no-source-value", fieldAction.Realization);
+            Assert.IsFalse(evaluation.Issues.Any(value => value.Code == "IngredientBlocked"));
+        }
+
+        [TestMethod]
         public void DanglingTaxonomyRelationshipIsSealedToExactFieldValuesAndHiddenIdentity()
         {
             var field = CreateDanglingTaxonomyField();

@@ -384,7 +384,9 @@ Planning creates exactly one `PageFieldAction` per captured field:
 | `CaptureUnavailable` | The definition was captured, but no restorable value was returned. |
 | `Block` | The exact plan cannot execute. |
 
-The Enterprise Wiki v1 workflow currently recognizes a reviewed subset of publishing metadata. Unknown fields are never discarded and are never guessed into a target field. This preserves a recovery snapshot for a later mapper without weakening current import safety. Page Layout field-schema closure is a separate concern: it recreates only fields proven necessary to render the approved layout and does not imply that arbitrary source page-item values are replayed.
+At ingredient level, a field action with no source value and no required material projects as `Drop`, not `Block`. The complete field definition and capture diagnostics remain in the snapshot. If the ingredient is required by the layout or another retained node, normal dependency-closure validation still prevents an unsafe drop.
+
+The Enterprise Wiki v1 workflow currently recognizes a reviewed subset of publishing metadata. Unknown field evidence is never discarded from the snapshot and is never guessed into a target field; an empty action may still be explicitly dropped from the execution closure. This preserves a recovery snapshot for a later mapper without weakening current import safety. Page Layout field-schema closure is a separate concern: it recreates only fields proven necessary to render the approved layout and does not imply that arbitrary source page-item values are replayed.
 
 Taxonomy follows the same capture-wide/restore-narrow rule at value granularity. Every captured taxonomy value has one relationship action. Values owned by a selected field receive strict target-aware replay or block actions; values in an unselected field receive `RetainEvidenceOnly`, project as delegated evidence, and do not trigger target taxonomy admission.
 

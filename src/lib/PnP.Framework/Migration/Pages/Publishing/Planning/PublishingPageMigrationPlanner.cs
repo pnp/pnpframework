@@ -76,9 +76,22 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
             var targetWeb = targetContext.Web;
             var targetSite = targetContext.Site;
             var targetRootWeb = targetContext.Site.RootWeb;
-            targetContext.Load(targetWeb, web => web.Url, web => web.ServerRelativeUrl);
-            targetContext.Load(targetSite, site => site.Id);
-            targetContext.Load(targetRootWeb, web => web.Url, web => web.ServerRelativeUrl, web => web.Title, web => web.WebTemplate, web => web.Configuration);
+            targetContext.Load(targetWeb,
+                web => web.Id,
+                web => web.Url,
+                web => web.ServerRelativeUrl,
+                web => web.Title,
+                web => web.WebTemplate,
+                web => web.Configuration,
+                web => web.AllProperties);
+            targetContext.Load(targetSite, site => site.Id, site => site.ServerRelativeUrl);
+            targetContext.Load(targetRootWeb,
+                web => web.Id,
+                web => web.Url,
+                web => web.ServerRelativeUrl,
+                web => web.Title,
+                web => web.WebTemplate,
+                web => web.Configuration);
             targetContext.ExecuteQueryRetry();
 
             var snapshot = exportPackage.Snapshot;
@@ -126,6 +139,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
                 targetWeb.ServerRelativeUrl,
                 options,
                 blockers);
+            Microsoft.SharePoint.Client.List targetPages;
             var targetProbe = PublishingPageTargetInspector.Inspect(
                 targetContext,
                 targetPagePath,
@@ -133,7 +147,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
                 targetLifecycle,
                 layoutMaterialization,
                 layoutTargetProbe,
-                blockers);
+                blockers,
+                out targetPages,
+                includeListInventory: snapshot.ListDependencies.Count > 0);
             var dependencyPlan = PublishingPageDependencyPlanner.Build(
                 targetContext,
                 snapshot,
@@ -152,7 +168,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
                 options,
                 taxonomyRelationshipActions,
                 blockers,
-                warnings);
+                warnings,
+                targetPages,
+                targetPagesResolved: true,
+                targetFieldsLoaded: targetPages != null);
             var expectedContent = PageTextTransformer.Rewrite(snapshot.PublishingPageContent, replacements);
             var expectedContentDigest = PublishingPageDigest.ComputeSha256(expectedContent);
             var plan = new PublishingPageMigrationPlan

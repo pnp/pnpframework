@@ -31,53 +31,49 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
 
             var diagnostics = new List<string>();
             var siteContentTypes = web.ContentTypes;
-            var availableContentTypes = web.AvailableContentTypes;
             var fields = web.AvailableFields;
+            var parentCandidate = web.AvailableContentTypes.GetById(plan.ParentContentTypeId);
+            var exactCandidate = siteContentTypes.GetById(plan.ContentTypeId);
             context.Load(web, value => value.EffectiveBasePermissions);
             context.Load(siteContentTypes, values => values.Include(
                 value => value.Id,
-                value => value.Name,
-                value => value.Description,
-                value => value.Group,
-                value => value.ReadOnly,
-                value => value.Sealed,
-                value => value.Hidden));
-            context.Load(availableContentTypes, values => values.Include(value => value.Id, value => value.Name));
+                value => value.Name));
             context.Load(fields, values => values.Include(
                 value => value.Id,
                 value => value.InternalName,
                 value => value.Title,
                 value => value.TypeAsString,
                 value => value.SchemaXml));
+            context.Load(parentCandidate, value => value.Id);
+            context.Load(parentCandidate.FieldLinks, values => values.Include(
+                value => value.Id,
+                value => value.Name,
+                value => value.Required,
+                value => value.Hidden));
+            context.Load(exactCandidate,
+                value => value.Id,
+                value => value.Name,
+                value => value.Description,
+                value => value.Group,
+                value => value.ReadOnly,
+                value => value.Sealed,
+                value => value.Hidden);
+            context.Load(exactCandidate.Parent, value => value.Id);
+            context.Load(exactCandidate.FieldLinks, values => values.Include(
+                value => value.Id,
+                value => value.Name,
+                value => value.Required,
+                value => value.Hidden));
             context.ExecuteQueryRetry();
 
-            var parent = availableContentTypes.FirstOrDefault(value =>
-                string.Equals(value.Id.StringValue, plan.ParentContentTypeId, StringComparison.OrdinalIgnoreCase));
-            var exact = siteContentTypes.FirstOrDefault(value =>
-                string.Equals(value.Id.StringValue, plan.ContentTypeId, StringComparison.OrdinalIgnoreCase));
-            if (parent != null)
-            {
-                context.Load(parent.FieldLinks, values => values.Include(
-                    value => value.Id,
-                    value => value.Name,
-                    value => value.Required,
-                    value => value.Hidden));
-            }
-
-            if (exact != null)
-            {
-                context.Load(exact.Parent, value => value.Id);
-                context.Load(exact.FieldLinks, values => values.Include(
-                    value => value.Id,
-                    value => value.Name,
-                    value => value.Required,
-                    value => value.Hidden));
-            }
-
-            if (parent != null || exact != null)
-            {
-                context.ExecuteQueryRetry();
-            }
+            var parent = parentCandidate.ServerObjectIsNull.GetValueOrDefault(true)
+                || !string.Equals(parentCandidate.Id.StringValue, plan.ParentContentTypeId, StringComparison.OrdinalIgnoreCase)
+                ? null
+                : parentCandidate;
+            var exact = exactCandidate.ServerObjectIsNull.GetValueOrDefault(true)
+                || !string.Equals(exactCandidate.Id.StringValue, plan.ContentTypeId, StringComparison.OrdinalIgnoreCase)
+                ? null
+                : exactCandidate;
 
             var fieldById = fields.ToDictionary(value => value.Id);
             var fieldProbes = new List<FieldSchemaTargetProbe>();

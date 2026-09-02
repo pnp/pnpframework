@@ -18,6 +18,7 @@ The documents describe the current implementation and its intended invariants. T
 5. [Execution and verification](execution-and-verification.md) defines admission, journaling, retry, receipt, fresh-readback, and acceptance semantics.
 6. [Page classification and ingredient policy](page-classification-and-ingredient-policy.md) defines CLR runtime selection, non-exclusive profiles, validation cohorts, ingredient actions, dependency release, and aggregate outcomes.
 7. [Taxonomy relationship fidelity](taxonomy-relationship-fidelity.md) defines exact capture and reproduction of valid, outside-bound, and dangling taxonomy relationships without Term repair.
+8. [Performance and concurrency](performance-and-concurrency.md) defines measurement stages, safe read parallelism, write serialization, caching boundaries, and semantic regression requirements.
 
 ## Document roles
 

@@ -26,6 +26,11 @@ namespace PnP.Framework.Migration.Lists.Planning
             };
             try
             {
+                if (CanUseLoadedWeb(anchorContext.Web, plan.TargetWebUrl))
+                {
+                    return PopulateProbe(anchorContext.Web, source, plan, probe);
+                }
+
                 using (var context = anchorContext.Clone(plan.TargetWebUrl))
                 {
                     var web = context.Web;
@@ -37,50 +42,7 @@ namespace PnP.Framework.Migration.Lists.Planning
                         value => value.RootFolder.ServerRelativeUrl,
                         value => value.RootFolder.Properties));
                     context.ExecuteQueryRetry();
-                    probe.TargetWebExists = true;
-                    probe.TargetWebId = web.Id;
-                    probe.CanManageLists = web.EffectiveBasePermissions.Has(PermissionKind.ManageLists);
-                    var exact = web.Lists.AsEnumerable().FirstOrDefault(value => string.Equals(
-                        Normalize(value.RootFolder.ServerRelativeUrl),
-                        Normalize(plan.TargetRootFolderServerRelativeUrl),
-                        StringComparison.OrdinalIgnoreCase));
-                    probe.SameTitleDifferentPaths = web.Lists.AsEnumerable()
-                        .Where(value => string.Equals(value.Title, plan.TargetTitle, StringComparison.OrdinalIgnoreCase))
-                        .Where(value => exact == null || value.Id != exact.Id)
-                        .Select(value => value.RootFolder.ServerRelativeUrl)
-                        .OrderBy(value => value, StringComparer.OrdinalIgnoreCase).ToList();
-                    if (exact == null)
-                    {
-                        if (!probe.CanManageLists)
-                        {
-                            probe.Issues.Add(Issue("TargetListWriteUnavailable", plan, "The mapped target Web does not grant ManageLists."));
-                        }
-                        if (probe.SameTitleDifferentPaths.Count > 0)
-                        {
-                            probe.Issues.Add(Issue("TargetListTitleCollision", plan,
-                                "The target already contains the same List title at different path(s): " + string.Join(", ", probe.SameTitleDifferentPaths) + "."));
-                        }
-                        probe.Disposition = probe.Issues.Count == 0 ? ListMaterializationDisposition.CreateOwned : ListMaterializationDisposition.Block;
-                        return probe;
-                    }
-
-                    probe.ListExists = true;
-                    probe.TargetListId = exact.Id;
-                    probe.ExistingTitle = exact.Title;
-                    probe.ExistingBaseTemplate = exact.BaseTemplate;
-                    probe.ExistingOriginalIdentifier = Property(exact.RootFolder.Properties, OriginalIdentifierPropertyName);
-                    probe.ExistingPlanDigest = Property(exact.RootFolder.Properties, PlanDigestPropertyName);
-                    if (exact.BaseTemplate != source.BaseTemplate || !string.Equals(exact.Title, plan.TargetTitle, StringComparison.Ordinal))
-                    {
-                        probe.Issues.Add(Issue("TargetListCollision", plan, "A List exists at the target path with different title or base template."));
-                    }
-                    if (!string.Equals(probe.ExistingOriginalIdentifier, plan.OriginalIdentifier, StringComparison.Ordinal)
-                        || !string.Equals(probe.ExistingPlanDigest, plan.PlanDigest, StringComparison.OrdinalIgnoreCase))
-                    {
-                        probe.Issues.Add(Issue("TargetListOwnershipCollision", plan, "The existing List is not claimed by this exact source identity and semantic plan digest."));
-                    }
-                    probe.Disposition = probe.Issues.Count == 0 ? ListMaterializationDisposition.ReuseOwned : ListMaterializationDisposition.Block;
-                    return probe;
+                    return PopulateProbe(web, source, plan, probe);
                 }
             }
             catch (Exception exception) when (exception is ServerException || exception is ClientRequestException)
@@ -88,6 +50,71 @@ namespace PnP.Framework.Migration.Lists.Planning
                 probe.Issues.Add(Issue("TargetWebUnavailable", plan, "The mapped target Web could not be inspected: " + exception.Message));
                 return probe;
             }
+        }
+
+        private static bool CanUseLoadedWeb(Web web, string targetWebUrl)
+        {
+            return web != null
+                && web.IsPropertyAvailable("Id")
+                && web.IsPropertyAvailable("Url")
+                && web.IsPropertyAvailable("EffectiveBasePermissions")
+                && web.Lists.AreItemsAvailable
+                && string.Equals(
+                    new Uri(web.Url).AbsoluteUri.TrimEnd('/'),
+                    new Uri(targetWebUrl).AbsoluteUri.TrimEnd('/'),
+                    StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static ListTargetProbe PopulateProbe(
+            Web web,
+            ListDependencySnapshot source,
+            ListMaterializationPlan plan,
+            ListTargetProbe probe)
+        {
+            probe.TargetWebExists = true;
+            probe.TargetWebId = web.Id;
+            probe.CanManageLists = web.EffectiveBasePermissions.Has(PermissionKind.ManageLists);
+            var exact = web.Lists.AsEnumerable().FirstOrDefault(value => string.Equals(
+                Normalize(value.RootFolder.ServerRelativeUrl),
+                Normalize(plan.TargetRootFolderServerRelativeUrl),
+                StringComparison.OrdinalIgnoreCase));
+            probe.SameTitleDifferentPaths = web.Lists.AsEnumerable()
+                .Where(value => string.Equals(value.Title, plan.TargetTitle, StringComparison.OrdinalIgnoreCase))
+                .Where(value => exact == null || value.Id != exact.Id)
+                .Select(value => value.RootFolder.ServerRelativeUrl)
+                .OrderBy(value => value, StringComparer.OrdinalIgnoreCase).ToList();
+            if (exact == null)
+            {
+                if (!probe.CanManageLists)
+                {
+                    probe.Issues.Add(Issue("TargetListWriteUnavailable", plan, "The mapped target Web does not grant ManageLists."));
+                }
+                if (probe.SameTitleDifferentPaths.Count > 0)
+                {
+                    probe.Issues.Add(Issue("TargetListTitleCollision", plan,
+                        "The target already contains the same List title at different path(s): " + string.Join(", ", probe.SameTitleDifferentPaths) + "."));
+                }
+                probe.Disposition = probe.Issues.Count == 0 ? ListMaterializationDisposition.CreateOwned : ListMaterializationDisposition.Block;
+                return probe;
+            }
+
+            probe.ListExists = true;
+            probe.TargetListId = exact.Id;
+            probe.ExistingTitle = exact.Title;
+            probe.ExistingBaseTemplate = exact.BaseTemplate;
+            probe.ExistingOriginalIdentifier = Property(exact.RootFolder.Properties, OriginalIdentifierPropertyName);
+            probe.ExistingPlanDigest = Property(exact.RootFolder.Properties, PlanDigestPropertyName);
+            if (exact.BaseTemplate != source.BaseTemplate || !string.Equals(exact.Title, plan.TargetTitle, StringComparison.Ordinal))
+            {
+                probe.Issues.Add(Issue("TargetListCollision", plan, "A List exists at the target path with different title or base template."));
+            }
+            if (!string.Equals(probe.ExistingOriginalIdentifier, plan.OriginalIdentifier, StringComparison.Ordinal)
+                || !string.Equals(probe.ExistingPlanDigest, plan.PlanDigest, StringComparison.OrdinalIgnoreCase))
+            {
+                probe.Issues.Add(Issue("TargetListOwnershipCollision", plan, "The existing List is not claimed by this exact source identity and semantic plan digest."));
+            }
+            probe.Disposition = probe.Issues.Count == 0 ? ListMaterializationDisposition.ReuseOwned : ListMaterializationDisposition.Block;
+            return probe;
         }
 
         public static ListTargetProbe DeferUntilTopologyMaterialization(ListMaterializationPlan plan)

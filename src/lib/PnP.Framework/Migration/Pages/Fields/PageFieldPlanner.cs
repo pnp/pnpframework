@@ -19,9 +19,12 @@ namespace PnP.Framework.Migration.Pages.Fields
             PagePlanningOptions options,
             ICollection<TaxonomyRelationshipAction> taxonomyRelationshipActions,
             ICollection<string> blockers,
-            ICollection<string> warnings)
+            ICollection<string> warnings,
+            Microsoft.SharePoint.Client.List targetPages = null,
+            bool targetPagesResolved = false,
+            bool targetFieldsLoaded = false)
         {
-            var pages = targetContext.Web.GetPagesLibrary();
+            var pages = targetPagesResolved ? targetPages : targetContext.Web.GetPagesLibrary();
             var sourceFields = fields.OrderBy(field => field.InternalName, StringComparer.Ordinal).ToArray();
             var eligibleTaxonomyFieldNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             var result = new List<PageFieldAction>();
@@ -47,11 +50,14 @@ namespace PnP.Framework.Migration.Pages.Fields
                 return result;
             }
 
-            targetContext.Load(pages.Fields, values => values.Include(
-                field => field.InternalName,
-                field => field.TypeAsString,
-                field => field.ReadOnlyField));
-            targetContext.ExecuteQueryRetry();
+            if (!targetFieldsLoaded)
+            {
+                targetContext.Load(pages.Fields, values => values.Include(
+                    field => field.InternalName,
+                    field => field.TypeAsString,
+                    field => field.ReadOnlyField));
+                targetContext.ExecuteQueryRetry();
+            }
             var targetFields = pages.Fields.ToDictionary(field => field.InternalName, StringComparer.OrdinalIgnoreCase);
             foreach (var sourceField in sourceFields)
             {

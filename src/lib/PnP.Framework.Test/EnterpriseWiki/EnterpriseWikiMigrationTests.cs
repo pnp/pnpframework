@@ -30,6 +30,7 @@ using PnP.Framework.Migration.Lists.Items;
 using PnP.Framework.Migration.Lists.Capture;
 using PnP.Framework.Migration.Lists.Fields;
 using PnP.Framework.Migration.Lists.ContentTypes;
+using PnP.Framework.Migration.Lists.Packaging;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Evidence;
@@ -1308,6 +1309,109 @@ namespace PnP.Framework.Test.EnterpriseWiki
             Assert.AreEqual(IngredientDisposition.Preserve, byId[PublishingPageIngredientIds.ListContentType(webId, libraryId, listContentTypeId)].Disposition);
             Assert.AreEqual(IngredientDisposition.Preserve, byId[PublishingPageIngredientIds.ListDocument(webId, libraryId, 9)].Disposition);
             Assert.AreEqual(0, PageIngredientPlanEvaluator.Evaluate(snapshot.IngredientGraph, actions).Issues.Count);
+        }
+
+        [TestMethod]
+        public void IngredientProjectionCollapsesOnlySemanticallyIdenticalEdges()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var webId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var listId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var fieldId = Guid.Parse("44444444-4444-4444-4444-444444444444");
+            var list = CreateListSnapshot(siteId, webId, listId, "Items");
+            list.Fields.Add(new ListFieldSnapshot
+            {
+                Id = fieldId,
+                InternalName = "RepeatedValue",
+                Title = "Repeated value",
+                TypeAsString = "Text",
+                SchemaXml = "<Field ID='{44444444-4444-4444-4444-444444444444}' Name='RepeatedValue' Type='Text' />"
+            });
+            list.Items.Add(new ListItemSnapshot
+            {
+                SourceItemId = 7,
+                Values = new List<ListItemValueSnapshot>
+                {
+                    new ListItemValueSnapshot { InternalName = "RepeatedValue", Kind = ListItemValueKind.String, ScalarValue = "first" },
+                    new ListItemValueSnapshot { InternalName = "RepeatedValue", Kind = ListItemValueKind.String, ScalarValue = "second" }
+                }
+            });
+
+            var snapshot = CreateMigrationPackage().Snapshot;
+            snapshot.ListDependencies = new List<ListDependencySnapshot> { list };
+            snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(snapshot);
+
+            var itemId = PublishingPageIngredientIds.ListItem(webId, listId, 7);
+            var listFieldId = PublishingPageIngredientIds.ListField(webId, listId, fieldId);
+            Assert.AreEqual(1, snapshot.IngredientGraph.Edges.Count(edge =>
+                edge.FromIngredientId == itemId
+                && edge.ToIngredientId == listFieldId
+                && edge.Relationship == PageIngredientRelationship.BindsTo
+                && edge.Requirement == PageIngredientRequirement.Required));
+        }
+
+        [TestMethod]
+        public void ListPackageValidationAllowsSiblingContentTypesWithTheSameParent()
+        {
+            var list = CreateListSnapshot(
+                Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                "Academy");
+            list.ContentTypes.Add(new ListContentTypeSnapshot
+            {
+                Id = "0x0100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                Name = "Academy article",
+                ParentId = "0x01"
+            });
+            list.ContentTypes.Add(new ListContentTypeSnapshot
+            {
+                Id = "0x0100BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+                Name = "Academy announcement",
+                ParentId = "0x01"
+            });
+
+            ListDependencyPackageValidator.Validate(
+                Array.Empty<ClassicWebPartSnapshot>(),
+                Array.Empty<ClassicListWebPartBindingSnapshot>(),
+                new[] { list },
+                Array.Empty<ListLookupDependency>(),
+                null,
+                null);
+        }
+
+        [TestMethod]
+        public void ListPackageValidationRetainsBindingEvidenceWhenTopologyCaptureIsUnavailable()
+        {
+            var webPartId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var siteId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var webId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var listId = Guid.Parse("44444444-4444-4444-4444-444444444444");
+            const string exportXml = "<webPart />";
+            const string exportDigest = "captured-export-digest";
+            var list = CreateListSnapshot(siteId, webId, listId, "Referenced list");
+            var webPart = new ClassicWebPartSnapshot
+            {
+                Id = webPartId,
+                ExportXml = exportXml,
+                ExportSha256 = exportDigest
+            };
+            var binding = new ClassicListWebPartBindingSnapshot
+            {
+                SourceWebPartId = webPartId,
+                SourceListWebId = webId,
+                SourceListId = listId,
+                SourceExportXml = exportXml,
+                SourceExportSha256 = exportDigest
+            };
+
+            ListDependencyPackageValidator.Validate(
+                new[] { webPart },
+                new[] { binding },
+                new[] { list },
+                Array.Empty<ListLookupDependency>(),
+                null,
+                null);
         }
 
         [TestMethod]

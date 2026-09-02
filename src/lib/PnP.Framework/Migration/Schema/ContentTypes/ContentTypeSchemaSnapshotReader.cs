@@ -109,7 +109,33 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 diagnostics?.Add($"Associated content type '{contentType.Name}' does not expose required field link '{missingName}'.");
             }
 
-            var fieldsById = fields.ToDictionary(value => value.Id);
+            var fieldGroups = fields
+                .Where(value => value != null)
+                .GroupBy(value => value.Id)
+                .ToArray();
+            var hasConflictingDuplicateFields = false;
+            foreach (var group in fieldGroups.Where(value => value.Count() > 1))
+            {
+                var distinctSchemas = group
+                    .Select(value => value.SchemaXml ?? string.Empty)
+                    .Distinct(StringComparer.Ordinal)
+                    .Count();
+                if (distinctSchemas > 1)
+                {
+                    hasConflictingDuplicateFields = true;
+                    diagnostics?.Add($"Available field ID '{group.Key:D}' returned {group.Count()} rows with conflicting schema evidence; the lexically first schema is retained and the content type evidence is partial.");
+                }
+                else
+                {
+                    diagnostics?.Add($"Available field ID '{group.Key:D}' returned {group.Count()} identical rows; duplicate enumeration evidence was collapsed.");
+                }
+            }
+            var fieldsById = fieldGroups.ToDictionary(
+                group => group.Key,
+                group => group
+                    .OrderBy(value => value.SchemaXml ?? string.Empty, StringComparer.Ordinal)
+                    .ThenBy(value => value.InternalName ?? string.Empty, StringComparer.OrdinalIgnoreCase)
+                    .First());
             var closure = new List<FieldSchemaSnapshot>();
             foreach (var link in requiredLinks)
             {
@@ -136,7 +162,9 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 field.Ownership = FieldOwnershipClassifier.Classify(field, closure);
             }
 
-            var complete = missingNames.Length == 0 && requiredLinks.Count == closure.Count(value => value.Role != FieldSchemaRole.Dependency);
+            var complete = missingNames.Length == 0
+                && !hasConflictingDuplicateFields
+                && requiredLinks.Count == closure.Count(value => value.Role != FieldSchemaRole.Dependency);
             return new ContentTypeSchemaSnapshot
             {
                 EvidenceState = complete ? ContentTypeSchemaEvidenceState.Readable : ContentTypeSchemaEvidenceState.Partial,

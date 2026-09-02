@@ -88,11 +88,11 @@ namespace PnP.Framework.Migration.Lists.Packaging
                 throw new InvalidDataException(order.Issues.First().Message);
             }
 
-            if (bindingValues.Length > 0)
+            if (bindingValues.Length > 0 && topology != null)
             {
-                if (topology == null || topology.Webs == null)
+                if (topology.Webs == null)
                 {
-                    throw new InvalidDataException("List-bound Web Parts require a captured source topology closure.");
+                    throw new InvalidDataException("A captured source topology closure has a null Web inventory.");
                 }
                 var capturedWebIds = new HashSet<Guid>(topology.Webs.Select(value => value.WebId));
                 if (dependencyValues.Any(value => value.SourceSiteId != topology.SiteId || !capturedWebIds.Contains(value.SourceWebId)))
@@ -140,8 +140,7 @@ namespace PnP.Framework.Migration.Lists.Packaging
                     || string.IsNullOrWhiteSpace(value.ParentId)
                     || value.FieldLinks == null
                     || value.FieldLinks.Any(link => link == null || link.FieldId == Guid.Empty)
-                    || value.FieldLinks.GroupBy(link => link.FieldId).Any(group => group.Count() > 1))
-                || dependency.ContentTypes.GroupBy(value => value.ParentId, StringComparer.OrdinalIgnoreCase).Any(group => group.Count() > 1))
+                    || value.FieldLinks.GroupBy(link => link.FieldId).Any(group => group.Count() > 1)))
             {
                 throw new InvalidDataException("List '" + dependency.Title + "' contains missing, duplicate, or incomplete List content type evidence.");
             }

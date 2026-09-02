@@ -12,6 +12,18 @@ Migration is intentionally separate from the existing provisioning and moderniza
 
 The migration APIs are being introduced incrementally. A namespace or contract is not considered stable merely because it is public; schema versions and release notes define compatibility once a feature is released.
 
+## Design documentation
+
+Contributor-facing subsystem design documents live in [`docs`](docs/README.md). They describe the purpose and scope, architecture, package model, per-object lifecycle, and execution/verification semantics. These code-adjacent drafts are intentionally separate from the repository-root DocFX customer documentation.
+
+Start with:
+
+- [Purpose and scope](docs/purpose-and-scope.md)
+- [Architecture](docs/architecture.md)
+- [Package model](docs/package-model.md)
+- [Object lifecycle](docs/object-lifecycle.md)
+- [Execution and verification](docs/execution-and-verification.md)
+
 ## Design rules
 
 Every migration area should preserve the following boundaries:

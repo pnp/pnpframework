@@ -4,6 +4,8 @@
 
 The first profile is Enterprise Wiki. Enterprise Wiki is an entry profile, not the owner of all participating data. Common field, reference, security, lifecycle-evidence, and classic Web Part models remain under `PnP.Framework.Migration.Pages`; publishing layout, publishing content, target lifecycle, package, report, and verification contracts belong to the Publishing family; Enterprise Wiki classification and portability policy belong to the Enterprise Wiki profile.
 
+For the cross-domain artifact chain and execution semantics, see the Migration design documents for the [package model](../../docs/package-model.md), [object lifecycle](../../docs/object-lifecycle.md), and [execution and verification](../../docs/execution-and-verification.md).
+
 ## Workflow and connection boundaries
 
 ```text
@@ -64,7 +66,7 @@ The following composed capabilities remain shared and can be used by future Wiki
 | `EnterpriseWikiPageDiscovery` | Finds source Pages-library items and classifies Enterprise Wiki content types while excluding Project Pages. |
 | `EnterpriseWikiPackageExporter` | Captures a source-only `PublishingPageExportPackage` and seals its snapshot digest. |
 | `EnterpriseWikiMigrationPlanner` | Inspects the target, creates one explicit action per governed object, and seals a target-specific migration package and report. |
-| `EnterpriseWikiMigrationImporter` | Validates the package and approved plan digest, applies the exact plan, then returns a fresh-readback receipt. |
+| `EnterpriseWikiMigrationImporter` | Validates the package, admits the approved plan against fresh target state, applies the exact plan, then returns a fresh-readback receipt. Invalid package contracts currently throw before a receipt is created. |
 | `EnterpriseWikiPackageFileStore` | Saves and loads export packages, migration packages, receipts, and Markdown reports, with optional validation against an `IMigrationArtifactStore`. |
 
 These orchestration types contain Enterprise Wiki policy. Generic page readers do not switch behavior based on an Enterprise Wiki flag.
@@ -135,7 +137,7 @@ The source fence detects a page that changed during capture. It is not a lock, a
 | `snapshot` | The complete source evidence used to make the decisions. |
 | `plan` | Target-specific decisions and post-import assertions. |
 | `snapshotDigest` | Must continue to match the embedded snapshot. |
-| `planDigest` | SHA-256 over all sealed target decisions. This is the approval token supplied to Import. |
+| `planDigest` | SHA-256 over the complete sealed plan, including policy, probes, actions, issues, and assertions. This is the approval token supplied to Import. |
 | `report` | Report metadata; the complete Markdown rendering is generated from the package. |
 
 `PublishingPageMigrationPlan` contains:
@@ -167,7 +169,7 @@ The source fence detects a page that changed during capture. It is not a lock, a
 | `runtimeVerification` | Typed, digest-sealed requirements for an external browser/runtime verifier. Requirements are not treated as executed by the importer. |
 | `blockers` / `warnings` | Target and policy findings. `isExecutable` is derived from an empty blocker list. |
 
-Import requires the caller's `approvedPlanDigest` to match exactly. Editing a target path, action, mapping, policy input, assertion, or lifecycle decision invalidates the package until it is replanned and reviewed again.
+Import requires the caller's `approvedPlanDigest` to match exactly. Editing any sealed plan content, including a target path, planning probe, action, mapping, policy input, issue, assertion, or lifecycle decision, invalidates the package until it is replanned and reviewed again.
 
 ### Page Layout convergence model
 
@@ -237,8 +239,8 @@ Import rechecks critical target facts before writing so that a stale plan does n
 | `schemaVersion` | Receipt contract version. |
 | `startedAtUtc` / `completedAtUtc` | Import execution interval. |
 | `operationId` / `executionStatus` | Independent attempt identity and `NotStarted`, `Running`, `Succeeded`, or `FailedUnexpectedly` outcome. |
-| `admissionFailure` / `mutationStarted` / `steps` | Zero-mutation admission result or the ordered write-ahead mutation receipts. |
-| `approvedPlanDigest` | Approval token actually presented to Import. |
+| `admissionFailure` / `mutationStarted` / `steps` | Zero-mutation approval/target-admission result or the ordered write-ahead mutation receipts. Malformed contracts throw before this receipt exists. |
+| `approvedPlanDigest` | Approval token presented to an admitted execution. Current rejection receipts record the package digest rather than retaining a mismatched caller candidate. |
 | `targetWebUrl` / `targetPageServerRelativeUrl` | Executed target. |
 | `targetFileUniqueId` / `targetListItemId` / `targetContentTypeId` / `targetVersionLabel` | Persisted target identity returned by fresh readback. |
 | `expectedLifecycle` | Lifecycle sealed in the plan. |
@@ -252,8 +254,8 @@ Import rechecks critical target facts before writing so that a stale plan does n
 | `listMaterializations` / `listsMatched` | Per-List target Web/List IDs, item/View/content-type maps, verified object counts, diagnostics, and final whole-closure readback status. |
 | `fieldResults` | Per-field write result and diagnostics. |
 | `freshReadbackPassed` | Whether required fresh-readback assertions passed. |
-| `storageVerificationStatus` | `Passed` only when content digest, Web Parts, fields, content type, and lifecycle all match. |
-| `runtimeVerificationStatus` / `acceptanceStatus` | Runtime work remains `Pending` until an external verifier supplies evidence; storage success alone is not final acceptance when runtime requirements exist. |
+| `storageVerificationStatus` | `Passed` only when required topology, List, content, Web Part, field, content-type, and lifecycle readback all match. |
+| `runtimeVerificationStatus` / `acceptanceStatus` | Runtime work remains `Pending` when runtime requirements exist. The runtime receipt contract is defined, but the library does not yet reconcile it into a new final acceptance record. |
 | `warnings` | Non-fatal import/verification findings. |
 
 The receipt records observed outcome and ordered mutation steps. It is not a promise of a cross-object transaction or automatic global rollback.
@@ -265,14 +267,15 @@ A list-bound Publishing Page is not portable by copying its ASPX and Web Part XM
 ```text
 source Site/Web ancestor closure
     -> approved target Web map
-    -> custom site fields/content types
+    -> Page Layout schema/resources/layout and other dependency artifacts
     -> lookup Lists before consuming Lists
-    -> List-local content types and fields
+    -> required site and List-local content types and fields
     -> current folders/items/files/attachments
     -> public and page-bound Views
     -> source-to-target Web/List/View/item ID catalog
-    -> rewritten classic Web Part export XML
-    -> page write and lifecycle
+    -> create the page
+    -> transformed content/fields and rebound classic Web Parts
+    -> derived page lifecycle
     -> final topology/List/page fresh readback
 ```
 

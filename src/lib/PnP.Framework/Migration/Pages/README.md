@@ -4,6 +4,8 @@
 
 It does not define one universal page contract. Each page family owns the aggregate that represents its actual storage model, while composing the shared capabilities that apply to it.
 
+The cross-domain workflow, package boundary, and governed-object lifecycle are documented in the Migration [design documentation](../docs/README.md).
+
 ## Ownership model
 
 ```text

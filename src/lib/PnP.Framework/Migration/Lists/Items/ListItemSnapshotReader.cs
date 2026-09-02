@@ -113,6 +113,19 @@ namespace PnP.Framework.Migration.Lists.Items
                     ServerRelativeUrl = item.Folder.ServerRelativeUrl
                 };
             }
+            var content = ListBinaryArtifactReader.Read(
+                context,
+                item.File,
+                maximumBytes,
+                artifactStore,
+                ListBinaryArtifactReader.MediaType(item.File.Name),
+                item.File.Name);
+            if (content?.Artifact != null && item.File.Length != content.Artifact.Length)
+            {
+                content.Availability = EvidenceAvailability.Partial;
+                content.Diagnostics.Add("DocumentMetadataLengthMismatch: metadataLength=" + item.File.Length
+                    + "; payloadLength=" + content.Artifact.Length + ".");
+            }
             return new ListDocumentSnapshot
             {
                 Kind = ListDocumentObjectKind.File,
@@ -121,7 +134,7 @@ namespace PnP.Framework.Migration.Lists.Items
                 Length = item.File.Length,
                 MajorVersion = item.File.MajorVersion,
                 MinorVersion = item.File.MinorVersion,
-                Content = ListBinaryArtifactReader.Read(context, item.File, maximumBytes, artifactStore, ListBinaryArtifactReader.MediaType(item.File.Name), item.File.Name)
+                Content = content
             };
         }
 

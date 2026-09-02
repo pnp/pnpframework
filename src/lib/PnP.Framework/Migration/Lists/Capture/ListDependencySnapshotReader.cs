@@ -111,11 +111,15 @@ namespace PnP.Framework.Migration.Lists.Capture
             context.ExecuteQueryRetry();
 
             var items = ListItemSnapshotReader.Read(context, list, maximumBytes, artifactStore, warnings);
-            var listContentTypes = ListContentTypeSnapshotReader.Read(list.ContentTypes);
             var contentTypeDiagnostics = new List<string>();
+            var listContentTypes = ListContentTypeSnapshotReader.Read(list.ContentTypes, contentTypeDiagnostics);
             var siteContentTypes = ContentTypeClosureSnapshotReader.Read(context, sourceWeb, listContentTypes, contentTypeDiagnostics);
             var availability = EvidenceAvailability.Captured;
             if (items.Count != list.ItemCount || items.Any(value => value.Availability != EvidenceAvailability.Captured))
+            {
+                availability = EvidenceAvailability.Partial;
+            }
+            if (contentTypeDiagnostics.Any(value => value.StartsWith("ConflictingListContentTypeFieldLink:", StringComparison.Ordinal)))
             {
                 availability = EvidenceAvailability.Partial;
             }

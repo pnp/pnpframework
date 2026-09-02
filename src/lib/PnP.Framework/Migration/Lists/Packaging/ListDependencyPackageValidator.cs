@@ -211,7 +211,13 @@ namespace PnP.Framework.Migration.Lists.Packaging
                     ValidateBinary(item.Document.Content, artifactStore, "document " + item.Document.Name);
                     if (item.Document.Content != null && item.Document.Content.Artifact != null && item.Document.Length != item.Document.Content.Artifact.Length)
                     {
-                        throw new InvalidDataException("Document payload length differs from captured file metadata: " + item.Document.ServerRelativeUrl);
+                        var hasExplicitMismatchEvidence = item.Document.Content.Availability == EvidenceAvailability.Partial
+                            && item.Document.Content.Diagnostics.Any(value => value != null
+                                && value.StartsWith("DocumentMetadataLengthMismatch:", StringComparison.Ordinal));
+                        if (!hasExplicitMismatchEvidence)
+                        {
+                            throw new InvalidDataException("Document payload length differs from captured file metadata: " + item.Document.ServerRelativeUrl);
+                        }
                     }
                 }
             }
@@ -223,7 +229,8 @@ namespace PnP.Framework.Migration.Lists.Packaging
             {
                 throw new InvalidDataException("Missing binary evidence record for " + subject + ".");
             }
-            if (binary.Availability == EvidenceAvailability.Captured)
+            if (binary.Availability == EvidenceAvailability.Captured
+                || (binary.Availability == EvidenceAvailability.Partial && binary.Artifact != null))
             {
                 if (binary.Artifact == null)
                 {

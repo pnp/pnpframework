@@ -1415,6 +1415,45 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
+        public void ListPackageValidationRetainsExplicitDocumentLengthMismatchEvidence()
+        {
+            var bytes = Encoding.UTF8.GetBytes("captured payload");
+            var list = CreateListSnapshot(
+                Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                "Documents");
+            list.BaseType = "DocumentLibrary";
+            list.Items.Add(new ListItemSnapshot
+            {
+                SourceItemId = 7,
+                Availability = EvidenceAvailability.Partial,
+                Document = new ListDocumentSnapshot
+                {
+                    Kind = ListDocumentObjectKind.File,
+                    Name = "changing.pptx",
+                    ServerRelativeUrl = "/sites/source/Documents/changing.pptx",
+                    Length = bytes.LongLength + 10,
+                    Content = new ListBinaryArtifactSnapshot
+                    {
+                        Artifact = MigrationArtifact.Describe(bytes, "application/octet-stream", "changing.pptx"),
+                        ContentBase64 = Convert.ToBase64String(bytes),
+                        Availability = EvidenceAvailability.Partial,
+                        Diagnostics = { "DocumentMetadataLengthMismatch: metadataLength=26; payloadLength=16." }
+                    }
+                }
+            });
+
+            ListDependencyPackageValidator.Validate(
+                Array.Empty<ClassicWebPartSnapshot>(),
+                Array.Empty<ClassicListWebPartBindingSnapshot>(),
+                new[] { list },
+                Array.Empty<ListLookupDependency>(),
+                null,
+                null);
+        }
+
+        [TestMethod]
         public void IngredientProjectionAssignsLayoutResourceActionFromMaterializationPlan()
         {
             var package = CreateMigrationPackage();

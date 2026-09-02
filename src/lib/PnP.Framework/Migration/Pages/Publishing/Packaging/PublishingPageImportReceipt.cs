@@ -53,6 +53,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
 
         public bool LifecycleMatched { get; set; }
 
+        public bool SecurityMatched { get; set; }
+
         public string ExpectedPublishingPageContentSha256 { get; set; }
 
         public string PersistedPublishingPageContentSha256 { get; set; }

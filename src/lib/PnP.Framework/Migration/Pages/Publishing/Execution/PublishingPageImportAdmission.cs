@@ -11,9 +11,9 @@ using System.Linq;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Lists.Planning;
 
-namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
+namespace PnP.Framework.Migration.Pages.Publishing.Execution
 {
-    internal static class EnterpriseWikiImportAdmission
+    internal static class PublishingPageImportAdmission
     {
         public static PublishingPageImportReceipt TryAdmit(
             ClientContext targetContext,
@@ -72,11 +72,12 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 blockers.Add($"{issue.Code}: {issue.Message}");
             }
 
-            var freshProbe = EnterpriseWikiTargetInspector.Inspect(
+            var freshProbe = PublishingPageTargetInspector.Inspect(
                 targetContext,
                 package.Plan.TargetPageServerRelativeUrl,
                 package.Plan.DependencyActions,
                 package.Plan.TargetLifecycle,
+                package.Plan.LayoutMaterialization,
                 freshLayoutProbe,
                 blockers);
             if (blockers.Count > 0)
@@ -89,7 +90,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 || !string.Equals(freshProbe.PageLayoutUrl, package.Plan.TargetProbe.PageLayoutUrl, StringComparison.OrdinalIgnoreCase))
             {
                 return Failure(package, operationId, startedAt, "TargetPreconditionChanged", package.Plan.TargetPageServerRelativeUrl,
-                    "The target Enterprise Wiki content type or layout changed after approval.", recorder);
+                    "The target Publishing Page content type or layout changed after approval.", recorder);
             }
 
             return null;

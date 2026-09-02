@@ -16,6 +16,7 @@ The documents describe the current implementation and its intended invariants. T
 3. [Package model](package-model.md) describes the export package, migration package, plan, import receipt, and digest relationships.
 4. [Object lifecycle](object-lifecycle.md) follows each governed object from captured evidence through action selection, target resolution, execution, and verification.
 5. [Execution and verification](execution-and-verification.md) defines admission, journaling, retry, receipt, fresh-readback, and acceptance semantics.
+6. [Page classification and ingredient policy](page-classification-and-ingredient-policy.md) defines CLR runtime selection, non-exclusive profiles, validation cohorts, ingredient actions, dependency release, and aggregate outcomes.
 
 ## Document roles
 
@@ -45,9 +46,12 @@ An item labelled **Implemented** exists in the current code. **Planned** identif
 
 | Artifact | Schema |
 | --- | --- |
-| Publishing Page source export | `pnp-publishing-page-export/v1` |
-| Publishing Page migration package | `pnp-publishing-page-migration-package/v1` |
-| Publishing Page import receipt | `pnp-publishing-page-import-receipt/v1` |
+| Publishing Page source export | `pnp-publishing-page-export/v2` |
+| Publishing Page migration package | `pnp-publishing-page-migration-package/v2` |
+| Publishing Page import receipt | `pnp-publishing-page-import-receipt/v2` |
+| Source ASPX artifact | `pnp-page-artifact/v1` |
+| Page runtime resolution | `pnp-page-runtime/v1` |
+| Canonical page ingredient graph | `pnp-page-ingredient-graph/v1` |
 | Source topology | `pnp-source-topology/v1` |
 | Topology plan | `pnp-topology-plan/v1` |
 | Topology target analysis | `pnp-topology-target-analysis/v1` |

@@ -25,7 +25,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
             DateTimeOffset startedAt,
             MigrationExecutionRecorder recorder,
             IMigrationArtifactStore artifactStore,
-            Func<string, bool> isExpectedContentType)
+            string expectedContentTypeId)
         {
             var warnings = new List<string>();
             var topologyReceipt = TopologyMaterializationCoordinator.Ensure(targetContext, package.Plan.Topology, recorder);
@@ -51,7 +51,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                 writeResult.FieldResults,
                 recorder.Steps,
                 warnings,
-                isExpectedContentType);
+                expectedContentTypeId);
             recorder.RecordState(receipt.ExecutionStatus, receipt.FreshReadbackPassed
                 ? "Mutation and fresh storage verification completed."
                 : "Mutation completed, but fresh storage verification failed.");

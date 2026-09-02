@@ -8,16 +8,41 @@ using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
 using System;
 using System.IO;
 using System.Linq;
+using PnP.Framework.Migration.Pages.Cohorts;
+using PnP.Framework.Migration.Pages.Runtime;
+using PnP.Framework.Migration.Pages.Publishing.Profiles;
 
-namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
+namespace PnP.Framework.Migration.Pages.Publishing.Execution
 {
-    internal static class EnterpriseWikiImportPlanValidator
+    internal static class PublishingPageImportPlanValidator
     {
-        public static void Validate(PublishingPageMigrationPackage package)
+        public static void Validate(
+            PublishingPageMigrationPackage package,
+            PublishingPageWorkflowPolicy workflowPolicy)
         {
-            if (!string.Equals(package.Snapshot.SourceProfile, EnterpriseWikiMigrationProfile.SourceProfile, StringComparison.Ordinal))
+            if (workflowPolicy == null
+                || !string.Equals(package.Selection?.WorkflowId, workflowPolicy.WorkflowId, StringComparison.Ordinal))
             {
-                throw new InvalidDataException($"The '{package.Snapshot.SourceProfile}' source profile cannot be imported by the Enterprise Wiki importer.");
+                throw new InvalidDataException($"Package workflow '{package.Selection?.WorkflowId}' does not match the selected Publishing Page importer.");
+            }
+
+            var expectedSelection = workflowPolicy.Select(package.Snapshot.Source.ContentTypeId);
+            if (!string.Equals(
+                    PublishingPageDigest.ComputeSelectionDigest(expectedSelection),
+                    package.SelectionDigest,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidDataException("The sealed validation-cohort assessment does not match the selected workflow policy and source evidence.");
+            }
+
+            if (package.Selection?.ValidationCohort?.Disposition != ValidationCohortDisposition.Included)
+            {
+                throw new InvalidDataException($"The package is not included in validation cohort '{package.Selection?.ValidationCohort?.CohortId}'.");
+            }
+
+            if (!string.Equals(package.Snapshot.Runtime?.AdapterId, PageRuntimeAdapterIds.Publishing, StringComparison.Ordinal))
+            {
+                throw new InvalidDataException($"Runtime adapter '{package.Snapshot.Runtime?.AdapterId ?? PageRuntimeAdapterIds.Unknown}' cannot be imported by the Publishing Page runtime.");
             }
 
             if (package.Plan.Operation != PageMigrationOperation.CreatePage || !package.Plan.CreateOnly)
@@ -34,15 +59,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             var fieldByName = package.Snapshot.Fields.ToDictionary(item => item.InternalName, StringComparer.OrdinalIgnoreCase);
             foreach (var action in package.Plan.FieldActions.Where(item => item.Disposition == PageFieldDisposition.Apply))
             {
-                if (!EnterpriseWikiMigrationProfile.AdditionalFieldNames.Contains(action.SourceInternalName)
-                    || !string.Equals(action.SourceInternalName, action.TargetInternalName, StringComparison.OrdinalIgnoreCase)
+                if (!string.Equals(action.SourceInternalName, action.TargetInternalName, StringComparison.OrdinalIgnoreCase)
                     || !fieldByName.TryGetValue(action.SourceInternalName, out var field)
                     || field.ReadOnly
                     || !field.HasValue
                     || field.CaptureStatus != PageCaptureStatus.Captured
                     || !PageFieldPlanner.IsImportableKind(field.Kind))
                 {
-                    throw new InvalidDataException($"Field action '{action.SourceInternalName}' is marked Apply but is not supported by the Enterprise Wiki importer.");
+                    throw new InvalidDataException($"Field action '{action.SourceInternalName}' is marked Apply but is not supported by the Publishing Page importer.");
                 }
             }
 

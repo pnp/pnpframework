@@ -21,6 +21,7 @@ Start with:
 - [Purpose and scope](docs/purpose-and-scope.md)
 - [Architecture](docs/architecture.md)
 - [Package model](docs/package-model.md)
+- [Page classification and ingredient policy](docs/page-classification-and-ingredient-policy.md)
 - [Object lifecycle](docs/object-lifecycle.md)
 - [Execution and verification](docs/execution-and-verification.md)
 
@@ -33,9 +34,10 @@ Every migration area should preserve the following boundaries:
 3. **Import executes a sealed plan.** The importer validates both the source snapshot digest and the approved plan digest before writing.
 4. **Verification uses a fresh readback.** Success is based on persisted target state, not only on successful CSOM requests.
 5. **Unknown evidence is retained.** Capture should preserve information even when the current importer cannot restore it. Planning decides what is understood and safe to apply.
-6. **Unsafe ambiguity becomes a blocker or a conservative result.** A migration profile must not silently guess cross-site identities, target bindings, or lifecycle state.
-7. **Profiles compose reusable page capabilities.** Cross-page evidence and mechanics belong in `Pages`; publishing-page contracts and lifecycle behavior belong in `Pages.Publishing`; site-template-specific policy belongs in a profile namespace.
-8. **Use existing PnP primitives.** Migration code should compose established PnP Framework operations instead of duplicating CSOM retry, file, folder, page, URL, or Web Part plumbing.
+6. **Unsafe ambiguity becomes a blocker or a conservative result.** A migration workflow must not silently guess cross-site identities, target bindings, runtime adapter, required dependencies, or lifecycle state.
+7. **Runtime, profiles, cohorts, and ingredients are separate.** CLR evidence selects an executable adapter; profile signals are non-exclusive; cohort membership is workflow-specific; every non-empty ingredient receives an explicit action.
+8. **Profiles compose reusable page capabilities.** Cross-page evidence and mechanics belong in `Pages`; publishing-page contracts and lifecycle behavior belong in `Pages.Publishing`; the Enterprise Wiki namespace remains a thin workflow facade.
+9. **Use existing PnP primitives.** Migration code should compose established PnP Framework operations instead of duplicating CSOM retry, file, folder, page, URL, or Web Part plumbing.
 
 ## Current areas
 
@@ -55,9 +57,9 @@ Every migration area should preserve the following boundaries:
 | `PnP.Framework.Migration.Schema.ContentTypes` | Minimal required-field content-type closure capture, planning, target admission, exact-ID materialization, and fresh verification. |
 | `PnP.Framework.Migration.Taxonomy` | Explicit source term-store/term-set to target term-store/term-set schema mappings. |
 | `PnP.Framework.Migration.Verification` | Storage/runtime verification states and typed external runtime-verification manifests and receipts. |
-| [`PnP.Framework.Migration.Pages`](Pages/README.md) | Shared page identity, evidence, field, reference, security, classic Web Part, content, capture, and planning capabilities. |
-| [`PnP.Framework.Migration.Pages.Publishing`](Pages/Publishing/README.md) | Classic publishing-page aggregate contracts, lifecycle policy, packages, reports, and verification. |
-| `PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki` | Enterprise Wiki classification, portability policy, target inspection, planning, and import orchestration. |
+| [`PnP.Framework.Migration.Pages`](Pages/README.md) | Shared page identity, exact ASPX evidence, CLR runtime, non-exclusive profiles, cohorts, canonical ingredients, fields, references, security, classic Web Parts, content, capture, and planning capabilities. |
+| [`PnP.Framework.Migration.Pages.Publishing`](Pages/Publishing/README.md) | Classic publishing-page aggregate contracts, workflow policy, lifecycle, planning, packages, reports, execution, and verification. |
+| `PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki` | Thin Enterprise Wiki v1 discovery, API, and EW-named file-storage facade. |
 
 Future Wiki Page and Web Part Page implementations should be sibling page families under `Pages`, reusing the shared page capabilities instead of copying publishing-page types.
 
@@ -69,6 +71,7 @@ The dependency direction is:
 
 ```text
 source evidence
+    -> CLR runtime + non-exclusive profile signals + canonical ingredient graph
     -> Topology plan (SPSite/SPWeb ownership)
     -> shared Schema closure (site fields/content types)
     -> List closure (List, list CTs, fields, items/files, views)

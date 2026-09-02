@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
+namespace PnP.Framework.Migration.Pages.ClassicWebParts.Planning
 {
-    internal static class EnterpriseWikiWebPartPolicy
+    internal static class ClassicWebPartReplayCapabilityPolicy
     {
         public static string GetBlocker(string exportXml)
         {
@@ -40,7 +40,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
 
             if (typeName.EndsWith(".RSSAggregatorWebPart", StringComparison.OrdinalIgnoreCase))
             {
-                return $"type '{typeName}' is not supported by the current deterministic import profile and must be replaced or explicitly mapped";
+                return $"type '{typeName}' is not supported by the current deterministic Publishing Page importer and must be replaced or explicitly mapped";
             }
 
             var properties = document

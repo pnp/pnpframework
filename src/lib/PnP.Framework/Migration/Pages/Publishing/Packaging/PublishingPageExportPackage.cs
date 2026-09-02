@@ -9,6 +9,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
 
         public DateTimeOffset ExportedAtUtc { get; set; }
 
+        public PublishingPageWorkflowSelection Selection { get; set; }
+
+        public string SelectionDigest { get; set; }
+
         public PublishingPageCaptureBundle Snapshot { get; set; }
 
         public string SnapshotDigest { get; set; }

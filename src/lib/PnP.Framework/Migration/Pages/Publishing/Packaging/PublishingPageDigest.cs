@@ -7,6 +7,16 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
 {
     public static class PublishingPageDigest
     {
+        public static string ComputeSelectionDigest(PublishingPageWorkflowSelection selection)
+        {
+            if (selection == null)
+            {
+                throw new ArgumentNullException(nameof(selection));
+            }
+
+            return PageDigest.ComputeSha256(PublishingPagePackageSerializer.SerializeCanonical(selection));
+        }
+
         public static string ComputeSnapshotDigest(PublishingPageCaptureBundle snapshot)
         {
             if (snapshot == null)

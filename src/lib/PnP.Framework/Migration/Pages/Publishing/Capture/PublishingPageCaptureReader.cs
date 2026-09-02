@@ -6,6 +6,7 @@ using PnP.Framework.Migration.Pages.Security;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
 using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Packaging;
+using PnP.Framework.Migration.Pages.Markup;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -42,6 +43,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Capture
             context.Load(web, value => value.Id, value => value.Url, value => value.ServerRelativeUrl);
             context.Load(file,
                 value => value.Exists,
+                value => value.Name,
                 value => value.UniqueId,
                 value => value.ServerRelativeUrl,
                 value => value.UIVersionLabel,
@@ -76,6 +78,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Capture
                 artifactStore,
                 blockers,
                 warnings);
+            var pageArtifact = PageArtifactSnapshotReader.Read(context, file, artifactStore, blockers);
 
             var identity = new PageIdentity
             {
@@ -97,6 +100,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Capture
             return new CapturedPublishingPage
             {
                 Identity = identity,
+                PageArtifact = pageArtifact,
                 Layout = layoutSnapshot,
                 PublishingPageContent = content,
                 Fields = PageFieldSnapshotReader.Read(context, item, warnings),

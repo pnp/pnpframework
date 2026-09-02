@@ -4,6 +4,7 @@ using PnP.Framework.Migration.Pages.Publishing.Execution;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Packaging;
 using System;
+using PnP.Framework.Migration.Pages.Publishing.Profiles;
 
 namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
 {
@@ -39,11 +40,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             }
 
             PublishingPagePackageValidator.ValidateMigration(package, artifactStore);
-            EnterpriseWikiImportPlanValidator.Validate(package);
+            PublishingPageImportPlanValidator.Validate(package, EnterpriseWikiV1WorkflowPolicy.Instance);
             var operationId = Guid.NewGuid();
             var startedAt = DateTimeOffset.UtcNow;
             var recorder = new MigrationExecutionRecorder(operationId, package.PlanDigest, journal);
-            var admissionFailure = EnterpriseWikiImportAdmission.TryAdmit(
+            var admissionFailure = PublishingPageImportAdmission.TryAdmit(
                 targetContext,
                 package,
                 approvedPlanDigest,
@@ -66,7 +67,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                     startedAt,
                     recorder,
                     artifactStore,
-                    EnterpriseWikiMigrationProfile.IsContentType);
+                    package.Plan.TargetProbe.PageContentTypeId);
             }
             catch (Exception exception)
             {

@@ -67,12 +67,12 @@ The Publishing Page family currently defines three primary versioned artifacts:
 
 ```text
 PublishingPageExportPackage
-    snapshot + snapshotDigest
+    selection + snapshot + snapshotDigest
              |
              | embedded without semantic mutation
              v
 PublishingPageMigrationPackage
-    snapshot + plan + snapshotDigest + planDigest
+    selection + snapshot + plan + snapshotDigest + planDigest
              |
              | approvedPlanDigest
              v
@@ -122,14 +122,19 @@ Folders and namespaces represent object domains or public workflow boundaries. T
 | `Migration.Lists` | Required List closure, lookup ordering, List-local schema, current content, Views, receipts, and verification. |
 | `Migration.Taxonomy` | Reviewed taxonomy schema mappings. |
 | `Migration.Pages` | Page-wide identity, evidence, fields, references, security, classic Web Parts, and shared mechanics. |
-| `Migration.Pages.Publishing` | Publishing aggregate, Page Layout, target lifecycle, package, report, execution, and verification. |
-| `Migration.Pages.Publishing.EnterpriseWiki` | Enterprise Wiki discovery, classification, portability policy, and orchestration. |
+| `Migration.Pages.Markup` | Exact ASPX artifacts and parsed Page-directive evidence. |
+| `Migration.Pages.Runtime` | CLR-first runtime-adapter resolution. |
+| `Migration.Pages.Profiles` / `Pages.Cohorts` | Non-exclusive profile signals and versioned validation-cohort results. |
+| `Migration.Pages.Ingredients` | Canonical ingredient nodes, dependency edges, semantic actions, and aggregate outcome evaluation. |
+| `Migration.Pages.ClassicWebParts.Planning` | Current classic Web Part replay capability and action planning. |
+| `Migration.Pages.Publishing` | Publishing aggregate, Page Layout, target lifecycle, workflow policy, package, report, execution, and verification. |
+| `Migration.Pages.Publishing.EnterpriseWiki` | Thin Enterprise Wiki v1 API facade, discovery, and workflow-specific file naming. |
 | `Migration.Verification` | Storage/runtime status and external runtime verification contracts. |
 
 Dependencies point inward:
 
 ```text
-Enterprise Wiki profile
+Enterprise Wiki v1 facade and workflow policy
     -> Publishing Page family
         -> shared Page capabilities
             -> Topology / Schema / Lists / Execution / Packaging / Verification
@@ -149,7 +154,7 @@ Capture produces evidence, not actions. Each reader should record:
 - content digests and artifact references for large or binary values;
 - a source stability fence when concurrent source mutation would invalidate a coherent snapshot.
 
-Capture aggregates these object snapshots into `PublishingPageCaptureBundle`. Unknown evidence remains in the bundle even when the current planner chooses `EvidenceOnly`, a conservative skip, or a blocker.
+Capture aggregates these object snapshots into `PublishingPageCaptureBundle`, retains the exact source ASPX artifact, resolves the CLR runtime, emits non-exclusive profile signals, and projects a canonical ingredient dependency graph. Core, Layout, Topology, List-schema, List-content, Web Part, and Reference projectors own their object-specific nodes and edges; the top-level Publishing projector only composes them. Unknown evidence remains in the bundle even when the current planner later chooses `Delegate`, `EvidenceOnly`, a conservative skip, or a blocker.
 
 ## Planning architecture
 
@@ -158,7 +163,7 @@ Planning has two inputs:
 1. a sealed source snapshot;
 2. read-only observations and policy for one target.
 
-The planner produces a hierarchical action graph. There is no universal CLR base class for all actions because Web creation, field application, reference rewriting, and List content materialization have different domain semantics. They share conceptual requirements:
+The planner produces typed domain plans plus one canonical `PageIngredientAction` for every non-empty ingredient. Matching object-owned action projectors derive canonical actions from those typed plans; package validation re-projects them instead of trusting a caller-edited summary. There is no universal CLR base class for all executable operations because Web creation, field application, reference rewriting, and List content materialization have different domain semantics. They share conceptual requirements:
 
 - source identity;
 - target locator or mapping;
@@ -168,6 +173,8 @@ The planner produces a hierarchical action graph. There is no universal CLR base
 - reason, diagnostics, or typed issues;
 - expected persisted state;
 - semantic digest where ownership or approval requires it.
+
+Canonical ingredient dispositions are `Preserve`, `Transform`, `Substitute`, `Drop`, `Delegate`, and `Block`. A retained consumer cannot lose a required dependency unless its `Transform` explicitly releases a real required edge; invalid, duplicate, or non-transform releases block evaluation. The evaluator derives `Exact`, `ExecutableWithTransform`, `ExecutableWithLoss`, or `Blocked`; plan-wide target and policy blockers remain independently authoritative.
 
 Every governed object must have one unambiguous plan result. Evidence outside the current execution boundary must remain visible instead of disappearing from the report.
 
@@ -183,6 +190,8 @@ The architecture distinguishes four target concepts:
 | Verification result | Whether a fresh readback satisfies the approved expectation. |
 
 A target URL in a plan is not proof that the Web exists. A target List ID in a receipt is not proof that its schema matches. The four concepts remain separate so that stale planning observations and incomplete mutations cannot masquerade as verified results.
+
+For Publishing Pages, target Content Type selection begins with the approved Page Layout association. Planning seals one exact Pages-library Content Type ID. Multiple descendants are an ambiguity blocker; Import and fresh readback require exact equality with the sealed ID rather than accepting any broad Enterprise Wiki descendant.
 
 ## Execution architecture
 

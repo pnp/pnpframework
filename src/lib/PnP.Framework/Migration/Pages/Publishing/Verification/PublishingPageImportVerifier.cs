@@ -29,7 +29,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
             IList<PageFieldImportResult> fieldResults,
             IList<MigrationMutationReceipt> steps,
             IEnumerable<string> warnings,
-            Func<string, bool> isExpectedContentType)
+            string expectedContentTypeId)
         {
             using (var verificationContext = targetContext.Clone(package.Plan.TargetWebUrl))
             {
@@ -79,6 +79,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     throw new InvalidOperationException("Fresh target readback could not find the imported page list item.");
                 }
 
+                verificationContext.Load(item, value => value.HasUniqueRoleAssignments);
+                verificationContext.ExecuteQueryRetry();
+
                 var content = PublishingPageCaptureReader.GetFieldString(item, "PublishingPageContent") ?? string.Empty;
                 var contentTypeId = PublishingPageCaptureReader.GetFieldString(item, "ContentTypeId") ?? string.Empty;
                 var webPartResults = PublishingPageWebPartVerifier.Verify(
@@ -121,6 +124,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     receiptWarnings.Add($"Target lifecycle mismatch. Expected {package.Plan.TargetLifecycle}; actual level is {actualLevel} and checkout state is {actualCheckOutType}.");
                 }
 
+                var securityMatched = package.Snapshot.Security.HasUniqueRoleAssignments
+                    || !item.HasUniqueRoleAssignments;
+                if (!securityMatched)
+                {
+                    receiptWarnings.Add("Target security mismatch. The source page inherited permissions, but the target page has unique role assignments.");
+                }
+
                 var plannedFieldsPassed = fieldResults.All(result => !result.Attempted || result.Succeeded);
                 var webPartsMatched = webPartResults.All(result => result.Passed)
                     && webPartResults.Count == package.Snapshot.WebParts.Count;
@@ -142,10 +152,17 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 {
                     receiptWarnings.Add("Fresh List readback did not verify every captured List dependency.");
                 }
-                var readbackPassed = isExpectedContentType(contentTypeId)
+                var contentTypeMatched = !string.IsNullOrWhiteSpace(expectedContentTypeId)
+                    && string.Equals(contentTypeId, expectedContentTypeId, StringComparison.OrdinalIgnoreCase);
+                if (!contentTypeMatched)
+                {
+                    receiptWarnings.Add($"Target Content Type mismatch. Expected '{expectedContentTypeId ?? "unavailable"}'; actual '{contentTypeId}'.");
+                }
+                var readbackPassed = contentTypeMatched
                     && storageContentEqual
                     && webPartsMatched
                     && lifecycleMatched
+                    && securityMatched
                     && plannedFieldsPassed
                     && topologyMatched
                     && listsMatched;
@@ -172,6 +189,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     ActualCheckOutType = actualCheckOutType,
                     ActualModerationStatus = PublishingPageCaptureReader.TryGetInt32(item, "_ModerationStatus"),
                     LifecycleMatched = lifecycleMatched,
+                    SecurityMatched = securityMatched,
                     ExpectedPublishingPageContentSha256 = package.Plan.ExpectedPublishingPageContentSha256,
                     PersistedPublishingPageContentSha256 = persistedDigest,
                     StorageContentEqual = storageContentEqual,

@@ -2,7 +2,7 @@
 
 > Status: Draft
 > Implementation status: Implemented contracts with explicit extension points
-> Applies to: Publishing Page package contracts v1
+> Applies to: Publishing Page package contracts v2
 
 ## Purpose
 
@@ -27,9 +27,12 @@ The migration package embeds the source snapshot, so Import does not need to rec
 
 | CLR contract | Schema |
 | --- | --- |
-| `PublishingPageExportPackage` | `pnp-publishing-page-export/v1` |
-| `PublishingPageMigrationPackage` | `pnp-publishing-page-migration-package/v1` |
-| `PublishingPageImportReceipt` | `pnp-publishing-page-import-receipt/v1` |
+| `PublishingPageExportPackage` | `pnp-publishing-page-export/v2` |
+| `PublishingPageMigrationPackage` | `pnp-publishing-page-migration-package/v2` |
+| `PublishingPageImportReceipt` | `pnp-publishing-page-import-receipt/v2` |
+| `PageArtifactSnapshot` | `pnp-page-artifact/v1` |
+| `PageRuntimeSnapshot` | `pnp-page-runtime/v1` |
+| `CanonicalPageIngredientGraph` | `pnp-page-ingredient-graph/v1` |
 | `RuntimeVerificationManifest` | `pnp-migration-runtime-verification/v1` |
 | `RuntimeVerificationReceipt` | `pnp-migration-runtime-verification-receipt/v1` |
 
@@ -43,6 +46,8 @@ JSON serialization uses camel-case property names, string enum values, explicit 
 PublishingPageExportPackage
 ├── schemaVersion
 ├── exportedAtUtc
+├── selection
+├── selectionDigest
 ├── snapshot
 └── snapshotDigest
           |
@@ -54,6 +59,8 @@ PublishingPageMigrationPackage
 ├── exportSchemaVersion
 ├── exportedAtUtc
 ├── state
+├── selection
+├── selectionDigest
 ├── snapshot
 ├── plan
 ├── snapshotDigest
@@ -80,6 +87,8 @@ PublishingPageImportReceipt
 | --- | --- |
 | `schemaVersion` | Export envelope version. |
 | `exportedAtUtc` | Time capture and package sealing completed. |
+| `selection` | Workflow ID plus versioned validation-cohort assessment. This selects policy; it is not source evidence. |
+| `selectionDigest` | SHA-256 over the workflow/cohort selection. Classification edits invalidate the package independently of source evidence. |
 | `snapshot` | Complete `PublishingPageCaptureBundle`. |
 | `snapshotDigest` | SHA-256 over canonical serialization of the complete snapshot. |
 
@@ -91,9 +100,12 @@ Changing any snapshot evidence after sealing invalidates `snapshotDigest`.
 
 | Field | Captured evidence |
 | --- | --- |
-| `sourceProfile` | Profile that classified the source, currently Enterprise Wiki. |
 | `capturePolicy` | Normalized capture inputs and payload limits. |
 | `source` | Page/Web/file/List-item identity, content type, version, size, modified time, and title. |
+| `pageArtifact` | Exact source ASPX byte artifact, parsed `Page` directive, availability, and diagnostics. |
+| `runtime` | CLR-derived executable adapter, evidence source, resolution state, and diagnostics. |
+| `profileSignals` | Non-exclusive Content Type, layout, and field signals. Multiple profile IDs may apply. |
+| `ingredientGraph` | Canonical nodes and dependency edges projected over all typed page evidence, including CLR/runtime, layout resources/schema, owner Webs, List/site schema, current items/documents/attachments/Views, Web Parts, and references. |
 | `layout` | Publishing Page Layout identity, exact artifact, parsed controls/zones/registrations/resources, and associated schema closure. |
 | `publishingPageContent` | Complete source `PublishingPageContent` HTML. |
 | `publishingPageContentSha256` | Digest of captured publishing HTML. |
@@ -107,7 +119,7 @@ Changing any snapshot evidence after sealing invalidates `snapshotDigest`.
 | `security` | Permission inheritance and role-assignment evidence. |
 | `lifecycle` | Source checkout, file level, moderation, and timestamp evidence. |
 | `sourceFence` | Before/after file identity, version, length, and modified-time stability evidence. |
-| `blockers` | Capture findings that make the current exact profile non-executable. |
+| `blockers` | Capture findings that make the selected workflow non-executable. |
 | `warnings` | Review findings that do not independently block planning. |
 
 The bundle is not a list of writes. A value may be captured even when its later plan disposition is evidence-only or blocked.
@@ -122,6 +134,8 @@ The bundle is not a list of writes. A value may be captured even when its later 
 | `plannedAtUtc` | Time target analysis and plan sealing completed. |
 | `exportSchemaVersion` / `exportedAtUtc` | Provenance of the embedded export. |
 | `state` | `ApprovalReady` when the plan has no blockers, otherwise `Blocked`; `Draft` is available while constructing a package. |
+| `selection` | Exact workflow/cohort selection copied from the export and validated again at planning/import. |
+| `selectionDigest` | Must continue to match the embedded selection and its policy-derived assessment. |
 | `snapshot` | Exact source evidence used to make the plan. |
 | `plan` | Target mappings, actions, probes, expected assertions, and issues. |
 | `snapshotDigest` | Must still match the embedded snapshot. |
@@ -158,7 +172,10 @@ The bundle is not a list of writes. A value may be captured even when its later 
 | `expectedPublishingPageContentSha256` | Expected post-replacement publishing-content digest. |
 | `storageAssertions` | Required storage-level expectations. |
 | `runtimeVerification` | Typed requirements for an external verifier. Presence does not imply execution. |
-| `blockers` / `warnings` | Plan-wide findings. `IsExecutable` is derived from an empty blocker list. |
+| `ingredientActions` | Exactly one semantic capability/disposition, target, policy, dependency-release list, and verification list for every non-empty canonical ingredient. Releases are valid only on a `Transform` and must name a real required dependency edge. |
+| `migrationOutcome` | Evaluated aggregate: `Exact`, `ExecutableWithTransform`, `ExecutableWithLoss`, `Blocked`, or `Unknown`. |
+| `ingredientIssues` | Recomputed dependency-closure and action-coverage issues. |
+| `blockers` / `warnings` | Plan-wide findings. `IsExecutable` requires both an empty blocker list and an executable ingredient outcome. |
 
 The plan contains nested actions rather than a flat transaction list. Dependency ordering and runtime identity exchange determine execution order.
 
@@ -255,6 +272,10 @@ Before target mutation, current validators require at least the following:
 
 - supported Publishing Page envelope and embedded export schema versions;
 - non-null required aggregates;
+- workflow ID and validation-cohort assessment;
+- canonical selection-digest equality and workflow-policy re-evaluation from source evidence;
+- source ASPX artifact identity plus byte length/digest;
+- runtime, profile-signal, and canonical ingredient-graph structure plus deterministic re-derivation from the typed source evidence;
 - canonical snapshot and plan digest equality;
 - plan-to-snapshot digest binding;
 - package state consistent with blockers;
@@ -263,15 +284,16 @@ Before target mutation, current validators require at least the following:
 - complete and unique topology target-analysis coverage;
 - List identities, admitted probes for executable Lists, content-type closure shape, and per-List/plan-set digests;
 - unique runtime-verification requirement IDs;
+- unique ingredient/action IDs, deterministic action re-projection from typed domain plans, complete non-empty ingredient action coverage, valid graph edges, validated transform-only dependency releases, recomputed dependency closure, and aggregate outcome equality;
 - artifact availability and digest validity when external artifacts are required.
 
-Current validation gaps include uniform checking of nested `schemaVersion` values and independent re-derivation of the sealed List order and all nested List field/View action coverage. Those gaps do not authorize Import to repair or reinterpret the package.
+Current validation gaps include uniform checking of every nested `schemaVersion` value and independent semantic re-derivation of all sealed List ordering and target-planning decisions. Missing nested List/schema/View decisions already project to blocking ingredient actions; those remaining gaps do not authorize Import to repair or reinterpret the package.
 
 A contract-validation failure throws before target admission and currently produces no import receipt. Approval and target-admission failures after successful contract validation return typed zero-mutation receipts.
 
 ## Human-readable report
 
-The Markdown migration report is a bounded projection of `PublishingPageMigrationPackage`. It is designed for plan review and includes source evidence, actions, target probes, issues, expected assertions, and approval digests.
+The Markdown migration report is a bounded projection of `PublishingPageMigrationPackage`. It is designed for plan review and includes source evidence, CLR runtime resolution, profile/cohort classification, all ingredient nodes and edges, every ingredient and typed-domain action, target probes, issues, expected assertions, and approval digests.
 
 It is not the authoritative package and it is not a post-import verification report. Complete large values remain in JSON or the content-addressed artifact store. Actual execution and verification belong to `PublishingPageImportReceipt`.
 

@@ -28,6 +28,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 $"expected-target-publishing-page-content-sha256={expectedContentDigest}",
                 $"expected-shared-webparts={snapshot.WebParts.Count}"
             };
+            if (!snapshot.Security.HasUniqueRoleAssignments)
+            {
+                result.Add("expected-page-permissions=inherited");
+            }
             var referenceById = snapshot.Dependencies.ToDictionary(item => item.Id, System.StringComparer.Ordinal);
             result.AddRange(referenceActions
                 .Where(item => item.Disposition == PageReferenceDisposition.MaterializeAtTarget)

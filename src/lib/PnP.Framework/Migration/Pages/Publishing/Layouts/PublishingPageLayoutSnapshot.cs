@@ -1,6 +1,7 @@
 using PnP.Framework.Migration.Evidence;
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Schema.ContentTypes;
+using PnP.Framework.Migration.Pages.Markup;
 using System;
 using System.Collections.Generic;
 
@@ -43,6 +44,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
         public ArtifactReference Bytes { get; set; }
 
         public string ContentBase64 { get; set; }
+
+        public PageDirectiveSnapshot PageDirective { get; set; }
 
         public IList<PublishingPageLayoutRegistration> Registrations { get; set; } = new List<PublishingPageLayoutRegistration>();
 

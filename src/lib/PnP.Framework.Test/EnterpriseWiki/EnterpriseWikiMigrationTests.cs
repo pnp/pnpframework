@@ -6,6 +6,7 @@ using PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki;
 using PnP.Framework.Migration.Pages.Fields;
 using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
+using PnP.Framework.Migration.Pages.Publishing.Execution;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
@@ -15,7 +16,15 @@ using PnP.Framework.Migration.Pages.Security;
 using PnP.Framework.Migration.Pages.Publishing.Verification;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
 using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
+using PnP.Framework.Migration.Pages.ClassicWebParts.Planning;
 using PnP.Framework.Migration.Pages.Publishing.Layouts;
+using PnP.Framework.Migration.Pages.Publishing.Ingredients;
+using PnP.Framework.Migration.Pages.Publishing.Profiles;
+using PnP.Framework.Migration.Pages.Markup;
+using PnP.Framework.Migration.Pages.Runtime;
+using PnP.Framework.Migration.Pages.Profiles;
+using PnP.Framework.Migration.Pages.Ingredients;
+using PnP.Framework.Migration.Pages.Cohorts;
 using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Lists.Items;
 using PnP.Framework.Migration.Lists.Capture;
@@ -50,6 +59,136 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
+        public void RuntimeResolutionUsesClrPageTypeBeforeContentTypeProfile()
+        {
+            var artifact = new PageArtifactSnapshot
+            {
+                PageDirective = new PageDirectiveSnapshot
+                {
+                    Inherits = "Microsoft.SharePoint.WebPartPages.WikiEditPage, Microsoft.SharePoint"
+                }
+            };
+
+            var runtime = PageRuntimeResolver.Resolve(
+                artifact,
+                null,
+                BuiltInContentTypeId.EnterpriseWikiPage);
+
+            Assert.AreEqual(PageRuntimeAdapterIds.Wiki, runtime.AdapterId);
+            Assert.AreEqual(PageRuntimeDetectionSource.PageDirective, runtime.DetectionSource);
+            Assert.AreEqual(PageRuntimeResolutionState.Resolved, runtime.ResolutionState);
+        }
+
+        [TestMethod]
+        public void ProjectPageProducesNonExclusiveProfileSignalsButIsOutsideEwV1Cohort()
+        {
+            var source = new PageIdentity
+            {
+                ContentTypeId = BuiltInContentTypeId.ProjectPage + "001122"
+            };
+            var signals = PublishingPageProfileSignalProjector.Project(
+                source,
+                new PublishingPageLayoutSnapshot { FileName = "ProjectPage.aspx" },
+                new[]
+                {
+                    new PageFieldValueSnapshot { InternalName = "Wiki_x0020_Page_x0020_Categories" },
+                    new PageFieldValueSnapshot { InternalName = "TaskStatus" }
+                });
+
+            Assert.IsTrue(signals.Any(value => value.ProfileId == PageProfileIds.EnterpriseWiki));
+            Assert.IsTrue(signals.Any(value => value.ProfileId == PageProfileIds.ProjectPage));
+            Assert.AreEqual(
+                ValidationCohortDisposition.Excluded,
+                EnterpriseWikiV1CohortPolicy.Assess(source.ContentTypeId).Disposition);
+        }
+
+        [TestMethod]
+        public void RequiredIngredientCanBeDroppedOnlyWhenConsumerTransformReleasesIt()
+        {
+            var graph = new CanonicalPageIngredientGraph
+            {
+                Nodes = new List<PageIngredientNode>
+                {
+                    new PageIngredientNode { Id = "consumer", Kind = PageIngredientKind.Content, HasContent = true },
+                    new PageIngredientNode { Id = "dependency", Kind = PageIngredientKind.Reference, HasContent = true }
+                },
+                Edges = new List<PageIngredientEdge>
+                {
+                    new PageIngredientEdge
+                    {
+                        FromIngredientId = "consumer",
+                        ToIngredientId = "dependency",
+                        Relationship = PageIngredientRelationship.DependsOn,
+                        Requirement = PageIngredientRequirement.Required
+                    }
+                }
+            };
+            var actions = new List<PageIngredientAction>
+            {
+                new PageIngredientAction
+                {
+                    ActionId = "action:consumer",
+                    IngredientId = "consumer",
+                    Capability = IngredientCapability.Available,
+                    Disposition = IngredientDisposition.Preserve
+                },
+                new PageIngredientAction
+                {
+                    ActionId = "action:dependency",
+                    IngredientId = "dependency",
+                    Capability = IngredientCapability.Available,
+                    Disposition = IngredientDisposition.Drop
+                }
+            };
+
+            var blocked = PageIngredientPlanEvaluator.Evaluate(graph, actions);
+            Assert.AreEqual(PageMigrationOutcome.Blocked, blocked.Outcome);
+            Assert.IsTrue(blocked.Issues.Any(value => value.Code == "RequiredIngredientDependencyUnsatisfied"));
+
+            actions[0].ReleasedDependencyIngredientIds.Add("dependency");
+            var invalidRelease = PageIngredientPlanEvaluator.Evaluate(graph, actions);
+            Assert.AreEqual(PageMigrationOutcome.Blocked, invalidRelease.Outcome);
+            Assert.IsTrue(invalidRelease.Issues.Any(value => value.Code == "IngredientDependencyReleaseInvalid"));
+
+            actions[0].Disposition = IngredientDisposition.Transform;
+            var released = PageIngredientPlanEvaluator.Evaluate(graph, actions);
+            Assert.AreEqual(PageMigrationOutcome.ExecutableWithLoss, released.Outcome);
+            Assert.AreEqual(0, released.Issues.Count);
+        }
+
+        [TestMethod]
+        public void EmptyIngredientDispositionDoesNotDegradeAggregateOutcome()
+        {
+            var graph = new CanonicalPageIngredientGraph
+            {
+                Nodes = new List<PageIngredientNode>
+                {
+                    new PageIngredientNode { Id = "present", Kind = PageIngredientKind.Content, HasContent = true },
+                    new PageIngredientNode { Id = "empty", Kind = PageIngredientKind.Field, HasContent = false }
+                }
+            };
+            var actions = new List<PageIngredientAction>
+            {
+                new PageIngredientAction
+                {
+                    ActionId = "action:present",
+                    IngredientId = "present",
+                    Capability = IngredientCapability.Available,
+                    Disposition = IngredientDisposition.Preserve
+                },
+                new PageIngredientAction
+                {
+                    ActionId = "action:empty",
+                    IngredientId = "empty",
+                    Capability = IngredientCapability.Unknown,
+                    Disposition = IngredientDisposition.Drop
+                }
+            };
+
+            Assert.AreEqual(PageMigrationOutcome.Exact, PageIngredientPlanEvaluator.Evaluate(graph, actions).Outcome);
+        }
+
+        [TestMethod]
         public void ContentRewriteUsesLongestCaseInsensitiveMappingFirst()
         {
             var replacements = new[]
@@ -80,6 +219,8 @@ namespace PnP.Framework.Test.EnterpriseWiki
             var export = new PublishingPageExportPackage
             {
                 ExportedAtUtc = DateTimeOffset.UtcNow,
+                Selection = CreateSelection(),
+                SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(CreateSelection()),
                 Snapshot = snapshot,
                 SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot)
             };
@@ -91,12 +232,50 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
+        public void ExportValidationRederivesRuntimeEvenAfterSnapshotIsRedigested()
+        {
+            var snapshot = CreateSnapshot();
+            var export = new PublishingPageExportPackage
+            {
+                ExportedAtUtc = DateTimeOffset.UtcNow,
+                Selection = CreateSelection(),
+                SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(CreateSelection()),
+                Snapshot = snapshot
+            };
+            snapshot.Runtime.AdapterId = PageRuntimeAdapterIds.Wiki;
+            snapshot.Runtime.DetectionSource = PageRuntimeDetectionSource.PageDirective;
+            snapshot.Runtime.ResolutionState = PageRuntimeResolutionState.Resolved;
+            export.SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot);
+
+            Assert.ThrowsException<InvalidDataException>(() => PublishingPagePackageValidator.ValidateExport(export));
+        }
+
+        [TestMethod]
+        public void ExportValidationRederivesIngredientGraphEvenAfterSnapshotIsRedigested()
+        {
+            var snapshot = CreateSnapshot();
+            var export = new PublishingPageExportPackage
+            {
+                ExportedAtUtc = DateTimeOffset.UtcNow,
+                Selection = CreateSelection(),
+                SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(CreateSelection()),
+                Snapshot = snapshot
+            };
+            snapshot.IngredientGraph.Nodes.Single(value => value.Id == PublishingPageIngredientIds.Lifecycle).Label = "tampered";
+            export.SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot);
+
+            Assert.ThrowsException<InvalidDataException>(() => PublishingPagePackageValidator.ValidateExport(export));
+        }
+
+        [TestMethod]
         public void ExportValidationDetectsPageLayoutByteMutation()
         {
             var snapshot = CreateSnapshot();
             var export = new PublishingPageExportPackage
             {
                 ExportedAtUtc = DateTimeOffset.UtcNow,
+                Selection = CreateSelection(),
+                SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(CreateSelection()),
                 Snapshot = snapshot,
                 SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot)
             };
@@ -107,12 +286,45 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
+        public void PackageValidationDetectsWorkflowSelectionMutation()
+        {
+            var package = CreateMigrationPackage();
+            package.Selection.ValidationCohort.Disposition = ValidationCohortDisposition.Excluded;
+
+            Assert.ThrowsException<InvalidDataException>(() => PublishingPagePackageValidator.ValidateMigration(package));
+        }
+
+        [TestMethod]
+        public void ImportPolicyRecomputesCohortAssessmentFromSourceEvidence()
+        {
+            var package = CreateMigrationPackage();
+            package.Selection.ValidationCohort.Reasons = new List<string> { "tampered but re-digested reason" };
+            package.SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(package.Selection);
+
+            PublishingPagePackageValidator.ValidateMigration(package);
+            Assert.ThrowsException<InvalidDataException>(() =>
+                PublishingPageImportPlanValidator.Validate(package, EnterpriseWikiV1WorkflowPolicy.Instance));
+        }
+
+        [TestMethod]
         public void MigrationValidationDetectsPlanMutation()
         {
             var package = CreateMigrationPackage();
 
             PublishingPagePackageValidator.ValidateMigration(package);
             package.Plan.TargetPageServerRelativeUrl = "/sites/target/Pages/changed.aspx";
+
+            Assert.ThrowsException<InvalidDataException>(() => PublishingPagePackageValidator.ValidateMigration(package));
+        }
+
+        [TestMethod]
+        public void MigrationValidationRecomputesIngredientOutcomeAndDependencyIssues()
+        {
+            var package = CreateMigrationPackage();
+            var fieldAction = package.Plan.IngredientActions.Single(value => value.IngredientId == "field:OOCLReference");
+            fieldAction.Disposition = IngredientDisposition.Preserve;
+            fieldAction.Capability = IngredientCapability.Available;
+            package.PlanDigest = PublishingPageDigest.ComputePlanDigest(package.Plan);
 
             Assert.ThrowsException<InvalidDataException>(() => PublishingPagePackageValidator.ValidateMigration(package));
         }
@@ -156,7 +368,10 @@ namespace PnP.Framework.Test.EnterpriseWiki
             StringAssert.Contains(report, "EvidenceOnly");
             StringAssert.Contains(report, "rawValueJson");
             StringAssert.Contains(report, "Only an unconflicted Published");
-            StringAssert.Contains(report, "snapshot.sourceProfile");
+            StringAssert.Contains(report, "selection.validationCohort.disposition");
+            StringAssert.Contains(report, "CLR runtime resolution");
+            StringAssert.Contains(report, "Canonical ingredient nodes");
+            StringAssert.Contains(report, "Ingredient actions");
             StringAssert.Contains(report, "snapshot.layout.customizedPageStatus");
             StringAssert.Contains(report, "Page Layout materialization plan");
             StringAssert.Contains(report, "Page Layout target admission");
@@ -172,9 +387,9 @@ namespace PnP.Framework.Test.EnterpriseWiki
             const string rss = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.Portal.WebControls.RSSAggregatorWebPart"" /></metaData></webPart></webParts>";
             const string scriptEditor = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart"" /></metaData></webPart></webParts>";
 
-            Assert.IsNull(EnterpriseWikiWebPartPolicy.GetBlocker(listView));
-            StringAssert.Contains(EnterpriseWikiWebPartPolicy.GetBlocker(rss), "not supported");
-            Assert.IsNull(EnterpriseWikiWebPartPolicy.GetBlocker(scriptEditor));
+            Assert.IsNull(ClassicWebPartReplayCapabilityPolicy.GetBlocker(listView));
+            StringAssert.Contains(ClassicWebPartReplayCapabilityPolicy.GetBlocker(rss), "not supported");
+            Assert.IsNull(ClassicWebPartReplayCapabilityPolicy.GetBlocker(scriptEditor));
         }
 
         [TestMethod]
@@ -186,7 +401,9 @@ namespace PnP.Framework.Test.EnterpriseWiki
             var roundTripped = PublishingPagePackageSerializer.Deserialize<PublishingPageMigrationPackage>(json);
 
             PublishingPagePackageValidator.ValidateMigration(roundTripped);
-            Assert.AreEqual("EnterpriseWiki", roundTripped.Snapshot.SourceProfile);
+            Assert.AreEqual(EnterpriseWikiV1CohortPolicy.CohortId, roundTripped.Selection.WorkflowId);
+            Assert.AreEqual(PageRuntimeAdapterIds.Publishing, roundTripped.Snapshot.Runtime.AdapterId);
+            Assert.AreEqual(PageMigrationOutcome.ExecutableWithLoss, roundTripped.Plan.MigrationOutcome);
             Assert.AreEqual("https://source.sharepoint.com/_catalogs/masterpage/EnterpriseWiki.aspx", roundTripped.Snapshot.Layout.Url);
             Assert.AreEqual(package.Snapshot.Layout.Bytes.Sha256, roundTripped.Snapshot.Layout.Bytes.Sha256);
             Assert.AreEqual("PublishingPageContent", roundTripped.Snapshot.Layout.Controls.Single().FieldName);
@@ -373,6 +590,8 @@ namespace PnP.Framework.Test.EnterpriseWiki
             var export = new PublishingPageExportPackage
             {
                 ExportedAtUtc = DateTimeOffset.UtcNow,
+                Selection = CreateSelection(),
+                SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(CreateSelection()),
                 Snapshot = snapshot,
                 SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot)
             };
@@ -636,6 +855,210 @@ namespace PnP.Framework.Test.EnterpriseWiki
             var ownerPlan = plan.Lists.Single(value => value.SourceListId == ownerId);
             Assert.AreEqual(ListFieldMaterializationDisposition.MapLookup, ownerPlan.Fields.Single(value => value.SourceFieldId == lookupFieldId).Disposition);
             Assert.AreEqual(ListFieldMaterializationDisposition.EvidenceOnly, ownerPlan.Fields.Single(value => value.SourceFieldId == unknownFieldId).Disposition);
+        }
+
+        [TestMethod]
+        public void IngredientProjectionAssignsExplicitActionsAcrossTopologyAndListContents()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var webId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var listId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var libraryId = Guid.Parse("44444444-4444-4444-4444-444444444444");
+            var titleFieldId = Guid.Parse("55555555-5555-5555-5555-555555555555");
+            var futureFieldId = Guid.Parse("66666666-6666-6666-6666-666666666666");
+            var libraryFieldId = Guid.Parse("77777777-7777-7777-7777-777777777777");
+            const string siteContentTypeId = "0x010100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            const string listContentTypeId = "0x010100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA00BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+            var attachmentBytes = Encoding.UTF8.GetBytes("attachment");
+            var documentBytes = Encoding.UTF8.GetBytes("document");
+            var list = CreateListSnapshot(siteId, webId, listId, "Items");
+            list.EnableAttachments = true;
+            list.Fields.Add(new ListFieldSnapshot
+            {
+                Id = titleFieldId,
+                InternalName = "CaseTitle",
+                Title = "Case title",
+                TypeAsString = "Text",
+                SchemaXml = "<Field ID='{55555555-5555-5555-5555-555555555555}' Name='CaseTitle' Type='Text' />"
+            });
+            list.Fields.Add(new ListFieldSnapshot
+            {
+                Id = futureFieldId,
+                InternalName = "FutureValue",
+                Title = "Future value",
+                TypeAsString = "FutureType",
+                SchemaXml = "<Field ID='{66666666-6666-6666-6666-666666666666}' Name='FutureValue' Type='FutureType' />"
+            });
+            list.ContentTypes.Add(new ListContentTypeSnapshot { Id = "0x01", Name = "Item" });
+            list.SourceItemCount = 1;
+            list.Items.Add(new ListItemSnapshot
+            {
+                SourceItemId = 7,
+                Values = new List<ListItemValueSnapshot>
+                {
+                    new ListItemValueSnapshot { InternalName = "CaseTitle", Kind = ListItemValueKind.String, ScalarValue = "OOCL" }
+                },
+                Attachments = new List<ListAttachmentSnapshot>
+                {
+                    new ListAttachmentSnapshot
+                    {
+                        FileName = "evidence.txt",
+                        ServerRelativeUrl = "/sites/source/Lists/Items/Attachments/7/evidence.txt",
+                        Content = new ListBinaryArtifactSnapshot
+                        {
+                            Artifact = MigrationArtifact.Describe(attachmentBytes, "text/plain", "evidence.txt"),
+                            ContentBase64 = Convert.ToBase64String(attachmentBytes),
+                            Availability = EvidenceAvailability.Captured
+                        }
+                    }
+                }
+            });
+            var library = CreateListSnapshot(siteId, webId, libraryId, "Documents");
+            library.BaseTemplate = 101;
+            library.BaseType = "DocumentLibrary";
+            library.RootFolderServerRelativeUrl = "/sites/source/Documents";
+            var libraryFieldSchema = "<Field ID='{77777777-7777-7777-7777-777777777777}' Name='CaseNumber' Type='Text' />";
+            library.Fields.Add(new ListFieldSnapshot
+            {
+                Id = libraryFieldId,
+                InternalName = "CaseNumber",
+                Title = "Case number",
+                TypeAsString = "Text",
+                SchemaXml = libraryFieldSchema,
+                PortableSchemaSha256 = FieldSchemaCanonicalizer.PortableDigest(libraryFieldSchema)
+            });
+            library.SiteContentTypes.Add(new ContentTypeSchemaSnapshot
+            {
+                EvidenceState = ContentTypeSchemaEvidenceState.Readable,
+                Availability = EvidenceAvailability.Captured,
+                SourceWebUrl = "https://source.sharepoint.com/sites/source",
+                SourceScope = "/sites/source",
+                ContentTypeId = siteContentTypeId,
+                Name = "Case document",
+                ParentContentTypeId = "0x0101",
+                ParentContentTypeName = "Document",
+                RequiredFieldLinks = new List<ContentTypeFieldLinkSnapshot>
+                {
+                    new ContentTypeFieldLinkSnapshot { FieldId = libraryFieldId, Name = "CaseNumber" }
+                },
+                RequiredFieldClosure = new List<FieldSchemaSnapshot>
+                {
+                    new FieldSchemaSnapshot
+                    {
+                        Id = libraryFieldId,
+                        InternalName = "CaseNumber",
+                        Title = "Case number",
+                        TypeAsString = "Text",
+                        SchemaXml = libraryFieldSchema,
+                        PortableSchemaSha256 = FieldSchemaCanonicalizer.PortableDigest(libraryFieldSchema),
+                        Role = FieldSchemaRole.DirectBinding
+                    }
+                }
+            });
+            library.ContentTypes.Add(new ListContentTypeSnapshot
+            {
+                Id = listContentTypeId,
+                Name = "Case document",
+                ParentId = siteContentTypeId,
+                FieldLinks = new List<ListContentTypeFieldLinkSnapshot>
+                {
+                    new ListContentTypeFieldLinkSnapshot { FieldId = libraryFieldId, InternalName = "CaseNumber" }
+                }
+            });
+            library.SourceItemCount = 1;
+            library.Items.Add(new ListItemSnapshot
+            {
+                SourceItemId = 9,
+                Values = new List<ListItemValueSnapshot>
+                {
+                    new ListItemValueSnapshot { InternalName = "CaseNumber", Kind = ListItemValueKind.String, ScalarValue = "C-42" }
+                },
+                Document = new ListDocumentSnapshot
+                {
+                    Kind = ListDocumentObjectKind.File,
+                    Name = "case.docx",
+                    ServerRelativeUrl = "/sites/source/Documents/case.docx",
+                    Length = documentBytes.LongLength,
+                    Content = new ListBinaryArtifactSnapshot
+                    {
+                        Artifact = MigrationArtifact.Describe(documentBytes, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "case.docx"),
+                        ContentBase64 = Convert.ToBase64String(documentBytes),
+                        Availability = EvidenceAvailability.Captured
+                    }
+                }
+            });
+
+            var package = CreateMigrationPackage();
+            var snapshot = package.Snapshot;
+            snapshot.Source.SiteId = siteId;
+            snapshot.Source.WebId = webId;
+            snapshot.SourceTopology = new SourceSiteCollectionSnapshot
+            {
+                SiteId = siteId,
+                RootWebId = webId,
+                SiteCollectionUrl = snapshot.Source.WebUrl,
+                ServerRelativeUrl = snapshot.Source.WebServerRelativeUrl,
+                Webs = new List<SourceWebSnapshot>
+                {
+                    new SourceWebSnapshot
+                    {
+                        SiteId = siteId,
+                        WebId = webId,
+                        SiteCollectionUrl = snapshot.Source.WebUrl,
+                        WebUrl = snapshot.Source.WebUrl,
+                        ServerRelativeUrl = snapshot.Source.WebServerRelativeUrl,
+                        Title = "Source",
+                        WebTemplate = "STS",
+                        Availability = EvidenceAvailability.Captured
+                    }
+                }
+            };
+            snapshot.ListDependencies = new List<ListDependencySnapshot> { list, library };
+            var topology = CreateTopology(siteId, webId);
+            package.Plan.Topology = topology;
+            package.Plan.TopologyTargetAnalysis = CreateAdmittedTopologyAnalysis(topology, siteId, webId);
+            package.Plan.ListMigration = ListMigrationPlanFactory.Create(snapshot.ListDependencies, null, topology, null, null);
+            snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(snapshot);
+
+            var actions = PublishingPageIngredientActionProjector.Project(snapshot, package.Plan);
+            var byId = actions.ToDictionary(value => value.IngredientId, StringComparer.Ordinal);
+
+            Assert.IsFalse(actions.Any(value => value.PolicyId == "policy.ingredient.unknown"));
+            Assert.AreEqual(IngredientDisposition.Preserve, byId[PublishingPageIngredientIds.Web(siteId, webId)].Disposition);
+            Assert.AreEqual(IngredientDisposition.Preserve, byId[PublishingPageIngredientIds.ListField(webId, listId, titleFieldId)].Disposition);
+            Assert.AreEqual(IngredientDisposition.Drop, byId[PublishingPageIngredientIds.ListField(webId, listId, futureFieldId)].Disposition);
+            Assert.AreEqual(IngredientDisposition.Preserve, byId[PublishingPageIngredientIds.ListContentType(webId, listId, "0x01")].Disposition);
+            Assert.AreEqual(IngredientDisposition.Preserve, byId[PublishingPageIngredientIds.ListItem(webId, listId, 7)].Disposition);
+            Assert.AreEqual(IngredientDisposition.Preserve, byId[PublishingPageIngredientIds.ListAttachment(webId, listId, 7, "evidence.txt")].Disposition);
+            Assert.AreEqual(IngredientDisposition.Preserve, byId[PublishingPageIngredientIds.SiteContentType("/sites/source", siteContentTypeId)].Disposition);
+            Assert.AreEqual(IngredientDisposition.Preserve, byId[PublishingPageIngredientIds.SiteField("/sites/source", libraryFieldId)].Disposition);
+            Assert.AreEqual(IngredientDisposition.Preserve, byId[PublishingPageIngredientIds.ListContentType(webId, libraryId, listContentTypeId)].Disposition);
+            Assert.AreEqual(IngredientDisposition.Preserve, byId[PublishingPageIngredientIds.ListDocument(webId, libraryId, 9)].Disposition);
+            Assert.AreEqual(0, PageIngredientPlanEvaluator.Evaluate(snapshot.IngredientGraph, actions).Issues.Count);
+        }
+
+        [TestMethod]
+        public void IngredientProjectionAssignsLayoutResourceActionFromMaterializationPlan()
+        {
+            var package = CreateMigrationPackage();
+            var snapshot = package.Snapshot;
+            snapshot.Layout = CreateCustomLayout();
+            snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(snapshot);
+            package.Plan.LayoutMaterialization = PublishingPageLayoutPlanFactory.Create(
+                snapshot.Layout,
+                new Uri(snapshot.Source.WebUrl),
+                new Uri(package.Plan.TargetWebUrl),
+                new Uri(package.Plan.TargetWebUrl),
+                "EnterpriseWiki.aspx");
+            package.Plan.LayoutAdmission = null;
+
+            var actions = PublishingPageIngredientActionProjector.Project(snapshot, package.Plan);
+            var resource = actions.Single(value => value.IngredientId == PublishingPageIngredientIds.LayoutResource("~site/SiteAssets/Contoso/app.js"));
+
+            Assert.AreEqual(IngredientDisposition.Preserve, resource.Disposition);
+            Assert.AreEqual("copy-exact-bytes-create-only", resource.Realization);
+            Assert.AreEqual("policy.layout.resource", resource.PolicyId);
+            Assert.IsFalse(actions.Any(value => value.PolicyId == "policy.ingredient.unknown"));
         }
 
         [TestMethod]
@@ -970,11 +1393,43 @@ namespace PnP.Framework.Test.EnterpriseWiki
             return plan;
         }
 
+        private static TopologyTargetAnalysis CreateAdmittedTopologyAnalysis(TopologyPlan topology, Guid siteId, Guid webId)
+        {
+            return new TopologyTargetAnalysis
+            {
+                TopologyPlanDigest = topology.PlanDigest,
+                SiteCollections = new List<TopologySiteTargetProbe>
+                {
+                    new TopologySiteTargetProbe
+                    {
+                        SourceSiteId = siteId,
+                        TargetSiteCollectionUrl = "https://target.sharepoint.com/sites/target",
+                        Exists = true,
+                        Disposition = TopologyMaterializationDisposition.ReuseApprovedHost,
+                        Webs = new List<TopologyWebTargetProbe>
+                        {
+                            new TopologyWebTargetProbe
+                            {
+                                SourceSiteId = siteId,
+                                SourceWebId = webId,
+                                TargetWebUrl = "https://target.sharepoint.com/sites/target",
+                                Exists = true,
+                                Disposition = TopologyMaterializationDisposition.ReuseApprovedHost
+                            }
+                        }
+                    }
+                }
+            };
+        }
+
         private static PublishingPageCaptureBundle CreateSnapshot()
         {
-            return new PublishingPageCaptureBundle
+            var fileUniqueId = Guid.Parse("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee");
+            var modifiedUtc = new DateTime(2026, 8, 26, 1, 2, 3, DateTimeKind.Utc);
+            var pageBytes = Encoding.UTF8.GetBytes(
+                "<%@ Page Language=\"C#\" Inherits=\"Microsoft.SharePoint.Publishing.TemplateRedirectionPage, Microsoft.SharePoint.Publishing\" %>");
+            var snapshot = new PublishingPageCaptureBundle
             {
-                SourceProfile = "EnterpriseWiki",
                 CapturePolicy = new PageCaptureOptions
                 {
                     SourcePageServerRelativeUrl = "/sites/source/Pages/source.aspx"
@@ -984,9 +1439,22 @@ namespace PnP.Framework.Test.EnterpriseWiki
                     WebUrl = "https://source.sharepoint.com/sites/source",
                     WebServerRelativeUrl = "/sites/source",
                     PageServerRelativeUrl = "/sites/source/Pages/source.aspx",
+                    FileUniqueId = fileUniqueId,
                     ContentTypeId = BuiltInContentTypeId.EnterpriseWikiPage,
                     ContentTypeName = "Enterprise Wiki Page",
-                    Title = "Source"
+                    Title = "Source",
+                    Length = pageBytes.LongLength,
+                    ModifiedUtc = modifiedUtc,
+                    VersionLabel = "0.1"
+                },
+                PageArtifact = new PageArtifactSnapshot
+                {
+                    FileUniqueId = fileUniqueId,
+                    ServerRelativeUrl = "/sites/source/Pages/source.aspx",
+                    Bytes = MigrationArtifact.Describe(pageBytes, "application/vnd.ms-aspx", "source.aspx"),
+                    ContentBase64 = Convert.ToBase64String(pageBytes),
+                    PageDirective = PageDirectiveParser.Parse(Encoding.UTF8.GetString(pageBytes)),
+                    Availability = EvidenceAvailability.Captured
                 },
                 Layout = CreateStockLayout(),
                 PublishingPageContent = "<p>source</p>",
@@ -1015,8 +1483,24 @@ namespace PnP.Framework.Test.EnterpriseWiki
                     Level = "Draft",
                     ModerationStatus = 3
                 },
-                SourceFence = new SourcePageFence()
+                SourceFence = new SourcePageFence
+                {
+                    FileUniqueId = fileUniqueId,
+                    VersionLabel = "0.1",
+                    Length = pageBytes.LongLength,
+                    ModifiedUtc = modifiedUtc
+                }
             };
+            snapshot.Runtime = PageRuntimeResolver.Resolve(
+                snapshot.PageArtifact,
+                snapshot.Layout.PageDirective,
+                snapshot.Source.ContentTypeId);
+            snapshot.ProfileSignals = PublishingPageProfileSignalProjector.Project(
+                snapshot.Source,
+                snapshot.Layout,
+                snapshot.Fields);
+            snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(snapshot);
+            return snapshot;
         }
 
         private static PublishingPageLayoutSnapshot CreateStockLayout()
@@ -1182,6 +1666,10 @@ namespace PnP.Framework.Test.EnterpriseWiki
             {
                 TargetServerRelativeUrl = layoutPlan.TargetServerRelativeUrl,
                 FileExists = true,
+                ExistingAssociatedContentTypeName = "Enterprise Wiki Page",
+                ExistingAssociatedContentTypeId = BuiltInContentTypeId.EnterpriseWikiPage,
+                AssociatedContentTypeAvailable = true,
+                ResolvedAssociatedContentTypeId = BuiltInContentTypeId.EnterpriseWikiPage,
                 Availability = EvidenceAvailability.Captured
             };
             var layoutAdmission = PublishingPageLayoutTargetAdmissionEvaluator.Evaluate(layoutPlan, layoutProbe);
@@ -1200,7 +1688,16 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 {
                     TargetPageServerRelativeUrl = "/sites/target/Pages/source.aspx"
                 },
-                TargetProbe = new PublishingPageTargetSnapshot(),
+                TargetProbe = new PublishingPageTargetSnapshot
+                {
+                    WebUrl = "https://target.sharepoint.com/sites/target",
+                    WebServerRelativeUrl = "/sites/target",
+                    PagesLibraryServerRelativeUrl = "/sites/target/Pages",
+                    PagesLibraryBaseTemplate = 850,
+                    PageContentTypeId = BuiltInContentTypeId.EnterpriseWikiPage,
+                    PageLayoutUrl = "https://target.sharepoint.com/_catalogs/masterpage/EnterpriseWiki.aspx",
+                    PageLayoutExists = true
+                },
                 LayoutMaterialization = layoutPlan,
                 LayoutTargetProbe = layoutProbe,
                 LayoutAdmission = layoutAdmission,
@@ -1229,11 +1726,17 @@ namespace PnP.Framework.Test.EnterpriseWiki
                     }
                 }
             };
+            plan.IngredientActions = PublishingPageIngredientActionProjector.Project(snapshot, plan);
+            var ingredientEvaluation = PageIngredientPlanEvaluator.Evaluate(snapshot.IngredientGraph, plan.IngredientActions);
+            plan.MigrationOutcome = ingredientEvaluation.Outcome;
+            plan.IngredientIssues = ingredientEvaluation.Issues;
             return new PublishingPageMigrationPackage
             {
                 PlannedAtUtc = DateTimeOffset.UtcNow,
                 ExportedAtUtc = DateTimeOffset.UtcNow.AddMinutes(-1),
                 State = PublishingPagePackageState.ApprovalReady,
+                Selection = CreateSelection(),
+                SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(CreateSelection()),
                 Snapshot = snapshot,
                 Plan = plan,
                 SnapshotDigest = snapshotDigest,
@@ -1241,6 +1744,24 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 Report = new PublishingPageMigrationReport
                 {
                     Summary = "Test report"
+                }
+            };
+        }
+
+        private static PublishingPageWorkflowSelection CreateSelection()
+        {
+            return new PublishingPageWorkflowSelection
+            {
+                WorkflowId = EnterpriseWikiV1CohortPolicy.CohortId,
+                ValidationCohort = new ValidationCohortAssessment
+                {
+                    CohortId = EnterpriseWikiV1CohortPolicy.CohortId,
+                    PolicyVersion = EnterpriseWikiV1CohortPolicy.PolicyVersion,
+                    Disposition = ValidationCohortDisposition.Included,
+                    Reasons = new List<string>
+                    {
+                        "Enterprise Wiki Content Type lineage is included by the EW-v1 validation policy."
+                    }
                 }
             };
         }

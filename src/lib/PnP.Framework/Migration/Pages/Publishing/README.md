@@ -2,9 +2,9 @@
 
 `PnP.Framework.Migration.Pages.Publishing` defines the aggregate contracts and behavior that are specific to classic SharePoint Publishing Pages. It composes the reusable page capabilities documented in [../README.md](../README.md).
 
-The first profile is Enterprise Wiki. Enterprise Wiki is an entry profile, not the owner of all participating data. Common field, reference, security, lifecycle-evidence, and classic Web Part models remain under `PnP.Framework.Migration.Pages`; publishing layout, publishing content, target lifecycle, package, report, and verification contracts belong to the Publishing family; Enterprise Wiki classification and portability policy belong to the Enterprise Wiki profile.
+The first workflow is Enterprise Wiki v1. Enterprise Wiki is an entry facade and validation cohort, not the owner of all participating data. Common ASPX, runtime, profile-signal, ingredient, field, reference, security, lifecycle-evidence, and classic Web Part models remain under `PnP.Framework.Migration.Pages`; publishing layout, content, target lifecycle, planning, package, report, execution, and verification belong to the Publishing family.
 
-For the cross-domain artifact chain and execution semantics, see the Migration design documents for the [package model](../../docs/package-model.md), [object lifecycle](../../docs/object-lifecycle.md), and [execution and verification](../../docs/execution-and-verification.md).
+For the cross-domain artifact chain and execution semantics, see the Migration design documents for the [package model](../../docs/package-model.md), [page classification and ingredient policy](../../docs/page-classification-and-ingredient-policy.md), [object lifecycle](../../docs/object-lifecycle.md), and [execution and verification](../../docs/execution-and-verification.md).
 
 ## Workflow and connection boundaries
 
@@ -33,21 +33,27 @@ Export deliberately has no target dependency. The resulting package can be store
 
 | Namespace | Responsibility |
 | --- | --- |
-| `Pages.Publishing.Capture` | Publishing aggregate capture: common page identity plus `PublishingPageContent` and publishing layout evidence. |
+| `Pages.Publishing.Capture` | Publishing aggregate capture and generic package export: common page identity/artifact/runtime/profile/ingredient evidence plus `PublishingPageContent` and layout evidence. |
 | `Pages.Publishing.Layouts` | Exact Page Layout bytes, parsed controls/zones/registrations/resources, associated schema closure, target planning/admission, and create-or-exact-reuse materialization. |
 | `Pages.Publishing.Lifecycle` | Conservative target Draft/Published interpretation for Publishing Pages. Source lifecycle evidence itself remains in `Pages.Lifecycle`. |
-| `Pages.Publishing.Planning` | The target-specific Publishing Page plan that composes shared field, reference, replacement, and operation types. |
+| `Pages.Publishing.Profiles` | Publishing workflow policy and EW-v1 cohort/profile projection. |
+| `Pages.Publishing.Ingredients` | Thin graph/action coordinators plus object-owned Core, Layout, Topology, List-schema, List-content, Web Part, and Reference projectors. |
+| `Pages.Publishing.Planning` | Generic target-specific orchestration plus separate lifecycle/field policy and topology/List/Web Part dependency planning. |
 | `Pages.Publishing.Packaging` | Versioned Publishing Page export, migration, and receipt envelopes; canonical serialization, digests, and validation. |
 | `Pages.Publishing.Execution` | Publishing-page target writes, lifecycle application, execution receipts, and failure-receipt construction. |
 | `Pages.Publishing.Reporting` | Complete Markdown review output for the source snapshot and target plan. |
 | `Pages.Publishing.Verification` | Publishing target probe, storage assertions, and fresh-readback verification. |
-| `Pages.Publishing.EnterpriseWiki` | Enterprise Wiki discovery, classification, required layout and target policy, Web Part portability policy, export, planning, import, and file-storage facade. |
+| `Pages.Publishing.EnterpriseWiki` | Thin public Enterprise Wiki v1 export/planning/import facades, discovery, and EW-named file storage. |
 
 The following composed capabilities remain shared and can be used by future Wiki Page or Web Part Page families:
 
 | Namespace | Reused capability |
 | --- | --- |
 | `Pages.Capture` | Capture options/status, page file probe, and source stability fence. |
+| `Pages.Markup` | Exact source ASPX bytes and parsed Page directive. |
+| `Pages.Runtime` | CLR-first runtime-adapter resolution. |
+| `Pages.Profiles` / `Pages.Cohorts` | Non-exclusive product signals and versioned validation-population decisions. |
+| `Pages.Ingredients` | Canonical dependency graph, semantic dispositions, and aggregate outcome evaluation. |
 | `Pages.Fields` | Full list-item field evidence, plan dispositions, and supported writes. |
 | `Pages.ClassicWebParts` | Classic shared Web Part export evidence and source capture. |
 | `Pages.References` | Authored reference inventory, target actions, rewriting, and payload materialization. |
@@ -69,7 +75,7 @@ The following composed capabilities remain shared and can be used by future Wiki
 | `EnterpriseWikiMigrationImporter` | Validates the package, admits the approved plan against fresh target state, applies the exact plan, then returns a fresh-readback receipt. Invalid package contracts currently throw before a receipt is created. |
 | `EnterpriseWikiPackageFileStore` | Saves and loads export packages, migration packages, receipts, and Markdown reports, with optional validation against an `IMigrationArtifactStore`. |
 
-These orchestration types contain Enterprise Wiki policy. Generic page readers do not switch behavior based on an Enterprise Wiki flag.
+These public types select `EnterpriseWikiV1WorkflowPolicy` and delegate to Publishing-family services. Generic readers and planners do not switch behavior based on an Enterprise Wiki flag.
 
 ## Versioned artifacts
 
@@ -77,9 +83,12 @@ JSON uses camel-case property names, string enum values, explicit nulls, and cas
 
 | Artifact | Schema |
 | --- | --- |
-| Source export | `pnp-publishing-page-export/v1` |
-| Target-specific migration package | `pnp-publishing-page-migration-package/v1` |
-| Import receipt | `pnp-publishing-page-import-receipt/v1` |
+| Source export | `pnp-publishing-page-export/v2` |
+| Target-specific migration package | `pnp-publishing-page-migration-package/v2` |
+| Import receipt | `pnp-publishing-page-import-receipt/v2` |
+| Nested source ASPX artifact | `pnp-page-artifact/v1` |
+| Nested page runtime resolution | `pnp-page-runtime/v1` |
+| Nested canonical ingredient graph | `pnp-page-ingredient-graph/v1` |
 | Nested Page Layout evidence | `pnp-publishing-page-layout/v1` |
 | Nested content type schema evidence | `pnp-content-type-schema/v1` |
 | Nested source topology | `pnp-source-topology/v1` |
@@ -96,6 +105,8 @@ A breaking JSON change requires a new schema version. A CLR namespace move does 
 | --- | --- |
 | `schemaVersion` | Export contract version. |
 | `exportedAtUtc` | Time source capture completed. |
+| `selection` | Workflow ID and versioned validation-cohort assessment. |
+| `selectionDigest` | SHA-256 over the exact workflow/cohort selection. |
 | `snapshot` | Complete source evidence. |
 | `snapshotDigest` | SHA-256 of the canonical serialization of the complete snapshot. Any snapshot mutation invalidates it. |
 
@@ -103,9 +114,12 @@ A breaking JSON change requires a new schema version. A CLR namespace move does 
 
 | JSON field | Interpretation |
 | --- | --- |
-| `sourceProfile` | Profile that classified the page, currently `EnterpriseWiki`. |
 | `capturePolicy` | Normalized source path, whether classic Web Parts were included, and the maximum payload size per dependency. |
 | `source` | Common `PageIdentity`: source web URL/path, page path, list-item ID, file ID, content type, version, length, modified time, and title. It intentionally contains no publishing layout field. |
+| `pageArtifact` | Exact source ASPX artifact plus parsed Page directive, availability, and diagnostics. |
+| `runtime` | Adapter selected from CLR type evidence, with Content Type fallback made explicit. |
+| `profileSignals` | Non-exclusive Content Type/layout/field trait signals; multiple profiles can apply. |
+| `ingredientGraph` | Canonical page/external-content nodes and required/conditional/optional dependency edges. Nodes cover owner Webs, layout resources and associated fields, List/site schema, every current item/document/attachment/View, Web Parts, and references in addition to the page core. |
 | `layout` | Publishing-specific layout evidence: identity and gallery metadata, exact ASPX artifact, parsed server-control registrations, field-bound controls, Web Part zones, authored rendering-resource references, one evidence result per reference, and the associated content type's minimal required field-schema closure. |
 | `publishingPageContent` | Complete source `PublishingPageContent` HTML. |
 | `publishingPageContentSha256` | Digest of the captured publishing HTML. |
@@ -119,7 +133,7 @@ A breaking JSON change requires a new schema version. A CLR namespace move does 
 | `security` | Permission inheritance and role-assignment evidence. |
 | `lifecycle` | Source checkout type, file level, moderation status, created time, and modified time. |
 | `sourceFence` | File ID, version, length, and modified time sampled before and after capture. |
-| `blockers` | Source findings that make the current exact profile non-executable. |
+| `blockers` | Source findings that make the selected workflow non-executable. |
 | `warnings` | Findings requiring review that do not independently block planning. |
 
 The source fence detects a page that changed during capture. It is not a lock, and edits made after a successful export do not alter the sealed snapshot.
@@ -134,6 +148,8 @@ The source fence detects a page that changed during capture. It is not a lock, a
 | `plannedAtUtc` | Time target analysis and plan sealing completed. |
 | `exportSchemaVersion` / `exportedAtUtc` | Provenance of the embedded source export. |
 | `state` | `ApprovalReady` only when the sealed plan has no blockers; otherwise `Blocked`. |
+| `selection` | Exact workflow and cohort assessment copied from the source export. |
+| `selectionDigest` | Must match both the embedded selection and the assessment recomputed by the selected workflow policy. |
 | `snapshot` | The complete source evidence used to make the decisions. |
 | `plan` | Target-specific decisions and post-import assertions. |
 | `snapshotDigest` | Must continue to match the embedded snapshot. |
@@ -167,7 +183,10 @@ The source fence detects a page that changed during capture. It is not a lock, a
 | `expectedPublishingPageContentSha256` | Expected digest after approved replacements. |
 | `storageAssertions` | Required storage-level readback conditions. |
 | `runtimeVerification` | Typed, digest-sealed requirements for an external browser/runtime verifier. Requirements are not treated as executed by the importer. |
-| `blockers` / `warnings` | Target and policy findings. `isExecutable` is derived from an empty blocker list. |
+| `ingredientActions` | One capability/disposition/realization/target/policy/verification record for every non-empty canonical ingredient. A dependency release is accepted only from a `Transform` and only for one of that ingredient's real required edges. |
+| `migrationOutcome` | Aggregate `Exact`, `ExecutableWithTransform`, `ExecutableWithLoss`, `Blocked`, or `Unknown` result. |
+| `ingredientIssues` | Recomputed missing-action and required-dependency-closure issues. |
+| `blockers` / `warnings` | Target and policy findings. `isExecutable` requires no blockers and an executable ingredient outcome. |
 
 Import requires the caller's `approvedPlanDigest` to match exactly. Editing any sealed plan content, including a target path, planning probe, action, mapping, policy input, issue, assertion, or lifecycle decision, invalidates the package until it is replanned and reviewed again.
 
@@ -207,6 +226,7 @@ Large ASPX/resource payloads may remain inline in JSON or live in an `IMigration
 - the complete source SPSite/SPWeb hierarchy, every approved mapping, observed target identity/shape/provenance, and create/reuse/recover/block disposition;
 - every List setting, field schema, custom site-content-type ancestor and field closure, List-local content type and FieldLink, explicit CT order, View, current item value, folder/file artifact, attachment, lookup edge, target action, target probe, and typed issue;
 - every item value's typed form plus raw runtime type/text/JSON recovery evidence, including values the current importer will not write;
+- every canonical ingredient node/edge and its independent action, including explicitly dropped unused List fields and the retained snapshot that makes later recovery possible;
 - every classic Web Part export, parsed List binding, approved copy/rebind/block action, and every authored page dependency plus its target action;
 - the layout/schema/resource materialization plan, all resource rewrites, target probes, typed admission issues, and approved taxonomy schema mappings;
 - target page/library evidence, text replacements, storage assertions, runtime-verification requirements, blockers, and warnings.
@@ -220,11 +240,11 @@ Large HTML, XML, JSON, ASPX, and Base64 values are represented as length, SHA-25
 | JSON field | Interpretation |
 | --- | --- |
 | `webUrl` / `webServerRelativeUrl` | Resolved target web identity. |
-| `webTemplate` / `webConfiguration` | Target site template evidence used by the profile. |
+| `webTemplate` / `webConfiguration` | Target site template evidence used by planning. |
 | `pagesLibraryServerRelativeUrl` / `pagesLibraryBaseTemplate` | Resolved target Pages library. |
 | `enableVersioning` / `enableMinorVersions` / `enableModeration` / `forceCheckout` / `draftVersionVisibility` | Target library lifecycle behavior. |
-| `pageContentTypeId` | Target publishing page content type selected by the profile. |
-| `pageLayoutUrl` / `pageLayoutExists` | Compatibility summary of the layout selected by the profile. Detailed exact-byte and schema/resource evidence lives in `layoutTargetProbe`. |
+| `pageContentTypeId` | One exact Pages-library Content Type ID derived from the approved Page Layout association. Ambiguous descendants block planning, and import verifies exact equality. |
+| `pageLayoutUrl` / `pageLayoutExists` | Compatibility summary of the approved layout. Detailed exact-byte and schema/resource evidence lives in `layoutTargetProbe`. |
 | `targetPageExists` | Create-only collision check. |
 | `existingDependencyPaths` | Dependency targets already present when the plan was created. |
 
@@ -354,7 +374,7 @@ Planning creates exactly one `PageFieldAction` per captured field:
 | `CaptureUnavailable` | The definition was captured, but no restorable value was returned. |
 | `Block` | The exact plan cannot execute. |
 
-The Enterprise Wiki profile currently recognizes a reviewed subset of publishing metadata. Unknown fields are never discarded and are never guessed into a target field. This preserves a recovery snapshot for a later mapper without weakening current import safety. Page Layout field-schema closure is a separate concern: it recreates only fields proven necessary to render the approved layout and does not imply that arbitrary source page-item values are replayed.
+The Enterprise Wiki v1 workflow currently recognizes a reviewed subset of publishing metadata. Unknown fields are never discarded and are never guessed into a target field. This preserves a recovery snapshot for a later mapper without weakening current import safety. Page Layout field-schema closure is a separate concern: it recreates only fields proven necessary to render the approved layout and does not imply that arbitrary source page-item values are replayed.
 
 ## Publishing lifecycle policy
 
@@ -388,9 +408,9 @@ Authored references are inventoried separately so each receives an explicit acti
 | `Delegate` | Reserve handling for another reviewed migration owner. |
 | `Block` | Stop Import until the unsupported reference is resolved and the package is replanned. |
 
-Same-tenant iframes, resources outside the captured web boundary, and missing restorable payloads block the exact profile. The default per-dependency capture limit is 10 MiB.
+Same-tenant iframes, resources outside the captured web boundary, and missing restorable payloads block the current workflow. The default per-dependency capture limit is 10 MiB.
 
-`ClassicWebPartSnapshotReader` only captures common evidence: export XML, ID, title, zone, index, hidden state, and digest. It does not decide portability. `EnterpriseWikiWebPartPolicy` separately blocks known unsupported types such as RSS Aggregator and source-list-bound list-view Web Parts. This lets another page profile reuse the snapshot reader with a different portability policy.
+`ClassicWebPartSnapshotReader` only captures common evidence: export XML, ID, title, zone, index, hidden state, and digest. `ClassicWebPartReplayCapabilityPolicy` and `ClassicWebPartActionPlanner` separately assess current Publishing Page replay, List/View dependency closure, and known unsupported types such as RSS Aggregator.
 
 ## Security policy
 
@@ -412,14 +432,14 @@ This layer owns migration evidence, policy, approval, and verification. It shoul
 
 ## Current limitations
 
-The current Enterprise Wiki profile is intentionally narrow:
+The current Enterprise Wiki v1 workflow is intentionally narrow:
 
 - only create-only plans are executable; overwrite/update is refused;
 - target pages must be in the root of the target Publishing Pages library;
 - the target site collection must already exist; mapped child Webs can be created/recovered, but tenant-level site creation is not implemented;
 - child-Web template selection is sealed, but required Feature activation is not inferred or performed; Publishing/Enterprise Wiki, Document ID, Document Set, asset-library, and other Feature prerequisites must already be available or gain explicit plans;
 - unique permissions are captured but not restored;
-- page-item user, lookup, and taxonomy values still require profile-specific mappings; List lookup values are mapped through target item receipts, while List taxonomy schema needs a reviewed store/set mapping and the mapped target Terms must already exist;
+- page-item user, lookup, and taxonomy values still require workflow-specific mappings; List lookup values are mapped through target item receipts, while List taxonomy schema needs a reviewed store/set mapping and the mapped target Terms must already exist;
 - Term Group/Set/Term creation and durable many-to-one source taxonomy aliases are not implemented;
 - only recognized fields with supported values and compatible target definitions are written;
 - version history, Created/Modified/Author/Editor preservation, unique ACLs, workflows/subscriptions/event receivers, and personal Views are not restored;
@@ -434,7 +454,7 @@ The current Enterprise Wiki profile is intentionally narrow:
 - a source fence detects capture-time mutation but does not invalidate an export after a later source edit;
 - live-tenant behavior still requires environment-specific validation in addition to unit and contract tests.
 
-A future implementation should add an explicit action or a narrower/new profile instead of silently relaxing one of these blockers.
+A future implementation should add an explicit action or a narrower/new workflow instead of silently relaxing one of these blockers.
 
 ## Validation expectations
 
@@ -444,6 +464,8 @@ Changes to this family should validate:
 - export, migration package, and receipt JSON round trips;
 - snapshot and plan mutation invalidates the corresponding digest;
 - exactly one field action exists per captured page field, one dependency action per captured page dependency, one Web Part action per captured Web Part, and one List plan per captured List closure node;
+- every non-empty topology, layout-resource/schema, List/site-schema, current item/document/attachment/View, Web Part, and reference ingredient has exactly one non-fallback action;
+- dependency releases are unique, belong to `Transform` actions, and name actual required edges;
 - topology target analysis covers each mapped Web exactly once, and duplicate Site/Web probes are rejected;
 - custom site-content-type closure terminates only at exact runtime IDs and is materialized parent-first;
 - lookup cycles and calculated-field dependency cycles block before mutation;

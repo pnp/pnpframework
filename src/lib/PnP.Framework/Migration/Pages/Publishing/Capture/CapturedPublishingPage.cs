@@ -4,6 +4,7 @@ using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.Security;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
 using PnP.Framework.Migration.Pages.Publishing.Layouts;
+using PnP.Framework.Migration.Pages.Markup;
 using System.Collections.Generic;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Capture
@@ -11,6 +12,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Capture
     internal sealed class CapturedPublishingPage
     {
         public PageIdentity Identity { get; set; }
+
+        public PageArtifactSnapshot PageArtifact { get; set; }
 
         public PublishingPageLayoutSnapshot Layout { get; set; }
 

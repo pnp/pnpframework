@@ -10,6 +10,8 @@ using PnP.Framework.Migration.Verification;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
+using PnP.Framework.Migration.Pages.Ingredients;
+using PnP.Framework.Migration.Diagnostics;
 using System.Collections.Generic;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Planning
@@ -68,10 +70,18 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
 
         public RuntimeVerificationManifest RuntimeVerification { get; set; } = new RuntimeVerificationManifest();
 
+        public IList<PageIngredientAction> IngredientActions { get; set; } = new List<PageIngredientAction>();
+
+        public PageMigrationOutcome MigrationOutcome { get; set; }
+
+        public IList<MigrationIssue> IngredientIssues { get; set; } = new List<MigrationIssue>();
+
         public IList<string> Blockers { get; set; } = new List<string>();
 
         public IList<string> Warnings { get; set; } = new List<string>();
 
-        public bool IsExecutable => Blockers.Count == 0;
+        public bool IsExecutable => Blockers.Count == 0
+            && MigrationOutcome != PageMigrationOutcome.Blocked
+            && MigrationOutcome != PageMigrationOutcome.Unknown;
     }
 }

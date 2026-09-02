@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using PnP.Framework.Migration.Pages.Markup;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Layouts
 {
@@ -52,6 +53,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
             var controls = ParseControls(markup);
             return new PublishingPageLayoutMarkup
             {
+                PageDirective = PageDirectiveParser.Parse(markup),
                 Registrations = registrations,
                 Controls = controls,
                 Zones = controls

@@ -9,17 +9,27 @@ using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
 using PnP.Framework.Migration.Lists.Capture;
 using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Topology;
+using PnP.Framework.Migration.Pages.Markup;
+using PnP.Framework.Migration.Pages.Runtime;
+using PnP.Framework.Migration.Pages.Profiles;
+using PnP.Framework.Migration.Pages.Ingredients;
 using System.Collections.Generic;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Capture
 {
     public sealed class PublishingPageCaptureBundle
     {
-        public string SourceProfile { get; set; }
-
         public PageCaptureOptions CapturePolicy { get; set; }
 
         public PageIdentity Source { get; set; }
+
+        public PageArtifactSnapshot PageArtifact { get; set; }
+
+        public PageRuntimeSnapshot Runtime { get; set; }
+
+        public IList<PageProfileSignal> ProfileSignals { get; set; } = new List<PageProfileSignal>();
+
+        public CanonicalPageIngredientGraph IngredientGraph { get; set; }
 
         public PublishingPageLayoutSnapshot Layout { get; set; }
 

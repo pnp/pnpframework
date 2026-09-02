@@ -48,6 +48,22 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                         "The reviewed target stock Page Layout does not exist."));
                 }
 
+                var expectedContentTypeId = probe.ResolvedAssociatedContentTypeId ?? plan.AssociatedContentTypeId;
+                if (string.IsNullOrWhiteSpace(expectedContentTypeId)
+                    || string.IsNullOrWhiteSpace(probe.ExistingAssociatedContentTypeId))
+                {
+                    issues.Add(Issue("TargetStockPageLayoutAssociationUnavailable", $"target-page-layout:{plan.TargetServerRelativeUrl}",
+                        "The reviewed target stock Page Layout does not expose a resolvable associated Content Type ID."));
+                }
+                else if (!string.Equals(
+                    probe.ExistingAssociatedContentTypeId,
+                    expectedContentTypeId,
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    issues.Add(Issue("TargetStockPageLayoutAssociationMismatch", $"target-page-layout:{plan.TargetServerRelativeUrl}",
+                        $"The target stock Page Layout is associated with '{probe.ExistingAssociatedContentTypeId}', not approved Content Type '{expectedContentTypeId}'."));
+                }
+
                 return Result(issues, warnings, PublishingPageLayoutMaterializationDisposition.ReuseTargetStock, null);
             }
 

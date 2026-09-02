@@ -6,7 +6,7 @@
 
 ## Conceptual lifecycle
 
-Every object governed by a migration profile follows the same conceptual lifecycle even though domains use different CLR contracts and disposition enums:
+Every object governed by a migration workflow follows the same conceptual lifecycle even though domains use different CLR contracts and disposition enums:
 
 ```text
 source identity and evidence
@@ -26,7 +26,7 @@ A complete governed object should answer the following questions:
 
 1. **Source identity:** Which source object is this, and at what ownership scope?
 2. **Evidence:** What exact facts, values, schema, bytes, and diagnostics were captured?
-3. **Action:** What will the current profile do, and why?
+3. **Action:** What will the current workflow do, and why?
 4. **Target mapping:** Where or to which runtime object should it map?
 5. **Target probe:** What target state justified the action?
 6. **Dependencies:** Which target objects or identity maps must exist first?
@@ -42,6 +42,9 @@ Not every captured evidence node becomes an independent mutation. For example, i
 
 | Object | Source evidence | Planned result | Target evidence | Receipt/runtime mapping | Fresh verification |
 | --- | --- | --- | --- | --- | --- |
+| Source ASPX artifact | File identity, exact bytes, Page directive, digest, availability | Preserve as evidence and transform into a target family shell, or block | Target path, runtime, layout, and Content Type plan | Target file identity | Source artifact digest remains valid; target page assertions pass |
+| CLR runtime / profile / cohort | Page and layout declared types, Content Type/layout/field signals | Select one runtime adapter; retain multiple profile signals; include/exclude/unknown cohort result | Target runtime compatibility | No copied source runtime ID | Browser/runtime requirements and error-shell checks |
+| Canonical ingredient | Node, ownership, evidence digest, required/optional edges | Preserve, transform, substitute, drop, delegate, or block | Per-action target identity and capability | Typed domain receipt supplies actual IDs | Per-action assertions plus dependency-closure evaluation |
 | Site Collection / Web | IDs, parent, URL, title, template, configuration | Map existing host, create/reuse/recover child Web, or block | Existence, Site/Web/parent IDs, template, ownership properties | Source Web ID -> target Site/Web ID and actual disposition | Hierarchy, identity, URL, template/configuration, ownership digest |
 | Site field | GUID, schema, portable digest, role, taxonomy binding | Require target runtime, create/reuse owned, or block | Existing ID/type/schema and manageability | Target field at approved owner Web | Portable schema and required binding |
 | Site content type | ID, parent, metadata, FieldLinks, required field closure | Create owned, reuse owned, or block | Parent availability, existing CT/metadata/links/fields | Target content type identity at owner Web | Parent, metadata, flags, required FieldLinks |
@@ -52,7 +55,7 @@ Not every captured evidence node becomes an independent mutation. For example, i
 | Attachment | Parent item, file name, exact bytes | Materialize current attachment | Target parent item mapping | Target attachment under mapped item | Name, length, and SHA-256 |
 | View | Source View ID, scope, URL, query, fields, paging, links/XML | Create/reuse public or page-bound View, skip personal, or block | Existing title/type/path and collision state | Source View ID -> target View ID | Supported query, fields, paging, and binding state |
 | Page field value | Definition, typed value, raw evidence, capture status | Apply, handled/skip/evidence-only, mapping required, or block | Target field existence/type/writeability | Per-field import result | Persisted supported value |
-| Page security | Inheritance state, role assignments, principals, and role-definition names | Evidence-only in the current profile; no ACL replay action is approved | None in the current implementation | None | Not currently verified; explicit capability gap |
+| Page security | Inheritance state, role assignments, principals, and role-definition names | Preserve inherited security, delegate unique ACL replay, or block when inheritance is required | Target inheritance state | No principal mapping in the current implementation | Inherited target state is read back; unique source assignments remain snapshot evidence only |
 | Page reference/resource | Source URL, scope, payload/artifact, availability | Preserve, rewrite, materialize, delegate, or block | Target path/existence and payload safety | Materialized dependency count and step receipt | Target resource/path and rewritten content assertion |
 | Classic Web Part | Source ID, export XML, type, zone/order/hidden, List binding | Copy, rebind after dependencies, or block | Portability policy and target dependency mapping | Imported part/result using target runtime IDs | Export digest/definition, zone, order, hidden state |
 | Page Layout | Identity, gallery metadata, exact ASPX, controls/zones/resources/schema | Reuse stock, create owned, reuse owned, or block | Existing bytes, association, resources, permissions, schema | Materialization steps and selected target layout | Exact owned bytes/resources/schema or approved stock reuse |
@@ -74,6 +77,8 @@ Domain-specific enum names remain authoritative. For review, they fit into commo
 | Block | Refuse execution because evidence, mapping, ownership, or target compatibility is insufficient. | Domain-specific `Block` dispositions and plan blockers |
 
 These categories are explanatory. They do not replace domain enums or authorize one domain to apply another domain's rules.
+
+Every non-empty canonical ingredient also receives one semantic `IngredientDisposition`: `Preserve`, `Transform`, `Substitute`, `Drop`, `Delegate`, or `Block`. Required graph edges are validated independently of the domain-specific execution order. A consumer transform may release a dependency only by naming it explicitly in `releasedDependencyIngredientIds`.
 
 ## Topology lifecycle
 
@@ -155,13 +160,13 @@ Current dispositions are:
 - `CaptureUnavailable`;
 - `Block`.
 
-Only `Apply` authorizes a field write. Other results remain visible in the package/report and may contribute a blocker depending on profile policy.
+Only `Apply` authorizes a field write. Other results remain visible in the package/report and may contribute a blocker depending on workflow policy.
 
 ## Reference and Web Part lifecycle
 
 References may be preserved externally, rewritten, materialized from captured payload, delegated, or blocked. Replacements are explicit plan content and participate in `planDigest`.
 
-Classic Web Parts are captured as shared evidence. The Enterprise Wiki profile separately chooses `CopyCaptured`, `RebindListAfterMaterialization`, or `Block`. A List-bound Web Part executes only after target Web/List/View identity maps exist. Verification reads back supported definition and placement properties.
+Classic Web Parts are captured as shared evidence. `ClassicWebPartReplayCapabilityPolicy` and `ClassicWebPartActionPlanner` choose `CopyCaptured`, `RebindListAfterMaterialization`, or `Block` for the current Publishing Page importer. A List-bound Web Part executes only after target Web/List/View identity maps exist. Verification reads back supported definition and placement properties.
 
 ## Page and lifecycle result
 

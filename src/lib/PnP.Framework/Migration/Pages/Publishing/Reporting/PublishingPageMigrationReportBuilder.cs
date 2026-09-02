@@ -4,6 +4,7 @@ using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
 using PnP.Framework.Migration.Pages.Publishing.Reporting.Sections;
+using PnP.Framework.Migration.Pages.Markup;
 using System;
 using System.Linq;
 
@@ -23,7 +24,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             var plan = package.Plan;
             var report = package.Report ?? new PublishingPageMigrationReport();
             var writer = new MarkdownReportWriter();
-            writer.Heading(1, $"{DisplayProfile(snapshot.SourceProfile)} migration report");
+            writer.Heading(1, $"{DisplayWorkflow(package.Selection.WorkflowId)} migration report");
             writer.Paragraph(report.Summary ?? "This report describes the sealed source snapshot and target-specific migration plan.");
             writer.Paragraph("The JSON package is authoritative. This Markdown is a complete review view: large HTML, XML, JSON, and Base64 values are represented by length, SHA-256, and a preview while their full values remain in the package.");
 
@@ -36,8 +37,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("state", package.State, "ApprovalReady can be imported after digest approval; Blocked cannot."),
                 Row("snapshotDigest", package.SnapshotDigest, "SHA-256 over the complete source snapshot."),
                 Row("planDigest", package.PlanDigest, "SHA-256 over all target decisions; this is the approval token."),
-                Row("snapshot.sourceProfile", snapshot.SourceProfile, "Selects the source-specific classifier and target adapter."),
-                Row("plan.isExecutable", plan.IsExecutable, "True only when the blocker list is empty."),
+                Row("selection.workflowId", package.Selection.WorkflowId, "Selects the orchestration and policy set; it does not redefine captured evidence."),
+                Row("selectionDigest", package.SelectionDigest, "SHA-256 over workflow and cohort selection; editing classification invalidates the package."),
+                Row("selection.validationCohort.cohortId", package.Selection.ValidationCohort.CohortId, "Names the validation population used by this workflow."),
+                Row("selection.validationCohort.policyVersion", package.Selection.ValidationCohort.PolicyVersion, "Version of the cohort-membership policy."),
+                Row("selection.validationCohort.disposition", package.Selection.ValidationCohort.Disposition, "Included means this page belongs to the reviewed EW-v1 validation cohort; capability is assessed separately per ingredient."),
+                Row("selection.validationCohort.reasons", Join(package.Selection.ValidationCohort.Reasons), "Evidence-backed explanation of cohort membership."),
+                Row("plan.migrationOutcome", plan.MigrationOutcome, "Aggregate result of ingredient actions and required dependency closure."),
+                Row("plan.isExecutable", plan.IsExecutable, "True only when there are no workflow blockers and the ingredient outcome is executable."),
                 Row("report.summary", report.Summary, "Human-readable package status summary.")
             });
 
@@ -55,6 +62,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("modifiedUtc", snapshot.Source.ModifiedUtc, "Source file modified time at capture."),
                 Row("title", snapshot.Source.Title, "Title assigned during target page creation.")
             });
+
+            AppendRuntimeAndClassification(writer, snapshot);
+            AppendPageArtifact(writer, snapshot);
 
             writer.Table("Capture policy and source fence", new[] { "Property", "Value", "How to read it" }, new[]
             {
@@ -92,6 +102,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             ClassicWebPartMigrationReportSection.Append(writer, snapshot, plan);
             AppendDependencies(writer, snapshot, plan);
             AppendSecurity(writer, snapshot);
+            AppendIngredientModel(writer, snapshot, plan);
             AppendPlan(writer, plan);
 
             writer.Table("Approved text replacements", new[] { "Source", "Target", "Reason" },
@@ -110,7 +121,120 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             writer.List("Captured ingredients", report.CapturedIngredients);
             writer.Heading(2, "Field-action legend");
             writer.Paragraph("`Apply` is written by Import. `AlreadyHandled` is handled by page creation/content/layout logic. `EvidenceOnly` remains available for future recovery. `RequiresMapping` needs an explicit cross-site identity mapping. `Skip*`, `Target*`, and `CaptureUnavailable` are retained but not written. `Block` makes the plan non-executable.");
+            writer.Heading(2, "Ingredient-action legend");
+            writer.Paragraph("`Preserve` retains the ingredient's semantics, `Transform` deliberately changes representation, `Substitute` lets the target runtime supply an equivalent, `Drop` records reviewed loss, `Delegate` keeps evidence for another workflow, and `Block` prevents import. A retained ingredient may only drop a required dependency when its transform explicitly releases that dependency.");
             return writer.ToString();
+        }
+
+        private static void AppendRuntimeAndClassification(
+            MarkdownReportWriter writer,
+            PublishingPageCaptureBundle snapshot)
+        {
+            writer.Table("CLR runtime resolution", new[] { "Property", "Value", "How to read it" }, new[]
+            {
+                Row("schemaVersion", snapshot.Runtime.SchemaVersion, "Version of the runtime-resolution evidence contract."),
+                Row("pageDeclaredType", snapshot.Runtime.PageDeclaredType, "CLR type declared by the source ASPX Page directive."),
+                Row("layoutDeclaredType", snapshot.Runtime.LayoutDeclaredType, "CLR type declared by the Page Layout directive, when present."),
+                Row("adapterId", snapshot.Runtime.AdapterId, "Executable adapter selected from CLR evidence; Content Type is only a fallback signal."),
+                Row("detectionSource", snapshot.Runtime.DetectionSource, "Evidence source that won runtime resolution."),
+                Row("resolutionState", snapshot.Runtime.ResolutionState, "Resolved is executable by a matching adapter; ambiguous or unknown evidence remains explicit."),
+                Row("diagnostics", Join(snapshot.Runtime.Diagnostics), "Runtime resolution explanations and conflicts.")
+            });
+
+            writer.Table(
+                $"Non-exclusive page profile signals ({snapshot.ProfileSignals.Count})",
+                new[] { "Profile ID", "Signal kind", "Subject", "Evidence", "How to read it" },
+                snapshot.ProfileSignals.Select(signal => Row(
+                    signal.ProfileId,
+                    signal.Kind,
+                    signal.Subject,
+                    signal.Evidence,
+                    "Signals classify product ancestry or observed traits; multiple profiles may apply and none selects the runtime adapter.")));
+        }
+
+        private static void AppendPageArtifact(
+            MarkdownReportWriter writer,
+            PublishingPageCaptureBundle snapshot)
+        {
+            var artifact = snapshot.PageArtifact;
+            writer.Table("Source ASPX artifact", new[] { "Property", "Value", "How to read it" }, new[]
+            {
+                Row("schemaVersion", artifact.SchemaVersion, "Version of the immutable page-artifact evidence contract."),
+                Row("fileUniqueId", artifact.FileUniqueId, "Must match the source page identity."),
+                Row("serverRelativeUrl", artifact.ServerRelativeUrl, "Must match the source page path."),
+                Row("bytes", PublishingPageArtifactReportFormatter.Artifact(artifact.Bytes), "Reference to the exact source ASPX bytes."),
+                Row("contentBase64", Summarize(artifact.ContentBase64), "Inline bytes when no external artifact store is used; the JSON retains the complete value."),
+                Row("availability", artifact.Availability, "Captured means byte evidence passed digest validation."),
+                Row("diagnostics", Join(artifact.Diagnostics), "Capture failures or partial-evidence explanations."),
+                Row("pageDirective.inherits", artifact.PageDirective?.Inherits, "CLR page type used first for runtime classification."),
+                Row("pageDirective.masterPageFile", artifact.PageDirective?.MasterPageFile, "Master-page declaration preserved as evidence."),
+                Row("pageDirective.language", artifact.PageDirective?.Language, "Declared source language."),
+                Row("pageDirective.codeBehind", artifact.PageDirective?.CodeBehind, "Code-behind declaration; evidence only and never deployed by this workflow."),
+                Row("pageDirective.codeFile", artifact.PageDirective?.CodeFile, "Code-file declaration; evidence only and never deployed by this workflow.")
+            });
+
+            writer.Table(
+                "Source ASPX Page-directive attributes",
+                new[] { "Name", "Value" },
+                (artifact.PageDirective?.Attributes ?? Array.Empty<PageDirectiveAttribute>())
+                    .Select(attribute => Row(attribute.Name, attribute.Value)));
+        }
+
+        private static void AppendIngredientModel(
+            MarkdownReportWriter writer,
+            PublishingPageCaptureBundle snapshot,
+            PublishingPageMigrationPlan plan)
+        {
+            writer.Table(
+                $"Canonical ingredient nodes ({snapshot.IngredientGraph.Nodes.Count})",
+                new[] { "ID", "Kind", "Label", "Has content", "Ownership", "Source authority", "Evidence digest", "Runtime requirement", "Evidence references" },
+                snapshot.IngredientGraph.Nodes.Select(node => Row(
+                    node.Id,
+                    node.Kind,
+                    node.Label,
+                    node.HasContent,
+                    node.Ownership,
+                    node.SourceAuthority,
+                    node.EvidenceDigest,
+                    node.RuntimeRequirement,
+                    Join(node.EvidenceReferences))));
+
+            writer.Table(
+                $"Canonical ingredient edges ({snapshot.IngredientGraph.Edges.Count})",
+                new[] { "From", "Relationship", "To", "Requirement", "Condition" },
+                snapshot.IngredientGraph.Edges.Select(edge => Row(
+                    edge.FromIngredientId,
+                    edge.Relationship,
+                    edge.ToIngredientId,
+                    edge.Requirement,
+                    edge.Condition)));
+
+            writer.Table(
+                $"Ingredient actions ({plan.IngredientActions.Count})",
+                new[] { "Action ID", "Ingredient", "Capability", "Disposition", "Realization", "Target identity", "Policy", "Reason", "Released dependencies", "Verification assertions" },
+                plan.IngredientActions.Select(action => Row(
+                    action.ActionId,
+                    action.IngredientId,
+                    action.Capability,
+                    action.Disposition,
+                    action.Realization,
+                    action.TargetIdentity,
+                    $"{Format(action.PolicyId)}@{Format(action.PolicyVersion)}",
+                    action.Reason,
+                    Join(action.ReleasedDependencyIngredientIds),
+                    Join(action.VerificationAssertions))));
+
+            writer.Table(
+                $"Ingredient dependency issues ({plan.IngredientIssues.Count})",
+                new[] { "Code", "Severity", "Subject", "Ingredient", "Message", "Source identity", "Target identity" },
+                plan.IngredientIssues.Select(issue => Row(
+                    issue.Code,
+                    issue.Severity,
+                    issue.Subject,
+                    issue.Ingredient,
+                    issue.Message,
+                    issue.SourceIdentity,
+                    issue.TargetIdentity)));
         }
 
         private static void AppendFields(MarkdownReportWriter writer, PublishingPageCaptureBundle snapshot, PublishingPageMigrationPlan plan)
@@ -227,8 +351,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("targetProbe.enableModeration", plan.TargetProbe.EnableModeration, "Controls whether a published page also needs approval."),
                 Row("targetProbe.forceCheckout", plan.TargetProbe.ForceCheckout, "Controls whether the importer must check out before updates."),
                 Row("targetProbe.draftVersionVisibility", plan.TargetProbe.DraftVersionVisibility, "Who can see draft/minor versions."),
-                Row("targetProbe.pageContentTypeId", plan.TargetProbe.PageContentTypeId, "Profile-specific publishing content type found in the target library."),
-                Row("targetProbe.pageLayoutUrl", plan.TargetProbe.PageLayoutUrl, "Profile-specific layout found in the target site collection."),
+                Row("targetProbe.pageContentTypeId", plan.TargetProbe.PageContentTypeId, "Exact Pages-library Content Type ID sealed into the plan and verified after creation."),
+                Row("targetProbe.pageLayoutUrl", plan.TargetProbe.PageLayoutUrl, "Approved Publishing Page Layout found or planned in the target site collection."),
                 Row("targetProbe.pageLayoutExists", plan.TargetProbe.PageLayoutExists, "False is a blocker."),
                 Row("targetProbe.targetPageExists", plan.TargetProbe.TargetPageExists, "True is a blocker for CreatePage."),
                 Row("targetProbe.existingDependencyPaths", Join(plan.TargetProbe.ExistingDependencyPaths), "Create-only dependency collisions.")
@@ -246,9 +370,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             PublishingPageLayoutPlanReportSection.Append(writer, plan);
         }
 
-        private static string DisplayProfile(string value)
+        private static string DisplayWorkflow(string value)
         {
-            return string.Equals(value, "EnterpriseWiki", StringComparison.Ordinal) ? "Enterprise Wiki" : Format(value);
+            return string.Equals(value, "enterprise-wiki-v1", StringComparison.Ordinal)
+                ? "Enterprise Wiki v1"
+                : Format(value);
         }
 
         private static string[] Row(params object[] values) => PublishingPageReportValueFormatter.Row(values);

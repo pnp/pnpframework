@@ -132,6 +132,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                     VersionLabel = file.UIVersionLabel,
                     Bytes = artifact,
                     ContentBase64 = artifactStore == null ? Convert.ToBase64String(bytes) : null,
+                    PageDirective = markup.PageDirective,
                     Registrations = markup.Registrations,
                     Controls = markup.Controls,
                     Zones = markup.Zones,

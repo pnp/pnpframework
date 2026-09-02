@@ -17,6 +17,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
 
         public PublishingPagePackageState State { get; set; }
 
+        public PublishingPageWorkflowSelection Selection { get; set; }
+
+        public string SelectionDigest { get; set; }
+
         public PublishingPageCaptureBundle Snapshot { get; set; }
 
         public PublishingPageMigrationPlan Plan { get; set; }

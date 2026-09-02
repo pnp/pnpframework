@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using PnP.Framework.Migration.Pages.Publishing.Profiles;
 
 namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
 {
@@ -52,7 +53,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 {
                     var contentTypeId = Convert.ToString(item["ContentTypeId"], CultureInfo.InvariantCulture);
                     var fileRef = Convert.ToString(item["FileRef"], CultureInfo.InvariantCulture);
-                    if (EnterpriseWikiMigrationProfile.IsContentType(contentTypeId) && !string.IsNullOrWhiteSpace(fileRef))
+                    if (EnterpriseWikiV1CohortPolicy.IsIncludedContentType(contentTypeId) && !string.IsNullOrWhiteSpace(fileRef))
                     {
                         result.Add(fileRef);
                     }
@@ -67,7 +68,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
 
         public static bool IsEnterpriseWikiContentType(string contentTypeId)
         {
-            return EnterpriseWikiMigrationProfile.IsContentType(contentTypeId);
+            return EnterpriseWikiV1CohortPolicy.IsIncludedContentType(contentTypeId);
         }
     }
 }

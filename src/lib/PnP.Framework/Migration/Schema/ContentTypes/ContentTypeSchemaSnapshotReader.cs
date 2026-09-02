@@ -42,10 +42,13 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 throw new ArgumentNullException(nameof(web));
             }
 
-            var contentTypes = web.AvailableContentTypes;
+            // The Page Layout association already gives us the exact content type ID.
+            // Avoid enumerating the whole inherited content type catalog while retaining
+            // the complete AvailableFields enumeration used for field-conflict evidence.
+            var contentType = web.AvailableContentTypes.GetById(contentTypeId);
             var fields = web.AvailableFields;
             context.Load(web, value => value.Url);
-            context.Load(contentTypes, values => values.Include(
+            context.Load(contentType,
                 value => value.Id,
                 value => value.Name,
                 value => value.Description,
@@ -54,7 +57,7 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 value => value.ReadOnly,
                 value => value.Sealed,
                 value => value.Hidden,
-                value => value.Parent));
+                value => value.Parent);
             context.Load(fields, values => values.Include(
                 value => value.Id,
                 value => value.InternalName,
@@ -67,10 +70,7 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 value => value.Sealed,
                 value => value.SchemaXml));
             context.ExecuteQueryRetry();
-
-            var contentType = contentTypes.FirstOrDefault(value =>
-                string.Equals(value.Id.StringValue, contentTypeId, StringComparison.OrdinalIgnoreCase));
-            if (contentType == null)
+            if (contentType.ServerObjectIsNull.GetValueOrDefault(true))
             {
                 return Missing($"Associated content type '{contentTypeId}' was not found in the source web.");
             }

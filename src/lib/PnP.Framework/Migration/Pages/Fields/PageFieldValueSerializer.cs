@@ -1,6 +1,7 @@
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using PnP.Framework.Migration.Pages.Capture;
+using PnP.Framework.Migration.Pages.Fields.Taxonomy;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -40,6 +41,13 @@ namespace PnP.Framework.Migration.Pages.Fields
             {
                 snapshot.Kind = PageFieldValueKind.Taxonomy;
                 snapshot.TaxonomyValues.Add(ToTaxonomyValue(taxonomy));
+            }
+            else if (PageTaxonomyRuntimeValueReader.TryRead(value, out var runtimeTaxonomy))
+            {
+                snapshot.Kind = runtimeTaxonomy.IsCollection
+                    ? PageFieldValueKind.TaxonomyCollection
+                    : PageFieldValueKind.Taxonomy;
+                snapshot.TaxonomyValues = runtimeTaxonomy.Values.ToList();
             }
             else if (value is FieldUserValue[] users)
             {

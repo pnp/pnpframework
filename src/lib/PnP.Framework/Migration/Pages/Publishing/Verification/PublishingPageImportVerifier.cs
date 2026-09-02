@@ -34,11 +34,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
         {
             using (var verificationContext = targetContext.Clone(package.Plan.TargetWebUrl))
             {
-                var pages = verificationContext.Web.GetPagesLibrary();
-                if (pages == null)
-                {
-                    throw new InvalidOperationException("Fresh target readback could not find the publishing Pages library.");
-                }
+                var pages = verificationContext.Web.GetList(
+                    PagePath.GetDirectoryName(package.Plan.TargetPageServerRelativeUrl));
 
                 var file = verificationContext.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(package.Plan.TargetPageServerRelativeUrl));
                 var executableTaxonomyActions = package.Plan.TaxonomyRelationshipActions

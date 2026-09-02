@@ -49,16 +49,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
 
         private static List GetPagesLibrary(ClientContext context, PublishingPageMigrationPackage package)
         {
-            var pages = context.Web.GetPagesLibrary();
-            if (pages == null)
-            {
-                throw new InvalidOperationException("The target publishing Pages library is unavailable.");
-            }
-
+            var targetDirectory = PagePath.GetDirectoryName(package.Plan.TargetPageServerRelativeUrl);
+            var pages = context.Web.GetList(targetDirectory);
             context.Load(pages, list => list.EnableModeration, list => list.ForceCheckout);
             context.Load(pages.RootFolder, folder => folder.ServerRelativeUrl);
             context.ExecuteQueryRetry();
-            var targetDirectory = PagePath.GetDirectoryName(package.Plan.TargetPageServerRelativeUrl);
             if (!string.Equals(targetDirectory, pages.RootFolder.ServerRelativeUrl, StringComparison.OrdinalIgnoreCase))
             {
                 throw new NotSupportedException("The publishing-page importer supports pages in the root of the target Pages library only.");

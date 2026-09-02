@@ -25,8 +25,11 @@ namespace PnP.Framework.Migration.Topology.Execution
                 };
             }
 
-            anchorContext.Load(anchorContext.Web, value => value.Url);
-            anchorContext.ExecuteQueryRetry();
+            if (!anchorContext.Web.IsPropertyAvailable("Url"))
+            {
+                anchorContext.Load(anchorContext.Web, value => value.Url);
+                anchorContext.ExecuteQueryRetry();
+            }
             var approvedHostUrl = anchorContext.Web.Url;
             var initial = TopologyTargetInspector.Inspect(anchorContext, plan, approvedHostUrl);
             if (!initial.IsAdmitted)
@@ -36,6 +39,11 @@ namespace PnP.Framework.Migration.Topology.Execution
             }
 
             var result = new TopologyMaterializationReceipt { TopologyPlanDigest = plan.PlanDigest };
+            if (TryCompleteWithoutMutation(plan, initial, recorder, result))
+            {
+                return result;
+            }
+
             foreach (var sitePlan in plan.SiteCollections.OrderBy(value => value.SourceSiteId))
             {
                 foreach (var webPlan in sitePlan.Webs.OrderBy(value => Depth(value.TargetServerRelativeUrl))
@@ -115,6 +123,63 @@ namespace PnP.Framework.Migration.Topology.Execution
             result.FreshReadbackPassed = true;
             result.Diagnostics.Add("Fresh target analysis verified " + result.Webs.Count + " Site/Web mapping(s) after topology materialization.");
             return result;
+        }
+
+        internal static bool TryCompleteWithoutMutation(
+            TopologyPlan plan,
+            TopologyTargetAnalysis analysis,
+            MigrationExecutionRecorder recorder,
+            TopologyMaterializationReceipt result)
+        {
+            var plans = plan.SiteCollections
+                .SelectMany(value => value.Webs)
+                .OrderBy(value => Depth(value.TargetServerRelativeUrl))
+                .ThenBy(value => value.TargetServerRelativeUrl, StringComparer.OrdinalIgnoreCase)
+                .ToArray();
+            var probes = analysis.SiteCollections
+                .SelectMany(value => value.Webs)
+                .ToDictionary(value => value.SourceWebId);
+            if (plans.Length != probes.Count)
+            {
+                return false;
+            }
+
+            foreach (var webPlan in plans)
+            {
+                if (!probes.TryGetValue(webPlan.SourceWebId, out var probe)
+                    || !probe.IsAdmitted
+                    || !probe.TargetWebId.HasValue
+                    || !probe.TargetSiteId.HasValue
+                    || (probe.Disposition != TopologyMaterializationDisposition.ReuseApprovedHost
+                        && probe.Disposition != TopologyMaterializationDisposition.ReuseOwned))
+                {
+                    return false;
+                }
+            }
+
+            foreach (var webPlan in plans)
+            {
+                var probe = probes[webPlan.SourceWebId];
+                recorder.RecordAlreadySatisfied(
+                    "topology.web." + webPlan.SourceWebId.ToString("N"),
+                    "Reuse target Web '" + webPlan.TargetWebUrl + "' as " + probe.Disposition + ".");
+                result.Webs.Add(new TopologyWebMaterializationReceipt
+                {
+                    SourceSiteId = webPlan.SourceSiteId,
+                    SourceWebId = webPlan.SourceWebId,
+                    TargetSiteId = probe.TargetSiteId.Value,
+                    TargetWebId = probe.TargetWebId.Value,
+                    TargetWebUrl = webPlan.TargetWebUrl,
+                    Disposition = probe.Disposition,
+                    MappingDigest = TopologyPlanner.ComputeWebMappingDigest(webPlan)
+                });
+            }
+
+            result.FreshReadbackPassed = true;
+            result.Diagnostics.Add(
+                "One fresh target analysis verified " + result.Webs.Count
+                + " reusable Site/Web mapping(s); no topology mutation was required.");
+            return true;
         }
 
         private static TopologyWebTargetProbe EnsureChild(

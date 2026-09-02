@@ -1,7 +1,7 @@
 # Performance and concurrency
 
 > Status: Draft
-> Implementation status: Target-inspection batching implemented; orchestration policy remains host-owned
+> Implementation status: Target-inspection batching and empty-domain/reuse fast paths implemented; orchestration policy remains host-owned
 > Scope: Capture, planning, admission, execution, and verification performance
 
 ## Performance is a measured contract
@@ -43,6 +43,14 @@ CSOM latency normally dominates local projection and digest computation. The pre
 6. apply bounded item-level concurrency only after per-item request count is minimized.
 
 The implementation must not share one `ClientContext` across concurrent items. Each concurrent item owns its contexts and disposes them when its stage ends.
+
+The current publishing importer also applies three narrow read-path fast paths:
+
+- taxonomy admission returns before resolving the target Pages library when the sealed plan contains no executable taxonomy relationship actions;
+- topology materialization accepts one fresh target analysis as both admission and final readback when every planned Web is already an admitted `ReuseApprovedHost` or `ReuseOwned` mapping and no topology mutation occurs;
+- page execution and verification resolve the Pages List directly from the sealed target page directory instead of repeating localized Pages-library discovery.
+
+These fast paths do not reuse planning evidence. Each operates inside its own current admission, execution, or fresh-verification boundary.
 
 ## Freshness and cache boundaries
 
@@ -101,3 +109,18 @@ Before accepting an optimization, run the same frozen snapshot and target mappin
 For a cohort, sort stable `itemIdentity=canonicalDigest` pairs and hash the combined text. Matching cohort hashes provide a compact guard, but reviewers should still inspect representative simple, complex, and fidelity-sensitive packages.
 
 An expected digest change must identify the evidence or decision that changed. A performance-only pull request should normally preserve all canonical digests.
+
+## Representative measurement
+
+A September 2026 simple Publishing Page run provides a reference point for the current optimization strategy. The numbers are evidence for this page shape, not a universal service-level target.
+
+| Measurement | Before | After | Result |
+| --- | ---: | ---: | --- |
+| Read-only Import admission requests | 14 | 9 | 35.7% fewer requests |
+| Read-only Import admission request time | 12,933.6 ms | 8,017.3 ms | 38.0% lower accumulated request time |
+| Local round-trip package comparison wall time | 985.2 ms | 821.9 ms | 16.6% lower wall time |
+| Local comparison maximum open scopes | 2 | 5 | Four independent package inputs overlapped under one item |
+
+The admission comparison used the same sealed package against an already-existing create-only target. Both runs correctly rejected mutation, so the comparison measures a read-only boundary without changing target state. The package comparison overlapped source export, target export, migration package, and receipt loading only when the host was processing one item; cohort mode keeps that inner work sequential to avoid multiplying item-level concurrency.
+
+The original successful apply used 46 CSOM requests and 46,061.9 ms of accumulated CSOM time within 50,242.6 ms wall time. Static request-shape analysis predicts that the admission, all-reuse topology, direct Pages-list resolution, and direct verification-list resolution fast paths can reduce this simple page shape to approximately 29 requests. That figure is an estimate until a separately approved create-only target is executed end to end; it must not be reported as a measured apply result.

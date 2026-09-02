@@ -139,12 +139,18 @@ namespace PnP.Framework.Migration.Pages.Fields.Taxonomy
             PagePlanningOptions options)
         {
             var blockers = new List<string>();
+            var approved = (approvedActions ?? Array.Empty<TaxonomyRelationshipAction>()).ToArray();
+            if (approved.All(action => action != null
+                && action.Disposition == TaxonomyRelationshipDisposition.RetainEvidenceOnly))
+            {
+                return blockers;
+            }
+
             var pages = context.Web.GetPagesLibrary();
             if (pages == null)
             {
                 return new[] { "Fresh taxonomy admission could not find the target Pages library." };
             }
-            var approved = (approvedActions ?? Array.Empty<TaxonomyRelationshipAction>()).ToArray();
             var eligibleFieldNames = new HashSet<string>(
                 approved
                     .Where(action => action.Disposition != TaxonomyRelationshipDisposition.RetainEvidenceOnly)

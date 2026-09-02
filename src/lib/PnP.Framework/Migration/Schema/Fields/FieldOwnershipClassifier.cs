@@ -46,8 +46,18 @@ namespace PnP.Framework.Migration.Schema.Fields
             return HasPlatformSource(field.SchemaXml) ? FieldOwnership.TargetRuntime : FieldOwnership.UserDefined;
         }
 
+        public static bool IsTargetRuntime(Guid fieldId, string schemaXml)
+        {
+            return KnownTargetRuntimeFieldIds.Contains(fieldId) || HasPlatformSource(schemaXml);
+        }
+
         private static bool HasPlatformSource(string schemaXml)
         {
+            if (string.IsNullOrWhiteSpace(schemaXml))
+            {
+                return false;
+            }
+
             try
             {
                 var source = XDocument.Parse(schemaXml).Root?.Attribute("SourceID")?.Value;

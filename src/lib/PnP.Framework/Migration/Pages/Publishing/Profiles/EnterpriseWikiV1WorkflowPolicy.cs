@@ -12,6 +12,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Profiles
             FieldsHandledByPageWriter = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
             {
                 "ContentTypeId",
+                "FileLeafRef",
                 "PublishingPageContent",
                 "PublishingPageLayout",
                 "Title"

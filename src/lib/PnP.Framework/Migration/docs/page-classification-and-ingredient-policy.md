@@ -132,6 +132,8 @@ The evaluator rejects a release list when the action is not `Transform`, the rel
 
 Releasing a dependency does not make the result exact. A `Drop` or `Delegate` produces `ExecutableWithLoss`; a `Transform` or `Substitute` produces at least `ExecutableWithTransform`.
 
+For an admitted reviewed stock Page Layout, embedded stock CSS, image, and target-runtime references are `Substitute` ingredients rather than copied assets. The exact target stock layout readback proves which references are owned by that target layout; runtime verification must still prove that they resolve. Page-item values remain separate decisions: a SharePoint-owned source field becomes `TargetRuntime` only when the target exposes an equivalent same-name, same-type field, and then projects as a target-runtime substitution. `FileLeafRef` is handled by target page-shell creation. Unknown or unmatched business-field values remain delegated evidence and are not upgraded by this rule.
+
 ## Aggregate outcome
 
 The evaluator derives one `plan.migrationOutcome`:

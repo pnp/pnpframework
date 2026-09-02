@@ -33,9 +33,87 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 .ThenBy(field => field.FieldId)
                 .ToList();
             var blocked = fields.Any(field => field.Disposition == FieldSchemaMaterializationDisposition.Block);
+            return CreatePlan(
+                schema,
+                fields,
+                blocked ? ContentTypeMaterializationDisposition.Block : ContentTypeMaterializationDisposition.CreateOwned,
+                blocked
+                    ? "The required content type closure contains field schema that needs an explicit capability decision."
+                    : "Create or exactly reuse the content type and its required field closure.");
+        }
+
+        public static bool TryCreateTargetRuntimeRequirement(
+            ContentTypeSchemaSnapshot schema,
+            out ContentTypeMaterializationPlan plan)
+        {
+            plan = null;
+            if (schema == null
+                || schema.EvidenceState != ContentTypeSchemaEvidenceState.Partial
+                || schema.Availability != EvidenceAvailability.Partial
+                || string.IsNullOrWhiteSpace(schema.ContentTypeId)
+                || string.IsNullOrWhiteSpace(schema.Name)
+                || string.IsNullOrWhiteSpace(schema.ParentContentTypeId)
+                || schema.RequiredFieldLinks == null
+                || schema.RequiredFieldClosure == null
+                || schema.RequiredFieldClosure.Count == 0
+                || schema.RequiredFieldLinks.Any(value => value == null || value.FieldId == Guid.Empty)
+                || schema.RequiredFieldClosure.Any(value => value == null
+                    || value.Id == Guid.Empty
+                    || string.IsNullOrWhiteSpace(value.InternalName)
+                    || string.IsNullOrWhiteSpace(value.TypeAsString)
+                    || string.IsNullOrWhiteSpace(value.SchemaXml)))
+            {
+                return false;
+            }
+
+            var closure = schema.RequiredFieldClosure.ToArray();
+            var closureIds = new HashSet<Guid>(closure.Select(value => value.Id));
+            if (closureIds.Count != closure.Length
+                || schema.RequiredFieldLinks.Select(value => value.FieldId).Distinct().Count() != schema.RequiredFieldLinks.Count
+                || schema.RequiredFieldLinks.Any(value => !closureIds.Contains(value.FieldId)))
+            {
+                return false;
+            }
+
+            var fields = new List<FieldSchemaMaterializationPlan>();
+            foreach (var field in closure)
+            {
+                var ownership = FieldOwnershipClassifier.Classify(field, closure);
+                if (ownership != FieldOwnership.TargetRuntime)
+                {
+                    return false;
+                }
+
+                fields.Add(Plan(
+                    field,
+                    ownership,
+                    FieldSchemaMaterializationDisposition.RequireTargetRuntime,
+                    null,
+                    null,
+                    null,
+                    "The partial source closure identifies this as a target-runtime field; require its exact ID, internal name, and type without creating or repairing schema."));
+            }
+
+            plan = CreatePlan(
+                schema,
+                fields
+                    .OrderBy(field => field.Role == FieldSchemaRole.Dependency ? 0 : 1)
+                    .ThenBy(field => field.FieldId)
+                    .ToList(),
+                ContentTypeMaterializationDisposition.ReuseOwned,
+                "Source content type evidence is partial, so creation is forbidden. Require the exact existing target-runtime content type, parent lineage, metadata, captured field links, and captured target-runtime field closure.");
+            return true;
+        }
+
+        private static ContentTypeMaterializationPlan CreatePlan(
+            ContentTypeSchemaSnapshot schema,
+            IList<FieldSchemaMaterializationPlan> fields,
+            ContentTypeMaterializationDisposition disposition,
+            string reason)
+        {
             return new ContentTypeMaterializationPlan
             {
-                Disposition = blocked ? ContentTypeMaterializationDisposition.Block : ContentTypeMaterializationDisposition.CreateOwned,
+                Disposition = disposition,
                 SourceWebUrl = schema.SourceWebUrl,
                 ContentTypeId = schema.ContentTypeId,
                 Name = schema.Name,
@@ -48,9 +126,7 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 ParentContentTypeName = schema.ParentContentTypeName,
                 RequiredFieldLinks = schema.RequiredFieldLinks.ToList(),
                 Fields = fields,
-                Reason = blocked
-                    ? "The required content type closure contains field schema that needs an explicit capability decision."
-                    : "Create or exactly reuse the content type and its required field closure."
+                Reason = reason
             };
         }
 

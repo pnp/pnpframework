@@ -71,6 +71,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                     value => value.ServerRelativeUrl,
                     value => value.UIVersionLabel,
                     value => value.Length,
+                    value => value.CustomizedPageStatus,
                     value => value.CheckOutType,
                     value => value.Level);
                 context.Load(item);
@@ -120,7 +121,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                     ServerRelativeUrl = file.ServerRelativeUrl,
                     Description = description,
                     FileUniqueId = file.UniqueId,
-                    CustomizedPageStatus = FieldInt32(item, "CustomizedPageStatus"),
+                    CustomizedPageStatus = (int)file.CustomizedPageStatus,
                     SetupPath = FieldString(item, "SetupPath"),
                     FileName = file.Name,
                     ItemContentTypeId = FieldString(item, "ContentTypeId"),
@@ -203,12 +204,6 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
         {
             object value;
             return item.FieldValues.TryGetValue(name, out value) ? Convert.ToString(value) : null;
-        }
-
-        private static int? FieldInt32(ListItem item, string name)
-        {
-            int result;
-            return int.TryParse(FieldString(item, name), out result) ? result : (int?)null;
         }
 
         private static PublishingPageLayoutSnapshot Missing(

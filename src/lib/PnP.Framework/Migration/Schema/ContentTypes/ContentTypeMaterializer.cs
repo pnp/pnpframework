@@ -34,6 +34,12 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 throw new InvalidOperationException("Blocked content type schema cannot be materialized.");
             }
 
+            if (plan.Disposition == ContentTypeMaterializationDisposition.ReuseOwned
+                && admission.Disposition != ContentTypeMaterializationDisposition.ReuseOwned)
+            {
+                throw new InvalidOperationException("A target-runtime-only content type plan cannot create or repair schema.");
+            }
+
             if (admission.Disposition == ContentTypeMaterializationDisposition.ReuseOwned)
             {
                 Verify(context, web, plan);

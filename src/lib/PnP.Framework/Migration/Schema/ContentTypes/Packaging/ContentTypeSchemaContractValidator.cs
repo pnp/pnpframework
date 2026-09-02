@@ -72,6 +72,21 @@ namespace PnP.Framework.Migration.Schema.ContentTypes.Packaging
                 throw new InvalidDataException("The content type materialization plan contains a null collection.");
             }
 
+            if (string.IsNullOrWhiteSpace(schema.ContentTypeId)
+                || string.IsNullOrWhiteSpace(schema.Name)
+                || string.IsNullOrWhiteSpace(schema.ParentContentTypeId))
+            {
+                throw new InvalidDataException("The content type materialization plan is missing identity or parent information.");
+            }
+
+            if (schema.Disposition == ContentTypeMaterializationDisposition.ReuseOwned
+                && (schema.Fields.Count == 0
+                    || schema.Fields.Any(value => value == null
+                        || value.Disposition != FieldSchemaMaterializationDisposition.RequireTargetRuntime)))
+            {
+                throw new InvalidDataException("A target-runtime-only content type plan must contain only explicit target-runtime field requirements.");
+            }
+
             var duplicateLink = schema.RequiredFieldLinks
                 .GroupBy(value => value?.FieldId ?? Guid.Empty)
                 .FirstOrDefault(group => group.Key == Guid.Empty || group.Count() > 1);

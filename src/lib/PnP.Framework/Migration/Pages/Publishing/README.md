@@ -376,6 +376,7 @@ Planning creates exactly one `PageFieldAction` per captured field:
 | `SkipEmpty` | No source value needs restoring. |
 | `SkipReadOnly` | SharePoint owns the source or target field. |
 | `SkipCalculated` | SharePoint recomputes the value. |
+| `TargetRuntime` | Source schema is SharePoint-owned and the target exposes an equivalent same-name, same-type field; the target runtime regenerates the value. |
 | `TargetFieldMissing` | A recognized source field is absent at the target. |
 | `TargetTypeMismatch` | Source and target field types differ. |
 | `RequiresMapping` | User or lookup identity cannot be copied safely across sites without an explicit mapping. Taxonomy uses typed per-value relationship actions and blocks when they are incomplete. |

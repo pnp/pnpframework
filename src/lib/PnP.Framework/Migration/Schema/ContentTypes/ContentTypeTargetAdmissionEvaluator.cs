@@ -117,6 +117,11 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                     }
                 }
             }
+            else if (plan.Disposition == ContentTypeMaterializationDisposition.ReuseOwned)
+            {
+                issues.Add(Issue("TargetRuntimeContentTypeUnavailable", $"target-content-type:{plan.ContentTypeId}",
+                    $"Partial source schema evidence permits exact target-runtime reuse only, but content type '{plan.Name}' ({plan.ContentTypeId}) does not exist at the target."));
+            }
             else if (!probe.CanManageContentTypes)
             {
                 issues.Add(Issue("TargetContentTypeWriteUnavailable", "target-content-type-schema-permission",
@@ -125,12 +130,15 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
 
             if (issues.Count == 0 && probe.ContentTypeExists)
             {
-                warnings.Add("The exact required-field content type closure already exists and can be reused without a write.");
+                warnings.Add(plan.Disposition == ContentTypeMaterializationDisposition.ReuseOwned
+                    ? "Partial source schema evidence was admitted by exact target-runtime content type reuse; no field or content type schema will be created or repaired."
+                    : "The exact required-field content type closure already exists and can be reused without a write.");
             }
 
-            return Result(issues, warnings, probe.ContentTypeExists
+            var disposition = probe.ContentTypeExists || plan.Disposition == ContentTypeMaterializationDisposition.ReuseOwned
                 ? ContentTypeMaterializationDisposition.ReuseOwned
-                : ContentTypeMaterializationDisposition.CreateOwned);
+                : ContentTypeMaterializationDisposition.CreateOwned;
+            return Result(issues, warnings, disposition);
         }
 
         private static MigrationIssue FieldCollision(

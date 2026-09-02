@@ -22,8 +22,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             writer.Table("Associated Page Layout content type schema", new[] { "Property", "Value", "How to read it" }, new[]
             {
                 Row("schemaVersion", schema.SchemaVersion, "Version of the reusable content-type schema evidence contract."),
-                Row("evidenceState", schema.EvidenceState, "Readable means the exact content type and required field closure were captured."),
-                Row("availability", schema.Availability, "Captured or a diagnosed Conflict can be planned; Unavailable cannot."),
+                Row("evidenceState", schema.EvidenceState, "Readable means the selected field closure is complete; Partial retains exact identity, captured links/fields, and diagnostics without claiming a complete schema."),
+                Row("availability", schema.Availability, "Captured can be materialized; Partial is eligible only for explicit exact target-runtime reuse when every captured field is target-runtime owned."),
                 Row("sourceWebUrl", schema.SourceWebUrl, "Web from which the site content type schema was read."),
                 Row("contentTypeId", schema.ContentTypeId, "Exact source content type ID to preserve when migration owns the type."),
                 Row("name", schema.Name, "Source content type name."),
@@ -47,8 +47,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                     item.Hidden,
                     item.Role,
                     item.Role == FieldSchemaRole.DirectBinding
-                        ? "The Page Layout directly binds this field."
-                        : "This field is required by another field in the closure.")));
+                        ? "The associated content type directly exposes this captured field link."
+                        : item.Role == FieldSchemaRole.InheritedFromParent
+                            ? "The captured field link is inherited from the associated content type parent."
+                            : "This field is required by another field in the captured closure.")));
 
             writer.Table("Associated content type required field-schema closure",
                 new[] { "Field ID / internal name", "Title / type / group", "Flags", "Role / ownership", "Schema XML", "Schema SHA-256", "Portable SHA-256", "Taxonomy binding", "Sources", "Diagnostics" },
@@ -77,7 +79,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
 
             writer.Table("Page Layout content type materialization plan", new[] { "Property", "Value", "How to read it" }, new[]
             {
-                Row("disposition", schema.Disposition, "CreateOwned means create or exactly reuse the exact content type ID and minimal field closure; Block prevents layout creation."),
+                Row("disposition", schema.Disposition, "CreateOwned permits create-or-exact-reuse from complete source schema; ReuseOwned requires an exact existing target-runtime content type and forbids schema writes; Block prevents layout creation."),
                 Row("sourceWebUrl", schema.SourceWebUrl, "Source schema provenance."),
                 Row("contentTypeId", schema.ContentTypeId, "Exact ID to create or reuse."),
                 Row("name", schema.Name, "Expected exact content type name."),

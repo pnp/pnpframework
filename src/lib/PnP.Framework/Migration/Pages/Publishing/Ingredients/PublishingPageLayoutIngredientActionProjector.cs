@@ -2,6 +2,7 @@ using PnP.Framework.Migration.Pages.Ingredients;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
+using PnP.Framework.Migration.Schema.ContentTypes;
 using PnP.Framework.Migration.Schema.Fields;
 using System;
 using System.Collections.Generic;
@@ -36,15 +37,41 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                 plan.LayoutMaterialization?.Reason ?? "The Publishing Page Layout plan is unavailable.",
                 plan.LayoutMaterialization?.TargetServerRelativeUrl,
                 "The target Page Layout bytes and associated Content Type match the sealed layout plan."));
+
+            var reuseStock = plan.LayoutAdmission?.Disposition == PublishingPageLayoutMaterializationDisposition.ReuseTargetStock;
+            var schemaPlan = plan.LayoutMaterialization?.ContentTypeSchema;
+            var schemaAdmission = plan.LayoutAdmission?.ContentTypeSchema;
+            var contentTypeBlocked = !reuseStock
+                && (schemaPlan == null
+                    || schemaPlan.Disposition == ContentTypeMaterializationDisposition.Block
+                    || schemaAdmission == null
+                    || !schemaAdmission.IsEligible);
+            var requireTargetRuntime = !contentTypeBlocked
+                && !reuseStock
+                && schemaPlan.Disposition == ContentTypeMaterializationDisposition.ReuseOwned;
             PublishingPageIngredientActionFactory.Add(actions, PublishingPageIngredientActionFactory.Create(
                 PublishingPageIngredientIds.ContentType,
-                layoutBlocked ? IngredientCapability.Incompatible : IngredientCapability.Available,
-                layoutBlocked ? IngredientDisposition.Block : IngredientDisposition.Preserve,
-                layoutBlocked ? "none" : "materialize-layout-associated-content-type",
+                contentTypeBlocked ? IngredientCapability.Incompatible : IngredientCapability.Available,
+                contentTypeBlocked
+                    ? IngredientDisposition.Block
+                    : requireTargetRuntime ? IngredientDisposition.Substitute : IngredientDisposition.Preserve,
+                contentTypeBlocked
+                    ? "none"
+                    : reuseStock ? "reuse-reviewed-stock-content-type"
+                    : requireTargetRuntime ? "reuse-exact-target-runtime-content-type"
+                    : "materialize-layout-associated-content-type",
                 "policy.content-type.layout-association",
-                "Use the exact Content Type associated with the approved target Page Layout.",
-                plan.TargetProbe?.PageContentTypeId,
-                $"The target page ContentTypeId equals '{plan.TargetProbe?.PageContentTypeId}'."));
+                reuseStock
+                    ? "Use the exact Content Type associated with the approved target stock Page Layout."
+                    : schemaPlan?.Reason ?? "No associated Content Type materialization decision was produced.",
+                reuseStock
+                    ? plan.LayoutTargetProbe?.ResolvedAssociatedContentTypeId
+                    : schemaPlan?.ContentTypeId,
+                contentTypeBlocked
+                    ? null
+                    : requireTargetRuntime
+                        ? $"Fresh target readback verifies exact existing ContentTypeId '{schemaPlan.ContentTypeId}', metadata, parent lineage, captured field links, and target-runtime fields without schema writes."
+                        : $"Fresh target readback verifies associated ContentTypeId '{schemaPlan?.ContentTypeId ?? plan.LayoutTargetProbe?.ResolvedAssociatedContentTypeId}'."));
         }
 
         private static void AddContentTypeFields(
@@ -90,6 +117,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             PublishingPageMigrationPlan plan,
             IDictionary<string, PageIngredientAction> actions)
         {
+            var reuseStock = plan.LayoutAdmission?.IsEligible == true
+                && plan.LayoutAdmission.Disposition == PublishingPageLayoutMaterializationDisposition.ReuseTargetStock;
             var resourcePlans = (plan.LayoutMaterialization?.ResourceMaterializations
                     ?? Array.Empty<PublishingPageLayoutResourceMaterializationPlan>())
                 .Where(value => value != null)
@@ -102,9 +131,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             {
                 resourcePlans.TryGetValue(resourceGroup.Key, out var resourcePlan);
                 var source = resourceGroup.First();
-                var blocked = resourcePlan == null
-                    || resourcePlan.Disposition == PublishingPageLayoutResourceMaterializationDisposition.Block;
-                var targetRuntime = resourcePlan?.Disposition == PublishingPageLayoutResourceMaterializationDisposition.TargetRuntime;
+                var stockResource = reuseStock && !string.IsNullOrWhiteSpace(resourceGroup.Key);
+                var blocked = !stockResource && (resourcePlan == null
+                    || resourcePlan.Disposition == PublishingPageLayoutResourceMaterializationDisposition.Block);
+                var targetRuntime = stockResource
+                    || resourcePlan?.Disposition == PublishingPageLayoutResourceMaterializationDisposition.TargetRuntime;
                 PublishingPageIngredientActionFactory.Add(actions, PublishingPageIngredientActionFactory.Create(
                     PublishingPageIngredientIds.LayoutResource(resourceGroup.Key),
                     blocked ? IngredientCapability.Incompatible : IngredientCapability.Available,
@@ -113,13 +144,21 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                         : targetRuntime ? IngredientDisposition.Substitute : IngredientDisposition.Preserve,
                     blocked
                         ? "none"
-                        : targetRuntime ? "reuse-target-runtime-resource" : "copy-exact-bytes-create-only",
-                    "policy.layout.resource",
-                    resourcePlan?.Reason ?? "No Page Layout resource materialization decision was produced.",
-                    resourcePlan?.TargetReference ?? resourcePlan?.TargetServerRelativeUrl ?? resourcePlan?.SourceReference,
+                        : stockResource
+                            ? "reuse-reviewed-stock-layout-resource"
+                            : targetRuntime ? "reuse-target-runtime-resource" : "copy-exact-bytes-create-only",
+                    stockResource ? "policy.layout.resource.reviewed-stock" : "policy.layout.resource",
+                    stockResource
+                        ? "The admitted target stock Page Layout has exact captured bytes and owns the same embedded resource reference."
+                        : resourcePlan?.Reason ?? "No Page Layout resource materialization decision was produced.",
+                    stockResource
+                        ? resourceGroup.Key
+                        : resourcePlan?.TargetReference ?? resourcePlan?.TargetServerRelativeUrl ?? resourcePlan?.SourceReference,
                     blocked
                         ? null
-                        : targetRuntime
+                        : stockResource
+                            ? "Fresh readback verifies the exact target stock Page Layout bytes; target runtime verification confirms that its embedded resource reference resolves."
+                            : targetRuntime
                             ? "The target-runtime resource reference resolves in the target Publishing runtime."
                             : $"The target resource bytes have SHA-256 '{source.Artifact?.Sha256}'."));
             }

@@ -13,6 +13,7 @@ namespace PnP.Framework.Migration.Pages.Fields
         EvidenceOnly = 8,
         CaptureUnavailable = 9,
         Block = 10,
-        ApplyTaxonomyRelationships = 11
+        ApplyTaxonomyRelationships = 11,
+        TargetRuntime = 12
     }
 }

@@ -101,12 +101,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                 .ToList();
             var targetBytes = PublishingPageLayoutResourceRewriter.Rewrite(sourceBytes, rewrites);
             var targetFileName = BuildOwnedFileName(sourceFileName, layout.Bytes.Sha256);
-            var contentTypePlan = layout.AssociatedContentTypeSchema != null
-                && layout.AssociatedContentTypeSchema.EvidenceState == ContentTypeSchemaEvidenceState.Readable
-                && (layout.AssociatedContentTypeSchema.Availability == EvidenceAvailability.Captured
-                    || layout.AssociatedContentTypeSchema.Availability == EvidenceAvailability.Conflict)
-                    ? ContentTypeSchemaPlanner.CreateRequiredClosure(layout.AssociatedContentTypeSchema, taxonomyMappings)
-                    : null;
+            var contentTypePlan = CreateContentTypePlan(layout.AssociatedContentTypeSchema, taxonomyMappings);
             return new PublishingPageLayoutMaterializationPlan
             {
                 Disposition = resourcePlans.Any(value => value.Disposition == PublishingPageLayoutResourceMaterializationDisposition.Block)
@@ -218,6 +213,28 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
 
             var path = sourceLayoutUrl.AbsolutePath.Substring(0, marker);
             return new Uri(sourceLayoutUrl.GetLeftPart(UriPartial.Authority) + (string.IsNullOrEmpty(path) ? "/" : path));
+        }
+
+        private static ContentTypeMaterializationPlan CreateContentTypePlan(
+            ContentTypeSchemaSnapshot schema,
+            IEnumerable<TaxonomyTargetMapping> taxonomyMappings)
+        {
+            if (schema == null)
+            {
+                return null;
+            }
+
+            if (schema.EvidenceState == ContentTypeSchemaEvidenceState.Readable
+                && (schema.Availability == EvidenceAvailability.Captured
+                    || schema.Availability == EvidenceAvailability.Conflict))
+            {
+                return ContentTypeSchemaPlanner.CreateRequiredClosure(schema, taxonomyMappings);
+            }
+
+            ContentTypeMaterializationPlan targetRuntimeRequirement;
+            return ContentTypeSchemaPlanner.TryCreateTargetRuntimeRequirement(schema, out targetRuntimeRequirement)
+                ? targetRuntimeRequirement
+                : null;
         }
 
         private static void RequireAbsoluteHttps(Uri value, string parameterName)

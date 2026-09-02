@@ -146,6 +146,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                     return (IngredientCapability.Available, IngredientDisposition.Preserve, "ensure-schema-without-value");
                 case PageFieldDisposition.SkipReadOnly:
                 case PageFieldDisposition.SkipCalculated:
+                case PageFieldDisposition.TargetRuntime:
                     return (IngredientCapability.Available, IngredientDisposition.Substitute, "target-runtime-value");
                 case PageFieldDisposition.EvidenceOnly:
                     return (IngredientCapability.Unknown, IngredientDisposition.Delegate, "retain-snapshot");

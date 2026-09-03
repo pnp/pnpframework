@@ -538,6 +538,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             {
                 // If the JsonControlData is already set, we don't need to merge it with the propertiesJson
                 var json = Newtonsoft.Json.Linq.JObject.Parse(webPart.JsonControlData);
+
+                // BuildControlData uses the SharePoint canvas schema:
+                //   webPartId = component ID
+                //   id        = instance ID
+                //
+                // PnP provisioning templates expect:
+                //   id         = component ID
+                //   instanceId = instance ID
+                // Only normalize actual web parts. SectionBackgroundControl and other
+                // special canvas controls might not have a valid WebPartId.
+                if (Guid.TryParse(webPart.WebPartId, out _))
+                {
+                    json["id"] = webPart.WebPartId;
+                    json["instanceId"] = webPart.InstanceId.ToString("D");
+                }
+                
                 if (!string.IsNullOrWhiteSpace(webPart.PropertiesJson))
                     json.Add("properties", Newtonsoft.Json.Linq.JObject.Parse(webPart.PropertiesJson));
 

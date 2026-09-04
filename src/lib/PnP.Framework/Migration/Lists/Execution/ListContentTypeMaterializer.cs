@@ -37,7 +37,14 @@ namespace PnP.Framework.Migration.Lists.Execution
                     target = targetList.ContentTypes.AddExistingContentType(available);
                     context.Load(target, value => value.Id);
                     context.ExecuteQueryRetry();
-                    target = LoadContentType(context, targetList, target.Id.StringValue);
+                    var targetId = target.Id.StringValue;
+                    // AddExistingContentType mutates the loaded collection with
+                    // an object whose Parent identity is not initialized. The
+                    // next source content type search walks every collection
+                    // member, so refresh the collection and all Parent IDs before
+                    // continuing the membership transaction.
+                    LoadListContentTypes(context, targetList);
+                    target = LoadContentType(context, targetList, targetId);
                 }
                 if (target.Parent == null
                     || !string.Equals(target.Parent.Id.StringValue, sourceContentType.ParentId, StringComparison.OrdinalIgnoreCase))

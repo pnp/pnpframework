@@ -190,7 +190,13 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 if (!readbackAdmission.IsEligible
                     || readbackAdmission.Disposition != ContentTypeMaterializationDisposition.ReuseOwned)
                 {
-                    throw new InvalidOperationException("Fresh content type schema readback differs from the sealed plan.");
+                    var diagnostics = readbackAdmission.Issues
+                        .Select(value => value.Code + ": " + value.Message)
+                        .Concat(readbackAdmission.Warnings)
+                        .ToArray();
+                    throw new InvalidOperationException(
+                        "Fresh content type schema readback differs from the sealed plan; disposition="
+                        + readbackAdmission.Disposition + ". " + string.Join(" ", diagnostics));
                 }
 
                 return readback;

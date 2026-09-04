@@ -74,7 +74,8 @@ namespace PnP.Framework.Migration.Schema.Fields
                         "Target site-field name is already used by a different GUID: "
                         + plan.InternalName + ".");
                 }
-                if (plan.Disposition == FieldSchemaMaterializationDisposition.RequireTargetRuntime)
+                if (plan.Disposition == FieldSchemaMaterializationDisposition.RequireTargetRuntime
+                    && string.IsNullOrWhiteSpace(plan.TargetSchemaXml))
                 {
                     throw new InvalidOperationException(
                         "The target runtime does not expose required site field '"
@@ -248,7 +249,9 @@ namespace PnP.Framework.Migration.Schema.Fields
                     "Fresh target site-field identity/type differs for '"
                     + plan.InternalName + "' (" + plan.FieldId.ToString("D") + ").");
             }
-            if (plan.Disposition == FieldSchemaMaterializationDisposition.CreateOrReuseOwned)
+            if (plan.Disposition == FieldSchemaMaterializationDisposition.CreateOrReuseOwned
+                || plan.Disposition == FieldSchemaMaterializationDisposition.RequireTargetRuntime
+                    && !string.IsNullOrWhiteSpace(plan.TargetSchemaXml))
             {
                 var digest = string.IsNullOrWhiteSpace(field.SchemaXml)
                     ? null

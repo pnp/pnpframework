@@ -138,8 +138,13 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
             var ownership = FieldOwnershipClassifier.Classify(field, closure);
             if (ownership == FieldOwnership.TargetRuntime)
             {
-                return Plan(field, ownership, FieldSchemaMaterializationDisposition.RequireTargetRuntime, null, null, null,
-                    "The field is supplied by the exact target runtime or parent content type.");
+                var featureRuntimeFallback = ContentTypeRuntimeCatalog.IsDocumentIdField(field.Id)
+                    ? FieldSchemaCanonicalizer.RewriteForTarget(field.SchemaXml)
+                    : null;
+                return Plan(field, ownership, FieldSchemaMaterializationDisposition.RequireTargetRuntime, featureRuntimeFallback, null, null,
+                    featureRuntimeFallback == null
+                        ? "The field is supplied by the exact target runtime or parent content type."
+                        : "Prefer the Document ID feature runtime field; retain the exact captured schema as a sealed fallback because multi-Web site activation completes field registration asynchronously.");
             }
 
             if (field.TypeAsString.StartsWith("Calculated", StringComparison.OrdinalIgnoreCase))

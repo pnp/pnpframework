@@ -128,6 +128,11 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 .Distinct();
         }
 
+        internal static bool IsDocumentIdField(Guid fieldId)
+        {
+            return DocumentIdFieldIds.Contains(fieldId);
+        }
+
         private static bool IsAssetContentType(string contentTypeId)
         {
             return string.Equals(contentTypeId, RichMediaAssetContentTypeId, StringComparison.OrdinalIgnoreCase)

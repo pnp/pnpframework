@@ -267,7 +267,21 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 "<Field ID=\"{ae3e2a36-125d-45d3-9051-744b513536a6}\" Name=\"_dlc_DocId\" Type=\"Text\" />");
             var schema = new ContentTypeSchemaSnapshot
             {
+                EvidenceState = ContentTypeSchemaEvidenceState.Readable,
+                Availability = EvidenceAvailability.Captured,
                 ContentTypeId = "0x010100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                Name = "Custom document",
+                ParentContentTypeId = BuiltInContentTypeId.Document,
+                ParentContentTypeName = "Document",
+                RequiredFieldLinks = new List<ContentTypeFieldLinkSnapshot>
+                {
+                    new ContentTypeFieldLinkSnapshot
+                    {
+                        FieldId = docId.Id,
+                        Name = docId.InternalName,
+                        Role = docId.Role
+                    }
+                },
                 RequiredFieldClosure = new List<FieldSchemaSnapshot> { docId }
             };
 
@@ -280,6 +294,13 @@ namespace PnP.Framework.Test.EnterpriseWiki
             Assert.AreEqual(1, features.Count);
             Assert.AreEqual(ContentTypeRuntimeCatalog.DocumentIdServiceFeatureId, features[0].FeatureId);
             Assert.AreEqual(schema.ContentTypeId, features[0].RequiredByContentTypeIds.Single());
+
+            var plan = ContentTypeSchemaPlanner.CreateRequiredClosure(schema);
+            Assert.AreEqual(FieldSchemaMaterializationDisposition.RequireTargetRuntime, plan.Fields.Single().Disposition);
+            Assert.IsNotNull(plan.Fields.Single().TargetSchemaXml);
+            Assert.AreEqual(
+                FieldSchemaCanonicalizer.PortableDigest(docId.SchemaXml),
+                plan.Fields.Single().TargetPortableSchemaSha256);
         }
 
         [TestMethod]

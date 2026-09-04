@@ -1,4 +1,5 @@
 using Microsoft.SharePoint.Client;
+using PnP.Framework.Migration.Lists.Fields;
 using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Pages.ClassicWebParts.Bindings;
@@ -47,7 +48,7 @@ namespace PnP.Framework.Migration.Lists.Capture
                     var dependency = ListDependencySnapshotReader.Read(context, web, identity.ListId, maximumBytes, artifactStore, warnings);
                     result.Dependencies.Add(dependency);
                     result.RequiredSourceWebIds.Add(dependency.SourceWebId);
-                    foreach (var field in dependency.Fields.Where(value => value.SourceLookupListId.HasValue))
+                    foreach (var field in dependency.Fields.Where(ShouldFollowLookupDependency))
                     {
                         var lookupWebId = field.SourceLookupWebId ?? dependency.SourceWebId;
                         var edge = new ListLookupDependency
@@ -71,6 +72,22 @@ namespace PnP.Framework.Migration.Lists.Capture
             result.LookupDependencies = result.LookupDependencies.OrderBy(value => value.LookupListId).ThenBy(value => value.SourceListId).ThenBy(value => value.FieldId).ToList();
             result.RequiredSourceWebIds = result.RequiredSourceWebIds.Distinct().OrderBy(value => value).ToList();
             return result;
+        }
+
+        internal static bool ShouldFollowLookupDependency(ListFieldSnapshot field)
+        {
+            if (field?.SourceLookupListId.HasValue != true)
+            {
+                return false;
+            }
+
+            // A taxonomy field's List attribute points at the site-local
+            // TaxonomyHiddenList WssId cache. That cache is platform-owned and
+            // must not be copied as a cross-site business List dependency;
+            // SharePoint allocates target WssIds when taxonomy values are set.
+            // The field binding and source term identifiers remain fully
+            // captured by TaxonomyFieldBindingSnapshot.
+            return !field.TypeAsString.StartsWith("TaxonomyFieldType", StringComparison.OrdinalIgnoreCase);
         }
 
         private sealed class ListIdentity

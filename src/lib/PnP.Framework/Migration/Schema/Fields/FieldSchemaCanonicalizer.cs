@@ -89,6 +89,10 @@ namespace PnP.Framework.Migration.Schema.Fields
             {
                 attribute.Remove();
             }
+            if (IsHiddenTaxonomyCompanionField(root))
+            {
+                root.Attribute("DisplayName")?.Remove();
+            }
         }
 
         private static void SetTaxonomyProperty(XElement root, string name, Guid? value)
@@ -115,6 +119,7 @@ namespace PnP.Framework.Migration.Schema.Fields
                          .Where(item => !item.IsNamespaceDeclaration)
                          .Where(item => !VolatileAttributes.Contains(item.Name.LocalName))
                          .Where(item => !IsDefaultEquivalentAttribute(item))
+                         .Where(item => !IsHiddenTaxonomyCompanionDisplayName(item))
                          .OrderBy(item => ExpandedName(item.Name), StringComparer.Ordinal))
             {
                 var value = attribute.Value;
@@ -206,6 +211,29 @@ namespace PnP.Framework.Migration.Schema.Fields
                     || string.Equals(name, "Aggregation", StringComparison.OrdinalIgnoreCase)
                     || string.Equals(name, "Node", StringComparison.OrdinalIgnoreCase))
                 && string.IsNullOrEmpty(value);
+        }
+
+        private static bool IsHiddenTaxonomyCompanionDisplayName(XAttribute attribute) =>
+            string.Equals(attribute.Name.LocalName, "DisplayName", StringComparison.OrdinalIgnoreCase)
+            && attribute.Parent != null
+            && IsHiddenTaxonomyCompanionField(attribute.Parent);
+
+        private static bool IsHiddenTaxonomyCompanionField(XElement field)
+        {
+            if (!string.Equals(field.Name.LocalName, "Field", StringComparison.OrdinalIgnoreCase)
+                || !string.Equals((string)field.Attribute("Type"), "Note", StringComparison.OrdinalIgnoreCase)
+                || !string.Equals((string)field.Attribute("Hidden"), "TRUE", StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
+            var internalName = (string)field.Attribute("Name") ?? (string)field.Attribute("StaticName") ?? string.Empty;
+            if (internalName.Length != 33 || (internalName[0] != 'g' && internalName[0] != 'G'))
+            {
+                return false;
+            }
+            Guid ignored;
+            return Guid.TryParseExact(internalName.Substring(1), "N", out ignored);
         }
     }
 }

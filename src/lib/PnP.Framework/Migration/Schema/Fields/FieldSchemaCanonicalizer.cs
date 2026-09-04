@@ -120,6 +120,7 @@ namespace PnP.Framework.Migration.Schema.Fields
                          .Where(item => !VolatileAttributes.Contains(item.Name.LocalName))
                          .Where(item => !IsDefaultEquivalentAttribute(item))
                          .Where(item => !IsHiddenTaxonomyCompanionDisplayName(item))
+                         .Where(item => !IsDocumentIdRuntimeIndex(item))
                          .OrderBy(item => ExpandedName(item.Name), StringComparer.Ordinal))
             {
                 var value = attribute.Value;
@@ -229,6 +230,18 @@ namespace PnP.Framework.Migration.Schema.Fields
                 return false;
             }
             return true;
+        }
+
+        private static bool IsDocumentIdRuntimeIndex(XAttribute attribute)
+        {
+            if (!string.Equals(attribute.Name.LocalName, "Indexed", StringComparison.OrdinalIgnoreCase)
+                || !string.Equals(attribute.Value, "TRUE", StringComparison.OrdinalIgnoreCase)
+                || attribute.Parent == null)
+            {
+                return false;
+            }
+            var id = ((string)attribute.Parent.Attribute("ID") ?? string.Empty).Trim().Trim('{', '}');
+            return string.Equals(id, "ae3e2a36-125d-45d3-9051-744b513536a6", StringComparison.OrdinalIgnoreCase);
         }
     }
 }

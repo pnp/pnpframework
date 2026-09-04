@@ -60,6 +60,18 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
+        public void PortableSchemaAcceptsRuntimeIndexOnDocumentIdValueFieldOnly()
+        {
+            const string source = "<Field Type=\"Text\" ID=\"{ae3e2a36-125d-45d3-9051-744b513536a6}\" Name=\"_dlc_DocId\" />";
+            const string runtime = "<Field Type=\"Text\" ID=\"{ae3e2a36-125d-45d3-9051-744b513536a6}\" Name=\"_dlc_DocId\" Indexed=\"TRUE\" />";
+            const string ordinarySource = "<Field Type=\"Text\" ID=\"{11111111-1111-1111-1111-111111111111}\" Name=\"Value\" />";
+            const string ordinaryIndexed = "<Field Type=\"Text\" ID=\"{11111111-1111-1111-1111-111111111111}\" Name=\"Value\" Indexed=\"TRUE\" />";
+
+            Assert.AreEqual(FieldSchemaCanonicalizer.PortableDigest(source), FieldSchemaCanonicalizer.PortableDigest(runtime));
+            Assert.AreNotEqual(FieldSchemaCanonicalizer.PortableDigest(ordinarySource), FieldSchemaCanonicalizer.PortableDigest(ordinaryIndexed));
+        }
+
+        [TestMethod]
         public void SiteFieldMergeSelectsParentProducerForMatchingInheritedConsumer()
         {
             var producer = Plan(

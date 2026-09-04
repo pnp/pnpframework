@@ -222,18 +222,13 @@ namespace PnP.Framework.Migration.Schema.Fields
         {
             if (!string.Equals(field.Name.LocalName, "Field", StringComparison.OrdinalIgnoreCase)
                 || !string.Equals((string)field.Attribute("Type"), "Note", StringComparison.OrdinalIgnoreCase)
-                || !string.Equals((string)field.Attribute("Hidden"), "TRUE", StringComparison.OrdinalIgnoreCase))
+                || !string.Equals((string)field.Attribute("Hidden"), "TRUE", StringComparison.OrdinalIgnoreCase)
+                || !string.Equals((string)field.Attribute("ShowInViewForms"), "FALSE", StringComparison.OrdinalIgnoreCase)
+                || !string.Equals((string)field.Attribute("CanToggleHidden"), "TRUE", StringComparison.OrdinalIgnoreCase))
             {
                 return false;
             }
-
-            var internalName = (string)field.Attribute("Name") ?? (string)field.Attribute("StaticName") ?? string.Empty;
-            if (internalName.Length != 33 || (internalName[0] != 'g' && internalName[0] != 'G'))
-            {
-                return false;
-            }
-            Guid ignored;
-            return Guid.TryParseExact(internalName.Substring(1), "N", out ignored);
+            return true;
         }
     }
 }

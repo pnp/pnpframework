@@ -24,6 +24,14 @@ namespace PnP.Framework.Migration.Lists.Execution
                 context.Load(view.ViewFields);
             }
             context.ExecuteQueryRetry();
+            var publicViewsByTitle = list.Views
+                .AsEnumerable()
+                .Where(value => !value.PersonalView)
+                .GroupBy(value => value.Title, StringComparer.Ordinal)
+                .ToDictionary(
+                    value => value.Key,
+                    value => value.ToList(),
+                    StringComparer.Ordinal);
             var result = new Dictionary<Guid, Guid>();
             foreach (var viewPlan in plan.Views.Where(value => value.Disposition == ListViewMaterializationDisposition.CreateOrReuseOwnedPublicView
                 || value.Disposition == ListViewMaterializationDisposition.CreateOrReuseWebPartView)
@@ -33,13 +41,12 @@ namespace PnP.Framework.Migration.Lists.Execution
             {
                 var source = viewPlan.Source;
                 var title = TargetTitle(viewPlan);
-                var candidates = list.Views.AsEnumerable().Where(value => !value.PersonalView
-                    && string.Equals(value.Title, title, StringComparison.Ordinal)).ToArray();
-                if (candidates.Length > 1)
+                publicViewsByTitle.TryGetValue(title, out var candidates);
+                if (candidates != null && candidates.Count > 1)
                 {
                     throw new InvalidOperationException("Target List contains multiple public Views named '" + title + "'.");
                 }
-                var target = candidates.SingleOrDefault();
+                var target = candidates?.SingleOrDefault();
                 if (target == null)
                 {
                     target = list.Views.Add(new ViewCreationInformation
@@ -54,6 +61,7 @@ namespace PnP.Framework.Migration.Lists.Execution
                         ViewTypeKind = ParseViewType(source.ViewType)
                     });
                     context.ExecuteQueryRetry();
+                    publicViewsByTitle[title] = new List<View> { target };
                 }
                 var expectedJsLink = ListViewRenderingResourceMaterializer.RewriteJsLink(
                     source.JsLink,

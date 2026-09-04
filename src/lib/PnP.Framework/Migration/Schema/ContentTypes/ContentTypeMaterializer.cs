@@ -135,9 +135,20 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 value => value.Hidden));
             context.ExecuteQueryRetry();
             var existingLinks = createdContentType.FieldLinks.ToDictionary(value => value.Id);
+            var taxonomyFieldCompanions = plan.Fields
+                .Where(value => value.HiddenTextFieldId.HasValue)
+                .ToDictionary(value => value.FieldId, value => value.HiddenTextFieldId.Value);
+            var taxonomyCompanionIds = new HashSet<Guid>(taxonomyFieldCompanions.Values);
             foreach (var linkPlan in plan.RequiredFieldLinks
                          .Where(value => value.Role != FieldSchemaRole.InheritedFromParent)
-                         .OrderBy(value => value.Role == FieldSchemaRole.Dependency ? 0 : 1)
+                         // A taxonomy field owns its hidden Note companion. The
+                         // primary link must be added first because SharePoint can
+                         // reject a standalone companion link and can also create
+                         // that companion link automatically as a side effect.
+                         .OrderBy(value => taxonomyFieldCompanions.ContainsKey(value.FieldId)
+                             ? 0
+                             : taxonomyCompanionIds.Contains(value.FieldId) ? 2 : 1)
+                         .ThenBy(value => value.Role == FieldSchemaRole.Dependency ? 0 : 1)
                          .ThenBy(value => value.FieldId))
             {
                 FieldLink link;
@@ -159,6 +170,18 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                     throw new InvalidOperationException(
                         $"Failed to reconcile content type field link '{linkPlan.Name}' ({linkPlan.FieldId:D}) on '{plan.ContentTypeId}': {exception.Message}",
                         exception);
+                }
+
+                if (taxonomyFieldCompanions.ContainsKey(linkPlan.FieldId))
+                {
+                    // Refresh after a primary taxonomy link so a companion link
+                    // created by SharePoint is reused instead of added twice.
+                    context.Load(createdContentType.FieldLinks, values => values.Include(
+                        value => value.Id,
+                        value => value.Required,
+                        value => value.Hidden));
+                    context.ExecuteQueryRetry();
+                    existingLinks = createdContentType.FieldLinks.ToDictionary(value => value.Id);
                 }
             }
 

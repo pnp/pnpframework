@@ -7,7 +7,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
 {
     internal static class PublishingPageWebPartIngredientGraphProjector
     {
-        public static void Project(PublishingPageCaptureBundle snapshot, CanonicalPageIngredientGraph graph)
+        public static void Project(
+            PublishingPageCaptureBundle snapshot,
+            CanonicalPageIngredientGraph graph,
+            PublishingPageIngredientGraphProjectionRevision revision)
         {
             foreach (var webPart in snapshot.WebParts.OrderBy(value => value.Id))
             {
@@ -21,7 +24,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                     "Shared Web Part store export",
                     webPart.ExportSha256,
                     webPart.TypeName));
-                graph.Edges.Add(Edge(PublishingPageIngredientIds.PageArtifact, id, PageIngredientRelationship.PlacedIn, PageIngredientRequirement.Optional));
+                graph.Edges.Add(PublishingPageIngredientGraphProjector.UsesTransactionDependencies(revision)
+                    ? Edge(id, PublishingPageIngredientIds.PageArtifact, PageIngredientRelationship.PlacedIn, PageIngredientRequirement.Required)
+                    : Edge(PublishingPageIngredientIds.PageArtifact, id, PageIngredientRelationship.PlacedIn, PageIngredientRequirement.Optional));
             }
 
             foreach (var binding in snapshot.ListWebPartBindings.Where(value => value != null))

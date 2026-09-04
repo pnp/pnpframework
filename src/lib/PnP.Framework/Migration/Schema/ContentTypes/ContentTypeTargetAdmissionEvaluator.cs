@@ -1,6 +1,7 @@
 using PnP.Framework.Migration.Diagnostics;
 using PnP.Framework.Migration.Evidence;
 using PnP.Framework.Migration.Schema.Fields;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,14 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
         public static ContentTypeTargetAdmission Evaluate(
             ContentTypeMaterializationPlan plan,
             ContentTypeTargetProbe probe)
+        {
+            return Evaluate(plan, probe, null);
+        }
+
+        internal static ContentTypeTargetAdmission Evaluate(
+            ContentTypeMaterializationPlan plan,
+            ContentTypeTargetProbe probe,
+            ContentTypeTargetAdmissionContext context)
         {
             var issues = new List<MigrationIssue>();
             var warnings = new List<string>();
@@ -39,12 +48,18 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 issues.Add(Issue(code, $"field-schema:{field.InternalName}:{field.FieldId:D}", field.Reason));
             }
 
-            if (!probe.ParentContentTypeAvailable
-                || !string.Equals(probe.ResolvedParentContentTypeId, plan.ParentContentTypeId, StringComparison.OrdinalIgnoreCase))
+            var parentWillBeProvided = context?.WillProvideContentType(plan.ParentContentTypeId) == true;
+            if ((!probe.ParentContentTypeAvailable
+                    || !string.Equals(probe.ResolvedParentContentTypeId, plan.ParentContentTypeId, StringComparison.OrdinalIgnoreCase))
+                && !parentWillBeProvided)
             {
                 issues.Add(Issue("TargetContentTypeParentUnavailable",
                     $"target-parent-content-type:{plan.ParentContentTypeId}",
                     $"The target does not expose exact parent content type '{plan.ParentContentTypeName}' ({plan.ParentContentTypeId})."));
+            }
+            else if (parentWillBeProvided && !probe.ParentContentTypeAvailable)
+            {
+                warnings.Add($"The sealed content type closure creates parent '{plan.ParentContentTypeId}' before '{plan.ContentTypeId}'; execution still performs a strict fresh parent readback.");
             }
 
             foreach (var collisionId in probe.SameNameDifferentIds)
@@ -59,23 +74,77 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
             {
                 FieldSchemaTargetProbe target;
                 targetFields.TryGetValue(field.FieldId, out target);
+                if (field.TaxonomyMappingMode == TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference)
+                {
+                    if (target?.UnresolvedTargetTermSetExists != false)
+                    {
+                        issues.Add(Issue(
+                            target?.UnresolvedTargetTermSetExists == true
+                                ? "TargetUnresolvedTaxonomyReferenceCollision"
+                                : "TargetUnresolvedTaxonomyReferenceProbeUnavailable",
+                            $"target-taxonomy-termset:{field.TargetTermSetId:D}",
+                            target?.UnresolvedTargetTermSetExists == true
+                                ? $"Target TermSet '{field.TargetTermSetId:D}' exists as '{target.UnresolvedTargetTermSetName}'; using it would heal the source-invalid taxonomy relationship."
+                                : $"The selected unresolved target TermSet '{field.TargetTermSetId:D}' was not freshly probed."));
+                    }
+                    else
+                    {
+                        warnings.Add($"Taxonomy field '{field.InternalName}' ({field.FieldId:D}) intentionally targets absent TermSet '{field.TargetTermSetId:D}' while retaining source TermSet '{field.SourceTermSetId:D}' in the sealed plan; no TermSet asset will be created or repaired.");
+                    }
+                }
                 if (field.Disposition == FieldSchemaMaterializationDisposition.RequireTargetRuntime)
                 {
+                    var generatedTaxonomyCompanion = IsGeneratedTaxonomyCompanion(plan, field);
+                    var parentWillProvideField = field.Role == FieldSchemaRole.InheritedFromParent
+                        && context?.WillProvideParentFieldLink(plan.ParentContentTypeId, field.FieldId) == true;
+                    var featureWillProvideField = context?.WillProvisionRuntimeField(field.FieldId) == true;
                     if (target == null || !target.Exists)
                     {
-                        issues.Add(Issue("TargetFieldSchemaUnavailable", $"target-field:{field.FieldId:D}",
-                            $"The target runtime does not expose required field '{field.InternalName}' ({field.FieldId:D})."));
+                        if (parentWillProvideField)
+                        {
+                            warnings.Add($"The sealed parent content type transaction provides inherited field '{field.InternalName}' ({field.FieldId:D}) before creating '{plan.ContentTypeId}'.");
+                        }
+                        else if (featureWillProvideField)
+                        {
+                            warnings.Add($"A sealed platform-feature transaction provides target-runtime field '{field.InternalName}' ({field.FieldId:D}) before content type materialization.");
+                        }
+                        else
+                        {
+                            issues.Add(Issue("TargetFieldSchemaUnavailable", $"target-field:{field.FieldId:D}",
+                                $"The target runtime does not expose required field '{field.InternalName}' ({field.FieldId:D})."));
+                        }
                     }
-                    else if (!string.Equals(target.InternalName, field.InternalName, StringComparison.OrdinalIgnoreCase)
+                    else if ((!generatedTaxonomyCompanion
+                            && !string.Equals(target.InternalName, field.InternalName, StringComparison.OrdinalIgnoreCase))
                         || !string.Equals(target.TypeAsString, field.TypeAsString, StringComparison.OrdinalIgnoreCase))
                     {
                         issues.Add(FieldCollision(field, target, "target-runtime field identity or type differs"));
                     }
-                    else if (field.Role == FieldSchemaRole.InheritedFromParent && !parentLinks.ContainsKey(field.FieldId))
+                    else if (generatedTaxonomyCompanion
+                        && !string.Equals(target.InternalName, field.InternalName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        warnings.Add($"Target runtime generated taxonomy companion field '{target.InternalName}' for source companion '{field.InternalName}' ({field.FieldId:D}); GUID and Note type match, and the companion is not written directly.");
+                    }
+                    else if (field.Role == FieldSchemaRole.InheritedFromParent
+                        && !parentLinks.ContainsKey(field.FieldId)
+                        && !parentWillProvideField
+                        && !featureWillProvideField)
                     {
                         issues.Add(Issue("TargetParentFieldLinkUnavailable",
                             $"target-parent-content-type-field-link:{field.FieldId:D}",
                             $"The target parent content type does not expose inherited field link '{field.InternalName}' ({field.FieldId:D})."));
+                    }
+                    else if (field.Role == FieldSchemaRole.InheritedFromParent
+                        && !parentLinks.ContainsKey(field.FieldId)
+                        && parentWillProvideField)
+                    {
+                        warnings.Add($"The sealed parent content type transaction supplies inherited field link '{field.InternalName}' ({field.FieldId:D}) before creating '{plan.ContentTypeId}'.");
+                    }
+                    else if (field.Role == FieldSchemaRole.InheritedFromParent
+                        && !parentLinks.ContainsKey(field.FieldId)
+                        && featureWillProvideField)
+                    {
+                        warnings.Add($"A sealed platform-feature transaction supplies inherited field link '{field.InternalName}' ({field.FieldId:D}) before creating '{plan.ContentTypeId}'.");
                     }
 
                     continue;
@@ -148,6 +217,16 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
         {
             return Issue("TargetFieldSchemaCollision", $"target-field-schema:{field.FieldId:D}",
                 $"Target field collision for '{field.InternalName}' ({field.FieldId:D}): {reason}; target internalName='{target.InternalName}', type='{target.TypeAsString}'.");
+        }
+
+        private static bool IsGeneratedTaxonomyCompanion(
+            ContentTypeMaterializationPlan plan,
+            FieldSchemaMaterializationPlan field)
+        {
+            return field.Role == FieldSchemaRole.Dependency
+                && field.Hidden
+                && string.Equals(field.TypeAsString, "Note", StringComparison.OrdinalIgnoreCase)
+                && plan.Fields.Any(value => value.HiddenTextFieldId == field.FieldId);
         }
 
         private static MigrationIssue Issue(string code, string ingredient, string message)

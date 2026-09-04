@@ -369,6 +369,11 @@ namespace PnP.Framework.Migration.Pages.Fields.Taxonomy
                     : $"No complete reviewed taxonomy mapping exists for source binding '{sourceStoreId:D}/{sourceSetId:D}'.";
                 return null;
             }
+            if (matches[0].Mode == TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference)
+            {
+                error = $"The reviewed taxonomy mapping for source binding '{sourceStoreId:D}/{sourceSetId:D}' preserves an unresolved schema reference and cannot be used to replay live page taxonomy values.";
+                return null;
+            }
             error = null;
             return matches[0];
         }

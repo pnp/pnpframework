@@ -14,7 +14,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             var plan = pagePlan.LayoutMaterialization;
             writer.Table("Page Layout materialization plan", new[] { "JSON path", "Value", "How to read it" }, new[]
             {
-                Row("plan.layoutMaterialization.disposition", plan.Disposition, "ReuseTargetStock uses reviewed target runtime stock; CreateOwned creates a digest-owned layout; ReuseOwned is a fresh admission result; Block is not executable."),
+                Row("plan.layoutMaterialization.disposition", plan.Disposition, "ReuseTargetStock uses reviewed target runtime stock; CreateOwned creates a digest-owned layout; ReuseOwned is a fresh admission result; local Block becomes final ingredient Defer and remains queued for mitigation unless literal HTTP 401/403 evidence exists."),
                 Row("plan.layoutMaterialization.sourceUrl", plan.SourceUrl, "Absolute source layout URL sealed into the target decision."),
                 Row("plan.layoutMaterialization.sourceServerRelativeUrl", plan.SourceServerRelativeUrl, "Source layout path."),
                 Row("plan.layoutMaterialization.sourceFileName", plan.SourceFileName, "Original source file name."),
@@ -106,7 +106,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("isEligible", admission.IsEligible, "True only when every required layout, schema, resource, permission, and collision check is satisfied."),
                 Row("disposition", admission.Disposition, "The target-observed action approved at planning time."),
                 Row("contentTypeSchema.isEligible", admission.ContentTypeSchema?.IsEligible, "Custom layouts require a separately eligible schema admission."),
-                Row("contentTypeSchema.disposition", admission.ContentTypeSchema?.Disposition, "CreateOwned, ReuseOwned, or Block for the associated schema."),
+                Row("contentTypeSchema.disposition", admission.ContentTypeSchema?.Disposition, "CreateOwned, ReuseOwned, or a local capability Block for the associated schema; local Block is projected as final ingredient Defer."),
                 Row("warnings", Join(admission.Warnings), "Non-blocking admission findings."),
                 Row("contentTypeSchema.warnings", Join(admission.ContentTypeSchema?.Warnings), "Non-blocking schema findings.")
             });

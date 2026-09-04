@@ -74,7 +74,18 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             var snapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot);
             if (!string.Equals(snapshotDigest, package.SnapshotDigest, StringComparison.OrdinalIgnoreCase))
             {
-                throw new InvalidDataException("The source snapshot digest does not match the export payload.");
+                var canUseLegacyViewRenderingDigest = snapshot.ListDependencies.All(dependency =>
+                    dependency != null
+                    && (dependency.ViewRenderingResources?.Count ?? 0) == 0
+                    && (dependency.Views ?? Array.Empty<Lists.Views.ListViewSnapshot>()).All(view =>
+                        view != null && (view.RenderingResourceBindings?.Count ?? 0) == 0));
+                var legacyDigest = canUseLegacyViewRenderingDigest
+                    ? PublishingPageDigest.ComputeLegacySnapshotDigestWithoutViewRenderingResources(snapshot)
+                    : null;
+                if (!string.Equals(legacyDigest, package.SnapshotDigest, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new InvalidDataException("The source snapshot digest does not match the export payload.");
+                }
             }
         }
 
@@ -186,10 +197,35 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
         private static void ValidateIngredientGraph(CanonicalPageIngredientGraph graph)
         {
             if (!string.Equals(graph.SchemaVersion, "pnp-page-ingredient-graph/v1", StringComparison.Ordinal)
+                || (!string.IsNullOrWhiteSpace(graph.ProjectionVersion)
+                    && !string.Equals(
+                        graph.ProjectionVersion,
+                        PublishingPageIngredientGraphProjector.CurrentProjectionVersion,
+                        StringComparison.Ordinal)
+                    && !string.Equals(
+                        graph.ProjectionVersion,
+                        PublishingPageIngredientGraphProjector.ProjectionVersionV6,
+                        StringComparison.Ordinal)
+                    && !string.Equals(
+                        graph.ProjectionVersion,
+                        PublishingPageIngredientGraphProjector.ProjectionVersionV5,
+                        StringComparison.Ordinal)
+                    && !string.Equals(
+                        graph.ProjectionVersion,
+                        PublishingPageIngredientGraphProjector.ProjectionVersionV4,
+                        StringComparison.Ordinal)
+                    && !string.Equals(
+                        graph.ProjectionVersion,
+                        PublishingPageIngredientGraphProjector.ProjectionVersionV3,
+                        StringComparison.Ordinal)
+                    && !string.Equals(
+                        graph.ProjectionVersion,
+                        PublishingPageIngredientGraphProjector.ProjectionVersionV2,
+                        StringComparison.Ordinal))
                 || graph.Nodes == null
                 || graph.Edges == null)
             {
-                throw new InvalidDataException("The canonical ingredient graph has an unsupported schema or null collection.");
+                throw new InvalidDataException("The canonical ingredient graph has an unsupported schema/projection or null collection.");
             }
             var nodes = graph.Nodes.ToList();
             var duplicateNode = nodes
@@ -200,11 +236,20 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                 throw new InvalidDataException($"The ingredient graph contains a null, missing, or duplicate node ID '{duplicateNode?.Key}'.");
             }
             var nodeIds = new HashSet<string>(nodes.Select(value => value.Id), StringComparer.Ordinal);
-            if (graph.Edges.Any(edge => edge == null
-                    || !nodeIds.Contains(edge.FromIngredientId ?? string.Empty)
-                    || !nodeIds.Contains(edge.ToIngredientId ?? string.Empty)))
+            if (graph.Edges.Any(edge => edge == null))
             {
-                throw new InvalidDataException("Every ingredient edge must connect two captured graph nodes.");
+                throw new InvalidDataException("The ingredient graph contains a null dependency edge.");
+            }
+            var disconnectedEdge = graph.Edges.FirstOrDefault(edge => !nodeIds.Contains(edge.FromIngredientId ?? string.Empty)
+                || !nodeIds.Contains(edge.ToIngredientId ?? string.Empty));
+            if (disconnectedEdge != null)
+            {
+                var from = disconnectedEdge.FromIngredientId ?? "<null>";
+                var to = disconnectedEdge.ToIngredientId ?? "<null>";
+                throw new InvalidDataException(
+                    $"Every ingredient edge must connect two captured graph nodes. Disconnected edge '{from}' -> '{to}'; "
+                    + $"fromExists={nodeIds.Contains(from)}; toExists={nodeIds.Contains(to)}; "
+                    + $"relationship={disconnectedEdge.Relationship}; requirement={disconnectedEdge.Requirement}.");
             }
             var duplicateEdge = graph.Edges
                 .GroupBy(edge => edge.FromIngredientId + "\u001f" + edge.ToIngredientId + "\u001f"
@@ -324,10 +369,31 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
 
         private static void ValidateDerivedIngredientGraph(PublishingPageCaptureBundle snapshot)
         {
-            var expected = PublishingPageIngredientGraphProjector.Project(snapshot);
-            if (!PublishingPageValidationCanonical.Equals(expected, snapshot.IngredientGraph))
+            if (!string.IsNullOrWhiteSpace(snapshot.IngredientGraph.ProjectionVersion))
             {
-                throw new InvalidDataException("The sealed canonical ingredient graph does not match the typed source evidence.");
+                var expected = PublishingPageIngredientGraphProjector.ProjectForVersion(
+                    snapshot,
+                    snapshot.IngredientGraph.ProjectionVersion);
+                if (!PublishingPageValidationCanonical.Equals(expected, snapshot.IngredientGraph))
+                {
+                    throw new InvalidDataException("The sealed canonical ingredient graph does not match the typed source evidence for its declared projection version.");
+                }
+                return;
+            }
+
+            // Exports captured before projection versioning remain immutable. Validate them
+            // against the legacy semantics that originally produced the sealed graph. During
+            // the short development transition, also accept current semantics without a stamp;
+            // new captures always write CurrentProjectionVersion.
+            var legacy = PublishingPageIngredientGraphProjector.ProjectLegacy(snapshot);
+            if (PublishingPageValidationCanonical.Equals(legacy, snapshot.IngredientGraph))
+            {
+                return;
+            }
+            var transitional = PublishingPageIngredientGraphProjector.ProjectCurrentUnversioned(snapshot);
+            if (!PublishingPageValidationCanonical.Equals(transitional, snapshot.IngredientGraph))
+            {
+                throw new InvalidDataException("The sealed canonical ingredient graph does not match any supported typed-evidence projection.");
             }
         }
     }

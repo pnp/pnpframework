@@ -107,6 +107,8 @@ namespace PnP.Framework.Migration.Topology
 
     public sealed class TopologyPlanningPolicy
     {
+        public bool PreserveSourceChildWebTemplate { get; set; } = true;
+
         public string DefaultChildWebTemplate { get; set; } = "STS#0";
 
         public int DefaultChildWebConfiguration { get; set; }
@@ -132,7 +134,11 @@ namespace PnP.Framework.Migration.Topology
 
         public string TargetSiteCollectionUrl { get; set; }
 
+        public string PreferredTargetWebUrl { get; set; }
+
         public string TargetWebUrl { get; set; }
+
+        public string PreferredTargetServerRelativeUrl { get; set; }
 
         public string TargetServerRelativeUrl { get; set; }
 
@@ -155,7 +161,13 @@ namespace PnP.Framework.Migration.Topology
 
         public TargetSiteMode TargetMode { get; set; }
 
+        public string PreferredTargetSiteCollectionUrl { get; set; }
+
         public string TargetSiteCollectionUrl { get; set; }
+
+        public bool TargetSiteCollisionResolved { get; set; }
+
+        public string TargetSiteResolutionReason { get; set; }
 
         public Guid? ExpectedTargetSiteId { get; set; }
 
@@ -198,7 +210,17 @@ namespace PnP.Framework.Migration.Topology
 
         public Guid SourceWebId { get; set; }
 
+        public string PreferredTargetWebUrl { get; set; }
+
         public string TargetWebUrl { get; set; }
+
+        public string PreferredTargetServerRelativeUrl { get; set; }
+
+        public string TargetServerRelativeUrl { get; set; }
+
+        public bool CollisionResolved { get; set; }
+
+        public string CollisionResolutionReason { get; set; }
 
         public bool Exists { get; set; }
 
@@ -230,7 +252,13 @@ namespace PnP.Framework.Migration.Topology
     {
         public Guid SourceSiteId { get; set; }
 
+        public string PreferredTargetSiteCollectionUrl { get; set; }
+
         public string TargetSiteCollectionUrl { get; set; }
+
+        public bool CollisionResolved { get; set; }
+
+        public string CollisionResolutionReason { get; set; }
 
         public bool Exists { get; set; }
 
@@ -283,6 +311,10 @@ namespace PnP.Framework.Migration.Topology
     public sealed class TopologyMaterializationReceipt
     {
         public string TopologyPlanDigest { get; set; }
+
+        public string ApprovedTopologyPlanDigest { get; set; }
+
+        public string ExecutionTopologyPlanDigest { get; set; }
 
         public IList<TopologyWebMaterializationReceipt> Webs { get; set; } = new List<TopologyWebMaterializationReceipt>();
 

@@ -1,6 +1,7 @@
 using PnP.Framework.Migration.Evidence;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Migration.Lists.Views
 {
@@ -35,6 +36,9 @@ namespace PnP.Framework.Migration.Lists.Views
         public string JsLink { get; set; }
 
         public string XslLink { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public IList<ListViewRenderingResourceBindingSnapshot> RenderingResourceBindings { get; set; } = new List<ListViewRenderingResourceBindingSnapshot>();
 
         public bool IsPageBound { get; set; }
 

@@ -81,6 +81,7 @@ namespace PnP.Framework.Migration.Pages.Fields.Taxonomy
                 value => value.InternalName,
                 value => value.SspId,
                 value => value.TermSetId,
+                value => value.AnchorId,
                 value => value.TextField,
                 value => value.Open);
             context.ExecuteQueryRetry();
@@ -90,6 +91,7 @@ namespace PnP.Framework.Migration.Pages.Fields.Taxonomy
                 FieldInternalName = taxonomyField.InternalName,
                 TermStoreId = taxonomyField.SspId,
                 BoundTermSetId = taxonomyField.TermSetId,
+                AnchorTermId = taxonomyField.AnchorId,
                 TextFieldId = taxonomyField.TextField,
                 Open = taxonomyField.Open
             };

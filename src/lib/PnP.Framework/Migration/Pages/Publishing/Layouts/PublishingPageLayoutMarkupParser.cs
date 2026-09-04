@@ -63,7 +63,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                     .Select(group => new PublishingPageLayoutZone { Id = group.Key })
                     .OrderBy(item => item.Id, StringComparer.OrdinalIgnoreCase)
                     .ToList(),
-                RequiredFieldNames = controls
+                RequiredFieldIdentifiers = controls
                     .Select(item => item.FieldName)
                     .Where(item => !string.IsNullOrWhiteSpace(item))
                     .Concat(new[] { "Title", "PublishingPageContent" })

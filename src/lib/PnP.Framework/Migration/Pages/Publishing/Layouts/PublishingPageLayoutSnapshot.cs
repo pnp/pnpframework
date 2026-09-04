@@ -4,6 +4,7 @@ using PnP.Framework.Migration.Schema.ContentTypes;
 using PnP.Framework.Migration.Pages.Markup;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Layouts
 {
@@ -16,6 +17,15 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
         public string Url { get; set; }
 
         public string ServerRelativeUrl { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string OwnerSiteCollectionUrl { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool ExternalToPageSiteCollection { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public LiteralHttpAuthorizationEvidence AuthorizationEvidence { get; set; }
 
         public string Description { get; set; }
 

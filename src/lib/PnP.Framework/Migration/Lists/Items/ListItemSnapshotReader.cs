@@ -1,5 +1,6 @@
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Migration.Evidence;
+using PnP.Framework.Migration.Lists.Items.Protection;
 using PnP.Framework.Migration.Packaging;
 using System;
 using System.Collections.Generic;
@@ -75,6 +76,11 @@ namespace PnP.Framework.Migration.Lists.Items
                     {
                         warnings.Add("List item " + item.Id + " has document or attachment bytes that could not be captured exactly.");
                     }
+                    if (snapshot.Document?.Content?.RepresentationKind
+                        == ListBinaryRepresentationKind.InformationRightsManagedEnvelope)
+                    {
+                        warnings.Add("List item " + item.Id + " returned an Information Rights Management envelope. The exact response bytes and stable logical-content identity are retained, but cross-site replay and verification remain pending.");
+                    }
                     result.Add(snapshot);
                 }
                 position = page.ListItemCollectionPosition;
@@ -119,12 +125,30 @@ namespace PnP.Framework.Migration.Lists.Items
                 maximumBytes,
                 artifactStore,
                 ListBinaryArtifactReader.MediaType(item.File.Name),
-                item.File.Name);
+                item.File.Name,
+                item.File.ServerRelativeUrl,
+                ReadArchiveStatus(item));
+            if (content?.RepresentationKind == ListBinaryRepresentationKind.InformationRightsManagedEnvelope)
+            {
+                content.LogicalContentIdentity = ListBinaryContentIdentityReader.Read(item.FieldValues);
+                if (content.LogicalContentIdentity == null)
+                {
+                    content.Diagnostics.Add("RightsManagedLogicalContentIdentityUnavailable: SharePoint returned a DRM envelope, but MetaInfo contained no cTag or QuickXorHash.");
+                }
+            }
             if (content?.Artifact != null && item.File.Length != content.Artifact.Length)
             {
-                content.Availability = EvidenceAvailability.Partial;
-                content.Diagnostics.Add("DocumentMetadataLengthMismatch: metadataLength=" + item.File.Length
-                    + "; payloadLength=" + content.Artifact.Length + ".");
+                if (content.RepresentationKind == ListBinaryRepresentationKind.InformationRightsManagedEnvelope)
+                {
+                    content.Diagnostics.Add("RightsManagedEnvelopeLengthMismatch: logicalFileLength=" + item.File.Length
+                        + "; returnedEnvelopeLength=" + content.Artifact.Length + ".");
+                }
+                else
+                {
+                    content.Availability = EvidenceAvailability.Partial;
+                    content.Diagnostics.Add("DocumentMetadataLengthMismatch: metadataLength=" + item.File.Length
+                        + "; payloadLength=" + content.Artifact.Length + ".");
+                }
             }
             return new ListDocumentSnapshot
             {
@@ -134,6 +158,7 @@ namespace PnP.Framework.Migration.Lists.Items
                 Length = item.File.Length,
                 MajorVersion = item.File.MajorVersion,
                 MinorVersion = item.File.MinorVersion,
+                InformationProtection = ListDocumentInformationProtectionSnapshotReader.Read(item.FieldValues),
                 Content = content
             };
         }
@@ -142,6 +167,21 @@ namespace PnP.Framework.Migration.Lists.Items
         {
             object value;
             return item.FieldValues.TryGetValue("Attachments", out value) && value is bool && (bool)value;
+        }
+
+        private static string ReadArchiveStatus(ListItem item)
+        {
+            foreach (var value in item.FieldValues)
+            {
+                if (string.Equals(
+                    value.Key,
+                    "_FileArchiveStatus",
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    return Convert.ToString(value.Value);
+                }
+            }
+            return null;
         }
 
         private static Guid? ReadUniqueId(ListItem item)

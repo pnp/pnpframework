@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Migration.Evidence;
+using PnP.Framework.Migration.Features;
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Pages.Ingredients;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
@@ -9,6 +10,7 @@ using PnP.Framework.Migration.Pages.Publishing.Planning;
 using PnP.Framework.Migration.Pages.Publishing.Profiles;
 using PnP.Framework.Migration.Schema.ContentTypes;
 using PnP.Framework.Migration.Schema.Fields;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,6 +87,37 @@ namespace PnP.Framework.Test.EnterpriseWiki
             Assert.IsTrue(admission.IsEligible);
             Assert.AreEqual(ContentTypeMaterializationDisposition.ReuseOwned, admission.Disposition);
             Assert.IsTrue(admission.Warnings.Any(value => value.Contains("no field or content type schema will be created or repaired")));
+        }
+
+        [TestMethod]
+        public void TargetRuntimeTaxonomyCompanionAllowsRuntimeInternalName()
+        {
+            var schema = CreatePartialRuntimeSchema();
+            var companion = CreateField(
+                Guid.Parse("f863c21f-5fdb-4a91-bb0c-5ae889190dd7"),
+                "Wiki_x0020_Page_x0020_CategoriesTaxHTField0",
+                "Note",
+                FieldSchemaRole.Dependency,
+                "<Field ID=\"{f863c21f-5fdb-4a91-bb0c-5ae889190dd7}\" Name=\"Wiki_x0020_Page_x0020_CategoriesTaxHTField0\" Type=\"Note\" Hidden=\"TRUE\" />");
+            companion.Hidden = true;
+            var taxonomy = CreateField(
+                Guid.Parse("e1a5b98c-dd71-426d-acb6-e478c7a5882f"),
+                "Wiki_x0020_Page_x0020_Categories",
+                "TaxonomyFieldTypeMulti",
+                FieldSchemaRole.InheritedFromParent,
+                "<Field ID=\"{e1a5b98c-dd71-426d-acb6-e478c7a5882f}\" Name=\"Wiki_x0020_Page_x0020_Categories\" Type=\"TaxonomyFieldTypeMulti\" />");
+            taxonomy.Taxonomy = new TaxonomyFieldBindingSnapshot { HiddenTextFieldId = companion.Id };
+            schema.RequiredFieldLinks.Add(Link(taxonomy));
+            schema.RequiredFieldClosure.Add(companion);
+            schema.RequiredFieldClosure.Add(taxonomy);
+            Assert.IsTrue(ContentTypeSchemaPlanner.TryCreateTargetRuntimeRequirement(schema, out var plan));
+            var probe = CreateExactTargetProbe(schema);
+            probe.Fields.Single(value => value.FieldId == companion.Id).InternalName = taxonomy.Id.ToString("N");
+
+            var admission = ContentTypeTargetAdmissionEvaluator.Evaluate(plan, probe);
+
+            Assert.IsTrue(admission.IsEligible);
+            Assert.IsTrue(admission.Warnings.Any(value => value.Contains("generated taxonomy companion")));
         }
 
         [TestMethod]
@@ -189,6 +222,165 @@ namespace PnP.Framework.Test.EnterpriseWiki
             Assert.IsTrue(FieldOwnershipClassifier.IsTargetRuntime(
                 Guid.Parse("8f6b6dd8-9357-4019-8172-966fcd502ed2"),
                 "<Field ID=\"{8f6b6dd8-9357-4019-8172-966fcd502ed2}\" Name=\"TaxCatchAllLabel\" Type=\"LookupMulti\" />"));
+        }
+
+        [TestMethod]
+        public void SourceOwnedCalculatedFieldHasCreateOnlySchemaPlan()
+        {
+            var calculated = CreateField(
+                Guid.Parse("702eb418-d00c-4579-bf9b-f5ac49582083"),
+                "Reviews",
+                "Calculated",
+                FieldSchemaRole.DirectBinding,
+                "<Field ID=\"{702eb418-d00c-4579-bf9b-f5ac49582083}\" Name=\"Reviews\" Type=\"Calculated\" ReadOnly=\"TRUE\"><Formula>=1</Formula></Field>");
+            calculated.ReadOnly = true;
+            var schema = new ContentTypeSchemaSnapshot
+            {
+                EvidenceState = ContentTypeSchemaEvidenceState.Readable,
+                Availability = EvidenceAvailability.Captured,
+                SourceWebUrl = "https://source.sharepoint.com/sites/source",
+                ContentTypeId = "0x010100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                Name = "Custom document",
+                ParentContentTypeId = BuiltInContentTypeId.Document,
+                ParentContentTypeName = "Document",
+                RequiredFieldLinks = new List<ContentTypeFieldLinkSnapshot> { Link(calculated) },
+                RequiredFieldClosure = new List<FieldSchemaSnapshot> { calculated }
+            };
+
+            var plan = ContentTypeSchemaPlanner.CreateRequiredClosure(schema);
+
+            Assert.AreEqual(ContentTypeMaterializationDisposition.CreateOwned, plan.Disposition);
+            Assert.AreEqual(
+                FieldSchemaMaterializationDisposition.CreateOrReuseOwned,
+                plan.Fields.Single().Disposition);
+            Assert.IsNotNull(plan.Fields.Single().TargetSchemaXml);
+        }
+
+        [TestMethod]
+        public void RuntimeCatalogRecognizesLinkToDocumentAndRequiresDocumentIdService()
+        {
+            var docId = CreateField(
+                Guid.Parse("ae3e2a36-125d-45d3-9051-744b513536a6"),
+                "_dlc_DocId",
+                "Text",
+                FieldSchemaRole.InheritedFromParent,
+                "<Field ID=\"{ae3e2a36-125d-45d3-9051-744b513536a6}\" Name=\"_dlc_DocId\" Type=\"Text\" />");
+            var schema = new ContentTypeSchemaSnapshot
+            {
+                ContentTypeId = "0x010100AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                RequiredFieldClosure = new List<FieldSchemaSnapshot> { docId }
+            };
+
+            var features = ContentTypeRuntimeCatalog.CreateFeatureRequirements(
+                new[] { BuiltInContentTypeId.LinkToDocument },
+                new[] { schema },
+                "https://target.sharepoint.com/sites/target");
+
+            Assert.IsTrue(ContentTypeRuntimeCatalog.IsTargetRuntime(BuiltInContentTypeId.LinkToDocument));
+            Assert.AreEqual(1, features.Count);
+            Assert.AreEqual(ContentTypeRuntimeCatalog.DocumentIdServiceFeatureId, features[0].FeatureId);
+            Assert.AreEqual(schema.ContentTypeId, features[0].RequiredByContentTypeIds.Single());
+        }
+
+        [TestMethod]
+        public void PlanningAdmissionAcceptsSealedParentAndFeaturePredecessors()
+        {
+            var parentFieldId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var runtimeFieldId = Guid.Parse("ae3e2a36-125d-45d3-9051-744b513536a6");
+            var parentPlan = new ContentTypeMaterializationPlan
+            {
+                ContentTypeId = "0x010100AA",
+                RequiredFieldLinks = new List<ContentTypeFieldLinkSnapshot>
+                {
+                    new ContentTypeFieldLinkSnapshot { FieldId = parentFieldId, Name = "ParentField" }
+                }
+            };
+            var context = new ContentTypeTargetAdmissionContext(new[] { runtimeFieldId });
+            context.RegisterAdmitted(parentPlan);
+            var childPlan = new ContentTypeMaterializationPlan
+            {
+                Disposition = ContentTypeMaterializationDisposition.CreateOwned,
+                ContentTypeId = "0x010100AA0011",
+                Name = "Child",
+                ParentContentTypeId = parentPlan.ContentTypeId,
+                ParentContentTypeName = "Parent",
+                RequiredFieldLinks = new List<ContentTypeFieldLinkSnapshot>
+                {
+                    new ContentTypeFieldLinkSnapshot { FieldId = parentFieldId, Name = "ParentField", Role = FieldSchemaRole.InheritedFromParent },
+                    new ContentTypeFieldLinkSnapshot { FieldId = runtimeFieldId, Name = "_dlc_DocId", Role = FieldSchemaRole.InheritedFromParent }
+                },
+                Fields = new List<FieldSchemaMaterializationPlan>
+                {
+                    new FieldSchemaMaterializationPlan { FieldId = parentFieldId, InternalName = "ParentField", TypeAsString = "Text", Role = FieldSchemaRole.InheritedFromParent, Disposition = FieldSchemaMaterializationDisposition.RequireTargetRuntime },
+                    new FieldSchemaMaterializationPlan { FieldId = runtimeFieldId, InternalName = "_dlc_DocId", TypeAsString = "Text", Role = FieldSchemaRole.InheritedFromParent, Disposition = FieldSchemaMaterializationDisposition.RequireTargetRuntime }
+                }
+            };
+            var probe = new ContentTypeTargetProbe
+            {
+                Availability = EvidenceAvailability.Captured,
+                CanManageContentTypes = true
+            };
+
+            var strict = ContentTypeTargetAdmissionEvaluator.Evaluate(childPlan, probe);
+            var planning = ContentTypeTargetAdmissionEvaluator.Evaluate(childPlan, probe, context);
+
+            Assert.IsFalse(strict.IsEligible);
+            Assert.IsTrue(planning.IsEligible);
+            Assert.AreEqual(ContentTypeMaterializationDisposition.CreateOwned, planning.Disposition);
+            Assert.IsTrue(planning.Warnings.Any(value => value.Contains("strict fresh parent readback")));
+            Assert.IsTrue(planning.Warnings.Any(value => value.Contains("platform-feature transaction")));
+        }
+
+        [TestMethod]
+        public void UnresolvedTaxonomyMappingPreservesMissingTermSetIdentity()
+        {
+            var sourceStoreId = Guid.Parse("e385fb40-52d4-4fae-9c5b-3e8ff8a5878e");
+            var targetStoreId = Guid.Parse("c5e18914-52aa-4047-8ef6-f9654987b925");
+            var missingSetId = Guid.Parse("4e691f0e-5ccf-4b99-a3aa-f66b03e98a37");
+            var derivedAbsentSetId = Guid.Parse("e318d4cb-6d03-5d29-90c3-7c554147e0f2");
+            var field = CreateField(
+                Guid.Parse("42387623-5ddb-4764-94ea-e9d826afa77c"),
+                "ActivityName",
+                "TaxonomyFieldType",
+                FieldSchemaRole.DirectBinding,
+                "<Field ID=\"{42387623-5ddb-4764-94ea-e9d826afa77c}\" Name=\"ActivityName\" Type=\"TaxonomyFieldType\" />");
+            field.Taxonomy = new TaxonomyFieldBindingSnapshot
+            {
+                SourceTermStoreId = sourceStoreId,
+                SourceTermSetId = missingSetId,
+                HiddenTextFieldId = Guid.Parse("cfd9f3e8-ce6f-4dc0-a87f-18256c8d4dc3")
+            };
+            var schema = new ContentTypeSchemaSnapshot
+            {
+                EvidenceState = ContentTypeSchemaEvidenceState.Readable,
+                Availability = EvidenceAvailability.Captured,
+                SourceWebUrl = "https://source.sharepoint.com/teams/campusipkits",
+                ContentTypeId = "0x010100AA0011",
+                Name = "IPKit Guidance",
+                ParentContentTypeId = "0x010100AA",
+                ParentContentTypeName = "Enterprise Wiki Page",
+                RequiredFieldLinks = new List<ContentTypeFieldLinkSnapshot> { Link(field) },
+                RequiredFieldClosure = new List<FieldSchemaSnapshot> { field }
+            };
+            var mapping = new TaxonomyTargetMapping
+            {
+                SourceTermStoreId = sourceStoreId,
+                SourceTermSetId = missingSetId,
+                TargetTermStoreId = targetStoreId,
+                TargetTermSetId = derivedAbsentSetId,
+                Mode = TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference,
+                UnresolvedReferenceTargetVerifiedAbsent = true,
+                UnresolvedReferenceEvidenceSha256 = new string('a', 64)
+            };
+
+            var plan = ContentTypeSchemaPlanner.CreateRequiredClosure(schema, new[] { mapping });
+            var fieldPlan = plan.Fields.Single();
+
+            Assert.AreEqual(TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference, fieldPlan.TaxonomyMappingMode);
+            Assert.AreEqual(missingSetId, fieldPlan.SourceTermSetId);
+            Assert.AreEqual(derivedAbsentSetId, fieldPlan.TargetTermSetId);
+            Assert.AreEqual(new string('a', 64), fieldPlan.UnresolvedReferenceEvidenceSha256);
+            StringAssert.Contains(fieldPlan.Reason, "source GUID");
         }
 
         private static PublishingPageLayoutSnapshot CreatePartialRuntimeLayout()

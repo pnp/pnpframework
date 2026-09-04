@@ -5,6 +5,7 @@ using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
 using PnP.Framework.Migration.Schema.ContentTypes;
 using PnP.Framework.Migration.Schema.Fields;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,10 +42,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             ListDependencySnapshot source,
             ListMaterializationPlan listPlan,
             bool listBlocked,
-            IDictionary<string, PageIngredientAction> actions)
+            IDictionary<string, PageIngredientAction> actions,
+            bool transactionDependencyProjection)
         {
-            AddListFields(source, listPlan, listBlocked, actions);
-            AddListContentTypes(source, listPlan, listBlocked, actions);
+            AddListFields(source, listPlan, listBlocked, actions, transactionDependencyProjection);
+            AddListContentTypes(source, listPlan, listBlocked, actions, transactionDependencyProjection);
         }
 
         private static void ProjectSharedContentType(
@@ -53,7 +55,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             IDictionary<string, PageIngredientAction> actions)
         {
             var scope = SchemaScope(sourceSchema);
-            var blocked = schemaPlan == null || !schemaPlan.IsExecutable;
+            var blocked = schemaPlan == null || IsContentTypeObjectUnavailable(schemaPlan.Schema);
             PublishingPageIngredientActionFactory.Add(actions, PublishingPageIngredientActionFactory.Create(
                 PublishingPageIngredientIds.SiteContentType(scope, sourceSchema.ContentTypeId),
                 blocked ? IngredientCapability.Incompatible : IngredientCapability.Available,
@@ -76,9 +78,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             foreach (var sourceField in sourceSchema.RequiredFieldClosure.Where(value => value != null))
             {
                 plannedFields.TryGetValue(sourceField.Id, out var fieldPlan);
-                var mapping = blocked || fieldPlan == null
+                var mapping = fieldPlan == null
                     ? (IngredientCapability.Incompatible, IngredientDisposition.Block, "none")
-                    : Map(fieldPlan.Disposition);
+                    : Map(fieldPlan);
                 PublishingPageIngredientActionFactory.Add(actions, PublishingPageIngredientActionFactory.Create(
                     PublishingPageIngredientIds.SiteField(scope, sourceField.Id),
                     mapping.Item1,
@@ -99,13 +101,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             ListDependencySnapshot source,
             ListMaterializationPlan listPlan,
             bool listBlocked,
-            IDictionary<string, PageIngredientAction> actions)
+            IDictionary<string, PageIngredientAction> actions,
+            bool transactionDependencyProjection)
         {
             var plans = listPlan.Fields.ToDictionary(value => value.SourceFieldId);
             foreach (var field in source.Fields.Where(value => value != null))
             {
                 plans.TryGetValue(field.Id, out var fieldPlan);
-                var mapping = listBlocked || fieldPlan == null
+                var mapping = (!transactionDependencyProjection && listBlocked) || fieldPlan == null
                     ? (IngredientCapability.Incompatible, IngredientDisposition.Block, "none")
                     : Map(fieldPlan.Disposition);
                 var targetIdentity = listPlan.TargetRootFolderServerRelativeUrl + "#field:" + field.InternalName;
@@ -129,24 +132,45 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             ListDependencySnapshot source,
             ListMaterializationPlan listPlan,
             bool listBlocked,
-            IDictionary<string, PageIngredientAction> actions)
+            IDictionary<string, PageIngredientAction> actions,
+            bool transactionDependencyProjection)
         {
+            var capturedParents = new HashSet<string>(
+                source.SiteContentTypes.Where(value => value != null).Select(value => value.ContentTypeId),
+                StringComparer.OrdinalIgnoreCase);
             foreach (var contentType in source.ContentTypes.Where(value => value != null))
             {
+                var missingParent = !string.IsNullOrWhiteSpace(contentType.ParentId)
+                    && !ContentTypeRuntimeCatalog.IsTargetRuntime(contentType.ParentId)
+                    && !capturedParents.Contains(contentType.ParentId);
+                var blocked = (!transactionDependencyProjection && listBlocked) || missingParent;
                 PublishingPageIngredientActionFactory.Add(actions, PublishingPageIngredientActionFactory.Create(
                     PublishingPageIngredientIds.ListContentType(source.SourceWebId, source.SourceListId, contentType.Id),
-                    listBlocked ? IngredientCapability.Incompatible : IngredientCapability.Available,
-                    listBlocked ? IngredientDisposition.Block : IngredientDisposition.Preserve,
-                    listBlocked ? "none" : "materialize-list-content-type-membership",
+                    blocked ? IngredientCapability.Incompatible : IngredientCapability.Available,
+                    blocked ? IngredientDisposition.Block : IngredientDisposition.Preserve,
+                    blocked ? "none" : "materialize-list-content-type-membership",
                     "policy.list-content-type.membership",
-                    listBlocked
-                        ? "The owning List has no executable materialization plan."
+                    missingParent
+                        ? "The List-local Content Type references a custom parent whose exact site Content Type closure is absent."
+                        : listBlocked && !transactionDependencyProjection
+                            ? "The owning List has no executable materialization plan."
                         : "Create or reuse the captured List content type membership and apply its field links and ordering.",
-                    listBlocked ? null : listPlan.TargetRootFolderServerRelativeUrl + "#content-type:" + contentType.Id,
-                    listBlocked
+                    blocked ? null : listPlan.TargetRootFolderServerRelativeUrl + "#content-type:" + contentType.Id,
+                    blocked
                         ? null
                         : $"The List receipt maps source Content Type '{contentType.Id}' to a verified target Content Type ID."));
             }
+        }
+
+        private static bool IsContentTypeObjectUnavailable(ContentTypeMaterializationPlan plan)
+        {
+            if (plan == null)
+            {
+                return true;
+            }
+
+            return plan.Disposition == ContentTypeMaterializationDisposition.Block
+                && !(plan.Fields?.Any(value => value?.Disposition == FieldSchemaMaterializationDisposition.Block) ?? false);
         }
 
         private static (IngredientCapability Capability, IngredientDisposition Disposition, string Realization) Map(
@@ -186,6 +210,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                 default:
                     return (IngredientCapability.Incompatible, IngredientDisposition.Block, "none");
             }
+        }
+
+        private static (IngredientCapability Capability, IngredientDisposition Disposition, string Realization) Map(
+            FieldSchemaMaterializationPlan field)
+        {
+            return field.TaxonomyMappingMode == TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference
+                ? (IngredientCapability.Available, IngredientDisposition.Transform, "create-schema-preserving-unresolved-taxonomy-reference")
+                : Map(field.Disposition);
         }
 
         private static ContentTypeClosureNodePlan FindSchemaPlan(

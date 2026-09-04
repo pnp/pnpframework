@@ -4,6 +4,7 @@ using PnP.Framework.Migration.Pages.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
 using PnP.Framework.Migration.Pages.References;
+using PnP.Framework.Migration.Topology;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
             PublishingPageTargetLifecycle targetLifecycle,
             PublishingPageLayoutMaterializationPlan layoutPlan,
             PublishingPageLayoutTargetProbe layoutProbe,
-            ICollection<string> blockers)
+            ICollection<string> blockers,
+            TopologyTargetAnalysis dependencyTopology = null)
         {
             Microsoft.SharePoint.Client.List ignored;
             return Inspect(
@@ -33,7 +35,38 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 layoutProbe,
                 blockers,
                 out ignored,
-                includeListInventory: false);
+                includeListInventory: false,
+                resolvePageCollision: false,
+                pageOriginalIdentifier: null,
+                dependencyTopology: dependencyTopology);
+        }
+
+        public static PublishingPageTargetSnapshot InspectForPlanning(
+            ClientContext context,
+            string targetPagePath,
+            string pageOriginalIdentifier,
+            IEnumerable<PageReferenceAction> dependencies,
+            PublishingPageTargetLifecycle targetLifecycle,
+            PublishingPageLayoutMaterializationPlan layoutPlan,
+            PublishingPageLayoutTargetProbe layoutProbe,
+            ICollection<string> blockers,
+            out Microsoft.SharePoint.Client.List pages,
+            bool includeListInventory = false,
+            TopologyTargetAnalysis dependencyTopology = null)
+        {
+            return Inspect(
+                context,
+                targetPagePath,
+                dependencies,
+                targetLifecycle,
+                layoutPlan,
+                layoutProbe,
+                blockers,
+                out pages,
+                includeListInventory,
+                resolvePageCollision: true,
+                pageOriginalIdentifier: pageOriginalIdentifier,
+                dependencyTopology: dependencyTopology);
         }
 
         public static PublishingPageTargetSnapshot Inspect(
@@ -45,7 +78,37 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
             PublishingPageLayoutTargetProbe layoutProbe,
             ICollection<string> blockers,
             out Microsoft.SharePoint.Client.List pages,
-            bool includeListInventory = false)
+            bool includeListInventory = false,
+            TopologyTargetAnalysis dependencyTopology = null)
+        {
+            return Inspect(
+                context,
+                targetPagePath,
+                dependencies,
+                targetLifecycle,
+                layoutPlan,
+                layoutProbe,
+                blockers,
+                out pages,
+                includeListInventory,
+                resolvePageCollision: false,
+                pageOriginalIdentifier: null,
+                dependencyTopology: dependencyTopology);
+        }
+
+        private static PublishingPageTargetSnapshot Inspect(
+            ClientContext context,
+            string targetPagePath,
+            IEnumerable<PageReferenceAction> dependencies,
+            PublishingPageTargetLifecycle targetLifecycle,
+            PublishingPageLayoutMaterializationPlan layoutPlan,
+            PublishingPageLayoutTargetProbe layoutProbe,
+            ICollection<string> blockers,
+            out Microsoft.SharePoint.Client.List pages,
+            bool includeListInventory,
+            bool resolvePageCollision,
+            string pageOriginalIdentifier,
+            TopologyTargetAnalysis dependencyTopology)
         {
             var web = context.Web;
             if (!web.IsPropertyAvailable("Url")
@@ -54,7 +117,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 || !web.IsPropertyAvailable("Configuration")
                 || !context.Site.IsPropertyAvailable("ServerRelativeUrl"))
             {
-                context.Load(web, value => value.Url, value => value.ServerRelativeUrl, value => value.WebTemplate, value => value.Configuration);
+                context.Load(web, value => value.Id, value => value.Url, value => value.ServerRelativeUrl, value => value.WebTemplate, value => value.Configuration);
                 context.Load(context.Site, site => site.ServerRelativeUrl);
                 context.ExecuteQueryRetry();
             }
@@ -63,7 +126,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 WebUrl = web.Url.TrimEnd('/'),
                 WebServerRelativeUrl = web.ServerRelativeUrl,
                 WebTemplate = web.WebTemplate,
-                WebConfiguration = web.Configuration
+                WebConfiguration = web.Configuration,
+                PreferredTargetPageServerRelativeUrl = targetPagePath,
+                TargetPageServerRelativeUrl = targetPagePath
             };
 
             var expectedDirectory = PagePath.GetDirectoryName(targetPagePath);
@@ -127,9 +192,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 : new Uri(new Uri(web.Url).GetLeftPart(UriPartial.Authority) + PagePath.Encode(layoutProbe.TargetServerRelativeUrl)).AbsoluteUri;
 
             var actualDirectory = pages.RootFolder.ServerRelativeUrl;
-            if (!string.Equals(expectedDirectory, actualDirectory, StringComparison.OrdinalIgnoreCase))
+            if (!PagePath.IsWithin(expectedDirectory, actualDirectory))
             {
-                blockers.Add($"The current Publishing Page writer requires the target page in the root of '{actualDirectory}'.");
+                blockers.Add($"The target Page path '{targetPagePath}' is outside the publishing Pages library '{actualDirectory}'.");
             }
 
             var dependencyPaths = dependencies
@@ -138,18 +203,27 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 .Where(path => !string.IsNullOrWhiteSpace(path))
                 .Distinct(StringComparer.OrdinalIgnoreCase)
                 .ToArray();
-            foreach (var path in dependencyPaths.Where(path => !PagePath.IsWithin(path, web.ServerRelativeUrl)))
+            var dependencyOwners = new Dictionary<string, Web>(StringComparer.OrdinalIgnoreCase);
+            foreach (var path in dependencyPaths)
             {
-                blockers.Add($"Planned dependency target escapes the target web boundary: {path}");
+                var owner = ResolveDependencyOwner(context, web, path, dependencyTopology);
+                if (owner == null)
+                {
+                    blockers.Add($"Planned dependency target is outside the reviewed target topology: {path}");
+                    continue;
+                }
+                dependencyOwners[path] = owner;
             }
 
             var pathsToProbe = new[] { targetPagePath }
-                .Concat(dependencyPaths.Where(path => PagePath.IsWithin(path, web.ServerRelativeUrl)))
+                .Concat(dependencyOwners.Keys)
                 .Distinct(StringComparer.OrdinalIgnoreCase)
                 .ToArray();
             var files = pathsToProbe.ToDictionary(
                 path => path,
-                path => web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(path)),
+                path => (string.Equals(path, targetPagePath, StringComparison.OrdinalIgnoreCase)
+                    ? web
+                    : dependencyOwners[path]).GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(path)),
                 StringComparer.OrdinalIgnoreCase);
             foreach (var file in files.Values)
             {
@@ -166,17 +240,41 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 files = null;
             }
 
-            snapshot.TargetPageExists = files == null
+            snapshot.PreferredTargetPageExists = files == null
                 ? PageFileProbe.Exists(context, targetPagePath)
                 : files[targetPagePath].Exists;
+            snapshot.TargetPageExists = snapshot.PreferredTargetPageExists;
+            if (snapshot.PreferredTargetPageExists && resolvePageCollision)
+            {
+                if (string.IsNullOrWhiteSpace(pageOriginalIdentifier))
+                {
+                    throw new ArgumentException("A stable Page source identity is required for planning-time collision resolution.", nameof(pageOriginalIdentifier));
+                }
+                var targetFolder = web.GetFolderByServerRelativePath(ResourcePath.FromDecodedUrl(expectedDirectory));
+                context.Load(targetFolder.Files, values => values.Include(value => value.ServerRelativeUrl));
+                context.ExecuteQueryRetry();
+                var resolution = PublishingPageTargetPathResolver.Resolve(
+                    targetPagePath,
+                    pageOriginalIdentifier,
+                    targetFolder.Files.AsEnumerable().Select(value => value.ServerRelativeUrl));
+                snapshot.TargetPageServerRelativeUrl = resolution.TargetPageServerRelativeUrl;
+                snapshot.TargetPathCollisionResolved = resolution.CollisionResolved;
+                snapshot.TargetPathResolutionReason = resolution.Reason;
+                snapshot.TargetPageExists = targetFolder.Files.AsEnumerable().Any(value => string.Equals(
+                    Uri.UnescapeDataString(value.ServerRelativeUrl),
+                    Uri.UnescapeDataString(resolution.TargetPageServerRelativeUrl),
+                    StringComparison.OrdinalIgnoreCase));
+            }
             if (snapshot.TargetPageExists)
             {
-                blockers.Add($"Create-only target page already exists: {targetPagePath}");
+                blockers.Add($"Create-only target page already exists: {snapshot.TargetPageServerRelativeUrl}");
             }
 
-            foreach (var path in dependencyPaths.Where(path => PagePath.IsWithin(path, web.ServerRelativeUrl)))
+            foreach (var path in dependencyOwners.Keys)
             {
-                var exists = files == null ? PageFileProbe.Exists(context, path) : files[path].Exists;
+                var exists = files == null
+                    ? FileExists(context, dependencyOwners[path], path)
+                    : files[path].Exists;
                 if (exists)
                 {
                     snapshot.ExistingDependencyPaths.Add(path);
@@ -185,6 +283,46 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
             }
 
             return snapshot;
+        }
+
+        private static Web ResolveDependencyOwner(
+            ClientContext context,
+            Web pageWeb,
+            string targetPath,
+            TopologyTargetAnalysis topology)
+        {
+            if (PagePath.IsWithin(targetPath, pageWeb.ServerRelativeUrl))
+            {
+                return pageWeb;
+            }
+
+            var candidate = topology?.SiteCollections
+                .SelectMany(value => value.Webs ?? Array.Empty<TopologyWebTargetProbe>())
+                .Where(value => value != null
+                    && value.Exists
+                    && value.TargetWebId.HasValue
+                    && !string.IsNullOrWhiteSpace(value.TargetServerRelativeUrl)
+                    && PagePath.IsWithin(targetPath, value.TargetServerRelativeUrl))
+                .OrderByDescending(value => value.TargetServerRelativeUrl.Length)
+                .FirstOrDefault();
+            return candidate?.TargetWebId == null
+                ? null
+                : context.Site.OpenWebById(candidate.TargetWebId.Value);
+        }
+
+        private static bool FileExists(ClientContext context, Web owner, string path)
+        {
+            var file = owner.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(path));
+            context.Load(file, value => value.Exists);
+            try
+            {
+                context.ExecuteQueryRetry();
+                return file.Exists;
+            }
+            catch (ServerException exception) when (IsMissing(exception))
+            {
+                return false;
+            }
         }
 
         private static bool IsMissing(ServerException exception)

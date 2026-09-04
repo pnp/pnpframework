@@ -10,7 +10,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
             Uri sourcePageWebUrl,
             Uri sourceSiteCollectionUrl,
             Uri targetPageWebUrl,
-            Uri targetSiteCollectionUrl)
+            Uri targetSiteCollectionUrl,
+            bool allowExternalResourceReferences)
         {
             if (resource == null || resource.Reference == null)
             {
@@ -34,6 +35,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                 || string.IsNullOrWhiteSpace(resource.ResolvedSourceUrl)
                 || !Uri.TryCreate(resource.ResolvedSourceUrl, UriKind.Absolute, out sourceUri))
             {
+                if (TryCreatePreservedExternal(resource, allowExternalResourceReferences, out var preserved))
+                {
+                    return preserved;
+                }
+
                 return Block(resource, "Exact source bytes and an absolute source URI are required before copying a Page Layout resource.");
             }
 
@@ -49,6 +55,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
             }
             else
             {
+                if (TryCreatePreservedExternal(resource, allowExternalResourceReferences, out var preserved))
+                {
+                    return preserved;
+                }
+
                 return Block(resource, "Only source Page Web or site-collection SiteAssets and Style Library files have a reviewed target mapping.");
             }
 
@@ -66,6 +77,33 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                 TargetReference = targetReference,
                 Reason = "Copy exact source bytes create-only to the corresponding target-owned asset path and rewrite the Page Layout reference."
             };
+        }
+
+        private static bool TryCreatePreservedExternal(
+            PublishingPageLayoutResourceSnapshot resource,
+            bool allowExternalResourceReferences,
+            out PublishingPageLayoutResourceMaterializationPlan plan)
+        {
+            plan = null;
+            if (!allowExternalResourceReferences
+                || string.IsNullOrWhiteSpace(resource.Reference?.Value)
+                || !Uri.TryCreate(resource.Reference.Value.Trim(), UriKind.Absolute, out var sourceUri)
+                || !string.Equals(sourceUri.Scheme, Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
+            plan = new PublishingPageLayoutResourceMaterializationPlan
+            {
+                SourceReference = resource.Reference.Value,
+                SourceUrl = sourceUri.AbsoluteUri,
+                SourceEvidenceState = resource.EvidenceState,
+                Disposition = PublishingPageLayoutResourceMaterializationDisposition.PreserveExternal,
+                TargetReference = resource.Reference.Value,
+                Reason = "Retain the exact authored absolute HTTPS reference because external references are allowed. "
+                    + $"The source payload remains '{resource.EvidenceState}', so the plan preserves the relationship without claiming or copying bytes."
+            };
+            return true;
         }
 
         private static PublishingPageLayoutResourceMaterializationPlan Block(

@@ -1,5 +1,6 @@
 using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
+using PnP.Framework.Migration.Pages.Ingredients;
 using PnP.Framework.Migration.Verification;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
             string message,
             ExecutionAdmissionFailure admissionFailure)
         {
+            var frontier = package.Plan.ExecutionFrontier;
             return new PublishingPageImportReceipt
             {
                 OperationId = operationId,
@@ -64,6 +66,16 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                 TargetWebUrl = package.Plan.TargetWebUrl,
                 TargetPageServerRelativeUrl = package.Plan.TargetPageServerRelativeUrl,
                 ExecutionStatus = status,
+                PartialExecution = frontier?.IsPartial == true,
+                ExecutionFrontier = frontier,
+                DeferredIngredientCount = frontier?.Decisions.Count(value => value != null
+                    && (value.State == PageIngredientExecutionState.Deferred
+                        || value.State == PageIngredientExecutionState.SkippedByDeferredDependency)) ?? 0,
+                AuthorizationBlockedIngredientCount = frontier?.Decisions.Count(value => value != null
+                    && (value.State == PageIngredientExecutionState.AuthorizationBlocked
+                        || value.State == PageIngredientExecutionState.SkippedByAuthorizationDependency)) ?? 0,
+                ApprovedLifecycle = package.Plan.TargetLifecycle,
+                ExpectedLifecycle = package.Plan.TargetLifecycle,
                 AdmissionFailure = admissionFailure,
                 MutationStarted = mutationStarted,
                 Steps = recorder.Steps,

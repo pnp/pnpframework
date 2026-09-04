@@ -3,12 +3,14 @@ using PnP.Framework.Migration.Lists.Packaging;
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Pages.Content;
 using PnP.Framework.Migration.Pages.Ingredients;
+using PnP.Framework.Migration.Pages.Planning;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Pages.Publishing.Ingredients;
 using PnP.Framework.Migration.Pages.Publishing.Layouts.Packaging;
 using PnP.Framework.Migration.Pages.Publishing.Lifecycle;
 using PnP.Framework.Migration.Pages.Publishing.Packaging.Taxonomy;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
+using PnP.Framework.Migration.Pages.Publishing.Verification;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,7 +36,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             }, artifactStore);
 
             var plan = package.Plan;
-            ValidatePlanShape(plan);
+            ValidatePlanShape(package.Snapshot, plan);
             PublishingPageLayoutPackageValidator.ValidatePlan(
                 plan.PageLayoutName,
                 plan.IsExecutable,
@@ -49,6 +51,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             ValidateTopology(package, plan);
             ListMigrationPlanValidator.Validate(package.Snapshot.ListDependencies, plan.ListMigration);
             ValidateRuntimeVerification(plan);
+            ValidatePlanningIngredientGraph(package.Snapshot, plan);
             if (!string.Equals(plan.SourceSnapshotDigest, package.SnapshotDigest, StringComparison.OrdinalIgnoreCase))
             {
                 throw new InvalidDataException("The migration plan does not reference the sealed snapshot in this package.");
@@ -61,16 +64,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
 
             ValidateActionCoverage(package.Snapshot, plan);
             ValidateDerivedIngredientActions(package.Snapshot, plan);
-            ValidateIngredientActions(package.Snapshot.IngredientGraph, plan);
+            ValidateIngredientActions(package.Snapshot, plan.IngredientGraph, plan);
             ValidateExpectedContent(package, plan);
             var derivedLifecycle = PublishingPageLifecyclePolicy.DeriveTargetLifecycle(package.Snapshot.Lifecycle);
             if (plan.TargetLifecycle != derivedLifecycle)
             {
                 throw new InvalidDataException($"The planned lifecycle '{plan.TargetLifecycle}' does not match the source-derived lifecycle '{derivedLifecycle}'.");
             }
-            var expectedState = plan.IsExecutable
-                ? PublishingPagePackageState.ApprovalReady
-                : PublishingPagePackageState.Blocked;
+            var expectedState = PublishingPagePackageStatePolicy.Derive(plan);
             if (package.State != expectedState)
             {
                 throw new InvalidDataException($"Package state '{package.State}' does not match plan executability '{expectedState}'.");
@@ -97,7 +98,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             }
         }
 
-        private static void ValidatePlanShape(PublishingPageMigrationPlan plan)
+        private static void ValidatePlanShape(
+            PublishingPageCaptureBundle snapshot,
+            PublishingPageMigrationPlan plan)
         {
             if (plan.PlanningPolicy == null
                 || plan.TargetProbe == null
@@ -111,8 +114,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                 || plan.StorageAssertions == null
                 || plan.RuntimeVerification == null
                 || plan.RuntimeVerification.Requirements == null
+                || plan.IngredientGraph == null
+                || plan.IngredientGraph.Nodes == null
+                || plan.IngredientGraph.Edges == null
                 || plan.IngredientActions == null
                 || plan.IngredientIssues == null
+                || plan.ExecutionFrontier == null
+                || plan.ExecutionFrontier.Decisions == null
                 || plan.Blockers == null
                 || plan.Warnings == null)
             {
@@ -124,6 +132,38 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
                 || plan.PlanningPolicy.ListTargetOverrides == null)
             {
                 throw new InvalidDataException("The planning policy contains a null taxonomy schema mapping collection.");
+            }
+            PagePlanningTaxonomyMappingResolver.Normalize(plan.PlanningPolicy);
+
+            var expectedOriginalIdentifier = PublishingPageTargetOwnership.OriginalIdentifier(snapshot.Source);
+            if (!string.Equals(plan.OriginalIdentifier, expectedOriginalIdentifier, StringComparison.Ordinal))
+            {
+                throw new InvalidDataException("The Publishing Page original identifier does not match the captured Site, Web, and file identity.");
+            }
+            if (string.IsNullOrWhiteSpace(plan.TargetWebUrl)
+                || string.IsNullOrWhiteSpace(plan.TargetWebServerRelativeUrl)
+                || string.IsNullOrWhiteSpace(plan.PreferredTargetPageServerRelativeUrl)
+                || string.IsNullOrWhiteSpace(plan.TargetPageServerRelativeUrl))
+            {
+                throw new InvalidDataException("The migration plan must seal the target Web plus preferred and final target page paths.");
+            }
+
+            var pathChanged = !string.Equals(
+                plan.PreferredTargetPageServerRelativeUrl,
+                plan.TargetPageServerRelativeUrl,
+                StringComparison.OrdinalIgnoreCase);
+            if (pathChanged != plan.TargetPathCollisionResolved
+                || (pathChanged && string.IsNullOrWhiteSpace(plan.TargetPathResolutionReason))
+                || (!pathChanged && !string.IsNullOrWhiteSpace(plan.TargetPathResolutionReason)))
+            {
+                throw new InvalidDataException("The Publishing Page collision-resolution fields do not agree with the preferred and final target paths.");
+            }
+            if (!string.Equals(plan.TargetProbe.PreferredTargetPageServerRelativeUrl, plan.PreferredTargetPageServerRelativeUrl, StringComparison.OrdinalIgnoreCase)
+                || !string.Equals(plan.TargetProbe.TargetPageServerRelativeUrl, plan.TargetPageServerRelativeUrl, StringComparison.OrdinalIgnoreCase)
+                || plan.TargetProbe.TargetPathCollisionResolved != plan.TargetPathCollisionResolved
+                || !string.Equals(plan.TargetProbe.TargetPathResolutionReason, plan.TargetPathResolutionReason, StringComparison.Ordinal))
+            {
+                throw new InvalidDataException("The sealed target-page probe does not describe the preferred and final paths in the migration plan.");
             }
         }
 
@@ -139,6 +179,32 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             if (plan.Topology == null)
             {
                 return;
+            }
+            foreach (var site in plan.Topology.SiteCollections)
+            {
+                var sitePathChanged = !string.Equals(
+                    site.PreferredTargetSiteCollectionUrl,
+                    site.TargetSiteCollectionUrl,
+                    StringComparison.OrdinalIgnoreCase);
+                if (string.IsNullOrWhiteSpace(site.PreferredTargetSiteCollectionUrl)
+                    || string.IsNullOrWhiteSpace(site.TargetSiteCollectionUrl)
+                    || sitePathChanged != site.TargetSiteCollisionResolved
+                    || (sitePathChanged && string.IsNullOrWhiteSpace(site.TargetSiteResolutionReason))
+                    || (!sitePathChanged && !string.IsNullOrWhiteSpace(site.TargetSiteResolutionReason)))
+                {
+                    throw new InvalidDataException("A topology Site Collection mapping has inconsistent preferred/final collision fields.");
+                }
+                foreach (var web in site.Webs)
+                {
+                    if (string.IsNullOrWhiteSpace(web.PreferredTargetWebUrl)
+                        || string.IsNullOrWhiteSpace(web.PreferredTargetServerRelativeUrl)
+                        || string.IsNullOrWhiteSpace(web.TargetWebUrl)
+                        || string.IsNullOrWhiteSpace(web.TargetServerRelativeUrl)
+                        || !string.Equals(web.TargetSiteCollectionUrl, site.TargetSiteCollectionUrl, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new InvalidDataException("A topology Web mapping is missing preferred/final paths or references a different target Site Collection.");
+                    }
+                }
             }
             if (plan.TopologyTargetAnalysis == null
                 || !string.Equals(plan.TopologyTargetAnalysis.TopologyPlanDigest, plan.Topology.PlanDigest, StringComparison.OrdinalIgnoreCase))
@@ -193,14 +259,55 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             PublishingPageCaptureBundle snapshot,
             PublishingPageMigrationPlan plan)
         {
-            var expected = PublishingPageIngredientActionProjector.Project(snapshot, plan);
+            var expected = PublishingPageIngredientActionProjector.Project(snapshot, plan, plan.IngredientGraph);
             if (!PublishingPageValidationCanonical.Equals(expected, plan.IngredientActions))
             {
                 throw new InvalidDataException("The sealed ingredient actions do not match the typed domain plans and policy projection.");
             }
         }
 
+        private static void ValidatePlanningIngredientGraph(
+            PublishingPageCaptureBundle snapshot,
+            PublishingPageMigrationPlan plan)
+        {
+            var projectionVersion = plan.IngredientGraph.ProjectionVersion;
+            var supportedProjection = string.Equals(
+                    projectionVersion,
+                    PublishingPageIngredientGraphProjector.CurrentProjectionVersion,
+                    StringComparison.Ordinal)
+                || string.Equals(
+                    projectionVersion,
+                    PublishingPageIngredientGraphProjector.ProjectionVersionV6,
+                    StringComparison.Ordinal)
+                || string.Equals(
+                    projectionVersion,
+                    PublishingPageIngredientGraphProjector.ProjectionVersionV5,
+                    StringComparison.Ordinal)
+                || string.Equals(
+                    projectionVersion,
+                    PublishingPageIngredientGraphProjector.ProjectionVersionV4,
+                    StringComparison.Ordinal)
+                || string.Equals(
+                    projectionVersion,
+                    PublishingPageIngredientGraphProjector.ProjectionVersionV3,
+                    StringComparison.Ordinal)
+                || string.Equals(
+                    projectionVersion,
+                    PublishingPageIngredientGraphProjector.ProjectionVersionV2,
+                    StringComparison.Ordinal);
+            var expected = supportedProjection
+                ? PublishingPageIngredientGraphProjector.ProjectForVersion(snapshot, projectionVersion)
+                : null;
+            if (!string.Equals(plan.IngredientGraph.SchemaVersion, "pnp-page-ingredient-graph/v1", StringComparison.Ordinal)
+                || !supportedProjection
+                || !PublishingPageValidationCanonical.Equals(expected, plan.IngredientGraph))
+            {
+                throw new InvalidDataException("The planning ingredient graph does not match its supported typed-evidence projection.");
+            }
+        }
+
         private static void ValidateIngredientActions(
+            PublishingPageCaptureBundle snapshot,
             CanonicalPageIngredientGraph graph,
             PublishingPageMigrationPlan plan)
         {
@@ -220,10 +327,17 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             {
                 throw new InvalidDataException($"Ingredient action ID '{duplicateActionId.Key}' is duplicated.");
             }
-            var evaluation = PageIngredientPlanEvaluator.Evaluate(graph, plan.IngredientActions);
+            var evaluation = PageIngredientPlanEvaluator.Evaluate(
+                graph,
+                plan.IngredientActions,
+                PublishingPageIngredientAuthorizationPolicy.GetEvidence(snapshot));
             if (evaluation.Outcome != plan.MigrationOutcome)
             {
                 throw new InvalidDataException($"The sealed migration outcome '{plan.MigrationOutcome}' differs from evaluated outcome '{evaluation.Outcome}'.");
+            }
+            if (!PublishingPageValidationCanonical.Equals(evaluation.ExecutionFrontier, plan.ExecutionFrontier))
+            {
+                throw new InvalidDataException("The sealed ingredient execution frontier differs from dependency-closure evaluation.");
             }
             var expectedIssues = new HashSet<string>(evaluation.Issues.Select(IssueIdentity), StringComparer.Ordinal);
             var actualIssues = new HashSet<string>(plan.IngredientIssues.Select(IssueIdentity), StringComparer.Ordinal);

@@ -17,7 +17,13 @@ namespace PnP.Framework.Migration.Lists.Fields
             foreach (var field in fields.Where(value => value.TypeAsString.StartsWith("TaxonomyFieldType", StringComparison.OrdinalIgnoreCase)))
             {
                 var taxonomy = context.CastTo<TaxonomyField>(field);
-                context.Load(taxonomy, value => value.SspId, value => value.TermSetId, value => value.TextField, value => value.Open);
+                context.Load(
+                    taxonomy,
+                    value => value.SspId,
+                    value => value.TermSetId,
+                    value => value.AnchorId,
+                    value => value.TextField,
+                    value => value.Open);
                 taxonomyFields[field.Id] = taxonomy;
             }
             if (taxonomyFields.Count > 0)
@@ -68,6 +74,7 @@ namespace PnP.Framework.Migration.Lists.Fields
                     {
                         SourceTermStoreId = taxonomy.SspId,
                         SourceTermSetId = taxonomy.TermSetId,
+                        AnchorTermId = taxonomy.AnchorId,
                         HiddenTextFieldId = taxonomy.TextField,
                         Open = taxonomy.Open
                     }

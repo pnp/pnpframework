@@ -15,6 +15,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
 
         public IList<PageFieldImportResult> FieldResults { get; set; } = new List<PageFieldImportResult>();
 
+        public bool ResumedExistingOwnedPage { get; set; }
+
         public bool PlannedFieldFailure => FieldResults.Any(result => result.Attempted && !result.Succeeded);
     }
 }

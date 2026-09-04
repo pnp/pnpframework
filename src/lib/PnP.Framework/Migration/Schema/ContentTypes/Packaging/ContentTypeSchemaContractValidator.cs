@@ -1,5 +1,6 @@
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Schema.Fields;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -103,6 +104,24 @@ namespace PnP.Framework.Migration.Schema.ContentTypes.Packaging
             {
                 throw new InvalidDataException("A required content type field link is absent from the materialization field closure.");
             }
+            if (schema.Fields.Any(value => value.TaxonomyMappingMode == TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference
+                && (!value.TypeAsString.StartsWith("TaxonomyFieldType", StringComparison.OrdinalIgnoreCase)
+                    || !value.SourceTermSetId.HasValue
+                    || !value.TargetTermSetId.HasValue
+                    || !value.UnresolvedReferenceTargetVerifiedAbsent
+                    || !IsSha256(value.UnresolvedReferenceEvidenceSha256))))
+            {
+                throw new InvalidDataException("An unresolved taxonomy field plan requires complete source/target identities and digest-sealed target-absence evidence.");
+            }
+        }
+
+        private static bool IsSha256(string value)
+        {
+            return !string.IsNullOrWhiteSpace(value)
+                && value.Length == 64
+                && value.All(character => character >= '0' && character <= '9'
+                    || character >= 'a' && character <= 'f'
+                    || character >= 'A' && character <= 'F');
         }
     }
 }

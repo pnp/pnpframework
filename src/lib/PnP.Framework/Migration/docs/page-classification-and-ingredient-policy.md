@@ -82,7 +82,7 @@ Planning creates exactly one `PageIngredientAction` for every non-empty ingredie
 | `actionId` | Stable action identity inside the plan. |
 | `ingredientId` | Captured graph node governed by the action. |
 | `capability` | Whether the selected target can represent the ingredient. |
-| `disposition` | Semantic decision: preserve, transform, substitute, drop, delegate, or block. |
+| `disposition` | Semantic decision: preserve, transform, substitute, drop, delegate, defer, or authorization-block. |
 | `realization` | Concrete implementation mechanism. |
 | `targetIdentity` | Planned target path, field, Content Type, runtime, or other locator. |
 | `policyId` / `policyVersion` | Rule that made the decision. |
@@ -99,7 +99,8 @@ Disposition semantics are:
 | `Substitute` | Use a target-runtime supplied equivalent. |
 | `Drop` | Deliberately omit the ingredient and record reviewed loss. |
 | `Delegate` | Keep source evidence but assign restoration to another workflow. |
-| `Block` | The current plan cannot execute safely. |
+| `Defer` | Keep a known evidence, mapping, or capability gap in the nonterminal mitigation and re-planning queue. |
+| `Block` | Stop only this ingredient branch because the package retains digest-valid literal wire HTTP 401/403 evidence for it. |
 
 The source ASPX artifact is a useful example: the Publishing workflow does not deploy the source file as executable code. It creates a target Publishing Page shell and retains the exact source bytes as evidence, so this action is `Transform`, not `Preserve`.
 
@@ -111,16 +112,18 @@ List item capture and List field policy are intentionally asymmetric. Capture ke
 | source-owned supported field | `Preserve`; create or exactly reuse the schema and copy recognized values. |
 | lookup or taxonomy field | `Transform`; rewrite site-local identities through reviewed target mappings. |
 | unsupported field with no nonempty item, View, or Content Type consumer | `Drop`; retain its complete snapshot for later recovery. |
-| unsupported field used by captured content or schema | `Block`; omission would break a retained consumer. |
+| unsupported field used by captured content or schema | `Defer`; omission would break a retained consumer, so continue RCA/materializer work and re-plan. |
 
 ## Dependency closure and discard rules
 
-A retained consumer cannot silently lose a required dependency. `PageIngredientPlanEvaluator` blocks the plan when:
+A retained consumer cannot silently lose a required dependency. `PageIngredientPlanEvaluator` marks the action graph invalid when:
 
 - a non-empty ingredient has no action;
-- an action has an undefined or blocked disposition;
+- an action has an undefined disposition, or uses `Block` without matching literal HTTP 401/403 evidence;
 - a retained ingredient has unknown capability;
-- a required dependency is dropped, delegated, blocked, or missing.
+- a required dependency is dropped, delegated, or missing.
+
+A required dependency in `Defer` makes the aggregate `MitigationPending`; a required dependency in evidence-backed `Block` makes the affected branch `AuthorizationBlocked`.
 
 A dependency may be discarded only when one of these conditions holds:
 
@@ -143,10 +146,12 @@ The evaluator derives one `plan.migrationOutcome`:
 | `Exact` | All non-empty ingredients are preserved without transform, substitution, delegation, or loss. |
 | `ExecutableWithTransform` | The plan is executable but at least one ingredient changes representation. |
 | `ExecutableWithLoss` | The plan is executable but at least one ingredient is deliberately dropped or delegated. |
-| `Blocked` | An ingredient or required dependency is not safely executable. |
+| `MitigationPending` | At least one ingredient is `Defer`; retain it in the nonterminal mitigation queue. |
+| `AuthorizationBlocked` | At least one branch is `Block`, backed by retained literal wire HTTP 401/403 evidence. |
+| `Invalid` | The proposed action graph is inconsistent and returns to RCA; it is not an authorization stop. |
 | `Unknown` | No trustworthy evaluation exists; this is never importable. |
 
-`plan.isExecutable` additionally requires the workflow-wide blocker list to be empty. The ingredient outcome does not hide target topology, layout admission, collision, or policy blockers that live in typed domain plans.
+`plan.isExecutable` additionally requires the workflow-wide blocker list to be empty. The ingredient outcome does not hide target topology, layout admission, or policy blockers that live in typed domain plans. A foreign Web/List/Page collision observed before sealing is a deterministic retargeting decision at that node, not a terminal workflow blocker; a collision observed after approval is a stale-plan precondition failure that requires replanning.
 
 ## Realistic Enterprise Wiki example
 

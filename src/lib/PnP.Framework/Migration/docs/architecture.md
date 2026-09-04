@@ -94,6 +94,7 @@ source Site/Web ancestor closure
     -> Page Layout associated schema, rendering resources, and layout
     -> approved page-reference dependency artifacts
     -> lookup-provider Lists before lookup-consuming Lists
+         -> required SharePoint platform features and their promised runtime content types
          -> required site content type closure
          -> List identity, settings, fields, and List-local content types
          -> folders, items, documents, attachments, and Views
@@ -115,12 +116,13 @@ Folders and namespaces represent object domains or public workflow boundaries. T
 | `Migration.Diagnostics` | Typed issues and severity. |
 | `Migration.Evidence` | Evidence availability, lineage, and recovery fidelity. |
 | `Migration.Execution` | Operation state, mutation intents, mutation receipts, and journals. |
+| `Migration.Features` | Conditional SharePoint platform-feature requirements, target probes, activation, and runtime-contract verification. |
 | `Migration.Packaging` | Artifact references, canonical digests, and artifact stores. |
 | `Migration.Topology` | Source Site/Web evidence, target mapping, ownership, Web materialization, and runtime Web IDs. |
 | `Migration.Schema.Fields` | Portable site-field evidence, planning, target probes, and schema materialization. |
 | `Migration.Schema.ContentTypes` | Site content type closure, planning, target probes, materialization, and verification. |
 | `Migration.Lists` | Required List closure, lookup ordering, List-local schema, current content, Views, receipts, and verification. |
-| `Migration.Taxonomy` | Reviewed taxonomy schema mappings. |
+| `Migration.Taxonomy` | Taxonomy relationship evidence, reviewed mappings, required TermSet/Term asset closure, provenance, target classification, and asset planning. |
 | `Migration.Pages` | Page-wide identity, evidence, fields, references, security, classic Web Parts, and shared mechanics. |
 | `Migration.Pages.Markup` | Exact ASPX artifacts and parsed Page-directive evidence. |
 | `Migration.Pages.Runtime` | CLR-first runtime-adapter resolution. |
@@ -174,9 +176,11 @@ The planner produces typed domain plans plus one canonical `PageIngredientAction
 - expected persisted state;
 - semantic digest where ownership or approval requires it.
 
-Canonical ingredient dispositions are `Preserve`, `Transform`, `Substitute`, `Drop`, `Delegate`, and `Block`. A retained consumer cannot lose a required dependency unless its `Transform` explicitly releases a real required edge; invalid, duplicate, or non-transform releases block evaluation. The evaluator derives `Exact`, `ExecutableWithTransform`, `ExecutableWithLoss`, or `Blocked`; plan-wide target and policy blockers remain independently authoritative.
+Canonical ingredient dispositions are `Preserve`, `Transform`, `Substitute`, `Drop`, `Delegate`, `Defer`, and `Block`. `Defer` means nonterminal mitigation work: the ingredient is not executable in the current transaction, but it remains in the RCA/re-capture/re-plan queue. `Block` is reserved exclusively for an ingredient bound to retained, digest-valid literal wire HTTP `401` or `403` evidence. A retained consumer cannot lose a required dependency unless its `Transform` explicitly releases a real required edge. The evaluator derives `Exact`, `ExecutableWithTransform`, `ExecutableWithLoss`, `MitigationPending`, `AuthorizationBlocked`, or `Invalid`; only `AuthorizationBlocked` is an authorization stop.
 
 Every governed object must have one unambiguous plan result. Evidence outside the current execution boundary must remain visible instead of disappearing from the report.
+
+Conditional SharePoint capabilities are ingredients rather than hidden prerequisites. For example, a List content-type parent may require the Asset Library, Document Sets, or Video and Rich Media site feature. The plan records the feature ID, scope, dependency order, consuming content-type IDs, expected runtime content-type IDs, target probe, and activation action. A List collision does not make an independently activatable platform feature incompatible; the graph dependency keeps the consuming List gated while preserving the feature's own capability result.
 
 ## Target evidence model
 
@@ -190,6 +194,8 @@ The architecture distinguishes four target concepts:
 | Verification result | Whether a fresh readback satisfies the approved expectation. |
 
 A target URL in a plan is not proof that the Web exists. A target List ID in a receipt is not proof that its schema matches. The four concepts remain separate so that stale planning observations and incomplete mutations cannot masquerade as verified results.
+
+Default topology mapping preserves the complete source path relative to its Site Collection root. The target Site Collection leaf may receive an isolation suffix, and a proven foreign collision may receive a stable suffix at the colliding node; Web, library, folder, and page tails otherwise remain byte-for-byte path-equivalent after URL decoding. Missing target nodes are materialization work, not mapping failures.
 
 For Publishing Pages, target Content Type selection begins with the approved Page Layout association. Planning seals one exact Pages-library Content Type ID. Multiple descendants are an ambiguity blocker; Import and fresh readback require exact equality with the sealed ID rather than accepting any broad Enterprise Wiki descendant.
 

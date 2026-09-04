@@ -142,6 +142,13 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                     "The field is supplied by the exact target runtime or parent content type.");
             }
 
+            if (field.TypeAsString.StartsWith("Calculated", StringComparison.OrdinalIgnoreCase))
+            {
+                return Plan(field, ownership, FieldSchemaMaterializationDisposition.CreateOrReuseOwned,
+                    FieldSchemaCanonicalizer.RewriteForTarget(field.SchemaXml), null, null,
+                    "Create or reuse the exact source-owned calculated field schema; target SharePoint computes its value.");
+            }
+
             if (field.ReadOnly || field.Sealed)
             {
                 return Plan(field, ownership, FieldSchemaMaterializationDisposition.Block, null, null, null,
@@ -170,20 +177,44 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                     return Plan(field, ownership, FieldSchemaMaterializationDisposition.Block, null, null, null,
                         $"Taxonomy field requires an explicit target mapping for source store {field.Taxonomy.SourceTermStoreId:D} and term set {field.Taxonomy.SourceTermSetId:D}.");
                 }
+                if (mapping.Mode == TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference
+                    && (!mapping.UnresolvedReferenceTargetVerifiedAbsent
+                        || !IsSha256(mapping.UnresolvedReferenceEvidenceSha256)))
+                {
+                    return Plan(field, ownership, FieldSchemaMaterializationDisposition.Block, null, null, null,
+                        "An unresolved taxonomy reference requires digest-sealed evidence that the selected target TermSet GUID is absent.");
+                }
 
                 var targetSchema = FieldSchemaCanonicalizer.RewriteForTarget(
                     field.SchemaXml,
                     mapping.TargetTermStoreId,
                     mapping.TargetTermSetId,
                     field.Taxonomy.HiddenTextFieldId);
-                return Plan(field, ownership, FieldSchemaMaterializationDisposition.CreateOrReuseOwned, targetSchema,
+                var planned = Plan(field, ownership, FieldSchemaMaterializationDisposition.CreateOrReuseOwned, targetSchema,
                     mapping.TargetTermStoreId, mapping.TargetTermSetId,
-                    "Create or reuse the exact field GUID after rebinding taxonomy to the approved target store and term set.");
+                    mapping.Mode == TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference
+                        ? mapping.TargetTermSetId == field.Taxonomy.SourceTermSetId
+                            ? "Create or reuse the exact field GUID in the target Term Store while preserving the source-invalid TermSet GUID as an unresolved reference. Do not create, substitute, or repair the missing TermSet."
+                            : $"Create or reuse the exact field GUID with digest-derived absent target TermSet '{mapping.TargetTermSetId:D}' because source GUID '{field.Taxonomy.SourceTermSetId:D}' is already live at the target. Preserve the original source GUID in the sealed plan and do not create, substitute, or repair a TermSet asset."
+                        : "Create or reuse the exact field GUID after rebinding taxonomy to the selected target store and term set. Execution remains gated by reviewed taxonomy-asset admission and fresh readback.");
+                planned.TaxonomyMappingMode = mapping.Mode;
+                planned.UnresolvedReferenceTargetVerifiedAbsent = mapping.UnresolvedReferenceTargetVerifiedAbsent;
+                planned.UnresolvedReferenceEvidenceSha256 = mapping.UnresolvedReferenceEvidenceSha256;
+                return planned;
             }
 
             return Plan(field, ownership, FieldSchemaMaterializationDisposition.CreateOrReuseOwned,
                 FieldSchemaCanonicalizer.RewriteForTarget(field.SchemaXml), null, null,
                 "Create or reuse the exact field GUID from portable source schema.");
+        }
+
+        private static bool IsSha256(string value)
+        {
+            return !string.IsNullOrWhiteSpace(value)
+                && value.Length == 64
+                && value.All(character => character >= '0' && character <= '9'
+                    || character >= 'a' && character <= 'f'
+                    || character >= 'A' && character <= 'F');
         }
 
         private static FieldSchemaMaterializationPlan Plan(
@@ -212,8 +243,10 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 TargetPortableSchemaSha256 = targetSchemaXml == null ? null : FieldSchemaCanonicalizer.PortableDigest(targetSchemaXml),
                 SourceTermStoreId = field.Taxonomy?.SourceTermStoreId,
                 SourceTermSetId = field.Taxonomy?.SourceTermSetId,
+                SourceAnchorTermId = field.Taxonomy?.AnchorTermId,
                 TargetTermStoreId = targetTermStoreId,
                 TargetTermSetId = targetTermSetId,
+                TargetAnchorTermId = field.Taxonomy?.AnchorTermId,
                 HiddenTextFieldId = field.Taxonomy?.HiddenTextFieldId,
                 Reason = reason
             };

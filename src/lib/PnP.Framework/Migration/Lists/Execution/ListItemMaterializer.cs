@@ -27,6 +27,51 @@ namespace PnP.Framework.Migration.Lists.Execution
             IDictionary<string, string> contentTypeIds,
             IMigrationArtifactStore artifactStore)
         {
+            var selection = new ListMaterializationExecutionScope.ListSelection
+            {
+                SourceListId = source.SourceListId,
+                IncludeListObject = true,
+                ExactContentTypeInventory = true,
+                ExactItemInventory = true
+            };
+            foreach (var item in source.Items.Where(value => value != null))
+            {
+                selection.ItemIds.Add(item.SourceItemId);
+                if (item.Document != null)
+                {
+                    selection.DocumentItemIds.Add(item.SourceItemId);
+                }
+                foreach (var attachment in item.Attachments.Where(value => value != null))
+                {
+                    selection.AddAttachment(item.SourceItemId, attachment.FileName);
+                }
+                selection.ExactAttachmentInventoryItemIds.Add(item.SourceItemId);
+            }
+            return Ensure(
+                context,
+                targetList,
+                source,
+                plan,
+                selection,
+                dependencyReceipts,
+                contentTypeIds,
+                artifactStore);
+        }
+
+        public static IDictionary<int, int> Ensure(
+            ClientContext context,
+            List targetList,
+            ListDependencySnapshot source,
+            ListMaterializationPlan plan,
+            ListMaterializationExecutionScope.ListSelection selection,
+            IDictionary<Guid, ListMaterializationReceipt> dependencyReceipts,
+            IDictionary<string, string> contentTypeIds,
+            IMigrationArtifactStore artifactStore)
+        {
+            if (selection == null || selection.SourceListId != source.SourceListId)
+            {
+                throw new ArgumentException("The List item execution selection does not match the source List.", nameof(selection));
+            }
             EnsureReservedFields(context, targetList);
             context.Load(targetList.RootFolder, value => value.ServerRelativeUrl);
             context.ExecuteQueryRetry();
@@ -34,12 +79,15 @@ namespace PnP.Framework.Migration.Lists.Execution
             var targetItems = new Dictionary<int, ListItem>();
             foreach (var sourceItem in OrderItems(source.Items))
             {
-                var expectedDigest = ComputeItemDigest(sourceItem);
+                var includeItem = selection.ItemIds.Contains(sourceItem.SourceItemId);
+                var expectedDigest = includeItem ? ComputeItemDigest(sourceItem) : null;
                 ListItem targetItem;
                 if (existingBySourceId.TryGetValue(sourceItem.SourceItemId, out targetItem))
                 {
                     var observed = ReadString(targetItem, OriginalItemDigestFieldName);
-                    if (!string.IsNullOrWhiteSpace(observed) && !string.Equals(observed, expectedDigest, StringComparison.OrdinalIgnoreCase))
+                    if (includeItem
+                        && !string.IsNullOrWhiteSpace(observed)
+                        && !string.Equals(observed, expectedDigest, StringComparison.OrdinalIgnoreCase))
                     {
                         throw new InvalidDataException("Target List item provenance collision for source item " + sourceItem.SourceItemId + ".");
                     }
@@ -49,11 +97,19 @@ namespace PnP.Framework.Migration.Lists.Execution
                     targetItem = ListDocumentMaterializer.CreateItem(context, targetList, source, plan, sourceItem, artifactStore);
                 }
                 targetItems[sourceItem.SourceItemId] = targetItem;
-                ListItemValueWriter.Apply(context, targetList, targetItem, sourceItem, plan, dependencyReceipts, contentTypeIds, false);
-                ListAttachmentMaterializer.Ensure(context, targetItem, sourceItem.Attachments, artifactStore);
+                if (includeItem)
+                {
+                    ListItemValueWriter.Apply(context, targetList, targetItem, sourceItem, plan, dependencyReceipts, contentTypeIds, false);
+                }
+                if (selection.AttachmentNamesByItemId.ContainsKey(sourceItem.SourceItemId))
+                {
+                    ListAttachmentMaterializer.Ensure(context, targetItem, sourceItem.Attachments, artifactStore);
+                }
             }
 
-            foreach (var sourceItem in source.Items.OrderBy(value => value.SourceItemId))
+            foreach (var sourceItem in source.Items
+                         .Where(value => selection.ItemIds.Contains(value.SourceItemId))
+                         .OrderBy(value => value.SourceItemId))
             {
                 var targetItem = targetItems[sourceItem.SourceItemId];
                 ListItemValueWriter.Apply(context, targetList, targetItem, sourceItem, plan, dependencyReceipts, contentTypeIds, true);
@@ -157,13 +213,28 @@ namespace PnP.Framework.Migration.Lists.Execution
 
         internal static string ComputeItemDigest(ListItemSnapshot item)
         {
-            return MigrationDigest.ComputeSha256(MigrationContractSerializer.SerializeCanonical(item));
+            return MigrationDigest.ComputeSha256(MigrationContractSerializer.SerializeCanonical(
+                new ListItemCoreDigestContract
+                {
+                    SourceItemId = item.SourceItemId,
+                    SourceUniqueId = item.SourceUniqueId,
+                    Values = item.Values.Where(value => value != null).ToList()
+                }));
         }
 
         private static string ReadString(ListItem item, string field)
         {
             object value;
             return item.FieldValues.TryGetValue(field, out value) ? Convert.ToString(value, CultureInfo.InvariantCulture) : null;
+        }
+
+        private sealed class ListItemCoreDigestContract
+        {
+            public int SourceItemId { get; set; }
+
+            public Guid? SourceUniqueId { get; set; }
+
+            public IList<ListItemValueSnapshot> Values { get; set; } = new List<ListItemValueSnapshot>();
         }
     }
 }

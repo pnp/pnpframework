@@ -15,15 +15,27 @@ namespace PnP.Framework.Migration.Topology.Execution
             TopologyPlan plan,
             MigrationExecutionRecorder recorder)
         {
-            if (plan == null)
+            return Ensure(anchorContext, plan, plan, recorder);
+        }
+
+        public static TopologyMaterializationReceipt Ensure(
+            ClientContext anchorContext,
+            TopologyPlan approvedPlan,
+            TopologyPlan executionPlan,
+            MigrationExecutionRecorder recorder)
+        {
+            if (executionPlan == null)
             {
                 recorder.RecordAlreadySatisfied("topology.materialize", "The approved package has no source topology to materialize.");
                 return new TopologyMaterializationReceipt
                 {
                     FreshReadbackPassed = true,
+                    TopologyPlanDigest = approvedPlan?.PlanDigest,
+                    ApprovedTopologyPlanDigest = approvedPlan?.PlanDigest,
                     Diagnostics = new List<string> { "No topology closure was required." }
                 };
             }
+            var plan = executionPlan;
 
             if (!anchorContext.Web.IsPropertyAvailable("Url"))
             {
@@ -38,20 +50,62 @@ namespace PnP.Framework.Migration.Topology.Execution
                     + string.Join("; ", initial.Issues.Select(value => value.Message)));
             }
 
-            var result = new TopologyMaterializationReceipt { TopologyPlanDigest = plan.PlanDigest };
+            var result = new TopologyMaterializationReceipt
+            {
+                TopologyPlanDigest = approvedPlan?.PlanDigest ?? plan.PlanDigest,
+                ApprovedTopologyPlanDigest = approvedPlan?.PlanDigest,
+                ExecutionTopologyPlanDigest = plan.PlanDigest
+            };
             if (TryCompleteWithoutMutation(plan, initial, recorder, result))
             {
                 return result;
             }
 
+            var inspectionScope = TopologyTargetInspectionScope.Create(anchorContext, approvedHostUrl);
+            var initialSites = initial.SiteCollections.ToDictionary(value => value.SourceSiteId);
             foreach (var sitePlan in plan.SiteCollections.OrderBy(value => value.SourceSiteId))
             {
+                TopologySiteTargetProbe initialSite;
+                if (!initialSites.TryGetValue(sitePlan.SourceSiteId, out initialSite)
+                    || !initialSite.TargetSiteId.HasValue)
+                {
+                    throw new InvalidDataException(
+                        "The admitted target analysis has no runtime Site identity for source Site "
+                        + sitePlan.SourceSiteId.ToString("D") + ".");
+                }
+                var initialWebs = initialSite.Webs.ToDictionary(value => value.SourceWebId);
+                var materializedProbes = new Dictionary<Guid, TopologyWebTargetProbe>();
                 foreach (var webPlan in sitePlan.Webs.OrderBy(value => Depth(value.TargetServerRelativeUrl))
                              .ThenBy(value => value.TargetServerRelativeUrl, StringComparer.OrdinalIgnoreCase))
                 {
-                    var fresh = TopologyTargetInspector.Inspect(anchorContext, plan, approvedHostUrl);
-                    var probe = fresh.SiteCollections.Single(value => value.SourceSiteId == sitePlan.SourceSiteId)
-                        .Webs.Single(value => value.SourceWebId == webPlan.SourceWebId);
+                    TopologyWebTargetProbe probe;
+                    if (webPlan.Kind == TopologyNodeKind.SiteCollectionRoot)
+                    {
+                        if (!initialWebs.TryGetValue(webPlan.SourceWebId, out probe))
+                        {
+                            throw new InvalidDataException(
+                                "The admitted target analysis has no root-Web probe for source Web "
+                                + webPlan.SourceWebId.ToString("D") + ".");
+                        }
+                    }
+                    else
+                    {
+                        TopologyWebTargetProbe parentProbe;
+                        if (!webPlan.SourceParentWebId.HasValue
+                            || !materializedProbes.TryGetValue(webPlan.SourceParentWebId.Value, out parentProbe)
+                            || !parentProbe.TargetSiteId.HasValue
+                            || !parentProbe.TargetWebId.HasValue)
+                        {
+                            throw new InvalidDataException(
+                                "The direct target parent has not been materialized for source Web "
+                                + webPlan.SourceWebId.ToString("D") + ".");
+                        }
+                        probe = TopologyWebTargetInspector.Inspect(
+                            inspectionScope,
+                            webPlan,
+                            parentProbe.TargetSiteId.Value,
+                            parentProbe.TargetWebId.Value);
+                    }
                     if (!probe.IsAdmitted)
                     {
                         throw new InvalidOperationException("Fresh target Web preflight failed for '" + webPlan.TargetWebUrl + "': "
@@ -73,7 +127,12 @@ namespace PnP.Framework.Migration.Topology.Execution
                             disposition == TopologyMaterializationDisposition.RecoverInterruptedCreate
                                 ? "Recover and claim interrupted target Web '" + webPlan.TargetWebUrl + "'."
                                 : "Create and claim target Web '" + webPlan.TargetWebUrl + "'.",
-                            () => EnsureChild(anchorContext, plan, sitePlan, webPlan, disposition, approvedHostUrl),
+                            () => EnsureChild(
+                                anchorContext,
+                                inspectionScope,
+                                sitePlan,
+                                webPlan,
+                                probe),
                             value => MutationOutcome.Applied,
                             value => "Target Web " + value.TargetWebId.Value.ToString("D") + " passed exact provenance readback.");
                     }
@@ -92,6 +151,7 @@ namespace PnP.Framework.Migration.Topology.Execution
                         Disposition = disposition,
                         MappingDigest = TopologyPlanner.ComputeWebMappingDigest(webPlan)
                     });
+                    materializedProbes[webPlan.SourceWebId] = probe;
                 }
             }
             var final = TopologyTargetInspector.Inspect(anchorContext, plan, approvedHostUrl);
@@ -184,15 +244,18 @@ namespace PnP.Framework.Migration.Topology.Execution
 
         private static TopologyWebTargetProbe EnsureChild(
             ClientContext anchorContext,
-            TopologyPlan topology,
+            TopologyTargetInspectionScope inspectionScope,
             SiteCollectionMappingPlan sitePlan,
             WebMappingPlan plan,
-            TopologyMaterializationDisposition disposition,
-            string approvedHostUrl)
+            TopologyWebTargetProbe admittedProbe)
         {
             if (plan.Kind != TopologyNodeKind.ChildWeb || string.IsNullOrWhiteSpace(plan.TargetParentWebUrl))
             {
                 throw new InvalidOperationException("Only a planned child Web can be created or recovered.");
+            }
+            if (!admittedProbe.TargetSiteId.HasValue || !admittedProbe.TargetParentWebId.HasValue)
+            {
+                throw new InvalidDataException("The admitted target child-Web probe has no runtime Site/parent identity.");
             }
 
             using (var parentContext = anchorContext.Clone(plan.TargetParentWebUrl))
@@ -206,21 +269,25 @@ namespace PnP.Framework.Migration.Topology.Execution
                 }
 
                 Web target;
-                if (disposition == TopologyMaterializationDisposition.CreateOwned)
+                if (admittedProbe.Disposition == TopologyMaterializationDisposition.CreateOwned)
                 {
                     var parentPath = parent.ServerRelativeUrl.TrimEnd('/');
                     if (!plan.TargetServerRelativeUrl.StartsWith(parentPath + "/", StringComparison.OrdinalIgnoreCase))
                     {
                         throw new InvalidDataException("The planned child Web path is outside its target parent Web.");
                     }
-                    var segment = Uri.UnescapeDataString(plan.TargetServerRelativeUrl.Substring(parentPath.Length + 1));
-                    if (segment.IndexOf('/') >= 0)
+                    var relativePath = Uri.UnescapeDataString(plan.TargetServerRelativeUrl.Substring(parentPath.Length + 1));
+                    if (string.IsNullOrWhiteSpace(relativePath)
+                        || relativePath.IndexOf('/') >= 0
+                        || relativePath.IndexOf('\\') >= 0
+                        || relativePath == "."
+                        || relativePath == "..")
                     {
-                        throw new InvalidDataException("A child Web materializer accepts one direct URL segment only.");
+                        throw new InvalidDataException("The planned child Web URL must be one safe segment below its captured direct parent.");
                     }
                     target = parent.Webs.Add(new WebCreationInformation
                     {
-                        Url = segment,
+                        Url = relativePath,
                         Title = plan.TargetTitle,
                         Description = TopologyTargetInspector.InterruptedCreateDescription(plan),
                         Language = sitePlan.TargetLanguage <= 0 ? 1033 : sitePlan.TargetLanguage,
@@ -230,17 +297,19 @@ namespace PnP.Framework.Migration.Topology.Execution
                     parentContext.Load(target, value => value.Id, value => value.Url, value => value.AllProperties);
                     parentContext.ExecuteQueryRetry();
                 }
-                else if (disposition == TopologyMaterializationDisposition.RecoverInterruptedCreate)
+                else if (admittedProbe.Disposition == TopologyMaterializationDisposition.RecoverInterruptedCreate)
                 {
-                    target = parentContext.Site.OpenWebById(TopologyTargetInspector.Inspect(anchorContext, topology, approvedHostUrl)
-                        .SiteCollections.Single(value => value.SourceSiteId == sitePlan.SourceSiteId)
-                        .Webs.Single(value => value.SourceWebId == plan.SourceWebId).TargetWebId.Value);
+                    if (!admittedProbe.TargetWebId.HasValue)
+                    {
+                        throw new InvalidDataException("The interrupted target child-Web probe has no runtime Web identity.");
+                    }
+                    target = parentContext.Site.OpenWebById(admittedProbe.TargetWebId.Value);
                     parentContext.Load(target, value => value.Id, value => value.Url, value => value.AllProperties);
                     parentContext.ExecuteQueryRetry();
                 }
                 else
                 {
-                    throw new InvalidOperationException("Unexpected child Web materialization disposition: " + disposition + ".");
+                    throw new InvalidOperationException("Unexpected child Web materialization disposition: " + admittedProbe.Disposition + ".");
                 }
 
                 target.AllProperties[TopologyPlanner.WebOriginalIdentifierPropertyName] = plan.OriginalIdentifier;
@@ -249,9 +318,11 @@ namespace PnP.Framework.Migration.Topology.Execution
                 parentContext.ExecuteQueryRetry();
             }
 
-            var readback = TopologyTargetInspector.Inspect(anchorContext, topology, approvedHostUrl)
-                .SiteCollections.Single(value => value.SourceSiteId == sitePlan.SourceSiteId)
-                .Webs.Single(value => value.SourceWebId == plan.SourceWebId);
+            var readback = TopologyWebTargetInspector.Inspect(
+                inspectionScope,
+                plan,
+                admittedProbe.TargetSiteId.Value,
+                admittedProbe.TargetParentWebId.Value);
             if (readback.Disposition != TopologyMaterializationDisposition.ReuseOwned)
             {
                 throw new InvalidOperationException("Fresh target child-Web readback did not resolve exact migration ownership.");

@@ -38,9 +38,19 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             return "list:" + sourceWebId.ToString("D") + "/" + sourceListId.ToString("D");
         }
 
+        public static string PlatformFeature(Guid sourceSiteId, Guid featureId)
+        {
+            return "platform-feature:" + sourceSiteId.ToString("D") + "/" + featureId.ToString("D");
+        }
+
         public static string View(Guid sourceWebId, Guid sourceListId, Guid sourceViewId)
         {
             return "view:" + sourceWebId.ToString("D") + "/" + sourceListId.ToString("D") + "/" + sourceViewId.ToString("D");
+        }
+
+        public static string ViewRenderingResource(Guid sourceSiteId, string resourceId)
+        {
+            return "view-rendering-resource:" + sourceSiteId.ToString("D") + "/" + (resourceId ?? string.Empty);
         }
 
         public static string Web(Guid sourceSiteId, Guid sourceWebId)
@@ -86,6 +96,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
         public static string ListDocument(Guid sourceWebId, Guid sourceListId, int sourceItemId)
         {
             return "list-document:" + sourceWebId.ToString("D") + "/" + sourceListId.ToString("D") + "/" + sourceItemId;
+        }
+
+        public static string ListDocumentInformationProtection(Guid sourceWebId, Guid sourceListId, int sourceItemId)
+        {
+            return "list-document-information-protection:" + sourceWebId.ToString("D") + "/" + sourceListId.ToString("D") + "/" + sourceItemId;
         }
 
         public static string ListAttachment(Guid sourceWebId, Guid sourceListId, int sourceItemId, string fileName)

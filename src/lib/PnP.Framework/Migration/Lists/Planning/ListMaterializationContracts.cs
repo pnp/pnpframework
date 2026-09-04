@@ -3,6 +3,8 @@ using PnP.Framework.Migration.Lists.Capture;
 using PnP.Framework.Migration.Lists.Views;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Schema.ContentTypes;
+using PnP.Framework.Migration.Features;
+using PnP.Framework.Migration.Packaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +37,13 @@ namespace PnP.Framework.Migration.Lists.Planning
         CreateOrReuseWebPartView = 2,
         SkipPersonal = 3,
         Block = 4
+    }
+
+    public enum ListViewRenderingResourceMaterializationDisposition
+    {
+        CreateOrReuseExact = 1,
+        Block = 2,
+        PreserveReferenceOnly = 3
     }
 
     public sealed class ListTargetOverride
@@ -90,11 +99,46 @@ namespace PnP.Framework.Migration.Lists.Planning
         public string Reason { get; set; }
     }
 
+    public sealed class ListViewRenderingResourceMaterializationPlan
+    {
+        public string SourceResourceId { get; set; }
+
+        public ListViewRenderingResourceKind Kind { get; set; }
+
+        public string SourceAbsoluteUrl { get; set; }
+
+        public string SourceServerRelativeUrl { get; set; }
+
+        public string TargetAbsoluteUrl { get; set; }
+
+        public string TargetServerRelativeUrl { get; set; }
+
+        public ArtifactReference SourceArtifact { get; set; }
+
+        public string SourceContentBase64 { get; set; }
+
+        public ListViewRenderingResourceMaterializationDisposition Disposition { get; set; }
+
+        public string Reason { get; set; }
+
+        public bool IsExecutable => Disposition != ListViewRenderingResourceMaterializationDisposition.Block;
+    }
+
     public sealed class ListTargetProbe
     {
+        public string PreferredTargetRootFolderServerRelativeUrl { get; set; }
+
+        public string PreferredTargetTitle { get; set; }
+
         public string TargetWebUrl { get; set; }
 
         public string TargetRootFolderServerRelativeUrl { get; set; }
+
+        public string TargetTitle { get; set; }
+
+        public bool CollisionResolved { get; set; }
+
+        public string CollisionResolutionReason { get; set; }
 
         public bool TargetWebExists { get; set; }
 
@@ -136,9 +180,15 @@ namespace PnP.Framework.Migration.Lists.Planning
 
         public string TargetWebUrl { get; set; }
 
+        public string TargetSiteCollectionUrl { get; set; }
+
         public string TargetWebServerRelativeUrl { get; set; }
 
+        public string PreferredTargetRootFolderServerRelativeUrl { get; set; }
+
         public string TargetRootFolderServerRelativeUrl { get; set; }
+
+        public string PreferredTargetTitle { get; set; }
 
         public string TargetTitle { get; set; }
 
@@ -150,7 +200,11 @@ namespace PnP.Framework.Migration.Lists.Planning
 
         public IList<ListViewMaterializationPlan> Views { get; set; } = new List<ListViewMaterializationPlan>();
 
+        public IList<ListViewRenderingResourceMaterializationPlan> ViewRenderingResources { get; set; } = new List<ListViewRenderingResourceMaterializationPlan>();
+
         public IList<ContentTypeClosureNodePlan> SiteContentTypes { get; set; } = new List<ContentTypeClosureNodePlan>();
+
+        public IList<PlatformFeatureMaterializationPlan> RequiredFeatures { get; set; } = new List<PlatformFeatureMaterializationPlan>();
 
         public IList<MigrationIssue> Issues { get; set; } = new List<MigrationIssue>();
 
@@ -161,6 +215,8 @@ namespace PnP.Framework.Migration.Lists.Planning
         public bool IsExecutable => Disposition != ListMaterializationDisposition.Block
             && Issues.All(value => value.Severity != MigrationIssueSeverity.Blocker && value.Severity != MigrationIssueSeverity.Error)
             && SiteContentTypes.All(value => value.IsExecutable)
+            && RequiredFeatures.All(value => value.IsExecutable)
+            && ViewRenderingResources.All(value => value.IsExecutable)
             && (TargetProbe == null || TargetProbe.IsAdmitted);
     }
 
@@ -209,6 +265,8 @@ namespace PnP.Framework.Migration.Lists.Planning
         public int VerifiedContentTypeCount { get; set; }
 
         public int VerifiedViewCount { get; set; }
+
+        public int VerifiedViewRenderingResourceCount { get; set; }
 
         public int VerifiedItemCount { get; set; }
 

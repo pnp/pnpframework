@@ -101,6 +101,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Capture
             var references = PageReferenceSnapshotReader.Read(
                 sourceContext,
                 sourceCapture.Identity,
+                sourceTopology,
                 sourceCapture.PublishingPageContent,
                 sourceCapture.WebParts,
                 options,

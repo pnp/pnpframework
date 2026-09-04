@@ -4,7 +4,6 @@ using PnP.Framework.Migration.Packaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace PnP.Framework.Migration.Topology
 {
@@ -14,8 +13,6 @@ namespace PnP.Framework.Migration.Topology
         public const string WebOriginalIdentifierPropertyName = "pnp_reserved_web_original_identifier";
         public const string SitePlanDigestPropertyName = "pnp_reserved_site_migration_digest";
         public const string WebPlanDigestPropertyName = "pnp_reserved_web_migration_digest";
-
-        private static readonly Regex InvalidSegmentCharacters = new Regex("[^a-z0-9-]+", RegexOptions.Compiled);
 
         public TopologyPlanBuildResult Build(
             IEnumerable<SourceSiteCollectionSnapshot> sourceSites,
@@ -61,6 +58,7 @@ namespace PnP.Framework.Migration.Topology
                     SourceSiteId = source.SiteId,
                     SourceSiteCollectionUrl = NormalizeAbsoluteUrl(source.SiteCollectionUrl),
                     TargetMode = target.Mode,
+                    PreferredTargetSiteCollectionUrl = NormalizeAbsoluteUrl(target.TargetSiteUrl),
                     TargetSiteCollectionUrl = NormalizeAbsoluteUrl(target.TargetSiteUrl),
                     ExpectedTargetSiteId = target.ExpectedTargetSiteId,
                     TargetTitle = target.Title,
@@ -98,16 +96,18 @@ namespace PnP.Framework.Migration.Topology
                 throw new ArgumentNullException(nameof(plan));
             }
 
-            var digest = plan.PlanDigest;
-            plan.PlanDigest = null;
-            try
+            // Digesting must be safe for a sealed plan shared by parallel page
+            // assessments. Mutating PlanDigest, even briefly, lets another reader
+            // observe an invalid plan or seal an assessment without topology
+            // provenance. A shallow envelope is sufficient because only the
+            // self-referential top-level digest is excluded from canonical form.
+            var canonical = new TopologyPlan
             {
-                return MigrationDigest.ComputeSha256(MigrationContractSerializer.SerializeCanonical(plan));
-            }
-            finally
-            {
-                plan.PlanDigest = digest;
-            }
+                SchemaVersion = plan.SchemaVersion,
+                SiteCollections = plan.SiteCollections,
+                PlanDigest = null
+            };
+            return MigrationDigest.ComputeSha256(MigrationContractSerializer.SerializeCanonical(canonical));
         }
 
         public static string ComputeWebMappingDigest(WebMappingPlan plan)
@@ -117,6 +117,33 @@ namespace PnP.Framework.Migration.Topology
                 throw new ArgumentNullException(nameof(plan));
             }
             return MigrationDigest.ComputeSha256(MigrationContractSerializer.SerializeCanonical(plan));
+        }
+
+        public static string ComputeSiteMappingDigest(SiteCollectionMappingPlan plan)
+        {
+            if (plan == null)
+            {
+                throw new ArgumentNullException(nameof(plan));
+            }
+            var stablePlan = new SiteCollectionMappingPlan
+            {
+                SourceSiteId = plan.SourceSiteId,
+                SourceSiteCollectionUrl = plan.SourceSiteCollectionUrl,
+                TargetMode = TargetSiteMode.CreateTargetSite,
+                PreferredTargetSiteCollectionUrl = plan.PreferredTargetSiteCollectionUrl,
+                TargetSiteCollectionUrl = plan.TargetSiteCollectionUrl,
+                TargetSiteCollisionResolved = plan.TargetSiteCollisionResolved,
+                TargetSiteResolutionReason = plan.TargetSiteResolutionReason,
+                ExpectedTargetSiteId = null,
+                TargetTitle = plan.TargetTitle,
+                TargetOwner = plan.TargetOwner,
+                TargetTemplate = plan.TargetTemplate,
+                TargetLanguage = plan.TargetLanguage,
+                TargetTimeZone = plan.TargetTimeZone,
+                OriginalIdentifier = plan.OriginalIdentifier,
+                Webs = plan.Webs
+            };
+            return MigrationDigest.ComputeSha256(MigrationContractSerializer.SerializeCanonical(stablePlan));
         }
 
         public static string MapWebOwnedServerRelativePath(
@@ -203,18 +230,24 @@ namespace PnP.Framework.Migration.Topology
 
                     TargetWebOverride[] overrides;
                     var targetOverride = overrideByWeb.TryGetValue(web.WebId, out overrides) && overrides.Length == 1 ? overrides[0] : null;
-                    var segment = targetOverride == null || string.IsNullOrWhiteSpace(targetOverride.TargetUrlSegment)
-                        ? DefaultTargetSegment(web)
+                    var hasOverride = targetOverride != null && !string.IsNullOrWhiteSpace(targetOverride.TargetUrlSegment);
+                    var relativePath = !hasOverride
+                        ? DefaultTargetRelativePath(web, webs[web.ParentWebId.Value].Single())
                         : targetOverride.TargetUrlSegment;
-                    if (!IsSafeWebSegment(segment))
+                    // A SharePoint child Web is created relative to its captured direct parent.
+                    // Therefore its creation URL must be exactly one path segment. Accepting a
+                    // multi-segment value here would silently invent missing intermediate Webs
+                    // and make the materializer call Webs.Add with an unsupported URL.
+                    var pathIsSafe = IsSafeWebSegment(relativePath);
+                    if (!pathIsSafe)
                     {
-                        AddBlocker(issues, "InvalidTargetWebOverride", "source-web:" + web.WebId.ToString("D"), "Target Web URL segment '" + segment + "' is not a safe single path segment.");
+                        AddBlocker(issues, "InvalidTargetWebPath", "source-web:" + web.WebId.ToString("D"), "Target Web relative path '" + relativePath + "' is not safe.");
                         pending.Remove(web);
                         progressed = true;
                         continue;
                     }
 
-                    var targetPath = parent.TargetServerRelativeUrl.TrimEnd('/') + "/" + segment;
+                    var targetPath = parent.TargetServerRelativeUrl.TrimEnd('/') + "/" + relativePath;
                     var targetUrl = new Uri(new Uri(target.TargetSiteUrl).GetLeftPart(UriPartial.Authority) + targetPath).AbsoluteUri.TrimEnd('/');
                     result[web.WebId] = new WebMappingPlan
                     {
@@ -226,12 +259,22 @@ namespace PnP.Framework.Migration.Topology
                         SourceWebUrl = NormalizeAbsoluteUrl(web.WebUrl),
                         SourceServerRelativeUrl = NormalizeServerRelativePath(web.ServerRelativeUrl),
                         TargetSiteCollectionUrl = NormalizeAbsoluteUrl(target.TargetSiteUrl),
+                        PreferredTargetWebUrl = targetUrl,
                         TargetWebUrl = targetUrl,
+                        PreferredTargetServerRelativeUrl = NormalizeServerRelativePath(targetPath),
                         TargetServerRelativeUrl = NormalizeServerRelativePath(targetPath),
                         TargetParentWebUrl = parent.TargetWebUrl,
                         TargetTitle = targetOverride == null || string.IsNullOrWhiteSpace(targetOverride.TargetTitle) ? web.Title : targetOverride.TargetTitle,
-                        TargetTemplate = targetOverride == null || string.IsNullOrWhiteSpace(targetOverride.TargetTemplate) ? policy.DefaultChildWebTemplate : targetOverride.TargetTemplate,
-                        TargetConfiguration = targetOverride != null && targetOverride.TargetConfiguration.HasValue ? targetOverride.TargetConfiguration.Value : policy.DefaultChildWebConfiguration,
+                        TargetTemplate = targetOverride != null && !string.IsNullOrWhiteSpace(targetOverride.TargetTemplate)
+                            ? targetOverride.TargetTemplate
+                            : policy.PreserveSourceChildWebTemplate && !string.IsNullOrWhiteSpace(web.WebTemplate)
+                                ? web.WebTemplate
+                                : policy.DefaultChildWebTemplate,
+                        TargetConfiguration = targetOverride != null && targetOverride.TargetConfiguration.HasValue
+                            ? targetOverride.TargetConfiguration.Value
+                            : policy.PreserveSourceChildWebTemplate
+                                ? web.Configuration
+                                : policy.DefaultChildWebConfiguration,
                         OriginalIdentifier = WebOriginalIdentifier(source.SiteId, web.WebId)
                     };
                     pending.Remove(web);
@@ -266,7 +309,9 @@ namespace PnP.Framework.Migration.Topology
                 SourceWebUrl = NormalizeAbsoluteUrl(web.WebUrl),
                 SourceServerRelativeUrl = NormalizeServerRelativePath(web.ServerRelativeUrl),
                 TargetSiteCollectionUrl = targetRoot,
+                PreferredTargetWebUrl = targetRoot,
                 TargetWebUrl = targetRoot,
+                PreferredTargetServerRelativeUrl = NormalizeServerRelativePath(new Uri(targetRoot).AbsolutePath),
                 TargetServerRelativeUrl = NormalizeServerRelativePath(new Uri(targetRoot).AbsolutePath),
                 TargetTitle = target.Title,
                 TargetTemplate = target.Template,
@@ -311,7 +356,7 @@ namespace PnP.Framework.Migration.Topology
                 || !Uri.TryCreate(source.SiteCollectionUrl, UriKind.Absolute, out siteUrl)
                 || webUrl.Scheme != Uri.UriSchemeHttps
                 || !string.Equals(webUrl.Authority, siteUrl.Authority, StringComparison.OrdinalIgnoreCase)
-                || web.Availability == EvidenceAvailability.Unavailable || web.Availability == EvidenceAvailability.Conflict;
+                || web.Availability != EvidenceAvailability.Captured;
             if (invalid)
             {
                 AddBlocker(issues, "InvalidSourceWeb", "source-web:" + (web == null ? Guid.Empty : web.WebId).ToString("D"), "The source Web must be a captured member of its declared Site Collection.");
@@ -344,20 +389,18 @@ namespace PnP.Framework.Migration.Topology
             }
         }
 
-        private static string DefaultTargetSegment(SourceWebSnapshot web)
+        private static string DefaultTargetRelativePath(
+            SourceWebSnapshot web,
+            SourceWebSnapshot parent)
         {
-            var segments = new Uri(web.WebUrl).AbsolutePath.TrimEnd('/').Split('/');
-            var leaf = Uri.UnescapeDataString(segments.Length == 0 ? "web" : segments[segments.Length - 1]).ToLowerInvariant();
-            var slug = InvalidSegmentCharacters.Replace(leaf, "-").Trim('-');
-            if (slug.Length == 0)
+            var webPath = NormalizeServerRelativePath(web.ServerRelativeUrl);
+            var parentPath = NormalizeServerRelativePath(parent.ServerRelativeUrl).TrimEnd('/');
+            if (!webPath.StartsWith(parentPath + "/", StringComparison.OrdinalIgnoreCase))
             {
-                slug = "web";
+                throw new ArgumentException("The source Web path is outside its captured direct parent Web.", nameof(web));
             }
-            if (slug.Length > 40)
-            {
-                slug = slug.Substring(0, 40).TrimEnd('-');
-            }
-            return slug + "-" + web.WebId.ToString("N").Substring(0, 8);
+
+            return Uri.UnescapeDataString(webPath.Substring(parentPath.Length + 1));
         }
 
         private static bool IsSafeWebSegment(string value)

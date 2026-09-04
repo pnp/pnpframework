@@ -23,10 +23,12 @@ using PnP.Framework.Migration.Pages.Publishing.Profiles;
 using PnP.Framework.Migration.Pages.Markup;
 using PnP.Framework.Migration.Pages.Runtime;
 using PnP.Framework.Migration.Pages.Profiles;
+using PnP.Framework.Migration.Pages.References;
 using PnP.Framework.Migration.Pages.Ingredients;
 using PnP.Framework.Migration.Pages.Cohorts;
 using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Lists.Items;
+using PnP.Framework.Migration.Lists.Items.Protection;
 using PnP.Framework.Migration.Lists.Capture;
 using PnP.Framework.Migration.Lists.Fields;
 using PnP.Framework.Migration.Lists.ContentTypes;
@@ -34,6 +36,7 @@ using PnP.Framework.Migration.Lists.Packaging;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Execution;
 using PnP.Framework.Migration.Evidence;
+using PnP.Framework.Migration.Diagnostics;
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Schema.ContentTypes;
 using PnP.Framework.Migration.Schema.Fields;
@@ -145,18 +148,263 @@ namespace PnP.Framework.Test.EnterpriseWiki
             };
 
             var blocked = PageIngredientPlanEvaluator.Evaluate(graph, actions);
-            Assert.AreEqual(PageMigrationOutcome.Blocked, blocked.Outcome);
+            Assert.AreEqual(PageMigrationOutcome.Invalid, blocked.Outcome);
             Assert.IsTrue(blocked.Issues.Any(value => value.Code == "RequiredIngredientDependencyUnsatisfied"));
 
             actions[0].ReleasedDependencyIngredientIds.Add("dependency");
             var invalidRelease = PageIngredientPlanEvaluator.Evaluate(graph, actions);
-            Assert.AreEqual(PageMigrationOutcome.Blocked, invalidRelease.Outcome);
+            Assert.AreEqual(PageMigrationOutcome.Invalid, invalidRelease.Outcome);
             Assert.IsTrue(invalidRelease.Issues.Any(value => value.Code == "IngredientDependencyReleaseInvalid"));
 
             actions[0].Disposition = IngredientDisposition.Transform;
             var released = PageIngredientPlanEvaluator.Evaluate(graph, actions);
             Assert.AreEqual(PageMigrationOutcome.ExecutableWithLoss, released.Outcome);
             Assert.AreEqual(0, released.Issues.Count);
+        }
+
+        [TestMethod]
+        public void DeferredIngredientIsMitigationPendingRatherThanBlocked()
+        {
+            var graph = new CanonicalPageIngredientGraph
+            {
+                Nodes = new List<PageIngredientNode>
+                {
+                    new PageIngredientNode { Id = "ingredient", Kind = PageIngredientKind.Field, HasContent = true }
+                }
+            };
+            var actions = new List<PageIngredientAction>
+            {
+                new PageIngredientAction
+                {
+                    ActionId = "action:ingredient",
+                    IngredientId = "ingredient",
+                    Capability = IngredientCapability.Incompatible,
+                    Disposition = IngredientDisposition.Defer,
+                    Reason = "More source evidence is required."
+                }
+            };
+
+            var evaluation = PageIngredientPlanEvaluator.Evaluate(graph, actions);
+
+            Assert.AreEqual(PageMigrationOutcome.MitigationPending, evaluation.Outcome);
+            Assert.IsFalse(evaluation.IsExecutable);
+            Assert.IsTrue(evaluation.Issues.Any(value =>
+                value.Code == "IngredientMitigationPending"
+                && value.Severity == MigrationIssueSeverity.Warning));
+        }
+
+        [TestMethod]
+        public void DeferredIngredientPrunesOnlyItsRequiredConsumerBranch()
+        {
+            var graph = new CanonicalPageIngredientGraph
+            {
+                Nodes = new List<PageIngredientNode>
+                {
+                    new PageIngredientNode { Id = "consumer", Kind = PageIngredientKind.Content, HasContent = true },
+                    new PageIngredientNode { Id = "dependency", Kind = PageIngredientKind.Reference, HasContent = true },
+                    new PageIngredientNode { Id = "independent", Kind = PageIngredientKind.List, HasContent = true }
+                },
+                Edges = new List<PageIngredientEdge>
+                {
+                    new PageIngredientEdge
+                    {
+                        FromIngredientId = "consumer",
+                        ToIngredientId = "dependency",
+                        Relationship = PageIngredientRelationship.DependsOn,
+                        Requirement = PageIngredientRequirement.Required
+                    }
+                }
+            };
+            var actions = new List<PageIngredientAction>
+            {
+                new PageIngredientAction { ActionId = "action:consumer", IngredientId = "consumer", Capability = IngredientCapability.Available, Disposition = IngredientDisposition.Preserve },
+                new PageIngredientAction { ActionId = "action:dependency", IngredientId = "dependency", Capability = IngredientCapability.Incompatible, Disposition = IngredientDisposition.Defer },
+                new PageIngredientAction { ActionId = "action:independent", IngredientId = "independent", Capability = IngredientCapability.Available, Disposition = IngredientDisposition.Preserve }
+            };
+
+            var evaluation = PageIngredientPlanEvaluator.Evaluate(graph, actions);
+
+            Assert.AreEqual(PageMigrationOutcome.PartiallyExecutable, evaluation.Outcome);
+            Assert.IsTrue(evaluation.IsExecutable);
+            Assert.AreEqual(PageIngredientExecutionState.Deferred, evaluation.ExecutionFrontier.GetState("dependency"));
+            Assert.AreEqual(PageIngredientExecutionState.SkippedByDeferredDependency, evaluation.ExecutionFrontier.GetState("consumer"));
+            Assert.AreEqual(PageIngredientExecutionState.Executable, evaluation.ExecutionFrontier.GetState("independent"));
+            CollectionAssert.AreEqual(
+                new[] { "dependency" },
+                evaluation.ExecutionFrontier.Decisions.Single(value => value.IngredientId == "consumer").CauseIngredientIds.ToArray());
+        }
+
+        [TestMethod]
+        public void IngredientBlockRequiresMatchingLiteralHttpAuthorizationEvidence()
+        {
+            var graph = new CanonicalPageIngredientGraph
+            {
+                Nodes = new List<PageIngredientNode>
+                {
+                    new PageIngredientNode { Id = "ingredient", Kind = PageIngredientKind.Layout, HasContent = true }
+                }
+            };
+            var actions = new List<PageIngredientAction>
+            {
+                new PageIngredientAction
+                {
+                    ActionId = "action:ingredient",
+                    IngredientId = "ingredient",
+                    Capability = IngredientCapability.Missing,
+                    Disposition = IngredientDisposition.Block,
+                    Reason = "The wire request returned HTTP 403."
+                }
+            };
+
+            var withoutEvidence = PageIngredientPlanEvaluator.Evaluate(graph, actions);
+            Assert.AreEqual(PageMigrationOutcome.Invalid, withoutEvidence.Outcome);
+            Assert.IsTrue(withoutEvidence.Issues.Any(value =>
+                value.Code == "IngredientBlockWithoutAuthorizationEvidence"));
+
+            var evidence = new Dictionary<string, LiteralHttpAuthorizationEvidence>(StringComparer.Ordinal)
+            {
+                ["ingredient"] = LiteralHttpAuthorizationEvidence.Create(
+                    "capture-layout",
+                    "https://source.example/_vti_bin/client.svc/ProcessQuery",
+                    403,
+                    DateTimeOffset.UtcNow)
+            };
+            var withEvidence = PageIngredientPlanEvaluator.Evaluate(graph, actions, evidence);
+
+            Assert.AreEqual(PageMigrationOutcome.AuthorizationBlocked, withEvidence.Outcome);
+            Assert.IsFalse(withEvidence.IsExecutable);
+            Assert.IsTrue(withEvidence.Issues.Any(value =>
+                value.Code == "IngredientAuthorizationBlocked"
+                && value.Severity == MigrationIssueSeverity.Blocker));
+        }
+
+        [TestMethod]
+        public void AuthorizationBlockPrunesOnlyItsRequiredConsumerBranch()
+        {
+            var graph = new CanonicalPageIngredientGraph
+            {
+                Nodes = new List<PageIngredientNode>
+                {
+                    new PageIngredientNode { Id = "consumer", Kind = PageIngredientKind.PageArtifact, HasContent = true },
+                    new PageIngredientNode { Id = "dependency", Kind = PageIngredientKind.Layout, HasContent = true },
+                    new PageIngredientNode { Id = "independent", Kind = PageIngredientKind.List, HasContent = true }
+                },
+                Edges = new List<PageIngredientEdge>
+                {
+                    new PageIngredientEdge
+                    {
+                        FromIngredientId = "consumer",
+                        ToIngredientId = "dependency",
+                        Relationship = PageIngredientRelationship.DependsOn,
+                        Requirement = PageIngredientRequirement.Required
+                    }
+                }
+            };
+            var actions = new List<PageIngredientAction>
+            {
+                new PageIngredientAction { ActionId = "action:consumer", IngredientId = "consumer", Capability = IngredientCapability.Available, Disposition = IngredientDisposition.Preserve },
+                new PageIngredientAction { ActionId = "action:dependency", IngredientId = "dependency", Capability = IngredientCapability.Missing, Disposition = IngredientDisposition.Block },
+                new PageIngredientAction { ActionId = "action:independent", IngredientId = "independent", Capability = IngredientCapability.Available, Disposition = IngredientDisposition.Preserve }
+            };
+            var evidence = new Dictionary<string, LiteralHttpAuthorizationEvidence>(StringComparer.Ordinal)
+            {
+                ["dependency"] = LiteralHttpAuthorizationEvidence.Create(
+                    "capture-layout",
+                    "https://source.example/_vti_bin/client.svc/ProcessQuery",
+                    403,
+                    DateTimeOffset.UtcNow)
+            };
+
+            var evaluation = PageIngredientPlanEvaluator.Evaluate(graph, actions, evidence);
+
+            Assert.AreEqual(PageMigrationOutcome.PartiallyExecutable, evaluation.Outcome);
+            Assert.IsTrue(evaluation.IsExecutable);
+            Assert.AreEqual(PageIngredientExecutionState.AuthorizationBlocked, evaluation.ExecutionFrontier.GetState("dependency"));
+            Assert.AreEqual(PageIngredientExecutionState.SkippedByAuthorizationDependency, evaluation.ExecutionFrontier.GetState("consumer"));
+            Assert.AreEqual(PageIngredientExecutionState.Executable, evaluation.ExecutionFrontier.GetState("independent"));
+        }
+
+        [TestMethod]
+        public void FinalIngredientProjectionReservesBlockForLiteralAuthorizationEvidence()
+        {
+            var package = CreateMigrationPackage();
+            package.Plan.LayoutAdmission.Disposition = PublishingPageLayoutMaterializationDisposition.Block;
+            package.Snapshot.Layout.AuthorizationEvidence = null;
+
+            var mitigationActions = PublishingPageIngredientActionProjector.Project(
+                package.Snapshot,
+                package.Plan,
+                package.Plan.IngredientGraph);
+            var mitigationEvaluation = PageIngredientPlanEvaluator.Evaluate(
+                package.Plan.IngredientGraph,
+                mitigationActions);
+
+            Assert.AreEqual(
+                IngredientDisposition.Defer,
+                mitigationActions.Single(value => value.IngredientId == PublishingPageIngredientIds.Layout).Disposition);
+            Assert.AreEqual(PageMigrationOutcome.PartiallyExecutable, mitigationEvaluation.Outcome);
+            Assert.IsTrue(mitigationEvaluation.ExecutionFrontier.HasExecutableIngredients);
+
+            package.Snapshot.Layout.AuthorizationEvidence = LiteralHttpAuthorizationEvidence.Create(
+                "capture-page-layout-owner",
+                "https://source.example/_vti_bin/client.svc/ProcessQuery",
+                403,
+                DateTimeOffset.UtcNow);
+            var authorizationActions = PublishingPageIngredientActionProjector.Project(
+                package.Snapshot,
+                package.Plan,
+                package.Plan.IngredientGraph);
+            var authorizationEvaluation = PageIngredientPlanEvaluator.Evaluate(
+                package.Plan.IngredientGraph,
+                authorizationActions,
+                PublishingPageIngredientAuthorizationPolicy.GetEvidence(package.Snapshot));
+
+            Assert.AreEqual(
+                IngredientDisposition.Block,
+                authorizationActions.Single(value => value.IngredientId == PublishingPageIngredientIds.Layout).Disposition);
+            Assert.AreEqual(
+                IngredientDisposition.Block,
+                authorizationActions.Single(value => value.IngredientId == PublishingPageIngredientIds.ContentType).Disposition);
+            Assert.AreEqual(PageMigrationOutcome.PartiallyExecutable, authorizationEvaluation.Outcome);
+            Assert.IsTrue(authorizationEvaluation.ExecutionFrontier.HasExecutableIngredients);
+        }
+
+        [TestMethod]
+        public void LayoutFieldSchemaDoesNotRequireOptionalIdentityItemValue()
+        {
+            var package = CreateMigrationPackage();
+            var field = package.Snapshot.Fields.Single(value => value.InternalName == "OOCLReference");
+            field.TypeAsString = "User";
+            field.Kind = PageFieldValueKind.User;
+            field.Required = false;
+            package.Snapshot.Layout.Controls.Add(new PublishingPageLayoutControl
+            {
+                TagPrefix = "PublishingWebControls",
+                ControlName = "UserField",
+                FieldName = field.InternalName
+            });
+            package.Snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(package.Snapshot);
+
+            var layoutValueEdge = package.Snapshot.IngredientGraph.Edges.Single(value =>
+                value.FromIngredientId == PublishingPageIngredientIds.Layout
+                && value.ToIngredientId == PublishingPageIngredientIds.Field(field.InternalName));
+            Assert.AreEqual(PageIngredientRequirement.Optional, layoutValueEdge.Requirement);
+
+            var fieldPlan = package.Plan.FieldActions.Single(value => value.SourceInternalName == field.InternalName);
+            fieldPlan.Disposition = PageFieldDisposition.EvidenceOnly;
+            fieldPlan.Reason = "Retain the optional source identity as evidence and leave the target value unset.";
+            package.Plan.IngredientActions = PublishingPageIngredientActionProjector.Project(package.Snapshot, package.Plan);
+            var fieldAction = package.Plan.IngredientActions.Single(value =>
+                value.IngredientId == PublishingPageIngredientIds.Field(field.InternalName));
+            var evaluation = PageIngredientPlanEvaluator.Evaluate(
+                package.Snapshot.IngredientGraph,
+                package.Plan.IngredientActions);
+
+            Assert.AreEqual(IngredientDisposition.Delegate, fieldAction.Disposition);
+            Assert.AreEqual(PageMigrationOutcome.ExecutableWithLoss, evaluation.Outcome);
+            Assert.IsFalse(evaluation.Issues.Any(value =>
+                value.Code == "IngredientBlocked"
+                || value.Code == "RequiredIngredientDependencyUnsatisfied"));
         }
 
         [TestMethod]
@@ -429,6 +677,7 @@ namespace PnP.Framework.Test.EnterpriseWiki
             package.Snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(package.Snapshot);
             package.SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(package.Snapshot);
             package.Plan.SourceSnapshotDigest = package.SnapshotDigest;
+            package.Plan.IngredientGraph = PublishingPageIngredientGraphProjector.Project(package.Snapshot);
             package.Plan.FieldActions.Add(new PageFieldAction
             {
                 SourceInternalName = field.InternalName,
@@ -447,12 +696,16 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 Disposition = TaxonomyRelationshipDisposition.RetainEvidenceOnly,
                 Reason = "The owning page field is not selected for replay; its exact taxonomy relationship evidence remains sealed in the snapshot."
             });
-            package.Plan.IngredientActions = PublishingPageIngredientActionProjector.Project(package.Snapshot, package.Plan);
+            package.Plan.IngredientActions = PublishingPageIngredientActionProjector.Project(
+                package.Snapshot,
+                package.Plan,
+                package.Plan.IngredientGraph);
             var evaluation = PageIngredientPlanEvaluator.Evaluate(
-                package.Snapshot.IngredientGraph,
+                package.Plan.IngredientGraph,
                 package.Plan.IngredientActions);
             package.Plan.MigrationOutcome = evaluation.Outcome;
             package.Plan.IngredientIssues = evaluation.Issues;
+            package.Plan.ExecutionFrontier = evaluation.ExecutionFrontier;
             package.State = PublishingPagePackageState.ApprovalReady;
             package.PlanDigest = PublishingPageDigest.ComputePlanDigest(package.Plan);
 
@@ -573,6 +826,100 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
+        public void ExportValidationAcceptsLegacyIngredientProjectionWithoutChangingItsSnapshotDigest()
+        {
+            var snapshot = CreateSnapshot();
+            snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.ProjectLegacy(snapshot);
+            var export = new PublishingPageExportPackage
+            {
+                ExportedAtUtc = DateTimeOffset.UtcNow,
+                Selection = CreateSelection(),
+                SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(CreateSelection()),
+                Snapshot = snapshot,
+                SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot)
+            };
+
+            var roundTrip = PublishingPagePackageSerializer.Deserialize<PublishingPageExportPackage>(
+                PublishingPagePackageSerializer.Serialize(export));
+
+            Assert.IsNull(roundTrip.Snapshot.IngredientGraph.ProjectionVersion);
+            Assert.AreEqual(export.SnapshotDigest, PublishingPageDigest.ComputeSnapshotDigest(roundTrip.Snapshot));
+            PublishingPagePackageValidator.ValidateExport(roundTrip);
+        }
+
+        [TestMethod]
+        public void ExportValidationAcceptsVersion2IngredientProjectionWithoutChangingItsSnapshotDigest()
+        {
+            var snapshot = CreateSnapshot();
+            snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.ProjectVersion2(snapshot);
+            var export = new PublishingPageExportPackage
+            {
+                ExportedAtUtc = DateTimeOffset.UtcNow,
+                Selection = CreateSelection(),
+                SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(CreateSelection()),
+                Snapshot = snapshot,
+                SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot)
+            };
+
+            var roundTrip = PublishingPagePackageSerializer.Deserialize<PublishingPageExportPackage>(
+                PublishingPagePackageSerializer.Serialize(export));
+
+            Assert.AreEqual(PublishingPageIngredientGraphProjector.ProjectionVersionV2, roundTrip.Snapshot.IngredientGraph.ProjectionVersion);
+            Assert.AreEqual(export.SnapshotDigest, PublishingPageDigest.ComputeSnapshotDigest(roundTrip.Snapshot));
+            PublishingPagePackageValidator.ValidateExport(roundTrip);
+        }
+
+        [TestMethod]
+        public void ExportPackageCanBeDeserializedFromAStreamWithoutChangingItsSnapshotDigest()
+        {
+            var snapshot = CreateSnapshot();
+            var export = new PublishingPageExportPackage
+            {
+                ExportedAtUtc = DateTimeOffset.UtcNow,
+                Selection = CreateSelection(),
+                SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(CreateSelection()),
+                Snapshot = snapshot,
+                SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(snapshot)
+            };
+            using var stream = new MemoryStream(
+                Encoding.UTF8.GetBytes(PublishingPagePackageSerializer.Serialize(export)));
+
+            var roundTrip = PublishingPagePackageSerializer.Deserialize<PublishingPageExportPackage>(stream);
+
+            Assert.AreEqual(export.SnapshotDigest, roundTrip.SnapshotDigest);
+            PublishingPagePackageValidator.ValidateExport(roundTrip);
+        }
+
+        [TestMethod]
+        public void MigrationPlanReprojectsLegacySnapshotEvidenceWithoutRewritingTheSnapshot()
+        {
+            var package = CreateMigrationPackage();
+            package.Snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.ProjectLegacy(package.Snapshot);
+            package.SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(package.Snapshot);
+            package.Plan.SourceSnapshotDigest = package.SnapshotDigest;
+            package.Plan.IngredientGraph = PublishingPageIngredientGraphProjector.Project(package.Snapshot);
+            package.Plan.IngredientActions = PublishingPageIngredientActionProjector.Project(
+                package.Snapshot,
+                package.Plan,
+                package.Plan.IngredientGraph);
+            var evaluation = PageIngredientPlanEvaluator.Evaluate(
+                package.Plan.IngredientGraph,
+                package.Plan.IngredientActions);
+            package.Plan.MigrationOutcome = evaluation.Outcome;
+            package.Plan.IngredientIssues = evaluation.Issues;
+            package.Plan.ExecutionFrontier = evaluation.ExecutionFrontier;
+            package.State = PublishingPagePackageStatePolicy.Derive(package.Plan);
+            package.PlanDigest = PublishingPageDigest.ComputePlanDigest(package.Plan);
+
+            PublishingPagePackageValidator.ValidateMigration(package);
+
+            Assert.IsNull(package.Snapshot.IngredientGraph.ProjectionVersion);
+            Assert.AreEqual(
+                PublishingPageIngredientGraphProjector.CurrentProjectionVersion,
+                package.Plan.IngredientGraph.ProjectionVersion);
+        }
+
+        [TestMethod]
         public void ExportValidationDetectsPageLayoutByteMutation()
         {
             var snapshot = CreateSnapshot();
@@ -608,7 +955,24 @@ namespace PnP.Framework.Test.EnterpriseWiki
 
             PublishingPagePackageValidator.ValidateMigration(package);
             Assert.ThrowsException<InvalidDataException>(() =>
-                PublishingPageImportPlanValidator.Validate(package, EnterpriseWikiV1WorkflowPolicy.Instance));
+                PublishingPageImportPlanValidator.Validate(
+                    package,
+                    EnterpriseWikiV1WorkflowPolicy.Instance,
+                    PublishingPageExecutionScope.Create(package)));
+        }
+
+        [TestMethod]
+        public void PublishingRuntimeCanImportOutsideValidationCohort()
+        {
+            var package = CreateMigrationPackage();
+            package.Snapshot.Source.ContentTypeId = BuiltInContentTypeId.ProjectPage + "001122";
+            package.Selection = EnterpriseWikiV1WorkflowPolicy.Instance.Select(package.Snapshot.Source.ContentTypeId);
+            package.SelectionDigest = PublishingPageDigest.ComputeSelectionDigest(package.Selection);
+
+            PublishingPageImportPlanValidator.Validate(
+                package,
+                EnterpriseWikiV1WorkflowPolicy.Instance,
+                PublishingPageExecutionScope.Create(package));
         }
 
         [TestMethod]
@@ -691,10 +1055,14 @@ namespace PnP.Framework.Test.EnterpriseWiki
             const string listView = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.WebPartPages.XsltListViewWebPart"" /></metaData><data><properties><property name=""ListId"">58a84d5d-b1ee-4da0-a49b-7e597ee8ae35</property></properties></data></webPart></webParts>";
             const string rss = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.Portal.WebControls.RSSAggregatorWebPart"" /></metaData></webPart></webParts>";
             const string scriptEditor = @"<webParts><webPart xmlns=""http://schemas.microsoft.com/WebPart/v3""><metaData><type name=""Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart"" /></metaData></webPart></webParts>";
+            const string contentEditorV2 = @"<WebPart xmlns=""http://schemas.microsoft.com/WebPart/v2""><Assembly>Microsoft.SharePoint.Core, Version=16.0.0.0</Assembly><TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName></WebPart>";
+            const string contactV2 = @"<WebPart xmlns=""http://schemas.microsoft.com/WebPart/v2""><Assembly>Microsoft.SharePoint.Portal, Version=16.0.0.0</Assembly><TypeName>Microsoft.SharePoint.Portal.WebControls.ContactFieldControl</TypeName></WebPart>";
 
             Assert.IsNull(ClassicWebPartReplayCapabilityPolicy.GetBlocker(listView));
             StringAssert.Contains(ClassicWebPartReplayCapabilityPolicy.GetBlocker(rss), "not supported");
             Assert.IsNull(ClassicWebPartReplayCapabilityPolicy.GetBlocker(scriptEditor));
+            Assert.IsNull(ClassicWebPartReplayCapabilityPolicy.GetBlocker(contentEditorV2));
+            Assert.IsNull(ClassicWebPartReplayCapabilityPolicy.GetBlocker(contactV2));
         }
 
         [TestMethod]
@@ -759,11 +1127,26 @@ namespace PnP.Framework.Test.EnterpriseWiki
             var parsed = PublishingPageLayoutMarkupParser.Parse(markup);
 
             Assert.AreEqual(1, parsed.Registrations.Count);
-            Assert.IsTrue(parsed.RequiredFieldNames.Contains("Title", StringComparer.OrdinalIgnoreCase));
-            Assert.IsTrue(parsed.RequiredFieldNames.Contains("PublishingPageContent", StringComparer.OrdinalIgnoreCase));
+            Assert.IsTrue(parsed.RequiredFieldIdentifiers.Contains("Title", StringComparer.OrdinalIgnoreCase));
+            Assert.IsTrue(parsed.RequiredFieldIdentifiers.Contains("PublishingPageContent", StringComparer.OrdinalIgnoreCase));
             Assert.AreEqual("Main", parsed.Zones.Single().Id);
             Assert.IsTrue(parsed.ResourceReferences.Any(value => value.Value == "~sitecollection/Style Library/Contoso/site.css"));
             Assert.IsTrue(parsed.ResourceReferences.Any(value => value.Value == "~site/SiteAssets/Contoso/app.js"));
+        }
+
+        [TestMethod]
+        public void ContentTypeFieldIdentifierMatcherAcceptsNamesAndGuidForms()
+        {
+            var fieldId = Guid.Parse("f55c4d88-1f2e-4ad9-aaa8-819af4ee7ee8");
+
+            Assert.IsTrue(ContentTypeSchemaSnapshotReader.MatchesFieldIdentifier(
+                new[] { "PublishingPageContent" }, fieldId, "PublishingPageContent"));
+            Assert.IsTrue(ContentTypeSchemaSnapshotReader.MatchesFieldIdentifier(
+                new[] { fieldId.ToString("D") }, fieldId, "PublishingPageContent"));
+            Assert.IsTrue(ContentTypeSchemaSnapshotReader.MatchesFieldIdentifier(
+                new[] { "{" + fieldId.ToString("D") + "}" }, fieldId, "PublishingPageContent"));
+            Assert.IsFalse(ContentTypeSchemaSnapshotReader.MatchesFieldIdentifier(
+                new[] { "Title" }, fieldId, "PublishingPageContent"));
         }
 
         [TestMethod]
@@ -859,6 +1242,126 @@ namespace PnP.Framework.Test.EnterpriseWiki
             Assert.AreEqual("/sites/target/SiteAssets/Contoso/app.js", plan.ResourceMaterializations.Single().TargetServerRelativeUrl);
             Assert.AreEqual("https://target.sharepoint.com/sites/target/SiteAssets/Contoso/app.js", plan.ResourceRewrites.Single().TargetReference);
             Assert.AreNotEqual(plan.SourceBytes.Sha256, plan.TargetBytes.Sha256);
+        }
+
+        [TestMethod]
+        public void CustomLayoutPreservesUnreadableAbsoluteResourceWhenExternalReferencesAreAllowed()
+        {
+            const string authoredReference = "https://source.sharepoint.com/sites/source/SiteAssets/Contoso/app.js";
+            var layout = CreateCustomLayout();
+            var layoutBytes = Encoding.UTF8.GetBytes(
+                "<%@ Page %><PublishingWebControls:TextField FieldName=\"Activity\" runat=\"server\" /><script src=\""
+                + authoredReference
+                + "\"></script>");
+            layout.Bytes = MigrationArtifact.Describe(layoutBytes, "application/vnd.ms-aspx", "Custom.aspx");
+            layout.ContentBase64 = Convert.ToBase64String(layoutBytes);
+            layout.ResourceReferences.Single().Value = authoredReference;
+            var resource = layout.ResourceArtifacts.Single();
+            resource.Reference = layout.ResourceReferences.Single();
+            resource.EvidenceState = PublishingPageLayoutResourceEvidenceState.AccessDenied;
+            resource.ResolvedSourceUrl = authoredReference;
+            resource.Artifact = null;
+            resource.ContentBase64 = null;
+            resource.Diagnostics = new List<string> { "Access denied." };
+
+            var plan = PublishingPageLayoutPlanFactory.Create(
+                layout,
+                new Uri("https://source.sharepoint.com/sites/source"),
+                new Uri("https://target.sharepoint.com/sites/target"),
+                new Uri("https://target.sharepoint.com/sites/target"),
+                "EnterpriseWiki.aspx");
+
+            Assert.AreEqual(PublishingPageLayoutMaterializationDisposition.CreateOwned, plan.Disposition);
+            Assert.AreEqual(
+                PublishingPageLayoutResourceMaterializationDisposition.PreserveExternal,
+                plan.ResourceMaterializations.Single().Disposition);
+            Assert.AreEqual(authoredReference, plan.ResourceMaterializations.Single().TargetReference);
+            Assert.AreEqual(0, plan.ResourceRewrites.Count);
+            Assert.AreEqual(plan.SourceBytes.Sha256, plan.TargetBytes.Sha256);
+        }
+
+        [TestMethod]
+        public void CustomLayoutBlocksUnreadableAbsoluteResourceWhenExternalReferencesAreDisabled()
+        {
+            const string authoredReference = "https://source.sharepoint.com/sites/source/SiteAssets/Contoso/app.js";
+            var layout = CreateCustomLayout();
+            layout.ResourceReferences.Single().Value = authoredReference;
+            var resource = layout.ResourceArtifacts.Single();
+            resource.Reference = layout.ResourceReferences.Single();
+            resource.EvidenceState = PublishingPageLayoutResourceEvidenceState.AccessDenied;
+            resource.ResolvedSourceUrl = authoredReference;
+            resource.Artifact = null;
+            resource.ContentBase64 = null;
+            resource.Diagnostics = new List<string> { "Access denied." };
+
+            var plan = PublishingPageLayoutPlanFactory.Create(
+                layout,
+                new Uri("https://source.sharepoint.com/sites/source"),
+                new Uri("https://target.sharepoint.com/sites/target"),
+                new Uri("https://target.sharepoint.com/sites/target"),
+                "EnterpriseWiki.aspx",
+                allowExternalResourceReferences: false);
+
+            Assert.AreEqual(PublishingPageLayoutMaterializationDisposition.Block, plan.Disposition);
+            Assert.AreEqual(
+                PublishingPageLayoutResourceMaterializationDisposition.Block,
+                plan.ResourceMaterializations.Single().Disposition);
+        }
+
+        [DataTestMethod]
+        [DataRow("EnterpriseWiki.aspx", "Basic Page", "Enterprise Wiki Page", BuiltInContentTypeId.EnterpriseWikiPage)]
+        [DataRow("BlankWebPartPage.aspx", "Blank Web Part page", "Welcome Page", BuiltInContentTypeId.WelcomePage)]
+        public void UnavailableNativeLayoutRequiresReviewedTargetRuntimeStock(
+            string fileName,
+            string title,
+            string contentTypeName,
+            string contentTypeId)
+        {
+            var layout = new PublishingPageLayoutSnapshot
+            {
+                EvidenceState = PublishingPageLayoutEvidenceState.AccessDenied,
+                Availability = EvidenceAvailability.Unavailable,
+                Url = "https://source.sharepoint.com/sites/source/_catalogs/masterpage/" + fileName,
+                ServerRelativeUrl = "/sites/source/_catalogs/masterpage/" + fileName,
+                Description = title,
+                Diagnostics = new List<string> { "Access is denied." }
+            };
+
+            var plan = PublishingPageLayoutPlanFactory.Create(
+                layout,
+                new Uri("https://source.sharepoint.com/sites/source"),
+                new Uri("https://target.sharepoint.com/sites/target"),
+                new Uri("https://target.sharepoint.com/sites/target"),
+                "EnterpriseWiki.aspx");
+
+            Assert.AreEqual(PublishingPageLayoutMaterializationDisposition.ReuseTargetStock, plan.Disposition);
+            Assert.AreEqual(fileName, plan.TargetFileName);
+            Assert.AreEqual(contentTypeName, plan.AssociatedContentTypeName);
+            Assert.AreEqual(contentTypeId, plan.AssociatedContentTypeId);
+            Assert.IsNull(plan.TargetBytes);
+        }
+
+        [TestMethod]
+        public void UnavailableCustomLayoutDoesNotImpersonateNativeStock()
+        {
+            var layout = new PublishingPageLayoutSnapshot
+            {
+                EvidenceState = PublishingPageLayoutEvidenceState.Failed,
+                Availability = EvidenceAvailability.Unavailable,
+                Url = "https://source.sharepoint.com/sites/source/_catalogs/masterpage/Custom.aspx",
+                ServerRelativeUrl = "/sites/source/_catalogs/masterpage/Custom.aspx",
+                Description = "Custom Page Layout",
+                Diagnostics = new List<string> { "Source evidence unavailable." }
+            };
+
+            var plan = PublishingPageLayoutPlanFactory.Create(
+                layout,
+                new Uri("https://source.sharepoint.com/sites/source"),
+                new Uri("https://target.sharepoint.com/sites/target"),
+                new Uri("https://target.sharepoint.com/sites/target"),
+                "EnterpriseWiki.aspx");
+
+            Assert.AreEqual(PublishingPageLayoutMaterializationDisposition.Block, plan.Disposition);
         }
 
         [TestMethod]
@@ -1101,6 +1604,602 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 "/teams/source/child",
                 child.TargetServerRelativeUrl));
             Assert.AreEqual(first.Plan.PlanDigest, second.Plan.PlanDigest);
+            Assert.AreEqual(
+                TopologyPlanner.ComputeSiteMappingDigest(first.Plan.SiteCollections.Single()),
+                TopologyPlanner.ComputeSiteMappingDigest(second.Plan.SiteCollections.Single()));
+            var boundSite = first.Plan.SiteCollections.Single();
+            var createSiteDigest = TopologyPlanner.ComputeSiteMappingDigest(boundSite);
+            boundSite.TargetMode = TargetSiteMode.ExistingTargetSite;
+            boundSite.ExpectedTargetSiteId = Guid.Parse("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb");
+            Assert.AreEqual(createSiteDigest, TopologyPlanner.ComputeSiteMappingDigest(boundSite));
+        }
+
+        [TestMethod]
+        public void TopologyPlannerPreservesSourceWebUrlSegmentByDefault()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var rootId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var childId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var source = new SourceSiteCollectionSnapshot
+            {
+                SiteId = siteId,
+                SiteCollectionUrl = "https://source.sharepoint.com/teams/Source_Site",
+                ServerRelativeUrl = "/teams/Source_Site",
+                RootWebId = rootId,
+                Webs = new List<SourceWebSnapshot>
+                {
+                    new SourceWebSnapshot
+                    {
+                        SiteId = siteId,
+                        WebId = rootId,
+                        SiteCollectionUrl = "https://source.sharepoint.com/teams/Source_Site",
+                        WebUrl = "https://source.sharepoint.com/teams/Source_Site",
+                        ServerRelativeUrl = "/teams/Source_Site",
+                        Title = "Root",
+                        WebTemplate = "CMSPUBLISHING"
+                    },
+                    new SourceWebSnapshot
+                    {
+                        SiteId = siteId,
+                        WebId = childId,
+                        ParentWebId = rootId,
+                        SiteCollectionUrl = "https://source.sharepoint.com/teams/Source_Site",
+                        WebUrl = "https://source.sharepoint.com/teams/Source_Site/Child_Web",
+                        ServerRelativeUrl = "/teams/Source_Site/Child_Web",
+                        Title = "Child",
+                        WebTemplate = "CMSPUBLISHING"
+                    }
+                }
+            };
+            var target = new TargetSiteCollectionSpec
+            {
+                SourceSiteId = siteId,
+                Mode = TargetSiteMode.ExistingTargetSite,
+                TargetSiteUrl = "https://target.sharepoint.com/teams/Source_Site-pnp",
+                ExpectedTargetSiteId = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                Title = "Target"
+            };
+
+            var result = new TopologyPlanner().Build(new[] { source }, new[] { target });
+
+            Assert.IsTrue(result.IsExecutable, string.Join(Environment.NewLine, result.Issues.Select(value => value.Message)));
+            var child = result.Plan.SiteCollections.Single().Webs.Single(value => value.SourceWebId == childId);
+            Assert.AreEqual("/teams/Source_Site-pnp/Child_Web", child.TargetServerRelativeUrl);
+            Assert.AreEqual("CMSPUBLISHING", child.TargetTemplate);
+            Assert.AreEqual(0, child.TargetConfiguration);
+            Assert.AreEqual(
+                "/teams/Source_Site-pnp/Child_Web/Pages/Folder/Page.aspx",
+                TopologyPlanner.MapWebOwnedServerRelativePath(
+                    "/teams/Source_Site/Child_Web/Pages/Folder/Page.aspx",
+                    "/teams/Source_Site/Child_Web",
+                    child.TargetServerRelativeUrl));
+        }
+
+        [TestMethod]
+        public void TopologyPlannerRejectsDirectChildWhenIntermediateParentClosureIsMissing()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var rootId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var childId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var source = new SourceSiteCollectionSnapshot
+            {
+                SiteId = siteId,
+                SiteCollectionUrl = "https://source.sharepoint.com/teams/athena",
+                ServerRelativeUrl = "/teams/athena",
+                RootWebId = rootId,
+                Webs = new List<SourceWebSnapshot>
+                {
+                    new SourceWebSnapshot
+                    {
+                        SiteId = siteId,
+                        WebId = rootId,
+                        SiteCollectionUrl = "https://source.sharepoint.com/teams/athena",
+                        WebUrl = "https://source.sharepoint.com/teams/athena",
+                        ServerRelativeUrl = "/teams/athena",
+                        Title = "Root",
+                        WebTemplate = "CMSPUBLISHING"
+                    },
+                    new SourceWebSnapshot
+                    {
+                        SiteId = siteId,
+                        WebId = childId,
+                        ParentWebId = rootId,
+                        SiteCollectionUrl = "https://source.sharepoint.com/teams/athena",
+                        WebUrl = "https://source.sharepoint.com/teams/athena/gkb/projects/AthenaWiki",
+                        ServerRelativeUrl = "/teams/athena/gkb/projects/AthenaWiki",
+                        Title = "Athena Wiki",
+                        WebTemplate = "CMSPUBLISHING"
+                    }
+                }
+            };
+            var target = new TargetSiteCollectionSpec
+            {
+                SourceSiteId = siteId,
+                Mode = TargetSiteMode.ExistingTargetSite,
+                TargetSiteUrl = "https://target.sharepoint.com/teams/athena-pnp",
+                ExpectedTargetSiteId = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                Title = "Athena"
+            };
+
+            var result = new TopologyPlanner().Build(new[] { source }, new[] { target });
+
+            Assert.IsFalse(result.IsExecutable);
+            Assert.IsNull(result.Plan);
+            Assert.IsTrue(result.Issues.Any(value => value.Code == "InvalidTargetWebPath"
+                && value.Subject == "source-web:" + childId.ToString("D")));
+        }
+
+        [TestMethod]
+        public void TopologyPlannerRejectsPartialSourceWebEvidence()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var rootId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var childId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var source = new SourceSiteCollectionSnapshot
+            {
+                SiteId = siteId,
+                SiteCollectionUrl = "https://source.sharepoint.com/teams/source",
+                ServerRelativeUrl = "/teams/source",
+                RootWebId = rootId,
+                Webs = new List<SourceWebSnapshot>
+                {
+                    new SourceWebSnapshot
+                    {
+                        SiteId = siteId,
+                        WebId = rootId,
+                        SiteCollectionUrl = "https://source.sharepoint.com/teams/source",
+                        WebUrl = "https://source.sharepoint.com/teams/source",
+                        ServerRelativeUrl = "/teams/source",
+                        Title = "Root",
+                        WebTemplate = "CMSPUBLISHING"
+                    },
+                    new SourceWebSnapshot
+                    {
+                        SiteId = siteId,
+                        WebId = childId,
+                        ParentWebId = rootId,
+                        SiteCollectionUrl = "https://source.sharepoint.com/teams/source",
+                        WebUrl = "https://source.sharepoint.com/teams/source/child",
+                        ServerRelativeUrl = "/teams/source/child",
+                        Title = "Child",
+                        WebTemplate = "CMSPUBLISHING",
+                        Availability = EvidenceAvailability.Partial
+                    }
+                }
+            };
+            var target = new TargetSiteCollectionSpec
+            {
+                SourceSiteId = siteId,
+                Mode = TargetSiteMode.ExistingTargetSite,
+                TargetSiteUrl = "https://target.sharepoint.com/teams/target",
+                ExpectedTargetSiteId = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                Title = "Target"
+            };
+
+            var result = new TopologyPlanner().Build(new[] { source }, new[] { target });
+
+            Assert.IsFalse(result.IsExecutable);
+            Assert.IsNull(result.Plan);
+            Assert.IsTrue(result.Issues.Any(value => value.Code == "InvalidSourceWeb"
+                && value.Subject == "source-web:" + childId.ToString("D")));
+        }
+
+        [TestMethod]
+        public void TopologyPlanValidatorRejectsResealedMultiSegmentDirectChild()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var rootId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var childId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var source = new SourceSiteCollectionSnapshot
+            {
+                SiteId = siteId,
+                SiteCollectionUrl = "https://source.sharepoint.com/teams/source",
+                ServerRelativeUrl = "/teams/source",
+                RootWebId = rootId,
+                Webs = new List<SourceWebSnapshot>
+                {
+                    new SourceWebSnapshot
+                    {
+                        SiteId = siteId,
+                        WebId = rootId,
+                        SiteCollectionUrl = "https://source.sharepoint.com/teams/source",
+                        WebUrl = "https://source.sharepoint.com/teams/source",
+                        ServerRelativeUrl = "/teams/source",
+                        Title = "Root",
+                        WebTemplate = "CMSPUBLISHING"
+                    },
+                    new SourceWebSnapshot
+                    {
+                        SiteId = siteId,
+                        WebId = childId,
+                        ParentWebId = rootId,
+                        SiteCollectionUrl = "https://source.sharepoint.com/teams/source",
+                        WebUrl = "https://source.sharepoint.com/teams/source/child",
+                        ServerRelativeUrl = "/teams/source/child",
+                        Title = "Child",
+                        WebTemplate = "CMSPUBLISHING"
+                    }
+                }
+            };
+            var target = new TargetSiteCollectionSpec
+            {
+                SourceSiteId = siteId,
+                Mode = TargetSiteMode.ExistingTargetSite,
+                TargetSiteUrl = "https://target.sharepoint.com/teams/target",
+                ExpectedTargetSiteId = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                Title = "Target"
+            };
+            var plan = new TopologyPlanner().Build(new[] { source }, new[] { target }).Plan;
+            var child = plan.SiteCollections.Single().Webs.Single(value => value.SourceWebId == childId);
+            child.TargetWebUrl = "https://target.sharepoint.com/teams/target/missing/child";
+            child.PreferredTargetWebUrl = child.TargetWebUrl;
+            child.TargetServerRelativeUrl = "/teams/target/missing/child";
+            child.PreferredTargetServerRelativeUrl = child.TargetServerRelativeUrl;
+            plan.PlanDigest = TopologyPlanner.ComputeDigest(plan);
+
+            Assert.ThrowsException<InvalidDataException>(() => TopologyPlanValidator.Validate(plan));
+        }
+
+        [TestMethod]
+        public void TopologyTargetPathAllocatorOnlyAddsSuffixForCollision()
+        {
+            Assert.AreEqual(
+                "Code.aspx",
+                TopologyTargetPathAllocator.AllocateSegment(
+                    "Code.aspx",
+                    "urn:pnp:page:source-1",
+                    new[] { "Other.aspx" },
+                    preserveFileExtension: true));
+
+            var allocated = TopologyTargetPathAllocator.AllocateSegment(
+                "Code.aspx",
+                "urn:pnp:page:source-1",
+                new[] { "code.aspx" },
+                preserveFileExtension: true);
+
+            StringAssert.StartsWith(allocated, "Code-pnp-");
+            StringAssert.EndsWith(allocated, ".aspx");
+            Assert.AreEqual(
+                allocated,
+                TopologyTargetPathAllocator.AllocateSegment(
+                    "Code.aspx",
+                    "urn:pnp:page:source-1",
+                    new[] { "CODE.ASPX" },
+                    preserveFileExtension: true));
+        }
+
+        [TestMethod]
+        public void TopologyTargetPathAllocatorExtendsStableSuffixWhenNeeded()
+        {
+            var first = TopologyTargetPathAllocator.AllocateSegment(
+                "Child_Web",
+                "urn:pnp:web:source-1",
+                new[] { "Child_Web" });
+            var second = TopologyTargetPathAllocator.AllocateSegment(
+                "Child_Web",
+                "urn:pnp:web:source-1",
+                new[] { "Child_Web", first });
+
+            Assert.AreNotEqual(first, second);
+            Assert.IsTrue(second.Length > first.Length);
+            StringAssert.StartsWith(second, "Child_Web-pnp-");
+        }
+
+        [TestMethod]
+        public void TopologyTargetPathAllocatorChangesOnlyCollidingLeaf()
+        {
+            var allocated = TopologyTargetPathAllocator.AllocateServerRelativePath(
+                "/sites/target/Web/Pages/Code.aspx",
+                "urn:pnp:spo-page:v1:source-1",
+                new[]
+                {
+                    "/sites/other/Web/Pages/Code.aspx",
+                    "/sites/target/Web/Pages/Code.aspx"
+                },
+                preserveFileExtension: true);
+
+            StringAssert.StartsWith(allocated, "/sites/target/Web/Pages/Code-pnp-");
+            StringAssert.EndsWith(allocated, ".aspx");
+            Assert.AreEqual(
+                "/sites/target/Web/Pages/Code.aspx",
+                TopologyTargetPathAllocator.AllocateServerRelativePath(
+                    "/sites/target/Web/Pages/Code.aspx",
+                    "urn:pnp:spo-page:v1:source-1",
+                    new[] { "/sites/other/Web/Pages/Code.aspx" },
+                    preserveFileExtension: true));
+        }
+
+        [TestMethod]
+        public void ListTargetPathResolverSuffixesOnlyTheCollidingListNode()
+        {
+            var plan = new ListMaterializationPlan
+            {
+                SourceSiteId = Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                SourceWebId = Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                SourceListId = Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                TargetWebUrl = "https://target.sharepoint.com/sites/site-pnp/web",
+                TargetSiteCollectionUrl = "https://target.sharepoint.com/sites/site-pnp",
+                TargetWebServerRelativeUrl = "/sites/site-pnp/web",
+                PreferredTargetRootFolderServerRelativeUrl = "/sites/site-pnp/web/Shared Documents",
+                TargetRootFolderServerRelativeUrl = "/sites/site-pnp/web/Shared Documents",
+                PreferredTargetTitle = "Shared Documents",
+                TargetTitle = "Shared Documents",
+                OriginalIdentifier = "urn:pnp:spo-list:v1:source-list"
+            };
+            var resolution = ListTargetPathResolver.Resolve(
+                plan,
+                101,
+                new[]
+                {
+                    new ListTargetInventoryItem
+                    {
+                        ListId = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                        RootFolderServerRelativeUrl = "/sites/site-pnp/web/Shared Documents",
+                        Title = "Shared Documents",
+                        BaseTemplate = 101
+                    },
+                    new ListTargetInventoryItem
+                    {
+                        ListId = Guid.Parse("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                        RootFolderServerRelativeUrl = "/sites/other/Shared Documents",
+                        Title = "Other",
+                        BaseTemplate = 101
+                    }
+                });
+
+            Assert.IsTrue(resolution.CollisionResolved);
+            StringAssert.StartsWith(
+                resolution.TargetRootFolderServerRelativeUrl,
+                "/sites/site-pnp/web/Shared Documents-pnp-");
+            StringAssert.StartsWith(resolution.TargetTitle, "Shared Documents-pnp-");
+            Assert.IsNull(resolution.ExistingOwnedTarget);
+        }
+
+        [TestMethod]
+        public void ListTargetPathResolverRediscoversOwnedStableSuffix()
+        {
+            var plan = new ListMaterializationPlan
+            {
+                SourceSiteId = Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                SourceWebId = Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                SourceListId = Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                TargetWebUrl = "https://target.sharepoint.com/sites/site-pnp/web",
+                TargetSiteCollectionUrl = "https://target.sharepoint.com/sites/site-pnp",
+                TargetWebServerRelativeUrl = "/sites/site-pnp/web",
+                PreferredTargetRootFolderServerRelativeUrl = "/sites/site-pnp/web/Resources",
+                TargetRootFolderServerRelativeUrl = "/sites/site-pnp/web/Resources",
+                PreferredTargetTitle = "Resources",
+                TargetTitle = "Resources",
+                OriginalIdentifier = "urn:pnp:spo-list:v1:source-list"
+            };
+            var foreign = new ListTargetInventoryItem
+            {
+                ListId = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                RootFolderServerRelativeUrl = plan.PreferredTargetRootFolderServerRelativeUrl,
+                Title = plan.PreferredTargetTitle,
+                BaseTemplate = 100
+            };
+            var first = ListTargetPathResolver.Resolve(plan, 100, new[] { foreign });
+            plan.TargetRootFolderServerRelativeUrl = first.TargetRootFolderServerRelativeUrl;
+            plan.TargetTitle = first.TargetTitle;
+            var owned = new ListTargetInventoryItem
+            {
+                ListId = Guid.Parse("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                RootFolderServerRelativeUrl = plan.TargetRootFolderServerRelativeUrl,
+                Title = plan.TargetTitle,
+                BaseTemplate = 100,
+                OriginalIdentifier = plan.OriginalIdentifier,
+                PlanDigest = ListMigrationPlanFactory.ComputePlanDigest(plan)
+            };
+            plan.TargetRootFolderServerRelativeUrl = plan.PreferredTargetRootFolderServerRelativeUrl;
+            plan.TargetTitle = plan.PreferredTargetTitle;
+
+            var second = ListTargetPathResolver.Resolve(plan, 100, new[] { foreign, owned });
+
+            Assert.AreSame(owned, second.ExistingOwnedTarget);
+            Assert.AreEqual(owned.RootFolderServerRelativeUrl, second.TargetRootFolderServerRelativeUrl);
+            Assert.AreEqual(owned.Title, second.TargetTitle);
+            Assert.IsTrue(second.CollisionResolved);
+        }
+
+        [TestMethod]
+        public void PublishingPageTargetPathResolverPreservesLibraryAndSuffixesOnlyFileName()
+        {
+            var resolution = PublishingPageTargetPathResolver.Resolve(
+                "/sites/site-pnp/web/Pages/Templates/Guidance/Status.aspx",
+                "urn:pnp:spo-page:v1:source-page",
+                new[]
+                {
+                    "/sites/site-pnp/web/Pages/Templates/Guidance/Status.aspx",
+                    "/sites/other/Pages/Status.aspx"
+                });
+
+            Assert.IsTrue(resolution.CollisionResolved);
+            StringAssert.StartsWith(
+                resolution.TargetPageServerRelativeUrl,
+                "/sites/site-pnp/web/Pages/Templates/Guidance/Status-pnp-");
+            StringAssert.EndsWith(resolution.TargetPageServerRelativeUrl, ".aspx");
+            Assert.AreEqual(
+                "/sites/site-pnp/web/Pages/Templates/Guidance",
+                PagePath.GetDirectoryName(resolution.TargetPageServerRelativeUrl));
+        }
+
+        [TestMethod]
+        public void PublishingPageTargetFolderPreservesExactWebRelativeHierarchy()
+        {
+            Assert.AreEqual(
+                "Pages/Templates/IPKit with Managed Code",
+                PublishingPageTargetLocationMaterializer.GetWebRelativeDirectory(
+                    "/teams/uat_campusipkit-pnp",
+                    "/teams/uat_campusipkit-pnp/Pages/Templates/IPKit with Managed Code"));
+        }
+
+        [TestMethod]
+        public void PublishingPageTargetOwnershipUsesSiteWebAndFileIdentity()
+        {
+            var source = CreateSnapshot().Source;
+
+            Assert.AreEqual(
+                "urn:pnp:spo-page:v1:" + source.SiteId.ToString("D") + ":"
+                    + source.WebId.ToString("D") + ":" + source.FileUniqueId.ToString("D"),
+                PublishingPageTargetOwnership.OriginalIdentifier(source));
+        }
+
+        [TestMethod]
+        public void TopologyWebTargetPathResolverSuffixesOnlyCollidingWebLeaf()
+        {
+            var plan = new WebMappingPlan
+            {
+                Kind = TopologyNodeKind.ChildWeb,
+                SourceSiteId = Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                SourceWebId = Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                SourceParentWebId = Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                TargetSiteCollectionUrl = "https://target.sharepoint.com/sites/site-pnp",
+                TargetParentWebUrl = "https://target.sharepoint.com/sites/site-pnp",
+                PreferredTargetWebUrl = "https://target.sharepoint.com/sites/site-pnp/teams/Delivery",
+                TargetWebUrl = "https://target.sharepoint.com/sites/site-pnp/teams/Delivery",
+                PreferredTargetServerRelativeUrl = "/sites/site-pnp/teams/Delivery",
+                TargetServerRelativeUrl = "/sites/site-pnp/teams/Delivery",
+                TargetTitle = "Delivery",
+                TargetTemplate = "STS#0",
+                OriginalIdentifier = "urn:pnp:spo-web:v1:source-web"
+            };
+
+            var resolution = TopologyWebTargetPathResolver.Resolve(
+                plan,
+                new[]
+                {
+                    new TopologyWebTargetInventoryItem
+                    {
+                        WebId = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                        Url = plan.TargetWebUrl,
+                        ServerRelativeUrl = plan.TargetServerRelativeUrl,
+                        Title = "Foreign",
+                        Template = "STS",
+                        Configuration = 0
+                    }
+                });
+
+            Assert.IsTrue(resolution.CollisionResolved);
+            StringAssert.StartsWith(
+                resolution.TargetServerRelativeUrl,
+                "/sites/site-pnp/teams/Delivery-pnp-");
+            Assert.AreEqual(
+                resolution.TargetServerRelativeUrl,
+                Uri.UnescapeDataString(new Uri(resolution.TargetWebUrl).AbsolutePath));
+        }
+
+        [TestMethod]
+        public void TopologyPlanRetargeterMovesOnlySourceGraphDescendants()
+        {
+            var rootId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var selectedId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var descendantId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var siblingId = Guid.Parse("44444444-4444-4444-4444-444444444444");
+            var site = new SiteCollectionMappingPlan
+            {
+                TargetSiteCollectionUrl = "https://target.sharepoint.com/sites/site-pnp",
+                Webs = new List<WebMappingPlan>
+                {
+                    new WebMappingPlan
+                    {
+                        Kind = TopologyNodeKind.SiteCollectionRoot,
+                        SourceWebId = rootId,
+                        TargetWebUrl = "https://target.sharepoint.com/sites/site-pnp",
+                        TargetServerRelativeUrl = "/sites/site-pnp"
+                    },
+                    new WebMappingPlan
+                    {
+                        Kind = TopologyNodeKind.ChildWeb,
+                        SourceWebId = selectedId,
+                        SourceParentWebId = rootId,
+                        TargetWebUrl = "https://target.sharepoint.com/sites/site-pnp/A",
+                        TargetServerRelativeUrl = "/sites/site-pnp/A",
+                        TargetParentWebUrl = "https://target.sharepoint.com/sites/site-pnp"
+                    },
+                    new WebMappingPlan
+                    {
+                        Kind = TopologyNodeKind.ChildWeb,
+                        SourceWebId = descendantId,
+                        SourceParentWebId = selectedId,
+                        TargetWebUrl = "https://target.sharepoint.com/sites/site-pnp/A/B",
+                        TargetServerRelativeUrl = "/sites/site-pnp/A/B",
+                        TargetParentWebUrl = "https://target.sharepoint.com/sites/site-pnp/A"
+                    },
+                    new WebMappingPlan
+                    {
+                        Kind = TopologyNodeKind.ChildWeb,
+                        SourceWebId = siblingId,
+                        SourceParentWebId = rootId,
+                        TargetWebUrl = "https://target.sharepoint.com/sites/site-pnp/A/Unrelated",
+                        TargetServerRelativeUrl = "/sites/site-pnp/A/Unrelated",
+                        TargetParentWebUrl = "https://target.sharepoint.com/sites/site-pnp"
+                    }
+                }
+            };
+
+            TopologyPlanRetargeter.RetargetWeb(site, selectedId, "/sites/site-pnp/A-pnp-12345678");
+
+            Assert.AreEqual(
+                "/sites/site-pnp/A-pnp-12345678",
+                site.Webs.Single(value => value.SourceWebId == selectedId).TargetServerRelativeUrl);
+            Assert.AreEqual(
+                "/sites/site-pnp/A-pnp-12345678/B",
+                site.Webs.Single(value => value.SourceWebId == descendantId).TargetServerRelativeUrl);
+            Assert.AreEqual(
+                "/sites/site-pnp/A/Unrelated",
+                site.Webs.Single(value => value.SourceWebId == siblingId).TargetServerRelativeUrl);
+        }
+
+        [TestMethod]
+        public void TopologyPlanRetargeterMovesSiteRootAndPreservesEveryWebTail()
+        {
+            var rootId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var childId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var site = new SiteCollectionMappingPlan
+            {
+                SourceSiteId = Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                PreferredTargetSiteCollectionUrl = "https://target.sharepoint.com/teams/source-pnp",
+                TargetSiteCollectionUrl = "https://target.sharepoint.com/teams/source-pnp",
+                Webs = new List<WebMappingPlan>
+                {
+                    new WebMappingPlan
+                    {
+                        Kind = TopologyNodeKind.SiteCollectionRoot,
+                        SourceWebId = rootId,
+                        PreferredTargetWebUrl = "https://target.sharepoint.com/teams/source-pnp",
+                        TargetWebUrl = "https://target.sharepoint.com/teams/source-pnp",
+                        PreferredTargetServerRelativeUrl = "/teams/source-pnp",
+                        TargetServerRelativeUrl = "/teams/source-pnp"
+                    },
+                    new WebMappingPlan
+                    {
+                        Kind = TopologyNodeKind.ChildWeb,
+                        SourceWebId = childId,
+                        SourceParentWebId = rootId,
+                        PreferredTargetWebUrl = "https://target.sharepoint.com/teams/source-pnp/Delivery",
+                        TargetWebUrl = "https://target.sharepoint.com/teams/source-pnp/Delivery",
+                        PreferredTargetServerRelativeUrl = "/teams/source-pnp/Delivery",
+                        TargetServerRelativeUrl = "/teams/source-pnp/Delivery",
+                        TargetParentWebUrl = "https://target.sharepoint.com/teams/source-pnp"
+                    }
+                }
+            };
+
+            TopologyPlanRetargeter.RetargetSiteCollection(
+                site,
+                "https://target.sharepoint.com/teams/source-pnp-pnp-12345678",
+                "The preferred Site Collection is a foreign collision.");
+
+            Assert.AreEqual("https://target.sharepoint.com/teams/source-pnp", site.PreferredTargetSiteCollectionUrl);
+            Assert.AreEqual("https://target.sharepoint.com/teams/source-pnp-pnp-12345678", site.TargetSiteCollectionUrl);
+            Assert.IsTrue(site.TargetSiteCollisionResolved);
+            Assert.AreEqual("/teams/source-pnp-pnp-12345678", site.Webs[0].TargetServerRelativeUrl);
+            Assert.AreEqual("/teams/source-pnp-pnp-12345678/Delivery", site.Webs[1].TargetServerRelativeUrl);
+            Assert.AreEqual(
+                "https://target.sharepoint.com/teams/source-pnp-pnp-12345678",
+                site.Webs[1].TargetParentWebUrl);
+            Assert.AreEqual("/teams/source-pnp/Delivery", site.Webs[1].PreferredTargetServerRelativeUrl);
         }
 
         [TestMethod]
@@ -1213,7 +2312,8 @@ namespace PnP.Framework.Test.EnterpriseWiki
                         {
                             Artifact = MigrationArtifact.Describe(attachmentBytes, "text/plain", "evidence.txt"),
                             ContentBase64 = Convert.ToBase64String(attachmentBytes),
-                            Availability = EvidenceAvailability.Captured
+                            Availability = EvidenceAvailability.Captured,
+                            RepresentationKind = ListBinaryRepresentationKind.OrdinaryFilePayload
                         }
                     }
                 }
@@ -1288,7 +2388,8 @@ namespace PnP.Framework.Test.EnterpriseWiki
                     {
                         Artifact = MigrationArtifact.Describe(documentBytes, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "case.docx"),
                         ContentBase64 = Convert.ToBase64String(documentBytes),
-                        Availability = EvidenceAvailability.Captured
+                        Availability = EvidenceAvailability.Captured,
+                        RepresentationKind = ListBinaryRepresentationKind.OrdinaryFilePayload
                     }
                 }
             });
@@ -1343,7 +2444,7 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
-        public void IngredientProjectionCollapsesOnlySemanticallyIdenticalEdges()
+        public void IngredientProjectionVersion6KeepsListAndFieldAsIndependentTransactions()
         {
             var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
             var webId = Guid.Parse("22222222-2222-2222-2222-222222222222");
@@ -1374,11 +2475,170 @@ namespace PnP.Framework.Test.EnterpriseWiki
 
             var itemId = PublishingPageIngredientIds.ListItem(webId, listId, 7);
             var listFieldId = PublishingPageIngredientIds.ListField(webId, listId, fieldId);
+            var projectedListId = PublishingPageIngredientIds.List(webId, listId);
+            Assert.AreEqual(PublishingPageIngredientGraphProjector.CurrentProjectionVersion, snapshot.IngredientGraph.ProjectionVersion);
+            Assert.AreEqual(0, snapshot.IngredientGraph.Edges.Count(edge =>
+                edge.FromIngredientId == itemId
+                && edge.ToIngredientId == listFieldId));
             Assert.AreEqual(1, snapshot.IngredientGraph.Edges.Count(edge =>
+                edge.FromIngredientId == projectedListId
+                && edge.ToIngredientId == listFieldId
+                && edge.Relationship == PageIngredientRelationship.Backs
+                && edge.Requirement == PageIngredientRequirement.Conditional));
+            Assert.AreEqual(1, snapshot.IngredientGraph.Edges.Count(edge =>
+                edge.FromIngredientId == listFieldId
+                && edge.ToIngredientId == projectedListId
+                && edge.Relationship == PageIngredientRelationship.DependsOn
+                && edge.Requirement == PageIngredientRequirement.Required));
+
+            var version3 = PublishingPageIngredientGraphProjector.ProjectVersion3(snapshot);
+            Assert.AreEqual(1, version3.Edges.Count(edge =>
+                edge.FromIngredientId == projectedListId
+                && edge.ToIngredientId == listFieldId
+                && edge.Relationship == PageIngredientRelationship.Backs
+                && edge.Requirement == PageIngredientRequirement.Required));
+
+            var version2 = PublishingPageIngredientGraphProjector.ProjectVersion2(snapshot);
+            Assert.AreEqual(1, version2.Edges.Count(edge =>
                 edge.FromIngredientId == itemId
                 && edge.ToIngredientId == listFieldId
                 && edge.Relationship == PageIngredientRelationship.BindsTo
                 && edge.Requirement == PageIngredientRequirement.Required));
+        }
+
+        [TestMethod]
+        public void IngredientProjectionVersion6MakesInformationProtectionAnAcyclicDocumentTransaction()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var webId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var listId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var list = CreateListSnapshot(siteId, webId, listId, "Protected documents");
+            list.Items.Add(new ListItemSnapshot
+            {
+                SourceItemId = 7,
+                Document = new ListDocumentSnapshot
+                {
+                    Name = "protected.docx",
+                    ServerRelativeUrl = "/sites/source/Protected documents/protected.docx",
+                    InformationProtection = new ListDocumentInformationProtectionSnapshot
+                    {
+                        LabelId = "9fbde396-1a24-4c79-8edf-9254a0f35055",
+                        AssignmentMethod = "1",
+                        LabelHash = "label-hash;00"
+                    }
+                }
+            });
+            var snapshot = CreateMigrationPackage().Snapshot;
+            snapshot.ListDependencies = new List<ListDependencySnapshot> { list };
+
+            var current = PublishingPageIngredientGraphProjector.Project(snapshot);
+            var version5 = PublishingPageIngredientGraphProjector.ProjectVersion5(snapshot);
+            var documentId = PublishingPageIngredientIds.ListDocument(webId, listId, 7);
+            var policyId = PublishingPageIngredientIds.ListDocumentInformationProtection(webId, listId, 7);
+
+            Assert.AreEqual("pnp-publishing-page-ingredient-projection/v6", current.ProjectionVersion);
+            Assert.AreEqual(1, current.Edges.Count(edge =>
+                edge.FromIngredientId == documentId
+                && edge.ToIngredientId == policyId
+                && edge.Relationship == PageIngredientRelationship.GovernedBy
+                && edge.Requirement == PageIngredientRequirement.Optional));
+            Assert.AreEqual(1, current.Edges.Count(edge =>
+                edge.FromIngredientId == policyId
+                && edge.ToIngredientId == documentId
+                && edge.Relationship == PageIngredientRelationship.DependsOn
+                && edge.Requirement == PageIngredientRequirement.Required));
+            Assert.AreEqual(1, version5.Edges.Count(edge =>
+                edge.FromIngredientId == documentId
+                && edge.ToIngredientId == policyId
+                && edge.Relationship == PageIngredientRelationship.GovernedBy
+                && edge.Requirement == PageIngredientRequirement.Required));
+        }
+
+        [TestMethod]
+        public void IngredientProjectionVersion6BindsLayoutTransactionsToTheRootWeb()
+        {
+            var package = CreateMigrationPackage();
+            var snapshot = package.Snapshot;
+            snapshot.Layout = CreateCustomLayout();
+            snapshot.SourceTopology = new SourceSiteCollectionSnapshot
+            {
+                SiteId = snapshot.Source.SiteId,
+                RootWebId = snapshot.Source.WebId,
+                SiteCollectionUrl = snapshot.Source.WebUrl,
+                ServerRelativeUrl = snapshot.Source.WebServerRelativeUrl,
+                Webs = new List<SourceWebSnapshot>
+                {
+                    new SourceWebSnapshot
+                    {
+                        SiteId = snapshot.Source.SiteId,
+                        WebId = snapshot.Source.WebId,
+                        SiteCollectionUrl = snapshot.Source.WebUrl,
+                        WebUrl = snapshot.Source.WebUrl,
+                        ServerRelativeUrl = snapshot.Source.WebServerRelativeUrl,
+                        Availability = EvidenceAvailability.Captured
+                    }
+                }
+            };
+
+            var graph = PublishingPageIngredientGraphProjector.Project(snapshot);
+            var version4 = PublishingPageIngredientGraphProjector.ProjectVersion4(snapshot);
+            var ownerWebId = PublishingPageIngredientIds.Web(snapshot.Source.SiteId, snapshot.Source.WebId);
+            var resourceId = PublishingPageIngredientIds.LayoutResource(
+                snapshot.Layout.ResourceArtifacts.Single().Reference.Value);
+            var fieldId = PublishingPageIngredientIds.PageContentTypeField(
+                snapshot.Layout.AssociatedContentTypeSchema.RequiredFieldClosure.Single().Id);
+
+            Assert.AreEqual("pnp-publishing-page-ingredient-projection/v6", graph.ProjectionVersion);
+            Assert.IsTrue(HasRequiredEdge(graph, PublishingPageIngredientIds.Layout, ownerWebId));
+            Assert.IsTrue(HasRequiredEdge(graph, PublishingPageIngredientIds.ContentType, ownerWebId));
+            Assert.IsTrue(HasRequiredEdge(graph, resourceId, ownerWebId));
+            Assert.IsTrue(HasRequiredEdge(graph, fieldId, ownerWebId));
+            Assert.IsFalse(HasRequiredEdge(version4, PublishingPageIngredientIds.Layout, ownerWebId));
+            Assert.AreEqual(PublishingPageIngredientGraphProjector.ProjectionVersionV4, version4.ProjectionVersion);
+        }
+
+        [TestMethod]
+        public void MaterializedReferenceRemainsExecutableWhenPageContentIsDeferred()
+        {
+            var package = CreateMigrationPackage();
+            package.Snapshot.Dependencies.Add(new PageReferenceSnapshot
+            {
+                Id = "asset",
+                OriginalValue = "/sites/source/SiteAssets/app.js",
+                SourceAbsoluteUrl = "https://source.sharepoint.com/sites/source/SiteAssets/app.js",
+                SourceServerRelativeUrl = "/sites/source/SiteAssets/app.js",
+                ContentBase64 = "AQ==",
+                ContentSha256 = new string('a', 64),
+                ContentLength = 1,
+                CaptureStatus = PageCaptureStatus.Captured
+            });
+            package.Plan.DependencyActions.Add(new PageReferenceAction
+            {
+                SnapshotDependencyId = "asset",
+                TargetAbsoluteUrl = "https://target.sharepoint.com/sites/target/SiteAssets/app.js",
+                TargetServerRelativeUrl = "/sites/target/SiteAssets/app.js",
+                Disposition = PageReferenceDisposition.MaterializeAtTarget
+            });
+            var graph = PublishingPageIngredientGraphProjector.Project(package.Snapshot);
+            var actions = PublishingPageIngredientActionProjector.Project(package.Snapshot, package.Plan, graph);
+            var content = actions.Single(value => value.IngredientId == PublishingPageIngredientIds.PublishingContent);
+            content.Disposition = IngredientDisposition.Defer;
+
+            var result = PageIngredientPlanEvaluator.Evaluate(graph, actions);
+            var referenceId = PublishingPageIngredientIds.Reference("asset");
+            var referenceAction = actions.Single(value => value.IngredientId == referenceId);
+
+            Assert.AreEqual(IngredientDisposition.Transform, referenceAction.Disposition);
+            CollectionAssert.Contains(referenceAction.ReleasedDependencyIngredientIds.ToList(), PublishingPageIngredientIds.PublishingContent);
+            Assert.AreEqual(PageIngredientExecutionState.Executable, result.ExecutionFrontier.GetState(referenceId));
+            Assert.AreEqual(PageIngredientExecutionState.Deferred, result.ExecutionFrontier.GetState(PublishingPageIngredientIds.PublishingContent));
+        }
+
+        private static bool HasRequiredEdge(CanonicalPageIngredientGraph graph, string from, string to)
+        {
+            return graph.Edges.Any(value => value.FromIngredientId == from
+                && value.ToIngredientId == to
+                && value.Requirement == PageIngredientRequirement.Required);
         }
 
         [TestMethod]
@@ -1401,6 +2661,100 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 Name = "Academy announcement",
                 ParentId = "0x01"
             });
+
+            ListDependencyPackageValidator.Validate(
+                Array.Empty<ClassicWebPartSnapshot>(),
+                Array.Empty<ClassicListWebPartBindingSnapshot>(),
+                new[] { list },
+                Array.Empty<ListLookupDependency>(),
+                null,
+                null);
+
+            list.SourceItemCount = 1;
+            list.BaseTemplate = 101;
+            var plan = ListMigrationPlanFactory.Create(
+                new[] { list },
+                null,
+                CreateTopology(list.SourceSiteId, list.SourceWebId),
+                null,
+                null);
+
+            Assert.IsFalse(plan.Lists.Single().Issues.Any(value =>
+                value.Code == "ListBinaryEvidenceUnavailable"));
+        }
+
+        [TestMethod]
+        public void ListPackageValidationAcceptsCapturedIrmPolicyEvidence()
+        {
+            var list = CreateListSnapshot(
+                Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                "Protected documents");
+            list.InformationRightsManagement = new ListInformationRightsManagementSnapshot
+            {
+                IrmEnabled = true,
+                Availability = EvidenceAvailability.Captured,
+                Policy = new ListInformationRightsManagementPolicySnapshot
+                {
+                    PolicyTitle = "Source protected library",
+                    TemplateId = "source-template"
+                }
+            };
+
+            ListDependencyPackageValidator.Validate(
+                Array.Empty<ClassicWebPartSnapshot>(),
+                Array.Empty<ClassicListWebPartBindingSnapshot>(),
+                new[] { list },
+                Array.Empty<ListLookupDependency>(),
+                null,
+                null);
+        }
+
+        [TestMethod]
+        public void ListPackageValidationRejectsUnavailableIrmWithoutLiteralAuthorizationEvidence()
+        {
+            var list = CreateListSnapshot(
+                Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                "Protected documents");
+            list.InformationRightsManagement = new ListInformationRightsManagementSnapshot
+            {
+                IrmEnabled = true,
+                Availability = EvidenceAvailability.Unavailable
+            };
+
+            var exception = Assert.ThrowsException<InvalidDataException>(() =>
+                ListDependencyPackageValidator.Validate(
+                    Array.Empty<ClassicWebPartSnapshot>(),
+                    Array.Empty<ClassicListWebPartBindingSnapshot>(),
+                    new[] { list },
+                    Array.Empty<ListLookupDependency>(),
+                    null,
+                    null));
+
+            StringAssert.Contains(exception.Message, "without literal HTTP 401/403 evidence");
+        }
+
+        [TestMethod]
+        public void ListPackageValidationAcceptsLiteralIrmAuthorizationEvidence()
+        {
+            var list = CreateListSnapshot(
+                Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                "Protected documents");
+            list.InformationRightsManagement = new ListInformationRightsManagementSnapshot
+            {
+                IrmEnabled = true,
+                Availability = EvidenceAvailability.Unavailable,
+                AuthorizationEvidence = LiteralHttpAuthorizationEvidence.Create(
+                    "capture-list-irm-policy",
+                    "https://source.sharepoint.com/sites/source/_vti_bin/client.svc/ProcessQuery",
+                    403,
+                    new DateTimeOffset(2026, 9, 4, 1, 2, 3, TimeSpan.Zero))
+            };
 
             ListDependencyPackageValidator.Validate(
                 Array.Empty<ClassicWebPartSnapshot>(),
@@ -1470,6 +2824,7 @@ namespace PnP.Framework.Test.EnterpriseWiki
                         Artifact = MigrationArtifact.Describe(bytes, "application/octet-stream", "changing.pptx"),
                         ContentBase64 = Convert.ToBase64String(bytes),
                         Availability = EvidenceAvailability.Partial,
+                        RepresentationKind = ListBinaryRepresentationKind.OrdinaryFilePayload,
                         Diagnostics = { "DocumentMetadataLengthMismatch: metadataLength=26; payloadLength=16." }
                     }
                 }
@@ -1482,6 +2837,9 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 Array.Empty<ListLookupDependency>(),
                 null,
                 null);
+
+            Assert.IsTrue(ListMigrationPlanFactory.HasReplayableBinary(
+                list.Items.Single().Document.Content));
         }
 
         [TestMethod]
@@ -1752,6 +3110,45 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
+        public void ListScopedReadOnlyAndSealedFieldsRequireTargetRuntime()
+        {
+            var siteId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var webId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var listId = Guid.Parse("33333333-3333-3333-3333-333333333333");
+            var source = CreateListSnapshot(siteId, webId, listId, "Assets");
+            var readOnlySchema = $"<Field ID='{{44444444-4444-4444-4444-444444444444}}' Name='GeneratedMetadata' Type='Note' ReadOnly='TRUE' SourceID='{{{listId:D}}}' />";
+            var sealedSchema = $"<Field ID='{{55555555-5555-5555-5555-555555555555}}' Name='AssetAuthor' Type='Text' Sealed='TRUE' SourceID='{{{listId:D}}}' />";
+            source.Fields.Add(new ListFieldSnapshot
+            {
+                Id = Guid.Parse("44444444-4444-4444-4444-444444444444"),
+                InternalName = "GeneratedMetadata",
+                Title = "Generated Metadata",
+                TypeAsString = "Note",
+                SchemaXml = readOnlySchema,
+                SchemaXmlSha256 = MigrationDigest.ComputeSha256(readOnlySchema),
+                PortableSchemaSha256 = FieldSchemaCanonicalizer.PortableDigest(readOnlySchema),
+                ReadOnly = true
+            });
+            source.Fields.Add(new ListFieldSnapshot
+            {
+                Id = Guid.Parse("55555555-5555-5555-5555-555555555555"),
+                InternalName = "AssetAuthor",
+                Title = "Asset Author",
+                TypeAsString = "Text",
+                SchemaXml = sealedSchema,
+                SchemaXmlSha256 = MigrationDigest.ComputeSha256(sealedSchema),
+                PortableSchemaSha256 = FieldSchemaCanonicalizer.PortableDigest(sealedSchema),
+                Sealed = true
+            });
+
+            var plan = ListMigrationPlanFactory.Create(new[] { source }, null, CreateTopology(siteId, webId), null, null);
+            var fields = plan.Lists.Single().Fields.ToDictionary(value => value.InternalName);
+
+            Assert.AreEqual(ListFieldMaterializationDisposition.RequireTargetRuntime, fields["GeneratedMetadata"].Disposition);
+            Assert.AreEqual(ListFieldMaterializationDisposition.RequireTargetRuntimeAndCopyValue, fields["AssetAuthor"].Disposition);
+        }
+
+        [TestMethod]
         public void RuntimeListFieldCompatibilityPreservesScalarAndCollectionShapes()
         {
             Assert.IsTrue(ListFieldTypeCompatibility.IsCompatibleRuntimeType("Note", "Text"));
@@ -1883,6 +3280,8 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 },
                 Source = new PageIdentity
                 {
+                    SiteId = Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                    WebId = Guid.Parse("22222222-2222-2222-2222-222222222222"),
                     WebUrl = "https://source.sharepoint.com/sites/source",
                     WebServerRelativeUrl = "/sites/source",
                     PageServerRelativeUrl = "/sites/source/Pages/source.aspx",
@@ -2041,6 +3440,7 @@ namespace PnP.Framework.Test.EnterpriseWiki
             package.Snapshot.IngredientGraph = PublishingPageIngredientGraphProjector.Project(package.Snapshot);
             package.SnapshotDigest = PublishingPageDigest.ComputeSnapshotDigest(package.Snapshot);
             package.Plan.SourceSnapshotDigest = package.SnapshotDigest;
+            package.Plan.IngredientGraph = PublishingPageIngredientGraphProjector.Project(package.Snapshot);
             package.Plan.PlanningPolicy.TaxonomySchemaMappings.Add(new TaxonomyTargetMapping
             {
                 SourceTermStoreId = field.TaxonomyBinding.TermStoreId,
@@ -2079,12 +3479,16 @@ namespace PnP.Framework.Test.EnterpriseWiki
                     "The target-local WssId resolves to the sealed hidden identity."
                 }
             });
-            package.Plan.IngredientActions = PublishingPageIngredientActionProjector.Project(package.Snapshot, package.Plan);
+            package.Plan.IngredientActions = PublishingPageIngredientActionProjector.Project(
+                package.Snapshot,
+                package.Plan,
+                package.Plan.IngredientGraph);
             var evaluation = PageIngredientPlanEvaluator.Evaluate(
-                package.Snapshot.IngredientGraph,
+                package.Plan.IngredientGraph,
                 package.Plan.IngredientActions);
             package.Plan.MigrationOutcome = evaluation.Outcome;
             package.Plan.IngredientIssues = evaluation.Issues;
+            package.Plan.ExecutionFrontier = evaluation.ExecutionFrontier;
             package.State = PublishingPagePackageState.ApprovalReady;
             package.PlanDigest = PublishingPageDigest.ComputePlanDigest(package.Plan);
         }
@@ -2264,8 +3668,10 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 SourceSnapshotDigest = snapshotDigest,
                 SourceWebUrl = snapshot.Source.WebUrl,
                 SourcePageServerRelativeUrl = snapshot.Source.PageServerRelativeUrl,
+                OriginalIdentifier = PublishingPageTargetOwnership.OriginalIdentifier(snapshot.Source),
                 TargetWebUrl = "https://target.sharepoint.com/sites/target",
                 TargetWebServerRelativeUrl = "/sites/target",
+                PreferredTargetPageServerRelativeUrl = "/sites/target/Pages/source.aspx",
                 TargetPageServerRelativeUrl = "/sites/target/Pages/source.aspx",
                 PageLayoutName = "EnterpriseWiki",
                 TargetLifecycle = PublishingPageTargetLifecycle.Draft,
@@ -2282,7 +3688,9 @@ namespace PnP.Framework.Test.EnterpriseWiki
                     PagesLibraryBaseTemplate = 850,
                     PageContentTypeId = BuiltInContentTypeId.EnterpriseWikiPage,
                     PageLayoutUrl = "https://target.sharepoint.com/_catalogs/masterpage/EnterpriseWiki.aspx",
-                    PageLayoutExists = true
+                    PageLayoutExists = true,
+                    PreferredTargetPageServerRelativeUrl = "/sites/target/Pages/source.aspx",
+                    TargetPageServerRelativeUrl = "/sites/target/Pages/source.aspx"
                 },
                 LayoutMaterialization = layoutPlan,
                 LayoutTargetProbe = layoutProbe,
@@ -2310,12 +3718,14 @@ namespace PnP.Framework.Test.EnterpriseWiki
                             Description = "Normalized authored DOM is equal."
                         }
                     }
-                }
+                },
+                IngredientGraph = PublishingPageIngredientGraphProjector.Project(snapshot)
             };
-            plan.IngredientActions = PublishingPageIngredientActionProjector.Project(snapshot, plan);
-            var ingredientEvaluation = PageIngredientPlanEvaluator.Evaluate(snapshot.IngredientGraph, plan.IngredientActions);
+            plan.IngredientActions = PublishingPageIngredientActionProjector.Project(snapshot, plan, plan.IngredientGraph);
+            var ingredientEvaluation = PageIngredientPlanEvaluator.Evaluate(plan.IngredientGraph, plan.IngredientActions);
             plan.MigrationOutcome = ingredientEvaluation.Outcome;
             plan.IngredientIssues = ingredientEvaluation.Issues;
+            plan.ExecutionFrontier = ingredientEvaluation.ExecutionFrontier;
             return new PublishingPageMigrationPackage
             {
                 PlannedAtUtc = DateTimeOffset.UtcNow,

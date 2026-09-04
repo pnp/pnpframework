@@ -19,7 +19,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
             Uri targetSiteCollectionUrl,
             string reviewedStockFileName,
             IEnumerable<TaxonomyTargetMapping> taxonomyMappings = null,
-            IMigrationArtifactStore artifactStore = null)
+            IMigrationArtifactStore artifactStore = null,
+            bool allowExternalResourceReferences = true)
         {
             if (layout == null)
             {
@@ -63,6 +64,33 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                 };
             }
 
+            if (PublishingPageNativeLayoutCatalog.TryGetUnavailableSourceSubstitution(
+                layout,
+                sourceFileName,
+                out var nativeProfile))
+            {
+                return new PublishingPageLayoutMaterializationPlan
+                {
+                    Disposition = PublishingPageLayoutMaterializationDisposition.ReuseTargetStock,
+                    SourceUrl = layout.Url,
+                    SourceServerRelativeUrl = layout.ServerRelativeUrl,
+                    SourceFileName = sourceFileName,
+                    SourceBytes = layout.Bytes,
+                    AssociatedContentTypeName = nativeProfile.AssociatedContentTypeName,
+                    AssociatedContentTypeId = nativeProfile.AssociatedContentTypeId,
+                    TargetFileName = nativeProfile.FileName,
+                    TargetPageLayoutName = Path.GetFileNameWithoutExtension(nativeProfile.FileName),
+                    TargetServerRelativeUrl = BuildTargetPath(targetSiteCollectionUrl, nativeProfile.FileName),
+                    RequiredFieldBindings = RequiredFieldBindings(layout),
+                    RequiredRegistrations = layout.Registrations.ToList(),
+                    Zones = layout.Zones.ToList(),
+                    ResourceReferences = layout.ResourceReferences.ToList(),
+                    TargetBytes = layout.Bytes,
+                    Reason = $"Require the reviewed target-runtime stock {nativeProfile.FileName} Page Layout and its native '{nativeProfile.AssociatedContentTypeName}' association. "
+                        + $"Source bytes remain unavailable ({layout.EvidenceState}); this is an explicit target-runtime substitution, not a source-byte equality claim."
+                };
+            }
+
             if (layout.EvidenceState != PublishingPageLayoutEvidenceState.Readable
                 || layout.Availability != EvidenceAvailability.Captured
                 || layout.Bytes == null)
@@ -86,7 +114,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                     sourcePageWebUrl,
                     sourceSiteCollectionUrl,
                     targetPageWebUrl,
-                    targetSiteCollectionUrl))
+                    targetSiteCollectionUrl,
+                    allowExternalResourceReferences))
                 .OrderBy(value => value.SourceReference, StringComparer.OrdinalIgnoreCase)
                 .ToList();
             var rewrites = resourcePlans
@@ -199,6 +228,18 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
 
         private static Uri ResolveSourceSiteCollectionUrl(PublishingPageLayoutSnapshot layout)
         {
+            if (!string.IsNullOrWhiteSpace(layout.OwnerSiteCollectionUrl))
+            {
+                Uri owner;
+                if (!Uri.TryCreate(layout.OwnerSiteCollectionUrl, UriKind.Absolute, out owner)
+                    || !string.Equals(owner.Scheme, Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new InvalidDataException("The captured Page Layout owner Site Collection URL is invalid.");
+                }
+
+                return owner;
+            }
+
             Uri sourceLayoutUrl;
             if (!Uri.TryCreate(layout.Url, UriKind.Absolute, out sourceLayoutUrl))
             {

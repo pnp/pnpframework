@@ -32,6 +32,22 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
             return value;
         }
 
+        public static T Deserialize<T>(Stream jsonStream)
+        {
+            if (jsonStream == null)
+            {
+                throw new ArgumentNullException(nameof(jsonStream));
+            }
+
+            var value = MigrationContractSerializer.Deserialize<T>(jsonStream);
+            if (value == null)
+            {
+                throw new InvalidDataException($"The JSON payload did not contain a {typeof(T).Name} value.");
+            }
+
+            return value;
+        }
+
         internal static string SerializeCanonical<T>(T value)
         {
             if (value == null)

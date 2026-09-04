@@ -30,6 +30,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
             {
                 throw new NotSupportedException("Only create-page plans are supported. Deferred-field recovery remains represented by the package schema but is not executable yet.");
             }
+
+            PagePlanningTaxonomyMappingResolver.Normalize(options);
         }
 
         public static void AddSnapshotDecisions(
@@ -84,9 +86,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
                         SourceTermStoreId = value.SourceTermStoreId,
                         SourceTermSetId = value.SourceTermSetId,
                         TargetTermStoreId = value.TargetTermStoreId,
-                        TargetTermSetId = value.TargetTermSetId
+                        TargetTermSetId = value.TargetTermSetId,
+                        Mode = value.Mode,
+                        UnresolvedReferenceTargetVerifiedAbsent = value.UnresolvedReferenceTargetVerifiedAbsent,
+                        UnresolvedReferenceEvidenceSha256 = value.UnresolvedReferenceEvidenceSha256
                     })
                     .ToList(),
+                TaxonomyAssetMappingCatalog = PagePlanningTaxonomyMappingResolver.Clone(options.TaxonomyAssetMappingCatalog),
                 TopologyPolicy = new TopologyPlanningPolicy
                 {
                     DefaultChildWebTemplate = options.TopologyPolicy?.DefaultChildWebTemplate,

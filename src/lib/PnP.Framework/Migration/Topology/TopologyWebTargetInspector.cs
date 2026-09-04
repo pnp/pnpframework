@@ -15,6 +15,25 @@ namespace PnP.Framework.Migration.Topology
             Guid targetSiteId,
             Guid targetParentWebId)
         {
+            return Inspect(scope, plan, targetSiteId, targetParentWebId, false);
+        }
+
+        public static TopologyWebTargetProbe InspectForPlanning(
+            TopologyTargetInspectionScope scope,
+            WebMappingPlan plan,
+            Guid targetSiteId,
+            Guid targetParentWebId)
+        {
+            return Inspect(scope, plan, targetSiteId, targetParentWebId, true);
+        }
+
+        private static TopologyWebTargetProbe Inspect(
+            TopologyTargetInspectionScope scope,
+            WebMappingPlan plan,
+            Guid targetSiteId,
+            Guid targetParentWebId,
+            bool resolvePlanningCollision)
+        {
             var approvedHost = scope.AnchorContext.Web;
             if (TargetUrl.Equals(plan.TargetWebUrl, scope.ApprovedHostUrl)
                 && approvedHost.IsPropertyAvailable("Id")
@@ -33,19 +52,67 @@ namespace PnP.Framework.Migration.Topology
             {
                 var parent = context.Web;
                 context.Load(parent, value => value.Id, value => value.Url);
-                context.Load(parent.Webs, values => values.Include(
-                    value => value.Id,
-                    value => value.Url,
-                    value => value.ServerRelativeUrl,
-                    value => value.Title,
-                    value => value.Description,
-                    value => value.WebTemplate,
-                    value => value.Configuration,
-                    value => value.AllProperties));
+                if (resolvePlanningCollision)
+                {
+                    context.Load(parent.Webs, values => values.Include(
+                        value => value.Id,
+                        value => value.Url,
+                        value => value.ServerRelativeUrl,
+                        value => value.Title,
+                        value => value.Description,
+                        value => value.WebTemplate,
+                        value => value.Configuration,
+                        value => value.AllProperties));
+                }
+                else
+                {
+                    var targetServerRelativeUrl = plan.TargetServerRelativeUrl;
+                    context.Load(parent.Webs, values => values
+                        .Where(value => value.ServerRelativeUrl == targetServerRelativeUrl)
+                        .Include(
+                            value => value.Id,
+                            value => value.Url,
+                            value => value.ServerRelativeUrl,
+                            value => value.Title,
+                            value => value.Description,
+                            value => value.WebTemplate,
+                            value => value.Configuration,
+                            value => value.AllProperties));
+                }
                 context.ExecuteQueryRetry();
                 if (parent.Id != targetParentWebId || !TargetUrl.Equals(parent.Url, plan.TargetParentWebUrl))
                 {
                     return Blocked(plan, "TargetParentIdentityMismatch", "The observed target parent Web differs from the topology plan.");
+                }
+
+                if (resolvePlanningCollision)
+                {
+                    var resolution = TopologyWebTargetPathResolver.Resolve(
+                        plan,
+                        parent.Webs.AsEnumerable().Select(value => new TopologyWebTargetInventoryItem
+                        {
+                            WebId = value.Id,
+                            Url = value.Url,
+                            ServerRelativeUrl = value.ServerRelativeUrl,
+                            Title = value.Title,
+                            Description = value.Description,
+                            Template = value.WebTemplate,
+                            Configuration = value.Configuration,
+                            OriginalIdentifier = Property(value.AllProperties, TopologyPlanner.WebOriginalIdentifierPropertyName),
+                            MappingDigest = Property(value.AllProperties, TopologyPlanner.WebPlanDigestPropertyName)
+                        }));
+                    if (resolution.ExistingTarget == null)
+                    {
+                        return PlannedCreate(
+                            plan,
+                            targetSiteId,
+                            targetParentWebId,
+                            resolution.TargetWebUrl,
+                            resolution.TargetServerRelativeUrl,
+                            resolution.CollisionResolved,
+                            resolution.Reason);
+                    }
+                    return FromResolution(plan, targetSiteId, targetParentWebId, resolution);
                 }
 
                 var candidate = parent.Webs.AsEnumerable().SingleOrDefault(value =>
@@ -64,7 +131,10 @@ namespace PnP.Framework.Migration.Topology
                 {
                     SourceSiteId = plan.SourceSiteId,
                     SourceWebId = plan.SourceWebId,
+                    PreferredTargetWebUrl = plan.PreferredTargetWebUrl ?? plan.TargetWebUrl,
                     TargetWebUrl = plan.TargetWebUrl,
+                    PreferredTargetServerRelativeUrl = plan.PreferredTargetServerRelativeUrl ?? plan.TargetServerRelativeUrl,
+                    TargetServerRelativeUrl = plan.TargetServerRelativeUrl,
                     Exists = true,
                     TargetSiteId = targetSiteId,
                     TargetWebId = candidate.Id,
@@ -91,7 +161,10 @@ namespace PnP.Framework.Migration.Topology
             {
                 SourceSiteId = plan.SourceSiteId,
                 SourceWebId = plan.SourceWebId,
+                PreferredTargetWebUrl = plan.PreferredTargetWebUrl ?? plan.TargetWebUrl,
                 TargetWebUrl = plan.TargetWebUrl,
+                PreferredTargetServerRelativeUrl = plan.PreferredTargetServerRelativeUrl ?? plan.TargetServerRelativeUrl,
+                TargetServerRelativeUrl = plan.TargetServerRelativeUrl,
                 Exists = true,
                 TargetSiteId = targetSiteId,
                 TargetWebId = approvedHost.Id,
@@ -140,11 +213,35 @@ namespace PnP.Framework.Migration.Topology
 
         internal static TopologyWebTargetProbe PlannedCreate(WebMappingPlan plan, Guid targetSiteId, Guid? parentWebId)
         {
+            return PlannedCreate(
+                plan,
+                targetSiteId,
+                parentWebId,
+                plan.TargetWebUrl,
+                plan.TargetServerRelativeUrl,
+                false,
+                null);
+        }
+
+        private static TopologyWebTargetProbe PlannedCreate(
+            WebMappingPlan plan,
+            Guid targetSiteId,
+            Guid? parentWebId,
+            string targetWebUrl,
+            string targetServerRelativeUrl,
+            bool collisionResolved,
+            string collisionResolutionReason)
+        {
             return new TopologyWebTargetProbe
             {
                 SourceSiteId = plan.SourceSiteId,
                 SourceWebId = plan.SourceWebId,
-                TargetWebUrl = plan.TargetWebUrl,
+                PreferredTargetWebUrl = plan.PreferredTargetWebUrl ?? plan.TargetWebUrl,
+                TargetWebUrl = targetWebUrl,
+                PreferredTargetServerRelativeUrl = plan.PreferredTargetServerRelativeUrl ?? plan.TargetServerRelativeUrl,
+                TargetServerRelativeUrl = targetServerRelativeUrl,
+                CollisionResolved = collisionResolved,
+                CollisionResolutionReason = collisionResolutionReason,
                 Exists = false,
                 TargetSiteId = targetSiteId,
                 TargetParentWebId = parentWebId,
@@ -158,14 +255,17 @@ namespace PnP.Framework.Migration.Topology
             {
                 SourceSiteId = plan.SourceSiteId,
                 SourceWebId = plan.SourceWebId,
+                PreferredTargetWebUrl = plan.PreferredTargetWebUrl ?? plan.TargetWebUrl,
                 TargetWebUrl = plan.TargetWebUrl,
+                PreferredTargetServerRelativeUrl = plan.PreferredTargetServerRelativeUrl ?? plan.TargetServerRelativeUrl,
+                TargetServerRelativeUrl = plan.TargetServerRelativeUrl,
                 Disposition = TopologyMaterializationDisposition.Block
             };
             result.Issues.Add(Issue(code, "target-web:" + plan.TargetWebUrl, message));
             return result;
         }
 
-        private static bool TemplateMatches(string observedTemplate, int observedConfiguration, string expectedTemplate, int expectedConfiguration)
+        internal static bool TemplateMatches(string observedTemplate, int observedConfiguration, string expectedTemplate, int expectedConfiguration)
         {
             var parts = (expectedTemplate ?? string.Empty).Split('#');
             var template = parts[0];
@@ -174,6 +274,36 @@ namespace PnP.Framework.Migration.Topology
                 : expectedConfiguration;
             return string.Equals(observedTemplate, template, StringComparison.OrdinalIgnoreCase)
                 && observedConfiguration == configuration;
+        }
+
+        private static TopologyWebTargetProbe FromResolution(
+            WebMappingPlan plan,
+            Guid targetSiteId,
+            Guid targetParentWebId,
+            TopologyWebTargetPathResolution resolution)
+        {
+            var existing = resolution.ExistingTarget;
+            return new TopologyWebTargetProbe
+            {
+                SourceSiteId = plan.SourceSiteId,
+                SourceWebId = plan.SourceWebId,
+                PreferredTargetWebUrl = resolution.PreferredTargetWebUrl,
+                TargetWebUrl = resolution.TargetWebUrl,
+                PreferredTargetServerRelativeUrl = resolution.PreferredTargetServerRelativeUrl,
+                TargetServerRelativeUrl = resolution.TargetServerRelativeUrl,
+                CollisionResolved = resolution.CollisionResolved,
+                CollisionResolutionReason = resolution.Reason,
+                Exists = true,
+                TargetSiteId = targetSiteId,
+                TargetWebId = existing.WebId,
+                TargetParentWebId = targetParentWebId,
+                ExistingTitle = existing.Title,
+                ExistingTemplate = existing.Template,
+                ExistingConfiguration = existing.Configuration,
+                ExistingOriginalIdentifier = existing.OriginalIdentifier,
+                ExistingPlanDigest = existing.MappingDigest,
+                Disposition = resolution.ExistingDisposition
+            };
         }
 
         private static string Property(PropertyValues values, string name)

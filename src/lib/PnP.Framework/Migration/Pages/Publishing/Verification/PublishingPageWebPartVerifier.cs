@@ -20,7 +20,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
             IEnumerable<ClassicListWebPartBindingSnapshot> bindings,
             IEnumerable<ClassicWebPartAction> actions,
             IEnumerable<ListMaterializationReceipt> listReceipts,
-            IEnumerable<PageTextReplacement> replacements)
+            IEnumerable<PageTextReplacement> replacements,
+            bool exactInventory = true)
         {
             var actual = Read(context, pagePath);
             var unused = actual.ToList();
@@ -83,7 +84,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                 }
             }
 
-            foreach (var extra in unused)
+            foreach (var extra in exactInventory ? unused : Enumerable.Empty<ClassicWebPartSnapshot>())
             {
                 results.Add(new PublishingPageWebPartVerificationResult
                 {

@@ -7,6 +7,7 @@ using PnP.Framework.Migration.Verification;
 using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Taxonomy;
+using PnP.Framework.Migration.Pages.Ingredients;
 using System;
 using System.Collections.Generic;
 
@@ -23,6 +24,22 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
         public Guid OperationId { get; set; }
 
         public MigrationExecutionStatus ExecutionStatus { get; set; }
+
+        public bool PartialExecution { get; set; }
+
+        public PageIngredientExecutionFrontier ExecutionFrontier { get; set; }
+
+        public IList<string> CompletedIngredientIds { get; set; } = new List<string>();
+
+        public IList<string> VerifiedIngredientIds { get; set; } = new List<string>();
+
+        public IList<string> PendingVerificationIngredientIds { get; set; } = new List<string>();
+
+        public IList<string> FailedVerificationIngredientIds { get; set; } = new List<string>();
+
+        public int DeferredIngredientCount { get; set; }
+
+        public int AuthorizationBlockedIngredientCount { get; set; }
 
         public ExecutionAdmissionFailure AdmissionFailure { get; set; }
 
@@ -46,6 +63,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
 
         public PublishingPageTargetLifecycle ExpectedLifecycle { get; set; }
 
+        public PublishingPageTargetLifecycle ApprovedLifecycle { get; set; }
+
         public string ActualFileLevel { get; set; }
 
         public string ActualCheckOutType { get; set; }
@@ -55,6 +74,20 @@ namespace PnP.Framework.Migration.Pages.Publishing.Packaging
         public bool LifecycleMatched { get; set; }
 
         public bool SecurityMatched { get; set; }
+
+        public bool OwnershipMatched { get; set; }
+
+        public bool PageArtifactMatched { get; set; }
+
+        public bool LayoutMatched { get; set; }
+
+        public bool ContentTypeMatched { get; set; }
+
+        public bool PageFieldsMatched { get; set; }
+
+        public bool DependenciesMatched { get; set; }
+
+        public string ApprovedPublishingPageContentSha256 { get; set; }
 
         public string ExpectedPublishingPageContentSha256 { get; set; }
 

@@ -1,4 +1,6 @@
 using System;
+using System.Text.Json.Serialization;
+using PnP.Framework.Migration.Taxonomy;
 
 namespace PnP.Framework.Migration.Schema.Fields
 {
@@ -34,9 +36,24 @@ namespace PnP.Framework.Migration.Schema.Fields
 
         public Guid? SourceTermSetId { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public Guid? SourceAnchorTermId { get; set; }
+
         public Guid? TargetTermStoreId { get; set; }
 
         public Guid? TargetTermSetId { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public TaxonomyTargetMappingMode TaxonomyMappingMode { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool UnresolvedReferenceTargetVerifiedAbsent { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string UnresolvedReferenceEvidenceSha256 { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public Guid? TargetAnchorTermId { get; set; }
 
         public Guid? HiddenTextFieldId { get; set; }
 

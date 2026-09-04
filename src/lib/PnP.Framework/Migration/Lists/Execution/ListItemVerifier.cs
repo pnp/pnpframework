@@ -18,14 +18,17 @@ namespace PnP.Framework.Migration.Lists.Execution
             ListMaterializationPlan plan,
             ListMaterializationReceipt receipt,
             IDictionary<Guid, ListMaterializationReceipt> dependencyReceipts,
+            ListMaterializationExecutionScope.ListSelection selection,
             ICollection<string> diagnostics)
         {
             var owned = ReadOwnedItems(context, list, diagnostics);
-            if (list.ItemCount != source.Items.Count)
+            var exactInventory = selection == null || selection.ExactItemInventory;
+            if (exactInventory && list.ItemCount != source.Items.Count)
             {
                 diagnostics.Add("Target List ItemCount " + list.ItemCount + " differs from captured current item count " + source.Items.Count + ".");
             }
-            if (owned.Count != source.Items.Count || receipt.TargetItemIds.Count != source.Items.Count)
+            if ((exactInventory && owned.Count != source.Items.Count)
+                || receipt.TargetItemIds.Count != source.Items.Count)
             {
                 diagnostics.Add("Target source-to-item mapping count differs from the captured current item count.");
             }
@@ -45,15 +48,25 @@ namespace PnP.Framework.Migration.Lists.Execution
                 context.Load(target);
                 context.Load(target.AttachmentFiles, values => values.Include(value => value.FileName, value => value.ServerRelativeUrl));
                 context.ExecuteQueryRetry();
-                var expectedDigest = ListItemMaterializer.ComputeItemDigest(sourceItem);
-                if (!string.Equals(ReadString(target, ListItemMaterializer.OriginalItemDigestFieldName), expectedDigest, StringComparison.OrdinalIgnoreCase))
+                var includeItem = selection == null || selection.ItemIds.Contains(sourceItem.SourceItemId);
+                if (includeItem)
                 {
-                    diagnostics.Add("Target item provenance digest differs for source item " + sourceItem.SourceItemId + ".");
+                    var expectedDigest = ListItemMaterializer.ComputeItemDigest(sourceItem);
+                    if (!string.Equals(ReadString(target, ListItemMaterializer.OriginalItemDigestFieldName), expectedDigest, StringComparison.OrdinalIgnoreCase))
+                    {
+                        diagnostics.Add("Target item provenance digest differs for source item " + sourceItem.SourceItemId + ".");
+                    }
+                    VerifyValues(sourceItem, target, plan, receipt.TargetContentTypeIds, allReceipts, diagnostics);
+                    receipt.VerifiedItemCount++;
                 }
-                VerifyValues(sourceItem, target, plan, receipt.TargetContentTypeIds, allReceipts, diagnostics);
                 ListBinaryVerifier.VerifyDocument(context, source, plan, sourceItem, receipt, diagnostics);
-                ListBinaryVerifier.VerifyAttachments(context, sourceItem, target, receipt, diagnostics);
-                receipt.VerifiedItemCount++;
+                ListBinaryVerifier.VerifyAttachments(
+                    context,
+                    sourceItem,
+                    target,
+                    receipt,
+                    selection == null || selection.ExactAttachmentInventoryItemIds.Contains(sourceItem.SourceItemId),
+                    diagnostics);
             }
         }
 

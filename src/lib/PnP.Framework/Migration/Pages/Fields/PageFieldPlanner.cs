@@ -168,9 +168,18 @@ namespace PnP.Framework.Migration.Pages.Fields
                         continue;
                     }
 
-                    action.Disposition = PageFieldDisposition.RequiresMapping;
-                    action.Reason = "The value is captured, but its source identity must be mapped before it can be safely applied to another site.";
-                    warnings.Add($"Field '{sourceField.InternalName}' requires an identity mapping and remains evidence-only.");
+                    if (sourceField.Required)
+                    {
+                        action.Disposition = PageFieldDisposition.RequiresMapping;
+                        action.Reason = "The required value is captured, but its source identity must be mapped before it can be safely applied to another site.";
+                        warnings.Add($"Required field '{sourceField.InternalName}' needs an explicit cross-site identity mapping.");
+                    }
+                    else
+                    {
+                        action.Disposition = PageFieldDisposition.EvidenceOnly;
+                        action.Reason = "No reviewed cross-site identity mapping is available. Retain the optional source value as evidence and leave the target value unset.";
+                        warnings.Add($"Optional field '{sourceField.InternalName}' has no reviewed identity mapping; its captured value remains evidence-only and the target value will be left unset.");
+                    }
 
                     continue;
                 }

@@ -36,7 +36,10 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 ContentTypeMaterializationPlan schema;
                 try
                 {
-                    schema = ContentTypeSchemaPlanner.CreateRequiredClosure(snapshot, taxonomyMappings);
+                    schema = ContentTypeRuntimeCatalog.IsTargetRuntime(snapshot.ContentTypeId)
+                        && ContentTypeSchemaPlanner.TryCreateTargetRuntimeRequirement(snapshot, out var targetRuntimeRequirement)
+                            ? targetRuntimeRequirement
+                            : ContentTypeSchemaPlanner.CreateRequiredClosure(snapshot, taxonomyMappings);
                 }
                 catch (ArgumentException exception)
                 {

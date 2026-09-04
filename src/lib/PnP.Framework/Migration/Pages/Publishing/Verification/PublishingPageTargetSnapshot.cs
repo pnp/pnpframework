@@ -32,6 +32,16 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
 
         public bool PageLayoutExists { get; set; }
 
+        public string PreferredTargetPageServerRelativeUrl { get; set; }
+
+        public string TargetPageServerRelativeUrl { get; set; }
+
+        public bool PreferredTargetPageExists { get; set; }
+
+        public bool TargetPathCollisionResolved { get; set; }
+
+        public string TargetPathResolutionReason { get; set; }
+
         public bool TargetPageExists { get; set; }
 
         public IList<string> ExistingDependencyPaths { get; set; } = new List<string>();

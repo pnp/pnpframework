@@ -14,17 +14,17 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
         public static ContentTypeSchemaSnapshot Read(
             ClientContext context,
             string contentTypeId,
-            IEnumerable<string> requiredFieldNames,
+            IEnumerable<string> requiredFieldIdentifiers,
             ICollection<string> diagnostics)
         {
-            return Read(context, context == null ? null : context.Web, contentTypeId, requiredFieldNames, diagnostics);
+            return Read(context, context == null ? null : context.Web, contentTypeId, requiredFieldIdentifiers, diagnostics);
         }
 
         public static ContentTypeSchemaSnapshot Read(
             ClientContext context,
             Web web,
             string contentTypeId,
-            IEnumerable<string> requiredFieldNames,
+            IEnumerable<string> requiredFieldIdentifiers,
             ICollection<string> diagnostics)
         {
             if (context == null)
@@ -87,12 +87,16 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
             }
 
             context.ExecuteQueryRetry();
-            var requiredNames = new HashSet<string>(requiredFieldNames ?? Enumerable.Empty<string>(), StringComparer.OrdinalIgnoreCase);
+            var requiredIdentifiers = new HashSet<string>(
+                (requiredFieldIdentifiers ?? Enumerable.Empty<string>())
+                    .Select(NormalizeFieldIdentifier)
+                    .Where(value => !string.IsNullOrWhiteSpace(value)),
+                StringComparer.OrdinalIgnoreCase);
             var parentFieldIds = contentType.Parent == null
                 ? new HashSet<Guid>()
                 : new HashSet<Guid>(contentType.Parent.FieldLinks.Select(value => value.Id));
             var requiredLinks = contentType.FieldLinks
-                .Where(link => requiredNames.Contains(link.Name))
+                .Where(link => MatchesFieldIdentifier(requiredIdentifiers, link.Id, link.Name))
                 .Select(link => new ContentTypeFieldLinkSnapshot
                 {
                     FieldId = link.Id,
@@ -103,10 +107,16 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 })
                 .OrderBy(link => link.Name, StringComparer.OrdinalIgnoreCase)
                 .ToList();
-            var missingNames = requiredNames.Except(requiredLinks.Select(link => link.Name), StringComparer.OrdinalIgnoreCase).ToArray();
-            foreach (var missingName in missingNames)
+            var matchedIdentifiers = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var link in requiredLinks)
             {
-                diagnostics?.Add($"Associated content type '{contentType.Name}' does not expose required field link '{missingName}'.");
+                matchedIdentifiers.Add(NormalizeFieldIdentifier(link.Name));
+                matchedIdentifiers.Add(NormalizeFieldIdentifier(link.FieldId.ToString("D")));
+            }
+            var missingIdentifiers = requiredIdentifiers.Except(matchedIdentifiers, StringComparer.OrdinalIgnoreCase).ToArray();
+            foreach (var missingIdentifier in missingIdentifiers)
+            {
+                diagnostics?.Add($"Associated content type '{contentType.Name}' does not expose required field link identifier '{missingIdentifier}'.");
             }
 
             var fieldGroups = fields
@@ -173,7 +183,7 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 field.Ownership = FieldOwnershipClassifier.Classify(field, closure);
             }
 
-            var complete = missingNames.Length == 0
+            var complete = missingIdentifiers.Length == 0
                 && !hasConflictingDuplicateFields
                 && requiredLinks.Count == closure.Count(value => value.Role != FieldSchemaRole.Dependency);
             return new ContentTypeSchemaSnapshot
@@ -224,6 +234,7 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 context.Load(taxonomyField,
                     value => value.SspId,
                     value => value.TermSetId,
+                    value => value.AnchorId,
                     value => value.TextField,
                     value => value.Open);
                 context.ExecuteQueryRetry();
@@ -231,6 +242,7 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 {
                     SourceTermStoreId = taxonomyField.SspId,
                     SourceTermSetId = taxonomyField.TermSetId,
+                    AnchorTermId = taxonomyField.AnchorId,
                     HiddenTextFieldId = taxonomyField.TextField,
                     Open = taxonomyField.Open
                 };
@@ -247,6 +259,33 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 Availability = EvidenceAvailability.Unavailable,
                 Diagnostics = new List<string> { diagnostic }
             };
+        }
+
+        internal static bool MatchesFieldIdentifier(
+            IEnumerable<string> requiredFieldIdentifiers,
+            Guid fieldId,
+            string fieldName)
+        {
+            var identifiers = new HashSet<string>(
+                (requiredFieldIdentifiers ?? Enumerable.Empty<string>())
+                    .Select(NormalizeFieldIdentifier)
+                    .Where(value => !string.IsNullOrWhiteSpace(value)),
+                StringComparer.OrdinalIgnoreCase);
+            return MatchesFieldIdentifier(identifiers, fieldId, fieldName);
+        }
+
+        private static bool MatchesFieldIdentifier(
+            ISet<string> requiredFieldIdentifiers,
+            Guid fieldId,
+            string fieldName)
+        {
+            return requiredFieldIdentifiers.Contains(NormalizeFieldIdentifier(fieldName))
+                || requiredFieldIdentifiers.Contains(NormalizeFieldIdentifier(fieldId.ToString("D")));
+        }
+
+        private static string NormalizeFieldIdentifier(string value)
+        {
+            return (value ?? string.Empty).Trim().Trim('{', '}');
         }
     }
 }

@@ -4,6 +4,7 @@ namespace PnP.Framework.Migration.Verification
     {
         Pending = 1,
         Accepted = 2,
-        Rejected = 3
+        Rejected = 3,
+        PartiallyAccepted = 4
     }
 }

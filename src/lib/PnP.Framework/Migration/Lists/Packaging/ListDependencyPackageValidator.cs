@@ -1,6 +1,7 @@
 using PnP.Framework.Migration.Evidence;
 using PnP.Framework.Migration.Lists.Capture;
 using PnP.Framework.Migration.Lists.Items;
+using PnP.Framework.Migration.Lists.Items.Protection;
 using PnP.Framework.Migration.Lists.Planning;
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
@@ -107,10 +108,12 @@ namespace PnP.Framework.Migration.Lists.Packaging
             if (dependency == null || dependency.SourceSiteId == Guid.Empty || dependency.SourceWebId == Guid.Empty || dependency.SourceListId == Guid.Empty
                 || string.IsNullOrWhiteSpace(dependency.SourceWebUrl) || string.IsNullOrWhiteSpace(dependency.RootFolderServerRelativeUrl)
                 || dependency.Fields == null || dependency.ContentTypes == null || dependency.UniqueContentTypeOrder == null || dependency.SiteContentTypes == null
-                || dependency.Views == null || dependency.Items == null || dependency.Diagnostics == null)
+                || dependency.Views == null || dependency.ViewRenderingResources == null
+                || dependency.Items == null || dependency.Diagnostics == null)
             {
                 throw new InvalidDataException("A List dependency snapshot is missing identity, metadata, or an inventory collection.");
             }
+            ValidateInformationRightsManagement(dependency);
             var duplicateField = dependency.Fields.GroupBy(value => value == null ? Guid.Empty : value.Id).FirstOrDefault(group => group.Key == Guid.Empty || group.Count() > 1);
             if (duplicateField != null || dependency.Fields.Any(value => string.IsNullOrWhiteSpace(value.InternalName)
                 || !string.Equals(MigrationDigest.ComputeSha256(value.SchemaXml ?? string.Empty), value.SchemaXmlSha256, StringComparison.OrdinalIgnoreCase)))
@@ -190,6 +193,59 @@ namespace PnP.Framework.Migration.Lists.Packaging
             {
                 throw new InvalidDataException("List '" + dependency.Title + "' contains missing, duplicate, or mutated view evidence.");
             }
+            var renderingResources = dependency.ViewRenderingResources
+                .GroupBy(value => value == null ? string.Empty : value.Id, StringComparer.Ordinal)
+                .ToDictionary(group => group.Key, group => group.ToArray(), StringComparer.Ordinal);
+            if (renderingResources.Any(value => string.IsNullOrWhiteSpace(value.Key) || value.Value.Length != 1))
+            {
+                throw new InvalidDataException("List '" + dependency.Title + "' contains a missing or duplicate View rendering-resource identity.");
+            }
+            foreach (var resource in dependency.ViewRenderingResources)
+            {
+                if (resource.Diagnostics == null)
+                {
+                    throw new InvalidDataException("List '" + dependency.Title + "' contains incomplete View rendering-resource evidence.");
+                }
+                if (resource.Availability == EvidenceAvailability.Captured
+                    || resource.Availability == EvidenceAvailability.Partial
+                    || resource.Artifact != null)
+                {
+                    if (!Uri.TryCreate(resource.SourceAbsoluteUrl, UriKind.Absolute, out var sourceUri)
+                        || sourceUri.Scheme != Uri.UriSchemeHttps && sourceUri.Scheme != Uri.UriSchemeHttp)
+                    {
+                        throw new InvalidDataException("Captured View rendering-resource evidence has no valid HTTP(S) source URL.");
+                    }
+                    if (string.IsNullOrWhiteSpace(resource.SourceServerRelativeUrl))
+                    {
+                        throw new InvalidDataException("Captured View rendering-resource evidence has no source server-relative path.");
+                    }
+                    MigrationArtifactContractValidator.Validate(
+                        resource.Artifact,
+                        resource.ContentBase64,
+                        artifactStore,
+                        "View rendering resource '" + resource.SourceAbsoluteUrl + "'");
+                }
+            }
+            foreach (var view in dependency.Views)
+            {
+                if (view.RenderingResourceBindings == null)
+                {
+                    throw new InvalidDataException("View '" + view.Id.ToString("D") + "' has a null rendering-resource binding inventory.");
+                }
+                var duplicateBinding = view.RenderingResourceBindings
+                    .Where(value => value != null)
+                    .GroupBy(value => value.SourceProperty + "\u001f" + value.OriginalReference, StringComparer.OrdinalIgnoreCase)
+                    .FirstOrDefault(group => group.Count() > 1);
+                if (duplicateBinding != null
+                    || view.RenderingResourceBindings.Any(value => value == null
+                        || string.IsNullOrWhiteSpace(value.SourceProperty)
+                        || string.IsNullOrWhiteSpace(value.OriginalReference)
+                        || string.IsNullOrWhiteSpace(value.ResourceId)
+                        || !renderingResources.ContainsKey(value.ResourceId)))
+                {
+                    throw new InvalidDataException("View '" + view.Id.ToString("D") + "' contains an invalid rendering-resource binding.");
+                }
+            }
             var duplicateItem = dependency.Items.GroupBy(value => value == null ? 0 : value.SourceItemId).FirstOrDefault(group => group.Key <= 0 || group.Count() > 1);
             if (duplicateItem != null)
             {
@@ -208,12 +264,18 @@ namespace PnP.Framework.Migration.Lists.Packaging
                 }
                 if (item.Document != null && item.Document.Kind == ListDocumentObjectKind.File)
                 {
+                    ValidateInformationProtection(item.Document.InformationProtection, dependency.Title, item.SourceItemId);
                     ValidateBinary(item.Document.Content, artifactStore, "document " + item.Document.Name);
                     if (item.Document.Content != null && item.Document.Content.Artifact != null && item.Document.Length != item.Document.Content.Artifact.Length)
                     {
-                        var hasExplicitMismatchEvidence = item.Document.Content.Availability == EvidenceAvailability.Partial
-                            && item.Document.Content.Diagnostics.Any(value => value != null
-                                && value.StartsWith("DocumentMetadataLengthMismatch:", StringComparison.Ordinal));
+                        var rightsManaged = item.Document.Content.RepresentationKind
+                            == ListBinaryRepresentationKind.InformationRightsManagedEnvelope;
+                        var hasExplicitMismatchEvidence = rightsManaged
+                            ? item.Document.Content.Diagnostics.Any(value => value != null
+                                && value.StartsWith("RightsManagedEnvelopeLengthMismatch:", StringComparison.Ordinal))
+                            : item.Document.Content.Availability == EvidenceAvailability.Partial
+                                && item.Document.Content.Diagnostics.Any(value => value != null
+                                    && value.StartsWith("DocumentMetadataLengthMismatch:", StringComparison.Ordinal));
                         if (!hasExplicitMismatchEvidence)
                         {
                             throw new InvalidDataException("Document payload length differs from captured file metadata: " + item.Document.ServerRelativeUrl);
@@ -223,11 +285,123 @@ namespace PnP.Framework.Migration.Lists.Packaging
             }
         }
 
+        private static void ValidateInformationProtection(
+            ListDocumentInformationProtectionSnapshot informationProtection,
+            string listTitle,
+            int sourceItemId)
+        {
+            if (informationProtection == null)
+            {
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(informationProtection.LabelId)
+                || informationProtection.Diagnostics == null
+                || !Enum.IsDefined(typeof(EvidenceAvailability), informationProtection.Availability))
+            {
+                throw new InvalidDataException(
+                    "List '" + listTitle + "' item " + sourceItemId
+                    + " contains incomplete document information-protection evidence.");
+            }
+        }
+
+        private static void ValidateInformationRightsManagement(ListDependencySnapshot dependency)
+        {
+            var informationRightsManagement = dependency.InformationRightsManagement;
+            if (informationRightsManagement == null)
+            {
+                // The contract is optional so packages captured before IRM policy
+                // evidence was introduced retain their historical semantic digest.
+                return;
+            }
+            if (informationRightsManagement.Diagnostics == null
+                || !Enum.IsDefined(typeof(EvidenceAvailability), informationRightsManagement.Availability))
+            {
+                throw new InvalidDataException(
+                    "List '" + dependency.Title + "' contains incomplete IRM policy evidence.");
+            }
+
+            if (!informationRightsManagement.IrmEnabled)
+            {
+                if (informationRightsManagement.Policy != null
+                    || informationRightsManagement.AuthorizationEvidence != null
+                    || informationRightsManagement.Availability != EvidenceAvailability.Captured)
+                {
+                    throw new InvalidDataException(
+                        "List '" + dependency.Title + "' contains contradictory disabled IRM policy evidence.");
+                }
+                return;
+            }
+
+            if (informationRightsManagement.AuthorizationEvidence != null)
+            {
+                LiteralHttpAuthorizationEvidence.Validate(informationRightsManagement.AuthorizationEvidence);
+                if (!string.Equals(
+                        informationRightsManagement.AuthorizationEvidence.Operation,
+                        "capture-list-irm-policy",
+                        StringComparison.Ordinal)
+                    || informationRightsManagement.Availability != EvidenceAvailability.Unavailable
+                    || informationRightsManagement.Policy != null)
+                {
+                    throw new InvalidDataException(
+                        "List '" + dependency.Title + "' contains contradictory IRM authorization evidence.");
+                }
+                return;
+            }
+
+            if (informationRightsManagement.Availability == EvidenceAvailability.Captured
+                && informationRightsManagement.Policy == null)
+            {
+                throw new InvalidDataException(
+                    "IRM-enabled List '" + dependency.Title + "' has no captured IRM policy.");
+            }
+            if (informationRightsManagement.Availability == EvidenceAvailability.Unavailable)
+            {
+                throw new InvalidDataException(
+                    "IRM-enabled List '" + dependency.Title + "' is unavailable without literal HTTP 401/403 evidence.");
+            }
+        }
+
         private static void ValidateBinary(ListBinaryArtifactSnapshot binary, IMigrationArtifactStore artifactStore, string subject)
         {
             if (binary == null)
             {
                 throw new InvalidDataException("Missing binary evidence record for " + subject + ".");
+            }
+            if (binary.Diagnostics == null)
+            {
+                throw new InvalidDataException("Binary evidence diagnostics are null for " + subject + ".");
+            }
+            if (!Enum.IsDefined(typeof(ListBinaryRepresentationKind), binary.RepresentationKind))
+            {
+                throw new InvalidDataException("Binary representation kind is invalid for " + subject + ".");
+            }
+            if (binary.LogicalContentIdentity != null
+                && (string.IsNullOrWhiteSpace(binary.LogicalContentIdentity.EvidenceSource)
+                    || (string.IsNullOrWhiteSpace(binary.LogicalContentIdentity.QuickXorHash)
+                        && string.IsNullOrWhiteSpace(binary.LogicalContentIdentity.ContentTag))))
+            {
+                throw new InvalidDataException("Binary logical-content identity is incomplete for " + subject + ".");
+            }
+            if (binary.ArchivedContentEvidence != null)
+            {
+                if (binary.ArchivedContentEvidence.Count == 0
+                    || binary.ArchivedContentEvidence.Any(value => value == null)
+                    || binary.ArchivedContentEvidence
+                        .GroupBy(
+                            value => value.Operation + "\n" + value.RequestUri,
+                            StringComparer.OrdinalIgnoreCase)
+                        .Any(group => group.Count() > 1))
+                {
+                    throw new InvalidDataException("Archived-content evidence is empty, null, or duplicated for " + subject + ".");
+                }
+                foreach (var evidence in binary.ArchivedContentEvidence)
+                {
+                    LiteralHttpArchivedContentEvidence.Validate(evidence);
+                }
+                if (binary.Availability != EvidenceAvailability.Unavailable || binary.Artifact != null)
+                {
+                    throw new InvalidDataException("Archived-content evidence must describe unavailable source bytes for " + subject + ".");
+                }
             }
             if (binary.Availability == EvidenceAvailability.Captured
                 || (binary.Availability == EvidenceAvailability.Partial && binary.Artifact != null))

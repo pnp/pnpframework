@@ -9,6 +9,7 @@ using PnP.Framework.Migration.Schema.ContentTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace PnP.Framework.Migration.Lists.Capture
 {
@@ -36,9 +37,11 @@ namespace PnP.Framework.Migration.Lists.Capture
             }
 
             var site = context.Site;
+            var rootWeb = site.RootWeb;
             var list = sourceWeb.Lists.GetById(sourceListId);
             context.Load(site, value => value.Id);
             context.Load(sourceWeb, value => value.Id, value => value.Url, value => value.ServerRelativeUrl);
+            context.Load(rootWeb, value => value.Id, value => value.Url, value => value.ServerRelativeUrl);
             context.Load(list,
                 value => value.Id,
                 value => value.Title,
@@ -54,6 +57,9 @@ namespace PnP.Framework.Migration.Lists.Capture
                 value => value.EnableMinorVersions,
                 value => value.EnableModeration,
                 value => value.ForceCheckout,
+                value => value.IrmEnabled,
+                value => value.IrmExpire,
+                value => value.IrmReject,
                 value => value.ItemCount);
             context.Load(list.RootFolder,
                 value => value.ServerRelativeUrl,
@@ -110,7 +116,23 @@ namespace PnP.Framework.Migration.Lists.Capture
             }
             context.ExecuteQueryRetry();
 
+            var informationRightsManagement = ReadInformationRightsManagement(
+                context,
+                sourceWeb.Url,
+                sourceListId,
+                list.IrmEnabled,
+                list.IrmExpire,
+                list.IrmReject);
             var items = ListItemSnapshotReader.Read(context, list, maximumBytes, artifactStore, warnings);
+            var views = ListViewSnapshotReader.Read(list.Views, list.RootFolder.ServerRelativeUrl);
+            var viewRenderingResources = ListViewRenderingResourceSnapshotReader.Read(
+                context,
+                sourceWeb,
+                rootWeb,
+                views,
+                maximumBytes,
+                artifactStore,
+                warnings);
             var contentTypeDiagnostics = new List<string>();
             var listContentTypes = ListContentTypeSnapshotReader.Read(list.ContentTypes, contentTypeDiagnostics);
             var siteContentTypes = ContentTypeClosureSnapshotReader.Read(context, sourceWeb, listContentTypes, contentTypeDiagnostics);
@@ -119,7 +141,15 @@ namespace PnP.Framework.Migration.Lists.Capture
             {
                 availability = EvidenceAvailability.Partial;
             }
+            if (viewRenderingResources.Any(value => value.Availability != EvidenceAvailability.Captured))
+            {
+                availability = EvidenceAvailability.Partial;
+            }
             if (contentTypeDiagnostics.Any(value => value.StartsWith("ConflictingListContentTypeFieldLink:", StringComparison.Ordinal)))
+            {
+                availability = EvidenceAvailability.Partial;
+            }
+            if (informationRightsManagement.Availability != EvidenceAvailability.Captured)
             {
                 availability = EvidenceAvailability.Partial;
             }
@@ -143,6 +173,7 @@ namespace PnP.Framework.Migration.Lists.Capture
                 EnableMinorVersions = list.EnableMinorVersions,
                 EnableModeration = list.EnableModeration,
                 ForceCheckout = list.ForceCheckout,
+                InformationRightsManagement = informationRightsManagement,
                 SourceItemCount = list.ItemCount,
                 Fields = ListFieldSnapshotReader.Read(context, list.Fields),
                 ContentTypes = listContentTypes,
@@ -150,7 +181,8 @@ namespace PnP.Framework.Migration.Lists.Capture
                 UniqueContentTypeOrder = (list.RootFolder.UniqueContentTypeOrder ?? new ContentTypeId[0])
                     .Select(value => value.StringValue).ToList(),
                 SiteContentTypes = siteContentTypes,
-                Views = ListViewSnapshotReader.Read(list.Views, list.RootFolder.ServerRelativeUrl),
+                Views = views,
+                ViewRenderingResources = viewRenderingResources,
                 Items = items,
                 Availability = availability
             };
@@ -163,6 +195,104 @@ namespace PnP.Framework.Migration.Lists.Capture
             {
                 snapshot.Diagnostics.Add(diagnostic);
                 warnings.Add(diagnostic);
+            }
+            foreach (var diagnostic in informationRightsManagement.Diagnostics)
+            {
+                snapshot.Diagnostics.Add(diagnostic);
+                warnings.Add(diagnostic);
+            }
+            return snapshot;
+        }
+
+        private static ListInformationRightsManagementSnapshot ReadInformationRightsManagement(
+            ClientContext context,
+            string sourceWebUrl,
+            Guid sourceListId,
+            bool irmEnabled,
+            bool irmExpire,
+            bool irmReject)
+        {
+            var snapshot = new ListInformationRightsManagementSnapshot
+            {
+                IrmEnabled = irmEnabled,
+                IrmExpire = irmExpire,
+                IrmReject = irmReject
+            };
+            if (!irmEnabled)
+            {
+                return snapshot;
+            }
+
+            try
+            {
+                using (var policyContext = context.Clone(sourceWebUrl))
+                {
+                    var sourceList = policyContext.Web.Lists.GetById(sourceListId);
+                    var settings = sourceList.InformationRightsManagementSettings;
+                    policyContext.Load(settings,
+                        value => value.AllowPrint,
+                        value => value.AllowScript,
+                        value => value.AllowWriteCopy,
+                        value => value.DisableDocumentBrowserView,
+                        value => value.DocumentAccessExpireDays,
+                        value => value.DocumentLibraryProtectionExpireDate,
+                        value => value.EnableDocumentAccessExpire,
+                        value => value.EnableDocumentBrowserPublishingView,
+                        value => value.EnableGroupProtection,
+                        value => value.EnableLicenseCacheExpire,
+                        value => value.GroupName,
+                        value => value.LicenseCacheExpireDays,
+                        value => value.PolicyDescription,
+                        value => value.PolicyTitle,
+                        value => value.TemplateId);
+                    policyContext.ExecuteQueryRetry();
+                    snapshot.Policy = new ListInformationRightsManagementPolicySnapshot
+                    {
+                        AllowPrint = settings.AllowPrint,
+                        AllowScript = settings.AllowScript,
+                        AllowWriteCopy = settings.AllowWriteCopy,
+                        DisableDocumentBrowserView = settings.DisableDocumentBrowserView,
+                        DocumentAccessExpireDays = settings.DocumentAccessExpireDays,
+                        DocumentLibraryProtectionExpireDate = settings.DocumentLibraryProtectionExpireDate,
+                        EnableDocumentAccessExpire = settings.EnableDocumentAccessExpire,
+                        EnableDocumentBrowserPublishingView = settings.EnableDocumentBrowserPublishingView,
+                        EnableGroupProtection = settings.EnableGroupProtection,
+                        EnableLicenseCacheExpire = settings.EnableLicenseCacheExpire,
+                        GroupName = settings.GroupName,
+                        LicenseCacheExpireDays = settings.LicenseCacheExpireDays,
+                        PolicyDescription = settings.PolicyDescription,
+                        PolicyTitle = settings.PolicyTitle,
+                        TemplateId = settings.TemplateId
+                    };
+                }
+            }
+            catch (WebException exception)
+            {
+                using (var response = exception.Response as HttpWebResponse)
+                {
+                    var statusCode = response == null ? 0 : (int)response.StatusCode;
+                    if (statusCode == 401 || statusCode == 403)
+                    {
+                        snapshot.Availability = EvidenceAvailability.Unavailable;
+                        snapshot.AuthorizationEvidence = LiteralHttpAuthorizationEvidence.Create(
+                            "capture-list-irm-policy",
+                            response.ResponseUri?.AbsoluteUri ?? sourceWebUrl,
+                            statusCode,
+                            DateTimeOffset.UtcNow);
+                        snapshot.Diagnostics.Add(
+                            "List IRM policy request returned literal HTTP " + statusCode + ".");
+                        return snapshot;
+                    }
+                }
+                snapshot.Availability = EvidenceAvailability.Partial;
+                snapshot.Diagnostics.Add(
+                    "List IRM policy capture failed without literal HTTP 401/403 evidence: " + exception.Message);
+            }
+            catch (Exception exception)
+            {
+                snapshot.Availability = EvidenceAvailability.Partial;
+                snapshot.Diagnostics.Add(
+                    "List IRM policy capture failed without literal HTTP 401/403 evidence: " + exception.Message);
             }
             return snapshot;
         }

@@ -1,6 +1,8 @@
 using Microsoft.SharePoint.Client;
+using Microsoft.SharePoint.Client.Taxonomy;
 using PnP.Framework.Migration.Evidence;
 using PnP.Framework.Migration.Schema.Fields;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,11 +33,13 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
 
             var diagnostics = new List<string>();
             var siteContentTypes = web.ContentTypes;
+            var availableContentTypes = web.AvailableContentTypes;
             var fields = web.AvailableFields;
-            var parentCandidate = web.AvailableContentTypes.GetById(plan.ParentContentTypeId);
-            var exactCandidate = siteContentTypes.GetById(plan.ContentTypeId);
             context.Load(web, value => value.EffectiveBasePermissions);
             context.Load(siteContentTypes, values => values.Include(
+                value => value.Id,
+                value => value.Name));
+            context.Load(availableContentTypes, values => values.Include(
                 value => value.Id,
                 value => value.Name));
             context.Load(fields, values => values.Include(
@@ -44,36 +48,73 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 value => value.Title,
                 value => value.TypeAsString,
                 value => value.SchemaXml));
-            context.Load(parentCandidate, value => value.Id);
-            context.Load(parentCandidate.FieldLinks, values => values.Include(
-                value => value.Id,
-                value => value.Name,
-                value => value.Required,
-                value => value.Hidden));
-            context.Load(exactCandidate,
-                value => value.Id,
-                value => value.Name,
-                value => value.Description,
-                value => value.Group,
-                value => value.ReadOnly,
-                value => value.Sealed,
-                value => value.Hidden);
-            context.Load(exactCandidate.Parent, value => value.Id);
-            context.Load(exactCandidate.FieldLinks, values => values.Include(
-                value => value.Id,
-                value => value.Name,
-                value => value.Required,
-                value => value.Hidden));
             context.ExecuteQueryRetry();
 
-            var parent = parentCandidate.ServerObjectIsNull.GetValueOrDefault(true)
-                || !string.Equals(parentCandidate.Id.StringValue, plan.ParentContentTypeId, StringComparison.OrdinalIgnoreCase)
-                ? null
-                : parentCandidate;
-            var exact = exactCandidate.ServerObjectIsNull.GetValueOrDefault(true)
-                || !string.Equals(exactCandidate.Id.StringValue, plan.ContentTypeId, StringComparison.OrdinalIgnoreCase)
-                ? null
-                : exactCandidate;
+            // A missing target Content Type is a normal CreateMissing observation.
+            // CSOM GetById returns a null server object whose nested Parent or
+            // FieldLinks cannot be loaded safely, so resolve candidates from the
+            // loaded collections and request details only for objects that exist.
+            var parent = availableContentTypes.FirstOrDefault(value =>
+                string.Equals(value.Id.StringValue, plan.ParentContentTypeId, StringComparison.OrdinalIgnoreCase));
+            var exact = siteContentTypes.FirstOrDefault(value =>
+                string.Equals(value.Id.StringValue, plan.ContentTypeId, StringComparison.OrdinalIgnoreCase));
+            if (parent != null)
+            {
+                context.Load(parent.FieldLinks, values => values.Include(
+                    value => value.Id,
+                    value => value.Name,
+                    value => value.Required,
+                    value => value.Hidden));
+            }
+            if (exact != null)
+            {
+                context.Load(exact,
+                    value => value.Id,
+                    value => value.Name,
+                    value => value.Description,
+                    value => value.Group,
+                    value => value.ReadOnly,
+                    value => value.Sealed,
+                    value => value.Hidden);
+                context.Load(exact.Parent, value => value.Id);
+                context.Load(exact.FieldLinks, values => values.Include(
+                    value => value.Id,
+                    value => value.Name,
+                    value => value.Required,
+                    value => value.Hidden));
+            }
+            if (parent != null || exact != null)
+            {
+                context.ExecuteQueryRetry();
+            }
+
+            var unresolvedTermSetProbes = new Dictionary<Guid, (bool Exists, string Name)>();
+            var unresolvedGroups = plan.Fields
+                .Where(value => value.TaxonomyMappingMode == TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference)
+                .Where(value => value.TargetTermStoreId.HasValue && value.TargetTermSetId.HasValue)
+                .GroupBy(value => value.TargetTermStoreId.Value.ToString("D") + "/" + value.TargetTermSetId.Value.ToString("D"), StringComparer.Ordinal)
+                .ToArray();
+            if (unresolvedGroups.Length > 0)
+            {
+                var taxonomySession = TaxonomySession.GetTaxonomySession(context);
+                var pending = unresolvedGroups.Select(group =>
+                {
+                    var first = group.First();
+                    var store = taxonomySession.TermStores.GetById(first.TargetTermStoreId.Value);
+                    var termSet = store.GetTermSet(first.TargetTermSetId.Value);
+                    context.Load(termSet, value => value.Id, value => value.Name);
+                    return new { Fields = group.ToArray(), TermSet = termSet };
+                }).ToArray();
+                context.ExecuteQueryRetry();
+                foreach (var item in pending)
+                {
+                    var exists = !item.TermSet.ServerObjectIsNull.GetValueOrDefault(true);
+                    foreach (var field in item.Fields)
+                    {
+                        unresolvedTermSetProbes[field.FieldId] = (exists, exists ? item.TermSet.Name : null);
+                    }
+                }
+            }
 
             var fieldById = fields.ToDictionary(value => value.Id);
             var fieldProbes = new List<FieldSchemaTargetProbe>();
@@ -93,6 +134,7 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                         diagnostics.Add($"Target field '{field.InternalName}' ({field.Id:D}) has invalid SchemaXml: {exception.Message}");
                     }
                 }
+                var hasUnresolvedProbe = unresolvedTermSetProbes.TryGetValue(desired.FieldId, out var unresolvedProbe);
 
                 fieldProbes.Add(new FieldSchemaTargetProbe
                 {
@@ -101,7 +143,13 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                     InternalName = field?.InternalName,
                     Title = field?.Title,
                     TypeAsString = field?.TypeAsString,
-                    PortableSchemaSha256 = portableDigest
+                    PortableSchemaSha256 = portableDigest,
+                    UnresolvedTargetTermSetExists = desired.TaxonomyMappingMode == TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference
+                        ? hasUnresolvedProbe ? unresolvedProbe.Exists : (bool?)null
+                        : (bool?)null,
+                    UnresolvedTargetTermSetName = desired.TaxonomyMappingMode == TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference
+                        ? unresolvedProbe.Name
+                        : null
                 });
             }
 

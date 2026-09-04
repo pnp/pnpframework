@@ -79,7 +79,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
 
             writer.Table("Page Layout content type materialization plan", new[] { "Property", "Value", "How to read it" }, new[]
             {
-                Row("disposition", schema.Disposition, "CreateOwned permits create-or-exact-reuse from complete source schema; ReuseOwned requires an exact existing target-runtime content type and forbids schema writes; Block prevents layout creation."),
+                Row("disposition", schema.Disposition, "CreateOwned permits create-or-exact-reuse from complete source schema; ReuseOwned requires an exact existing target-runtime content type and forbids schema writes; local Block records a capability gap and is projected as final ingredient Defer."),
                 Row("sourceWebUrl", schema.SourceWebUrl, "Source schema provenance."),
                 Row("contentTypeId", schema.ContentTypeId, "Exact ID to create or reuse."),
                 Row("name", schema.Name, "Expected exact content type name."),

@@ -55,10 +55,14 @@ namespace PnP.Framework.Migration.Lists.Execution
                     });
                     context.ExecuteQueryRetry();
                 }
+                var expectedJsLink = ListViewRenderingResourceMaterializer.RewriteJsLink(
+                    source.JsLink,
+                    source,
+                    plan.ViewRenderingResources);
                 target.ViewQuery = source.ViewQuery;
                 target.RowLimit = source.RowLimit;
                 target.Paged = source.Paged;
-                target.JSLink = source.JsLink;
+                target.JSLink = expectedJsLink;
                 target.ViewFields.RemoveAll();
                 foreach (var field in source.ViewFields)
                 {
@@ -74,7 +78,7 @@ namespace PnP.Framework.Migration.Lists.Execution
                     || !string.Equals(target.ViewQuery ?? string.Empty, source.ViewQuery ?? string.Empty, StringComparison.Ordinal)
                     || target.RowLimit != source.RowLimit
                     || target.Paged != source.Paged
-                    || !string.Equals(target.JSLink ?? string.Empty, source.JsLink ?? string.Empty, StringComparison.Ordinal)
+                    || !string.Equals(target.JSLink ?? string.Empty, expectedJsLink ?? string.Empty, StringComparison.Ordinal)
                     || !target.ViewFields.SequenceEqual(source.ViewFields, StringComparer.OrdinalIgnoreCase))
                 {
                     throw new InvalidOperationException("Fresh target View readback differs from the sealed source View: " + source.Id.ToString("D") + ".");

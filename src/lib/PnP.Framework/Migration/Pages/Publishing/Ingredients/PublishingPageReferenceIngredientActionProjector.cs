@@ -1,7 +1,9 @@
 using PnP.Framework.Migration.Pages.Ingredients;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
 using PnP.Framework.Migration.Pages.References;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
 {
@@ -9,20 +11,34 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
     {
         public static void Project(
             PublishingPageMigrationPlan plan,
-            IDictionary<string, PageIngredientAction> actions)
+            IDictionary<string, PageIngredientAction> actions,
+            CanonicalPageIngredientGraph graph)
         {
             foreach (var referenceAction in plan.DependencyActions)
             {
                 var mapping = Map(referenceAction.Disposition);
-                PublishingPageIngredientActionFactory.Add(actions, PublishingPageIngredientActionFactory.Create(
-                    PublishingPageIngredientIds.Reference(referenceAction.SnapshotDependencyId),
+                var ingredientId = PublishingPageIngredientIds.Reference(referenceAction.SnapshotDependencyId);
+                var action = PublishingPageIngredientActionFactory.Create(
+                    ingredientId,
                     mapping.Capability,
                     mapping.Disposition,
                     mapping.Realization,
                     "policy.reference.page",
                     string.Join("; ", referenceAction.Diagnostics ?? new List<string>()),
                     referenceAction.TargetServerRelativeUrl ?? referenceAction.TargetAbsoluteUrl,
-                    $"The reference disposition '{referenceAction.Disposition}' is reflected in stored content and target dependency evidence."));
+                    $"The reference disposition '{referenceAction.Disposition}' is reflected in stored content and target dependency evidence.");
+                if (referenceAction.Disposition == PageReferenceDisposition.MaterializeAtTarget
+                    && (graph?.Edges ?? Array.Empty<PageIngredientEdge>()).Any(value => value != null
+                        && value.Requirement == PageIngredientRequirement.Required
+                        && string.Equals(value.FromIngredientId, ingredientId, StringComparison.Ordinal)
+                        && string.Equals(value.ToIngredientId, PublishingPageIngredientIds.PublishingContent, StringComparison.Ordinal)))
+                {
+                    // Asset copying is independently executable. It does not require the
+                    // page-content transaction that will eventually consume its target URL.
+                    action.Disposition = IngredientDisposition.Transform;
+                    action.ReleasedDependencyIngredientIds.Add(PublishingPageIngredientIds.PublishingContent);
+                }
+                PublishingPageIngredientActionFactory.Add(actions, action);
             }
         }
 

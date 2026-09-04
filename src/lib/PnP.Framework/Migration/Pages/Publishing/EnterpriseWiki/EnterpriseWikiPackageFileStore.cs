@@ -1,4 +1,5 @@
 using PnP.Framework.Migration.Pages.Publishing.Packaging;
+using PnP.Framework.Migration.Pages.Publishing.Assessment;
 using PnP.Framework.Migration.Pages.Publishing.Reporting;
 using PnP.Framework.Migration.Packaging;
 using System;
@@ -12,6 +13,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
         public const string DefaultExportFileName = "enterprise-wiki-export.json";
 
         public const string DefaultPackageFileName = "enterprise-wiki-package.json";
+
+        public const string DefaultAssessmentFileName = "enterprise-wiki-assessment.json";
 
         public const string DefaultReportFileName = "enterprise-wiki-report.md";
 
@@ -42,9 +45,30 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
         public static PublishingPageExportPackage LoadExport(string path, IMigrationArtifactStore artifactStore)
         {
             var exportPath = ResolveExistingPath(path, DefaultExportFileName, "Enterprise Wiki export");
-            var package = PublishingPagePackageSerializer.Deserialize<PublishingPageExportPackage>(File.ReadAllText(exportPath));
+            using var stream = OpenPackageReadStream(exportPath);
+            var package = PublishingPagePackageSerializer.Deserialize<PublishingPageExportPackage>(stream);
             PublishingPagePackageValidator.ValidateExport(package, artifactStore);
             return package;
+        }
+
+        public static string SaveAssessment(
+            string path,
+            PublishingPageMigrationAssessment assessment,
+            bool overwrite = false)
+        {
+            PublishingPageMigrationAssessmentValidator.Validate(assessment);
+            var assessmentPath = ResolvePath(path, DefaultAssessmentFileName);
+            SaveText(assessmentPath, PublishingPagePackageSerializer.Serialize(assessment), overwrite);
+            return assessmentPath;
+        }
+
+        public static PublishingPageMigrationAssessment LoadAssessment(string path)
+        {
+            var assessmentPath = ResolveExistingPath(path, DefaultAssessmentFileName, "Enterprise Wiki assessment");
+            using var stream = OpenPackageReadStream(assessmentPath);
+            var assessment = PublishingPagePackageSerializer.Deserialize<PublishingPageMigrationAssessment>(stream);
+            PublishingPageMigrationAssessmentValidator.Validate(assessment);
+            return assessment;
         }
 
         public static string SaveMigration(string path, PublishingPageMigrationPackage package, bool overwrite = false)
@@ -76,7 +100,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
         public static PublishingPageMigrationPackage LoadMigration(string path, IMigrationArtifactStore artifactStore)
         {
             var packagePath = ResolveExistingPath(path, DefaultPackageFileName, "Enterprise Wiki migration package");
-            var package = PublishingPagePackageSerializer.Deserialize<PublishingPageMigrationPackage>(File.ReadAllText(packagePath));
+            using var stream = OpenPackageReadStream(packagePath);
+            var package = PublishingPagePackageSerializer.Deserialize<PublishingPageMigrationPackage>(stream);
             PublishingPagePackageValidator.ValidateMigration(package, artifactStore);
             return package;
         }
@@ -127,6 +152,17 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             }
 
             File.WriteAllText(path, value, new UTF8Encoding(false));
+        }
+
+        private static FileStream OpenPackageReadStream(string path)
+        {
+            return new FileStream(
+                path,
+                FileMode.Open,
+                FileAccess.Read,
+                FileShare.Read,
+                128 * 1024,
+                FileOptions.SequentialScan);
         }
 
         private static void EnsureWritable(string path, bool overwrite)

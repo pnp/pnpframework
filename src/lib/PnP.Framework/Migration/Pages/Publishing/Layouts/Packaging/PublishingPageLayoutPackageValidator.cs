@@ -1,4 +1,5 @@
 using PnP.Framework.Migration.Evidence;
+using PnP.Framework.Migration.Diagnostics;
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Schema.ContentTypes;
 using PnP.Framework.Migration.Schema.ContentTypes.Packaging;
@@ -43,6 +44,28 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts.Packaging
                 }
 
                 MigrationArtifactContractValidator.Validate(layout.Bytes, layout.ContentBase64, artifactStore, "Page Layout");
+            }
+
+            if (layout.ExternalToPageSiteCollection && string.IsNullOrWhiteSpace(layout.OwnerSiteCollectionUrl))
+            {
+                throw new InvalidDataException("An external Page Layout must identify its owner Site Collection.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(layout.OwnerSiteCollectionUrl)
+                && (!Uri.TryCreate(layout.OwnerSiteCollectionUrl, UriKind.Absolute, out var ownerSite)
+                    || !string.Equals(ownerSite.Scheme, Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new InvalidDataException("The Page Layout owner Site Collection URL must be absolute HTTPS.");
+            }
+
+            if (layout.EvidenceState == PublishingPageLayoutEvidenceState.AuthorizationBlocked)
+            {
+                LiteralHttpAuthorizationEvidence.Validate(layout.AuthorizationEvidence);
+            }
+            else if (layout.AuthorizationEvidence != null)
+            {
+                throw new InvalidDataException(
+                    "Page Layout authorization evidence is only valid for the AuthorizationBlocked evidence state.");
             }
 
             var duplicateReference = layout.ResourceReferences
@@ -141,7 +164,17 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts.Packaging
                     || admission.Disposition == PublishingPageLayoutMaterializationDisposition.Block
                     || probe == null))
             {
-                throw new InvalidDataException("An executable migration plan requires an eligible Page Layout admission and target probe.");
+                var issueSummary = string.Join(" | ", (admission.Issues ?? new List<MigrationIssue>())
+                    .Select(value => value.Code + ": " + value.Message));
+                var probeDiagnostics = string.Join(" | ", probe?.Diagnostics ?? new List<string>());
+                throw new InvalidDataException(
+                    "An executable migration plan requires an eligible Page Layout admission and target probe. "
+                    + "layoutDisposition=" + layout.Disposition
+                    + "; admissionEligible=" + admission.IsEligible
+                    + "; admissionDisposition=" + admission.Disposition
+                    + "; probePresent=" + (probe != null)
+                    + "; issues=" + issueSummary
+                    + "; probeDiagnostics=" + probeDiagnostics);
             }
 
             if (probe != null

@@ -36,7 +36,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("plannedAtUtc", package.PlannedAtUtc, "UTC time at which the target-specific plan was sealed."),
                 Row("exportSchemaVersion", package.ExportSchemaVersion, "Version of the embedded source-only export contract."),
                 Row("exportedAtUtc", package.ExportedAtUtc, "UTC time at which the source snapshot was captured."),
-                Row("state", package.State, "ApprovalReady can be imported after digest approval; Blocked cannot."),
+                Row("state", package.State, "ApprovalReady can be imported after digest approval; MitigationPending is re-queued; AuthorizationBlocked requires literal HTTP 401/403 evidence; Invalid requires RCA."),
                 Row("snapshotDigest", package.SnapshotDigest, "SHA-256 over the complete source snapshot."),
                 Row("planDigest", package.PlanDigest, "SHA-256 over all target decisions; this is the approval token."),
                 Row("selection.workflowId", package.Selection.WorkflowId, "Selects the orchestration and policy set; it does not redefine captured evidence."),
@@ -122,9 +122,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             writer.List("Report warnings", report.Warnings);
             writer.List("Captured ingredients", report.CapturedIngredients);
             writer.Heading(2, "Field-action legend");
-            writer.Paragraph("`Apply` writes a supported scalar value. `ApplyTaxonomyRelationships` executes the separately reviewed relationship actions and never creates or substitutes a Term. A taxonomy relationship action of `RetainEvidenceOnly` preserves its sealed source proof without asserting target capability. `AlreadyHandled` is handled by page creation/content/layout logic. `EvidenceOnly` remains available for future recovery. `RequiresMapping` needs an explicit cross-site identity mapping. `Skip*`, `Target*`, and `CaptureUnavailable` are retained but not written. An ingredient with no source material may be dropped without degrading the aggregate outcome; `Block` on a nonempty ingredient makes the plan non-executable.");
+            writer.Paragraph("`Apply` writes a supported scalar value. `ApplyTaxonomyRelationships` executes the separately reviewed relationship actions and never creates or substitutes a Term. A taxonomy relationship action of `RetainEvidenceOnly` preserves its sealed source proof without asserting target capability. `AlreadyHandled` is handled by page creation/content/layout logic. `EvidenceOnly` remains available for future recovery. `RequiresMapping` needs an explicit cross-site identity mapping. `Skip*`, `Target*`, and `CaptureUnavailable` are retained but not written. A typed field planner may use `Block` to record a current capability gap; final ingredient orchestration converts that finding to nonterminal `Defer` unless the same ingredient carries validated literal wire HTTP 401/403 evidence.");
             writer.Heading(2, "Ingredient-action legend");
-            writer.Paragraph("`Preserve` retains the ingredient's semantics, `Transform` deliberately changes representation, `Substitute` lets the target runtime supply an equivalent, `Drop` records reviewed loss, `Delegate` keeps evidence for another workflow, and `Block` prevents import. A retained ingredient may only drop a required dependency when its transform explicitly releases that dependency.");
+            writer.Paragraph("`Preserve` retains the ingredient's semantics, `Transform` deliberately changes representation, `Substitute` lets the target runtime supply an equivalent, `Drop` records reviewed loss, `Delegate` keeps evidence for another workflow, and `Defer` keeps a known gap in the mitigation and re-planning queue. Final `Block` is reserved for digest-valid literal wire HTTP 401/403 evidence and stops only that affected ingredient branch. A retained ingredient may only drop a required dependency when its transform explicitly releases that dependency.");
             return writer.ToString();
         }
 
@@ -187,8 +187,21 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
             PublishingPageCaptureBundle snapshot,
             PublishingPageMigrationPlan plan)
         {
+            writer.Table("Ingredient graph projections", new[] { "Property", "Value", "How to read it" }, new[]
+            {
+                Row("snapshot.ingredientGraph.schemaVersion", snapshot.IngredientGraph.SchemaVersion, "Nested graph contract carried by the immutable source snapshot."),
+                Row("snapshot.ingredientGraph.projectionVersion", snapshot.IngredientGraph.ProjectionVersion, "Null means a validated legacy capture-time projection; it does not invalidate or rewrite the source snapshot digest."),
+                Row("snapshot.ingredientGraph.nodeCount", snapshot.IngredientGraph.Nodes.Count, "Ingredients understood when the source export was sealed."),
+                Row("snapshot.ingredientGraph.edgeCount", snapshot.IngredientGraph.Edges.Count, "Capture-time dependency relationships sealed into the source snapshot."),
+                Row("plan.ingredientGraph.schemaVersion", plan.IngredientGraph.SchemaVersion, "Nested graph contract used by this target-specific plan."),
+                Row("plan.ingredientGraph.projectionVersion", plan.IngredientGraph.ProjectionVersion, "Current deterministic projection of the unchanged typed source evidence."),
+                Row("plan.ingredientGraph.nodeCount", plan.IngredientGraph.Nodes.Count, "Current ingredients for which the plan must choose an action."),
+                Row("plan.ingredientGraph.edgeCount", plan.IngredientGraph.Edges.Count, "Current dependency tree evaluated for executability and loss."),
+                Row("plan.ingredientGraph.reprojected", !PublishingPageValidationCanonical.Equals(snapshot.IngredientGraph, plan.IngredientGraph), "True means planner capabilities evolved after capture. The source snapshot and its digest remain unchanged; only the plan-time derived graph is newer.")
+            });
+
             writer.Table(
-                $"Canonical ingredient nodes ({snapshot.IngredientGraph.Nodes.Count})",
+                $"Canonical ingredient nodes — capture-time ({snapshot.IngredientGraph.Nodes.Count})",
                 new[] { "ID", "Kind", "Label", "Has content", "Ownership", "Source authority", "Evidence digest", "Runtime requirement", "Evidence references" },
                 snapshot.IngredientGraph.Nodes.Select(node => Row(
                     node.Id,
@@ -202,9 +215,33 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                     Join(node.EvidenceReferences))));
 
             writer.Table(
-                $"Canonical ingredient edges ({snapshot.IngredientGraph.Edges.Count})",
+                $"Canonical ingredient edges — capture-time ({snapshot.IngredientGraph.Edges.Count})",
                 new[] { "From", "Relationship", "To", "Requirement", "Condition" },
                 snapshot.IngredientGraph.Edges.Select(edge => Row(
+                    edge.FromIngredientId,
+                    edge.Relationship,
+                    edge.ToIngredientId,
+                    edge.Requirement,
+                    edge.Condition)));
+
+            writer.Table(
+                $"Plan-time canonical ingredient nodes ({plan.IngredientGraph.Nodes.Count})",
+                new[] { "ID", "Kind", "Label", "Has content", "Ownership", "Source authority", "Evidence digest", "Runtime requirement", "Evidence references" },
+                plan.IngredientGraph.Nodes.Select(node => Row(
+                    node.Id,
+                    node.Kind,
+                    node.Label,
+                    node.HasContent,
+                    node.Ownership,
+                    node.SourceAuthority,
+                    node.EvidenceDigest,
+                    node.RuntimeRequirement,
+                    Join(node.EvidenceReferences))));
+
+            writer.Table(
+                $"Plan-time canonical ingredient edges ({plan.IngredientGraph.Edges.Count})",
+                new[] { "From", "Relationship", "To", "Requirement", "Condition" },
+                plan.IngredientGraph.Edges.Select(edge => Row(
                     edge.FromIngredientId,
                     edge.Relationship,
                     edge.ToIngredientId,
@@ -363,11 +400,15 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("plan.sourceSnapshotDigest", plan.SourceSnapshotDigest, "Binds this plan to the exact source snapshot."),
                 Row("plan.sourceWebUrl", plan.SourceWebUrl, "Source web used for mapping."),
                 Row("plan.sourcePageServerRelativeUrl", plan.SourcePageServerRelativeUrl, "Source page represented by the snapshot."),
+                Row("plan.originalIdentifier", plan.OriginalIdentifier, "Stable source-qualified Site/Web/file identity written to the target page for ownership verification."),
                 Row("plan.targetWebUrl", plan.TargetWebUrl, "Target connection must point here during import."),
                 Row("plan.targetWebServerRelativeUrl", plan.TargetWebServerRelativeUrl, "Target web boundary for paths."),
-                Row("plan.targetPageServerRelativeUrl", plan.TargetPageServerRelativeUrl, "Exact target page to create."),
+                Row("plan.preferredTargetPageServerRelativeUrl", plan.PreferredTargetPageServerRelativeUrl, "Path produced by exact relative-path mapping before live collision resolution."),
+                Row("plan.targetPageServerRelativeUrl", plan.TargetPageServerRelativeUrl, "Final sealed target page path. Only the colliding file leaf may differ from the preferred path."),
+                Row("plan.targetPathCollisionResolved", plan.TargetPathCollisionResolved, "True when planning moved only the page filename to avoid a proven foreign collision."),
+                Row("plan.targetPathResolutionReason", plan.TargetPathResolutionReason, "Evidence explaining why the final target path differs from the preferred path."),
                 Row("plan.pageLayoutName", plan.PageLayoutName, "Publishing layout name passed to page creation."),
-                Row("plan.createOnly", plan.CreateOnly, "Existing pages and dependency files are blockers."),
+                Row("plan.createOnly", plan.CreateOnly, "Import never overwrites an existing object. Planning resolves a foreign collision to another leaf; a post-approval collision invalidates the plan."),
                 Row("planningPolicy.targetPageServerRelativeUrl", plan.PlanningPolicy.TargetPageServerRelativeUrl, "Normalized requested target page."),
                 Row("planningPolicy.requireInheritedPermissions", plan.PlanningPolicy.RequireInheritedPermissions, "Blocks source pages with unique permissions when true."),
                 Row("planningPolicy.blockOnManagedMetadata", plan.PlanningPolicy.BlockOnManagedMetadata, "Legacy compatibility input. It cannot bypass relationship evidence, reviewed mappings, target-state admission, or the no-Term-repair invariant."),
@@ -387,7 +428,12 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("targetProbe.pageContentTypeId", plan.TargetProbe.PageContentTypeId, "Exact Pages-library Content Type ID sealed into the plan and verified after creation."),
                 Row("targetProbe.pageLayoutUrl", plan.TargetProbe.PageLayoutUrl, "Approved Publishing Page Layout found or planned in the target site collection."),
                 Row("targetProbe.pageLayoutExists", plan.TargetProbe.PageLayoutExists, "False is a blocker."),
-                Row("targetProbe.targetPageExists", plan.TargetProbe.TargetPageExists, "True is a blocker for CreatePage."),
+                Row("targetProbe.preferredTargetPageServerRelativeUrl", plan.TargetProbe.PreferredTargetPageServerRelativeUrl, "Exact relative-path target inspected before collision allocation."),
+                Row("targetProbe.targetPageServerRelativeUrl", plan.TargetProbe.TargetPageServerRelativeUrl, "Final page path sealed by the planning probe."),
+                Row("targetProbe.preferredTargetPageExists", plan.TargetProbe.PreferredTargetPageExists, "When true during planning, a foreign preferred-path collision must be resolved without overwriting it."),
+                Row("targetProbe.targetPathCollisionResolved", plan.TargetProbe.TargetPathCollisionResolved, "Whether the probe allocated a stable suffix at the page leaf."),
+                Row("targetProbe.targetPathResolutionReason", plan.TargetProbe.TargetPathResolutionReason, "Collision evidence retained for review."),
+                Row("targetProbe.targetPageExists", plan.TargetProbe.TargetPageExists, "True means the final sealed create-only path was occupied at this probe boundary."),
                 Row("targetProbe.existingDependencyPaths", Join(plan.TargetProbe.ExistingDependencyPaths), "Create-only dependency collisions.")
             });
 

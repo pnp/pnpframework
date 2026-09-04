@@ -15,6 +15,6 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
 
         public IList<PublishingPageLayoutResourceReference> ResourceReferences { get; set; } = new List<PublishingPageLayoutResourceReference>();
 
-        public IList<string> RequiredFieldNames { get; set; } = new List<string>();
+        public IList<string> RequiredFieldIdentifiers { get; set; } = new List<string>();
     }
 }

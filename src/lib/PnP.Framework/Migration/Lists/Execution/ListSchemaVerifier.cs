@@ -17,6 +17,7 @@ namespace PnP.Framework.Migration.Lists.Execution
             ListMaterializationPlan plan,
             ListMaterializationReceipt receipt,
             IDictionary<Guid, ListMaterializationReceipt> dependencyReceipts,
+            ListMaterializationExecutionScope.ListSelection selection,
             ICollection<string> diagnostics)
         {
             context.Load(list.Fields, values => values.Include(
@@ -63,7 +64,8 @@ namespace PnP.Framework.Migration.Lists.Execution
             context.ExecuteQueryRetry();
 
             VerifyFields(list, plan, dependencyReceipts, receipt, diagnostics);
-            VerifyContentTypes(list, source, receipt, diagnostics);
+            VerifyContentTypes(list, source, receipt, selection, diagnostics);
+            receipt.VerifiedViewRenderingResourceCount = ListViewRenderingResourceMaterializer.Verify(context, plan, diagnostics);
             VerifyViews(list, plan, receipt, diagnostics);
         }
 
@@ -120,6 +122,7 @@ namespace PnP.Framework.Migration.Lists.Execution
             List list,
             ListDependencySnapshot source,
             ListMaterializationReceipt receipt,
+            ListMaterializationExecutionScope.ListSelection selection,
             ICollection<string> diagnostics)
         {
             var actual = list.ContentTypes.AsEnumerable().ToDictionary(value => value.Id.StringValue, StringComparer.OrdinalIgnoreCase);
@@ -167,13 +170,16 @@ namespace PnP.Framework.Migration.Lists.Execution
                 receipt.VerifiedContentTypeCount++;
             }
 
-            var expectedOrder = ExpectedContentTypeOrder(source, receipt, actual);
-            var observedOrder = list.RootFolder.UniqueContentTypeOrder == null
-                ? null
-                : list.RootFolder.UniqueContentTypeOrder.Select(value => value.StringValue).ToArray();
-            if (!SameOrder(observedOrder, expectedOrder))
+            if (selection == null || selection.ExactContentTypeInventory)
             {
-                diagnostics.Add("Target List unique content type order differs from the sealed source order.");
+                var expectedOrder = ExpectedContentTypeOrder(source, receipt, actual);
+                var observedOrder = list.RootFolder.UniqueContentTypeOrder == null
+                    ? null
+                    : list.RootFolder.UniqueContentTypeOrder.Select(value => value.StringValue).ToArray();
+                if (!SameOrder(observedOrder, expectedOrder))
+                {
+                    diagnostics.Add("Target List unique content type order differs from the sealed source order.");
+                }
             }
         }
 
@@ -226,13 +232,17 @@ namespace PnP.Framework.Migration.Lists.Execution
                     continue;
                 }
                 var source = viewPlan.Source;
+                var expectedJsLink = ListViewRenderingResourceMaterializer.RewriteJsLink(
+                    source.JsLink,
+                    source,
+                    plan.ViewRenderingResources);
                 if (target.PersonalView
                     || !string.Equals(target.Title, ListViewMaterializer.TargetTitle(viewPlan), StringComparison.Ordinal)
                     || !string.Equals(target.ViewType, source.ViewType, StringComparison.OrdinalIgnoreCase)
                     || !string.Equals(target.ViewQuery ?? string.Empty, source.ViewQuery ?? string.Empty, StringComparison.Ordinal)
                     || target.RowLimit != source.RowLimit
                     || target.Paged != source.Paged
-                    || !string.Equals(target.JSLink ?? string.Empty, source.JsLink ?? string.Empty, StringComparison.Ordinal)
+                    || !string.Equals(target.JSLink ?? string.Empty, expectedJsLink ?? string.Empty, StringComparison.Ordinal)
                     || !target.ViewFields.SequenceEqual(source.ViewFields, StringComparer.OrdinalIgnoreCase))
                 {
                     diagnostics.Add("Target View readback differs: " + viewPlan.SourceViewId.ToString("D") + ".");

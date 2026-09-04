@@ -1,7 +1,9 @@
 using PnP.Framework.Migration.Evidence;
+using PnP.Framework.Migration.Lists.Items.Protection;
 using PnP.Framework.Migration.Packaging;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace PnP.Framework.Migration.Lists.Items
 {
@@ -11,6 +13,28 @@ namespace PnP.Framework.Migration.Lists.Items
         Folder = 2
     }
 
+    /// <summary>
+    /// Describes what SharePoint returned for a captured binary request. The
+    /// artifact digest always seals those exact returned bytes; this value tells
+    /// planning whether those bytes are also a stable representation of the
+    /// logical source file.
+    /// </summary>
+    public enum ListBinaryRepresentationKind
+    {
+        Unclassified = 0,
+        OrdinaryFilePayload = 1,
+        InformationRightsManagedEnvelope = 2
+    }
+
+    public sealed class ListBinaryContentIdentitySnapshot
+    {
+        public string QuickXorHash { get; set; }
+
+        public string ContentTag { get; set; }
+
+        public string EvidenceSource { get; set; }
+    }
+
     public sealed class ListBinaryArtifactSnapshot
     {
         public ArtifactReference Artifact { get; set; }
@@ -18,6 +42,15 @@ namespace PnP.Framework.Migration.Lists.Items
         public string ContentBase64 { get; set; }
 
         public EvidenceAvailability Availability { get; set; } = EvidenceAvailability.Captured;
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public ListBinaryRepresentationKind RepresentationKind { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public ListBinaryContentIdentitySnapshot LogicalContentIdentity { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public IList<LiteralHttpArchivedContentEvidence> ArchivedContentEvidence { get; set; }
 
         public IList<string> Diagnostics { get; set; } = new List<string>();
     }
@@ -44,6 +77,9 @@ namespace PnP.Framework.Migration.Lists.Items
         public int MajorVersion { get; set; }
 
         public int MinorVersion { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public ListDocumentInformationProtectionSnapshot InformationProtection { get; set; }
 
         public ListBinaryArtifactSnapshot Content { get; set; }
     }

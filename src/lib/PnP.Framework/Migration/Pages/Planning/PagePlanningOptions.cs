@@ -2,6 +2,7 @@ using PnP.Framework.Migration.Taxonomy;
 using System.Collections.Generic;
 using PnP.Framework.Migration.Topology;
 using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Taxonomy.Assets;
 
 namespace PnP.Framework.Migration.Pages.Planning
 {
@@ -18,6 +19,8 @@ namespace PnP.Framework.Migration.Pages.Planning
         public bool CreateOnly { get; set; } = true;
 
         public IList<TaxonomyTargetMapping> TaxonomySchemaMappings { get; set; } = new List<TaxonomyTargetMapping>();
+
+        public TaxonomyAssetMappingCatalog TaxonomyAssetMappingCatalog { get; set; }
 
         public TopologyPlanningPolicy TopologyPolicy { get; set; } = new TopologyPlanningPolicy();
 

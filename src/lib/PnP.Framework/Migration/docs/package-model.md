@@ -36,8 +36,18 @@ The migration package embeds the source snapshot, so Import does not need to rec
 | `RuntimeVerificationManifest` | `pnp-migration-runtime-verification/v1` |
 | `RuntimeVerificationReceipt` | `pnp-migration-runtime-verification-receipt/v1` |
 | `TaxonomyValueRelationshipSnapshot` | `pnp-taxonomy-value-relationship/v1` |
+| `TaxonomyAssetSourceSnapshot` | `pnp-taxonomy-asset-source/v1` |
+| `TaxonomyTermGroupMaterializationPlan` | `pnp-taxonomy-termgroup-plan/v1` |
+| `TaxonomyTermSetMaterializationPlan` | `pnp-taxonomy-termset-plan/v1` |
+| `TaxonomyTermMaterializationPlan` | `pnp-taxonomy-term-plan/v1` |
+| `TaxonomyAssetReviewPlan` | `pnp-taxonomy-asset-review-plan/v1` |
+| `TaxonomyAssetApprovalManifest` | `pnp-taxonomy-asset-approval/v1` |
+| `TaxonomyAssetExecutionAdmission` | `pnp-taxonomy-asset-execution-admission/v1` |
+| `TaxonomyAssetMaterializationReceipt` | `pnp-taxonomy-asset-materialization-receipt/v1` |
 
 Nested snapshots and plans have their own schema identifiers where independent evolution or validation is required.
+
+Taxonomy asset evidence is currently emitted as a cohort-level, digest-sealed review sidecar. It is derived from the page bundles but is not yet embedded in `PublishingPageMigrationPackage`. Its separate approval manifest covers every deterministic target TermGroup, TermSet, and Term action. A TermSet action cannot implicitly create its parent TermGroup, and adding a child to an external TermSet requires an additional per-Term flag. Execution produces a journal plus fresh-readback receipt. Page Apply must consume a successful receipt before the two approval boundaries can be joined.
 
 JSON serialization uses camel-case property names, string enum values, explicit nulls, and case-sensitive property names.
 
@@ -113,7 +123,7 @@ Changing any snapshot evidence after sealing invalidates `snapshotDigest`.
 | `fields` | Every returned Pages-library field definition plus typed or raw value evidence. Taxonomy fields additionally carry their exact binding, field-value-set digest, live-resolution state, `TaxonomyHiddenList`/`TaxCatchAll` evidence, and per-value relationship proof. |
 | `webParts` | Captured classic Web Part export XML, identity, placement, hidden state, and digest. |
 | `listWebPartBindings` | Parsed source Web/List/View bindings and relevant XML/path evidence. |
-| `listDependencies` | Required Lists/libraries, settings, fields, site/List content types, Views, current items, folders, files, and attachments. Every returned item field has a value snapshot; unknown runtime types retain best-effort raw evidence and may be marked `Partial`. |
+| `listDependencies` | Required Lists/libraries, settings, fields, site/List content types, Views, current items, folders, files, and attachments. Every returned item field has a value snapshot; unknown runtime types retain best-effort raw evidence and may be marked `Partial`. Binary evidence records whether SharePoint returned an ordinary payload or an IRM envelope; protected documents retain exact artifact bytes plus available `cTag`/`QuickXorHash` logical identity. |
 | `listLookupDependencies` | Directed lookup edges used for ordering and cycle detection. |
 | `sourceTopology` | Source Site Collection and complete required Web ancestor closure. |
 | `dependencies` | Authored references and safe payload evidence. |
@@ -125,6 +135,19 @@ Changing any snapshot evidence after sealing invalidates `snapshotDigest`.
 
 The bundle is not a list of writes. A value may be captured even when its later plan disposition is evidence-only or blocked.
 
+For an IRM envelope, `artifact.sha256` remains the package-integrity identity of the exact captured response. It is deliberately not interpreted as a stable source-content identity. `logicalContentIdentity.quickXorHash`, together with source file identity/version/length and `contentTag`, supports source-to-source semantic comparison while replay remains `Defer`. The full artifact still participates in `snapshotDigest`, so two faithful captures may have different immutable snapshot digests even when their protected logical document is unchanged.
+
+### Capture-time and plan-time ingredient projections
+
+The snapshot's `ingredientGraph` is immutable capture evidence. Its projection version records the projector semantics used when that snapshot was sealed; validating or planning an older package must never rewrite that graph or change `snapshotDigest`.
+
+Planning independently derives the current canonical graph from the typed snapshot evidence and stores it as `plan.ingredientGraph`. This separates two concerns:
+
+- export validation proves that the captured graph is authentic for its recorded projection semantics;
+- plan validation proves that the actions and dependency closure match the current projector and policy.
+
+Legacy export packages whose graph has no `projectionVersion` are validated against the legacy projector. A current plan over that evidence stores the current versioned projection in `plan.ingredientGraph`, while the embedded snapshot remains byte-for-byte and digest-equivalent to the export. Import validates both boundaries. This permits projector evolution without either silently accepting a tampered old graph or invalidating authentic frozen evidence.
+
 ## Target-specific migration package
 
 `PublishingPageMigrationPackage` embeds the source snapshot and adds the complete reviewed target intent.
@@ -134,7 +157,7 @@ The bundle is not a list of writes. A value may be captured even when its later 
 | `schemaVersion` | Migration-package envelope version. |
 | `plannedAtUtc` | Time target analysis and plan sealing completed. |
 | `exportSchemaVersion` / `exportedAtUtc` | Provenance of the embedded export. |
-| `state` | `ApprovalReady` when the plan has no blockers, otherwise `Blocked`; `Draft` is available while constructing a package. |
+| `state` | `ApprovalReady` when executable; `MitigationPending` when more evidence/capability work is queued; `AuthorizationBlocked` only for literal HTTP 401/403; `Invalid` for an inconsistent action graph. `Draft` is available during construction and legacy `Blocked` is no longer emitted. |
 | `selection` | Exact workflow/cohort selection copied from the export and validated again at planning/import. |
 | `selectionDigest` | Must continue to match the embedded selection and its policy-derived assessment. |
 | `snapshot` | Exact source evidence used to make the plan. |
@@ -164,22 +187,25 @@ The bundle is not a list of writes. A value may be captured even when its later 
 | `layoutTargetProbe` | Detailed target evidence for layout bytes, schema, permissions, and resources. |
 | `layoutAdmission` | Typed eligibility result and issues for the layout closure. |
 | `fieldActions` | Exactly one result for every captured governed page field. |
-| `taxonomyRelationshipActions` | Exactly one action for every captured taxonomy value. A selected field seals the exact target field/text-field binding and reuses an exact live-in-bound Term, reproduces an exact live-outside-bound or dangling relationship, or blocks. An unselected field uses `RetainEvidenceOnly`, which preserves sealed source evidence without making a target claim. No action authorizes Term creation/substitution. |
+| `taxonomyRelationshipActions` | Exactly one action for every captured taxonomy value. A selected field seals the exact target field/text-field binding and reuses an exact live-in-bound Term, reproduces an exact live-outside-bound or dangling relationship, or defers for mitigation. An unselected field uses `RetainEvidenceOnly`, which preserves sealed source evidence without making a target claim. A relationship action never authorizes Term creation, repair, or substitution; any exact missing source asset must be prepared through a separately reviewed taxonomy asset plan before page admission. |
 | `dependencyActions` | Exactly one result for every captured governed reference. |
 | `topology` | Source Site/Web to target Site/Web mapping and topology semantic digest. |
 | `topologyTargetAnalysis` | Target existence, identity, parent, template, ownership, disposition, and issues for each mapped Site/Web. |
-| `listMigration` | Ordered per-List plans, field/View/site-content-type actions, target probes, issues, and digests. |
-| `webPartActions` | Copy, rebind-after-materialization, or block result for each captured Web Part. |
+| `listMigration` | Ordered per-List plans, conditional platform-feature requirements, field/View/site-content-type actions, target probes, issues, and digests. Each feature requirement seals its ID, scope, dependency order, consuming and promised content-type IDs, and target Site Collection. |
+| `webPartActions` | Copy, rebind-after-materialization, or defer-for-mitigation result for each captured Web Part. |
 | `replacements` | Approved source-to-target text substitutions. |
 | `expectedPublishingPageContentSha256` | Expected post-replacement publishing-content digest. |
 | `storageAssertions` | Required storage-level expectations. |
 | `runtimeVerification` | Typed requirements for an external verifier. Presence does not imply execution. |
+| `ingredientGraph` | Current versioned projection derived from the immutable typed snapshot evidence for this plan. It may differ from the capture-time graph only through an explicit projector-version change; planning does not rewrite the snapshot. |
 | `ingredientActions` | Exactly one semantic capability/disposition, target, policy, dependency-release list, and verification list for every non-empty canonical ingredient. Releases are valid only on a `Transform` and must name a real required dependency edge. |
-| `migrationOutcome` | Evaluated aggregate: `Exact`, `ExecutableWithTransform`, `ExecutableWithLoss`, `Blocked`, or `Unknown`. |
+| `migrationOutcome` | Evaluated aggregate: `Exact`, `ExecutableWithTransform`, `ExecutableWithLoss`, `MitigationPending`, `AuthorizationBlocked`, `Invalid`, or `Unknown`. Legacy `Blocked` is no longer emitted. |
 | `ingredientIssues` | Recomputed dependency-closure and action-coverage issues. |
 | `blockers` / `warnings` | Plan-wide findings. `IsExecutable` requires both an empty blocker list and an executable ingredient outcome. |
 
 The plan contains nested actions rather than a flat transaction list. Dependency ordering and runtime identity exchange determine execution order.
+
+Package-level `MitigationPending` means that this sealed target transaction is not safe to execute yet, but it is a nonterminal work item: the migration loop continues with evidence collection, RCA, capability implementation, re-capture, replanning, and verification. `AuthorizationBlocked` is the only authorization stop and requires retained literal wire-level HTTP `401` or `403`. `Invalid` identifies an inconsistent proposed action graph and also returns to RCA rather than being treated as authorization. The legacy ambiguous `Blocked` state is retained only for contract compatibility and is never emitted by new planning.
 
 ## Target information
 

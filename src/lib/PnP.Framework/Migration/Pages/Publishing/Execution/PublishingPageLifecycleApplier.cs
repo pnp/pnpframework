@@ -12,6 +12,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
             ClientContext context,
             PublishingPageMigrationPackage package,
             PublishingPageWriteResult result,
+            bool applyApprovedLifecycle,
             MigrationExecutionRecorder recorder,
             ICollection<string> warnings)
         {
@@ -19,7 +20,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
             context.ExecuteQueryRetry();
             if (result.TargetFile.CheckOutType != CheckOutType.None)
             {
-                var checkinType = package.Plan.TargetLifecycle == PublishingPageTargetLifecycle.Published && !result.PlannedFieldFailure
+                var checkinType = applyApprovedLifecycle
+                    && package.Plan.TargetLifecycle == PublishingPageTargetLifecycle.Published
+                    && !result.PlannedFieldFailure
                     ? CheckinType.MajorCheckIn
                     : CheckinType.MinorCheckIn;
                 recorder.Execute("page.checkin", $"Check in the page as {checkinType}.", () =>
@@ -33,9 +36,15 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                 recorder.RecordAlreadySatisfied("page.checkin", "The target page is already checked in.");
             }
 
-            if (package.Plan.TargetLifecycle != PublishingPageTargetLifecycle.Published || result.PlannedFieldFailure)
+            if (!applyApprovedLifecycle
+                || package.Plan.TargetLifecycle != PublishingPageTargetLifecycle.Published
+                || result.PlannedFieldFailure)
             {
-                recorder.RecordAlreadySatisfied("page.publish", "The approved lifecycle is Draft, or a planned field update failed; no publish action was performed.");
+                recorder.RecordAlreadySatisfied(
+                    "page.publish",
+                    !applyApprovedLifecycle
+                        ? "The lifecycle ingredient is outside the admitted execution frontier; the page is left Draft."
+                        : "The approved lifecycle is Draft, or a planned field update failed; no publish action was performed.");
                 if (result.PlannedFieldFailure)
                 {
                     warnings.Add("One or more planned field updates failed. The page was not published.");

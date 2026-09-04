@@ -10,13 +10,43 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
 {
     internal static class PublishingPageLayoutIngredientGraphProjector
     {
-        public static void Project(PublishingPageCaptureBundle snapshot, CanonicalPageIngredientGraph graph)
+        public static void Project(
+            PublishingPageCaptureBundle snapshot,
+            CanonicalPageIngredientGraph graph,
+            PublishingPageIngredientGraphProjectionRevision revision)
         {
-            AddContentTypeFields(snapshot, graph);
-            AddResources(snapshot, graph);
+            var ownerWebId = PublishingPageIngredientGraphProjector.UsesOwnerWebDependencies(revision)
+                ? PublishingPageIngredientOwnerWebResolver.Root(snapshot)
+                : null;
+            AddContentTypeFields(snapshot, graph, ownerWebId);
+            AddResources(snapshot, graph, ownerWebId);
+            if (PublishingPageIngredientGraphProjector.UsesTransactionDependencies(revision))
+            {
+                graph.Edges.Add(Edge(
+                    PublishingPageIngredientIds.Layout,
+                    PublishingPageIngredientIds.ContentType,
+                    PageIngredientRelationship.TypedBy,
+                    PageIngredientRequirement.Required));
+            }
+            if (!string.IsNullOrWhiteSpace(ownerWebId))
+            {
+                graph.Edges.Add(Edge(
+                    PublishingPageIngredientIds.Layout,
+                    ownerWebId,
+                    PageIngredientRelationship.DependsOn,
+                    PageIngredientRequirement.Required));
+                graph.Edges.Add(Edge(
+                    PublishingPageIngredientIds.ContentType,
+                    ownerWebId,
+                    PageIngredientRelationship.DependsOn,
+                    PageIngredientRequirement.Required));
+            }
         }
 
-        private static void AddContentTypeFields(PublishingPageCaptureBundle snapshot, CanonicalPageIngredientGraph graph)
+        private static void AddContentTypeFields(
+            PublishingPageCaptureBundle snapshot,
+            CanonicalPageIngredientGraph graph,
+            string ownerWebId)
         {
             foreach (var field in (snapshot.Layout?.AssociatedContentTypeSchema?.RequiredFieldClosure
                          ?? Array.Empty<FieldSchemaSnapshot>())
@@ -40,10 +70,21 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                     id,
                     PageIngredientRelationship.BindsTo,
                     PageIngredientRequirement.Required));
+                if (!string.IsNullOrWhiteSpace(ownerWebId))
+                {
+                    graph.Edges.Add(Edge(
+                        id,
+                        ownerWebId,
+                        PageIngredientRelationship.DependsOn,
+                        PageIngredientRequirement.Required));
+                }
             }
         }
 
-        private static void AddResources(PublishingPageCaptureBundle snapshot, CanonicalPageIngredientGraph graph)
+        private static void AddResources(
+            PublishingPageCaptureBundle snapshot,
+            CanonicalPageIngredientGraph graph,
+            string ownerWebId)
         {
             foreach (var resourceGroup in (snapshot.Layout?.ResourceArtifacts
                          ?? Array.Empty<PublishingPageLayoutResourceSnapshot>())
@@ -67,6 +108,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                     id,
                     PageIngredientRelationship.References,
                     PageIngredientRequirement.Required));
+                if (!string.IsNullOrWhiteSpace(ownerWebId))
+                {
+                    graph.Edges.Add(Edge(
+                        id,
+                        ownerWebId,
+                        PageIngredientRelationship.DependsOn,
+                        PageIngredientRequirement.Required));
+                }
             }
         }
     }

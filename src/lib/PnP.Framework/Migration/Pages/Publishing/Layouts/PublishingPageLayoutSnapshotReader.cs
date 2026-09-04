@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 
 namespace PnP.Framework.Migration.Pages.Publishing.Layouts
 {
@@ -24,47 +25,96 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                 return Missing(layoutUrl, description, "PublishingPageLayout is unavailable on the source page.", blockers);
             }
 
-            var rootWeb = context.Site.RootWeb;
+            var pageRootWeb = context.Site.RootWeb;
             context.Load(context.Web, value => value.Url);
-            context.Load(rootWeb, value => value.Url, value => value.ServerRelativeUrl);
+            context.Load(pageRootWeb, value => value.Url, value => value.ServerRelativeUrl);
             context.ExecuteQueryRetry();
-            var serverRelativeUrl = ResolveServerRelativeUrl(rootWeb.Url, layoutUrl);
-            Uri absoluteLayoutUrl;
-            var rootUri = new Uri(rootWeb.Url);
-            if (Uri.TryCreate(layoutUrl, UriKind.Absolute, out absoluteLayoutUrl)
-                && (!string.Equals(absoluteLayoutUrl.Scheme, rootUri.Scheme, StringComparison.OrdinalIgnoreCase)
-                    || !string.Equals(absoluteLayoutUrl.Host, rootUri.Host, StringComparison.OrdinalIgnoreCase)
-                    || absoluteLayoutUrl.Port != rootUri.Port))
+            PublishingPageLayoutSourceLocation location;
+            string locationDiagnostic;
+            if (!PublishingPageLayoutSourceLocation.TryResolve(
+                new Uri(pageRootWeb.Url),
+                layoutUrl,
+                out location,
+                out locationDiagnostic))
             {
                 return Failure(
                     layoutUrl,
-                    serverRelativeUrl,
+                    null,
                     description,
                     PublishingPageLayoutEvidenceState.Failed,
-                    "PublishingPageLayout points outside the source site collection origin.",
+                    locationDiagnostic,
                     blockers);
             }
 
-            var galleryRoot = rootWeb.ServerRelativeUrl == "/"
-                ? "/_catalogs/masterpage/"
-                : rootWeb.ServerRelativeUrl.TrimEnd('/') + "/_catalogs/masterpage/";
-            if (!serverRelativeUrl.StartsWith(galleryRoot, StringComparison.OrdinalIgnoreCase))
+            var pageWebUrl = new Uri(context.Web.Url);
+            var pageSiteCollectionUrl = new Uri(pageRootWeb.Url);
+            if (!location.IsExternalToPageSiteCollection)
             {
-                return Failure(
+                return ReadFromOwner(
+                    context,
+                    context,
+                    pageWebUrl,
+                    pageSiteCollectionUrl,
                     layoutUrl,
-                    serverRelativeUrl,
                     description,
-                    PublishingPageLayoutEvidenceState.Failed,
-                    $"PublishingPageLayout is outside the source master page gallery '{galleryRoot}'.",
-                    blockers);
+                    location,
+                    artifactStore,
+                    blockers,
+                    warnings);
             }
 
+            using (var ownerContext = context.Clone(location.OwnerSiteCollectionUrl))
+            {
+                return ReadFromOwner(
+                    ownerContext,
+                    context,
+                    pageWebUrl,
+                    pageSiteCollectionUrl,
+                    layoutUrl,
+                    description,
+                    location,
+                    artifactStore,
+                    blockers,
+                    warnings);
+            }
+        }
+
+        private static PublishingPageLayoutSnapshot ReadFromOwner(
+            ClientContext ownerContext,
+            ClientContext pageContext,
+            Uri pageWebUrl,
+            Uri pageSiteCollectionUrl,
+            string layoutUrl,
+            string description,
+            PublishingPageLayoutSourceLocation location,
+            IMigrationArtifactStore artifactStore,
+            ICollection<string> blockers,
+            ICollection<string> warnings)
+        {
             try
             {
-                var file = rootWeb.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativeUrl));
+                var rootWeb = ownerContext.Site.RootWeb;
+                ownerContext.Load(rootWeb, value => value.Url, value => value.ServerRelativeUrl);
+                ownerContext.ExecuteQueryRetry();
+                var galleryRoot = rootWeb.ServerRelativeUrl == "/"
+                    ? "/_catalogs/masterpage/"
+                    : rootWeb.ServerRelativeUrl.TrimEnd('/') + "/_catalogs/masterpage/";
+                if (!location.ServerRelativeUrl.StartsWith(galleryRoot, StringComparison.OrdinalIgnoreCase))
+                {
+                    return Failure(
+                        layoutUrl,
+                        location.ServerRelativeUrl,
+                        description,
+                        PublishingPageLayoutEvidenceState.Failed,
+                        $"PublishingPageLayout owner resolved to '{rootWeb.Url}', but the file is outside its master page gallery '{galleryRoot}'.",
+                        blockers,
+                        location);
+                }
+
+                var file = rootWeb.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(location.ServerRelativeUrl));
                 var item = file.ListItemAllFields;
                 var stream = file.OpenBinaryStream();
-                context.Load(file,
+                ownerContext.Load(file,
                     value => value.Exists,
                     value => value.UniqueId,
                     value => value.Name,
@@ -74,11 +124,11 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                     value => value.CustomizedPageStatus,
                     value => value.CheckOutType,
                     value => value.Level);
-                context.Load(item);
-                context.ExecuteQueryRetry();
+                ownerContext.Load(item);
+                ownerContext.ExecuteQueryRetry();
                 if (!file.Exists || stream.Value == null)
                 {
-                    return Missing(layoutUrl, description, "The source Page Layout file or its exact bytes are unavailable.", blockers);
+                    return Missing(layoutUrl, description, "The source Page Layout file or its exact bytes are unavailable.", blockers, location);
                 }
 
                 byte[] bytes;
@@ -97,19 +147,17 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                 var schemaDiagnostics = new List<string>();
                 var schema = association == null
                     ? null
-                    : ContentTypeSchemaSnapshotReader.Read(context, rootWeb, association.Value.Id, markup.RequiredFieldNames, schemaDiagnostics);
+                    : ContentTypeSchemaSnapshotReader.Read(ownerContext, rootWeb, association.Value.Id, markup.RequiredFieldIdentifiers, schemaDiagnostics);
                 foreach (var diagnostic in schemaDiagnostics)
                 {
                     warnings?.Add(diagnostic);
                 }
 
-                var sourceWebUrl = new Uri(context.Web.Url);
-                var sourceSiteCollectionUrl = new Uri(rootWeb.Url);
                 var resources = markup.ResourceReferences
                     .Select(reference => PublishingPageLayoutResourceSnapshotReader.Read(
-                        context,
-                        sourceWebUrl,
-                        sourceSiteCollectionUrl,
+                        pageContext,
+                        pageWebUrl,
+                        pageSiteCollectionUrl,
                         reference,
                         artifactStore))
                     .ToList();
@@ -119,6 +167,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                     Availability = EvidenceAvailability.Captured,
                     Url = layoutUrl,
                     ServerRelativeUrl = file.ServerRelativeUrl,
+                    OwnerSiteCollectionUrl = rootWeb.Url,
+                    ExternalToPageSiteCollection = location.IsExternalToPageSiteCollection,
                     Description = description,
                     FileUniqueId = file.UniqueId,
                     CustomizedPageStatus = (int)file.CustomizedPageStatus,
@@ -143,6 +193,31 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                     Diagnostics = schemaDiagnostics
                 };
             }
+            catch (WebException exception)
+            {
+                using (var response = exception.Response as HttpWebResponse)
+                {
+                    var statusCode = response == null ? 0 : (int)response.StatusCode;
+                    if (statusCode != 401 && statusCode != 403)
+                    {
+                        throw;
+                    }
+
+                    var requestUri = response.ResponseUri?.AbsoluteUri
+                        ?? location.AbsoluteLayoutUrl.AbsoluteUri;
+                    var evidence = LiteralHttpAuthorizationEvidence.Create(
+                        "capture-page-layout-owner",
+                        requestUri,
+                        statusCode,
+                        DateTimeOffset.UtcNow);
+                    return AuthorizationFailure(
+                        layoutUrl,
+                        description,
+                        location,
+                        evidence,
+                        blockers);
+                }
+            }
             catch (ServerException exception)
             {
                 var accessDenied = exception.ServerErrorCode == -2147024891
@@ -152,7 +227,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
                 var state = accessDenied ? PublishingPageLayoutEvidenceState.AccessDenied
                     : missing ? PublishingPageLayoutEvidenceState.Missing
                     : PublishingPageLayoutEvidenceState.Failed;
-                return Failure(layoutUrl, serverRelativeUrl, description, state, exception.Message, blockers);
+                return Failure(layoutUrl, location.ServerRelativeUrl, description, state, exception.Message, blockers, location);
             }
         }
 
@@ -162,22 +237,6 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
             {
                 return store.Put(content, "application/vnd.ms-aspx", name);
             }
-        }
-
-        private static string ResolveServerRelativeUrl(string rootWebUrl, string layoutUrl)
-        {
-            Uri absolute;
-            if (Uri.TryCreate(layoutUrl, UriKind.Absolute, out absolute))
-            {
-                return Uri.UnescapeDataString(absolute.AbsolutePath);
-            }
-
-            if (layoutUrl.StartsWith("/", StringComparison.Ordinal))
-            {
-                return Uri.UnescapeDataString(layoutUrl.Split('?', '#')[0]);
-            }
-
-            return Uri.UnescapeDataString(new Uri(new Uri(rootWebUrl.TrimEnd('/') + "/"), layoutUrl).AbsolutePath);
         }
 
         private static (string Name, string Id)? ParseAssociation(string value)
@@ -210,10 +269,41 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
             string url,
             string description,
             string diagnostic,
-            ICollection<string> blockers)
+            ICollection<string> blockers,
+            PublishingPageLayoutSourceLocation location = null)
         {
             blockers?.Add(diagnostic);
-            return Failure(url, null, description, PublishingPageLayoutEvidenceState.Missing, diagnostic, null);
+            return Failure(
+                url,
+                location?.ServerRelativeUrl,
+                description,
+                PublishingPageLayoutEvidenceState.Missing,
+                diagnostic,
+                null,
+                location);
+        }
+
+        private static PublishingPageLayoutSnapshot AuthorizationFailure(
+            string url,
+            string description,
+            PublishingPageLayoutSourceLocation location,
+            LiteralHttpAuthorizationEvidence evidence,
+            ICollection<string> blockers)
+        {
+            var diagnostic = $"Page Layout owner request returned literal HTTP {evidence.HttpStatusCode}.";
+            blockers?.Add(diagnostic);
+            return new PublishingPageLayoutSnapshot
+            {
+                Url = url,
+                ServerRelativeUrl = location.ServerRelativeUrl,
+                OwnerSiteCollectionUrl = location.OwnerSiteCollectionUrl.AbsoluteUri.TrimEnd('/'),
+                ExternalToPageSiteCollection = location.IsExternalToPageSiteCollection,
+                Description = description,
+                EvidenceState = PublishingPageLayoutEvidenceState.AuthorizationBlocked,
+                Availability = EvidenceAvailability.Unavailable,
+                AuthorizationEvidence = evidence,
+                Diagnostics = new List<string> { diagnostic }
+            };
         }
 
         private static PublishingPageLayoutSnapshot Failure(
@@ -222,13 +312,16 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
             string description,
             PublishingPageLayoutEvidenceState state,
             string diagnostic,
-            ICollection<string> blockers)
+            ICollection<string> blockers,
+            PublishingPageLayoutSourceLocation location = null)
         {
             blockers?.Add(diagnostic);
             return new PublishingPageLayoutSnapshot
             {
                 Url = url,
                 ServerRelativeUrl = serverRelativeUrl,
+                OwnerSiteCollectionUrl = location?.OwnerSiteCollectionUrl.AbsoluteUri.TrimEnd('/'),
+                ExternalToPageSiteCollection = location?.IsExternalToPageSiteCollection == true,
                 Description = description,
                 EvidenceState = state,
                 Availability = state == PublishingPageLayoutEvidenceState.MetadataOnly

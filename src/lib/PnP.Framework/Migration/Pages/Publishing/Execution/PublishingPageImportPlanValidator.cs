@@ -19,8 +19,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
     {
         public static void Validate(
             PublishingPageMigrationPackage package,
-            PublishingPageWorkflowPolicy workflowPolicy)
+            PublishingPageWorkflowPolicy workflowPolicy,
+            PublishingPageExecutionScope executionScope)
         {
+            if (executionScope == null)
+            {
+                throw new ArgumentNullException(nameof(executionScope));
+            }
             if (workflowPolicy == null
                 || !string.Equals(package.Selection?.WorkflowId, workflowPolicy.WorkflowId, StringComparison.Ordinal))
             {
@@ -34,11 +39,6 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                     StringComparison.OrdinalIgnoreCase))
             {
                 throw new InvalidDataException("The sealed validation-cohort assessment does not match the selected workflow policy and source evidence.");
-            }
-
-            if (package.Selection?.ValidationCohort?.Disposition != ValidationCohortDisposition.Included)
-            {
-                throw new InvalidDataException($"The package is not included in validation cohort '{package.Selection?.ValidationCohort?.CohortId}'.");
             }
 
             if (!string.Equals(package.Snapshot.Runtime?.AdapterId, PageRuntimeAdapterIds.Publishing, StringComparison.Ordinal))
@@ -58,7 +58,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
             }
 
             var fieldByName = package.Snapshot.Fields.ToDictionary(item => item.InternalName, StringComparer.OrdinalIgnoreCase);
-            foreach (var action in package.Plan.FieldActions.Where(item => item.Disposition == PageFieldDisposition.Apply))
+            var executableFields = executionScope.PageFieldActions(package);
+            foreach (var action in executableFields.Where(item => item.Disposition == PageFieldDisposition.Apply))
             {
                 if (!string.Equals(action.SourceInternalName, action.TargetInternalName, StringComparison.OrdinalIgnoreCase)
                     || !fieldByName.TryGetValue(action.SourceInternalName, out var field)
@@ -70,7 +71,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                     throw new InvalidDataException($"Field action '{action.SourceInternalName}' is marked Apply but is not supported by the Publishing Page importer.");
                 }
             }
-            foreach (var action in package.Plan.FieldActions.Where(item => item.Disposition == PageFieldDisposition.ApplyTaxonomyRelationships))
+            var executableTaxonomy = executionScope.TaxonomyActions(package);
+            foreach (var action in executableFields.Where(item => item.Disposition == PageFieldDisposition.ApplyTaxonomyRelationships))
             {
                 if (!string.Equals(action.SourceInternalName, action.TargetInternalName, StringComparison.OrdinalIgnoreCase)
                     || !fieldByName.TryGetValue(action.SourceInternalName, out var field)
@@ -81,7 +83,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                 {
                     throw new InvalidDataException($"Field action '{action.SourceInternalName}' is marked for taxonomy replay but is not supported by the Publishing Page importer.");
                 }
-                var relationshipActions = package.Plan.TaxonomyRelationshipActions
+                var relationshipActions = executableTaxonomy
                     .Where(value => value.SourceFieldId == field.Id)
                     .ToArray();
                 if (relationshipActions.Length != field.TaxonomyValues.Count
@@ -91,14 +93,12 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                 }
             }
 
-            if (package.Plan.IsExecutable
-                && ((package.Plan.Topology != null
-                        && (package.Plan.TopologyTargetAnalysis == null || !package.Plan.TopologyTargetAnalysis.IsAdmitted))
-                    || (package.Snapshot.ListDependencies.Count > 0
-                        && (package.Plan.ListMigration == null || !package.Plan.ListMigration.IsExecutable))
-                    || package.Plan.WebPartActions.Any(value => value.Disposition == ClassicWebPartDisposition.Block)))
+            var projectedLists = executionScope.ListScope?.ProjectPlanSet(package.Plan.ListMigration);
+            if ((executionScope.ListScope?.HasWork == true
+                    && (projectedLists == null || !projectedLists.IsExecutable))
+                || executionScope.WebPartActions(package).Any(value => value.Disposition == ClassicWebPartDisposition.Block))
             {
-                throw new InvalidDataException("An executable publishing-page plan contains a blocked List or Web Part action.");
+                throw new InvalidDataException("The admitted ingredient frontier contains a blocked topology, List, or Web Part transaction.");
             }
         }
     }

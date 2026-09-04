@@ -52,6 +52,15 @@ The current publishing importer also applies three narrow read-path fast paths:
 
 These fast paths do not reuse planning evidence. Each operates inside its own current admission, execution, or fresh-verification boundary.
 
+When topology mutation is required, the materializer does not rescan the complete topology before and after every child Web. It now uses:
+
+1. one complete fresh analysis before the first topology mutation;
+2. one exact, direct-parent-scoped freshness probe for each child immediately before its action;
+3. one exact provenance readback after each created or recovered child;
+4. one complete fresh analysis after all topology actions.
+
+The exact child probe asks SharePoint for only the planned immediate-child path. Planning-time collision allocation still loads the direct parent's complete child inventory because it must prove which suffix is free. This changes the materialization inspection path from repeated whole-plan scanning, which was quadratic in planned Web count, to a linear number of bounded inspection passes without weakening the initial or final freshness fences.
+
 ## Freshness and cache boundaries
 
 The following may be cached for their explicit validity period:
@@ -78,13 +87,15 @@ Recommended starting limits are:
 
 | Stage | Default upper bound | Reason |
 | --- | ---: | --- |
-| Planning | 8 | Read-only, independent target inspections; validate against tenant telemetry. |
+| Planning | 6 | Read-only, independent work; the measured 398-page frozen cohort reached its best wall time before eight-way large-package deserialization caused I/O and GC contention. Validate against tenant telemetry. |
 | Capture | 4 | Read-only but can transfer larger artifacts and expand dependency graphs. |
 | Combined capture-plan | 4 | Bounded by the heavier of source capture and target planning. |
 | Apply | 1 per governed target scope | Avoid concurrent ownership races and conflicting dependency writes. |
 | Fresh verification | Same operation, sequential after its writes | Preserves a clear freshness fence and receipt ordering. |
 
 These are host defaults, not a promise that every tenant can sustain them. Reduce the limit when P95 latency grows materially, memory or artifact I/O becomes the bottleneck, or retry signals appear. A later scheduler may additionally cap concurrency per tenant, site collection, or Web while retaining a larger global limit.
+
+For the September 2026 398-page frozen cohort, identical source-authoritative assessment inputs took 55.19 seconds at concurrency 4, 49.28 seconds at concurrency 6, and 51.75 seconds at concurrency 8. Six-way planning was 10.7% faster than four-way and 4.8% faster than eight-way. At eight-way concurrency, mean export-load time rose from 332.1 ms at four-way to 622.7 ms and mean ingredient-assessment time rose from 199.8 ms to 377.8 ms. The host therefore defaults local planning to six concurrent items while preserving an explicit override for other machines and workloads.
 
 ## Retry and backoff
 

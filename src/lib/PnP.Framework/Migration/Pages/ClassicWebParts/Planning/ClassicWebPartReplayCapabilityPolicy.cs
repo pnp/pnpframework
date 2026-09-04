@@ -30,7 +30,15 @@ namespace PnP.Framework.Migration.Pages.ClassicWebParts.Planning
                 .FirstOrDefault(value => !string.IsNullOrWhiteSpace(value));
             if (string.IsNullOrWhiteSpace(typeName))
             {
-                return "the shared Web Part export does not declare a v3 type";
+                typeName = document
+                    .Descendants()
+                    .Where(element => string.Equals(element.Name.LocalName, "TypeName", StringComparison.OrdinalIgnoreCase))
+                    .Select(element => element.Value?.Trim())
+                    .FirstOrDefault(value => !string.IsNullOrWhiteSpace(value));
+            }
+            if (string.IsNullOrWhiteSpace(typeName))
+            {
+                return "the shared Web Part export does not declare a v2 or v3 type";
             }
 
             if (typeName.EndsWith(".ErrorWebPart", StringComparison.OrdinalIgnoreCase))

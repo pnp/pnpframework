@@ -10,13 +10,19 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
 {
     internal static class PublishingPageCoreIngredientGraphProjector
     {
-        public static void Project(PublishingPageCaptureBundle snapshot, CanonicalPageIngredientGraph graph)
+        public static void Project(
+            PublishingPageCaptureBundle snapshot,
+            CanonicalPageIngredientGraph graph,
+            PublishingPageIngredientGraphProjectionRevision revision)
         {
-            AddRoots(snapshot, graph);
-            AddFields(snapshot, graph);
+            AddRoots(snapshot, graph, revision);
+            AddFields(snapshot, graph, revision);
         }
 
-        private static void AddRoots(PublishingPageCaptureBundle snapshot, CanonicalPageIngredientGraph graph)
+        private static void AddRoots(
+            PublishingPageCaptureBundle snapshot,
+            CanonicalPageIngredientGraph graph,
+            PublishingPageIngredientGraphProjectionRevision revision)
         {
             graph.Nodes.Add(Node(
                 PublishingPageIngredientIds.Runtime,
@@ -85,12 +91,30 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             graph.Edges.Add(Edge(PublishingPageIngredientIds.PageArtifact, PublishingPageIngredientIds.Runtime, PageIngredientRelationship.RendersThrough, PageIngredientRequirement.Required));
             graph.Edges.Add(Edge(PublishingPageIngredientIds.PageArtifact, PublishingPageIngredientIds.Layout, PageIngredientRelationship.RendersThrough, PageIngredientRequirement.Required));
             graph.Edges.Add(Edge(PublishingPageIngredientIds.PageArtifact, PublishingPageIngredientIds.ContentType, PageIngredientRelationship.TypedBy, PageIngredientRequirement.Required));
-            graph.Edges.Add(Edge(PublishingPageIngredientIds.PageArtifact, PublishingPageIngredientIds.PublishingContent, PageIngredientRelationship.Backs, PageIngredientRequirement.Required));
-            graph.Edges.Add(Edge(PublishingPageIngredientIds.PageArtifact, PublishingPageIngredientIds.Security, PageIngredientRelationship.GovernedBy, PageIngredientRequirement.Optional));
-            graph.Edges.Add(Edge(PublishingPageIngredientIds.PageArtifact, PublishingPageIngredientIds.Lifecycle, PageIngredientRelationship.GovernedBy, PageIngredientRequirement.Required));
+            if (PublishingPageIngredientGraphProjector.UsesTransactionDependencies(revision))
+            {
+                // v4 models transaction prerequisites rather than aggregate object
+                // composition. The target page shell is created first; content,
+                // security, fields, Web Parts, and lifecycle are subsequent
+                // transactions that require that shell. This lets a deferred
+                // optional ingredient prune only its own consumer subtree.
+                graph.Edges.Add(Edge(PublishingPageIngredientIds.PublishingContent, PublishingPageIngredientIds.PageArtifact, PageIngredientRelationship.Backs, PageIngredientRequirement.Required));
+                graph.Edges.Add(Edge(PublishingPageIngredientIds.Security, PublishingPageIngredientIds.PageArtifact, PageIngredientRelationship.GovernedBy, PageIngredientRequirement.Required));
+                graph.Edges.Add(Edge(PublishingPageIngredientIds.Lifecycle, PublishingPageIngredientIds.PageArtifact, PageIngredientRelationship.GovernedBy, PageIngredientRequirement.Required));
+                graph.Edges.Add(Edge(PublishingPageIngredientIds.Lifecycle, PublishingPageIngredientIds.PublishingContent, PageIngredientRelationship.DependsOn, PageIngredientRequirement.Required));
+            }
+            else
+            {
+                graph.Edges.Add(Edge(PublishingPageIngredientIds.PageArtifact, PublishingPageIngredientIds.PublishingContent, PageIngredientRelationship.Backs, PageIngredientRequirement.Required));
+                graph.Edges.Add(Edge(PublishingPageIngredientIds.PageArtifact, PublishingPageIngredientIds.Security, PageIngredientRelationship.GovernedBy, PageIngredientRequirement.Optional));
+                graph.Edges.Add(Edge(PublishingPageIngredientIds.PageArtifact, PublishingPageIngredientIds.Lifecycle, PageIngredientRelationship.GovernedBy, PageIngredientRequirement.Required));
+            }
         }
 
-        private static void AddFields(PublishingPageCaptureBundle snapshot, CanonicalPageIngredientGraph graph)
+        private static void AddFields(
+            PublishingPageCaptureBundle snapshot,
+            CanonicalPageIngredientGraph graph,
+            PublishingPageIngredientGraphProjectionRevision revision)
         {
             var requiredByLayout = new HashSet<string>(
                 (snapshot.Layout?.Controls ?? Array.Empty<Layouts.PublishingPageLayoutControl>())
@@ -108,17 +132,31 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                     field.InternalName,
                     field.HasValue || field.Required || requiredByLayout.Contains(field.InternalName),
                     PageIngredientOwnership.Shared,
-                    "Pages library field schema and ListItem value",
+                    revision == PublishingPageIngredientGraphProjectionRevision.LegacyV1
+                        ? "Pages library field schema and ListItem value"
+                        : "Pages library ListItem field value; field schema is modeled by the Page Content Type closure",
                     null,
                     snapshot.Runtime?.AdapterId));
-                graph.Edges.Add(Edge(
-                    PublishingPageIngredientIds.PageArtifact,
-                    id,
-                    PageIngredientRelationship.Backs,
-                    field.Required ? PageIngredientRequirement.Required : PageIngredientRequirement.Optional));
+                graph.Edges.Add(PublishingPageIngredientGraphProjector.UsesTransactionDependencies(revision)
+                    ? Edge(
+                        id,
+                        PublishingPageIngredientIds.PageArtifact,
+                        PageIngredientRelationship.Backs,
+                        PageIngredientRequirement.Required)
+                    : Edge(
+                        PublishingPageIngredientIds.PageArtifact,
+                        id,
+                        PageIngredientRelationship.Backs,
+                        field.Required ? PageIngredientRequirement.Required : PageIngredientRequirement.Optional));
                 if (requiredByLayout.Contains(field.InternalName))
                 {
-                    graph.Edges.Add(Edge(PublishingPageIngredientIds.Layout, id, PageIngredientRelationship.BindsTo, PageIngredientRequirement.Required));
+                    graph.Edges.Add(Edge(
+                        PublishingPageIngredientIds.Layout,
+                        id,
+                        PageIngredientRelationship.BindsTo,
+                        revision == PublishingPageIngredientGraphProjectionRevision.LegacyV1
+                            ? PageIngredientRequirement.Required
+                            : PageIngredientRequirement.Optional));
                 }
 
                 AddTaxonomyRelationships(field, id, snapshot, graph);

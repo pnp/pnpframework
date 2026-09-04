@@ -67,7 +67,8 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
             var probedFields = preflight.Fields.ToDictionary(value => value.FieldId);
             foreach (var fieldPlan in plan.Fields
                          .Where(value => value.Disposition == FieldSchemaMaterializationDisposition.CreateOrReuseOwned)
-                         .OrderBy(value => value.Role == FieldSchemaRole.Dependency ? 0 : 1)
+                         .OrderBy(value => value.TypeAsString.StartsWith("Calculated", StringComparison.OrdinalIgnoreCase) ? 1 : 0)
+                         .ThenBy(value => value.Role == FieldSchemaRole.Dependency ? 0 : 1)
                          .ThenBy(value => value.FieldId))
             {
                 var probe = probedFields[fieldPlan.FieldId];
@@ -140,6 +141,13 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 link.Hidden = linkPlan.Hidden;
             }
 
+            // SharePoint inherits the parent description when an empty value is
+            // supplied through ContentTypeCreationInformation. Re-apply all
+            // reviewed metadata after creation so an intentionally empty source
+            // description remains empty instead of becoming target-runtime data.
+            createdContentType.Name = plan.Name;
+            createdContentType.Description = plan.Description ?? string.Empty;
+            createdContentType.Group = plan.Group ?? string.Empty;
             createdContentType.Hidden = plan.Hidden;
             createdContentType.ReadOnly = plan.ReadOnly;
             createdContentType.Sealed = plan.Sealed;

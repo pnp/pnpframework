@@ -3,9 +3,11 @@ using PnP.Framework.Migration.Evidence;
 using PnP.Framework.Migration.Lists.Capture;
 using PnP.Framework.Migration.Lists.Fields;
 using PnP.Framework.Migration.Lists.Items;
+using PnP.Framework.Migration.Lists.Views;
 using PnP.Framework.Migration.Packaging;
 using PnP.Framework.Migration.Schema.Fields;
 using PnP.Framework.Migration.Schema.ContentTypes;
+using PnP.Framework.Migration.Features;
 using PnP.Framework.Migration.Taxonomy;
 using PnP.Framework.Migration.Topology;
 using System;
@@ -87,6 +89,11 @@ namespace PnP.Framework.Migration.Lists.Planning
                 node.TargetAdmission,
                 node.DeferredUntilTopologyMaterialization
             }).ToArray();
+            var featureStates = plan.RequiredFeatures.Select(feature => new
+            {
+                Feature = feature,
+                feature.TargetProbe
+            }).ToArray();
             plan.PlanDigest = null;
             plan.TargetProbe = null;
             plan.Disposition = ListMaterializationDisposition.CreateOwned;
@@ -95,6 +102,10 @@ namespace PnP.Framework.Migration.Lists.Planning
                 state.Node.TargetProbe = null;
                 state.Node.TargetAdmission = null;
                 state.Node.DeferredUntilTopologyMaterialization = false;
+            }
+            foreach (var state in featureStates)
+            {
+                state.Feature.TargetProbe = null;
             }
             try
             {
@@ -111,6 +122,10 @@ namespace PnP.Framework.Migration.Lists.Planning
                     state.Node.TargetAdmission = state.TargetAdmission;
                     state.Node.DeferredUntilTopologyMaterialization = state.DeferredUntilTopologyMaterialization;
                 }
+                foreach (var state in featureStates)
+                {
+                    state.Feature.TargetProbe = state.TargetProbe;
+                }
             }
         }
 
@@ -124,6 +139,7 @@ namespace PnP.Framework.Migration.Lists.Planning
             {
                 list.Disposition = list.TargetProbe == null || !list.TargetProbe.IsAdmitted
                     || list.SiteContentTypes.Any(value => !value.IsExecutable)
+                    || list.RequiredFeatures.Any(value => !value.IsExecutable)
                     ? ListMaterializationDisposition.Block
                     : list.TargetProbe.Disposition;
             }
@@ -166,16 +182,24 @@ namespace PnP.Framework.Migration.Lists.Planning
             }
             foreach (var attachment in source.Items.SelectMany(value => value.Attachments))
             {
-                if (attachment.Content == null || attachment.Content.Availability != EvidenceAvailability.Captured || attachment.Content.Artifact == null)
+                if (!HasReplayableBinary(attachment.Content))
                 {
-                    issues.Add(Issue("ListBinaryEvidenceUnavailable", "attachment:" + attachment.ServerRelativeUrl, "Exact attachment bytes are required before materialization."));
+                    issues.Add(IsArchivedContent(attachment.Content)
+                        ? Issue("ListBinaryContentArchived", "attachment:" + attachment.ServerRelativeUrl,
+                            "The source attachment is stored in Microsoft 365 Archive. Reactivate it and perform a fresh capture before exact materialization.")
+                        : Issue("ListBinaryEvidenceUnavailable", "attachment:" + attachment.ServerRelativeUrl,
+                            "Exact attachment bytes are required before materialization."));
                 }
             }
             foreach (var document in source.Items.Where(value => value.Document != null && value.Document.Kind == ListDocumentObjectKind.File).Select(value => value.Document))
             {
-                if (document.Content == null || document.Content.Availability != EvidenceAvailability.Captured || document.Content.Artifact == null)
+                if (!HasReplayableBinary(document.Content))
                 {
-                    issues.Add(Issue("ListBinaryEvidenceUnavailable", "document:" + document.ServerRelativeUrl, "Exact document bytes are required before materialization."));
+                    issues.Add(IsArchivedContent(document.Content)
+                        ? Issue("ListBinaryContentArchived", "document:" + document.ServerRelativeUrl,
+                            "The source document is stored in Microsoft 365 Archive. Reactivate it and perform a fresh capture before exact materialization.")
+                        : Issue("ListBinaryEvidenceUnavailable", "document:" + document.ServerRelativeUrl,
+                            "Exact document bytes are required before materialization."));
                 }
             }
 
@@ -192,6 +216,11 @@ namespace PnP.Framework.Migration.Lists.Planning
                 issues.Add(Issue("CustomListContentTypeClosureUnavailable", "content-type:" + contentType.Id,
                     "The List uses custom content type '" + contentType.Name + "', but its exact site-content-type parent closure is missing."));
             }
+            var requiredFeatures = ContentTypeRuntimeCatalog.CreateFeatureRequirements(
+                source.ContentTypes.Select(value => value.ParentId),
+                source.SiteContentTypes,
+                topology.SiteCollections.Single(value => value.SourceSiteId == source.SourceSiteId).TargetSiteCollectionUrl);
+            var siteMapping = topology.SiteCollections.Single(value => value.SourceSiteId == source.SourceSiteId);
 
             var fieldOrder = ListCalculatedFieldOrder.Order(source.Fields.Select(field => CreateFieldPlan(source, field, taxonomyMappings, issues)));
             var fieldPlans = fieldOrder.Fields;
@@ -200,33 +229,56 @@ namespace PnP.Framework.Migration.Lists.Planning
                 issues.Add(Issue("CalculatedFieldDependencyCycle", "list:" + source.SourceListId.ToString("D"),
                     "Calculated fields contain a dependency cycle: " + string.Join(", ", fieldOrder.CycleFields) + "."));
             }
-            var viewPlans = source.Views.Select(view => new ListViewMaterializationPlan
+            var renderingResourcePlans = source.ViewRenderingResources
+                .Select(resource => CreateViewRenderingResourcePlan(resource, siteMapping, issues))
+                .ToList();
+            var renderingResourcePlansById = renderingResourcePlans
+                .GroupBy(value => value.SourceResourceId, StringComparer.Ordinal)
+                .ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
+            var viewPlans = source.Views.Select(view =>
             {
-                SourceViewId = view.Id,
-                Title = view.Title,
-                SourceServerRelativeUrl = view.ServerRelativeUrl,
-                Disposition = view.Availability == EvidenceAvailability.Unavailable || view.Availability == EvidenceAvailability.Conflict
-                    ? ListViewMaterializationDisposition.Block
-                    : view.PersonalView
-                        ? ListViewMaterializationDisposition.SkipPersonal
-                        : view.IsPageBound
-                            ? ListViewMaterializationDisposition.CreateOrReuseWebPartView
-                            : ListViewMaterializationDisposition.CreateOrReuseOwnedPublicView,
-                Source = view,
-                Reason = view.PersonalView
-                    ? "Personal views are user-scoped and remain evidence-only."
-                    : view.IsPageBound
-                        ? "The approved Web Part rewrite replays this embedded view with a target runtime view ID."
-                        : "Create or exactly reuse the shared view inside the migration-owned target List."
+                var customRendering = IsCustomRenderingReference(view.JsLink) || IsCustomRenderingReference(view.XslLink);
+                var unsupportedCustomXsl = view.RenderingResourceBindings?.Any(binding => binding != null
+                    && string.Equals(binding.SourceProperty, "XslLink", StringComparison.OrdinalIgnoreCase)) == true;
+                var resourceClosureMissing = customRendering
+                    && (unsupportedCustomXsl
+                        || view.RenderingResourceBindings == null
+                        || view.RenderingResourceBindings.Count == 0
+                        || view.RenderingResourceBindings.Any(binding => binding == null
+                            || !renderingResourcePlansById.TryGetValue(binding.ResourceId ?? string.Empty, out var resourcePlan)
+                            || !resourcePlan.IsExecutable));
+                return new ListViewMaterializationPlan
+                {
+                    SourceViewId = view.Id,
+                    Title = view.Title,
+                    SourceServerRelativeUrl = view.ServerRelativeUrl,
+                    Disposition = view.Availability == EvidenceAvailability.Unavailable || view.Availability == EvidenceAvailability.Conflict
+                            || resourceClosureMissing
+                        ? ListViewMaterializationDisposition.Block
+                        : view.PersonalView
+                            ? ListViewMaterializationDisposition.SkipPersonal
+                            : view.IsPageBound
+                                ? ListViewMaterializationDisposition.CreateOrReuseWebPartView
+                                : ListViewMaterializationDisposition.CreateOrReuseOwnedPublicView,
+                    Source = view,
+                    Reason = resourceClosureMissing
+                        ? "One or more custom View rendering resources have no exact captured and materializable dependency."
+                        : view.PersonalView
+                            ? "Personal views are user-scoped and remain evidence-only."
+                            : view.IsPageBound
+                                ? "The approved Web Part rewrite replays this embedded view with a target runtime view ID."
+                                : "Create or exactly reuse the shared view inside the migration-owned target List."
+                };
             }).ToList();
             foreach (var blockedView in viewPlans.Where(value => value.Disposition == ListViewMaterializationDisposition.Block))
             {
                 issues.Add(Issue("ViewEvidenceUnavailable", "view:" + blockedView.SourceViewId.ToString("D"), "View schema evidence is unavailable or conflicting."));
             }
-            foreach (var customRenderingView in source.Views.Where(value => IsCustomRenderingReference(value.JsLink) || IsCustomRenderingReference(value.XslLink)))
+            foreach (var customRenderingView in viewPlans.Where(value => value.Disposition == ListViewMaterializationDisposition.Block
+                && (IsCustomRenderingReference(value.Source.JsLink) || IsCustomRenderingReference(value.Source.XslLink))))
             {
-                issues.Add(Issue("ViewRenderingResourceUnavailable", "view:" + customRenderingView.Id.ToString("D"),
-                    "Custom JSLink/XslLink requires separately captured exact rendering-resource bytes before the view can execute."));
+                issues.Add(Issue("ViewRenderingResourceUnavailable", "view:" + customRenderingView.SourceViewId.ToString("D"),
+                    "One or more custom JSLink/XslLink dependencies lack exact captured and materializable resource evidence."));
             }
 
             var targetPath = string.IsNullOrWhiteSpace(targetOverride == null ? null : targetOverride.TargetRootFolderServerRelativeUrl)
@@ -238,18 +290,110 @@ namespace PnP.Framework.Migration.Lists.Planning
                 SourceWebId = source.SourceWebId,
                 SourceListId = source.SourceListId,
                 TargetWebUrl = owner.TargetWebUrl,
+                TargetSiteCollectionUrl = topology.SiteCollections.Single(value => value.SourceSiteId == source.SourceSiteId).TargetSiteCollectionUrl,
                 TargetWebServerRelativeUrl = owner.TargetServerRelativeUrl,
+                PreferredTargetRootFolderServerRelativeUrl = targetPath,
                 TargetRootFolderServerRelativeUrl = targetPath,
+                PreferredTargetTitle = string.IsNullOrWhiteSpace(targetOverride == null ? null : targetOverride.TargetTitle) ? source.Title : targetOverride.TargetTitle,
                 TargetTitle = string.IsNullOrWhiteSpace(targetOverride == null ? null : targetOverride.TargetTitle) ? source.Title : targetOverride.TargetTitle,
                 OriginalIdentifier = "urn:pnp:spo-list:v1:" + source.SourceSiteId.ToString("D") + ":" + source.SourceWebId.ToString("D") + ":" + source.SourceListId.ToString("D"),
                 Disposition = issues.Any(value => value.Severity == MigrationIssueSeverity.Blocker) ? ListMaterializationDisposition.Block : ListMaterializationDisposition.CreateOwned,
                 Fields = fieldPlans,
                 Views = viewPlans,
+                ViewRenderingResources = renderingResourcePlans,
                 SiteContentTypes = contentTypeClosure.Nodes,
+                RequiredFeatures = requiredFeatures,
                 Issues = issues.OrderBy(value => value.Code, StringComparer.Ordinal).ThenBy(value => value.Subject, StringComparer.Ordinal).ToList()
             };
             plan.PlanDigest = ComputePlanDigest(plan);
             return plan;
+        }
+
+        private static ListViewRenderingResourceMaterializationPlan CreateViewRenderingResourcePlan(
+            ListViewRenderingResourceSnapshot source,
+            SiteCollectionMappingPlan siteMapping,
+            ICollection<MigrationIssue> issues)
+        {
+            var plan = new ListViewRenderingResourceMaterializationPlan
+            {
+                SourceResourceId = source?.Id,
+                Kind = source == null ? ListViewRenderingResourceKind.Other : source.Kind,
+                SourceAbsoluteUrl = source?.SourceAbsoluteUrl,
+                SourceServerRelativeUrl = source?.SourceServerRelativeUrl,
+                SourceArtifact = source?.Artifact,
+                SourceContentBase64 = source?.ContentBase64,
+                Disposition = ListViewRenderingResourceMaterializationDisposition.Block
+            };
+            if (source == null || string.IsNullOrWhiteSpace(source.SourceServerRelativeUrl))
+            {
+                plan.Reason = "The View rendering-resource identity is absent from the sealed snapshot.";
+                issues.Add(Issue("ViewRenderingResourceUnavailable", "view-rendering-resource:" + (source?.Id ?? "missing"), plan.Reason));
+                return plan;
+            }
+
+            var owner = (siteMapping.Webs ?? Array.Empty<WebMappingPlan>())
+                .Where(value => value != null
+                    && !string.IsNullOrWhiteSpace(value.SourceServerRelativeUrl)
+                    && IsWithin(source.SourceServerRelativeUrl, value.SourceServerRelativeUrl))
+                .OrderByDescending(value => value.SourceServerRelativeUrl.Length)
+                .FirstOrDefault();
+            if (owner == null)
+            {
+                plan.Reason = "The View rendering-resource owner Web is absent from the reviewed topology plan.";
+                issues.Add(Issue("ViewRenderingResourceOwnerMappingUnavailable", "view-rendering-resource:" + source.Id, plan.Reason));
+                return plan;
+            }
+
+            var relativePath = source.SourceServerRelativeUrl.Substring(owner.SourceServerRelativeUrl.TrimEnd('/').Length).TrimStart('/');
+            if (!IsReviewedAssetPath(relativePath))
+            {
+                plan.Reason = "Only SiteAssets and Style Library View rendering resources have a reviewed exact-path materializer.";
+                issues.Add(Issue("ViewRenderingResourcePathUnsupported", "view-rendering-resource:" + source.Id, plan.Reason));
+                return plan;
+            }
+
+            plan.TargetServerRelativeUrl = TopologyPlanner.MapWebOwnedServerRelativePath(
+                source.SourceServerRelativeUrl,
+                owner.SourceServerRelativeUrl,
+                owner.TargetServerRelativeUrl);
+            var targetAuthority = new Uri(siteMapping.TargetSiteCollectionUrl).GetLeftPart(UriPartial.Authority);
+            plan.TargetAbsoluteUrl = new Uri(new Uri(targetAuthority + "/"), plan.TargetServerRelativeUrl.TrimStart('/')).AbsoluteUri;
+            if (source.Availability == EvidenceAvailability.Unavailable
+                || source.Availability == EvidenceAvailability.Conflict
+                || source.Artifact == null)
+            {
+                plan.Disposition = ListViewRenderingResourceMaterializationDisposition.PreserveReferenceOnly;
+                plan.Reason = "Preserve the captured JSLink/XslLink relationship at the mapped path without creating resource bytes because no exact readable payload exists in the sealed snapshot. This is an explicit lossy substitute, not an authorization block.";
+                return plan;
+            }
+            plan.Disposition = ListViewRenderingResourceMaterializationDisposition.CreateOrReuseExact;
+            plan.Reason = "Copy or exactly reuse the sealed View rendering resource at the same mapped Web-relative path.";
+            return plan;
+        }
+
+        internal static bool HasReplayableBinary(ListBinaryArtifactSnapshot binary)
+        {
+            return binary?.Artifact != null
+                && (binary.Availability == EvidenceAvailability.Captured
+                    || binary.Availability == EvidenceAvailability.Partial);
+        }
+
+        internal static bool IsArchivedContent(ListBinaryArtifactSnapshot binary)
+        {
+            return binary?.ArchivedContentEvidence != null
+                && binary.ArchivedContentEvidence.Count > 0;
+        }
+
+        internal static bool IsRightsManagedEnvelope(ListBinaryArtifactSnapshot binary)
+        {
+            return binary?.RepresentationKind
+                == ListBinaryRepresentationKind.InformationRightsManagedEnvelope;
+        }
+
+        internal static bool IsUnclassifiedBinary(ListBinaryArtifactSnapshot binary)
+        {
+            return binary != null
+                && binary.RepresentationKind == ListBinaryRepresentationKind.Unclassified;
         }
 
         private static ListFieldMaterializationPlan CreateFieldPlan(
@@ -262,15 +406,26 @@ namespace PnP.Framework.Migration.Lists.Planning
             {
                 return Block(field, issues, "ListFieldEvidenceUnavailable", "Field schema evidence is unavailable or conflicting.");
             }
-            var targetRuntime = field.FromBaseType || HasPlatformSource(field.SchemaXml);
+            if (ReviewedListRuntimeFieldCatalog.IsSnapshotOnly(field))
+            {
+                return Plan(
+                    field,
+                    ListFieldMaterializationDisposition.EvidenceOnly,
+                    null,
+                    "SharePoint owns this sealed cache or derived field. Preserve its captured schema and value in the immutable snapshot, but do not create the field or replay its source value.");
+            }
+            var targetRuntime = field.FromBaseType
+                || FieldOwnershipClassifier.IsTargetRuntime(field.Id, field.SchemaXml)
+                || IsListTemplateRuntimeField(source, field);
             if (targetRuntime)
             {
+                var copyValue = !field.ReadOnly && SupportedScalarTypes.Contains(field.TypeAsString);
                 return Plan(field,
-                    !field.ReadOnly && !field.Sealed && SupportedScalarTypes.Contains(field.TypeAsString)
+                    copyValue
                         ? ListFieldMaterializationDisposition.RequireTargetRuntimeAndCopyValue
                         : ListFieldMaterializationDisposition.RequireTargetRuntime,
                     null,
-                    !field.ReadOnly && !field.Sealed && SupportedScalarTypes.Contains(field.TypeAsString)
+                    copyValue
                         ? "The target List template owns this writable runtime field identity; copy its recognized current value."
                         : "The target List template owns this runtime field identity; SharePoint-owned/read-only values are not replayed.");
             }
@@ -293,7 +448,7 @@ namespace PnP.Framework.Migration.Lists.Planning
                 }
                 var schema = FieldSchemaCanonicalizer.RewriteForTarget(field.SchemaXml, mapping.TargetTermStoreId, mapping.TargetTermSetId, field.Taxonomy.HiddenTextFieldId);
                 return Plan(field, ListFieldMaterializationDisposition.MapTaxonomy, schema,
-                    "Create or reuse the taxonomy field with the approved target store/set; target SharePoint allocates WssIds.");
+                    "Create or reuse the taxonomy field with the selected target store/set after taxonomy-asset admission; target SharePoint allocates WssIds and fresh readback verifies the binding.");
             }
             var hasValue = HasBusinessValue(source, field.InternalName);
             if (string.Equals(field.TypeAsString, "User", StringComparison.OrdinalIgnoreCase)
@@ -372,6 +527,24 @@ namespace PnP.Framework.Migration.Lists.Planning
             }
         }
 
+        private static bool IsListTemplateRuntimeField(ListDependencySnapshot source, ListFieldSnapshot field)
+        {
+            if (source == null || field == null || (!field.ReadOnly && !field.Sealed) || string.IsNullOrWhiteSpace(field.SchemaXml))
+            {
+                return false;
+            }
+
+            try
+            {
+                var sourceId = XDocument.Parse(field.SchemaXml).Root?.Attribute("SourceID")?.Value;
+                return Guid.TryParse(sourceId?.Trim('{', '}'), out var ownerId) && ownerId == source.SourceListId;
+            }
+            catch (System.Xml.XmlException)
+            {
+                return false;
+            }
+        }
+
         private static bool IsCustomRenderingReference(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -379,6 +552,22 @@ namespace PnP.Framework.Migration.Lists.Planning
                 return false;
             }
             return value.IndexOf('/') >= 0 || value.IndexOf('\\') >= 0 || value.StartsWith("~", StringComparison.Ordinal);
+        }
+
+        private static bool IsWithin(string value, string parent)
+        {
+            var normalizedValue = (value ?? string.Empty).TrimEnd('/');
+            var normalizedParent = (parent ?? string.Empty).TrimEnd('/');
+            return string.Equals(normalizedValue, normalizedParent, StringComparison.OrdinalIgnoreCase)
+                || normalizedValue.StartsWith(normalizedParent + "/", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static bool IsReviewedAssetPath(string relativePath)
+        {
+            return relativePath.Equals("SiteAssets", StringComparison.OrdinalIgnoreCase)
+                || relativePath.StartsWith("SiteAssets/", StringComparison.OrdinalIgnoreCase)
+                || relativePath.Equals("Style Library", StringComparison.OrdinalIgnoreCase)
+                || relativePath.StartsWith("Style Library/", StringComparison.OrdinalIgnoreCase);
         }
 
         private static string NormalizeTargetPath(string value, string targetWebPath)

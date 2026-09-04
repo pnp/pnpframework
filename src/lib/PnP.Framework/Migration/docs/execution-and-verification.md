@@ -46,10 +46,15 @@ Planning probes are review evidence, not execution-time truth. Import freshly in
 - target page and Pages library preconditions;
 - layout/resource/schema compatibility;
 - topology identity, parentage, template, ownership, and collisions;
+- required platform-feature state, activation authority, and promised runtime content types;
 - Lists and custom site content types whose owner Web already exists;
 - permissions needed for planned materialization.
 
-Objects below a missing but approved child Web may be explicitly deferred until topology materialization. They must be probed before their own mutation begins.
+Objects below a missing but approved Site/Web are reported as a topology prerequisite until that reviewed topology transaction is materialized. This is an ordered action, not a terminal deferred gap. Their frozen source evidence remains valid, and each dependent object must be freshly probed before its own mutation begins.
+
+Topology planning requires a captured direct-parent chain for every executable source Web. It must not invent an intermediate Web from a multi-segment URL. A source Web whose parent chain cannot be read remains non-executable together with only its dependent descendants; unrelated topology branches continue. The workflow may classify that branch as authorization-blocked only when retained wire evidence contains a literal HTTP `401` or `403`. Other incomplete or semantic-access-denied evidence remains a mitigation/RCA result.
+
+Target mapping preserves the complete path relative to the source Site Collection. Run isolation may add the reviewed suffix to the target Site Collection leaf, and a proven collision may add a deterministic suffix only to the colliding Site/Web/List/Page node. Missing nodes use an explicit create action; absence is not a reason to flatten or rename the remaining hierarchy.
 
 ### Admission failure
 
@@ -78,6 +83,8 @@ Every invocation that passes contract validation creates a new `OperationId` and
 | `FailedUnexpectedly` | The current implementation uses this for any post-admission attempt that does not end in full mutation-plus-readback success, including an unexpected exception or a required fresh-readback mismatch. Receipts and target state must be inspected before retry. |
 
 Execution status is not the same as source eligibility, plan approval, storage verification, runtime verification, or final acceptance.
+
+The surrounding migration workflow may stop a transaction as authorization-blocked only when it retains a structured wire-level HTTP status code `401` or `403`. A SharePoint `E_ACCESSDENIED` value inside an HTTP 200 CSOM response, a permission-mask prediction, or message text containing “401/403” is evidence for further authorization RCA, not proof of this terminal classification.
 
 ## Mutation journal
 
@@ -112,13 +119,14 @@ The current Publishing Page execution follows the approved dependency graph. At 
 2. materialize/resolve target topology;
 3. materialize Page Layout-associated schema, rendering resources, and the layout;
 4. materialize approved page-reference dependency artifacts;
-5. materialize required Lists in lookup dependency order;
-6. collect target Web/List/item/View/content-type mappings;
-7. create the target Publishing Page;
-8. write approved transformed content and supported page fields, then import or rebind classic Web Parts using the runtime mappings;
-9. apply the derived target lifecycle;
-10. freshly read the supported target closure;
-11. produce the import receipt and storage/runtime/acceptance statuses.
+5. activate and freshly verify conditional SharePoint platform features before their consuming content-type/List actions;
+6. materialize required Lists in lookup dependency order;
+7. collect target Web/List/item/View/content-type mappings;
+8. create the target Publishing Page;
+9. write approved transformed content and supported page fields, then import or rebind classic Web Parts using the runtime mappings;
+10. apply the derived target lifecycle;
+11. freshly read the supported target closure;
+12. produce the import receipt and storage/runtime/acceptance statuses.
 
 The precise step grouping may evolve, but a consumer must not execute an action before its required runtime identity maps are available.
 
@@ -154,6 +162,8 @@ Other domains must define equally narrow recovery rules before claiming an inter
 A plan may select `CreateOwned` because the target was free. Before execution, another authorized attempt may complete the same exact owned object. Fresh admission may then safely observe `ReuseOwned`.
 
 Receipts record the actual execution-time disposition. Semantic ownership digests exclude mutable observation state where required so this safe create-to-reuse transition does not invalidate the approved intent.
+
+An external topology approval binds the exact plan digest, runner and library binaries, target Site URL, preflight timestamp, and expected action. Execution accepts only safe forward transitions: `CreateMissing` may become interrupted-create recovery, owned reuse, or owned-plan reconciliation; recovery may become owned reuse or reconciliation; reconciliation may become exact owned reuse; exact reuse may remain exact reuse only. A transition to a foreign collision, authorization failure, retryable failure, or a newly required create action is rejected for fresh review before mutation.
 
 ## Failure and rollback semantics
 
@@ -214,7 +224,7 @@ Current required readback includes, where governed by the plan:
 - target page path, file/item/content-type identity, publishing content digest, fields, and lifecycle evidence;
 - required Page Layout, resource, and schema state.
 
-Large/binary equality is established using length and SHA-256, with exact byte reads where the verifier owns the artifact.
+Large/binary equality is established using length and SHA-256, with exact byte reads where the verifier owns a byte-stable artifact. An Information Rights Management envelope is not admitted to that verifier: repeated reads can regenerate the DRM transform and encrypted-package streams. Until a reviewed semantic verifier exists, its ingredient remains `Defer`; source comparison uses the retained file identity/version/length plus `cTag` and `QuickXorHash`, while artifact SHA-256 continues to protect the immutable captured envelope itself.
 
 ## Verification and acceptance statuses
 

@@ -1,5 +1,6 @@
 using PnP.Framework.Migration.Lists.Capture;
 using PnP.Framework.Migration.Lists.Planning;
+using PnP.Framework.Migration.Features;
 using PnP.Framework.Migration.Schema.ContentTypes;
 using PnP.Framework.Migration.Schema.Fields;
 using System;
@@ -14,9 +15,31 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting.Sections
         public static void Append(MarkdownReportWriter writer, ListDependencySnapshot source, ListMaterializationPlan plan)
         {
             AppendFields(writer, source, plan);
+            AppendPlatformFeatures(writer, plan);
             AppendSiteContentTypes(writer, source, plan);
             AppendListContentTypes(writer, source);
             AppendViews(writer, source, plan);
+        }
+
+        private static void AppendPlatformFeatures(MarkdownReportWriter writer, ListMaterializationPlan plan)
+        {
+            var features = plan == null ? Array.Empty<PlatformFeatureMaterializationPlan>() : plan.RequiredFeatures.ToArray();
+            writer.Heading(4, $"Required SharePoint platform features ({features.Length})");
+            writer.Paragraph("Conditional target-runtime content types are not assumed to exist merely because SharePoint owns their IDs. The plan probes their providing site feature and either reuses or explicitly activates that platform capability before List schema is materialized.");
+            writer.Table(null,
+                new[] { "Feature ID / name", "Scope / order", "Required by content types", "Expected runtime content types", "Target probe", "Plan disposition", "Reason / diagnostics" },
+                features.Select(feature => Row(
+                    $"{feature.FeatureId:D} / {Format(feature.Name)}",
+                    $"{feature.Scope} / {feature.DependencyOrder}",
+                    Join(feature.RequiredByContentTypeIds),
+                    Join(feature.ExpectedContentTypeIds),
+                    feature.TargetProbe == null
+                        ? null
+                        : $"active={feature.TargetProbe.IsActive}; canActivate={feature.TargetProbe.CanActivate}; deferred={feature.TargetProbe.DeferredUntilTopologyMaterialization}; availableCTs={Join(feature.TargetProbe.AvailableContentTypeIds)}",
+                    feature.Disposition,
+                    Join(new[] { feature.Reason }.Concat(feature.TargetProbe == null
+                        ? Enumerable.Empty<string>()
+                        : feature.TargetProbe.Issues.Select(value => value.Message))))));
         }
 
         private static void AppendFields(MarkdownReportWriter writer, ListDependencySnapshot source, ListMaterializationPlan plan)
@@ -168,6 +191,29 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting.Sections
                         view.Availability,
                         action?.Disposition,
                         Join(new[] { action?.Reason }.Concat(view.Diagnostics)));
+                }));
+
+            writer.Heading(5, $"Custom rendering resources ({source.ViewRenderingResources.Count})");
+            var resourcePlans = plan == null
+                ? new Dictionary<string, ListViewRenderingResourceMaterializationPlan>(StringComparer.Ordinal)
+                : plan.ViewRenderingResources.ToDictionary(value => value.SourceResourceId, StringComparer.Ordinal);
+            writer.Table(null,
+                new[] { "Resource ID", "Kind", "Source", "Artifact", "Availability", "Target / disposition", "Consumers", "Reason / diagnostics" },
+                source.ViewRenderingResources.OrderBy(value => value.SourceServerRelativeUrl, StringComparer.OrdinalIgnoreCase).Select(resource =>
+                {
+                    resourcePlans.TryGetValue(resource.Id, out var resourcePlan);
+                    var consumers = source.Views
+                        .Where(view => view.RenderingResourceBindings.Any(binding => string.Equals(binding.ResourceId, resource.Id, StringComparison.Ordinal)))
+                        .Select(view => view.Id.ToString("D"));
+                    return Row(
+                        resource.Id,
+                        resource.Kind,
+                        $"url={Format(resource.SourceAbsoluteUrl)}; path={Format(resource.SourceServerRelativeUrl)}",
+                        $"sha256={Format(resource.Artifact?.Sha256)}; length={resource.Artifact?.Length}",
+                        resource.Availability,
+                        $"path={Format(resourcePlan?.TargetServerRelativeUrl)}; disposition={resourcePlan?.Disposition}",
+                        Join(consumers),
+                        Join(new[] { resourcePlan?.Reason }.Concat(resource.Diagnostics)));
                 }));
         }
     }

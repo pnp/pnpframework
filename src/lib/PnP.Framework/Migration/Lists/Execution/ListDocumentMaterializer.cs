@@ -43,6 +43,12 @@ namespace PnP.Framework.Migration.Lists.Execution
                 return item;
             }
 
+            if (ListMigrationPlanFactory.IsRightsManagedEnvelope(sourceItem.Document.Content))
+            {
+                throw new InvalidOperationException(
+                    "Rights-managed document replay requires an approved cross-site envelope materializer and semantic verifier: "
+                    + sourceItem.Document.ServerRelativeUrl);
+            }
             var bytes = MigrationArtifact.ReadAllBytes(sourceItem.Document.Content.Artifact, sourceItem.Document.Content.ContentBase64, artifactStore);
             var directory = targetPath.Substring(0, targetPath.LastIndexOf('/'));
             var relativeDirectory = directory.Substring(plan.TargetRootFolderServerRelativeUrl.TrimEnd('/').Length).Trim('/');

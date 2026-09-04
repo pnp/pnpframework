@@ -4,6 +4,7 @@ using PnP.Framework.Migration.Pages.Publishing.Layouts;
 using PnP.Framework.Migration.Pages.Publishing.Planning;
 using PnP.Framework.Migration.Schema.ContentTypes;
 using PnP.Framework.Migration.Schema.Fields;
+using PnP.Framework.Migration.Taxonomy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,7 +94,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                     ? (IngredientCapability.Available, IngredientDisposition.Preserve, "reuse-reviewed-stock-schema")
                     : fieldPlan == null
                         ? (IngredientCapability.Incompatible, IngredientDisposition.Block, "none")
-                        : Map(fieldPlan.Disposition);
+                        : Map(fieldPlan);
                 PublishingPageIngredientActionFactory.Add(actions, PublishingPageIngredientActionFactory.Create(
                     PublishingPageIngredientIds.PageContentTypeField(sourceField.Id),
                     mapping.Item1,
@@ -136,6 +137,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                     || resourcePlan.Disposition == PublishingPageLayoutResourceMaterializationDisposition.Block);
                 var targetRuntime = stockResource
                     || resourcePlan?.Disposition == PublishingPageLayoutResourceMaterializationDisposition.TargetRuntime;
+                var preserveExternal = resourcePlan?.Disposition
+                    == PublishingPageLayoutResourceMaterializationDisposition.PreserveExternal;
                 PublishingPageIngredientActionFactory.Add(actions, PublishingPageIngredientActionFactory.Create(
                     PublishingPageIngredientIds.LayoutResource(resourceGroup.Key),
                     blocked ? IngredientCapability.Incompatible : IngredientCapability.Available,
@@ -146,7 +149,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                         ? "none"
                         : stockResource
                             ? "reuse-reviewed-stock-layout-resource"
-                            : targetRuntime ? "reuse-target-runtime-resource" : "copy-exact-bytes-create-only",
+                            : targetRuntime ? "reuse-target-runtime-resource"
+                            : preserveExternal ? "preserve-exact-source-reference"
+                            : "copy-exact-bytes-create-only",
                     stockResource ? "policy.layout.resource.reviewed-stock" : "policy.layout.resource",
                     stockResource
                         ? "The admitted target stock Page Layout has exact captured bytes and owns the same embedded resource reference."
@@ -160,14 +165,20 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                             ? "Fresh readback verifies the exact target stock Page Layout bytes; target runtime verification confirms that its embedded resource reference resolves."
                             : targetRuntime
                             ? "The target-runtime resource reference resolves in the target Publishing runtime."
+                            : preserveExternal
+                            ? "The target Page Layout retains the exact authored external reference; no assertion is made about remote payload availability."
                             : $"The target resource bytes have SHA-256 '{source.Artifact?.Sha256}'."));
             }
         }
 
         private static (IngredientCapability Capability, IngredientDisposition Disposition, string Realization) Map(
-            FieldSchemaMaterializationDisposition disposition)
+            FieldSchemaMaterializationPlan field)
         {
-            switch (disposition)
+            if (field.TaxonomyMappingMode == TaxonomyTargetMappingMode.PreserveUnresolvedSourceReference)
+            {
+                return (IngredientCapability.Available, IngredientDisposition.Transform, "create-schema-preserving-unresolved-taxonomy-reference");
+            }
+            switch (field.Disposition)
             {
                 case FieldSchemaMaterializationDisposition.RequireTargetRuntime:
                     return (IngredientCapability.Available, IngredientDisposition.Substitute, "reuse-target-runtime-schema");

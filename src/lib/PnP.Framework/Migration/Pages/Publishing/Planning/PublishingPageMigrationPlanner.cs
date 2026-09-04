@@ -96,11 +96,12 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
 
             var snapshot = exportPackage.Snapshot;
             var targetPagePath = PagePath.Normalize(targetWeb.ServerRelativeUrl, options.TargetPageServerRelativeUrl, "Pages");
+            var pageOriginalIdentifier = PublishingPageTargetOwnership.OriginalIdentifier(snapshot.Source);
             var blockers = snapshot.Blockers.ToList();
             var warnings = snapshot.Warnings.ToList();
             if (exportPackage.Selection?.ValidationCohort?.Disposition != ValidationCohortDisposition.Included)
             {
-                blockers.Add($"The source page is '{exportPackage.Selection.ValidationCohort.Disposition}' for validation cohort '{exportPackage.Selection.ValidationCohort.CohortId}'. Cohort exclusion is separate from ingredient capability; use a compatible workflow to plan this page.");
+                warnings.Add($"The source page is '{exportPackage.Selection.ValidationCohort.Disposition}' for validation cohort '{exportPackage.Selection.ValidationCohort.CohortId}'. Cohort membership is retained as evidence but does not override the CLR-selected Publishing runtime or ingredient capability decisions.");
             }
             if (!string.Equals(snapshot.Runtime?.AdapterId, PageRuntimeAdapterIds.Publishing, StringComparison.Ordinal))
             {
@@ -115,7 +116,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
                 new Uri(targetRootWeb.Url),
                 workflowPolicy.PreferredTargetPageLayoutFileName,
                 options.TaxonomySchemaMappings,
-                artifactStore);
+                artifactStore,
+                options.AllowExternalResourceReferences);
             var layoutTargetProbe = layoutMaterialization.Disposition == PublishingPageLayoutMaterializationDisposition.Block
                 ? null
                 : PublishingPageLayoutTargetInspector.Inspect(targetContext, layoutMaterialization);
@@ -131,25 +133,6 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
 
             var targetLifecycle = PublishingPageLifecyclePolicy.DeriveTargetLifecycle(snapshot.Lifecycle);
             var lifecycleReason = PublishingPagePlanningPolicy.DescribeLifecycleDecision(snapshot.Lifecycle, targetLifecycle, warnings);
-            var replacements = PageReferencePlanner.BuildTextReplacements(snapshot.Source, targetWeb.Url, targetWeb.ServerRelativeUrl);
-            var dependencyActions = PageReferencePlanner.BuildActions(
-                snapshot.Source,
-                snapshot.Dependencies,
-                targetWeb.Url,
-                targetWeb.ServerRelativeUrl,
-                options,
-                blockers);
-            Microsoft.SharePoint.Client.List targetPages;
-            var targetProbe = PublishingPageTargetInspector.Inspect(
-                targetContext,
-                targetPagePath,
-                dependencyActions,
-                targetLifecycle,
-                layoutMaterialization,
-                layoutTargetProbe,
-                blockers,
-                out targetPages,
-                includeListInventory: snapshot.ListDependencies.Count > 0);
             var dependencyPlan = PublishingPageDependencyPlanner.Build(
                 targetContext,
                 snapshot,
@@ -159,6 +142,40 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
                 options,
                 blockers,
                 warnings);
+            var referenceSiteMapping = dependencyPlan.Topology?.SiteCollections
+                .SingleOrDefault(value => value.SourceSiteId == snapshot.Source.SiteId);
+            var dependencyActions = PageReferencePlanner.BuildActions(
+                snapshot.Source,
+                snapshot.Dependencies,
+                targetWeb.Url,
+                targetWeb.ServerRelativeUrl,
+                referenceSiteMapping,
+                options,
+                blockers);
+            var replacements = PageReferencePlanner.BuildTextReplacements(
+                snapshot.Source,
+                targetWeb.Url,
+                targetWeb.ServerRelativeUrl,
+                snapshot.Dependencies,
+                dependencyActions);
+            Microsoft.SharePoint.Client.List targetPages;
+            var targetProbe = PublishingPageTargetInspector.InspectForPlanning(
+                targetContext,
+                targetPagePath,
+                pageOriginalIdentifier,
+                dependencyActions,
+                targetLifecycle,
+                layoutMaterialization,
+                layoutTargetProbe,
+                blockers,
+                out targetPages,
+                includeListInventory: snapshot.ListDependencies.Count > 0,
+                dependencyTopology: dependencyPlan.TopologyTargetAnalysis);
+            if (targetProbe.TargetPathCollisionResolved)
+            {
+                targetPagePath = targetProbe.TargetPageServerRelativeUrl;
+                warnings.Add(targetProbe.TargetPathResolutionReason + " Final target: '" + targetPagePath + "'.");
+            }
             var taxonomyRelationshipActions = new List<TaxonomyRelationshipAction>();
             var fieldActions = PageFieldPlanner.BuildActions(
                 targetContext,
@@ -174,14 +191,19 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
                 targetFieldsLoaded: targetPages != null);
             var expectedContent = PageTextTransformer.Rewrite(snapshot.PublishingPageContent, replacements);
             var expectedContentDigest = PublishingPageDigest.ComputeSha256(expectedContent);
+            var planningIngredientGraph = PublishingPageIngredientGraphProjector.Project(snapshot);
             var plan = new PublishingPageMigrationPlan
             {
                 SourceSnapshotDigest = exportPackage.SnapshotDigest,
                 SourceWebUrl = snapshot.Source.WebUrl,
                 SourcePageServerRelativeUrl = snapshot.Source.PageServerRelativeUrl,
+                OriginalIdentifier = pageOriginalIdentifier,
                 TargetWebUrl = targetWeb.Url.TrimEnd('/'),
                 TargetWebServerRelativeUrl = targetWeb.ServerRelativeUrl,
+                PreferredTargetPageServerRelativeUrl = targetProbe.PreferredTargetPageServerRelativeUrl,
                 TargetPageServerRelativeUrl = targetPagePath,
+                TargetPathCollisionResolved = targetProbe.TargetPathCollisionResolved,
+                TargetPathResolutionReason = targetProbe.TargetPathResolutionReason,
                 PageLayoutName = layoutMaterialization.TargetPageLayoutName,
                 Operation = PageMigrationOperation.CreatePage,
                 TargetLifecycle = targetLifecycle,
@@ -208,20 +230,25 @@ namespace PnP.Framework.Migration.Pages.Publishing.Planning
                     expectedContentDigest,
                     targetLifecycle),
                 RuntimeVerification = PublishingPageRuntimeVerificationPolicy.CreateManifest(),
+                IngredientGraph = planningIngredientGraph,
                 Blockers = blockers.Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToList(),
                 Warnings = warnings.Distinct(StringComparer.Ordinal).OrderBy(item => item, StringComparer.Ordinal).ToList()
             };
-            plan.IngredientActions = PublishingPageIngredientActionProjector.Project(snapshot, plan);
-            var ingredientEvaluation = PageIngredientPlanEvaluator.Evaluate(snapshot.IngredientGraph, plan.IngredientActions);
+            plan.IngredientActions = PublishingPageIngredientActionProjector.Project(snapshot, plan, planningIngredientGraph);
+            var ingredientEvaluation = PageIngredientPlanEvaluator.Evaluate(
+                planningIngredientGraph,
+                plan.IngredientActions,
+                PublishingPageIngredientAuthorizationPolicy.GetEvidence(snapshot));
             plan.MigrationOutcome = ingredientEvaluation.Outcome;
             plan.IngredientIssues = ingredientEvaluation.Issues;
+            plan.ExecutionFrontier = ingredientEvaluation.ExecutionFrontier;
             var package = new PublishingPageMigrationPackage
             {
                 PlannedAtUtc = DateTimeOffset.UtcNow,
                 ExportedAtUtc = exportPackage.ExportedAtUtc,
                 Selection = exportPackage.Selection,
                 SelectionDigest = exportPackage.SelectionDigest,
-                State = plan.IsExecutable ? PublishingPagePackageState.ApprovalReady : PublishingPagePackageState.Blocked,
+                State = PublishingPagePackageStatePolicy.Derive(plan),
                 Snapshot = snapshot,
                 Plan = plan,
                 SnapshotDigest = exportPackage.SnapshotDigest,

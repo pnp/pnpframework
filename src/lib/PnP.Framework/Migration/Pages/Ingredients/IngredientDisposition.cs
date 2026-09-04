@@ -8,6 +8,7 @@ namespace PnP.Framework.Migration.Pages.Ingredients
         Substitute = 3,
         Drop = 4,
         Delegate = 5,
-        Block = 6
+        Defer = 6,
+        Block = 7
     }
 }

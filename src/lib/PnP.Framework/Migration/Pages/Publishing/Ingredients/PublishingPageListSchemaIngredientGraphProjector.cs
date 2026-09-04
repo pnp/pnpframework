@@ -1,4 +1,5 @@
 using PnP.Framework.Migration.Lists.Capture;
+using PnP.Framework.Migration.Lists.Items;
 using PnP.Framework.Migration.Pages.Ingredients;
 using PnP.Framework.Migration.Pages.Publishing.Capture;
 using PnP.Framework.Migration.Schema.ContentTypes;
@@ -13,7 +14,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
     {
         public static void ProjectSharedClosures(
             PublishingPageCaptureBundle snapshot,
-            CanonicalPageIngredientGraph graph)
+            CanonicalPageIngredientGraph graph,
+            PublishingPageIngredientGraphProjectionRevision revision)
         {
             var schemas = snapshot.ListDependencies
                 .Where(value => value != null)
@@ -31,7 +33,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             var addedFields = new HashSet<string>(StringComparer.Ordinal);
             foreach (var schema in schemas)
             {
-                AddSharedContentType(schema, schemaIds, addedFields, graph);
+                AddSharedContentType(snapshot, schema, schemaIds, addedFields, graph, revision);
             }
         }
 
@@ -39,8 +41,21 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             ListDependencySnapshot list,
             string listId,
             IDictionary<Guid, ListDependencySnapshot> listsById,
-            CanonicalPageIngredientGraph graph)
+            CanonicalPageIngredientGraph graph,
+            PublishingPageIngredientGraphProjectionRevision revision)
         {
+            var fieldsUsedByCapturedItems = revision == PublishingPageIngredientGraphProjectionRevision.Version3
+                || PublishingPageIngredientGraphProjector.UsesTransactionDependencies(revision)
+                ? new HashSet<string>(
+                    (list.Items ?? Array.Empty<ListItemSnapshot>())
+                        .Where(item => item != null)
+                        .SelectMany(item => item.Values ?? Array.Empty<ListItemValueSnapshot>())
+                        .Where(value => value != null
+                            && value.Kind != ListItemValueKind.Null
+                            && !string.IsNullOrWhiteSpace(value.InternalName))
+                        .Select(value => value.InternalName),
+                    StringComparer.OrdinalIgnoreCase)
+                : null;
             var fieldIdsByName = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             foreach (var field in list.Fields.Where(value => value != null).OrderBy(value => value.Id))
             {
@@ -55,7 +70,23 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                     "Captured List field schema",
                     field.PortableSchemaSha256,
                     null));
-                graph.Edges.Add(Edge(listId, fieldId, PageIngredientRelationship.Backs, PageIngredientRequirement.Conditional));
+                graph.Edges.Add(Edge(
+                    listId,
+                    fieldId,
+                    PageIngredientRelationship.Backs,
+                    PublishingPageIngredientGraphProjector.UsesTransactionDependencies(revision)
+                        ? PageIngredientRequirement.Conditional
+                        : fieldsUsedByCapturedItems?.Contains(field.InternalName) == true
+                            ? PageIngredientRequirement.Required
+                            : PageIngredientRequirement.Conditional));
+                if (PublishingPageIngredientGraphProjector.UsesTransactionDependencies(revision))
+                {
+                    graph.Edges.Add(Edge(
+                        fieldId,
+                        listId,
+                        PageIngredientRelationship.DependsOn,
+                        PageIngredientRequirement.Required));
+                }
                 if (field.SourceLookupListId.HasValue)
                 {
                     if (listsById.TryGetValue(field.SourceLookupListId.Value, out var provider))
@@ -82,6 +113,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                     null,
                     null));
                 graph.Edges.Add(Edge(listId, contentTypeId, PageIngredientRelationship.TypedBy, PageIngredientRequirement.Conditional));
+                if (PublishingPageIngredientGraphProjector.UsesTransactionDependencies(revision))
+                {
+                    graph.Edges.Add(Edge(
+                        contentTypeId,
+                        listId,
+                        PageIngredientRelationship.DependsOn,
+                        PageIngredientRequirement.Required));
+                }
                 var parent = list.SiteContentTypes.FirstOrDefault(value => value != null
                     && string.Equals(value.ContentTypeId, contentType.ParentId, StringComparison.OrdinalIgnoreCase));
                 if (parent != null)
@@ -124,13 +163,20 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
         }
 
         private static void AddSharedContentType(
+            PublishingPageCaptureBundle snapshot,
             ContentTypeSchemaSnapshot schema,
             ISet<string> schemaIds,
             ISet<string> addedFields,
-            CanonicalPageIngredientGraph graph)
+            CanonicalPageIngredientGraph graph,
+            PublishingPageIngredientGraphProjectionRevision revision)
         {
             var scope = SchemaScope(schema);
             var contentTypeId = PublishingPageIngredientIds.SiteContentType(scope, schema.ContentTypeId);
+            var ownerWebId = PublishingPageIngredientGraphProjector.UsesOwnerWebDependencies(revision)
+                ? PublishingPageIngredientOwnerWebResolver.ExactOrContaining(
+                    snapshot,
+                    schema.SourceScope ?? schema.SourceWebUrl)
+                : null;
             graph.Nodes.Add(Node(
                 contentTypeId,
                 PageIngredientKind.ContentType,
@@ -140,6 +186,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                 "Captured site Content Type closure",
                 null,
                 null));
+            if (!string.IsNullOrWhiteSpace(ownerWebId))
+            {
+                graph.Edges.Add(Edge(
+                    contentTypeId,
+                    ownerWebId,
+                    PageIngredientRelationship.DependsOn,
+                    PageIngredientRequirement.Required));
+            }
 
             var parentId = PublishingPageIngredientIds.SiteContentType(scope, schema.ParentContentTypeId);
             if (schemaIds.Contains(parentId))
@@ -169,6 +223,14 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
                         "Captured site field-schema closure",
                         field.PortableSchemaSha256,
                         null));
+                    if (!string.IsNullOrWhiteSpace(ownerWebId))
+                    {
+                        graph.Edges.Add(Edge(
+                            fieldId,
+                            ownerWebId,
+                            PageIngredientRelationship.DependsOn,
+                            PageIngredientRequirement.Required));
+                    }
                 }
                 graph.Edges.Add(Edge(
                     contentTypeId,

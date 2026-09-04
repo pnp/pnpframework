@@ -11,10 +11,26 @@ namespace PnP.Framework.Migration.Topology
     {
         public static TopologySiteTargetProbe Inspect(TopologyTargetInspectionScope scope, SiteCollectionMappingPlan plan)
         {
+            return Inspect(scope, plan, false);
+        }
+
+        public static TopologySiteTargetProbe InspectForPlanning(TopologyTargetInspectionScope scope, SiteCollectionMappingPlan plan)
+        {
+            return Inspect(scope, plan, true);
+        }
+
+        private static TopologySiteTargetProbe Inspect(
+            TopologyTargetInspectionScope scope,
+            SiteCollectionMappingPlan plan,
+            bool resolvePlanningCollisions)
+        {
             var probe = new TopologySiteTargetProbe
             {
                 SourceSiteId = plan.SourceSiteId,
+                PreferredTargetSiteCollectionUrl = plan.PreferredTargetSiteCollectionUrl ?? plan.TargetSiteCollectionUrl,
                 TargetSiteCollectionUrl = plan.TargetSiteCollectionUrl,
+                CollisionResolved = plan.TargetSiteCollisionResolved,
+                CollisionResolutionReason = plan.TargetSiteResolutionReason,
                 Disposition = TopologyMaterializationDisposition.Block
             };
             if (plan.TargetMode != TargetSiteMode.ExistingTargetSite)
@@ -28,7 +44,7 @@ namespace PnP.Framework.Migration.Topology
             {
                 if (scope.LoadedRoot != null && TargetUrl.Equals(plan.TargetSiteCollectionUrl, scope.LoadedRoot.Url))
                 {
-                    return Populate(scope, plan, probe, scope.LoadedRoot);
+                    return Populate(scope, plan, probe, scope.LoadedRoot, resolvePlanningCollisions);
                 }
 
                 using (var context = scope.AnchorContext.Clone(plan.TargetSiteCollectionUrl))
@@ -49,7 +65,7 @@ namespace PnP.Framework.Migration.Topology
                         root.Url,
                         root.Title,
                         root.WebTemplate,
-                        root.Configuration));
+                        root.Configuration), resolvePlanningCollisions);
                 }
             }
             catch (Exception exception) when (exception is ServerException || exception is ClientRequestException)
@@ -64,7 +80,8 @@ namespace PnP.Framework.Migration.Topology
             TopologyTargetInspectionScope scope,
             SiteCollectionMappingPlan plan,
             TopologySiteTargetProbe probe,
-            LoadedRootTarget root)
+            LoadedRootTarget root,
+            bool resolvePlanningCollisions)
         {
             probe.Exists = true;
             probe.TargetSiteId = root.SiteId;
@@ -97,7 +114,10 @@ namespace PnP.Framework.Migration.Topology
                 {
                     SourceSiteId = rootPlan.SourceSiteId,
                     SourceWebId = rootPlan.SourceWebId,
+                    PreferredTargetWebUrl = rootPlan.PreferredTargetWebUrl ?? rootPlan.TargetWebUrl,
                     TargetWebUrl = rootPlan.TargetWebUrl,
+                    PreferredTargetServerRelativeUrl = rootPlan.PreferredTargetServerRelativeUrl ?? rootPlan.TargetServerRelativeUrl,
+                    TargetServerRelativeUrl = rootPlan.TargetServerRelativeUrl,
                     Exists = true,
                     TargetSiteId = root.SiteId,
                     TargetWebId = root.WebId,
@@ -110,7 +130,8 @@ namespace PnP.Framework.Migration.Topology
 
             foreach (var childPlan in plan.Webs.Where(value => value.Kind == TopologyNodeKind.ChildWeb)
                          .OrderBy(value => TargetUrl.Depth(value.TargetServerRelativeUrl))
-                         .ThenBy(value => value.TargetServerRelativeUrl, StringComparer.OrdinalIgnoreCase))
+                         .ThenBy(value => value.TargetServerRelativeUrl, StringComparer.OrdinalIgnoreCase)
+                         .ToArray())
             {
                 TopologyWebTargetProbe parentProbe;
                 if (!childPlan.SourceParentWebId.HasValue || !probes.TryGetValue(childPlan.SourceParentWebId.Value, out parentProbe))
@@ -138,11 +159,25 @@ namespace PnP.Framework.Migration.Topology
                     continue;
                 }
 
-                probes[childPlan.SourceWebId] = TopologyWebTargetInspector.Inspect(
-                    scope,
-                    childPlan,
-                    root.SiteId,
-                    parentProbe.TargetWebId.Value);
+                var childProbe = resolvePlanningCollisions
+                    ? TopologyWebTargetInspector.InspectForPlanning(
+                        scope,
+                        childPlan,
+                        root.SiteId,
+                        parentProbe.TargetWebId.Value)
+                    : TopologyWebTargetInspector.Inspect(
+                        scope,
+                        childPlan,
+                        root.SiteId,
+                        parentProbe.TargetWebId.Value);
+                if (resolvePlanningCollisions && childProbe.CollisionResolved)
+                {
+                    TopologyPlanRetargeter.RetargetWeb(
+                        plan,
+                        childPlan.SourceWebId,
+                        childProbe.TargetServerRelativeUrl);
+                }
+                probes[childPlan.SourceWebId] = childProbe;
             }
 
             probe.Webs = plan.Webs.Select(value => probes[value.SourceWebId]).ToList();

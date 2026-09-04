@@ -4,6 +4,8 @@ using PnP.Framework.Migration.Lists.Planning;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using PnP.Framework.Migration.Features;
 
 namespace PnP.Framework.Migration.Lists.Execution
 {
@@ -16,10 +18,21 @@ namespace PnP.Framework.Migration.Lists.Execution
             ListMaterializationReceipt receipt,
             IDictionary<Guid, ListMaterializationReceipt> dependencyReceipts)
         {
+            Verify(context, source, plan, receipt, dependencyReceipts, null);
+        }
+
+        public static void Verify(
+            ClientContext context,
+            ListDependencySnapshot source,
+            ListMaterializationPlan plan,
+            ListMaterializationReceipt receipt,
+            IDictionary<Guid, ListMaterializationReceipt> dependencyReceipts,
+            ListMaterializationExecutionScope.ListSelection selection)
+        {
             var diagnostics = new List<string>();
             try
             {
-                VerifyCore(context, source, plan, receipt, dependencyReceipts, diagnostics);
+                VerifyCore(context, source, plan, receipt, dependencyReceipts, selection, diagnostics);
             }
             catch (Exception exception)
             {
@@ -35,6 +48,7 @@ namespace PnP.Framework.Migration.Lists.Execution
             ListMaterializationPlan plan,
             ListMaterializationReceipt receipt,
             IDictionary<Guid, ListMaterializationReceipt> dependencyReceipts,
+            ListMaterializationExecutionScope.ListSelection selection,
             ICollection<string> diagnostics)
         {
             var list = context.Web.Lists.GetById(receipt.TargetListId);
@@ -61,8 +75,27 @@ namespace PnP.Framework.Migration.Lists.Execution
             context.ExecuteQueryRetry();
 
             VerifyIdentityAndSettings(context, list, source, plan, receipt, diagnostics);
-            ListSchemaVerifier.Verify(context, list, source, plan, receipt, dependencyReceipts, diagnostics);
-            ListItemVerifier.Verify(context, list, source, plan, receipt, dependencyReceipts, diagnostics);
+            VerifyRequiredFeatures(context, plan, diagnostics);
+            ListSchemaVerifier.Verify(context, list, source, plan, receipt, dependencyReceipts, selection, diagnostics);
+            ListItemVerifier.Verify(context, list, source, plan, receipt, dependencyReceipts, selection, diagnostics);
+        }
+
+        private static void VerifyRequiredFeatures(
+            ClientContext context,
+            ListMaterializationPlan plan,
+            ICollection<string> diagnostics)
+        {
+            var probes = PlatformFeatureTargetInspector.Inspect(context, plan.RequiredFeatures);
+            foreach (var feature in plan.RequiredFeatures)
+            {
+                PlatformFeatureTargetProbe probe;
+                if (!probes.TryGetValue(feature.FeatureId, out probe) || !probe.IsActive || !probe.IsAdmitted)
+                {
+                    diagnostics.Add("Target platform feature readback failed: " + feature.Name + " ("
+                        + feature.FeatureId.ToString("D") + ")."
+                        + (probe == null ? string.Empty : " " + string.Join("; ", probe.Issues.Select(value => value.Message))));
+                }
+            }
         }
 
         private static void VerifyIdentityAndSettings(

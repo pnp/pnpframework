@@ -14,21 +14,38 @@ namespace PnP.Framework.Migration.Lists.Planning
 
         public static ListTargetProbe Inspect(ClientContext anchorContext, ListDependencySnapshot source, ListMaterializationPlan plan)
         {
+            return Inspect(anchorContext, source, plan, false);
+        }
+
+        public static ListTargetProbe InspectForPlanning(ClientContext anchorContext, ListDependencySnapshot source, ListMaterializationPlan plan)
+        {
+            return Inspect(anchorContext, source, plan, true);
+        }
+
+        private static ListTargetProbe Inspect(
+            ClientContext anchorContext,
+            ListDependencySnapshot source,
+            ListMaterializationPlan plan,
+            bool resolvePlanningCollision)
+        {
             if (anchorContext == null)
             {
                 throw new ArgumentNullException(nameof(anchorContext));
             }
             var probe = new ListTargetProbe
             {
+                PreferredTargetRootFolderServerRelativeUrl = plan.PreferredTargetRootFolderServerRelativeUrl ?? plan.TargetRootFolderServerRelativeUrl,
+                PreferredTargetTitle = plan.PreferredTargetTitle ?? plan.TargetTitle,
                 TargetWebUrl = plan.TargetWebUrl,
                 TargetRootFolderServerRelativeUrl = plan.TargetRootFolderServerRelativeUrl,
+                TargetTitle = plan.TargetTitle,
                 Disposition = ListMaterializationDisposition.Block
             };
             try
             {
                 if (CanUseLoadedWeb(anchorContext.Web, plan.TargetWebUrl))
                 {
-                    return PopulateProbe(anchorContext.Web, source, plan, probe);
+                    return PopulateProbe(anchorContext.Web, source, plan, probe, resolvePlanningCollision);
                 }
 
                 using (var context = anchorContext.Clone(plan.TargetWebUrl))
@@ -42,7 +59,7 @@ namespace PnP.Framework.Migration.Lists.Planning
                         value => value.RootFolder.ServerRelativeUrl,
                         value => value.RootFolder.Properties));
                     context.ExecuteQueryRetry();
-                    return PopulateProbe(web, source, plan, probe);
+                    return PopulateProbe(web, source, plan, probe, resolvePlanningCollision);
                 }
             }
             catch (Exception exception) when (exception is ServerException || exception is ClientRequestException)
@@ -69,11 +86,53 @@ namespace PnP.Framework.Migration.Lists.Planning
             Web web,
             ListDependencySnapshot source,
             ListMaterializationPlan plan,
-            ListTargetProbe probe)
+            ListTargetProbe probe,
+            bool resolvePlanningCollision)
         {
             probe.TargetWebExists = true;
             probe.TargetWebId = web.Id;
             probe.CanManageLists = web.EffectiveBasePermissions.Has(PermissionKind.ManageLists);
+            if (resolvePlanningCollision)
+            {
+                var resolution = ListTargetPathResolver.Resolve(
+                    plan,
+                    source.BaseTemplate,
+                    web.Lists.AsEnumerable().Select(value => new ListTargetInventoryItem
+                    {
+                        ListId = value.Id,
+                        RootFolderServerRelativeUrl = value.RootFolder.ServerRelativeUrl,
+                        Title = value.Title,
+                        BaseTemplate = value.BaseTemplate,
+                        OriginalIdentifier = Property(value.RootFolder.Properties, OriginalIdentifierPropertyName),
+                        PlanDigest = Property(value.RootFolder.Properties, PlanDigestPropertyName)
+                    }));
+                probe.PreferredTargetRootFolderServerRelativeUrl = resolution.PreferredTargetRootFolderServerRelativeUrl;
+                probe.PreferredTargetTitle = resolution.PreferredTargetTitle;
+                probe.TargetRootFolderServerRelativeUrl = resolution.TargetRootFolderServerRelativeUrl;
+                probe.TargetTitle = resolution.TargetTitle;
+                probe.CollisionResolved = resolution.CollisionResolved;
+                probe.CollisionResolutionReason = resolution.Reason;
+                if (resolution.ExistingOwnedTarget != null)
+                {
+                    probe.ListExists = true;
+                    probe.TargetListId = resolution.ExistingOwnedTarget.ListId;
+                    probe.ExistingTitle = resolution.ExistingOwnedTarget.Title;
+                    probe.ExistingBaseTemplate = resolution.ExistingOwnedTarget.BaseTemplate;
+                    probe.ExistingOriginalIdentifier = resolution.ExistingOwnedTarget.OriginalIdentifier;
+                    probe.ExistingPlanDigest = resolution.ExistingOwnedTarget.PlanDigest;
+                    probe.Disposition = ListMaterializationDisposition.ReuseOwned;
+                    return probe;
+                }
+                if (!probe.CanManageLists)
+                {
+                    probe.Issues.Add(Issue("TargetListWriteUnavailable", plan, "The mapped target Web does not grant ManageLists."));
+                    probe.Disposition = ListMaterializationDisposition.Block;
+                    return probe;
+                }
+                probe.Disposition = ListMaterializationDisposition.CreateOwned;
+                return probe;
+            }
+
             var exact = web.Lists.AsEnumerable().FirstOrDefault(value => string.Equals(
                 Normalize(value.RootFolder.ServerRelativeUrl),
                 Normalize(plan.TargetRootFolderServerRelativeUrl),
@@ -125,8 +184,11 @@ namespace PnP.Framework.Migration.Lists.Planning
             }
             return new ListTargetProbe
             {
+                PreferredTargetRootFolderServerRelativeUrl = plan.PreferredTargetRootFolderServerRelativeUrl ?? plan.TargetRootFolderServerRelativeUrl,
+                PreferredTargetTitle = plan.PreferredTargetTitle ?? plan.TargetTitle,
                 TargetWebUrl = plan.TargetWebUrl,
                 TargetRootFolderServerRelativeUrl = plan.TargetRootFolderServerRelativeUrl,
+                TargetTitle = plan.TargetTitle,
                 TargetWebExists = false,
                 DeferredUntilTopologyMaterialization = true,
                 CanManageLists = true,

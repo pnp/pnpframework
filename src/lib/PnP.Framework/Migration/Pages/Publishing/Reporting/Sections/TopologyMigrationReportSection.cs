@@ -48,21 +48,24 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting.Sections
                 return;
             }
 
-            writer.Table("Target site-collection mapping", new[] { "Source Site ID", "Mode", "Target URL / expected ID", "Title / owner", "Template / locale", "Original identifier" },
+            writer.Table("Target site-collection mapping", new[] { "Source Site ID", "Mode", "Preferred target", "Final target / expected ID", "Collision resolution", "Title / owner", "Template / locale", "Original identifier" },
                 plan.Topology.SiteCollections.OrderBy(value => value.SourceSiteId).Select(value => Row(
                     value.SourceSiteId,
                     value.TargetMode,
+                    value.PreferredTargetSiteCollectionUrl,
                     $"url={Format(value.TargetSiteCollectionUrl)}; expectedId={Format(value.ExpectedTargetSiteId)}",
+                    $"resolved={value.TargetSiteCollisionResolved}; reason={Format(value.TargetSiteResolutionReason)}",
                     $"title={Format(value.TargetTitle)}; owner={Format(value.TargetOwner)}",
                     $"{Format(value.TargetTemplate)}; language={value.TargetLanguage}; timeZone={value.TargetTimeZone}",
                     value.OriginalIdentifier)));
-            writer.Table("Approved Web mappings", new[] { "Kind", "Source Site / Web / parent", "Source URL / path", "Target URL / path / parent", "Target title / template", "Original identifier", "Mapping SHA-256" },
+            writer.Table("Approved Web mappings", new[] { "Kind", "Source Site / Web / parent", "Source URL / path", "Preferred target", "Final target / parent", "Target title / template", "Original identifier", "Mapping SHA-256" },
                 plan.Topology.SiteCollections.SelectMany(value => value.Webs)
                     .OrderBy(value => value.TargetServerRelativeUrl, StringComparer.OrdinalIgnoreCase)
                     .Select(value => Row(
                         value.Kind,
                         $"site={value.SourceSiteId:D}; web={value.SourceWebId:D}; parent={Format(value.SourceParentWebId)}",
                         $"url={Format(value.SourceWebUrl)}; path={Format(value.SourceServerRelativeUrl)}",
+                        $"url={Format(value.PreferredTargetWebUrl)}; path={Format(value.PreferredTargetServerRelativeUrl)}",
                         $"url={Format(value.TargetWebUrl)}; path={Format(value.TargetServerRelativeUrl)}; parent={Format(value.TargetParentWebUrl)}",
                         $"title={Format(value.TargetTitle)}; template={Format(value.TargetTemplate)}#{value.TargetConfiguration}",
                         value.OriginalIdentifier,
@@ -80,21 +83,23 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting.Sections
                 writer.Paragraph("No target topology analysis was sealed. An executable topology plan requires one.");
                 return;
             }
-            writer.Table("Target site-collection probes", new[] { "Source Site ID", "Target URL", "Exists", "Target Site / root Web", "Disposition", "Admitted", "Issues" },
+            writer.Table("Target site-collection probes", new[] { "Source Site ID", "Preferred / final target", "Collision resolution", "Exists", "Target Site / root Web", "Disposition", "Admitted", "Issues" },
                 analysis.SiteCollections.OrderBy(value => value.SourceSiteId).Select(value => Row(
                     value.SourceSiteId,
-                    value.TargetSiteCollectionUrl,
+                    $"preferred={Format(value.PreferredTargetSiteCollectionUrl)}; final={Format(value.TargetSiteCollectionUrl)}",
+                    $"resolved={value.CollisionResolved}; reason={Format(value.CollisionResolutionReason)}",
                     value.Exists,
                     $"site={Format(value.TargetSiteId)}; rootWeb={Format(value.TargetRootWebId)}",
                     value.Disposition,
                     value.IsAdmitted,
                     IssueSummary(value.Issues))));
-            writer.Table("Target Web probes", new[] { "Source Site / Web", "Target URL", "Exists / runtime identity", "Observed shape", "Observed provenance", "Disposition", "Admitted", "Issues" },
+            writer.Table("Target Web probes", new[] { "Source Site / Web", "Preferred / final target", "Collision resolution", "Exists / runtime identity", "Observed shape", "Observed provenance", "Disposition", "Admitted", "Issues" },
                 analysis.SiteCollections.SelectMany(value => value.Webs)
                     .OrderBy(value => value.TargetWebUrl, StringComparer.OrdinalIgnoreCase)
                     .Select(value => Row(
                         $"site={value.SourceSiteId:D}; web={value.SourceWebId:D}",
-                        value.TargetWebUrl,
+                        $"preferred={Format(value.PreferredTargetWebUrl)} ({Format(value.PreferredTargetServerRelativeUrl)}); final={Format(value.TargetWebUrl)} ({Format(value.TargetServerRelativeUrl)})",
+                        $"resolved={value.CollisionResolved}; reason={Format(value.CollisionResolutionReason)}",
                         $"exists={value.Exists}; site={Format(value.TargetSiteId)}; web={Format(value.TargetWebId)}; parent={Format(value.TargetParentWebId)}",
                         $"title={Format(value.ExistingTitle)}; template={Format(value.ExistingTemplate)}#{Format(value.ExistingConfiguration)}",
                         $"originalIdentifier={Format(value.ExistingOriginalIdentifier)}; planDigest={Format(value.ExistingPlanDigest)}",

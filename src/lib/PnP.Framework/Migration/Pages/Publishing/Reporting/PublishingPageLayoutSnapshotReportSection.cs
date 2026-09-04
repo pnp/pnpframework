@@ -15,6 +15,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
                 Row("snapshot.layout.availability", layout.Availability, "Captured is required for custom-layout materialization."),
                 Row("snapshot.layout.url", layout.Url, "Absolute source layout URL."),
                 Row("snapshot.layout.serverRelativeUrl", layout.ServerRelativeUrl, "Exact source master-page-gallery path."),
+                Row("snapshot.layout.ownerSiteCollectionUrl", layout.OwnerSiteCollectionUrl, "Site Collection that owns the captured master-page-gallery item; it can differ from the page Site Collection."),
+                Row("snapshot.layout.externalToPageSiteCollection", layout.ExternalToPageSiteCollection, "True means Page Layout bytes and schema were captured from an external owner while page-runtime tokens retain the page Web/Site Collection context."),
+                Row("snapshot.layout.authorizationEvidence", Authorization(layout), "Present only when the Page Layout owner request returned literal wire HTTP 401/403."),
                 Row("snapshot.layout.description", layout.Description, "Source gallery description."),
                 Row("snapshot.layout.fileUniqueId", layout.FileUniqueId, "Source layout file identity evidence; it is not reused as the target file ID."),
                 Row("snapshot.layout.customizedPageStatus", layout.CustomizedPageStatus, "1 identifies an uncustomized ghosted layout. Only uncustomized reviewed EnterpriseWiki.aspx is reused as target stock."),
@@ -85,5 +88,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.Reporting
         private static string Join(IEnumerable<string> values) => PublishingPageReportValueFormatter.Join(values);
 
         private static string Summarize(string value) => PublishingPageReportValueFormatter.SummarizePayload(value);
+
+        private static string Authorization(PublishingPageLayoutSnapshot layout)
+        {
+            var evidence = layout.AuthorizationEvidence;
+            return evidence == null
+                ? null
+                : $"{evidence.Operation}; HTTP {evidence.HttpStatusCode}; {evidence.RequestUri}; {evidence.ObservedAtUtc:O}; sha256={evidence.EvidenceSha256}";
+        }
     }
 }

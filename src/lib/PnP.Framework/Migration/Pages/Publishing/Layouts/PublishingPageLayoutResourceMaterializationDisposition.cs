@@ -4,6 +4,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Layouts
     {
         TargetRuntime = 1,
         CreateOrReuseOwned = 2,
-        Block = 3
+        Block = 3,
+        PreserveExternal = 4
     }
 }

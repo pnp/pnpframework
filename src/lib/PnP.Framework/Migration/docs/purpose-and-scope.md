@@ -58,7 +58,7 @@ Import accepts an approved plan digest. Editing a target path, action, mapping, 
 
 The importer must distinguish approved hosts, migration-owned objects, runtime-provided objects, and unrelated target objects. A matching name is not sufficient proof of identity.
 
-Created or reused objects use source-qualified identifiers and semantic digests where the domain supports migration ownership. Ambiguous or unowned collisions block instead of being overwritten.
+Created or reused objects use source-qualified identifiers and semantic digests where the domain supports migration ownership. Planning never overwrites an ambiguous or unowned collision: it keeps the complete mapped relative path and allocates a stable suffix only at the colliding Web, List/library, or Page leaf. If the sealed final path becomes occupied after approval, Apply rejects the stale plan and the workflow replans instead of silently retargeting.
 
 ### Support safe retry
 

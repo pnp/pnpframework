@@ -40,13 +40,15 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
             }
 
             PublishingPagePackageValidator.ValidateMigration(package, artifactStore);
-            PublishingPageImportPlanValidator.Validate(package, EnterpriseWikiV1WorkflowPolicy.Instance);
+            var executionScope = PublishingPageExecutionScope.Create(package);
+            PublishingPageImportPlanValidator.Validate(package, EnterpriseWikiV1WorkflowPolicy.Instance, executionScope);
             var operationId = Guid.NewGuid();
             var startedAt = DateTimeOffset.UtcNow;
             var recorder = new MigrationExecutionRecorder(operationId, package.PlanDigest, journal);
             var admissionFailure = PublishingPageImportAdmission.TryAdmit(
                 targetContext,
                 package,
+                executionScope,
                 approvedPlanDigest,
                 operationId,
                 startedAt,
@@ -62,12 +64,13 @@ namespace PnP.Framework.Migration.Pages.Publishing.EnterpriseWiki
                 return PublishingPageMutationExecutor.Execute(
                     targetContext,
                     package,
+                    executionScope,
                     approvedPlanDigest,
                     operationId,
                     startedAt,
                     recorder,
                     artifactStore,
-                    package.Plan.TargetProbe.PageContentTypeId);
+                    package.Plan.TargetProbe?.PageContentTypeId);
             }
             catch (Exception exception)
             {

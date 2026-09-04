@@ -49,7 +49,8 @@ Every migration area should preserve the following boundaries:
 | `PnP.Framework.Migration.Evidence` | Evidence availability, source lineage, and derived-artifact provenance shared by migration domains. |
 | `PnP.Framework.Migration.Execution` | Operation state, write-ahead mutation intents, step receipts, and pluggable execution journals. |
 | `PnP.Framework.Migration.Packaging` | Content-addressed artifact references, artifact-store contracts, digest helpers, and a local directory-backed content-addressed store for larger or binary evidence. |
-| `PnP.Framework.Migration.Topology` | Source SPSite/SPWeb evidence, parent-preserving target maps, collision probes, migration-owned provenance, child-Web materialization, and source-to-target runtime identity receipts. |
+| `PnP.Framework.Migration.Topology` | Source SPSite/SPWeb evidence, complete Site-relative target maps, collision probes, migration-owned provenance, child-Web materialization, and source-to-target runtime identity receipts. |
+| `PnP.Framework.Migration.Features` | Explicit conditional SharePoint platform-feature plans, target probes, dependency-ordered activation, and promised runtime-contract verification. |
 | `PnP.Framework.Migration.Lists` | Page-required List/library dependency closure, lookup ordering, target planning, create-or-owned-reuse execution, and final fresh-readback results. |
 | `PnP.Framework.Migration.Lists.Fields` | Complete List field-schema evidence and List-specific schema/value planning. |
 | `PnP.Framework.Migration.Lists.ContentTypes` | List-local content types and exact FieldLink evidence. |
@@ -57,7 +58,7 @@ Every migration area should preserve the following boundaries:
 | `PnP.Framework.Migration.Lists.Views` | Public, embedded/page-bound, and personal View evidence; personal Views remain evidence-only. |
 | `PnP.Framework.Migration.Schema.Fields` | Portable field-schema evidence, ownership classification, canonicalization, exact-ID materialization plans, and target probes. |
 | `PnP.Framework.Migration.Schema.ContentTypes` | Minimal required-field content-type closure capture, planning, target admission, exact-ID materialization, and fresh verification. |
-| `PnP.Framework.Migration.Taxonomy` | Explicit source term-store/term-set to target term-store/term-set schema mappings. |
+| `PnP.Framework.Migration.Taxonomy` | Exact taxonomy relationship evidence, reviewed mappings, source TermSet/Term asset closure, migration provenance, and conservative target classification. |
 | `PnP.Framework.Migration.Verification` | Storage/runtime verification states and typed external runtime-verification manifests and receipts. |
 | [`PnP.Framework.Migration.Pages`](Pages/README.md) | Shared page identity, exact ASPX evidence, CLR runtime, non-exclusive profiles, cohorts, canonical ingredients, fields, references, security, classic Web Parts, content, capture, and planning capabilities. |
 | [`PnP.Framework.Migration.Pages.Publishing`](Pages/Publishing/README.md) | Classic publishing-page aggregate contracts, workflow policy, lifecycle, planning, packages, reports, execution, and verification. |
@@ -75,6 +76,7 @@ The dependency direction is:
 source evidence
     -> CLR runtime + non-exclusive profile signals + canonical ingredient graph
     -> Topology plan (SPSite/SPWeb ownership)
+    -> conditional platform-feature requirements
     -> shared Schema closure (site fields/content types)
     -> List closure (List, list CTs, fields, items/files, views)
     -> Classic Web Part runtime rebinding
@@ -82,14 +84,14 @@ source evidence
     -> storage receipt and optional external runtime acceptance
 ```
 
-The object model deliberately does not place these capabilities under an `EnterpriseWiki` namespace. Enterprise Wiki is a page-profile entry point. `Topology`, `Schema`, `Lists`, `Taxonomy`, and shared `Pages.ClassicWebParts` own their respective evidence and mechanics so future Wiki Page and Web Part Page profiles can compose the same implementation.
+The object model deliberately does not place these capabilities under an `EnterpriseWiki` namespace. Enterprise Wiki is a page-profile entry point. `Topology`, `Features`, `Schema`, `Lists`, `Taxonomy`, and shared `Pages.ClassicWebParts` own their respective evidence and mechanics so future Wiki Page and Web Part Page profiles can compose the same implementation.
 
 ### Absorbed proof-of-concept assets
 
 | Proven behavior | PnP Framework expression |
 | --- | --- |
 | Preserve SPSite versus SPWeb identity level and child-Web ancestry. | `SourceSiteCollectionSnapshot`, `TopologyPlan`, `TopologyTargetAnalysis`, and `TopologyMaterializationReceipt`. |
-| Refuse unowned collisions and resume only exact owned work. | Per-Web and per-List original-identifier plus semantic-digest properties; create/reuse/recover/block dispositions. |
+| Preserve the complete Site/Web/Library/Folder/Page relative path and never overwrite an unowned collision. | Planning changes no relative segment. A stable suffix is added only at the topology/object node used for run isolation or where an observed ownership collision requires it, then per-object original-identifier plus semantic-digest provenance is sealed; Apply rejects any post-approval path change and requires replanning. |
 | Capture the complete List/lookup closure required by a page. | `ListDependencySnapshot`, `ListLookupDependency`, and deterministic DAG ordering with cycle blocking. |
 | Preserve unknown item values for future recovery while writing only understood fields. | Every returned `ListItemValueSnapshot` keeps typed and raw evidence; `ListFieldMaterializationDisposition` controls replay. |
 | Recreate custom site-content-type ancestry without treating every child of Document as runtime. | Exact runtime content-type catalog plus `ContentTypeClosureSnapshotReader`, planner, and materializer. |
@@ -98,6 +100,7 @@ The object model deliberately does not place these capabilities under an `Enterp
 | Create calculated fields after their calculated dependencies. | Formula-reference dependency ordering, including display-name references, with cycle blocking. |
 | Accept runtime field evolution only inside a known serialized-value family. | Shared compatibility rules allow equivalent scalar representations such as Text/Note/Choice and numeric types while keeping every single-value versus multi-value shape distinct. |
 | Never force source List/View/item/WssId values into the target. | Runtime-generated IDs are recorded in List receipts; lookup and classic Web Part consumers are rewritten through those maps; taxonomy writes ignore source WssId. |
+| Preserve taxonomy identity without healing invalid relationships. | `Taxonomy.Assets` captures only the required TermSet/Term/ancestor closure, derives an explicit deterministic target TermGroup ingredient, preserves exact GUIDs and Repro4-compatible original-identifier provenance, classifies owned/external/missing/colliding target assets, and keeps page relationship replay independent from asset preparation. |
 | Prove more than successful mutation calls. | Final topology and per-List fresh readback covers identity, settings, provenance, schema, CT metadata/order/FieldLinks, supported Views, current item values, files, and attachments. |
 
 ### Deliberately open boundaries
@@ -108,7 +111,7 @@ The following proof-of-concept behaviors are not silently approximated:
 - Child-Web feature activation is not inferred from the source template. The generic materializer uses the sealed target Web template; Publishing/Enterprise Wiki, Document ID, Document Set, asset-library, and other Feature prerequisites still need explicit capability plans.
 - A same-title template-created List is a blocker. `ListTargetOverride.TargetTitle` supports a reviewed alternate target title, but PnP does not yet rename a selected template List through the proof-of-concept's resumable claim protocol.
 - List View/Web Part `JSLink` and `XslLink` strings are captured, but custom referenced bytes do not yet have a List-rendering-resource artifact/materialization contract. Custom paths block planning.
-- Taxonomy schema can use reviewed source-store/set to target-store/set mappings, and item writes let target SharePoint resolve WssId. Creating Term Groups/Sets/Terms and retaining many-to-one source aliases is still a separate migration domain.
+- Taxonomy asset capture, deterministic planning, read-only target inspection, digest-sealed ingredient-level approval, journaled materialization, and aggregate fresh verification are implemented under `Migration.Taxonomy.Assets`. TermGroup, TermSet, and Term actions are explicit and dependency-checked; no child approval authorizes hidden parent creation. The 10% plan has not been approved or applied to the live target. Mutating an external TermSet requires a separate per-Term authorization, and retaining many-to-one source aliases remains follow-up work.
 - Full `ListViewXml`, View hidden/default repair in every collision shape, exact removal of extra List CT FieldLinks, and template/Feature-specific List creation remain narrower follow-up work.
 - Version history, audit identity/timestamps, unique ACLs, workflows, subscriptions, event receivers, personal Views, and browser DOM/visual acceptance remain outside the storage importer.
 

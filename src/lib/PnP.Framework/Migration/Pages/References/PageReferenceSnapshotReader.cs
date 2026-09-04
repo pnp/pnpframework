@@ -4,6 +4,7 @@ using Microsoft.SharePoint.Client;
 using PnP.Framework.Migration.Pages.Capture;
 using PnP.Framework.Migration.Pages.ClassicWebParts;
 using PnP.Framework.Migration.Pages.Packaging;
+using PnP.Framework.Migration.Topology;
 using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace PnP.Framework.Migration.Pages.References
         public static List<PageReferenceSnapshot> Read(
             ClientContext sourceContext,
             PageIdentity source,
+            SourceSiteCollectionSnapshot sourceTopology,
             string pageContent,
             IEnumerable<ClassicWebPartSnapshot> webParts,
             PageCaptureOptions options,
@@ -45,7 +47,15 @@ namespace PnP.Framework.Migration.Pages.References
                     continue;
                 }
 
-                result.Add(Capture(sourceContext, sourceWebUri, candidate, absoluteUri, options, warnings));
+                result.Add(Capture(
+                    sourceContext,
+                    source,
+                    sourceTopology,
+                    sourceWebUri,
+                    candidate,
+                    absoluteUri,
+                    options,
+                    warnings));
             }
 
             return result;
@@ -61,6 +71,8 @@ namespace PnP.Framework.Migration.Pages.References
 
         private static PageReferenceSnapshot Capture(
             ClientContext sourceContext,
+            PageIdentity source,
+            SourceSiteCollectionSnapshot sourceTopology,
             Uri sourceWebUri,
             ReferenceCandidate candidate,
             Uri absoluteUri,
@@ -92,19 +104,40 @@ namespace PnP.Framework.Migration.Pages.References
 
             if (candidate.Kind == PageReferenceKind.IFrame)
             {
+                reference.CaptureStatus = PageCaptureStatus.CapturedWithLimitations;
                 reference.Diagnostics.Add("Same-tenant iframe dependencies require a separately reviewed page/application profile during planning.");
                 return reference;
             }
 
-            if (!PagePath.IsWithin(sourcePath, sourceWebPath))
+            var owner = (sourceTopology?.Webs ?? Array.Empty<SourceWebSnapshot>())
+                .Where(web => web != null
+                    && !string.IsNullOrWhiteSpace(web.ServerRelativeUrl)
+                    && PagePath.IsWithin(sourcePath, web.ServerRelativeUrl))
+                .OrderByDescending(web => web.ServerRelativeUrl.Length)
+                .FirstOrDefault();
+            if (owner == null && PagePath.IsWithin(sourcePath, sourceWebPath))
             {
-                reference.Diagnostics.Add("The resource is outside the captured source web boundary.");
+                owner = new SourceWebSnapshot
+                {
+                    WebId = source.WebId,
+                    ServerRelativeUrl = source.WebServerRelativeUrl,
+                    WebUrl = source.WebUrl
+                };
+            }
+            if (owner == null)
+            {
+                reference.CaptureStatus = PageCaptureStatus.CapturedWithLimitations;
+                reference.Diagnostics.Add(
+                    "The resource owner is outside the captured source Site/Web topology closure.");
                 return reference;
             }
 
             try
             {
-                var payload = ReadFile(sourceContext, sourcePath, options.MaximumDependencyBytes);
+                var ownerWeb = owner.WebId == source.WebId
+                    ? sourceContext.Web
+                    : sourceContext.Site.OpenWebById(owner.WebId);
+                var payload = ReadFile(ownerWeb, sourceContext, sourcePath, options.MaximumDependencyBytes);
                 reference.ContentBase64 = Convert.ToBase64String(payload);
                 reference.ContentLength = payload.LongLength;
                 reference.ContentSha256 = PageDigest.ComputeSha256(payload);
@@ -119,9 +152,13 @@ namespace PnP.Framework.Migration.Pages.References
             return reference;
         }
 
-        private static byte[] ReadFile(ClientContext context, string serverRelativeUrl, long maximumBytes)
+        private static byte[] ReadFile(
+            Web web,
+            ClientContext context,
+            string serverRelativeUrl,
+            long maximumBytes)
         {
-            var file = context.Web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativeUrl));
+            var file = web.GetFileByServerRelativePath(ResourcePath.FromDecodedUrl(serverRelativeUrl));
             context.Load(file, value => value.Exists, value => value.Length);
             var stream = file.OpenBinaryStream();
             context.ExecuteQueryRetry();

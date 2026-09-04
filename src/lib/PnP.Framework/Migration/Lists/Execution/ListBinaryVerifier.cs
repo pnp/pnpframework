@@ -59,10 +59,11 @@ namespace PnP.Framework.Migration.Lists.Execution
             ListItemSnapshot sourceItem,
             ListItem targetItem,
             ListMaterializationReceipt receipt,
+            bool exactInventory,
             ICollection<string> diagnostics)
         {
             var actual = targetItem.AttachmentFiles.AsEnumerable().ToDictionary(value => value.FileName, StringComparer.OrdinalIgnoreCase);
-            if (actual.Count != sourceItem.Attachments.Count)
+            if (exactInventory && actual.Count != sourceItem.Attachments.Count)
             {
                 diagnostics.Add("Target attachment count differs for source item " + sourceItem.SourceItemId + ".");
             }

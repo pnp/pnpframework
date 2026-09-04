@@ -158,15 +158,17 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 }
             }
 
+            var reconcileExistingOwnedContentType = false;
             if (probe.ContentTypeExists)
             {
-                if (!string.Equals(probe.ExistingName, plan.Name, StringComparison.Ordinal)
-                    || !string.Equals(probe.ExistingDescription ?? string.Empty, plan.Description ?? string.Empty, StringComparison.Ordinal)
-                    || !string.Equals(probe.ExistingGroup ?? string.Empty, plan.Group ?? string.Empty, StringComparison.Ordinal)
-                    || probe.ExistingReadOnly != plan.ReadOnly
-                    || probe.ExistingSealed != plan.Sealed
-                    || probe.ExistingHidden != plan.Hidden
-                    || !string.Equals(probe.ExistingParentContentTypeId, plan.ParentContentTypeId, StringComparison.OrdinalIgnoreCase))
+                var metadataMatches = string.Equals(probe.ExistingName, plan.Name, StringComparison.Ordinal)
+                    && string.Equals(probe.ExistingDescription ?? string.Empty, plan.Description ?? string.Empty, StringComparison.Ordinal)
+                    && string.Equals(probe.ExistingGroup ?? string.Empty, plan.Group ?? string.Empty, StringComparison.Ordinal)
+                    && probe.ExistingReadOnly == plan.ReadOnly
+                    && probe.ExistingSealed == plan.Sealed
+                    && probe.ExistingHidden == plan.Hidden
+                    && string.Equals(probe.ExistingParentContentTypeId, plan.ParentContentTypeId, StringComparison.OrdinalIgnoreCase);
+                if (!metadataMatches)
                 {
                     issues.Add(Issue("TargetContentTypeCollision", $"target-content-type:{plan.ContentTypeId}",
                         "The exact content type ID exists with different metadata or parent lineage."));
@@ -180,9 +182,18 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                         || actual.Required != expected.Required
                         || actual.Hidden != expected.Hidden)
                     {
-                        issues.Add(Issue("TargetContentTypeFieldLinkCollision",
-                            $"target-content-type-field-link:{expected.FieldId:D}",
-                            $"The existing target content type does not expose exact required field link '{expected.Name}' ({expected.FieldId:D})."));
+                        if (metadataMatches
+                            && plan.Disposition == ContentTypeMaterializationDisposition.CreateOwned)
+                        {
+                            reconcileExistingOwnedContentType = true;
+                            warnings.Add($"The exact-ID content type is an interrupted create and will reconcile field link '{expected.Name}' ({expected.FieldId:D}).");
+                        }
+                        else
+                        {
+                            issues.Add(Issue("TargetContentTypeFieldLinkCollision",
+                                $"target-content-type-field-link:{expected.FieldId:D}",
+                                $"The existing target content type does not expose exact required field link '{expected.Name}' ({expected.FieldId:D})."));
+                        }
                     }
                 }
             }
@@ -204,9 +215,13 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                     : "The exact required-field content type closure already exists and can be reused without a write.");
             }
 
-            var disposition = probe.ContentTypeExists || plan.Disposition == ContentTypeMaterializationDisposition.ReuseOwned
-                ? ContentTypeMaterializationDisposition.ReuseOwned
-                : ContentTypeMaterializationDisposition.CreateOwned;
+            var disposition = probe.ContentTypeExists
+                ? reconcileExistingOwnedContentType && issues.Count == 0
+                    ? ContentTypeMaterializationDisposition.CreateOwned
+                    : ContentTypeMaterializationDisposition.ReuseOwned
+                : plan.Disposition == ContentTypeMaterializationDisposition.ReuseOwned
+                    ? ContentTypeMaterializationDisposition.ReuseOwned
+                    : ContentTypeMaterializationDisposition.CreateOwned;
             return Result(issues, warnings, disposition);
         }
 

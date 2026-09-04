@@ -104,15 +104,25 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 throw new InvalidOperationException($"Target parent content type is unavailable: {plan.ParentContentTypeId}.");
             }
 
-            var createdContentType = web.ContentTypes.Add(new ContentTypeCreationInformation
+            ContentType createdContentType;
+            if (preflight.ContentTypeExists)
             {
-                Id = plan.ContentTypeId,
-                Name = plan.Name,
-                Description = plan.Description,
-                Group = plan.Group
-            });
-            context.Load(createdContentType, value => value.Id, value => value.Name);
-            context.ExecuteQueryRetry();
+                createdContentType = web.ContentTypes.GetById(plan.ContentTypeId);
+                context.Load(createdContentType, value => value.Id, value => value.Name);
+                context.ExecuteQueryRetry();
+            }
+            else
+            {
+                createdContentType = web.ContentTypes.Add(new ContentTypeCreationInformation
+                {
+                    Id = plan.ContentTypeId,
+                    Name = plan.Name,
+                    Description = plan.Description,
+                    Group = plan.Group
+                });
+                context.Load(createdContentType, value => value.Id, value => value.Name);
+                context.ExecuteQueryRetry();
+            }
             if (!string.Equals(createdContentType.Id.StringValue, plan.ContentTypeId, StringComparison.OrdinalIgnoreCase))
             {
                 throw new InvalidOperationException(
@@ -139,6 +149,17 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                 }
                 link.Required = linkPlan.Required;
                 link.Hidden = linkPlan.Hidden;
+                createdContentType.Update(false);
+                try
+                {
+                    context.ExecuteQueryRetry();
+                }
+                catch (ServerException exception)
+                {
+                    throw new InvalidOperationException(
+                        $"Failed to reconcile content type field link '{linkPlan.Name}' ({linkPlan.FieldId:D}) on '{plan.ContentTypeId}': {exception.Message}",
+                        exception);
+                }
             }
 
             // SharePoint inherits the parent description when an empty value is
@@ -162,15 +183,18 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
             Web web,
             ContentTypeMaterializationPlan plan)
         {
-            var readback = ContentTypeTargetInspector.Inspect(context, web, plan);
-            var readbackAdmission = ContentTypeTargetAdmissionEvaluator.Evaluate(plan, readback);
-            if (!readbackAdmission.IsEligible
-                || readbackAdmission.Disposition != ContentTypeMaterializationDisposition.ReuseOwned)
+            using (var readbackContext = context.Clone(context.Url))
             {
-                throw new InvalidOperationException("Fresh content type schema readback differs from the sealed plan.");
-            }
+                var readback = ContentTypeTargetInspector.Inspect(readbackContext, readbackContext.Web, plan);
+                var readbackAdmission = ContentTypeTargetAdmissionEvaluator.Evaluate(plan, readback);
+                if (!readbackAdmission.IsEligible
+                    || readbackAdmission.Disposition != ContentTypeMaterializationDisposition.ReuseOwned)
+                {
+                    throw new InvalidOperationException("Fresh content type schema readback differs from the sealed plan.");
+                }
 
-            return readback;
+                return readback;
+            }
         }
     }
 }

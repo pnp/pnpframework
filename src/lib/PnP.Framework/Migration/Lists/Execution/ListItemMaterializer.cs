@@ -96,11 +96,20 @@ namespace PnP.Framework.Migration.Lists.Execution
                 {
                     targetItem = ListDocumentMaterializer.CreateItem(context, targetList, source, plan, sourceItem, artifactStore);
                 }
-                targetItems[sourceItem.SourceItemId] = targetItem;
                 if (includeItem)
                 {
+                    if (ListItemValueWriter.ApplyContentType(context, targetItem, sourceItem, contentTypeIds))
+                    {
+                        // Get a clean CSOM object after changing ContentTypeId.
+                        // Otherwise later Update calls can resend the dirty
+                        // ContentTypeId and re-apply defaults over authored values.
+                        targetItem = targetList.GetItemById(targetItem.Id);
+                        context.Load(targetItem, value => value.Id);
+                        context.ExecuteQueryRetry();
+                    }
                     ListItemValueWriter.Apply(context, targetList, targetItem, sourceItem, plan, dependencyReceipts, contentTypeIds, false);
                 }
+                targetItems[sourceItem.SourceItemId] = targetItem;
                 if (selection.AttachmentNamesByItemId.ContainsKey(sourceItem.SourceItemId))
                 {
                     ListAttachmentMaterializer.Ensure(context, targetItem, sourceItem.Attachments, artifactStore);

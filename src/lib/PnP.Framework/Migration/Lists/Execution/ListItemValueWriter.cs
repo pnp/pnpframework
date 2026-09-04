@@ -22,10 +22,6 @@ namespace PnP.Framework.Migration.Lists.Execution
             IDictionary<string, string> contentTypeIds,
             bool lookupPhase)
         {
-            if (!lookupPhase)
-            {
-                ApplyContentType(context, targetItem, sourceItem, contentTypeIds);
-            }
             var plans = plan.Fields.ToDictionary(value => value.InternalName, StringComparer.OrdinalIgnoreCase);
             var changed = false;
             foreach (var value in sourceItem.Values)
@@ -64,7 +60,7 @@ namespace PnP.Framework.Migration.Lists.Execution
             }
         }
 
-        private static void ApplyContentType(
+        internal static bool ApplyContentType(
             ClientContext context,
             ListItem targetItem,
             ListItemSnapshot sourceItem,
@@ -77,7 +73,7 @@ namespace PnP.Framework.Migration.Lists.Execution
                 || contentTypeIds == null
                 || !contentTypeIds.TryGetValue(sourceContentTypeId, out var targetContentTypeId))
             {
-                return;
+                return false;
             }
 
             // SharePoint may apply Content Type defaults after other field values
@@ -87,6 +83,7 @@ namespace PnP.Framework.Migration.Lists.Execution
             targetItem["ContentTypeId"] = targetContentTypeId;
             targetItem.Update();
             context.ExecuteQueryRetry();
+            return true;
         }
 
         private static bool WritesValue(ListFieldMaterializationDisposition value)

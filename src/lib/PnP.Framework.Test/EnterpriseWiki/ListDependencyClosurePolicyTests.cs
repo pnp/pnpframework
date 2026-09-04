@@ -48,5 +48,18 @@ namespace PnP.Framework.Test.EnterpriseWiki
             Assert.IsFalse(ListDependencyClosureSnapshotReader.ShouldFollowLookupDependency(field));
             Assert.IsTrue(ReviewedListRuntimeFieldCatalog.IsSnapshotOnly(field));
         }
+
+        [TestMethod]
+        public void UnifiedComplianceMetadataIsSnapshotOnly()
+        {
+            var field = new ListFieldSnapshot
+            {
+                Id = Guid.Parse("97dfa283-6ba8-4e68-ab6f-846e53f6d381"),
+                InternalName = "_ip_UnifiedCompliancePolicyProperties",
+                TypeAsString = "Note"
+            };
+
+            Assert.IsTrue(ReviewedListRuntimeFieldCatalog.IsSnapshotOnly(field));
+        }
     }
 }

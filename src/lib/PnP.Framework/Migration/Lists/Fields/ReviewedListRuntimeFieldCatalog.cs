@@ -29,6 +29,13 @@ namespace PnP.Framework.Migration.Lists.Fields
                 [new Guid("8f6b6dd8-9357-4019-8172-966fcd502ed2")] = ("TaxCatchAllLabel", "LookupMulti")
             };
 
+        private static readonly IReadOnlyDictionary<Guid, (string InternalName, string TypeAsString)> ProtectedMetadataFields =
+            new Dictionary<Guid, (string InternalName, string TypeAsString)>
+            {
+                [new Guid("97dfa283-6ba8-4e68-ab6f-846e53f6d381")] = ("_ip_UnifiedCompliancePolicyProperties", "Note"),
+                [new Guid("a925f967-0e5c-443a-ab36-18749634253f")] = ("_ip_UnifiedCompliancePolicyUIAction", "Text")
+            };
+
         public static bool IsSnapshotOnly(ListFieldSnapshot field)
         {
             if (field == null)
@@ -41,6 +48,12 @@ namespace PnP.Framework.Migration.Lists.Fields
             {
                 return string.Equals(field.InternalName, taxonomyCache.InternalName, StringComparison.OrdinalIgnoreCase)
                     && string.Equals(field.TypeAsString, taxonomyCache.TypeAsString, StringComparison.OrdinalIgnoreCase);
+            }
+
+            if (ProtectedMetadataFields.TryGetValue(field.Id, out var protectedMetadata))
+            {
+                return string.Equals(field.InternalName, protectedMetadata.InternalName, StringComparison.OrdinalIgnoreCase)
+                    && string.Equals(field.TypeAsString, protectedMetadata.TypeAsString, StringComparison.OrdinalIgnoreCase);
             }
 
             if (!field.ReadOnly || !field.Sealed

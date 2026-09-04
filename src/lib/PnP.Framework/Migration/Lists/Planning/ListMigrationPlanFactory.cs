@@ -406,6 +406,9 @@ namespace PnP.Framework.Migration.Lists.Planning
             {
                 return Block(field, issues, "ListFieldEvidenceUnavailable", "Field schema evidence is unavailable or conflicting.");
             }
+            var hasValue = HasBusinessValue(source, field.InternalName);
+            var requiredBySurface = source.Views.Any(view => view.ViewFields.Contains(field.InternalName, StringComparer.OrdinalIgnoreCase))
+                || source.ContentTypes.Any(contentType => contentType.FieldLinks.Any(link => link.FieldId == field.Id));
             if (ReviewedListRuntimeFieldCatalog.IsSnapshotOnly(field))
             {
                 return Plan(
@@ -419,7 +422,15 @@ namespace PnP.Framework.Migration.Lists.Planning
                 || IsListTemplateRuntimeField(source, field);
             if (targetRuntime)
             {
-                var copyValue = !field.ReadOnly && SupportedScalarTypes.Contains(field.TypeAsString);
+                var copyValue = hasValue && !field.ReadOnly && SupportedScalarTypes.Contains(field.TypeAsString);
+                if (!requiredBySurface && !copyValue)
+                {
+                    return Plan(
+                        field,
+                        ListFieldMaterializationDisposition.EvidenceOnly,
+                        null,
+                        "The SharePoint-owned field has no retained View or Content Type consumer and no supported writable value; preserve its complete source evidence without requiring tenant-specific runtime schema.");
+                }
                 return Plan(field,
                     copyValue
                         ? ListFieldMaterializationDisposition.RequireTargetRuntimeAndCopyValue
@@ -450,7 +461,6 @@ namespace PnP.Framework.Migration.Lists.Planning
                 return Plan(field, ListFieldMaterializationDisposition.MapTaxonomy, schema,
                     "Create or reuse the taxonomy field with the selected target store/set after taxonomy-asset admission; target SharePoint allocates WssIds and fresh readback verifies the binding.");
             }
-            var hasValue = HasBusinessValue(source, field.InternalName);
             if (string.Equals(field.TypeAsString, "User", StringComparison.OrdinalIgnoreCase)
                 || string.Equals(field.TypeAsString, "UserMulti", StringComparison.OrdinalIgnoreCase))
             {
@@ -472,8 +482,6 @@ namespace PnP.Framework.Migration.Lists.Planning
                 return Plan(field, ListFieldMaterializationDisposition.CreateOrReuseOwnedAndCopyValue,
                     FieldSchemaCanonicalizer.RewriteForTarget(field.SchemaXml), "Create or reuse the source-owned field and copy recognized values.");
             }
-            var requiredBySurface = source.Views.Any(view => view.ViewFields.Contains(field.InternalName, StringComparer.OrdinalIgnoreCase))
-                || source.ContentTypes.Any(contentType => contentType.FieldLinks.Any(link => link.FieldId == field.Id));
             if (!hasValue && !requiredBySurface)
             {
                 return Plan(field, ListFieldMaterializationDisposition.EvidenceOnly, null,

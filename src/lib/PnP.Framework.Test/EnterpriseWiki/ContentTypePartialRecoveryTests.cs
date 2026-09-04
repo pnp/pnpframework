@@ -17,6 +17,7 @@ namespace PnP.Framework.Test.EnterpriseWiki
             var fieldId = Guid.Parse("11111111-1111-1111-1111-111111111111");
             var plan = Plan(fieldId, ContentTypeMaterializationDisposition.CreateOwned);
             var probe = Probe(plan, fieldId, false);
+            probe.ExistingDescription = "Inherited parent description";
 
             var result = ContentTypeTargetAdmissionEvaluator.Evaluate(plan, probe);
 

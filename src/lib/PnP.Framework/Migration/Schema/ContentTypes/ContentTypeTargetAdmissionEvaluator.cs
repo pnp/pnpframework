@@ -161,17 +161,34 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
             var reconcileExistingOwnedContentType = false;
             if (probe.ContentTypeExists)
             {
-                var metadataMatches = string.Equals(probe.ExistingName, plan.Name, StringComparison.Ordinal)
-                    && string.Equals(probe.ExistingDescription ?? string.Empty, plan.Description ?? string.Empty, StringComparison.Ordinal)
+                var identityMetadataMatches = string.Equals(probe.ExistingName, plan.Name, StringComparison.Ordinal)
                     && string.Equals(probe.ExistingGroup ?? string.Empty, plan.Group ?? string.Empty, StringComparison.Ordinal)
                     && probe.ExistingReadOnly == plan.ReadOnly
                     && probe.ExistingSealed == plan.Sealed
                     && probe.ExistingHidden == plan.Hidden
                     && string.Equals(probe.ExistingParentContentTypeId, plan.ParentContentTypeId, StringComparison.OrdinalIgnoreCase);
-                if (!metadataMatches)
+                if (!identityMetadataMatches)
                 {
                     issues.Add(Issue("TargetContentTypeCollision", $"target-content-type:{plan.ContentTypeId}",
                         "The exact content type ID exists with different metadata or parent lineage."));
+                }
+                var descriptionMatches = string.Equals(
+                    probe.ExistingDescription ?? string.Empty,
+                    plan.Description ?? string.Empty,
+                    StringComparison.Ordinal);
+                if (!descriptionMatches)
+                {
+                    if (identityMetadataMatches
+                        && plan.Disposition == ContentTypeMaterializationDisposition.CreateOwned)
+                    {
+                        reconcileExistingOwnedContentType = true;
+                        warnings.Add("The exact-ID interrupted create temporarily inherited its parent description; reconciliation will restore the reviewed description.");
+                    }
+                    else
+                    {
+                        issues.Add(Issue("TargetContentTypeCollision", $"target-content-type:{plan.ContentTypeId}",
+                            "The exact content type ID exists with a different description."));
+                    }
                 }
 
                 var existingLinks = probe.ExistingFieldLinks.ToDictionary(value => value.FieldId);
@@ -182,7 +199,7 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                         || actual.Required != expected.Required
                         || actual.Hidden != expected.Hidden)
                     {
-                        if (metadataMatches
+                        if (identityMetadataMatches
                             && plan.Disposition == ContentTypeMaterializationDisposition.CreateOwned)
                         {
                             reconcileExistingOwnedContentType = true;

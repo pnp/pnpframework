@@ -196,7 +196,8 @@ namespace PnP.Framework.Migration.Schema.Fields
             var value = attribute.Value?.Trim() ?? string.Empty;
             return (string.Equals(name, "Hidden", StringComparison.OrdinalIgnoreCase)
                     || string.Equals(name, "ReadOnly", StringComparison.OrdinalIgnoreCase)
-                    || string.Equals(name, "Sealed", StringComparison.OrdinalIgnoreCase))
+                    || string.Equals(name, "Sealed", StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(name, "Required", StringComparison.OrdinalIgnoreCase))
                 && string.Equals(value, "FALSE", StringComparison.OrdinalIgnoreCase)
                 || (string.Equals(name, "AllowDeletion", StringComparison.OrdinalIgnoreCase)
                     && string.Equals(value, "TRUE", StringComparison.OrdinalIgnoreCase))

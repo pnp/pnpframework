@@ -29,6 +29,19 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
+        public void PortableSchemaTreatsServerRequiredFalseAsEquivalentToOmission()
+        {
+            const string compact = "<Field Type=\"TaxonomyFieldType\" DisplayName=\"Language\" "
+                + "ID=\"{92cc2700-0556-43d8-b753-8b146d9b1b61}\" Name=\"MS_x0020_Language\" />";
+            const string expanded = "<Field Type=\"TaxonomyFieldType\" DisplayName=\"Language\" Required=\"FALSE\" "
+                + "ID=\"{92cc2700-0556-43d8-b753-8b146d9b1b61}\" Name=\"MS_x0020_Language\" />";
+
+            Assert.AreEqual(
+                FieldSchemaCanonicalizer.PortableDigest(compact),
+                FieldSchemaCanonicalizer.PortableDigest(expanded));
+        }
+
+        [TestMethod]
         public void PortableSchemaRetainsMaterialVisibilityAndDefaultValueDifferences()
         {
             const string baseline = "<Field Type=\"Text\" ID=\"{7e229256-a9ae-4bbe-a70f-391a14d95dcc}\" Name=\"DerivedFromID\"><Default>Original</Default></Field>";

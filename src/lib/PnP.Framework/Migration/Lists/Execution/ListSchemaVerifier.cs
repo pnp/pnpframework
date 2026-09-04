@@ -64,7 +64,7 @@ namespace PnP.Framework.Migration.Lists.Execution
             context.ExecuteQueryRetry();
 
             VerifyFields(list, plan, dependencyReceipts, receipt, diagnostics);
-            VerifyContentTypes(list, source, receipt, selection, diagnostics);
+            VerifyContentTypes(list, source, plan, receipt, selection, diagnostics);
             receipt.VerifiedViewRenderingResourceCount = ListViewRenderingResourceMaterializer.Verify(context, plan, diagnostics);
             VerifyViews(list, plan, receipt, diagnostics);
         }
@@ -121,10 +121,14 @@ namespace PnP.Framework.Migration.Lists.Execution
         private static void VerifyContentTypes(
             List list,
             ListDependencySnapshot source,
+            ListMaterializationPlan plan,
             ListMaterializationReceipt receipt,
             ListMaterializationExecutionScope.ListSelection selection,
             ICollection<string> diagnostics)
         {
+            var retainedFieldIds = new HashSet<Guid>(plan.Fields
+                .Where(value => value.Disposition != ListFieldMaterializationDisposition.EvidenceOnly)
+                .Select(value => value.SourceFieldId));
             var actual = list.ContentTypes.AsEnumerable().ToDictionary(value => value.Id.StringValue, StringComparer.OrdinalIgnoreCase);
             if (receipt.TargetContentTypeIds.Count != source.ContentTypes.Count)
             {
@@ -153,7 +157,9 @@ namespace PnP.Framework.Migration.Lists.Execution
                     continue;
                 }
                 var links = target.FieldLinks.AsEnumerable().ToDictionary(value => value.Id);
-                var linkMismatch = sourceContentType.FieldLinks.Any(expected =>
+                var linkMismatch = sourceContentType.FieldLinks
+                    .Where(expected => retainedFieldIds.Contains(expected.FieldId))
+                    .Any(expected =>
                 {
                     FieldLink observed;
                     return !links.TryGetValue(expected.FieldId, out observed)

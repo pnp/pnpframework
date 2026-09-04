@@ -134,6 +134,7 @@ namespace PnP.Framework.Migration.Lists.Execution
                         context,
                         targetList,
                         source,
+                        plan,
                         contentTypeIds,
                         recorder,
                         prefix);
@@ -224,6 +225,7 @@ namespace PnP.Framework.Migration.Lists.Execution
             ClientContext context,
             List targetList,
             ListDependencySnapshot source,
+            ListMaterializationPlan plan,
             IDictionary<string, string> contentTypeIds,
             MigrationExecutionRecorder recorder,
             string prefix)
@@ -235,7 +237,7 @@ namespace PnP.Framework.Migration.Lists.Execution
                 return;
             }
             recorder.Execute(prefix + ".content-types.field-links", "Apply approved List content type field-link settings.", () =>
-                ListContentTypeMaterializer.EnsureFieldLinks(context, targetList, source, contentTypeIds));
+                ListContentTypeMaterializer.EnsureFieldLinks(context, targetList, source, plan, contentTypeIds));
         }
 
         private static void EnsureContentTypeOrder(

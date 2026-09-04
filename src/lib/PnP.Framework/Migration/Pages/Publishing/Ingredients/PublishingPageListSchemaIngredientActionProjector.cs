@@ -138,27 +138,49 @@ namespace PnP.Framework.Migration.Pages.Publishing.Ingredients
             var capturedParents = new HashSet<string>(
                 source.SiteContentTypes.Where(value => value != null).Select(value => value.ContentTypeId),
                 StringComparer.OrdinalIgnoreCase);
+            var droppedFieldIds = new HashSet<Guid>(listPlan.Fields
+                .Where(value => value.Disposition == ListFieldMaterializationDisposition.EvidenceOnly)
+                .Select(value => value.SourceFieldId));
             foreach (var contentType in source.ContentTypes.Where(value => value != null))
             {
                 var missingParent = !string.IsNullOrWhiteSpace(contentType.ParentId)
                     && !ContentTypeRuntimeCatalog.IsTargetRuntime(contentType.ParentId)
                     && !capturedParents.Contains(contentType.ParentId);
                 var blocked = (!transactionDependencyProjection && listBlocked) || missingParent;
-                PublishingPageIngredientActionFactory.Add(actions, PublishingPageIngredientActionFactory.Create(
+                var releasedFields = contentType.FieldLinks
+                    .Where(value => droppedFieldIds.Contains(value.FieldId))
+                    .Select(value => PublishingPageIngredientIds.ListField(source.SourceWebId, source.SourceListId, value.FieldId))
+                    .Distinct(StringComparer.Ordinal)
+                    .OrderBy(value => value, StringComparer.Ordinal)
+                    .ToArray();
+                var action = PublishingPageIngredientActionFactory.Create(
                     PublishingPageIngredientIds.ListContentType(source.SourceWebId, source.SourceListId, contentType.Id),
                     blocked ? IngredientCapability.Incompatible : IngredientCapability.Available,
-                    blocked ? IngredientDisposition.Block : IngredientDisposition.Preserve,
-                    blocked ? "none" : "materialize-list-content-type-membership",
+                    blocked
+                        ? IngredientDisposition.Block
+                        : releasedFields.Length > 0 ? IngredientDisposition.Transform : IngredientDisposition.Preserve,
+                    blocked
+                        ? "none"
+                        : releasedFields.Length > 0
+                            ? "materialize-list-content-type-with-runtime-cache-links-released"
+                            : "materialize-list-content-type-membership",
                     "policy.list-content-type.membership",
                     missingParent
                         ? "The List-local Content Type references a custom parent whose exact site Content Type closure is absent."
                         : listBlocked && !transactionDependencyProjection
                             ? "The owning List has no executable materialization plan."
-                        : "Create or reuse the captured List content type membership and apply its field links and ordering.",
+                        : releasedFields.Length > 0
+                            ? "Create or reuse the captured List content type while explicitly releasing SharePoint-owned taxonomy cache FieldLinks; their source schema and values remain in the snapshot."
+                            : "Create or reuse the captured List content type membership and apply its field links and ordering.",
                     blocked ? null : listPlan.TargetRootFolderServerRelativeUrl + "#content-type:" + contentType.Id,
                     blocked
                         ? null
-                        : $"The List receipt maps source Content Type '{contentType.Id}' to a verified target Content Type ID."));
+                        : $"The List receipt maps source Content Type '{contentType.Id}' to a verified target Content Type ID.");
+                foreach (var releasedField in releasedFields)
+                {
+                    action.ReleasedDependencyIngredientIds.Add(releasedField);
+                }
+                PublishingPageIngredientActionFactory.Add(actions, action);
             }
         }
 

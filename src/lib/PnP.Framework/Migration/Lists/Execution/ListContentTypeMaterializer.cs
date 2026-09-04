@@ -1,6 +1,7 @@
 using Microsoft.SharePoint.Client;
 using PnP.Framework.Migration.Lists.Capture;
 using PnP.Framework.Migration.Lists.ContentTypes;
+using PnP.Framework.Migration.Lists.Planning;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -56,8 +57,12 @@ namespace PnP.Framework.Migration.Lists.Execution
             ClientContext context,
             List targetList,
             ListDependencySnapshot source,
+            ListMaterializationPlan plan,
             IDictionary<string, string> contentTypeIds)
         {
+            var retainedFieldIds = new HashSet<Guid>(plan.Fields
+                .Where(value => value.Disposition != ListFieldMaterializationDisposition.EvidenceOnly)
+                .Select(value => value.SourceFieldId));
             foreach (var sourceContentType in source.ContentTypes.OrderBy(value => value.Id, StringComparer.OrdinalIgnoreCase))
             {
                 string targetId;
@@ -76,7 +81,11 @@ namespace PnP.Framework.Migration.Lists.Execution
                 }
                 var links = target.FieldLinks.AsEnumerable().ToDictionary(value => value.Id);
                 var fieldsToAdd = new List<Field>();
-                foreach (var expected in sourceContentType.FieldLinks.OrderBy(value => value.FieldId))
+                var retainedLinks = sourceContentType.FieldLinks
+                    .Where(value => retainedFieldIds.Contains(value.FieldId))
+                    .OrderBy(value => value.FieldId)
+                    .ToArray();
+                foreach (var expected in retainedLinks)
                 {
                     if (!links.ContainsKey(expected.FieldId))
                     {
@@ -97,7 +106,7 @@ namespace PnP.Framework.Migration.Lists.Execution
                     target = LoadContentType(context, targetList, targetId);
                     links = target.FieldLinks.AsEnumerable().ToDictionary(value => value.Id);
                 }
-                foreach (var expected in sourceContentType.FieldLinks.OrderBy(value => value.FieldId))
+                foreach (var expected in retainedLinks)
                 {
                     FieldLink link;
                     if (!links.TryGetValue(expected.FieldId, out link))
@@ -117,7 +126,7 @@ namespace PnP.Framework.Migration.Lists.Execution
                 target.Sealed = sourceContentType.Sealed;
                 target.Update(false);
                 context.ExecuteQueryRetry();
-                VerifyContentType(context, targetList, targetId, sourceContentType);
+                VerifyContentType(context, targetList, targetId, sourceContentType, retainedFieldIds);
             }
         }
 
@@ -245,7 +254,8 @@ namespace PnP.Framework.Migration.Lists.Execution
             ClientContext context,
             List targetList,
             string targetId,
-            ListContentTypeSnapshot source)
+            ListContentTypeSnapshot source,
+            ISet<Guid> retainedFieldIds)
         {
             var target = LoadContentType(context, targetList, targetId);
             if (!string.Equals(target.Name, source.Name, StringComparison.Ordinal)
@@ -260,7 +270,7 @@ namespace PnP.Framework.Migration.Lists.Execution
                 throw new InvalidDataException("Fresh target List content type metadata differs: " + source.Id + ".");
             }
             var actual = target.FieldLinks.AsEnumerable().ToDictionary(value => value.Id);
-            foreach (var expected in source.FieldLinks)
+            foreach (var expected in source.FieldLinks.Where(value => retainedFieldIds.Contains(value.FieldId)))
             {
                 FieldLink link;
                 if (!actual.TryGetValue(expected.FieldId, out link)

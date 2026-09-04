@@ -54,23 +54,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                     throw new InvalidOperationException(
                         $"The approved exact page path is occupied by a target that is not owned by this sealed plan: '{package.Plan.TargetPageServerRelativeUrl}'.");
                 }
-                var mutableFieldActions = executionScope.PageFieldActions(package)
-                    .Where(value => value.Disposition == PageFieldDisposition.Apply
-                        || value.Disposition == PageFieldDisposition.ApplyTaxonomyRelationships)
-                    .ToArray();
-                if (mutableFieldActions.Length > 0)
-                {
-                    throw new InvalidOperationException(
-                        "Owned-page resume with mutable field actions requires action-level field reconciliation before replay can continue safely.");
-                }
-                if (executionScope.WebPartActions(package).Count > 0)
-                {
-                    throw new InvalidOperationException(
-                        "Owned-page resume with shared Web Part actions requires action-level Web Part reconciliation before replay can continue safely.");
-                }
                 recorder.RecordAlreadySatisfied(
                     "page.create",
-                    $"Resume the exact migration-owned publishing page '{package.Plan.TargetPageServerRelativeUrl}'.");
+                    $"Resume the exact migration-owned publishing page '{package.Plan.TargetPageServerRelativeUrl}' under the same sealed plan; mutable ingredients will be verified in place rather than replayed.");
             }
             else
             {
@@ -105,10 +91,10 @@ namespace PnP.Framework.Migration.Pages.Publishing.Execution
                     "PublishingPageContent on the exact migration-owned page will be checked by fresh storage readback.");
                 recorder.RecordAlreadySatisfied(
                     "page.fields",
-                    "The resumed page has no mutable field action; non-replayed fields remain governed by their sealed dispositions.");
+                    "Approved page field actions on the resumed page will be checked by fresh storage readback rather than replayed.");
                 recorder.RecordAlreadySatisfied(
                     "page.webparts",
-                    "The resumed page has no shared Web Part action.");
+                    "Approved shared Web Part actions on the resumed page will be checked by fresh storage readback rather than replayed.");
                 recorder.RecordAlreadySatisfied(
                     "page.ownership",
                     "The exact target page already carries matching source identity, snapshot digest, and plan digest provenance.");

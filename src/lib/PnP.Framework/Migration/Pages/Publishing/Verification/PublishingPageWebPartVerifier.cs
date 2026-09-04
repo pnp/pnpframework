@@ -55,6 +55,19 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     string.Equals(item.ExportSha256, expectedDigest, StringComparison.OrdinalIgnoreCase)
                     && string.Equals(item.ZoneId, expected.ZoneId, StringComparison.OrdinalIgnoreCase)
                     && item.ZoneIndex == expected.ZoneIndex);
+                var storageCanonicalMatch = false;
+                if (match == null && action?.Disposition == ClassicWebPartDisposition.RebindListAfterMaterialization)
+                {
+                    var expectedCanonical = ClassicWebPartStorageCanonicalizer.CanonicalizeListBoundExport(expectedXml);
+                    match = unused.FirstOrDefault(item =>
+                        string.Equals(item.ZoneId, expected.ZoneId, StringComparison.OrdinalIgnoreCase)
+                        && item.ZoneIndex == expected.ZoneIndex
+                        && string.Equals(
+                            ClassicWebPartStorageCanonicalizer.CanonicalizeListBoundExport(item.ExportXml),
+                            expectedCanonical,
+                            StringComparison.Ordinal));
+                    storageCanonicalMatch = match != null;
+                }
                 if (match == null)
                 {
                     match = unused.FirstOrDefault(item =>
@@ -76,7 +89,7 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
                     ExpectedExportSha256 = expectedDigest,
                     ActualExportSha256 = match?.ExportSha256,
                     Passed = passed,
-                    Message = Describe(expected, match, passed)
+                    Message = Describe(expected, match, passed, storageCanonicalMatch)
                 });
                 if (match != null)
                 {
@@ -130,7 +143,8 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
         private static string Describe(
             ClassicWebPartSnapshot expected,
             ClassicWebPartSnapshot actual,
-            bool passed)
+            bool passed,
+            bool storageCanonicalMatch)
         {
             if (actual == null)
             {
@@ -139,7 +153,9 @@ namespace PnP.Framework.Migration.Pages.Publishing.Verification
 
             if (passed)
             {
-                return "Export digest, zone placement, and hidden state match.";
+                return storageCanonicalMatch
+                    ? "Storage-canonical list binding, zone placement, and hidden state match; SharePoint regenerated only runtime View identity or equivalent empty/null XML representation."
+                    : "Export digest, zone placement, and hidden state match.";
             }
 
             return $"Expected zone '{expected.ZoneId}' index {expected.ZoneIndex} hidden={expected.Hidden}; actual zone '{actual.ZoneId}' index {actual.ZoneIndex} hidden={actual.Hidden}.";

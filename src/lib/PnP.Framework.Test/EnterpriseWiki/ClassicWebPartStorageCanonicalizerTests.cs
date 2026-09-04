@@ -17,7 +17,8 @@ namespace PnP.Framework.Test.EnterpriseWiki
                 "11111111-1111-1111-1111-111111111111",
                 "{33333333-3333-3333-3333-333333333333}",
                 "<property name=\"NoDefaultStyle\" type=\"string\" null=\"true\" />")
-                .Replace("{AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA}", "{aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa}");
+                .Replace("{AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA}", "{aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa}")
+                .Replace("https://source.example/_layouts/15/images/links.png?rev=50", "/_layouts/15/images/links.png?rev=50");
 
             Assert.AreEqual(
                 ClassicWebPartStorageCanonicalizer.CanonicalizeListBoundExport(expected),
@@ -49,7 +50,8 @@ namespace PnP.Framework.Test.EnterpriseWiki
             + "<property name=\"ListName\">{AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA}</property>"
             + "<property name=\"WebId\">bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb</property>"
             + "<property name=\"XmlDefinition\">&lt;View Name=\"" + viewId
-            + "\" Url=\"/sites/target/Pages/A.aspx\"&gt;&lt;ViewFields&gt;&lt;FieldRef Name=\"Title\" /&gt;&lt;/ViewFields&gt;&lt;/View&gt;</property>"
+            + "\" Url=\"/sites/target/Pages/A.aspx\" ImageUrl=\"https://source.example/_layouts/15/images/links.png?rev=50\"&gt;"
+            + "&lt;ViewFields&gt;&lt;FieldRef Name=\"Title\" /&gt;&lt;/ViewFields&gt;&lt;/View&gt;</property>"
             + "</properties></data></webPart></webParts>";
     }
 }

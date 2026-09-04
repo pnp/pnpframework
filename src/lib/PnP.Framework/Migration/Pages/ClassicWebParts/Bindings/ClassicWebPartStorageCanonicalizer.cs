@@ -65,6 +65,13 @@ namespace PnP.Framework.Migration.Pages.ClassicWebParts.Bindings
             {
                 name.Value = "{runtime-view-identity}";
             }
+            var imageUrl = view.Root?.Attribute("ImageUrl");
+            if (imageUrl != null
+                && Uri.TryCreate(imageUrl.Value, UriKind.Absolute, out var absoluteImage)
+                && absoluteImage.AbsolutePath.StartsWith("/_layouts/", StringComparison.OrdinalIgnoreCase))
+            {
+                imageUrl.Value = absoluteImage.PathAndQuery;
+            }
 
             return view.ToString(SaveOptions.DisableFormatting);
         }

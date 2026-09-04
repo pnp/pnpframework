@@ -46,7 +46,11 @@ namespace PnP.Framework.Migration.Lists.Execution
                     continue;
                 }
                 context.Load(target);
-                context.Load(target.AttachmentFiles, values => values.Include(value => value.FileName, value => value.ServerRelativeUrl));
+                var verifyAttachments = source.EnableAttachments || sourceItem.Attachments.Count > 0;
+                if (verifyAttachments)
+                {
+                    context.Load(target.AttachmentFiles, values => values.Include(value => value.FileName, value => value.ServerRelativeUrl));
+                }
                 context.ExecuteQueryRetry();
                 var includeItem = selection == null || selection.ItemIds.Contains(sourceItem.SourceItemId);
                 if (includeItem)
@@ -60,13 +64,16 @@ namespace PnP.Framework.Migration.Lists.Execution
                     receipt.VerifiedItemCount++;
                 }
                 ListBinaryVerifier.VerifyDocument(context, source, plan, sourceItem, receipt, diagnostics);
-                ListBinaryVerifier.VerifyAttachments(
-                    context,
-                    sourceItem,
-                    target,
-                    receipt,
-                    selection == null || selection.ExactAttachmentInventoryItemIds.Contains(sourceItem.SourceItemId),
-                    diagnostics);
+                if (verifyAttachments)
+                {
+                    ListBinaryVerifier.VerifyAttachments(
+                        context,
+                        sourceItem,
+                        target,
+                        receipt,
+                        selection == null || selection.ExactAttachmentInventoryItemIds.Contains(sourceItem.SourceItemId),
+                        diagnostics);
+                }
             }
         }
 

@@ -66,11 +66,15 @@ namespace PnP.Framework.Migration.Pages.ClassicWebParts.Bindings
                 name.Value = "{runtime-view-identity}";
             }
             var imageUrl = view.Root?.Attribute("ImageUrl");
-            if (imageUrl != null
-                && Uri.TryCreate(imageUrl.Value, UriKind.Absolute, out var absoluteImage)
-                && absoluteImage.AbsolutePath.StartsWith("/_layouts/", StringComparison.OrdinalIgnoreCase))
+            var layoutsIndex = imageUrl?.Value.LastIndexOf("/_layouts/", StringComparison.OrdinalIgnoreCase) ?? -1;
+            if (imageUrl != null && layoutsIndex >= 0)
             {
-                imageUrl.Value = absoluteImage.PathAndQuery;
+                // SharePoint stores built-in View icons root-relative. Accept
+                // absolute source/target forms and the legacy composer defect
+                // that concatenated an origin twice before the same _layouts
+                // path; everything before the final built-in path is storage
+                // noise rather than authored content.
+                imageUrl.Value = imageUrl.Value.Substring(layoutsIndex);
             }
 
             return view.ToString(SaveOptions.DisableFormatting);

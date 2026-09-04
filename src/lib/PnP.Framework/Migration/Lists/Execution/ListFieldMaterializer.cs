@@ -31,6 +31,11 @@ namespace PnP.Framework.Migration.Lists.Execution
                 if (fieldPlan.Disposition == ListFieldMaterializationDisposition.RequireTargetRuntime
                     || fieldPlan.Disposition == ListFieldMaterializationDisposition.RequireTargetRuntimeAndCopyValue)
                 {
+                    if (existing == null)
+                    {
+                        existing = AddTargetRuntimeSiteField(context, targetList, fieldPlan);
+                        targetById[existing.Id] = existing;
+                    }
                     if (existing == null
                         || !string.Equals(existing.InternalName, fieldPlan.InternalName, StringComparison.OrdinalIgnoreCase)
                         || !ListFieldTypeCompatibility.IsCompatibleRuntimeType(existing.TypeAsString, fieldPlan.TypeAsString))
@@ -78,6 +83,59 @@ namespace PnP.Framework.Migration.Lists.Execution
                 }
                 targetById[created.Id] = created;
             }
+        }
+
+        private static Field AddTargetRuntimeSiteField(
+            ClientContext context,
+            List targetList,
+            ListFieldMaterializationPlan fieldPlan)
+        {
+            var siteField = context.Web.AvailableFields.GetById(fieldPlan.SourceFieldId);
+            context.Load(siteField,
+                value => value.Id,
+                value => value.InternalName,
+                value => value.TypeAsString,
+                value => value.SchemaXml);
+            try
+            {
+                context.ExecuteQueryRetry();
+            }
+            catch (ServerException exception)
+            {
+                throw new InvalidDataException(
+                    "Target runtime does not expose required site field '"
+                    + fieldPlan.InternalName + "' (" + fieldPlan.SourceFieldId.ToString("D") + ").",
+                    exception);
+            }
+            if (siteField.Id != fieldPlan.SourceFieldId
+                || !string.Equals(siteField.InternalName, fieldPlan.InternalName, StringComparison.OrdinalIgnoreCase)
+                || !ListFieldTypeCompatibility.IsCompatibleRuntimeType(siteField.TypeAsString, fieldPlan.TypeAsString)
+                || string.IsNullOrWhiteSpace(siteField.SchemaXml))
+            {
+                throw new InvalidDataException(
+                    "Target runtime site field identity/type differs for '"
+                    + fieldPlan.InternalName + "' (" + fieldPlan.SourceFieldId.ToString("D") + ").");
+            }
+
+            var created = targetList.Fields.AddFieldAsXml(
+                siteField.SchemaXml,
+                false,
+                AddFieldOptions.AddFieldInternalNameHint | AddFieldOptions.AddToNoContentType);
+            context.Load(created,
+                value => value.Id,
+                value => value.InternalName,
+                value => value.TypeAsString,
+                value => value.SchemaXml);
+            context.ExecuteQueryRetry();
+            if (created.Id != fieldPlan.SourceFieldId
+                || !string.Equals(created.InternalName, fieldPlan.InternalName, StringComparison.OrdinalIgnoreCase)
+                || !ListFieldTypeCompatibility.IsCompatibleRuntimeType(created.TypeAsString, fieldPlan.TypeAsString))
+            {
+                throw new InvalidDataException(
+                    "Fresh target runtime List field differs for '"
+                    + fieldPlan.InternalName + "' (" + fieldPlan.SourceFieldId.ToString("D") + ").");
+            }
+            return created;
         }
 
     }

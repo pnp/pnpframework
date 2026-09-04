@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Migration.Schema.Fields;
+using System;
+using System.IO;
 
 namespace PnP.Framework.Test.EnterpriseWiki
 {
@@ -34,6 +36,67 @@ namespace PnP.Framework.Test.EnterpriseWiki
 
             Assert.AreNotEqual(FieldSchemaCanonicalizer.PortableDigest(baseline), FieldSchemaCanonicalizer.PortableDigest(hidden));
             Assert.AreNotEqual(FieldSchemaCanonicalizer.PortableDigest(baseline), FieldSchemaCanonicalizer.PortableDigest(changedDefault));
+        }
+
+        [TestMethod]
+        public void SiteFieldMergeSelectsParentProducerForMatchingInheritedConsumer()
+        {
+            var producer = Plan(
+                FieldSchemaRole.DirectBinding,
+                FieldOwnership.UserDefined,
+                FieldSchemaMaterializationDisposition.CreateOrReuseOwned,
+                "<Field Type=\"Text\" ID=\"{7e229256-a9ae-4bbe-a70f-391a14d95dcc}\" Name=\"DerivedFromID\" />");
+            var consumer = Plan(
+                FieldSchemaRole.InheritedFromParent,
+                FieldOwnership.TargetRuntime,
+                FieldSchemaMaterializationDisposition.RequireTargetRuntime,
+                null);
+
+            Assert.AreSame(
+                producer,
+                SiteFieldMaterializer.Merge(producer.FieldId, new[] { consumer, producer }));
+        }
+
+        [TestMethod]
+        public void SiteFieldMergeRejectsInheritedConsumerWithDifferentSourceSchema()
+        {
+            var producer = Plan(
+                FieldSchemaRole.DirectBinding,
+                FieldOwnership.UserDefined,
+                FieldSchemaMaterializationDisposition.CreateOrReuseOwned,
+                "<Field Type=\"Text\" ID=\"{7e229256-a9ae-4bbe-a70f-391a14d95dcc}\" Name=\"DerivedFromID\" />");
+            var consumer = Plan(
+                FieldSchemaRole.InheritedFromParent,
+                FieldOwnership.TargetRuntime,
+                FieldSchemaMaterializationDisposition.RequireTargetRuntime,
+                null);
+            consumer.SourcePortableSchemaSha256 = "different";
+
+            Assert.ThrowsException<InvalidDataException>(() =>
+                SiteFieldMaterializer.Merge(producer.FieldId, new[] { producer, consumer }));
+        }
+
+        private static FieldSchemaMaterializationPlan Plan(
+            FieldSchemaRole role,
+            FieldOwnership ownership,
+            FieldSchemaMaterializationDisposition disposition,
+            string targetSchema)
+        {
+            const string source = "<Field Type=\"Text\" ID=\"{7e229256-a9ae-4bbe-a70f-391a14d95dcc}\" Name=\"DerivedFromID\" />";
+            return new FieldSchemaMaterializationPlan
+            {
+                FieldId = Guid.Parse("7e229256-a9ae-4bbe-a70f-391a14d95dcc"),
+                InternalName = "DerivedFromID",
+                TypeAsString = "Text",
+                Role = role,
+                Ownership = ownership,
+                Disposition = disposition,
+                SourcePortableSchemaSha256 = FieldSchemaCanonicalizer.PortableDigest(source),
+                TargetSchemaXml = targetSchema,
+                TargetPortableSchemaSha256 = targetSchema == null
+                    ? null
+                    : FieldSchemaCanonicalizer.PortableDigest(targetSchema)
+            };
         }
     }
 }

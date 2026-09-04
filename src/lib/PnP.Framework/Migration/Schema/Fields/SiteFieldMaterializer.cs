@@ -125,25 +125,71 @@ namespace PnP.Framework.Migration.Schema.Fields
             return createdCount;
         }
 
-        private static FieldSchemaMaterializationPlan Merge(
+        internal static FieldSchemaMaterializationPlan Merge(
             Guid fieldId,
             IEnumerable<FieldSchemaMaterializationPlan> candidates)
         {
             var values = candidates.ToArray();
-            var first = values[0];
-            if (values.Any(value =>
-                value.Disposition != first.Disposition
-                || value.Ownership != first.Ownership
-                || !string.Equals(value.InternalName, first.InternalName, StringComparison.OrdinalIgnoreCase)
-                || !string.Equals(value.TypeAsString, first.TypeAsString, StringComparison.OrdinalIgnoreCase)
-                || !EquivalentTargetSchema(value, first)))
+            var producers = values
+                .Where(value => value.Disposition == FieldSchemaMaterializationDisposition.CreateOrReuseOwned)
+                .OrderBy(value => value.Role == FieldSchemaRole.DirectBinding ? 0 : 1)
+                .ToArray();
+            if (producers.Length > 0)
             {
-                throw new InvalidDataException(
-                    "Conflicting site-field execution plans were sealed for field "
-                    + fieldId.ToString("D") + ".");
+                var producer = producers[0];
+                if (producers.Any(value => !EquivalentProducer(value, producer))
+                    || values.Where(value => value.Disposition == FieldSchemaMaterializationDisposition.RequireTargetRuntime)
+                        .Any(value => !EquivalentInheritedConsumer(value, producer))
+                    || values.Any(value => value.Disposition == FieldSchemaMaterializationDisposition.Block))
+                {
+                    throw Conflict(fieldId);
+                }
+                return producer;
+            }
+
+            var first = values[0];
+            if (values.Any(value => value.Disposition != first.Disposition
+                || value.Ownership != first.Ownership
+                || !EquivalentIdentity(value, first)
+                || !string.Equals(
+                    value.SourcePortableSchemaSha256 ?? string.Empty,
+                    first.SourcePortableSchemaSha256 ?? string.Empty,
+                    StringComparison.OrdinalIgnoreCase)))
+            {
+                throw Conflict(fieldId);
             }
             return first;
         }
+
+        private static bool EquivalentProducer(
+            FieldSchemaMaterializationPlan left,
+            FieldSchemaMaterializationPlan right) =>
+            left.Ownership == right.Ownership
+            && EquivalentIdentity(left, right)
+            && EquivalentTargetSchema(left, right);
+
+        private static bool EquivalentInheritedConsumer(
+            FieldSchemaMaterializationPlan consumer,
+            FieldSchemaMaterializationPlan producer) =>
+            consumer.Role == FieldSchemaRole.InheritedFromParent
+            && consumer.Ownership == FieldOwnership.TargetRuntime
+            && EquivalentIdentity(consumer, producer)
+            && string.Equals(
+                consumer.SourcePortableSchemaSha256 ?? string.Empty,
+                producer.SourcePortableSchemaSha256 ?? string.Empty,
+                StringComparison.OrdinalIgnoreCase);
+
+        private static bool EquivalentIdentity(
+            FieldSchemaMaterializationPlan left,
+            FieldSchemaMaterializationPlan right) =>
+            left.FieldId == right.FieldId
+            && string.Equals(left.InternalName, right.InternalName, StringComparison.OrdinalIgnoreCase)
+            && string.Equals(left.TypeAsString, right.TypeAsString, StringComparison.OrdinalIgnoreCase);
+
+        private static InvalidDataException Conflict(Guid fieldId) =>
+            new InvalidDataException(
+                "Conflicting site-field execution plans were sealed for field "
+                + fieldId.ToString("D") + ".");
 
         private static bool EquivalentTargetSchema(
             FieldSchemaMaterializationPlan left,

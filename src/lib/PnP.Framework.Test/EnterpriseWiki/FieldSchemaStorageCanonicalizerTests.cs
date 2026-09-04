@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Migration.Schema.Fields;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace PnP.Framework.Test.EnterpriseWiki
 {
@@ -74,6 +75,33 @@ namespace PnP.Framework.Test.EnterpriseWiki
 
             Assert.ThrowsException<InvalidDataException>(() =>
                 SiteFieldMaterializer.Merge(producer.FieldId, new[] { producer, consumer }));
+        }
+
+        [TestMethod]
+        public void SiteFieldMaterializationOrdersHiddenCompanionBeforeTaxonomyConsumer()
+        {
+            var companion = Plan(
+                FieldSchemaRole.DirectBinding,
+                FieldOwnership.UserDefined,
+                FieldSchemaMaterializationDisposition.CreateOrReuseOwned,
+                "<Field Type=\"Note\" ID=\"{35fe1c89-1f26-4c87-bd68-061ced1afdb3}\" Name=\"g6775e77a6d84637a29014d883a4378a\" />");
+            companion.FieldId = Guid.Parse("35fe1c89-1f26-4c87-bd68-061ced1afdb3");
+            companion.InternalName = "g6775e77a6d84637a29014d883a4378a";
+            companion.TypeAsString = "Note";
+            var taxonomy = Plan(
+                FieldSchemaRole.DirectBinding,
+                FieldOwnership.UserDefined,
+                FieldSchemaMaterializationDisposition.CreateOrReuseOwned,
+                "<Field Type=\"TaxonomyFieldTypeMulti\" ID=\"{06775e77-a6d8-4637-a290-14d883a4378a}\" Name=\"ServicesDomain\" />");
+            taxonomy.FieldId = Guid.Parse("06775e77-a6d8-4637-a290-14d883a4378a");
+            taxonomy.InternalName = "ServicesDomain";
+            taxonomy.TypeAsString = "TaxonomyFieldTypeMulti";
+            taxonomy.HiddenTextFieldId = companion.FieldId;
+
+            var ordered = SiteFieldMaterializer.OrderForMaterialization(new[] { taxonomy, companion }).ToArray();
+
+            Assert.AreSame(companion, ordered[0]);
+            Assert.AreSame(taxonomy, ordered[1]);
         }
 
         private static FieldSchemaMaterializationPlan Plan(

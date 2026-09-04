@@ -27,13 +27,12 @@ namespace PnP.Framework.Migration.Schema.Fields
                 throw new ArgumentNullException(nameof(web));
             }
 
-            var values = (plans ?? Enumerable.Empty<FieldSchemaMaterializationPlan>())
+            var merged = (plans ?? Enumerable.Empty<FieldSchemaMaterializationPlan>())
                 .Where(value => value != null)
                 .GroupBy(value => value.FieldId)
                 .Select(group => Merge(group.Key, group))
-                .OrderBy(value => value.TypeAsString?.StartsWith("Calculated", StringComparison.OrdinalIgnoreCase) == true ? 1 : 0)
-                .ThenBy(value => value.Role == FieldSchemaRole.Dependency ? 0 : 1)
-                .ThenBy(value => value.FieldId)
+                .ToArray();
+            var values = OrderForMaterialization(merged)
                 .ToArray();
             if (values.Length == 0)
             {
@@ -45,15 +44,15 @@ namespace PnP.Framework.Migration.Schema.Fields
             }
 
             context.Load(web, value => value.EffectiveBasePermissions);
-            context.Load(web.AvailableFields, fields => fields.Include(
+            context.Load(web.Fields, fields => fields.Include(
                 value => value.Id,
                 value => value.InternalName,
                 value => value.TypeAsString,
                 value => value.SchemaXml));
             context.ExecuteQueryRetry();
 
-            var byId = web.AvailableFields.AsEnumerable().ToDictionary(value => value.Id);
-            var byName = web.AvailableFields.AsEnumerable()
+            var byId = web.Fields.AsEnumerable().ToDictionary(value => value.Id);
+            var byName = web.Fields.AsEnumerable()
                 .Where(value => !string.IsNullOrWhiteSpace(value.InternalName))
                 .GroupBy(value => value.InternalName, StringComparer.OrdinalIgnoreCase)
                 .ToDictionary(group => group.Key, group => group.ToArray(), StringComparer.OrdinalIgnoreCase);
@@ -106,6 +105,15 @@ namespace PnP.Framework.Migration.Schema.Fields
                     value => value.SchemaXml);
                 context.ExecuteQueryRetry();
                 Verify(created, plan);
+                byId[created.Id] = created;
+                if (!byName.TryGetValue(created.InternalName, out var sameName))
+                {
+                    byName[created.InternalName] = new[] { created };
+                }
+                else
+                {
+                    byName[created.InternalName] = sameName.Concat(new[] { created }).ToArray();
+                }
                 createdCount++;
             }
 
@@ -113,7 +121,7 @@ namespace PnP.Framework.Migration.Schema.Fields
             // fields have been created; this is the transaction's fresh proof.
             foreach (var plan in values)
             {
-                var readback = web.AvailableFields.GetById(plan.FieldId);
+                var readback = web.Fields.GetById(plan.FieldId);
                 context.Load(readback,
                     value => value.Id,
                     value => value.InternalName,
@@ -123,6 +131,23 @@ namespace PnP.Framework.Migration.Schema.Fields
                 Verify(readback, plan);
             }
             return createdCount;
+        }
+
+        internal static IEnumerable<FieldSchemaMaterializationPlan> OrderForMaterialization(
+            IEnumerable<FieldSchemaMaterializationPlan> plans)
+        {
+            var values = (plans ?? Enumerable.Empty<FieldSchemaMaterializationPlan>()).ToArray();
+            var hiddenTextFieldIds = values
+                .Where(value => value?.HiddenTextFieldId.HasValue == true)
+                .Select(value => value.HiddenTextFieldId.Value)
+                .ToHashSet();
+            return values
+                .OrderBy(value => hiddenTextFieldIds.Contains(value.FieldId)
+                    ? 0
+                    : value.HiddenTextFieldId.HasValue ? 2 : 1)
+                .ThenBy(value => value.TypeAsString?.StartsWith("Calculated", StringComparison.OrdinalIgnoreCase) == true ? 1 : 0)
+                .ThenBy(value => value.Role == FieldSchemaRole.Dependency ? 0 : 1)
+                .ThenBy(value => value.FieldId);
         }
 
         internal static FieldSchemaMaterializationPlan Merge(

@@ -183,7 +183,16 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
             Web web,
             ContentTypeMaterializationPlan plan)
         {
-            using (var readbackContext = context.Clone(context.Url))
+            // Content types are scoped to the Web that owns the transaction. A
+            // publishing page can execute from a child Web while its Page Layout
+            // schema is owned by the site-collection root Web. Cloning
+            // context.Url in that case freshens the child Web and makes an exact
+            // root-Web content type look absent (CreateOwned) after it was
+            // successfully created or reused. Resolve and clone the admitted Web
+            // URL so verification reads back the same scope that was mutated.
+            context.Load(web, value => value.Url);
+            context.ExecuteQueryRetry();
+            using (var readbackContext = context.Clone(web.Url))
             {
                 var readback = ContentTypeTargetInspector.Inspect(readbackContext, readbackContext.Web, plan);
                 var readbackAdmission = ContentTypeTargetAdmissionEvaluator.Evaluate(plan, readback);
@@ -196,7 +205,7 @@ namespace PnP.Framework.Migration.Schema.ContentTypes
                         .ToArray();
                     throw new InvalidOperationException(
                         "Fresh content type schema readback differs from the sealed plan; disposition="
-                        + readbackAdmission.Disposition + ". " + string.Join(" ", diagnostics));
+                        + readbackAdmission.Disposition + "; scope='" + web.Url + "'. " + string.Join(" ", diagnostics));
                 }
 
                 return readback;

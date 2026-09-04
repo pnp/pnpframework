@@ -22,21 +22,16 @@ namespace PnP.Framework.Migration.Lists.Execution
             IDictionary<string, string> contentTypeIds,
             bool lookupPhase)
         {
+            if (!lookupPhase)
+            {
+                ApplyContentType(context, targetItem, sourceItem, contentTypeIds);
+            }
             var plans = plan.Fields.ToDictionary(value => value.InternalName, StringComparer.OrdinalIgnoreCase);
             var changed = false;
             foreach (var value in sourceItem.Values)
             {
                 if (!lookupPhase && string.Equals(value.InternalName, "ContentTypeId", StringComparison.OrdinalIgnoreCase))
                 {
-                    var sourceContentTypeId = value.ScalarValue ?? value.RawValue;
-                    string targetContentTypeId;
-                    if (!string.IsNullOrWhiteSpace(sourceContentTypeId)
-                        && contentTypeIds != null
-                        && contentTypeIds.TryGetValue(sourceContentTypeId, out targetContentTypeId))
-                    {
-                        targetItem["ContentTypeId"] = targetContentTypeId;
-                        changed = true;
-                    }
                     continue;
                 }
                 ListFieldMaterializationPlan fieldPlan;
@@ -67,6 +62,31 @@ namespace PnP.Framework.Migration.Lists.Execution
                 targetItem.Update();
                 context.ExecuteQueryRetry();
             }
+        }
+
+        private static void ApplyContentType(
+            ClientContext context,
+            ListItem targetItem,
+            ListItemSnapshot sourceItem,
+            IDictionary<string, string> contentTypeIds)
+        {
+            var value = sourceItem.Values.FirstOrDefault(candidate =>
+                string.Equals(candidate.InternalName, "ContentTypeId", StringComparison.OrdinalIgnoreCase));
+            var sourceContentTypeId = value?.ScalarValue ?? value?.RawValue;
+            if (string.IsNullOrWhiteSpace(sourceContentTypeId)
+                || contentTypeIds == null
+                || !contentTypeIds.TryGetValue(sourceContentTypeId, out var targetContentTypeId))
+            {
+                return;
+            }
+
+            // SharePoint may apply Content Type defaults after other field values
+            // when both are submitted in one request. Commit the Content Type
+            // first so authored values such as Title and Order are not reset to
+            // their document-library defaults.
+            targetItem["ContentTypeId"] = targetContentTypeId;
+            targetItem.Update();
+            context.ExecuteQueryRetry();
         }
 
         private static bool WritesValue(ListFieldMaterializationDisposition value)

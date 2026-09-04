@@ -85,6 +85,10 @@ namespace PnP.Framework.Migration.Schema.Fields
             {
                 attribute.Remove();
             }
+            foreach (var attribute in root.Attributes().Where(IsDefaultEquivalentAttribute).ToArray())
+            {
+                attribute.Remove();
+            }
         }
 
         private static void SetTaxonomyProperty(XElement root, string name, Guid? value)
@@ -110,6 +114,7 @@ namespace PnP.Framework.Migration.Schema.Fields
             foreach (var attribute in element.Attributes()
                          .Where(item => !item.IsNamespaceDeclaration)
                          .Where(item => !VolatileAttributes.Contains(item.Name.LocalName))
+                         .Where(item => !IsDefaultEquivalentAttribute(item))
                          .OrderBy(item => ExpandedName(item.Name), StringComparer.Ordinal))
             {
                 var value = attribute.Value;
@@ -181,6 +186,26 @@ namespace PnP.Framework.Migration.Schema.Fields
                 && Guid.TryParse(value.Trim().Trim('{', '}'), out id)
                     ? id.ToString("D")
                     : value;
+        }
+
+        private static bool IsDefaultEquivalentAttribute(XAttribute attribute)
+        {
+            var name = attribute.Name.LocalName;
+            var value = attribute.Value?.Trim() ?? string.Empty;
+            return (string.Equals(name, "Hidden", StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(name, "ReadOnly", StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(name, "Sealed", StringComparison.OrdinalIgnoreCase))
+                && string.Equals(value, "FALSE", StringComparison.OrdinalIgnoreCase)
+                || (string.Equals(name, "AllowDeletion", StringComparison.OrdinalIgnoreCase)
+                    && string.Equals(value, "TRUE", StringComparison.OrdinalIgnoreCase))
+                || (string.Equals(name, "Customization", StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(name, "PITarget", StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(name, "PrimaryPITarget", StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(name, "PIAttribute", StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(name, "PrimaryPIAttribute", StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(name, "Aggregation", StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(name, "Node", StringComparison.OrdinalIgnoreCase))
+                && string.IsNullOrEmpty(value);
         }
     }
 }

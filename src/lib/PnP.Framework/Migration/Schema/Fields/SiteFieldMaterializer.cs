@@ -136,14 +136,32 @@ namespace PnP.Framework.Migration.Schema.Fields
                 || value.Ownership != first.Ownership
                 || !string.Equals(value.InternalName, first.InternalName, StringComparison.OrdinalIgnoreCase)
                 || !string.Equals(value.TypeAsString, first.TypeAsString, StringComparison.OrdinalIgnoreCase)
-                || !string.Equals(value.TargetSchemaXml ?? string.Empty, first.TargetSchemaXml ?? string.Empty, StringComparison.Ordinal)
-                || !string.Equals(value.TargetPortableSchemaSha256 ?? string.Empty, first.TargetPortableSchemaSha256 ?? string.Empty, StringComparison.OrdinalIgnoreCase)))
+                || !EquivalentTargetSchema(value, first)))
             {
                 throw new InvalidDataException(
                     "Conflicting site-field execution plans were sealed for field "
                     + fieldId.ToString("D") + ".");
             }
             return first;
+        }
+
+        private static bool EquivalentTargetSchema(
+            FieldSchemaMaterializationPlan left,
+            FieldSchemaMaterializationPlan right)
+        {
+            if (string.IsNullOrWhiteSpace(left.TargetSchemaXml)
+                || string.IsNullOrWhiteSpace(right.TargetSchemaXml))
+            {
+                return string.Equals(
+                    left.TargetSchemaXml ?? string.Empty,
+                    right.TargetSchemaXml ?? string.Empty,
+                    StringComparison.Ordinal);
+            }
+
+            return string.Equals(
+                FieldSchemaCanonicalizer.PortableDigest(left.TargetSchemaXml),
+                FieldSchemaCanonicalizer.PortableDigest(right.TargetSchemaXml),
+                StringComparison.OrdinalIgnoreCase);
         }
 
         private static void Verify(Field field, FieldSchemaMaterializationPlan plan)

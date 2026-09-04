@@ -47,6 +47,7 @@ namespace PnP.Framework.Migration.Schema.Fields
             context.Load(web.Fields, fields => fields.Include(
                 value => value.Id,
                 value => value.InternalName,
+                value => value.Title,
                 value => value.TypeAsString,
                 value => value.SchemaXml));
             context.ExecuteQueryRetry();
@@ -62,6 +63,7 @@ namespace PnP.Framework.Migration.Schema.Fields
                 byId.TryGetValue(plan.FieldId, out var existing);
                 if (existing != null)
                 {
+                    EnsureDisplayName(context, existing, plan);
                     Verify(existing, plan);
                     continue;
                 }
@@ -102,6 +104,7 @@ namespace PnP.Framework.Migration.Schema.Fields
                 context.Load(created,
                     value => value.Id,
                     value => value.InternalName,
+                    value => value.Title,
                     value => value.TypeAsString,
                     value => value.SchemaXml);
                 context.ExecuteQueryRetry();
@@ -126,12 +129,35 @@ namespace PnP.Framework.Migration.Schema.Fields
                 context.Load(readback,
                     value => value.Id,
                     value => value.InternalName,
+                    value => value.Title,
                     value => value.TypeAsString,
                     value => value.SchemaXml);
                 context.ExecuteQueryRetry();
                 Verify(readback, plan);
             }
             return createdCount;
+        }
+
+        private static void EnsureDisplayName(
+            ClientContext context,
+            Field field,
+            FieldSchemaMaterializationPlan plan)
+        {
+            if (!string.IsNullOrWhiteSpace(field.Title) || string.IsNullOrWhiteSpace(plan.Title))
+            {
+                return;
+            }
+
+            field.Title = plan.Title;
+            field.Update();
+            context.ExecuteQueryRetry();
+            context.Load(field,
+                value => value.Id,
+                value => value.InternalName,
+                value => value.Title,
+                value => value.TypeAsString,
+                value => value.SchemaXml);
+            context.ExecuteQueryRetry();
         }
 
         internal static IEnumerable<FieldSchemaMaterializationPlan> OrderForMaterialization(
@@ -247,6 +273,14 @@ namespace PnP.Framework.Migration.Schema.Fields
             {
                 throw new InvalidDataException(
                     "Fresh target site-field identity/type differs for '"
+                    + plan.InternalName + "' (" + plan.FieldId.ToString("D") + ").");
+            }
+            if (plan.Disposition == FieldSchemaMaterializationDisposition.CreateOrReuseOwned
+                && !string.IsNullOrWhiteSpace(plan.Title)
+                && string.IsNullOrWhiteSpace(field.Title))
+            {
+                throw new InvalidDataException(
+                    "Fresh target site-field DisplayName is empty for '"
                     + plan.InternalName + "' (" + plan.FieldId.ToString("D") + ").");
             }
             if (plan.Disposition == FieldSchemaMaterializationDisposition.CreateOrReuseOwned

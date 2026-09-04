@@ -60,6 +60,21 @@ namespace PnP.Framework.Test.EnterpriseWiki
         }
 
         [TestMethod]
+        public void TargetRewritePreservesHiddenTaxonomyCompanionDisplayName()
+        {
+            const string source = "<Field Type=\"Note\" DisplayName=\"ServicesDomain_0\" Hidden=\"TRUE\" "
+                + "ShowInViewForms=\"FALSE\" CanToggleHidden=\"TRUE\" SourceID=\"{11111111-1111-1111-1111-111111111111}\" "
+                + "ID=\"{35fe1c89-1f26-4c87-bd68-061ced1afdb3}\" Name=\"g6775e77a6d84637a29014d883a4378a\" />";
+
+            var target = FieldSchemaCanonicalizer.RewriteForTarget(source);
+
+            StringAssert.Contains(target, "DisplayName=\"ServicesDomain_0\"");
+            Assert.AreEqual(
+                FieldSchemaCanonicalizer.PortableDigest(source),
+                FieldSchemaCanonicalizer.PortableDigest(target));
+        }
+
+        [TestMethod]
         public void PortableSchemaAcceptsRuntimeIndexOnDocumentIdValueFieldOnly()
         {
             const string source = "<Field Type=\"Text\" ID=\"{ae3e2a36-125d-45d3-9051-744b513536a6}\" Name=\"_dlc_DocId\" />";

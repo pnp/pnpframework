@@ -89,10 +89,6 @@ namespace PnP.Framework.Migration.Schema.Fields
             {
                 attribute.Remove();
             }
-            if (IsHiddenTaxonomyCompanionField(root))
-            {
-                root.Attribute("DisplayName")?.Remove();
-            }
         }
 
         private static void SetTaxonomyProperty(XElement root, string name, Guid? value)

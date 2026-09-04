@@ -229,17 +229,25 @@ namespace PnP.Framework.Migration.Lists.Execution
             ListContentTypeSnapshot source,
             ISet<Guid> selectedFieldIds)
         {
-            var missing = source.FieldLinks
-                .Where(value => value != null && !selectedFieldIds.Contains(value.FieldId))
-                .Select(value => value.InternalName)
-                .ToArray();
-            if (missing.Length > 0)
+            // PageIngredientPlanEvaluator has already validated that every
+            // required non-executable FieldLink was explicitly released by this
+            // executable Content Type Transform action. Project only retained
+            // links into the runtime transaction while leaving the complete
+            // source Content Type and released cache links in the sealed package.
+            return new ListContentTypeSnapshot
             {
-                throw new InvalidOperationException(
-                    "An executable List Content Type has non-executable field-link dependencies: "
-                    + string.Join(", ", missing) + ".");
-            }
-            return source;
+                Id = source.Id,
+                Name = source.Name,
+                Description = source.Description,
+                Group = source.Group,
+                ParentId = source.ParentId,
+                Hidden = source.Hidden,
+                ReadOnly = source.ReadOnly,
+                Sealed = source.Sealed,
+                FieldLinks = source.FieldLinks
+                    .Where(value => value != null && selectedFieldIds.Contains(value.FieldId))
+                    .ToList()
+            };
         }
 
         private static ContentTypeClosureNodePlan ProjectContentTypeNode(ContentTypeClosureNodePlan source)

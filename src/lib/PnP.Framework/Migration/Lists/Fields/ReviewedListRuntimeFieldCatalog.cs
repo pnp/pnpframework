@@ -22,9 +22,28 @@ namespace PnP.Framework.Migration.Lists.Fields
                 [new Guid("89a0fbbc-67b4-40bd-8c9a-386b325ab4ca")] = ("SharingHintHash", "Text")
             };
 
+        private static readonly IReadOnlyDictionary<Guid, (string InternalName, string TypeAsString)> TaxonomyCacheFields =
+            new Dictionary<Guid, (string InternalName, string TypeAsString)>
+            {
+                [new Guid("f3b0adf9-c1a2-4b02-920d-943fba4b3611")] = ("TaxCatchAll", "LookupMulti"),
+                [new Guid("8f6b6dd8-9357-4019-8172-966fcd502ed2")] = ("TaxCatchAllLabel", "LookupMulti")
+            };
+
         public static bool IsSnapshotOnly(ListFieldSnapshot field)
         {
-            if (field == null || !field.ReadOnly || !field.Sealed
+            if (field == null)
+            {
+                return false;
+            }
+
+            if (field.Hidden && field.Sealed
+                && TaxonomyCacheFields.TryGetValue(field.Id, out var taxonomyCache))
+            {
+                return string.Equals(field.InternalName, taxonomyCache.InternalName, StringComparison.OrdinalIgnoreCase)
+                    && string.Equals(field.TypeAsString, taxonomyCache.TypeAsString, StringComparison.OrdinalIgnoreCase);
+            }
+
+            if (!field.ReadOnly || !field.Sealed
                 || !SnapshotOnlyFields.TryGetValue(field.Id, out var reviewed))
             {
                 return false;

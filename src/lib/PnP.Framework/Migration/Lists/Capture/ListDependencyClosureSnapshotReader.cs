@@ -87,7 +87,8 @@ namespace PnP.Framework.Migration.Lists.Capture
             // SharePoint allocates target WssIds when taxonomy values are set.
             // The field binding and source term identifiers remain fully
             // captured by TaxonomyFieldBindingSnapshot.
-            return !field.TypeAsString.StartsWith("TaxonomyFieldType", StringComparison.OrdinalIgnoreCase);
+            return !field.TypeAsString.StartsWith("TaxonomyFieldType", StringComparison.OrdinalIgnoreCase)
+                && !ReviewedListRuntimeFieldCatalog.IsSnapshotOnly(field);
         }
 
         private sealed class ListIdentity

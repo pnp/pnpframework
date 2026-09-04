@@ -31,5 +31,22 @@ namespace PnP.Framework.Test.EnterpriseWiki
 
             Assert.IsTrue(ListDependencyClosureSnapshotReader.ShouldFollowLookupDependency(field));
         }
+
+        [TestMethod]
+        public void TaxonomyCatchAllCacheDoesNotExpandHiddenList()
+        {
+            var field = new ListFieldSnapshot
+            {
+                Id = Guid.Parse("f3b0adf9-c1a2-4b02-920d-943fba4b3611"),
+                InternalName = "TaxCatchAll",
+                TypeAsString = "LookupMulti",
+                Hidden = true,
+                Sealed = true,
+                SourceLookupListId = Guid.Parse("11111111-1111-1111-1111-111111111111")
+            };
+
+            Assert.IsFalse(ListDependencyClosureSnapshotReader.ShouldFollowLookupDependency(field));
+            Assert.IsTrue(ReviewedListRuntimeFieldCatalog.IsSnapshotOnly(field));
+        }
     }
 }

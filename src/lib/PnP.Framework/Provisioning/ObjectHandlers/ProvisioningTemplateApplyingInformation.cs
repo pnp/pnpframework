@@ -129,5 +129,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// Defines a delay to wait for after modern site creation
         /// </summary>
         public Int32 DelayAfterModernSiteCreation { get; set; }
+
+        /// <summary>
+        /// Controls whether property bag writes are allowed on NoScript sites.
+        /// When null (default), the provisioning engine auto-detects via a sentinel write probe.
+        /// Set to true if the tenant has AllowWebPropertyBagUpdateWhenDenyAddAndCustomizePagesIsEnabled = true.
+        /// Set to false to skip all property bag write operations without probing.
+        /// </summary>
+        public bool? PropertyBagWriteAllowed { get; set; }
     }
 }

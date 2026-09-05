@@ -1055,6 +1055,7 @@ namespace PnP.Framework.Enums
         public static readonly Guid ResolvedBy = new Guid("{b4fa187b-eb65-478e-8bc6-93b0da320f03}");
         public static readonly Guid ResolvedDate = new Guid("{c4995c71-4c5c-4e9f-afc1-a9033f2bfde5}");
         public static readonly Guid Description = new Guid("{3f155110-a6a2-4d70-926c-94648101f0e8}");
+        public static readonly Guid _ExtendedDescription = new Guid("{cb19284a-cde7-4570-a980-1dab8bd74470}");
         public static readonly Guid HolidayDate = new Guid("{335e22c3-b8a4-4234-9790-7a03eeb7b0d4}");
         public static readonly Guid V4HolidayDate = new Guid("{492b1ac0-c594-4013-a2b6-ea70f5a8a506}");
         public static readonly Guid IsNonWorkingDay = new Guid("{baf7091c-01fb-4831-a975-08254f87f234}");
@@ -1292,6 +1293,7 @@ namespace PnP.Framework.Enums
                     [End] = true,
                     [EncodedAbsThumbnailUrl] = true,
                     [Description] = true,
+                    [_ExtendedDescription] = true,
                     [DisplayTemplateJSTargetContentType] = true,
                     [V4HolidayDate] = true,
                     [EmailSubject] = true,

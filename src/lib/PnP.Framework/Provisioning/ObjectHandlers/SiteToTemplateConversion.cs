@@ -460,6 +460,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 CallWebHooks(template, tokenParser, ProvisioningTemplateWebhookKind.ProvisioningTemplateStarted);
 
+                if (!provisioningInfo.PropertyBagWriteAllowed.HasValue)
+                {
+                    provisioningInfo.PropertyBagWriteAllowed = !web.IsPropertyBagWriteBlocked();
+                }
+
                 foreach (var handler in objectHandlers)
                 {
                     if (handler.WillProvision(web, template, provisioningInfo))

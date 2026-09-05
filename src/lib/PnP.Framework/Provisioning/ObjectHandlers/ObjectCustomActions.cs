@@ -162,7 +162,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             var isDirty = false;
 
-            if (isNoScriptSite)
+            if (isNoScriptSite && !customAction.IsSPFxCustomAction())
             {
                 scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_CustomActions_SkippingAddUpdateDueToNoScript, customAction.Name);
                 return;

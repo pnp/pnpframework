@@ -672,7 +672,7 @@ namespace PnP.Framework
             confidentialClientApplication = builder.Build();
 
             // register tokencache if callback provided
-            tokenCacheCallback?.Invoke(confidentialClientApplication.UserTokenCache);
+            tokenCacheCallback?.Invoke(confidentialClientApplication.AppTokenCache);
 
             authenticationType = ClientContextType.AzureADCertificate;
         }

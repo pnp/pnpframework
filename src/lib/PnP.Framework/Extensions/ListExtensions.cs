@@ -1778,12 +1778,22 @@ namespace Microsoft.SharePoint.Client
 
                         list.Update();
 
-                        clientContext.ExecuteQueryRetry();
+                        try
+                        {
+                            clientContext.ExecuteQueryRetry();
+                        }
+                        catch (ServerException ex)
+                        {
+                            // Since September 2026 SharePoint Online rejects registering event receivers through CSOM with a
+                            // ServiceUnavailableException. The defaults file is already in place, so do not fail the whole
+                            // operation, but without the receiver SharePoint will not apply the defaults to newly added items.
+                            Log.Warning(Constants.LOGGING_SOURCE, CoreResources.ListExtensions_DefaultColumnValuesReceiverNotRegistered, list.RootFolder.ServerRelativeUrl, ex.Message);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error applying default column values", ex);
+                    throw new Exception($"Error applying default column values: {ex.Message}", ex);
                 }
             }
         }

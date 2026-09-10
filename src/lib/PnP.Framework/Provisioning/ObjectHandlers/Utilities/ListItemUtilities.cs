@@ -267,10 +267,59 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
             var context = item.Context as ClientContext;
             var list = item.ParentList;
-            context.Web.EnsureProperty(w => w.Url);
 
-            bool isDocLib = list.EnsureProperty(l => l.BaseType) == BaseType.DocumentLibrary;
-            bool isPagesLib = list.EnsureProperty(l => l.RootFolder).Name.Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);
+            //Ensure can have unwanted sideeffects as ExecuteQuery is called..
+            if (!context.Web.IsPropertyAvailable("Url"))
+            {
+                context.Web.EnsureProperty(w => w.Url);
+            }
+
+            bool isDocLib = false;  
+            bool isPagesLib = false;
+
+            if (list.IsPropertyAvailable("BaseType"))
+            {
+                isDocLib = list.BaseType == BaseType.DocumentLibrary;
+            }
+            else
+            {
+                // Otherwise, ensure the property is loaded
+                try
+                {
+                    isDocLib = list.EnsureProperty(l => l.BaseType) == BaseType.DocumentLibrary;
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(Constants.LOGGING_SOURCE, "Error while trying to get list property 'BaseType' for '{0}'. Error: {1}", list.IsPropertyAvailable("Title")?list.Title:"list title not loaded", ex.Message);
+                    //throw;
+                }
+            }
+
+            if (list.IsObjectPropertyInstantiated("RootFolder") && list.RootFolder.IsPropertyAvailable("Name"))
+            {
+                isPagesLib = list.RootFolder.Name.Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);
+            }
+            else
+            {
+                // Otherwise, ensure the property is loaded
+                try
+                {
+                    if(!list.IsObjectPropertyInstantiated("RootFolder"))
+                    {
+                        list.EnsureProperty(l => l.RootFolder);
+                    }
+                    if (!list.RootFolder.IsPropertyAvailable("Name"))
+                    {
+                        list.RootFolder.EnsureProperty(rf => rf.Name);
+                    }
+                    isPagesLib = list.RootFolder.Name.Equals("SitePages", StringComparison.InvariantCultureIgnoreCase);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(Constants.LOGGING_SOURCE, "Error while trying to get list property 'RootFolder' for '{0}'. Error: {1}", list.IsPropertyAvailable("Title") ? list.Title : "list title not loaded", ex.Message);
+                    //throw;
+                }
+            }
 
             var clonedContext = context.Clone(context.Web.Url);
             var web = clonedContext.Web;

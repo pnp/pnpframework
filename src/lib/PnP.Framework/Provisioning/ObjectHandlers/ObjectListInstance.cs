@@ -2060,7 +2060,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     // for a new list immediately add the webhook
                     if (!isListUpdate)
                     {
-                        var webhookSubscription = list.AddWebhookSubscription(webhookServerNotificationUrl, DateTime.Now.AddDays(webhook.ExpiresInDays));
+                        var webhookSubscription = list.AddWebhookSubscription(webhookServerNotificationUrl, DateTime.Now.AddDays(webhook.ExpiresInDays), webhook.ClientState);
                     }
                     // for existing lists add a new webhook or update existing webhook
                     else
@@ -2073,13 +2073,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             // refresh the expiration date of the existing webhook
                             existingWebhook.ExpirationDateTime = DateTime.Now.AddDays(webhook.ExpiresInDays);
+                            // update client state of the existing webhook
+                            existingWebhook.ClientState = webhook.ClientState;
                             // update the existing webhook
                             list.UpdateWebhookSubscription(existingWebhook);
                         }
                         else
                         {
                             // add as new webhook
-                            var webhookSubscription = list.AddWebhookSubscription(webhookServerNotificationUrl, DateTime.Now.AddDays(webhook.ExpiresInDays));
+                            var webhookSubscription = list.AddWebhookSubscription(webhookServerNotificationUrl, DateTime.Now.AddDays(webhook.ExpiresInDays), webhook.ClientState);
                         }
                     }
                 }

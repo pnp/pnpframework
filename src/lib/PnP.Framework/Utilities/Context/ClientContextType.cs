@@ -15,7 +15,7 @@
         OnPremises = 7,
         AccessToken = 8,
         PnPCoreSdk = 9,
-        
+        AzureLongRunningOnBehalfOf = 12
         /// <summary>
         /// System Assigned Managed Identity in Azure
         /// </summary>

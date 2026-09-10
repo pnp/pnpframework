@@ -1761,29 +1761,37 @@ namespace Microsoft.SharePoint.Client
                         clientContext.ExecuteQueryRetry();
                     }
 
-                    // Add the event receiver if not already there
+                    // Add the event receiver if not already there. Since September 2026 SharePoint Online rejects registering
+                    // it through CSOM (EventReceivers.Add) with a ServiceUnavailableException, while the REST endpoint still
+                    // accepts the same definition, so register it through REST.
                     if (list.GetEventReceiverByName("LocationBasedMetadataDefaultsReceiver ItemAdded") == null)
                     {
-                        EventReceiverDefinitionCreationInformation eventCi = new EventReceiverDefinitionCreationInformation
+                        list.EnsureProperty(l => l.Id);
+                        var payload = JsonSerializer.Serialize(new
                         {
-                            Synchronization = EventReceiverSynchronization.Synchronous,
-                            EventType = EventReceiverType.ItemAdded,
+                            Synchronization = (int)EventReceiverSynchronization.Synchronous,
+                            EventType = (int)EventReceiverType.ItemAdded,
                             ReceiverAssembly = "Microsoft.Office.DocumentManagement, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c",
                             ReceiverClass = "Microsoft.Office.DocumentManagement.LocationBasedMetadataDefaultsReceiver",
                             ReceiverName = "LocationBasedMetadataDefaultsReceiver ItemAdded",
                             SequenceNumber = 1000
-                        };
+                        });
 
-                        list.EventReceivers.Add(eventCi);
-
-                        list.Update();
-
-                        clientContext.ExecuteQueryRetry();
+                        try
+                        {
+                            RESTUtilities.ExecutePostAsync(list.ParentWeb, $"/_api/web/lists(guid'{list.Id}')/EventReceivers", payload).GetAwaiter().GetResult();
+                        }
+                        catch (Exception ex)
+                        {
+                            // The defaults file is already in place, so do not fail the whole operation, but without the
+                            // receiver SharePoint will not apply the defaults to newly added items.
+                            Log.Warning(Constants.LOGGING_SOURCE, CoreResources.ListExtensions_DefaultColumnValuesReceiverNotRegistered, list.RootFolder.ServerRelativeUrl, ex.Message);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error applying default column values", ex);
+                    throw new Exception($"Error applying default column values: {ex.Message}", ex);
                 }
             }
         }

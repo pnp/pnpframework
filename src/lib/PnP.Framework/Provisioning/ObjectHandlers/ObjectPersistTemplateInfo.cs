@@ -24,11 +24,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             using (var scope = new PnPMonitoredScope(this.Name))
             {
-                // Check if this is not a noscript site as we're not allowed to write to the web property bag is that one
-                bool isNoScriptSite = web.IsNoScriptSite();
-                if (isNoScriptSite)
+                // Check if property bag writes are blocked (NoScript without tenant override)
+                if (applyingInformation.PropertyBagWriteAllowed == false)
                 {
-
                     return parser;
                 }
 
@@ -60,7 +58,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             if (!_willProvision.HasValue)
             {
-                _willProvision = !web.IsNoScriptSite();
+                _willProvision = applyingInformation.PropertyBagWriteAllowed != false;
             }
             return _willProvision.Value;
         }

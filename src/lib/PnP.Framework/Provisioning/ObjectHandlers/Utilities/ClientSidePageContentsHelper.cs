@@ -200,7 +200,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 }
                                 else
                                 {
-                                    throw ex;
+                                    throw;
                                 }
                             }
 
@@ -266,11 +266,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 break;
                             case PnPCore.CanvasSectionTemplate.FlexibleLayoutSection:
                                 //XML Schema does not support FlexibleLayoutSection, so we need to fallback to OneColumn, during loading the page we have to restore from JsonControlData (sectionFactor=100)
-                                sectionInstance.Type = CanvasSectionType.OneColumn;
+                                sectionInstance.Type = CanvasSectionType.FlexibleLayoutSection;
                                 break;
                             case PnPCore.CanvasSectionTemplate.FlexibleLayoutVerticalSection:
                                 //XML Schema does not support FlexibleLayoutVerticalSection, so we need to fallback to OneColumnVerticalSection, during loading the page we have to restore from JsonControlData (sectionFactor=100)
-                                sectionInstance.Type = CanvasSectionType.OneColumnVerticalSection;
+                                sectionInstance.Type = CanvasSectionType.FlexibleLayoutVerticalSection;
                                 break;
                             default:
                                 sectionInstance.Type = CanvasSectionType.OneColumn;

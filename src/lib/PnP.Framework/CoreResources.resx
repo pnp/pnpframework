@@ -1047,6 +1047,9 @@
   <data name="ListExtensions_IncorrectValueFormat" xml:space="preserve">
     <value>Value should be in the format of &lt;id&gt;;#&lt;value&gt; (Example 1: 1;#Foo Bar   Example 2: 1;#Foo Bar;#2;#Bar Foo)</value>
   </data>
+  <data name="ListExtensions_DefaultColumnValuesReceiverNotRegistered" xml:space="preserve">
+    <value>Default column values for '{0}' have been stored, but the LocationBasedMetadataDefaultsReceiver event receiver could not be registered on the list, so SharePoint will not apply them to newly added items: {1}</value>
+  </data>
   <data name="WebExtensions_CreatePublishingImageRendition" xml:space="preserve">
     <value>Creating Image Rendition '{0}' of width '{1}' and height '{2}'.</value>
   </data>

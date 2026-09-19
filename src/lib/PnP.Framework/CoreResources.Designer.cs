@@ -604,7 +604,16 @@ namespace PnP.Framework {
                 return ResourceManager.GetString("ListExtensions_IncorrectValueFormat", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Default column values for &apos;{0}&apos; have been stored, but the LocationBasedMetadataDefaultsReceiver event receiver could not be registered on the list, so SharePoint will not apply them to newly added items: {1}.
+        /// </summary>
+        internal static string ListExtensions_DefaultColumnValuesReceiverNotRegistered {
+            get {
+                return ResourceManager.GetString("ListExtensions_DefaultColumnValuesReceiverNotRegistered", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Skipping reindexing of the list because it&apos;s marked as a &apos;no crawl&apos; list..
         /// </summary>

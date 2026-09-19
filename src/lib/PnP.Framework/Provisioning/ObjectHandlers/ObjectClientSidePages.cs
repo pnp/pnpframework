@@ -373,7 +373,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
 
             // Page Header
-            if (clientSidePage.Header != null && page.LayoutType != PnPCore.PageLayoutType.Topic)
+            if (clientSidePage.Header != null)
             {
                 switch (clientSidePage.Header.Type)
                 {
@@ -834,83 +834,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 //    }
                                 //}
                             }
-                        }
-                    }
-                }
-            }
-
-            // Handle the header controls in the topic pages
-            if (page.LayoutType == PnPCore.PageLayoutType.Topic)
-            {
-                var headerControlSection = clientSidePage.Sections.FirstOrDefault(p => p.Order == 999999);
-                if (headerControlSection != null)
-                {
-                    // Ensure there's at least one default section available
-                    if (!page.Sections.Any())
-                    {
-                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 0);
-                    }
-
-                    // Clear existing header controls as they'll be overwritten
-                    page.HeaderControls.Clear();                    
-
-                    // Load existing available controls
-                    var componentsToAdd = page.AvailablePageComponents();
-
-                    int order = 1;
-                    foreach (var headerControl in headerControlSection.Controls)
-                    {
-                        PnPCore.IPageComponent baseControl = null;
-
-                        // apply token parsing on the web part properties
-                        headerControl.JsonControlData = parser.ParseString(headerControl.JsonControlData);
-
-                        if (headerControl.Type == WebPartType.Custom)
-                        {
-                            // Find the base control installed to the current site
-                            baseControl = componentsToAdd.FirstOrDefault(p => p.Id.Equals($"{{{headerControl.ControlId}}}", StringComparison.CurrentCultureIgnoreCase));
-                            if (baseControl == null)
-                            {
-                                baseControl = componentsToAdd.FirstOrDefault(p => p.Id.Equals(headerControl.ControlId.ToString(), StringComparison.InvariantCultureIgnoreCase));
-                            }
-
-                            if (baseControl != null)
-                            {
-                                PnPCore.IPageWebPart myWebPart = page.NewWebPart(baseControl);
-
-                                myWebPart.IsHeaderControl = true;
-
-                                if (!string.IsNullOrEmpty(headerControl.JsonControlData))
-                                {
-                                    var json = JsonConvert.DeserializeObject<JObject>(headerControl.JsonControlData);
-                                    if (json["instanceId"] != null && json["instanceId"].Type != JTokenType.Null)
-                                    {
-                                        if (Guid.TryParse(json["instanceId"].Value<string>(), out Guid instanceId))
-                                        {
-                                            myWebPart.InstanceId = instanceId;
-                                        }
-                                    }
-
-                                    if (json["dataVersion"] != null && json["dataVersion"].Type != JTokenType.Null)
-                                    {
-                                        myWebPart.DataVersion = json["dataVersion"].Value<string>();
-                                    }
-                                }
-
-                                // set properties using json string
-                                if (!string.IsNullOrEmpty(headerControl.JsonControlData))
-                                {
-                                    myWebPart.PropertiesJson = headerControl.JsonControlData;
-                                }
-
-                                page.AddHeaderControl(myWebPart, order);
-                                order++;
-                            }
-                            else
-                            {
-                                scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_ClientSidePages_BaseControlNotFound, headerControl.ControlId, headerControl.CustomWebPartName);
-                            }
-
                         }
                     }
                 }

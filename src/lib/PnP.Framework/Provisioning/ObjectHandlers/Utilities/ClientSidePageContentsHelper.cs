@@ -105,7 +105,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     extractedPageInstance.PromoteAsNewsArticle = isNews;
                     extractedPageInstance.PromoteAsTemplate = page.IsTemplate;
                     extractedPageInstance.Overwrite = true;
-                    extractedPageInstance.Publish = true;
+                    extractedPageInstance.Publish = creationInfo.ExtractPageAsPublished;
                     extractedPageInstance.Layout = pageToExtract.LayoutType.ToString();
                     //extractedPageInstance.EnableComments = !pageToExtract.CommentsDisabled;
                     extractedPageInstance.EnableComments = !pageToExtract.AreCommentsDisabled();

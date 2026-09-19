@@ -343,7 +343,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                     }
 
-                    if (!isNoScriptSite)
+                    if (applyingInformation.PropertyBagWriteAllowed != false)
                     {
                         web.NoCrawl = webSettings.NoCrawl;
                     }

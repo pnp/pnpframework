@@ -62405,6 +62405,19 @@ references:
   isSpec: "True"
   fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ExtensibilityHandlers
   nameWithType: ProvisioningTemplateCreationInformation.ExtensibilityHandlers
+- uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ExtractPageAsPublished
+  name: ExtractPageAsPublished
+  href: api/PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.html#PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateCreationInformation_ExtractPageAsPublished
+  commentId: P:PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ExtractPageAsPublished
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ExtractPageAsPublished
+  nameWithType: ProvisioningTemplateCreationInformation.ExtractPageAsPublished
+- uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ExtractPageAsPublished*
+  name: ExtractPageAsPublished
+  href: api/PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.html#PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateCreationInformation_ExtractPageAsPublished_
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ExtractPageAsPublished
+  isSpec: "True"
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.ExtractPageAsPublished
+  nameWithType: ProvisioningTemplateCreationInformation.ExtractPageAsPublished
 - uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.FileConnector
   name: FileConnector
   href: api/PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateCreationInformation.html#PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateCreationInformation_FileConnector

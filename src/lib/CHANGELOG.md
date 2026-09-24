@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## 1.22.0 - unreleased
+
+### Changed
+
+- Enabled Provisioning of Shared Teams Channels #1128 [singingknight - Per Jakobsen]
+
 ## [1.21.0]
 
 ### Changed

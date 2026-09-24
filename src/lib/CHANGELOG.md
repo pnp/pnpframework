@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fixed template provisioning so there is an option if pages should be extracted as Published or not #1275 [Magnus-K-work - Magnus-K-work]
 - Fixed detection of both unpublished and published news pages in page template extraction. #1270 [Magnus-K-work - Magnus-K-work]
 - Fixed missing ContentTypeId when extracting list and library data from a sub site #1253 [gszdev - gszdev]
+- Fixed FieldRef not exported when hidden in Content‑Type–Enabled list #1249 [wuxiaojun514 - wuxiaojun514]
 
 ## [1.21.0]
 

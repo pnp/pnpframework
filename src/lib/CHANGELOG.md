@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Enabled Provisioning of Shared Teams Channels #1128 [singingknight - Per Jakobsen]
+- Updates JSON control data handling for web parts #1277 [magarma - Miguel Angel García Martínez]
 
 ## [1.21.0]
 

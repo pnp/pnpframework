@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Enabled Provisioning of Shared Teams Channels #1128 [singingknight - Per Jakobsen]
 - Updates JSON control data handling for web parts #1277 [magarma - Miguel Angel García Martínez]
 - Fixed template provisioning so there is an option if pages should be extracted as Published or not #1275 [Magnus-K-work - Magnus-K-work]
+- Fixed detection of both unpublished and published news pages in page template extraction. #1270 [Magnus-K-work - Magnus-K-work]
 
 ## [1.21.0]
 

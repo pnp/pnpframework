@@ -3403,6 +3403,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("fake-template.stp", list.TemplateInternalName);
             Assert.AreEqual(120, list.Webhooks[0].ExpiresInDays);
             Assert.AreEqual("http://myapp.azurewebsites.net/WebHookListener", list.Webhooks[0].ServerNotificationUrl);
+            Assert.AreEqual("ABC", list.Webhooks[0].ClientState);
 
             // security
             var security = list.Security;
@@ -3687,7 +3688,8 @@ namespace PnP.Framework.Test.Framework.Providers
             list.Webhooks.Add(new PnP.Framework.Provisioning.Model.Webhook
             {
                 ExpiresInDays = 120,
-                ServerNotificationUrl = "http://myapp.azurewebsites.net/WebHookListener"
+                ServerNotificationUrl = "http://myapp.azurewebsites.net/WebHookListener",
+                ClientState = "CBA"
             });
 
             list.IRMSettings = new PnP.Framework.Provisioning.Model.IRMSettings
@@ -3942,6 +3944,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("/Lists/ProjectDocuments", l.Url);
             Assert.AreEqual(120, list.Webhooks[0].ExpiresInDays);
             Assert.AreEqual("http://myapp.azurewebsites.net/WebHookListener", list.Webhooks[0].ServerNotificationUrl);
+            Assert.AreEqual("CBA", list.Webhooks[0].ClientState);
 
             Assert.IsNotNull(l.Security);
             var security = l.Security.BreakRoleInheritance;
@@ -5084,6 +5087,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(120, webhooks[0].ExpiresInDays);
             Assert.AreEqual(SiteWebhookType.WebCreated, webhooks[0].SiteWebhookType);
             Assert.AreEqual("http://myapp.azurewebsites.net/WebHookListener", webhooks[0].ServerNotificationUrl);
+            Assert.AreEqual("DEF", webhooks[0].ClientState);
         }
 
         [TestMethod]
@@ -5098,7 +5102,8 @@ namespace PnP.Framework.Test.Framework.Providers
             {
                 SiteWebhookType = SiteWebhookType.WebCreated,
                 ServerNotificationUrl = "http://myapp.azurewebsites.net/WebHookListener",
-                ExpiresInDays = 120
+                ExpiresInDays = 120,
+                ClientState = "FED"
             });
 
             var serializer = new XMLPnPSchemaV202103Serializer();
@@ -5118,6 +5123,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("120", webhooks[0].ExpiresInDays);
             Assert.AreEqual(SiteWebhookSiteWebhookType.WebCreated, webhooks[0].SiteWebhookType);
             Assert.AreEqual("http://myapp.azurewebsites.net/WebHookListener", webhooks[0].ServerNotificationUrl);
+            Assert.AreEqual("FED", webhooks[0].ClientState);
         }
 
         [TestMethod]

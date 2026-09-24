@@ -1,5 +1,8 @@
 ﻿using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
+using PnP.Core.Model;
+using PnP.Core.QueryModel;
+using PnP.Core.Services;
 using PnP.Framework.Diagnostics;
 using PnP.Framework.Entities;
 using PnP.Framework.Extensions;
@@ -15,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using ContentType = Microsoft.SharePoint.Client.ContentType;
@@ -78,7 +82,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         templateList.Url = listParser.ParseString(templateList.Url);
                         currentListIndex++;
                         WriteSubProgress("List", templateList.Title, currentListIndex, total);
-                        CheckContentTypes(web, template, scope, templateList);
+                        if (!CheckContentTypes(web, template, scope, templateList).Wait(new TimeSpan(0, 2, 0)))
+                        {
+                            throw new Exception("Could not check content type");
+                        }
                         // check if the List exists by url or by title
                         var index = existingLists.FindIndex(x => x.Title.Equals(listParser.ParseString(templateList.Title), StringComparison.OrdinalIgnoreCase) || x.RootFolder.ServerRelativeUrl.Equals(UrlUtility.Combine(serverRelativeUrl, templateList.Url), StringComparison.OrdinalIgnoreCase));
 
@@ -657,7 +664,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private static void CheckContentTypes(Web web, ProvisioningTemplate template, PnPMonitoredScope scope, ListInstance templateList)
+        private static async Task CheckContentTypes(Web web, ProvisioningTemplate template, PnPMonitoredScope scope, ListInstance templateList)
         {
             // Check for the presence of the references content types and throw an exception if not present or in template
             if (!templateList.ContentTypesEnabled) return;
@@ -670,6 +677,21 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 if (!found)
                 {
                     found = existingCts.Any(t => string.Equals(t.StringId, ct.ContentTypeId, StringComparison.InvariantCultureIgnoreCase));
+                }
+                if (!found)
+                {
+                    using (PnPContext context = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
+                    {
+                        // Copy from content type hub if it exists
+                        await context.ContentTypeHub.LoadAsync(p => p.ContentTypes.QueryProperties(p => p.Name, p => p.Description,
+                                                p => p.FieldLinks.QueryProperties(p => p.Name)));
+                        // Get the content type you want to add
+                        var contentType = context.ContentTypeHub.ContentTypes.AsRequested().FirstOrDefault(t => string.Equals(t.StringId, ct.ContentTypeId, StringComparison.InvariantCultureIgnoreCase));
+                        if (contentType != null)
+                        {
+                            found = true;
+                        }
+                    }
                 }
                 if (!found)
                 {
@@ -1642,6 +1664,54 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     ),
                     searchInSiteHierarchy: true
                     );
+
+                if (tempCT == null)
+                {
+                    using (PnPContext context = PnPCoreSdk.Instance.GetPnPContext(web.Context as ClientContext))
+                    {
+                        // Copy from content type hub if it exists
+                        if (!context.ContentTypeHub.LoadAsync(p => p.ContentTypes.QueryProperties(p => p.Name, p => p.Description,
+                            p => p.FieldLinks.QueryProperties(p => p.Name))).Wait(new TimeSpan(0, 1, 0)))
+                        {
+                            throw new Exception("Could not load content type hub content types");
+                        }
+
+                        // Get the content type you want to add
+                        var pnpCT = context.ContentTypeHub.ContentTypes.AsRequested().FirstOrDefault(t => string.Equals(t.StringId, ctb.ContentTypeId, StringComparison.InvariantCultureIgnoreCase));
+                        if (pnpCT != null)
+                        {
+                            var _list = context.Web.Lists.GetById(list.Id);
+                            var ctWasAdded = false;
+                            for (int i = 0; i < 10 && !ctWasAdded; i++)
+                            {
+                                try
+                                {
+                                    _list.ContentTypes.AddAvailableContentTypeFromHubAsync(pnpCT.StringId).Wait(new TimeSpan(0, 1, 0));
+                                    ctWasAdded = true;
+                                }
+                                catch (Exception e)
+                                {
+                                    if (i >= 9)
+                                        throw new Exception("Could not add content type from hub. Cause: " + e.Message, e);
+                                    ctWasAdded = false;
+                                    Thread.Sleep(i * i * 1000);
+                                }
+                            }
+                            tempCT = web.GetContentTypeById(ctb.ContentTypeId, cts => cts.Include(
+                                    ct => ct.Id,
+                                    ct => ct.Name,
+                                    ct => ct.FieldLinks.Include(fl => fl.Id, fl => fl.Hidden)
+                                ),
+                                searchInSiteHierarchy: true
+                                );
+
+                            list.ContentTypes.RefreshLoad();
+                            list.Context.Load(list.ContentTypes);
+                            list.Context.ExecuteQuery();
+                        }
+                    }
+                }
+
                 if (tempCT != null)
                 {
                     ContentTypeId existingContentTypeId = list.ContentTypes.BestMatch(ctb.ContentTypeId);

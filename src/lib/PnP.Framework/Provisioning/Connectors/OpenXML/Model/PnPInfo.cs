@@ -28,5 +28,15 @@ namespace PnP.Framework.Provisioning.Connectors.OpenXML.Model
         /// Defines the mapping between original file names and OpenXML file names
         /// </summary>
         public PnPFilesMap FilesMap { get; set; }
+
+        /// <summary>
+        /// Specifies whether the file streams should be used for file contenets instead of the MemoryStream.
+        /// </summary>
+        public bool UseFileStreams { get; set; } = false;
+
+        /// <summary>
+        /// Path to be used for saving file contenets instead of the MemoryStream.
+        /// </summary>
+        public string PnPFilesPath { get; set; }
     }
 }

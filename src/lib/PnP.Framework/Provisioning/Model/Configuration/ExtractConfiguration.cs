@@ -52,6 +52,9 @@ namespace PnP.Framework.Provisioning.Model.Configuration
         [JsonPropertyName("contentTypes")]
         public ContentTypes.ExtractContentTypeConfiguration ContentTypes { get; set; } = new ContentTypes.ExtractContentTypeConfiguration();
 
+        [JsonPropertyName("siteFields")]
+        public Fields.ExtractFieldsConfiguration SiteFields { get; set; } = new Fields.ExtractFieldsConfiguration();
+
         [JsonPropertyName("searchSettings")]
         public SearchSettings.ExtractSearchConfiguration SearchSettings { get; set; } = new SearchSettings.ExtractSearchConfiguration();
 
@@ -83,6 +86,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
                 BaseTemplate = information.BaseTemplate
             };
             config.ContentTypes.Groups = information.ContentTypeGroupsToInclude;
+            config.SiteFields.Groups = information.FieldGroupsToInclude;
             config.Extensibility.Handlers = information.ExtensibilityHandlers;
             config.FileConnector = information.FileConnector;
             if (information.HandlersToProcess == Model.Handlers.All)
@@ -162,6 +166,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
                 IncludeHiddenLists = this.Lists.IncludeHiddenLists,
                 IncludeSiteGroups = this.SiteSecurity.IncludeSiteGroups,
                 ContentTypeGroupsToInclude = this.ContentTypes.Groups,
+                FieldGroupsToInclude = this.SiteFields.Groups,
                 IncludeContentTypesFromSyndication = !this.ContentTypes.ExcludeFromSyndication,
                 IncludeTermGroupsSecurity = this.Taxonomy.IncludeSecurity,
                 IncludeSiteCollectionTermGroup = this.Taxonomy.IncludeSiteCollectionTermGroup,

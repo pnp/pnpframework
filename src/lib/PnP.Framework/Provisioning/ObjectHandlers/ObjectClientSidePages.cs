@@ -373,7 +373,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
 
             // Page Header
-            if (clientSidePage.Header != null && page.LayoutType != PnPCore.PageLayoutType.Topic)
+            if (clientSidePage.Header != null)
             {
                 switch (clientSidePage.Header.Type)
                 {
@@ -527,7 +527,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             {
                                 var textControl = page.NewTextPart();
                                 PnPCore.ControlFlexLayoutPosition controlFlexLayoutPosition = null;
-                                
+
                                 if (control.ControlProperties.Any())
                                 {
                                     var textProperty = control.ControlProperties.First();
@@ -536,7 +536,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     {
                                         var json = JsonConvert.DeserializeObject<JObject>(control.JsonControlData);
                                         SetZoneId(page.Sections[sectionCount].Columns[control.Column - 1], json);
-                                        
+
                                         if (section.Type == CanvasSectionType.FlexibleLayoutSection || section.Type == CanvasSectionType.FlexibleLayoutVerticalSection)
                                         {
                                             controlFlexLayoutPosition = GetControlFlexLayoutPosition(json);
@@ -733,67 +733,70 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     baseControl = componentsToAdd.FirstOrDefault(p => p.Name.Equals(webPartName, StringComparison.InvariantCultureIgnoreCase));
                                 }
 
-                                PnPCore.IPageWebPart myWebPart=null;
+                                PnPCore.IPageWebPart myWebPart = null;
 
                                 if (baseControl != null)
                                 {
                                     myWebPart = page.NewWebPart(baseControl);
                                 }
-                                else
+                                else if (string.IsNullOrWhiteSpace(control.JsonControlData))
                                 {
-                                    if (!string.IsNullOrWhiteSpace(control.JsonControlData) && control.JsonControlData.Contains("\"controlType\":14"))
-                                    {
-                                        myWebPart = page.NewSectionBackgroundControl();
-                                    }
-                                    else
-                                    {
-                                        myWebPart = page.NewWebPart();
-                                    }
+                                    myWebPart = page.NewWebPart();
                                 }
 
-                                myWebPart.Order = control.Order;
-                                
-
+                                //process JsonControlData to extract layout information for FL sections and special webparts
+                                PnPCore.ControlFlexLayoutPosition controlFlexLayoutPosition = null;
                                 if (!string.IsNullOrEmpty(control.JsonControlData))
                                 {
                                     var json = JsonConvert.DeserializeObject<JObject>(control.JsonControlData);
-                                    SetDefaultProperties(page.Sections[sectionCount].Columns[control.Column - 1], myWebPart, json, parser);
+                                    if (myWebPart == null)
+                                    {
+                                        var controlTypeInt = json.TryGetValue("controlType", StringComparison.InvariantCultureIgnoreCase, out JToken controlTypeToken) ? controlTypeToken.Value<int>() : 0;
+                                        switch (controlTypeInt)
+                                        {
+                                            case 1: // emptySection
+                                                //dont add an empty section here, as this webpart will be added automatically when a section is added without any webparts
+                                                SetDefaultProperties(page.Sections[sectionCount].Columns[control.Column - 1], null, json, parser);
+                                                break;
+                                            case 14: // SectionBackgroundControl
+                                                myWebPart = page.NewSectionBackgroundControl();
+                                                break;
+                                            default: // custom web part
+                                                myWebPart = page.NewWebPart();
+                                                break;
+                                        }
+                                    }
 
-                                    PnPCore.ControlFlexLayoutPosition controlFlexLayoutPosition = null;
+                                    if(myWebPart == null)
+                                        continue;
+
+                                    SetDefaultProperties(page.Sections[sectionCount].Columns[control.Column - 1], myWebPart, json, parser);
+                                    myWebPart.PropertiesJson = control.JsonControlData;
+
+                                    if (baseControl == null)
+                                    {
+                                        if(json.TryGetValue("id", StringComparison.InvariantCultureIgnoreCase, out JToken idToken) && Guid.TryParse(idToken.Value<string>(), out Guid webPartId))
+                                        {
+                                            PropertyInfo propertyInfo = myWebPart.Type.GetProperty("WebPartId");
+                                            if (propertyInfo != null)
+                                            {
+                                                propertyInfo.SetValue(myWebPart, webPartId.ToString());
+                                            }
+                                        }
+                                    }
+
                                     if (section.Type == CanvasSectionType.FlexibleLayoutSection || section.Type == CanvasSectionType.FlexibleLayoutVerticalSection)
                                     {
                                         controlFlexLayoutPosition = GetControlFlexLayoutPosition(json);
                                     }
+                                }
 
-                                    if (baseControl == null)
-                                    {
-                                        if (json["id"] != null && json["id"].Type != JTokenType.Null)
-                                        {
-                                            if (Guid.TryParse(json["id"].Value<string>(), out Guid webPartId))
-                                            {
-                                                PropertyInfo propertyInfo = myWebPart.Type.GetProperty("WebPartId");
-                                                if (propertyInfo != null)
-                                                {
-                                                    propertyInfo.SetValue(myWebPart, json["id"].Value<string>());
-                                                }
-                                            }
-                                        }
-                                    }
+                                if (myWebPart != null)
+                                {
+                                    myWebPart.Order = control.Order;
                                     // Reduce column number by 1 due 0 start indexing
                                     page.AddControl(myWebPart, page.Sections[sectionCount].Columns[control.Column - 1], control.Order, controlFlexLayoutPosition);
-                                }
-                                else
-                                {
-                                    // Reduce column number by 1 due 0 start indexing
-                                    page.AddControl(myWebPart, page.Sections[sectionCount].Columns[control.Column - 1], control.Order);
-                                }
-
-                                // set properties using json string
-                                if (!string.IsNullOrEmpty(control.JsonControlData))
-                                {
-                                    myWebPart.PropertiesJson = control.JsonControlData;
-                                }
-
+                                }                            
                                 //CHECK:
                                 // set using property collection
                                 //if (control.ControlProperties.Any())
@@ -831,83 +834,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 //    }
                                 //}
                             }
-                        }
-                    }
-                }
-            }
-
-            // Handle the header controls in the topic pages
-            if (page.LayoutType == PnPCore.PageLayoutType.Topic)
-            {
-                var headerControlSection = clientSidePage.Sections.FirstOrDefault(p => p.Order == 999999);
-                if (headerControlSection != null)
-                {
-                    // Ensure there's at least one default section available
-                    if (!page.Sections.Any())
-                    {
-                        page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 0);
-                    }
-
-                    // Clear existing header controls as they'll be overwritten
-                    page.HeaderControls.Clear();                    
-
-                    // Load existing available controls
-                    var componentsToAdd = page.AvailablePageComponents();
-
-                    int order = 1;
-                    foreach (var headerControl in headerControlSection.Controls)
-                    {
-                        PnPCore.IPageComponent baseControl = null;
-
-                        // apply token parsing on the web part properties
-                        headerControl.JsonControlData = parser.ParseString(headerControl.JsonControlData);
-
-                        if (headerControl.Type == WebPartType.Custom)
-                        {
-                            // Find the base control installed to the current site
-                            baseControl = componentsToAdd.FirstOrDefault(p => p.Id.Equals($"{{{headerControl.ControlId}}}", StringComparison.CurrentCultureIgnoreCase));
-                            if (baseControl == null)
-                            {
-                                baseControl = componentsToAdd.FirstOrDefault(p => p.Id.Equals(headerControl.ControlId.ToString(), StringComparison.InvariantCultureIgnoreCase));
-                            }
-
-                            if (baseControl != null)
-                            {
-                                PnPCore.IPageWebPart myWebPart = page.NewWebPart(baseControl);
-
-                                myWebPart.IsHeaderControl = true;
-
-                                if (!string.IsNullOrEmpty(headerControl.JsonControlData))
-                                {
-                                    var json = JsonConvert.DeserializeObject<JObject>(headerControl.JsonControlData);
-                                    if (json["instanceId"] != null && json["instanceId"].Type != JTokenType.Null)
-                                    {
-                                        if (Guid.TryParse(json["instanceId"].Value<string>(), out Guid instanceId))
-                                        {
-                                            myWebPart.InstanceId = instanceId;
-                                        }
-                                    }
-
-                                    if (json["dataVersion"] != null && json["dataVersion"].Type != JTokenType.Null)
-                                    {
-                                        myWebPart.DataVersion = json["dataVersion"].Value<string>();
-                                    }
-                                }
-
-                                // set properties using json string
-                                if (!string.IsNullOrEmpty(headerControl.JsonControlData))
-                                {
-                                    myWebPart.PropertiesJson = headerControl.JsonControlData;
-                                }
-
-                                page.AddHeaderControl(myWebPart, order);
-                                order++;
-                            }
-                            else
-                            {
-                                scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_ClientSidePages_BaseControlNotFound, headerControl.ControlId, headerControl.CustomWebPartName);
-                            }
-
                         }
                     }
                 }
@@ -1051,20 +977,23 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private static void SetDefaultProperties(PnPCore.ICanvasColumn canvasColumn, PnPCore.IPageWebPart myWebPart, JObject json, TokenParser parser)
         {
-            if (json["instanceId"] != null && json["instanceId"].Type != JTokenType.Null)
+            if (myWebPart != null)
             {
-                if (Guid.TryParse(json["instanceId"].Value<string>(), out Guid instanceId))
+                if (json["instanceId"] != null && json["instanceId"].Type != JTokenType.Null)
                 {
-                    myWebPart.InstanceId = instanceId;
+                    if (Guid.TryParse(json["instanceId"].Value<string>(), out Guid instanceId))
+                    {
+                        myWebPart.InstanceId = instanceId;
+                    }
                 }
-            }
-            if (json["title"] != null && json["title"].Type != JTokenType.Null)
-            {
-                myWebPart.Title = parser.ParseString(json["title"].Value<string>());
-            }
-            if (json["description"] != null && json["description"].Type != JTokenType.Null)
-            {
-                myWebPart.Description = parser.ParseString(json["description"].Value<string>());
+                if (json["title"] != null && json["title"].Type != JTokenType.Null)
+                {
+                    myWebPart.Title = parser.ParseString(json["title"].Value<string>());
+                }
+                if (json["description"] != null && json["description"].Type != JTokenType.Null)
+                {
+                    myWebPart.Description = parser.ParseString(json["description"].Value<string>());
+                }
             }
 
             SetZoneId(canvasColumn, json);

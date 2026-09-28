@@ -101,14 +101,17 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V202103
                 var dataSourceItemType = Type.GetType(dataSourceItemTypeName, true);
                 var dataSourceItemKeySelector = CreateSelectorLambda(dataSourceItemType, "Key");
                 var dataSourceItemValueSelector = CreateSelectorLambda(dataSourceItemType, "Value");
-                expressions.Add(l => l.DataSource, new FromArrayToDictionaryValueResolver<string, string>(dataSourceItemType, dataSourceItemKeySelector, dataSourceItemValueSelector));
+                // DataSource and DefaultColumnValues are both StringDictionaryItem arrays, so the source
+                // property has to be named. Without it the resolver falls back to the first array of that
+                // item type on the list and the two settings read each other's values.
+                expressions.Add(l => l.DataSource, new FromArrayToDictionaryValueResolver<string, string>(dataSourceItemType, dataSourceItemKeySelector, dataSourceItemValueSelector, "DataSource"));
 
                 // Default Column Values
                 var defaultColumnItemTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StringDictionaryItem, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";
                 var defaultColumnItemType = Type.GetType(defaultColumnItemTypeName, true);
                 var defaultColumnItemKeySelector = CreateSelectorLambda(defaultColumnItemType, "Key");
                 var defaultColumnItemValueSelector = CreateSelectorLambda(defaultColumnItemType, "Value");
-                expressions.Add(l => l.DefaultColumnValues, new FromArrayToDictionaryValueResolver<string, string>(defaultColumnItemType, defaultColumnItemKeySelector, defaultColumnItemValueSelector));
+                expressions.Add(l => l.DefaultColumnValues, new FromArrayToDictionaryValueResolver<string, string>(defaultColumnItemType, defaultColumnItemKeySelector, defaultColumnItemValueSelector, "DefaultColumnValues"));
 
                 template.Lists.AddRange(
                     PnPObjectsMapper.MapObjects<ListInstance>(lists,
@@ -210,6 +213,8 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V202103
                 var dataSourceItemType = Type.GetType(dataSourceItemTypeName, true);
                 var dataSourceItemKeySelector = CreateSelectorLambda(dataSourceItemType, "Key");
                 var dataSourceItemValueSelector = CreateSelectorLambda(dataSourceItemType, "Value");
+
+                resolvers.Add($"{listInstanceType}.DataSource", new FromDictionaryToArrayValueResolver<string, string>(dataSourceItemType, dataSourceItemKeySelector, dataSourceItemValueSelector));
 
                 // Default Column Values
                 var defaultColumnItemTypeName = $"{PnPSerializationScope.Current?.BaseSchemaNamespace}.StringDictionaryItem, {PnPSerializationScope.Current?.BaseSchemaAssemblyName}";

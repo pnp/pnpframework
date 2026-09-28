@@ -573,6 +573,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 web.Context.ExecuteQueryRetry();
 
+                ClientContext siteCollectionContext = null;
+                if (web.IsSubSite())
+                {
+                    siteCollectionContext = web.ParentWeb.Context as ClientContext;
+                    siteCollectionContext.Site.RootWeb.EnsureProperties(
+                        w => w.ServerRelativeUrl,
+                        w => w.Url,
+                        w => w.ContentTypes.Include(c => c.Id, c => c.Name, c => c.StringId));
+                }
+
                 //export PnPFile FieldValues
                 if (file.ListItemAllFields.FieldValues.Any())
                 {
@@ -580,17 +590,37 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                     var fieldValuesAsText = file.ListItemAllFields.EnsureProperty(li => li.FieldValuesAsText).FieldValues;
 
-                    #region //**** get correct Content Type
-                    string ctId = string.Empty;
-                    foreach (var ct in web.ContentTypes.OrderByDescending(c => c.StringId.Length))
+                    if (file.ListItemAllFields.ContentType.StringId != defaultContentTypeId) // skip if it is the default content type (don't run through loops if not needed)
                     {
-                        if (file.ListItemAllFields.ContentType.StringId.StartsWith(ct.StringId) && file.ListItemAllFields.ContentType.StringId != defaultContentTypeId) // skip if it is the default content type
+                        #region //**** get correct Content Type
+                        string ctId = string.Empty;
+                        foreach (var ct in web.ContentTypes.OrderByDescending(c => c.StringId.Length))
                         {
-                            pnpFile.Properties.Add("ContentTypeId", ct.StringId);
-                            break;
+                            if (file.ListItemAllFields.ContentType.StringId.StartsWith(ct.StringId))
+                                //&& file.ListItemAllFields.ContentType.StringId != defaultContentTypeId) // skip if it is the default content type
+                            {
+                                ctId = ct.StringId;
+                                pnpFile.Properties.Add("ContentTypeId", ct.StringId);
+                                break;
+                            }
                         }
+
+                        if (string.IsNullOrEmpty(ctId)
+                            && siteCollectionContext != null)
+                        {
+                            foreach (var ct in siteCollectionContext.Site.RootWeb.ContentTypes.OrderByDescending(c => c.StringId.Length))
+                            {
+                                if (file.ListItemAllFields.ContentType.StringId.StartsWith(ct.StringId))
+                                    //&& file.ListItemAllFields.ContentType.StringId != defaultContentTypeId) // skip if it is the default content type
+                                {
+                                    ctId = ct.StringId;
+                                    pnpFile.Properties.Add("ContentTypeId", ct.StringId);
+                                    break;
+                                }
+                            }
+                        }
+                        #endregion //**** get correct Content Type
                     }
-                    #endregion //**** get correct Content Type
 
                     foreach (var fieldValue in fieldValues)
                     {
@@ -732,6 +762,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     f => f.ListItemAllFields.HasUniqueRoleAssignments,
                     f => f.ListItemAllFields.ParentList,
                     f => f.ListItemAllFields.ContentType.StringId);
+
+                web.Context.ExecuteQueryRetry();
+                /*
                 web.Context.Load(web,
                     w => w.AssociatedOwnerGroup,
                     w => w.AssociatedMemberGroup,
@@ -741,13 +774,35 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     w => w.RoleDefinitions.Include(r => r.RoleTypeKind, r => r.Name),
                     w => w.ContentTypes.Include(c => c.Id, c => c.Name, c => c.StringId));
                 web.Context.ExecuteQueryRetry();
+                */
+
+                web.EnsureProperties(
+                    w => w.AssociatedOwnerGroup,
+                    w => w.AssociatedMemberGroup,
+                    w => w.AssociatedVisitorGroup,
+                    w => w.Title,
+                    w => w.Url,
+                    w => w.RoleDefinitions.Include(r => r.RoleTypeKind, r => r.Name),
+                    w => w.ContentTypes.Include(c => c.Id, c => c.Name, c => c.StringId));
+
+                ClientContext siteCollectionContext = null;
+                if (web.IsSubSite())
+                {
+                    siteCollectionContext = web.ParentWeb.Context as ClientContext;
+                    siteCollectionContext.Site.RootWeb.EnsureProperties(
+                        w => w.ServerRelativeUrl,
+                        w => w.Url,
+                        w => w.ContentTypes.Include(c => c.Id, c => c.Name, c => c.StringId));
+                }
+
 
                 pnpFolder = new Model.Folder(spFolder.Name);
 
                 //export PnPFolder Properties
                 if (spFolder.Properties.FieldValues.Any())
                 {
-                    foreach (var propKey in spFolder.Properties.FieldValues.Keys.Where(k => !k.StartsWith("vti_") && !k.StartsWith("docset_")))
+                    var entries = spFolder.Properties.FieldValues.Keys.Where(k => !k.StartsWith("vti_") && !k.StartsWith("docset_"));
+                    foreach (var propKey in entries)
                     {
                         pnpFolder.PropertyBagEntries.Add(new PropertyBagEntry() { Key = propKey, Value = spFolder.Properties.FieldValues[propKey].ToString() });
                     }
@@ -772,8 +827,23 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         if (spFolder.ListItemAllFields.ContentType.StringId.StartsWith(ct.StringId))
                         {
+                            ctId = ct.StringId;
                             pnpFolder.ContentTypeID = ct.StringId;
                             break;
+                        }
+                    }
+
+                    if (string.IsNullOrEmpty(ctId)
+                        && siteCollectionContext != null)
+                    {
+                        foreach (var ct in siteCollectionContext.Site.RootWeb.ContentTypes.OrderByDescending(c => c.StringId.Length))
+                        {
+                            if (spFolder.ListItemAllFields.ContentType.StringId.StartsWith(ct.StringId))
+                            {
+                                ctId = ct.StringId;
+                                pnpFolder.ContentTypeID = ct.StringId;
+                                break;
+                            }
                         }
                     }
                     #endregion //**** get correct Content Type
@@ -783,6 +853,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     {
                         filteredFieldValues = fieldValues.Where(f => queryConfig.ViewFields.Contains(f.Key)).ToList();
                     }
+
                     foreach (var fieldValue in filteredFieldValues)
                     {
                         if (fieldValue.Value != null && !string.IsNullOrEmpty(fieldValue.Value.ToString()))
@@ -795,7 +866,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             {
                                 value = TokenizeValue(web, field.TypeAsString, fieldValue, fieldValuesAsText[field.InternalName]);
                             }
-                            
+
                             //We process moderation status, ideally this shoud be managed with a new attribute in Folder, but it requires a new schema version
                             if (fieldValue.Key.Equals("_ModerationStatus", StringComparison.InvariantCultureIgnoreCase))
                             {

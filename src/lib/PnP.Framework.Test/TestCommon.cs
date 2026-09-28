@@ -290,11 +290,7 @@ namespace PnP.Framework.Test
                 {
                     //clientContext = am.GetAppOnlyAuthenticatedContext(DevSiteUrl, Core.Utilities.TokenHelper.GetRealmFromTargetUrl(new Uri(DevSiteUrl)), AppId, AppSecret, acsHostUrl: "windows-ppe.net", globalEndPointPrefix: "login");
                     clientContext = am.GetACSAppOnlyContext(DevSiteUrl, AppId, AppSecret, AzureEnvironment.PPE);
-                }
-                else if (new Uri(DevSiteUrl).DnsSafeHost.Contains("sharepoint.de"))
-                {
-                    clientContext = am.GetACSAppOnlyContext(DevSiteUrl, AppId, AppSecret, AzureEnvironment.Germany);
-                }
+                }                
                 else
                 {
                     clientContext = am.GetACSAppOnlyContext(DevSiteUrl, AppId, AppSecret);

@@ -1061,16 +1061,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             // Temporary variable, just in case
             List<String> channelMembers = null;
 
-            if (channel.Private)
+            var privateOrSharedChannel = channel.MembershipType == MembershipType.Private || channel.MembershipType == MembershipType.Shared;
+            if (privateOrSharedChannel)
             {
-                // Get the team owners, who will be set as members of the private channel
-                // if the channel is private
+                // Get the team owners, who will be set as owners of the channel
+                // if the channel is private or shared (only first owner if shared)
                 var teamOwnersString = HttpHelper.MakeGetRequestForString($"{graphBaseUri}v1.0/groups/{teamId}/owners", accessToken);
                 channelMembers = new List<String>();
 
                 foreach (var user in JObject.Parse(teamOwnersString)["value"] as JArray)
                 {
                     channelMembers.Add((string)user["id"]);
+                    if (channel.MembershipType == MembershipType.Shared)
+                    {
+                        // Only add the first owner if the channel is shared
+                        break;
+                    }
                 }
             }
 
@@ -1081,21 +1087,21 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             {
                 description = parser.ParseString(channel.Description),
                 displayName = parser.ParseString(channel.DisplayName),
-                isFavoriteByDefault = channel.Private ? false : channel.IsFavoriteByDefault,
-                membershipType = channel.Private ? "private" : "standard",
-                moderationSettings = channel.Private ? null : new Dictionary<string, object>{
+                isFavoriteByDefault = privateOrSharedChannel ? null : channel.IsFavoriteByDefault,
+                membershipType = channel.MembershipType.ToString().ToLowerInvariant(),
+                moderationSettings = privateOrSharedChannel ? null : new Dictionary<string, object>{
                     { "userNewMessageRestriction", channel.UserNewMessageRestriction },
                     { "replyRestriction", channel.ReplyRestriction },
                     { "allowNewMessageFromBots", channel.AllowNewMessageFromBots },
                     { "allowNewMessageFromConnectors", channel.AllowNewMessageFromConnectors }
                 },
-                members = (channel.Private && channelMembers != null) ? (from m in channelMembers
-                                                                         select new
-                                                                         {
-                                                                             private_channel_member_odata_type = "#microsoft.graph.aadUserConversationMember",
-                                                                             private_channel_user_odata_bind = $"{graphBaseUri}v1.0/users('{m}')",
-                                                                             roles = new String[] { "owner" }
-                                                                         }).ToArray() : null
+                members = channelMembers != null ? (from m in channelMembers
+                                                    select new
+                                                    {
+                                                        private_channel_member_odata_type = "#microsoft.graph.aadUserConversationMember",
+                                                        private_channel_user_odata_bind = $"{graphBaseUri}v1.0/users('{m}')",
+                                                        roles = new String[] { "owner" }
+                                                    }).ToArray() : null
             };
 
             var channelId = GraphHelper.CreateOrUpdateGraphObject(scope,

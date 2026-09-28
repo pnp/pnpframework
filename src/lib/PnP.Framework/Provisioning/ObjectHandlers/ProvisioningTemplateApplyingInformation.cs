@@ -132,10 +132,16 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         /// <summary>
         /// Controls whether property bag writes are allowed on NoScript sites.
-        /// When null (default), the provisioning engine auto-detects via a sentinel write probe.
-        /// Set to true if the tenant has AllowWebPropertyBagUpdateWhenDenyAddAndCustomizePagesIsEnabled = true.
+        /// When null (default), the provisioning engine auto-detects on the site collection's root web.
+        /// A provisioning sequence shares the detected result across that site collection's templates and subwebs.
+        /// Set to true to attempt property bag writes without probing. This does not grant additional permissions.
         /// Set to false to skip all property bag write operations without probing.
         /// </summary>
         public bool? PropertyBagWriteAllowed { get; set; }
+
+        internal ProvisioningTemplateApplyingInformation Clone()
+        {
+            return (ProvisioningTemplateApplyingInformation)MemberwiseClone();
+        }
     }
 }

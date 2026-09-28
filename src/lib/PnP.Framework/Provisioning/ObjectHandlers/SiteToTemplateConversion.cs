@@ -434,6 +434,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     objectHandlers.Add(new ObjectPersistTemplateInfo());
                 }
+
+                // Detect before WillProvision caches decisions, including for progress reporting.
+                if (!provisioningInfo.PropertyBagWriteAllowed.HasValue)
+                {
+                    // Hierarchy options already belong to this site collection; copy caller-owned options.
+                    if (!calledFromHierarchy)
+                    {
+                        provisioningInfo = provisioningInfo.Clone();
+                    }
+                    provisioningInfo.PropertyBagWriteAllowed = !((ClientContext)web.Context).Site.RootWeb.IsPropertyBagWriteBlocked();
+                }
+
                 var count = objectHandlers.Count(o => o.ReportProgress && o.WillProvision(web, template, provisioningInfo)) + 1;
 
                 progressDelegate?.Invoke("Initializing engine", 1, count); // handlers + initializing message)
@@ -459,11 +471,6 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 template = cleaner.CleanUpBeforeProvisioning(template);
 
                 CallWebHooks(template, tokenParser, ProvisioningTemplateWebhookKind.ProvisioningTemplateStarted);
-
-                if (!provisioningInfo.PropertyBagWriteAllowed.HasValue)
-                {
-                    provisioningInfo.PropertyBagWriteAllowed = !web.IsPropertyBagWriteBlocked();
-                }
 
                 foreach (var handler in objectHandlers)
                 {

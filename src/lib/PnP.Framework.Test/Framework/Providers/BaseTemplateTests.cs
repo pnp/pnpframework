@@ -11,6 +11,7 @@ using PnP.Framework.Provisioning.Providers.Xml;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -108,16 +109,16 @@ namespace PnP.Framework.Test.Framework.Providers
 
             List<BaseTemplate> templates = new List<BaseTemplate>(15);
             templates.Add(new BaseTemplate("STS#0"));
-            templates.Add(new BaseTemplate("BLOG#0"));
+            //templates.Add(new BaseTemplate("BLOG#0")); // Unable to create
             templates.Add(new BaseTemplate("BDR#0"));
             templates.Add(new BaseTemplate("DEV#0"));
             templates.Add(new BaseTemplate("OFFILE#1"));
-            templates.Add(new BaseTemplate("GROUP#0", skipDeleteCreateCycle: true));
+            //templates.Add(new BaseTemplate("GROUP#0")); // Unable to create
             templates.Add(new BaseTemplate("SITEPAGEPUBLISHING#0"));
-            templates.Add(new BaseTemplate("EHS#1"));
+            //templates.Add(new BaseTemplate("EHS#1")); // Unable to create
             templates.Add(new BaseTemplate("BLANKINTERNETCONTAINER#0", "", "BLANKINTERNET#0"));
             templates.Add(new BaseTemplate("STS#3"));
-            templates.Add(new BaseTemplate("BICENTERSITE#0"));
+            //templates.Add(new BaseTemplate("BICENTERSITE#0")); // Unable to create
             templates.Add(new BaseTemplate("SRCHCEN#0"));
             templates.Add(new BaseTemplate("BLANKINTERNETCONTAINER#0", "CMSPUBLISHING#0", "CMSPUBLISHING#0"));
             templates.Add(new BaseTemplate("ENTERWIKI#0"));
@@ -161,7 +162,7 @@ namespace PnP.Framework.Test.Framework.Providers
 
                         try
                         {
-                            Console.WriteLine("Deleting existing site {0}", siteUrl);
+                            Debug.WriteLine("Deleting existing site {0}", siteUrl);
                             if (template.SkipDeleteCreateCycle)
                             {
                                 // Do nothing for the time being since we don't allow group deletion using app-only context
@@ -182,7 +183,7 @@ namespace PnP.Framework.Test.Framework.Providers
                     {
                         string siteUrl = GetSiteUrl(template);
 
-                        Console.WriteLine("Creating site {0}", siteUrl);
+                        Debug.WriteLine("Creating site {0}", siteUrl);
 
                         if (template.SkipDeleteCreateCycle)
                         {
@@ -190,13 +191,13 @@ namespace PnP.Framework.Test.Framework.Providers
                         }
                         else
                         {
-                            bool siteExists = false;
+                            SiteExistence siteExists = SiteExistence.No;
                             if (template.SubSiteTemplate.Length > 0)
                             {
-                                siteExists = tenant.SiteExists(siteUrl);
+                                siteExists = tenant.SiteExistsAnywhere(siteUrl);
                             }
 
-                            if (!siteExists)
+                            if (siteExists == SiteExistence.No)
                             {
                                 if (template.Template.StartsWith("SITEPAGEPUBLISHING"))
                                 {
@@ -259,6 +260,7 @@ namespace PnP.Framework.Test.Framework.Providers
                 {
                     string siteUrl = GetSiteUrl(template, false);
 
+                    Debug.WriteLine("Exporting site {0}", siteUrl);
                     // Export the base templates
                     using (ClientContext cc = ctx.Clone(siteUrl))
                     {

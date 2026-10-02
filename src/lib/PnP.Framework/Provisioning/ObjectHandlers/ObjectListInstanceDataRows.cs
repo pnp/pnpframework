@@ -40,7 +40,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ListInstancesDataRows_Processing_data_rows_for__0_, listInstance.Title);
                         // Retrieve the target list
                         var list = web.GetListByUrl(parser.ParseString(listInstance.Url));
-                        web.Context.Load(list);
+                        web.Context.Load(list, l => l.Id, l => l.Title, l=>l.BaseType, l=>l.RootFolder);
 
                         // Retrieve the fields' types from the list
                         Microsoft.SharePoint.Client.FieldCollection fields = list.Fields;
@@ -198,6 +198,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                     WriteMessage(warning, ProvisioningMessageType.Warning);
                                     continue;
                                 }
+                                scope.LogError(CoreResources.Provisioning_ObjectHandlers_ListInstancesDataRows_Creating_listitem_failed___0_____1_, ex.Message, ex.StackTrace);
+                                throw;
                             }
                             catch (Exception ex)
                             {

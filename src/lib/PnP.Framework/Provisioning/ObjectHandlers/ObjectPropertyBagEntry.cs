@@ -30,9 +30,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     "DesignPreview"
                 });
 
-                // Check if this is not a noscript site as we're not allowed to write to the web property bag is that one
-                bool isNoScriptSite = web.IsNoScriptSite();
-                if (isNoScriptSite)
+                // Check if property bag writes are blocked (NoScript without tenant override)
+                if (applyingInformation.PropertyBagWriteAllowed == false)
                 {
                     return parser;
                 }
@@ -187,7 +186,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             if (!_willProvision.HasValue)
             {
-                _willProvision = template.PropertyBagEntries.Any() && !web.IsNoScriptSite();
+                _willProvision = template.PropertyBagEntries.Any() && (applyingInformation.PropertyBagWriteAllowed != false);
             }
             return _willProvision.Value;
 

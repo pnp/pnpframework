@@ -697,17 +697,14 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     // System.Threading.Thread.Sleep(TimeSpan.FromMinutes(10));
 
                     WriteMessage("Applying templates", ProvisioningMessageType.Progress);
-                    var currentSite = "";
-
-                    var provisioningTemplateApplyingInformation = configuration.ToApplyingInformation();
-                    provisioningTemplateApplyingInformation.ProgressDelegate = (string message, int step, int total) =>
-                    {
-                        configuration.ProgressDelegate?.Invoke($"{currentSite} : {message}", step, total);
-                    };
-
                     foreach (var sitecollection in sequence.SiteCollections)
                     {
-                        currentSite = sitecollection.ProvisioningId != null ? sitecollection.ProvisioningId : sitecollection.Title;
+                        var currentSite = sitecollection.ProvisioningId != null ? sitecollection.ProvisioningId : sitecollection.Title;
+                        var provisioningTemplateApplyingInformation = configuration.ToApplyingInformation();
+                        provisioningTemplateApplyingInformation.ProgressDelegate = (string message, int step, int total) =>
+                        {
+                            configuration.ProgressDelegate?.Invoke($"{currentSite} : {message}", step, total);
+                        };
 
                         siteUrls.TryGetValue(sitecollection.Id, out string siteUrl);
                         if (siteUrl != null)

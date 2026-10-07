@@ -273,15 +273,20 @@ namespace Microsoft.SharePoint.Client
         /// <param name="backgroundServerRelativeUrl">URL of background image to apply</param>
         /// <param name="resetSubsitesToInherit">false (default) to apply to currently inheriting subsites only; true to force all subsites to inherit</param>
         /// <param name="updateRootOnly">false (default) to apply to subsites; true to only apply to specified site</param>
+        /// <param name="propertyBagWriteAllowed">When provided, skips the sentinel write probe.
+        /// True means property bag writes are allowed; false means blocked. Null (default) auto-detects.</param>
         [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "OfficeDevPnP.Core.Diagnostics.Log.Debug(System.String,System.String,System.Object[])")]
-        public static void SetThemeByUrl(this Web web, string paletteServerRelativeUrl, string fontServerRelativeUrl, string backgroundServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false)
+        public static void SetThemeByUrl(this Web web, string paletteServerRelativeUrl, string fontServerRelativeUrl, string backgroundServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false, bool? propertyBagWriteAllowed = null)
         {
             var websToUpdate = new List<Web>();
             web.Context.Load(web, w => w.AllProperties, w => w.ServerRelativeUrl);
             web.Context.ExecuteQueryRetry();
             Log.Info(Constants.LOGGING_SOURCE, CoreResources.BrandingExtension_ApplyTheme, paletteServerRelativeUrl, web.ServerRelativeUrl);
 
-            if (!web.IsNoScriptSite())
+            var blocked = propertyBagWriteAllowed.HasValue
+                ? !propertyBagWriteAllowed.Value
+                : web.IsPropertyBagWriteBlocked();
+            if (!blocked)
             {
                 web.AllProperties[InheritTheme] = "False";
                 web.Update();
@@ -313,7 +318,7 @@ namespace Microsoft.SharePoint.Client
                         if (resetSubsitesToInherit || inheritTheme)
                         {
                             Log.Debug(Constants.LOGGING_SOURCE, "Inherited: " + CoreResources.BrandingExtension_ApplyTheme, paletteServerRelativeUrl, childWeb.ServerRelativeUrl);
-                            if (!web.IsNoScriptSite())
+                            if (!blocked)
                             {
                                 childWeb.AllProperties[InheritTheme] = "True";
                                 //childWeb.ThemedCssFolderUrl = themedCssFolderUrl;

@@ -142,8 +142,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         return parser;
                     }
 
-                    // Check if this is not a noscript site as navigation features are not supported
-                    bool isNoScriptSite = web.IsNoScriptSite();
+                    // Check if property bag writes are blocked (NoScript without tenant override)
+                    bool propertyBagWriteBlocked = applyingInformation.PropertyBagWriteAllowed == false;
 
                     // Retrieve the current web navigation settings
                     var navigationSettings = new WebNavigationSettings(web.Context, web);
@@ -158,7 +158,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     web.Update();
                     web.Context.ExecuteQueryRetry();
 
-                    if (!isNoScriptSite)
+                    if (!propertyBagWriteBlocked)
                     {
                         navigationSettings.Update(TaxonomySession.GetTaxonomySession(web.Context));
                         web.Context.ExecuteQueryRetry();
@@ -194,7 +194,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 break;
                         }
 
-                        if (!isNoScriptSite)
+                        if (!propertyBagWriteBlocked)
                         {
                             navigationSettings.Update(TaxonomySession.GetTaxonomySession(web.Context));
                             web.Context.ExecuteQueryRetry();
@@ -225,7 +225,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 navigationSettings.CurrentNavigation.TermSetId = Guid.Parse(parser.ParseString(template.Navigation.CurrentNavigation.ManagedNavigation.TermSetId));
                                 break;
                             case CurrentNavigationType.StructuralLocal:
-                                if (!isNoScriptSite)
+                                if (!propertyBagWriteBlocked)
                                 {
                                     web.SetPropertyBagValue(NavigationShowSiblings, "false");
                                 }
@@ -238,7 +238,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 break;
                             case CurrentNavigationType.Structural:
                             default:
-                                if (!isNoScriptSite)
+                                if (!propertyBagWriteBlocked)
                                 {
                                     web.SetPropertyBagValue(NavigationShowSiblings, "true");
                                 }
@@ -251,7 +251,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                                 break;
                         }
 
-                        if (!isNoScriptSite)
+                        if (!propertyBagWriteBlocked)
                         {
                             navigationSettings.Update(TaxonomySession.GetTaxonomySession(web.Context));
                             web.Context.ExecuteQueryRetry();

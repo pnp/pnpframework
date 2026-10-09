@@ -35,9 +35,10 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|",
+            return (String.Format("{0}|{1}|{2}|{3}|",
                 ServerNotificationUrl?.GetHashCode() ?? 0,
                 ExpiresInDays.GetHashCode(),
+                ClientState?.GetHashCode() ?? 0,
                 SiteWebhookType.GetHashCode()
             ).GetHashCode());
         }
@@ -57,7 +58,7 @@ namespace PnP.Framework.Provisioning.Model
         }
 
         /// <summary>
-        /// Compares SiteWebhook object based on ServerNotificationUrl, ExpiresInDays, and SiteWebhookType
+        /// Compares SiteWebhook object based on ServerNotificationUrl, ExpiresInDays, ClientState and SiteWebhookType
         /// </summary>
         /// <param name="other">SiteWebhook Class object</param>
         /// <returns>true if the SiteWebhook object is equal to the current object; otherwise, false.</returns>
@@ -70,6 +71,7 @@ namespace PnP.Framework.Provisioning.Model
 
             return (this.ServerNotificationUrl == other.ServerNotificationUrl &&
                 this.ExpiresInDays == other.ExpiresInDays &&
+                this.ClientState == other.ClientState &&
                 this.SiteWebhookType == other.SiteWebhookType
                 );
         }

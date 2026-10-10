@@ -1102,7 +1102,9 @@ namespace PnP.Framework.Modernization.Transform
                 {
                     clientContext.Load(clientContext.Web, p => p.Id, p => p.ServerRelativeUrl, p => p.RootFolder.WelcomePage, p => p.Language);
                 }
-                clientContext.Load(clientContext.Site, p => p.RootWeb.ServerRelativeUrl, p => p.Id, p => p.Url);
+                clientContext.Load(clientContext.Site, p => p.Id, p => p.Url);
+                // Load RootWeb as its own CSOM object instead of expanding it through Site.
+                clientContext.Load(clientContext.Site.RootWeb, p => p.ServerRelativeUrl);
                 // Use regular ExecuteQuery as we want to send this custom clienttag
                 clientContext.ExecuteQuery();
             }

@@ -6,8 +6,6 @@ namespace PnP.Framework.Modernization.Publishing
     {
         CrossSiteCollection,
         SameWeb,
-        SameSiteCollectionNotAllowed,
-        InPlaceDifferentSiteCollection,
         SameSiteCollectionDifferentWeb,
         SameWebRequiresWritableSitePages,
     }
@@ -18,23 +16,15 @@ namespace PnP.Framework.Modernization.Publishing
     internal static class PublishingPageTransformationValidator
     {
         internal static PublishingPageTransformationTarget ValidateTarget(
-            bool inPlacePublishingPage,
             Guid sourceSiteId,
             Guid targetSiteId,
             Guid sourceWebId,
             Guid targetWebId,
             bool hasWritableSitePages)
         {
-            if (!inPlacePublishingPage)
-            {
-                return sourceSiteId != targetSiteId
-                    ? PublishingPageTransformationTarget.CrossSiteCollection
-                    : PublishingPageTransformationTarget.SameSiteCollectionNotAllowed;
-            }
-
             if (sourceSiteId != targetSiteId)
             {
-                return PublishingPageTransformationTarget.InPlaceDifferentSiteCollection;
+                return PublishingPageTransformationTarget.CrossSiteCollection;
             }
 
             if (sourceWebId != targetWebId)

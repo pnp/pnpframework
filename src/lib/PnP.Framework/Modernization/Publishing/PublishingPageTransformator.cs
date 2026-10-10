@@ -40,7 +40,7 @@ namespace PnP.Framework.Modernization.Publishing
 #endif
 
             this.sourceClientContext = sourceClientContext ?? throw new ArgumentException("sourceClientContext must be provided.");
-            this.targetClientContext = targetClientContext ?? throw new ArgumentException("targetClientContext must be provided."); ;
+            this.targetClientContext = targetClientContext ?? this.sourceClientContext;
 
             this.version = GetVersion();
             this.pageTelemetry = new PageTelemetry(version);
@@ -79,7 +79,7 @@ namespace PnP.Framework.Modernization.Publishing
 #endif
 
             this.sourceClientContext = sourceClientContext ?? throw new ArgumentException("sourceClientContext must be provided.");
-            this.targetClientContext = targetClientContext ?? throw new ArgumentException("targetClientContext must be provided."); ;
+            this.targetClientContext = targetClientContext ?? this.sourceClientContext;
 
             this.version = GetVersion();
             this.pageTelemetry = new PageTelemetry(version);
@@ -179,15 +179,12 @@ namespace PnP.Framework.Modernization.Publishing
                 var sourceWebId = sameSiteCollection ? sourceClientContext.Web.EnsureProperty(p => p.Id) : Guid.Empty;
                 var hasWritableSitePages = false;
 
-                if (sameSiteCollection &&
-                    sourceWebId.Equals(targetClientContext.Web.Id) &&
-                    publishingPageTransformationInformation.InPlacePublishingPage)
+                if (sameSiteCollection && sourceWebId.Equals(targetClientContext.Web.Id))
                 {
                     hasWritableSitePages = HasWritableSitePagesLibrary(sourceClientContext);
                 }
 
                 var transformationTarget = PublishingPageTransformationValidator.ValidateTarget(
-                    publishingPageTransformationInformation.InPlacePublishingPage,
                     sourceClientContext.Site.Id,
                     targetClientContext.Site.Id,
                     sourceWebId,
@@ -694,7 +691,7 @@ namespace PnP.Framework.Modernization.Publishing
                 }
                 else if (transformationTarget == PublishingPageTransformationTarget.SameWeb)
                 {
-                    // The in-place opt-in must fail closed when the target collision probe is inconclusive.
+                    // Stop in-place transformation when the target collision probe is inconclusive.
                     throw;
                 }
                 else
@@ -725,12 +722,6 @@ namespace PnP.Framework.Modernization.Publishing
         {
             switch (transformationTarget)
             {
-                case PublishingPageTransformationTarget.SameSiteCollectionNotAllowed:
-                    LogError(LogStrings.Error_SameSiteTransferNoAllowedForPublishingPages, LogStrings.Heading_SharePointConnection);
-                    throw new ArgumentNullException(LogStrings.Error_SameSiteTransferNoAllowedForPublishingPages);
-                case PublishingPageTransformationTarget.InPlaceDifferentSiteCollection:
-                    LogError(LogStrings.Error_InPlacePublishingPageDifferentSiteCollection, LogStrings.Heading_SharePointConnection);
-                    throw new ArgumentException(LogStrings.Error_InPlacePublishingPageDifferentSiteCollection);
                 case PublishingPageTransformationTarget.SameSiteCollectionDifferentWeb:
                     LogError(LogStrings.Error_InPlacePublishingPageDifferentWeb, LogStrings.Heading_SharePointConnection);
                     throw new ArgumentException(LogStrings.Error_InPlacePublishingPageDifferentWeb);

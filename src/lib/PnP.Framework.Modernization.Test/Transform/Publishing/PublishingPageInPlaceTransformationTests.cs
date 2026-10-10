@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,27 +19,55 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
         private static readonly Guid SourceSiteId = Guid.Parse("c33f44c0-e1ce-4d87-a961-98669e76bca6");
         private static readonly Guid SourceWebId = Guid.Parse("a467c0f4-dcf4-49f3-8a08-e33de32d3202");
 
-        [TestMethod]
-        public void InPlacePublishingPageDefaultsToFalse()
-        {
-            var information = new PublishingPageTransformationInformation(null);
+        public TestContext TestContext { get; set; }
 
-            Assert.IsFalse(information.InPlacePublishingPage);
+        [TestMethod]
+        public void ModelConstructorWithoutTargetUsesSourceContext()
+        {
+            using (var sourceContext = CreateContext("https://contoso.sharepoint.com/sites/enterprise-wiki"))
+            {
+                var transformator = CreateTransformator(sourceContext, null);
+
+                Assert.AreSame(sourceContext, transformator.sourceClientContext);
+                Assert.AreSame(sourceContext, transformator.targetClientContext);
+            }
         }
 
         [TestMethod]
-        public void SameWebRequiresExplicitOptIn()
+        public void FileMappingConstructorWithoutTargetUsesSourceContext()
         {
-            var result = ValidateSameWeb(inPlacePublishingPage: false, hasWritableSitePages: true);
+            Directory.CreateDirectory(TestContext.TestResultsDirectory);
+            var mappingPath = Path.Combine(TestContext.TestResultsDirectory, $"webpartmapping-{Guid.NewGuid():N}.xml");
+            System.IO.File.WriteAllText(mappingPath, BasePageTransformator.LoadDefaultWebPartMappingFile());
 
-            Assert.AreEqual(PublishingPageTransformationTarget.SameSiteCollectionNotAllowed, result);
+            try
+            {
+                using (var sourceContext = CreateContext("https://contoso.sharepoint.com/sites/enterprise-wiki"))
+                {
+                    var transformator = new PublishingPageTransformator(sourceContext, null, mappingPath, null);
+
+                    Assert.AreSame(sourceContext, transformator.sourceClientContext);
+                    Assert.AreSame(sourceContext, transformator.targetClientContext);
+                }
+            }
+            finally
+            {
+                System.IO.File.Delete(mappingPath);
+            }
+        }
+
+        [TestMethod]
+        public void SameWebTargetIsAcceptedWithoutAdditionalOptions()
+        {
+            var result = ValidateSameWeb(hasWritableSitePages: true);
+
+            Assert.AreEqual(PublishingPageTransformationTarget.SameWeb, result);
         }
 
         [TestMethod]
         public void SameSiteCollectionDifferentWebFailsClosed()
         {
             var result = PublishingPageTransformationValidator.ValidateTarget(
-                true,
                 SourceSiteId,
                 SourceSiteId,
                 SourceWebId,
@@ -49,33 +78,22 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
         }
 
         [TestMethod]
-        public void InPlaceDifferentSiteCollectionFailsClosedBeforeOverwritePolicy()
+        public void ConstructorRetainsAnExplicitTargetContext()
         {
-            var result = PublishingPageTransformationValidator.ValidateTarget(
-                true,
-                SourceSiteId,
-                Guid.Parse("2e33ad34-f43a-4d75-af55-e0deba981252"),
-                SourceWebId,
-                Guid.Parse("7896708f-f5ea-4f22-aeb3-6223bf8897b0"),
-                true);
+            using (var sourceContext = CreateContext("https://contoso.sharepoint.com/sites/enterprise-wiki"))
+            using (var targetContext = CreateContext("https://contoso.sharepoint.com/sites/modern-target"))
+            {
+                var transformator = CreateTransformator(sourceContext, targetContext);
 
-            Assert.AreEqual(PublishingPageTransformationTarget.InPlaceDifferentSiteCollection, result);
-            Assert.IsFalse(PublishingPageTransformationValidator.CanOverwriteTarget(result, true));
-            Assert.IsFalse(PublishingPageTransformationValidator.UsesCrossSitePermissionSemantics(result));
+                Assert.AreSame(sourceContext, transformator.sourceClientContext);
+                Assert.AreSame(targetContext, transformator.targetClientContext);
+            }
         }
 
         [TestMethod]
-        public void DefaultSameSiteDifferentWebKeepsExistingSameSiteRejection()
+        public void ConstructorStillRequiresSourceContext()
         {
-            var result = PublishingPageTransformationValidator.ValidateTarget(
-                false,
-                SourceSiteId,
-                SourceSiteId,
-                SourceWebId,
-                Guid.Parse("7896708f-f5ea-4f22-aeb3-6223bf8897b0"),
-                false);
-
-            Assert.AreEqual(PublishingPageTransformationTarget.SameSiteCollectionNotAllowed, result);
+            Assert.ThrowsException<ArgumentException>(() => CreateTransformator(null, null));
         }
 
         [TestMethod]
@@ -83,17 +101,16 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
         {
             Assert.AreEqual(
                 PublishingPageTransformationTarget.SameWebRequiresWritableSitePages,
-                ValidateSameWeb(true, false));
+                ValidateSameWeb(false));
             Assert.AreEqual(
                 PublishingPageTransformationTarget.SameWeb,
-                ValidateSameWeb(true, true));
+                ValidateSameWeb(true));
         }
 
         [TestMethod]
         public void CrossSiteCollectionKeepsExistingTargetPolicyAndPermissionSemantics()
         {
             var result = PublishingPageTransformationValidator.ValidateTarget(
-                false,
                 SourceSiteId,
                 Guid.Parse("2e33ad34-f43a-4d75-af55-e0deba981252"),
                 SourceWebId,
@@ -108,7 +125,7 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
         [TestMethod]
         public void SameWebNeverOverwritesAndUsesInPlacePermissionSemantics()
         {
-            var result = ValidateSameWeb(true, true);
+            var result = ValidateSameWeb(true);
 
             Assert.IsFalse(PublishingPageTransformationValidator.CanOverwriteTarget(result, true));
             Assert.IsFalse(PublishingPageTransformationValidator.UsesCrossSitePermissionSemantics(result));
@@ -187,8 +204,8 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
 
                 foreach (var rejectedTarget in new[]
                 {
-                    PublishingPageTransformationTarget.InPlaceDifferentSiteCollection,
                     PublishingPageTransformationTarget.SameSiteCollectionDifferentWeb,
+                    PublishingPageTransformationTarget.SameWebRequiresWritableSitePages,
                 })
                 {
                     var probeCalls = 0;
@@ -276,11 +293,9 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
         }
 
         private static PublishingPageTransformationTarget ValidateSameWeb(
-            bool inPlacePublishingPage,
             bool hasWritableSitePages)
         {
             return PublishingPageTransformationValidator.ValidateTarget(
-                inPlacePublishingPage,
                 SourceSiteId,
                 SourceSiteId,
                 SourceWebId,
@@ -301,7 +316,6 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
 
             return new PublishingPageTransformationInformation(sourcePage, overwrite)
             {
-                InPlacePublishingPage = true,
                 Folder = "converted/",
                 TargetPageName = "source.aspx",
             };

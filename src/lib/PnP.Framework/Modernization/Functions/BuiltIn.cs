@@ -647,7 +647,7 @@ namespace PnP.Framework.Modernization.Functions
         /// </summary>
         /// <param name="serverRelativeImagePath">Server relative path of the image</param>
         /// <returns>A set of image properties</returns>
-        [FunctionDocumentation(Description = "Does lookup a file based on the given server relative path and return needed properties of the file. Returns null if file was not found.",
+        [FunctionDocumentation(Description = "Looks up image properties by server relative path. Returns empty file identities and numeric defaults when the image file was not found.",
                                Example = "ImageLookup({ServerRelativeFileName})")]
         [InputDocumentation(Name = "{ServerRelativeFileName}", Description = "Server relative file name of the image")]
         [OutputDocumentation(Name = "{ImageListId}", Description = "Id of the list holding the file")]
@@ -722,8 +722,14 @@ namespace PnP.Framework.Modernization.Functions
             {
                 if (ex.ServerErrorTypeName == "System.IO.FileNotFoundException")
                 {
-                    // Provided image was not found, should not happen
-                    return null;
+                    // Keep the original image URL when its file is missing, but still resolve
+                    // the required numeric tokens in the modern Image web part mapping.
+                    LogWarning($"Image file was not found; retaining its source URL: {serverRelativeImagePath}", LogStrings.Heading_BuiltInFunctions);
+                    results["ImageListId"] = "";
+                    results["ImageUniqueId"] = "";
+                    results["ImageHeight"] = "-1";
+                    results["ImageWidth"] = "-1";
+                    return results;
                 }
                 else
                 {

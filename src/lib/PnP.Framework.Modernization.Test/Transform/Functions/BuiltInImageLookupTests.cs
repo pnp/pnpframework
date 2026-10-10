@@ -87,7 +87,7 @@ namespace PnP.Framework.Modernization.Test.Transform.Functions
         }
 
         [TestMethod]
-        public void ImageLookup_WhenFileIsNotFound_PreservesNullResult()
+        public void ImageLookup_WhenFileIsNotFound_ReturnsNumericDefaults()
         {
             using (var context = CreateContext(CreateProvider(false, null, false, null)))
             {
@@ -99,7 +99,13 @@ namespace PnP.Framework.Modernization.Test.Transform.Functions
 
                 var result = builtIn.ImageLookup(ImageServerRelativeUrl);
 
-                Assert.IsNull(result);
+                Assert.IsNotNull(result);
+                Assert.AreEqual(string.Empty, result["ImageListId"]);
+                Assert.AreEqual(string.Empty, result["ImageUniqueId"]);
+                Assert.AreEqual("-1", result["ImageWidth"]);
+                Assert.AreEqual("-1", result["ImageHeight"]);
+                AssertMappingWithLookupResult("SharePointPnP.Modernization.WikiImagePart", result);
+                AssertMappingWithLookupResult("Microsoft.SharePoint.WebPartPages.ImageWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c", result);
             }
         }
 
@@ -118,6 +124,11 @@ namespace PnP.Framework.Modernization.Test.Transform.Functions
         private static void AssertMappingWithDefaultDimensions(string webPartType)
         {
             var lookupResult = InvokeImageLookup(false, null, false, null);
+            AssertMappingWithLookupResult(webPartType, lookupResult);
+        }
+
+        private static void AssertMappingWithLookupResult(string webPartType, Dictionary<string, string> lookupResult)
+        {
             var mapping = LoadImageJsonControlData(webPartType);
             var replacements = new Dictionary<string, string>
             {

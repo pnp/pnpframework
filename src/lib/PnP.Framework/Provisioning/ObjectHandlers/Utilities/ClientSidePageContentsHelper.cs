@@ -25,7 +25,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
         internal const string TopicEntityId = "_EntityId";
         internal const string TopicEntityRelations = "_EntityRelations";
         internal const string TopicEntityType = "_EntityType";
-        
+
         private const string ContentTypeIdField = "ContentTypeId";
 
         public void ExtractClientSidePage(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo, PnPMonitoredScope scope, string pageUrl, string pageName, bool isHomePage, bool isTemplate = false)
@@ -87,7 +87,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     }
 
                     //var isNews = pageToExtract.LayoutType != Pages.ClientSidePageLayoutType.Home && promotedState == (int)Pages.PromotedState.Promoted;
-                    var isNews = pageToExtract.LayoutType != PnPCore.PageLayoutType.Home && promotedState == (int)PnPCore.PromotedState.Promoted;
+                    var isNews = pageToExtract.LayoutType != PnPCore.PageLayoutType.Home &&
+                        (promotedState == (int)PnPCore.PromotedState.PromoteOnPublish || promotedState == (int)PnPCore.PromotedState.Promoted);
 
                     // Create the page;
                     BaseClientSidePage extractedPageInstance;
@@ -105,7 +106,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                     extractedPageInstance.PromoteAsNewsArticle = isNews;
                     extractedPageInstance.PromoteAsTemplate = page.IsTemplate;
                     extractedPageInstance.Overwrite = true;
-                    extractedPageInstance.Publish = true;
+                    extractedPageInstance.Publish = creationInfo.ExtractPageAsPublished;
                     extractedPageInstance.Layout = pageToExtract.LayoutType.ToString();
                     //extractedPageInstance.EnableComments = !pageToExtract.CommentsDisabled;
                     extractedPageInstance.EnableComments = !pageToExtract.AreCommentsDisabled();
@@ -176,7 +177,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         if (thumbnailFileIds.Count == 1)
                         {
                             try{
-                                
+
                                 var file = web.GetFileById(thumbnailFileIds[0]);
                                 web.Context.Load(file, f => f.Level, f => f.ServerRelativePath, f => f.UniqueId);
                                 web.Context.ExecuteQueryRetry();
@@ -188,7 +189,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 {
                                     extractedPageInstance.ThumbnailUrl = Regex.Replace(extractedPageInstance.ThumbnailUrl, file.UniqueId.ToString("N"), $"{{fileuniqueid:{file.ServerRelativePath.DecodedUrl.Substring(web.ServerRelativeUrl.Length).TrimStart("/".ToCharArray())}}}");
                                 }
-                                
+
                             }
                             catch(ServerException ex)
                             {
@@ -538,6 +539,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             {
                 // If the JsonControlData is already set, we don't need to merge it with the propertiesJson
                 var json = Newtonsoft.Json.Linq.JObject.Parse(webPart.JsonControlData);
+
+                // BuildControlData uses the SharePoint canvas schema:
+                //   webPartId = component ID
+                //   id        = instance ID
+                //
+                // PnP provisioning templates expect:
+                //   id         = component ID
+                //   instanceId = instance ID
+                // Only normalize actual web parts. SectionBackgroundControl and other
+                // special canvas controls might not have a valid WebPartId.
+                if (Guid.TryParse(webPart.WebPartId, out _))
+                {
+                    json["id"] = webPart.WebPartId;
+                    json["instanceId"] = webPart.InstanceId.ToString("D");
+                }
+                
                 if (!string.IsNullOrWhiteSpace(webPart.PropertiesJson))
                     json.Add("properties", Newtonsoft.Json.Linq.JObject.Parse(webPart.PropertiesJson));
 

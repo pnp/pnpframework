@@ -1,17 +1,91 @@
-<?xml version="1.0"?>
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2021/03/ProvisioningSchema">
-  <pnp:Preferences Generator="PnP.Framework, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null" />
+<?xml version="1.0" encoding="utf-8"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema">
+  <pnp:Preferences Generator="PnP.Framework, Version=1.19.0.0, Culture=neutral, PublicKeyToken=0d501f89f11b748c" />
   <pnp:Templates ID="CONTAINER-STS0template">
     <pnp:ProvisioningTemplate ID="STS0template" Version="1" BaseSiteTemplate="STS#0" Scope="RootSite">
+      <pnp:WebSettings RequestAccessEmail="" NoCrawl="false" WelcomePage="SitePages/Home.aspx" SiteLogo="" AlternateCSS="" MasterPageUrl="{masterpagecatalog}/seattle.master" CustomMasterPageUrl="{masterpagecatalog}/seattle.master" CommentsOnSitePagesDisabled="false" QuickLaunchEnabled="true" MembersCanShare="true" SearchScope="DefaultScope" SearchBoxInNavBar="Inherit" />
+      <pnp:SiteSettings AllowDesigner="true" AllowCreateDeclarativeWorkflow="true" AllowSaveDeclarativeWorkflowAsTemplate="true" AllowSavePublishDeclarativeWorkflow="true" SearchBoxInNavBar="Inherit" SearchCenterUrl="" />
+      <pnp:RegionalSettings AdjustHijriDays="0" AlternateCalendarType="None" CalendarType="Gregorian" Collation="25" FirstDayOfWeek="Sunday" FirstWeekOfYear="0" LocaleId="1033" ShowWeeks="false" Time24="false" TimeZone="4" WorkDayEndHour="5:00PM" WorkDays="62" WorkDayStartHour="8:00AM" />
+      <pnp:SupportedUILanguages>
+        <pnp:SupportedUILanguage LCID="1033" />
+      </pnp:SupportedUILanguages>
+      <pnp:AuditSettings AuditLogTrimmingRetention="90" TrimAuditLog="true" />
+      <pnp:PropertyBagEntries>
+        <pnp:PropertyBagEntry Key="vti_customuploadpage" Value="/_layouts/15/UploadEx.aspx" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="FollowLinkEnabled" Value="TRUE" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_associateownergroup" Value="7" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="enabledhelpcollections" Value="" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="disabledhelpcollections" Value="WSSEndUser;#WSSCentralAdmin;#FastEndUser;#FastCentralAdmin;#MSSEndUser;#MSSCentralAdmin;#PPSDesignerEndUser;#SQLWSSAddIn" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_defaultlanguage" Value="en-us" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="taxonomyhiddenlist" Value="55100313-f9a3-4a34-aae4-3190b4384e50" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="sharepointhelpoverride" Value="SPOStandard" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_sitemasterid" Value="11381b47-939f-42cb-98d0-fa15cfe279c8" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="profileschemaversion" Value="1" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="contenttypessynctimestampversion" Value="1" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_associategroups" Value="9;5;8;7" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="UseFastCloneFromSiteMaster" Value="FALSE" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_associatevisitorgroup" Value="8" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_extenderversion" Value="16.0.0.27424" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_associatemembergroup" Value="9" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="contenttypesusagebackfillversion" Value="3" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="__ScriptSafeInternalPages" Value="WopiFrame.aspx;videoembedplayer.aspx;" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_categories" Value="Travel Expense\ Report Business Competition Goals/Objectives Ideas Miscellaneous Waiting VIP In\ Process Planning Schedule" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_createdassociategroups" Value="7;8;9" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="allowslistpolicy" Value="True" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="vti_approvallevels" Value="Approved Rejected Pending\ Review" Overwrite="false" />
+        <pnp:PropertyBagEntry Key="SiteNotebookGuid" Value="a4392c3d-ec7d-4a94-8cf4-a4791430d39a" Overwrite="false" />
+      </pnp:PropertyBagEntries>
+      <pnp:Security AssociatedOwnerGroup="{groupsitetitle} Owners" AssociatedMemberGroup="{groupsitetitle} Members" AssociatedVisitorGroup="{groupsitetitle} Visitors">
+        <pnp:AdditionalOwners>
+          <pnp:User Name="SHAREPOINT\system" />
+        </pnp:AdditionalOwners>
+        <pnp:Permissions>
+          <pnp:RoleDefinitions>
+            <pnp:RoleDefinition Name="View Only" Description="Can view pages, list items, and documents. Document types with server-side file handlers can be viewed in the browser but not downloaded.">
+              <pnp:Permissions>
+                <pnp:Permission>EmptyMask</pnp:Permission>
+                <pnp:Permission>ViewListItems</pnp:Permission>
+                <pnp:Permission>ViewVersions</pnp:Permission>
+                <pnp:Permission>ViewFormPages</pnp:Permission>
+                <pnp:Permission>Open</pnp:Permission>
+                <pnp:Permission>ViewPages</pnp:Permission>
+                <pnp:Permission>CreateSSCSite</pnp:Permission>
+                <pnp:Permission>BrowseUserInfo</pnp:Permission>
+                <pnp:Permission>UseClientIntegration</pnp:Permission>
+                <pnp:Permission>UseRemoteAPIs</pnp:Permission>
+                <pnp:Permission>CreateAlerts</pnp:Permission>
+              </pnp:Permissions>
+            </pnp:RoleDefinition>
+          </pnp:RoleDefinitions>
+        </pnp:Permissions>
+      </pnp:Security>
+      <pnp:Navigation AddNewPagesToNavigation="true" CreateFriendlyUrlsForNewPages="true">
+        <pnp:GlobalNavigation NavigationType="Structural">
+          <pnp:StructuralNavigation RemoveExistingNodes="false">
+            <pnp:NavigationNode Title="Home" Url="{site}" />
+          </pnp:StructuralNavigation>
+        </pnp:GlobalNavigation>
+        <pnp:CurrentNavigation NavigationType="StructuralLocal">
+          <pnp:StructuralNavigation RemoveExistingNodes="false">
+            <pnp:NavigationNode Title="Home" Url="{site}" />
+            <pnp:NavigationNode Title="Notebook" Url="{site}/_layouts/15/Doc.aspx?sourcedoc=%7Ba4392c3d-ec7d-4a94-8cf4-a4791430d39a%7D&amp;action=editnew" IsExternal="true" />
+            <pnp:NavigationNode Title="News" Url="{site}/_layouts/15/News.aspx" IsExternal="true" />
+            <pnp:NavigationNode Title="Documents" Url="{site}/Shared Documents/Forms/AllItems.aspx" />
+            <pnp:NavigationNode Title="Pages" Url="{site}/SitePages/Forms/ByAuthor.aspx" />
+            <pnp:NavigationNode Title="Site contents" Url="{site}/_layouts/15/viewlsts.aspx" IsExternal="true" />
+          </pnp:StructuralNavigation>
+        </pnp:CurrentNavigation>
+      </pnp:Navigation>
       <pnp:SiteFields>
-        <Field Type="Note" DisplayName="HashTags_0" StaticName="j33b1bc20532487296f1bbbdead35a56" Name="j33b1bc20532487296f1bbbdead35a56" ID="{790722e8-f13c-4f84-90b2-36161bfe7873}" ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" SourceID="{033d7c83-9d92-413c-bb29-3dfba7481373}" />
-        <Field Type="Note" DisplayName="TaxKeywordTaxHTField" StaticName="TaxKeywordTaxHTField" Name="TaxKeywordTaxHTField" ID="{1390a86a-23da-45f0-8efe-ef36edadfb39}" ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" SourceID="{033d7c83-9d92-413c-bb29-3dfba7481373}" />
+        <Field Type="Note" DisplayName="HashTags_0" StaticName="j33b1bc20532487296f1bbbdead35a56" Name="j33b1bc20532487296f1bbbdead35a56" ID="{790722e8-f13c-4f84-90b2-36161bfe7873}" ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" SourceID="{8c24f561-37be-4ace-9199-5d8deeebcb3d}" />
+        <Field Type="Note" DisplayName="TaxKeywordTaxHTField" StaticName="TaxKeywordTaxHTField" Name="TaxKeywordTaxHTField" ID="{1390a86a-23da-45f0-8efe-ef36edadfb39}" ShowInViewForms="FALSE" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" SourceID="{8c24f561-37be-4ace-9199-5d8deeebcb3d}" />
         <Field ID="{56747800-D36E-4625-ABE3-B1BC74A7D5F8}" Name="LowerValuesAreBetter" StaticName="LowerValuesAreBetter" Description="Whether lower is better or higher is better" Group="Status Indicators" Type="Boolean" DisplayName="Lower values are better" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{672D9500-5649-49ae-8166-777F40527874}" Name="AbuseReportsCommentsLookup" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="Lookup" List="" Mult="TRUE" DisplayName="Comments Lookup" ReadOnly="TRUE" Hidden="TRUE" AllowDeletion="FALSE" Sealed="TRUE">
           <FieldRefs>
             <FieldRef Name="AbuseReportsLookup" />
           </FieldRefs>
         </Field>
+        <Field ID="{1F30D200-0D4E-4C8A-A7EB-2E49815BF2BE}" DisplayName="Instance Id" Name="WF4InstanceId" Type="Text" Group="_Hidden" Hidden="TRUE" Sealed="TRUE" Indexed="TRUE" />
         <Field Type="TaxonomyFieldTypeMulti" DisplayName="Enterprise Keywords" StaticName="TaxKeyword" Name="TaxKeyword" ID="{23f27201-bee3-471e-b2e7-b64fd8b7ca38}" ShowInViewForms="TRUE" DefaultListField="TRUE" List="{{listid:TaxonomyHiddenList}}" WebId="{siteid}" Required="FALSE" Hidden="FALSE" CanToggleHidden="TRUE" ShowField="Term1033" SourceID="{{siteid}}" Mult="TRUE" Sortable="FALSE" Group="Enterprise Keywords Group" Description="Enterprise Keywords are shared with other users and applications to allow for ease of search and filtering, as well as metadata consistency and reuse" AllowDeletion="TRUE" Sealed="TRUE">
           <Customization>
             <ArrayOfProperty>
@@ -58,6 +132,14 @@
                 <Value xmlns:q9="http://www.w3.org/2001/XMLSchema" p4:type="q9:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
               </Property>
               <Property>
+                <Name>IsDocTagsEnabled</Name>
+                <Value xmlns:q10="http://www.w3.org/2001/XMLSchema" p4:type="q10:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+              </Property>
+              <Property>
+                <Name>IsEnhancedImageTaggingEnabled</Name>
+                <Value xmlns:q11="http://www.w3.org/2001/XMLSchema" p4:type="q11:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+              </Property>
+              <Property>
                 <Name>FilterAssemblyStrongName</Name>
               </Property>
               <Property>
@@ -73,6 +155,7 @@
           </Customization>
         </Field>
         <Field ID="{1FAA4902-9115-44B9-BBA7-791441CA1D6F}" Name="SMTotalFileStreamSize" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="SMTotalFileStreamSize" Hidden="TRUE" Group="_Hidden" ColName="DocSize" RowOrdinal="0" ReadOnly="TRUE" FromBaseType="TRUE" Type="Lookup" List="Docs" ListInternal="StorageMetrics" ShowField="SMTotalFileStreamSize" JoinColName="DocId" LeftColumnName="tp_DocId" DisplayName="Total File Stream Size" />
+        <Field ID="{b1996002-9167-45e5-a4df-b2c41c6723c7}" Name="RatingCount" StaticName="RatingCount" DisplayName="Number of Ratings" Description="Number of ratings submitted" Group="Content Feedback" Type="RatingCount" Min="0" Decimals="0" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInNewForm="FALSE" CanToggleHidden="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{851C7906-3C95-46bc-A81E-30588602D910}" Name="ReportLink" StaticName="ReportLink" Group="_Hidden" ReadOnly="TRUE" Type="Computed" DisplayName="Link to Report" Filterable="FALSE" Sortable="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3">
           <FieldRefs>
             <FieldRef Name="ReportName" />
@@ -211,6 +294,7 @@
         <Field ID="{D4B6480A-4BED-4094-9A52-30181EA38F1D}" Name="_ComplianceTag" DisplaceOnUpgrade="TRUE" Hidden="TRUE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="Retention label" List="Docs" FieldRef="ID" ShowField="ComplianceTag" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" />
         <Field ID="{A2455E0A-F63C-46af-857C-DBD4199FF95F}" Name="RoutingRuleExternal" StaticName="RoutingRuleExternal" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Document and Record Management Columns" DisplayName="Route To External Location" Type="Boolean" Required="TRUE" CanToggleHidden="TRUE" Sealed="TRUE" />
         <Field ID="{F53D350D-854E-4962-9318-89D56D30773A}" Name="FormattedWarning" StaticName="FormattedWarning" Description="The warning value of the indicator, formatted by its datasource provider" Group="Status Indicators" Type="Text" DisplayName="Formatted indicator warning" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+        <Field ID="{5FEB760D-E1C5-42D7-92AC-26AE20A1365A}" Name="DescendantRatingsCount" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="Integer" DisplayName="Aggregated Rating Count" ReadOnly="TRUE" Hidden="FALSE" AllowDeletion="FALSE" Sealed="TRUE" />
         <Field ID="{92BE610E-DDBB-49F4-B3B1-5C2BC768DF8F}" Name="_ComplianceTagWrittenTime" DisplaceOnUpgrade="TRUE" Hidden="TRUE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="Retention label Applied" List="Docs" FieldRef="ID" ShowField="ComplianceTagWrittenTime" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" />
         <Field ID="{9889a80f-c9ec-41d8-a359-ac5fb5c4cfa2}" Name="_SPCallToAction" StaticName="_SPCallToAction" DisplayName="Call To Action" Type="Note" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" AllowDeletion="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" />
         <Field ID="{7383B80F-B38D-4dde-B9E0-5319F0777069}" Name="RoutingTargetFolder" StaticName="RoutingTargetFolder" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Document and Record Management Columns" DisplayName="Target Folder" Type="Text" Required="TRUE" CanToggleHidden="TRUE" Sealed="TRUE" MaxLength="255" />
@@ -219,6 +303,12 @@
         <Field ID="{36193413-DD5C-4096-8C1E-1B40098B9BA3}" Name="_OriginalSourceSiteId" StaticName="_OriginalSourceSiteId" DisplayName="Original Source Site ID" Type="Guid" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" ReadOnly="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" AllowDeletion="FALSE" />
         <Field ID="{EDD35D15-AE36-4b1b-91AA-0E288DF6C612}" Name="ReputationScore" SourceID="http://schemas.microsoft.com/sharepoint/v3" Type="Number" DisplayName="Reputation Score" StaticName="ReputationScore" ReadOnly="TRUE" Group="_Hidden" Hidden="FALSE" AllowDeletion="FALSE" Sealed="TRUE">
           <Default>0</Default>
+        </Field>
+        <Field ID="{55B29417-1042-47F0-9DFF-CE8156667F96}" DisplayName="Task Outcome" Name="TaskOutcome" Type="OutcomeChoice" Sealed="FALSE">
+          <CHOICES>
+            <CHOICE>Approved</CHOICE>
+            <CHOICE>Rejected</CHOICE>
+          </CHOICES>
         </Field>
         <Field ID="{D43E8A19-F4F3-4e6a-B8C1-02E972C3ED6F}" Name="PercentExpression" StaticName="PercentExpression" Description="Determine whether the expression is used to calculate percentage" Group="Status Indicators" Type="Boolean" DisplayName="Percent Expression" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{BAB0A619-D1EC-40D7-847B-3E4408080C17}" Name="CompatibleManagedProperties" StaticName="CompatibleManagedProperties" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Display Template Columns" DisplayName="Compatible Managed Properties" Description="Enter the names of the managed properties that you would like to use this Filter Display Template with. The managed properties with names that start with the values you enter will be able to use this Display Template. " Type="Note" Required="FALSE" CanToggleHidden="TRUE" Sealed="TRUE" RichText="FALSE" />
@@ -230,12 +320,18 @@
         <Field ID="{467E811F-0C12-4A93-BB04-42FF0C1C597B}" DisplayName="Template Id" Type="Text" ShowInEditForm="FALSE" Required="TRUE" Name="TemplateId" RowOrdinal="0" Group="_Hidden" />
         <Field ID="{467E811F-0C12-4A93-BB04-42FF0C1C597C}" DisplayName="Form Relative Url" Type="Text" ShowInEditForm="FALSE" Required="TRUE" Name="FormRelativeUrl" RowOrdinal="0" Group="_Hidden" />
         <Field ID="{E2A3861F-C216-47D7-820F-7CB638862AB2}" Name="_ShortcutWebId" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ShortcutWebId" DisplayName="Shortcut Web Id" Group="_Hidden" Hidden="TRUE" Type="Guid" />
+        <Field ID="{86EBE41F-255F-4170-B040-9977528A8BF5}" Name="_SPCollaborators" StaticName="_SPCollaborators" DisplayName="Collaborators" Type="Note" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" AllowDeletion="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" ReadOnly="TRUE" Hidden="TRUE" />
         <Field ID="{A0DD6C22-0988-453E-B3E2-77479DC9F014}" Name="ManagedPropertyMapping" StaticName="ManagedPropertyMapping" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Display Template Columns" DisplayName="Managed Property Mappings" Description="Enter the slots and the managed properties that map to the slots. This field will be used to determine which managed properties are retrieved from SharePoint Search when you are using this Display Template. Use the format &quot;slot name&quot;:&quot;property name&quot;, separated by commas." Type="Note" UnlimitedLengthInDocumentLibrary="TRUE" Required="FALSE" CanToggleHidden="TRUE" Sealed="TRUE" RichText="FALSE" />
         <Field ID="{F0816223-FD98-41f9-AA57-B7F7DB462FAA}" Name="Value" StaticName="Value" Group="Status Indicators" Type="Number" DisplayName="Indicator Value" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{28081524-7C2F-4f08-9319-9C737B495BC1}" Name="ParentName" StaticName="ParentName" Group="_Hidden" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInFileDlg="FALSE" Type="Text" DisplayName="Report Parent Name" AuthoringInfo="(the name of a snapshot's parent)" Filterable="FALSE" Sortable="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{20906227-D1C8-430c-989A-30A62E3E40B2}" Name="GoalFromWorkBook" StaticName="GoalFromWorkBook" Description="Whether the goal comes from the workbook or from the indicator definition" Group="Status Indicators" Type="Boolean" DisplayName="Goal from workbook" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{A261B12A-8CA2-47FA-A117-05861D637C7E}" Name="SMTotalFileCount" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="SMTotalFileCount" Hidden="TRUE" Group="_Hidden" ColName="DocCount" RowOrdinal="0" ReadOnly="TRUE" FromBaseType="TRUE" Type="Lookup" List="Docs" ListInternal="StorageMetrics" ShowField="SMTotalFileCount" JoinColName="DocId" LeftColumnName="tp_DocId" DisplayName="Total File Count" />
         <Field ID="{EFCA5F2B-DE72-42a8-AEFD-1257AF8698A8}" Name="ReportCreatedBy" StaticName="ReportCreatedBy" Group="_Hidden" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInFileDlg="FALSE" Type="User" List="UserInfo" Filterable="TRUE" Sortable="TRUE" DisplayName="Report Created By" AuthoringInfo="(snapshotted value)" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+        <Field ID="{6E4D832B-F610-41a8-B3E0-239608EFDA41}" Name="LikesCount" StaticName="LikesCount" DisplayName="Number of Likes" Group="Content Feedback" Type="Likes" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInNewForm="FALSE" CanToggleHidden="TRUE" JSLink="sp.ui.reputation.js" SourceID="http://schemas.microsoft.com/sharepoint/v3">
+          <FieldRefs>
+            <FieldRef Name="LikedBy" />
+          </FieldRefs>
+        </Field>
         <Field ID="{0121CB2B-4515-44f2-9D5A-0DCB3BF556AA}" Name="KpiComments" StaticName="KpiComments" Description="Comments describe the current status of the indicator, and may provide information about causes or problems." Group="Status Indicators" Type="Note" DisplayName="Indicator Comments" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{9730102C-9470-4515-960E-6DFB2D89A68B}" Name="DetailLink" StaticName="DetailLink" Description="Link for page for clicking through for details " Group="Status Indicators" Type="URL" DisplayName="Detail Link" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{E236652C-CF8F-4917-8BAA-30FFCCCFB7E8}" Name="MemberStatusInt" SourceID="http://schemas.microsoft.com/sharepoint/v3" Type="Integer" DisplayName="Member Status" StaticName="MemberStatusInt" ReadOnly="TRUE" Group="_Hidden" Hidden="FALSE" Sealed="TRUE">
@@ -273,6 +369,7 @@
         <Field ID="{3C497036-038F-41db-AEC7-C9849649B135}" Name="KpiStatus" StaticName="KpiStatus" Description="The status of the Indicator" Group="Status Indicators" Type="Number" DisplayName="Indicator Status" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{DE38F937-8578-435e-8CD3-50BE3EA59253}" Name="MediaLengthInSeconds" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="MediaLengthInSeconds" Group="_Hidden" Type="Integer" DisplayName="Length (seconds)" ShowInNewForm="FALSE" ShowInEditForm="FALSE" />
         <Field ID="{F4EBD738-21DB-4797-9229-2E817DD2367D}" Name="TagEventDate" SourceID="http://schemas.microsoft.com/sharepoint/v3" Required="FALSE" ShowInFileDlg="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ReadOnly="TRUE" StaticName="TagEventDate" Type="DateTime" DisplayName="Label Event Date" Sortable="TRUE" />
+        <Field ID="{321A8C3C-0EC7-473B-BCC6-67F3C2DAE20D}" DisplayName="WSPublishError" Name="WSPublishError" Type="Note" Sealed="TRUE" Group="_Hidden" />
         <Field ID="{3C318A40-0D51-408D-BA71-16FA845B9FE5}" Name="CrawlerXSLFile" StaticName="CrawlerXSLFile" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Display Template Columns" DisplayName="Crawler XSL File" Description="Add an XSL file to be used to generate HTML when crawlers are viewing the page." Type="URL" Required="FALSE" CanToggleHidden="TRUE" Sealed="TRUE" />
         <Field ID="{91E86A43-75F2-426F-80DA-35EDFB47D55D}" Name="_OriginalSourceItemId" StaticName="_OriginalSourceItemId" DisplayName="Original Source Item ID" Type="Guid" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" ReadOnly="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" AllowDeletion="FALSE" />
         <Field ID="{CC33F143-E697-42db-9C83-8DB4E6928E9D}" Name="ReportModified" StaticName="ReportModified" Group="_Hidden" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInFileDlg="FALSE" Type="DateTime" Filterable="FALSE" Sortable="TRUE" DisplayName="Report Modified" AuthoringInfo="(snapshotted value)" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
@@ -302,6 +399,7 @@
         <Field ID="{65572D4D-445A-43F1-9C77-3358222A2C93}" DisplayName="Form Category" Type="Text" Required="FALSE" Name="FormCategory" RowOrdinal="0" Group="_Hidden" />
         <Field ID="{AB065451-14D6-485a-88C3-414C908D50D3}" Name="CategoryDescription" DisplayName="Description" Type="Text" SourceID="http://schemas.microsoft.com/sharepoint.v3" DisplaceOnUpgrade="TRUE" Hidden="FALSE" Sealed="FALSE" AllowDeletion="FALSE" />
         <Field ID="{EA588E51-855C-4533-9F5A-F21D7E19564E}" Type="URL" Group="_Hidden" Name="BannerUrl" DisplayName="Banner URL" Sealed="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3/fields" StaticName="BannerUrl" />
+        <Field ID="{5D45DB58-9AE3-4541-9BD0-759872D0D8D6}" Name="TopicLastRatedOrLikedBy" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="User" List="UserInfo" Sortable="FALSE" DisplayName="Topic Last Updated By" Hidden="TRUE" AllowDeletion="FALSE" Sealed="TRUE" />
         <Field ID="{FD3E3A59-BF10-4c99-B678-5DD7FCC6CB28}" Name="LastUpdated" StaticName="LastUpdated" Description="The last indicator update from its datasource provider" Group="Status Indicators" Type="DateTime" DisplayName="Most recent indicator data update" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{51139F59-4BAC-45cb-8047-9C633EED1DB0}" Name="NumberOfReplies" SourceID="http://schemas.microsoft.com/sharepoint/v3" Type="Number" DisplayName="Replies" StaticName="NumberOfReplies" ReadOnly="TRUE" Group="_Hidden" Hidden="FALSE" AllowDeletion="FALSE" Sealed="TRUE">
           <Default>0</Default>
@@ -332,8 +430,11 @@
           </MAPPINGS>
           <Default>Active</Default>
         </Field>
+        <Field ID="{A569E161-E19E-4360-9AE1-20DFDA097CB3}" DisplayName="WSEnabled" Name="WSEnabled" Type="Boolean" Sealed="TRUE" />
         <Field ID="{1805E563-22CF-44ed-96F5-58EBB8A6CB80}" Name="MemberLookup" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="Lookup" List="" Mult="FALSE" ShowField="Title" DisplayName="Posted by" ReadOnly="TRUE" Hidden="FALSE" AllowDeletion="FALSE" Sealed="TRUE" />
-        <Field ID="{08D89A66-4634-42B8-9D5A-0C27395A48B3}" Name="TriggerFlowInfo" SourceID="http://schemas.microsoft.com/sharepoint/v3" Required="FALSE" ShowInFileDlg="FALSE" Hidden="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ReadOnlyEnforced="TRUE" DisplaceOnUpgrade="TRUE" StaticName="TriggerFlowInfo" Type="Text" DisplayName="Trigger Flow Info" Sortable="FALSE" />
+        <Field ID="{08D89A66-4634-42B8-9D5A-0C27395A48B3}" Name="TriggerFlowInfo" SourceID="http://schemas.microsoft.com/sharepoint/v3" Required="FALSE" ShowInFileDlg="FALSE" Hidden="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ReadOnlyEnforced="FALSE" ReadOnly="TRUE" DisplaceOnUpgrade="TRUE" StaticName="TriggerFlowInfo" Type="Text" DisplayName="Trigger Flow Info" Sortable="FALSE" />
+        <Field ID="{4D64B067-08C3-43DC-A87B-8B8E01673313}" Name="RatedBy" StaticName="RatedBy" DisplayName="Rated By" Description="Users rated the item." Group="_Hidden" Type="UserMulti" List="UserInfo" Mult="TRUE" Hidden="TRUE" ForcePromoteDemote="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+        <Field ID="{D8225D68-5DDB-4e66-8069-2694E8F628FB}" DisplayName="WSEventSource" Name="WSEventSource" Type="Text" Sealed="TRUE" Group="_Hidden" />
         <Field ID="{17828E6A-633B-443A-A503-1DB661F1F5F7}" Name="AuthorNumOfPostsLookup" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="Lookup" List="" Mult="FALSE" DisplayName="Author's Number of Posts" Hidden="TRUE" AllowDeletion="FALSE" Sealed="TRUE">
           <FieldRefs>
             <FieldRef Name="MemberLookup" />
@@ -341,6 +442,7 @@
         </Field>
         <Field ID="{4181B96A-3125-4f75-B823-3A4D675C6B19}" Name="GoalCell" StaticName="GoalCell" Description="Address or name of the cell for the goal" Group="Status Indicators" Type="Text" DisplayName="Goal Cell" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{3A6B296C-3F50-445C-A13F-9C679EA9DDA3}" Name="ComplianceAssetId" SourceID="http://schemas.microsoft.com/sharepoint/v3" Required="FALSE" ShowInFileDlg="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ReadOnly="TRUE" StaticName="ComplianceAssetId" Type="Text" DisplayName="Compliance Asset Id" Sortable="TRUE" />
+        <Field ID="{4C321A6D-2A91-428B-8296-59408B35901A}" Name="_SourceDynamicSectionId" StaticName="_SourceDynamicSectionId" DisplayName="sourceDynamicPageId" Type="Text" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Indexed="TRUE" Description="" ShowInEditForm="FALSE" AllowDeletion="FALSE" Hidden="TRUE" />
         <Field ID="{B0BD6F6D-ED80-4ff8-8BE0-EF9238A16835}" Name="ReportLinkFilename" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="ReportLinkFilename" Group="_Hidden" ReadOnly="TRUE" Type="Computed" DisplayName="Name" Filterable="FALSE" ClassInfo="Menu" AuthoringInfo="(link to report with edit menu)">
           <FieldRefs>
             <FieldRef ID="{687c7f94-686a-42d3-9b67-2782eac4b4f8}" Name="FileLeafRef" />
@@ -420,6 +522,7 @@
         </Field>
         <Field ID="{1A03FA74-8C63-40CC-BD06-73B580BD8744}" DisplayName="Form ID" Type="Text" Required="FALSE" Name="FormId" RowOrdinal="0" Group="_Hidden" />
         <Field ID="{418d7676-2d6f-42cf-a16a-e43d2971252a}" Name="_ComplianceTagUserId" DisplaceOnUpgrade="TRUE" Hidden="TRUE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="Label applied by" List="Docs" FieldRef="ID" ShowField="ComplianceTagUserId" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" />
+        <Field ID="{D8A77D76-536B-45D2-8B9B-E4E9B00CF3DC}" Name="_Emoji" SourceID="http://schemas.microsoft.com/sharepoint/v3" Required="FALSE" Hidden="TRUE" ShowInFileDlg="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplaceOnUpgrade="TRUE" StaticName="_Emoji" Type="Text" DisplayName="Emoji" Sortable="FALSE" />
         <Field ID="{2662AD77-2410-4938-B01C-E5E43321BAD4}" Name="_ShortcutSiteId" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ShortcutSiteId" DisplayName="Shortcut Site Id" Group="_Hidden" Hidden="TRUE" Type="Guid" />
         <Field ID="{2DE1DF7B-48E1-4c8e-BE0F-F00E504B9948}" SourceID="http://schemas.microsoft.com/sharepoint/v3" Name="VideoSetOwner" DisplayName="Owner" Description="The owner of the Video" StaticName="VideoSetOwner" Group="_Hidden" Type="User" List="UserInfo" ShowField="NameWithPictureAndDetails" Hidden="FALSE" ShowInEditForm="TRUE" />
         <Field ID="{3B32F47B-F1A1-45ff-B5AD-7B28B84C720A}" Name="ValueCell" StaticName="ValueCell" Description="Address or name of the cell for the value" Group="Status Indicators" Type="Text" DisplayName="Value Cell" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
@@ -445,6 +548,7 @@
             </IfEqual>
           </DisplayPattern>
         </Field>
+        <Field ID="{6391DC7E-E7F3-4FAF-9890-550FD5D3022F}" DisplayName="WSGUID" Name="WSGUID" Type="Guid" Sealed="TRUE" Group="_Hidden" />
         <Field ID="{CCC1037F-F65E-434A-868E-8C98AF31FE29}" Name="_ComplianceFlags" DisplaceOnUpgrade="TRUE" Hidden="TRUE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="Label setting" List="Docs" FieldRef="ID" ShowField="ComplianceFlags" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" />
         <Field ID="{D2264183-83DC-4d08-A57D-974686192D7A}" Name="TopicCount" DisplayName="Discussions" Type="Integer" SourceID="http://schemas.microsoft.com/sharepoint.v3" DisplaceOnUpgrade="TRUE" ReadOnly="TRUE" Hidden="FALSE" Sealed="FALSE" AllowDeletion="FALSE">
           <Default>0</Default>
@@ -469,13 +573,16 @@
         </Field>
         <Field ID="{74E6AE8A-0E3E-4DCB-BBFF-B5A016D74D64}" Name="_dlc_ExpireDateSaved" StaticName="_dlc_ExpireDateSaved" DisplayName="Original Expiration Date" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Document and Record Management Columns" Type="DateTime" Indexed="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInFileDlg="FALSE" ShowInDisplayForm="FALSE" Required="FALSE" Sealed="TRUE" ReadOnly="TRUE" OverwriteInChildScopes="TRUE" />
         <Field ID="{ff41708b-e251-4237-a060-bea44657e8dc}" Name="_SPAssetFolderId" StaticName="_SPAssetFolderId" DisplayName="Asset Folder Id" Type="Number" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" ReadOnly="TRUE" AllowDeletion="FALSE" Hidden="TRUE" />
+        <Field ID="{F519008D-1B5B-42a8-8DAB-E1A642FE5787}" DisplayName="WSDescription" Name="WSDescription" Type="Text" Sealed="TRUE" Group="_Hidden" />
         <Field ID="{4966388E-6E12-4BC6-8990-5B5B66153EAE}" Name="CanvasContent1" StaticName="CanvasContent1" DisplayName="Authoring Canvas Content" Type="HTML" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="This column stores the content of the authoring canvas in a site page." AllowDeletion="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" ShowInVersionHistory="FALSE" RichText="TRUE" RichTextMode="FullHtml" />
         <Field ID="{1F300F90-C9D2-41f5-8EBB-7F2829A4C977}" SourceID="http://schemas.microsoft.com/sharepoint/v3" Name="VideoSetDefaultEncoding" DisplayName="Default Encoding" StaticName="VideoSetDefaultEncoding" Group="_Hidden" Type="URL" Hidden="TRUE" ShowInEditForm="FALSE" />
         <Field ID="{9CB4D391-367F-4342-8F17-AC808799784A}" SourceID="http://schemas.microsoft.com/sharepoint/v3" Name="VideoSetShowDownloadLink" DisplayName="Show Download Link" Description="Specifies whether a button appears on the video player page that allows the user to download the video being played." StaticName="VideoSetShowDownloadLink" Group="_Hidden" Type="Boolean" Hidden="FALSE" ShowInEditForm="TRUE">
           <Default>1</Default>
         </Field>
         <Field ID="{ABE62893-898D-48f9-9A52-3778B420F81C}" Name="GiftedBadgeLookup" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="Lookup" List="" Mult="FALSE" ShowField="Title" DisplayName="Gifted Badge" AllowDeletion="FALSE" Sealed="TRUE" />
+        <Field ID="{9B590294-0151-44cf-9D56-24D8BB80F802}" DisplayName="WSDisplayName" Name="WSDisplayName" Type="Text" Sealed="TRUE" Group="_Hidden" />
         <Field ID="{58EB8694-8BD6-4f98-8097-374BD97FFEC4}" DisplayName="Content Type ID" Type="Text" Required="FALSE" Name="CustomContentTypeId" Hidden="TRUE" RowOrdinal="0" Group="_Hidden" />
+        <Field ID="{0F17D094-F613-4D33-8031-7B22650AAD78}" Name="MediaUserMetadata" SourceID="http://schemas.microsoft.com/sharepoint/v3" Required="FALSE" Hidden="TRUE" Group="_Hidden" Sealed="TRUE" UnlimitedLengthInDocumentLibrary="TRUE" ShowInFileDlg="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" DisplaceOnUpgrade="TRUE" StaticName="MediaUserMetadata" Type="Note" DisplayName="Media User Metadata" Sortable="FALSE" />
         <Field ID="{CAB85295-B195-4AC2-8323-87C602E6AC9D}" Name="TargetControlType" StaticName="TargetControlType" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Display Template Columns" DisplayName="Target Control Type (Search)" Description="Select the search controls that will use this Display Template." Type="MultiChoice" Required="FALSE" CanToggleHidden="TRUE" Sealed="TRUE">
           <CHOICES>
             <CHOICE>SearchResults</CHOICE>
@@ -525,7 +632,9 @@
         <Field ID="{C3FC749D-C4A7-478b-A915-21C1C68F7199}" Name="AbuseReportsCount" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="Number" DisplayName="Reports" ReadOnly="TRUE" Indexed="TRUE" Hidden="TRUE" AllowDeletion="FALSE" Sealed="TRUE" />
         <Field ID="{96C27C9D-33F5-4f8e-893E-684014BC7090}" DisplayName="Form Locale" Type="Text" Required="FALSE" Name="FormLocale" RowOrdinal="0" Group="_Hidden" />
         <Field ID="{E84A049E-230D-4751-8D5C-8F615E968DF2}" Name="Warning" StaticName="Warning" Group="Status Indicators" Type="Number" DisplayName="Indicator Warning Threshold" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+        <Field ID="{16582F9F-BA8C-42F7-8A63-9994650BB6C8}" Name="DescendantLikesCount" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="Integer" DisplayName="Aggregated Like Count" ReadOnly="TRUE" Hidden="FALSE" AllowDeletion="FALSE" Sealed="TRUE" />
         <Field ID="{3C6188A0-2761-4e0a-9FC0-EE32D47E4D49}" Name="WarningFromWorkBook" StaticName="WarningFromWorkBook" Description="Whether the warning comes from the workbook or from the indicator definition" Group="Status Indicators" Type="Boolean" DisplayName="Warning from workbook" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+        <Field ID="{DCA4E5A0-0887-4480-8F7B-EFCF76B76413}" Name="MediaGeneratedMetadata" SourceID="http://schemas.microsoft.com/sharepoint/v3" Required="FALSE" Hidden="TRUE" Group="_Hidden" Sealed="TRUE" UnlimitedLengthInDocumentLibrary="TRUE" ShowInFileDlg="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" DisplaceOnUpgrade="TRUE" StaticName="MediaGeneratedMetadata" Type="Note" DisplayName="Media Generated Metadata" Sortable="FALSE" />
         <Field ID="{6AB3E5A0-98F4-442E-8FFF-730E653EA881}" Name="AuthorMemberSinceLookup" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="Lookup" List="" Mult="FALSE" DisplayName="Author's membership date" Hidden="TRUE" AllowDeletion="FALSE" Sealed="TRUE">
           <FieldRefs>
             <FieldRef Name="MemberLookup" />
@@ -535,7 +644,9 @@
           <Default>0</Default>
         </Field>
         <Field ID="{9dc5bba2-9c3e-4f46-a845-e25330b5eaf6}" Name="OtherMail" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="OtherMail" Group="_Hidden" DisplayName="OtherMail" ReadOnly="FALSE" Type="Text" FromBaseType="TRUE" DelayActivateTemplateBinding="GROUP,SPSPERS,SITEPAGEPUBLISHING" />
+        <Field ID="{40270DA4-0A34-4c14-8C30-59E065A28A4D}" DisplayName="WSPublishState" Name="WSPublishState" Type="Integer" Sealed="TRUE" />
         <Field ID="{CBB92DA4-FD46-4C7D-AF6C-3128C2A5576E}" Indexed="FALSE" Name="DocumentSetDescription" StaticName="DocumentSetDescription" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" DisplayName="Description" Description="A description of the Document Set" Type="Note" NumLines="5" UnlimitedLengthInDocumentLibrary="TRUE" Hidden="FALSE" Required="FALSE" CanToggleHidden="TRUE" Sealed="TRUE" />
+        <Field ID="{577d74a4-b828-4c3c-bfcd-b16d76cdbc0a}" Name="ComplianceTagAppId" SourceID="http://schemas.microsoft.com/sharepoint/v3" Required="FALSE" ShowInFileDlg="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" Hidden="TRUE" DisplaceOnUpgrade="TRUE" ReadOnly="TRUE" StaticName="ComplianceTagAppId" Type="Text" DisplayName="Label applied by App Id" Sortable="FALSE" />
         <Field ID="{4EF69CA4-4179-4d27-9E6C-F9544D45DFDC}" DisplayName="Show in Catalog" Type="Boolean" Required="FALSE" Name="ShowInCatalog" RowOrdinal="0" Group="_Hidden">
           <Default>TRUE</Default>
         </Field>
@@ -559,7 +670,15 @@
             <CHOICE>YesNo</CHOICE>
           </CHOICES>
         </Field>
+        <Field ID="{5a14d1ab-1513-48c7-97b3-657a5ba6c742}" Name="AverageRating" StaticName="AverageRating" DisplayName="Rating (0-5)" Description="Average value of all the ratings that have been submitted" Group="Content Feedback" Type="AverageRating" Decimals="2" Min="0" Max="5" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInNewForm="FALSE" CanToggleHidden="TRUE" JSLink="sp.ui.reputation.js" SourceID="http://schemas.microsoft.com/sharepoint/v3">
+          <FieldRefs>
+            <FieldRef Name="RatingCount" />
+            <FieldRef Name="RatedBy" />
+            <FieldRef Name="Ratings" />
+          </FieldRefs>
+        </Field>
         <Field ID="{FB3259AC-BD07-4397-B7AA-03E885B0838E}" Name="BannerImageOffset" StaticName="BannerImageOffset" DisplayName="Banner Image Offset" Type="Text" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" AllowDeletion="FALSE" Hidden="TRUE" />
+        <Field ID="{3BDAB9AC-9E5D-44D4-BDE9-13B37E170618}" Name="_ColorHex" SourceID="http://schemas.microsoft.com/sharepoint/v3" Required="FALSE" Hidden="TRUE" ShowInFileDlg="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplaceOnUpgrade="TRUE" StaticName="_ColorHex" Type="Text" DisplayName="Color" Sortable="FALSE" />
         <Field ID="{6E4B3AAD-350D-42fa-BD61-D1DE715B45DB}" Name="Goal" StaticName="Goal" Group="Status Indicators" Type="Number" DisplayName="Indicator Goal Threshold" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{FF4470AE-85D6-49ab-A501-E5772848F6C7}" Name="RoutingConditions" StaticName="RoutingConditions" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Document and Record Management Columns" DisplayName="Condition XML" Type="Note" Required="TRUE" CanToggleHidden="TRUE" Hidden="TRUE" Sealed="TRUE" MaxLength="65535" />
         <Field ID="{FF4470AE-85D6-49ab-A501-E5772848F6C8}" Name="RoutingConditionProperties" StaticName="RoutingConditionProperties" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Document and Record Management Columns" DisplayName="Properties used in Conditions" Type="Note" Required="TRUE" CanToggleHidden="TRUE" Sealed="TRUE" RichText="FALSE" />
@@ -592,6 +711,8 @@
         <Field ID="{E247CBB0-ABB3-4759-B9F4-0128E37DD34A}" Name="UpdateError" StaticName="UpdateError" Description="Contains the error message from last update, if any" Group="Status Indicators" Type="Note" DisplayName="Update Error" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{BDA383B2-0BC3-4b10-936E-D7E48974E230}" Name="RoutingTargetLibrary" StaticName="RoutingTargetLibrary" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Document and Record Management Columns" DisplayName="Target Library" Type="Text" Required="TRUE" CanToggleHidden="TRUE" Sealed="TRUE" MaxLength="255" />
         <Field ID="{5BAF6DB5-9D25-4738-B15E-DB5789298E82}" Name="BannerImageUrl" StaticName="BannerImageUrl" DisplayName="Banner Image URL" Type="URL" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" AllowDeletion="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" ShowInVersionHistory="FALSE" />
+        <Field ID="{73D6D2B7-4FF3-46b4-95E1-0AB6C9B1EC9C}" DisplayName="WSEventSourceGUID" Name="WSEventSourceGUID" Type="Guid" Sealed="TRUE" Group="_Hidden" />
+        <Field ID="{4CA54AB8-9667-427E-B1EC-B1FB4A9F3E19}" DisplayName="WSEventContextKeys" Name="WSEventContextKeys" Type="Note" Sealed="TRUE" Group="_Hidden" />
         <Field ID="{AC836BB9-18E1-4f52-B614-E8885543C4C6}" SourceID="http://schemas.microsoft.com/sharepoint/v3" Name="VideoSetEmbedCode" DisplayName="Embed Code" StaticName="VideoSetEmbedCode" Group="_Hidden" Type="Note" RichText="TRUE" RichTextMode="FullHtml" Hidden="TRUE" ShowInEditForm="TRUE" />
         <Field ID="{2A647ABA-7C69-482b-97B2-DC94F2FB39DC}" Name="RoutingAutoFolderProp" StaticName="RoutingAutoFolderProp" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Document and Record Management Columns" DisplayName="Property for Automatic Folder Creation" Type="Text" Required="TRUE" CanToggleHidden="TRUE" Sealed="TRUE" MaxLength="255" />
         <Field ID="{9E1A17BC-4B5A-498b-A0F7-E5D1ED43C349}" Name="Member" SourceID="http://schemas.microsoft.com/sharepoint/v3" Type="User" List="UserInfo" Required="TRUE" ShowField="NameWithPictureAndDetails" UserSelectionMode="PeopleOnly" UserSelectionScope="0" DisplayName="Member" StaticName="Member" ReadOnly="TRUE" ReadOnlyEnforced="TRUE" Group="_Hidden" Hidden="FALSE" Sealed="TRUE" />
@@ -648,20 +769,28 @@
                 <Value xmlns:q9="http://www.w3.org/2001/XMLSchema" p4:type="q9:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
               </Property>
               <Property>
+                <Name>IsDocTagsEnabled</Name>
+                <Value xmlns:q10="http://www.w3.org/2001/XMLSchema" p4:type="q10:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+              </Property>
+              <Property>
+                <Name>IsEnhancedImageTaggingEnabled</Name>
+                <Value xmlns:q11="http://www.w3.org/2001/XMLSchema" p4:type="q11:boolean" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">false</Value>
+              </Property>
+              <Property>
                 <Name>FilterAssemblyStrongName</Name>
-                <Value xmlns:q10="http://www.w3.org/2001/XMLSchema" p4:type="q10:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">Microsoft.SharePoint.Taxonomy, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Value>
+                <Value xmlns:q12="http://www.w3.org/2001/XMLSchema" p4:type="q12:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">Microsoft.SharePoint.Taxonomy, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Value>
               </Property>
               <Property>
                 <Name>FilterClassName</Name>
-                <Value xmlns:q11="http://www.w3.org/2001/XMLSchema" p4:type="q11:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">Microsoft.SharePoint.Taxonomy.TaxonomyField</Value>
+                <Value xmlns:q13="http://www.w3.org/2001/XMLSchema" p4:type="q13:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">Microsoft.SharePoint.Taxonomy.TaxonomyField</Value>
               </Property>
               <Property>
                 <Name>FilterMethodName</Name>
-                <Value xmlns:q12="http://www.w3.org/2001/XMLSchema" p4:type="q12:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">GetFilteringHtml</Value>
+                <Value xmlns:q14="http://www.w3.org/2001/XMLSchema" p4:type="q14:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">GetFilteringHtml</Value>
               </Property>
               <Property>
                 <Name>FilterJavascriptProperty</Name>
-                <Value xmlns:q13="http://www.w3.org/2001/XMLSchema" p4:type="q13:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">FilteringJavascript</Value>
+                <Value xmlns:q15="http://www.w3.org/2001/XMLSchema" p4:type="q15:string" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance">FilteringJavascript</Value>
               </Property>
             </ArrayOfProperty>
           </Customization>
@@ -794,14 +923,19 @@
             <CHOICE>MigratedFromServerRendered</CHOICE>
             <CHOICE>TopicPage</CHOICE>
             <CHOICE>PrivateAuthoring</CHOICE>
+            <CHOICE>IsFromPrivateAuthoring</CHOICE>
+            <CHOICE>IsFromAuthoringCopilot</CHOICE>
+            <CHOICE>IsFromNgsp</CHOICE>
           </CHOICES>
         </Field>
         <Field ID="{F841E7C6-0491-449f-86DF-9DAE475E2132}" Name="TopicPageUrl" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" DisplayName="Topic page URL" Type="Text" Hidden="TRUE" Sealed="TRUE" ReadOnly="TRUE" AllowDeletion="FALSE" />
         <Field ID="{3AFCC5C7-C6EF-44f8-9479-3561D72F9E8E}" Name="_vti_ItemHoldRecordStatus" StaticName="_vti_ItemHoldRecordStatus" DisplayName="Hold and Record Status" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Document and Record Management Columns" Type="Integer" Min="0" Max="32" Decimals="0" Indexed="FALSE" Hidden="TRUE" CanToggleHidden="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInFileDlg="FALSE" ShowInDisplayForm="FALSE" Required="FALSE" Sealed="TRUE" ReadOnly="TRUE" />
         <Field ID="{1BE428C8-2C2D-4e02-970B-6663EB1D7080}" Name="ParentId" StaticName="ParentId" Description="The Parent Id of this report" DisplayName="Parent ID" Group="_Hidden" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInFileDlg="FALSE" Type="Number" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{CBA948C8-9E42-44a0-B9F1-A39D91B28CB0}" Name="LastActivity" SourceID="http://schemas.microsoft.com/sharepoint/v3" Type="DateTime" Format="DateTime" DisplayName="Last Activity" StaticName="LastActivity" ReadOnly="TRUE" Group="_Hidden" Hidden="FALSE" AllowDeletion="FALSE" Sealed="TRUE" />
+        <Field ID="{B4BA57C8-AB73-49fa-B6AF-A4F824D84C14}" DisplayName="WSEventType" Name="WSEventType" Type="Text" Sealed="TRUE" Group="_Hidden" />
         <Field ID="{66B691CF-07A3-4CA6-AC6D-27FA969C8569}" DisplayName="Form Name" Type="Text" Required="FALSE" Name="FormName" RowOrdinal="0" Group="_Hidden" />
         <Field ID="{6C5CC2D0-706C-4BC2-9549-F774A75D5488}" Name="UserExpiration" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="UserExpiration" Group="_Hidden" DisplayName="User Expiration" ReadOnly="TRUE" ReadOnlyEnforced="TRUE" Type="DateTime" FromBaseType="TRUE" />
+        <Field ID="{76D13CD2-1BAE-45A5-8B74-545B87B65037}" Name="_ColorTag" SourceID="http://schemas.microsoft.com/sharepoint/v3" Required="FALSE" ShowInFileDlg="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ReadOnly="TRUE" DisplaceOnUpgrade="TRUE" Type="Text" StaticName="_ColorTag" DisplayName="Color Tag" Sortable="TRUE" />
         <Field ID="{1C2CC9D2-3C9F-4a46-8088-17287D608270}" SourceID="http://schemas.microsoft.com/sharepoint/v3" Name="VideoSetExternalLink" DisplayName="External Link" StaticName="VideoSetExternalLink" Group="_Hidden" Type="URL" Hidden="TRUE" ShowInEditForm="TRUE" />
         <Field ID="{592102D3-4BCE-4640-A49E-B6F23D480B7D}" Name="RoutingContentType" StaticName="RoutingContentType" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Document and Record Management Columns" DisplayName="Submission Content Type" Type="Text" Required="TRUE" CanToggleHidden="TRUE" Sealed="TRUE" MaxLength="255" />
         <Field ID="{DAEF58D7-CCFD-43FC-B776-2E292CC66BBA}" Name="PageLayoutType" StaticName="PageLayoutType" DisplayName="Page Layout Type" Type="Text" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" AllowDeletion="FALSE" MaxLength="255" Hidden="TRUE" />
@@ -824,6 +958,7 @@
         <Field ID="{1A7348E7-1BB7-4A47-9790-088E7CB20B58}" Name="_AuthorByline" StaticName="_AuthorByline" DisplayName="Author Byline" Type="UserMulti" Mult="TRUE" List="UserInfo" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" AllowDeletion="FALSE" />
         <Field ID="{3F44DEE7-B4BA-4E0F-9A4C-84F4420DFAF6}" Name="CategoriesLookup" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="Lookup" List="" Mult="FALSE" ShowField="Title" DisplayName="Category" Hidden="FALSE" AllowDeletion="FALSE" Sealed="TRUE" />
         <Field ID="{3366AAE9-30A9-43f5-A2CB-1A6EE44E2CE4}" Name="FormattedValue" StaticName="FormattedValue" Description="The value of the indicator, formatted by its datasource provider" Group="Status Indicators" Type="Text" DisplayName="Formatted indicator value" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+        <Field ID="{2CDCD5EB-846D-4f4d-9AAF-73E8E73C7312}" Name="LikedBy" StaticName="LikedBy" DisplayName="Liked By" Group="_Hidden" Type="UserMulti" List="UserInfo" Mult="TRUE" Hidden="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{F6DF49EC-807B-4d40-A7DA-A17684121F92}" Name="IncludeHierarchy" StaticName="IncludeHierarchy" Description="To include child KPIs or not" Group="Status Indicators" Type="Boolean" DisplayName="Include child indicators" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{B76B58EC-0549-4f00-9575-2FD28BD55010}" SourceID="http://schemas.microsoft.com/sharepoint/v3" Name="VideoSetDescription" DisplayName="Description" Description="A summary of the Video" StaticName="VideoSetDescription" Group="_Hidden" Type="Note" NumLines="5" UnlimitedLengthInDocumentLibrary="TRUE" Hidden="FALSE" ShowInEditForm="TRUE" />
         <Field ID="{96226EED-EC6F-4f0e-ADD5-9CFE66A441A0}" Name="AutoUpdate" StaticName="AutoUpdate" Description="Whether to fetch the backend data every time" Group="Status Indicators" Type="Boolean" DisplayName="Auto Update" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
@@ -837,6 +972,7 @@
           <Default>0</Default>
         </Field>
         <Field ID="{0A9EC8F0-0340-4E24-9B35-CA86A6DED5AB}" Name="TemplateHidden" StaticName="TemplateHidden" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Display Template Columns" DisplayName="Hidden Template" Description="Hide this Display Template where people select from an available list of search Display Templates." Type="Boolean" Required="FALSE" CanToggleHidden="TRUE" Sealed="TRUE" />
+        <Field ID="{898232F1-83C0-41DF-9F1A-64B08A03F62D}" Name="Popularity" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="Number" DisplayName="Popularity" ReadOnly="TRUE" Hidden="FALSE" Indexed="TRUE" AllowDeletion="FALSE" Sealed="TRUE" />
         <Field ID="{178D4AF1-459B-4f61-BB41-B347986EE37B}" Name="NumberOfDiscussions" SourceID="http://schemas.microsoft.com/sharepoint/v3" Type="Number" DisplayName="Discussions" StaticName="NumberOfDiscussions" ReadOnly="TRUE" Group="_Hidden" Hidden="FALSE" AllowDeletion="FALSE" Sealed="TRUE">
           <Default>0</Default>
         </Field>
@@ -876,11 +1012,13 @@
         <Field ID="{10A4D7F7-AB3A-426f-B5CC-AB1EB03A94F4}" Name="RoutingTargetPath" StaticName="RoutingTargetPath" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="Document and Record Management Columns" DisplayName="Target Path" Type="Text" Required="TRUE" CanToggleHidden="TRUE" Sealed="TRUE" MaxLength="255" />
         <Field ID="{3A8EE3F8-166B-4394-B3E2-E98DCF86A847}" Name="A2ODMountCount" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="A2ODMountCount" Hidden="TRUE" Group="_Hidden" ReadOnly="TRUE" Type="Lookup" List="Docs" ShowField="A2ODMountCount" DisplayName="A2OD Mount Count" FromBaseType="TRUE" DisplaceOnUpgrade="TRUE" FieldRef="ID" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" />
         <Field Type="LookupMulti" DisplayName="Taxonomy Catch All Column" StaticName="TaxCatchAll" Name="TaxCatchAll" ID="{f3b0adf9-c1a2-4b02-920d-943fba4b3611}" ShowInViewForms="FALSE" List="{{listid:TaxonomyHiddenList}}" WebId="{siteid}" Required="FALSE" Hidden="TRUE" CanToggleHidden="TRUE" ShowField="CatchAllData" SourceID="{{siteid}}" Mult="TRUE" Sortable="FALSE" AllowDeletion="TRUE" Sealed="TRUE" />
+        <Field ID="{434F51FB-FFD2-4A0E-A03B-CA3131AC67BA}" Name="Ratings" StaticName="Ratings" DisplayName="User ratings" Description="User ratings for the item" Group="_Hidden" Type="Note" Hidden="TRUE" ForcePromoteDemote="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
         <Field ID="{CD4DF6FB-0DA8-4ac9-B551-ED4FA6CD88FD}" Name="AbuseReportsReporterLookup" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplaceOnUpgrade="TRUE" Group="_Hidden" Type="Lookup" List="" Mult="TRUE" DisplayName="Reporter Lookup" ReadOnly="TRUE" Hidden="TRUE" AllowDeletion="FALSE" Sealed="TRUE">
           <FieldRefs>
             <FieldRef Name="AbuseReportsLookup" />
           </FieldRefs>
         </Field>
+        <Field ID="{031C92FD-9CB6-4AC8-8F5F-636D28E37079}" Name="_SPAuthoringMetadata" StaticName="_SPAuthoringMetadata" DisplayName="Authoring Metadata" Type="Note" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" AllowDeletion="FALSE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" ReadOnly="TRUE" Hidden="TRUE" />
         <Field ID="{C274CBFD-084A-4017-925F-CCE50C9E3EEC}" Name="_CommentFlags" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_CommentFlags" Hidden="TRUE" Group="_Hidden" ReadOnly="TRUE" Type="Lookup" List="Docs" ShowField="CommentFlags" DisplayName="Comment settings" FromBaseType="TRUE" DisplaceOnUpgrade="TRUE" FieldRef="ID" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" />
         <Field ID="{8CAF7FFE-9D2C-406c-9743-7A252B5C8AE5}" Name="ReportCreatedByDisplay" StaticName="ReportCreatedByDisplay" Group="_Hidden" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInFileDlg="FALSE" ReadOnly="TRUE" Type="Computed" Filterable="TRUE" Sortable="TRUE" DisplayName="Report Created By" SourceID="http://schemas.microsoft.com/sharepoint/v3">
           <FieldRefs>
@@ -906,7 +1044,7 @@
         <Field ID="{D60D65FF-FF42-4044-A684-AC3F7A5E598C}" Name="_TopicHeader" StaticName="_TopicHeader" DisplayName="Topic header" Type="Text" SourceID="http://schemas.microsoft.com/sharepoint/v3" Group="_Hidden" Description="" ShowInNewForm="FALSE" ShowInEditForm="FALSE" ShowInDisplayForm="FALSE" ShowInViewForms="FALSE" ShowInListSettings="FALSE" AllowDeletion="FALSE" />
       </pnp:SiteFields>
       <pnp:ContentTypes>
-        <pnp:ContentType ID="0x00A7470EADF4194E2E9ED1031B61DA0884" Name="Common Indicator Columns" Description="" Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x00A7470EADF4194E2E9ED1031B61DA0884" Name="Common Indicator Columns" Description="" Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="249a1c1a-5a3e-4173-abad-779b01892510" Name="KpiDescription" UpdateChildren="true" />
@@ -923,7 +1061,7 @@
             <pnp:FieldRef ID="fd3e3a59-bf10-4c99-b678-5dd7fcc6cb28" Name="LastUpdated" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x00A7470EADF4194E2E9ED1031B61DA088401" Name="Fixed Value based Status Indicator" Description="Create a new Status Indicator using manually entered information" Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x00A7470EADF4194E2E9ED1031B61DA088401" Name="Fixed Value based Status Indicator" Description="Create a new Status Indicator using manually entered information" Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="249a1c1a-5a3e-4173-abad-779b01892510" Name="KpiDescription" UpdateChildren="true" />
@@ -940,7 +1078,7 @@
             <pnp:FieldRef ID="fd3e3a59-bf10-4c99-b678-5dd7fcc6cb28" Name="LastUpdated" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x00A7470EADF4194E2E9ED1031B61DA088402" Name="SharePoint List based Status Indicator" Description="Create a new Status Indicator using data from SharePoint Lists" Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x00A7470EADF4194E2E9ED1031B61DA088402" Name="SharePoint List based Status Indicator" Description="Create a new Status Indicator using data from SharePoint Lists" Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="249a1c1a-5a3e-4173-abad-779b01892510" Name="KpiDescription" UpdateChildren="true" />
@@ -962,7 +1100,7 @@
             <pnp:FieldRef ID="96226eed-ec6f-4f0e-add5-9cfe66a441a0" Name="AutoUpdate" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x00A7470EADF4194E2E9ED1031B61DA088403" Name="Excel based Status Indicator" Description="Create a new Status Indicator using data from Excel Services" Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x00A7470EADF4194E2E9ED1031B61DA088403" Name="Excel based Status Indicator" Description="Create a new Status Indicator using data from Excel Services" Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="249a1c1a-5a3e-4173-abad-779b01892510" Name="KpiDescription" UpdateChildren="true" />
@@ -989,7 +1127,7 @@
             <pnp:FieldRef ID="96226eed-ec6f-4f0e-add5-9cfe66a441a0" Name="AutoUpdate" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x00A7470EADF4194E2E9ED1031B61DA088404" Name="SQL Server Analysis Services based Status Indicator" Description="Create a new Status Indicator using data from SQL Server Analysis Services" Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x00A7470EADF4194E2E9ED1031B61DA088404" Name="SQL Server Analysis Services based Status Indicator" Description="Create a new Status Indicator using data from SQL Server Analysis Services" Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="249a1c1a-5a3e-4173-abad-779b01892510" Name="KpiDescription" UpdateChildren="true" />
@@ -1013,7 +1151,7 @@
             <pnp:FieldRef ID="96226eed-ec6f-4f0e-add5-9cfe66a441a0" Name="AutoUpdate" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x010019ACC57FBA4146AFA4C822E719824BED" Name="Category" Description="(Category Content Type Description)" Group="Community Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x010019ACC57FBA4146AFA4C822E719824BED" Name="Category" Description="(Category Content Type Description)" Group="Community Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
@@ -1025,7 +1163,7 @@
             <pnp:FieldRef ID="539458a6-152c-460f-a915-53722c6eb4a6" Name="LastPostDate" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x010027FC2137D8DE4B00A40E14346D070D52" Name="Site Membership" Description="Add a new member" Group="Community Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x010027FC2137D8DE4B00A40E14346D070D52" Name="Site Membership" Description="Add a new member" Group="Community Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Hidden="true" UpdateChildren="true" />
@@ -1034,7 +1172,7 @@
             <pnp:FieldRef ID="e236652c-cf8f-4917-8baa-30ffcccfb7e8" Name="MemberStatusInt" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x010027FC2137D8DE4B00A40E14346D070D5201" Name="Community Member" Description="Add a new community member" Group="Community Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x010027FC2137D8DE4B00A40E14346D070D5201" Name="Community Member" Description="Add a new community member" Group="Community Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="9e1a17bc-4b5a-498b-a0f7-e5d1ed43c349" Name="Member" UpdateChildren="true" />
@@ -1050,15 +1188,37 @@
             <pnp:FieldRef ID="501c11be-6dbf-4e6d-b322-b1882da0c8c0" Name="HideReputation" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x010085EC78BE64F9478AAE3ED069093B9963" Name="Project Policy" Description="Container content type for Project Policy definitions" Group="_Hidden" Sealed="true" ReadOnly="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false" />
-        <pnp:ContentType ID="0x010085EC78BE64F9478AAE3ED069093B9963004A37C4B20C06FF4E85D6F87A91A460F1" Name="Project sites policy" Description="Projects have a limited lifetime. Final deliverables should be transferred to the respective division/departmental sites" Group="_Hidden" Hidden="true" ReadOnly="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x01002A2479FF33DD4BC3B1533A012B653717" Name="WorkflowServiceDefinition" Description="WorkflowServiceDefinition" Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
-            <pnp:FieldRef ID="b0227f1a-b179-4d45-855b-a18f03706bcb" Name="_dlc_Exempt" Hidden="true" UpdateChildren="true" />
-            <pnp:FieldRef ID="74e6ae8a-0e3e-4dcb-bbff-b5a016d74d64" Name="_dlc_ExpireDateSaved" Hidden="true" UpdateChildren="true" />
-            <pnp:FieldRef ID="acd16fdf-052f-40f7-bb7e-564c269c9fbc" Name="_dlc_ExpireDate" UpdateChildren="true" />
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
+            <pnp:FieldRef ID="6391dc7e-e7f3-4faf-9890-550fd5d3022f" Name="WSGUID" UpdateChildren="true" />
+            <pnp:FieldRef ID="40270da4-0a34-4c14-8c30-59e065a28a4d" Name="WSPublishState" UpdateChildren="true" />
+            <pnp:FieldRef ID="321a8c3c-0ec7-473b-bcc6-67f3c2dae20d" Name="WSPublishError" UpdateChildren="true" />
+            <pnp:FieldRef ID="9b590294-0151-44cf-9d56-24d8bb80f802" Name="WSDisplayName" UpdateChildren="true" />
+            <pnp:FieldRef ID="f519008d-1b5b-42a8-8dab-e1a642fe5787" Name="WSDescription" UpdateChildren="true" />
+            <pnp:FieldRef ID="78eae64a-f5f2-49af-b416-3247b76f46a1" Name="FormData" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0100DC2417D125A4489CA59DCC70E3F152B2" Name="Rule" Description="Create a rule that moves content submitted to this site to the correct library or folder." Group="_Hidden" Sealed="true" NewFormUrl="_layouts/15/EditRule.aspx" EditFormUrl="_layouts/15/EditRule.aspx" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x010085EC78BE64F9478AAE3ED069093B9963" Name="Project Policy" Description="Container content type for Project Policy definitions" Group="_Hidden" Sealed="true" ReadOnly="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false" />
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0100AA27A923036E459D9EF0D18BBD0B9587" Name="WorkflowServiceSubscription" Description="WorkflowServiceSubscription" Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
+            <pnp:FieldRef ID="6391dc7e-e7f3-4faf-9890-550fd5d3022f" Name="WSGUID" UpdateChildren="true" />
+            <pnp:FieldRef ID="40270da4-0a34-4c14-8c30-59e065a28a4d" Name="WSPublishState" UpdateChildren="true" />
+            <pnp:FieldRef ID="321a8c3c-0ec7-473b-bcc6-67f3c2dae20d" Name="WSPublishError" UpdateChildren="true" />
+            <pnp:FieldRef ID="4ca54ab8-9667-427e-b1ec-b1fb4a9f3e19" Name="WSEventContextKeys" UpdateChildren="true" />
+            <pnp:FieldRef ID="73d6d2b7-4ff3-46b4-95e1-0ab6c9b1ec9c" Name="WSEventSourceGUID" UpdateChildren="true" />
+            <pnp:FieldRef ID="9b590294-0151-44cf-9d56-24d8bb80f802" Name="WSDisplayName" UpdateChildren="true" />
+            <pnp:FieldRef ID="f519008d-1b5b-42a8-8dab-e1a642fe5787" Name="WSDescription" UpdateChildren="true" />
+            <pnp:FieldRef ID="d8225d68-5ddb-4e66-8069-2694e8f628fb" Name="WSEventSource" UpdateChildren="true" />
+            <pnp:FieldRef ID="b4ba57c8-ab73-49fa-b6af-a4f824d84c14" Name="WSEventType" UpdateChildren="true" />
+            <pnp:FieldRef ID="a569e161-e19e-4360-9ae1-20dfda097cb3" Name="WSEnabled" UpdateChildren="true" />
+            <pnp:FieldRef ID="78eae64a-f5f2-49af-b416-3247b76f46a1" Name="FormData" UpdateChildren="true" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentId="&lt;FormUrls xmlns=&quot;http://schemas.microsoft.com/sharepoint/v3/contenttype/forms/url&quot;&gt;&lt;Edit&gt;_layouts/15/EditRule.aspx&lt;/Edit&gt;&lt;New&gt;_layouts/15/EditRule.aspx&lt;/New&gt;&lt;/FormUrls&gt;" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0100DC2417D125A4489CA59DCC70E3F152B2" Name="Rule" Description="Create a rule that moves content submitted to this site to the correct library or folder." Group="_Hidden" Sealed="true" NewFormUrl="_layouts/15/EditRule.aspx" EditFormUrl="_layouts/15/EditRule.aspx" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
@@ -1080,7 +1240,7 @@
             <pnp:FieldRef ID="a2455e0a-f63c-46af-857c-dbd4199ff95f" Name="RoutingRuleExternal" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0101002039C03B61C64EC4A04F5361F3851066" Name="Display Template" Description="Base Content Type containing common Display Template columns. Use one of Control, Group, Item or Filter Display Template content types to create a display type. " Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0101002039C03B61C64EC4A04F5361F3851066" Name="Display Template" Description="Base Content Type containing common Display Template columns. Use one of Control, Group, Item or Filter Display Template content types to create a display type. " Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1096,7 +1256,7 @@
             <pnp:FieldRef ID="3c318a40-0d51-408d-ba71-16fa845b9fe5" Name="CrawlerXSLFile" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0101002039C03B61C64EC4A04F5361F385106605" Name="Display Template Code" Description="Display Template Code javascript that registers and executes Display Template rendering logic." Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0101002039C03B61C64EC4A04F5361F385106605" Name="Display Template Code" Description="Display Template Code javascript that registers and executes Display Template rendering logic." Group="_Hidden" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1116,7 +1276,7 @@
             <pnp:FieldRef ID="bab0a619-d1ec-40d7-847b-3e4408080c17" Name="CompatibleManagedProperties" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x01010058DDEB47312E4967BFC1576B96E8C3D4" Name="Report" Description="" Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x01010058DDEB47312E4967BFC1576B96E8C3D4" Name="Report" Description="" Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1134,7 +1294,7 @@
           </pnp:FieldRefs>
           <pnp:DocumentTemplate TargetName="/_layouts/CreateWorkbook.aspx" />
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0101009148F5A04DDD49CBA7127AADA5FB792B" Name="Rich Media Asset" Description="Upload an asset." Group="Digital Asset Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0101009148F5A04DDD49CBA7127AADA5FB792B" Name="Rich Media Asset" Description="Upload an asset." Group="Digital Asset Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1160,7 +1320,7 @@
           </pnp:FieldRefs>
           <pnp:DocumentTemplate TargetName="/_layouts/15/Upload.aspx" />
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0101009148F5A04DDD49CBA7127AADA5FB792B00291D173ECE694D56B19D111489C4369D" Name="Video Rendition" Description="Upload a video file." Group="Digital Asset Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0101009148F5A04DDD49CBA7127AADA5FB792B00291D173ECE694D56B19D111489C4369D" Name="Video Rendition" Description="Upload a video file." Group="Digital Asset Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1195,7 +1355,7 @@
           </pnp:FieldRefs>
           <pnp:DocumentTemplate TargetName="/_layouts/15/UploadEx.aspx" />
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0101009148F5A04DDD49CBA7127AADA5FB792B006973ACD696DC4858A76371B2FB2F439A" Name="Audio" Description="Upload an audio file." Group="Digital Asset Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0101009148F5A04DDD49CBA7127AADA5FB792B006973ACD696DC4858A76371B2FB2F439A" Name="Audio" Description="Upload an audio file." Group="Digital Asset Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1226,7 +1386,7 @@
           </pnp:FieldRefs>
           <pnp:DocumentTemplate TargetName="/_layouts/15/UploadEx.aspx" />
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0101009148F5A04DDD49CBA7127AADA5FB792B00AADE34325A8B49CDA8BB4DB53328F214" Name="Image" Description="Upload an image." Group="Digital Asset Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0101009148F5A04DDD49CBA7127AADA5FB792B00AADE34325A8B49CDA8BB4DB53328F214" Name="Image" Description="Upload an image." Group="Digital Asset Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1258,7 +1418,7 @@
           </pnp:FieldRefs>
           <pnp:DocumentTemplate TargetName="/_layouts/15/Upload.aspx" />
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B" Name="Repost Page" Description="Used to create a News link post. If deleted, the News link option will be disabled for users." Group="Document Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B" Name="Repost Page" Description="Used to create a News link post. If deleted, the News link option will be disabled for users." Group="Document Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1283,6 +1443,8 @@
             <pnp:FieldRef ID="9de685c5-fdf5-4319-b987-3edf55efb36f" Name="_SPSitePageFlags" UpdateChildren="true" />
             <pnp:FieldRef ID="ff41708b-e251-4237-a060-bea44657e8dc" Name="_SPAssetFolderId" UpdateChildren="true" />
             <pnp:FieldRef ID="9889a80f-c9ec-41d8-a359-ac5fb5c4cfa2" Name="_SPCallToAction" UpdateChildren="true" />
+            <pnp:FieldRef ID="86ebe41f-255f-4170-b040-9977528a8bf5" Name="_SPCollaborators" UpdateChildren="true" />
+            <pnp:FieldRef ID="031c92fd-9cb6-4ac8-8f5f-636d28e37079" Name="_SPAuthoringMetadata" UpdateChildren="true" />
             <pnp:FieldRef ID="0e7b982f-698a-4d0c-aacb-f16906f66d30" Name="_OriginalSourceUrl" UpdateChildren="true" />
             <pnp:FieldRef ID="36193413-dd5c-4096-8c1e-1b40098b9ba3" Name="_OriginalSourceSiteId" UpdateChildren="true" />
             <pnp:FieldRef ID="3477a5bc-c605-4b2e-a7c1-8db8f13c017e" Name="_OriginalSourceWebId" UpdateChildren="true" />
@@ -1291,7 +1453,38 @@
           </pnp:FieldRefs>
           <pnp:DocumentTemplate TargetName="/_layouts/15/CreateSitePage.aspx" />
         </pnp:ContentType>
-        <pnp:ContentType ID="0x010100A2E3C117A0C5482FAEE3D57C48CB042F" Name="Web Part Page with Status List" Description="Create a page that displays Status Indicators and Excel workbooks." Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0101009D1CB255DA76424F860D91F20E6C411800C57E7DC123744954AACC08D1D5260154" Name="Content Freshness" Description="Used to create a dynamic page related to contentfreshness." Group="_Hidden" Hidden="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
+            <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
+            <pnp:FieldRef ID="8553196d-ec8d-4564-9861-3dbe931050c8" Name="FileLeafRef" Required="true" UpdateChildren="true" />
+            <pnp:FieldRef ID="8c06beca-0777-48f7-91c7-6da68bc07b69" Name="Created" Hidden="true" UpdateChildren="true" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" UpdateChildren="true" />
+            <pnp:FieldRef ID="28cf69c5-fa48-462a-b5cd-27b6f9d2bd5f" Name="Modified" Hidden="true" UpdateChildren="true" />
+            <pnp:FieldRef ID="822c78e3-1ea9-4943-b449-57863ad33ca9" Name="Modified_x0020_By" UpdateChildren="true" />
+            <pnp:FieldRef ID="4dd7e525-8d6b-4cb4-9d3e-44ee25f973eb" Name="Created_x0020_By" UpdateChildren="true" />
+            <pnp:FieldRef ID="82642ec8-ef9b-478f-acf9-31f7d45fbc31" Name="LinkTitle" UpdateChildren="true" />
+            <pnp:FieldRef ID="7efc33c1-b56b-490e-9c9b-1097e971ba96" Name="ClientSideApplicationId" UpdateChildren="true" />
+            <pnp:FieldRef ID="daef58d7-ccfd-43fc-b776-2e292cc66bba" Name="PageLayoutType" UpdateChildren="true" />
+            <pnp:FieldRef ID="4966388e-6e12-4bc6-8990-5b5b66153eae" Name="CanvasContent1" UpdateChildren="true" />
+            <pnp:FieldRef ID="5baf6db5-9d25-4738-b15e-db5789298e82" Name="BannerImageUrl" UpdateChildren="true" />
+            <pnp:FieldRef ID="fb3259ac-bd07-4397-b7aa-03e885b0838e" Name="BannerImageOffset" UpdateChildren="true" />
+            <pnp:FieldRef ID="3f155110-a6a2-4d70-926c-94648101f0e8" Name="Description" UpdateChildren="true" />
+            <pnp:FieldRef ID="f5ad16a2-85be-46b2-b5f0-2bb8b4a5074a" Name="PromotedState" UpdateChildren="true" />
+            <pnp:FieldRef ID="c84f8697-331e-457d-884a-c4fb8f30ea74" Name="FirstPublishedDate" UpdateChildren="true" />
+            <pnp:FieldRef ID="261075db-0525-4fb8-a6ea-772014186599" Name="LayoutWebpartsContent" UpdateChildren="true" />
+            <pnp:FieldRef ID="1a7348e7-1bb7-4a47-9790-088e7cb20b58" Name="_AuthorByline" UpdateChildren="true" />
+            <pnp:FieldRef ID="d60d65ff-ff42-4044-a684-ac3f7a5e598c" Name="_TopicHeader" UpdateChildren="true" />
+            <pnp:FieldRef ID="9de685c5-fdf5-4319-b987-3edf55efb36f" Name="_SPSitePageFlags" UpdateChildren="true" />
+            <pnp:FieldRef ID="ff41708b-e251-4237-a060-bea44657e8dc" Name="_SPAssetFolderId" UpdateChildren="true" />
+            <pnp:FieldRef ID="9889a80f-c9ec-41d8-a359-ac5fb5c4cfa2" Name="_SPCallToAction" UpdateChildren="true" />
+            <pnp:FieldRef ID="86ebe41f-255f-4170-b040-9977528a8bf5" Name="_SPCollaborators" UpdateChildren="true" />
+            <pnp:FieldRef ID="031c92fd-9cb6-4ac8-8f5f-636d28e37079" Name="_SPAuthoringMetadata" UpdateChildren="true" />
+            <pnp:FieldRef ID="4c321a6d-2a91-428b-8296-59408b35901a" Name="_SourceDynamicSectionId" UpdateChildren="true" />
+          </pnp:FieldRefs>
+          <pnp:DocumentTemplate TargetName="/_layouts/15/CreateSitePage.aspx" />
+        </pnp:ContentType>
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x010100A2E3C117A0C5482FAEE3D57C48CB042F" Name="Web Part Page with Status List" Description="Create a page that displays Status Indicators and Excel workbooks." Group="Business Intelligence" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1305,7 +1498,7 @@
           </pnp:FieldRefs>
           <pnp:DocumentTemplate TargetName="/_layouts/spnewdashboard.aspx" />
         </pnp:ContentType>
-        <pnp:ContentType ID="0x010100C5033D6CFB8447359FB795C8A73A2B19" Name="Design File" Description="HTML, JavaScript, CSS, images, and other supporting files in the Master Page Gallery used by HTML Master Pages, HTML Page Layouts, and Display Templates." Group="_Hidden" Sealed="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x010100C5033D6CFB8447359FB795C8A73A2B19" Name="Design File" Description="HTML, JavaScript, CSS, images, and other supporting files in the Master Page Gallery used by HTML Master Pages, HTML Page Layouts, and Display Templates." Group="_Hidden" Sealed="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1317,7 +1510,7 @@
             <pnp:FieldRef ID="4dd7e525-8d6b-4cb4-9d3e-44ee25f973eb" Name="Created_x0020_By" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x010100F8EF98760CBA4A94994F13BA881038FA" Name="InfoPath Form Template" Description="A Microsoft InfoPath Form Template." Group="_Hidden" Hidden="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x010100F8EF98760CBA4A94994F13BA881038FA" Name="InfoPath Form Template" Description="A Microsoft InfoPath Form Template." Group="_Hidden" Hidden="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1338,7 +1531,7 @@
             <pnp:FieldRef ID="1a03fa74-8c63-40cc-bd06-73b580bd8743" Name="LinkTemplateName" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x010106" Name="Master Page Preview" Description="Create a new master page preview." Group="Document Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x010106" Name="Master Page Preview" Description="Create a new master page preview." Group="Document Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="5f47e085-2150-41dc-b661-442f3027f552" Name="SelectFilename" UpdateChildren="true" />
@@ -1352,7 +1545,24 @@
           </pnp:FieldRefs>
           <pnp:DocumentTemplate TargetName="/_layouts/15/upload.aspx" />
         </pnp:ContentType>
-        <pnp:ContentType ID="0x01080100C9C9515DE4E24001905074F980F93160" Name="SharePoint Server Workflow Task" Description="A work item created by a workflow that you or your team needs to complete." Group="_Hidden" Hidden="true" NewFormUrl="" EditFormUrl="~layouts/WrkTaskIP.aspx" DisplayFormUrl="~layouts/WrkTaskIP.aspx" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0108003365C4474CAE8C42BCE396314E88E51F" Name="Workflow Task (SharePoint 2013)" Description="Create a SharePoint 2013 Workflow Task" Group="List Content Types" Hidden="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" UpdateChildren="true" />
+            <pnp:FieldRef ID="64cd368d-2f95-4bfc-a1f9-8d4324ecb007" Name="StartDate" UpdateChildren="true" />
+            <pnp:FieldRef ID="cd21b4c2-6841-4f9e-a23a-738a65f99889" Name="DueDate" UpdateChildren="true" />
+            <pnp:FieldRef ID="53101f38-dd2e-458c-b245-0c236cc13d1a" Name="AssignedTo" UpdateChildren="true" />
+            <pnp:FieldRef ID="d2311440-1ed6-46ea-b46d-daa643dc3886" Name="PercentComplete" UpdateChildren="true" />
+            <pnp:FieldRef ID="7662cd2c-f069-4dba-9e35-082cf976e170" Name="Body" UpdateChildren="true" />
+            <pnp:FieldRef ID="c3a92d97-2b77-4a25-9698-3ab54874bc6f" Name="Predecessors" UpdateChildren="true" />
+            <pnp:FieldRef ID="a8eb573e-9e11-481a-a8c9-1104a54b2fbd" Name="Priority" UpdateChildren="true" />
+            <pnp:FieldRef ID="c15b34c3-ce7d-490a-b133-3f4de8801b76" Name="Status" UpdateChildren="true" />
+            <pnp:FieldRef ID="d2a04afc-9a05-48c8-a7fa-fa98f9496141" Name="RelatedItems" UpdateChildren="true" />
+            <pnp:FieldRef ID="55b29417-1042-47f0-9dff-ce8156667f96" Name="TaskOutcome" UpdateChildren="true" />
+            <pnp:FieldRef ID="1f30d200-0d4e-4c8a-a7eb-2e49815bf2be" Name="WorkflowInstanceId" UpdateChildren="true" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentId="&lt;FormUrls xmlns=&quot;http://schemas.microsoft.com/sharepoint/v3/contenttype/forms/url&quot;&gt;&lt;Display&gt;~layouts/WrkTaskIP.aspx&lt;/Display&gt;&lt;Edit&gt;~layouts/WrkTaskIP.aspx&lt;/Edit&gt;&lt;/FormUrls&gt;" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x01080100C9C9515DE4E24001905074F980F93160" Name="SharePoint Server Workflow Task" Description="A work item created by a workflow that you or your team needs to complete." Group="_Hidden" Hidden="true" NewFormUrl="" EditFormUrl="~layouts/WrkTaskIP.aspx" DisplayFormUrl="~layouts/WrkTaskIP.aspx" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" UpdateChildren="true" />
@@ -1384,7 +1594,7 @@
             <pnp:FieldRef ID="1c5518e2-1e99-49fe-bfc6-1a8de3ba16e2" Name="ExtendedProperties" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0110" Name="Post" Description="Create a new blog post." Group="List Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="Lists/Posts/Post.aspx" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentId="&lt;FormUrls xmlns=&quot;http://schemas.microsoft.com/sharepoint/v3/contenttype/forms/url&quot;&gt;&lt;Display&gt;$Resources:core,lists_Folder;/$Resources:core,blogpost_Folder;/Post.aspx&lt;/Display&gt;&lt;MobileDisplay&gt;_layouts/15/mobile/disppost.aspx&lt;/MobileDisplay&gt;&lt;MobileNew&gt;_layouts/15/mobile/newpost.aspx&lt;/MobileNew&gt;&lt;/FormUrls&gt;" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0110" Name="Post" Description="Create a new blog post." Group="List Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="Lists/Posts/Post.aspx" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
@@ -1393,7 +1603,7 @@
             <pnp:FieldRef ID="b1b53d80-23d6-e31b-b235-3a286b9f10ea" Name="PublishedDate" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0120D5" Name="Document Collection Folder" Description="Create a new Document Collection Folder" Group="_Hidden" Sealed="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0120D5" Name="Document Collection Folder" Description="Create a new Document Collection Folder" Group="_Hidden" Sealed="true" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
             <pnp:FieldRef ID="b824e17e-a1b3-426e-aecf-f0184d900485" Name="ItemChildCount" UpdateChildren="true" />
@@ -1402,10 +1612,10 @@
             <pnp:FieldRef ID="8553196d-ec8d-4564-9861-3dbe931050c8" Name="FileLeafRef" Required="true" UpdateChildren="true" />
           </pnp:FieldRefs>
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0120D520A8" Name="System Media Collection" Description="System type for a collection of rich media assets." Group="_Hidden" Sealed="true" ReadOnly="true" NewFormUrl="_layouts/15/NewDocSet.aspx" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
-          <pnp:DocumentSetTemplate />
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentId="&lt;FormUrls xmlns=&quot;http://schemas.microsoft.com/sharepoint/v3/contenttype/forms/url&quot;&gt;&lt;New&gt;_layouts/15/NewDocSet.aspx&lt;/New&gt;&lt;/FormUrls&gt;" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0120D520A8" Name="System Media Collection" Description="System type for a collection of rich media assets." Group="_Hidden" Sealed="true" ReadOnly="true" NewFormUrl="_layouts/15/NewDocSet.aspx" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+          <pnp:DocumentSetTemplate UpdateChildren="false" />
         </pnp:ContentType>
-        <pnp:ContentType ID="0x0120D520A808" Name="Video" Description="Upload or link to a video." Group="Digital Asset Content Types" NewFormUrl="_layouts/15/NewVideoSet.aspx" EditFormUrl="_layouts/15/EditVideoSet.aspx" DisplayFormUrl="" UpdateChildren="false">
+        <pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentId="&amp;amp;lt;FormUrls xmlns=&quot;http://schemas.microsoft.com/sharepoint/v3/contenttype/forms/url&quot;&amp;amp;gt;&amp;amp;lt;New&amp;amp;gt;_layouts/15/NewVideoSet.aspx&amp;amp;lt;/New&amp;amp;gt;&amp;amp;lt;Edit&amp;amp;gt;_layouts/15/EditVideoSet.aspx&amp;amp;lt;/Edit&amp;amp;gt;&amp;amp;lt;/FormUrls&amp;amp;gt;" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0120D520A808" Name="Video" Description="Upload or link to a video." Group="Digital Asset Content Types" NewFormUrl="_layouts/15/NewVideoSet.aspx" EditFormUrl="_layouts/15/EditVideoSet.aspx" DisplayFormUrl="" UpdateChildren="false">
           <pnp:FieldRefs>
             <pnp:FieldRef ID="b76b58ec-0549-4f00-9575-2fd28bd55010" Name="VideoSetDescription" UpdateChildren="true" />
             <pnp:FieldRef ID="2de1df7b-48e1-4c8e-be0f-f00e504b9948" Name="VideoSetOwner" UpdateChildren="true" />
@@ -1424,7 +1634,7 @@
             <pnp:FieldRef ID="bcd999a7-9dca-4824-a515-878bee641ed3" Name="PeopleInMedia" UpdateChildren="true" />
             <pnp:FieldRef ID="b0e12a3b-cf63-47d1-8418-4ef850d87a3c" Name="NoCrawl" UpdateChildren="true" />
           </pnp:FieldRefs>
-          <pnp:DocumentSetTemplate>
+          <pnp:DocumentSetTemplate UpdateChildren="false">
             <pnp:AllowedContentTypes>
               <pnp:AllowedContentType ContentTypeID="0x0101" />
               <pnp:AllowedContentType ContentTypeID="0x0101009148F5A04DDD49CBA7127AADA5FB792B00291D173ECE694D56B19D111489C4369D" />
@@ -1435,13 +1645,13 @@
         </pnp:ContentType>
       </pnp:ContentTypes>
       <pnp:Lists>
-        <pnp:ListInstance Title="Documents" Description="" DocumentTemplate="{site}/Shared Documents/Forms/template.dotx" OnQuickLaunch="true" TemplateType="101" Url="Shared Documents" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="500" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" DefaultDisplayFormUrl="{site}/Shared Documents/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/Shared Documents/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/Shared Documents/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itdl.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+        <pnp:ListInstance Title="Documents" Description="" DocumentTemplate="{site}/Shared Documents/Forms/template.dotx" OnQuickLaunch="true" TemplateType="101" Url="Shared Documents" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="500" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" DefaultDisplayFormUrl="{site}/Shared Documents/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/Shared Documents/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/Shared Documents/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itdl.png?rev=50" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
           <pnp:ContentTypeBindings>
             <pnp:ContentTypeBinding ContentTypeID="0x0101" Default="true" />
             <pnp:ContentTypeBinding ContentTypeID="0x0120" />
           </pnp:ContentTypeBindings>
           <pnp:Views>
-            <View Name="{5B7CF022-D5E0-4CA1-A22D-F8A7B526F300}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Documents" Url="{site}/Shared Documents/Forms/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
+            <View Name="{3FF7CB2E-FB0F-4145-AE67-1E460190F363}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Documents" Url="{site}/Shared Documents/Forms/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=50">
               <Query>
                 <OrderBy>
                   <FieldRef Name="FileLeafRef" />
@@ -1457,18 +1667,23 @@
               <JSLink>clienttemplates.js</JSLink>
             </View>
           </pnp:Views>
+          <pnp:Fields>
+            <Field ID="{3881510a-4e4a-4ee8-b102-8ee8e2d0dd4b}" ColName="tp_CheckoutUserId" RowOrdinal="0" ReadOnly="TRUE" Type="User" List="UserInfo" Name="CheckoutUser" DisplaceOnUpgrade="TRUE" DisplayName="Checked Out To" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="CheckoutUser" FromBaseType="TRUE" />
+          </pnp:Fields>
           <pnp:FieldRefs>
             <pnp:FieldRef ID="d307dff3-340f-44a2-9f4b-fbfe1ba07459" Name="_CommentCount" DisplayName="Comment count" />
             <pnp:FieldRef ID="db8d9d6d-dc9a-4fbd-85f3-4a753bfdc58c" Name="_LikeCount" DisplayName="Like count" />
+            <pnp:FieldRef ID="76d13cd2-1bae-45a5-8b74-545b87b65037" Name="_ColorTag" DisplayName="Color Tag" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" DisplayName="Title" />
             <pnp:FieldRef ID="cb19284a-cde7-4570-a980-1dab8bd74470" Name="_ExtendedDescription" DisplayName="Description" />
           </pnp:FieldRefs>
         </pnp:ListInstance>
-        <pnp:ListInstance Title="Form Templates" Description="This library contains administrator-approved form templates that were activated to this site collection." DocumentTemplate="" TemplateType="101" Url="FormServerTemplates" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/FormServerTemplates/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/FormServerTemplates/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/FormServerTemplates/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itdl.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+        <pnp:ListInstance Title="Form Templates" Description="This library contains administrator-approved form templates that were activated to this site collection." DocumentTemplate="" TemplateType="101" Url="FormServerTemplates" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/FormServerTemplates/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/FormServerTemplates/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/FormServerTemplates/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itdl.png?rev=50" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
           <pnp:ContentTypeBindings>
             <pnp:ContentTypeBinding ContentTypeID="0x010100F8EF98760CBA4A94994F13BA881038FA" Default="true" />
           </pnp:ContentTypeBindings>
           <pnp:Views>
-            <View Name="{3430DCF4-A8A2-4ED9-A663-762A0B529B45}" MobileView="TRUE" Type="HTML" DisplayName="All Documents" Url="{site}/FormServerTemplates/Forms/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
+            <View Name="{19F3C05B-1576-4484-BC21-3920D2CDEC21}" MobileView="TRUE" Type="HTML" DisplayName="All Documents" Url="{site}/FormServerTemplates/Forms/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=50">
               <Query>
                 <OrderBy>
                   <FieldRef Name="FileLeafRef" />
@@ -1483,7 +1698,7 @@
               <RowLimit Paged="TRUE">30</RowLimit>
               <JSLink>clienttemplates.js</JSLink>
             </View>
-            <View Name="{6643C273-1671-413F-B3E5-B1C1F2416ACA}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Forms" Url="{site}/FormServerTemplates/Forms/All Forms.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
+            <View Name="{C0E31C7C-EA6A-4A3F-8320-3668C8C3A4E8}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Forms" Url="{site}/FormServerTemplates/Forms/All Forms.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=50">
               <Query>
                 <GroupBy Collapse="FALSE">
                   <FieldRef Name="FormCategory" />
@@ -1508,7 +1723,12 @@
               <JSLink>clienttemplates.js</JSLink>
             </View>
           </pnp:Views>
+          <pnp:Fields>
+            <Field ID="{3881510a-4e4a-4ee8-b102-8ee8e2d0dd4b}" ColName="tp_CheckoutUserId" RowOrdinal="0" ReadOnly="TRUE" Type="User" List="UserInfo" Name="CheckoutUser" DisplaceOnUpgrade="TRUE" DisplayName="Checked Out To" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="CheckoutUser" FromBaseType="TRUE" />
+          </pnp:Fields>
           <pnp:FieldRefs>
+            <pnp:FieldRef ID="76d13cd2-1bae-45a5-8b74-545b87b65037" Name="_ColorTag" DisplayName="Color Tag" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" DisplayName="Title" />
             <pnp:FieldRef ID="cb19284a-cde7-4570-a980-1dab8bd74470" Name="_ExtendedDescription" DisplayName="Description" />
             <pnp:FieldRef ID="66b691cf-07a3-4ca6-ac6d-27fa969c8569" Name="FormName" DisplayName="Form Name" />
             <pnp:FieldRef ID="65572d4d-445a-43f1-9c77-3358222a2c93" Name="FormCategory" DisplayName="Form Category" />
@@ -1522,7 +1742,7 @@
             <pnp:FieldRef ID="db8d9d6d-dc9a-4fbd-85f3-4a753bfdc58c" Name="_LikeCount" DisplayName="Like count" />
           </pnp:FieldRefs>
         </pnp:ListInstance>
-        <pnp:ListInstance Title="MicroFeed" Description="MySite MicroFeed Persistent Storage List" DocumentTemplate="" TemplateType="544" Url="Lists/PublishedFeed" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="ea23650b-0340-4708-b465-441a41c37af7" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/PublishedFeed/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/PublishedFeed/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/PublishedFeed/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" WriteSecurity="2" ValidationFormula="" ValidationMessage="">
+        <pnp:ListInstance Title="MicroFeed" Description="MySite MicroFeed Persistent Storage List" DocumentTemplate="" TemplateType="544" Url="Lists/PublishedFeed" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="ea23650b-0340-4708-b465-441a41c37af7" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/PublishedFeed/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/PublishedFeed/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/PublishedFeed/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=50" IrmExpire="false" IrmReject="false" IsApplicationList="false" WriteSecurity="2" ValidationFormula="" ValidationMessage="">
           <pnp:ContentTypeBindings>
             <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
             <pnp:ContentTypeBinding ContentTypeID="0x01" />
@@ -1531,7 +1751,7 @@
             <pnp:ContentTypeBinding ContentTypeID="0x0120" />
           </pnp:ContentTypeBindings>
           <pnp:Views>
-            <View Name="{EA0EF85A-B01F-4C19-A3AB-861210DB3E23}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/PublishedFeed/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/images/generic.png">
+            <View Name="{CE1B512E-2814-4A4D-8815-EF5016C914AF}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/PublishedFeed/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/images/generic.png">
               <Query>
                 <OrderBy>
                   <FieldRef Name="Created_x0020_Date" />
@@ -1582,28 +1802,28 @@
           </pnp:Views>
           <pnp:Fields>
             <Field Type="Integer" Name="MicroBlogType" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" Indexed="TRUE" DisplayName="MicroBlogType" StaticName="MicroBlogType" ID="{35329af5-04eb-44ee-89ae-9b5e4b5ecd9d}" ColName="int1" SourceID="{{listid:MicroFeed}}" />
-            <Field Type="Text" Name="PostAuthor" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" Indexed="FALSE" DisplayName="Post Author" StaticName="PostAuthor" ID="{6e4c2103-dea2-4b81-bc0a-410a7a812a05}" ColName="nvarchar4" SourceID="{{listid:MicroFeed}}" />
+            <Field Type="Text" Name="PostAuthor" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" Indexed="FALSE" DisplayName="Post Author" StaticName="PostAuthor" ID="{6e4c2103-dea2-4b81-bc0a-410a7a812a05}" ColName="nvarchar7" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="DefinitionId" Indexed="TRUE" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="DefinitionId" StaticName="DefinitionId" ID="{de90c424-0414-4d3c-a6d0-a8090fc2f731}" ColName="int2" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="RootPostID" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" Indexed="TRUE" DisplayName="RootPostID" StaticName="RootPostID" ID="{9ce2079a-cf0d-479f-ae35-48229641a003}" ColName="int3" SourceID="{{listid:MicroFeed}}" />
-            <Field Type="Text" Name="RootPostOwnerID" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Root Post Owner ID" StaticName="RootPostOwnerID" ID="{d573c999-f181-4015-88fd-72d7c135e1d6}" ColName="nvarchar5" SourceID="{{listid:MicroFeed}}" />
-            <Field Type="Text" Name="RootPostUniqueID" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Root Post Unique ID" StaticName="RootPostUniqueID" ID="{8d68c714-9453-45d4-857e-c134308f1047}" ColName="nvarchar6" SourceID="{{listid:MicroFeed}}" />
+            <Field Type="Text" Name="RootPostOwnerID" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Root Post Owner ID" StaticName="RootPostOwnerID" ID="{d573c999-f181-4015-88fd-72d7c135e1d6}" ColName="nvarchar8" SourceID="{{listid:MicroFeed}}" />
+            <Field Type="Text" Name="RootPostUniqueID" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Root Post Unique ID" StaticName="RootPostUniqueID" ID="{8d68c714-9453-45d4-857e-c134308f1047}" ColName="nvarchar9" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="ReplyCount" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="ReplyCount" StaticName="ReplyCount" ID="{5f460546-df7d-489d-99fd-677d26f68e30}" ColName="int4" SourceID="{{listid:MicroFeed}}" />
-            <Field Type="Text" Name="ReferenceID" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Reference ID" StaticName="ReferenceID" ID="{5d8af039-7778-4004-b934-c9c348059309}" ColName="nvarchar7" SourceID="{{listid:MicroFeed}}" />
+            <Field Type="Text" Name="ReferenceID" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Reference ID" StaticName="ReferenceID" ID="{5d8af039-7778-4004-b934-c9c348059309}" ColName="nvarchar10" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="Attributes" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Attributes" StaticName="Attributes" ID="{5611398e-c664-46c8-8d34-427ae046cc31}" ColName="int5" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Note" Name="Content" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Content" StaticName="Content" ID="{37c1e42e-8f43-4767-b51b-901fa7c19f00}" ColName="ntext2" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Note" Name="ContentData" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="ContentData" StaticName="ContentData" ID="{ec8e7d18-467b-4f6e-9607-e4f015dc63d9}" ColName="ntext3" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Note" Name="SearchContent" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="SearchContent" StaticName="SearchContent" ID="{fa2e7421-b52a-4fb7-afc2-c348144b4850}" ColName="ntext4" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Note" Name="RefRoot" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="RefRoot" StaticName="RefRoot" ID="{4709c48f-0bbe-47e6-9b19-deb852cb3ea4}" ColName="ntext5" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Note" Name="RefReply" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="RefReply" StaticName="RefReply" ID="{fa830350-bc6c-4931-ba2f-b3078fef4554}" ColName="ntext6" SourceID="{{listid:MicroFeed}}" />
-            <Field Type="Text" Name="PostSource" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Post Source" StaticName="PostSource" ID="{e24e486f-3717-433c-91fc-edd848c2c483}" ColName="nvarchar8" SourceID="{{listid:MicroFeed}}" />
+            <Field Type="Text" Name="PostSource" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Post Source" StaticName="PostSource" ID="{e24e486f-3717-433c-91fc-edd848c2c483}" ColName="nvarchar11" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="PeopleCount" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="PeopleCount" StaticName="PeopleCount" ID="{a1728d72-f862-40d5-b3a8-4e394faba47a}" ColName="int6" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Note" Name="PeopleList" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="PeopleList" StaticName="PeopleList" ID="{d20e68a2-693a-470a-8349-a972ab3a7f0d}" ColName="ntext7" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="MediaLinkType" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaLinkType" StaticName="MediaLinkType" ID="{2de40ff2-1313-4ae9-a927-f460493ae86f}" ColName="int7" SourceID="{{listid:MicroFeed}}" />
-            <Field Type="Text" Name="MediaLinkDescription" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Media Link Description" StaticName="MediaLinkDescription" ID="{4c074db2-ce03-406e-a23a-36153af6da2d}" ColName="nvarchar9" SourceID="{{listid:MicroFeed}}" />
+            <Field Type="Text" Name="MediaLinkDescription" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="Media Link Description" StaticName="MediaLinkDescription" ID="{4c074db2-ce03-406e-a23a-36153af6da2d}" ColName="nvarchar12" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Note" Name="PostSourceUri" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="PostSourceUri" StaticName="PostSourceUri" ID="{9c2e087c-0aae-49e0-a354-6853f4066acb}" ColName="ntext8" SourceID="{{listid:MicroFeed}}" />
-            <Field Type="URL" Name="MediaLinkURI" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaLinkURI" StaticName="MediaLinkURI" ID="{d69707f1-8cb7-4318-8deb-fea7ed53df41}" ColName="nvarchar10" ColName2="nvarchar11" SourceID="{{listid:MicroFeed}}" />
-            <Field Type="URL" Name="MediaLinkUISnippet" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaLinkUISnippet" StaticName="MediaLinkUISnippet" ID="{e1d22b08-cc0c-45d2-88f6-eb53529065e3}" ColName="nvarchar12" ColName2="nvarchar13" SourceID="{{listid:MicroFeed}}" />
-            <Field Type="URL" Name="MediaLinkContentURI" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaLinkContentURI" StaticName="MediaLinkContentURI" ID="{35479e24-035c-4fa0-9605-da97647aa69e}" ColName="nvarchar14" ColName2="nvarchar15" SourceID="{{listid:MicroFeed}}" />
+            <Field Type="URL" Name="MediaLinkURI" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaLinkURI" StaticName="MediaLinkURI" ID="{d69707f1-8cb7-4318-8deb-fea7ed53df41}" ColName="nvarchar13" ColName2="nvarchar14" SourceID="{{listid:MicroFeed}}" />
+            <Field Type="URL" Name="MediaLinkUISnippet" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaLinkUISnippet" StaticName="MediaLinkUISnippet" ID="{e1d22b08-cc0c-45d2-88f6-eb53529065e3}" ColName="nvarchar15" ColName2="nvarchar16" SourceID="{{listid:MicroFeed}}" />
+            <Field Type="URL" Name="MediaLinkContentURI" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaLinkContentURI" StaticName="MediaLinkContentURI" ID="{35479e24-035c-4fa0-9605-da97647aa69e}" ColName="nvarchar17" ColName2="nvarchar18" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="MediaLength" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaLength" StaticName="MediaLength" ID="{39c851ac-bc40-4481-adeb-945f56ac2e1d}" ColName="int8" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="MediaWidth" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaWidth" StaticName="MediaWidth" ID="{234c9611-d3e4-413b-a5b6-cf0fa773ca24}" ColName="int9" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="MediaHeight" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaHeight" StaticName="MediaHeight" ID="{41680d11-1cb0-4c7b-bc3e-85477635f116}" ColName="int10" SourceID="{{listid:MicroFeed}}" />
@@ -1611,7 +1831,7 @@
             <Field Type="Integer" Name="MediaPreviewHeight" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaPreviewHeight" StaticName="MediaPreviewHeight" ID="{6804f2b3-ba6b-4147-81d0-d025b76a82c4}" ColName="int12" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="MediaActionWidth" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaActionWidth" StaticName="MediaActionWidth" ID="{79f148db-dcf4-4728-8744-3aa9a3669a12}" ColName="int13" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="MediaActionHeight" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaActionHeight" StaticName="MediaActionHeight" ID="{b8448c28-0729-4d4f-9f38-8299291df5d3}" ColName="int14" SourceID="{{listid:MicroFeed}}" />
-            <Field Type="URL" Name="MediaActionClickUrl" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaActionClickUrl" StaticName="MediaActionClickUrl" ID="{84a29bc8-2234-42af-9961-e3cf1d3e11b4}" ColName="nvarchar16" ColName2="nvarchar17" SourceID="{{listid:MicroFeed}}" />
+            <Field Type="URL" Name="MediaActionClickUrl" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaActionClickUrl" StaticName="MediaActionClickUrl" ID="{84a29bc8-2234-42af-9961-e3cf1d3e11b4}" ColName="nvarchar19" ColName2="nvarchar20" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Integer" Name="MediaActionClickKind" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" DisplayName="MediaActionClickKind" StaticName="MediaActionClickKind" ID="{53abf914-9726-4da7-b43f-7e8fb3568071}" ColName="int15" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Note" Name="eMailSubscribers" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" StaticName="eMailSubscribers" DisplayName="eMailSubscribers" ID="{8dc7f8e0-41ac-4c89-a6f5-d33ffa058ef5}" ColName="ntext9" SourceID="{{listid:MicroFeed}}" />
             <Field Type="Note" Name="eMailUnsubscribed" ShowInDisplayForm="TRUE" ShowInNewForm="FALSE" ShowInEditForm="FALSE" StaticName="eMailUnsubscribed" DisplayName="eMailUnsubscribed" ID="{0a27b050-40cf-4dc4-8eab-7e85936cfed4}" ColName="ntext10" SourceID="{{listid:MicroFeed}}" />
@@ -1624,7 +1844,7 @@
             <pnp:FieldRef ID="333b1bc2-0532-4872-96f1-bbbdead35a56" Name="HashTags" DisplayName="HashTags" />
           </pnp:FieldRefs>
         </pnp:ListInstance>
-        <pnp:ListInstance Title="Site Assets" Description="Use this library to store files which are included on pages within this site, such as images on Wiki pages." DocumentTemplate="{site}/SiteAssets/Forms/template.doc" TemplateType="101" Url="SiteAssets" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="500" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" DefaultDisplayFormUrl="{site}/SiteAssets/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/SiteAssets/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/SiteAssets/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itdl.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="true" ValidationFormula="" ValidationMessage="">
+        <pnp:ListInstance Title="Site Assets" Description="Use this library to store files which are included on pages within this site, such as images on Wiki pages." DocumentTemplate="{site}/SiteAssets/Forms/template.doc" TemplateType="101" Url="SiteAssets" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="500" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" DefaultDisplayFormUrl="{site}/SiteAssets/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/SiteAssets/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/SiteAssets/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itdl.png?rev=50" IrmExpire="false" IrmReject="false" IsApplicationList="true" ValidationFormula="" ValidationMessage="">
           <pnp:PropertyBagEntries>
             <pnp:PropertyBagEntry Key="IsAttachmentLibrary" Value="1" Overwrite="false" />
           </pnp:PropertyBagEntries>
@@ -1633,7 +1853,7 @@
             <pnp:ContentTypeBinding ContentTypeID="0x0120" />
           </pnp:ContentTypeBindings>
           <pnp:Views>
-            <View Name="{587BA9D3-4174-44E6-8D3F-68A4E7ADD9C3}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Documents" Url="{site}/SiteAssets/Forms/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
+            <View Name="{F8F8FFCB-902D-4115-96FD-8409690D562D}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Documents" Url="{site}/SiteAssets/Forms/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=50">
               <Query>
                 <OrderBy>
                   <FieldRef Name="FileLeafRef" />
@@ -1649,13 +1869,18 @@
               <JSLink>clienttemplates.js</JSLink>
             </View>
           </pnp:Views>
+          <pnp:Fields>
+            <Field ID="{3881510a-4e4a-4ee8-b102-8ee8e2d0dd4b}" ColName="tp_CheckoutUserId" RowOrdinal="0" ReadOnly="TRUE" Type="User" List="UserInfo" Name="CheckoutUser" DisplaceOnUpgrade="TRUE" DisplayName="Checked Out To" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="CheckoutUser" FromBaseType="TRUE" />
+          </pnp:Fields>
           <pnp:FieldRefs>
             <pnp:FieldRef ID="d307dff3-340f-44a2-9f4b-fbfe1ba07459" Name="_CommentCount" DisplayName="Comment count" />
             <pnp:FieldRef ID="db8d9d6d-dc9a-4fbd-85f3-4a753bfdc58c" Name="_LikeCount" DisplayName="Like count" />
+            <pnp:FieldRef ID="76d13cd2-1bae-45a5-8b74-545b87b65037" Name="_ColorTag" DisplayName="Color Tag" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" DisplayName="Title" />
             <pnp:FieldRef ID="cb19284a-cde7-4570-a980-1dab8bd74470" Name="_ExtendedDescription" DisplayName="Description" />
           </pnp:FieldRefs>
         </pnp:ListInstance>
-        <pnp:ListInstance Title="Site Pages" Description="" DocumentTemplate="" TemplateType="119" Url="SitePages" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-c796-4402-9f2f-0eb9a6e71b18" ContentTypesEnabled="true" EnableAttachments="false" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/SitePages/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/SitePages/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/SitePages/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itwp.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="true" ValidationFormula="" ValidationMessage="">
+        <pnp:ListInstance Title="Site Pages" Description="" DocumentTemplate="" TemplateType="119" Url="SitePages" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-c796-4402-9f2f-0eb9a6e71b18" ContentTypesEnabled="true" EnableAttachments="false" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/SitePages/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/SitePages/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/SitePages/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itwp.png?rev=50" IrmExpire="false" IrmReject="false" IsApplicationList="true" ValidationFormula="" ValidationMessage="">
           <pnp:ContentTypeBindings>
             <pnp:ContentTypeBinding ContentTypeID="0x010108" Default="true" />
             <pnp:ContentTypeBinding ContentTypeID="0x0120" />
@@ -1664,7 +1889,7 @@
             <pnp:ContentTypeBinding ContentTypeID="0x0101009D1CB255DA76424F860D91F20E6C4118002A50BFCFB7614729B56886FADA02339B" />
           </pnp:ContentTypeBindings>
           <pnp:Views>
-            <View Name="{CC6708F8-B633-458D-9462-57636617A24C}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="By Author" Url="{site}/SitePages/Forms/ByAuthor.aspx" Level="1" BaseViewID="4" ContentTypeID="0x" ToolbarTemplate="WikiLibraryViewToolBar" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
+            <View Name="{7A68FF1B-D735-4DC5-B736-89F5916C3D88}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="By Author" Url="{site}/SitePages/Forms/ByAuthor.aspx" Level="1" BaseViewID="4" ContentTypeID="0x" ToolbarTemplate="WikiLibraryViewToolBar" ImageUrl="/_layouts/15/images/dlicon.png?rev=50">
               <Query>
                 <GroupBy Collapse="FALSE">
                   <FieldRef Name="Author" />
@@ -1683,7 +1908,7 @@
               <RowLimit Paged="TRUE">30</RowLimit>
               <JSLink>clienttemplates.js</JSLink>
             </View>
-            <View Name="{98B4D2EA-08AC-4492-BB03-D163233EA2EF}" Type="HTML" DisplayName="All Pages" Url="{site}/SitePages/Forms/AllPages.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ToolbarTemplate="WikiLibraryViewToolBar" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
+            <View Name="{C3DF7685-A780-4AE5-8223-CD559437B13B}" Type="HTML" DisplayName="All Pages" Url="{site}/SitePages/Forms/AllPages.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ToolbarTemplate="WikiLibraryViewToolBar" ImageUrl="/_layouts/15/images/dlicon.png?rev=50">
               <Query>
                 <OrderBy>
                   <FieldRef Name="Modified" Ascending="FALSE" />
@@ -1700,7 +1925,27 @@
               <RowLimit Paged="TRUE">30</RowLimit>
               <JSLink>clienttemplates.js</JSLink>
             </View>
-            <View Name="{4A639C6C-C72E-4E59-A5FE-01045E92E9AF}" Type="HTML" DisplayName="Created By Me" Url="{site}/SitePages/Forms/CreatedByMe.aspx" Level="1" BaseViewID="3" ContentTypeID="0x" ToolbarTemplate="WikiLibraryViewToolBar" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
+            <View Name="{419FEE7A-1CED-4E70-AFF4-5F32E5BFF4F5}" Type="HTML" DisplayName="By Editor" Url="{site}/SitePages/Forms/ByEditor.aspx" Level="1" BaseViewID="5" ContentTypeID="0x" ToolbarTemplate="WikiLibraryViewToolBar" ImageUrl="/_layouts/15/images/dlicon.png?rev=50">
+              <Query>
+                <GroupBy Collapse="FALSE">
+                  <FieldRef Name="Editor" />
+                </GroupBy>
+                <OrderBy>
+                  <FieldRef Name="FileLeafRef" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="DocIcon" />
+                <FieldRef Name="LinkFilename" />
+                <FieldRef Name="Editor" />
+                <FieldRef Name="Modified" />
+                <FieldRef Name="Author" />
+                <FieldRef Name="Created" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+            <View Name="{053FD20C-3E80-45E6-96E4-FE355BFE6285}" Type="HTML" DisplayName="Created By Me" Url="{site}/SitePages/Forms/CreatedByMe.aspx" Level="1" BaseViewID="3" ContentTypeID="0x" ToolbarTemplate="WikiLibraryViewToolBar" ImageUrl="/_layouts/15/images/dlicon.png?rev=50">
               <Query>
                 <Where>
                   <Eq>
@@ -1725,27 +1970,7 @@
               <RowLimit Paged="TRUE">30</RowLimit>
               <JSLink>clienttemplates.js</JSLink>
             </View>
-            <View Name="{026C4E65-5073-41BD-A79C-B99462661B45}" Type="HTML" DisplayName="By Editor" Url="{site}/SitePages/Forms/ByEditor.aspx" Level="1" BaseViewID="5" ContentTypeID="0x" ToolbarTemplate="WikiLibraryViewToolBar" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
-              <Query>
-                <GroupBy Collapse="FALSE">
-                  <FieldRef Name="Editor" />
-                </GroupBy>
-                <OrderBy>
-                  <FieldRef Name="FileLeafRef" />
-                </OrderBy>
-              </Query>
-              <ViewFields>
-                <FieldRef Name="DocIcon" />
-                <FieldRef Name="LinkFilename" />
-                <FieldRef Name="Editor" />
-                <FieldRef Name="Modified" />
-                <FieldRef Name="Author" />
-                <FieldRef Name="Created" />
-              </ViewFields>
-              <RowLimit Paged="TRUE">30</RowLimit>
-              <JSLink>clienttemplates.js</JSLink>
-            </View>
-            <View Name="{C7C87749-56A8-4248-A671-906EA8557B3A}" Type="HTML" DisplayName="Recent Changes" Url="{site}/SitePages/Forms/RecentChanges.aspx" Level="1" BaseViewID="2" ContentTypeID="0x" ToolbarTemplate="WikiLibraryViewToolBar" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
+            <View Name="{1C57A087-153E-4B3A-8476-8460A717BE3D}" Type="HTML" DisplayName="Recent Changes" Url="{site}/SitePages/Forms/RecentChanges.aspx" Level="1" BaseViewID="2" ContentTypeID="0x" ToolbarTemplate="WikiLibraryViewToolBar" ImageUrl="/_layouts/15/images/dlicon.png?rev=50">
               <Query>
                 <OrderBy>
                   <FieldRef Name="Modified" Ascending="FALSE" />
@@ -1763,8 +1988,12 @@
               <JSLink>clienttemplates.js</JSLink>
             </View>
           </pnp:Views>
+          <pnp:Fields>
+            <Field ID="{3881510a-4e4a-4ee8-b102-8ee8e2d0dd4b}" ColName="tp_CheckoutUserId" RowOrdinal="0" ReadOnly="TRUE" Type="User" List="UserInfo" Name="CheckoutUser" DisplaceOnUpgrade="TRUE" DisplayName="Checked Out To" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="CheckoutUser" FromBaseType="TRUE" />
+          </pnp:Fields>
           <pnp:FieldRefs>
             <pnp:FieldRef ID="c33527b4-d920-4587-b791-45024d00068a" Name="WikiField" DisplayName="Wiki Content" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" DisplayName="Title" />
             <pnp:FieldRef ID="4966388e-6e12-4bc6-8990-5b5b66153eae" Name="CanvasContent1" DisplayName="Authoring Canvas Content" />
             <pnp:FieldRef ID="5baf6db5-9d25-4738-b15e-db5789298e82" Name="BannerImageUrl" DisplayName="Banner Image URL" />
             <pnp:FieldRef ID="3f155110-a6a2-4d70-926c-94648101f0e8" Name="Description" DisplayName="Description" />
@@ -1782,13 +2011,13 @@
             <pnp:FieldRef ID="91e86a43-75f2-426f-80da-35edfb47d55d" Name="_OriginalSourceItemId" DisplayName="Original Source Item ID" />
           </pnp:FieldRefs>
         </pnp:ListInstance>
-        <pnp:ListInstance Title="Style Library" Description="Use the style library to store style sheets, such as CSS or XSL files. The style sheets in this gallery can be used by this site or any of its subsites." DocumentTemplate="" TemplateType="101" Url="Style Library" ForceCheckout="true" EnableVersioning="true" EnableMinorVersions="true" MinorVersionLimit="0" MaxVersionLimit="500" DraftVersionVisibility="1" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" NoCrawl="true" DefaultDisplayFormUrl="{site}/Style Library/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/Style Library/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/Style Library/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itdl.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+        <pnp:ListInstance Title="Style Library" Description="Use the style library to store style sheets, such as CSS or XSL files. The style sheets in this gallery can be used by this site or any of its subsites." DocumentTemplate="" TemplateType="101" Url="Style Library" ForceCheckout="true" EnableVersioning="true" EnableMinorVersions="true" MinorVersionLimit="0" MaxVersionLimit="500" DraftVersionVisibility="1" TemplateFeatureID="00bfea71-e717-4e80-aa17-d0c71b360101" EnableAttachments="false" NoCrawl="true" DefaultDisplayFormUrl="{site}/Style Library/Forms/DispForm.aspx" DefaultEditFormUrl="{site}/Style Library/Forms/EditForm.aspx" DefaultNewFormUrl="{site}/Style Library/Forms/Upload.aspx" ImageUrl="/_layouts/15/images/itdl.png?rev=50" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
           <pnp:ContentTypeBindings>
             <pnp:ContentTypeBinding ContentTypeID="0x0101" Default="true" />
             <pnp:ContentTypeBinding ContentTypeID="0x0120" />
           </pnp:ContentTypeBindings>
           <pnp:Views>
-            <View Name="{AF3FBCA7-6B32-4520-80BF-F0B0EAB51F11}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Documents" Url="{site}/Style Library/Forms/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=47">
+            <View Name="{84E914A5-6643-4A17-A312-8ED310F83543}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Documents" Url="{site}/Style Library/Forms/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/dlicon.png?rev=50">
               <Query>
                 <OrderBy>
                   <FieldRef Name="FileLeafRef" />
@@ -1805,9 +2034,14 @@
               <JSLink>clienttemplates.js</JSLink>
             </View>
           </pnp:Views>
+          <pnp:Fields>
+            <Field ID="{3881510a-4e4a-4ee8-b102-8ee8e2d0dd4b}" ColName="tp_CheckoutUserId" RowOrdinal="0" ReadOnly="TRUE" Type="User" List="UserInfo" Name="CheckoutUser" DisplaceOnUpgrade="TRUE" DisplayName="Checked Out To" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="CheckoutUser" FromBaseType="TRUE" />
+          </pnp:Fields>
           <pnp:FieldRefs>
             <pnp:FieldRef ID="d307dff3-340f-44a2-9f4b-fbfe1ba07459" Name="_CommentCount" DisplayName="Comment count" />
             <pnp:FieldRef ID="db8d9d6d-dc9a-4fbd-85f3-4a753bfdc58c" Name="_LikeCount" DisplayName="Like count" />
+            <pnp:FieldRef ID="76d13cd2-1bae-45a5-8b74-545b87b65037" Name="_ColorTag" DisplayName="Color Tag" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" DisplayName="Title" />
             <pnp:FieldRef ID="cb19284a-cde7-4570-a980-1dab8bd74470" Name="_ExtendedDescription" DisplayName="Description" />
           </pnp:FieldRefs>
         </pnp:ListInstance>
@@ -1829,10 +2063,9 @@
           <pnp:Feature ID="6e8f2b8d-d765-4e69-84ea-5702574c11d6" />
           <pnp:Feature ID="ca7bd552-10b1-4563-85b9-5ed1d39c962a" />
           <pnp:Feature ID="592ccb4a-9304-49ab-aab1-66638198bb58" />
-          <pnp:Feature ID="9fec40ea-a949-407d-be09-6cba26470a0c" />
+          <pnp:Feature ID="371a9b45-6923-41d8-9f5d-6c4506e51b2e" />
           <pnp:Feature ID="5b79b49a-2da6-4161-95bd-7375c1995ef9" />
           <pnp:Feature ID="c9c9515d-e4e2-4001-9050-74f980f93160" />
-          <pnp:Feature ID="4248e21f-a816-4c88-8cab-79d82201da7b" />
           <pnp:Feature ID="b21b090c-c796-4b0f-ac0f-7ef1659c20ae" />
           <pnp:Feature ID="5f3b0127-2f1d-4cfd-8dd2-85ad1fb00bfc" />
           <pnp:Feature ID="fde5d850-671e-4143-950a-87b473922dc7" />
@@ -1851,7 +2084,6 @@
           <pnp:Feature ID="875d1044-c0cf-4244-8865-d2a0039c2a49" />
           <pnp:Feature ID="14aafd3a-fcb9-4bb7-9ad7-d8e36b663bbd" />
           <pnp:Feature ID="3cb475e7-4e87-45eb-a1f3-db96ad7cf313" />
-          <pnp:Feature ID="744b5fd3-3b09-4da6-9bd1-de18315b045d" />
           <pnp:Feature ID="4bcccd62-dcaf-46dc-a7d4-e38277ef33f4" />
           <pnp:Feature ID="ff77ac56-88d0-4147-b865-e84f5f03fc42" />
           <pnp:Feature ID="73ef14b1-13a9-416b-a9b5-ececa2b0604c" />
@@ -1895,6 +2127,7 @@
           <pnp:Feature ID="87294c72-f260-42f3-a41b-981a2ffce37a" />
           <pnp:Feature ID="ff13819a-a9ac-46fb-8163-9d53357ef98d" />
           <pnp:Feature ID="00bfea71-d1ce-42de-9c63-a44004ce0104" />
+          <pnp:Feature ID="992f7f2f-1a54-4fb1-a29d-aca651e10c40" />
           <pnp:Feature ID="00bfea71-52d4-45b3-b544-b1c71b620109" />
           <pnp:Feature ID="4aec7207-0d02-4f4f-aa07-b370199cd0c7" />
           <pnp:Feature ID="2c63df2b-ceab-42c6-aeff-b3968162d4b1" />
@@ -1912,81 +2145,7 @@
           <pnp:Feature ID="a0e5a010-1329-49d4-9e09-f280cdbed37d" />
         </pnp:WebFeatures>
       </pnp:Features>
-      <pnp:ComposedLook Name="" ColorFile="" FontFile="" BackgroundFile="" Version="0" />
-      <pnp:WebSettings RequestAccessEmail="" NoCrawl="false" WelcomePage="SitePages/Home.aspx" SiteLogo="" AlternateCSS="" MasterPageUrl="{masterpagecatalog}/seattle.master" CustomMasterPageUrl="{masterpagecatalog}/seattle.master" CommentsOnSitePagesDisabled="false" QuickLaunchEnabled="true" MembersCanShare="true" SearchScope="DefaultScope" SearchBoxInNavBar="Inherit" />
-      <pnp:SiteSettings AllowDesigner="true" AllowCreateDeclarativeWorkflow="true" AllowSaveDeclarativeWorkflowAsTemplate="true" AllowSavePublishDeclarativeWorkflow="true" SearchBoxInNavBar="Inherit" SearchCenterUrl="" />
-      <pnp:RegionalSettings AdjustHijriDays="0" AlternateCalendarType="None" CalendarType="Gregorian" Collation="25" FirstDayOfWeek="Sunday" FirstWeekOfYear="0" LocaleId="1033" ShowWeeks="false" Time24="false" TimeZone="4" WorkDayEndHour="5:00PM" WorkDays="62" WorkDayStartHour="8:00AM" />
-      <pnp:SupportedUILanguages>
-        <pnp:SupportedUILanguage LCID="1033" />
-      </pnp:SupportedUILanguages>
-      <pnp:AuditSettings AuditLogTrimmingRetention="90" TrimAuditLog="true" />
-      <pnp:PropertyBagEntries>
-        <pnp:PropertyBagEntry Key="vti_associategroups" Value="9;4;8;7" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="FollowLinkEnabled" Value="TRUE" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_associateownergroup" Value="7" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="enabledhelpcollections" Value="VGSEndUser" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_customuploadpage" Value="/_layouts/15/UploadEx.aspx" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_defaultlanguage" Value="en-us" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="taxonomyhiddenlist" Value="f405b697-7b23-4be2-9a25-dd5b01265bf7" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="sharepointhelpoverride" Value="SPOStandard" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="disabledhelpcollections" Value="WSSEndUser;#WSSCentralAdmin;#FastEndUser;#FastCentralAdmin;#MSSEndUser;#MSSCentralAdmin;#PPSDesignerEndUser;#SQLWSSAddIn" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="contenttypessynctimestampversion" Value="1" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="UseFastCloneFromSiteMaster" Value="FALSE" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_associatevisitorgroup" Value="8" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_sitemasterid" Value="77af68c7-f2b7-4311-a73a-3f4b575f7b02" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_extenderversion" Value="16.0.0.21701" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="contenttypesusagebackfillversion" Value="2" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="metadatatimestamp" Value="437b86fc125845a985ea87a29156ce3c|2015-03-27T08:10:01.077Z" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="__ScriptSafeInternalPages" Value="WopiFrame.aspx;videoembedplayer.aspx;" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_associatemembergroup" Value="9" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_categories" Value="Travel Expense\ Report Business Competition Goals/Objectives Ideas Miscellaneous Waiting VIP In\ Process Planning Schedule" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_createdassociategroups" Value="7;8;9" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="allowslistpolicy" Value="True" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="vti_approvallevels" Value="Approved Rejected Pending\ Review" Overwrite="false" />
-        <pnp:PropertyBagEntry Key="SiteNotebookGuid" Value="47b53eb3-b641-40c7-acc6-fb1061fb9666" Overwrite="false" />
-      </pnp:PropertyBagEntries>
-      <pnp:Security AssociatedOwnerGroup="{groupsitetitle} Owners" AssociatedMemberGroup="{groupsitetitle} Members" AssociatedVisitorGroup="{groupsitetitle} Visitors">
-        <pnp:AdditionalOwners>
-          <pnp:User Name="SHAREPOINT\system" />
-        </pnp:AdditionalOwners>
-        <pnp:Permissions>
-          <pnp:RoleDefinitions>
-            <pnp:RoleDefinition Name="View Only" Description="Can view pages, list items, and documents. Document types with server-side file handlers can be viewed in the browser but not downloaded.">
-              <pnp:Permissions>
-                <pnp:Permission>EmptyMask</pnp:Permission>
-                <pnp:Permission>ViewListItems</pnp:Permission>
-                <pnp:Permission>ViewVersions</pnp:Permission>
-                <pnp:Permission>ViewFormPages</pnp:Permission>
-                <pnp:Permission>Open</pnp:Permission>
-                <pnp:Permission>ViewPages</pnp:Permission>
-                <pnp:Permission>CreateSSCSite</pnp:Permission>
-                <pnp:Permission>BrowseUserInfo</pnp:Permission>
-                <pnp:Permission>UseClientIntegration</pnp:Permission>
-                <pnp:Permission>UseRemoteAPIs</pnp:Permission>
-                <pnp:Permission>CreateAlerts</pnp:Permission>
-              </pnp:Permissions>
-            </pnp:RoleDefinition>
-          </pnp:RoleDefinitions>
-        </pnp:Permissions>
-      </pnp:Security>
-      <pnp:Navigation AddNewPagesToNavigation="true" CreateFriendlyUrlsForNewPages="true">
-        <pnp:GlobalNavigation NavigationType="Structural">
-          <pnp:StructuralNavigation RemoveExistingNodes="false">
-            <pnp:NavigationNode Title="Home" Url="{site}" />
-          </pnp:StructuralNavigation>
-        </pnp:GlobalNavigation>
-        <pnp:CurrentNavigation NavigationType="StructuralLocal">
-          <pnp:StructuralNavigation RemoveExistingNodes="false">
-            <pnp:NavigationNode Title="Home" Url="{site}" />
-            <pnp:NavigationNode Title="Notebook" Url="{site}/_layouts/15/Doc.aspx?sourcedoc=%7B47b53eb3-b641-40c7-acc6-fb1061fb9666%7D&amp;action=editnew" IsExternal="true" />
-            <pnp:NavigationNode Title="News" Url="{site}/_layouts/15/News.aspx" IsExternal="true" />
-            <pnp:NavigationNode Title="Documents" Url="{site}/Shared Documents/Forms/AllItems.aspx" />
-            <pnp:NavigationNode Title="Pages" Url="{site}/SitePages/Forms/ByAuthor.aspx" />
-            <pnp:NavigationNode Title="Site contents" Url="{site}/_layouts/15/viewlsts.aspx" IsExternal="true" />
-          </pnp:StructuralNavigation>
-        </pnp:CurrentNavigation>
-      </pnp:Navigation>
-      <pnp:Header Layout="Standard" ShowSiteTitle="false" ShowSiteNavigation="false" />
+      <pnp:Header Layout="Standard" />
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
 </pnp:Provisioning>

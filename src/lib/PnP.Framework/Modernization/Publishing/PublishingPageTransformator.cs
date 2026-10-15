@@ -40,7 +40,7 @@ namespace PnP.Framework.Modernization.Publishing
 #endif
 
             this.sourceClientContext = sourceClientContext ?? throw new ArgumentException("sourceClientContext must be provided.");
-            this.targetClientContext = targetClientContext ?? throw new ArgumentException("targetClientContext must be provided."); ;
+            this.targetClientContext = targetClientContext ?? throw new ArgumentException("targetClientContext must be provided.");
 
             this.version = GetVersion();
             this.pageTelemetry = new PageTelemetry(version);
@@ -79,7 +79,7 @@ namespace PnP.Framework.Modernization.Publishing
 #endif
 
             this.sourceClientContext = sourceClientContext ?? throw new ArgumentException("sourceClientContext must be provided.");
-            this.targetClientContext = targetClientContext ?? throw new ArgumentException("targetClientContext must be provided."); ;
+            this.targetClientContext = targetClientContext ?? throw new ArgumentException("targetClientContext must be provided.");
 
             this.version = GetVersion();
             this.pageTelemetry = new PageTelemetry(version);
@@ -95,6 +95,51 @@ namespace PnP.Framework.Modernization.Publishing
             {
                 this.publishingPageTransformation = this.pageLayoutManager.MergePageLayoutMappingFiles(this.publishingPageTransformation, customPublishingPageTransformationModel);
             }
+        }
+
+        /// <summary>
+        /// Creates a transformator that writes the modern page into the Web that holds the publishing page.
+        /// </summary>
+        /// <param name="sourceClientContext">Client context of the Web holding the publishing page</param>
+        /// <returns>A transformator configured for in-place transformation</returns>
+        public static PublishingPageTransformator CreateInPlace(ClientContext sourceClientContext)
+        {
+            return new PublishingPageTransformator(sourceClientContext, sourceClientContext);
+        }
+
+        /// <summary>
+        /// Creates a transformator that writes the modern page into the Web that holds the publishing page.
+        /// </summary>
+        /// <param name="sourceClientContext">Client context of the Web holding the publishing page</param>
+        /// <param name="publishingPageTransformationFile">Page layout mapping file</param>
+        /// <returns>A transformator configured for in-place transformation</returns>
+        public static PublishingPageTransformator CreateInPlace(ClientContext sourceClientContext, string publishingPageTransformationFile)
+        {
+            return new PublishingPageTransformator(sourceClientContext, sourceClientContext, publishingPageTransformationFile);
+        }
+
+        /// <summary>
+        /// Creates a transformator that writes the modern page into the Web that holds the publishing page.
+        /// </summary>
+        /// <param name="sourceClientContext">Client context of the Web holding the publishing page</param>
+        /// <param name="pageTransformationFile">Web part mapping file</param>
+        /// <param name="publishingPageTransformationFile">Page layout mapping file</param>
+        /// <returns>A transformator configured for in-place transformation</returns>
+        public static PublishingPageTransformator CreateInPlace(ClientContext sourceClientContext, string pageTransformationFile, string publishingPageTransformationFile)
+        {
+            return new PublishingPageTransformator(sourceClientContext, sourceClientContext, pageTransformationFile, publishingPageTransformationFile);
+        }
+
+        /// <summary>
+        /// Creates a transformator that writes the modern page into the Web that holds the publishing page.
+        /// </summary>
+        /// <param name="sourceClientContext">Client context of the Web holding the publishing page</param>
+        /// <param name="pageTransformationModel">Web part mapping model</param>
+        /// <param name="customPublishingPageTransformationModel">Page layout mapping model</param>
+        /// <returns>A transformator configured for in-place transformation</returns>
+        public static PublishingPageTransformator CreateInPlace(ClientContext sourceClientContext, PageTransformation pageTransformationModel, PublishingPageTransformation customPublishingPageTransformationModel)
+        {
+            return new PublishingPageTransformator(sourceClientContext, sourceClientContext, pageTransformationModel, customPublishingPageTransformationModel);
         }
         #endregion
 
@@ -175,17 +220,35 @@ namespace PnP.Framework.Modernization.Publishing
 
                 PopulateGlobalProperties(sourceClientContext, targetClientContext);
 
-                if (sourceClientContext.Site.Id.Equals(targetClientContext.Site.Id))
+                var sameSiteCollection = sourceClientContext.Site.Id.Equals(targetClientContext.Site.Id);
+                var sourceWebId = sameSiteCollection ? sourceClientContext.Web.EnsureProperty(p => p.Id) : Guid.Empty;
+                var hasWritableSitePages = false;
+
+                if (sameSiteCollection && sourceWebId.Equals(targetClientContext.Web.Id))
                 {
-                    // Oops, seems source and target point to the same site collection...that's a no go for publishing portal page transformation!                
-                    LogError(LogStrings.Error_SameSiteTransferNoAllowedForPublishingPages, LogStrings.Heading_SharePointConnection);
-                    throw new ArgumentNullException(LogStrings.Error_SameSiteTransferNoAllowedForPublishingPages);
+                    hasWritableSitePages = HasWritableSitePagesLibrary(sourceClientContext);
+                }
+
+                var transformationTarget = PublishingPageTransformationValidator.ValidateTarget(
+                    sourceClientContext.Site.Id,
+                    targetClientContext.Site.Id,
+                    sourceWebId,
+                    targetClientContext.Web.Id,
+                    hasWritableSitePages);
+
+                EnsureTransformationTargetAllowed(transformationTarget);
+
+                if (transformationTarget == PublishingPageTransformationTarget.SameWeb)
+                {
+                    // Use the source context for all writes so existing in-place permission, URL and asset semantics apply.
+                    targetClientContext = sourceClientContext;
                 }
 
                 LogInfo($"{targetClientContext.Web.GetUrl()}", LogStrings.Heading_Summary, LogEntrySignificance.TargetSiteUrl);
 
                 // Need to add further validation for target template
-                if (targetClientContext.Web.WebTemplate != "SITEPAGEPUBLISHING" && targetClientContext.Web.WebTemplate != "STS" && 
+                if (transformationTarget == PublishingPageTransformationTarget.CrossSiteCollection &&
+                    targetClientContext.Web.WebTemplate != "SITEPAGEPUBLISHING" && targetClientContext.Web.WebTemplate != "STS" &&
                     targetClientContext.Web.WebTemplate != "GROUP" && targetClientContext.Web.WebTemplate != "BDR" && targetClientContext.Web.WebTemplate != "DEV")
                 {
 
@@ -301,11 +364,16 @@ namespace PnP.Framework.Modernization.Publishing
                     publishingPageTransformationInformation.TargetPageName = $"{publishingPageTransformationInformation.SourcePage[Constants.FileLeafRefField].ToString()}";
                 }
 
+                // Canonicalize the target page name once, before it is used to probe for a collision, to save the
+                // page and to read the saved page back. Saving appends the .aspx extension when it is missing, so a
+                // caller supplied name without the extension would otherwise probe and read back a different file
+                // than the one that is written, and an existing target page could be overwritten unnoticed.
+                publishingPageTransformationInformation.TargetPageName = EnsureAspxExtension(publishingPageTransformationInformation.TargetPageName);
+
                 // Check if page name is free to use
 #if DEBUG && MEASURE
             Start();
 #endif
-                bool pageExists = false;
                 PnPCore.IPage targetPage = null;
                 List pagesLibrary = null;
                 Microsoft.SharePoint.Client.File existingFile = null;
@@ -313,46 +381,17 @@ namespace PnP.Framework.Modernization.Publishing
                 //The determines of the target client context has been specified and use that to generate the target page
                 var context = targetClientContext;
 
-                try
-                {
-                    LogDebug(LogStrings.LoadingExistingPageIfExists, LogStrings.Heading_PageCreation);
+                targetPage = CreateTargetPageAfterCollisionProbe(
+                    transformationTarget,
+                    publishingPageTransformationInformation,
+                    () => Load(sourceClientContext, targetClientContext, publishingPageTransformationInformation, out pagesLibrary),
+                    pageName => context.Web.AddClientSidePage(pageName),
+                    out existingFile);
 
-                    // Just try to load the page in the fastest possible manner, we only want to see if the page exists or not
-                    existingFile = Load(sourceClientContext, targetClientContext, publishingPageTransformationInformation, out pagesLibrary);
-                    pageExists = true;
-                }
-                catch (Exception ex)
-                {
-                    if(ex is ArgumentException)
-                    {
-                        //Non-critical error generated 
-                        LogInfo(LogStrings.CheckPageExistsError, LogStrings.Heading_PageCreation);
-                    }
-                    else
-                    {
-                        //Something else occurred
-                        LogError(LogStrings.CheckPageExistsError, LogStrings.Heading_PageCreation, ex);
-                    }
-                }
-                
 #if DEBUG && MEASURE
             Stop("Load Page");
 #endif
 
-                if (pageExists)
-                {
-                    LogInfo(LogStrings.PageAlreadyExistsInTargetLocation, LogStrings.Heading_PageCreation);
-
-                    if (!publishingPageTransformationInformation.Overwrite)
-                    {
-                        var message = $"{LogStrings.PageNotOverwriteIfExists}  {publishingPageTransformationInformation.TargetPageName}.";
-                        LogError(message, LogStrings.Heading_PageCreation);
-                        throw new ArgumentException(message);
-                    }
-                }
-
-                // Create the client side page
-                targetPage = context.Web.AddClientSidePage($"{publishingPageTransformationInformation.Folder}{publishingPageTransformationInformation.TargetPageName}");
                 LogInfo($"{LogStrings.ModernPageCreated} ", LogStrings.Heading_PageCreation);
                 #endregion
 
@@ -534,10 +573,10 @@ namespace PnP.Framework.Modernization.Publishing
                 Start();
 #endif
                     // Check if we do have item level permissions we want to take over
-                    listItemPermissionsToKeep = GetItemLevelPermissions(true, pagesLibrary, publishingPageTransformationInformation.SourcePage, savedTargetPage.ListItemAllFields);
+                    var usesCrossSitePermissionSemantics = PublishingPageTransformationValidator.UsesCrossSitePermissionSemantics(transformationTarget);
+                    listItemPermissionsToKeep = GetItemLevelPermissions(usesCrossSitePermissionSemantics, pagesLibrary, publishingPageTransformationInformation.SourcePage, savedTargetPage.ListItemAllFields);
 
-                    // When creating the page in another site collection we'll always want to copy item level permissions if specified
-                    ApplyItemLevelPermissions(true, savedTargetPage.ListItemAllFields, listItemPermissionsToKeep);
+                    ApplyItemLevelPermissions(usesCrossSitePermissionSemantics, savedTargetPage.ListItemAllFields, listItemPermissionsToKeep);
 #if DEBUG && MEASURE
                 Stop("Permission handling");
 #endif
@@ -668,6 +707,135 @@ namespace PnP.Framework.Modernization.Publishing
         }
 
         #region Helper methods
+        /// <summary>
+        /// Production seam that keeps the collision probe and the first target-page operation in one fail-closed flow.
+        /// </summary>
+        internal PnPCore.IPage CreateTargetPageAfterCollisionProbe(
+            PublishingPageTransformationTarget transformationTarget,
+            PublishingPageTransformationInformation publishingPageTransformationInformation,
+            Func<Microsoft.SharePoint.Client.File> targetPageProbe,
+            Func<string, PnPCore.IPage> addClientSidePage,
+            out Microsoft.SharePoint.Client.File existingFile)
+        {
+            // Keep the first target operation fail-closed even if a future caller bypasses the earlier routing guard.
+            EnsureTransformationTargetAllowed(transformationTarget);
+
+            var pageExists = false;
+            existingFile = null;
+
+            try
+            {
+                LogDebug(LogStrings.LoadingExistingPageIfExists, LogStrings.Heading_PageCreation);
+
+                // A successful probe means the target name is already occupied, even if the caller does not need the file object.
+                existingFile = targetPageProbe();
+                pageExists = true;
+            }
+            catch (Exception ex)
+            {
+                // Match the "page not found" signal structurally. LogStrings are English-only constants that are
+                // intended to be localized, so matching on the message text would silently break this routing.
+                var targetPageDoesNotExist = ex is PageDoesNotExistInWebException;
+
+                if (targetPageDoesNotExist)
+                {
+                    LogInfo(LogStrings.CheckPageExistsError, LogStrings.Heading_PageCreation);
+                }
+                else if (transformationTarget == PublishingPageTransformationTarget.SameWeb)
+                {
+                    // Stop in-place transformation when the target collision probe is inconclusive.
+                    throw;
+                }
+                else
+                {
+                    // Preserve the existing default cross-site behavior.
+                    LogError(LogStrings.CheckPageExistsError, LogStrings.Heading_PageCreation, ex);
+                }
+            }
+
+            if (pageExists)
+            {
+                LogInfo(LogStrings.PageAlreadyExistsInTargetLocation, LogStrings.Heading_PageCreation);
+
+                if (!PublishingPageTransformationValidator.CanOverwriteTarget(transformationTarget, publishingPageTransformationInformation.Overwrite))
+                {
+                    var message = transformationTarget == PublishingPageTransformationTarget.SameWeb
+                        ? $"{LogStrings.Error_InPlacePublishingPageTargetExists} {publishingPageTransformationInformation.TargetPageName}."
+                        : $"{LogStrings.PageNotOverwriteIfExists}  {publishingPageTransformationInformation.TargetPageName}.";
+                    LogError(message, LogStrings.Heading_PageCreation);
+                    throw new ArgumentException(message);
+                }
+            }
+
+            return addClientSidePage($"{publishingPageTransformationInformation.Folder}{publishingPageTransformationInformation.TargetPageName}");
+        }
+
+        private void EnsureTransformationTargetAllowed(PublishingPageTransformationTarget transformationTarget)
+        {
+            switch (transformationTarget)
+            {
+                case PublishingPageTransformationTarget.SameSiteCollectionDifferentWeb:
+                    LogError(LogStrings.Error_InPlacePublishingPageDifferentWeb, LogStrings.Heading_SharePointConnection);
+                    throw new ArgumentException(LogStrings.Error_InPlacePublishingPageDifferentWeb);
+                case PublishingPageTransformationTarget.SameWebRequiresWritableSitePages:
+                    LogError(LogStrings.Error_InPlacePublishingPageRequiresWritableSitePages, LogStrings.Heading_SharePointConnection);
+                    throw new ArgumentException(LogStrings.Error_InPlacePublishingPageRequiresWritableSitePages);
+            }
+        }
+
+        private bool HasWritableSitePagesLibrary(ClientContext context)
+        {
+            var sitePagesServerRelativeUrl = UrlUtility.Combine(context.Web.ServerRelativeUrl, "SitePages");
+
+            try
+            {
+                var sitePagesLibrary = context.Web.GetList(sitePagesServerRelativeUrl);
+                context.Load(sitePagesLibrary,
+                    p => p.Id,
+                    p => p.BaseTemplate,
+                    p => p.EffectiveBasePermissions);
+                context.ExecuteQueryRetry();
+
+                if (sitePagesLibrary.Id == Guid.Empty)
+                {
+                    LogError($"{LogStrings.Error_InPlacePublishingPageSitePagesNotFound} Path: {sitePagesServerRelativeUrl}.", LogStrings.Heading_SharePointConnection);
+                    return false;
+                }
+
+                if (sitePagesLibrary.BaseTemplate != (int)ListTemplateType.WebPageLibrary)
+                {
+                    LogError($"{LogStrings.Error_InPlacePublishingPageSitePagesInvalidTemplate} Path: {sitePagesServerRelativeUrl}; BaseTemplate: {sitePagesLibrary.BaseTemplate}.", LogStrings.Heading_SharePointConnection);
+                    return false;
+                }
+
+                var canAdd = sitePagesLibrary.EffectiveBasePermissions.Has(PermissionKind.AddListItems);
+                var canEdit = sitePagesLibrary.EffectiveBasePermissions.Has(PermissionKind.EditListItems);
+                if (!canAdd || !canEdit)
+                {
+                    LogError($"{LogStrings.Error_InPlacePublishingPageSitePagesInsufficientPermissions} Path: {sitePagesServerRelativeUrl}; AddListItems: {canAdd}; EditListItems: {canEdit}.", LogStrings.Heading_SharePointConnection);
+                    return false;
+                }
+
+                return true;
+            }
+            catch (ServerUnauthorizedAccessException ex)
+            {
+                LogError($"{LogStrings.Error_InPlacePublishingPageSitePagesProbeUnauthorized} Path: {sitePagesServerRelativeUrl}; {ex.Message}", LogStrings.Heading_SharePointConnection);
+                return false;
+            }
+            catch (ServerException ex) when (string.Equals(ex.ServerErrorTypeName, "System.IO.FileNotFoundException", StringComparison.Ordinal))
+            {
+                LogError($"{LogStrings.Error_InPlacePublishingPageSitePagesNotFound} Path: {sitePagesServerRelativeUrl}; {ex.Message}", LogStrings.Heading_SharePointConnection);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                var message = $"{LogStrings.Error_InPlacePublishingPageSitePagesProbeFailed} Path: {sitePagesServerRelativeUrl}; {ex.Message}";
+                LogError(message, LogStrings.Heading_SharePointConnection);
+                throw new InvalidOperationException(message, ex);
+            }
+        }
+
         private void SetPageTitle(PublishingPageTransformationInformation publishingPageTransformationInformation, PnPCore.IPage targetPage)
         {
             string titleValue = "";
@@ -734,7 +902,7 @@ namespace PnP.Framework.Modernization.Publishing
             if (!file.Exists)
             {
                 LogInfo(LogStrings.TransformPageDoesNotExistInWeb, LogStrings.Heading_Load); //Not an error this is a check
-                throw new ArgumentException($"{publishingPageTransformationInformation.TargetPageName} - {LogStrings.TransformPageDoesNotExistInWeb}");
+                throw new PageDoesNotExistInWebException($"{publishingPageTransformationInformation.TargetPageName} - {LogStrings.TransformPageDoesNotExistInWeb}");
             }
 
             return file;

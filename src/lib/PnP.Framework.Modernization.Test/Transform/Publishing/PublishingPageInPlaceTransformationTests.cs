@@ -327,35 +327,35 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
         {
             // Saving appends .aspx, so an uncanonicalized name would probe and read back a different
             // file than the one written, letting an existing target page be overwritten unnoticed.
-            Assert.AreEqual("existing.aspx", PublishingPageTransformator.EnsureAspxExtension("existing"));
+            Assert.AreEqual("existing.aspx", BasePageTransformator.EnsureAspxExtension("existing"));
         }
 
         [TestMethod]
         public void TargetPageNameKeepsAnExistingExtensionRegardlessOfCasing()
         {
-            Assert.AreEqual("existing.aspx", PublishingPageTransformator.EnsureAspxExtension("existing.aspx"));
-            Assert.AreEqual("existing.ASPX", PublishingPageTransformator.EnsureAspxExtension("existing.ASPX"));
+            Assert.AreEqual("existing.aspx", BasePageTransformator.EnsureAspxExtension("existing.aspx"));
+            Assert.AreEqual("existing.ASPX", BasePageTransformator.EnsureAspxExtension("existing.ASPX"));
         }
 
         [TestMethod]
         public void TargetPageNameCanonicalizationIsIdempotent()
         {
-            var canonicalized = PublishingPageTransformator.EnsureAspxExtension("existing");
+            var canonicalized = BasePageTransformator.EnsureAspxExtension("existing");
 
-            Assert.AreEqual(canonicalized, PublishingPageTransformator.EnsureAspxExtension(canonicalized));
+            Assert.AreEqual(canonicalized, BasePageTransformator.EnsureAspxExtension(canonicalized));
         }
 
         [TestMethod]
         public void TargetPageNameCanonicalizationKeepsEmbeddedDots()
         {
-            Assert.AreEqual("report.v2.aspx", PublishingPageTransformator.EnsureAspxExtension("report.v2"));
+            Assert.AreEqual("report.v2.aspx", BasePageTransformator.EnsureAspxExtension("report.v2"));
         }
 
         [TestMethod]
         public void TargetPageNameCanonicalizationLeavesAnAbsentNameToTheSourcePageDefault()
         {
-            Assert.IsNull(PublishingPageTransformator.EnsureAspxExtension(null));
-            Assert.AreEqual(string.Empty, PublishingPageTransformator.EnsureAspxExtension(string.Empty));
+            Assert.IsNull(BasePageTransformator.EnsureAspxExtension(null));
+            Assert.AreEqual(string.Empty, BasePageTransformator.EnsureAspxExtension(string.Empty));
         }
 
         private static PublishingPageTransformationTarget ValidateSameWeb(

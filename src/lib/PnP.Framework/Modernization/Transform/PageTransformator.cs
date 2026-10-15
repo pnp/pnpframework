@@ -473,6 +473,12 @@ namespace PnP.Framework.Modernization.Transform
 
                 }
 
+                // Canonicalize the target page name once, before it is used to probe for a collision, to save the
+                // page and to read the saved page back. Saving appends the .aspx extension when it is missing, so a
+                // caller supplied name without the extension would otherwise probe and read back a different file
+                // than the one that is written, and an existing target page could be overwritten unnoticed.
+                pageTransformationInformation.TargetPageName = EnsureAspxExtension(pageTransformationInformation.TargetPageName);
+
                 // Check if page name is free to use
 #if DEBUG && MEASURE
             Start();

@@ -1087,6 +1087,26 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         /// <param name="clientContext"></param>
         /// <param name="isTargetContext"></param>
+        /// <summary>
+        /// Appends the .aspx extension to a target page name when it is missing, matching the name the page is
+        /// actually saved under. The comparison is case insensitive, so an existing extension is never duplicated.
+        /// Saving a client side page appends the extension on its own, so the collision probe, the save and the
+        /// readback must all be given the same canonical name or they resolve to different files.
+        /// </summary>
+        /// <param name="targetPageName">Target page name supplied by the caller or derived from the source page</param>
+        /// <returns>The target page name as it will exist in the Site Pages library</returns>
+        internal static string EnsureAspxExtension(string targetPageName)
+        {
+            if (string.IsNullOrEmpty(targetPageName))
+            {
+                return targetPageName;
+            }
+
+            return targetPageName.EndsWith(".aspx", StringComparison.InvariantCultureIgnoreCase)
+                ? targetPageName
+                : $"{targetPageName}.aspx";
+        }
+
         internal void LoadClientObject(ClientContext clientContext, bool isTargetContext)
         {
             if (clientContext != null)

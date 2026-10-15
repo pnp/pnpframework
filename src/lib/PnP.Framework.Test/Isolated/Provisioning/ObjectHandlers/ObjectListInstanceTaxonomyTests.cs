@@ -15,9 +15,11 @@ namespace PnP.Framework.Test.Isolated.Provisioning.ObjectHanlders
     public class ObjectListInstanceTaxonomyTests
     {
         [DataTestMethod]
-        [DataRow("TaxonomyFieldType")]
-        [DataRow("TaxonomyFieldTypeMulti")]
-        public void ExtractFields_ExportsBackingFieldForTaxonomyMaterializedAsField(string fieldType)
+        [DataRow("TaxonomyFieldType", false)]
+        [DataRow("TaxonomyFieldTypeMulti", false)]
+        [DataRow("TaxonomyFieldType", true)]
+        [DataRow("TaxonomyFieldTypeMulti", true)]
+        public void ExtractFields_ExportsBackingFieldForTaxonomyMaterializedAsField(string fieldType, bool includeListReference)
         {
             const string siteUrl = "https://test.sharepoint.com/sites/TestWeb";
             var webId = new Guid("11111111-1111-1111-1111-111111111111");
@@ -25,6 +27,12 @@ namespace PnP.Framework.Test.Isolated.Provisioning.ObjectHanlders
             var fieldId = new Guid("33333333-3333-3333-3333-333333333333");
             var backingFieldId = new Guid("44444444-4444-4444-4444-444444444444");
             var fieldSchema = $"<Field ID='{fieldId:B}' Name='Metadata' DisplayName='Metadata' Type='{fieldType}' />";
+            if (includeListReference)
+            {
+                // Exercise taxonomy tokenization before the cast, as with list-local Image Tags.
+                fieldSchema = $"<Field ID='{fieldId:B}' Name='Metadata' DisplayName='Metadata' Type='{fieldType}' List='{{55555555-5555-5555-5555-555555555555}}'>"
+                    + $"<Customization><ArrayOfProperty><Property><Name>SspId</Name><Value>{webId}</Value></Property></ArrayOfProperty></Customization></Field>";
+            }
             var backingSchema = $"<Field ID='{backingFieldId:B}' Name='Metadata_0' Type='Note' Hidden='TRUE' SourceID='{listId:B}' />";
             var responses = new MockEntryResponseProvider();
             responses.ResponseEntries.Add(new MockResponseEntry
@@ -97,6 +105,10 @@ namespace PnP.Framework.Test.Isolated.Provisioning.ObjectHanlders
                 var taxonomy = XElement.Parse(list.Fields[1].SchemaXml);
                 Assert.AreEqual(fieldId, Guid.Parse(taxonomy.Attribute("ID").Value));
                 Assert.AreEqual(fieldType, taxonomy.Attribute("Type").Value);
+                if (includeListReference)
+                {
+                    Assert.AreEqual("{sitecollectiontermstoreid}", taxonomy.Element("Customization").Element("ArrayOfProperty").Element("Property").Element("Value").Value);
+                }
             }
         }
     }

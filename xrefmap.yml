@@ -29758,6 +29758,37 @@ references:
   isSpec: "True"
   fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.PublishingPageTransformator
   nameWithType: PublishingPageTransformator.PublishingPageTransformator
+- uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext)
+  name: CreateInPlace(ClientContext)
+  href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformator.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformator_CreateInPlace_ClientContext_
+  commentId: M:PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext)
+  fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext)
+  nameWithType: PublishingPageTransformator.CreateInPlace(ClientContext)
+- uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext,PnP.Framework.Modernization.PageTransformation,PnP.Framework.Modernization.Publishing.PublishingPageTransformation)
+  name: CreateInPlace(ClientContext, PageTransformation, PublishingPageTransformation)
+  href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformator.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformator_CreateInPlace_ClientContext_PnP_Framework_Modernization_PageTransformation_PnP_Framework_Modernization_Publishing_PublishingPageTransformation_
+  commentId: M:PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext,PnP.Framework.Modernization.PageTransformation,PnP.Framework.Modernization.Publishing.PublishingPageTransformation)
+  fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext, PnP.Framework.Modernization.PageTransformation, PnP.Framework.Modernization.Publishing.PublishingPageTransformation)
+  nameWithType: PublishingPageTransformator.CreateInPlace(ClientContext, PageTransformation, PublishingPageTransformation)
+- uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext,System.String)
+  name: CreateInPlace(ClientContext, String)
+  href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformator.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformator_CreateInPlace_ClientContext_System_String_
+  commentId: M:PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext,System.String)
+  fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext, System.String)
+  nameWithType: PublishingPageTransformator.CreateInPlace(ClientContext, String)
+- uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext,System.String,System.String)
+  name: CreateInPlace(ClientContext, String, String)
+  href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformator.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformator_CreateInPlace_ClientContext_System_String_System_String_
+  commentId: M:PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext,System.String,System.String)
+  fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace(ClientContext, System.String, System.String)
+  nameWithType: PublishingPageTransformator.CreateInPlace(ClientContext, String, String)
+- uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace*
+  name: CreateInPlace
+  href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformator.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformator_CreateInPlace_
+  commentId: Overload:PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace
+  isSpec: "True"
+  fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.CreateInPlace
+  nameWithType: PublishingPageTransformator.CreateInPlace
 - uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformator.LoadDefaultPageLayoutMappingFile
   name: LoadDefaultPageLayoutMappingFile()
   href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformator.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformator_LoadDefaultPageLayoutMappingFile
@@ -31003,6 +31034,54 @@ references:
   commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Error_HeaderImageAssetTransferFailed
   fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Error_HeaderImageAssetTransferFailed
   nameWithType: LogStrings.Error_HeaderImageAssetTransferFailed
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageDifferentWeb
+  name: Error_InPlacePublishingPageDifferentWeb
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Error_InPlacePublishingPageDifferentWeb
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageDifferentWeb
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageDifferentWeb
+  nameWithType: LogStrings.Error_InPlacePublishingPageDifferentWeb
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageRequiresWritableSitePages
+  name: Error_InPlacePublishingPageRequiresWritableSitePages
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Error_InPlacePublishingPageRequiresWritableSitePages
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageRequiresWritableSitePages
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageRequiresWritableSitePages
+  nameWithType: LogStrings.Error_InPlacePublishingPageRequiresWritableSitePages
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesInsufficientPermissions
+  name: Error_InPlacePublishingPageSitePagesInsufficientPermissions
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Error_InPlacePublishingPageSitePagesInsufficientPermissions
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesInsufficientPermissions
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesInsufficientPermissions
+  nameWithType: LogStrings.Error_InPlacePublishingPageSitePagesInsufficientPermissions
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesInvalidTemplate
+  name: Error_InPlacePublishingPageSitePagesInvalidTemplate
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Error_InPlacePublishingPageSitePagesInvalidTemplate
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesInvalidTemplate
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesInvalidTemplate
+  nameWithType: LogStrings.Error_InPlacePublishingPageSitePagesInvalidTemplate
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesNotFound
+  name: Error_InPlacePublishingPageSitePagesNotFound
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Error_InPlacePublishingPageSitePagesNotFound
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesNotFound
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesNotFound
+  nameWithType: LogStrings.Error_InPlacePublishingPageSitePagesNotFound
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesProbeFailed
+  name: Error_InPlacePublishingPageSitePagesProbeFailed
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Error_InPlacePublishingPageSitePagesProbeFailed
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesProbeFailed
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesProbeFailed
+  nameWithType: LogStrings.Error_InPlacePublishingPageSitePagesProbeFailed
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesProbeUnauthorized
+  name: Error_InPlacePublishingPageSitePagesProbeUnauthorized
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Error_InPlacePublishingPageSitePagesProbeUnauthorized
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesProbeUnauthorized
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageSitePagesProbeUnauthorized
+  nameWithType: LogStrings.Error_InPlacePublishingPageSitePagesProbeUnauthorized
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageTargetExists
+  name: Error_InPlacePublishingPageTargetExists
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Error_InPlacePublishingPageTargetExists
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageTargetExists
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Error_InPlacePublishingPageTargetExists
+  nameWithType: LogStrings.Error_InPlacePublishingPageTargetExists
 - uid: PnP.Framework.Modernization.Telemetry.LogStrings.Error_LoadContentFromFile
   name: Error_LoadContentFromFile
   href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Error_LoadContentFromFile
@@ -35285,6 +35364,31 @@ references:
   isSpec: "True"
   fullName: PnP.Framework.Modernization.Transform.ModernizationCenterInformation.ModernizationCenterUri
   nameWithType: ModernizationCenterInformation.ModernizationCenterUri
+- uid: PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException
+  name: PageDoesNotExistInWebException
+  href: api/PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.html
+  commentId: T:PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException
+  fullName: PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException
+  nameWithType: PageDoesNotExistInWebException
+- uid: PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.#ctor(System.String)
+  name: PageDoesNotExistInWebException(String)
+  href: api/PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.html#PnP_Framework_Modernization_Transform_PageDoesNotExistInWebException__ctor_System_String_
+  commentId: M:PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.#ctor(System.String)
+  fullName: PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.PageDoesNotExistInWebException(System.String)
+  nameWithType: PageDoesNotExistInWebException.PageDoesNotExistInWebException(String)
+- uid: PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.#ctor(System.String,Exception)
+  name: PageDoesNotExistInWebException(String, Exception)
+  href: api/PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.html#PnP_Framework_Modernization_Transform_PageDoesNotExistInWebException__ctor_System_String_Exception_
+  commentId: M:PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.#ctor(System.String,Exception)
+  fullName: PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.PageDoesNotExistInWebException(System.String, Exception)
+  nameWithType: PageDoesNotExistInWebException.PageDoesNotExistInWebException(String, Exception)
+- uid: PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.#ctor*
+  name: PageDoesNotExistInWebException
+  href: api/PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.html#PnP_Framework_Modernization_Transform_PageDoesNotExistInWebException__ctor_
+  commentId: Overload:PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.#ctor
+  isSpec: "True"
+  fullName: PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.PageDoesNotExistInWebException
+  nameWithType: PageDoesNotExistInWebException.PageDoesNotExistInWebException
 - uid: PnP.Framework.Modernization.Transform.PageTransformationInformation
   name: PageTransformationInformation
   href: api/PnP.Framework.Modernization.Transform.PageTransformationInformation.html

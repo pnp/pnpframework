@@ -2466,7 +2466,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Functions.BuiltIn.html",
-          "hash": "pKh9r7i+ANNr3glV2cXDNLQdKamtu3M6ldxQHUqbjUk="
+          "hash": "C1nhirEbZVUj8A6u+YwZNFz33nGWt8hb2IaYx+5Zo4Q="
         }
       },
       "is_incremental": false,
@@ -3126,7 +3126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Publishing.PublishingPageTransformator.html",
-          "hash": "H932E24A3YyyXPp7UtMFadIfwpSWTGZWq4chRtb3lDw="
+          "hash": "tOqCyT0eVCjRP1KOU/dbeOl+RXAKjTMhxUwl0qZxAok="
         }
       },
       "is_incremental": false,
@@ -3294,7 +3294,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Telemetry.LogStrings.html",
-          "hash": "SqA/ZkUeMAxsAixsCDE0YKXDFiJZhbPDEI2idObSaf0="
+          "hash": "Og8D92RUfn2nlla0qfFHPEly7UYTndJ9BUDvUOx2feM="
         }
       },
       "is_incremental": false,
@@ -3782,6 +3782,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PnP.Framework.Modernization.Transform.PageDoesNotExistInWebException.html",
+          "hash": "2hoMp0gHUSpfYKGqVLxDikHTe/I0uSxn5O1Pdac5uOw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/PnP.Framework.Modernization.Transform.PageTransformationInformation.yml",
       "output": {
         ".html": {
@@ -3798,7 +3810,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Transform.PageTransformator.html",
-          "hash": "zo3dLE+c9zWD4+lJGCCbUyGXqRi2ph7Ft7l4iu3dn38="
+          "hash": "Y06sNv53t06TGZyLR9lBZ4fHgqfybLWEUxToa2WBQGw="
         }
       },
       "is_incremental": false,
@@ -4122,7 +4134,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Transform.html",
-          "hash": "h6amIH6mmxKeH2pCaql8poIVnuyUs7zV+jeRLhIxDaE="
+          "hash": "0kamOoHP/W5MxUKrO428RKXNxl09MowZMvaeVQc55WM="
         }
       },
       "is_incremental": false,
@@ -22830,7 +22842,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "O1O3LT6IPK1/z759enpek6tO3vQGOtnHQ1gEMSrLTbw="
+          "hash": "Y2XHYPEkBvnpFFTmu2wPVxThJgpr2jDezMPCT47XpJ8="
         }
       },
       "is_incremental": false,
@@ -23139,7 +23151,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 1899,
+          "total_file_count": 1900,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

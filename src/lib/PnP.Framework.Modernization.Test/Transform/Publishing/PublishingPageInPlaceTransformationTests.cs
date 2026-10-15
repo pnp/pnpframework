@@ -22,11 +22,11 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
         public TestContext TestContext { get; set; }
 
         [TestMethod]
-        public void ModelConstructorWithoutTargetUsesSourceContext()
+        public void ModelCreateInPlaceUsesSourceContextAsTarget()
         {
             using (var sourceContext = CreateContext("https://contoso.sharepoint.com/sites/enterprise-wiki"))
             {
-                var transformator = CreateTransformator(sourceContext, null);
+                var transformator = PublishingPageTransformator.CreateInPlace(sourceContext, new PageTransformation(), null);
 
                 Assert.AreSame(sourceContext, transformator.sourceClientContext);
                 Assert.AreSame(sourceContext, transformator.targetClientContext);
@@ -34,7 +34,7 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
         }
 
         [TestMethod]
-        public void FileMappingConstructorWithoutTargetUsesSourceContext()
+        public void FileMappingCreateInPlaceUsesSourceContextAsTarget()
         {
             Directory.CreateDirectory(TestContext.TestResultsDirectory);
             var mappingPath = Path.Combine(TestContext.TestResultsDirectory, $"webpartmapping-{Guid.NewGuid():N}.xml");
@@ -44,10 +44,40 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
             {
                 using (var sourceContext = CreateContext("https://contoso.sharepoint.com/sites/enterprise-wiki"))
                 {
-                    var transformator = new PublishingPageTransformator(sourceContext, null, mappingPath, null);
+                    var transformator = PublishingPageTransformator.CreateInPlace(sourceContext, mappingPath, null);
 
                     Assert.AreSame(sourceContext, transformator.sourceClientContext);
                     Assert.AreSame(sourceContext, transformator.targetClientContext);
+                }
+            }
+            finally
+            {
+                System.IO.File.Delete(mappingPath);
+            }
+        }
+
+        [TestMethod]
+        public void ModelConstructorStillRejectsANullTargetContext()
+        {
+            using (var sourceContext = CreateContext("https://contoso.sharepoint.com/sites/enterprise-wiki"))
+            {
+                Assert.ThrowsException<ArgumentException>(() => CreateTransformator(sourceContext, null));
+            }
+        }
+
+        [TestMethod]
+        public void FileMappingConstructorStillRejectsANullTargetContext()
+        {
+            Directory.CreateDirectory(TestContext.TestResultsDirectory);
+            var mappingPath = Path.Combine(TestContext.TestResultsDirectory, $"webpartmapping-{Guid.NewGuid():N}.xml");
+            System.IO.File.WriteAllText(mappingPath, BasePageTransformator.LoadDefaultWebPartMappingFile());
+
+            try
+            {
+                using (var sourceContext = CreateContext("https://contoso.sharepoint.com/sites/enterprise-wiki"))
+                {
+                    Assert.ThrowsException<ArgumentException>(
+                        () => new PublishingPageTransformator(sourceContext, null, mappingPath, null));
                 }
             }
             finally
@@ -278,7 +308,7 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
                 transformator.CreateTargetPageAfterCollisionProbe(
                     PublishingPageTransformationTarget.SameWeb,
                     information,
-                    () => throw new ArgumentException($"{information.TargetPageName} - {LogStrings.TransformPageDoesNotExistInWeb}"),
+                    () => throw new PageDoesNotExistInWebException($"{information.TargetPageName} - {LogStrings.TransformPageDoesNotExistInWeb}"),
                     pageName =>
                     {
                         addCalls++;

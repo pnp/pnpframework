@@ -1278,7 +1278,7 @@ namespace PnP.Framework.Modernization.Transform
             if (!file.Exists)
             {
                 LogInfo(LogStrings.TransformPageDoesNotExistInWeb, LogStrings.Heading_Load);
-                throw new ArgumentException($"{pageTransformationInformation.TargetPageName} - {LogStrings.TransformPageDoesNotExistInWeb}");
+                throw new PageDoesNotExistInWebException($"{pageTransformationInformation.TargetPageName} - {LogStrings.TransformPageDoesNotExistInWeb}");
             }
 
             return file;

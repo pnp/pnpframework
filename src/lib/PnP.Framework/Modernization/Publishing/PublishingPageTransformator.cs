@@ -40,7 +40,7 @@ namespace PnP.Framework.Modernization.Publishing
 #endif
 
             this.sourceClientContext = sourceClientContext ?? throw new ArgumentException("sourceClientContext must be provided.");
-            this.targetClientContext = targetClientContext ?? this.sourceClientContext;
+            this.targetClientContext = targetClientContext ?? throw new ArgumentException("targetClientContext must be provided.");
 
             this.version = GetVersion();
             this.pageTelemetry = new PageTelemetry(version);
@@ -79,7 +79,7 @@ namespace PnP.Framework.Modernization.Publishing
 #endif
 
             this.sourceClientContext = sourceClientContext ?? throw new ArgumentException("sourceClientContext must be provided.");
-            this.targetClientContext = targetClientContext ?? this.sourceClientContext;
+            this.targetClientContext = targetClientContext ?? throw new ArgumentException("targetClientContext must be provided.");
 
             this.version = GetVersion();
             this.pageTelemetry = new PageTelemetry(version);
@@ -95,6 +95,51 @@ namespace PnP.Framework.Modernization.Publishing
             {
                 this.publishingPageTransformation = this.pageLayoutManager.MergePageLayoutMappingFiles(this.publishingPageTransformation, customPublishingPageTransformationModel);
             }
+        }
+
+        /// <summary>
+        /// Creates a transformator that writes the modern page into the Web that holds the publishing page.
+        /// </summary>
+        /// <param name="sourceClientContext">Client context of the Web holding the publishing page</param>
+        /// <returns>A transformator configured for in-place transformation</returns>
+        public static PublishingPageTransformator CreateInPlace(ClientContext sourceClientContext)
+        {
+            return new PublishingPageTransformator(sourceClientContext, sourceClientContext);
+        }
+
+        /// <summary>
+        /// Creates a transformator that writes the modern page into the Web that holds the publishing page.
+        /// </summary>
+        /// <param name="sourceClientContext">Client context of the Web holding the publishing page</param>
+        /// <param name="publishingPageTransformationFile">Page layout mapping file</param>
+        /// <returns>A transformator configured for in-place transformation</returns>
+        public static PublishingPageTransformator CreateInPlace(ClientContext sourceClientContext, string publishingPageTransformationFile)
+        {
+            return new PublishingPageTransformator(sourceClientContext, sourceClientContext, publishingPageTransformationFile);
+        }
+
+        /// <summary>
+        /// Creates a transformator that writes the modern page into the Web that holds the publishing page.
+        /// </summary>
+        /// <param name="sourceClientContext">Client context of the Web holding the publishing page</param>
+        /// <param name="pageTransformationFile">Web part mapping file</param>
+        /// <param name="publishingPageTransformationFile">Page layout mapping file</param>
+        /// <returns>A transformator configured for in-place transformation</returns>
+        public static PublishingPageTransformator CreateInPlace(ClientContext sourceClientContext, string pageTransformationFile, string publishingPageTransformationFile)
+        {
+            return new PublishingPageTransformator(sourceClientContext, sourceClientContext, pageTransformationFile, publishingPageTransformationFile);
+        }
+
+        /// <summary>
+        /// Creates a transformator that writes the modern page into the Web that holds the publishing page.
+        /// </summary>
+        /// <param name="sourceClientContext">Client context of the Web holding the publishing page</param>
+        /// <param name="pageTransformationModel">Web part mapping model</param>
+        /// <param name="customPublishingPageTransformationModel">Page layout mapping model</param>
+        /// <returns>A transformator configured for in-place transformation</returns>
+        public static PublishingPageTransformator CreateInPlace(ClientContext sourceClientContext, PageTransformation pageTransformationModel, PublishingPageTransformation customPublishingPageTransformationModel)
+        {
+            return new PublishingPageTransformator(sourceClientContext, sourceClientContext, pageTransformationModel, customPublishingPageTransformationModel);
         }
         #endregion
 
@@ -682,8 +727,9 @@ namespace PnP.Framework.Modernization.Publishing
             }
             catch (Exception ex)
             {
-                var targetPageDoesNotExist = ex is ArgumentException &&
-                    ex.Message.EndsWith(LogStrings.TransformPageDoesNotExistInWeb, StringComparison.InvariantCulture);
+                // Match the "page not found" signal structurally. LogStrings are English-only constants that are
+                // intended to be localized, so matching on the message text would silently break this routing.
+                var targetPageDoesNotExist = ex is PageDoesNotExistInWebException;
 
                 if (targetPageDoesNotExist)
                 {
@@ -850,7 +896,7 @@ namespace PnP.Framework.Modernization.Publishing
             if (!file.Exists)
             {
                 LogInfo(LogStrings.TransformPageDoesNotExistInWeb, LogStrings.Heading_Load); //Not an error this is a check
-                throw new ArgumentException($"{publishingPageTransformationInformation.TargetPageName} - {LogStrings.TransformPageDoesNotExistInWeb}");
+                throw new PageDoesNotExistInWebException($"{publishingPageTransformationInformation.TargetPageName} - {LogStrings.TransformPageDoesNotExistInWeb}");
             }
 
             return file;

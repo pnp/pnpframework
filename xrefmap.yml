@@ -32078,6 +32078,12 @@ references:
   commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Warning_ContextValidationFailWithKeepPermissionsEnabled
   fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_ContextValidationFailWithKeepPermissionsEnabled
   nameWithType: LogStrings.Warning_ContextValidationFailWithKeepPermissionsEnabled
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_DocumentEmbedLookupFileNotFound
+  name: Warning_DocumentEmbedLookupFileNotFound
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Warning_DocumentEmbedLookupFileNotFound
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Warning_DocumentEmbedLookupFileNotFound
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_DocumentEmbedLookupFileNotFound
+  nameWithType: LogStrings.Warning_DocumentEmbedLookupFileNotFound
 - uid: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_FieldNotFoundInSourcePage
   name: Warning_FieldNotFoundInSourcePage
   href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Warning_FieldNotFoundInSourcePage

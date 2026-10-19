@@ -845,23 +845,26 @@ namespace PnP.Framework.Modernization.Functions
         #endregion
 
         #region DocumentEmbed functions
-        [FunctionDocumentation(Description = "Does lookup a file based on the given server relative path and return needed properties of the file. Returns null if file was not found.",
+        [FunctionDocumentation(Description = "Looks up file properties by server relative path. Returns empty metadata when the path is empty or the file cannot be found, allowing mappings to retain the document URL. A missing file is logged as a warning; the document itself is not recovered.",
                                Example = "DocumentEmbedLookup({ServerRelativeFileName})")]
         [InputDocumentation(Name = "{ServerRelativeFileName}", Description = "Server relative file name")]
+        [OutputDocumentation(Name = "{DocumentWeb}", Description = "Server relative URL of the web holding the file")]
         [OutputDocumentation(Name = "{DocumentListId}", Description = "Id of the list holding the file")]
         [OutputDocumentation(Name = "{DocumentUniqueId}", Description = "UniqueId of the file")]
         [OutputDocumentation(Name = "{DocumentAuthor}", Description = "User principal name of the document author")]
         [OutputDocumentation(Name = "{DocumentAuthorName}", Description = "Name of the file author")]
         public Dictionary<string, string> DocumentEmbedLookup(string serverRelativeUrl)
         {
-            Dictionary<string, string> results = new Dictionary<string, string>();
+            Dictionary<string, string> results = new Dictionary<string, string>
+            {
+                ["DocumentWeb"] = "",
+                ["DocumentListId"] = "",
+                ["DocumentUniqueId"] = "",
+                ["DocumentAuthor"] = "",
+                ["DocumentAuthorName"] = ""
+            };
             if (string.IsNullOrEmpty(serverRelativeUrl))
             {
-                results.Add("DocumentWeb", "");
-                results.Add("DocumentListId", "");
-                results.Add("DocumentUniqueId", "");
-                results.Add("DocumentAuthor", "");
-                results.Add("DocumentAuthorName", "");
                 return results;
             }
 
@@ -882,15 +885,15 @@ namespace PnP.Framework.Modernization.Functions
 
                     contextToUse = this.clientContext.Clone(webUrlResult.Value);
                 }
+                catch (ServerException ex) when (ex.ServerErrorTypeName == "System.IO.FileNotFoundException")
+                {
+                    LogWarning(string.Format(LogStrings.Warning_DocumentEmbedLookupFileNotFound, serverRelativeUrl, this.clientContext.Url), LogStrings.Heading_BuiltInFunctions);
+                    return results;
+                }
                 catch (Exception ex)
                 {
-                    LogError(LogStrings.Error_DocumentEmbedLookup, LogStrings.Heading_BuiltInFunctions, ex);
+                    LogError($"{LogStrings.Error_DocumentEmbedLookup}: {serverRelativeUrl}", LogStrings.Heading_BuiltInFunctions, ex);
 
-                    results.Add("DocumentWeb", "");
-                    results.Add("DocumentListId", "");
-                    results.Add("DocumentUniqueId", "");
-                    results.Add("DocumentAuthor", "");
-                    results.Add("DocumentAuthorName", "");
                     return results;
                 }
             }
@@ -904,11 +907,11 @@ namespace PnP.Framework.Modernization.Functions
 
                 string[] authorParts = document.Author.LoginName.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
 
-                results.Add("DocumentWeb", contextToUse.Web.ServerRelativeUrl);
-                results.Add("DocumentListId", document.ListId.ToString());
-                results.Add("DocumentUniqueId", document.UniqueId.ToString());
-                results.Add("DocumentAuthor", authorParts.Length == 3 ? authorParts[2] : "");
-                results.Add("DocumentAuthorName", document.Author.Title);
+                results["DocumentWeb"] = contextToUse.Web.ServerRelativeUrl;
+                results["DocumentListId"] = document.ListId.ToString();
+                results["DocumentUniqueId"] = document.UniqueId.ToString();
+                results["DocumentAuthor"] = authorParts.Length == 3 ? authorParts[2] : "";
+                results["DocumentAuthorName"] = document.Author.Title;
 
                 return results;
             }
@@ -916,13 +919,12 @@ namespace PnP.Framework.Modernization.Functions
             {
                 if (ex.ServerErrorTypeName == "System.IO.FileNotFoundException")
                 {
-                    // provided file is not retrievable...we're eating the exception this file not be used in the target web part
-                    LogError(LogStrings.Error_DocumentEmbedLookupFileNotRetrievable, LogStrings.Heading_BuiltInFunctions, ex);
-                    return null;
+                    LogWarning(string.Format(LogStrings.Warning_DocumentEmbedLookupFileNotFound, serverRelativeUrl, contextToUse.Url), LogStrings.Heading_BuiltInFunctions);
+                    return results;
                 }
                 else
                 {
-                    LogError(LogStrings.Error_DocumentEmbedLookup, LogStrings.Heading_BuiltInFunctions, ex);
+                    LogError($"{LogStrings.Error_DocumentEmbedLookup}: {serverRelativeUrl}", LogStrings.Heading_BuiltInFunctions, ex);
                     throw;
                 }
             }

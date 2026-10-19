@@ -281,6 +281,7 @@
         public const string Error_ReturnCrossSiteRelativePath = "An error occurred in ReturnCrossSiteRelativePath function";
         public const string Error_DocumentEmbedLookup = "An error occurred in DocumentEmbedLookup function";
         public const string Error_DocumentEmbedLookupFileNotRetrievable = "An error occurred in DocumentEmbedLookup function - file not retrievable";
+        public const string Warning_DocumentEmbedLookupFileNotFound = "DocumentEmbedLookup received File Not Found for '{0}' (context: '{1}'). Retaining the document reference with empty metadata so page transformation can continue. Verify the URL, document existence, and the migration identity's access; this response does not establish why the file is unavailable.";
         public const string Error_LoadContentFromFile = "An error occurred in LoadContentFromFile function";
 
         public const string Error_LoadContentFromFileContentLink = "An error occurred in getting the referenced file in content link";

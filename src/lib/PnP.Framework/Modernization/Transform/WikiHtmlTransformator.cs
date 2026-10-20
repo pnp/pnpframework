@@ -52,21 +52,20 @@ namespace PnP.Framework.Modernization.Transform
         #endregion
 
         /// <summary>
-        /// Replaces embedded images and iframes with respective "fake" image and video web parts. Depending on the 
-        /// image/iframe position in the html the wiki text is broken up in multiple wiki text parts intermixed 
-        /// with image and/or video parts. Later on these web parts will be transformed to client side web parts
+        /// Replaces embedded iframes with "fake" video web parts, splitting text where possible.
+        /// Images remain in the text for conversion to CK5 inline images when the text control is created.
         /// </summary>
         /// <param name="wikiPageWebParts">List of web parts on the page</param>
-        /// <param name="handleWikiImagesAndVideos">If true images and videos embedded in wiki text will be transformed to actual image/video web parts,
-        /// else they'll get a placeholder and will be added as separate web parts at the end of the page</param>
-        /// <param name="addTableListImageAsImageWebPart">When an image lives inside a table (or list) then also add it as a separate image web part</param>
+        /// <param name="handleWikiImagesAndVideos">If true embedded iframes split text into text/video parts;
+        /// otherwise video web parts are added at the end of the page. Images are always kept inline.</param>
+        /// <param name="addTableListImageAsImageWebPart">Retained for compatibility; images are always kept inline.</param>
         /// <returns>Updated list of web parts</returns>
         public List<WebPartEntity> TransformPlusSplit(List<WebPartEntity> wikiPageWebParts, bool handleWikiImagesAndVideos, bool addTableListImageAsImageWebPart)
         {
             List<WebPartEntity> updatedWebParts = new List<WebPartEntity>(wikiPageWebParts.Count + 10);
             List<WebPartEntity> replacedWebParts = new List<WebPartEntity>(10);
 
-            // Counters used for breaking up wiki text and placing images in between the broken wiki text fragments
+            // Counters used for placing videos between wiki text fragments
             int lastRow = 1;
             int lastColum = 1;
             int extraWebPartCounter = 1;
@@ -77,7 +76,7 @@ namespace PnP.Framework.Modernization.Transform
                 wp.Order = wp.Order * 1000;
             }
 
-            // Counters used for placing web parts at the end of the page (e.g. image was defined inside a table)
+            // Counters used for placing videos at the end of the page
             int lastRow2 = 1;
             int lastColum2 = 1;
             int extraWebPartCounter2 = 1;
@@ -136,15 +135,13 @@ namespace PnP.Framework.Modernization.Transform
                     // Parse the html
                     using (var document = this.parser.ParseDocument(htmlToParse))
                     {
-                        // Check if this text requires special handling due to embedded images or iframes...
-                        var images = document.QuerySelectorAll("img");
+                        // Only iframes require separate web parts; images stay in their original text.
                         var iframes = document.QuerySelectorAll("iframe");
-                        var elementsToHandle = images.Union(iframes);
 
                         // No special handling needed, so skip this wiki text part
-                        if (!elementsToHandle.Any())
+                        if (!iframes.Any())
                         {
-                            if (wp.Type == WebParts.ContentEditor)
+                            if (wp.Type.GetTypeShort() == WebParts.ContentEditor.GetTypeShort())
                             {
                                 // Since we've already read (and possible extended) the content let's 'rewrite' the web part properties
                                 if (wp.Properties.ContainsKey("ContentLink"))
@@ -166,122 +163,19 @@ namespace PnP.Framework.Modernization.Transform
                             continue;
                         }
 
-                        // Right, we've found a wiki text part with images or iframes...
+                        // This text part contains iframes.
                         lastRow = wp.Row;
                         lastColum = wp.Column;
                         extraWebPartCounter = wp.Order;
 
                         // Iterate over each each element, need to check each element to ensure we create the 
                         // replacement web parts in the right order
-                        foreach (var element in document.All)
+                        foreach (var element in iframes)
                         {
                             Dictionary<string, string> props = new Dictionary<string, string>();
 
-                            // Img elements might require splitting of wiki text
-                            if (element is IHtmlImageElement)
-                            {
-                                bool split = true;
-                                bool inUnSplitableElement = InUnSplitableElement(element);
-
-                                // Only split if the image was not living in a table or list
-                                if (handleWikiImagesAndVideos && !inUnSplitableElement)
-                                {
-                                    // Get the current html tree from this element up and add as text part
-                                    props.Add("Title", "Wiki text");
-                                    props.Add("Text", $"SplitPart{splitCounter}");
-                                    splitCounter++;
-
-                                    replacedWebParts.Add(new WebPartEntity()
-                                    {
-                                        Type = WebParts.WikiText,
-                                        Title = "Wiki text",
-                                        Row = lastRow,
-                                        Column = lastColum,
-                                        Order = extraWebPartCounter,
-                                        Properties = props
-                                    });
-                                    extraWebPartCounter++;
-                                }
-                                else
-                                {
-                                    split = false;
-                                }
-
-                                // Check if this image tag is wrapped inside an Anchor
-                                string anchorTag = null;
-                                string captionHtml = "";
-                                if (element.ParentElement != null && element.ParentElement.TagName.Equals("A", StringComparison.InvariantCultureIgnoreCase))
-                                {
-                                    if (element.ParentElement.HasAttribute("href"))
-                                    {
-                                        anchorTag = element.ParentElement.GetAttribute("href");
-                                    }
-
-                                    if (!string.IsNullOrEmpty(element.ParentElement.TextContent))
-                                    {
-                                        captionHtml = element.ParentElement.TextContent;
-                                    }
-                                }
-
-                                // Fill properties of the image web part
-                                props = new Dictionary<string, string>();
-                                if ((element as IHtmlImageElement).Source != null)
-                                {
-                                    props.Add("Title", "Image in wiki text");
-                                    props.Add("Description", "");
-                                    props.Add("ImageUrl", (element as IHtmlImageElement).Source.Replace("about://", ""));
-                                    props.Add("Width", (element as IHtmlImageElement).DisplayWidth.ToString());
-                                    props.Add("Height", (element as IHtmlImageElement).DisplayHeight.ToString());
-                                    props.Add("Anchor", anchorTag ?? "");
-                                    props.Add("Caption", captionHtml ?? "");
-                                }
-
-                                var alt = (element as IElement).Attributes.Where(p => p.Name.Equals("alt", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-                                if (alt != null)
-                                {
-                                    props.Add("AlternativeText", alt.Value.CleanForJSON());
-                                }
-
-                                if (!inUnSplitableElement || addTableListImageAsImageWebPart)
-                                {
-                                    // Add image part
-                                    replacedWebParts.Add(new WebPartEntity()
-                                    {
-                                        Type = WebParts.WikiImage,
-                                        Title = "Image in wiki text",
-                                        Row = split ? lastRow : lastRow2,
-                                        Column = split ? lastColum : lastColum2,
-                                        Order = split ? extraWebPartCounter : extraWebPartCounter2,
-                                        Properties = props
-                                    });
-                                }
-
-                                if (split)
-                                {
-                                    // replace img or img nested in A with "splitter"
-                                    var splitter = document.CreateElement("span");
-                                    splitter.ClassName = "split";
-
-                                    if (element.ParentElement != null)
-                                    {
-                                        if (element.ParentElement.TagName.Equals("A", StringComparison.InvariantCultureIgnoreCase))
-                                        {
-                                            element.ParentElement.ParentElement.ReplaceChild(splitter, element.ParentElement);
-                                        }
-                                        else
-                                        {
-                                            element.ParentElement.ReplaceChild(splitter, element);
-                                        }
-                                    }
-                                    extraWebPartCounter++;
-                                }
-                                else
-                                {
-                                    extraWebPartCounter2++;
-                                }
-                            }
                             // IFrame elements might require splitting of wiki text
-                            else if (element is IHtmlInlineFrameElement)
+                            if (element is IHtmlInlineFrameElement)
                             {
                                 bool split = true;
                                 bool inUnSplitableElement = InUnSplitableElement(element);

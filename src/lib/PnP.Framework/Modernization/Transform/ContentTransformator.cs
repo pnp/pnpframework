@@ -27,6 +27,7 @@ namespace PnP.Framework.Modernization.Transform
         private Dictionary<string, string> globalTokens;
         private bool isCrossSiteTransfer;
         private BaseTransformationInformation transformationInformation;
+        private BuiltIn inlineImageFunctions;
 
         class CombinedMapping
         {
@@ -278,6 +279,12 @@ namespace PnP.Framework.Modernization.Transform
 
                         var text = page.NewTextPart();
                         text.Text = TokenParser.ReplaceTokens(map.ClientSideText.Text, webPart);
+                        if (!string.IsNullOrEmpty(text.Text) && text.Text.IndexOf("<img", StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            inlineImageFunctions ??= new BuiltIn(transformationInformation, targetClientContext,
+                                sourceClientContext, page, RegisteredLogObservers);
+                            text.Text = inlineImageFunctions.TransformInlineImages(text.Text);
+                        }
 
                         page.AddControl(text, page.Sections[webPart.Row - 1].Columns[webPart.Column - 1], order);
                         LogInfo(LogStrings.AddedClientSideTextWebPart, LogStrings.Heading_AddingWebPartsToPage);

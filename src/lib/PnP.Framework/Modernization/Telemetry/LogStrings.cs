@@ -161,7 +161,7 @@
         public const string TransformSourcePageIsPublishingPage = "Recognized source page as a Publishing Page";
         public const string TransformSourcePageIsDelvePage = "Recognized source page as a Delve Blog Page";
         public const string TransformSourcePageAnalysing = "Analyzing web parts and page layouts";
-        public const string WikiTextContainsImagesVideosReferences = "Splitting images and videos from wiki text - as modern text web part does not support embedded images and videos";
+        public const string WikiTextContainsImagesVideosReferences = "Keeping images inline in rich text and handling embedded iframes as separate video web parts";
         public const string TransformSourcePageIsWebPartPage = "Recognized source page as a Web Part Page.";
         public const string TransformPageModernTitle = "Setting the modern page title:";
         public const string TransformPageTitleOverride = "Using specified page title override";

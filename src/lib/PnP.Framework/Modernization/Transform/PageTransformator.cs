@@ -629,7 +629,7 @@ namespace PnP.Framework.Modernization.Transform
 
                         pageData = new WikiPage(pageTransformationInformation.SourcePage, pageTransformation, base.RegisteredLogObservers).Analyze();
 
-                        // Wiki pages can contain embedded images and videos, which is not supported by the target RTE...split wiki text blocks so the transformator can handle the images and videos as separate web parts
+                        // Images stay inline; embedded iframes are handled as separate video web parts.
                         LogInfo(LogStrings.WikiTextContainsImagesVideosReferences, LogStrings.Heading_ArticlePageHandling);
                     }
                     else if (IsBlogPage(pageType))

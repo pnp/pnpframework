@@ -14,6 +14,33 @@ Pnp Framework includes a range of capabilities that simplify development for Mic
 - Helper classes and extension methods to make it easier to perform standard operations
 - Incorporates the PnP Core SDK
 
+## Images in modernized rich text
+
+Page modernization converts images in classic wiki content, publishing rich-text fields,
+and non-script Content Editor Web Part (CEWP) HTML to native CK5 inline images.
+CEWP HTML can be embedded or loaded from a supported content link. Images remain
+in their text control, including in table cells, lists, and hyperlinks; modernization
+does not split text controls around images or append duplicate Image web parts.
+Local HTML containers may be normalized to accommodate CK5 image markup.
+
+Existing cross-site asset transfer is retained. Supported image dimensions, alternative
+text, and link destinations are carried over. Pixel-sized images do not inherit the
+SDK's default full-width percentage; explicit percentage widths are preserved.
+Missing dimensions are completed from image metadata where available, maintaining
+the aspect ratio. A height-only image whose width cannot be determined is retained
+with a warning rather than resized incorrectly. If an image cannot be converted (for
+example, an external URL or a missing/inaccessible file), its original image HTML is
+retained and a warning is logged. Such fallback HTML is not guaranteed to survive
+editing and saving in SharePoint. CK4 targets are not supported for this conversion.
+
+`AddTableListImageAsImageWebPart` is retained for API compatibility but no longer
+affects image handling. `HandleWikiImagesAndVideos` now controls only embedded
+iframe/video placement. Standalone classic Image web parts and script/embed CEWP
+mappings retain their existing behavior.
+
+When validating a migration, open the generated page in the CK5 editor and save it
+again to confirm that inline images and their table/list placement and links survive
+the edit/save round trip, rather than checking only the initial rendering.
 
 ## I don't have access to a Microsoft 365 tenant
 
@@ -62,4 +89,3 @@ The PnP Framework is maintained in the PnP GitHub repository: https://github.com
 - The source of the documentation you are reading right now in the `docs` folder
 
 <img src="https://m365-visitor-stats.azurewebsites.net/pnpframework/docs/using-the-framework" aria-hidden="true" />
-

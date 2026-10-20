@@ -55,13 +55,14 @@ namespace PnP.Framework.Modernization.Transform
 
         #region Webpart replacement configuration
         /// <summary>
-        /// If true images and videos embedded in wiki text will be transformed to actual image/video web parts, 
-        /// else they'll get a placeholder and will be added as separate web parts at the end of the page
+        /// If true embedded iframes split wiki text into text/video parts; otherwise videos are added at the end of the page.
+        /// Images are always converted in place to CK5 inline images, independently of this setting.
         /// </summary>
         public bool HandleWikiImagesAndVideos { get; set; }
 
         /// <summary>
-        /// When an image lives inside a table (or list) then also add it as a separate image web part
+        /// Retained for compatibility. This setting no longer creates separate image web parts:
+        /// images in tables and lists are converted in place to CK5 inline images.
         /// </summary>
         public bool AddTableListImageAsImageWebPart { get; set; }
 

@@ -842,7 +842,7 @@ namespace PnP.Framework.Modernization.Transform
                 {
                     var pageName = $"{pageTransformationInformation.Folder}{pageTransformationInformation.TargetPageName}";
 
-                    targetPage.Save(pageName);
+                    SavePage(targetPage, pageName, pageTransformationInformation, context);
 
                     LogInfo($"{LogStrings.TransformSavedPageInCrossSiteCollection}: {pageName}", LogStrings.Heading_ArticlePageHandling);
                 }
@@ -850,7 +850,7 @@ namespace PnP.Framework.Modernization.Transform
                 {
                     var pageName = $"{pageTransformationInformation.Folder}{pageTransformationInformation.TargetPageName}";
 
-                    targetPage.Save(pageName);
+                    SavePage(targetPage, pageName, pageTransformationInformation, context);
 
                     LogInfo($"{LogStrings.TransformSavedPage}: {pageName}", LogStrings.Heading_ArticlePageHandling);
                 }

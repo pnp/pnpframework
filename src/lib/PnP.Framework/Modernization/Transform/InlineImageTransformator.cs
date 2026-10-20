@@ -18,21 +18,33 @@ namespace PnP.Framework.Modernization.Transform
     {
         private readonly PnPCore.IPage page;
         private readonly Uri sourcePageUrl;
-        private readonly Func<string, string> transferImage;
+        private readonly Func<Uri, string> transferImage;
         private readonly Func<string, string> rewriteUrl;
         private readonly Func<string, Dictionary<string, string>> imageLookup;
+        private readonly Func<Uri, string> importExternalImage;
+        private readonly HashSet<string> internalAuthorities;
         private readonly HtmlParser parser = new HtmlParser(new HtmlParserOptions { IsEmbedded = true },
             BrowsingContext.New(Configuration.Default.WithCss()));
 
         internal InlineImageTransformator(PnPCore.IPage page, Uri sourcePageUrl,
-            Func<string, string> transferImage, Func<string, string> rewriteUrl,
-            IList<ILogObserver> logObservers = null, Func<string, Dictionary<string, string>> imageLookup = null)
+            Func<Uri, string> transferImage, Func<string, string> rewriteUrl,
+            IList<ILogObserver> logObservers = null, Func<string, Dictionary<string, string>> imageLookup = null,
+            Func<Uri, string> importExternalImage = null, IEnumerable<Uri> internalOrigins = null)
         {
             this.page = page;
             this.sourcePageUrl = sourcePageUrl;
             this.transferImage = transferImage;
             this.rewriteUrl = rewriteUrl;
             this.imageLookup = imageLookup;
+            this.importExternalImage = importExternalImage;
+            internalAuthorities = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { sourcePageUrl.Authority };
+            if (internalOrigins != null)
+            {
+                foreach (var origin in internalOrigins)
+                {
+                    internalAuthorities.Add(origin.Authority);
+                }
+            }
             if (logObservers != null)
             {
                 foreach (var observer in logObservers)
@@ -71,7 +83,7 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
-        internal string Transform(string html)
+        internal string Transform(string html, bool externalImagesOnly = false)
         {
             using (var document = parser.ParseDocument(html))
             {
@@ -95,48 +107,45 @@ namespace PnP.Framework.Modernization.Transform
                     if (string.IsNullOrWhiteSpace(source) ||
                         !Uri.TryCreate(sourcePageUrl, source, out var imageUrl) ||
                         (imageUrl.Scheme != Uri.UriSchemeHttp && imageUrl.Scheme != Uri.UriSchemeHttps) ||
-                        !imageUrl.Authority.Equals(sourcePageUrl.Authority, StringComparison.OrdinalIgnoreCase))
+                        !string.IsNullOrEmpty(imageUrl.UserInfo))
                     {
-                        Warn(source, "The image source is not a file on the source SharePoint host.");
+                        if (!externalImagesOnly)
+                        {
+                            Warn(source, "The image source is not a supported HTTP(S) URL.");
+                        }
+                        continue;
+                    }
+
+                    var external = !internalAuthorities.Contains(imageUrl.Authority);
+                    if (external != externalImagesOnly)
+                    {
+                        continue;
+                    }
+                    if (external && imageUrl.Scheme != Uri.UriSchemeHttps)
+                    {
+                        Warn(source, "External images require HTTPS for ingestion or native external rendering.");
                         continue;
                     }
 
                     IElement inlineImage;
                     try
                     {
-                        var targetUrl = transferImage(imageUrl.AbsolutePath);
-                        var options = GetOptions(image);
-                        CompleteDimensions(options, targetUrl);
-                        if (options.Height.HasValue && !options.Width.HasValue && !options.WidthPercentage.HasValue)
+                        if (external && ExternalImageImporter.IsStockImage(imageUrl))
                         {
-                            Warn(source, "The image width could not be determined to preserve its specified height.");
-                            continue;
+                            inlineImage = CreateExternalImage(document, image, imageUrl);
+                            LogInfo("Keeping a stock image as a native external CK5 image.", LogStrings.Heading_ContentTransform);
                         }
-                        var hasPixelWidth = options.Width.HasValue;
-                        var hasPercentageWidth = options.WidthPercentage.HasValue;
-                        var snippet = page.GetInlineImage(null, targetUrl, options);
-                        using (var fragment = parser.ParseDocument(snippet))
+                        else
                         {
-                            var plugin = fragment.QuerySelector("div.imagePlugin");
-                            if (plugin == null)
+                            if (external && importExternalImage == null)
                             {
-                                Warn(source, "The SDK did not return a CK5 inline image.");
-                                continue;
+                                throw new InvalidDataException("The external image importer is unavailable.");
                             }
-                            inlineImage = (IElement)plugin.Clone(true);
+                            var targetUrl = external ? importExternalImage(imageUrl) : transferImage(imageUrl);
+                            inlineImage = CreateSharePointImage(image, targetUrl);
+                            inlineImage.SetAttribute("data-alttext", image.GetAttribute("alt") ?? "");
+                            inlineImage.SetAttribute("data-linkurl", GetImageLink(image, source, imageUrl, targetUrl));
                         }
-
-                        // The SDK defaults this to 100%, which overrides pixel widths in CK5.
-                        // Omitting it lets CK5 derive responsive sizing from the supplied pixel width.
-                        if (hasPixelWidth && !hasPercentageWidth)
-                        {
-                            inlineImage.RemoveAttribute("data-widthpercentage");
-                        }
-
-                        // Set user-controlled strings through the DOM, not the SDK's HTML template.
-                        inlineImage.SetAttribute("data-imageurl", targetUrl);
-                        inlineImage.SetAttribute("data-alttext", image.GetAttribute("alt") ?? "");
-                        inlineImage.SetAttribute("data-linkurl", GetImageLink(image, source, imageUrl, targetUrl));
                     }
                     catch (Exception ex) when (ex is PnP.Core.ServiceException ||
                                                ex is ServerException ||
@@ -144,10 +153,20 @@ namespace PnP.Framework.Modernization.Transform
                                                ex is HttpRequestException ||
                                                ex is WebException ||
                                                ex is IOException ||
+                                               ex is InvalidDataException ||
                                                ex is UnauthorizedAccessException)
                     {
-                        Warn(source, ex.Message);
-                        continue;
+                        if (!external)
+                        {
+                            Warn(source, ex.Message);
+                            continue;
+                        }
+                        inlineImage = CreateExternalImage(document, image, imageUrl);
+                        var reason = ex is PnP.Core.ServiceException serviceException && serviceException.Error is PnP.Core.ServiceError serviceError
+                            ? $"HTTP {serviceError.HttpResponseCode}"
+                            : ex.GetType().Name;
+                        LogWarning($"Could not import external image '{imageUrl.GetLeftPart(UriPartial.Path)}' ({reason}). Retaining its URL in a native external CK5 image.",
+                            LogStrings.Heading_ContentTransform);
                     }
 
                     image.Parent.ReplaceChild(inlineImage, image);
@@ -161,8 +180,75 @@ namespace PnP.Framework.Modernization.Transform
 
         private void Warn(string source, string reason)
         {
+            if (Uri.TryCreate(source, UriKind.Absolute, out var url))
+            {
+                source = url.Scheme == Uri.UriSchemeHttp || url.Scheme == Uri.UriSchemeHttps
+                    ? url.GetComponents(UriComponents.SchemeAndServer | UriComponents.Path, UriFormat.SafeUnescaped)
+                    : url.Scheme + ":[omitted]";
+            }
+            else if (source != null)
+            {
+                var query = source.IndexOfAny(new[] { '?', '#' });
+                if (query >= 0)
+                {
+                    source = source.Substring(0, query);
+                }
+            }
             LogWarning($"Could not convert rich-text image '{source}' to a CK5 inline image. Retaining the original image HTML. {reason}",
                 LogStrings.Heading_ContentTransform);
+        }
+
+        private IElement CreateSharePointImage(IElement image, string targetUrl)
+        {
+            var options = GetOptions(image);
+            CompleteDimensions(options, targetUrl);
+            if (options.Height.HasValue && !options.Width.HasValue && !options.WidthPercentage.HasValue)
+            {
+                throw new InvalidDataException("The image width could not be determined to preserve its specified height.");
+            }
+            var hasPixelWidth = options.Width.HasValue;
+            var hasPercentageWidth = options.WidthPercentage.HasValue;
+            var snippet = page.GetInlineImage(null, targetUrl, options);
+            using (var fragment = parser.ParseDocument(snippet))
+            {
+                var plugin = fragment.QuerySelector("div.imagePlugin");
+                if (plugin == null)
+                {
+                    throw new InvalidDataException("The SDK did not return a CK5 inline image.");
+                }
+                var inlineImage = (IElement)plugin.Clone(true);
+                // The SDK's default 100% overrides pixel widths; let CK5 derive their responsive sizing.
+                if (hasPixelWidth && !hasPercentageWidth)
+                {
+                    inlineImage.RemoveAttribute("data-widthpercentage");
+                }
+                inlineImage.SetAttribute("data-imageurl", targetUrl);
+                return inlineImage;
+            }
+        }
+
+        private IElement CreateExternalImage(IDocument document, IElement image, Uri imageUrl)
+        {
+            var options = GetOptions(image);
+            var plugin = document.CreateElement("div");
+            plugin.ClassName = "imagePlugin";
+            plugin.SetAttribute("style", "background-color:transparent;position:relative;");
+            plugin.SetAttribute("data-imageurl", imageUrl.AbsoluteUri);
+            plugin.SetAttribute("data-uploading", "0");
+            plugin.SetAttribute("data-alignment", options.Alignment.ToString());
+            plugin.SetAttribute("data-width", (options.Width ?? 0).ToString(CultureInfo.InvariantCulture));
+            plugin.SetAttribute("data-height", (options.Height ?? 0).ToString(CultureInfo.InvariantCulture));
+            plugin.SetAttribute("data-imagenaturalwidth", (options.Width ?? 0).ToString(CultureInfo.InvariantCulture));
+            plugin.SetAttribute("data-imagenaturalheight", (options.Height ?? 0).ToString(CultureInfo.InvariantCulture));
+            if (options.WidthPercentage.HasValue)
+            {
+                plugin.SetAttribute("data-widthpercentage", options.WidthPercentage.Value.ToString(CultureInfo.InvariantCulture));
+            }
+            plugin.SetAttribute("data-alttext", image.GetAttribute("alt") ?? "");
+            plugin.SetAttribute("data-captiontext", "");
+            plugin.SetAttribute("data-isoverlaytextenabled", "false");
+            plugin.SetAttribute("data-linkurl", GetImageLink(image, image.GetAttribute("src"), imageUrl, imageUrl.AbsoluteUri));
+            return plugin;
         }
 
         private string GetImageLink(IElement image, string source, Uri imageUrl, string targetUrl)

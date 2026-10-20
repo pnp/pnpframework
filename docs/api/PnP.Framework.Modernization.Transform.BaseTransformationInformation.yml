@@ -402,7 +402,7 @@ items:
   assemblies:
   - PnP.Framework
   namespace: PnP.Framework.Modernization.Transform
-  summary: "\nIf true embedded iframes split wiki text into text/video parts; otherwise videos are added at the end of the page.\nImages are always converted in place to CK5 inline images, independently of this setting.\n"
+  summary: "\nSplits text around eligible iframes when true; otherwise appends video parts.\nDoes not affect image handling.\n"
   example: []
   syntax:
     content: public bool HandleWikiImagesAndVideos { get; set; }
@@ -439,7 +439,7 @@ items:
   assemblies:
   - PnP.Framework
   namespace: PnP.Framework.Modernization.Transform
-  summary: "\nRetained for compatibility. This setting no longer creates separate image web parts:\nimages in tables and lists are converted in place to CK5 inline images.\n"
+  summary: "\nRetained for API compatibility; ignored.\n"
   example: []
   syntax:
     content: public bool AddTableListImageAsImageWebPart { get; set; }

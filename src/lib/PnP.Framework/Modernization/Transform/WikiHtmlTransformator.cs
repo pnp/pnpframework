@@ -52,13 +52,12 @@ namespace PnP.Framework.Modernization.Transform
         #endregion
 
         /// <summary>
-        /// Replaces embedded iframes with "fake" video web parts, splitting text where possible.
-        /// Images remain in the text for conversion to CK5 inline images when the text control is created.
+        /// Creates video parts for iframes, splitting text where possible.
+        /// Leaves images in the text for later processing.
         /// </summary>
         /// <param name="wikiPageWebParts">List of web parts on the page</param>
-        /// <param name="handleWikiImagesAndVideos">If true embedded iframes split text into text/video parts;
-        /// otherwise video web parts are added at the end of the page. Images are always kept inline.</param>
-        /// <param name="addTableListImageAsImageWebPart">Retained for compatibility; images are always kept inline.</param>
+        /// <param name="handleWikiImagesAndVideos">If true, splits text around eligible iframes; otherwise appends video parts.</param>
+        /// <param name="addTableListImageAsImageWebPart">Retained for API compatibility; ignored.</param>
         /// <returns>Updated list of web parts</returns>
         public List<WebPartEntity> TransformPlusSplit(List<WebPartEntity> wikiPageWebParts, bool handleWikiImagesAndVideos, bool addTableListImageAsImageWebPart)
         {

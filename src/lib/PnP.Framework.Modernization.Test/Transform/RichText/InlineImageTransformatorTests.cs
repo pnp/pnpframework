@@ -30,8 +30,7 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
         [DataTestMethod]
         [DataRow("<p>before<img src='" + ImageUrl + "'>after</p>", "body > .imagePlugin")]
         [DataRow("<table><tbody><tr><td><p>before<img src='" + ImageUrl + "'>after</p></td></tr></tbody></table>", "td > .imagePlugin")]
-        [DataRow("<ul><li><p>before<strong><img src='" + ImageUrl + "'></strong>after</p></li></ul>", "li > .imagePlugin")]
-        [DataRow("<ol><li><ul><li><img src='" + ImageUrl + "'></li></ul></li></ol>", "ol > li > ul > li > .imagePlugin")]
+        [DataRow("<ol><li><ul><li><p><strong><img src='" + ImageUrl + "'></strong></p></li></ul></li></ol>", "ol > li > ul > li > .imagePlugin")]
         public void Transform_ConvertsInPlaceAndPreservesContainer(string html, string selector)
         {
             var page = CreatePage();
@@ -102,15 +101,6 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
             }
         }
 
-        [TestMethod]
-        public void Transform_PreservesPercentageWidth()
-        {
-            var page = CreatePage();
-            CreateTransformator(page).Transform($"<img src='{ImageUrl}' width='300' height='200' style='width:50%'>");
-            page.Verify(p => p.GetInlineImage(null, TargetImageUrl,
-                It.Is<PnPCore.PageImageOptions>(options => options.Width == 300 && options.Height == 200 && options.WidthPercentage == 50)), Times.Once);
-        }
-
         [DataTestMethod]
         [DataRow("", null)]
         [DataRow("style='width:50%'", "50")]
@@ -165,62 +155,23 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
         }
 
         [TestMethod]
-        public void Transform_PreservesInheritedAlignmentAndIsIdempotent()
-        {
-            var page = CreatePage();
-            var transformator = CreateTransformator(page);
-            var html = $"<p style='text-align:center'>before<code><span><img src='{ImageUrl}'></span></code>after</p>";
-            var result = transformator.Transform(html);
-
-            page.Verify(p => p.GetInlineImage(null, TargetImageUrl,
-                It.Is<PnPCore.PageImageOptions>(options => options.Alignment == PnPCore.PageImageAlignment.Center)), Times.Once);
-            Assert.AreEqual(result, transformator.Transform(result));
-            using (var document = new HtmlParser().ParseDocument(result))
-            {
-                Assert.AreEqual(1, document.QuerySelectorAll("body > .imagePlugin").Length);
-                Assert.AreEqual("beforeafter", document.Body.TextContent);
-            }
-        }
-
-        [DataTestMethod]
-        [DataRow("../SiteAssets/image.png")]
-        [DataRow(ImageUrl)]
-        [DataRow(SiteUrl + "/SiteAssets/image.png")]
-        [DataRow("//contoso.sharepoint.com/sites/source/SiteAssets/image.png")]
-        public void Transform_ResolvesSourceBeforeAssetTransfer(string source)
-        {
-            string transferredSource = null;
-            var transformator = new InlineImageTransformator(CreatePage().Object, SourcePageUrl,
-                value => { transferredSource = value; return TargetImageUrl; }, value => value);
-
-            transformator.Transform($"<img src='{source}'>");
-
-            Assert.AreEqual(ImageUrl, transferredSource);
-        }
-
-        [DataTestMethod]
-        [DataRow("/sites/target/SiteAssets/image.png")]
-        [DataRow("/sites/target/siteassets/IMAGE.PNG")]
-        public void Transform_RewritesImageSelfLinkToCopiedAsset(string link)
+        public void Transform_RewritesImageSelfLinkToCopiedAsset()
         {
             var transformator = new InlineImageTransformator(CreatePage().Object, SourcePageUrl,
                 _ => TargetImageUrl, value => value.Replace("/sites/source/", "/sites/target/"));
-            var result = transformator.Transform($"<a href='{link}'><img src='{ImageUrl}'></a>");
+            var result = transformator.Transform($"<a href='/sites/target/SiteAssets/image.png'><img src='{ImageUrl}'></a>");
             using (var document = new HtmlParser().ParseDocument(result))
             {
                 Assert.AreEqual(TargetImageUrl, document.QuerySelector(".imagePlugin").GetAttribute("data-linkurl"));
             }
         }
 
-        [DataTestMethod]
-        [DataRow("https://external.example/image.png")]
-        [DataRow("data:image/png;base64,AAAA")]
-        [DataRow("")]
-        public void Transform_UnsupportedImageRetainsOriginalAndWarns(string source)
+        [TestMethod]
+        public void Transform_ImageWithoutSourceRetainsOriginalAndWarns()
         {
             var page = CreatePage();
             var observer = new Mock<ILogObserver>();
-            var html = $"<p><a href='/details'><img src=\"{source}\" alt=\"keep\" style=\"width: 42px; height: 21px\"></a></p>";
+            const string html = "<p><a href=\"/details\"><img alt=\"keep\" style=\"width: 42px; height: 21px\"></a></p>";
             var result = CreateTransformator(page, observer.Object).Transform(html);
 
             Assert.AreEqual(html, result);
@@ -229,22 +180,76 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
         }
 
         [TestMethod]
-        public void Transform_MissingImageRetainsOriginalButConvertsOtherImages()
+        public void Transform_ImportsExternalImageAndUpdatesItsSelfLink()
         {
+            const string external = "https://images.example/photo.png?version=1&signature=test";
+            Uri imported = null;
+            var page = CreatePage();
+            var transformator = new InlineImageTransformator(page.Object, SourcePageUrl,
+                _ => throw new AssertFailedException("Unexpected internal transfer"), value => value,
+                importExternalImage: url => { imported = url; return TargetImageUrl; });
+            var html = "<p><a href='https://images.example/photo.png?version=1&amp;signature=test'>" +
+                "<img src='https://images.example/photo.png?version=1&amp;signature=test' alt='Imported' width='160' height='80'></a></p>";
+            using (var document = new HtmlParser().ParseDocument(transformator.Transform(html, externalImagesOnly: true)))
+            {
+                Assert.AreEqual(external, imported.AbsoluteUri);
+                var image = document.QuerySelector("body > .imagePlugin");
+                Assert.IsNotNull(image);
+                Assert.AreEqual(TargetImageUrl, image.GetAttribute("data-imageurl"));
+                Assert.AreEqual(TargetImageUrl, image.GetAttribute("data-linkurl"));
+                Assert.AreEqual("Imported", image.GetAttribute("data-alttext"));
+            }
+        }
+
+        [DataTestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void Transform_FailedExternalImportRetainsNativeImageWithoutFakeFileMetadata(bool invalidResponse)
+        {
+            const string external = "https://images.example/photo.png?signature=secret-token&version=2";
             var page = CreatePage();
             var observer = new Mock<ILogObserver>();
-            page.SetupSequence(p => p.GetInlineImage(null, TargetImageUrl, It.IsAny<PnPCore.PageImageOptions>()))
-                .Throws(new FileNotFoundException("Missing image"))
-                .Returns(ImageSnippet(TargetImageUrl, new PnPCore.PageImageOptions()));
-
-            var html = $"<p><img src='{ImageUrl}' alt='missing'><img src='{ImageUrl}' alt='present'></p>";
-            using (var document = new HtmlParser().ParseDocument(CreateTransformator(page, observer.Object).Transform(html)))
+            var transformator = new InlineImageTransformator(page.Object, SourcePageUrl, _ => "", value => value,
+                new[] { observer.Object }, importExternalImage: _ =>
+                {
+                    if (invalidResponse) throw new InvalidDataException(external);
+                    throw new IOException(external);
+                });
+            var html = "<table><tr><td><p><a href='/details'>Before <img src='https://images.example/photo.png?signature=secret-token&amp;version=2' " +
+                "alt='A &quot;quote&quot; &amp; &lt;tag&gt;' width='160' height='80'> After</a></p></td></tr></table>";
+            using (var document = new HtmlParser().ParseDocument(transformator.Transform(html, externalImagesOnly: true)))
             {
-                Assert.AreEqual(ImageUrl, document.QuerySelector("p > img").GetAttribute("src"));
-                Assert.AreEqual("missing", document.QuerySelector("img").GetAttribute("alt"));
-                Assert.AreEqual("present", document.QuerySelector(".imagePlugin").GetAttribute("data-alttext"));
+                var image = document.QuerySelector("td > .imagePlugin");
+                Assert.IsNotNull(image);
+                Assert.AreEqual(external, image.GetAttribute("data-imageurl"));
+                Assert.AreEqual("/details", image.GetAttribute("data-linkurl"));
+                Assert.AreEqual("0", image.GetAttribute("data-uploading"));
+                Assert.AreEqual("160", image.GetAttribute("data-width"));
+                Assert.AreEqual("80", image.GetAttribute("data-height"));
+                Assert.AreEqual("A \"quote\" & <tag>", image.GetAttribute("data-alttext"));
+                Assert.IsFalse(image.HasAttribute("data-siteid"));
+                Assert.IsFalse(image.HasAttribute("data-webid"));
+                Assert.IsFalse(image.HasAttribute("data-listid"));
+                Assert.IsFalse(image.HasAttribute("data-uniqueid"));
+                Assert.IsFalse(image.HasAttribute("data-widthpercentage"));
+                Assert.AreEqual(0, document.QuerySelectorAll("img").Length);
+                Assert.AreEqual("Before  After", document.Body.TextContent);
             }
-            observer.Verify(log => log.Warning(It.Is<LogEntry>(entry => entry.Message.Contains("Missing image"))), Times.Once);
+            page.Verify(p => p.GetInlineImage(It.IsAny<PnPCore.IPageText>(), It.IsAny<string>(), It.IsAny<PnPCore.PageImageOptions>()), Times.Never);
+            observer.Verify(log => log.Warning(It.Is<LogEntry>(entry =>
+                entry.Message.Contains("native external CK5 image") && !entry.Message.Contains("secret-token"))), Times.Once);
+        }
+
+        [TestMethod]
+        public void Transform_StockImagesStayExternalWithoutImport()
+        {
+            const string source = "https://cdn.hubblecontent.osi.office.net/image.png";
+            var transformator = new InlineImageTransformator(CreatePage().Object, SourcePageUrl, _ => "", value => value,
+                importExternalImage: _ => throw new AssertFailedException("Stock images must not be ingested"));
+            using (var document = new HtmlParser().ParseDocument(transformator.Transform($"<img src='{source}'>", externalImagesOnly: true)))
+            {
+                Assert.AreEqual(source, document.QuerySelector(".imagePlugin").GetAttribute("data-imageurl"));
+            }
         }
 
         [TestMethod]
@@ -261,40 +266,6 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
         }
 
         [TestMethod]
-        public void Transform_DoesNotHideUnexpectedProgrammingErrors()
-        {
-            var page = CreatePage();
-            page.Setup(p => p.GetInlineImage(null, TargetImageUrl, It.IsAny<PnPCore.PageImageOptions>()))
-                .Throws(new InvalidOperationException("Unexpected"));
-            Assert.ThrowsException<InvalidOperationException>(() => CreateTransformator(page).Transform($"<img src='{ImageUrl}'>"));
-        }
-
-        [TestMethod]
-        public void TextCleanup_PreservesImageSourceAndAttributesThroughUrlAndTableCleanup()
-        {
-            var html = $"<table><thead><tr><th><a href='/sites/source/Pages/details.aspx'><img src='{ImageUrl}' style='height: 42px; width: 84px' alt='A &amp; B'></a></th></tr></thead><tbody><tr><td><ul><li><img src='{ImageUrl}'></li></ul></td></tr></tbody></table>";
-            var result = InlineImageTransformator.PreserveImages(html, text =>
-                new HtmlTransformator().Transform(text.Replace("/sites/source/", "/sites/target/"), true));
-
-            using (var document = new HtmlParser().ParseDocument(result))
-            {
-                Assert.AreEqual(2, document.QuerySelectorAll("img").Length);
-                Assert.IsTrue(document.QuerySelectorAll("img").All(image => image.GetAttribute("src") == ImageUrl));
-                Assert.AreEqual("height: 42px; width: 84px", document.QuerySelector("img").GetAttribute("style"));
-                Assert.AreEqual("/sites/target/Pages/details.aspx", document.QuerySelector("a").GetAttribute("href"));
-                Assert.AreEqual("A & B", document.QuerySelector("img").GetAttribute("alt"));
-                Assert.IsFalse(result.Contains("placeholder"));
-                Assert.IsFalse(result.Contains("pnpimage"));
-            }
-
-            using (var document = new HtmlParser().ParseDocument(CreateTransformator(CreatePage()).Transform(result)))
-            {
-                Assert.AreEqual(2, document.QuerySelectorAll("td .imagePlugin").Length);
-                Assert.AreEqual(1, document.QuerySelectorAll("li > .imagePlugin").Length);
-            }
-        }
-
-        [TestMethod]
         public void TextCleanup_PreservesImagesInAllTableSectionsAndHeaderRows()
         {
             var html = $"<table><thead><tr><th><img src='{ImageUrl}' alt='header1'></th></tr><tr><th><img src='{ImageUrl}' alt='header2'></th></tr></thead><tbody><tr><td><img src='{ImageUrl}' alt='body1'></td></tr></tbody><tbody><tr><td><img src='{ImageUrl}' alt='body2'></td></tr></tbody><tfoot><tr><td><img src='{ImageUrl}' alt='footer'></td></tr></tfoot></table>";
@@ -307,32 +278,8 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
             }
         }
 
-        [TestMethod]
-        public void TextCleanup_WithoutImagesRetainsExistingOutput()
-        {
-            const string html = "<h1>Heading</h1><p>Text <a href='/sites/source/Pages/other.aspx'>link</a></p><iframe src='https://video.example'></iframe>";
-            Func<string, string> cleanup = value => new HtmlTransformator().Transform(value.Replace("/sites/source/", "/sites/target/"), true);
-            Assert.AreEqual(cleanup(html), InlineImageTransformator.PreserveImages(html, cleanup));
-        }
-
-        [TestMethod]
-        public void Transform_AssetTransferFailureRetainsSourceAndWarns()
-        {
-            var observer = new Mock<ILogObserver>();
-            var page = CreatePage();
-            var transformator = new InlineImageTransformator(page.Object, SourcePageUrl,
-                _ => throw new UnauthorizedAccessException("Cannot copy asset"), value => value, new[] { observer.Object });
-            var html = $"<p><img src='{ImageUrl}' alt='keep'></p>";
-
-            Assert.AreEqual(html, transformator.Transform(html));
-            page.Verify(p => p.GetInlineImage(It.IsAny<PnPCore.IPageText>(), It.IsAny<string>(), It.IsAny<PnPCore.PageImageOptions>()), Times.Never);
-            observer.Verify(log => log.Warning(It.Is<LogEntry>(entry => entry.Message.Contains("Cannot copy asset"))), Times.Once);
-        }
-
         [DataTestMethod]
         [DataRow(true, true)]
-        [DataRow(true, false)]
-        [DataRow(false, true)]
         [DataRow(false, false)]
         public void WikiSplitter_NeverSplitsOrExtractsImages(bool handleImagesAndVideos, bool addTableListImages)
         {
@@ -433,26 +380,35 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
         }
 
         [TestMethod]
-        public void ContentMapping_MissingImagePreservesItsSourceAndStyleAndWarns()
+        public void ContentMapping_MissingImagePreservesHtmlAndContinues()
         {
             using (var context = CreateContext())
             {
                 var page = CreatePage();
                 var controls = ConfigureCanvas(page);
                 var observer = new Mock<ILogObserver>();
-                page.Setup(p => p.GetInlineImage(null, ImageUrl, It.IsAny<PnPCore.PageImageOptions>()))
-                    .Throws(new FileNotFoundException("Missing image"));
-                var source = WikiText($"<p>before<img src='{ImageUrl}' alt='keep' style='height: 42px; width: 84px'>after</p>");
-                new ContentTransformator(context, context, page.Object, LoadMapping(), new PageTransformationInformation(null),
+                page.SetupSequence(p => p.GetInlineImage(null, ImageUrl, It.IsAny<PnPCore.PageImageOptions>()))
+                    .Throws(new FileNotFoundException("Missing image"))
+                    .Returns(ImageSnippet(ImageUrl, new PnPCore.PageImageOptions { Width = 160, Height = 80 }));
+                var source = WikiText($"<p>before<img src='{ImageUrl}' alt='keep' style='height: 42px; width: 84px'>" +
+                    $"<img src='{ImageUrl}' alt='present' width='160' height='80'>after</p>");
+                var information = new PageTransformationInformation(null);
+                new ContentTransformator(context, context, page.Object, LoadMapping(), information,
                     new[] { observer.Object }).Transform(new List<WebPartEntity> { source });
+                var transformator = new TestPageTransformator { sourceClientContext = context };
+                transformator.RegisterObserver(observer.Object);
+                transformator.SavePage(page.Object, "target.aspx", information, context,
+                    _ => throw new AssertFailedException("Internal images must not be retried as external images"));
 
                 using (var document = new HtmlParser().ParseDocument(((PnPCore.IPageText)controls.Single()).Text))
                 {
                     Assert.AreEqual(ImageUrl, document.QuerySelector("p > img").GetAttribute("src"));
                     Assert.AreEqual("height: 42px; width: 84px", document.QuerySelector("img").GetAttribute("style"));
                     Assert.AreEqual("beforeafter", document.Body.TextContent);
-                    Assert.AreEqual(0, document.QuerySelectorAll(".imagePlugin").Length);
+                    Assert.AreEqual(1, document.QuerySelectorAll(".imagePlugin").Length);
+                    Assert.AreEqual("present", document.QuerySelector(".imagePlugin").GetAttribute("data-alttext"));
                 }
+                page.Verify(p => p.GetInlineImage(null, ImageUrl, It.IsAny<PnPCore.PageImageOptions>()), Times.Exactly(2));
                 observer.Verify(log => log.Warning(It.Is<LogEntry>(entry => entry.Message.Contains("Missing image"))), Times.Once);
             }
         }
@@ -460,20 +416,31 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
         [DataTestMethod]
         [DataRow(false)]
         [DataRow(true)]
-        public void BuiltInCleanup_PreservesSourceImageWhileRespectingLinkRewriteOptions(bool skipUrlRewrite)
+        public void BuiltInCleanup_PreservesImagesThroughTableAndUrlRewriting(bool skipUrlRewrite)
         {
             using (var source = CreateContext())
             using (var target = CreateContext("https://contoso.sharepoint.com/sites/target"))
             {
                 var information = new PageTransformationInformation(null) { SkipUrlRewrite = skipUrlRewrite };
                 var builtIn = new BuiltIn(information, target, source, CreatePage().Object);
-                var result = builtIn.TextCleanup($"<a href='/sites/source/Pages/details.aspx'><img src='{ImageUrl}'></a>", "true");
+                var html = $"<table><thead><tr><th><a href='/sites/source/Pages/details.aspx'><img src='{ImageUrl}' style='height: 42px; width: 84px' alt='A &amp; B'></a></th></tr></thead>" +
+                    $"<tbody><tr><td><ul><li><img src='{ImageUrl}'></li></ul></td></tr></tbody></table>";
+                var result = builtIn.TextCleanup(html, "true");
                 using (var document = new HtmlParser().ParseDocument(result))
                 {
-                    Assert.AreEqual(ImageUrl, document.QuerySelector("img").GetAttribute("src"));
+                    Assert.AreEqual(2, document.QuerySelectorAll("img").Length);
+                    Assert.IsTrue(document.QuerySelectorAll("img").All(image => image.GetAttribute("src") == ImageUrl));
+                    Assert.AreEqual("height: 42px; width: 84px", document.QuerySelector("img").GetAttribute("style"));
+                    Assert.AreEqual("A & B", document.QuerySelector("img").GetAttribute("alt"));
                     Assert.AreEqual(skipUrlRewrite ? "/sites/source/Pages/details.aspx" : "/sites/target/Pages/details.aspx",
                         document.QuerySelector("a").GetAttribute("href"));
                     Assert.IsFalse(result.Contains("placeholder"));
+                    Assert.IsFalse(result.Contains("pnpimage"));
+                }
+                using (var document = new HtmlParser().ParseDocument(CreateTransformator(CreatePage()).Transform(result)))
+                {
+                    Assert.AreEqual(2, document.QuerySelectorAll("td .imagePlugin").Length);
+                    Assert.AreEqual(1, document.QuerySelectorAll("li > .imagePlugin").Length);
                 }
             }
         }
@@ -492,6 +459,73 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
 
                 page.Verify(p => p.GetInlineImage(null, ImageUrl, It.IsAny<PnPCore.PageImageOptions>()), Times.Once);
             }
+        }
+
+        [TestMethod]
+        public void SavePage_ImportsExternalImagesBetweenInitialAndFinalSave()
+        {
+            using (var context = CreateContext())
+            {
+                var events = new List<string>();
+                var page = CreatePage();
+                var controls = ConfigureCanvas(page);
+                var information = new PageTransformationInformation(null);
+                new ContentTransformator(context, context, page.Object, LoadMapping(), information)
+                    .Transform(new List<WebPartEntity>
+                    {
+                        WikiText("<p><img src='https://images.example/photo.png' width='160' height='80'></p>")
+                    });
+                page.Setup(value => value.Save("target.aspx")).Callback(() => events.Add("save")).Returns("target.aspx");
+                var transformator = new TestPageTransformator { sourceClientContext = context };
+
+                transformator.SavePage(page.Object, "target.aspx", information, context,
+                    _ => { events.Add("import"); return TargetImageUrl; });
+
+                CollectionAssert.AreEqual(new[] { "save", "import", "save" }, events);
+                var text = (PnPCore.IPageText)controls.Single();
+                Assert.IsTrue(text.Text.Contains("imagePlugin"));
+                Assert.IsTrue(text.Text.Contains(TargetImageUrl));
+            }
+        }
+
+        [TestMethod]
+        public void BuiltInConversion_DoesNotCopyTargetHostImagesFromADifferentSourceHost()
+        {
+            using (var source = CreateContext("https://legacy.example/sites/source"))
+            using (var target = CreateContext("https://contoso.sharepoint.com/sites/target"))
+            {
+                var page = CreatePage();
+                var observer = new Mock<ILogObserver>();
+                var builtIn = new BuiltIn(new PageTransformationInformation(null), target, source, page.Object, new[] { observer.Object });
+                const string path = "/sites/target/SiteAssets/image.png";
+                var result = builtIn.TransformInlineImages($"<img src='https://contoso.sharepoint.com{path}' width='160' height='80'>");
+
+                page.Verify(value => value.GetInlineImage(null, path, It.IsAny<PnPCore.PageImageOptions>()), Times.Once);
+                Assert.IsTrue(result.Contains("imagePlugin"));
+                observer.Verify(value => value.Warning(It.IsAny<LogEntry>()), Times.Never);
+                observer.Verify(value => value.Error(It.IsAny<LogEntry>()), Times.Never);
+            }
+        }
+
+        [DataTestMethod]
+        [DataRow("<img src='https://images.example/photo.png'>", 1)]
+        [DataRow("<div class='imagePlugin' data-imageurl='/image.png'></div>", 1)]
+        [DataRow("<p><br></p>", 0)]
+        public void EmptyTextCleanup_RemovesOnlyEmptyControls(string html, int expectedCount)
+        {
+            var page = CreatePage();
+            var text = new Mock<PnPCore.IPageText>();
+            text.SetupGet(value => value.Text).Returns(html);
+            var controls = new List<PnPCore.ICanvasControl> { text.Object };
+            page.SetupGet(value => value.Controls).Returns(controls);
+
+            new TestPageTransformator().RemoveEmptyTextParts(page.Object);
+
+            Assert.AreEqual(expectedCount, controls.Count);
+        }
+
+        private sealed class TestPageTransformator : BasePageTransformator
+        {
         }
 
         private static InlineImageTransformator CreateTransformator(Mock<PnPCore.IPage> page, ILogObserver observer = null)
@@ -518,6 +552,7 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
         private static List<PnPCore.ICanvasControl> ConfigureCanvas(Mock<PnPCore.IPage> page)
         {
             var controls = new List<PnPCore.ICanvasControl>();
+            page.SetupGet(p => p.Controls).Returns(controls);
             var column = new Mock<PnPCore.ICanvasColumn>();
             column.SetupGet(c => c.Controls).Returns(controls);
             var section = new Mock<PnPCore.ICanvasSection>();

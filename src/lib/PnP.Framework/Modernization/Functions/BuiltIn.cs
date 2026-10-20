@@ -299,7 +299,7 @@ namespace PnP.Framework.Modernization.Functions
             });
         }
 
-        internal string TransformInlineImages(string text)
+        internal string TransformInlineImages(string text, bool externalImagesOnly = false, Func<Uri, string> importExternalImage = null)
         {
             var sourceUrl = new Uri((sourceClientContext ?? targetClientContext).Url.TrimEnd('/') + "/");
             if (baseTransformationInformation.SourcePage != null &&
@@ -309,9 +309,20 @@ namespace PnP.Framework.Modernization.Functions
                 sourceUrl = new Uri(sourceUrl, pagePath);
             }
 
-            return new InlineImageTransformator(clientSidePage, sourceUrl, ReturnCrossSiteRelativePath,
+            var sourceOrigins = new[]
+            {
+                new Uri((sourceClientContext ?? targetClientContext).Url),
+                new Uri((sourceClientContext ?? targetClientContext).Web.GetUrl())
+            };
+            var targetOrigins = new[] { new Uri(targetClientContext.Url), new Uri(targetClientContext.Web.GetUrl()) };
+            return new InlineImageTransformator(clientSidePage, sourceUrl,
+                image => targetOrigins.Any(origin => origin.Authority.Equals(image.Authority, StringComparison.OrdinalIgnoreCase)) &&
+                         !sourceOrigins.Any(origin => origin.Authority.Equals(image.Authority, StringComparison.OrdinalIgnoreCase))
+                    ? image.AbsolutePath
+                    : ReturnCrossSiteRelativePath(image.AbsolutePath),
                 url => baseTransformationInformation.SkipUrlRewrite ? url : urlTransformator.Transform(url),
-                RegisteredLogObservers, ImageLookup).Transform(text);
+                RegisteredLogObservers, ImageLookup, importExternalImage,
+                sourceOrigins.Concat(targetOrigins)).Transform(text, externalImagesOnly);
         }
 
         /// <summary>

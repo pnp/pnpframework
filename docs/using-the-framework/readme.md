@@ -16,31 +16,27 @@ Pnp Framework includes a range of capabilities that simplify development for Mic
 
 ## Images in modernized rich text
 
-Page modernization converts images in classic wiki content, publishing rich-text fields,
-and non-script Content Editor Web Part (CEWP) HTML to native CK5 inline images.
-CEWP HTML can be embedded or loaded from a supported content link. Images remain
-in their text control, including in table cells, lists, and hyperlinks; modernization
-does not split text controls around images or append duplicate Image web parts.
-Local HTML containers may be normalized to accommodate CK5 image markup.
+Modernization converts images in wiki content, publishing rich-text fields, and
+non-script Content Editor Web Part (CEWP) HTML (embedded or linked) to CK5 inline
+images. Images stay in text controls, including tables and lists, without image-driven
+splitting or duplicate Image web parts. Links, alt text, and supported sizing are
+preserved; HTML may be normalized. CK4 targets are unsupported.
 
-Existing cross-site asset transfer is retained. Supported image dimensions, alternative
-text, and link destinations are carried over. Pixel-sized images do not inherit the
-SDK's default full-width percentage; explicit percentage widths are preserved.
-Missing dimensions are completed from image metadata where available, maintaining
-the aspect ratio. A height-only image whose width cannot be determined is retained
-with a warning rather than resized incorrectly. If an image cannot be converted (for
-example, an external URL or a missing/inaccessible file), its original image HTML is
-retained and a warning is logged. Such fallback HTML is not guaranteed to survive
-editing and saving in SharePoint. CK4 targets are not supported for this conversion.
+After the target page is saved, external HTTPS images are imported through
+SharePoint's `AddImageFromExternalUrl` service into its page-owned asset folder.
+Repeated transformations reuse existing assets for the same complete external URL
+(including query parameters), even across processes, without re-downloading or
+refreshing them. Tenant restrictions apply; recognized stock-image URLs remain external.
 
-`AddTableListImageAsImageWebPart` is retained for API compatibility but no longer
-affects image handling. `HandleWikiImagesAndVideos` now controls only embedded
-iframe/video placement. Standalone classic Image web parts and script/embed CEWP
-mappings retain their existing behavior.
+External import or conversion failures retain the URL in a **native CK5 image** with a warning.
+These fallbacks depend on external access and browser policies, and lack SharePoint
+file-backed features. Unsupported URLs and internal-image conversion failures retain
+raw image HTML with a warning; CK5 editing may remove it.
 
-When validating a migration, open the generated page in the CK5 editor and save it
-again to confirm that inline images and their table/list placement and links survive
-the edit/save round trip, rather than checking only the initial rendering.
+`AddTableListImageAsImageWebPart` is ignored. `HandleWikiImagesAndVideos` controls only
+iframe/video placement. Standalone Image web parts and script/embed CEWPs are unchanged.
+
+Verify image placement and links after editing and saving the migrated page.
 
 ## I don't have access to a Microsoft 365 tenant
 

@@ -539,7 +539,7 @@ namespace PnP.Framework.Modernization.Publishing
 #endif
                 // Persist the client side page
                 var pageName = $"{publishingPageTransformationInformation.Folder}{publishingPageTransformationInformation.TargetPageName}";
-                targetPage.Save(pageName);
+                SavePage(targetPage, pageName, publishingPageTransformationInformation, context);
                 LogInfo($"{LogStrings.TransformSavedPageInCrossSiteCollection}: {pageName}", LogStrings.Heading_ArticlePageHandling);
 
                 // Load the page list item

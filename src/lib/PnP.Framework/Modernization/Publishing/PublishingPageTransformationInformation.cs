@@ -95,6 +95,24 @@ namespace PnP.Framework.Modernization.Publishing
         #endregion
 
         #region Page Properties
+        /// <summary>
+        /// Enables Enterprise Wiki destination preparation, same-name category/rating mappings
+        /// and optional sidebar insertion. Defaults to false, preserving legacy transformation
+        /// behavior for all destinations. Required site columns and term sets must already exist.
+        /// </summary>
+        public bool EnableEnterpriseWikiCapabilities { get; set; }
+
+        /// <summary>
+        /// Adds the native Enterprise Wiki sidebar when EnableEnterpriseWikiCapabilities is true
+        /// and the source is an Enterprise Wiki page.
+        /// The destination must support the modernized control host; this option does not deploy it.
+        /// Set to false for environments without that renderer.
+        /// </summary>
+        public bool IncludeEnterpriseWikiSidebar { get; set; } = true;
+
+        internal bool IsEnterpriseWikiPage { get; set; }
+        internal bool ShouldIncludeEnterpriseWikiSidebar =>
+            EnableEnterpriseWikiCapabilities && IsEnterpriseWikiPage && IncludeEnterpriseWikiSidebar;
         #endregion
     }
 }

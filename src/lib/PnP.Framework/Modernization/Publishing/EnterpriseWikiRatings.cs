@@ -25,15 +25,33 @@ namespace PnP.Framework.Modernization.Publishing
 
         internal static bool IsRatingField(string name) => FieldNames.Contains(name);
 
+        internal static EnterpriseWikiRatings Read(ListItem source)
+        {
+            if (FieldNames.Any(name => !source.FieldValues.ContainsKey(name)))
+            {
+                // Refresh the complete group so unloaded fields cannot become an empty history.
+                source.Context.Load(source, item => item["RatedBy"], item => item["Ratings"],
+                    item => item["RatingCount"], item => item["AverageRating"]);
+                source.Context.ExecuteQueryRetry();
+            }
+            return Read(source.FieldValues);
+        }
+
         internal static EnterpriseWikiRatings Read(IDictionary<string, object> fields)
         {
-            fields.TryGetValue("RatedBy", out var votersValue);
+            var missing = FieldNames.Where(name => !fields.ContainsKey(name)).ToArray();
+            if (missing.Length > 0)
+            {
+                throw new InvalidOperationException(
+                    $"Enterprise Wiki rating history cannot be migrated because rating fields are missing or not loaded: {string.Join(", ", missing)}.");
+            }
+            var votersValue = fields["RatedBy"];
             if (votersValue != null && !(votersValue is FieldUserValue[]))
             {
                 throw InvalidHistory("RatedBy is not a multi-user value.");
             }
             var voters = (FieldUserValue[])votersValue ?? Array.Empty<FieldUserValue>();
-            fields.TryGetValue("Ratings", out var ratingsValue);
+            var ratingsValue = fields["Ratings"];
             var ratings = Convert.ToString(ratingsValue, CultureInfo.InvariantCulture);
             var parts = string.IsNullOrWhiteSpace(ratings) ? Array.Empty<string>() : ratings.Trim().Split(',');
             if (parts.Length > 0 && parts[parts.Length - 1].Length == 0)
@@ -104,7 +122,8 @@ namespace PnP.Framework.Modernization.Publishing
 
         private static double ReadNumber(IDictionary<string, object> fields, string name)
         {
-            if (!fields.TryGetValue(name, out var value) || value == null)
+            var value = fields[name];
+            if (value == null)
             {
                 return 0;
             }

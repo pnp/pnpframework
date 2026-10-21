@@ -99,6 +99,7 @@ namespace PnP.Framework.Modernization.Publishing
         /// Enables Enterprise Wiki destination preparation, same-name category/rating mappings
         /// and optional sidebar insertion. Defaults to false, preserving legacy transformation
         /// behavior for all destinations. Required site columns and term sets must already exist.
+        /// Rating fields omitted from a partial source item are loaded before migrating rating history.
         /// </summary>
         public bool EnableEnterpriseWikiCapabilities { get; set; }
 

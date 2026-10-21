@@ -776,7 +776,7 @@ namespace PnP.Framework.Modernization.Publishing
             {
                 return null;
             }
-            var ratings = EnterpriseWikiRatings.Read(information.SourcePage.FieldValues);
+            var ratings = EnterpriseWikiRatings.Read(information.SourcePage);
             if (sameSiteCollection || ratings.Count == 0)
             {
                 return ratings;

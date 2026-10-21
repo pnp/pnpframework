@@ -29692,6 +29692,19 @@ references:
   isSpec: "True"
   fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.PublishingPageTransformationInformation
   nameWithType: PublishingPageTransformationInformation.PublishingPageTransformationInformation
+- uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.EnableEnterpriseWikiCapabilities
+  name: EnableEnterpriseWikiCapabilities
+  href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformationInformation_EnableEnterpriseWikiCapabilities
+  commentId: P:PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.EnableEnterpriseWikiCapabilities
+  fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.EnableEnterpriseWikiCapabilities
+  nameWithType: PublishingPageTransformationInformation.EnableEnterpriseWikiCapabilities
+- uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.EnableEnterpriseWikiCapabilities*
+  name: EnableEnterpriseWikiCapabilities
+  href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformationInformation_EnableEnterpriseWikiCapabilities_
+  commentId: Overload:PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.EnableEnterpriseWikiCapabilities
+  isSpec: "True"
+  fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.EnableEnterpriseWikiCapabilities
+  nameWithType: PublishingPageTransformationInformation.EnableEnterpriseWikiCapabilities
 - uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.GetFirstNonEmptyFieldName(System.String[])
   name: GetFirstNonEmptyFieldName(String[])
   href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformationInformation_GetFirstNonEmptyFieldName_System_String___
@@ -29708,6 +29721,19 @@ references:
   isSpec: "True"
   fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.GetFirstNonEmptyFieldName
   nameWithType: PublishingPageTransformationInformation.GetFirstNonEmptyFieldName
+- uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.IncludeEnterpriseWikiSidebar
+  name: IncludeEnterpriseWikiSidebar
+  href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformationInformation_IncludeEnterpriseWikiSidebar
+  commentId: P:PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.IncludeEnterpriseWikiSidebar
+  fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.IncludeEnterpriseWikiSidebar
+  nameWithType: PublishingPageTransformationInformation.IncludeEnterpriseWikiSidebar
+- uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.IncludeEnterpriseWikiSidebar*
+  name: IncludeEnterpriseWikiSidebar
+  href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformationInformation_IncludeEnterpriseWikiSidebar_
+  commentId: Overload:PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.IncludeEnterpriseWikiSidebar
+  isSpec: "True"
+  fullName: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.IncludeEnterpriseWikiSidebar
+  nameWithType: PublishingPageTransformationInformation.IncludeEnterpriseWikiSidebar
 - uid: PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.IsFieldUsed(System.String)
   name: IsFieldUsed(String)
   href: api/PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.html#PnP_Framework_Modernization_Publishing_PublishingPageTransformationInformation_IsFieldUsed_System_String_
@@ -31280,6 +31306,12 @@ references:
   commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Heading_CopyingPageMetadata
   fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Heading_CopyingPageMetadata
   nameWithType: LogStrings.Heading_CopyingPageMetadata
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Heading_EnterpriseWikiPreparation
+  name: Heading_EnterpriseWikiPreparation
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Heading_EnterpriseWikiPreparation
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Heading_EnterpriseWikiPreparation
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Heading_EnterpriseWikiPreparation
+  nameWithType: LogStrings.Heading_EnterpriseWikiPreparation
 - uid: PnP.Framework.Modernization.Telemetry.LogStrings.Heading_FunctionProcessor
   name: Heading_FunctionProcessor
   href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Heading_FunctionProcessor

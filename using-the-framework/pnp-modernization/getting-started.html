@@ -90,7 +90,7 @@
                     <h2 id="getting-started-with-pnp-page-transformation">Getting Started with PnP Page Transformation</h2>
 
 <p>The PnP Page Transformation tooling is a set of tools and libraries that enable the transformation of classic SharePoint pages to modern client-side pages.</p>
-<p>The transformation process involves analyzing the structure and content of classic pages, and then generating modern client-side pages that replicate the structure and content of the classic pages. This does not include the configuration of the SharePoint Sites or lists, only the page contents.</p>
+<p>The transformation process involves analyzing the structure and content of classic pages, and then generating modern client-side pages that replicate the structure and content of the classic pages. In general, site and list configuration must be prepared separately. Enterprise Wiki publishing-page transformation also prepares the destination prerequisites described below.</p>
 <p>Master pages and page layouts are not converted but they are mapped to their closest equivalent in the modern page model.</p>
 <h2 id="what-versions-of-sharepoint-are-supported">What versions of SharePoint are supported?</h2>
 <p>The PnP Page Transformation tooling supports SharePoint Online and SharePoint 2019, 2016 and 2013. It is not supported for SharePoint 2010 or earlier versions. However you can an older version of the tooling to transform pages in SharePoint 2010.</p>
@@ -139,9 +139,9 @@ using (var targetClientContext = GetClientContext(&quot;https://&lt;tenant&gt;.s
 }
 
 </code></pre>
-<blockquote>
-<p>Working on it... more to come.</p>
-</blockquote>
+<h2 id="enterprise-wiki-pages">Enterprise Wiki pages</h2>
+<p>Set <code>EnableEnterpriseWikiCapabilities = true</code> to prepare SitePages using existing category/rating site columns and copy their values. When false or omitted, all destinations retain legacy transformation behavior and custom mappings, without ESWiki preparation or sidebar insertion. Inconsistent rating history stops migration only with the new grouped rating handling enabled.</p>
+<p>When opted in, the sidebar requires destination support for the native modernized-control host. Set <code>IncludeEnterpriseWikiSidebar = false</code> where unavailable.</p>
 <img src="https://m365-visitor-stats.azurewebsites.net/pnpframework/docs/using-the-framework/pnp-modernization" aria-hidden="true">
 </article>
           </div>

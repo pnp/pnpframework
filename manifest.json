@@ -2994,7 +2994,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Publishing.PageLayoutManager.html",
-          "hash": "Eakq5qsv8K0FobPxqFdLJnZECjfqPrgcGfzhm6aWVHs="
+          "hash": "H6XlpPw7ego+0Cme4vUnXuh3chMp3nvej9cv5/U3Cfg="
         }
       },
       "is_incremental": false,
@@ -3114,7 +3114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.html",
-          "hash": "Kdg9zl9YRAmB/8uqwp5aVO7FiLPLBgN9NxCkRj6rZYc="
+          "hash": "4n3CbCHRjkJVkVNSiLpPae3Bc0PtRcWqFQDamYXTR18="
         }
       },
       "is_incremental": false,
@@ -3126,7 +3126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Publishing.PublishingPageTransformator.html",
-          "hash": "tOqCyT0eVCjRP1KOU/dbeOl+RXAKjTMhxUwl0qZxAok="
+          "hash": "DunUiD6iWPqbuSEJPyGUqvoSS+uBNiueYAWqdD/MYoQ="
         }
       },
       "is_incremental": false,
@@ -3294,7 +3294,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Telemetry.LogStrings.html",
-          "hash": "FcCSZCYwpYIA61H3O5euqvRPexvGwq2eLBvXRDlq1s0="
+          "hash": "AXHZ39XsYYjjG+bzTcF1G1AXkZy4DSZ9ns7w2CAceKM="
         }
       },
       "is_incremental": false,
@@ -23052,7 +23052,7 @@
       "output": {
         ".html": {
           "relative_path": "using-the-framework/pnp-modernization/getting-started.html",
-          "hash": "2rK7wSa22yvqxqE80vVzMSrYsctCdKB9yXOw/6G+ZH0="
+          "hash": "eKO8owKV40haEtVWKg8+IU97XGjjQYNP9uw7Q0lz6/E="
         }
       },
       "is_incremental": false,

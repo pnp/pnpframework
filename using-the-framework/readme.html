@@ -100,6 +100,24 @@
 <li>Helper classes and extension methods to make it easier to perform standard operations</li>
 <li>Incorporates the PnP Core SDK</li>
 </ul>
+<h2 id="images-in-modernized-rich-text">Images in modernized rich text</h2>
+<p>Modernization converts images in wiki content, publishing rich-text fields, and
+non-script Content Editor Web Part (CEWP) HTML (embedded or linked) to CK5 inline
+images. Images stay in text controls, including tables and lists, without image-driven
+splitting or duplicate Image web parts. Links, alt text, and supported sizing are
+preserved; HTML may be normalized. CK4 targets are unsupported.</p>
+<p>After the target page is saved, external HTTPS images are imported through
+SharePoint's <code>AddImageFromExternalUrl</code> service into its page-owned asset folder.
+Repeated transformations reuse existing assets for the same complete external URL
+(including query parameters), even across processes, without re-downloading or
+refreshing them. Tenant restrictions apply; recognized stock-image URLs remain external.</p>
+<p>External import or conversion failures retain the URL in a <strong>native CK5 image</strong> with a warning.
+These fallbacks depend on external access and browser policies, and lack SharePoint
+file-backed features. Unsupported URLs and internal-image conversion failures retain
+raw image HTML with a warning; CK5 editing may remove it.</p>
+<p><code>AddTableListImageAsImageWebPart</code> is ignored. <code>HandleWikiImagesAndVideos</code> controls only
+iframe/video placement. Standalone Image web parts and script/embed CEWPs are unchanged.</p>
+<p>Verify image placement and links after editing and saving the migrated page.</p>
 <h2 id="i-dont-have-access-to-a-microsoft-365-tenant">I don't have access to a Microsoft 365 tenant</h2>
 <p>If you don't have a Microsoft 365 tenant you can, for developer purposes, always request <a href="https://developer.microsoft.com/en-us/microsoft-365/dev-program">a free developer tenant</a> and use that for developing and testing your applications.</p>
 <blockquote>

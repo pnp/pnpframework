@@ -2466,7 +2466,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Functions.BuiltIn.html",
-          "hash": "rnGQxIx/IFxNGmXh/Es4jq7hZb9Aw1pirL+QLqyGL5o="
+          "hash": "uug7yvi6vB5v890K9+6FMsOL+bahzeJAbRbtRxuZ6cE="
         }
       },
       "is_incremental": false,
@@ -3390,7 +3390,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Transform.BasePageTransformator.html",
-          "hash": "ClStyh1otlrandYYqRXa2ORKJ7r+w28FzlEKyilJrTA="
+          "hash": "yNQcKqWO/kU9sywwxHhhQ77apbBGOf0tJb55QHmD7Sc="
         }
       },
       "is_incremental": false,
@@ -3414,7 +3414,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Transform.BaseTransformationInformation.html",
-          "hash": "Hq82TMoLnndDwkSTml8oKbSeEeYzBknHozrTjp76frU="
+          "hash": "EvljNDsNnHzloVz6paNx9clSwSnVeaE7+njvxLPgXOo="
         }
       },
       "is_incremental": false,
@@ -3546,7 +3546,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Transform.ContentTransformator.html",
-          "hash": "zH/5+E7dA6PBztWDlyeoa5xefYYVDOg1hLXL40qYZq4="
+          "hash": "8mIi1veGoakaqSMXTaLoitgoTX5ecUjF0jgIXehJL5w="
         }
       },
       "is_incremental": false,
@@ -4122,7 +4122,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Transform.WikiHtmlTransformator.html",
-          "hash": "3MZZ3A4Op6FY6CA6gxoViL2WcKxRQdxv4uxaYQmY3L0="
+          "hash": "uDWxYucPAyEskqNQjtWUR78ErLJ9RI6FS8oX/2crmaQ="
         }
       },
       "is_incremental": false,
@@ -23076,7 +23076,7 @@
       "output": {
         ".html": {
           "relative_path": "using-the-framework/readme.html",
-          "hash": "FlS3YygI0oJQ40lIolrvWPhXM2ccUk89u1IxY7/SwIA="
+          "hash": "nJwsX5CAU9XYr8SzM8Wd13K7vvRT8eXDtbqi/zOZk20="
         }
       },
       "is_incremental": false,

@@ -14,6 +14,29 @@ Pnp Framework includes a range of capabilities that simplify development for Mic
 - Helper classes and extension methods to make it easier to perform standard operations
 - Incorporates the PnP Core SDK
 
+## Images in modernized rich text
+
+Modernization converts images in wiki content, publishing rich-text fields, and
+non-script Content Editor Web Part (CEWP) HTML (embedded or linked) to CK5 inline
+images. Images stay in text controls, including tables and lists, without image-driven
+splitting or duplicate Image web parts. Links, alt text, and supported sizing are
+preserved; HTML may be normalized. CK4 targets are unsupported.
+
+After the target page is saved, external HTTPS images are imported through
+SharePoint's `AddImageFromExternalUrl` service into its page-owned asset folder.
+Repeated transformations reuse existing assets for the same complete external URL
+(including query parameters), even across processes, without re-downloading or
+refreshing them. Tenant restrictions apply; recognized stock-image URLs remain external.
+
+External import or conversion failures retain the URL in a **native CK5 image** with a warning.
+These fallbacks depend on external access and browser policies, and lack SharePoint
+file-backed features. Unsupported URLs and internal-image conversion failures retain
+raw image HTML with a warning; CK5 editing may remove it.
+
+`AddTableListImageAsImageWebPart` is ignored. `HandleWikiImagesAndVideos` controls only
+iframe/video placement. Standalone Image web parts and script/embed CEWPs are unchanged.
+
+Verify image placement and links after editing and saving the migrated page.
 
 ## I don't have access to a Microsoft 365 tenant
 
@@ -62,4 +85,3 @@ The PnP Framework is maintained in the PnP GitHub repository: https://github.com
 - The source of the documentation you are reading right now in the `docs` folder
 
 <img src="https://m365-visitor-stats.azurewebsites.net/pnpframework/docs/using-the-framework" aria-hidden="true" />
-

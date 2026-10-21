@@ -21,8 +21,10 @@ namespace PnP.Framework.Modernization.Publishing
     public class PublishingPageTransformator : BasePageTransformator
     {
         private PublishingPageTransformation publishingPageTransformation;
+        private PublishingPageTransformation enterpriseWikiPublishingPageTransformation;
         private PageLayoutManager pageLayoutManager;
         private string publishingPagesLibraryName = null;
+        private readonly EnterpriseWikiPagePreparation enterpriseWikiPreparation = new EnterpriseWikiPagePreparation();
 
         #region Construction
         public PublishingPageTransformator(ClientContext sourceClientContext, ClientContext targetClientContext) : this(sourceClientContext, targetClientContext, "webpartmapping.xml", null)
@@ -61,6 +63,7 @@ namespace PnP.Framework.Modernization.Publishing
 
             // Load the page layout mapping data            
             this.publishingPageTransformation = this.pageLayoutManager.LoadDefaultPageLayoutMappingFile();
+            this.enterpriseWikiPublishingPageTransformation = this.pageLayoutManager.LoadDefaultPageLayoutMappingFile(true);
 
             if (!string.IsNullOrEmpty(publishingPageTransformationFile))
             {
@@ -69,6 +72,7 @@ namespace PnP.Framework.Modernization.Publishing
 
                 // Merge these custom layout mappings with the default ones
                 this.publishingPageTransformation = this.pageLayoutManager.MergePageLayoutMappingFiles(this.publishingPageTransformation, customPublishingPageTransformation);
+                this.enterpriseWikiPublishingPageTransformation = this.pageLayoutManager.MergePageLayoutMappingFiles(this.enterpriseWikiPublishingPageTransformation, customPublishingPageTransformation);
             }
         }
 
@@ -89,11 +93,13 @@ namespace PnP.Framework.Modernization.Publishing
 
             // Load the page layout mapping data            
             this.publishingPageTransformation = this.pageLayoutManager.LoadDefaultPageLayoutMappingFile();
+            this.enterpriseWikiPublishingPageTransformation = this.pageLayoutManager.LoadDefaultPageLayoutMappingFile(true);
 
             // Merge these custom layout mappings with the default ones
             if (customPublishingPageTransformationModel != null)
             {
                 this.publishingPageTransformation = this.pageLayoutManager.MergePageLayoutMappingFiles(this.publishingPageTransformation, customPublishingPageTransformationModel);
+                this.enterpriseWikiPublishingPageTransformation = this.pageLayoutManager.MergePageLayoutMappingFiles(this.enterpriseWikiPublishingPageTransformation, customPublishingPageTransformationModel);
             }
         }
 
@@ -222,6 +228,19 @@ namespace PnP.Framework.Modernization.Publishing
 
                 var sameSiteCollection = sourceClientContext.Site.Id.Equals(targetClientContext.Site.Id);
                 var sourceWebId = sameSiteCollection ? sourceClientContext.Web.EnsureProperty(p => p.Id) : Guid.Empty;
+                // Reject unsupported destinations before preparation can change their schema.
+                var targetBeforePreparation = PublishingPageTransformationValidator.ValidateTarget(
+                    sourceClientContext.Site.Id, targetClientContext.Site.Id, sourceWebId, targetClientContext.Web.Id, true);
+                EnsureTransformationTargetAllowed(targetBeforePreparation);
+                if (targetBeforePreparation == PublishingPageTransformationTarget.CrossSiteCollection &&
+                    targetClientContext.Web.WebTemplate != "SITEPAGEPUBLISHING" && targetClientContext.Web.WebTemplate != "STS" &&
+                    targetClientContext.Web.WebTemplate != "GROUP" && targetClientContext.Web.WebTemplate != "BDR" && targetClientContext.Web.WebTemplate != "DEV")
+                {
+                    LogError(LogStrings.Error_CrossSiteTransferTargetsNonModernSite);
+                    throw new ArgumentException(LogStrings.Error_CrossSiteTransferTargetsNonModernSite, LogStrings.Heading_SharePointConnection);
+                }
+
+                EnsureEnterpriseWikiCapabilities(publishingPageTransformationInformation);
                 var hasWritableSitePages = false;
 
                 if (sameSiteCollection && sourceWebId.Equals(targetClientContext.Web.Id))
@@ -245,16 +264,6 @@ namespace PnP.Framework.Modernization.Publishing
                 }
 
                 LogInfo($"{targetClientContext.Web.GetUrl()}", LogStrings.Heading_Summary, LogEntrySignificance.TargetSiteUrl);
-
-                // Need to add further validation for target template
-                if (transformationTarget == PublishingPageTransformationTarget.CrossSiteCollection &&
-                    targetClientContext.Web.WebTemplate != "SITEPAGEPUBLISHING" && targetClientContext.Web.WebTemplate != "STS" &&
-                    targetClientContext.Web.WebTemplate != "GROUP" && targetClientContext.Web.WebTemplate != "BDR" && targetClientContext.Web.WebTemplate != "DEV")
-                {
-
-                    LogError(LogStrings.Error_CrossSiteTransferTargetsNonModernSite);
-                    throw new ArgumentException(LogStrings.Error_CrossSiteTransferTargetsNonModernSite, LogStrings.Heading_SharePointConnection);
-                }
 
                 // Ensure PostAsNews is used together with PagePublishing
                 if (publishingPageTransformationInformation.PostAsNews && !publishingPageTransformationInformation.PublishCreatedPage)
@@ -407,15 +416,17 @@ namespace PnP.Framework.Modernization.Publishing
                 LogInfo($"{LogStrings.TransformSourcePageIsPublishingPage} - {LogStrings.TransformSourcePageAnalysing}", LogStrings.Heading_ArticlePageHandling);
 
                 // Grab the pagelayout mapping to use:
-                var pageLayoutMappingModel = new PageLayoutManager(this.RegisteredLogObservers).GetPageLayoutMappingModel(this.publishingPageTransformation, publishingPageTransformationInformation.SourcePage);
+                var publishingModel = GetPublishingModel(publishingPageTransformationInformation);
+                var pageLayoutMappingModel = new PageLayoutManager(this.RegisteredLogObservers).GetPageLayoutMappingModel(publishingModel, publishingPageTransformationInformation.SourcePage);
+                var enterpriseWikiRatings = PrepareEnterpriseWikiRatings(publishingPageTransformationInformation, pageLayoutMappingModel, sameSiteCollection);
                
                 if (spVersion == SPVersion.SP2010 || spVersion == SPVersion.SP2013Legacy || spVersion == SPVersion.SP2016Legacy)
                 {
-                    pageData = new PublishingPageOnPremises(publishingPageTransformationInformation.SourcePage, pageTransformation, this.publishingPageTransformation, publishingPageTransformationInformation as BaseTransformationInformation, targetContext: targetClientContext, logObservers: base.RegisteredLogObservers).Analyze(pageLayoutMappingModel);
+                    pageData = new PublishingPageOnPremises(publishingPageTransformationInformation.SourcePage, pageTransformation, publishingModel, publishingPageTransformationInformation as BaseTransformationInformation, targetContext: targetClientContext, logObservers: base.RegisteredLogObservers).Analyze(pageLayoutMappingModel);
                 }
                 else
                 {
-                    pageData = new PublishingPage(publishingPageTransformationInformation.SourcePage, pageTransformation, this.publishingPageTransformation, publishingPageTransformationInformation as BaseTransformationInformation, targetContext: targetClientContext, logObservers: base.RegisteredLogObservers).Analyze(pageLayoutMappingModel);
+                    pageData = new PublishingPage(publishingPageTransformationInformation.SourcePage, pageTransformation, publishingModel, publishingPageTransformationInformation as BaseTransformationInformation, targetContext: targetClientContext, logObservers: base.RegisteredLogObservers).Analyze(pageLayoutMappingModel);
                 }
 
 
@@ -512,7 +523,7 @@ namespace PnP.Framework.Modernization.Publishing
 #if DEBUG && MEASURE
                 Start();
 #endif
-                PublishingPageHeaderTransformator headerTransformator = new PublishingPageHeaderTransformator(publishingPageTransformationInformation, sourceClientContext, targetClientContext, this.publishingPageTransformation, base.RegisteredLogObservers);
+                PublishingPageHeaderTransformator headerTransformator = new PublishingPageHeaderTransformator(publishingPageTransformationInformation, sourceClientContext, targetClientContext, publishingModel, base.RegisteredLogObservers);
                 headerTransformator.TransformHeader(ref targetPage);
 
 #if DEBUG && MEASURE
@@ -532,6 +543,11 @@ namespace PnP.Framework.Modernization.Publishing
                 #endregion
 
                 #region Page persisting + permissions
+
+                if (publishingPageTransformationInformation.ShouldIncludeEnterpriseWikiSidebar)
+                {
+                    EnterpriseWikiSidebar.Ensure(targetPage);
+                }
 
                 #region Save the page
 #if DEBUG && MEASURE
@@ -560,9 +576,10 @@ namespace PnP.Framework.Modernization.Publishing
                 #region Page metadata handling
                 PublishingMetadataTransformator publishingMetadataTransformator = 
                     new PublishingMetadataTransformator(publishingPageTransformationInformation, sourceClientContext, targetClientContext, savedTargetPage, targetPage, 
-                        pageLayoutMappingModel, this.publishingPageTransformation, this.userTransformator, base.RegisteredLogObservers);
+                        pageLayoutMappingModel, publishingModel, this.userTransformator, base.RegisteredLogObservers);
 
                 publishingMetadataTransformator.Transform();
+                enterpriseWikiRatings?.CopyTo(savedTargetPage.ListItemAllFields);
                 #endregion
 
                 #region Permission handling
@@ -707,6 +724,88 @@ namespace PnP.Framework.Modernization.Publishing
         }
 
         #region Helper methods
+        internal PublishingPageTransformation GetPublishingModel(PublishingPageTransformationInformation information)
+        {
+            return information.EnableEnterpriseWikiCapabilities ? enterpriseWikiPublishingPageTransformation : publishingPageTransformation;
+        }
+
+        private void EnsureEnterpriseWikiCapabilities(PublishingPageTransformationInformation information)
+        {
+            information.IsEnterpriseWikiPage = false;
+            if (!information.EnableEnterpriseWikiCapabilities)
+            {
+                return;
+            }
+            string contentTypeId;
+            if (information.SourcePage.FieldValues.TryGetValue(Constants.ContentTypeIdField, out var contentTypeValue) &&
+                contentTypeValue != null)
+            {
+                contentTypeId = contentTypeValue.ToString();
+            }
+            else
+            {
+                var contentType = information.SourcePage.EnsureProperty(p => p.ContentType);
+                contentTypeId = contentType.EnsureProperty(c => c.Id).StringValue;
+            }
+            var isEnterpriseWikiPage = EnterpriseWikiPagePreparation.IsEnterpriseWikiPage(
+                contentTypeId, information.SourcePage.PageLayoutFile());
+            information.IsEnterpriseWikiPage = isEnterpriseWikiPage;
+
+            try
+            {
+                enterpriseWikiPreparation.EnsureReady(
+                    targetClientContext.Site.Id, targetClientContext.Web.Id, targetClientContext.Web.WebTemplate,
+                    isEnterpriseWikiPage, information.EnableEnterpriseWikiCapabilities, () =>
+                    {
+                        LogInfo($"Preparing destination web '{targetClientContext.Url}'.", LogStrings.Heading_EnterpriseWikiPreparation);
+                        EnterpriseWikiPagePreparation.Prepare(targetClientContext);
+                        LogInfo("Enterprise Wiki SitePages prerequisites verified.", LogStrings.Heading_EnterpriseWikiPreparation);
+                    });
+            }
+            catch (Exception ex)
+            {
+                LogError($"Enterprise Wiki preparation failed for '{targetClientContext.Url}'.",
+                    LogStrings.Heading_EnterpriseWikiPreparation, ex);
+                throw;
+            }
+        }
+
+        private EnterpriseWikiRatings PrepareEnterpriseWikiRatings(PublishingPageTransformationInformation information, PageLayout layout, bool sameSiteCollection)
+        {
+            if (!information.EnableEnterpriseWikiCapabilities || !information.IsEnterpriseWikiPage || !EnterpriseWikiRatings.UsesSameNameMapping(layout))
+            {
+                return null;
+            }
+            var ratings = EnterpriseWikiRatings.Read(information.SourcePage);
+            if (sameSiteCollection || ratings.Count == 0)
+            {
+                return ratings;
+            }
+            using (var sourceContext = sourceClientContext.Clone(sourceClientContext.Url))
+            {
+                var users = ratings.Voters.ToDictionary(v => v.LookupId, v => sourceContext.Web.SiteUsers.GetById(v.LookupId));
+                foreach (var user in users.Values)
+                {
+                    sourceContext.Load(user, u => u.LoginName);
+                }
+                sourceContext.ExecuteQueryRetry();
+                return ratings.MapVoters(voter =>
+                {
+                    var principal = userTransformator.RemapPrincipal(users[voter.LookupId].LoginName);
+                    if (string.IsNullOrEmpty(principal))
+                    {
+                        throw new InvalidOperationException("An Enterprise Wiki voter could not be mapped to the destination.");
+                    }
+                    var user = CacheManager.Instance.GetEnsuredUser(targetClientContext, principal);
+                    if (user == null)
+                    {
+                        throw new InvalidOperationException("An Enterprise Wiki voter could not be resolved on the destination.");
+                    }
+                    return new FieldUserValue { LookupId = user.Id };
+                });
+            }
+        }
+
         /// <summary>
         /// Production seam that keeps the collision probe and the first target-page operation in one fail-closed flow.
         /// </summary>

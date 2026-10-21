@@ -62,6 +62,7 @@
         public const string Heading_SwappingPages = "Swapping Pages";
         public const string Heading_GetPrincipal = "Get Principal";
         public const string Heading_TermMapping = "Term Mapping";
+        public const string Heading_EnterpriseWikiPreparation = "Preparing Enterprise Wiki capabilities";
 
         #endregion
 

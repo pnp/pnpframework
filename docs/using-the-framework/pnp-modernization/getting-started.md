@@ -2,7 +2,7 @@
 
 The PnP Page Transformation tooling is a set of tools and libraries that enable the transformation of classic SharePoint pages to modern client-side pages. 
 
-The transformation process involves analyzing the structure and content of classic pages, and then generating modern client-side pages that replicate the structure and content of the classic pages. This does not include the configuration of the SharePoint Sites or lists, only the page contents.
+The transformation process involves analyzing the structure and content of classic pages, and then generating modern client-side pages that replicate the structure and content of the classic pages. In general, site and list configuration must be prepared separately. Enterprise Wiki publishing-page transformation also prepares the destination prerequisites described below.
 
 Master pages and page layouts are not converted but they are mapped to their closest equivalent in the modern page model.
 
@@ -62,6 +62,10 @@ using (var targetClientContext = GetClientContext("https://<tenant>.sharepoint.c
 ```
 
 
-> Working on it... more to come.
+## Enterprise Wiki pages
+
+Set `EnableEnterpriseWikiCapabilities = true` to prepare SitePages using existing category/rating site columns and copy their values. When false or omitted, all destinations retain legacy transformation behavior and custom mappings, without ESWiki preparation or sidebar insertion. Inconsistent rating history stops migration only with the new grouped rating handling enabled.
+
+When opted in, the sidebar requires destination support for the native modernized-control host. Set `IncludeEnterpriseWikiSidebar = false` where unavailable.
 
 <img src="https://m365-visitor-stats.azurewebsites.net/pnpframework/docs/using-the-framework/pnp-modernization" aria-hidden="true" />

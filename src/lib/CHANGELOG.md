@@ -15,12 +15,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Fixed page transformation failures for missing embedded documents by retaining their original references, returning empty metadata, and logging a warning [#1292](https://github.com/pnp/pnpframework/pull/1292) [YifengMao - Yifeng]
 - Added opt-in in-place publishing page transformation within the same Web via `PublishingPageTransformator.CreateInPlace`, preserving the source publishing page [#1290](https://github.com/pnp/pnpframework/pull/1290) [TaoziZ03 - Tianyi Tao]
 - Fixed page transformation target name normalization, missing-image mapping defaults, and root web metadata loading [#1290](https://github.com/pnp/pnpframework/pull/1290) [TaoziZ03 - Tianyi Tao]
+- Enabled Provisioning of Shared Teams Channels #1128 [singingknight - Per Jakobsen]
 - Updates JSON control data handling for web parts #1277 [magarma - Miguel Angel García Martínez]
 - Fixed template provisioning so there is an option if pages should be extracted as Published or not #1275 [Magnus-K-work - Magnus-K-work]
 - Fixed detection of both unpublished and published news pages in page template extraction. #1270 [Magnus-K-work - Magnus-K-work]
 - Fixed missing ContentTypeId when extracting list and library data from a sub site #1253 [gszdev - gszdev]
 - Fixed FieldRef not exported when hidden in Content‑Type–Enabled list #1249 [wuxiaojun514 - wuxiaojun514]
-- Enabled Provisioning of Shared Teams Channels #1128 [singingknight - Per Jakobsen]
 
 ## [1.21.0]
 

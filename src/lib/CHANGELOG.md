@@ -10,17 +10,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Added built-in `WelcomeTOC.aspx` publishing page layout mapping with ordered image/content fields and top, left, and right web part zones [#1295](https://github.com/pnp/pnpframework/pull/1295) [YifengMao - Yifeng]
+- Added opt-in Enterprise Wiki modernization with compatible category/rating metadata migration via `EnableEnterpriseWikiCapabilities` (default `false`), reusing existing site columns; optional sidebar insertion via `IncludeEnterpriseWikiSidebar` requires destination renderer support [#1293](https://github.com/pnp/pnpframework/pull/1293) [YifengMao - Yifeng]
+- Fixed page transformation failures for missing embedded documents by retaining their original references, returning empty metadata, and logging a warning [#1292](https://github.com/pnp/pnpframework/pull/1292) [YifengMao - Yifeng]
 - Added opt-in in-place publishing page transformation within the same Web via `PublishingPageTransformator.CreateInPlace`, preserving the source publishing page [#1290](https://github.com/pnp/pnpframework/pull/1290) [TaoziZ03 - Tianyi Tao]
 - Fixed page transformation target name normalization, missing-image mapping defaults, and root web metadata loading [#1290](https://github.com/pnp/pnpframework/pull/1290) [TaoziZ03 - Tianyi Tao]
-- Fixed page transformation failures for missing embedded documents by retaining their original references, returning empty metadata, and logging a warning [#1292](https://github.com/pnp/pnpframework/pull/1292) [YifengMao - Yifeng]
-- Added opt-in Enterprise Wiki modernization with compatible category/rating metadata migration via `EnableEnterpriseWikiCapabilities` (default `false`), reusing existing site columns; optional sidebar insertion via `IncludeEnterpriseWikiSidebar` requires destination renderer support [#1293](https://github.com/pnp/pnpframework/pull/1293) [YifengMao - Yifeng]
-- Added built-in `WelcomeTOC.aspx` publishing page layout mapping with ordered image/content fields and top, left, and right web part zones [#1295](https://github.com/pnp/pnpframework/pull/1295) [YifengMao - Yifeng]
-- Enabled Provisioning of Shared Teams Channels #1128 [singingknight - Per Jakobsen]
 - Updates JSON control data handling for web parts #1277 [magarma - Miguel Angel García Martínez]
 - Fixed template provisioning so there is an option if pages should be extracted as Published or not #1275 [Magnus-K-work - Magnus-K-work]
 - Fixed detection of both unpublished and published news pages in page template extraction. #1270 [Magnus-K-work - Magnus-K-work]
 - Fixed missing ContentTypeId when extracting list and library data from a sub site #1253 [gszdev - gszdev]
 - Fixed FieldRef not exported when hidden in Content‑Type–Enabled list #1249 [wuxiaojun514 - wuxiaojun514]
+- Enabled Provisioning of Shared Teams Channels #1128 [singingknight - Per Jakobsen]
 
 ## [1.21.0]
 

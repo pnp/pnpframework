@@ -551,12 +551,9 @@ namespace PnP.Framework.Modernization.Transform
                     {
                         LogInfo(LogStrings.TransformSourcePageIsHomePage, LogStrings.Heading_HomePageHandling);
 
-                        targetPage.LayoutType = PnPCore.PageLayoutType.Home;
-                        if (pageTransformationInformation.ReplaceHomePageWithDefaultHomePage)
+                        replacedByOOBHomePage = ConfigureHomePage(targetPage, pageTransformationInformation.ReplaceHomePageWithDefaultHomePage);
+                        if (replacedByOOBHomePage)
                         {
-                            targetPage.KeepDefaultWebParts = true;
-                            replacedByOOBHomePage = true;
-
                             LogInfo(LogStrings.TransformSourcePageHomePageUsingStock,
                                 LogStrings.Heading_HomePageHandling);
                         }
@@ -581,36 +578,7 @@ namespace PnP.Framework.Modernization.Transform
 #if DEBUG && MEASURE
                 Start();
 #endif
-                    if (pageTransformationInformation.PageHeader == null || (pageTransformationInformation.PageHeader as PnPCore.IPageHeader).Type == PnPCore.PageHeaderType.None)
-                    {
-                        LogInfo(LogStrings.TransformArticleSetHeaderToNone, LogStrings.Heading_ArticlePageHandling);
-
-                        if (pageTransformationInformation.SetAuthorInPageHeader && pageTransformationInformation.SourcePage != null)
-                        {
-                            targetPage.SetDefaultPageHeader();
-                            targetPage.PageHeader.LayoutType = PnPCore.PageHeaderLayoutType.NoImage;
-
-                            LogInfo(LogStrings.TransformArticleSetHeaderToNoneWithAuthor, LogStrings.Heading_ArticlePageHandling);
-                            SetAuthorInPageHeader(context, targetPage);
-                        }
-                        else
-                        {
-                            targetPage.RemovePageHeader();
-                        }
-                    }
-                    else if ((pageTransformationInformation.PageHeader as PnPCore.IPageHeader).Type == PnPCore.PageHeaderType.Default)
-                    {
-                        LogInfo(LogStrings.TransformArticleSetHeaderToDefault, LogStrings.Heading_ArticlePageHandling);
-
-                        targetPage.SetDefaultPageHeader();
-                    }
-                    else if ((pageTransformationInformation.PageHeader as PnPCore.IPageHeader).Type == PnPCore.PageHeaderType.Custom)
-                    {
-                        LogInfo($"{LogStrings.TransformArticleSetHeaderToCustom} " +
-                                $"{LogStrings.TransformArticleHeaderImageUrl} {pageTransformationInformation.PageHeader.ImageServerRelativeUrl} ", LogStrings.Heading_ArticlePageHandling);
-
-                        targetPage.SetCustomPageHeader(pageTransformationInformation.PageHeader.ImageServerRelativeUrl, pageTransformationInformation.PageHeader.TranslateX, pageTransformationInformation.PageHeader.TranslateY);
-                    }
+                    ConfigurePageHeader(pageTransformationInformation, targetPage, context, IsWikiPage(pageType) || IsWebPartPage(pageType));
 #if DEBUG && MEASURE
                 Stop("Target page header");
 #endif
@@ -1190,6 +1158,50 @@ namespace PnP.Framework.Modernization.Transform
         }
 
         #region Helper methods
+        internal static bool ConfigureHomePage(PnPCore.IPage targetPage, bool replaceWithDefault)
+        {
+            // Home layout does not persist a page header. Only stock replacements retain it.
+            targetPage.LayoutType = replaceWithDefault ? PnPCore.PageLayoutType.Home : PnPCore.PageLayoutType.Article;
+            if (replaceWithDefault)
+            {
+                targetPage.KeepDefaultWebParts = true;
+            }
+            return replaceWithDefault;
+        }
+
+        internal void ConfigurePageHeader(PageTransformationInformation information, PnPCore.IPage targetPage,
+            ClientContext context, bool alwaysSetAuthor)
+        {
+            if (information.PageHeader == null || information.PageHeader.Type == PnPCore.PageHeaderType.None)
+            {
+                if (!alwaysSetAuthor && (!information.SetAuthorInPageHeader || information.SourcePage == null))
+                {
+                    targetPage.RemovePageHeader();
+                    return;
+                }
+                targetPage.SetDefaultPageHeader();
+                targetPage.PageHeader.LayoutType = PnPCore.PageHeaderLayoutType.NoImage;
+                LogInfo(LogStrings.TransformArticleSetHeaderToNoneWithAuthor, LogStrings.Heading_ArticlePageHandling);
+
+                var authorUserTransformator = userTransformator ??
+                    new UserTransformator(information, sourceClientContext, context, RegisteredLogObservers);
+                new PageHeaderAuthorTransformator(sourceClientContext, context, authorUserTransformator, RegisteredLogObservers)
+                    .SetSourceAuthor(targetPage.PageHeader, information.SourcePage);
+            }
+            else if (information.PageHeader.Type == PnPCore.PageHeaderType.Default)
+            {
+                LogInfo(LogStrings.TransformArticleSetHeaderToDefault, LogStrings.Heading_ArticlePageHandling);
+                targetPage.SetDefaultPageHeader();
+            }
+            else if (information.PageHeader.Type == PnPCore.PageHeaderType.Custom)
+            {
+                LogInfo($"{LogStrings.TransformArticleSetHeaderToCustom} " +
+                    $"{LogStrings.TransformArticleHeaderImageUrl} {information.PageHeader.ImageServerRelativeUrl} ", LogStrings.Heading_ArticlePageHandling);
+                targetPage.SetCustomPageHeader(information.PageHeader.ImageServerRelativeUrl,
+                    information.PageHeader.TranslateX, information.PageHeader.TranslateY);
+            }
+        }
+
         private void SetPageTitle(PageTransformationInformation pageTransformationInformation, PnPCore.IPage targetPage)
         {
             if (FieldExistsAndIsUsed(pageTransformationInformation, Constants.FileLeafRefField))

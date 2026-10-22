@@ -1,7 +1,6 @@
 ﻿using AngleSharp.Html.Parser;
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
-using Newtonsoft.Json;
 using PnP.Framework.Modernization.Cache;
 using PnP.Framework.Modernization.Entities;
 using PnP.Framework.Modernization.Extensions;
@@ -1346,52 +1345,6 @@ namespace PnP.Framework.Modernization.Transform
         internal void InitializeTermMapping(BaseTransformationInformation baseTransformationInformation)
         {
             this.termTransformator = new TermTransformator(baseTransformationInformation, sourceClientContext, targetClientContext, RegisteredLogObservers);
-        }
-
-        internal void SetAuthorInPageHeader(ClientContext targetContext, PnPCore.IPage targetClientSidePage)
-        {
-            try
-            {
-                string userToResolve = this.userTransformator.RemapPrincipal(this.sourceClientContext, this.SourcePageAuthor);
-
-                var ensuredPageAuthorUser = CacheManager.Instance.GetEnsuredUser(targetContext, userToResolve);
-                if (ensuredPageAuthorUser != null)
-                {
-                    var author = CacheManager.Instance.GetUserFromUserList(targetContext, ensuredPageAuthorUser.Id);
-
-                    if (author != null)
-                    {
-                        if (!author.IsGroup)
-                        {
-                            // Don't serialize null values
-                            var jsonSerializerSettings = new JsonSerializerSettings()
-                            {
-                                MissingMemberHandling = MissingMemberHandling.Ignore,
-                                NullValueHandling = NullValueHandling.Ignore
-                            };
-
-                            var json = JsonConvert.SerializeObject(author, jsonSerializerSettings);
-
-                            if (!string.IsNullOrEmpty(json))
-                            {
-                                targetClientSidePage.PageHeader.Authors = json;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        this.LogWarning(string.Format(LogStrings.Warning_PageHeaderAuthorNotSet, $"Author {this.SourcePageAuthor.LookupValue} could not be resolved."), LogStrings.Heading_ArticlePageHandling);
-                    }
-                }
-                else
-                {
-                    this.LogWarning(string.Format(LogStrings.Warning_PageHeaderAuthorNotSet, $"Author {this.SourcePageAuthor.LookupValue} could not be resolved."), LogStrings.Heading_ArticlePageHandling);
-                }
-            }
-            catch (Exception ex)
-            {
-                this.LogWarning(string.Format(LogStrings.Warning_PageHeaderAuthorNotSet, ex.Message), LogStrings.Heading_ArticlePageHandling);
-            }
         }
 
         internal static string LoadFile(string fileName)

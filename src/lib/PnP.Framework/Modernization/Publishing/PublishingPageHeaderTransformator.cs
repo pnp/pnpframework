@@ -18,6 +18,7 @@ namespace PnP.Framework.Modernization.Publishing
         private PublishingFunctionProcessor functionProcessor;
         private ClientContext sourceClientContext;
         private ClientContext targetClientContext;
+        private readonly PageHeaderAuthorTransformator authorTransformator;
 
         #region Construction
         public PublishingPageHeaderTransformator(PublishingPageTransformationInformation publishingPageTransformationInformation, ClientContext sourceClientContext, ClientContext targetClientContext, PublishingPageTransformation publishingPageTransformation, IList<ILogObserver> logObservers = null)
@@ -36,6 +37,9 @@ namespace PnP.Framework.Modernization.Publishing
             this.sourceClientContext = sourceClientContext;
             this.targetClientContext = targetClientContext;
             this.functionProcessor = new PublishingFunctionProcessor(publishingPageTransformationInformation.SourcePage, sourceClientContext, targetClientContext, this.publishingPageTransformation, publishingPageTransformationInformation as BaseTransformationInformation, base.RegisteredLogObservers);
+            this.authorTransformator = new PageHeaderAuthorTransformator(sourceClientContext, targetClientContext,
+                new UserTransformator(publishingPageTransformationInformation, sourceClientContext, targetClientContext, base.RegisteredLogObservers),
+                base.RegisteredLogObservers);
         }
         #endregion
 
@@ -50,13 +54,12 @@ namespace PnP.Framework.Modernization.Publishing
             var publishingPageTransformationModel = new PageLayoutManager(this.RegisteredLogObservers).GetPageLayoutMappingModel(this.publishingPageTransformation, publishingPageTransformationInformation.SourcePage);
 
             // Configure the page header
-            if (publishingPageTransformationModel.PageHeader == PageLayoutPageHeader.None)
-            {
-                targetPage.RemovePageHeader();
-            }
-            else if (publishingPageTransformationModel.PageHeader == PageLayoutPageHeader.Default)
+            if (publishingPageTransformationModel.PageHeader == PageLayoutPageHeader.None ||
+                publishingPageTransformationModel.PageHeader == PageLayoutPageHeader.Default)
             {
                 targetPage.SetDefaultPageHeader();
+                targetPage.PageHeader.LayoutType = PnPCore.PageHeaderLayoutType.NoImage;
+                authorTransformator.SetSourceAuthor(targetPage.PageHeader, publishingPageTransformationInformation.SourcePage);
             }
             else
             {
@@ -149,7 +152,12 @@ namespace PnP.Framework.Modernization.Publishing
                     var authorsHeader = GetFieldValue(authorsHeaderField, PublishingFunctionProcessor.FieldType.User);
                     if (!string.IsNullOrEmpty(authorsHeader))
                     {
-                        targetPage.PageHeader.Authors = authorsHeader;
+                        authorTransformator.SetMappedAuthors(targetPage.PageHeader, authorsHeader);
+                    }
+                    else
+                    {
+                        LogWarning(string.Format(LogStrings.Warning_PageHeaderAuthorNotSet,
+                            "The configured Authors mapping returned no author."), LogStrings.Heading_PublishingPageHeader);
                     }
                 }
                 

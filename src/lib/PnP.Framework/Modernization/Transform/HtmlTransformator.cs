@@ -333,7 +333,7 @@ namespace PnP.Framework.Modernization.Transform
                         var tableHeaderValue = document.CreateElement("strong");
                         if (normalizedTable.Header[colPos].HasValue)
                         {
-                            tableHeaderValue.TextContent = normalizedTable.Header[colPos].Element.TextContent;
+                            tableHeaderValue.InnerHtml = normalizedTable.Header[colPos].Element.InnerHtml;
                         }
 
                         var tableHeaderCell = document.CreateElement("td");
@@ -1482,8 +1482,7 @@ namespace PnP.Framework.Modernization.Transform
             // An array to hold the header cells (if any)
             IElementCell[] headerCells = new IElementCell[tableDimension.Item1];
 
-            var tableBodyElement = (table as IHtmlTableElement).Bodies[0];
-            var rows = tableBodyElement.Children.Where(p => p.TagName.Equals("tr", StringComparison.InvariantCultureIgnoreCase));
+            var rows = ((IHtmlTableElement)table).Rows;
             if (rows != null && rows.Any())
             {
                 int rowPos = 0;
@@ -1492,7 +1491,7 @@ namespace PnP.Framework.Modernization.Transform
                     // We assume a table header only has TH cells
                     var tableHeaders = row.Children.Where(p => p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
                     var cellsInTableHeader = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase));
-                    if (tableHeaders != null && tableHeaders.Any() && !cellsInTableHeader.Any())
+                    if (tableHeaders != null && tableHeaders.Any() && !cellsInTableHeader.Any() && !headerCells.Any(cell => cell != null))
                     {
                         int colPos = 0;
                         foreach (var tableHeader in tableHeaders)
@@ -1670,8 +1669,7 @@ namespace PnP.Framework.Modernization.Transform
             int maxRows = 0;
             bool hasHeader = false;
 
-            var tableBodyElement = (table as IHtmlTableElement).Bodies[0];
-            var rows = tableBodyElement.Children.Where(p => p.TagName.Equals("tr", StringComparison.InvariantCultureIgnoreCase));
+            var rows = ((IHtmlTableElement)table).Rows;
             if (rows != null && rows.Any())
             {
                 maxRows = rows.Count();

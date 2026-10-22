@@ -43,6 +43,40 @@
         <WebPartZone ZoneIndex="0" ZoneId="RightColumnZone" Row="3" Column="2" />
       </WebPartZones>
     </PageLayout>
+    <!-- WelcomeTOC layout only; web parts retain their individual transformation mappings. -->
+    <PageLayout Name="WelcomeTOC" AssociatedContentType="" PageLayoutTemplate="AutoDetect" PageHeader="Custom">
+      <Header Type="FullWidthImage" Alignment="Left" ShowPublishedDate="false">
+        <Field Name="PublishingRollupImage" HeaderProperty="ImageServerRelativeUrl" Functions="ToImageUrl({PublishingRollupImage})" />
+        <Field Name="ArticleByLine" HeaderProperty="TopicHeader" Functions="" />
+        <Field Name="PublishingContact" HeaderProperty="Authors" Functions="ToAuthors({PublishingContact})" />
+      </Header>
+      <MetaData>
+        <Field Name="Title" TargetFieldName="" Functions="" />
+        <Field Name="Comments" TargetFieldName="" Functions="" />
+        <Field Name="PublishingStartDate" TargetFieldName="" Functions="" />
+        <Field Name="PublishingExpirationDate" TargetFieldName="" Functions="" />
+        <Field Name="PublishingContactEmail" TargetFieldName="" Functions="" />
+        <Field Name="PublishingContactName" TargetFieldName="" Functions="" />
+        <Field Name="PublishingContactPicture" TargetFieldName="" Functions="" />
+        <Field Name="PublishingIsFurlPage" TargetFieldName="" Functions="" />
+      </MetaData>
+      <WebParts>
+        <Field Name="PublishingPageImage" TargetWebPart="SharePointPnP.Modernization.WikiImagePart" Row="1" Column="1" Order="1">
+          <Property Name="ImageUrl" Type="string" Functions="ToImageUrl({PublishingPageImage})" />
+          <Property Name="AlternativeText" Type="string" Functions="ToImageAltText({PublishingPageImage})" />
+          <Property Name="Anchor" Type="string" Functions="ToImageAnchor({PublishingPageImage})" />
+          <Property Name="Caption" Type="string" Functions="EmptyString()" />
+        </Field>
+        <Field Name="PublishingPageContent" TargetWebPart="SharePointPnP.Modernization.WikiTextPart" Row="1" Column="1" Order="2">
+          <Property Name="Text" Type="string" />
+        </Field>
+      </WebParts>
+      <WebPartZones>
+        <WebPartZone ZoneIndex="0" ZoneId="TopColumnZone" Row="2" Column="1" />
+        <WebPartZone ZoneIndex="0" ZoneId="LeftColumnZone" Row="3" Column="1" />
+        <WebPartZone ZoneIndex="0" ZoneId="RightColumnZone" Row="3" Column="2" />
+      </WebPartZones>
+    </PageLayout>
     <!-- ArticleLinks -->
     <PageLayout Name="ArticleLinks" AssociatedContentType="" PageLayoutTemplate="AutoDetect" PageHeader="Custom">
       <Header Type="FullWidthImage" Alignment="Left" ShowPublishedDate="true">

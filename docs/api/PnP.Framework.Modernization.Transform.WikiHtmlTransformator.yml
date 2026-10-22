@@ -136,7 +136,7 @@ items:
   assemblies:
   - PnP.Framework
   namespace: PnP.Framework.Modernization.Transform
-  summary: "\nReplaces embedded images and iframes with respective &quot;fake&quot; image and video web parts. Depending on the \nimage/iframe position in the html the wiki text is broken up in multiple wiki text parts intermixed \nwith image and/or video parts. Later on these web parts will be transformed to client side web parts\n"
+  summary: "\nCreates video parts for iframes, splitting text where possible.\nLeaves images in the text for later processing.\n"
   example: []
   syntax:
     content: public List<WebPartEntity> TransformPlusSplit(List<WebPartEntity> wikiPageWebParts, bool handleWikiImagesAndVideos, bool addTableListImageAsImageWebPart)
@@ -147,12 +147,10 @@ items:
     - id: handleWikiImagesAndVideos
       type: System.Boolean
       description: >-
-        If true images and videos embedded in wiki text will be transformed to actual image/video web parts,
-
-        else they&apos;ll get a placeholder and will be added as separate web parts at the end of the page
+        If true, splits text around eligible iframes; otherwise appends video parts.
     - id: addTableListImageAsImageWebPart
       type: System.Boolean
-      description: When an image lives inside a table (or list) then also add it as a separate image web part
+      description: Retained for API compatibility; ignored.
     return:
       type: System.Collections.Generic.List{PnP.Framework.Modernization.Entities.WebPartEntity}
       description: Updated list of web parts

@@ -276,7 +276,7 @@ namespace PnP.Framework.Modernization.Functions
         [FunctionDocumentation(Description = "Rewrites wiki page html to be compliant with the html supported by the client side text part.",
                                Example = "{CleanedText} = TextCleanup({Text},{UsePlaceHolders})")]
         [InputDocumentation(Name = "{Text}", Description = "Original wiki html content")]
-        [InputDocumentation(Name = "{UsePlaceHolders}", Description = "Parameter indicating if placeholders must be included for unsupported img/iframe elements inside wiki html")]
+        [InputDocumentation(Name = "{UsePlaceHolders}", Description = "Parameter indicating if placeholders must be included for iframe elements. Images are preserved for subsequent CK5 inline conversion.")]
         [OutputDocumentation(Name = "{CleanedText}", Description = "Html compliant with client side text part")]
         public string TextCleanup(string text, string usePlaceHolders)
         {
@@ -285,17 +285,44 @@ namespace PnP.Framework.Modernization.Functions
                 return "";
             }
 
-            // Rewrite url's if needed
-            if (!this.baseTransformationInformation.SkipUrlRewrite)
-            {
-                text = this.urlTransformator.Transform(text);
-            }
-
             bool usePlaceHolder = true;
 
             bool.TryParse(usePlaceHolders, out usePlaceHolder);
 
-            return new HtmlTransformator(base.RegisteredLogObservers).Transform(text, usePlaceHolder);
+            return InlineImageTransformator.PreserveImages(text, html =>
+            {
+                if (!this.baseTransformationInformation.SkipUrlRewrite)
+                {
+                    html = this.urlTransformator.Transform(html);
+                }
+                return new HtmlTransformator(base.RegisteredLogObservers).Transform(html, usePlaceHolder);
+            });
+        }
+
+        internal string TransformInlineImages(string text, bool externalImagesOnly = false, Func<Uri, string> importExternalImage = null)
+        {
+            var sourceUrl = new Uri((sourceClientContext ?? targetClientContext).Url.TrimEnd('/') + "/");
+            if (baseTransformationInformation.SourcePage != null &&
+                baseTransformationInformation.SourcePage.FieldValues.TryGetValue(Constants.FileRefField, out var fileRef) &&
+                fileRef is string pagePath && !string.IsNullOrEmpty(pagePath))
+            {
+                sourceUrl = new Uri(sourceUrl, pagePath);
+            }
+
+            var sourceOrigins = new[]
+            {
+                new Uri((sourceClientContext ?? targetClientContext).Url),
+                new Uri((sourceClientContext ?? targetClientContext).Web.GetUrl())
+            };
+            var targetOrigins = new[] { new Uri(targetClientContext.Url), new Uri(targetClientContext.Web.GetUrl()) };
+            return new InlineImageTransformator(clientSidePage, sourceUrl,
+                image => targetOrigins.Any(origin => origin.Authority.Equals(image.Authority, StringComparison.OrdinalIgnoreCase)) &&
+                         !sourceOrigins.Any(origin => origin.Authority.Equals(image.Authority, StringComparison.OrdinalIgnoreCase))
+                    ? image.AbsolutePath
+                    : ReturnCrossSiteRelativePath(image.AbsolutePath),
+                url => baseTransformationInformation.SkipUrlRewrite ? url : urlTransformator.Transform(url),
+                RegisteredLogObservers, ImageLookup, importExternalImage,
+                sourceOrigins.Concat(targetOrigins)).Transform(text, externalImagesOnly);
         }
 
         /// <summary>

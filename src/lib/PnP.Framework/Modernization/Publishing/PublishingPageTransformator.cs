@@ -430,7 +430,7 @@ namespace PnP.Framework.Modernization.Publishing
                 }
 
 
-                // Wiki content can contain embedded images and videos, which is not supported by the target RTE...split wiki text blocks so the transformator can handle the images and videos as separate web parts
+                // Images stay inline; embedded iframes are handled as separate video web parts.
                 LogInfo(LogStrings.WikiTextContainsImagesVideosReferences, LogStrings.Heading_ArticlePageHandling);
                 pageData = new Tuple<Pages.PageLayout, List<WebPartEntity>>(pageData.Item1, new WikiHtmlTransformator(this.sourceClientContext, this.targetClientContext, targetPage, publishingPageTransformationInformation as BaseTransformationInformation, base.RegisteredLogObservers).TransformPlusSplit(pageData.Item2, publishingPageTransformationInformation.HandleWikiImagesAndVideos, publishingPageTransformationInformation.AddTableListImageAsImageWebPart));
 
@@ -555,7 +555,7 @@ namespace PnP.Framework.Modernization.Publishing
 #endif
                 // Persist the client side page
                 var pageName = $"{publishingPageTransformationInformation.Folder}{publishingPageTransformationInformation.TargetPageName}";
-                targetPage.Save(pageName);
+                SavePage(targetPage, pageName, publishingPageTransformationInformation, context);
                 LogInfo($"{LogStrings.TransformSavedPageInCrossSiteCollection}: {pageName}", LogStrings.Heading_ArticlePageHandling);
 
                 // Load the page list item

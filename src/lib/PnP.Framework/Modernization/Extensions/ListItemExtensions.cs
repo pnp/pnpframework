@@ -1,4 +1,5 @@
-﻿using PnP.Framework.Modernization;
+﻿using PnP.Framework.Extensions;
+using PnP.Framework.Modernization;
 using PnP.Framework.Modernization.Entities;
 using PnP.Framework.Modernization.Pages;
 using PnP.Framework.Modernization.Transform;
@@ -304,6 +305,38 @@ namespace Microsoft.SharePoint.Client
         {
             return item.FieldValues.ContainsKey(fieldName);
         }
+
+        /// <summary>
+        /// Gets the differences between the current field values and the provided new values
+        /// </summary>
+        /// <param name="item">List item to check</param>
+        /// <param name="newValues">Dictionary of field internal names and their new values</param>
+        /// <param name="treatEmptyStringAsNull">Whether to treat empty string as null when comparing values</param>
+        /// <returns>List of field changes that need to be applied</returns>
+        public static List<FieldChange> GetDifferences(this ListItem item, IDictionary<string, object> newValues, bool treatEmptyStringAsNull)
+        {
+            var diffs = new List<FieldChange>();
+
+            foreach (var kvp in newValues)
+            {
+                var name = kvp.Key;
+                var newVal = kvp.Value;
+
+                object currentVal = null;
+                if (item.FieldValues != null && item.FieldValues.TryGetValue(name, out var cv))
+                {
+                    currentVal = cv;
+                }
+
+                if (!ObjectExtensions.ValuesEqual(currentVal, newVal, treatEmptyStringAsNull))
+                {
+                    diffs.Add(new FieldChange(name, newVal, currentVal));
+                }
+            }
+
+            return diffs;
+        }
+
         #endregion
 
     }

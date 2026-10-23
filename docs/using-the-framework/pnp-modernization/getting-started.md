@@ -62,6 +62,12 @@ using (var targetClientContext = GetClientContext("https://<tenant>.sharepoint.c
 ```
 
 
+## Web Part page templates
+
+Standard Web Part page layouts include document workspaces (`defaultdws.aspx`), project sites, Document Centers, and basic pages (`bpstd.aspx`), in addition to the existing team-site and `spstd1.aspx` through `spstd8.aspx` layouts. Document workspace and project-site descriptions are copied as text at transformation time.
+
+Template mapping preserves supported zone placement, not all classic page behavior. Dynamic document-workspace breadcrumbs and arbitrary content outside Web Part zones are not converted.
+
 ## Enterprise Wiki pages
 
 Set `EnableEnterpriseWikiCapabilities = true` to prepare SitePages using existing category/rating site columns and copy their values. When false or omitted, all destinations retain legacy transformation behavior and custom mappings, without ESWiki preparation or sidebar insertion. Inconsistent rating history stops migration only with the new grouped rating handling enabled.

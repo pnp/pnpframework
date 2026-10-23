@@ -97,6 +97,20 @@ namespace PnP.Framework.Modernization.Functions
         }
 
         /// <summary>
+        /// Escapes text for use inside a JSON string without adding surrounding quotes.
+        /// </summary>
+        /// <param name="text">Text to escape</param>
+        /// <returns>JSON string content safe for the subsequent HTML decoding step</returns>
+        [FunctionDocumentation(Description = "Escapes text inside a JSON string without adding surrounding quotes.",
+                               Example = "{EncodedText} = JsonEncode({Text})")]
+        [InputDocumentation(Name = "{Text}", Description = "Text to escape")]
+        [OutputDocumentation(Name = "{EncodedText}", Description = "Escaped JSON string content")]
+        public string JsonEncode(string text)
+        {
+            return System.Web.HttpUtility.JavaScriptStringEncode(text);
+        }
+
+        /// <summary>
         /// Return true
         /// </summary>
         /// <returns>True</returns>

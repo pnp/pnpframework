@@ -62,12 +62,6 @@ using (var targetClientContext = GetClientContext("https://<tenant>.sharepoint.c
 ```
 
 
-## Incomplete summary links
-
-Summary links with a missing, empty, or whitespace-only URL are omitted from Quick Links, with a warning identifying each skipped entry by title. Valid links are still transformed. If no valid links remain, the Quick Links web part has no items and is hidden by its default `hideWebPartWhenEmpty` setting.
-
-Set `pti.MappingProperties["SummaryLinksToQuickLinks"] = "false"` to use the text mapping instead. This retains incomplete entries' titles as non-clickable list items and logs a warning for each entry; valid links and group headings are preserved. Correct the URLs on the classic source page before transforming if the entries should remain clickable.
-
 ## Enterprise Wiki pages
 
 Set `EnableEnterpriseWikiCapabilities = true` to prepare SitePages using existing category/rating site columns and copy their values. When false or omitted, all destinations retain legacy transformation behavior and custom mappings, without ESWiki preparation or sidebar insertion. Inconsistent rating history stops migration only with the new grouped rating handling enabled.

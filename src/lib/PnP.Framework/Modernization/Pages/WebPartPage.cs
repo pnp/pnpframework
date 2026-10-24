@@ -6,6 +6,7 @@ using PnP.Framework.Modernization.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace PnP.Framework.Modernization.Pages
 {
@@ -151,7 +152,27 @@ namespace PnP.Framework.Modernization.Pages
                 LogInfo(LogStrings.AnalysingNoWebPartsFound, LogStrings.Heading_ArticlePageHandling);
             }
 
+            AddTemplateContent(layout, webparts);
             return new Tuple<PageLayout, List<WebPartEntity>>(layout, webparts);
+        }
+
+        internal void AddTemplateContent(PageLayout layout, List<WebPartEntity> webparts)
+        {
+            if (layout != PageLayout.WebPart_DocumentWorkspace && layout != PageLayout.WebPart_ProjectSite)
+            {
+                return;
+            }
+
+            var description = cc.Web.EnsureProperty(w => w.Description);
+            if (!string.IsNullOrWhiteSpace(description))
+            {
+                // These templates render the web description before the Top zone.
+                foreach (var webpart in webparts.Where(w => w.Row == 1 && w.Column == 1))
+                {
+                    webpart.Order++;
+                }
+                webparts.Insert(0, CreateWikiTextPart($"<p>{WebUtility.HtmlEncode(description)}</p>", 1, 1, 0));
+            }
         }
 
         /// <summary>
@@ -294,6 +315,8 @@ namespace PnP.Framework.Modernization.Pages
                         break;
                     }
                 case PageLayout.WebPart_2010_TwoColumnsLeft:
+                case PageLayout.WebPart_DocumentWorkspace:
+                case PageLayout.WebPart_ProjectSite:
                     {
                         if (zoneId.Equals("Left", StringComparison.InvariantCultureIgnoreCase))
                         {
@@ -304,6 +327,11 @@ namespace PnP.Framework.Modernization.Pages
                             return 2;
                         }
                         break;
+                    }
+                case PageLayout.WebPart_DocumentCenter:
+                    {
+                        return zoneId.Equals("Top_Right", StringComparison.InvariantCultureIgnoreCase) ||
+                               zoneId.Equals("Right", StringComparison.InvariantCultureIgnoreCase) ? 2 : 1;
                     }
                 case PageLayout.WebPart_Custom:
                     {
@@ -326,6 +354,13 @@ namespace PnP.Framework.Modernization.Pages
         {
             switch (layout)
             {
+                case PageLayout.WebPart_DocumentWorkspace:
+                case PageLayout.WebPart_ProjectSite:
+                case PageLayout.WebPart_DocumentCenter:
+                    {
+                        return zoneId.Equals("Left", StringComparison.InvariantCultureIgnoreCase) ||
+                               zoneId.Equals("Right", StringComparison.InvariantCultureIgnoreCase) ? 2 : 1;
+                    }
                 case PageLayout.WebPart_HeaderFooterThreeColumns:
                     {
                         if (zoneId.Equals("Header", StringComparison.InvariantCultureIgnoreCase))
@@ -480,10 +515,31 @@ namespace PnP.Framework.Modernization.Pages
         /// <returns>Used layout</returns>
         internal PageLayout GetLayout(PropertyValues pageProperties)
         {
-            if (pageProperties.FieldValues.ContainsKey("vti_setuppath"))
+            return GetLayoutFromSetupPath(pageProperties.FieldValues.TryGetValue("vti_setuppath", out var setupPath) ? setupPath?.ToString() : null);
+        }
+
+        internal static PageLayout GetLayoutFromSetupPath(string setupPath)
+        {
+            if (!string.IsNullOrEmpty(setupPath))
             {
-                var setupPath = pageProperties["vti_setuppath"].ToString();
-                if (!string.IsNullOrEmpty(setupPath))
+                setupPath = "\\" + setupPath.Replace('/', '\\').TrimStart('\\');
+                if (setupPath.EndsWith(@"\SiteTemplates\STS\defaultdws.aspx", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return PageLayout.WebPart_DocumentWorkspace;
+                }
+                else if (setupPath.EndsWith(@"\SiteTemplates\ProjectSite\default.aspx", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return PageLayout.WebPart_ProjectSite;
+                }
+                else if (setupPath.EndsWith(@"\Features\BDR\default.aspx", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return PageLayout.WebPart_DocumentCenter;
+                }
+                else if (setupPath.EndsWith(@"\bpstd.aspx", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return PageLayout.WebPart_FullPageVertical;
+                }
+                else
                 {
                     if (setupPath.IndexOf(@"\STS\doctemp\smartpgs\spstd1.aspx", StringComparison.InvariantCultureIgnoreCase) > -1)
                     {
@@ -517,7 +573,7 @@ namespace PnP.Framework.Modernization.Pages
                     {
                         return PageLayout.WebPart_RightColumnHeaderFooterTopRow3Columns;
                     }
-                    else if (setupPath.Equals(@"SiteTemplates\STS\default.aspx", StringComparison.InvariantCultureIgnoreCase))
+                    else if (setupPath.EndsWith(@"\SiteTemplates\STS\default.aspx", StringComparison.InvariantCultureIgnoreCase))
                     {
                         return PageLayout.WebPart_2010_TwoColumnsLeft;
                     }

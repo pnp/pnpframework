@@ -62,6 +62,20 @@ using (var targetClientContext = GetClientContext("https://<tenant>.sharepoint.c
 ```
 
 
+## Page headers and authors
+
+Wiki and web-part page transformation now creates a no-image header by default and attempts to display the source page's **Created By** user and available job title. `SetAuthorInPageHeader` remains available for compatibility but is ignored: omitted, `true`, and `false` all use this default. This also applies to the switch passed through by `ConvertTo-PnPPage` when it uses this Framework version. Explicit default/custom `PageHeader` configurations supplied through the .NET API retain their existing behavior.
+
+Converted source home pages use **Article** layout because Home layout does not persist a page header. Setting `ReplaceHomePageWithDefaultHomePage = true` (the `-ReplaceHomePageWithDefault` cmdlet option) still keeps the stock modern home-page layout/content and skips normal page conversion and author-header creation.
+
+For publishing pages, layout mappings with `PageHeader="None"` or `PageHeader="Default"` now produce a no-image header using Created By. `PageHeader="Custom"` retains its image/layout settings and Authors mapping (normally `ToAuthors({PublishingContact})`); an empty custom mapping does not fall back to Created By.
+
+Author identities are resolved in the destination site, and the header's display data and person byline are set together for a resolvable single author. Job titles come from the existing User Information List lookup; no profile refresh is performed. Missing authors produce warnings without removing the page title/header. Custom author JSON is preserved, including multi-author payloads; unsupported or unresolved byline identities are reported rather than guessed.
+
+This header attribution is independent of `KeepPageCreationModificationInformation`, which controls preservation of audit fields. Whether a populated job title is visibly rendered depends on the SharePoint client.
+
+**SDK limitation:** with PnP.Core `1.18.58-nightly`, loading a saved no-image header can classify it as `None`. A subsequent SDK `Save` then removes the header and its byline. Initial transformation saves the header correctly, but load/save preservation requires a correction in the PnP Core header parser; it must not be assumed from successful migration alone.
+
 ## Enterprise Wiki pages
 
 Set `EnableEnterpriseWikiCapabilities = true` to prepare SitePages using existing category/rating site columns and copy their values. When false or omitted, all destinations retain legacy transformation behavior and custom mappings, without ESWiki preparation or sidebar insertion. Inconsistent rating history stops migration only with the new grouped rating handling enabled.

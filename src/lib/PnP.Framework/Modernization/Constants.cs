@@ -104,7 +104,7 @@ namespace PnP.Framework.Modernization
         // OOB Publishing Portal page layouts - these layouts are already included in the default mapping file
         public static string[] OobPublishingPageLayouts = new string[] { "ArticleLeft", "ArticleLinks", "ArticleRight", "BlankWebPartPage", "ProjectPage", "WelcomeLinks",
                                                                          "PageFromDocLayout", "WelcomeSplash", "ErrorLayout", "EnterpriseWiki", "CatalogArticle", "CatalogWelcome",
-                                                                         "PageLayoutTemplate", "RedirectPageLayout", "VariationRootPageLayout" };
+                                                                         "PageLayoutTemplate", "RedirectPageLayout", "VariationRootPageLayout", "RollupPage", "CuratedRollupPage" };
 
     }
 }

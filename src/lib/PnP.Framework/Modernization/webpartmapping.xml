@@ -66,8 +66,9 @@ configure the page transformation engine to use the community script editor. You
                in the model you can still use them. Consult the function documentation to understand the output parameters.
           -->
           <Property Name="ImageUrl" Type="string" Functions="{ServerRelativeFileName} = ReturnCrossSiteRelativePath({ImageUrl});ImageLookup({ServerRelativeFileName});{FileName} = ReturnFileName({ImageUrl})"/>
-          <Property Name="AlternativeText" Type="string"/>
-          <Property Name="Anchor" Type="string" Functions="ImageAnchorUrlRewrite({Anchor},{ImageUrl},{ServerRelativeFileName})"/>
+          <Property Name="AlternativeText" Type="string" Functions="JsonEncode({AlternativeText})"/>
+          <Property Name="Caption" Type="string" Functions="JsonEncode({Caption})"/>
+          <Property Name="Anchor" Type="string" Functions="ImageAnchorUrlRewrite({Anchor},{ImageUrl},{ServerRelativeFileName});JsonEncode({Anchor})"/>
         </Properties>
         <Mappings>
           <Mapping Default="true" Name="default">

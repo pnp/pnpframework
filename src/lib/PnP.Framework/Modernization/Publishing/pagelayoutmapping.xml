@@ -89,12 +89,18 @@
         <Field Name="ArticleStartDate" TargetFieldName="" Functions="" />
       </MetaData>
       <WebParts>
+        <Field Name="PublishingPageImage" TargetWebPart="SharePointPnP.Modernization.WikiImagePart" Row="1" Column="1" Order="1">
+          <Property Name="ImageUrl" Type="string" Functions="ToImageUrl({PublishingPageImage})" />
+          <Property Name="AlternativeText" Type="string" Functions="ToImageAltText({PublishingPageImage})" />
+          <Property Name="Anchor" Type="string" Functions="ToImageAnchor({PublishingPageImage})" />
+          <Property Name="Caption" Type="string" Functions="ToImageCaption({PublishingImageCaption})" />
+        </Field>
         <Field Name="SummaryLinks" TargetWebPart="Microsoft.SharePoint.Publishing.WebControls.SummaryLinkWebPart, Microsoft.SharePoint.Publishing, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" Row="1" Column="2">
           <!-- No function specified, means the content of the PublishingPageContent field will be assigned to the value of the first listed web part property -->
           <Property Name="SummaryLinkStore" Type="string" />
           <Property Name="Title" Type="string" Functions="EmptyString()"/>
         </Field>
-        <Field Name="PublishingPageContent" TargetWebPart="SharePointPnP.Modernization.WikiTextPart" Row="1" Column="1">
+        <Field Name="PublishingPageContent" TargetWebPart="SharePointPnP.Modernization.WikiTextPart" Row="1" Column="1" Order="2">
           <!-- No function specified, means the content of the PublishingPageContent field will be assigned to the value of the first listed web part property -->
           <Property Name="Text" Type="string" Functions="" />
         </Field>
@@ -265,6 +271,11 @@
         <Field Name="PublishingContactPicture" TargetFieldName="" Functions="" />
         <Field Name="PublishingIsFurlPage" TargetFieldName="" Functions="" />
       </MetaData>
+      <WebParts>
+        <Field Name="PublishingPageContent" TargetWebPart="SharePointPnP.Modernization.WikiTextPart" Row="1" Column="1">
+          <Property Name="Text" Type="string" />
+        </Field>
+      </WebParts>
     </PageLayout>
     <!-- EnterpriseWiki -->
     <PageLayout Name="EnterpriseWiki" AssociatedContentType="" PageLayoutTemplate="AutoDetect" PageHeader="Custom">
@@ -319,6 +330,63 @@
           <Property Name="Text" Type="string" />
         </Field>
       </WebParts>
+    </PageLayout>
+    <!-- RollupPage -->
+    <PageLayout Name="RollupPage" AssociatedContentType="" PageLayoutTemplate="AutoDetect" PageHeader="Custom">
+      <Header Type="FullWidthImage" Alignment="Left" ShowPublishedDate="false">
+        <Field Name="PublishingRollupImage" HeaderProperty="ImageServerRelativeUrl" Functions="ToImageUrl({PublishingRollupImage})" />
+        <Field Name="ArticleByLine" HeaderProperty="TopicHeader" Functions="" />
+        <Field Name="PublishingContact" HeaderProperty="Authors" Functions="ToAuthors({PublishingContact})" />
+      </Header>
+      <MetaData>
+        <Field Name="Title" TargetFieldName="" Functions="" />
+        <Field Name="Comments" TargetFieldName="" Functions="" />
+        <Field Name="PublishingStartDate" TargetFieldName="" Functions="" />
+        <Field Name="PublishingExpirationDate" TargetFieldName="" Functions="" />
+        <Field Name="PublishingContactEmail" TargetFieldName="" Functions="" />
+        <Field Name="PublishingContactName" TargetFieldName="" Functions="" />
+        <Field Name="PublishingContactPicture" TargetFieldName="" Functions="" />
+        <Field Name="PublishingIsFurlPage" TargetFieldName="" Functions="" />
+      </MetaData>
+      <WebPartZones>
+        <WebPartZone ZoneIndex="0" ZoneId="TopLeft" Row="1" Column="1" />
+        <WebPartZone ZoneIndex="0" ZoneId="TopRight" Row="1" Column="2" />
+        <WebPartZone ZoneIndex="0" ZoneId="Body" Row="2" Column="1" />
+        <WebPartZone ZoneIndex="0" ZoneId="BottomLeft" Row="3" Column="1" />
+        <WebPartZone ZoneIndex="0" ZoneId="BottomCenter" Row="3" Column="2" />
+        <WebPartZone ZoneIndex="0" ZoneId="BottomRight" Row="3" Column="3" />
+      </WebPartZones>
+    </PageLayout>
+    <!-- CuratedRollupPage -->
+    <PageLayout Name="CuratedRollupPage" AssociatedContentType="" PageLayoutTemplate="AutoDetect" PageHeader="Custom">
+      <Header Type="FullWidthImage" Alignment="Left" ShowPublishedDate="false">
+        <Field Name="PublishingRollupImage" HeaderProperty="ImageServerRelativeUrl" Functions="ToImageUrl({PublishingRollupImage})" />
+        <Field Name="ArticleByLine" HeaderProperty="TopicHeader" Functions="" />
+        <Field Name="PublishingContact" HeaderProperty="Authors" Functions="ToAuthors({PublishingContact})" />
+      </Header>
+      <MetaData>
+        <Field Name="Title" TargetFieldName="" Functions="" />
+        <Field Name="Comments" TargetFieldName="" Functions="" />
+        <Field Name="PublishingStartDate" TargetFieldName="" Functions="" />
+        <Field Name="PublishingExpirationDate" TargetFieldName="" Functions="" />
+        <Field Name="PublishingContactEmail" TargetFieldName="" Functions="" />
+        <Field Name="PublishingContactName" TargetFieldName="" Functions="" />
+        <Field Name="PublishingContactPicture" TargetFieldName="" Functions="" />
+        <Field Name="PublishingIsFurlPage" TargetFieldName="" Functions="" />
+      </MetaData>
+      <WebParts>
+        <Field Name="PublishingPageContent" TargetWebPart="SharePointPnP.Modernization.WikiTextPart" Row="3" Column="1">
+          <Property Name="Text" Type="string" />
+        </Field>
+      </WebParts>
+      <WebPartZones>
+        <WebPartZone ZoneIndex="0" ZoneId="TopLeft" Row="1" Column="1" />
+        <WebPartZone ZoneIndex="0" ZoneId="TopRight" Row="1" Column="2" />
+        <WebPartZone ZoneIndex="0" ZoneId="Body" Row="2" Column="1" />
+        <WebPartZone ZoneIndex="0" ZoneId="BottomLeft" Row="4" Column="1" />
+        <WebPartZone ZoneIndex="0" ZoneId="BottomCenter" Row="4" Column="2" />
+        <WebPartZone ZoneIndex="0" ZoneId="BottomRight" Row="4" Column="3" />
+      </WebPartZones>
     </PageLayout>
   </PageLayouts>
 </PublishingPageTransformation>

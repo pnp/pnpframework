@@ -278,6 +278,8 @@
         public const string OverridingQuickLinksDefaults = "Overriding QuickLinks properties via this JSON: {0}";
 
         public const string Warning_OverridingQuickLinksDefaultsFailed = "Overriding QuickLinks properties failed: {0}";
+        public const string Warning_SummaryLinkMissingUrlSkipped = "Summary link '{0}' has a missing, empty or whitespace-only URL and was skipped when creating Quick Links. Correct the source link or use the text mapping to retain its title.";
+        public const string Warning_SummaryLinkMissingUrlAsText = "Summary link '{0}' has a missing, empty or whitespace-only URL. Its title is retained as plain text without a hyperlink.";
 
         public const string Error_ReturnCrossSiteRelativePath = "An error occurred in ReturnCrossSiteRelativePath function";
         public const string Error_DocumentEmbedLookup = "An error occurred in DocumentEmbedLookup function";

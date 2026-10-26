@@ -1414,7 +1414,7 @@ namespace PnP.Framework.Modernization.Functions
                 text = this.urlTransformator.Transform(text);
             }
 
-            var summaryLinksHtmlTransformator = new SummaryLinksHtmlTransformator
+            var summaryLinksHtmlTransformator = new SummaryLinksHtmlTransformator(base.RegisteredLogObservers)
             {
                 WebPartTitle = webPartTitle
             };
@@ -1440,7 +1440,7 @@ namespace PnP.Framework.Modernization.Functions
         {
             Dictionary<string, string> results = new Dictionary<string, string>();
 
-            var links = new SummaryLinksHtmlTransformator().GetLinks(text);
+            var links = new SummaryLinksHtmlTransformator(base.RegisteredLogObservers).GetLinks(text);
 
             if (IsCrossSiteTransfer())
             {

@@ -27793,6 +27793,18 @@ references:
   commentId: F:PnP.Framework.Modernization.Pages.PageLayout.WebPart_Custom
   fullName: PnP.Framework.Modernization.Pages.PageLayout.WebPart_Custom
   nameWithType: PageLayout.WebPart_Custom
+- uid: PnP.Framework.Modernization.Pages.PageLayout.WebPart_DocumentCenter
+  name: WebPart_DocumentCenter
+  href: api/PnP.Framework.Modernization.Pages.PageLayout.html#PnP_Framework_Modernization_Pages_PageLayout_WebPart_DocumentCenter
+  commentId: F:PnP.Framework.Modernization.Pages.PageLayout.WebPart_DocumentCenter
+  fullName: PnP.Framework.Modernization.Pages.PageLayout.WebPart_DocumentCenter
+  nameWithType: PageLayout.WebPart_DocumentCenter
+- uid: PnP.Framework.Modernization.Pages.PageLayout.WebPart_DocumentWorkspace
+  name: WebPart_DocumentWorkspace
+  href: api/PnP.Framework.Modernization.Pages.PageLayout.html#PnP_Framework_Modernization_Pages_PageLayout_WebPart_DocumentWorkspace
+  commentId: F:PnP.Framework.Modernization.Pages.PageLayout.WebPart_DocumentWorkspace
+  fullName: PnP.Framework.Modernization.Pages.PageLayout.WebPart_DocumentWorkspace
+  nameWithType: PageLayout.WebPart_DocumentWorkspace
 - uid: PnP.Framework.Modernization.Pages.PageLayout.WebPart_FullPageVertical
   name: WebPart_FullPageVertical
   href: api/PnP.Framework.Modernization.Pages.PageLayout.html#PnP_Framework_Modernization_Pages_PageLayout_WebPart_FullPageVertical
@@ -27835,6 +27847,12 @@ references:
   commentId: F:PnP.Framework.Modernization.Pages.PageLayout.WebPart_LeftColumnHeaderFooterTopRow3Columns
   fullName: PnP.Framework.Modernization.Pages.PageLayout.WebPart_LeftColumnHeaderFooterTopRow3Columns
   nameWithType: PageLayout.WebPart_LeftColumnHeaderFooterTopRow3Columns
+- uid: PnP.Framework.Modernization.Pages.PageLayout.WebPart_ProjectSite
+  name: WebPart_ProjectSite
+  href: api/PnP.Framework.Modernization.Pages.PageLayout.html#PnP_Framework_Modernization_Pages_PageLayout_WebPart_ProjectSite
+  commentId: F:PnP.Framework.Modernization.Pages.PageLayout.WebPart_ProjectSite
+  fullName: PnP.Framework.Modernization.Pages.PageLayout.WebPart_ProjectSite
+  nameWithType: PageLayout.WebPart_ProjectSite
 - uid: PnP.Framework.Modernization.Pages.PageLayout.WebPart_RightColumnHeaderFooterTopRow3Columns
   name: WebPart_RightColumnHeaderFooterTopRow3Columns
   href: api/PnP.Framework.Modernization.Pages.PageLayout.html#PnP_Framework_Modernization_Pages_PageLayout_WebPart_RightColumnHeaderFooterTopRow3Columns

@@ -127,6 +127,46 @@ namespace PnP.Framework.Modernization.Test.Transform.Functions
             AssertMappingWithLookupResult(webPartType, lookupResult);
         }
 
+        [DataTestMethod]
+        [DataRow("Image \"quote\" & ampersand", "Caption \"quote\" & detail", "https://contoso.sharepoint.com/?value=\"quote\"&next=1")]
+        [DataRow("Path\\image\r\nnext\tline", "Caption\\detail\nnext", "https://contoso.sharepoint.com/")]
+        [DataRow("Literal &quot; entity", "<caption> &amp; entity", "https://contoso.sharepoint.com/?value=&quot;")]
+        [DataRow(null, null, "")]
+        public void WikiImageMappingEscapesTextWithoutChangingJsonValues(string altText, string caption, string anchor)
+        {
+            using (var context = CreateContext(CreateProvider(false, null, false, null)))
+            {
+                var model = BasePageTransformator.LoadDefaultWebPartMapping();
+                var mapping = model.WebParts.Single(part => part.Type == "SharePointPnP.Modernization.WikiImagePart");
+                var data = new PnP.Framework.Modernization.Entities.WebPartEntity
+                {
+                    Properties = new Dictionary<string, string>
+                    {
+                        ["ImageUrl"] = ImageServerRelativeUrl,
+                        ["AlternativeText"] = altText,
+                        ["Caption"] = caption,
+                        ["Anchor"] = anchor,
+                        ["SiteId"] = Guid.Empty.ToString(),
+                        ["WebId"] = Guid.Empty.ToString()
+                    }
+                };
+                var processor = new FunctionProcessor(context, context, null, model,
+                    new PageTransformationInformation(null) { SkipTelemetry = true });
+
+                processor.Process(ref mapping, data);
+                var json = System.Net.WebUtility.HtmlDecode(TokenParser.ReplaceTokens(
+                    mapping.Mappings.Mapping.Single().ClientSideWebPart.Single().JsonControlData, data));
+
+                using (var document = JsonDocument.Parse(json))
+                {
+                    Assert.AreEqual(altText ?? "", document.RootElement.GetProperty("properties").GetProperty("altText").GetString());
+                    var content = document.RootElement.GetProperty("serverProcessedContent");
+                    Assert.AreEqual(caption ?? "", content.GetProperty("searchablePlainTexts").GetProperty("captionText").GetString());
+                    Assert.AreEqual(anchor, content.GetProperty("links").GetProperty("linkUrl").GetString());
+                }
+            }
+        }
+
         private static void AssertMappingWithLookupResult(string webPartType, Dictionary<string, string> lookupResult)
         {
             var mapping = LoadImageJsonControlData(webPartType);

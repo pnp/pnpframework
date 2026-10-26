@@ -32195,6 +32195,18 @@ references:
   commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Warning_SkippedWebPartDueToEmptyInSourcee
   fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_SkippedWebPartDueToEmptyInSourcee
   nameWithType: LogStrings.Warning_SkippedWebPartDueToEmptyInSourcee
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_SummaryLinkMissingUrlAsText
+  name: Warning_SummaryLinkMissingUrlAsText
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Warning_SummaryLinkMissingUrlAsText
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Warning_SummaryLinkMissingUrlAsText
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_SummaryLinkMissingUrlAsText
+  nameWithType: LogStrings.Warning_SummaryLinkMissingUrlAsText
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_SummaryLinkMissingUrlSkipped
+  name: Warning_SummaryLinkMissingUrlSkipped
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Warning_SummaryLinkMissingUrlSkipped
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Warning_SummaryLinkMissingUrlSkipped
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_SummaryLinkMissingUrlSkipped
+  nameWithType: LogStrings.Warning_SummaryLinkMissingUrlSkipped
 - uid: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_TableCouldNotBeNormalized
   name: Warning_TableCouldNotBeNormalized
   href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Warning_TableCouldNotBeNormalized
@@ -37035,6 +37047,15 @@ references:
   commentId: M:PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.#ctor
   fullName: PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.SummaryLinksHtmlTransformator()
   nameWithType: SummaryLinksHtmlTransformator.SummaryLinksHtmlTransformator()
+- uid: PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.#ctor(IList{PnP.Framework.Modernization.Telemetry.ILogObserver})
+  name: SummaryLinksHtmlTransformator(IList<ILogObserver>)
+  href: api/PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.html#PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator__ctor_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__
+  commentId: M:PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.#ctor(IList{PnP.Framework.Modernization.Telemetry.ILogObserver})
+  name.vb: SummaryLinksHtmlTransformator(IList(Of ILogObserver))
+  fullName: PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.SummaryLinksHtmlTransformator(IList<PnP.Framework.Modernization.Telemetry.ILogObserver>)
+  fullName.vb: PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.SummaryLinksHtmlTransformator(IList(Of PnP.Framework.Modernization.Telemetry.ILogObserver))
+  nameWithType: SummaryLinksHtmlTransformator.SummaryLinksHtmlTransformator(IList<ILogObserver>)
+  nameWithType.vb: SummaryLinksHtmlTransformator.SummaryLinksHtmlTransformator(IList(Of ILogObserver))
 - uid: PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.#ctor*
   name: SummaryLinksHtmlTransformator
   href: api/PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.html#PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator__ctor_

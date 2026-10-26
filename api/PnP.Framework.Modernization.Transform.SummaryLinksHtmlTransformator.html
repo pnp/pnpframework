@@ -87,7 +87,7 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator">
                   <div class="contribution-panel mobile-hide pull-right">
-                      <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/SummaryLinksHtmlTransformator.cs/#L11" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
+                      <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/SummaryLinksHtmlTransformator.cs/#L12" title="View Source" class="view-source-lg"><i class="fa fa-code"></i></a>
                       <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc" class="improve-doc-lg"><i class="glyphicon glyphicon-pencil"></i></a>
                   </div>
                       <h1 id="PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator" data-uid="PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator">Class SummaryLinksHtmlTransformator
@@ -99,17 +99,57 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">SummaryLinksHtmlTransformator</span></div>
+    <div class="level1"><a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html">BaseTransform</a></div>
+    <div class="level2"><span class="xref">SummaryLinksHtmlTransformator</span></div>
   </div>
   
   
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_RegisteredLogObservers">BaseTransform.RegisteredLogObservers</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_RegisterObserver_PnP_Framework_Modernization_Telemetry_ILogObserver_">BaseTransform.RegisterObserver(ILogObserver)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_FlushObservers">BaseTransform.FlushObservers()</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_FlushSpecificObserver__1">BaseTransform.FlushSpecificObserver&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogError_System_String_System_String_Exception_System_Boolean_System_Boolean_">BaseTransform.LogError(String, String, Exception, Boolean, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogInfo_System_String_System_String_PnP_Framework_Modernization_Telemetry_LogEntrySignificance_">BaseTransform.LogInfo(String, String, LogEntrySignificance)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogWarning_System_String_System_String_">BaseTransform.LogWarning(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_LogDebug_System_String_System_String_">BaseTransform.LogDebug(String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_Log_PnP_Framework_Modernization_Telemetry_LogEntry_PnP_Framework_Modernization_Telemetry_LogLevel_">BaseTransform.Log(LogEntry, LogLevel)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_SetPageId_System_String_">BaseTransform.SetPageId(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_GetExactVersion_ClientRuntimeContext_">BaseTransform.GetExactVersion(ClientRuntimeContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="PnP.Framework.Modernization.Transform.BaseTransform.html#PnP_Framework_Modernization_Transform_BaseTransform_GetVersion_ClientRuntimeContext_">BaseTransform.GetVersion(ClientRuntimeContext)</a>
+    </div>
+  </div>
   
   <h6><strong>Namespace</strong>: <a class="xref" href="PnP.Framework.Modernization.Transform.html">PnP.Framework.Modernization.Transform</a></h6>
   <h6><strong>Assembly</strong>: PnP.Framework.dll</h6>
   
   <h5 id="PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SummaryLinksHtmlTransformator : object, IHtmlTransformator</code></pre>
+    <pre><code class="lang-csharp hljs">public class SummaryLinksHtmlTransformator : BaseTransform, IHtmlTransformator</code></pre>
   </div>
 
   
@@ -124,7 +164,7 @@
     <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator__ctor.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/SummaryLinksHtmlTransformator.cs/#L20" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/SummaryLinksHtmlTransformator.cs/#L21" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator__ctor_" data-uid="PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.#ctor*"></a>
@@ -153,6 +193,52 @@
   
   
   </div>
+  
+  <span class="small pull-right mobile-hide">
+    <span class="divider"> </span>
+    <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator__ctor_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.%23ctor(IList%7BPnP.Framework.Modernization.Telemetry.ILogObserver%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/SummaryLinksHtmlTransformator.cs/#L29" title="View Source"><i class="fa fa-code"></i></a>
+  </span>
+  
+  <a id="PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator__ctor_" data-uid="PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.#ctor*"></a>
+  
+  <h4 id="PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator__ctor_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" data-uid="PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.#ctor(IList{PnP.Framework.Modernization.Telemetry.ILogObserver})"><a href="#collapsible-PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator__ctor_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="expander" data-toggle="collapse">SummaryLinksHtmlTransformator(IList&lt;ILogObserver&gt;)</a></h4>
+  
+  <div id="collapsible-PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator__ctor_IList_PnP_Framework_Modernization_Telemetry_ILogObserver__" class="collapse in">
+  <div class="markdown level1 summary"><p>Creates a summary links transformator with diagnostic observers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SummaryLinksHtmlTransformator(IList&lt;ILogObserver&gt; logObservers)</code></pre>
+  </div>
+
+  <h5 class="parameters">Parameters</h5>
+  <table>
+    <tr>
+      <td>
+        <span class="pull-right"><span class="xref">IList</span>&lt;<a class="xref" href="PnP.Framework.Modernization.Telemetry.ILogObserver.html">ILogObserver</a>&gt;</span>
+        <span class="parametername">logObservers</span>
+        <p><p>Connected loggers</p>
+</p>
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
   <h3 id="properties">Properties
   </h3>
   
@@ -161,7 +247,7 @@
     <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator_WebPartTitle.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.WebPartTitle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/SummaryLinksHtmlTransformator.cs/#L28" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/SummaryLinksHtmlTransformator.cs/#L45" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator_WebPartTitle_" data-uid="PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.WebPartTitle*"></a>
@@ -206,7 +292,7 @@
     <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator_GetLinks_System_String_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.GetLinks(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/SummaryLinksHtmlTransformator.cs/#L158" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/SummaryLinksHtmlTransformator.cs/#L185" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator_GetLinks_" data-uid="PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.GetLinks*"></a>
@@ -214,7 +300,7 @@
   <h4 id="PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator_GetLinks_System_String_" data-uid="PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.GetLinks(System.String)"><a href="#collapsible-PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator_GetLinks_System_String_" class="expander" data-toggle="collapse">GetLinks(String)</a></h4>
   
   <div id="collapsible-PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator_GetLinks_System_String_" class="collapse in">
-  <div class="markdown level1 summary"><p>Transforms the passed summarylinks html a list of links</p>
+  <div class="markdown level1 summary"><p>Transforms the passed summarylinks html to a list of links, skipping entries without URLs with a warning</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -262,7 +348,7 @@
     <a href="https://github.com/pnp/pnpframework/new/dev/apiSpec/new?filename=PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator_Transform_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.Transform(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" title="Improve this Doc"><i class="fa fa-pencil"></i></a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/SummaryLinksHtmlTransformator.cs/#L47" title="View Source"><i class="fa fa-code"></i></a>
+    <a href="https://github.com/pnp/pnpframework/blob/dev/src/lib/PnP.Framework/Modernization/Transform/SummaryLinksHtmlTransformator.cs/#L64" title="View Source"><i class="fa fa-code"></i></a>
   </span>
   
   <a id="PnP_Framework_Modernization_Transform_SummaryLinksHtmlTransformator_Transform_" data-uid="PnP.Framework.Modernization.Transform.SummaryLinksHtmlTransformator.Transform*"></a>

@@ -26804,6 +26804,19 @@ references:
   isSpec: "True"
   fullName: PnP.Framework.Modernization.Functions.BuiltIn.ImageLookup
   nameWithType: BuiltIn.ImageLookup
+- uid: PnP.Framework.Modernization.Functions.BuiltIn.JsonEncode(System.String)
+  name: JsonEncode(String)
+  href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_JsonEncode_System_String_
+  commentId: M:PnP.Framework.Modernization.Functions.BuiltIn.JsonEncode(System.String)
+  fullName: PnP.Framework.Modernization.Functions.BuiltIn.JsonEncode(System.String)
+  nameWithType: BuiltIn.JsonEncode(String)
+- uid: PnP.Framework.Modernization.Functions.BuiltIn.JsonEncode*
+  name: JsonEncode
+  href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_JsonEncode_
+  commentId: Overload:PnP.Framework.Modernization.Functions.BuiltIn.JsonEncode
+  isSpec: "True"
+  fullName: PnP.Framework.Modernization.Functions.BuiltIn.JsonEncode
+  nameWithType: BuiltIn.JsonEncode
 - uid: PnP.Framework.Modernization.Functions.BuiltIn.ListAddServerRelativeUrl(Guid)
   name: ListAddServerRelativeUrl(Guid)
   href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_ListAddServerRelativeUrl_Guid_

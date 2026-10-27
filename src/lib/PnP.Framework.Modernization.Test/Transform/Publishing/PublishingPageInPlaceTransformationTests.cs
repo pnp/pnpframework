@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 using Microsoft.SharePoint.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PnP.Framework.Modernization.Cache;
@@ -135,6 +136,107 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
             Assert.AreEqual(
                 PublishingPageTransformationTarget.SameWeb,
                 ValidateSameWeb(true));
+        }
+
+        [DataTestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void SitePagesFeaturePreflightRejectsMissingFeatureWithActionableError(bool hasUnrelatedFeature)
+        {
+            var fixture = new SitePagesFeatureFixture();
+            if (hasUnrelatedFeature)
+            {
+                fixture.AddFeature(Guid.Parse("94c94ca6-b32f-4da9-a9e3-1f3d343d7ecb"));
+            }
+
+            using (var context = fixture.CreateContext())
+            {
+                var transformator = CreateTransformator(context, context);
+                var exception = Assert.ThrowsException<InvalidOperationException>(() =>
+                    transformator.EnsureSitePagesFeatureEnabled(PublishingPageTransformationTarget.SameWeb));
+
+                StringAssert.Contains(exception.Message, LogStrings.Error_InPlacePublishingPageSitePagesFeatureNotEnabled);
+                StringAssert.Contains(exception.Message, context.Url);
+                StringAssert.Contains(exception.Message, Modernization.Constants.FeatureId_Web_ModernPage.ToString());
+                StringAssert.Contains(exception.Message, "Manage site features");
+                Assert.AreEqual(1, fixture.RequestCount);
+                Assert.IsFalse(context.HasPendingRequest);
+            }
+        }
+
+        [TestMethod]
+        public void SitePagesFeaturePreflightAcceptsEnabledFeatureWithoutWrites()
+        {
+            var fixture = new SitePagesFeatureFixture();
+            fixture.AddFeature(Modernization.Constants.FeatureId_Web_ModernPage);
+
+            using (var context = fixture.CreateContext())
+            {
+                CreateTransformator(context, context).EnsureSitePagesFeatureEnabled(PublishingPageTransformationTarget.SameWeb);
+
+                Assert.AreEqual(1, fixture.RequestCount);
+                Assert.IsFalse(context.HasPendingRequest);
+            }
+        }
+
+        [DataTestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void SitePagesFeaturePreflightRefreshesAReusedContext(bool initiallyEnabled)
+        {
+            var fixture = new SitePagesFeatureFixture();
+            if (initiallyEnabled)
+            {
+                fixture.AddFeature(Modernization.Constants.FeatureId_Web_ModernPage);
+            }
+
+            using (var context = fixture.CreateContext())
+            {
+                var transformator = CreateTransformator(context, context);
+                Action preflight = () => transformator.EnsureSitePagesFeatureEnabled(PublishingPageTransformationTarget.SameWeb);
+                if (initiallyEnabled)
+                {
+                    preflight();
+                    fixture.Features.Clear();
+                    Assert.ThrowsException<InvalidOperationException>(preflight);
+                }
+                else
+                {
+                    Assert.ThrowsException<InvalidOperationException>(preflight);
+                    fixture.AddFeature(Modernization.Constants.FeatureId_Web_ModernPage);
+                    preflight();
+                }
+
+                Assert.AreEqual(2, fixture.RequestCount);
+            }
+        }
+
+        [TestMethod]
+        public void SitePagesFeaturePreflightDoesNotQueryCrossSiteTargets()
+        {
+            var fixture = new SitePagesFeatureFixture();
+            using (var context = fixture.CreateContext())
+            {
+                CreateTransformator(context, context).EnsureSitePagesFeatureEnabled(PublishingPageTransformationTarget.CrossSiteCollection);
+
+                Assert.AreEqual(0, fixture.RequestCount);
+                Assert.IsFalse(context.HasPendingRequest);
+            }
+        }
+
+        [TestMethod]
+        public void SitePagesFeaturePreflightPreservesQueryFailures()
+        {
+            var fixture = new SitePagesFeatureFixture { FailRequests = true };
+            using (var context = fixture.CreateContext())
+            {
+                var exception = Assert.ThrowsException<ClientRequestException>(() =>
+                    CreateTransformator(context, context).EnsureSitePagesFeatureEnabled(PublishingPageTransformationTarget.SameWeb));
+
+                StringAssert.Contains(exception.Message, "InternalServerError");
+                Assert.IsFalse(exception.ToString().Contains(LogStrings.Error_InPlacePublishingPageSitePagesFeatureNotEnabled));
+                Assert.AreEqual(1, fixture.RequestCount);
+            }
         }
 
         [TestMethod]
@@ -405,9 +507,50 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
             }
         }
 
-        private static ClientContext CreateContext(string webUrl)
+        private sealed class SitePagesFeatureFixture : IMockResponseProvider
         {
-            var responseProvider = new MockEntryResponseProvider();
+            private const string WebUrl = "https://contoso.sharepoint.com/sites/enterprise-wiki";
+            private readonly MockEntryResponseProvider provider = new MockEntryResponseProvider();
+            internal readonly List<object> Features = new List<object>();
+            internal bool FailRequests { get; set; }
+            internal int RequestCount { get; private set; }
+
+            internal void AddFeature(Guid id)
+            {
+                Features.Add(new { _ObjectType_ = "SP.Feature", DefinitionId = $"/Guid({id})/" });
+            }
+
+            internal ClientContext CreateContext()
+            {
+                provider.ResponseEntries.Add(new MockResponseEntry<object>
+                {
+                    Url = WebUrl,
+                    PropertyName = "Features",
+                    ReturnValue = new { _Child_Items_ = Features },
+                });
+                var context = PublishingPageInPlaceTransformationTests.CreateContext(WebUrl, provider);
+                context.WebRequestExecutorFactory = new MockWebRequestExecutorFactory(this);
+                return context;
+            }
+
+            public string GetResponse(string url, string verb, string body)
+            {
+                RequestCount++;
+                var request = XDocument.Parse(body);
+                Assert.IsFalse(request.Descendants().Any(element =>
+                    element.Name.LocalName == "Method" || element.Name.LocalName == "SetProperty"),
+                    "The Site Pages preflight must only read the active feature collection.");
+                if (FailRequests)
+                {
+                    throw new InvalidOperationException("Feature query failed");
+                }
+                return provider.GetResponse(url, verb, body);
+            }
+        }
+
+        private static ClientContext CreateContext(string webUrl, MockEntryResponseProvider responseProvider = null)
+        {
+            responseProvider = responseProvider ?? new MockEntryResponseProvider();
             responseProvider.ResponseEntries.Add(new MockResponseEntry<object>
             {
                 Url = webUrl,

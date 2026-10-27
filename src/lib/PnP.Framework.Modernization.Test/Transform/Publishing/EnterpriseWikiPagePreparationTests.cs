@@ -160,32 +160,109 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
             Assert.AreEqual(0, fixture.WriteCount);
         }
 
-        [TestMethod]
-        public void MissingSitePagesFeatureIsActivatedOnceAndVerified()
+        [DataTestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void MissingSitePagesFeatureFailsBeforeAnyServerWrite(bool hasUnrelatedFeature)
         {
             var fixture = new PreparationFixture();
             fixture.Features.Clear();
-            fixture.ActivateFeature = true;
+            if (hasUnrelatedFeature)
+            {
+                fixture.Features.Add(new
+                {
+                    _ObjectType_ = "SP.Feature",
+                    DefinitionId = "/Guid(94c94ca6-b32f-4da9-a9e3-1f3d343d7ecb)/"
+                });
+            }
             using (var context = fixture.CreateContext())
             {
-                EnterpriseWikiPagePreparation.Prepare(context);
-                EnterpriseWikiPagePreparation.Prepare(context);
+                var exception = Assert.ThrowsException<InvalidOperationException>(() => EnterpriseWikiPagePreparation.Prepare(context));
+                StringAssert.Contains(exception.Message, "Site Pages feature is not enabled");
+                StringAssert.Contains(exception.Message, context.Url);
+                StringAssert.Contains(exception.Message, EnterpriseWikiPagePreparation.SitePagesFeatureId.ToString());
+                StringAssert.Contains(exception.Message, "Manage site features");
             }
-            Assert.AreEqual(1, fixture.WriteCount);
-            Assert.AreEqual(1, fixture.Features.Count);
+            Assert.AreEqual(1, fixture.RequestCount);
+            Assert.AreEqual(0, fixture.WriteCount);
+            Assert.AreEqual(hasUnrelatedFeature ? 1 : 0, fixture.Features.Count);
         }
 
         [TestMethod]
-        public void FeatureActivationFailureStopsPreparation()
+        public void MissingSitePagesFeatureIsRejectedBeforeColumnValidation()
+        {
+            var fixture = new PreparationFixture();
+            fixture.Features.Clear();
+            fixture.SiteFields.Clear();
+            using (var context = fixture.CreateContext())
+            {
+                var exception = Assert.ThrowsException<InvalidOperationException>(() => EnterpriseWikiPagePreparation.Prepare(context));
+                StringAssert.Contains(exception.Message, "Site Pages feature is not enabled");
+            }
+            Assert.AreEqual(1, fixture.RequestCount);
+            Assert.AreEqual(0, fixture.WriteCount);
+        }
+
+        [DataTestMethod]
+        [DataRow("ENTERWIKI", false)]
+        [DataRow("ESWIKI", false)]
+        [DataRow("STS", true)]
+        public void EligibleEnterpriseWikiDestinationsRequireAnEnabledFeature(string template, bool isEnterpriseWikiPage)
         {
             var fixture = new PreparationFixture();
             fixture.Features.Clear();
             using (var context = fixture.CreateContext())
             {
-                Assert.ThrowsException<ClientRequestException>(() => EnterpriseWikiPagePreparation.Prepare(context));
+                var preparation = new EnterpriseWikiPagePreparation();
+                var exception = Assert.ThrowsException<InvalidOperationException>(() =>
+                    preparation.EnsureReady(SiteId, WebId, template, isEnterpriseWikiPage, true,
+                        () => EnterpriseWikiPagePreparation.Prepare(context)));
+                StringAssert.Contains(exception.Message, "Site Pages feature is not enabled");
             }
-            Assert.AreEqual(1, fixture.WriteCount);
-            Assert.AreEqual(0, fixture.Features.Count);
+            Assert.AreEqual(1, fixture.RequestCount);
+            Assert.AreEqual(0, fixture.WriteCount);
+        }
+
+        [DataTestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void PreparationRefreshesFeatureStateOnAReusedContext(bool initiallyEnabled)
+        {
+            var fixture = new PreparationFixture();
+            if (!initiallyEnabled)
+            {
+                fixture.Features.Clear();
+            }
+            using (var context = fixture.CreateContext())
+            {
+                if (initiallyEnabled)
+                {
+                    EnterpriseWikiPagePreparation.Prepare(context);
+                    fixture.Features.Clear();
+                    Assert.ThrowsException<InvalidOperationException>(() => EnterpriseWikiPagePreparation.Prepare(context));
+                }
+                else
+                {
+                    Assert.ThrowsException<InvalidOperationException>(() => EnterpriseWikiPagePreparation.Prepare(context));
+                    fixture.Features.Add(PreparationFixture.FeatureResponse());
+                    EnterpriseWikiPagePreparation.Prepare(context);
+                }
+            }
+            Assert.AreEqual(0, fixture.WriteCount);
+            Assert.AreEqual(initiallyEnabled ? 0 : 1, fixture.Features.Count);
+        }
+
+        [TestMethod]
+        public void FeatureQueryFailureStopsPreparationWithoutServerWrites()
+        {
+            var fixture = new PreparationFixture { FailRequests = true };
+            using (var context = fixture.CreateContext())
+            {
+                var exception = Assert.ThrowsException<ClientRequestException>(() => EnterpriseWikiPagePreparation.Prepare(context));
+                Assert.IsFalse(exception.Message.Contains("Site Pages feature is not enabled"));
+            }
+            Assert.AreEqual(1, fixture.RequestCount);
+            Assert.AreEqual(0, fixture.WriteCount);
         }
 
         [TestMethod]
@@ -210,7 +287,7 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
             internal readonly List<Dictionary<string, object>> SiteFields = new List<Dictionary<string, object>>();
             internal readonly List<Dictionary<string, object>> ListFields = new List<Dictionary<string, object>>();
             internal readonly List<object> Features = new List<object>();
-            internal bool ActivateFeature { get; set; }
+            internal bool FailRequests { get; set; }
             internal bool AddBackingField { get; set; }
             internal int RequestCount { get; private set; }
             internal int WriteCount { get; private set; }
@@ -298,7 +375,7 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
                 provider.ResponseEntries.Add(new MockResponseEntry<object> { Url = WebUrl, Method = "Add", ReturnValue = FeatureResponse() });
             }
 
-            private static object FeatureResponse()
+            internal static object FeatureResponse()
             {
                 return new { _ObjectType_ = "SP.Feature", DefinitionId = $"/Guid({EnterpriseWikiPagePreparation.SitePagesFeatureId})/" };
             }
@@ -316,6 +393,10 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
             public string GetResponse(string url, string verb, string body)
             {
                 RequestCount++;
+                if (FailRequests)
+                {
+                    throw new InvalidOperationException("Feature query failed.");
+                }
                 var request = XElement.Parse(body);
                 var writes = request.Descendants().Where(e =>
                     (e.Name.LocalName == "Method" && e.Parent.Name.LocalName == "Actions") ||
@@ -327,13 +408,7 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
                     var write = writes[0];
                     var parent = request.Descendants().FirstOrDefault(e =>
                         (string)e.Attribute("Id") == (string)write.Attribute("ParentId"));
-                    if (ActivateFeature && writes.Count == 1 && (string)write.Attribute("Name") == "Add" &&
-                        (string)parent?.Attribute("Name") == "Features")
-                    {
-                        StringAssert.Contains(write.ToString(), EnterpriseWikiPagePreparation.SitePagesFeatureId.ToString());
-                        Features.Add(FeatureResponse());
-                    }
-                    else if (AddBackingField && writes.Count == 1 && (string)write.Attribute("Name") == "Add" &&
+                    if (AddBackingField && writes.Count == 1 && (string)write.Attribute("Name") == "Add" &&
                         (string)parent?.Attribute("Name") == "Fields")
                     {
                         var parameter = write.Descendants().Single(e => e.Name.LocalName == "Parameter");

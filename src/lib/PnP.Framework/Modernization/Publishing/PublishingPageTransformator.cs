@@ -154,6 +154,10 @@ namespace PnP.Framework.Modernization.Publishing
         /// </summary>
         /// <param name="publishingPageTransformationInformation">Information about the publishing page to transform</param>
         /// <returns>The path to the created modern page</returns>
+        /// <remarks>
+        /// In-place transformation requires the Site Pages web feature to be enabled before transformation.
+        /// A manually created Web Page Library does not satisfy this prerequisite. The feature is not activated automatically.
+        /// </remarks>
         public string Transform(PublishingPageTransformationInformation publishingPageTransformationInformation)
         {
             SetPageId(Guid.NewGuid().ToString());
@@ -240,6 +244,7 @@ namespace PnP.Framework.Modernization.Publishing
                     throw new ArgumentException(LogStrings.Error_CrossSiteTransferTargetsNonModernSite, LogStrings.Heading_SharePointConnection);
                 }
 
+                EnsureSitePagesFeatureEnabled(targetBeforePreparation);
                 EnsureEnterpriseWikiCapabilities(publishingPageTransformationInformation);
                 var hasWritableSitePages = false;
 
@@ -879,6 +884,27 @@ namespace PnP.Framework.Modernization.Publishing
                 case PublishingPageTransformationTarget.SameWebRequiresWritableSitePages:
                     LogError(LogStrings.Error_InPlacePublishingPageRequiresWritableSitePages, LogStrings.Heading_SharePointConnection);
                     throw new ArgumentException(LogStrings.Error_InPlacePublishingPageRequiresWritableSitePages);
+            }
+        }
+
+        internal void EnsureSitePagesFeatureEnabled(PublishingPageTransformationTarget transformationTarget)
+        {
+            if (transformationTarget != PublishingPageTransformationTarget.SameWeb)
+            {
+                return;
+            }
+
+            // Reload the collection: a reused context must not retain a feature that was deactivated.
+            var features = sourceClientContext.Web.Features;
+            features.ClearObjectData();
+            sourceClientContext.Load(features, collection => collection.Include(feature => feature.DefinitionId));
+            sourceClientContext.ExecuteQueryRetry();
+
+            if (!features.Any(feature => feature.DefinitionId == Constants.FeatureId_Web_ModernPage))
+            {
+                var message = $"{LogStrings.Error_InPlacePublishingPageSitePagesFeatureNotEnabled} Web: {sourceClientContext.Url}; Feature ID: {Constants.FeatureId_Web_ModernPage}.";
+                LogError(message, LogStrings.Heading_SharePointConnection);
+                throw new InvalidOperationException(message);
             }
         }
 

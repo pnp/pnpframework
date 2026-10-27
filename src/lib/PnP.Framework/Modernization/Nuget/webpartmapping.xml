@@ -637,14 +637,14 @@ configure the page transformation engine to use the community script editor. You
           <Property Name="PartImageSmall" Type="string"/>
           <Property Name="PartImageLarge" Type="string"/>
           <Property Name="IsIncludedFilter" Type="bool"/>
-          <Property Name="ContentLink" Type="string" Functions="{ServerRelativeContent} = ReturnServerRelativePath({ContentLink}); {FullPath} = Concatenate({Host}, {ServerRelativeContent});{EncodedContentLink} = HtmlEncodeForJson({FullPath})"/>
+          <Property Name="ContentLink" Type="string"/>
           <Property Name="SourceType" Type="string"/>
         </Properties>
-        <!-- Selector returns WebPage for sourcetype=4, ServerFolderOrFile else -->
+        <!-- Absolute (4) and relative (8) web URLs use Embed; file/folder paths are skipped with a warning. -->
         <Mappings Selector="ContentEmbedSelectorSourceType({SourceType})">
-          <Mapping Name="WebPage" Default="true">
+          <Mapping Name="WebPage" Default="true" Functions="{PageViewerJson} = PageViewerToEmbedProperties({ContentLink})">
             <!-- Web page can be shown using content embed -->
-            <ClientSideWebPart Type="ContentEmbed" Order="10" JsonControlData="&#123;&quot;serverProcessedContent&quot;&#58;&#123;&quot;htmlStrings&quot;&#58;&#123;&#125;,&quot;searchablePlainTexts&quot;&#58;&#123;&quot;captionText&quot;&#58;&quot;&quot;&#125;,&quot;imageSources&quot;&#58;&#123;&#125;,&quot;links&quot;&#58;&#123;&#125;&#125;,&quot;dataVersion&quot;&#58;&quot;1.0&quot;,&quot;properties&quot;&#58;&#123;&quot;embedCode&quot;&#58;&quot;&lt;iframe width=\&quot;100%\&quot; height=\&quot;70%\&quot; src=\&quot;{EncodedContentLink}\&quot; allowfullscreen=\&quot;\&quot;&gt;&lt;/iframe&gt;&quot;,&quot;cachedEmbedCode&quot;&#58;&quot;&lt;iframe width=\&quot;100%\&quot; height=\&quot;70%\&quot; src=\&quot;{EncodedContentLink}\&quot; allowfullscreen=\&quot;\&quot;&gt;&lt;/iframe&gt;&quot;,&quot;shouldScaleWidth&quot;&#58;true,&quot;tempState&quot;&#58;&#123;&#125;&#125;&#125;"/>
+            <ClientSideWebPart Type="ContentEmbed" Order="10" JsonControlData="{PageViewerJson}"/>
           </Mapping>
           <!-- Showing server folder / file did not work anyhow, so no point in mapping it -->
           <Mapping Name="ServerFolderOrFile" Default="false">            
@@ -653,19 +653,21 @@ configure the page transformation engine to use the community script editor. You
       </WebPart>
       <!-- Picture library web part -->
       <WebPart Type="Microsoft.SharePoint.WebPartPages.PictureLibrarySlideshowWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" CrossSiteTransformationSupported="true">
-        <!-- For now transformation only goes cross site if there's a picture library with the same name existing.
-             TODO: since we can't create picture libraries on modern sites update this to copy the found images to a folder in site assets and then update the mapping to have a mapping that adds these images individually -->
+        <!-- Cross-site transformation requires a destination library with the same name.
+             Image Gallery uses dynamic library contents; classic view filtering and random ordering are not preserved. -->
         <Properties>
           <Property Name="LibraryGuid" Type="guid" Functions="{LibraryGuid} = ListCrossSiteCheck({LibraryGuid});"/>
           <Property Name="Layout" Type="string"/>
           <Property Name="Speed" Type="integer"/>
           <Property Name="ShowToolbar" Type="bool"/>
           <Property Name="ViewGuid" Type="guid"/>
+          <Property Name="Mode" Type="string"/>
+          <Property Name="ChromeType" Type="integer"/>
         </Properties>
         <Mappings>
-          <Mapping Default="true" Name="default">
+          <Mapping Default="true" Name="default" Functions="{ImageGalleryJson} = PictureLibrarySlideshowToImageGalleryProperties({LibraryGuid},{Layout},{Speed},{ShowToolbar},{ViewGuid},{Mode},{Title},{ChromeType})">
             <!-- PictureLibrarySlideShow depends on PictureLibrary which cannot be configured in the UI...but this does work with the imagegallery web part -->
-            <ClientSideWebPart Type="ImageGallery" Order="10" JsonControlData="&#123;&quot;serverProcessedContent&quot;&#58;&#123;&quot;htmlStrings&quot;&#58;&#123;&#125;,&quot;searchablePlainTexts&quot;&#58;&#123;&#125;,&quot;imageSources&quot;&#58;&#123;&#125;,&quot;links&quot;&#58;&#123;&#125;,&quot;componentDependencies&quot;&#58;&#123;&quot;layoutComponentId&quot;&#58;&quot;8ac0c53c-e8d0-4e3e-87d0-7449eb0d4027&quot;&#125;&#125;,&quot;dataVersion&quot;&#58;&quot;1.7&quot;,&quot;properties&quot;&#58;&#123;&quot;layout&quot;&#58;1,&quot;carouselSettings&quot;&#58;&#123;&quot;autoplay&quot;&#58;true,&quot;autoplaySpeed&quot;&#58;7,&quot;dots&quot;&#58;false,&quot;lazyLoad&quot;&#58;true,&quot;metadata&quot;&#58;true,&quot;swipe&quot;&#58;true&#125;,&quot;gridSettings&quot;&#58;&#123;&quot;imageSize&quot;&#58;2,&quot;imageCropping&quot;&#58;1,&quot;imageAspectRatio&quot;&#58;1,&quot;lightbox&quot;&#58;false&#125;,&quot;imageSourceType&quot;&#58;2,&quot;isRecursive&quot;&#58;false,&quot;isCdnEnabledForList&quot;&#58;false,&quot;hasDynamicModeEnabled&quot;&#58;true,&quot;maxImagesCount&quot;&#58;10,&quot;images&quot;&#58;[],&quot;listId&quot;&#58;&quot;{LibraryGuid}&quot;&#125;&#125;"/>
+            <ClientSideWebPart Type="ImageGallery" Order="10" JsonControlData="{ImageGalleryJson}"/>
           </Mapping>
         </Mappings>
       </WebPart>

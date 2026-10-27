@@ -64,11 +64,19 @@ namespace PnP.Framework.Modernization.Publishing
         internal static void Prepare(ClientContext context)
         {
             var web = context.Web;
+            web.Features.ClearObjectData();
             context.Load(web, w => w.ServerRelativeUrl);
             context.Load(web.AvailableFields, fields => fields.Include(
                 f => f.Id, f => f.InternalName, f => f.TypeAsString, f => f.SchemaXmlWithResourceTokens));
             context.Load(web.Features, features => features.Include(f => f.DefinitionId));
             context.ExecuteQueryRetry();
+
+            if (!web.Features.Any(f => f.DefinitionId == SitePagesFeatureId))
+            {
+                throw new InvalidOperationException(
+                    $"Enterprise Wiki preparation cannot continue because the Site Pages feature is not enabled on destination web '{context.Url}'. " +
+                    $"Enable Site Pages ({SitePagesFeatureId}) under Site Settings > Manage site features, then retry.");
+            }
 
             var category = web.AvailableFields.FirstOrDefault(
                 f => string.Equals(f.InternalName, CategoryFieldName, StringComparison.OrdinalIgnoreCase));
@@ -86,7 +94,7 @@ namespace PnP.Framework.Modernization.Publishing
                 throw new InvalidOperationException($"The category site column requires its native hidden Note backing field '{textFieldId}'.");
             }
 
-            // Preflight every definition before activating features or adding any list columns.
+            // Preflight every definition before adding any list columns.
             var requiredFields = new List<Field> { backingField };
             foreach (var definition in RatingFields)
             {
@@ -114,19 +122,6 @@ namespace PnP.Framework.Modernization.Publishing
 
             try
             {
-                if (!web.Features.Any(f => f.DefinitionId == SitePagesFeatureId))
-                {
-                    // Direct CSOM preserves activation failures instead of treating them as success.
-                    web.Features.Add(SitePagesFeatureId, false, FeatureDefinitionScope.Farm);
-                    context.ExecuteQueryRetry();
-                    context.Load(web.Features, features => features.Include(f => f.DefinitionId));
-                    context.ExecuteQueryRetry();
-                    if (!web.Features.Any(f => f.DefinitionId == SitePagesFeatureId))
-                    {
-                        throw new InvalidOperationException("The destination SitePages feature was not activated.");
-                    }
-                }
-
                 library = web.GetList(libraryUrl);
                 LoadLibrary(context, library);
                 ValidateExistingFields(library, requiredFields);

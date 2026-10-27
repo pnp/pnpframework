@@ -3114,7 +3114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Publishing.PublishingPageTransformationInformation.html",
-          "hash": "4n3CbCHRjkJVkVNSiLpPae3Bc0PtRcWqFQDamYXTR18="
+          "hash": "8K8n9fbMc/unPnpElSAE1Fhp1pMWydcLPNedrGwHbE8="
         }
       },
       "is_incremental": false,
@@ -3126,7 +3126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Publishing.PublishingPageTransformator.html",
-          "hash": "DunUiD6iWPqbuSEJPyGUqvoSS+uBNiueYAWqdD/MYoQ="
+          "hash": "3wi4+CO57RFpeQc+nobOHP/iZX5c37A9gU9Ow6GRwQM="
         }
       },
       "is_incremental": false,
@@ -3294,7 +3294,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Telemetry.LogStrings.html",
-          "hash": "CxvcHE4vpLTQ8Oe6JcdiWaYejKhrQgt/YyjaqZxzIWg="
+          "hash": "shoxwYzV8gRSieyt7xYzma2xFfsJUs53hYaO8NMdBl0="
         }
       },
       "is_incremental": false,

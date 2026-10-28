@@ -682,6 +682,30 @@ namespace PnP.Framework.Modernization.Functions
 
         #endregion
 
+        #region Site Feed functions
+        /// <summary>
+        /// Uses the native Site Feed in the source web, or a text placeholder when moving to another web.
+        /// </summary>
+        /// <param name="title">Title of the source web part</param>
+        /// <returns>The mapping to use for the Site Feed</returns>
+        [SelectorDocumentation(Description = "Uses the native Site Feed for same-web transformation. Cross-site transformation logs a warning and retains a text placeholder without migrating feed posts.",
+                               Example = "SiteFeedSelector({Title})")]
+        [InputDocumentation(Name = "{Title}", Description = "Title of the source web part")]
+        [OutputDocumentation(Name = "InPlace", Description = "Reuse the source web's feed through the native Site Feed")]
+        [OutputDocumentation(Name = "CrossSite", Description = "Retain a text placeholder because feed posts are not migrated")]
+        public string SiteFeedSelector(string title)
+        {
+            if (IsCrossSiteTransfer())
+            {
+                LogWarning(string.Format(LogStrings.Warning_SiteFeedCrossSite, title, this.sourceClientContext.Web.GetUrl()),
+                    LogStrings.Heading_BuiltInFunctions);
+                return "CrossSite";
+            }
+
+            return "InPlace";
+        }
+        #endregion
+
         #region Image functions
         /// <summary>
         /// Does return image properties based on given server relative image path

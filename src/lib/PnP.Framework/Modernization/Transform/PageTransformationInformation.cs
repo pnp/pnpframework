@@ -84,12 +84,14 @@ namespace PnP.Framework.Modernization.Transform
         public bool CopyPageMetadata { get; set; }
 
         /// <summary>
-        /// Configuration of the page header to apply
+        /// Configuration of the page header to apply. For wiki and web part pages, Null or None creates a no-image
+        /// header and attempts to display the source author.
         /// </summary>
         public PnPCore.IPageHeader PageHeader { get; set; }
 
         /// <summary>
-        /// Sets the page author in the page header similar to the original page author
+        /// Retained for compatibility; ignored for wiki and web part pages, whose default no-image header always attempts
+        /// to display the source author. Still controls author display for blog page transformation.
         /// </summary>
         public bool SetAuthorInPageHeader { get; set; }
 
@@ -101,7 +103,8 @@ namespace PnP.Framework.Modernization.Transform
 
         #region Webpart replacement configuration
         /// <summary>
-        /// If the page to be transformed is the web's home page then replace with stock modern home page instead of transforming it
+        /// If the page to be transformed is the web's home page then replace with stock modern home page instead of transforming it.
+        /// Otherwise, converted home pages use Article layout so their author header can be saved.
         /// </summary>
         public bool ReplaceHomePageWithDefaultHomePage { get; set; }
         #endregion

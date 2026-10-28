@@ -455,6 +455,11 @@ namespace PnP.Framework.Modernization.Publishing
                     // Will this user be mapped to another user?
                     var newUpn = this.userTransformator.RemapPrincipal(author.LoginName);
 
+                    if (string.IsNullOrWhiteSpace(newUpn))
+                    {
+                        return "";
+                    }
+
                     // Drop online prefix to avoid second unneeded lookup via upn later on
                     if (newUpn.StartsWith("i:0#.f|membership|"))
                     {
@@ -466,7 +471,7 @@ namespace PnP.Framework.Modernization.Publishing
                         // We'll need to retrieve the info from this user again as we've mapped to another user account in the target site
                         author = Cache.CacheManager.Instance.GetUserFromUserList(this.targetClientContext, newUpn);
 
-                        if (author == null)
+                        if (author == null || author.IsGroup)
                         {
                             // The principal returned from the user mapping is not available on the target site, so return empty
                             return "";

@@ -1068,10 +1068,10 @@ namespace PnP.Framework.Modernization.Cache
                 <View Scope='Recursive'>
                   <Query>
                     <Where>
-                      <Contains>
+                      <Eq>
                         <FieldRef Name='ID'/>
                         <Value Type='Integer'>{0}</Value>
-                      </Contains>
+                      </Eq>
                     </Where>
                   </Query>
                 </View>";

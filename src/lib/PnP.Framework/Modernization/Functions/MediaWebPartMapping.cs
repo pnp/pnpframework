@@ -9,18 +9,26 @@ using System.Linq;
 
 namespace PnP.Framework.Modernization.Functions
 {
-    public partial class BuiltIn
+    internal sealed class MediaWebPartMapping : FunctionsBase
     {
-        [FunctionDocumentation(Description = "Resolves classic media configuration before selecting Embed or File and Media. Context takes precedence; VideoSet is consulted only when both explicit sources are empty.",
-                               Example = "ResolveMediaConfiguration({MediaSource},{VideoSetEmbedCode},{VideoSetSource},{ConfigureFromContext})")]
-        [InputDocumentation(Name = "{MediaSource}", Description = "Configured media file URL")]
-        [InputDocumentation(Name = "{VideoSetEmbedCode}", Description = "Configured iframe embed code")]
-        [InputDocumentation(Name = "{VideoSetSource}", Description = "Video document set URL")]
-        [InputDocumentation(Name = "{ConfigureFromContext}", Description = "Read media from the source page item")]
-        [OutputDocumentation(Name = "{MediaMapping}", Description = "EMBED or FILE")]
-        [OutputDocumentation(Name = "{ResolvedMediaSource}", Description = "Resolved, escaped source file path")]
-        [OutputDocumentation(Name = "{MediaEmbedJson}", Description = "Validated Embed JSON, without trusted cached markup")]
-        public Dictionary<string, string> ResolveMediaConfiguration(string mediaSource, string embedCode,
+        private readonly ClientContext sourceClientContext;
+        private readonly ListItem sourcePage;
+
+        internal MediaWebPartMapping(ClientContext targetContext, ClientContext sourceContext,
+            ListItem sourcePage, IList<ILogObserver> logObservers) : base(targetContext)
+        {
+            this.sourceClientContext = sourceContext;
+            this.sourcePage = sourcePage;
+            if (logObservers != null)
+            {
+                foreach (var observer in logObservers)
+                {
+                    RegisterObserver(observer);
+                }
+            }
+        }
+
+        internal Dictionary<string, string> ResolveConfiguration(string mediaSource, string embedCode,
             string videoSetSource, bool configureFromContext)
         {
             var source = this.sourceClientContext ?? this.clientContext;
@@ -30,7 +38,7 @@ namespace PnP.Framework.Modernization.Functions
             {
                 if (configureFromContext)
                 {
-                    item = this.baseTransformationInformation.SourcePage;
+                    item = this.sourcePage;
                     if (item == null)
                     {
                         throw MediaUnavailable("Media web part requires a source page item for ConfigureFromContext.");
@@ -108,12 +116,7 @@ namespace PnP.Framework.Modernization.Functions
             }
         }
 
-        [FunctionDocumentation(Description = "Builds File and Media from the resolved asset's actual web and file identities. Run only in the FILE mapping after asset transfer; missing files are skipped, not represented by empty identities.",
-                               Example = "{MediaFileJson} = MediaToFileProperties({ResolvedMediaSource},{TransferredMediaSource})")]
-        [InputDocumentation(Name = "{ResolvedMediaSource}", Description = "Escaped source media path")]
-        [InputDocumentation(Name = "{TransferredMediaSource}", Description = "Path returned by asset transfer")]
-        [OutputDocumentation(Name = "{MediaFileJson}", Description = "HTML-encoded File and Media JSON")]
-        public string MediaToFileProperties(string resolvedMediaSource, string transferredMediaSource)
+        internal string ToFileProperties(string resolvedMediaSource, string transferredMediaSource)
         {
             var source = this.sourceClientContext ?? this.clientContext;
             var retainedSource = string.Equals(resolvedMediaSource, transferredMediaSource, StringComparison.Ordinal);

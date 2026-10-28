@@ -2,12 +2,15 @@
 using AngleSharp.Html.Parser;
 using AngleSharp.Io;
 using Microsoft.SharePoint.Client;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PnP.Framework.Modernization.Telemetry;
 using PnP.Framework.Modernization.Transform;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Xml.Linq;
 using PnPCore = PnP.Core.Model.SharePoint;
 
@@ -972,20 +975,184 @@ namespace PnP.Framework.Modernization.Functions
         }
         #endregion
 
+        #region Picture library slideshow functions
+        [FunctionDocumentation(Description = "Builds a dynamic Image Gallery carousel from a picture library slideshow. View filtering and random ordering are not preserved.",
+                               Example = "{ImageGalleryJson} = PictureLibrarySlideshowToImageGalleryProperties({LibraryGuid},{Layout},{Speed},{ShowToolbar},{ViewGuid},{Mode},{Title},{ChromeType})")]
+        [InputDocumentation(Name = "{LibraryGuid}", Description = "Picture library ID in the destination web")]
+        [InputDocumentation(Name = "{Layout}", Description = "Classic slideshow display style")]
+        [InputDocumentation(Name = "{Speed}", Description = "Seconds between slides")]
+        [InputDocumentation(Name = "{ShowToolbar}", Description = "Whether to show carousel navigation dots")]
+        [InputDocumentation(Name = "{ViewGuid}", Description = "Classic view ID, used to report unsupported view selection")]
+        [InputDocumentation(Name = "{Mode}", Description = "Classic sequential or random ordering")]
+        [InputDocumentation(Name = "{Title}", Description = "Web part title")]
+        [InputDocumentation(Name = "{ChromeType}", Description = "Classic web part chrome type")]
+        [OutputDocumentation(Name = "{ImageGalleryJson}", Description = "HTML-encoded Image Gallery JSON for the mapping pipeline")]
+        public string PictureLibrarySlideshowToImageGalleryProperties(Guid libraryGuid, string layout, int speed,
+            bool showToolbar, Guid viewGuid, string mode, string title, int chromeType)
+        {
+            if (libraryGuid == Guid.Empty)
+            {
+                throw new NotAvailableAtTargetException("The picture library slideshow has no configured destination library. This web part will be skipped.");
+            }
+
+            var library = this.clientContext.Web.GetListById(libraryGuid);
+            if (library == null)
+            {
+                throw new NotAvailableAtTargetException($"The picture library slideshow destination library {libraryGuid} was not found. This web part will be skipped.");
+            }
+            library.EnsureProperties(list => list.Title, list => list.RootFolder);
+            library.RootFolder.EnsureProperty(folder => folder.ServerRelativeUrl);
+            var listUrl = library.RootFolder.ServerRelativeUrl;
+            if (string.IsNullOrWhiteSpace(listUrl))
+            {
+                throw new NotAvailableAtTargetException("The picture library slideshow destination library has no root folder URL. This web part will be skipped.");
+            }
+
+            var autoplaySpeed = speed > 0 && speed <= 3600 ? Math.Max(2, Math.Min(10, speed)) : 5;
+            if (autoplaySpeed != speed)
+            {
+                LogWarning($"Picture library slideshow speed {speed} is rendered as {autoplaySpeed} seconds; Image Gallery supports 2 through 10 seconds.", LogStrings.Heading_BuiltInFunctions);
+            }
+            if (viewGuid != Guid.Empty)
+            {
+                LogWarning($"Picture library slideshow view {viewGuid} is not preserved. Image Gallery reads the library without the classic view's filtering or ordering.", LogStrings.Heading_BuiltInFunctions);
+            }
+            if (!string.Equals(mode, "Sequential", StringComparison.OrdinalIgnoreCase) && mode != "0")
+            {
+                LogWarning("Picture library slideshow random ordering is not preserved. Image Gallery uses its own library ordering.", LogStrings.Heading_BuiltInFunctions);
+            }
+
+            var showMetadata = layout != "0" && !string.Equals(layout, "NoTitleDesc", StringComparison.OrdinalIgnoreCase);
+            if (!showMetadata)
+            {
+                LogWarning("The classic slideshow's NoTitleDesc preference is recorded, but dynamic Image Gallery may still display image titles and descriptions. Verify caption visibility in the destination.", LogStrings.Heading_BuiltInFunctions);
+            }
+            var galleryTitle = string.IsNullOrWhiteSpace(title) ? library.Title : title;
+            // Classic chrome values: None = 2, BorderOnly = 4.
+            var showTitle = !string.IsNullOrWhiteSpace(title) && chromeType != 2 && chromeType != 4;
+            var data = new JObject
+            {
+                ["serverProcessedContent"] = new JObject
+                {
+                    ["htmlStrings"] = new JObject(),
+                    ["searchablePlainTexts"] = new JObject { ["title"] = galleryTitle },
+                    ["imageSources"] = new JObject(),
+                    ["links"] = new JObject { ["listUrl"] = listUrl },
+                    ["componentDependencies"] = new JObject { ["layoutComponentId"] = "8ac0c53c-e8d0-4e3e-87d0-7449eb0d4027" }
+                },
+                ["dataVersion"] = "1.11",
+                ["properties"] = new JObject
+                {
+                    ["layout"] = 1,
+                    ["carouselSettings"] = new JObject
+                    {
+                        ["autoplay"] = true,
+                        ["autoplaySpeed"] = autoplaySpeed,
+                        ["dots"] = showToolbar,
+                        ["lazyLoad"] = true,
+                        ["metadata"] = showMetadata,
+                        ["swipe"] = true
+                    },
+                    ["gridSettings"] = new JObject
+                    {
+                        ["imageSize"] = 2,
+                        ["imageCropping"] = 1,
+                        ["imageAspectRatio"] = 1,
+                        ["lightbox"] = false
+                    },
+                    ["imageSourceType"] = 2,
+                    ["isRecursive"] = false,
+                    ["isCdnEnabledForList"] = false,
+                    ["hasDynamicModeEnabled"] = true,
+                    ["canAlwaysSelectDocLibAsSource"] = true,
+                    ["maxImagesCount"] = 30,
+                    ["images"] = new JArray(),
+                    ["listId"] = libraryGuid.ToString(),
+                    ["listUrl"] = listUrl,
+                    ["title"] = galleryTitle,
+                    ["isTitleEnabled"] = showTitle
+                }
+            };
+
+            return EncodeWebPartMappingJson(data);
+        }
+        #endregion
+
         #region Content Embed functions
-        [SelectorDocumentation(Description = "Analyzes sourcetype and return recommended mapping.",
+        [SelectorDocumentation(Description = "Maps absolute (4) and relative (8) Page Viewer URLs to Embed; reports and skips other source types.",
                                Example = "ContentEmbedSelectorSourceType({SourceType})")]
         [InputDocumentation(Name = "{SourceType}", Description = "Sourcetype of the viewed page in pageviewerwebpart")]
         [OutputDocumentation(Name = "WebPage", Description = "The embedded content is a page")]
         [OutputDocumentation(Name = "ServerFolderOrFile", Description = "The embedded content points to a server folder or file")]
         public string ContentEmbedSelectorSourceType(string sourceType)
         {
-            if (sourceType == "4")
+            if (sourceType == "4" || sourceType == "8")
             {
                 return "WebPage";
             }
 
+            LogWarning($"Page Viewer source type '{sourceType}' cannot be embedded. Only absolute and relative web URLs are supported; this web part will be skipped.", LogStrings.Heading_BuiltInFunctions);
             return "ServerFolderOrFile";
+        }
+
+        [FunctionDocumentation(Description = "Resolves a Page Viewer URL and builds an Embed web part without bypassing destination embed restrictions.",
+                               Example = "{PageViewerJson} = PageViewerToEmbedProperties({ContentLink})")]
+        [InputDocumentation(Name = "{ContentLink}", Description = "An absolute, server-relative, web-relative, or protocol-relative HTTP(S) URL")]
+        [OutputDocumentation(Name = "{PageViewerJson}", Description = "HTML-encoded Embed JSON for the mapping pipeline")]
+        public string PageViewerToEmbedProperties(string contentLink)
+        {
+            var sourceWeb = new Uri((this.sourceClientContext ?? this.clientContext).Web.GetUrl().TrimEnd('/') + "/");
+            var address = contentLink?.Trim();
+            if (string.IsNullOrEmpty(address) || contentLink.Any(char.IsControl) || address.Contains("\\") ||
+                !Uri.TryCreate(sourceWeb, address, out var resolved) || !IsHttpUrl(resolved))
+            {
+                throw new NotAvailableAtTargetException("Page Viewer requires a valid HTTP(S) content URL. This web part will be skipped.");
+            }
+
+            // Default URL rewriting applies to source-site references, never to an unrelated external host.
+            if (string.Equals(resolved.GetLeftPart(UriPartial.Authority), sourceWeb.GetLeftPart(UriPartial.Authority), StringComparison.OrdinalIgnoreCase))
+            {
+                var rewritten = this.urlTransformator.Transform(resolved.AbsoluteUri);
+                if (!Uri.TryCreate(sourceWeb, rewritten, out resolved) || !IsHttpUrl(resolved))
+                {
+                    throw new NotAvailableAtTargetException("The rewritten Page Viewer URL is not an HTTP(S) URL. This web part will be skipped.");
+                }
+            }
+
+            LogWarning($"Page Viewer URL '{resolved.AbsoluteUri}' remains subject to the destination site's HTML Field Security and the embedded site's framing restrictions. Verify that the content can be embedded.", LogStrings.Heading_BuiltInFunctions);
+            var iframe = $"<iframe width=\"100%\" height=\"70%\" src=\"{WebUtility.HtmlEncode(resolved.AbsoluteUri)}\" allowfullscreen=\"\"></iframe>";
+            var data = new JObject
+            {
+                ["serverProcessedContent"] = new JObject
+                {
+                    ["htmlStrings"] = new JObject(),
+                    ["searchablePlainTexts"] = new JObject { ["captionText"] = string.Empty },
+                    ["imageSources"] = new JObject(),
+                    ["links"] = new JObject()
+                },
+                ["dataVersion"] = "1.0",
+                ["properties"] = new JObject
+                {
+                    ["embedCode"] = iframe,
+                    ["cachedEmbedCode"] = iframe,
+                    ["shouldScaleWidth"] = true,
+                    ["tempState"] = new JObject()
+                }
+            };
+            return EncodeWebPartMappingJson(data);
+        }
+
+        private static string EncodeWebPartMappingJson(JObject data)
+        {
+            // Protect literal tokens and HTML entities until ContentTransformator's final HTML decode.
+            return WebUtility.HtmlEncode(data.ToString(Formatting.None)).Replace("{", "&#123;").Replace("}", "&#125;");
+        }
+
+        private static bool IsHttpUrl(Uri uri)
+        {
+            return uri.IsAbsoluteUri && !string.IsNullOrEmpty(uri.Host) &&
+                string.IsNullOrEmpty(uri.UserInfo) &&
+                (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
         }
 
         [SelectorDocumentation(Description = "Content editor can be transformed in various ways depending on whether a link was used, what file type was used, if script is used or not...",

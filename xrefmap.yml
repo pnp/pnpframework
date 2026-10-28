@@ -26921,6 +26921,32 @@ references:
   isSpec: "True"
   fullName: PnP.Framework.Modernization.Functions.BuiltIn.LookupPerson
   nameWithType: BuiltIn.LookupPerson
+- uid: PnP.Framework.Modernization.Functions.BuiltIn.PageViewerToEmbedProperties(System.String)
+  name: PageViewerToEmbedProperties(String)
+  href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_PageViewerToEmbedProperties_System_String_
+  commentId: M:PnP.Framework.Modernization.Functions.BuiltIn.PageViewerToEmbedProperties(System.String)
+  fullName: PnP.Framework.Modernization.Functions.BuiltIn.PageViewerToEmbedProperties(System.String)
+  nameWithType: BuiltIn.PageViewerToEmbedProperties(String)
+- uid: PnP.Framework.Modernization.Functions.BuiltIn.PageViewerToEmbedProperties*
+  name: PageViewerToEmbedProperties
+  href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_PageViewerToEmbedProperties_
+  commentId: Overload:PnP.Framework.Modernization.Functions.BuiltIn.PageViewerToEmbedProperties
+  isSpec: "True"
+  fullName: PnP.Framework.Modernization.Functions.BuiltIn.PageViewerToEmbedProperties
+  nameWithType: BuiltIn.PageViewerToEmbedProperties
+- uid: PnP.Framework.Modernization.Functions.BuiltIn.PictureLibrarySlideshowToImageGalleryProperties(Guid,System.String,System.Int32,System.Boolean,Guid,System.String,System.String,System.Int32)
+  name: PictureLibrarySlideshowToImageGalleryProperties(Guid, String, Int32, Boolean, Guid, String, String, Int32)
+  href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_PictureLibrarySlideshowToImageGalleryProperties_Guid_System_String_System_Int32_System_Boolean_Guid_System_String_System_String_System_Int32_
+  commentId: M:PnP.Framework.Modernization.Functions.BuiltIn.PictureLibrarySlideshowToImageGalleryProperties(Guid,System.String,System.Int32,System.Boolean,Guid,System.String,System.String,System.Int32)
+  fullName: PnP.Framework.Modernization.Functions.BuiltIn.PictureLibrarySlideshowToImageGalleryProperties(Guid, System.String, System.Int32, System.Boolean, Guid, System.String, System.String, System.Int32)
+  nameWithType: BuiltIn.PictureLibrarySlideshowToImageGalleryProperties(Guid, String, Int32, Boolean, Guid, String, String, Int32)
+- uid: PnP.Framework.Modernization.Functions.BuiltIn.PictureLibrarySlideshowToImageGalleryProperties*
+  name: PictureLibrarySlideshowToImageGalleryProperties
+  href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_PictureLibrarySlideshowToImageGalleryProperties_
+  commentId: Overload:PnP.Framework.Modernization.Functions.BuiltIn.PictureLibrarySlideshowToImageGalleryProperties
+  isSpec: "True"
+  fullName: PnP.Framework.Modernization.Functions.BuiltIn.PictureLibrarySlideshowToImageGalleryProperties
+  nameWithType: BuiltIn.PictureLibrarySlideshowToImageGalleryProperties
 - uid: PnP.Framework.Modernization.Functions.BuiltIn.ReturnCrossSiteRelativePath(System.String)
   name: ReturnCrossSiteRelativePath(String)
   href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_ReturnCrossSiteRelativePath_System_String_

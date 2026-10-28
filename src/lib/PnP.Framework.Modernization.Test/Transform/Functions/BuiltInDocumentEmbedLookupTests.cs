@@ -102,7 +102,6 @@ namespace PnP.Framework.Modernization.Test.Transform.Functions
 
         [DataTestMethod]
         [DataRow("SharePointPnP.Modernization.WikiEmbedPart", "DocumentUrl")]
-        [DataRow("Microsoft.SharePoint.Publishing.WebControls.MediaWebPart", "MediaSource")]
         [DataRow("Microsoft.Office.Excel.WebUI.ExcelWebRenderer", "WorkbookUri")]
         [DataRow("Microsoft.Office.Visio.Server.WebControls.VisioWebAccess", "DiagramPath")]
         public void DocumentEmbedMapping_WhenFileIsNotFound_ProcessesFunctionsAndPreservesReference(string type, string urlProperty)

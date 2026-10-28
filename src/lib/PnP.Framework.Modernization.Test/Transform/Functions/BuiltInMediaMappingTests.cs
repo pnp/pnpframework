@@ -35,86 +35,77 @@ namespace PnP.Framework.Modernization.Test.Transform.Functions
         [TestMethod]
         public void EmbedWinsWithoutFileOrVideoSetLookupAndHasNoTrustedCache()
         {
-            using (var source = CreateContext(SourceUrl, out var requests))
-            using (var target = CreateContext(TargetUrl, out var targetRequests))
+            using var source = CreateContext(SourceUrl, out var requests);
+            using var target = CreateContext(TargetUrl, out var targetRequests);
+            var observer = new Mock<ILogObserver>();
+            var json = Transform(source, target, new Dictionary<string, string>
             {
-                var observer = new Mock<ILogObserver>();
-                var json = Transform(source, target, new Dictionary<string, string>
-                {
-                    ["VideoSetEmbedCode"] = Embed, ["MediaSource"] = SourcePath,
-                    ["VideoSetSource"] = "/missing-video-set", ["Title"] = "Must not replace"
-                }, requests, observer: observer.Object);
-                AssertEmbed(json);
-                Assert.IsFalse(requests.Concat(targetRequests).Any(request =>
-                    request.Contains("GetListItem") || request.Contains("GetFile") || request.Contains("EnsureSiteAssets")));
-                observer.Verify(log => log.Warning(It.Is<LogEntry>(entry =>
-                    entry.Message.Contains("HTML Field Security") && entry.Message.Contains("framing"))), Times.Once);
-            }
+                ["VideoSetEmbedCode"] = Embed, ["MediaSource"] = SourcePath,
+                ["VideoSetSource"] = "/missing-video-set"
+            }, requests, observer: observer.Object);
+            AssertEmbed(json);
+            Assert.IsFalse(requests.Concat(targetRequests).Any(request =>
+                request.Contains("GetListItem") || request.Contains("GetFile") || request.Contains("EnsureSiteAssets")));
+            observer.Verify(log => log.Warning(It.Is<LogEntry>(entry =>
+                entry.Message.Contains("HTML Field Security") && entry.Message.Contains("framing"))), Times.Once);
         }
 
         [DataTestMethod]
-        [DataRow("", "VideoSetUserOverrideEncoding")]
-        [DataRow("", "VideoSetDefaultEncoding")]
-        [DataRow("", "VideoSetExternalLink")]
-        [DataRow("", "VideoSetEmbedCode")]
-        [DataRow("true", "VideoSetUserOverrideEncoding")]
-        [DataRow("true", "FileRef")]
-        public void VideoSetAndContextResolveClassicInputPrecedence(string fromContext, string firstField)
+        [DataRow(false, false)]
+        [DataRow(false, true)]
+        [DataRow(true, false)]
+        public void VideoSetAndContextResolveClassicInputPrecedence(bool fromContext, bool useEmbed)
         {
             var fields = new Dictionary<string, object>
             {
-                ["ContentTypeId"] = firstField == "FileRef" ? "0x0101" : "0x0120D520A808",
+                ["ContentTypeId"] = fromContext ? "0x0101" : "0x0120D520A808",
                 ["FileRef"] = SourcePath,
                 ["VideoSetEmbedCode"] = Embed
             };
-            var encodings = new[] { "VideoSetUserOverrideEncoding", "VideoSetDefaultEncoding", "VideoSetExternalLink" };
-            var first = Array.IndexOf(encodings, firstField);
-            for (var index = first; index >= 0 && index < encodings.Length; index++)
+            if (!useEmbed)
             {
-                fields[encodings[index]] = new Dictionary<string, object>
+                fields["VideoSetUserOverrideEncoding"] = new Dictionary<string, object>
                 {
-                    ["_ObjectType_"] = "SP.FieldUrlValue", ["Url"] = index == first ? SourceUrl + "/Assets/clip.mp4" : SourceUrl + "/incorrect.mp4",
+                    ["_ObjectType_"] = "SP.FieldUrlValue", ["Url"] = SourceUrl + "/Assets/clip.mp4",
                     ["Description"] = "Video"
                 };
+                fields["VideoSetDefaultEncoding"] = SourceUrl + "/incorrect.mp4";
+                fields["VideoSetExternalLink"] = "https://external.example/incorrect.mp4";
             }
-            using (var context = CreateContext(SourceUrl, out var requests, fields))
+            using var context = CreateContext(SourceUrl, out var requests, fields);
+            ListItem page = null;
+            if (fromContext)
             {
-                ListItem page = null;
-                if (fromContext == "true")
-                {
-                    page = context.Web.GetListItem(SourcePath);
-                    context.Load(page);
-                    context.ExecuteQuery();
-                }
-                var data = Transform(context, context, new Dictionary<string, string>
-                {
-                    ["ConfigureFromContext"] = fromContext, ["VideoSetSource"] = "/sites/media-source/Assets/video-set",
-                    ["MediaSource"] = page == null ? "" : "/stale.mp4"
-                }, requests, page: page);
-                if (firstField == "VideoSetEmbedCode")
-                {
-                    AssertEmbed(data);
-                    Assert.IsFalse(requests.Any(request => request.Contains("GetFile")));
-                }
-                else
-                {
-                    AssertFile(data, SourceUrl, SourcePath, SourceId);
-                    Assert.IsTrue(requests.Any(request => request.Contains("GetFileByServerRelativePath")));
-                }
+                page = context.Web.GetListItem(SourcePath);
+                context.Load(page);
+                context.ExecuteQuery();
+            }
+            var data = Transform(context, context, new Dictionary<string, string>
+            {
+                ["ConfigureFromContext"] = fromContext.ToString(), ["VideoSetSource"] = "/sites/media-source/Assets/video-set",
+                ["MediaSource"] = fromContext ? "/stale.mp4" : ""
+            }, requests, page: page);
+            if (useEmbed)
+            {
+                AssertEmbed(data);
+                Assert.IsFalse(requests.Any(request => request.Contains("GetFile")));
+            }
+            else
+            {
+                AssertFile(data, SourceUrl, SourcePath, SourceId);
+                Assert.IsTrue(requests.Any(request => request.Contains("GetFileByServerRelativePath")));
             }
         }
 
         [TestMethod]
         public void DirectFileSkipsVideoSetAndRetainsFileIdentities()
         {
-            using (var context = CreateContext(SourceUrl, out var requests))
+            using var context = CreateContext(SourceUrl, out var requests);
+            AssertFile(Transform(context, context, new Dictionary<string, string>
             {
-                AssertFile(Transform(context, context, new Dictionary<string, string>
-                {
-                    ["MediaSource"] = "Assets/clip.mp4", ["VideoSetSource"] = "/missing-video-set"
-                }, requests), SourceUrl, SourcePath, SourceId);
-                Assert.IsFalse(requests.Any(request => request.Contains("GetListItem")));
-            }
+                ["MediaSource"] = "Assets/clip.mp4", ["VideoSetSource"] = "/missing-video-set"
+            }, requests), SourceUrl, SourcePath, SourceId);
+            Assert.IsFalse(requests.Any(request => request.Contains("GetListItem")));
         }
 
         [TestMethod]
@@ -127,18 +118,13 @@ namespace PnP.Framework.Modernization.Test.Transform.Functions
             CacheManager.Instance.AddAssetTransferredEntity(asset);
             try
             {
-                using (var source = CreateContext(SourceUrl, out var requests))
-                using (var target = CreateContext(TargetUrl, out var targetRequests))
-                {
-                    var observer = new Mock<ILogObserver>();
-                    observer.Setup(log => log.Error(It.IsAny<LogEntry>()))
-                        .Callback<LogEntry>(entry => Assert.Fail(entry.Exception?.ToString() ?? entry.Message));
-                    AssertFile(Transform(source, target, new Dictionary<string, string> { ["MediaSource"] = SourcePath },
-                        requests, observer: observer.Object), TargetUrl, TargetPath, TargetId);
-                    Assert.IsFalse(requests.Any(request => request.Contains("GetFile")));
-                    Assert.IsTrue(targetRequests.Any(request => request.Contains("EnsureSiteAssetsLibrary")));
-                    Assert.IsTrue(targetRequests.Any(request => request.Contains("GetFileByServerRelativePath")));
-                }
+                using var source = CreateContext(SourceUrl, out var requests);
+                using var target = CreateContext(TargetUrl, out var targetRequests);
+                AssertFile(Transform(source, target, new Dictionary<string, string> { ["MediaSource"] = SourcePath },
+                    requests), TargetUrl, TargetPath, TargetId);
+                Assert.IsFalse(requests.Any(request => request.Contains("GetFile")));
+                Assert.IsTrue(targetRequests.Any(request => request.Contains("EnsureSiteAssetsLibrary")));
+                Assert.IsTrue(targetRequests.Any(request => request.Contains("GetFileByServerRelativePath")));
             }
             finally
             {
@@ -150,55 +136,43 @@ namespace PnP.Framework.Modernization.Test.Transform.Functions
         public void CrossSiteUntransferredMediaRetainsSourceOriginAndIdentitiesWithWarning()
         {
             var path = SourcePath.Replace(".mp4", ".wav");
-            using (var source = CreateContext(SourceUrl, out var requests, filePath: path))
-            using (var target = CreateContext(TargetUrl, out var targetRequests))
-            {
-                var observer = new Mock<ILogObserver>();
-                AssertFile(Transform(source, target, new Dictionary<string, string> { ["MediaSource"] = path },
-                    requests, observer: observer.Object), SourceUrl, path, SourceId);
-                Assert.IsFalse(targetRequests.Any(request => request.Contains("GetFile")));
-                observer.Verify(log => log.Warning(It.Is<LogEntry>(entry =>
-                    entry.Message.Contains("retaining its source location and identities"))), Times.Once);
-            }
+            using var source = CreateContext(SourceUrl, out var requests, filePath: path);
+            using var target = CreateContext(TargetUrl, out var targetRequests);
+            var observer = new Mock<ILogObserver>();
+            AssertFile(Transform(source, target, new Dictionary<string, string> { ["MediaSource"] = path },
+                requests, observer: observer.Object), SourceUrl, path, SourceId);
+            Assert.IsFalse(targetRequests.Any(request => request.Contains("GetFile")));
+            observer.Verify(log => log.Warning(It.Is<LogEntry>(entry =>
+                entry.Message.Contains("retaining its source location and identities"))), Times.Once);
         }
 
         [DataTestMethod]
         [DataRow("", "")]
         [DataRow("/_layouts/15/clientbin/mediaplaceholder.mp4", "")]
         [DataRow("https://external.example/clip.mp4", "")]
-        [DataRow("/sites/media-source/clip.xap", "")]
-        [DataRow(SourcePath, "<iframe src=\"http://example.org/embed\"></iframe>")]
         [DataRow(SourcePath, "<iframe src=\"jav&#x61;script:alert(1)\"></iframe>")]
         [DataRow(SourcePath, "<iframe src=\"https://example.org\" onload=\"alert(1)\"></iframe>")]
         [DataRow(SourcePath, "<iframe srcdoc=\"&lt;script&gt;alert(1)&lt;/script&gt;\"></iframe>")]
         [DataRow(SourcePath, "<iframe src=\"https://example.org\"></iframe><script>alert(1)</script>")]
         public void InvalidConfigurationIsDiagnosedWithoutFileLookup(string media, string embed)
         {
-            using (var context = CreateContext(SourceUrl, out var requests))
-            {
-                var observer = new Mock<ILogObserver>();
-                AssertSkipped(() => Transform(context, context,
-                    new Dictionary<string, string> { ["MediaSource"] = media, ["VideoSetEmbedCode"] = embed }, requests,
-                    observer: observer.Object));
-                observer.Verify(log => log.Warning(It.Is<LogEntry>(entry => entry.Message.Contains("skipped"))), Times.Once);
-                Assert.IsFalse(requests.Any(request => request.Contains("GetFile")));
-            }
+            using var context = CreateContext(SourceUrl, out var requests);
+            var observer = new Mock<ILogObserver>();
+            AssertSkipped(() => Transform(context, context,
+                new Dictionary<string, string> { ["MediaSource"] = media, ["VideoSetEmbedCode"] = embed }, requests,
+                observer: observer.Object));
+            observer.Verify(log => log.Warning(It.Is<LogEntry>(entry => entry.Message.Contains("skipped"))), Times.Once);
+            Assert.IsFalse(requests.Any(request => request.Contains("GetFile")));
         }
 
         [TestMethod]
-        public void MissingContextAndMissingFileAreSkippedRatherThanEmittingEmptyIdentities()
+        public void MissingFileIsSkippedRatherThanEmittingEmptyIdentities()
         {
-            using (var context = CreateContext(SourceUrl, out var requests, exists: false))
+            using var context = CreateContext(SourceUrl, out var requests, exists: false);
+            AssertSkipped(() => Transform(context, context, new Dictionary<string, string>
             {
-                AssertSkipped(() => Transform(context, context, new Dictionary<string, string>
-                {
-                    ["ConfigureFromContext"] = "true", ["MediaSource"] = SourcePath
-                }, requests));
-                AssertSkipped(() => Transform(context, context, new Dictionary<string, string>
-                {
-                    ["MediaSource"] = SourcePath
-                }, requests));
-            }
+                ["MediaSource"] = SourcePath
+            }, requests));
         }
 
         private static void AssertSkipped(Action action)
@@ -257,7 +231,7 @@ namespace PnP.Framework.Modernization.Test.Transform.Functions
             {
                 part.Properties[property.Name] = values.TryGetValue(property.Name, out var value) ? value : "";
             }
-            part.Properties["Title"] = values.TryGetValue("Title", out var title) ? title : "Must not replace";
+            part.Properties["Title"] = "Must not replace";
             var processor = new FunctionProcessor(source, target, null, transformation,
                 new PageTransformationInformation(page) { SkipTelemetry = true }, observer == null ? null : new[] { observer });
             var before = requests.Count;

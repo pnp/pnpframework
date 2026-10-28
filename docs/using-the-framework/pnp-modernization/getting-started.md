@@ -68,4 +68,12 @@ Set `EnableEnterpriseWikiCapabilities = true` to prepare SitePages using existin
 
 When opted in, the sidebar requires destination support for the native modernized-control host. Set `IncludeEnterpriseWikiSidebar = false` where unavailable.
 
+## Project Summary
+
+Project Summary maps to the native Project Summary component where it is available in the destination. The primary task list, enabled panels, panel titles, additional list URLs, `daysToSearch`, and `ShowTimeline` are preserved. Cross-site transformation uses the existing list-title resolution: provision corresponding destination lists and their data first. Source list GUIDs and task item IDs are not reused as destination identities. Export must be enabled to read the collection-valued classic panel settings.
+
+Task values and panel contents are loaded from the destination lists when the modern page loads; they are not copied into page content. The destination list's selected timeline membership and single-bar custom date range are captured during migration, with an explicit warning. Later task edits appear on reload, but adding or removing timeline members or changing the selected view/date range requires remigration. A configured empty timeline stays empty rather than falling back to an automatically selected set of tasks.
+
+Classic timeline styling is not reproduced. Multiple timeline bars, ambiguous timeline selection, unreadable panel settings, and missing destination lists are reported rather than silently replaced with text or an unrelated task list. Native component availability and runtime behavior depend on the destination's deployed SharePoint version.
+
 <img src="https://m365-visitor-stats.azurewebsites.net/pnpframework/docs/using-the-framework/pnp-modernization" aria-hidden="true" />

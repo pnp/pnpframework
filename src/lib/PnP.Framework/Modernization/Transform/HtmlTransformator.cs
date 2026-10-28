@@ -6,6 +6,7 @@ using PnP.Framework.Modernization.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using AngleSharp.Css.Dom;
 using AngleSharp.Io;
 
@@ -293,24 +294,7 @@ namespace PnP.Framework.Modernization.Transform
 
                 // <table class="bandedRowTableStyleNeutral" title="Table">
                 var tableElement = document.CreateElement("table");
-                //ms-rteTable-default: basic grid lines
-                string tableClassName = "borderHeaderTableStyleNeutral";
-                if (!string.IsNullOrEmpty(normalizedTable.ClassName))
-                {
-                    if (normalizedTable.ClassName.Equals("ms-rteTable-default", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        tableClassName = "borderHeaderTableStyleNeutral";
-                    }
-                    else
-                    {
-                        if (int.TryParse(normalizedTable.ClassName.ToLower().Replace("ms-rtetable-", ""), out int tableStyleCode))
-                        {
-                            tableClassName = TableStyleCodeToName(tableStyleCode);
-                        }
-                    }
-                }
-
-                tableElement.ClassName = tableClassName;
+                tableElement.ClassName = normalizedTable.ClassName;
                 tableElement.SetAttribute("title", "Table");
                 innerDiv.AppendChild(tableElement);
 
@@ -1004,6 +988,73 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
+        private static string GetTableClassName(IElement table)
+        {
+            const string borderedStyle = "borderHeaderTableStyleNeutral";
+            const string borderlessStyle = "noBorderTableStyleNeutral";
+            const string classicStylePrefix = "ms-rteTable-";
+            string mappedStyle = null;
+            foreach (var className in table.ClassList)
+            {
+                if (className.Equals("ms-rteTable-default", StringComparison.OrdinalIgnoreCase))
+                {
+                    mappedStyle = borderedStyle;
+                    break;
+                }
+
+                if (className.StartsWith(classicStylePrefix, StringComparison.OrdinalIgnoreCase) &&
+                    int.TryParse(className.Substring(classicStylePrefix.Length), out int styleCode) &&
+                    styleCode >= 0 && styleCode <= 10)
+                {
+                    mappedStyle = TableStyleCodeToName(styleCode);
+                    break;
+                }
+            }
+
+            if (mappedStyle != null && mappedStyle != borderlessStyle)
+            {
+                return mappedStyle;
+            }
+
+            bool hasBorderAttribute = int.TryParse(table.GetAttribute("border"), out int borderWidth);
+            // A nested table's borders must not change its containing table's style.
+            bool hasVisibleBorder = (hasBorderAttribute && borderWidth > 0) || HasVisibleBorder(table) ||
+                table.QuerySelectorAll("tr,td,th")
+                    .Any(element => element.Closest("table") == table && HasVisibleBorder(element));
+            if (hasVisibleBorder)
+            {
+                return borderedStyle;
+            }
+
+            var style = table.GetStyle();
+            bool explicitlyBorderless = (hasBorderAttribute && borderWidth == 0) ||
+                (style != null && new[] { "top", "right", "bottom", "left" }
+                    .All(side => IsBorderlessSide(style, side)));
+            if (mappedStyle == borderlessStyle || table.ClassList.Length == 0 || explicitlyBorderless)
+            {
+                return borderlessStyle;
+            }
+
+            return borderedStyle;
+        }
+
+        private static bool HasVisibleBorder(IElement element)
+        {
+            var style = element.GetStyle();
+            return style != null && new[] { "top", "right", "bottom", "left" }
+                .Any(side => !string.IsNullOrEmpty(style.GetPropertyValue($"border-{side}-style")) &&
+                    !IsBorderlessSide(style, side));
+        }
+
+        private static bool IsBorderlessSide(ICssStyleDeclaration style, string side)
+        {
+            string borderStyle = style.GetPropertyValue($"border-{side}-style");
+            string borderWidth = style.GetPropertyValue($"border-{side}-width");
+            return borderStyle.Equals("none", StringComparison.OrdinalIgnoreCase) ||
+                borderStyle.Equals("hidden", StringComparison.OrdinalIgnoreCase) ||
+                Regex.IsMatch(borderWidth, @"^0(?:\.0+)?(?:[a-z]+)?$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+        }
+
         /// <summary>
         /// Map wiki table style to a RTE compatible style
         /// </summary>
@@ -1027,6 +1078,9 @@ namespace PnP.Framework.Modernization.Transform
             switch (tableStyleCode)
             {
                 case 0:
+                    {
+                        return "noBorderTableStyleNeutral";
+                    }
                 case 3:
                     {
                         return "simpleTableStyleNeutral";
@@ -1474,7 +1528,7 @@ namespace PnP.Framework.Modernization.Transform
             // Create table object
             Table normalizedTable = new Table()
             {
-                ClassName = table.ClassName,
+                ClassName = GetTableClassName(table),
             };
 
             // A 2 dimensional array to hold the normalized table cells

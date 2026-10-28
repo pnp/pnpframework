@@ -62,6 +62,24 @@ using (var targetClientContext = GetClientContext("https://<tenant>.sharepoint.c
 ```
 
 
+## Table styles
+
+Plain tables and the classic `ms-rteTable-0` ("no grid") style are transformed
+using the modern editor's native borderless table style. Classic style classes
+are recognized even when a table has additional CSS classes. Existing grid,
+header, and banded style mappings are retained.
+
+Visible inline borders on a table, row, or cell, or a positive HTML `border`
+attribute, prevent a borderless mapping. Borders belonging to a nested table do
+not affect the containing table. An explicit borderless declaration on a table
+with an unrecognized class is honored only when there are no visible inline
+borders; otherwise unrecognized classes retain the existing bordered fallback.
+External stylesheet rules and exact custom border colors, widths, or patterns
+are not reproduced.
+
+These mappings apply when transforming a page; previously transformed pages
+are not automatically updated.
+
 ## Enterprise Wiki pages
 
 Set `EnableEnterpriseWikiCapabilities = true` to prepare SitePages using existing category/rating site columns and copy their values. When false or omitted, all destinations retain legacy transformation behavior and custom mappings, without ESWiki preparation or sidebar insertion. Inconsistent rating history stops migration only with the new grouped rating handling enabled.

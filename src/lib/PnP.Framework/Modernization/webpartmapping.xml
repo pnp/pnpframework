@@ -303,8 +303,8 @@ configure the page transformation engine to use the community script editor. You
       <!-- Media web part -->
       <WebPart Type="Microsoft.SharePoint.Publishing.WebControls.MediaWebPart, Microsoft.SharePoint.Publishing, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" CrossSiteTransformationSupported="true">
         <Properties>
-          <Property Name="AutoPlay" Type="bool" Functions="{ServerRelativeMediaSource} = ReturnCrossSiteRelativePath({MediaSource}); {FullPath} = Concatenate({Host}, {ServerRelativeMediaSource})" />
-          <Property Name="MediaSource" Type="string" Functions="{FileName} = ReturnFileName({ServerRelativeMediaSource}); DocumentEmbedLookup({ServerRelativeMediaSource}); {EncodedFullPath} = HtmlEncodeForJson({FullPath}); {EncodedAuthor} = HtmlEncodeForJson({DocumentAuthor})" />
+          <Property Name="AutoPlay" Type="bool" />
+          <Property Name="MediaSource" Type="string" Functions="ResolveMediaConfiguration({MediaSource},{VideoSetEmbedCode},{VideoSetSource},{ConfigureFromContext})" />
           <Property Name="Loop" Type="bool" />
           <Property Name="IsPreviewImageSourceOverridenForVideoSet" Type="bool" />
           <Property Name="PreviewImageSource" Type="string" />
@@ -315,13 +315,15 @@ configure the page transformation engine to use the community script editor. You
           <Property Name="VideoSetSource" Type="string" />
           <Property Name="ConfigureFromContext" Type="bool" />
         </Properties>
-        <Mappings>
-          <Mapping Default="true" Name="default">
-            <!-- Media web part is typically used to run videos located in SharePoint libraries, replacement for that is document embed
-                 Web part uses Silverlight to play YouTube videos, so that feature anyhow does not work anymore in modern browsers 
-                 Important: The MediaSource property is only set when the web part also has preview image set!
-                 -->
-            <ClientSideWebPart Type="DocumentEmbed" Order="10" JsonControlData="&#123;&quot;serverProcessedContent&quot;&#58;&#123;&quot;htmlStrings&quot;&#58;&#123;&#125;,&quot;searchablePlainTexts&quot;&#58;&#123;&quot;annotation&quot;&#58;&quot;&quot;,&quot;title&quot;&#58;&quot;{FileName}&quot;&#125;,&quot;imageSources&quot;&#58;&#123;&#125;,&quot;links&quot;&#58;&#123;&quot;serverRelativeUrl&quot;&#58;&quot;{MediaSource}&quot;,&quot;wopiurl&quot;&#58;&quot;&quot;&#125;&#125;,&quot;dataVersion&quot;&#58;&quot;1.1&quot;,&quot;properties&quot;&#58;&#123;&quot;authorName&quot;&#58;&quot;{DocumentAuthorName}&quot;,&quot;chartitem&quot;&#58;&quot;&quot;,&quot;endrange&quot;&#58;&quot;&quot;,&quot;excelSettingsType&quot;&#58;&quot;&quot;,&quot;file&quot;&#58;&quot;{EncodedFullPath}&quot;,&quot;listId&quot;&#58;&quot;{DocumentListId}&quot;,&quot;modifiedAt&quot;&#58;&quot;&quot;,&quot;photoUrl&quot;&#58;&quot;/_layouts/15/userphoto.aspx?size=S&amp;accountname={EncodedAuthor}&quot;,&quot;rangeitem&quot;&#58;&quot;&quot;,&quot;siteId&quot;&#58;&quot;{SiteId}&quot;,&quot;startPage&quot;&#58;1,&quot;startrange&quot;&#58;&quot;&quot;,&quot;tableitem&quot;&#58;&quot;&quot;,&quot;uniqueId&quot;&#58;&quot;{DocumentUniqueId}&quot;,&quot;wdallowinteractivity&quot;&#58;true,&quot;wdhidegridlines&quot;&#58;true,&quot;wdhideheaders&quot;&#58;true,&quot;webId&quot;&#58;&quot;{WebId}&quot;&#125;&#125;"/>
+        <Mappings Selector="StaticString({MediaMapping})">
+          <!-- Resolve before selection. Only FILE transfers assets or reads file identities.
+               Embed is normalized to an HTTPS iframe and remains subject to HTML Field Security.
+               Classic autoplay, loop, preview images and rendition switching are not preserved. -->
+          <Mapping Default="false" Name="EMBED">
+            <ClientSideWebPart Type="ContentEmbed" Order="10" JsonControlData="{MediaEmbedJson}"/>
+          </Mapping>
+          <Mapping Default="true" Name="FILE" Functions="{TransferredMediaSource} = ReturnCrossSiteRelativePath({ResolvedMediaSource}); {MediaFileJson} = MediaToFileProperties({ResolvedMediaSource},{TransferredMediaSource})">
+            <ClientSideWebPart Type="DocumentEmbed" Order="10" JsonControlData="{MediaFileJson}"/>
           </Mapping>
         </Mappings>
       </WebPart>

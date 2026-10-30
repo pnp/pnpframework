@@ -1,5 +1,9 @@
 ﻿using Microsoft.SharePoint.Client;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PnP.Framework.Modernization.Transform;
+using System;
+using System.Net;
 
 namespace PnP.Framework.Modernization.Functions
 {
@@ -20,5 +24,18 @@ namespace PnP.Framework.Modernization.Functions
             this.clientContext = clientContext;
         }
         #endregion
+
+        protected static string EncodeWebPartMappingJson(JObject data)
+        {
+            // Protect literal tokens and HTML entities until ContentTransformator's final HTML decode.
+            return WebUtility.HtmlEncode(data.ToString(Formatting.None)).Replace("{", "&#123;").Replace("}", "&#125;");
+        }
+
+        protected static bool IsHttpUrl(Uri uri)
+        {
+            return uri.IsAbsoluteUri && !string.IsNullOrEmpty(uri.Host) &&
+                string.IsNullOrEmpty(uri.UserInfo) &&
+                (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
+        }
     }
 }

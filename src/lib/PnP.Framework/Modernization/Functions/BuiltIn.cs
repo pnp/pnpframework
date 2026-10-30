@@ -975,6 +975,37 @@ namespace PnP.Framework.Modernization.Functions
         }
         #endregion
 
+        #region Media web part functions
+        [FunctionDocumentation(Description = "Resolves classic media configuration before selecting Embed or File and Media. Context takes precedence; VideoSet is consulted only when both explicit sources are empty.",
+                               Example = "ResolveMediaConfiguration({MediaSource},{VideoSetEmbedCode},{VideoSetSource},{ConfigureFromContext})")]
+        [InputDocumentation(Name = "{MediaSource}", Description = "Configured media file URL")]
+        [InputDocumentation(Name = "{VideoSetEmbedCode}", Description = "Configured iframe embed code")]
+        [InputDocumentation(Name = "{VideoSetSource}", Description = "Video document set URL")]
+        [InputDocumentation(Name = "{ConfigureFromContext}", Description = "Read media from the source page item")]
+        [OutputDocumentation(Name = "{MediaMapping}", Description = "EMBED or FILE")]
+        [OutputDocumentation(Name = "{ResolvedMediaSource}", Description = "Resolved, escaped source file path")]
+        [OutputDocumentation(Name = "{MediaEmbedJson}", Description = "Validated Embed JSON, without trusted cached markup")]
+        public Dictionary<string, string> ResolveMediaConfiguration(string mediaSource, string embedCode,
+            string videoSetSource, bool configureFromContext)
+        {
+            var media = new MediaWebPartMapping(this.clientContext, this.sourceClientContext,
+                this.baseTransformationInformation.SourcePage, base.RegisteredLogObservers);
+            return media.ResolveConfiguration(mediaSource, embedCode, videoSetSource, configureFromContext);
+        }
+
+        [FunctionDocumentation(Description = "Builds File and Media from the resolved asset's actual web and file identities. Run only in the FILE mapping after asset transfer; missing files are skipped, not represented by empty identities.",
+                               Example = "{MediaFileJson} = MediaToFileProperties({ResolvedMediaSource},{TransferredMediaSource})")]
+        [InputDocumentation(Name = "{ResolvedMediaSource}", Description = "Escaped source media path")]
+        [InputDocumentation(Name = "{TransferredMediaSource}", Description = "Path returned by asset transfer")]
+        [OutputDocumentation(Name = "{MediaFileJson}", Description = "HTML-encoded File and Media JSON")]
+        public string MediaToFileProperties(string resolvedMediaSource, string transferredMediaSource)
+        {
+            var media = new MediaWebPartMapping(this.clientContext, this.sourceClientContext,
+                this.baseTransformationInformation.SourcePage, base.RegisteredLogObservers);
+            return media.ToFileProperties(resolvedMediaSource, transferredMediaSource);
+        }
+        #endregion
+
         #region Picture library slideshow functions
         [FunctionDocumentation(Description = "Builds a dynamic Image Gallery carousel from a picture library slideshow. View filtering and random ordering are not preserved.",
                                Example = "{ImageGalleryJson} = PictureLibrarySlideshowToImageGalleryProperties({LibraryGuid},{Layout},{Speed},{ShowToolbar},{ViewGuid},{Mode},{Title},{ChromeType})")]
@@ -1140,19 +1171,6 @@ namespace PnP.Framework.Modernization.Functions
                 }
             };
             return EncodeWebPartMappingJson(data);
-        }
-
-        private static string EncodeWebPartMappingJson(JObject data)
-        {
-            // Protect literal tokens and HTML entities until ContentTransformator's final HTML decode.
-            return WebUtility.HtmlEncode(data.ToString(Formatting.None)).Replace("{", "&#123;").Replace("}", "&#125;");
-        }
-
-        private static bool IsHttpUrl(Uri uri)
-        {
-            return uri.IsAbsoluteUri && !string.IsNullOrEmpty(uri.Host) &&
-                string.IsNullOrEmpty(uri.UserInfo) &&
-                (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
         }
 
         [SelectorDocumentation(Description = "Content editor can be transformed in various ways depending on whether a link was used, what file type was used, if script is used or not...",

@@ -26921,6 +26921,19 @@ references:
   isSpec: "True"
   fullName: PnP.Framework.Modernization.Functions.BuiltIn.LookupPerson
   nameWithType: BuiltIn.LookupPerson
+- uid: PnP.Framework.Modernization.Functions.BuiltIn.MediaToFileProperties(System.String,System.String)
+  name: MediaToFileProperties(String, String)
+  href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_MediaToFileProperties_System_String_System_String_
+  commentId: M:PnP.Framework.Modernization.Functions.BuiltIn.MediaToFileProperties(System.String,System.String)
+  fullName: PnP.Framework.Modernization.Functions.BuiltIn.MediaToFileProperties(System.String, System.String)
+  nameWithType: BuiltIn.MediaToFileProperties(String, String)
+- uid: PnP.Framework.Modernization.Functions.BuiltIn.MediaToFileProperties*
+  name: MediaToFileProperties
+  href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_MediaToFileProperties_
+  commentId: Overload:PnP.Framework.Modernization.Functions.BuiltIn.MediaToFileProperties
+  isSpec: "True"
+  fullName: PnP.Framework.Modernization.Functions.BuiltIn.MediaToFileProperties
+  nameWithType: BuiltIn.MediaToFileProperties
 - uid: PnP.Framework.Modernization.Functions.BuiltIn.PageViewerToEmbedProperties(System.String)
   name: PageViewerToEmbedProperties(String)
   href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_PageViewerToEmbedProperties_System_String_
@@ -26947,6 +26960,19 @@ references:
   isSpec: "True"
   fullName: PnP.Framework.Modernization.Functions.BuiltIn.PictureLibrarySlideshowToImageGalleryProperties
   nameWithType: BuiltIn.PictureLibrarySlideshowToImageGalleryProperties
+- uid: PnP.Framework.Modernization.Functions.BuiltIn.ResolveMediaConfiguration(System.String,System.String,System.String,System.Boolean)
+  name: ResolveMediaConfiguration(String, String, String, Boolean)
+  href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_ResolveMediaConfiguration_System_String_System_String_System_String_System_Boolean_
+  commentId: M:PnP.Framework.Modernization.Functions.BuiltIn.ResolveMediaConfiguration(System.String,System.String,System.String,System.Boolean)
+  fullName: PnP.Framework.Modernization.Functions.BuiltIn.ResolveMediaConfiguration(System.String, System.String, System.String, System.Boolean)
+  nameWithType: BuiltIn.ResolveMediaConfiguration(String, String, String, Boolean)
+- uid: PnP.Framework.Modernization.Functions.BuiltIn.ResolveMediaConfiguration*
+  name: ResolveMediaConfiguration
+  href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_ResolveMediaConfiguration_
+  commentId: Overload:PnP.Framework.Modernization.Functions.BuiltIn.ResolveMediaConfiguration
+  isSpec: "True"
+  fullName: PnP.Framework.Modernization.Functions.BuiltIn.ResolveMediaConfiguration
+  nameWithType: BuiltIn.ResolveMediaConfiguration
 - uid: PnP.Framework.Modernization.Functions.BuiltIn.ReturnCrossSiteRelativePath(System.String)
   name: ReturnCrossSiteRelativePath(String)
   href: api/PnP.Framework.Modernization.Functions.BuiltIn.html#PnP_Framework_Modernization_Functions_BuiltIn_ReturnCrossSiteRelativePath_System_String_
@@ -27214,6 +27240,32 @@ references:
   commentId: F:PnP.Framework.Modernization.Functions.FunctionsBase.clientContext
   fullName: PnP.Framework.Modernization.Functions.FunctionsBase.clientContext
   nameWithType: FunctionsBase.clientContext
+- uid: PnP.Framework.Modernization.Functions.FunctionsBase.EncodeWebPartMappingJson(JObject)
+  name: EncodeWebPartMappingJson(JObject)
+  href: api/PnP.Framework.Modernization.Functions.FunctionsBase.html#PnP_Framework_Modernization_Functions_FunctionsBase_EncodeWebPartMappingJson_JObject_
+  commentId: M:PnP.Framework.Modernization.Functions.FunctionsBase.EncodeWebPartMappingJson(JObject)
+  fullName: PnP.Framework.Modernization.Functions.FunctionsBase.EncodeWebPartMappingJson(JObject)
+  nameWithType: FunctionsBase.EncodeWebPartMappingJson(JObject)
+- uid: PnP.Framework.Modernization.Functions.FunctionsBase.EncodeWebPartMappingJson*
+  name: EncodeWebPartMappingJson
+  href: api/PnP.Framework.Modernization.Functions.FunctionsBase.html#PnP_Framework_Modernization_Functions_FunctionsBase_EncodeWebPartMappingJson_
+  commentId: Overload:PnP.Framework.Modernization.Functions.FunctionsBase.EncodeWebPartMappingJson
+  isSpec: "True"
+  fullName: PnP.Framework.Modernization.Functions.FunctionsBase.EncodeWebPartMappingJson
+  nameWithType: FunctionsBase.EncodeWebPartMappingJson
+- uid: PnP.Framework.Modernization.Functions.FunctionsBase.IsHttpUrl(Uri)
+  name: IsHttpUrl(Uri)
+  href: api/PnP.Framework.Modernization.Functions.FunctionsBase.html#PnP_Framework_Modernization_Functions_FunctionsBase_IsHttpUrl_Uri_
+  commentId: M:PnP.Framework.Modernization.Functions.FunctionsBase.IsHttpUrl(Uri)
+  fullName: PnP.Framework.Modernization.Functions.FunctionsBase.IsHttpUrl(Uri)
+  nameWithType: FunctionsBase.IsHttpUrl(Uri)
+- uid: PnP.Framework.Modernization.Functions.FunctionsBase.IsHttpUrl*
+  name: IsHttpUrl
+  href: api/PnP.Framework.Modernization.Functions.FunctionsBase.html#PnP_Framework_Modernization_Functions_FunctionsBase_IsHttpUrl_
+  commentId: Overload:PnP.Framework.Modernization.Functions.FunctionsBase.IsHttpUrl
+  isSpec: "True"
+  fullName: PnP.Framework.Modernization.Functions.FunctionsBase.IsHttpUrl
+  nameWithType: FunctionsBase.IsHttpUrl
 - uid: PnP.Framework.Modernization.Functions.InputDocumentationAttribute
   name: InputDocumentationAttribute
   href: api/PnP.Framework.Modernization.Functions.InputDocumentationAttribute.html

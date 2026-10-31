@@ -1092,13 +1092,18 @@ configure the page transformation engine to use the community script editor. You
         </Properties>
       </WebPart>
       <!-- Project site web parts -->
-      <WebPart Type="Microsoft.SharePoint.Portal.WebControls.ProjectSummaryWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <WebPart Type="Microsoft.SharePoint.Portal.WebControls.ProjectSummaryWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" CrossSiteTransformationSupported="true">
         <Properties>
           <Property Name="PrimaryTaskListUrl" Type="string" />
           <Property Name="ListId" Type="guid"/>
           <Property Name="ShowTimeline" Type="bool"/>
           <Property Name="Panels" Type="string"/>
         </Properties>
+        <Mappings>
+          <Mapping Default="true" Name="Default" Functions="{JsonProperties} = ProjectSummaryProperties({ListId}, {PrimaryTaskListUrl}, {ShowTimeline}, {Panels}, {Title})">
+            <ClientSideWebPart Type="Custom" ControlId="7b90afac-708b-4317-be62-f51a74067d7e" Order="10" JsonControlData="{JsonProperties}"/>
+          </Mapping>
+        </Mappings>
       </WebPart>     
       <!-- KPI web parts -->
       <WebPart Type="Microsoft.SharePoint.Portal.WebControls.IndicatorWebpart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">

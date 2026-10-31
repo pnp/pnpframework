@@ -819,7 +819,17 @@ namespace PnP.Framework.Modernization.Pages
                     }
                     else
                     {
-                        // the retrieved properties are sufficient
+                        // Project Summary's collection-valued Panels is omitted by CSOM, but exported as JSON.
+                        if (webPartType.GetTypeShort() == WebParts.ProjectSummary.GetTypeShort() &&
+                            !properties.ContainsKey("Panels"))
+                        {
+                            var panels = xml.Descendants(xmlns + "property").FirstOrDefault(p => (string)p.Attribute("name") == "Panels");
+                            if (panels != null && (string)panels.Attribute("null") != "true")
+                            {
+                                propertiesToKeep["Panels"] = panels.Value;
+                            }
+                        }
+
                         foreach (var property in propertiesToRetrieve)
                         {
                             if (!string.IsNullOrEmpty(property.Name) && properties.ContainsKey(property.Name))

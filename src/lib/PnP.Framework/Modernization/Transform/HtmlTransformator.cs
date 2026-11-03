@@ -69,13 +69,19 @@ namespace PnP.Framework.Modernization.Transform
 
         private const int DefaultTableWidth = 800;
         private HtmlParser parser;
+        private readonly Func<string, string> themeColorResolver;
 
         #region Construction
         /// <summary>
         /// Default constructor
         /// </summary>
-        public HtmlTransformator(IList<ILogObserver> logObservers = null): base()
+        public HtmlTransformator(IList<ILogObserver> logObservers = null): this(logObservers, null)
         {
+        }
+
+        internal HtmlTransformator(IList<ILogObserver> logObservers, Func<string, string> themeColorResolver): base()
+        {
+            this.themeColorResolver = themeColorResolver;
             if (logObservers != null)
             {
                 foreach (var observer in logObservers)
@@ -118,6 +124,7 @@ namespace PnP.Framework.Modernization.Transform
                 TransformBlockQuotes(document.QuerySelectorAll("blockquote"), document);
 
                 // Process elements that can hold forecolor, backcolor, fontsize, underline and strikethrough information
+                TransformElements(document.QuerySelectorAll("font"), document);
                 TransformElements(document.QuerySelectorAll("span"), document);
                 TransformElements(document.QuerySelectorAll("sup"), document);
                 TransformElements(document.QuerySelectorAll("sub"), document);
@@ -201,6 +208,7 @@ namespace PnP.Framework.Modernization.Transform
         {
             foreach(var element in document.All.Where(p => p.HasAttribute("style")))
             {
+                string foregroundColor = element.GetStyle().GetColor();
 
                 if (string.IsNullOrEmpty(element.GetAttribute("style")))
                 {
@@ -246,6 +254,11 @@ namespace PnP.Framework.Modernization.Transform
                         {
                             element.GetStyle().SetTextAlign(textAlign);
                         }
+                    }
+
+                    if (!string.IsNullOrEmpty(foregroundColor))
+                    {
+                        element.GetStyle().SetColor(foregroundColor);
                     }
                 }
             }
@@ -632,6 +645,23 @@ namespace PnP.Framework.Modernization.Transform
             foreach(var fromNode in fromNodes)
             {
                 var parent = fromNode.Parent;
+                var colorClasses = fromNode.ClassList.Where(IsForegroundColorClass).ToArray();
+                string foregroundColor = fromNode.GetStyle().GetColor();
+                if (colorClasses.Length > 0 || !string.IsNullOrEmpty(foregroundColor))
+                {
+                    // Headings are replaced below, so keep their color on the content.
+                    var coloredContent = document.CreateElement("span");
+                    coloredContent.ClassList.Add(colorClasses);
+                    if (!string.IsNullOrEmpty(foregroundColor))
+                    {
+                        coloredContent.GetStyle().SetColor(foregroundColor);
+                    }
+                    while (fromNode.FirstChild != null)
+                    {
+                        coloredContent.AppendChild(fromNode.FirstChild);
+                    }
+                    fromNode.AppendChild(coloredContent);
+                }
 
                 if (to == 0)
                 {
@@ -657,9 +687,11 @@ namespace PnP.Framework.Modernization.Transform
 
         protected virtual void TransformElements(IHtmlCollection<IElement> elementsToTransform, IHtmlDocument document)
         {
-            foreach (var element in elementsToTransform)
+            // Replacements copy inner HTML; transform descendants before their original nodes are detached.
+            foreach (var element in elementsToTransform.Reverse())
             {
                 var parent = element.Parent;
+                string foregroundColor = element.GetStyle().GetColor();
 
                 // ================================
                 // Rewrite font styles outside of the header styles
@@ -739,25 +771,28 @@ namespace PnP.Framework.Modernization.Transform
                 var themeForeColor = element.ClassList.PartialMatch("ms-rtethemeforecolor-");
                 if (!string.IsNullOrEmpty(themeForeColor))
                 {
-                    string newClass = null;
-
-                    // Modern Theme colors
-                    // Darker, Dark, Dark Alternate, Primary, Secondary
-                    // Neutral Tertiary, Neutral Secondary, Primary alternate, Neutral primary, Neutral Dark
-                    if (int.TryParse(themeForeColor.ToLower()[themeForeColor.ToLower().Length - 1].ToString(), out int themeCode))
+                    if (!string.IsNullOrEmpty(foregroundColor))
                     {
-                        string colorName = ThemeCodeToForegroundColorName(themeCode);
-                        if (!string.IsNullOrEmpty(colorName))
-                        {
-                            newClass = $"fontColor{colorName}";
-                        }
+                        element.ClassList.Remove(themeForeColor);
                     }
-
-                    element.ClassList.Remove(themeForeColor);
-                    if (!string.IsNullOrEmpty(newClass))
+                    else
                     {
-                        // We mapped a color
-                        element.ClassList.Add(newClass);
+                        var shadeName = GetThemeShadeName(themeForeColor);
+                        if (shadeName != null && themeColorResolver != null)
+                        {
+                            element.GetStyle().SetColor(themeColorResolver(shadeName));
+                            foregroundColor = element.GetStyle().GetColor();
+                            if (string.IsNullOrEmpty(foregroundColor))
+                            {
+                                throw new InvalidOperationException($"The source theme returned an invalid color for '{shadeName}'.");
+                            }
+                            element.ClassList.Remove(themeForeColor);
+                        }
+                        else
+                        {
+                            LogWarning($"Cannot resolve classic foreground color '{themeForeColor}' without a valid source theme shade. Retaining the class.",
+                                LogStrings.Heading_BuiltInFunctions);
+                        }
                     }
                 }
 
@@ -785,6 +820,11 @@ namespace PnP.Framework.Modernization.Transform
                         if (!string.IsNullOrEmpty(colorName))
                         {
                             newClass = $"fontColor{colorName}";
+                            if (string.IsNullOrEmpty(foregroundColor))
+                            {
+                                foregroundColor = new[] { "darkred", "red", "orange", "yellow", "lightgreen",
+                                    "green", "lightblue", "blue", "darkblue", "purple" }[colorCode - 1];
+                            }
                         }
                     }
 
@@ -794,6 +834,24 @@ namespace PnP.Framework.Modernization.Transform
                         // We mapped a color
                         element.ClassList.Add(newClass);
                     }
+                }
+
+                // CSS colors take precedence over the legacy font color attribute.
+                if (element.TagName.Equals("font", StringComparison.OrdinalIgnoreCase) && element.HasAttribute("color"))
+                {
+                    if (string.IsNullOrEmpty(foregroundColor))
+                    {
+                        element.GetStyle().SetColor(element.GetAttribute("color"));
+                        foregroundColor = element.GetStyle().GetColor();
+                    }
+                    if (!string.IsNullOrEmpty(foregroundColor))
+                    {
+                        element.RemoveAttribute("color");
+                    }
+                }
+                if (!string.IsNullOrEmpty(foregroundColor))
+                {
+                    element.GetStyle().SetColor(foregroundColor);
                 }
 
                 // <sub class="ms-rteBackColor-2">lowerscript</sub>
@@ -914,6 +972,10 @@ namespace PnP.Framework.Modernization.Transform
                         // We needed to insert an EM tag as the provided style uses italic
                         var newElement = document.CreateElement("span");
                         newElement.ClassList.Add(element.ClassList.ToArray());
+                        if (!string.IsNullOrEmpty(foregroundColor))
+                        {
+                            newElement.GetStyle().SetColor(foregroundColor);
+                        }
                         var newItalic = document.CreateElement("em");
 
                         // Transform the piece of html we add in this span, needed to handle spans nested in here as these otherwise would not be found anymore
@@ -937,7 +999,8 @@ namespace PnP.Framework.Modernization.Transform
                     else
                     {
                         // if we still did not replace the span element, the span has no classes set anymore and the span does not have child elements then we can replace it by text
-                        if (!replacementDone && element.ClassList.Length == 0 && element.FirstElementChild == null)
+                        if (!replacementDone && element.ClassList.Length == 0 && element.FirstElementChild == null &&
+                            string.IsNullOrEmpty(foregroundColor))
                         {
                             ReplaceChildElementByText(parent, element, document);
                         }
@@ -947,6 +1010,10 @@ namespace PnP.Framework.Modernization.Transform
                             if (element.HasAttribute("style"))
                             {
                                 element.RemoveAttribute("style");
+                            }
+                            if (!string.IsNullOrEmpty(foregroundColor))
+                            {
+                                element.GetStyle().SetColor(foregroundColor);
                             }
                             // if the element has no classes anymore then let's drop the class attribute
                             if (element.ClassList.Length == 0 && element.HasAttribute("class"))
@@ -961,6 +1028,10 @@ namespace PnP.Framework.Modernization.Transform
                     // Non span element with styling that was transformed will be wrapped in a span containing the styling which wraps a "clean" element
                     var newElement = document.CreateElement("span");
                     newElement.ClassList.Add(element.ClassList.ToArray());
+                    if (!string.IsNullOrEmpty(foregroundColor))
+                    {
+                        newElement.GetStyle().SetColor(foregroundColor);
+                    }
                     // no point in having an empty class attribute
                     if (element.HasAttribute("class"))
                     {
@@ -997,6 +1068,27 @@ namespace PnP.Framework.Modernization.Transform
                     }
                 }
             }
+        }
+
+        private static bool IsForegroundColorClass(string className)
+        {
+            return className.StartsWith("ms-rteForeColor-", StringComparison.OrdinalIgnoreCase) ||
+                className.StartsWith("ms-rteThemeForeColor-", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static string GetThemeShadeName(string className)
+        {
+            var match = Regex.Match(className, @"^ms-rteThemeForeColor-([1-9]|10)-([0-5])$",
+                RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+            if (!match.Success)
+            {
+                return null;
+            }
+
+            var slots = new[] { "BackgroundOverlay", "BodyText", "SubtleEmphasisText", "SubtleEmphasisBackground",
+                "ContentAccent1", "ContentAccent2", "ContentAccent3", "ContentAccent4", "ContentAccent5", "ContentAccent6" };
+            var shades = new[] { "", "-Lightest", "-Lighter", "-Medium", "-Darker", "-Darkest" };
+            return slots[int.Parse(match.Groups[1].Value) - 1] + shades[int.Parse(match.Groups[2].Value)];
         }
 
         private static string GetTableClassName(IElement table, bool hasHeader)
@@ -1407,10 +1499,15 @@ namespace PnP.Framework.Modernization.Transform
             string innerHtml = TransformInnerHtml(element.InnerHtml);
 
             // If the element has a class defined then wrap inside a span
-            if (element.ClassList.Length > 0)
+            string foregroundColor = element.GetStyle().GetColor();
+            if (element.ClassList.Length > 0 || !string.IsNullOrEmpty(foregroundColor))
             {
                 var newSpan = document.CreateElement("span");
                 newSpan.ClassList.Add(element.ClassList.ToArray());
+                if (!string.IsNullOrEmpty(foregroundColor))
+                {
+                    newSpan.GetStyle().SetColor(foregroundColor);
+                }
                 newSpan.InnerHtml = innerHtml;
                 newElement.AppendChild(newSpan);
             }

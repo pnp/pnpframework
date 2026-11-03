@@ -27,6 +27,7 @@ namespace PnP.Framework.Modernization.Functions
         private BaseTransformationInformation baseTransformationInformation;
         private UrlTransformator urlTransformator;
         private UserTransformator userTransformator;
+        private readonly Dictionary<string, string> sourceThemeColors = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         #region Construction
         /// <summary>
@@ -285,7 +286,7 @@ namespace PnP.Framework.Modernization.Functions
         }
 
         /// <summary>
-        /// Wiki html rewrite to work in RTE
+        /// Wiki html rewrite to work in RTE, preserving foreground colors from the source web's classic theme.
         /// </summary>
         /// <param name="text">Wiki html to rewrite</param>
         /// <param name="usePlaceHolders"></param>
@@ -312,8 +313,29 @@ namespace PnP.Framework.Modernization.Functions
                 {
                     html = this.urlTransformator.Transform(html);
                 }
-                return new HtmlTransformator(base.RegisteredLogObservers).Transform(html, usePlaceHolder);
+                return new HtmlTransformator(base.RegisteredLogObservers, ResolveSourceThemeColor).Transform(html, usePlaceHolder);
             });
+        }
+
+        private string ResolveSourceThemeColor(string shadeName)
+        {
+            if (!sourceThemeColors.TryGetValue(shadeName, out var color))
+            {
+                var context = sourceClientContext ?? targetClientContext;
+                var shade = context.Web.ThemeInfo.GetThemeShadeByName(shadeName);
+                context.ExecuteQueryRetry();
+                var value = shade.Value;
+                if (string.IsNullOrEmpty(value) || (value.Length != 6 && value.Length != 8) ||
+                    !value.All(Uri.IsHexDigit))
+                {
+                    throw new InvalidOperationException($"The source theme returned an invalid color for '{shadeName}'.");
+                }
+
+                // Classic RTE foreground rules force opacity to 1, even for ARGB theme values.
+                color = "#" + value.Substring(value.Length - 6);
+                sourceThemeColors.Add(shadeName, color);
+            }
+            return color;
         }
 
         internal string TransformInlineImages(string text, bool externalImagesOnly = false, Func<Uri, string> importExternalImage = null)

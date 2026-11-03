@@ -62,14 +62,6 @@ using (var targetClientContext = GetClientContext("https://<tenant>.sharepoint.c
 ```
 
 
-## Indented rich text
-
-Classic rich-text indentation can contain plain text directly inside a
-`blockquote`, alongside formatted elements. Modernization retains this text,
-including answers that are not wrapped in paragraphs, when converting indentation
-to modern paragraph margins. Previously transformed pages must be transformed
-again to recover text omitted by an earlier conversion.
-
 ## Table styles
 
 Plain tables and the classic `ms-rteTable-0` ("no grid") style are transformed

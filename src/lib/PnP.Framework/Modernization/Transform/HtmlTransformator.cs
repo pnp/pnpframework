@@ -1621,7 +1621,8 @@ namespace PnP.Framework.Modernization.Transform
                                     !string.IsNullOrEmpty(rowSpan) && rowSpan != "1" && int.TryParse(rowSpan, out int rowCellsToAdd))
                                 {
                                     int tempRowPos = rowPos;
-                                    for (int j = 0; j < rowCellsToAdd; j++)
+                                    // Classic HTML can span past the last row; only expand into rows that exist.
+                                    for (int j = 0; j < rowCellsToAdd && tempRowPos < tableDimension.Item2; j++)
                                     {
                                         int tempColPos = colPos - 1;
                                         for (int i = 0; i < columnCellsToAdd; i++)
@@ -1649,7 +1650,7 @@ namespace PnP.Framework.Modernization.Transform
                                     if (!string.IsNullOrEmpty(rowSpan) && rowSpan != "1" && int.TryParse(rowSpan, out int rowCellsToAdd2))
                                     {
                                         int tempRowPos = rowPos + 1;
-                                        for (int i = 0; i < rowCellsToAdd2 - 1; i++)
+                                        for (int i = 0; i < rowCellsToAdd2 - 1 && tempRowPos < tableDimension.Item2; i++)
                                         {
                                             cells[tempRowPos, colPos - 1] = new IElementCell(null);
                                             tempRowPos++;

@@ -6,6 +6,7 @@ using PnP.Framework.Modernization.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using AngleSharp.Css.Dom;
 using AngleSharp.Io;
@@ -69,6 +70,7 @@ namespace PnP.Framework.Modernization.Transform
 
         private const int DefaultTableWidth = 800;
         private HtmlParser parser;
+        private readonly ConditionalWeakTable<IElement, object> autoWidthTables = new ConditionalWeakTable<IElement, object>();
 
         #region Construction
         /// <summary>
@@ -106,6 +108,15 @@ namespace PnP.Framework.Modernization.Transform
 
             using (var document = this.parser.ParseDocument(text))
             {
+                // Capture source sizing before rich-text processing replaces or removes styled elements.
+                foreach (var table in document.QuerySelectorAll("table"))
+                {
+                    if (UsesAutomaticTableWidth(table))
+                    {
+                        autoWidthTables.Add(table, new object());
+                    }
+                }
+
                 // Process headings: RTE does h2, h3, h4 while wiki does h1, h2, h3, h4. Wiki h4 to h6 will become (formatted) text
                 TransformHeadings(document, 6, 0);
                 TransformHeadings(document, 5, 0);
@@ -304,6 +315,7 @@ namespace PnP.Framework.Modernization.Transform
 
                 // Table cell width
                 var cellWidth = GetDefaultCellTableCellWidths(normalizedTable.Cells.GetLength(1));
+                bool useAutomaticWidth = autoWidthTables.TryGetValue(table, out _);
 
                 // Table headers
                 if (normalizedTable.HasHeader)
@@ -321,7 +333,7 @@ namespace PnP.Framework.Modernization.Transform
                         }
 
                         var tableHeaderCell = document.CreateElement("td");
-                        tableHeaderCell.GetStyle().SetWidth($"{cellWidth[headerCounter]}px");
+                        tableHeaderCell.GetStyle().SetWidth(useAutomaticWidth ? "auto" : $"{cellWidth[headerCounter]}px");
 
                         // Restore alignment if needed
                         if (normalizedTable.Header[colPos].TextAlign != null)
@@ -348,7 +360,7 @@ namespace PnP.Framework.Modernization.Transform
                     for (int colPos = 0; colPos < normalizedTable.Cells.GetLength(1); colPos += 1)
                     {
                         var newTableCell = document.CreateElement("td");
-                        newTableCell.GetStyle().SetWidth($"{cellWidth[cellCounter]}px");
+                        newTableCell.GetStyle().SetWidth(useAutomaticWidth ? "auto" : $"{cellWidth[cellCounter]}px");
                         cellCounter++;
 
                         // Did we put a "real" cell?
@@ -1505,6 +1517,44 @@ namespace PnP.Framework.Modernization.Transform
 
             return widths;
         }
+
+        private static bool UsesAutomaticTableWidth(IElement sourceTable)
+        {
+            if (!(sourceTable is IHtmlTableElement htmlTable))
+            {
+                return false;
+            }
+
+            var rows = htmlTable.Rows;
+            if (rows.Length == 0 || HasExplicitWidth(sourceTable) ||
+                sourceTable.QuerySelectorAll("col, colgroup")
+                    .Any(column => column.Closest("table") == sourceTable && HasExplicitWidth(column)))
+            {
+                return false;
+            }
+
+            var cells = rows.SelectMany(row => row.Children.Where(cell =>
+                cell.TagName.Equals("td", StringComparison.OrdinalIgnoreCase) ||
+                cell.TagName.Equals("th", StringComparison.OrdinalIgnoreCase))).ToArray();
+            if (cells.Length == 0 || cells.Any(HasExplicitWidth))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool HasExplicitWidth(IElement element)
+        {
+            string widthAttribute = element.GetAttribute("width");
+            var style = element.GetStyle();
+            return IsConstrainedWidth(widthAttribute) || style != null &&
+                new[] { "width", "min-width", "max-width" }
+                    .Any(property => IsConstrainedWidth(style.GetPropertyValue(property)));
+        }
+
+        private static bool IsConstrainedWidth(string width) =>
+            !string.IsNullOrWhiteSpace(width) && !width.Trim().Equals("auto", StringComparison.OrdinalIgnoreCase);
 
         private static bool IsStrikeThrough(IElement element)
         {

@@ -278,10 +278,8 @@ namespace PnP.Framework.Modernization.Transform
                     }
                     else
                     {
-                        if (sourceClientContext.Site.Id.Equals(targetClientContext.Site.Id))
+                        if (NormalizeSameSiteTargetContext(sourceClientContext.Site.Id, targetClientContext.Site.Id, pageTransformationInformation))
                         {
-                            // Oops, seems source and target point to the same site collection...switch back the "source only" mode
-                            targetClientContext = null;
                             hasTargetContext = false;
                             LogWarning(LogStrings.Error_FallBackToSameSiteTransfer, LogStrings.Heading_SharePointConnection);
                         }
@@ -1190,6 +1188,22 @@ namespace PnP.Framework.Modernization.Transform
         }
 
         #region Helper methods
+        internal bool NormalizeSameSiteTargetContext(Guid sourceSiteId, Guid targetSiteId, BaseTransformationInformation transformationInformation)
+        {
+            if (!sourceSiteId.Equals(targetSiteId))
+            {
+                return false;
+            }
+
+            targetClientContext = null;
+            // Validation ran before the site IDs were loaded; discard its cross-site state too.
+            transformationInformation.IsCrossSiteTransformation = false;
+            transformationInformation.IsCrossFarmTransformation = false;
+            transformationInformation.TargetVersion = transformationInformation.SourceVersion;
+            transformationInformation.TargetVersionNumber = transformationInformation.SourceVersionNumber;
+            return true;
+        }
+
         private void SetPageTitle(PageTransformationInformation pageTransformationInformation, PnPCore.IPage targetPage)
         {
             if (FieldExistsAndIsUsed(pageTransformationInformation, Constants.FileLeafRefField))

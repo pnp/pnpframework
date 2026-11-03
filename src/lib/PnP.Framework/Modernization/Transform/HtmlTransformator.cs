@@ -470,7 +470,7 @@ namespace PnP.Framework.Modernization.Transform
                     }
                     else
                     {
-                        // We're at the bottom level, the children of this blockquote node do contain regular content. This is always wrapped inside either P or Div tags
+                        // We're at the bottom level, where blockquotes can contain both elements and unwrapped text.
                         bool replacementDone = false;
                         IElement insertionContainer = null;
                         IElement topLevelBlockQuote = null;
@@ -492,9 +492,20 @@ namespace PnP.Framework.Modernization.Transform
                             replacementDone = true;
                         }
 
-                        // Important to do a ToList() to get a copy as the Children list might be affected by the code in the loop!
-                        foreach (var nodeToProcess in blockQuote.Children.ToList())
+                        // Snapshot all nodes: iterating only elements would discard unwrapped answers.
+                        foreach (var childNode in blockQuote.ChildNodes.ToList())
                         {
+                            var nodeToProcess = childNode as IElement;
+                            if (childNode is IText)
+                            {
+                                nodeToProcess = document.CreateElement("p");
+                                nodeToProcess.TextContent = childNode.TextContent;
+                            }
+                            if (nodeToProcess == null)
+                            {
+                                continue;
+                            }
+
                             // Indention in realized via P element with the needed pixels as margin-left
                             IElement newElement;
 

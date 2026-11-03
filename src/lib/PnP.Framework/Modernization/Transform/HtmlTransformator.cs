@@ -999,7 +999,7 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
-        private static string GetTableClassName(IElement table)
+        private static string GetTableClassName(IElement table, bool hasHeader)
         {
             const string borderedStyle = "borderHeaderTableStyleNeutral";
             const string borderlessStyle = "noBorderTableStyleNeutral";
@@ -1024,6 +1024,12 @@ namespace PnP.Framework.Modernization.Transform
 
             if (mappedStyle != null && mappedStyle != borderlessStyle)
             {
+                // Modern filled-header styles color the first row even when it contains only body cells.
+                if (!hasHeader && (mappedStyle == "filledHeaderTableStyleTheme" || mappedStyle == "filledHeaderTableStyleNeutral"))
+                {
+                    return "simpleTableStyleNeutral";
+                }
+
                 return mappedStyle;
             }
 
@@ -1071,6 +1077,7 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         /// <param name="tableStyleCode">Code used for the wiki table style</param>
         /// <returns>RTE compatible table style</returns>
+        /// <remarks>Filled-header styles require a header row. Transformation uses a neutral grid for headerless tables instead.</remarks>
         public static string TableStyleCodeToName(int tableStyleCode)
         {
             //ms-rteTable-default: basic grid lines
@@ -1536,12 +1543,6 @@ namespace PnP.Framework.Modernization.Transform
             // Determine the table dimension, item1 = max cols / item 2 = max rows
             var tableDimension = GetTableDimensions(table);
 
-            // Create table object
-            Table normalizedTable = new Table()
-            {
-                ClassName = GetTableClassName(table),
-            };
-
             // A 2 dimensional array to hold the normalized table cells
             IElementCell[,] cells = new IElementCell[tableDimension.Item2, tableDimension.Item1];
             // An array to hold the header cells (if any)
@@ -1671,8 +1672,12 @@ namespace PnP.Framework.Modernization.Transform
                 }
             }
 
-            normalizedTable.Header = headerCells;
-            normalizedTable.Cells = cells;
+            Table normalizedTable = new Table()
+            {
+                Header = headerCells,
+                Cells = cells,
+            };
+            normalizedTable.ClassName = GetTableClassName(table, normalizedTable.HasHeader);
 
             // Let's assume there's badly shaped tables as well...fill the empty cells with an empty cell value so they're correctly replaced
             for (int rowPos = 0; rowPos < normalizedTable.Cells.GetLength(0); rowPos += 1)

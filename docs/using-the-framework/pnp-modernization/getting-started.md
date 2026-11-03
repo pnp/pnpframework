@@ -62,37 +62,6 @@ using (var targetClientContext = GetClientContext("https://<tenant>.sharepoint.c
 ```
 
 
-## Same-site wiki and web part pages
-
-When a supplied target context belongs to the source site collection,
-`PageTransformator` uses source-only (in-place) mode. The destination is the
-source web's `SitePages` library, even when the supplied target refers to a
-different subweb in that collection. Cross-site flags and target-version
-metadata are reset, but `TargetPageFolder`, its override option, and an explicit
-target page name are retained. Blog and publishing pages have separate rules.
-
-For a custom source library, set `TargetPageFolderOverridesDefaultFolder = true`
-to place the page directly in the requested folder under `SitePages`; otherwise
-the source library/folder path is included. Do not prefix `TargetPageFolder`
-with `SitePages`.
-
-To verify a local framework change through PnP.PowerShell, build that module
-against the local framework using its `PnPFrameworkPath` build property, import
-the isolated module in a new PowerShell process, and confirm the loaded
-`PnP.Framework` assembly path and file hash match the build. An installed
-module can contain an older framework even when this repository builds.
-
-Use an authorized test web, an existing classic page in a custom library, and
-unique output folders. Run `ConvertTo-PnPPage` with no target parameters,
-`-TargetConnection` only, `-TargetWebUrl` only, and both parameters pointing to
-the same web. Retain `-TargetPageFolder` and
-`-TargetPageFolderOverridesDefaultFolder` in each run. Verify the resulting
-`SitePages` item has modern page metadata and canvas content, the source page
-version is unchanged, and no critical transformation error was reported.
-Remove only the output folders created by the test. A successful command
-invocation alone is insufficient: older versions can report a transformation
-error without returning a terminating PowerShell error.
-
 ## Table styles
 
 Plain tables and the classic `ms-rteTable-0` ("no grid") style are transformed

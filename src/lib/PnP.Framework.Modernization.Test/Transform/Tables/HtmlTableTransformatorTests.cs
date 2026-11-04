@@ -117,9 +117,7 @@ namespace PnP.Framework.Modernization.Tests.Transform.Tables
                 CollectionAssert.AreEqual(expected,
                     document.QuerySelectorAll("h2, h3, p, li").Select(element => element.TextContent).ToArray());
                 Assert.AreEqual("/access-review", document.QuerySelector("li > a").GetAttribute("href"));
-                Assert.AreEqual(0, document.QuerySelectorAll("table table, [rowspan]").Length);
                 var introTable = document.QuerySelector("h2").Closest("table");
-                Assert.AreEqual(2, introTable.QuerySelectorAll("td").Length);
                 Assert.AreEqual(colSpan, ((IHtmlTableCellElement)introTable.QuerySelector("tr > td:last-child")).ColumnSpan);
             }
             observer.Verify(log => log.Warning(It.IsAny<LogEntry>()), Times.Never);

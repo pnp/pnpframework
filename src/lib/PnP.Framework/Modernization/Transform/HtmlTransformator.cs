@@ -71,6 +71,11 @@ namespace PnP.Framework.Modernization.Transform
         /// <param name="text">Html to be transformed</param>
         /// <param name="usePlaceHolder">Insert placeholders for images and iframe tags</param>
         /// <returns>Html that can be used and edited via the client side text part</returns>
+        /// <remarks>
+        /// Source fragment destinations are retained, with heading IDs placed on content spans because modern rendering
+        /// generates its own heading IDs. Those generated IDs can collide with source IDs. The modern text editor can
+        /// discard custom IDs on a subsequent edit/save; preserving them here does not prevent that editor behavior.
+        /// </remarks>
         public string Transform(string text, bool usePlaceHolder)
         {
             // Strip out the "zero width space characters"
@@ -575,26 +580,32 @@ namespace PnP.Framework.Modernization.Transform
                 var parent = fromNode.Parent;
                 var colorClasses = fromNode.ClassList.Where(IsForegroundColorClass).ToArray();
                 string foregroundColor = fromNode.GetStyle().GetColor();
-                if (colorClasses.Length > 0 || !string.IsNullOrEmpty(foregroundColor))
+                bool preserveHeadingAnchor = to != 0 && !string.IsNullOrEmpty(fromNode.Id);
+                if (preserveHeadingAnchor || colorClasses.Length > 0 || !string.IsNullOrEmpty(foregroundColor))
                 {
-                    // Headings are replaced below, so keep their color on the content.
-                    var coloredContent = document.CreateElement("span");
-                    coloredContent.ClassList.Add(colorClasses);
+                    // Modern rendering generates heading IDs. Keep legacy destinations on the content instead.
+                    var headingContent = document.CreateElement("span");
+                    if (preserveHeadingAnchor)
+                    {
+                        CopyId(fromNode, headingContent);
+                    }
+                    headingContent.ClassList.Add(colorClasses);
                     if (!string.IsNullOrEmpty(foregroundColor))
                     {
-                        coloredContent.GetStyle().SetColor(foregroundColor);
+                        headingContent.GetStyle().SetColor(foregroundColor);
                     }
                     while (fromNode.FirstChild != null)
                     {
-                        coloredContent.AppendChild(fromNode.FirstChild);
+                        headingContent.AppendChild(fromNode.FirstChild);
                     }
-                    fromNode.AppendChild(coloredContent);
+                    fromNode.AppendChild(headingContent);
                 }
 
                 if (to == 0)
                 {
                     // wrap the content inside a div so that further formatting processing will pick it up
                     var newElement = document.CreateElement("div");
+                    CopyId(fromNode, newElement);
                     newElement.InnerHtml = fromNode.InnerHtml;
                     parent.ReplaceChild(newElement, fromNode);
                 }
@@ -899,6 +910,7 @@ namespace PnP.Framework.Modernization.Transform
                     {
                         // We needed to insert an EM tag as the provided style uses italic
                         var newElement = document.CreateElement("span");
+                        CopyId(element, newElement);
                         newElement.ClassList.Add(element.ClassList.ToArray());
                         if (!string.IsNullOrEmpty(foregroundColor))
                         {
@@ -926,9 +938,9 @@ namespace PnP.Framework.Modernization.Transform
                     }
                     else
                     {
-                        // if we still did not replace the span element, the span has no classes set anymore and the span does not have child elements then we can replace it by text
+                        // Plain spans can be unwrapped unless they are fragment destinations.
                         if (!replacementDone && element.ClassList.Length == 0 && element.FirstElementChild == null &&
-                            string.IsNullOrEmpty(foregroundColor))
+                            string.IsNullOrEmpty(foregroundColor) && string.IsNullOrEmpty(element.Id))
                         {
                             ReplaceChildElementByText(parent, element, document);
                         }
@@ -972,6 +984,7 @@ namespace PnP.Framework.Modernization.Transform
                         newElement.AppendChild(strikeThroughElement);                        
                         // Create the element that held the strikethrough style
                         var emElement = document.CreateElement(elementToKeep.ToLower());
+                        CopyId(element, emElement);
                         emElement.InnerHtml = element.InnerHtml;
                         strikeThroughElement.AppendChild(emElement);
                     }
@@ -981,6 +994,7 @@ namespace PnP.Framework.Modernization.Transform
                         newElement.AppendChild(underlineElement);
                         // Create the element that held the underline style
                         var emElement = document.CreateElement(elementToKeep.ToLower());
+                        CopyId(element, emElement);
                         emElement.InnerHtml = element.InnerHtml;
                         underlineElement.AppendChild(emElement);
                     }
@@ -1422,6 +1436,7 @@ namespace PnP.Framework.Modernization.Transform
         private void ReplaceByRelevantTag(IHtmlDocument document, IElement element, INode parent, string tag)
         {
             var newElement = document.CreateElement(tag);
+            CopyId(element, newElement);
 
             // Transform the piece of html we add in this span, needed to handle spans nested in here as these otherwise would not be found anymore
             string innerHtml = TransformInnerHtml(element.InnerHtml);
@@ -1445,6 +1460,14 @@ namespace PnP.Framework.Modernization.Transform
             }
 
             parent.ReplaceChild(newElement, element);
+        }
+
+        private static void CopyId(IElement source, IElement target)
+        {
+            if (!string.IsNullOrEmpty(source.Id))
+            {
+                target.Id = source.Id;
+            }
         }
 
         private static void ReplaceChildElementByText(INode parent, IElement child, IHtmlDocument document)

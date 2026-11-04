@@ -22,7 +22,6 @@ namespace PnP.Framework.Modernization.Transform
         internal class Table
         {
             internal string ClassName { get; set; }
-            internal IElement InsertionPoint { get; set; }
             internal List<List<TableCell>> Rows { get; } = new List<List<TableCell>>();
             internal int Columns { get; set; }
         }
@@ -237,14 +236,12 @@ namespace PnP.Framework.Modernization.Transform
         /// Preserves table spans and relative column sizing in native canvas RTE markup that fits the canvas.
         /// Absolute table widths become responsive widths because RTE does not retain overflow constraints.
         /// Simple unsized tables retain the legacy wrapper.
-        /// Nested tables are extracted because canvas RTE does not support nesting.
+        /// Nested tables remain in their owning cells for canvas RTE to render and edit.
         /// </summary>
         protected virtual void TransformTables(IHtmlCollection<IElement> tables, IHtmlDocument document)
         {
-
-            List<Tuple<IElement, IElement, IElement>> tableReplaceList = new List<Tuple<IElement, IElement, IElement>>();
-
-            foreach (var table in tables)
+            // Transform inside-out so copying a cell includes its already transformed nested tables.
+            foreach (var table in tables.Reverse())
             {
                 Table normalizedTable = null;
 
@@ -297,6 +294,13 @@ namespace PnP.Framework.Modernization.Transform
                 tableElement.ClassName = normalizedTable.ClassName;
                 tableElement.SetAttribute("title", "Table");
                 tableContainer.AppendChild(tableElement);
+                var sourceCaption = ((IHtmlTableElement)table).Caption;
+                if (sourceCaption != null)
+                {
+                    var caption = document.CreateElement("caption");
+                    caption.InnerHtml = sourceCaption.InnerHtml;
+                    tableElement.AppendChild(caption);
+                }
                 double[] columnWidths = null;
                 if (nativeTable)
                 {
@@ -346,40 +350,7 @@ namespace PnP.Framework.Modernization.Transform
                     tableBody.AppendChild(newRow);
                 }
 
-                // Add table to list for doing actual replacements once we're done analyzing all tables
-                tableReplaceList.Add(new Tuple<IElement, IElement, IElement>(table, newTableElement, normalizedTable.InsertionPoint));
-            }
-
-            foreach (var tableToReplace in tableReplaceList.Where(p => p.Item3 != null))
-            {
-                // Insert the new table at the insertion point. Add a br to work around an RTE bug that you can't separate tables
-                tableToReplace.Item3.AppendChild(document.CreateElement("br"));
-                tableToReplace.Item3.AppendChild(tableToReplace.Item2);
-
-                // Remove the old table
-                tableToReplace.Item1.Parent.RemoveChild(tableToReplace.Item1);                
-            }
-
-            foreach (var tableToReplace in tableReplaceList.Where(p => p.Item3 == null))
-            {
-                // Swap old table with new table
-                tableToReplace.Item1.Parent.ReplaceChild(tableToReplace.Item2, tableToReplace.Item1);
-            }
-
-            // Drop any nested table
-            foreach(var tableToCheck in tableReplaceList)
-            {
-                var nestedTables = tableToCheck.Item2.QuerySelectorAll("table");
-                if (nestedTables.Any())
-                {
-                    foreach(var nestedTable in nestedTables.ToList())
-                    {
-                        if (nestedTable != nestedTables[0])
-                        {
-                            nestedTable.ParentElement.RemoveChild(nestedTable);
-                        }
-                    }
-                }
+                table.Parent.ReplaceChild(newTableElement, table);
             }
         }
 
@@ -1798,30 +1769,6 @@ namespace PnP.Framework.Modernization.Transform
             var firstRow = normalizedTable.Rows.FirstOrDefault();
             normalizedTable.ClassName = GetTableClassName(table,
                 firstRow != null && firstRow.Count > 0 && firstRow.All(cell => cell.Element.TagName == "TH"));
-
-            // Determine insertion point
-            if (table.ParentElement != null)
-            {
-                var startNode = table.ParentElement;
-                IElement lastTableElement = null;
-
-                // walk up the parent tree
-                while (startNode != null)
-                {
-                    if (startNode.TagName.Equals("table", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        lastTableElement = startNode;
-                    }
-                    startNode = startNode.ParentElement;
-                }
-                
-                if (lastTableElement != null)
-                {
-                    // This table was nested, let's take the parent element of the 'highest' table as insertion point
-                    normalizedTable.InsertionPoint = lastTableElement.ParentElement;
-                }
-
-            }
 
             return normalizedTable;
         }

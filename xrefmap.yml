@@ -31313,6 +31313,12 @@ references:
   commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Error_ReturnCrossSiteRelativePath
   fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Error_ReturnCrossSiteRelativePath
   nameWithType: LogStrings.Error_ReturnCrossSiteRelativePath
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Error_SameSiteTransferDifferentWeb
+  name: Error_SameSiteTransferDifferentWeb
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Error_SameSiteTransferDifferentWeb
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Error_SameSiteTransferDifferentWeb
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Error_SameSiteTransferDifferentWeb
+  nameWithType: LogStrings.Error_SameSiteTransferDifferentWeb
 - uid: PnP.Framework.Modernization.Telemetry.LogStrings.Error_SameSiteTransferNoAllowedForBlogPages
   name: Error_SameSiteTransferNoAllowedForBlogPages
   href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Error_SameSiteTransferNoAllowedForBlogPages

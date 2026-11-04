@@ -20,6 +20,24 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
     [TestClass]
     public class ForegroundColorTests
     {
+        [TestMethod]
+        public void Transform_PreservesColorsAndAutomaticTableWidths()
+        {
+            const string html = @"<table class='ms-rteTable-default'><tr>
+                <td><span id='blue' class='ms-rteThemeForeColor-6-0'>Blue field</span></td>
+                <td><font id='green' class='ms-rteForeColor-6'>Green field</font></td>
+                <td></td>
+            </tr></table>";
+            using (var result = Parse(new HtmlTransformator(null, _ => "#00485b").Transform(html, false)))
+            {
+                var cells = result.QuerySelectorAll("table td");
+                Assert.AreEqual(3, cells.Length);
+                Assert.IsTrue(cells.All(cell => cell.GetStyle().GetWidth() == "auto"));
+                AssertColor(result, "#blue", "#00485b");
+                AssertColor(result, "#green", "green");
+            }
+        }
+
         [DataTestMethod]
         [DataRow(false)]
         [DataRow(true)]

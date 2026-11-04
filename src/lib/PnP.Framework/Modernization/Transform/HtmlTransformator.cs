@@ -5,8 +5,8 @@ using AngleSharp.Html.Parser;
 using PnP.Framework.Modernization.Telemetry;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using AngleSharp.Css.Dom;
 using AngleSharp.Io;
@@ -23,54 +23,20 @@ namespace PnP.Framework.Modernization.Transform
         {
             internal string ClassName { get; set; }
             internal IElement InsertionPoint { get; set; }
-            internal IElementCell[] Header { get; set; }
-            internal IElementCell[,] Cells { get; set; }
-
-            internal bool HasHeader
-            {
-                get
-                {
-                    if (this.Header == null)
-                    {
-                        return false;
-                    }
-
-                    for (int colPos = 0; colPos < this.Header.Length; colPos += 1)
-                    {
-                        if (this.Header[colPos] != null)
-                        {
-                            return true;
-                        }
-                    }
-
-                    return false;
-                }
-            }
+            internal List<List<TableCell>> Rows { get; } = new List<List<TableCell>>();
+            internal int Columns { get; set; }
         }
 
-        internal class IElementCell
+        internal class TableCell
         {
-            internal bool HasValue
-            {
-                get
-                {
-                    return Element != null;
-                }
-            }
             internal IElement Element { get; set; }
-
-            internal IElementCell(IElement element)
-            {
-                this.Element = element;
-            }
-
-            internal string TextAlign { get; set; }
+            internal int Column { get; set; }
+            internal int ColumnSpan { get; set; }
+            internal int RowSpan { get; set; }
         }
         #endregion
 
-        private const int DefaultTableWidth = 800;
         private HtmlParser parser;
-        private readonly ConditionalWeakTable<IElement, object> autoWidthTables = new ConditionalWeakTable<IElement, object>();
         private readonly Func<string, string> themeColorResolver;
 
         #region Construction
@@ -114,15 +80,6 @@ namespace PnP.Framework.Modernization.Transform
 
             using (var document = this.parser.ParseDocument(text))
             {
-                // Capture source sizing before rich-text processing replaces or removes styled elements.
-                foreach (var table in document.QuerySelectorAll("table"))
-                {
-                    if (UsesAutomaticTableWidth(table))
-                    {
-                        autoWidthTables.Add(table, new object());
-                    }
-                }
-
                 // Process headings: RTE does h2, h3, h4 while wiki does h1, h2, h3, h4. Wiki h4 to h6 will become (formatted) text
                 TransformHeadings(document, 6, 0);
                 TransformHeadings(document, 5, 0);
@@ -228,7 +185,8 @@ namespace PnP.Framework.Modernization.Transform
                 }
                 else
                 {
-                    if (IsBlockElement(element))
+                    if (IsBlockElement(element) &&
+                        !(element.TagName == "FIGURE" && element.ClassList.Contains("canvasRteResponsiveTable")))
                     {
                         // Save the styles we want to maintain
                         string marginLeft = element.GetStyle().GetMarginLeft();
@@ -275,6 +233,12 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
+        /// <summary>
+        /// Preserves table spans and relative column sizing in native canvas RTE markup that fits the canvas.
+        /// Absolute table widths become responsive widths because RTE does not retain overflow constraints.
+        /// Simple unsized tables retain the legacy wrapper.
+        /// Nested tables are extracted because canvas RTE does not support nesting.
+        /// </summary>
         protected virtual void TransformTables(IHtmlCollection<IElement> tables, IHtmlDocument document)
         {
 
@@ -286,7 +250,7 @@ namespace PnP.Framework.Modernization.Transform
 
                 try
                 {
-                    // Normalize table by removing the col and row spans and returning a Table object containing matrix of cells, header cells and table information
+                    // Resolve the logical grid without turning covered positions into empty cells.
                     normalizedTable = NormalizeTable(table);
                 }
                 catch(Exception ex)
@@ -301,93 +265,78 @@ namespace PnP.Framework.Modernization.Transform
                 }
 
                 // Skip empty tables
-                if (normalizedTable.Cells.GetLength(0) == 0 && normalizedTable.Cells.GetLength(1) == 0)
+                if (normalizedTable.Columns == 0)
                 {
                     continue;
                 }
 
-                // <div class="canvasRteResponsiveTable">
-                var newTableElement = document.CreateElement($"div");
+                bool nativeTable = normalizedTable.Rows.SelectMany(row => row).Any(cell =>
+                    cell.ColumnSpan > 1 || cell.RowSpan > 1 || HasExplicitWidth(cell.Element)) ||
+                    HasExplicitWidth(table) || table.Children.Any(child => child.TagName == "COLGROUP");
+                var newTableElement = document.CreateElement(nativeTable ? "figure" : "div");
                 newTableElement.ClassName = "canvasRteResponsiveTable";
-
-                // <div class="tableCenterAlign tableWrapper">
-                var innerDiv = document.CreateElement("div");
-                // Possible alignments: tableLeftAlign, tableCenterAlign and tableRightAlign, since wiki does not have this option default to left align
-                innerDiv.ClassList.Add(new string[] { "tableLeftAlign", "tableWrapper" });
-                newTableElement.AppendChild(innerDiv);
+                IElement tableContainer = newTableElement;
+                if (nativeTable)
+                {
+                    // The legacy div wrapper regenerates column widths from physical, not logical, cells.
+                    newTableElement.ClassList.Add("table", "tableLeftAlign");
+                    newTableElement.SetAttribute("title", "Table");
+                    var width = GetTableWidth(table);
+                    newTableElement.GetStyle().SetWidth(TryGetColumnWidth(width, out double value, out string unit) && unit == "%"
+                        ? FormatTablePercentage(Math.Min(value, 100)) : "100%");
+                }
+                else
+                {
+                    tableContainer = document.CreateElement("div");
+                    tableContainer.ClassList.Add("tableLeftAlign", "tableWrapper");
+                    newTableElement.AppendChild(tableContainer);
+                }
 
                 // <table class="bandedRowTableStyleNeutral" title="Table">
                 var tableElement = document.CreateElement("table");
                 tableElement.ClassName = normalizedTable.ClassName;
                 tableElement.SetAttribute("title", "Table");
-                innerDiv.AppendChild(tableElement);
+                tableContainer.AppendChild(tableElement);
+                double[] columnWidths = null;
+                if (nativeTable)
+                {
+                    columnWidths = AddTableColumns(table, normalizedTable, tableElement, document);
+                }
 
                 // <tbody>
                 var tableBody = document.CreateElement("tbody");
                 tableElement.AppendChild(tableBody);
 
-                // Table cell width
-                var cellWidth = GetDefaultCellTableCellWidths(normalizedTable.Cells.GetLength(1));
-                bool useAutomaticWidth = autoWidthTables.TryGetValue(table, out _);
-
-                // Table headers
-                if (normalizedTable.HasHeader)
-                {
-                    // Header is transformed into  a row with bold formatted headers
-                    var newRow = document.CreateElement("tr");
-                    int headerCounter = 0;
-
-                    for (int colPos = 0; colPos < normalizedTable.Header.Length; colPos += 1)
-                    {
-                        var tableHeaderValue = document.CreateElement("strong");
-                        if (normalizedTable.Header[colPos].HasValue)
-                        {
-                            tableHeaderValue.InnerHtml = normalizedTable.Header[colPos].Element.InnerHtml;
-                        }
-
-                        var tableHeaderCell = document.CreateElement("td");
-                        tableHeaderCell.GetStyle().SetWidth(useAutomaticWidth ? "auto" : $"{cellWidth[headerCounter]}px");
-
-                        // Restore alignment if needed
-                        if (normalizedTable.Header[colPos].TextAlign != null)
-                        {
-                            tableHeaderCell.GetStyle().SetTextAlign(normalizedTable.Header[colPos].TextAlign);
-                        }
-
-                        headerCounter++;
-
-                        tableHeaderCell.AppendChild(tableHeaderValue);
-                        newRow.AppendChild(tableHeaderCell);
-                    }
-
-                    // Append the new header as table row
-                    tableBody.AppendChild(newRow);
-                }
-
-                // Iterate the table rows
-                for (int rowPos = 0; rowPos < normalizedTable.Cells.GetLength(0); rowPos += 1)
+                foreach (var row in normalizedTable.Rows)
                 {
                     var newRow = document.CreateElement("tr");
-                    int cellCounter = 0;
-
-                    for (int colPos = 0; colPos < normalizedTable.Cells.GetLength(1); colPos += 1)
+                    foreach (var cell in row)
                     {
                         var newTableCell = document.CreateElement("td");
-                        newTableCell.GetStyle().SetWidth(useAutomaticWidth ? "auto" : $"{cellWidth[cellCounter]}px");
-                        cellCounter++;
-
-                        // Did we put a "real" cell?
-                        if (normalizedTable.Cells[rowPos, colPos].HasValue)
+                        newTableCell.GetStyle().SetWidth(columnWidths == null ? "auto" :
+                            FormatTablePercentage(columnWidths.Skip(cell.Column).Take(cell.ColumnSpan).Sum()));
+                        if (cell.ColumnSpan > 1)
                         {
-                            // Copy over the content, take over html content as cell can have formatting inside
-                            // Formatting of the table cell content was already done in previous steps, so we simply copy what we have
-                            newTableCell.InnerHtml = normalizedTable.Cells[rowPos, colPos].Element.InnerHtml;
+                            newTableCell.SetAttribute("colspan", cell.ColumnSpan.ToString(CultureInfo.InvariantCulture));
                         }
-
-                        // Restore alignment if needed
-                        if (normalizedTable.Cells[rowPos, colPos].TextAlign != null)
+                        if (cell.RowSpan > 1)
                         {
-                            newTableCell.GetStyle().SetTextAlign(normalizedTable.Cells[rowPos, colPos].TextAlign);
+                            newTableCell.SetAttribute("rowspan", cell.RowSpan.ToString(CultureInfo.InvariantCulture));
+                        }
+                        if (cell.Element.TagName == "TH")
+                        {
+                            var strong = document.CreateElement("strong");
+                            strong.InnerHtml = cell.Element.InnerHtml;
+                            newTableCell.AppendChild(strong);
+                        }
+                        else
+                        {
+                            newTableCell.InnerHtml = cell.Element.InnerHtml;
+                        }
+                        var textAlign = cell.Element.GetStyle().GetTextAlign();
+                        if (!string.IsNullOrEmpty(textAlign))
+                        {
+                            newTableCell.GetStyle().SetTextAlign(textAlign);
                         }
 
                         newRow.AppendChild(newTableCell);
@@ -425,13 +374,9 @@ namespace PnP.Framework.Modernization.Transform
                 {
                     foreach(var nestedTable in nestedTables.ToList())
                     {
-                        // the new Table element has a DIV as top node, an inner DIV and then the table as child
-                        if (tableToCheck.Item2.FirstElementChild != null && tableToCheck.Item2.FirstElementChild.FirstElementChild != null)
+                        if (nestedTable != nestedTables[0])
                         {
-                            if (nestedTable != tableToCheck.Item2.FirstElementChild.FirstElementChild)
-                            {
-                                nestedTable.ParentElement.RemoveChild(nestedTable);
-                            }
+                            nestedTable.ParentElement.RemoveChild(nestedTable);
                         }
                     }
                 }
@@ -1593,52 +1538,177 @@ namespace PnP.Framework.Modernization.Transform
             return false;
         }
 
-        private static List<int> GetDefaultCellTableCellWidths(int columns)
+        private static string GetTableWidth(IElement element)
         {
-            List<int> widths = new List<int>(columns);
-
-            int width = DefaultTableWidth / columns;
-            int lastWidth = DefaultTableWidth - ((columns - 1) * width);
-
-            for (int i = 0; i < columns; i++)
+            var width = element.GetStyle().GetWidth();
+            if (!string.IsNullOrEmpty(width))
             {
-                if (i < columns - 1)
-                {
-                    widths.Add(width);
-                }
-                else
-                {
-                    widths.Add(lastWidth);
-                }
+                return width;
             }
 
-            return widths;
+            var attribute = element.GetAttribute("width")?.Trim();
+            if (string.IsNullOrEmpty(attribute))
+            {
+                return null;
+            }
+
+            // Validate presentational attributes with the CSS parser before retaining them.
+            var probe = element.Owner.CreateElement("span");
+            probe.GetStyle().SetWidth(Regex.IsMatch(attribute, @"^\d+(?:\.\d+)?$") ? attribute + "px" : attribute);
+            return probe.GetStyle().GetWidth();
         }
 
-        private static bool UsesAutomaticTableWidth(IElement sourceTable)
+        private static string FormatTablePercentage(double value) =>
+            value.ToString("0.######", CultureInfo.InvariantCulture) + "%";
+
+        private static bool TryGetColumnWidth(string width, out double value, out string unit)
         {
-            if (!(sourceTable is IHtmlTableElement htmlTable))
+            var match = Regex.Match(width ?? "", @"^(\d+(?:\.\d+)?|\.\d+)(px|pt|pc|in|cm|mm|%)$", RegexOptions.IgnoreCase);
+            unit = match.Groups[2].Value.ToLowerInvariant();
+            if (!double.TryParse(match.Groups[1].Value, NumberStyles.AllowDecimalPoint,
+                CultureInfo.InvariantCulture, out value) || double.IsInfinity(value))
             {
                 return false;
             }
 
-            var rows = htmlTable.Rows;
-            if (rows.Length == 0 || HasExplicitWidth(sourceTable) ||
-                sourceTable.QuerySelectorAll("col, colgroup")
-                    .Any(column => column.Closest("table") == sourceTable && HasExplicitWidth(column)))
+            switch (unit)
             {
-                return false;
+                case "pt": value *= 96.0 / 72; break;
+                case "pc": value *= 16; break;
+                case "in": value *= 96; break;
+                case "cm": value *= 96 / 2.54; break;
+                case "mm": value *= 96 / 25.4; break;
+            }
+            if (unit != "%")
+            {
+                unit = "px";
+            }
+            return !double.IsInfinity(value);
+        }
+
+        private static double[] AddTableColumns(IElement source, Table table, IElement target, IHtmlDocument document)
+        {
+            var widths = new string[table.Columns];
+            int column = 0;
+            foreach (var group in source.Children.Where(element => element.TagName == "COLGROUP"))
+            {
+                var columns = group.Children.Where(element => element.TagName == "COL").ToArray();
+                foreach (var definition in columns.Length == 0 ? new[] { group } : columns)
+                {
+                    var width = GetTableWidth(definition);
+                    if (string.IsNullOrEmpty(width))
+                    {
+                        width = GetTableWidth(group);
+                    }
+                    int span = ReadTableSpan(definition.GetAttribute("span"), 1000, false);
+                    for (int i = 0; i < span && column < widths.Length; i++, column++)
+                    {
+                        widths[column] = width;
+                    }
+                }
             }
 
-            var cells = rows.SelectMany(row => row.Children.Where(cell =>
-                cell.TagName.Equals("td", StringComparison.OrdinalIgnoreCase) ||
-                cell.TagName.Equals("th", StringComparison.OrdinalIgnoreCase))).ToArray();
-            if (cells.Length == 0 || cells.Any(HasExplicitWidth))
+            // Resolve individual columns before distributing a merged cell's width over unresolved columns.
+            foreach (var cell in table.Rows.SelectMany(row => row).OrderBy(cell => cell.ColumnSpan))
             {
-                return false;
+                var unresolved = Enumerable.Range(cell.Column, cell.ColumnSpan)
+                    .Where(index => !IsConstrainedWidth(widths[index])).ToArray();
+                if (unresolved.Length == 0 ||
+                    !TryGetColumnWidth(GetTableWidth(cell.Element), out double remaining, out string unit))
+                {
+                    continue;
+                }
+                bool compatible = true;
+                foreach (var index in Enumerable.Range(cell.Column, cell.ColumnSpan).Except(unresolved))
+                {
+                    if (!TryGetColumnWidth(widths[index], out double known, out string knownUnit) || unit != knownUnit)
+                    {
+                        compatible = false;
+                        break;
+                    }
+                    remaining -= known;
+                }
+                if (compatible && remaining > 0)
+                {
+                    foreach (var index in unresolved)
+                    {
+                        widths[index] = (remaining / unresolved.Length).ToString("0.######", CultureInfo.InvariantCulture) + unit;
+                    }
+                }
             }
 
-            return true;
+            var values = new double?[widths.Length];
+            var units = new string[widths.Length];
+            for (int i = 0; i < widths.Length; i++)
+            {
+                if (TryGetColumnWidth(widths[i], out double value, out string unit))
+                {
+                    values[i] = value;
+                    units[i] = unit;
+                }
+            }
+            if (!values.Any(value => value.HasValue))
+            {
+                return null;
+            }
+
+            int unspecified = values.Count(value => !value.HasValue);
+            double absoluteTotal = values.Where((value, index) => units[index] == "px").Sum(value => value ?? 0);
+            double percentageTotal = values.Where((value, index) => units[index] == "%").Sum(value => value ?? 0);
+            if (!TryGetColumnWidth(GetTableWidth(source), out double total, out string totalUnit) || totalUnit != "px" || total <= 0)
+            {
+                int absoluteCount = units.Count(unit => unit == "px");
+                double inferredAbsoluteTotal = absoluteTotal +
+                    (absoluteCount > 0 ? absoluteTotal / absoluteCount * unspecified : 0);
+                total = inferredAbsoluteTotal > 0
+                    ? inferredAbsoluteTotal / (percentageTotal < 100 ? 1 - percentageTotal / 100 : 1)
+                    : 100;
+            }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (units[i] == "%")
+                {
+                    values[i] = values[i] * total / 100;
+                }
+            }
+            double knownTotal = values.Sum(value => value ?? 0);
+            double availableWidth = unspecified > 0 ? Math.Max(0, total - knownTotal) / unspecified : 0;
+            var weights = values.Select(value => value ?? (availableWidth > 0 ? availableWidth : total / values.Length)).ToArray();
+            double weightTotal = weights.Sum();
+            if (weightTotal <= 0 || double.IsInfinity(weightTotal))
+            {
+                return null;
+            }
+            var percentages = weights.Select(value => value / weightTotal * 100).ToArray();
+            var colgroup = document.CreateElement("colgroup");
+            foreach (var percentage in percentages)
+            {
+                var col = document.CreateElement("col");
+                col.GetStyle().SetWidth(FormatTablePercentage(percentage));
+                colgroup.AppendChild(col);
+            }
+            target.AppendChild(colgroup);
+            return percentages;
+        }
+
+        private static int ReadTableSpan(string text, int maximum, bool zeroMeansRemaining)
+        {
+            var match = Regex.Match(text ?? "", @"^[ \t\r\n\f]*\+?([0-9]+)");
+            if (!match.Success)
+            {
+                return 1;
+            }
+
+            int value = 0;
+            foreach (char digit in match.Groups[1].Value)
+            {
+                value = Math.Min(maximum, value * 10 + digit - '0');
+                if (value == maximum)
+                {
+                    return maximum;
+                }
+            }
+            return value == 0 ? (zeroMeansRemaining ? maximum : 1) : value;
         }
 
         private static bool HasExplicitWidth(IElement element)
@@ -1681,173 +1751,53 @@ namespace PnP.Framework.Modernization.Transform
 
 
         /// <summary>
-        /// Returns the table as a normalized table object. Includes replacing row and col spans by actual empty cells
+        /// Resolves cell positions and spans within each source row group, without allocating a rectangular matrix.
         /// </summary>
         /// <param name="table">Table to normalize</param>
         /// <returns>Normalized table</returns>
         private Table NormalizeTable(IElement table)
         {
-            // Determine the table dimension, item1 = max cols / item 2 = max rows
-            var tableDimension = GetTableDimensions(table);
-
-            // A 2 dimensional array to hold the normalized table cells
-            IElementCell[,] cells = new IElementCell[tableDimension.Item2, tableDimension.Item1];
-            // An array to hold the header cells (if any)
-            IElementCell[] headerCells = new IElementCell[tableDimension.Item1];
-
+            var normalizedTable = new Table();
             var rows = ((IHtmlTableElement)table).Rows;
-            if (rows != null && rows.Any())
+            foreach (var group in rows.GroupBy(row => row.ParentElement))
             {
-                int rowPos = 0;
-                foreach (var row in rows)
+                var groupRows = group.ToArray();
+                var occupiedUntil = new Dictionary<int, int>();
+                for (int rowIndex = 0; rowIndex < groupRows.Length; rowIndex++)
                 {
-                    // We assume a table header only has TH cells
-                    var tableHeaders = row.Children.Where(p => p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
-                    var cellsInTableHeader = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase));
-                    if (tableHeaders != null && tableHeaders.Any() && !cellsInTableHeader.Any() && !headerCells.Any(cell => cell != null))
+                    var row = new List<TableCell>();
+                    int column = 0;
+                    foreach (var element in groupRows[rowIndex].Cells)
                     {
-                        int colPos = 0;
-                        foreach (var tableHeader in tableHeaders)
+                        while (occupiedUntil.TryGetValue(column, out int endRow) && endRow > rowIndex)
                         {
-                            headerCells[colPos] = new IElementCell(tableHeader);
-
-                            //Check header styles
-                            if (tableHeader.GetStyle() != null && !string.IsNullOrEmpty(tableHeader.GetStyle().GetTextAlign()))
+                            column++;
+                        }
+                        int columnSpan = ReadTableSpan(element.GetAttribute("colspan"), 1000, false);
+                        int rowSpan = ReadTableSpan(element.GetAttribute("rowspan"), Math.Min(65534, groupRows.Length - rowIndex), true);
+                        for (int offset = 1; offset < columnSpan; offset++)
+                        {
+                            if (occupiedUntil.TryGetValue(column + offset, out int endRow) && endRow > rowIndex)
                             {
-                                headerCells[colPos].TextAlign = tableHeader.GetStyle().GetTextAlign();
-                            }
-
-                            // Prep for next cell
-                            colPos++;
-
-                            var colSpan = tableHeader.GetAttribute("colspan");
-                            if (!string.IsNullOrEmpty(colSpan) && colSpan != "1" && int.TryParse(colSpan, out int columnCellsToAdd))
-                            {
-                                for (int i = 0; i < columnCellsToAdd - 1; i++)
-                                {
-                                    headerCells[colPos] = new IElementCell(null);
-                                    colPos++;
-                                }
+                                LogWarning(LogStrings.Warning_OverlappingTableSpans, LogStrings.Heading_BuiltInFunctions);
+                                columnSpan = offset;
+                                break;
                             }
                         }
-                    }
-                    else
-                    {
-                        // Support model of TD cells mixed with TH
-                        var tableCells = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase) || p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
-                        if (tableCells != null && tableCells.Any())
+                        row.Add(new TableCell { Element = element, Column = column, ColumnSpan = columnSpan, RowSpan = rowSpan });
+                        for (int offset = 0; offset < columnSpan; offset++)
                         {
-                            int colPos = 0;
-                            foreach (var tableCell in tableCells)
-                            {
-
-                                if (cells[rowPos, colPos] != null)
-                                {
-                                    // cells was already filled due to previous row span expansion. Find next free cell on this row
-                                    while ((cells[rowPos, colPos] != null) && colPos < tableDimension.Item1)
-                                    {
-                                        colPos++;
-                                    }
-                                }
-
-                                cells[rowPos, colPos] = new IElementCell(tableCell);
-
-                                //Check header styles
-                                if (tableCell.GetStyle() != null && !string.IsNullOrEmpty(tableCell.GetStyle().GetTextAlign()))
-                                {
-                                    cells[rowPos, colPos].TextAlign = tableCell.GetStyle().GetTextAlign();
-                                }
-
-                                // Prep for next cell
-                                colPos++;
-
-                                var colSpan = tableCell.GetAttribute("colspan");
-                                var rowSpan = tableCell.GetAttribute("rowspan");
-
-                                // We do have both col and row span set
-                                if (!string.IsNullOrEmpty(colSpan) && colSpan != "1" && int.TryParse(colSpan, out int columnCellsToAdd) &&
-                                    !string.IsNullOrEmpty(rowSpan) && rowSpan != "1" && int.TryParse(rowSpan, out int rowCellsToAdd))
-                                {
-                                    int tempRowPos = rowPos;
-                                    // Classic HTML can span past the last row; only expand into rows that exist.
-                                    for (int j = 0; j < rowCellsToAdd && tempRowPos < tableDimension.Item2; j++)
-                                    {
-                                        int tempColPos = colPos - 1;
-                                        for (int i = 0; i < columnCellsToAdd; i++)
-                                        {
-                                            if (cells[tempRowPos, tempColPos] == null)
-                                            {
-                                                cells[tempRowPos, tempColPos] = new IElementCell(null);
-                                            }
-                                            tempColPos++;
-                                        }
-                                        tempRowPos++;
-                                    }
-                                }
-                                else
-                                {
-                                    if (!string.IsNullOrEmpty(colSpan) && colSpan != "1" && int.TryParse(colSpan, out int columnCellsToAdd2))
-                                    {
-                                        for (int i = 0; i < columnCellsToAdd2 - 1; i++)
-                                        {
-                                            cells[rowPos, colPos] = new IElementCell(null);
-                                            colPos++;
-                                        }
-                                    }
-
-                                    if (!string.IsNullOrEmpty(rowSpan) && rowSpan != "1" && int.TryParse(rowSpan, out int rowCellsToAdd2))
-                                    {
-                                        int tempRowPos = rowPos + 1;
-                                        for (int i = 0; i < rowCellsToAdd2 - 1 && tempRowPos < tableDimension.Item2; i++)
-                                        {
-                                            cells[tempRowPos, colPos - 1] = new IElementCell(null);
-                                            tempRowPos++;
-                                        }
-                                    }
-                                }
-                            }
-
-                            // Only increase row pos for actual rows as header is handled differently
-                            rowPos++;
+                            occupiedUntil[column + offset] = rowIndex + rowSpan;
                         }
-                        else
-                        {
-                            // Deals with rows formatted without TD or TH tags (e.g.  <tr class="ms-rteTableOddRow-default"></tr>)
-                            rowPos++;
-                        }
-                    }                    
-                }
-            }
-
-            Table normalizedTable = new Table()
-            {
-                Header = headerCells,
-                Cells = cells,
-            };
-            normalizedTable.ClassName = GetTableClassName(table, normalizedTable.HasHeader);
-
-            // Let's assume there's badly shaped tables as well...fill the empty cells with an empty cell value so they're correctly replaced
-            for (int rowPos = 0; rowPos < normalizedTable.Cells.GetLength(0); rowPos += 1)
-            {
-                for (int colPos = 0; colPos < normalizedTable.Cells.GetLength(1); colPos += 1)
-                {
-                    if (normalizedTable.Cells[rowPos, colPos] == null)
-                    {
-                        normalizedTable.Cells[rowPos, colPos] = new IElementCell(null);
+                        column += columnSpan;
+                        normalizedTable.Columns = Math.Max(normalizedTable.Columns, column);
                     }
+                    normalizedTable.Rows.Add(row);
                 }
             }
-
-            if (normalizedTable.HasHeader)
-            {
-                for (int colPos = 0; colPos < normalizedTable.Header.GetLength(0); colPos += 1)
-                {
-                    if (normalizedTable.Header[colPos] == null)
-                    {
-                        normalizedTable.Header[colPos] = new IElementCell(null);
-                    }
-                }
-            }
+            var firstRow = normalizedTable.Rows.FirstOrDefault();
+            normalizedTable.ClassName = GetTableClassName(table,
+                firstRow != null && firstRow.Count > 0 && firstRow.All(cell => cell.Element.TagName == "TH"));
 
             // Determine insertion point
             if (table.ParentElement != null)
@@ -1876,85 +1826,6 @@ namespace PnP.Framework.Modernization.Transform
             return normalizedTable;
         }
 
-        /// <summary>
-        /// Gets the dimensions of a table, excluding the header
-        /// </summary>
-        /// <param name="table">Table to investigate</param>
-        /// <returns>Tuple containing the columns and rows</returns>
-        private static (int columns, int rows) GetTableDimensions(IElement table)
-        {
-            int maxCols = 0;
-            int maxRows = 0;
-            bool hasHeader = false;
-
-            var rows = ((IHtmlTableElement)table).Rows;
-            if (rows != null && rows.Any())
-            {
-                maxRows = rows.Count();
-                foreach (var row in rows)
-                {
-                    // Do we have a header
-                    var tableHeaders = row.Children.Where(p => p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
-
-                    var tdInHeader = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase));
-                    int tdCellsInHeader = 0;
-                    if (tdInHeader != null)
-                    {
-                        tdCellsInHeader = tdInHeader.Count();
-                    }
-
-                    if (tableHeaders != null && tableHeaders.Any() && tdCellsInHeader == 0)
-                    {
-                        hasHeader = true;
-                    }
-
-                    // It's allowed to mix TH and TD in a table row
-                    var tableCells = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase) || p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
-                    if (tableCells != null && tableCells.Any())
-                    {
-                        int colCount = 0;
-                        foreach (var tableCell in tableCells)
-                        {
-                            var colSpan = tableCell.GetAttribute("colspan");
-                            if (!string.IsNullOrEmpty(colSpan) && colSpan != "1")
-                            {
-                                if (int.TryParse(colSpan, out int columnCellsToAdd))
-                                {
-                                    colCount = colCount + columnCellsToAdd;
-                                }
-                                else
-                                {
-                                    colCount++;
-                                }
-                            }
-                            else
-                            {
-                                colCount++;
-                            }
-                        }
-
-                        if (colCount > maxCols)
-                        {
-                            maxCols = colCount;
-                        }
-                    }
-                }
-            }
-
-            if (hasHeader)
-            {
-                // remove one row as header is handled separately
-                maxRows--;
-            }
-
-            // If there's a TR then there must be one cell
-            if (maxRows > 0 && maxCols == 0)
-            {
-                maxCols = 1;
-            }
-
-            return (maxCols, maxRows);
-        }
         #endregion
     }
 }

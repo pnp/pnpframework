@@ -292,6 +292,7 @@
         public const string Error_LoadContentFromFileContentLink = "An error occurred in getting the referenced file in content link";
 
         public const string Warning_TableCouldNotBeNormalized = "Table could not be normalized and will be taken over as is. Error = {0}";
+        public const string Warning_OverlappingTableSpans = "Overlapping table spans were clipped to preserve cell content.";
         #endregion
 
         #region Publishing Page Transformation

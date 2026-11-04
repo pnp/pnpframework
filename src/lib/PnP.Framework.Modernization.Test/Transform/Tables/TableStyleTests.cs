@@ -75,11 +75,12 @@ namespace PnP.Framework.Modernization.Tests.Transform.Tables
             var html = $"<table class='custom ms-rteTable-9' style='background-color:white;border:1px solid red'>{rows}</table>";
 
             using (var document = new HtmlParser().ParseDocument(new HtmlTransformator().Transform(html, false)))
+            using (var source = new HtmlParser().ParseDocument(html))
             {
                 var table = document.QuerySelector("table");
                 Assert.AreEqual("simpleTableStyleNeutral", table.ClassName);
                 Assert.AreEqual(2, table.QuerySelectorAll("tr").Length);
-                Assert.AreEqual(4, table.QuerySelectorAll("td").Length);
+                Assert.AreEqual(source.QuerySelectorAll("td, th").Length, table.QuerySelectorAll("td").Length);
                 StringAssert.Contains(table.TextContent, "First");
                 StringAssert.Contains(table.TextContent, "Second");
                 StringAssert.Contains(table.TextContent, "Third");

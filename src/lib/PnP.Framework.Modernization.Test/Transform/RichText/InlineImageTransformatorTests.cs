@@ -307,16 +307,51 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
             }
         }
 
-        [TestMethod]
-        public void Transform_ImageWithoutSourceRetainsOriginalAndWarns()
+        [DataTestMethod]
+        [DataRow("", false)]
+        [DataRow("src=''", false)]
+        [DataRow("src=' \t\r\n '", false)]
+        [DataRow("src='&nbsp;'", false)]
+        [DataRow("", true)]
+        [DataRow("src=''", true)]
+        [DataRow("src=' \t\r\n '", true)]
+        public void Transform_ImageWithoutSourceIsRemovedAndWarns(string attributes, bool externalImagesOnly)
         {
             var page = CreatePage();
             var observer = new Mock<ILogObserver>();
-            const string html = "<p><a href=\"/details\"><img alt=\"keep\" style=\"width: 42px; height: 21px\"></a></p>";
-            var result = CreateTransformator(page, observer.Object).Transform(html);
+            var transformator = new InlineImageTransformator(page.Object, SourcePageUrl,
+                _ => throw new AssertFailedException("An image without a source must not be transferred"),
+                _ => throw new AssertFailedException("An image without a source must not be rewritten"),
+                new[] { observer.Object },
+                imageLookup: _ => throw new AssertFailedException("An image without a source must not be looked up"),
+                importExternalImage: _ => throw new AssertFailedException("An image without a source must not be imported"));
+            var html = $"<p>before<a href=\"/details\">link<img {attributes} alt=\"missing\" style=\"width: 42px; height: 21px\"></a>after</p>";
+            var result = transformator.Transform(html, externalImagesOnly);
 
-            Assert.AreEqual(html, result);
-            observer.Verify(log => log.Warning(It.Is<LogEntry>(entry => entry.Message.Contains("Retaining the original image HTML"))), Times.Once);
+            Assert.AreEqual("<p>before<a href=\"/details\">link</a>after</p>", result);
+            Assert.AreEqual(result, transformator.Transform(result, externalImagesOnly: true));
+            observer.Verify(log => log.Warning(It.Is<LogEntry>(entry =>
+                entry.Message.Contains("Removed") && entry.Message.Contains("missing, empty or whitespace-only src") &&
+                entry.Message.Contains("source HTML"))), Times.Once);
+            observer.Verify(log => log.Warning(It.IsAny<LogEntry>()), Times.Once);
+            page.Verify(p => p.GetInlineImage(It.IsAny<PnPCore.IPageText>(), It.IsAny<string>(), It.IsAny<PnPCore.PageImageOptions>()), Times.Never);
+        }
+
+        [DataTestMethod]
+        [DataRow("data:image/png;base64,AA==")]
+        [DataRow("ftp://images.example/photo.png")]
+        [DataRow("https://user:password@images.example/photo.png")]
+        [DataRow("http://[")]
+        public void Transform_UnsupportedNonblankSourceRetainsOriginalAndWarns(string source)
+        {
+            var page = CreatePage();
+            var observer = new Mock<ILogObserver>();
+            var html = $"<p><img src='{source}' alt='keep'></p>";
+
+            Assert.AreEqual(html, CreateTransformator(page, observer.Object).Transform(html));
+
+            observer.Verify(log => log.Warning(It.Is<LogEntry>(entry =>
+                entry.Message.Contains("Retaining the original image HTML"))), Times.Once);
             page.Verify(p => p.GetInlineImage(It.IsAny<PnPCore.IPageText>(), It.IsAny<string>(), It.IsAny<PnPCore.PageImageOptions>()), Times.Never);
         }
 
@@ -517,6 +552,44 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
 
                 Assert.AreEqual("Content editor contains script and could not be loaded.", ((PnPCore.IPageText)controls.Single()).Text);
                 page.Verify(p => p.GetInlineImage(It.IsAny<PnPCore.IPageText>(), It.IsAny<string>(), It.IsAny<PnPCore.PageImageOptions>()), Times.Never);
+            }
+        }
+
+        [TestMethod]
+        public void ContentMapping_RemovesFourSourcelessImagesAndConvertsFourValidImages()
+        {
+            using (var context = CreateContext())
+            {
+                var page = CreatePage();
+                var controls = ConfigureCanvas(page);
+                var observer = new Mock<ILogObserver>();
+                var information = new PageTransformationInformation(null);
+                var html = $"<p>before<img src='{ImageUrl}' alt='one' width='160' height='80'><img></p>" +
+                    $"<table><tr><td><img src=''><img src='{ImageUrl}' alt='two' width='160' height='80'></td></tr></table>" +
+                    $"<ul><li><img src=' \t '><img src='{ImageUrl}' alt='three' width='160' height='80'></li></ul>" +
+                    $"<p><img style='width:1072px'><img src='{ImageUrl}' alt='four' width='160' height='80'>after</p>";
+
+                new ContentTransformator(context, context, page.Object, LoadMapping(), information,
+                    new[] { observer.Object }).Transform(new List<WebPartEntity> { WikiText(html) });
+                var transformator = new TestPageTransformator { sourceClientContext = context };
+                transformator.RegisterObserver(observer.Object);
+                transformator.SavePage(page.Object, "target.aspx", information, context,
+                    _ => throw new AssertFailedException("No external import should occur"));
+
+                Assert.AreEqual(1, controls.Count);
+                using (var document = new HtmlParser().ParseDocument(((PnPCore.IPageText)controls.Single()).Text))
+                {
+                    Assert.AreEqual(0, document.QuerySelectorAll("img").Length);
+                    CollectionAssert.AreEqual(new[] { "one", "two", "three", "four" },
+                        document.QuerySelectorAll(".imagePlugin").Select(image => image.GetAttribute("data-alttext")).ToArray());
+                    Assert.AreEqual(1, document.QuerySelectorAll("td > .imagePlugin").Length);
+                    Assert.AreEqual(1, document.QuerySelectorAll("li > .imagePlugin").Length);
+                    Assert.AreEqual("beforeafter", document.Body.TextContent);
+                }
+                page.Verify(p => p.GetInlineImage(null, ImageUrl, It.IsAny<PnPCore.PageImageOptions>()), Times.Exactly(4));
+                observer.Verify(log => log.Warning(It.Is<LogEntry>(entry =>
+                    entry.Message.Contains("missing, empty or whitespace-only src"))), Times.Exactly(4));
+                observer.Verify(log => log.Warning(It.IsAny<LogEntry>()), Times.Exactly(4));
             }
         }
 

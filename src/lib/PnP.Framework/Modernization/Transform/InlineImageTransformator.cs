@@ -104,12 +104,20 @@ namespace PnP.Framework.Modernization.Transform
                     throw new NotSupportedException(message);
                 }
 
-                bool converted = false;
+                bool changed = false;
                 foreach (var image in images)
                 {
                     var source = image.GetAttribute("src");
-                    if (string.IsNullOrWhiteSpace(source) ||
-                        !Uri.TryCreate(sourcePageUrl, source, out var imageUrl) ||
+                    if (string.IsNullOrWhiteSpace(source))
+                    {
+                        image.Remove();
+                        changed = true;
+                        LogWarning("Removed a rich-text image with a missing, empty or whitespace-only src attribute in the source HTML. No image URL was available to migrate.",
+                            LogStrings.Heading_ContentTransform);
+                        continue;
+                    }
+
+                    if (!Uri.TryCreate(sourcePageUrl, source, out var imageUrl) ||
                         (imageUrl.Scheme != Uri.UriSchemeHttp && imageUrl.Scheme != Uri.UriSchemeHttps) ||
                         !string.IsNullOrEmpty(imageUrl.UserInfo))
                     {
@@ -195,10 +203,10 @@ namespace PnP.Framework.Modernization.Transform
 
                     image.Parent.ReplaceChild(inlineImage, image);
                     NormalizeParents(inlineImage);
-                    converted = true;
+                    changed = true;
                 }
 
-                return converted ? document.Body.InnerHtml : html;
+                return changed ? document.Body.InnerHtml : html;
             }
         }
 

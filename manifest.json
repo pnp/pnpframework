@@ -2718,7 +2718,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Pages.BasePage.html",
-          "hash": "mLphapyE8k4aBulsdQQcueJFelFY3veK+z9zshnLqIg="
+          "hash": "P67/eBBQ+UxUbbyk9CZQGfyhrJoNm7tkP914ybBvLQU="
         }
       },
       "is_incremental": false,
@@ -3294,7 +3294,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Telemetry.LogStrings.html",
-          "hash": "6p+fJG7vt2YpyV0zfwE+j9OqH/z0mv+ixQZ7FXW6O20="
+          "hash": "cZiqWO3RL49I7avx9FAnemyzfq1NKktzvJS5dIxuzgs="
         }
       },
       "is_incremental": false,
@@ -3642,7 +3642,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PnP.Framework.Modernization.Transform.HtmlTransformator.html",
-          "hash": "jlirBBd+IEmOvzmqNGDaWFMXz7ZQdEMw2uPHuGjMMII="
+          "hash": "IfH8u64afB1H5nwZgeClS751GxT9SghHm7Ku/MILFxw="
         }
       },
       "is_incremental": false,

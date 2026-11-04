@@ -32273,6 +32273,12 @@ references:
   commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Warning_NotSupportedWebPart
   fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_NotSupportedWebPart
   nameWithType: LogStrings.Warning_NotSupportedWebPart
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_OverlappingTableSpans
+  name: Warning_OverlappingTableSpans
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Warning_OverlappingTableSpans
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Warning_OverlappingTableSpans
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_OverlappingTableSpans
+  nameWithType: LogStrings.Warning_OverlappingTableSpans
 - uid: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_OverridingQuickLinksDefaultsFailed
   name: Warning_OverridingQuickLinksDefaultsFailed
   href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Warning_OverridingQuickLinksDefaultsFailed
@@ -32375,6 +32381,18 @@ references:
   commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Warning_UserTransformUserNotOnDomain
   fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_UserTransformUserNotOnDomain
   nameWithType: LogStrings.Warning_UserTransformUserNotOnDomain
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_WikiWebPartHtmlMissing
+  name: Warning_WikiWebPartHtmlMissing
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Warning_WikiWebPartHtmlMissing
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Warning_WikiWebPartHtmlMissing
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_WikiWebPartHtmlMissing
+  nameWithType: LogStrings.Warning_WikiWebPartHtmlMissing
+- uid: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_WikiWebPartHtmlPreserved
+  name: Warning_WikiWebPartHtmlPreserved
+  href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_Warning_WikiWebPartHtmlPreserved
+  commentId: F:PnP.Framework.Modernization.Telemetry.LogStrings.Warning_WikiWebPartHtmlPreserved
+  fullName: PnP.Framework.Modernization.Telemetry.LogStrings.Warning_WikiWebPartHtmlPreserved
+  nameWithType: LogStrings.Warning_WikiWebPartHtmlPreserved
 - uid: PnP.Framework.Modernization.Telemetry.LogStrings.WebPartXmlNotExported
   name: WebPartXmlNotExported
   href: api/PnP.Framework.Modernization.Telemetry.LogStrings.html#PnP_Framework_Modernization_Telemetry_LogStrings_WebPartXmlNotExported

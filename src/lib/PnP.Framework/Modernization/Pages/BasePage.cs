@@ -38,11 +38,10 @@ namespace PnP.Framework.Modernization.Pages
             public ClientResult<string> WebPartXml { get; set; }
 
             public string WebPartType { get; set; }
+            public string RenderedHtml { get; set; }
         }
 
         internal HtmlParser parser;
-
-        private const string webPartMarkerString = "[[WebPartMarker]]";
 
         public ListItem page;
         public File pageFile;
@@ -120,34 +119,10 @@ namespace PnP.Framework.Modernization.Pages
 
             StringBuilder textContent = new StringBuilder();
             int order = startOrder;
-            foreach (var node in content.ChildNodes)
+            foreach (var node in content.ChildNodes.SelectMany(SplitWikiContentNode))
             {
-                // Do we find a web part inside...
-                if (((node as IHtmlElement) != null) && ContainsWebPart(node as IHtmlElement))
+                if (IsWikiWebPartBox(node))
                 {
-                    var extraText = StripWebPart(node as IHtmlElement);
-                    string extraTextAfterWebPart = null;
-                    string extraTextBeforeWebPart = null;
-                    if (!string.IsNullOrEmpty(extraText))
-                    {
-                        // Should be, but checking anyhow
-                        int webPartMarker = extraText.IndexOf(webPartMarkerString);
-                        if (webPartMarker > -1)
-                        {
-                            extraTextBeforeWebPart = extraText.Substring(0, webPartMarker);
-                            extraTextAfterWebPart = extraText.Substring(webPartMarker + webPartMarkerString.Length);
-
-                            // there could have been multiple web parts in a row (we don't support text inbetween them for now)...strip the remaining markers
-                            extraTextBeforeWebPart = extraTextBeforeWebPart.Replace(webPartMarkerString, "");
-                            extraTextAfterWebPart = extraTextAfterWebPart.Replace(webPartMarkerString, "");
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(extraTextBeforeWebPart))
-                    {
-                        textContent.AppendLine(extraTextBeforeWebPart);
-                    }
-
                     // first insert text part (if it was available)
                     if (!string.IsNullOrEmpty(textContent.ToString()))
                     {
@@ -158,22 +133,27 @@ namespace PnP.Framework.Modernization.Pages
 
                     // then process the web part
                     order++;
-                    Regex regexClientIds = new Regex(@"id=\""div_(?<ControlId>(\w|\-)+)");
-                    if (regexClientIds.IsMatch((node as IHtmlElement).OuterHtml))
+                    var box = (IElement)node;
+                    var control = box.QuerySelectorAll("div[id]").Prepend(box).FirstOrDefault(element =>
+                        element.Id != null && element.Id.StartsWith("div_", StringComparison.OrdinalIgnoreCase) &&
+                        Guid.TryParse(element.Id.Substring(4), out _));
+                    var controlId = control?.Id.Substring(4);
+                    var placeholder = new WebPartPlaceHolder
                     {
-                        foreach (Match webPartMatch in regexClientIds.Matches((node as IHtmlElement).OuterHtml))
-                        {
-                            // Store the web part we need, will be retrieved afterwards to optimize performance
-                            string serverSideControlId = webPartMatch.Groups["ControlId"].Value;
-                            var serverSideControlIdToSearchFor = $"g_{serverSideControlId.Replace("-", "_")}";
-                            webPartsToRetrieve.Add(new WebPartPlaceHolder() { ControlId = serverSideControlIdToSearchFor, Id = serverSideControlId, Row = rowCount, Column = colCount, Order = order });
-                        }
+                        Id = controlId,
+                        ControlId = controlId == null ? null : $"g_{controlId.Replace("-", "_")}",
+                        Row = rowCount,
+                        Column = colCount,
+                        Order = order,
+                        RenderedHtml = box.InnerHtml
+                    };
+                    if (controlId != null)
+                    {
+                        webPartsToRetrieve.Add(placeholder);
                     }
-
-                    // Process the extra text that was positioned after the web part (if any)
-                    if (!string.IsNullOrEmpty(extraTextAfterWebPart))
+                    else
                     {
-                        textContent.AppendLine(extraTextAfterWebPart);
+                        PreserveWikiWebPartHtml(webparts, placeholder);
                     }
                 }
                 else
@@ -320,6 +300,10 @@ namespace PnP.Framework.Modernization.Pages
                         Properties = Properties(webPartToRetrieve.WebPartDefinition.WebPart.Properties.FieldValues, webPartToRetrieve.WebPartType, webPartToRetrieve.WebPartXml == null ? "" : webPartToRetrieve.WebPartXml.Value),
                     });
                 }
+                else
+                {
+                    PreserveWikiWebPartHtml(webparts, webPartToRetrieve);
+                }
             }
         }
 
@@ -464,6 +448,22 @@ namespace PnP.Framework.Modernization.Pages
                         Properties = Properties(webPartProperties, webPartToRetrieve.WebPartType, webPartToRetrieve.WebPartXmlOnPremises),
                     });
                 }
+                else
+                {
+                    PreserveWikiWebPartHtml(webparts, webPartToRetrieve);
+                }
+            }
+        }
+
+        private void PreserveWikiWebPartHtml(List<WebPartEntity> webparts, WebPartPlaceHolder placeholder)
+        {
+            var hasHtml = !string.IsNullOrWhiteSpace(placeholder.RenderedHtml);
+            LogWarning(string.Format(hasHtml ? LogStrings.Warning_WikiWebPartHtmlPreserved : LogStrings.Warning_WikiWebPartHtmlMissing,
+                placeholder.Id ?? "(missing or invalid control ID)", placeholder.Row, placeholder.Column),
+                LogStrings.Heading_ContentTransform);
+            if (hasHtml)
+            {
+                webparts.Add(CreateWikiTextPart(placeholder.RenderedHtml, placeholder.Row, placeholder.Column, placeholder.Order));
             }
         }
 
@@ -545,59 +545,40 @@ namespace PnP.Framework.Modernization.Pages
         }
 
 
-        /// <summary>
-        /// Does the tree of nodes somewhere contain a web part?
-        /// </summary>
-        /// <param name="element">Html content to analyze</param>
-        /// <returns>True if it contains a web part</returns>
-        private bool ContainsWebPart(IHtmlElement element)
+        private static bool IsWikiWebPartBox(INode node)
         {
-            var doc = parser.ParseDocument(element.OuterHtml);
-            var nodes = doc.All.Where(p => p.LocalName == "div");
-            foreach (var node in nodes)
-            {
-                if (((node as IHtmlElement) != null) && (node as IHtmlElement).ClassList.Contains("ms-rte-wpbox"))
-                {
-                    return true;
-                }
-            }
-            return false;
+            return node is IElement element && element.LocalName == "div" && element.ClassList.Contains("ms-rte-wpbox");
         }
 
-        /// <summary>
-        /// Strips the div holding the web part from the html
-        /// </summary>
-        /// <param name="element">Html element holding one or more web part divs</param>
-        /// <returns>Cleaned html with a placeholder for the web part div</returns>
-        private string StripWebPart(IHtmlElement element)
+        private static IEnumerable<INode> SplitWikiContentNode(INode node)
         {
-            IElement copy = element.Clone(true) as IElement;
-            var doc = parser.ParseDocument(copy.OuterHtml);
-            var nodes = doc.All.Where(p => p.LocalName == "div");
-            if (nodes.Any())
+            if (!(node is IElement element) || IsWikiWebPartBox(node) || element.QuerySelector("div.ms-rte-wpbox") == null)
             {
-                foreach (var node in nodes.ToList())
-                {
-                    if (((node as IHtmlElement) != null) && (node as IHtmlElement).ClassList.Contains("ms-rte-wpbox"))
-                    {
-                        var newElement = doc.CreateTextNode(webPartMarkerString);
-                        node.Parent.ReplaceChild(newElement, node);
-                    }
-                }
+                yield return node;
+                yield break;
+            }
 
-                if (doc.DocumentElement.Children[1].FirstElementChild != null &&
-                    doc.DocumentElement.Children[1].FirstElementChild is IHtmlDivElement)
+            // Keep ancestor formatting around each text fragment, and reserve a distinct position for every box.
+            var fragment = element.Clone(false);
+            foreach (var child in element.ChildNodes.SelectMany(SplitWikiContentNode))
+            {
+                if (IsWikiWebPartBox(child))
                 {
-                    return doc.DocumentElement.Children[1].FirstElementChild.InnerHtml;
+                    if (fragment.HasChildNodes)
+                    {
+                        yield return fragment;
+                    }
+                    yield return child;
+                    fragment = element.Clone(false);
                 }
                 else
                 {
-                    return doc.DocumentElement.Children[1].InnerHtml;
+                    fragment.AppendChild(child.Clone(true));
                 }
             }
-            else
+            if (fragment.HasChildNodes)
             {
-                return null;
+                yield return fragment;
             }
         }
 

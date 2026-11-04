@@ -212,6 +212,8 @@
         public const string TransformationModePublishing = "Publishing Page Transformation Mode";
         public const string TransformationMode = "{0} Transformation";
         public const string AnalysingNoWebPartsFound = "No web parts were found on page";
+        public const string Warning_WikiWebPartHtmlPreserved = "Wiki web-part placeholder '{0}' at row {1}, column {2} could not be resolved to a registered web part. Its rendered HTML was preserved as editable text.";
+        public const string Warning_WikiWebPartHtmlMissing = "Wiki web-part placeholder '{0}' at row {1}, column {2} could not be resolved to a registered web part and has no rendered HTML to preserve.";
         public const string ContentTransformFoundSourceWebParts = "Source page contains web part `{0}` of type `{1}`";
         public const string WebPartXmlNotExported = "Xml definition for web part {0} was not exportable. Error {1}.";
 

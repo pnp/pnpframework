@@ -28,6 +28,147 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
         private static readonly Uri SourcePageUrl = new Uri(SiteUrl + "/Pages/page.aspx");
 
         [DataTestMethod]
+        [DataRow("47494638376110000800", 16, 8)]
+        [DataRow("47494638396110000800", 16, 8)]
+        [DataRow("89504E470D0A1A0A0000000D4948445200000140000000A0", 320, 160)]
+        [DataRow("FFD8FFE000040000FFC00008080008001001FFD9", 16, 8)]
+        [DataRow("FFD8FFFFC20008080100020001FFD9", 512, 256)]
+        public void SystemImageSize_RecognizesImageDimensions(string hex, int width, int height)
+        {
+            var header = Convert.FromHexString(hex);
+            var result = SystemImageSize.Read(header, header.Length);
+            Assert.AreEqual(width, result.Width);
+            Assert.AreEqual(height, result.Height);
+        }
+
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow("47494638396110")]
+        [DataRow("47494638396100000800")]
+        [DataRow("89504E470D0A1A0A0000000D494844528000000000000001")]
+        [DataRow("FFD8FFE0FFFF")]
+        [DataRow("FFD8FFC00002080008001001")]
+        [DataRow("FFD8FFC00008080000001001")]
+        [DataRow("FFD8FFDA0008000000000000")]
+        [DataRow("3C68746D6C3E")]
+        public void SystemImageSize_RejectsInvalidOrUnknownHeaders(string hex)
+        {
+            var header = Convert.FromHexString(hex);
+            Assert.ThrowsException<InvalidDataException>(() => SystemImageSize.Read(header, header.Length));
+        }
+
+        [DataTestMethod]
+        [DataRow("/_layouts/images/icgen.gif")]
+        [DataRow("/_layouts/15/images/icgen.gif")]
+        [DataRow("/sites/source/_layouts/14/images/icgen.gif")]
+        [DataRow("/sites/source/_LAYOUTS/15/IMAGES/icgen.gif?version=1#icon")]
+        [DataRow("https://contoso.sharepoint.com/_layouts/images/icgen.gif")]
+        [DataRow("../_layouts/images/icgen.gif")]
+        public void Transform_SystemImagesUseNativeImagesWithoutFileLookup(string source)
+        {
+            var page = CreatePage();
+            var observer = new Mock<ILogObserver>();
+            var transformator = new InlineImageTransformator(page.Object, SourcePageUrl,
+                _ => throw new AssertFailedException("System images must not be transferred"), value => value,
+                new[] { observer.Object },
+                imageLookup: _ => throw new AssertFailedException("System images have no library metadata"),
+                importExternalImage: _ => throw new AssertFailedException("Internal system images must not be imported"),
+                systemImageSizeLookup: _ => throw new AssertFailedException("Explicit widths must not require a download"));
+            var html = $"<p>before<a href='/details'><img class='ms-asset-icon ms-rtePosition-4' src='{source}' alt='A &amp; B' width='16' height='16'></a>after</p>";
+
+            var result = transformator.Transform(html);
+            Assert.AreEqual(result, transformator.Transform(result, externalImagesOnly: true));
+            using (var document = new HtmlParser().ParseDocument(result))
+            {
+                var image = document.QuerySelector("body > .imagePlugin");
+                Assert.IsNotNull(image);
+                Assert.AreEqual(new Uri(SourcePageUrl, source).AbsoluteUri, image.GetAttribute("data-imageurl"));
+                Assert.AreEqual("/details", image.GetAttribute("data-linkurl"));
+                Assert.AreEqual("A & B", image.GetAttribute("data-alttext"));
+                Assert.AreEqual("16", image.GetAttribute("data-width"));
+                Assert.AreEqual("16", image.GetAttribute("data-height"));
+                Assert.IsFalse(image.HasAttribute("data-widthpercentage"));
+                foreach (var attribute in new[] { "data-siteid", "data-webid", "data-listid", "data-uniqueid" })
+                {
+                    Assert.IsFalse(image.HasAttribute(attribute));
+                }
+                Assert.AreEqual(0, document.QuerySelectorAll("img").Length);
+                Assert.AreEqual("beforeafter", document.Body.TextContent);
+            }
+
+            page.Verify(p => p.GetInlineImage(It.IsAny<PnPCore.IPageText>(), It.IsAny<string>(), It.IsAny<PnPCore.PageImageOptions>()), Times.Never);
+            page.Verify(p => p.NewWebPart(It.IsAny<PnPCore.IPageComponent>()), Times.Never);
+            observer.Verify(log => log.Info(It.Is<LogEntry>(entry =>
+                entry.Message.Contains("Keeping SharePoint system image") &&
+                !entry.Message.Contains("?") && !entry.Message.Contains("#"))), Times.Once);
+            observer.Verify(log => log.Warning(It.IsAny<LogEntry>()), Times.Never);
+            observer.Verify(log => log.Error(It.IsAny<LogEntry>()), Times.Never);
+        }
+
+        [DataTestMethod]
+        [DataRow("", "16", "8")]
+        [DataRow("height='4'", "8", "4")]
+        public void Transform_SystemImagesCompleteMissingWidthFromResource(string attributes, string width, string height)
+        {
+            var transformator = new InlineImageTransformator(CreatePage().Object, SourcePageUrl,
+                _ => throw new AssertFailedException("System images must not be transferred"), value => value,
+                systemImageSizeLookup: _ => (16, 8));
+            using (var document = new HtmlParser().ParseDocument(
+                transformator.Transform($"<img src='/_layouts/images/icgen.gif' {attributes}>")))
+            {
+                var image = document.QuerySelector(".imagePlugin");
+                Assert.AreEqual(width, image.GetAttribute("data-width"));
+                Assert.AreEqual(height, image.GetAttribute("data-height"));
+                Assert.IsFalse(image.HasAttribute("data-widthpercentage"));
+            }
+        }
+
+        [TestMethod]
+        public void Transform_SystemImageDimensionFailureRetainsHtmlAndWarns()
+        {
+            var observer = new Mock<ILogObserver>();
+            var transformator = new InlineImageTransformator(CreatePage().Object, SourcePageUrl,
+                _ => throw new AssertFailedException("System images must not be transferred"), value => value,
+                new[] { observer.Object },
+                systemImageSizeLookup: _ => throw new InvalidDataException("Invalid image header"));
+            const string html = "<img src='/_layouts/images/icgen.gif'>";
+
+            Assert.AreEqual(html, transformator.Transform(html));
+            observer.Verify(log => log.Warning(It.Is<LogEntry>(entry => entry.Message.Contains("Invalid image header"))), Times.Once);
+        }
+
+        [DataTestMethod]
+        [DataRow("/sites/source/SiteAssets/images/icgen.gif")]
+        [DataRow("/sites/source/not_layouts/images/icgen.gif")]
+        [DataRow("/_layouts/15/getpreview.ashx")]
+        [DataRow("/_layouts/15/images-other/icgen.gif")]
+        public void Transform_NonSystemImagesStillUseFileBackedConversion(string source)
+        {
+            var page = CreatePage();
+            var result = CreateTransformator(page).Transform($"<img src='{source}'>");
+
+            Assert.IsTrue(result.Contains("imagePlugin"));
+            page.Verify(p => p.GetInlineImage(null, TargetImageUrl, It.IsAny<PnPCore.PageImageOptions>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void Transform_ExternalLayoutsImageStillUsesImporter()
+        {
+            const string source = "https://images.example/_layouts/images/icgen.gif";
+            Uri imported = null;
+            var page = CreatePage();
+            var transformator = new InlineImageTransformator(page.Object, SourcePageUrl,
+                _ => throw new AssertFailedException("Unexpected internal transfer"), value => value,
+                importExternalImage: url => { imported = url; return TargetImageUrl; });
+
+            var result = transformator.Transform($"<img src='{source}'>", externalImagesOnly: true);
+
+            Assert.AreEqual(source, imported.AbsoluteUri);
+            Assert.IsTrue(result.Contains("imagePlugin"));
+            page.Verify(p => p.GetInlineImage(null, TargetImageUrl, It.IsAny<PnPCore.PageImageOptions>()), Times.Once);
+        }
+
+        [DataTestMethod]
         [DataRow("<p>before<img src='" + ImageUrl + "'>after</p>", "body > .imagePlugin")]
         [DataRow("<table><tbody><tr><td><p>before<img src='" + ImageUrl + "'>after</p></td></tr></tbody></table>", "td > .imagePlugin")]
         [DataRow("<ol><li><ul><li><p><strong><img src='" + ImageUrl + "'></strong></p></li></ul></li></ol>", "ol > li > ul > li > .imagePlugin")]
@@ -410,6 +551,46 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
                 }
                 page.Verify(p => p.GetInlineImage(null, ImageUrl, It.IsAny<PnPCore.PageImageOptions>()), Times.Exactly(2));
                 observer.Verify(log => log.Warning(It.Is<LogEntry>(entry => entry.Message.Contains("Missing image"))), Times.Once);
+            }
+        }
+
+        [TestMethod]
+        public void ContentMapping_SystemIconUsesNativeImageAlongsideFileBackedImage()
+        {
+            using (var context = CreateContext())
+            {
+                var page = CreatePage();
+                var controls = ConfigureCanvas(page);
+                var observer = new Mock<ILogObserver>();
+                var information = new PageTransformationInformation(null);
+                var source = WikiText("<p><a href='/details'><img class='ms-asset-icon ms-rtePosition-4' " +
+                    "src='/_layouts/images/icgen.gif' alt='' width='16' height='16' style='margin:5px;'>Download</a></p>" +
+                    $"<p><img src='{ImageUrl}' width='160' height='80'></p>");
+                new ContentTransformator(context, context, page.Object, LoadMapping(), information,
+                    new[] { observer.Object }).Transform(new List<WebPartEntity> { source });
+                var transformator = new TestPageTransformator { sourceClientContext = context };
+                transformator.RegisterObserver(observer.Object);
+                transformator.SavePage(page.Object, "target.aspx", information, context,
+                    _ => throw new AssertFailedException("Internal images must not be imported"));
+
+                using (var document = new HtmlParser().ParseDocument(((PnPCore.IPageText)controls.Single()).Text))
+                {
+                    var icon = document.QuerySelector(".imagePlugin[data-imageurl='https://contoso.sharepoint.com/_layouts/images/icgen.gif']");
+                    Assert.IsNotNull(icon);
+                    Assert.AreEqual("/details", icon.GetAttribute("data-linkurl"));
+                    Assert.AreEqual("", icon.GetAttribute("data-alttext"));
+                    Assert.AreEqual("16", icon.GetAttribute("data-width"));
+                    Assert.AreEqual("16", icon.GetAttribute("data-height"));
+                    Assert.IsFalse(icon.HasAttribute("data-widthpercentage"));
+                    Assert.AreEqual("Download", document.QuerySelector("a[href='/details']").TextContent);
+                    Assert.AreEqual(2, document.QuerySelectorAll(".imagePlugin").Length);
+                    Assert.AreEqual(0, document.QuerySelectorAll("img").Length);
+                }
+                page.Verify(p => p.GetInlineImage(null, "/_layouts/images/icgen.gif", It.IsAny<PnPCore.PageImageOptions>()), Times.Never);
+                page.Verify(p => p.GetInlineImage(null, ImageUrl, It.IsAny<PnPCore.PageImageOptions>()), Times.Once);
+                observer.Verify(log => log.Info(It.Is<LogEntry>(entry => entry.Message.Contains("Keeping SharePoint system image"))), Times.Once);
+                observer.Verify(log => log.Warning(It.IsAny<LogEntry>()), Times.Never);
+                observer.Verify(log => log.Error(It.IsAny<LogEntry>()), Times.Never);
             }
         }
 

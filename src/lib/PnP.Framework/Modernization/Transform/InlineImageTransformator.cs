@@ -10,6 +10,7 @@ using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using PnPCore = PnP.Core.Model.SharePoint;
 
 namespace PnP.Framework.Modernization.Transform
@@ -22,6 +23,7 @@ namespace PnP.Framework.Modernization.Transform
         private readonly Func<string, string> rewriteUrl;
         private readonly Func<string, Dictionary<string, string>> imageLookup;
         private readonly Func<Uri, string> importExternalImage;
+        private readonly Func<Uri, (int Width, int Height)> systemImageSizeLookup;
         private readonly HashSet<string> internalAuthorities;
         private readonly HtmlParser parser = new HtmlParser(new HtmlParserOptions { IsEmbedded = true },
             BrowsingContext.New(Configuration.Default.WithCss()));
@@ -29,7 +31,8 @@ namespace PnP.Framework.Modernization.Transform
         internal InlineImageTransformator(PnPCore.IPage page, Uri sourcePageUrl,
             Func<Uri, string> transferImage, Func<string, string> rewriteUrl,
             IList<ILogObserver> logObservers = null, Func<string, Dictionary<string, string>> imageLookup = null,
-            Func<Uri, string> importExternalImage = null, IEnumerable<Uri> internalOrigins = null)
+            Func<Uri, string> importExternalImage = null, IEnumerable<Uri> internalOrigins = null,
+            Func<Uri, (int Width, int Height)> systemImageSizeLookup = null)
         {
             this.page = page;
             this.sourcePageUrl = sourcePageUrl;
@@ -37,6 +40,7 @@ namespace PnP.Framework.Modernization.Transform
             this.rewriteUrl = rewriteUrl;
             this.imageLookup = imageLookup;
             this.importExternalImage = importExternalImage;
+            this.systemImageSizeLookup = systemImageSizeLookup ?? SystemImageSize.Get;
             internalAuthorities = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { sourcePageUrl.Authority };
             if (internalOrigins != null)
             {
@@ -130,9 +134,29 @@ namespace PnP.Framework.Modernization.Transform
                     IElement inlineImage;
                     try
                     {
-                        if (external && ExternalImageImporter.IsStockImage(imageUrl))
+                        if (!external && Regex.IsMatch(imageUrl.AbsolutePath, @"/_layouts/(?:[0-9]+/)?images/",
+                            RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
                         {
-                            inlineImage = CreateExternalImage(document, image, imageUrl);
+                            var options = GetOptions(image);
+                            if (!options.Width.HasValue && !options.WidthPercentage.HasValue)
+                            {
+                                var size = systemImageSizeLookup(imageUrl);
+                                options.Width = options.Height.HasValue
+                                    ? ScaleDimension(options.Height.Value, size.Width, size.Height)
+                                    : size.Width;
+                                options.Height ??= size.Height;
+                                if (!options.Width.HasValue || options.Width <= 0 || options.Height <= 0)
+                                {
+                                    throw new InvalidDataException("The system image dimensions could not be determined.");
+                                }
+                            }
+                            inlineImage = CreateUrlImage(document, image, imageUrl, options);
+                            LogInfo($"Keeping SharePoint system image '{imageUrl.GetLeftPart(UriPartial.Path)}' as a native URL-based CK5 image.",
+                                LogStrings.Heading_ContentTransform);
+                        }
+                        else if (external && ExternalImageImporter.IsStockImage(imageUrl))
+                        {
+                            inlineImage = CreateUrlImage(document, image, imageUrl);
                             LogInfo("Keeping a stock image as a native external CK5 image.", LogStrings.Heading_ContentTransform);
                         }
                         else
@@ -161,7 +185,7 @@ namespace PnP.Framework.Modernization.Transform
                             Warn(source, ex.Message);
                             continue;
                         }
-                        inlineImage = CreateExternalImage(document, image, imageUrl);
+                        inlineImage = CreateUrlImage(document, image, imageUrl);
                         var reason = ex is PnP.Core.ServiceException serviceException && serviceException.Error is PnP.Core.ServiceError serviceError
                             ? $"HTTP {serviceError.HttpResponseCode}"
                             : ex.GetType().Name;
@@ -227,9 +251,9 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
-        private IElement CreateExternalImage(IDocument document, IElement image, Uri imageUrl)
+        private IElement CreateUrlImage(IDocument document, IElement image, Uri imageUrl, PnPCore.PageImageOptions options = null)
         {
-            var options = GetOptions(image);
+            options ??= GetOptions(image);
             var plugin = document.CreateElement("div");
             plugin.ClassName = "imagePlugin";
             plugin.SetAttribute("style", "background-color:transparent;position:relative;");

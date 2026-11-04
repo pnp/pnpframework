@@ -140,6 +140,7 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         /// <param name="pageTransformationInformation">Information about the page to transform</param>
         /// <returns>The path to the created modern page</returns>
+        /// <exception cref="ArgumentException">The source and target are different webs in the same site collection.</exception>
         public string Transform(PageTransformationInformation pageTransformationInformation)
         {
             SetPageId(Guid.NewGuid().ToString());
@@ -278,7 +279,8 @@ namespace PnP.Framework.Modernization.Transform
                     }
                     else
                     {
-                        if (NormalizeSameSiteTargetContext(sourceClientContext.Site.Id, targetClientContext.Site.Id, pageTransformationInformation))
+                        if (NormalizeSameSiteTargetContext(sourceClientContext.Site.Id, targetClientContext.Site.Id,
+                            sourceClientContext.Web.Id, targetClientContext.Web.Id, pageTransformationInformation))
                         {
                             hasTargetContext = false;
                             LogWarning(LogStrings.Error_FallBackToSameSiteTransfer, LogStrings.Heading_SharePointConnection);
@@ -1188,15 +1190,22 @@ namespace PnP.Framework.Modernization.Transform
         }
 
         #region Helper methods
-        internal bool NormalizeSameSiteTargetContext(Guid sourceSiteId, Guid targetSiteId, BaseTransformationInformation transformationInformation)
+        internal bool NormalizeSameSiteTargetContext(Guid sourceSiteId, Guid targetSiteId, Guid sourceWebId, Guid targetWebId,
+            BaseTransformationInformation transformationInformation)
         {
             if (!sourceSiteId.Equals(targetSiteId))
             {
                 return false;
             }
 
+            if (!sourceWebId.Equals(targetWebId))
+            {
+                LogError(LogStrings.Error_SameSiteTransferDifferentWeb, LogStrings.Heading_SharePointConnection);
+                throw new ArgumentException(LogStrings.Error_SameSiteTransferDifferentWeb);
+            }
+
             targetClientContext = null;
-            // Validation ran before the site IDs were loaded; discard its cross-site state too.
+            // Validation ran before the site and web IDs were loaded; discard its cross-site state too.
             transformationInformation.IsCrossSiteTransformation = false;
             transformationInformation.IsCrossFarmTransformation = false;
             transformationInformation.TargetVersion = transformationInformation.SourceVersion;

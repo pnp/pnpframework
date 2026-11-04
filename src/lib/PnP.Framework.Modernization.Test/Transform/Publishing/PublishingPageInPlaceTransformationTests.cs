@@ -343,7 +343,7 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
                     var probeCalls = 0;
                     var addCalls = 0;
 
-                    Assert.ThrowsException<ArgumentException>(() => transformator.CreateTargetPageAfterCollisionProbe(
+                    var exception = Assert.ThrowsException<ArgumentException>(() => transformator.CreateTargetPageAfterCollisionProbe(
                         rejectedTarget,
                         information,
                         () =>
@@ -358,6 +358,11 @@ namespace PnP.Framework.Modernization.Tests.Transform.Publishing
                         },
                         out _));
 
+                    Assert.AreEqual(
+                        rejectedTarget == PublishingPageTransformationTarget.SameSiteCollectionDifferentWeb
+                            ? LogStrings.Error_SameSiteTransferDifferentWeb
+                            : LogStrings.Error_InPlacePublishingPageRequiresWritableSitePages,
+                        exception.Message);
                     Assert.AreEqual(0, probeCalls, $"Target probe ran for rejected target '{rejectedTarget}'.");
                     Assert.AreEqual(0, addCalls, $"AddClientSidePage seam ran for rejected target '{rejectedTarget}'.");
                     AssertSourceUnchanged(sourceBefore, information.SourcePage);

@@ -879,8 +879,8 @@ namespace PnP.Framework.Modernization.Publishing
             switch (transformationTarget)
             {
                 case PublishingPageTransformationTarget.SameSiteCollectionDifferentWeb:
-                    LogError(LogStrings.Error_InPlacePublishingPageDifferentWeb, LogStrings.Heading_SharePointConnection);
-                    throw new ArgumentException(LogStrings.Error_InPlacePublishingPageDifferentWeb);
+                    LogError(LogStrings.Error_SameSiteTransferDifferentWeb, LogStrings.Heading_SharePointConnection);
+                    throw new ArgumentException(LogStrings.Error_SameSiteTransferDifferentWeb);
                 case PublishingPageTransformationTarget.SameWebRequiresWritableSitePages:
                     LogError(LogStrings.Error_InPlacePublishingPageRequiresWritableSitePages, LogStrings.Heading_SharePointConnection);
                     throw new ArgumentException(LogStrings.Error_InPlacePublishingPageRequiresWritableSitePages);

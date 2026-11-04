@@ -77,9 +77,10 @@
         public const string Error_PageIsNotAPublishingPage = "Page is not a publishing page, please use the wiki and web part page API's";
         public const string Error_CannotUsePageAcceptBannerCrossSite = "Page transformation towards a different site collection cannot use the page accept banner.";
         public const string Error_OverridingTagePageTakesSourcePageName = "Overriding 'TargetPageTakesSourcePageName' to ensure that the newly created page in the other site collection gets the same name as the source page";
-        public const string Error_FallBackToSameSiteTransfer = "Oops, seems source and target point to the same site collection...switch back the 'source only' mode";
+        public const string Error_FallBackToSameSiteTransfer = "Oops, seems source and target point to the same web...switch back the 'source only' mode";
+        public const string Error_SameSiteTransferDifferentWeb = "Page transformation between different webs in the same site collection is not supported. Use the source web or a target in a different site collection.";
         public const string Error_SameSiteTransferNoAllowedForPublishingPages = "Oops, seems source and target point to the same site collection...that's a no go for publishing portal page transformation!";
-        public const string Error_InPlacePublishingPageDifferentWeb = "Publishing page transformation between different Webs in the same site collection is not supported.";
+        public const string Error_InPlacePublishingPageDifferentWeb = Error_SameSiteTransferDifferentWeb;
         public const string Error_InPlacePublishingPageSitePagesFeatureNotEnabled = "In-place publishing page transformation cannot continue because the Site Pages feature is not enabled. Enable Site Pages under Site Settings > Manage site features on this web, then retry.";
         public const string Error_InPlacePublishingPageRequiresWritableSitePages = "In-place publishing page transformation requires an existing Site Pages library with Add Items and Edit Items permissions.";
         public const string Error_InPlacePublishingPageSitePagesNotFound = "The Site Pages library required for in-place publishing page transformation was not found.";

@@ -181,6 +181,7 @@ namespace PnP.Framework.Modernization.Transform
             foreach(var element in document.All.Where(p => p.HasAttribute("style")))
             {
                 string foregroundColor = element.GetStyle().GetColor();
+                string backgroundColor = element.GetStyle().GetBackgroundColor();
 
                 if (string.IsNullOrEmpty(element.GetAttribute("style")))
                 {
@@ -232,6 +233,10 @@ namespace PnP.Framework.Modernization.Transform
                     if (!string.IsNullOrEmpty(foregroundColor))
                     {
                         element.GetStyle().SetColor(foregroundColor);
+                    }
+                    if (!string.IsNullOrEmpty(backgroundColor))
+                    {
+                        element.GetStyle().SetBackgroundColor(backgroundColor);
                     }
                 }
             }
@@ -578,10 +583,12 @@ namespace PnP.Framework.Modernization.Transform
             foreach(var fromNode in fromNodes)
             {
                 var parent = fromNode.Parent;
-                var colorClasses = fromNode.ClassList.Where(IsForegroundColorClass).ToArray();
+                var colorClasses = fromNode.ClassList.Where(IsTextColorClass).ToArray();
                 string foregroundColor = fromNode.GetStyle().GetColor();
+                string backgroundColor = fromNode.GetStyle().GetBackgroundColor();
                 bool preserveHeadingAnchor = to != 0 && !string.IsNullOrEmpty(fromNode.Id);
-                if (preserveHeadingAnchor || colorClasses.Length > 0 || !string.IsNullOrEmpty(foregroundColor))
+                if (preserveHeadingAnchor || colorClasses.Length > 0 ||
+                    !string.IsNullOrEmpty(foregroundColor) || !string.IsNullOrEmpty(backgroundColor))
                 {
                     // Modern rendering generates heading IDs. Keep legacy destinations on the content instead.
                     var headingContent = document.CreateElement("span");
@@ -593,6 +600,10 @@ namespace PnP.Framework.Modernization.Transform
                     if (!string.IsNullOrEmpty(foregroundColor))
                     {
                         headingContent.GetStyle().SetColor(foregroundColor);
+                    }
+                    if (!string.IsNullOrEmpty(backgroundColor))
+                    {
+                        headingContent.GetStyle().SetBackgroundColor(backgroundColor);
                     }
                     while (fromNode.FirstChild != null)
                     {
@@ -631,6 +642,7 @@ namespace PnP.Framework.Modernization.Transform
             {
                 var parent = element.Parent;
                 string foregroundColor = element.GetStyle().GetColor();
+                string backgroundColor = element.GetStyle().GetBackgroundColor();
 
                 // ================================
                 // Rewrite font styles outside of the header styles
@@ -739,8 +751,29 @@ namespace PnP.Framework.Modernization.Transform
                 var rtethemebackcolor = element.ClassList.PartialMatch("ms-rtethemebackcolor-");
                 if (!string.IsNullOrEmpty(rtethemebackcolor))
                 {
-                    // There are no themed back colors in modern, so for now drop the color span and the background color
-                    element.ClassList.Remove(rtethemebackcolor);
+                    if (!string.IsNullOrEmpty(backgroundColor))
+                    {
+                        element.ClassList.Remove(rtethemebackcolor);
+                    }
+                    else
+                    {
+                        var shadeName = GetThemeShadeName(rtethemebackcolor);
+                        if (shadeName != null && themeColorResolver != null)
+                        {
+                            element.GetStyle().SetBackgroundColor(themeColorResolver(shadeName));
+                            backgroundColor = element.GetStyle().GetBackgroundColor();
+                            if (string.IsNullOrEmpty(backgroundColor))
+                            {
+                                throw new InvalidOperationException($"The source theme returned an invalid color for '{shadeName}'.");
+                            }
+                            element.ClassList.Remove(rtethemebackcolor);
+                        }
+                        else
+                        {
+                            LogWarning($"Cannot resolve classic background color '{rtethemebackcolor}' without a valid source theme shade. Retaining the class.",
+                                LogStrings.Heading_BuiltInFunctions);
+                        }
+                    }
                 }
 
                 //<span class="ms-rteForeColor-2" style="">Red,&#160;</span>
@@ -916,6 +949,10 @@ namespace PnP.Framework.Modernization.Transform
                         {
                             newElement.GetStyle().SetColor(foregroundColor);
                         }
+                        if (!string.IsNullOrEmpty(backgroundColor))
+                        {
+                            newElement.GetStyle().SetBackgroundColor(backgroundColor);
+                        }
                         var newItalic = document.CreateElement("em");
 
                         // Transform the piece of html we add in this span, needed to handle spans nested in here as these otherwise would not be found anymore
@@ -940,7 +977,8 @@ namespace PnP.Framework.Modernization.Transform
                     {
                         // Plain spans can be unwrapped unless they are fragment destinations.
                         if (!replacementDone && element.ClassList.Length == 0 && element.FirstElementChild == null &&
-                            string.IsNullOrEmpty(foregroundColor) && string.IsNullOrEmpty(element.Id))
+                            string.IsNullOrEmpty(foregroundColor) && string.IsNullOrEmpty(backgroundColor) &&
+                            string.IsNullOrEmpty(element.Id))
                         {
                             ReplaceChildElementByText(parent, element, document);
                         }
@@ -954,6 +992,10 @@ namespace PnP.Framework.Modernization.Transform
                             if (!string.IsNullOrEmpty(foregroundColor))
                             {
                                 element.GetStyle().SetColor(foregroundColor);
+                            }
+                            if (!string.IsNullOrEmpty(backgroundColor))
+                            {
+                                element.GetStyle().SetBackgroundColor(backgroundColor);
                             }
                             // if the element has no classes anymore then let's drop the class attribute
                             if (element.ClassList.Length == 0 && element.HasAttribute("class"))
@@ -971,6 +1013,10 @@ namespace PnP.Framework.Modernization.Transform
                     if (!string.IsNullOrEmpty(foregroundColor))
                     {
                         newElement.GetStyle().SetColor(foregroundColor);
+                    }
+                    if (!string.IsNullOrEmpty(backgroundColor))
+                    {
+                        newElement.GetStyle().SetBackgroundColor(backgroundColor);
                     }
                     // no point in having an empty class attribute
                     if (element.HasAttribute("class"))
@@ -1012,15 +1058,17 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
-        private static bool IsForegroundColorClass(string className)
+        private static bool IsTextColorClass(string className)
         {
             return className.StartsWith("ms-rteForeColor-", StringComparison.OrdinalIgnoreCase) ||
-                className.StartsWith("ms-rteThemeForeColor-", StringComparison.OrdinalIgnoreCase);
+                className.StartsWith("ms-rteThemeForeColor-", StringComparison.OrdinalIgnoreCase) ||
+                className.StartsWith("ms-rteBackColor-", StringComparison.OrdinalIgnoreCase) ||
+                className.StartsWith("ms-rteThemeBackColor-", StringComparison.OrdinalIgnoreCase);
         }
 
         private static string GetThemeShadeName(string className)
         {
-            var match = Regex.Match(className, @"^ms-rteThemeForeColor-([1-9]|10)-([0-5])$",
+            var match = Regex.Match(className, @"^ms-rteTheme(?:Fore|Back)Color-([1-9]|10)-([0-5])$",
                 RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
             if (!match.Success)
             {
@@ -1443,13 +1491,18 @@ namespace PnP.Framework.Modernization.Transform
 
             // If the element has a class defined then wrap inside a span
             string foregroundColor = element.GetStyle().GetColor();
-            if (element.ClassList.Length > 0 || !string.IsNullOrEmpty(foregroundColor))
+            string backgroundColor = element.GetStyle().GetBackgroundColor();
+            if (element.ClassList.Length > 0 || !string.IsNullOrEmpty(foregroundColor) || !string.IsNullOrEmpty(backgroundColor))
             {
                 var newSpan = document.CreateElement("span");
                 newSpan.ClassList.Add(element.ClassList.ToArray());
                 if (!string.IsNullOrEmpty(foregroundColor))
                 {
                     newSpan.GetStyle().SetColor(foregroundColor);
+                }
+                if (!string.IsNullOrEmpty(backgroundColor))
+                {
+                    newSpan.GetStyle().SetBackgroundColor(backgroundColor);
                 }
                 newSpan.InnerHtml = innerHtml;
                 newElement.AppendChild(newSpan);

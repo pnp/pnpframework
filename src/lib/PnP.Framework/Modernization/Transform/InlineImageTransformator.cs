@@ -145,6 +145,17 @@ namespace PnP.Framework.Modernization.Transform
                         if (!external && Regex.IsMatch(imageUrl.AbsolutePath, @"/_layouts/(?:[0-9]+/)?images/",
                             RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
                         {
+                            // Native CK5 images are blocks: keep a marked file icon and its label in one inline link.
+                            if (image.ClassList.Contains("ms-asset-icon") &&
+                                !string.IsNullOrWhiteSpace(image.Closest("a[href]")?.TextContent))
+                            {
+                                image.SetAttribute("src", imageUrl.AbsoluteUri);
+                                changed = true;
+                                LogInfo($"Keeping SharePoint system icon '{imageUrl.GetLeftPart(UriPartial.Path)}' inside its labeled link.",
+                                    LogStrings.Heading_ContentTransform);
+                                continue;
+                            }
+
                             var options = GetOptions(image);
                             if (!options.Width.HasValue && !options.WidthPercentage.HasValue)
                             {

@@ -628,7 +628,7 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
         }
 
         [TestMethod]
-        public void ContentMapping_SystemIconUsesNativeImageAlongsideFileBackedImage()
+        public void ContentMapping_SystemIconStaysInLabeledLinkAlongsideFileBackedImage()
         {
             using (var context = CreateContext())
             {
@@ -648,20 +648,23 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
 
                 using (var document = new HtmlParser().ParseDocument(((PnPCore.IPageText)controls.Single()).Text))
                 {
-                    var icon = document.QuerySelector(".imagePlugin[data-imageurl='https://contoso.sharepoint.com/_layouts/images/icgen.gif']");
+                    var link = document.QuerySelector("p > a[href='/details']");
+                    Assert.IsNotNull(link);
+                    var icon = link.QuerySelector("img");
                     Assert.IsNotNull(icon);
-                    Assert.AreEqual("/details", icon.GetAttribute("data-linkurl"));
-                    Assert.AreEqual("", icon.GetAttribute("data-alttext"));
-                    Assert.AreEqual("16", icon.GetAttribute("data-width"));
-                    Assert.AreEqual("16", icon.GetAttribute("data-height"));
-                    Assert.IsFalse(icon.HasAttribute("data-widthpercentage"));
-                    Assert.AreEqual("Download", document.QuerySelector("a[href='/details']").TextContent);
-                    Assert.AreEqual(2, document.QuerySelectorAll(".imagePlugin").Length);
-                    Assert.AreEqual(0, document.QuerySelectorAll("img").Length);
+                    Assert.AreEqual("https://contoso.sharepoint.com/_layouts/images/icgen.gif", icon.GetAttribute("src"));
+                    Assert.AreEqual("", icon.GetAttribute("alt"));
+                    Assert.AreEqual("16", icon.GetAttribute("width"));
+                    Assert.AreEqual("16", icon.GetAttribute("height"));
+                    Assert.AreEqual("margin:5px;", icon.GetAttribute("style"));
+                    Assert.AreEqual("Download", link.TextContent);
+                    Assert.AreEqual(1, document.QuerySelectorAll("a[href='/details']").Length);
+                    Assert.AreEqual(1, document.QuerySelectorAll(".imagePlugin").Length);
+                    Assert.AreEqual(1, document.QuerySelectorAll("img").Length);
                 }
                 page.Verify(p => p.GetInlineImage(null, "/_layouts/images/icgen.gif", It.IsAny<PnPCore.PageImageOptions>()), Times.Never);
                 page.Verify(p => p.GetInlineImage(null, ImageUrl, It.IsAny<PnPCore.PageImageOptions>()), Times.Once);
-                observer.Verify(log => log.Info(It.Is<LogEntry>(entry => entry.Message.Contains("Keeping SharePoint system image"))), Times.Once);
+                observer.Verify(log => log.Info(It.Is<LogEntry>(entry => entry.Message.Contains("Keeping SharePoint system icon"))), Times.Once);
                 observer.Verify(log => log.Warning(It.IsAny<LogEntry>()), Times.Never);
                 observer.Verify(log => log.Error(It.IsAny<LogEntry>()), Times.Never);
             }

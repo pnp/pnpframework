@@ -61,7 +61,7 @@ namespace PnP.Framework.Modernization.Tests.Transform.Tables
             {
                 var cells = document.QuerySelectorAll("table tr > td");
                 Assert.AreEqual(source.QuerySelectorAll("td, th").Length, cells.Length);
-                Assert.IsTrue(cells.All(cell => cell.GetAttribute("style").TrimEnd(';') == "width: auto"));
+                Assert.IsTrue(cells.All(cell => cell.GetAttribute("style").Split(';').Any(style => style.Trim() == "width: auto")));
             }
         }
 

@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using AngleSharp.Css.Dom;
+using AngleSharp.Css.Values;
 using AngleSharp.Io;
 
 namespace PnP.Framework.Modernization.Transform
@@ -181,6 +182,7 @@ namespace PnP.Framework.Modernization.Transform
             foreach(var element in document.All.Where(p => p.HasAttribute("style")))
             {
                 string foregroundColor = element.GetStyle().GetColor();
+                string cellBackgroundColor = element.TagName == "TD" ? element.GetStyle().GetBackgroundColor() : null;
 
                 if (string.IsNullOrEmpty(element.GetAttribute("style")))
                 {
@@ -233,6 +235,10 @@ namespace PnP.Framework.Modernization.Transform
                     {
                         element.GetStyle().SetColor(foregroundColor);
                     }
+                    if (!string.IsNullOrEmpty(cellBackgroundColor))
+                    {
+                        element.GetStyle().SetBackgroundColor(cellBackgroundColor);
+                    }
                 }
             }
         }
@@ -240,7 +246,7 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Preserves table spans and relative column sizing in native canvas RTE markup that fits the canvas.
         /// Absolute table widths become responsive widths because RTE does not retain overflow constraints.
-        /// Simple unsized tables retain the legacy wrapper.
+        /// Tables without explicit sizing, spans, or cell backgrounds retain the legacy wrapper.
         /// Nested tables remain in their owning cells for canvas RTE to render and edit.
         /// </summary>
         protected virtual void TransformTables(IHtmlCollection<IElement> tables, IHtmlDocument document)
@@ -272,8 +278,11 @@ namespace PnP.Framework.Modernization.Transform
                     continue;
                 }
 
-                bool nativeTable = normalizedTable.Rows.SelectMany(row => row).Any(cell =>
-                    cell.ColumnSpan > 1 || cell.RowSpan > 1 || HasExplicitWidth(cell.Element)) ||
+                var bandedStyle = normalizedTable.ClassName == "simpleTableStyleNeutral" ? GetTableClassName(table, true) : null;
+                var bandingColors = GetHeaderlessTableBandingColors(bandedStyle);
+                bool nativeTable = bandingColors != null || normalizedTable.Rows.SelectMany(row => row).Any(cell =>
+                    cell.ColumnSpan > 1 || cell.RowSpan > 1 || HasExplicitWidth(cell.Element) ||
+                    GetTableCellBackgroundColor(cell.Element) != null) ||
                     HasExplicitWidth(table) || table.Children.Any(child => child.TagName == "COLGROUP");
                 var newTableElement = document.CreateElement(nativeTable ? "figure" : "div");
                 newTableElement.ClassName = "canvasRteResponsiveTable";
@@ -316,14 +325,41 @@ namespace PnP.Framework.Modernization.Transform
                 var tableBody = document.CreateElement("tbody");
                 tableElement.AppendChild(tableBody);
 
+                int rowIndex = 0;
                 foreach (var row in normalizedTable.Rows)
                 {
                     var newRow = document.CreateElement("tr");
+                    string rowBackgroundColor = null;
+                    if (bandingColors != null && row.Count > 0)
+                    {
+                        int bandIndex = rowIndex % 2;
+                        var sourceRow = row[0].Element.ParentElement;
+                        string styleCode = bandedStyle == "bandedRowTableStyleTheme" ? "6" : "1";
+                        if (sourceRow.ClassList.Any(name => name.Equals($"ms-rteTableEvenRow-{styleCode}", StringComparison.OrdinalIgnoreCase)))
+                        {
+                            bandIndex = 0;
+                        }
+                        else if (sourceRow.ClassList.Any(name => name.Equals($"ms-rteTableOddRow-{styleCode}", StringComparison.OrdinalIgnoreCase)))
+                        {
+                            bandIndex = 1;
+                        }
+                        rowBackgroundColor = bandingColors[bandIndex];
+                    }
                     foreach (var cell in row)
                     {
                         var newTableCell = document.CreateElement("td");
                         newTableCell.GetStyle().SetWidth(columnWidths == null ? "auto" :
                             FormatTablePercentage(columnWidths.Skip(cell.Column).Take(cell.ColumnSpan).Sum()));
+                        var cellBackgroundColor = GetTableCellBackgroundColor(cell.Element) ?? rowBackgroundColor;
+                        if (cellBackgroundColor != null)
+                        {
+                            newTableCell.GetStyle().SetBackgroundColor(cellBackgroundColor);
+                        }
+                        var foregroundColor = cell.Element.GetStyle().GetColor();
+                        if (!string.IsNullOrEmpty(foregroundColor))
+                        {
+                            newTableCell.GetStyle().SetColor(foregroundColor);
+                        }
                         if (cell.ColumnSpan > 1)
                         {
                             newTableCell.SetAttribute("colspan", cell.ColumnSpan.ToString(CultureInfo.InvariantCulture));
@@ -353,6 +389,7 @@ namespace PnP.Framework.Modernization.Transform
 
                     // Append the new row
                     tableBody.AppendChild(newRow);
+                    rowIndex++;
                 }
 
                 table.Parent.ReplaceChild(newTableElement, table);
@@ -1035,7 +1072,7 @@ namespace PnP.Framework.Modernization.Transform
 
         private static string GetTableClassName(IElement table, bool hasHeader)
         {
-            const string borderedStyle = "borderHeaderTableStyleNeutral";
+            string borderedStyle = hasHeader ? "borderHeaderTableStyleNeutral" : "simpleTableStyleNeutral";
             const string borderlessStyle = "noBorderTableStyleNeutral";
             const string classicStylePrefix = "ms-rteTable-";
             string mappedStyle = null;
@@ -1058,8 +1095,9 @@ namespace PnP.Framework.Modernization.Transform
 
             if (mappedStyle != null && mappedStyle != borderlessStyle)
             {
-                // Modern filled-header styles color the first row even when it contains only body cells.
-                if (!hasHeader && (mappedStyle == "filledHeaderTableStyleTheme" || mappedStyle == "filledHeaderTableStyleNeutral"))
+                // Banded styles also fill and bold the first row, even when it contains only body cells.
+                if (!hasHeader && (mappedStyle == "filledHeaderTableStyleTheme" || mappedStyle == "filledHeaderTableStyleNeutral" ||
+                    mappedStyle == "bandedRowTableStyleTheme" || mappedStyle == "bandedRowTableStyleNeutral"))
                 {
                     return "simpleTableStyleNeutral";
                 }
@@ -1089,6 +1127,49 @@ namespace PnP.Framework.Modernization.Transform
             return borderedStyle;
         }
 
+        private static string GetTableCellBackgroundColor(IElement cell)
+        {
+            return cell.GetStyle().GetProperty("background-color")?.RawValue is CssColorValue color && color.A > 0
+                ? color.CssText : null;
+        }
+
+        private string[] GetHeaderlessTableBandingColors(string style)
+        {
+            bool themed = style == "bandedRowTableStyleTheme";
+            if (!themed && style != "bandedRowTableStyleNeutral")
+            {
+                return null;
+            }
+
+            if (themeColorResolver == null)
+            {
+                LogWarning("Cannot resolve source table banding without a source theme. Using the classic default palette.",
+                    LogStrings.Heading_BuiltInFunctions);
+            }
+
+            CssColorValue ResolveColor(string shade, string defaultColor)
+            {
+                string color = themeColorResolver == null ? defaultColor : themeColorResolver(shade);
+                if (string.IsNullOrEmpty(color) || !CssColorValue.TryFromHex(color.TrimStart('#'), out var parsed))
+                {
+                    throw new InvalidOperationException($"The source theme returned an invalid color for '{shade}'.");
+                }
+                return parsed;
+            }
+
+            var background = ResolveColor("BackgroundOverlay", "#ffffff");
+            var band = ResolveColor(themed ? "ContentAccent1-Lightest" : "BackgroundOverlay-Lighter", themed ? "#c0e4ff" : "#d8d8d8");
+            if (themed)
+            {
+                // Classic style 6 uses 70% opacity. The modern cell editor drops translucent fills, so flatten against the source background.
+                band = CssColorValue.FromRgb(
+                    (byte)Math.Round(band.R * 0.7 + background.R * 0.3, MidpointRounding.AwayFromZero),
+                    (byte)Math.Round(band.G * 0.7 + background.G * 0.3, MidpointRounding.AwayFromZero),
+                    (byte)Math.Round(band.B * 0.7 + background.B * 0.3, MidpointRounding.AwayFromZero));
+            }
+            return new[] { background.CssText, band.CssText };
+        }
+
         private static bool HasVisibleBorder(IElement element)
         {
             var style = element.GetStyle();
@@ -1111,7 +1192,10 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         /// <param name="tableStyleCode">Code used for the wiki table style</param>
         /// <returns>RTE compatible table style</returns>
-        /// <remarks>Filled-header styles require a header row. Transformation uses a neutral grid for headerless tables instead.</remarks>
+        /// <remarks>
+        /// Filled-header, banded, and bordered-header styles emphasize the first row.
+        /// Transformation uses a neutral grid for headerless tables, preserving banded fills as native cell backgrounds.
+        /// </remarks>
         public static string TableStyleCodeToName(int tableStyleCode)
         {
             //ms-rteTable-default: basic grid lines

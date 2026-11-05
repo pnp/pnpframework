@@ -213,16 +213,20 @@ namespace PnP.Framework.Modernization.Test.Transform.RichText
             {
                 var builtIn = new BuiltIn(new PageTransformationInformation(null) { SkipUrlRewrite = true },
                     sameWeb ? source : target, sameWeb ? null : source);
-                using (var result = Parse(builtIn.TextCleanup("<span id='field' class='ms-rteThemeForeColor-6-0'>Field</span>", "false")))
+                using (var result = Parse(builtIn.TextCleanup("<span id='field' class='ms-rteThemeForeColor-6-0 ms-rteThemeBackColor-6-0'>Field</span>", "false")))
                 {
                     AssertColor(result, "#field", "#00485b");
+                    Assert.AreEqual(result.QuerySelector("#field").GetStyle().GetColor(),
+                        result.QuerySelector("#field").GetStyle().GetBackgroundColor());
                 }
 
                 var unexpectedRequest = new Mock<IMockResponseProvider>(MockBehavior.Strict);
                 source.WebRequestExecutorFactory = new MockWebRequestExecutorFactory(unexpectedRequest.Object);
-                using (var result = Parse(builtIn.TextCleanup("<font id='field' class='ms-rteThemeForeColor-6-0'>Field</font>", "false")))
+                using (var result = Parse(builtIn.TextCleanup("<font id='field' class='ms-rteThemeForeColor-6-0 ms-rteThemeBackColor-6-0'>Field</font>", "false")))
                 {
                     AssertColor(result, "#field", "#00485b");
+                    Assert.AreEqual(result.QuerySelector("#field").GetStyle().GetColor(),
+                        result.QuerySelector("#field").GetStyle().GetBackgroundColor());
                 }
                 unexpectedRequest.VerifyNoOtherCalls();
             }

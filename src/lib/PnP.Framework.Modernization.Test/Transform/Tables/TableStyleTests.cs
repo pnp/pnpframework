@@ -353,5 +353,37 @@ namespace PnP.Framework.Modernization.Tests.Transform.Tables
                 Assert.AreEqual(expected.GetStyle().GetBackgroundColor(), merged.GetStyle().GetBackgroundColor());
             }
         }
+
+        [TestMethod]
+        public void Transform_PreservesTextMaskInsideAuthoredAndBandedCells()
+        {
+            const string html = @"<table class='ms-rteTable-6'>
+                <tr><td style='background:#9cc2e5'><span id='mask'
+                    class='ms-rteThemeForeColor-2-5 ms-rteThemeBackColor-2-5'>Obsolete instructions</span></td></tr>
+                <tr><td>Current instructions</td></tr></table>";
+            var transformator = new HtmlTransformator(null, shade => shade switch
+            {
+                "BackgroundOverlay" => "#ffffff",
+                "ContentAccent1-Lightest" => "#b4fbfd",
+                "BodyText-Darkest" => "#1a1a1a",
+                _ => throw new AssertFailedException($"Unexpected theme shade: {shade}")
+            });
+            using (var document = new HtmlParser(new HtmlParserOptions(), BrowsingContext.New(Configuration.Default.WithCss()))
+                .ParseDocument(transformator.Transform(html, false)))
+            {
+                var cells = document.QuerySelectorAll("td");
+                var expected = document.CreateElement("span");
+                expected.GetStyle().SetBackgroundColor("#9cc2e5");
+                Assert.AreEqual(expected.GetStyle().GetBackgroundColor(), cells[0].GetStyle().GetBackgroundColor());
+                expected.GetStyle().SetBackgroundColor("#cbfcfe");
+                Assert.AreEqual(expected.GetStyle().GetBackgroundColor(), cells[1].GetStyle().GetBackgroundColor());
+                expected.GetStyle().SetBackgroundColor("#1a1a1a");
+                expected.GetStyle().SetColor("#1a1a1a");
+                var mask = document.QuerySelector("#mask");
+                Assert.AreEqual(expected.GetStyle().GetColor(), mask.GetStyle().GetColor());
+                Assert.AreEqual(expected.GetStyle().GetBackgroundColor(), mask.GetStyle().GetBackgroundColor());
+                Assert.AreEqual("Obsolete instructions", mask.TextContent);
+            }
+        }
     }
 }

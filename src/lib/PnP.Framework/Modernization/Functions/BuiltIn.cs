@@ -286,7 +286,7 @@ namespace PnP.Framework.Modernization.Functions
         }
 
         /// <summary>
-        /// Wiki html rewrite to work in RTE, preserving foreground colors from the source web's classic theme.
+        /// Wiki html rewrite to work in RTE, preserving foreground and background colors from the source web's classic theme.
         /// </summary>
         /// <param name="text">Wiki html to rewrite</param>
         /// <param name="usePlaceHolders"></param>

@@ -128,7 +128,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         {
                             scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ComposedLooks_ExtractObjects_Creating_SharePointConnector);
                             // Let's create a SharePoint connector since our files anyhow are in SharePoint at this moment
-                            TokenParser parser = new TokenParser(web, template);
+                            var parser = new TokenParser(web, template, new ProvisioningTemplateApplyingInformation { LoadSiteCollectionTermGroups = creationInfo.LoadSiteCollectionTermGroups });
                             DownLoadFile(spConnector, spConnectorRoot, creationInfo.FileConnector, web.Url, parser.ParseString(composedLook.BackgroundFile), scope);
                             DownLoadFile(spConnector, spConnectorRoot, creationInfo.FileConnector, web.Url, parser.ParseString(composedLook.ColorFile), scope);
                             DownLoadFile(spConnector, spConnectorRoot, creationInfo.FileConnector, web.Url, parser.ParseString(composedLook.FontFile), scope);

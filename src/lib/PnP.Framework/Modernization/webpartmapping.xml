@@ -189,16 +189,20 @@ configure the page transformation engine to use the community script editor. You
       <!-- Site Feed Web part -->
       <WebPart Type="Microsoft.SharePoint.Portal.WebControls.SiteFeedWebPart, Microsoft.SharePoint.Portal, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" CrossSiteTransformationSupported="true">
         <Properties>
-          <Property Name="IsIncluded" Type="bool" Functions="{EncodedHostUrl} = HtmlEncodeForJson({Host})"/>
+          <Property Name="IsIncluded" Type="bool"/>
           <Property Name="Dir" Type="string"/>
           <Property Name="PartImageSmall" Type="string"/>
           <Property Name="PartImageLarge" Type="string"/>
           <Property Name="IsIncludedFilter" Type="bool"/>
         </Properties>
-        <Mappings>
-          <Mapping Name="default" Default="true">
-            <!-- News is not the perfect mapping, currently there's no OOB replacement for showing the site feed data -->
-            <ClientSideWebPart Type="News" Order="10" JsonControlData="&#123;&quot;serverProcessedContent&quot;&#58;&#123;&quot;htmlStrings&quot;&#58;&#123;&#125;,&quot;searchablePlainTexts&quot;&#58;&#123;&#125;,&quot;imageSources&quot;&#58;&#123;&#125;,&quot;links&quot;&#58;&#123;&quot;baseUrl&quot;&#58;&quot;{EncodedHostUrl}{Web}&quot;&#125;&#125;,&quot;dataVersion&quot;&#58;&quot;1.11&quot;,&quot;properties&quot;&#58;&#123;&quot;showChrome&quot;&#58;true,&quot;carouselSettings&quot;&#58;&#123;&quot;autoplay&quot;&#58;false,&quot;autoplaySpeed&quot;&#58;5,&quot;dots&quot;&#58;true,&quot;lazyLoad&quot;&#58;true&#125;,&quot;showNewsMetadata&quot;&#58;&#123;&quot;showSocialActions&quot;&#58;true,&quot;showAuthor&quot;&#58;true,&quot;showDate&quot;&#58;true&#125;,&quot;layoutId&quot;&#58;&quot;GridNews&quot;,&quot;prefetchCount&quot;&#58;4,&quot;filters&quot;&#58;[&#123;&quot;filterType&quot;&#58;1,&quot;value&quot;&#58;&quot;&quot;,&quot;values&quot;&#58;[]&#125;],&quot;newsDataSourceProp&quot;&#58;1,&quot;dataProviderId&quot;&#58;&quot;news&quot;,&quot;newsSiteList&quot;&#58;[],&quot;renderItemsSliderValue&quot;&#58;4,&quot;webId&quot;&#58;&quot;{WebId}&quot;,&quot;siteId&quot;&#58;&quot;{SiteId}&quot;&#125;&#125;"/>
+        <Mappings Selector="SiteFeedSelector({Title})">
+          <Mapping Name="InPlace" Default="true" Functions="{SiteFeedTitle} = JsonEncode({Title})">
+            <!-- The native Site Feed reads the current web's existing feed. The component must be available at the destination. -->
+            <ClientSideWebPart Type="Custom" ControlId="b1d207ea-942e-4d3e-b890-a5c0fd61c670" Order="10" JsonControlData="&#123;&quot;serverProcessedContent&quot;&#58;&#123;&quot;htmlStrings&quot;&#58;&#123;&#125;,&quot;searchablePlainTexts&quot;&#58;&#123;&#125;,&quot;imageSources&quot;&#58;&#123;&#125;,&quot;links&quot;&#58;&#123;&#125;&#125;,&quot;dataVersion&quot;&#58;&quot;1.0&quot;,&quot;properties&quot;&#58;&#123;&quot;title&quot;&#58;&quot;{SiteFeedTitle}&quot;,&quot;itemsPerPage&quot;&#58;10,&quot;showReplies&quot;&#58;true&#125;&#125;"/>
+          </Mapping>
+          <Mapping Name="CrossSite" Default="false" Functions="{SiteFeedTitle} = HtmlEncode({Title})">
+            <!-- Keep CrossSiteTransformationSupported enabled so this warning/placeholder mapping runs instead of silently dropping the control. -->
+            <ClientSideText Order="10" Text="***Site Feed web part {SiteFeedTitle} was not transformed. Its posts remain in the source site; cross-site feed migration is not supported.***"/>
           </Mapping>
         </Mappings>
       </WebPart>

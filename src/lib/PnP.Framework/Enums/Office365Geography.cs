@@ -94,5 +94,65 @@
         /// Sweden
         /// </summary>
         SWE,
+
+        /// <summary>
+        /// Austria
+        /// </summary>
+        AUT,
+
+        /// <summary>
+        /// Chile
+        /// </summary>
+        CHL,
+
+        /// <summary>
+        /// Denmark
+        /// </summary>
+        DNK,
+
+        /// <summary>
+        /// Spain
+        /// </summary>
+        ESP,
+
+        /// <summary>
+        /// Indonesia
+        /// </summary>
+        IDN,
+
+        /// <summary>
+        /// Israel
+        /// </summary>
+        ISR,
+
+        /// <summary>
+        /// Italy
+        /// </summary>
+        ITA,
+
+        /// <summary>
+        /// Mexico
+        /// </summary>
+        MEX,
+
+        /// <summary>
+        /// Malaysia
+        /// </summary>
+        MYS,
+
+        /// <summary>
+        /// New Zealand
+        /// </summary>
+        NZL,
+
+        /// <summary>
+        /// Poland
+        /// </summary>
+        POL,
+
+        /// <summary>
+        /// Taiwan
+        /// </summary>
+        TWN,
     }
 }

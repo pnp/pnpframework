@@ -22,6 +22,11 @@ namespace PnP.Framework.Provisioning.Model
         /// </remarks>
         public Int32 ExpiresInDays { get; set; }
 
+        /// <summary>
+        /// Defines an opaque string passed back to the client on all notifications, optional attribute.
+        /// </summary>
+        public String ClientState { get; set; }
+
         #endregion
 
         #region Comparison code
@@ -32,9 +37,10 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|",
+            return (String.Format("{0}|{1}|{2}|",
                 ServerNotificationUrl?.GetHashCode() ?? 0,
-                ExpiresInDays.GetHashCode()
+                ExpiresInDays.GetHashCode(),
+                ClientState?.GetHashCode() ?? 0
             ).GetHashCode());
         }
 
@@ -53,7 +59,7 @@ namespace PnP.Framework.Provisioning.Model
         }
 
         /// <summary>
-        /// Compares Webhook object based on ServerNotificationUrl and ExpiresInDays
+        /// Compares Webhook object based on ServerNotificationUrl, ExpiresInDays and ClientState
         /// </summary>
         /// <param name="other">Webhook Class object</param>
         /// <returns>true if the Webhook object is equal to the current object; otherwise, false.</returns>
@@ -65,7 +71,8 @@ namespace PnP.Framework.Provisioning.Model
             }
 
             return (this.ServerNotificationUrl == other.ServerNotificationUrl &&
-                this.ExpiresInDays == other.ExpiresInDays
+                this.ExpiresInDays == other.ExpiresInDays &&
+                this.ClientState == other.ClientState
                 );
         }
 

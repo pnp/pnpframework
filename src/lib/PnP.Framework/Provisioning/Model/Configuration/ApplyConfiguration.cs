@@ -49,6 +49,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
 
         [JsonPropertyName("parameters")]
         public Dictionary<string, string> Parameters { get; set; } = new Dictionary<string, string>();
+
         /// <summary>
         /// Defines Tenant Extraction Settings
         /// </summary>
@@ -73,23 +74,31 @@ namespace PnP.Framework.Provisioning.Model.Configuration
         [JsonPropertyName("extensibility")]
         public Extensibility.ApplyExtensibilityConfiguration Extensibility { get; set; } = new Extensibility.ApplyExtensibilityConfiguration();
 
+        /// <summary>
+        /// Specifies whether to also load site collection term groups when initializing the <see cref="TokenParser"/>. If
+        /// <c>false</c>, only normal term groups will be loaded. This does not affect loading the site collection term group
+        /// when one of the <c>sitecollectionterm</c> tokens was found.
+        /// </summary>
+        [JsonPropertyName("loadSiteCollectionTermGroups")]
+        public bool LoadSiteCollectionTermGroups { get; set; } = true;
+
         public ProvisioningTemplateApplyingInformation ToApplyingInformation()
         {
             var ai = new ProvisioningTemplateApplyingInformation
             {
-                ApplyConfiguration = this
+                ApplyConfiguration = this,
+                ProvisionContentTypesToSubWebs = this.ContentTypes.ProvisionContentTypesToSubWebs,
+                OverwriteSystemPropertyBagValues = this.PropertyBag.OverwriteSystemValues,
+                IgnoreDuplicateDataRowErrors = this.Lists.IgnoreDuplicateDataRowErrors,
+                ClearNavigation = this.Navigation.ClearNavigation,
+                ProvisionFieldsToSubWebs = this.Fields.ProvisionFieldsToSubWebs,
+                LoadSiteCollectionTermGroups = LoadSiteCollectionTermGroups
             };
 
             if (this.AccessTokens != null && this.AccessTokens.Any())
             {
                 ai.AccessTokens = this.AccessTokens;
             }
-
-            ai.ProvisionContentTypesToSubWebs = this.ContentTypes.ProvisionContentTypesToSubWebs;
-            ai.OverwriteSystemPropertyBagValues = this.PropertyBag.OverwriteSystemValues;
-            ai.IgnoreDuplicateDataRowErrors = this.Lists.IgnoreDuplicateDataRowErrors;
-            ai.ClearNavigation = this.Navigation.ClearNavigation;
-            ai.ProvisionFieldsToSubWebs = this.Fields.ProvisionFieldsToSubWebs;
 
             if (Handlers.Any())
             {
@@ -178,12 +187,13 @@ namespace PnP.Framework.Provisioning.Model.Configuration
             config.ContentTypes.ProvisionContentTypesToSubWebs = information.ProvisionContentTypesToSubWebs;
             config.Fields.ProvisionFieldsToSubWebs = information.ProvisionFieldsToSubWebs;
             config.SiteProvisionedDelegate = information.SiteProvisionedDelegate;
+            config.LoadSiteCollectionTermGroups = information.LoadSiteCollectionTermGroups;
+
             return config;
         }
 
         public static ApplyConfiguration FromString(string input)
         {
-          
             return JsonSerializer.Deserialize<ApplyConfiguration>(input);
         }
     }

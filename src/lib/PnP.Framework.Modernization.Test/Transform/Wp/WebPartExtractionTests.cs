@@ -98,6 +98,30 @@ namespace PnP.Framework.Modernization.Tests.Transform.Wp
         }
 
         [DataTestMethod]
+        [DataRow("pre", "text-decoration:line-through", false)]
+        [DataRow("pre", "text-decoration:underline line-through", true)]
+        [DataRow("section", "text-decoration-line:line-through", false)]
+        [DataRow("article", "text-decoration:line-through solid red", false)]
+        public void UnsupportedBlockReplacementPreservesDecoration(string tag, string style, bool underline)
+        {
+            Analyze($"<{tag} style='{style}'><code>obsolete --option</code>" +
+                $"<p><a href='/guide'>Retired guidance</a></p></{tag}><p>Current guidance</p>");
+
+            var html = string.Concat(parts.Select(part => part.Properties["Text"]));
+            using (var result = new HtmlParser().ParseDocument(new HtmlTransformator().Transform(html, false)))
+            {
+                Assert.AreEqual(0, result.QuerySelectorAll(tag).Length);
+                Assert.AreEqual("obsolete --option", result.QuerySelector("code s")?.TextContent);
+                Assert.AreEqual("Retired guidance", result.QuerySelector("a s")?.TextContent);
+                Assert.AreEqual("/guide", result.QuerySelector("a").GetAttribute("href"));
+                Assert.AreEqual(underline, result.QuerySelector("code u") != null);
+                Assert.IsTrue(result.QuerySelectorAll("s").All(element => element.TextContent != "Current guidance"));
+                Assert.AreEqual("obsolete --optionRetired guidanceCurrent guidance",
+                    result.Body.TextContent.Replace("\n", "").Replace("\r", ""));
+            }
+        }
+
+        [DataTestMethod]
         [DataRow(false)]
         [DataRow(true)]
         public void MissingRegistrationPreservesRenderedHtml(bool onPremises)

@@ -23,6 +23,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         private bool includeSearchConfiguration = false;
         private List<String> propertyBagPropertiesToPreserve;
         private List<String> contentTypeGroupsToInclude;
+        private List<string> fieldGroupsToInclude;
         private bool persistPublishingFiles = false;
         private bool includeNativePublishingFiles = false;
         private bool skipVersionCheck = false;
@@ -52,6 +53,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             this.baseTemplate = web.GetBaseTemplate();
             this.propertyBagPropertiesToPreserve = new List<String>();
             this.contentTypeGroupsToInclude = new List<String>();
+            this.fieldGroupsToInclude = new List<String>();
         }
 
         /// <summary>
@@ -219,6 +221,15 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             get { return this.contentTypeGroupsToInclude; }
             set { this.contentTypeGroupsToInclude = value; }
+        }
+
+        /// <summary>
+        /// List of site field groups
+        /// </summary>
+        public List<string> FieldGroupsToInclude
+        {
+            get { return this.fieldGroupsToInclude; }
+            set { this.fieldGroupsToInclude = value; }
         }
 
         /// <summary>

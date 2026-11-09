@@ -76,6 +76,8 @@ namespace PnP.Framework.Modernization.Transform
         /// Source fragment destinations are retained, with heading IDs placed on content spans because modern rendering
         /// generates its own heading IDs. Those generated IDs can collide with source IDs. The modern text editor can
         /// discard custom IDs on a subsequent edit/save; preserving them here does not prevent that editor behavior.
+        /// Ordered lists retain their inline or HTML type marker style (decimal by default) at every nesting level,
+        /// using native RTE list markup instead of the modern renderer's implicit alphabetic nested markers.
         /// </remarks>
         public string Transform(string text, bool usePlaceHolder)
         {
@@ -116,6 +118,8 @@ namespace PnP.Framework.Modernization.Transform
 
                 // Process tables
                 TransformTables(document.QuerySelectorAll("table"), document);
+
+                TransformLists(document);
 
                 // Finalize the transformation by cleaning the html
                 // - styling information: RTE does only support a limited set of styles
@@ -185,6 +189,8 @@ namespace PnP.Framework.Modernization.Transform
             {
                 string foregroundColor = element.GetStyle().GetColor();
                 string backgroundColor = element.GetStyle().GetBackgroundColor();
+                string listStyleType = element.TagName == "OL" || element.TagName == "UL" || element.TagName == "LI"
+                    ? element.GetStyle().GetPropertyValue("list-style-type") : null;
 
                 if (string.IsNullOrEmpty(element.GetAttribute("style")))
                 {
@@ -241,8 +247,53 @@ namespace PnP.Framework.Modernization.Transform
                     {
                         element.GetStyle().SetBackgroundColor(backgroundColor);
                     }
+                    if (!string.IsNullOrEmpty(listStyleType))
+                    {
+                        element.GetStyle().SetProperty("list-style-type", listStyleType);
+                    }
                 }
             }
+        }
+
+        private static void TransformLists(IHtmlDocument document)
+        {
+            foreach (var list in document.QuerySelectorAll("ol, ul"))
+            {
+                if (list.TagName == "UL" && list.QuerySelector("ol") == null)
+                {
+                    continue;
+                }
+
+                // RTE uses this class on list containers to disable alphabetic LI and ::before overrides.
+                // Include UL ancestors so ordered lists nested inside bulleted lists inherit their own marker style.
+                list.ClassList.Add("customListStyle");
+                if (list.TagName == "OL" && string.IsNullOrEmpty(list.GetStyle().GetPropertyValue("list-style-type")))
+                {
+                    list.GetStyle().SetProperty("list-style-type", GetOrderedListStyle(list.GetAttribute("type")) ?? "decimal");
+                }
+            }
+
+            foreach (var item in document.QuerySelectorAll("ol > li[type]"))
+            {
+                var marker = GetOrderedListStyle(item.GetAttribute("type"));
+                if (marker != null && string.IsNullOrEmpty(item.GetStyle().GetPropertyValue("list-style-type")))
+                {
+                    item.GetStyle().SetProperty("list-style-type", marker);
+                }
+            }
+        }
+
+        private static string GetOrderedListStyle(string type)
+        {
+            return type switch
+            {
+                "1" => "decimal",
+                "a" => "lower-alpha",
+                "A" => "upper-alpha",
+                "i" => "lower-roman",
+                "I" => "upper-roman",
+                _ => null
+            };
         }
 
         /// <summary>

@@ -1746,7 +1746,7 @@ namespace PnP.Framework.Modernization.Functions
         /// Looks up a person from the UserInfo list and returns the needed details
         /// </summary>
         /// <param name="person">User account to lookup (in i:0#.f|membership|joe@contoso.onmicrosoft.com format)</param>
-        /// <returns>Information about the found user</returns>
+        /// <returns>Information about the found user, or empty person properties when the account is null or empty</returns>
         [FunctionDocumentation(Description = "Looks up a person from the UserInfo list and returns the needed details",
                                Example = "LookupPerson({ContactLoginName})")]
         [InputDocumentation(Name = "{ContactLoginName}", Description = "User account to lookup (in i:0#.f|membership|joe@contoso.onmicrosoft.com format)")]
@@ -1765,6 +1765,13 @@ namespace PnP.Framework.Modernization.Functions
 
             if (string.IsNullOrEmpty(person))
             {
+                result.Add("PersonName", "");
+                result.Add("PersonEmail", "");
+                result.Add("PersonUPN", "");
+                result.Add("PersonRole", "");
+                result.Add("PersonDepartment", "");
+                result.Add("PersonPhone", "");
+                result.Add("PersonSip", "");
                 return result;
             }
 

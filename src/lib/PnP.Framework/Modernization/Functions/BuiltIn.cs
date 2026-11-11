@@ -1751,7 +1751,7 @@ namespace PnP.Framework.Modernization.Functions
                                Example = "LookupPerson({ContactLoginName})")]
         [InputDocumentation(Name = "{ContactLoginName}", Description = "User account to lookup (in i:0#.f|membership|joe@contoso.onmicrosoft.com format)")]
         [OutputDocumentation(Name = "PersonName", Description = "Name of the user")]
-        [OutputDocumentation(Name = "PersonEmail", Description = "User's email")]
+        [OutputDocumentation(Name = "PersonEmail", Description = "User's email, or account name when the email is empty")]
         [OutputDocumentation(Name = "PersonUPN", Description = "UPN of the user")]
         [OutputDocumentation(Name = "PersonRole", Description = "Role of the user")]
         [OutputDocumentation(Name = "PersonDepartment", Description = "User's department")]
@@ -1811,7 +1811,8 @@ namespace PnP.Framework.Modernization.Functions
                     result.Add("PersonDepartment", loadedUser["Department"] != null ? loadedUser["Department"].ToString() : "");
                     result.Add("PersonPhone", loadedUser["WorkPhone"] != null ? loadedUser["WorkPhone"].ToString() : "");
                     result.Add("PersonSip", loadedUser["SipAddress"] != null ? loadedUser["SipAddress"].ToString() : "");
-                    result.Add("PersonEmail", loadedUser["EMail"] != null ? loadedUser["EMail"].ToString() : "");
+                    var email = loadedUser["EMail"]?.ToString();
+                    result.Add("PersonEmail", string.IsNullOrWhiteSpace(email) ? result["PersonUPN"] : email);
                     handled = true;
                 }
             }

@@ -71,6 +71,10 @@ namespace PnP.Framework.Provisioning.Model
         /// </summary>
         public bool ShowDividerLine { get; set; }
 
+        /// <summary>
+        /// Defines Heading Level for collapsible Canvas Section Title of a Client-side Page.
+        /// </summary>
+        public int HeadingLevel { get; set; }
         #endregion
 
         #region Constructors
@@ -93,7 +97,7 @@ namespace PnP.Framework.Provisioning.Model
         /// <returns>Returns HashCode</returns>
         public override int GetHashCode()
         {
-            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|",
+            return (String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|",
                 this.Controls.Aggregate(0, (acc, next) => acc += (next != null ? next.GetHashCode() : 0)),
                 Order.GetHashCode(),
                 Type.GetHashCode(),
@@ -103,7 +107,8 @@ namespace PnP.Framework.Provisioning.Model
                 (this.DisplayName != null ? this.DisplayName.GetHashCode() : 0),
                 this.IsExpanded.GetHashCode(),
                 this.IconAlignment.GetHashCode(),
-                this.ShowDividerLine.GetHashCode()
+                this.ShowDividerLine.GetHashCode(),
+                this.HeadingLevel.GetHashCode()
             ).GetHashCode());
         }
 
@@ -142,7 +147,8 @@ namespace PnP.Framework.Provisioning.Model
                 this.DisplayName == other.DisplayName &&
                 this.IsExpanded == other.IsExpanded &&
                 this.IconAlignment == other.IconAlignment &&
-                this.ShowDividerLine == other.ShowDividerLine
+                this.ShowDividerLine == other.ShowDividerLine &&
+                this.HeadingLevel == other.HeadingLevel
                 );
         }
 

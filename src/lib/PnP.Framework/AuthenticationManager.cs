@@ -101,6 +101,9 @@ namespace PnP.Framework
         private string microsoftGraphEndPoint;
         private string azureADLoginEndPoint;
 
+        private readonly bool usesBroker;
+        private AuthenticationInfo authenticationInfo;
+
         private readonly ClientContextType authenticationType;
         private readonly string username;
         private readonly SecureString password;
@@ -132,6 +135,12 @@ namespace PnP.Framework
         /// The type of Managed Identity used
         /// </summary>
         private readonly ManagedIdentityType? managedIdentityType;
+
+        /// <summary>
+        /// Returns credential-free metadata from the configured provider and latest successful acquisition.
+        /// Reading this property never acquires a token or enumerates cached accounts.
+        /// </summary>
+        public AuthenticationInfo Authentication => authenticationInfo ?? new AuthenticationInfo(GetAuthenticationMethod(), GetAuthenticationIdentityType());
 
         public CookieContainer CookieContainer { get; set; }
 
@@ -558,6 +567,7 @@ namespace PnP.Framework
             }
             if (useWAM && (SharedUtilities.IsWindowsPlatform() || SharedUtilities.IsLinuxPlatform()))
             {
+                usesBroker = true;
                 if (SharedUtilities.IsWindowsPlatform())
                 {
                     BrokerOptions brokerOptions = new(BrokerOptions.OperatingSystems.Windows)
@@ -1063,6 +1073,7 @@ namespace PnP.Framework
             }
             if (authResult?.AccessToken != null)
             {
+                RecordAuthenticationResult(authResult);
                 return authResult.AccessToken;
             }
             return null;
@@ -1136,6 +1147,7 @@ namespace PnP.Framework
                         }
                         if (authResult.AccessToken != null)
                         {
+                            RecordAuthenticationResult(authResult);
                             return BuildClientContext(publicClientApplication, siteUrl, scopes, authenticationType);
                         }
                         break;
@@ -1161,6 +1173,7 @@ namespace PnP.Framework
                         }
                         if (authResult.AccessToken != null)
                         {
+                            RecordAuthenticationResult(authResult);
                             return BuildClientContext(publicClientApplication, siteUrl, scopes, authenticationType);
                         }
                         break;
@@ -1182,6 +1195,7 @@ namespace PnP.Framework
                         }
                         if (authResult.AccessToken != null)
                         {
+                            RecordAuthenticationResult(authResult);
                             return BuildClientContext(confidentialClientApplication, siteUrl, scopes, authenticationType);
                         }
                         break;
@@ -1202,6 +1216,7 @@ namespace PnP.Framework
                         }
                         if (authResult.AccessToken != null)
                         {
+                            RecordAuthenticationResult(authResult);
                             return BuildClientContext(confidentialClientApplication, siteUrl, scopes, authenticationType);
                         }
                         break;
@@ -1220,6 +1235,7 @@ namespace PnP.Framework
                         }
                         if (authResult.AccessToken != null)
                         {
+                            RecordAuthenticationResult(authResult);
                             return BuildClientContext(publicClientApplication, siteUrl, scopes, authenticationType);
                         }
                         break;
@@ -1351,6 +1367,53 @@ namespace PnP.Framework
         #endregion
 
         #region Internals
+
+        private AuthenticationMethod GetAuthenticationMethod()
+        {
+            return authenticationType switch
+            {
+                ClientContextType.AzureADInteractive => usesBroker ? AuthenticationMethod.WAM : AuthenticationMethod.Browser,
+                ClientContextType.AzureADCredentials => AuthenticationMethod.UsernamePassword,
+                ClientContextType.DeviceLogin => AuthenticationMethod.DeviceCode,
+                ClientContextType.AzureADCertificate => AuthenticationMethod.Certificate,
+                ClientContextType.SharePointACSAppOnly => acsTokenGenerator != null ? AuthenticationMethod.ClientSecret : AuthenticationMethod.Unknown,
+                ClientContextType.AccessToken => AuthenticationMethod.AccessToken,
+                ClientContextType.SystemAssignedManagedIdentity => AuthenticationMethod.ManagedIdentity,
+                ClientContextType.UserAssignedManagedIdentity => AuthenticationMethod.ManagedIdentity,
+                ClientContextType.UserAssignedManagedIdentityFederatedCredential => AuthenticationMethod.FederatedIdentity,
+                ClientContextType.PnPCoreSdk => AuthenticationMethod.ExternalProvider,
+                _ => AuthenticationMethod.Unknown
+            };
+        }
+
+        private AuthenticationIdentityType GetAuthenticationIdentityType()
+        {
+            return authenticationType switch
+            {
+                ClientContextType.AzureADInteractive => AuthenticationIdentityType.User,
+                ClientContextType.AzureADCredentials => AuthenticationIdentityType.User,
+                ClientContextType.DeviceLogin => AuthenticationIdentityType.User,
+                ClientContextType.AzureOnBehalfOf => AuthenticationIdentityType.User,
+                ClientContextType.AzureADCertificate => AuthenticationIdentityType.Application,
+                ClientContextType.SharePointACSAppOnly => acsTokenGenerator != null ? AuthenticationIdentityType.Application : AuthenticationIdentityType.Unknown,
+                ClientContextType.SystemAssignedManagedIdentity => AuthenticationIdentityType.Application,
+                ClientContextType.UserAssignedManagedIdentity => AuthenticationIdentityType.Application,
+                ClientContextType.UserAssignedManagedIdentityFederatedCredential => AuthenticationIdentityType.Application,
+                _ => AuthenticationIdentityType.Unknown
+            };
+        }
+
+        private void RecordAuthenticationResult(AuthenticationResult result)
+        {
+            if (result == null)
+            {
+                return;
+            }
+            authenticationInfo = new AuthenticationInfo(GetAuthenticationMethod(), GetAuthenticationIdentityType(),
+                result.Account?.HomeAccountId?.Identifier, result.Account?.Username,
+                result.Account?.HomeAccountId?.TenantId, result.TenantId);
+        }
+
         private ClientContext BuildClientContext(IClientApplicationBase application, string siteUrl, string[] scopes, ClientContextType contextType)
         {
             var clientContext = new ClientContext(siteUrl)
@@ -1410,6 +1473,7 @@ namespace PnP.Framework
                 }
                 if (ar != null && ar.AccessToken != null)
                 {
+                    RecordAuthenticationResult(ar);
                     args.WebRequestExecutor.RequestHeaders["Authorization"] = "Bearer " + ar.AccessToken;
                 }
             };
@@ -1669,6 +1733,7 @@ namespace PnP.Framework
         private string GetManagedIdentityToken(string audience)
         {
             AuthenticationResult result = mi.AcquireTokenForManagedIdentity(audience).ExecuteAsync().GetAwaiter().GetResult();
+            RecordAuthenticationResult(result);
             return result?.AccessToken;
         }
 

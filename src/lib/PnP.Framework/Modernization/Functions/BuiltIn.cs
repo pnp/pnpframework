@@ -1513,8 +1513,20 @@ namespace PnP.Framework.Modernization.Functions
                 DataMappings = dataMappings
             };
 
-            ContentByQuerySearchTransformator cqs = new ContentByQuerySearchTransformator(this.clientContext);
-            var res = cqs.TransformContentByQueryWebPartToHighlightedContent(cbq);
+            bool scopedToList = !string.IsNullOrEmpty(cbq.ListName) ||
+                (Guid.TryParse(cbq.ListGuid, out var listId) && listId != Guid.Empty);
+            var queryContext = scopedToList ? this.clientContext : this.sourceClientContext ?? this.clientContext;
+            ContentByQuerySearchTransformator cqs = new ContentByQuerySearchTransformator(queryContext);
+            ContentByQuerySearchTransformatorResult res;
+            try
+            {
+                res = cqs.TransformContentByQueryWebPartToHighlightedContent(cbq);
+            }
+            catch (NotAvailableAtTargetException ex)
+            {
+                LogWarning(ex.Message, LogStrings.Heading_BuiltInFunctions);
+                throw;
+            }
 
             // Output the calculated properties so then can be used in the mapping
             results.Add("JsonProperties", res.Properties);

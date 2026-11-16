@@ -119,6 +119,7 @@
         #region Warning messages
 
         public const string Warning_NonCriticalErrorDuringVersionStampAndPublish = "Page could not be published as versioning is not enabled or version stamp could not be set.";
+        public const string Warning_NonCriticalErrorDuringPublishingPageVersionStampAndPublish = "Could not complete the non-critical page modernization version stamp or explicit publication. The page might still be published because both operations are sent in one request. Returned error: {0}. If this error states that the target page library requires minor versions, enable minor versioning and retry.";
         public const string Warning_NonCriticalErrorDuringPublish = "There was a non critical issue during page update/publish. Returned error message: {0}";
         public const string Warning_PostingAPageAsNewsRequiresPagePublishing = "Posting a page as news requires the page to be published. Turning on the PublishCreatedPage flag.";
         public const string Warning_ContextValidationFailWithKeepPermissionsEnabled = "Keep Specific Permissions was set, however this is not currently supported when contexts are cross-farm/tenant - this feature has been disabled.";

@@ -631,10 +631,10 @@ namespace PnP.Framework.Modernization.Publishing
                     context.ExecuteQueryRetry();
                     pageListItemWasReloaded = true;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // Eat exceptions as this is not critical for the generated page
-                    LogWarning(LogStrings.Warning_NonCriticalErrorDuringVersionStampAndPublish, LogStrings.Heading_ArticlePageHandling);                    
+                    LogWarning(string.Format(LogStrings.Warning_NonCriticalErrorDuringPublishingPageVersionStampAndPublish, ex.Message), LogStrings.Heading_ArticlePageHandling);
                 }
 
                 // Update flags field to indicate this is a "migrated" page

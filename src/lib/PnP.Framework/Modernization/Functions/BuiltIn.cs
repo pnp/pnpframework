@@ -622,7 +622,7 @@ namespace PnP.Framework.Modernization.Functions
         /// <param name="listId">Id of the list</param>
         /// <param name="xmlDefinition">Webpart view definition</param>
         /// <returns>Id of the detected view if found or otherwise the id of the default list view</returns>
-        [FunctionDocumentation(Description = "Detects the list view id that was used by the webpart by mapping the web part xmldefinition to the list views. If no view found the list default view id is returned.",
+        [FunctionDocumentation(Description = "Detects the list view id that was used by the webpart by mapping the web part xmldefinition to the visible list views. If no matching view is found, the list default view id is returned. A warning is logged when the fallback view's query, fields and row limit cannot be matched to the source.",
                                Example = "{ListViewId} = ListDetectUsedView({ListId},{XmlDefinition})")]
         [InputDocumentation(Name = "{ListId}", Description = "Guid of the list to analyze")]
         [InputDocumentation(Name = "{XmlDefinition}", Description = "XmlDefinition attribute of the XSLTListViewWebPart")]
@@ -701,8 +701,24 @@ namespace PnP.Framework.Modernization.Functions
                 return view.Id.ToString();
             }
 
-            // No matching view found, so proceed with the default view
-            return list.DefaultView.Id.ToString();
+            var defaultViewId = list.DefaultView.Id;
+            var defaultViewXml = list.Views.FirstOrDefault(view => view.Id == defaultViewId)?.ListViewXml;
+            var defaultViewElement = defaultViewXml != null ? XElement.Parse(defaultViewXml) : null;
+
+            // The matching loop can fall back even for identical views with absent optional elements.
+            bool matchesDefaultView = defaultViewElement != null && new[] { "Query", "ViewFields", "RowLimit" }.All(name =>
+            {
+                var sourceElement = webPartViewElement.Descendants(name).FirstOrDefault();
+                var defaultElement = defaultViewElement.Descendants(name).FirstOrDefault();
+                return sourceElement == null && defaultElement == null ||
+                    sourceElement != null && defaultElement != null && XmlComparer.AreEqual(sourceElement, defaultElement).Success;
+            });
+
+            if (!matchesDefaultView)
+            {
+                LogWarning($"No matching visible view was found for list '{listId}'. Using default view '{defaultViewId}'; the source web part's filters, sorting, columns and row limit may not be preserved. Review the destination web part and configure a suitable view.", LogStrings.Heading_BuiltInFunctions);
+            }
+            return defaultViewId.ToString();
         }
 
         #endregion

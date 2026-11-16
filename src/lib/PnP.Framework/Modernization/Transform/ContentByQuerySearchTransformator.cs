@@ -2,7 +2,6 @@
 using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using PnP.Framework.Enums;
 using PnP.Framework.Modernization.Functions;
 using PnP.Framework.Modernization.KQL;
 using PnP.Framework.Utilities;
@@ -635,7 +634,6 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         /// <param name="cbq">Properties coming from the content by query web part</param>
         /// <returns>Properties for highlighted content web part</returns>
-        /// <remarks>Subweb scopes support a single plain-text Title Contains filter. Other active field filters are skipped with a diagnostic.</remarks>
         public ContentByQuerySearchTransformatorResult TransformContentByQueryWebPartToHighlightedContent(ContentByQuery cbq)
         {
             // Transformation logic
@@ -786,7 +784,13 @@ namespace PnP.Framework.Modernization.Transform
                 }
 
                 var scopeUrl = ResolveContentQueryScope(cbq.WebUrl);
-                var scopedFilter = scopeUrl == null ? null : MapScopedContentQueryFilter(cbq);
+                if (scopeUrl != null &&
+                    ((!string.IsNullOrEmpty(cbq.FilterField1) && cbq.FilterField1Value != string.Empty) ||
+                     (!string.IsNullOrEmpty(cbq.FilterField2) && cbq.FilterField2Value != string.Empty) ||
+                     (!string.IsNullOrEmpty(cbq.FilterField3) && cbq.FilterField3Value != string.Empty)))
+                {
+                    throw new NotAvailableAtTargetException("Cannot preserve Content Query web scope together with field filters: Highlighted Content combines managed-property filters with OR. This web part will be skipped.");
+                }
 
                 // construct query
                 SearchQuery query = new SearchQuery
@@ -807,11 +811,7 @@ namespace PnP.Framework.Modernization.Transform
                     query.ContentTypes.AddRange(MapToContentTypesFromContentType(cbq.ContentTypeBeginsWithId));
                 }
 
-                if (scopedFilter != null)
-                {
-                    query.Filters.Add(scopedFilter);
-                }
-                else if (!string.IsNullOrEmpty(cbq.FilterField1) || !string.IsNullOrEmpty(cbq.FilterField2) || !string.IsNullOrEmpty(cbq.FilterField3))
+                if (!string.IsNullOrEmpty(cbq.FilterField1) || !string.IsNullOrEmpty(cbq.FilterField2) || !string.IsNullOrEmpty(cbq.FilterField3))
                 {
                     // Process CBQ filters
                     var filter1 = MapToFilter(null, cbq.FilterOperator1, cbq.FilterField1, cbq.FilterField1Value, FilterChainingOperator.And);
@@ -888,35 +888,6 @@ namespace PnP.Framework.Modernization.Transform
         }
 
         #region Helper methods
-
-        private static SearchQueryFilter MapScopedContentQueryFilter(ContentByQuery cbq)
-        {
-            var activeFilters = new[]
-            {
-                (Field: cbq.FilterField1, Value: cbq.FilterField1Value, Operator: cbq.FilterOperator1),
-                (Field: cbq.FilterField2, Value: cbq.FilterField2Value, Operator: cbq.FilterOperator2),
-                (Field: cbq.FilterField3, Value: cbq.FilterField3Value, Operator: cbq.FilterOperator3)
-            }.Where(f => !string.IsNullOrEmpty(f.Field) && f.Value != string.Empty).ToArray();
-
-            if (activeFilters.Length == 0)
-            {
-                return null;
-            }
-
-            var filter = activeFilters[0];
-            bool isTitle = filter.Field.Equals("Title", StringComparison.OrdinalIgnoreCase) ||
-                (Guid.TryParse(filter.Field, out var fieldId) && fieldId == BuiltInFieldId.Title);
-            if (activeFilters.Length == 1 && isTitle && filter.Operator == FilterFieldQueryOperator.Contains &&
-                !string.IsNullOrWhiteSpace(filter.Value) && !filter.Value.Any(char.IsControl) &&
-                filter.Value.IndexOfAny(new[] { '*', '{', '}', '"' }) < 0 &&
-                !filter.Value.Trim().Equals("[me]", StringComparison.OrdinalIgnoreCase))
-            {
-                // Different HC filter types are ANDed; two managed-property filters would be ORed.
-                return new SearchQueryFilter { FilterType = FilterType.TitleContaining, Value = filter.Value.Trim() };
-            }
-
-            throw new NotAvailableAtTargetException("Cannot preserve Content Query web scope with these field filters. Only a single plain-text Title Contains filter is supported; Highlighted Content combines managed-property filters with OR. This web part will be skipped.");
-        }
 
         private string ResolveContentQueryScope(string webUrl)
         {

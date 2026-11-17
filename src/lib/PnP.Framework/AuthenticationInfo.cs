@@ -1,7 +1,9 @@
 namespace PnP.Framework
 {
     /// <summary>
-    /// An immutable, credential-free authentication snapshot. It does not describe resource permissions,
+    /// An immutable, credential-free snapshot of a provider and its latest successful acquisition. When a
+    /// manager serves multiple resources or connections, identity fields describe its latest acquisition,
+    /// not an identity pinned to each resource. It does not describe resource permissions,
     /// token expiry, or whether another token can be acquired without interaction.
     /// </summary>
     public sealed class AuthenticationInfo

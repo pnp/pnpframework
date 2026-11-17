@@ -140,7 +140,7 @@ namespace PnP.Framework
         /// Returns credential-free metadata from the configured provider and latest successful acquisition.
         /// Reading this property never acquires a token or enumerates cached accounts.
         /// </summary>
-        public AuthenticationInfo Authentication => authenticationInfo ?? new AuthenticationInfo(GetAuthenticationMethod(), GetAuthenticationIdentityType());
+        public AuthenticationInfo Authentication => Volatile.Read(ref authenticationInfo) ?? new AuthenticationInfo(GetAuthenticationMethod(), GetAuthenticationIdentityType());
 
         public CookieContainer CookieContainer { get; set; }
 
@@ -1373,6 +1373,7 @@ namespace PnP.Framework
             return authenticationType switch
             {
                 ClientContextType.AzureADInteractive => usesBroker ? AuthenticationMethod.WAM : AuthenticationMethod.Browser,
+                ClientContextType.AzureOnBehalfOf => AuthenticationMethod.OnBehalfOf,
                 ClientContextType.AzureADCredentials => AuthenticationMethod.UsernamePassword,
                 ClientContextType.DeviceLogin => AuthenticationMethod.DeviceCode,
                 ClientContextType.AzureADCertificate => AuthenticationMethod.Certificate,
@@ -1409,9 +1410,9 @@ namespace PnP.Framework
             {
                 return;
             }
-            authenticationInfo = new AuthenticationInfo(GetAuthenticationMethod(), GetAuthenticationIdentityType(),
+            Volatile.Write(ref authenticationInfo, new AuthenticationInfo(GetAuthenticationMethod(), GetAuthenticationIdentityType(),
                 result.Account?.HomeAccountId?.Identifier, result.Account?.Username,
-                result.Account?.HomeAccountId?.TenantId, result.TenantId);
+                result.Account?.HomeAccountId?.TenantId, result.TenantId));
         }
 
         private ClientContext BuildClientContext(IClientApplicationBase application, string siteUrl, string[] scopes, ClientContextType contextType)

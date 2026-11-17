@@ -28,6 +28,8 @@ namespace PnP.Framework
         /// <summary>On-premises credential authentication.</summary>
         OnPremises,
         /// <summary>Authentication supplied by another provider.</summary>
-        ExternalProvider
+        ExternalProvider,
+        /// <summary>On-behalf-of token exchange using a user assertion.</summary>
+        OnBehalfOf
     }
 }

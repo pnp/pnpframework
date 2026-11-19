@@ -259,7 +259,7 @@
 		<PackageReference Include="AngleSharp.Css" Version="1.0.0" />
 		<PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.*" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="PnP.Core" Version="1.18.*-*" Condition="'$(PnPCoreSdkPath)' == ''" />
+		<PackageReference Include="PnP.Core" Version="1.19.0" Condition="'$(PnPCoreSdkPath)' == ''" />
 		<PackageReference Include="Portable.Xaml" Version="0.26.0" />
 	</ItemGroup>
 

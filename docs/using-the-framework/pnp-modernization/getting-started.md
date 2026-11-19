@@ -74,7 +74,7 @@ Author identities are resolved in the destination site, and the header's display
 
 This header attribution is independent of `KeepPageCreationModificationInformation`, which controls preservation of audit fields. Whether a populated job title is visibly rendered depends on the SharePoint client.
 
-**SDK limitation:** with PnP.Core `1.18.58-nightly`, loading a saved no-image header can classify it as `None`. A subsequent SDK `Save` then removes the header and its byline. Initial transformation saves the header correctly, but load/save preservation requires a correction in the PnP Core header parser; it must not be assumed from successful migration alone.
+**SDK requirement:** PnP.Core `1.19.0` or later preserves visible no-image headers and their bylines when loading and saving a modernized page. This Framework version requires that stable release or later. Older affected SDK versions can classify a saved no-image header as `None` and remove it and its byline on a subsequent save.
 
 ## Enterprise Wiki pages
 

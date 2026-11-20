@@ -55,13 +55,13 @@ namespace PnP.Framework.Modernization.Transform
 
         #region Webpart replacement configuration
         /// <summary>
-        /// If true images and videos embedded in wiki text will be transformed to actual image/video web parts, 
-        /// else they'll get a placeholder and will be added as separate web parts at the end of the page
+        /// Splits text around eligible iframes when true; otherwise appends video parts.
+        /// Does not affect image handling.
         /// </summary>
         public bool HandleWikiImagesAndVideos { get; set; }
 
         /// <summary>
-        /// When an image lives inside a table (or list) then also add it as a separate image web part
+        /// Retained for API compatibility; ignored.
         /// </summary>
         public bool AddTableListImageAsImageWebPart { get; set; }
 

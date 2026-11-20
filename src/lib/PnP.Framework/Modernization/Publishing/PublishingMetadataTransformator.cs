@@ -65,6 +65,9 @@ namespace PnP.Framework.Modernization.Publishing
                 bool isDirty = false;
                 bool listItemWasReloaded = false;
                 string contentTypeId = null;
+                var groupedEnterpriseWikiRatings = this.publishingPageTransformationInformation.EnableEnterpriseWikiCapabilities &&
+                    this.publishingPageTransformationInformation.IsEnterpriseWikiPage &&
+                    EnterpriseWikiRatings.UsesSameNameMapping(this.pageLayoutMappingModel);
 
                 // Set content type
                 if (!string.IsNullOrEmpty(this.pageLayoutMappingModel.AssociatedContentType))
@@ -696,7 +699,9 @@ namespace PnP.Framework.Modernization.Publishing
                             }
                             else
                             {
-                                if (targetFieldData.FieldType != "TaxonomyFieldTypeMulti" && targetFieldData.FieldType != "TaxonomyFieldType")
+                                if (targetFieldData.FieldType != "TaxonomyFieldTypeMulti" && targetFieldData.FieldType != "TaxonomyFieldType" &&
+                                    !(groupedEnterpriseWikiRatings && EnterpriseWikiRatings.IsRatingField(fieldToProcess.Name) &&
+                                      fieldToProcess.TargetFieldName == fieldToProcess.Name && string.IsNullOrEmpty(fieldToProcess.Functions)))
                                 {
                                     if (this.publishingPageTransformationInformation.SourcePage.FieldExists(fieldToProcess.Name))
                                     {

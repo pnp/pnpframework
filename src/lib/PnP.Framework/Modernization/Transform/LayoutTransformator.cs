@@ -59,6 +59,7 @@ namespace PnP.Framework.Modernization.Transform
                         return;
                     }
                 case PageLayout.WebPart_HeaderRightColumnBody:
+                case PageLayout.WebPart_DocumentWorkspace:
                     {
                         page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1);
                         page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnLeft, 2);
@@ -71,8 +72,15 @@ namespace PnP.Framework.Modernization.Transform
                         return;
                     }
                 case PageLayout.Wiki_TwoColumnsWithHeader:
+                case PageLayout.WebPart_ProjectSite:
                     {
                         page.AddSection(PnPCore.CanvasSectionTemplate.OneColumn, 1);
+                        page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumn, 2);
+                        return;
+                    }
+                case PageLayout.WebPart_DocumentCenter:
+                    {
+                        page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumnLeft, 1);
                         page.AddSection(PnPCore.CanvasSectionTemplate.TwoColumn, 2);
                         return;
                     }

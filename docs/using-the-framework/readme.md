@@ -14,7 +14,6 @@ Pnp Framework includes a range of capabilities that simplify development for Mic
 - Helper classes and extension methods to make it easier to perform standard operations
 - Incorporates the PnP Core SDK
 
-
 ## I don't have access to a Microsoft 365 tenant
 
 If you don't have a Microsoft 365 tenant you can, for developer purposes, always request [a free developer tenant](https://developer.microsoft.com/en-us/microsoft-365/dev-program) and use that for developing and testing your applications. 
@@ -62,4 +61,3 @@ The PnP Framework is maintained in the PnP GitHub repository: https://github.com
 - The source of the documentation you are reading right now in the `docs` folder
 
 <img src="https://m365-visitor-stats.azurewebsites.net/pnpframework/docs/using-the-framework" aria-hidden="true" />
-

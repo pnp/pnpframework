@@ -1,5 +1,6 @@
 ﻿using AngleSharp.Dom;
 using AngleSharp.Html.Parser;
+using PnP.Framework.Modernization.Telemetry;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,7 +9,7 @@ namespace PnP.Framework.Modernization.Transform
     /// <summary>
     /// This class is used to rewrite the html coming out of the SummaryLinks web part
     /// </summary>
-    public class SummaryLinksHtmlTransformator: IHtmlTransformator
+    public class SummaryLinksHtmlTransformator: BaseTransform, IHtmlTransformator
     {
         private HtmlParser parser;
         private string webPartTitle;
@@ -17,8 +18,24 @@ namespace PnP.Framework.Modernization.Transform
         /// <summary>
         /// Default constructor
         /// </summary>
-        public SummaryLinksHtmlTransformator()
+        public SummaryLinksHtmlTransformator() : this(null)
         {
+        }
+
+        /// <summary>
+        /// Creates a summary links transformator with diagnostic observers
+        /// </summary>
+        /// <param name="logObservers">Connected loggers</param>
+        public SummaryLinksHtmlTransformator(IList<ILogObserver> logObservers)
+        {
+            if (logObservers != null)
+            {
+                foreach (var observer in logObservers)
+                {
+                    RegisterObserver(observer);
+                }
+            }
+
             // Instantiate the AngleSharp Html parser
             parser = new HtmlParser(new HtmlParserOptions() { IsEmbedded = true });            
         }
@@ -92,32 +109,42 @@ namespace PnP.Framework.Modernization.Transform
 
                             // Link
                             var title = div.Children.Where(p => p.GetAttribute("title") == "_title").FirstOrDefault();
-                            var linkUrl = div.Children.Where(p => p.GetAttribute("title") == "_linkurl").FirstOrDefault();
+                            var linkUrl = GetUrl(div.Children.FirstOrDefault(p => p.GetAttribute("title") == "_linkurl"));
                             var openInNewWindow = div.Children.Where(p => p.GetAttribute("title") == "_openinnewwindow").FirstOrDefault();
 
-                            if (linkUrl != null && title != null)
+                            if (string.IsNullOrWhiteSpace(linkUrl))
+                            {
+                                LogWarning(string.Format(LogStrings.Warning_SummaryLinkMissingUrlAsText, title?.TextContent ?? "(untitled)"),
+                                    LogStrings.Heading_BuiltInFunctions);
+                            }
+
+                            if (title != null)
                             {
                                 // ListItem
                                 var item = newDocument.CreateElement("li");
 
-                                var link = newDocument.CreateElement("a");
-                                var href = linkUrl.Children.Where(p => p.HasAttribute("href")).FirstOrDefault();
-                                link.SetAttribute("href", href != null ? href.GetAttribute("href") : "");
-                                link.TextContent = title.TextContent;
-
-                                if (openInNewWindow != null)
+                                if (string.IsNullOrWhiteSpace(linkUrl))
                                 {
-                                    if (bool.TryParse(openInNewWindow.TextContent, out bool openInNewWindowValue))
+                                    item.TextContent = title.TextContent;
+                                }
+                                else
+                                {
+                                    var link = newDocument.CreateElement("a");
+                                    link.SetAttribute("href", linkUrl);
+                                    link.TextContent = title.TextContent;
+
+                                    if (openInNewWindow != null)
                                     {
-                                        if (openInNewWindowValue)
+                                        if (bool.TryParse(openInNewWindow.TextContent, out bool openInNewWindowValue) && openInNewWindowValue)
                                         {
                                             link.SetAttribute("target", "_blank");
                                             link.SetAttribute("data-interception", "off");
                                         }
                                     }
+
+                                    item.AppendChild(link);
                                 }
 
-                                item.AppendChild(link);
                                 list.AppendChild(item);
                             }
                         }
@@ -151,7 +178,7 @@ namespace PnP.Framework.Modernization.Transform
 
 
         /// <summary>
-        /// Transforms the passed summarylinks html a list of links
+        /// Transforms the passed summarylinks html to a list of links, skipping entries without URLs with a warning
         /// </summary>
         /// <param name="text">Summarylinks html to be transformed</param>
         /// <returns>List of links</returns>
@@ -192,13 +219,12 @@ namespace PnP.Framework.Modernization.Transform
                         };
 
                         // Handle Url fields
-                        if (linkUrl != null)
+                        l.Url = GetUrl(linkUrl);
+                        if (string.IsNullOrWhiteSpace(l.Url))
                         {
-                            var href = linkUrl.Children.Where(p => p.HasAttribute("href")).FirstOrDefault();
-                            if (href != null)
-                            {
-                                l.Url = href.GetAttribute("href");
-                            }
+                            LogWarning(string.Format(LogStrings.Warning_SummaryLinkMissingUrlSkipped, l.Title ?? "(untitled)"),
+                                LogStrings.Heading_BuiltInFunctions);
+                            continue;
                         }
                         if (linkImageUrl != null)
                         {
@@ -225,6 +251,11 @@ namespace PnP.Framework.Modernization.Transform
             }
 
             return links;
+        }
+
+        private static string GetUrl(IElement urlElement)
+        {
+            return urlElement?.Children.FirstOrDefault(p => p.HasAttribute("href"))?.GetAttribute("href");
         }
     }
 }

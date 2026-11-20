@@ -6,6 +6,8 @@ using PnP.Framework.Modernization.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace PnP.Framework.Modernization.Pages
 {
@@ -80,7 +82,7 @@ namespace PnP.Framework.Modernization.Pages
                 webServiceWebPartEntities = LoadWebPartPropertiesFromWebServices(webPartPage.EnsureProperty(p => p.ServerRelativeUrl));
             }
 
-            var pageUrl = page[Constants.FileRefField].ToString();
+            var pageUrl = webPartPageUrl;
 
             // Check page type
             var layout = GetLayoutFromWebServices(webPartPageUrl);
@@ -208,6 +210,7 @@ namespace PnP.Framework.Modernization.Pages
                 LogInfo(LogStrings.AnalysingNoWebPartsFound, LogStrings.Heading_ArticlePageHandling);
             }
 
+            AddTemplateContent(layout, webparts);
             return new Tuple<PageLayout, List<WebPartEntity>>(layout, webparts);
         }
 
@@ -219,58 +222,20 @@ namespace PnP.Framework.Modernization.Pages
         internal PageLayout GetLayoutFromWebServices(string webPartPageUrl)
         {
             var wsPageDocument = ExtractWebPartDocumentViaWebServicesFromPage(webPartPageUrl);
+            return GetLayoutFromWebServicesDocument(wsPageDocument.Item1);
+        }
 
-            if (!string.IsNullOrEmpty(wsPageDocument.Item1))
+        internal static PageLayout GetLayoutFromWebServicesDocument(string document)
+        {
+            if (!string.IsNullOrEmpty(document))
             {
-                //Example fragment from WS
-                //<li>vti_setuppath
-                //<li>SR|1033&#92;STS&#92;doctemp&#92;smartpgs&#92;spstd2.aspx
-                //<li>vti_generator
-
-                var fullDocument = wsPageDocument.Item1;
-
-                if (!string.IsNullOrEmpty(fullDocument))
+                // The web service returns file properties as HTML list entries before the ASPX.
+                var match = Regex.Match(document, @"<li>\s*vti_setuppath\s*(?:</li>\s*)?<li>\s*SR\|(?<path>[^<\r\n]+)", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+                if (match.Success)
                 {
-                    if (fullDocument.ContainsIgnoringCasing(@"STS&#92;doctemp&#92;smartpgs&#92;spstd1.aspx"))
-                    {
-                        return PageLayout.WebPart_FullPageVertical;
-                    }
-                    else if (fullDocument.ContainsIgnoringCasing(@"STS&#92;doctemp&#92;smartpgs&#92;spstd2.aspx"))
-                    {
-                        return PageLayout.WebPart_HeaderFooterThreeColumns;
-                    }
-                    else if (fullDocument.ContainsIgnoringCasing(@"STS&#92;doctemp&#92;smartpgs&#92;spstd3.aspx"))
-                    {
-                        return PageLayout.WebPart_HeaderLeftColumnBody;
-                    }
-                    else if (fullDocument.ContainsIgnoringCasing(@"STS&#92;doctemp&#92;smartpgs&#92;spstd4.aspx"))
-                    {
-                        return PageLayout.WebPart_HeaderRightColumnBody;
-                    }
-                    else if (fullDocument.ContainsIgnoringCasing(@"STS&#92;doctemp&#92;smartpgs&#92;spstd5.aspx"))
-                    {
-                        return PageLayout.WebPart_HeaderFooter2Columns4Rows;
-                    }
-                    else if (fullDocument.ContainsIgnoringCasing(@"STS&#92;doctemp&#92;smartpgs&#92;spstd6.aspx"))
-                    {
-                        return PageLayout.WebPart_HeaderFooter4ColumnsTopRow;
-                    }
-                    else if (fullDocument.ContainsIgnoringCasing(@"STS&#92;doctemp&#92;smartpgs&#92;spstd7.aspx"))
-                    {
-                        return PageLayout.WebPart_LeftColumnHeaderFooterTopRow3Columns;
-                    }
-                    else if (fullDocument.ContainsIgnoringCasing(@"STS&#92;doctemp&#92;smartpgs&#92;spstd8.aspx"))
-                    {
-                        return PageLayout.WebPart_RightColumnHeaderFooterTopRow3Columns;
-                    }
-                    else if (fullDocument.ContainsIgnoringCasing(@"SiteTemplates&#92;STS&#92;default.aspx"))
-                    {
-                        return PageLayout.WebPart_2010_TwoColumnsLeft;
-                    }
+                    return GetLayoutFromSetupPath(WebUtility.HtmlDecode(match.Groups["path"].Value.Trim()));
                 }
-
             }
-
             return PageLayout.WebPart_Custom;
         }
     }

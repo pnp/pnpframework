@@ -71,8 +71,9 @@ namespace PnP.Framework.Modernization.Publishing
         /// <summary>
         /// Load the default page layout mapping file
         /// </summary>
+        /// <param name="enableEnterpriseWikiCapabilities">Enable same-name Enterprise Wiki metadata mappings.</param>
         /// <returns>A <see cref="PublishingPageTransformation"/> instance.</returns>
-        internal PublishingPageTransformation LoadDefaultPageLayoutMappingFile()
+        internal PublishingPageTransformation LoadDefaultPageLayoutMappingFile(bool enableEnterpriseWikiCapabilities = false)
         {
             var fileContent = "";
             using (Stream stream = typeof(PageLayoutManager).Assembly.GetManifestResourceStream("PnP.Framework.Modernization.Publishing.pagelayoutmapping.xml"))
@@ -86,7 +87,22 @@ namespace PnP.Framework.Modernization.Publishing
             XmlSerializer xmlMapping = new XmlSerializer(typeof(PublishingPageTransformation));
             using (var stream = GenerateStreamFromString(fileContent))
             {
-                return (PublishingPageTransformation)xmlMapping.Deserialize(stream);
+                var model = (PublishingPageTransformation)xmlMapping.Deserialize(stream);
+                if (enableEnterpriseWikiCapabilities)
+                {
+                    var layout = model.PageLayouts.Single(p => p.Name == "EnterpriseWiki");
+                    foreach (var field in layout.MetaData.Field.Where(f => f.Name == EnterpriseWikiPagePreparation.CategoryFieldName ||
+                        EnterpriseWikiRatings.IsRatingField(f.Name)))
+                    {
+                        field.TargetFieldName = field.Name;
+                    }
+                    layout.MetaData.Field = layout.MetaData.Field.Concat(new[]
+                    {
+                        new MetaDataField { Name = "RatedBy", TargetFieldName = "RatedBy", Functions = "" },
+                        new MetaDataField { Name = "Ratings", TargetFieldName = "Ratings", Functions = "" }
+                    }).ToArray();
+                }
+                return model;
             }          
         }
 

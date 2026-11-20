@@ -62,6 +62,7 @@
         public const string Heading_SwappingPages = "Swapping Pages";
         public const string Heading_GetPrincipal = "Get Principal";
         public const string Heading_TermMapping = "Term Mapping";
+        public const string Heading_EnterpriseWikiPreparation = "Preparing Enterprise Wiki capabilities";
 
         #endregion
 
@@ -76,8 +77,18 @@
         public const string Error_PageIsNotAPublishingPage = "Page is not a publishing page, please use the wiki and web part page API's";
         public const string Error_CannotUsePageAcceptBannerCrossSite = "Page transformation towards a different site collection cannot use the page accept banner.";
         public const string Error_OverridingTagePageTakesSourcePageName = "Overriding 'TargetPageTakesSourcePageName' to ensure that the newly created page in the other site collection gets the same name as the source page";
-        public const string Error_FallBackToSameSiteTransfer = "Oops, seems source and target point to the same site collection...switch back the 'source only' mode";
+        public const string Error_FallBackToSameSiteTransfer = "Oops, seems source and target point to the same web...switch back the 'source only' mode";
+        public const string Error_SameSiteTransferDifferentWeb = "Page transformation between different webs in the same site collection is not supported. Use the source web or a target in a different site collection.";
         public const string Error_SameSiteTransferNoAllowedForPublishingPages = "Oops, seems source and target point to the same site collection...that's a no go for publishing portal page transformation!";
+        public const string Error_InPlacePublishingPageDifferentWeb = Error_SameSiteTransferDifferentWeb;
+        public const string Error_InPlacePublishingPageSitePagesFeatureNotEnabled = "In-place publishing page transformation cannot continue because the Site Pages feature is not enabled. Enable Site Pages under Site Settings > Manage site features on this web, then retry.";
+        public const string Error_InPlacePublishingPageRequiresWritableSitePages = "In-place publishing page transformation requires an existing Site Pages library with Add Items and Edit Items permissions.";
+        public const string Error_InPlacePublishingPageSitePagesNotFound = "The Site Pages library required for in-place publishing page transformation was not found.";
+        public const string Error_InPlacePublishingPageSitePagesInvalidTemplate = "The Site Pages path does not resolve to a Web Page Library.";
+        public const string Error_InPlacePublishingPageSitePagesInsufficientPermissions = "The current user cannot add and edit items in the Site Pages library.";
+        public const string Error_InPlacePublishingPageSitePagesProbeUnauthorized = "The Site Pages capability probe was denied.";
+        public const string Error_InPlacePublishingPageSitePagesProbeFailed = "The Site Pages capability probe could not determine whether the library is writable; transformation was stopped without creating a target page.";
+        public const string Error_InPlacePublishingPageTargetExists = "In-place publishing page transformation cannot overwrite an existing target page.";
         public const string Error_CrossSiteTransferTargetsNonModernSite = "Page transformation for targeting non-modern sites is currently not supported.";
         public const string Error_GetVersionError = "Setting version stamp error";
         public const string Error_MissingSitePagesLibrary = "Site does not have a sitepages library and therefore this page can't be a client side page.";
@@ -108,6 +119,7 @@
         #region Warning messages
 
         public const string Warning_NonCriticalErrorDuringVersionStampAndPublish = "Page could not be published as versioning is not enabled or version stamp could not be set.";
+        public const string Warning_NonCriticalErrorDuringPublishingPageVersionStampAndPublish = "Could not complete the non-critical page modernization version stamp or explicit publication. The page might still be published because both operations are sent in one request. Returned error: {0}. If this error states that the target page library requires minor versions, enable minor versioning and retry.";
         public const string Warning_NonCriticalErrorDuringPublish = "There was a non critical issue during page update/publish. Returned error message: {0}";
         public const string Warning_PostingAPageAsNewsRequiresPagePublishing = "Posting a page as news requires the page to be published. Turning on the PublishCreatedPage flag.";
         public const string Warning_ContextValidationFailWithKeepPermissionsEnabled = "Keep Specific Permissions was set, however this is not currently supported when contexts are cross-farm/tenant - this feature has been disabled.";
@@ -153,7 +165,7 @@
         public const string TransformSourcePageIsPublishingPage = "Recognized source page as a Publishing Page";
         public const string TransformSourcePageIsDelvePage = "Recognized source page as a Delve Blog Page";
         public const string TransformSourcePageAnalysing = "Analyzing web parts and page layouts";
-        public const string WikiTextContainsImagesVideosReferences = "Splitting images and videos from wiki text - as modern text web part does not support embedded images and videos";
+        public const string WikiTextContainsImagesVideosReferences = "Keeping images inline in rich text and handling embedded iframes as separate video web parts";
         public const string TransformSourcePageIsWebPartPage = "Recognized source page as a Web Part Page.";
         public const string TransformPageModernTitle = "Setting the modern page title:";
         public const string TransformPageTitleOverride = "Using specified page title override";
@@ -201,6 +213,8 @@
         public const string TransformationModePublishing = "Publishing Page Transformation Mode";
         public const string TransformationMode = "{0} Transformation";
         public const string AnalysingNoWebPartsFound = "No web parts were found on page";
+        public const string Warning_WikiWebPartHtmlPreserved = "Wiki web-part placeholder '{0}' at row {1}, column {2} could not be resolved to a registered web part. Its rendered HTML was preserved as editable text.";
+        public const string Warning_WikiWebPartHtmlMissing = "Wiki web-part placeholder '{0}' at row {1}, column {2} could not be resolved to a registered web part and has no rendered HTML to preserve.";
         public const string ContentTransformFoundSourceWebParts = "Source page contains web part `{0}` of type `{1}`";
         public const string WebPartXmlNotExported = "Xml definition for web part {0} was not exportable. Error {1}.";
 
@@ -269,15 +283,19 @@
         public const string OverridingQuickLinksDefaults = "Overriding QuickLinks properties via this JSON: {0}";
 
         public const string Warning_OverridingQuickLinksDefaultsFailed = "Overriding QuickLinks properties failed: {0}";
+        public const string Warning_SummaryLinkMissingUrlSkipped = "Summary link '{0}' has a missing, empty or whitespace-only URL and was skipped when creating Quick Links. Correct the source link or use the text mapping to retain its title.";
+        public const string Warning_SummaryLinkMissingUrlAsText = "Summary link '{0}' has a missing, empty or whitespace-only URL. Its title is retained as plain text without a hyperlink.";
 
         public const string Error_ReturnCrossSiteRelativePath = "An error occurred in ReturnCrossSiteRelativePath function";
         public const string Error_DocumentEmbedLookup = "An error occurred in DocumentEmbedLookup function";
         public const string Error_DocumentEmbedLookupFileNotRetrievable = "An error occurred in DocumentEmbedLookup function - file not retrievable";
+        public const string Warning_DocumentEmbedLookupFileNotFound = "DocumentEmbedLookup received File Not Found for '{0}' (context: '{1}'). Retaining the document reference with empty metadata so page transformation can continue. Verify the URL, document existence, and the migration identity's access; this response does not establish why the file is unavailable.";
         public const string Error_LoadContentFromFile = "An error occurred in LoadContentFromFile function";
 
         public const string Error_LoadContentFromFileContentLink = "An error occurred in getting the referenced file in content link";
 
         public const string Warning_TableCouldNotBeNormalized = "Table could not be normalized and will be taken over as is. Error = {0}";
+        public const string Warning_OverlappingTableSpans = "Overlapping table spans were clipped to preserve cell content.";
         #endregion
 
         #region Publishing Page Transformation

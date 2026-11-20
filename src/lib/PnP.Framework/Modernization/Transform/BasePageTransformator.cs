@@ -2,9 +2,11 @@
 using Microsoft.SharePoint.Client;
 using Microsoft.SharePoint.Client.Taxonomy;
 using Newtonsoft.Json;
+using PnP.Core.Services;
 using PnP.Framework.Modernization.Cache;
 using PnP.Framework.Modernization.Entities;
 using PnP.Framework.Modernization.Extensions;
+using PnP.Framework.Modernization.Functions;
 using PnP.Framework.Modernization.Telemetry;
 using System;
 using System.Collections.Generic;
@@ -38,6 +40,44 @@ namespace PnP.Framework.Modernization.Transform
         internal DateTime SourcePageModified;
 
         #region Helper methods
+
+        internal void SavePage(PnPCore.IPage page, string pageName, BaseTransformationInformation information,
+            ClientContext context, Func<Uri, string> importExternalImage = null)
+        {
+            // A saved page ID is needed for SharePoint to select and retain the page-owned asset folder.
+            page.Save(pageName);
+            var textParts = page.Controls.OfType<PnPCore.IPageText>()
+                .Where(part => !string.IsNullOrEmpty(part.Text) && part.Text.IndexOf("<img", StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList();
+            if (textParts.Count == 0)
+            {
+                return;
+            }
+
+            if (importExternalImage == null)
+            {
+                var importer = new ExternalImageImporter(new Uri(context.Url), page.PageId.GetValueOrDefault(), pageName,
+                    (method, request) => page.PnPContext.Web.ExecuteRequest(new ApiRequest(method, ApiRequestType.SPORest,
+                        request, null, new Dictionary<string, string> { ["Accept"] = "application/json;odata=nometadata" })).Response,
+                    RegisteredLogObservers);
+                importExternalImage = importer.Import;
+            }
+            var functions = new BuiltIn(information, context, sourceClientContext, page, RegisteredLogObservers);
+            bool changed = false;
+            foreach (var part in textParts)
+            {
+                var updated = functions.TransformInlineImages(part.Text, externalImagesOnly: true, importExternalImage: importExternalImage);
+                if (!string.Equals(updated, part.Text, StringComparison.Ordinal))
+                {
+                    part.Text = updated;
+                    changed = true;
+                }
+            }
+            if (changed)
+            {
+                page.Save(pageName);
+            }
+        }
 
         /// <summary>
         /// Loads the default webpart mapping model
@@ -138,7 +178,8 @@ namespace PnP.Framework.Modernization.Transform
                 {
                     using (var document = parser.ParseDocument(((PnPCore.IPageText)textPart).Text))
                     {
-                        if (document.FirstChild != null && string.IsNullOrEmpty(document.FirstChild.TextContent))
+                        if (document.FirstChild != null && string.IsNullOrEmpty(document.FirstChild.TextContent) &&
+                            document.QuerySelector("img, iframe, .imagePlugin") == null)
                         {
                             LogInfo(LogStrings.TransformRemovingEmptyWebPart, LogStrings.Heading_RemoveEmptyTextParts);
                             // Drop text part
@@ -1087,6 +1128,26 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         /// <param name="clientContext"></param>
         /// <param name="isTargetContext"></param>
+        /// <summary>
+        /// Appends the .aspx extension to a target page name when it is missing, matching the name the page is
+        /// actually saved under. The comparison is case insensitive, so an existing extension is never duplicated.
+        /// Saving a client side page appends the extension on its own, so the collision probe, the save and the
+        /// readback must all be given the same canonical name or they resolve to different files.
+        /// </summary>
+        /// <param name="targetPageName">Target page name supplied by the caller or derived from the source page</param>
+        /// <returns>The target page name as it will exist in the Site Pages library</returns>
+        internal static string EnsureAspxExtension(string targetPageName)
+        {
+            if (string.IsNullOrEmpty(targetPageName))
+            {
+                return targetPageName;
+            }
+
+            return targetPageName.EndsWith(".aspx", StringComparison.InvariantCultureIgnoreCase)
+                ? targetPageName
+                : $"{targetPageName}.aspx";
+        }
+
         internal void LoadClientObject(ClientContext clientContext, bool isTargetContext)
         {
             if (clientContext != null)
@@ -1102,7 +1163,9 @@ namespace PnP.Framework.Modernization.Transform
                 {
                     clientContext.Load(clientContext.Web, p => p.Id, p => p.ServerRelativeUrl, p => p.RootFolder.WelcomePage, p => p.Language);
                 }
-                clientContext.Load(clientContext.Site, p => p.RootWeb.ServerRelativeUrl, p => p.Id, p => p.Url);
+                clientContext.Load(clientContext.Site, p => p.Id, p => p.Url);
+                // Load RootWeb as its own CSOM object instead of expanding it through Site.
+                clientContext.Load(clientContext.Site.RootWeb, p => p.ServerRelativeUrl);
                 // Use regular ExecuteQuery as we want to send this custom clienttag
                 clientContext.ExecuteQuery();
             }

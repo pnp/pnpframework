@@ -140,6 +140,7 @@ namespace PnP.Framework.Modernization.Transform
         /// </summary>
         /// <param name="pageTransformationInformation">Information about the page to transform</param>
         /// <returns>The path to the created modern page</returns>
+        /// <exception cref="ArgumentException">The source and target are different webs in the same site collection.</exception>
         public string Transform(PageTransformationInformation pageTransformationInformation)
         {
             SetPageId(Guid.NewGuid().ToString());
@@ -278,10 +279,9 @@ namespace PnP.Framework.Modernization.Transform
                     }
                     else
                     {
-                        if (sourceClientContext.Site.Id.Equals(targetClientContext.Site.Id))
+                        if (NormalizeSameSiteTargetContext(sourceClientContext.Site.Id, targetClientContext.Site.Id,
+                            sourceClientContext.Web.Id, targetClientContext.Web.Id, pageTransformationInformation))
                         {
-                            // Oops, seems source and target point to the same site collection...switch back the "source only" mode
-                            targetClientContext = null;
                             hasTargetContext = false;
                             LogWarning(LogStrings.Error_FallBackToSameSiteTransfer, LogStrings.Heading_SharePointConnection);
                         }
@@ -473,6 +473,12 @@ namespace PnP.Framework.Modernization.Transform
 
                 }
 
+                // Canonicalize the target page name once, before it is used to probe for a collision, to save the
+                // page and to read the saved page back. Saving appends the .aspx extension when it is missing, so a
+                // caller supplied name without the extension would otherwise probe and read back a different file
+                // than the one that is written, and an existing target page could be overwritten unnoticed.
+                pageTransformationInformation.TargetPageName = EnsureAspxExtension(pageTransformationInformation.TargetPageName);
+
                 // Check if page name is free to use
 #if DEBUG && MEASURE
             Start();
@@ -623,7 +629,7 @@ namespace PnP.Framework.Modernization.Transform
 
                         pageData = new WikiPage(pageTransformationInformation.SourcePage, pageTransformation, base.RegisteredLogObservers).Analyze();
 
-                        // Wiki pages can contain embedded images and videos, which is not supported by the target RTE...split wiki text blocks so the transformator can handle the images and videos as separate web parts
+                        // Images stay inline; embedded iframes are handled as separate video web parts.
                         LogInfo(LogStrings.WikiTextContainsImagesVideosReferences, LogStrings.Heading_ArticlePageHandling);
                     }
                     else if (IsBlogPage(pageType))
@@ -836,7 +842,7 @@ namespace PnP.Framework.Modernization.Transform
                 {
                     var pageName = $"{pageTransformationInformation.Folder}{pageTransformationInformation.TargetPageName}";
 
-                    targetPage.Save(pageName);
+                    SavePage(targetPage, pageName, pageTransformationInformation, context);
 
                     LogInfo($"{LogStrings.TransformSavedPageInCrossSiteCollection}: {pageName}", LogStrings.Heading_ArticlePageHandling);
                 }
@@ -844,7 +850,7 @@ namespace PnP.Framework.Modernization.Transform
                 {
                     var pageName = $"{pageTransformationInformation.Folder}{pageTransformationInformation.TargetPageName}";
 
-                    targetPage.Save(pageName);
+                    SavePage(targetPage, pageName, pageTransformationInformation, context);
 
                     LogInfo($"{LogStrings.TransformSavedPage}: {pageName}", LogStrings.Heading_ArticlePageHandling);
                 }
@@ -1184,6 +1190,29 @@ namespace PnP.Framework.Modernization.Transform
         }
 
         #region Helper methods
+        internal bool NormalizeSameSiteTargetContext(Guid sourceSiteId, Guid targetSiteId, Guid sourceWebId, Guid targetWebId,
+            BaseTransformationInformation transformationInformation)
+        {
+            if (!sourceSiteId.Equals(targetSiteId))
+            {
+                return false;
+            }
+
+            if (!sourceWebId.Equals(targetWebId))
+            {
+                LogError(LogStrings.Error_SameSiteTransferDifferentWeb, LogStrings.Heading_SharePointConnection);
+                throw new ArgumentException(LogStrings.Error_SameSiteTransferDifferentWeb);
+            }
+
+            targetClientContext = null;
+            // Validation ran before the site and web IDs were loaded; discard its cross-site state too.
+            transformationInformation.IsCrossSiteTransformation = false;
+            transformationInformation.IsCrossFarmTransformation = false;
+            transformationInformation.TargetVersion = transformationInformation.SourceVersion;
+            transformationInformation.TargetVersionNumber = transformationInformation.SourceVersionNumber;
+            return true;
+        }
+
         private void SetPageTitle(PageTransformationInformation pageTransformationInformation, PnPCore.IPage targetPage)
         {
             if (FieldExistsAndIsUsed(pageTransformationInformation, Constants.FileLeafRefField))
@@ -1278,7 +1307,7 @@ namespace PnP.Framework.Modernization.Transform
             if (!file.Exists)
             {
                 LogInfo(LogStrings.TransformPageDoesNotExistInWeb, LogStrings.Heading_Load);
-                throw new ArgumentException($"{pageTransformationInformation.TargetPageName} - {LogStrings.TransformPageDoesNotExistInWeb}");
+                throw new PageDoesNotExistInWebException($"{pageTransformationInformation.TargetPageName} - {LogStrings.TransformPageDoesNotExistInWeb}");
             }
 
             return file;

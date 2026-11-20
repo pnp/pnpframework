@@ -5,8 +5,11 @@ using AngleSharp.Html.Parser;
 using PnP.Framework.Modernization.Telemetry;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using AngleSharp.Css.Dom;
+using AngleSharp.Css.Values;
 using AngleSharp.Io;
 
 namespace PnP.Framework.Modernization.Transform
@@ -20,61 +23,33 @@ namespace PnP.Framework.Modernization.Transform
         internal class Table
         {
             internal string ClassName { get; set; }
-            internal IElement InsertionPoint { get; set; }
-            internal IElementCell[] Header { get; set; }
-            internal IElementCell[,] Cells { get; set; }
-
-            internal bool HasHeader
-            {
-                get
-                {
-                    if (this.Header == null)
-                    {
-                        return false;
-                    }
-
-                    for (int colPos = 0; colPos < this.Header.Length; colPos += 1)
-                    {
-                        if (this.Header[colPos] != null)
-                        {
-                            return true;
-                        }
-                    }
-
-                    return false;
-                }
-            }
+            internal List<List<TableCell>> Rows { get; } = new List<List<TableCell>>();
+            internal int Columns { get; set; }
         }
 
-        internal class IElementCell
+        internal class TableCell
         {
-            internal bool HasValue
-            {
-                get
-                {
-                    return Element != null;
-                }
-            }
             internal IElement Element { get; set; }
-
-            internal IElementCell(IElement element)
-            {
-                this.Element = element;
-            }
-
-            internal string TextAlign { get; set; }
+            internal int Column { get; set; }
+            internal int ColumnSpan { get; set; }
+            internal int RowSpan { get; set; }
         }
         #endregion
 
-        private const int DefaultTableWidth = 800;
         private HtmlParser parser;
+        private readonly Func<string, string> themeColorResolver;
 
         #region Construction
         /// <summary>
         /// Default constructor
         /// </summary>
-        public HtmlTransformator(IList<ILogObserver> logObservers = null): base()
+        public HtmlTransformator(IList<ILogObserver> logObservers = null): this(logObservers, null)
         {
+        }
+
+        internal HtmlTransformator(IList<ILogObserver> logObservers, Func<string, string> themeColorResolver): base()
+        {
+            this.themeColorResolver = themeColorResolver;
             if (logObservers != null)
             {
                 foreach (var observer in logObservers)
@@ -97,6 +72,13 @@ namespace PnP.Framework.Modernization.Transform
         /// <param name="text">Html to be transformed</param>
         /// <param name="usePlaceHolder">Insert placeholders for images and iframe tags</param>
         /// <returns>Html that can be used and edited via the client side text part</returns>
+        /// <remarks>
+        /// Source fragment destinations are retained, with heading IDs placed on content spans because modern rendering
+        /// generates its own heading IDs. Those generated IDs can collide with source IDs. The modern text editor can
+        /// discard custom IDs on a subsequent edit/save; preserving them here does not prevent that editor behavior.
+        /// Ordered lists retain their inline or HTML type marker style (decimal by default) at every nesting level,
+        /// using native RTE list markup instead of the modern renderer's implicit alphabetic nested markers.
+        /// </remarks>
         public string Transform(string text, bool usePlaceHolder)
         {
             // Strip out the "zero width space characters"
@@ -105,6 +87,8 @@ namespace PnP.Framework.Modernization.Transform
 
             using (var document = this.parser.ParseDocument(text))
             {
+                PreserveStrikethrough(document.Body, document);
+
                 // Process headings: RTE does h2, h3, h4 while wiki does h1, h2, h3, h4. Wiki h4 to h6 will become (formatted) text
                 TransformHeadings(document, 6, 0);
                 TransformHeadings(document, 5, 0);
@@ -117,6 +101,7 @@ namespace PnP.Framework.Modernization.Transform
                 TransformBlockQuotes(document.QuerySelectorAll("blockquote"), document);
 
                 // Process elements that can hold forecolor, backcolor, fontsize, underline and strikethrough information
+                TransformElements(document.QuerySelectorAll("font"), document);
                 TransformElements(document.QuerySelectorAll("span"), document);
                 TransformElements(document.QuerySelectorAll("sup"), document);
                 TransformElements(document.QuerySelectorAll("sub"), document);
@@ -133,6 +118,8 @@ namespace PnP.Framework.Modernization.Transform
 
                 // Process tables
                 TransformTables(document.QuerySelectorAll("table"), document);
+
+                TransformLists(document);
 
                 // Finalize the transformation by cleaning the html
                 // - styling information: RTE does only support a limited set of styles
@@ -200,6 +187,10 @@ namespace PnP.Framework.Modernization.Transform
         {
             foreach(var element in document.All.Where(p => p.HasAttribute("style")))
             {
+                string foregroundColor = element.GetStyle().GetColor();
+                string backgroundColor = element.GetStyle().GetBackgroundColor();
+                string listStyleType = element.TagName == "OL" || element.TagName == "UL" || element.TagName == "LI"
+                    ? element.GetStyle().GetPropertyValue("list-style-type") : null;
 
                 if (string.IsNullOrEmpty(element.GetAttribute("style")))
                 {
@@ -208,7 +199,8 @@ namespace PnP.Framework.Modernization.Transform
                 }
                 else
                 {
-                    if (IsBlockElement(element))
+                    if (IsBlockElement(element) &&
+                        !(element.TagName == "FIGURE" && element.ClassList.Contains("canvasRteResponsiveTable")))
                     {
                         // Save the styles we want to maintain
                         string marginLeft = element.GetStyle().GetMarginLeft();
@@ -246,22 +238,80 @@ namespace PnP.Framework.Modernization.Transform
                             element.GetStyle().SetTextAlign(textAlign);
                         }
                     }
+
+                    if (!string.IsNullOrEmpty(foregroundColor))
+                    {
+                        element.GetStyle().SetColor(foregroundColor);
+                    }
+                    if (!string.IsNullOrEmpty(backgroundColor))
+                    {
+                        element.GetStyle().SetBackgroundColor(backgroundColor);
+                    }
+                    if (!string.IsNullOrEmpty(listStyleType))
+                    {
+                        element.GetStyle().SetProperty("list-style-type", listStyleType);
+                    }
                 }
             }
         }
 
+        private static void TransformLists(IHtmlDocument document)
+        {
+            foreach (var list in document.QuerySelectorAll("ol, ul"))
+            {
+                if (list.TagName == "UL" && list.QuerySelector("ol") == null)
+                {
+                    continue;
+                }
+
+                // RTE uses this class on list containers to disable alphabetic LI and ::before overrides.
+                // Include UL ancestors so ordered lists nested inside bulleted lists inherit their own marker style.
+                list.ClassList.Add("customListStyle");
+                if (list.TagName == "OL" && string.IsNullOrEmpty(list.GetStyle().GetPropertyValue("list-style-type")))
+                {
+                    list.GetStyle().SetProperty("list-style-type", GetOrderedListStyle(list.GetAttribute("type")) ?? "decimal");
+                }
+            }
+
+            foreach (var item in document.QuerySelectorAll("ol > li[type]"))
+            {
+                var marker = GetOrderedListStyle(item.GetAttribute("type"));
+                if (marker != null && string.IsNullOrEmpty(item.GetStyle().GetPropertyValue("list-style-type")))
+                {
+                    item.GetStyle().SetProperty("list-style-type", marker);
+                }
+            }
+        }
+
+        private static string GetOrderedListStyle(string type)
+        {
+            return type switch
+            {
+                "1" => "decimal",
+                "a" => "lower-alpha",
+                "A" => "upper-alpha",
+                "i" => "lower-roman",
+                "I" => "upper-roman",
+                _ => null
+            };
+        }
+
+        /// <summary>
+        /// Preserves table spans and relative column sizing in native canvas RTE markup that fits the canvas.
+        /// Absolute table widths become responsive widths because RTE does not retain overflow constraints.
+        /// Tables without explicit sizing, spans, or cell backgrounds retain the legacy wrapper.
+        /// Nested tables remain in their owning cells for canvas RTE to render and edit.
+        /// </summary>
         protected virtual void TransformTables(IHtmlCollection<IElement> tables, IHtmlDocument document)
         {
-
-            List<Tuple<IElement, IElement, IElement>> tableReplaceList = new List<Tuple<IElement, IElement, IElement>>();
-
-            foreach (var table in tables)
+            // Transform inside-out so copying a cell includes its already transformed nested tables.
+            foreach (var table in tables.Reverse())
             {
                 Table normalizedTable = null;
 
                 try
                 {
-                    // Normalize table by removing the col and row spans and returning a Table object containing matrix of cells, header cells and table information
+                    // Resolve the logical grid without turning covered positions into empty cells.
                     normalizedTable = NormalizeTable(table);
                 }
                 catch(Exception ex)
@@ -276,109 +326,115 @@ namespace PnP.Framework.Modernization.Transform
                 }
 
                 // Skip empty tables
-                if (normalizedTable.Cells.GetLength(0) == 0 && normalizedTable.Cells.GetLength(1) == 0)
+                if (normalizedTable.Columns == 0)
                 {
                     continue;
                 }
 
-                // <div class="canvasRteResponsiveTable">
-                var newTableElement = document.CreateElement($"div");
+                var bandedStyle = normalizedTable.ClassName == "simpleTableStyleNeutral" ? GetTableClassName(table, true) : null;
+                var bandingColors = GetHeaderlessTableBandingColors(bandedStyle);
+                bool nativeTable = bandingColors != null || normalizedTable.Rows.SelectMany(row => row).Any(cell =>
+                    cell.ColumnSpan > 1 || cell.RowSpan > 1 || HasExplicitWidth(cell.Element) ||
+                    GetTableCellBackgroundColor(cell.Element) != null) ||
+                    HasExplicitWidth(table) || table.Children.Any(child => child.TagName == "COLGROUP");
+                var newTableElement = document.CreateElement(nativeTable ? "figure" : "div");
                 newTableElement.ClassName = "canvasRteResponsiveTable";
-
-                // <div class="tableCenterAlign tableWrapper">
-                var innerDiv = document.CreateElement("div");
-                // Possible alignments: tableLeftAlign, tableCenterAlign and tableRightAlign, since wiki does not have this option default to left align
-                innerDiv.ClassList.Add(new string[] { "tableLeftAlign", "tableWrapper" });
-                newTableElement.AppendChild(innerDiv);
+                IElement tableContainer = newTableElement;
+                if (nativeTable)
+                {
+                    // The legacy div wrapper regenerates column widths from physical, not logical, cells.
+                    newTableElement.ClassList.Add("table", "tableLeftAlign");
+                    newTableElement.SetAttribute("title", "Table");
+                    var width = GetTableWidth(table);
+                    newTableElement.GetStyle().SetWidth(TryGetColumnWidth(width, out double value, out string unit) && unit == "%"
+                        ? FormatTablePercentage(Math.Min(value, 100)) : "100%");
+                }
+                else
+                {
+                    tableContainer = document.CreateElement("div");
+                    tableContainer.ClassList.Add("tableLeftAlign", "tableWrapper");
+                    newTableElement.AppendChild(tableContainer);
+                }
 
                 // <table class="bandedRowTableStyleNeutral" title="Table">
                 var tableElement = document.CreateElement("table");
-                //ms-rteTable-default: basic grid lines
-                string tableClassName = "borderHeaderTableStyleNeutral";
-                if (!string.IsNullOrEmpty(normalizedTable.ClassName))
-                {
-                    if (normalizedTable.ClassName.Equals("ms-rteTable-default", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        tableClassName = "borderHeaderTableStyleNeutral";
-                    }
-                    else
-                    {
-                        if (int.TryParse(normalizedTable.ClassName.ToLower().Replace("ms-rtetable-", ""), out int tableStyleCode))
-                        {
-                            tableClassName = TableStyleCodeToName(tableStyleCode);
-                        }
-                    }
-                }
-
-                tableElement.ClassName = tableClassName;
+                tableElement.ClassName = normalizedTable.ClassName;
                 tableElement.SetAttribute("title", "Table");
-                innerDiv.AppendChild(tableElement);
+                tableContainer.AppendChild(tableElement);
+                var sourceCaption = ((IHtmlTableElement)table).Caption;
+                if (sourceCaption != null)
+                {
+                    var caption = document.CreateElement("caption");
+                    caption.InnerHtml = sourceCaption.InnerHtml;
+                    tableElement.AppendChild(caption);
+                }
+                double[] columnWidths = null;
+                if (nativeTable)
+                {
+                    columnWidths = AddTableColumns(table, normalizedTable, tableElement, document);
+                }
 
                 // <tbody>
                 var tableBody = document.CreateElement("tbody");
                 tableElement.AppendChild(tableBody);
 
-                // Table cell width
-                var cellWidth = GetDefaultCellTableCellWidths(normalizedTable.Cells.GetLength(1));
-
-                // Table headers
-                if (normalizedTable.HasHeader)
+                int rowIndex = 0;
+                foreach (var row in normalizedTable.Rows)
                 {
-                    // Header is transformed into  a row with bold formatted headers
                     var newRow = document.CreateElement("tr");
-                    int headerCounter = 0;
-
-                    for (int colPos = 0; colPos < normalizedTable.Header.Length; colPos += 1)
+                    string rowBackgroundColor = null;
+                    if (bandingColors != null && row.Count > 0)
                     {
-                        var tableHeaderValue = document.CreateElement("strong");
-                        if (normalizedTable.Header[colPos].HasValue)
+                        int bandIndex = rowIndex % 2;
+                        var sourceRow = row[0].Element.ParentElement;
+                        string styleCode = bandedStyle == "bandedRowTableStyleTheme" ? "6" : "1";
+                        if (sourceRow.ClassList.Any(name => name.Equals($"ms-rteTableEvenRow-{styleCode}", StringComparison.OrdinalIgnoreCase)))
                         {
-                            tableHeaderValue.TextContent = normalizedTable.Header[colPos].Element.TextContent;
+                            bandIndex = 0;
                         }
-
-                        var tableHeaderCell = document.CreateElement("td");
-                        tableHeaderCell.GetStyle().SetWidth($"{cellWidth[headerCounter]}px");
-
-                        // Restore alignment if needed
-                        if (normalizedTable.Header[colPos].TextAlign != null)
+                        else if (sourceRow.ClassList.Any(name => name.Equals($"ms-rteTableOddRow-{styleCode}", StringComparison.OrdinalIgnoreCase)))
                         {
-                            tableHeaderCell.GetStyle().SetTextAlign(normalizedTable.Header[colPos].TextAlign);
+                            bandIndex = 1;
                         }
-
-                        headerCounter++;
-
-                        tableHeaderCell.AppendChild(tableHeaderValue);
-                        newRow.AppendChild(tableHeaderCell);
+                        rowBackgroundColor = bandingColors[bandIndex];
                     }
-
-                    // Append the new header as table row
-                    tableBody.AppendChild(newRow);
-                }
-
-                // Iterate the table rows
-                for (int rowPos = 0; rowPos < normalizedTable.Cells.GetLength(0); rowPos += 1)
-                {
-                    var newRow = document.CreateElement("tr");
-                    int cellCounter = 0;
-
-                    for (int colPos = 0; colPos < normalizedTable.Cells.GetLength(1); colPos += 1)
+                    foreach (var cell in row)
                     {
                         var newTableCell = document.CreateElement("td");
-                        newTableCell.GetStyle().SetWidth($"{cellWidth[cellCounter]}px");
-                        cellCounter++;
-
-                        // Did we put a "real" cell?
-                        if (normalizedTable.Cells[rowPos, colPos].HasValue)
+                        newTableCell.GetStyle().SetWidth(columnWidths == null ? "auto" :
+                            FormatTablePercentage(columnWidths.Skip(cell.Column).Take(cell.ColumnSpan).Sum()));
+                        var cellBackgroundColor = GetTableCellBackgroundColor(cell.Element) ?? rowBackgroundColor;
+                        if (cellBackgroundColor != null)
                         {
-                            // Copy over the content, take over html content as cell can have formatting inside
-                            // Formatting of the table cell content was already done in previous steps, so we simply copy what we have
-                            newTableCell.InnerHtml = normalizedTable.Cells[rowPos, colPos].Element.InnerHtml;
+                            newTableCell.GetStyle().SetBackgroundColor(cellBackgroundColor);
                         }
-
-                        // Restore alignment if needed
-                        if (normalizedTable.Cells[rowPos, colPos].TextAlign != null)
+                        var foregroundColor = cell.Element.GetStyle().GetColor();
+                        if (!string.IsNullOrEmpty(foregroundColor))
                         {
-                            newTableCell.GetStyle().SetTextAlign(normalizedTable.Cells[rowPos, colPos].TextAlign);
+                            newTableCell.GetStyle().SetColor(foregroundColor);
+                        }
+                        if (cell.ColumnSpan > 1)
+                        {
+                            newTableCell.SetAttribute("colspan", cell.ColumnSpan.ToString(CultureInfo.InvariantCulture));
+                        }
+                        if (cell.RowSpan > 1)
+                        {
+                            newTableCell.SetAttribute("rowspan", cell.RowSpan.ToString(CultureInfo.InvariantCulture));
+                        }
+                        if (cell.Element.TagName == "TH")
+                        {
+                            var strong = document.CreateElement("strong");
+                            strong.InnerHtml = cell.Element.InnerHtml;
+                            newTableCell.AppendChild(strong);
+                        }
+                        else
+                        {
+                            newTableCell.InnerHtml = cell.Element.InnerHtml;
+                        }
+                        var textAlign = cell.Element.GetStyle().GetTextAlign();
+                        if (!string.IsNullOrEmpty(textAlign))
+                        {
+                            newTableCell.GetStyle().SetTextAlign(textAlign);
                         }
 
                         newRow.AppendChild(newTableCell);
@@ -386,46 +442,10 @@ namespace PnP.Framework.Modernization.Transform
 
                     // Append the new row
                     tableBody.AppendChild(newRow);
+                    rowIndex++;
                 }
 
-                // Add table to list for doing actual replacements once we're done analyzing all tables
-                tableReplaceList.Add(new Tuple<IElement, IElement, IElement>(table, newTableElement, normalizedTable.InsertionPoint));
-            }
-
-            foreach (var tableToReplace in tableReplaceList.Where(p => p.Item3 != null))
-            {
-                // Insert the new table at the insertion point. Add a br to work around an RTE bug that you can't separate tables
-                tableToReplace.Item3.AppendChild(document.CreateElement("br"));
-                tableToReplace.Item3.AppendChild(tableToReplace.Item2);
-
-                // Remove the old table
-                tableToReplace.Item1.Parent.RemoveChild(tableToReplace.Item1);                
-            }
-
-            foreach (var tableToReplace in tableReplaceList.Where(p => p.Item3 == null))
-            {
-                // Swap old table with new table
-                tableToReplace.Item1.Parent.ReplaceChild(tableToReplace.Item2, tableToReplace.Item1);
-            }
-
-            // Drop any nested table
-            foreach(var tableToCheck in tableReplaceList)
-            {
-                var nestedTables = tableToCheck.Item2.QuerySelectorAll("table");
-                if (nestedTables.Any())
-                {
-                    foreach(var nestedTable in nestedTables.ToList())
-                    {
-                        // the new Table element has a DIV as top node, an inner DIV and then the table as child
-                        if (tableToCheck.Item2.FirstElementChild != null && tableToCheck.Item2.FirstElementChild.FirstElementChild != null)
-                        {
-                            if (nestedTable != tableToCheck.Item2.FirstElementChild.FirstElementChild)
-                            {
-                                nestedTable.ParentElement.RemoveChild(nestedTable);
-                            }
-                        }
-                    }
-                }
+                table.Parent.ReplaceChild(newTableElement, table);
             }
         }
 
@@ -478,7 +498,10 @@ namespace PnP.Framework.Modernization.Transform
             foreach (var blockQuote in blockQuotes)
             {
                 // Only process block quotes that are used for indentation
-                if (blockQuote.OuterHtml.ToLower().Contains("margin:0px 0px 0px 40px"))
+                var style = blockQuote.GetStyle();
+                if (style.GetMarginLeft() == "40px" &&
+                    new[] { style.GetMarginTop(), style.GetMarginRight(), style.GetMarginBottom() }
+                        .All(margin => margin == "0px" || margin == "0"))
                 {
                     if ((blockQuote.ChildElementCount > 0 && blockQuote.Children[0].TagName.ToLower() == "blockquote"))
                     {
@@ -486,7 +509,7 @@ namespace PnP.Framework.Modernization.Transform
                     }
                     else
                     {
-                        // We're at the bottom level, the children of this blockquote node do contain regular content. This is always wrapped inside either P or Div tags
+                        // We're at the bottom level, where blockquotes can contain both elements and unwrapped text.
                         bool replacementDone = false;
                         IElement insertionContainer = null;
                         IElement topLevelBlockQuote = null;
@@ -508,9 +531,20 @@ namespace PnP.Framework.Modernization.Transform
                             replacementDone = true;
                         }
 
-                        // Important to do a ToList() to get a copy as the Children list might be affected by the code in the loop!
-                        foreach (var nodeToProcess in blockQuote.Children.ToList())
+                        // Snapshot all nodes: iterating only elements would discard unwrapped answers.
+                        foreach (var childNode in blockQuote.ChildNodes.ToList())
                         {
+                            var nodeToProcess = childNode as IElement;
+                            if (childNode is IText)
+                            {
+                                nodeToProcess = document.CreateElement("p");
+                                nodeToProcess.TextContent = childNode.TextContent;
+                            }
+                            if (nodeToProcess == null)
+                            {
+                                continue;
+                            }
+
                             // Indention in realized via P element with the needed pixels as margin-left
                             IElement newElement;
 
@@ -637,11 +671,40 @@ namespace PnP.Framework.Modernization.Transform
             foreach(var fromNode in fromNodes)
             {
                 var parent = fromNode.Parent;
+                var colorClasses = fromNode.ClassList.Where(IsTextColorClass).ToArray();
+                string foregroundColor = fromNode.GetStyle().GetColor();
+                string backgroundColor = fromNode.GetStyle().GetBackgroundColor();
+                bool preserveHeadingAnchor = to != 0 && !string.IsNullOrEmpty(fromNode.Id);
+                if (preserveHeadingAnchor || colorClasses.Length > 0 ||
+                    !string.IsNullOrEmpty(foregroundColor) || !string.IsNullOrEmpty(backgroundColor))
+                {
+                    // Modern rendering generates heading IDs. Keep legacy destinations on the content instead.
+                    var headingContent = document.CreateElement("span");
+                    if (preserveHeadingAnchor)
+                    {
+                        CopyId(fromNode, headingContent);
+                    }
+                    headingContent.ClassList.Add(colorClasses);
+                    if (!string.IsNullOrEmpty(foregroundColor))
+                    {
+                        headingContent.GetStyle().SetColor(foregroundColor);
+                    }
+                    if (!string.IsNullOrEmpty(backgroundColor))
+                    {
+                        headingContent.GetStyle().SetBackgroundColor(backgroundColor);
+                    }
+                    while (fromNode.FirstChild != null)
+                    {
+                        headingContent.AppendChild(fromNode.FirstChild);
+                    }
+                    fromNode.AppendChild(headingContent);
+                }
 
                 if (to == 0)
                 {
                     // wrap the content inside a div so that further formatting processing will pick it up
                     var newElement = document.CreateElement("div");
+                    CopyId(fromNode, newElement);
                     newElement.InnerHtml = fromNode.InnerHtml;
                     parent.ReplaceChild(newElement, fromNode);
                 }
@@ -662,9 +725,12 @@ namespace PnP.Framework.Modernization.Transform
 
         protected virtual void TransformElements(IHtmlCollection<IElement> elementsToTransform, IHtmlDocument document)
         {
-            foreach (var element in elementsToTransform)
+            // Replacements copy inner HTML; transform descendants before their original nodes are detached.
+            foreach (var element in elementsToTransform.Reverse())
             {
                 var parent = element.Parent;
+                string foregroundColor = element.GetStyle().GetColor();
+                string backgroundColor = element.GetStyle().GetBackgroundColor();
 
                 // ================================
                 // Rewrite font styles outside of the header styles
@@ -744,25 +810,28 @@ namespace PnP.Framework.Modernization.Transform
                 var themeForeColor = element.ClassList.PartialMatch("ms-rtethemeforecolor-");
                 if (!string.IsNullOrEmpty(themeForeColor))
                 {
-                    string newClass = null;
-
-                    // Modern Theme colors
-                    // Darker, Dark, Dark Alternate, Primary, Secondary
-                    // Neutral Tertiary, Neutral Secondary, Primary alternate, Neutral primary, Neutral Dark
-                    if (int.TryParse(themeForeColor.ToLower()[themeForeColor.ToLower().Length - 1].ToString(), out int themeCode))
+                    if (!string.IsNullOrEmpty(foregroundColor))
                     {
-                        string colorName = ThemeCodeToForegroundColorName(themeCode);
-                        if (!string.IsNullOrEmpty(colorName))
-                        {
-                            newClass = $"fontColor{colorName}";
-                        }
+                        element.ClassList.Remove(themeForeColor);
                     }
-
-                    element.ClassList.Remove(themeForeColor);
-                    if (!string.IsNullOrEmpty(newClass))
+                    else
                     {
-                        // We mapped a color
-                        element.ClassList.Add(newClass);
+                        var shadeName = GetThemeShadeName(themeForeColor);
+                        if (shadeName != null && themeColorResolver != null)
+                        {
+                            element.GetStyle().SetColor(themeColorResolver(shadeName));
+                            foregroundColor = element.GetStyle().GetColor();
+                            if (string.IsNullOrEmpty(foregroundColor))
+                            {
+                                throw new InvalidOperationException($"The source theme returned an invalid color for '{shadeName}'.");
+                            }
+                            element.ClassList.Remove(themeForeColor);
+                        }
+                        else
+                        {
+                            LogWarning($"Cannot resolve classic foreground color '{themeForeColor}' without a valid source theme shade. Retaining the class.",
+                                LogStrings.Heading_BuiltInFunctions);
+                        }
                     }
                 }
 
@@ -770,8 +839,29 @@ namespace PnP.Framework.Modernization.Transform
                 var rtethemebackcolor = element.ClassList.PartialMatch("ms-rtethemebackcolor-");
                 if (!string.IsNullOrEmpty(rtethemebackcolor))
                 {
-                    // There are no themed back colors in modern, so for now drop the color span and the background color
-                    element.ClassList.Remove(rtethemebackcolor);
+                    if (!string.IsNullOrEmpty(backgroundColor))
+                    {
+                        element.ClassList.Remove(rtethemebackcolor);
+                    }
+                    else
+                    {
+                        var shadeName = GetThemeShadeName(rtethemebackcolor);
+                        if (shadeName != null && themeColorResolver != null)
+                        {
+                            element.GetStyle().SetBackgroundColor(themeColorResolver(shadeName));
+                            backgroundColor = element.GetStyle().GetBackgroundColor();
+                            if (string.IsNullOrEmpty(backgroundColor))
+                            {
+                                throw new InvalidOperationException($"The source theme returned an invalid color for '{shadeName}'.");
+                            }
+                            element.ClassList.Remove(rtethemebackcolor);
+                        }
+                        else
+                        {
+                            LogWarning($"Cannot resolve classic background color '{rtethemebackcolor}' without a valid source theme shade. Retaining the class.",
+                                LogStrings.Heading_BuiltInFunctions);
+                        }
+                    }
                 }
 
                 //<span class="ms-rteForeColor-2" style="">Red,&#160;</span>
@@ -790,6 +880,11 @@ namespace PnP.Framework.Modernization.Transform
                         if (!string.IsNullOrEmpty(colorName))
                         {
                             newClass = $"fontColor{colorName}";
+                            if (string.IsNullOrEmpty(foregroundColor))
+                            {
+                                foregroundColor = new[] { "darkred", "red", "orange", "yellow", "lightgreen",
+                                    "green", "lightblue", "blue", "darkblue", "purple" }[colorCode - 1];
+                            }
                         }
                     }
 
@@ -799,6 +894,24 @@ namespace PnP.Framework.Modernization.Transform
                         // We mapped a color
                         element.ClassList.Add(newClass);
                     }
+                }
+
+                // CSS colors take precedence over the legacy font color attribute.
+                if (element.TagName.Equals("font", StringComparison.OrdinalIgnoreCase) && element.HasAttribute("color"))
+                {
+                    if (string.IsNullOrEmpty(foregroundColor))
+                    {
+                        element.GetStyle().SetColor(element.GetAttribute("color"));
+                        foregroundColor = element.GetStyle().GetColor();
+                    }
+                    if (!string.IsNullOrEmpty(foregroundColor))
+                    {
+                        element.RemoveAttribute("color");
+                    }
+                }
+                if (!string.IsNullOrEmpty(foregroundColor))
+                {
+                    element.GetStyle().SetColor(foregroundColor);
                 }
 
                 // <sub class="ms-rteBackColor-2">lowerscript</sub>
@@ -918,7 +1031,16 @@ namespace PnP.Framework.Modernization.Transform
                     {
                         // We needed to insert an EM tag as the provided style uses italic
                         var newElement = document.CreateElement("span");
+                        CopyId(element, newElement);
                         newElement.ClassList.Add(element.ClassList.ToArray());
+                        if (!string.IsNullOrEmpty(foregroundColor))
+                        {
+                            newElement.GetStyle().SetColor(foregroundColor);
+                        }
+                        if (!string.IsNullOrEmpty(backgroundColor))
+                        {
+                            newElement.GetStyle().SetBackgroundColor(backgroundColor);
+                        }
                         var newItalic = document.CreateElement("em");
 
                         // Transform the piece of html we add in this span, needed to handle spans nested in here as these otherwise would not be found anymore
@@ -941,8 +1063,10 @@ namespace PnP.Framework.Modernization.Transform
                     }
                     else
                     {
-                        // if we still did not replace the span element, the span has no classes set anymore and the span does not have child elements then we can replace it by text
-                        if (!replacementDone && element.ClassList.Length == 0 && element.FirstElementChild == null)
+                        // Plain spans can be unwrapped unless they are fragment destinations.
+                        if (!replacementDone && element.ClassList.Length == 0 && element.FirstElementChild == null &&
+                            string.IsNullOrEmpty(foregroundColor) && string.IsNullOrEmpty(backgroundColor) &&
+                            string.IsNullOrEmpty(element.Id))
                         {
                             ReplaceChildElementByText(parent, element, document);
                         }
@@ -952,6 +1076,14 @@ namespace PnP.Framework.Modernization.Transform
                             if (element.HasAttribute("style"))
                             {
                                 element.RemoveAttribute("style");
+                            }
+                            if (!string.IsNullOrEmpty(foregroundColor))
+                            {
+                                element.GetStyle().SetColor(foregroundColor);
+                            }
+                            if (!string.IsNullOrEmpty(backgroundColor))
+                            {
+                                element.GetStyle().SetBackgroundColor(backgroundColor);
                             }
                             // if the element has no classes anymore then let's drop the class attribute
                             if (element.ClassList.Length == 0 && element.HasAttribute("class"))
@@ -966,6 +1098,14 @@ namespace PnP.Framework.Modernization.Transform
                     // Non span element with styling that was transformed will be wrapped in a span containing the styling which wraps a "clean" element
                     var newElement = document.CreateElement("span");
                     newElement.ClassList.Add(element.ClassList.ToArray());
+                    if (!string.IsNullOrEmpty(foregroundColor))
+                    {
+                        newElement.GetStyle().SetColor(foregroundColor);
+                    }
+                    if (!string.IsNullOrEmpty(backgroundColor))
+                    {
+                        newElement.GetStyle().SetBackgroundColor(backgroundColor);
+                    }
                     // no point in having an empty class attribute
                     if (element.HasAttribute("class"))
                     {
@@ -978,6 +1118,7 @@ namespace PnP.Framework.Modernization.Transform
                         newElement.AppendChild(strikeThroughElement);                        
                         // Create the element that held the strikethrough style
                         var emElement = document.CreateElement(elementToKeep.ToLower());
+                        CopyId(element, emElement);
                         emElement.InnerHtml = element.InnerHtml;
                         strikeThroughElement.AppendChild(emElement);
                     }
@@ -987,6 +1128,7 @@ namespace PnP.Framework.Modernization.Transform
                         newElement.AppendChild(underlineElement);
                         // Create the element that held the underline style
                         var emElement = document.CreateElement(elementToKeep.ToLower());
+                        CopyId(element, emElement);
                         emElement.InnerHtml = element.InnerHtml;
                         underlineElement.AppendChild(emElement);
                     }
@@ -1004,11 +1146,155 @@ namespace PnP.Framework.Modernization.Transform
             }
         }
 
+        private static bool IsTextColorClass(string className)
+        {
+            return className.StartsWith("ms-rteForeColor-", StringComparison.OrdinalIgnoreCase) ||
+                className.StartsWith("ms-rteThemeForeColor-", StringComparison.OrdinalIgnoreCase) ||
+                className.StartsWith("ms-rteBackColor-", StringComparison.OrdinalIgnoreCase) ||
+                className.StartsWith("ms-rteThemeBackColor-", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static string GetThemeShadeName(string className)
+        {
+            var match = Regex.Match(className, @"^ms-rteTheme(?:Fore|Back)Color-([1-9]|10)-([0-5])$",
+                RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+            if (!match.Success)
+            {
+                return null;
+            }
+
+            var slots = new[] { "BackgroundOverlay", "BodyText", "SubtleEmphasisText", "SubtleEmphasisBackground",
+                "ContentAccent1", "ContentAccent2", "ContentAccent3", "ContentAccent4", "ContentAccent5", "ContentAccent6" };
+            var shades = new[] { "", "-Lightest", "-Lighter", "-Medium", "-Darker", "-Darkest" };
+            return slots[int.Parse(match.Groups[1].Value) - 1] + shades[int.Parse(match.Groups[2].Value)];
+        }
+
+        private static string GetTableClassName(IElement table, bool hasHeader)
+        {
+            string borderedStyle = hasHeader ? "borderHeaderTableStyleNeutral" : "simpleTableStyleNeutral";
+            const string borderlessStyle = "noBorderTableStyleNeutral";
+            const string classicStylePrefix = "ms-rteTable-";
+            string mappedStyle = null;
+            foreach (var className in table.ClassList)
+            {
+                if (className.Equals("ms-rteTable-default", StringComparison.OrdinalIgnoreCase))
+                {
+                    mappedStyle = borderedStyle;
+                    break;
+                }
+
+                if (className.StartsWith(classicStylePrefix, StringComparison.OrdinalIgnoreCase) &&
+                    int.TryParse(className.Substring(classicStylePrefix.Length), out int styleCode) &&
+                    styleCode >= 0 && styleCode <= 10)
+                {
+                    mappedStyle = TableStyleCodeToName(styleCode);
+                    break;
+                }
+            }
+
+            if (mappedStyle != null && mappedStyle != borderlessStyle)
+            {
+                // Banded styles also fill and bold the first row, even when it contains only body cells.
+                if (!hasHeader && (mappedStyle == "filledHeaderTableStyleTheme" || mappedStyle == "filledHeaderTableStyleNeutral" ||
+                    mappedStyle == "bandedRowTableStyleTheme" || mappedStyle == "bandedRowTableStyleNeutral"))
+                {
+                    return "simpleTableStyleNeutral";
+                }
+
+                return mappedStyle;
+            }
+
+            bool hasBorderAttribute = int.TryParse(table.GetAttribute("border"), out int borderWidth);
+            // A nested table's borders must not change its containing table's style.
+            bool hasVisibleBorder = (hasBorderAttribute && borderWidth > 0) || HasVisibleBorder(table) ||
+                table.QuerySelectorAll("tr,td,th")
+                    .Any(element => element.Closest("table") == table && HasVisibleBorder(element));
+            if (hasVisibleBorder)
+            {
+                return borderedStyle;
+            }
+
+            var style = table.GetStyle();
+            bool explicitlyBorderless = (hasBorderAttribute && borderWidth == 0) ||
+                (style != null && new[] { "top", "right", "bottom", "left" }
+                    .All(side => IsBorderlessSide(style, side)));
+            if (mappedStyle == borderlessStyle || table.ClassList.Length == 0 || explicitlyBorderless)
+            {
+                return borderlessStyle;
+            }
+
+            return borderedStyle;
+        }
+
+        private static string GetTableCellBackgroundColor(IElement cell)
+        {
+            return cell.GetStyle().GetProperty("background-color")?.RawValue is CssColorValue color && color.A > 0
+                ? color.CssText : null;
+        }
+
+        private string[] GetHeaderlessTableBandingColors(string style)
+        {
+            bool themed = style == "bandedRowTableStyleTheme";
+            if (!themed && style != "bandedRowTableStyleNeutral")
+            {
+                return null;
+            }
+
+            if (themeColorResolver == null)
+            {
+                LogWarning("Cannot resolve source table banding without a source theme. Using the classic default palette.",
+                    LogStrings.Heading_BuiltInFunctions);
+            }
+
+            CssColorValue ResolveColor(string shade, string defaultColor)
+            {
+                string color = themeColorResolver == null ? defaultColor : themeColorResolver(shade);
+                if (string.IsNullOrEmpty(color) || !CssColorValue.TryFromHex(color.TrimStart('#'), out var parsed))
+                {
+                    throw new InvalidOperationException($"The source theme returned an invalid color for '{shade}'.");
+                }
+                return parsed;
+            }
+
+            var background = ResolveColor("BackgroundOverlay", "#ffffff");
+            var band = ResolveColor(themed ? "ContentAccent1-Lightest" : "BackgroundOverlay-Lighter", themed ? "#c0e4ff" : "#d8d8d8");
+            if (themed)
+            {
+                // Classic style 6 uses 70% opacity. The modern cell editor drops translucent fills, so flatten against the source background.
+                band = CssColorValue.FromRgb(
+                    (byte)Math.Round(band.R * 0.7 + background.R * 0.3, MidpointRounding.AwayFromZero),
+                    (byte)Math.Round(band.G * 0.7 + background.G * 0.3, MidpointRounding.AwayFromZero),
+                    (byte)Math.Round(band.B * 0.7 + background.B * 0.3, MidpointRounding.AwayFromZero));
+            }
+            return new[] { background.CssText, band.CssText };
+        }
+
+        private static bool HasVisibleBorder(IElement element)
+        {
+            var style = element.GetStyle();
+            return style != null && new[] { "top", "right", "bottom", "left" }
+                .Any(side => !string.IsNullOrEmpty(style.GetPropertyValue($"border-{side}-style")) &&
+                    !IsBorderlessSide(style, side));
+        }
+
+        private static bool IsBorderlessSide(ICssStyleDeclaration style, string side)
+        {
+            string borderStyle = style.GetPropertyValue($"border-{side}-style");
+            string borderWidth = style.GetPropertyValue($"border-{side}-width");
+            return borderStyle.Equals("none", StringComparison.OrdinalIgnoreCase) ||
+                borderStyle.Equals("hidden", StringComparison.OrdinalIgnoreCase) ||
+                Regex.IsMatch(borderWidth, @"^0(?:\.0+)?(?:[a-z]+)?$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+        }
+
         /// <summary>
         /// Map wiki table style to a RTE compatible style
         /// </summary>
         /// <param name="tableStyleCode">Code used for the wiki table style</param>
         /// <returns>RTE compatible table style</returns>
+        /// <remarks>
+        /// Filled-header, banded, and bordered-header styles emphasize the first row.
+        /// Transformation uses a neutral grid for headerless tables, preserving banded fills as native cell backgrounds.
+        /// </remarks>
         public static string TableStyleCodeToName(int tableStyleCode)
         {
             //ms-rteTable-default: basic grid lines
@@ -1027,6 +1313,9 @@ namespace PnP.Framework.Modernization.Transform
             switch (tableStyleCode)
             {
                 case 0:
+                    {
+                        return "noBorderTableStyleNeutral";
+                    }
                 case 3:
                     {
                         return "simpleTableStyleNeutral";
@@ -1252,6 +1541,48 @@ namespace PnP.Framework.Modernization.Transform
         }
 
         #region Helper methods
+        private static void PreserveStrikethrough(IElement element, IHtmlDocument document, bool strikeThrough = false, bool underline = false)
+        {
+            if (IsStrikeThrough(element))
+            {
+                strikeThrough = true;
+                underline |= IsUnderline(element);
+                element.GetStyle().RemoveProperty("text-decoration");
+                element.GetStyle().RemoveProperty("text-decoration-line");
+            }
+
+            // Materialize decoration on text before headings/containers lose their styles.
+            // Do not wrap blocks in <s>: that would break heading and list structure in the editor.
+            foreach (var child in element.ChildNodes.ToArray())
+            {
+                if (child is IElement childElement)
+                {
+                    if (childElement.TagName != "SCRIPT" && childElement.TagName != "STYLE" &&
+                        childElement.TagName != "TEXTAREA")
+                    {
+                        PreserveStrikethrough(childElement, document, strikeThrough, underline);
+                    }
+                }
+                else if (strikeThrough && child is IText && !string.IsNullOrWhiteSpace(child.TextContent))
+                {
+                    INode content = child;
+                    if (element.Closest("s, strike, del") == null)
+                    {
+                        var strike = document.CreateElement("s");
+                        element.ReplaceChild(strike, content);
+                        strike.AppendChild(content);
+                        content = strike;
+                    }
+                    if (underline && element.Closest("u") == null)
+                    {
+                        var underlined = document.CreateElement("u");
+                        element.ReplaceChild(underlined, content);
+                        underlined.AppendChild(content);
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Recursively loop the blockquote elements until we're at the top level, returns needed information to process:
         /// - Level: how many indents where used
@@ -1330,15 +1661,26 @@ namespace PnP.Framework.Modernization.Transform
         private void ReplaceByRelevantTag(IHtmlDocument document, IElement element, INode parent, string tag)
         {
             var newElement = document.CreateElement(tag);
+            CopyId(element, newElement);
 
             // Transform the piece of html we add in this span, needed to handle spans nested in here as these otherwise would not be found anymore
             string innerHtml = TransformInnerHtml(element.InnerHtml);
 
             // If the element has a class defined then wrap inside a span
-            if (element.ClassList.Length > 0)
+            string foregroundColor = element.GetStyle().GetColor();
+            string backgroundColor = element.GetStyle().GetBackgroundColor();
+            if (element.ClassList.Length > 0 || !string.IsNullOrEmpty(foregroundColor) || !string.IsNullOrEmpty(backgroundColor))
             {
                 var newSpan = document.CreateElement("span");
                 newSpan.ClassList.Add(element.ClassList.ToArray());
+                if (!string.IsNullOrEmpty(foregroundColor))
+                {
+                    newSpan.GetStyle().SetColor(foregroundColor);
+                }
+                if (!string.IsNullOrEmpty(backgroundColor))
+                {
+                    newSpan.GetStyle().SetBackgroundColor(backgroundColor);
+                }
                 newSpan.InnerHtml = innerHtml;
                 newElement.AppendChild(newSpan);
             }
@@ -1348,6 +1690,14 @@ namespace PnP.Framework.Modernization.Transform
             }
 
             parent.ReplaceChild(newElement, element);
+        }
+
+        private static void CopyId(IElement source, IElement target)
+        {
+            if (!string.IsNullOrEmpty(source.Id))
+            {
+                target.Id = source.Id;
+            }
         }
 
         private static void ReplaceChildElementByText(INode parent, IElement child, IHtmlDocument document)
@@ -1412,333 +1762,261 @@ namespace PnP.Framework.Modernization.Transform
             return false;
         }
 
-        private static List<int> GetDefaultCellTableCellWidths(int columns)
+        private static string GetTableWidth(IElement element)
         {
-            List<int> widths = new List<int>(columns);
-
-            int width = DefaultTableWidth / columns;
-            int lastWidth = DefaultTableWidth - ((columns - 1) * width);
-
-            for (int i = 0; i < columns; i++)
+            var width = element.GetStyle().GetWidth();
+            if (!string.IsNullOrEmpty(width))
             {
-                if (i < columns - 1)
-                {
-                    widths.Add(width);
-                }
-                else
-                {
-                    widths.Add(lastWidth);
-                }
+                return width;
             }
 
-            return widths;
+            var attribute = element.GetAttribute("width")?.Trim();
+            if (string.IsNullOrEmpty(attribute))
+            {
+                return null;
+            }
+
+            // Validate presentational attributes with the CSS parser before retaining them.
+            var probe = element.Owner.CreateElement("span");
+            probe.GetStyle().SetWidth(Regex.IsMatch(attribute, @"^\d+(?:\.\d+)?$") ? attribute + "px" : attribute);
+            return probe.GetStyle().GetWidth();
         }
 
-        private static bool IsStrikeThrough(IElement element)
+        private static string FormatTablePercentage(double value) =>
+            value.ToString("0.######", CultureInfo.InvariantCulture) + "%";
+
+        private static bool TryGetColumnWidth(string width, out double value, out string unit)
         {
-            if (element.GetStyle() != null && (!string.IsNullOrEmpty(element.GetStyle().GetTextDecoration()) && element.GetStyle().GetTextDecoration().Equals("line-through", StringComparison.InvariantCultureIgnoreCase) ||
-                                          !string.IsNullOrEmpty(element.GetStyle().GetPropertyValue("text-decoration-line")) && element.GetStyle().GetPropertyValue("text-decoration-line").Equals("line-through", StringComparison.InvariantCultureIgnoreCase)))
-            {
-                return true;
-            }
-            else
+            var match = Regex.Match(width ?? "", @"^(\d+(?:\.\d+)?|\.\d+)(px|pt|pc|in|cm|mm|%)$", RegexOptions.IgnoreCase);
+            unit = match.Groups[2].Value.ToLowerInvariant();
+            if (!double.TryParse(match.Groups[1].Value, NumberStyles.AllowDecimalPoint,
+                CultureInfo.InvariantCulture, out value) || double.IsInfinity(value))
             {
                 return false;
             }
+
+            switch (unit)
+            {
+                case "pt": value *= 96.0 / 72; break;
+                case "pc": value *= 16; break;
+                case "in": value *= 96; break;
+                case "cm": value *= 96 / 2.54; break;
+                case "mm": value *= 96 / 25.4; break;
+            }
+            if (unit != "%")
+            {
+                unit = "px";
+            }
+            return !double.IsInfinity(value);
+        }
+
+        private static double[] AddTableColumns(IElement source, Table table, IElement target, IHtmlDocument document)
+        {
+            var widths = new string[table.Columns];
+            int column = 0;
+            foreach (var group in source.Children.Where(element => element.TagName == "COLGROUP"))
+            {
+                var columns = group.Children.Where(element => element.TagName == "COL").ToArray();
+                foreach (var definition in columns.Length == 0 ? new[] { group } : columns)
+                {
+                    var width = GetTableWidth(definition);
+                    if (string.IsNullOrEmpty(width))
+                    {
+                        width = GetTableWidth(group);
+                    }
+                    int span = ReadTableSpan(definition.GetAttribute("span"), 1000, false);
+                    for (int i = 0; i < span && column < widths.Length; i++, column++)
+                    {
+                        widths[column] = width;
+                    }
+                }
+            }
+
+            // Resolve individual columns before distributing a merged cell's width over unresolved columns.
+            foreach (var cell in table.Rows.SelectMany(row => row).OrderBy(cell => cell.ColumnSpan))
+            {
+                var unresolved = Enumerable.Range(cell.Column, cell.ColumnSpan)
+                    .Where(index => !IsConstrainedWidth(widths[index])).ToArray();
+                if (unresolved.Length == 0 ||
+                    !TryGetColumnWidth(GetTableWidth(cell.Element), out double remaining, out string unit))
+                {
+                    continue;
+                }
+                bool compatible = true;
+                foreach (var index in Enumerable.Range(cell.Column, cell.ColumnSpan).Except(unresolved))
+                {
+                    if (!TryGetColumnWidth(widths[index], out double known, out string knownUnit) || unit != knownUnit)
+                    {
+                        compatible = false;
+                        break;
+                    }
+                    remaining -= known;
+                }
+                if (compatible && remaining > 0)
+                {
+                    foreach (var index in unresolved)
+                    {
+                        widths[index] = (remaining / unresolved.Length).ToString("0.######", CultureInfo.InvariantCulture) + unit;
+                    }
+                }
+            }
+
+            var values = new double?[widths.Length];
+            var units = new string[widths.Length];
+            for (int i = 0; i < widths.Length; i++)
+            {
+                if (TryGetColumnWidth(widths[i], out double value, out string unit))
+                {
+                    values[i] = value;
+                    units[i] = unit;
+                }
+            }
+            if (!values.Any(value => value.HasValue))
+            {
+                return null;
+            }
+
+            int unspecified = values.Count(value => !value.HasValue);
+            double absoluteTotal = values.Where((value, index) => units[index] == "px").Sum(value => value ?? 0);
+            double percentageTotal = values.Where((value, index) => units[index] == "%").Sum(value => value ?? 0);
+            if (!TryGetColumnWidth(GetTableWidth(source), out double total, out string totalUnit) || totalUnit != "px" || total <= 0)
+            {
+                int absoluteCount = units.Count(unit => unit == "px");
+                double inferredAbsoluteTotal = absoluteTotal +
+                    (absoluteCount > 0 ? absoluteTotal / absoluteCount * unspecified : 0);
+                total = inferredAbsoluteTotal > 0
+                    ? inferredAbsoluteTotal / (percentageTotal < 100 ? 1 - percentageTotal / 100 : 1)
+                    : 100;
+            }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (units[i] == "%")
+                {
+                    values[i] = values[i] * total / 100;
+                }
+            }
+            double knownTotal = values.Sum(value => value ?? 0);
+            double availableWidth = unspecified > 0 ? Math.Max(0, total - knownTotal) / unspecified : 0;
+            var weights = values.Select(value => value ?? (availableWidth > 0 ? availableWidth : total / values.Length)).ToArray();
+            double weightTotal = weights.Sum();
+            if (weightTotal <= 0 || double.IsInfinity(weightTotal))
+            {
+                return null;
+            }
+            var percentages = weights.Select(value => value / weightTotal * 100).ToArray();
+            var colgroup = document.CreateElement("colgroup");
+            foreach (var percentage in percentages)
+            {
+                var col = document.CreateElement("col");
+                col.GetStyle().SetWidth(FormatTablePercentage(percentage));
+                colgroup.AppendChild(col);
+            }
+            target.AppendChild(colgroup);
+            return percentages;
+        }
+
+        private static int ReadTableSpan(string text, int maximum, bool zeroMeansRemaining)
+        {
+            var match = Regex.Match(text ?? "", @"^[ \t\r\n\f]*\+?([0-9]+)");
+            if (!match.Success)
+            {
+                return 1;
+            }
+
+            int value = 0;
+            foreach (char digit in match.Groups[1].Value)
+            {
+                value = Math.Min(maximum, value * 10 + digit - '0');
+                if (value == maximum)
+                {
+                    return maximum;
+                }
+            }
+            return value == 0 ? (zeroMeansRemaining ? maximum : 1) : value;
+        }
+
+        private static bool HasExplicitWidth(IElement element)
+        {
+            string widthAttribute = element.GetAttribute("width");
+            var style = element.GetStyle();
+            return IsConstrainedWidth(widthAttribute) || style != null &&
+                new[] { "width", "min-width", "max-width" }
+                    .Any(property => IsConstrainedWidth(style.GetPropertyValue(property)));
+        }
+
+        private static bool IsConstrainedWidth(string width) =>
+            !string.IsNullOrWhiteSpace(width) && !width.Trim().Equals("auto", StringComparison.OrdinalIgnoreCase);
+
+        private static bool IsStrikeThrough(IElement element)
+        {
+            return HasTextDecoration(element, "line-through");
         }
 
         private static bool IsUnderline(IElement element)
         {
-            if (element.GetStyle() != null && (!string.IsNullOrEmpty(element.GetStyle().GetTextDecoration()) && element.GetStyle().GetTextDecoration().Equals("underline", StringComparison.InvariantCultureIgnoreCase) ||
-                                          !string.IsNullOrEmpty(element.GetStyle().GetPropertyValue("text-decoration-line")) && element.GetStyle().GetPropertyValue("text-decoration-line").Equals("underline", StringComparison.InvariantCultureIgnoreCase)))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return HasTextDecoration(element, "underline");
+        }
+
+        private static bool HasTextDecoration(IElement element, string decoration)
+        {
+            var lines = element.GetStyle()?.GetPropertyValue("text-decoration-line");
+            return !string.IsNullOrEmpty(lines) &&
+                lines.Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Contains(decoration, StringComparer.OrdinalIgnoreCase);
         }
 
 
         /// <summary>
-        /// Returns the table as a normalized table object. Includes replacing row and col spans by actual empty cells
+        /// Resolves cell positions and spans within each source row group, without allocating a rectangular matrix.
         /// </summary>
         /// <param name="table">Table to normalize</param>
         /// <returns>Normalized table</returns>
         private Table NormalizeTable(IElement table)
         {
-            // Determine the table dimension, item1 = max cols / item 2 = max rows
-            var tableDimension = GetTableDimensions(table);
-
-            // Create table object
-            Table normalizedTable = new Table()
+            var normalizedTable = new Table();
+            var rows = ((IHtmlTableElement)table).Rows;
+            foreach (var group in rows.GroupBy(row => row.ParentElement))
             {
-                ClassName = table.ClassName,
-            };
-
-            // A 2 dimensional array to hold the normalized table cells
-            IElementCell[,] cells = new IElementCell[tableDimension.Item2, tableDimension.Item1];
-            // An array to hold the header cells (if any)
-            IElementCell[] headerCells = new IElementCell[tableDimension.Item1];
-
-            var tableBodyElement = (table as IHtmlTableElement).Bodies[0];
-            var rows = tableBodyElement.Children.Where(p => p.TagName.Equals("tr", StringComparison.InvariantCultureIgnoreCase));
-            if (rows != null && rows.Any())
-            {
-                int rowPos = 0;
-                foreach (var row in rows)
+                var groupRows = group.ToArray();
+                var occupiedUntil = new Dictionary<int, int>();
+                for (int rowIndex = 0; rowIndex < groupRows.Length; rowIndex++)
                 {
-                    // We assume a table header only has TH cells
-                    var tableHeaders = row.Children.Where(p => p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
-                    var cellsInTableHeader = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase));
-                    if (tableHeaders != null && tableHeaders.Any() && !cellsInTableHeader.Any())
+                    var row = new List<TableCell>();
+                    int column = 0;
+                    foreach (var element in groupRows[rowIndex].Cells)
                     {
-                        int colPos = 0;
-                        foreach (var tableHeader in tableHeaders)
+                        while (occupiedUntil.TryGetValue(column, out int endRow) && endRow > rowIndex)
                         {
-                            headerCells[colPos] = new IElementCell(tableHeader);
-
-                            //Check header styles
-                            if (tableHeader.GetStyle() != null && !string.IsNullOrEmpty(tableHeader.GetStyle().GetTextAlign()))
+                            column++;
+                        }
+                        int columnSpan = ReadTableSpan(element.GetAttribute("colspan"), 1000, false);
+                        int rowSpan = ReadTableSpan(element.GetAttribute("rowspan"), Math.Min(65534, groupRows.Length - rowIndex), true);
+                        for (int offset = 1; offset < columnSpan; offset++)
+                        {
+                            if (occupiedUntil.TryGetValue(column + offset, out int endRow) && endRow > rowIndex)
                             {
-                                headerCells[colPos].TextAlign = tableHeader.GetStyle().GetTextAlign();
-                            }
-
-                            // Prep for next cell
-                            colPos++;
-
-                            var colSpan = tableHeader.GetAttribute("colspan");
-                            if (!string.IsNullOrEmpty(colSpan) && colSpan != "1" && int.TryParse(colSpan, out int columnCellsToAdd))
-                            {
-                                for (int i = 0; i < columnCellsToAdd - 1; i++)
-                                {
-                                    headerCells[colPos] = new IElementCell(null);
-                                    colPos++;
-                                }
+                                LogWarning(LogStrings.Warning_OverlappingTableSpans, LogStrings.Heading_BuiltInFunctions);
+                                columnSpan = offset;
+                                break;
                             }
                         }
-                    }
-                    else
-                    {
-                        // Support model of TD cells mixed with TH
-                        var tableCells = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase) || p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
-                        if (tableCells != null && tableCells.Any())
+                        row.Add(new TableCell { Element = element, Column = column, ColumnSpan = columnSpan, RowSpan = rowSpan });
+                        for (int offset = 0; offset < columnSpan; offset++)
                         {
-                            int colPos = 0;
-                            foreach (var tableCell in tableCells)
-                            {
-
-                                if (cells[rowPos, colPos] != null)
-                                {
-                                    // cells was already filled due to previous row span expansion. Find next free cell on this row
-                                    while ((cells[rowPos, colPos] != null) && colPos < tableDimension.Item1)
-                                    {
-                                        colPos++;
-                                    }
-                                }
-
-                                cells[rowPos, colPos] = new IElementCell(tableCell);
-
-                                //Check header styles
-                                if (tableCell.GetStyle() != null && !string.IsNullOrEmpty(tableCell.GetStyle().GetTextAlign()))
-                                {
-                                    cells[rowPos, colPos].TextAlign = tableCell.GetStyle().GetTextAlign();
-                                }
-
-                                // Prep for next cell
-                                colPos++;
-
-                                var colSpan = tableCell.GetAttribute("colspan");
-                                var rowSpan = tableCell.GetAttribute("rowspan");
-
-                                // We do have both col and row span set
-                                if (!string.IsNullOrEmpty(colSpan) && colSpan != "1" && int.TryParse(colSpan, out int columnCellsToAdd) &&
-                                    !string.IsNullOrEmpty(rowSpan) && rowSpan != "1" && int.TryParse(rowSpan, out int rowCellsToAdd))
-                                {
-                                    int tempRowPos = rowPos;
-                                    for (int j = 0; j < rowCellsToAdd; j++)
-                                    {
-                                        int tempColPos = colPos - 1;
-                                        for (int i = 0; i < columnCellsToAdd; i++)
-                                        {
-                                            if (cells[tempRowPos, tempColPos] == null)
-                                            {
-                                                cells[tempRowPos, tempColPos] = new IElementCell(null);
-                                            }
-                                            tempColPos++;
-                                        }
-                                        tempRowPos++;
-                                    }
-                                }
-                                else
-                                {
-                                    if (!string.IsNullOrEmpty(colSpan) && colSpan != "1" && int.TryParse(colSpan, out int columnCellsToAdd2))
-                                    {
-                                        for (int i = 0; i < columnCellsToAdd2 - 1; i++)
-                                        {
-                                            cells[rowPos, colPos] = new IElementCell(null);
-                                            colPos++;
-                                        }
-                                    }
-
-                                    if (!string.IsNullOrEmpty(rowSpan) && rowSpan != "1" && int.TryParse(rowSpan, out int rowCellsToAdd2))
-                                    {
-                                        int tempRowPos = rowPos + 1;
-                                        for (int i = 0; i < rowCellsToAdd2 - 1; i++)
-                                        {
-                                            cells[tempRowPos, colPos - 1] = new IElementCell(null);
-                                            tempRowPos++;
-                                        }
-                                    }
-                                }
-                            }
-
-                            // Only increase row pos for actual rows as header is handled differently
-                            rowPos++;
+                            occupiedUntil[column + offset] = rowIndex + rowSpan;
                         }
-                        else
-                        {
-                            // Deals with rows formatted without TD or TH tags (e.g.  <tr class="ms-rteTableOddRow-default"></tr>)
-                            rowPos++;
-                        }
-                    }                    
-                }
-            }
-
-            normalizedTable.Header = headerCells;
-            normalizedTable.Cells = cells;
-
-            // Let's assume there's badly shaped tables as well...fill the empty cells with an empty cell value so they're correctly replaced
-            for (int rowPos = 0; rowPos < normalizedTable.Cells.GetLength(0); rowPos += 1)
-            {
-                for (int colPos = 0; colPos < normalizedTable.Cells.GetLength(1); colPos += 1)
-                {
-                    if (normalizedTable.Cells[rowPos, colPos] == null)
-                    {
-                        normalizedTable.Cells[rowPos, colPos] = new IElementCell(null);
+                        column += columnSpan;
+                        normalizedTable.Columns = Math.Max(normalizedTable.Columns, column);
                     }
+                    normalizedTable.Rows.Add(row);
                 }
             }
-
-            if (normalizedTable.HasHeader)
-            {
-                for (int colPos = 0; colPos < normalizedTable.Header.GetLength(0); colPos += 1)
-                {
-                    if (normalizedTable.Header[colPos] == null)
-                    {
-                        normalizedTable.Header[colPos] = new IElementCell(null);
-                    }
-                }
-            }
-
-            // Determine insertion point
-            if (table.ParentElement != null)
-            {
-                var startNode = table.ParentElement;
-                IElement lastTableElement = null;
-
-                // walk up the parent tree
-                while (startNode != null)
-                {
-                    if (startNode.TagName.Equals("table", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        lastTableElement = startNode;
-                    }
-                    startNode = startNode.ParentElement;
-                }
-                
-                if (lastTableElement != null)
-                {
-                    // This table was nested, let's take the parent element of the 'highest' table as insertion point
-                    normalizedTable.InsertionPoint = lastTableElement.ParentElement;
-                }
-
-            }
+            var firstRow = normalizedTable.Rows.FirstOrDefault();
+            normalizedTable.ClassName = GetTableClassName(table,
+                firstRow != null && firstRow.Count > 0 && firstRow.All(cell => cell.Element.TagName == "TH"));
 
             return normalizedTable;
         }
 
-        /// <summary>
-        /// Gets the dimensions of a table, excluding the header
-        /// </summary>
-        /// <param name="table">Table to investigate</param>
-        /// <returns>Tuple containing the columns and rows</returns>
-        private static (int columns, int rows) GetTableDimensions(IElement table)
-        {
-            int maxCols = 0;
-            int maxRows = 0;
-            bool hasHeader = false;
-
-            var tableBodyElement = (table as IHtmlTableElement).Bodies[0];
-            var rows = tableBodyElement.Children.Where(p => p.TagName.Equals("tr", StringComparison.InvariantCultureIgnoreCase));
-            if (rows != null && rows.Any())
-            {
-                maxRows = rows.Count();
-                foreach (var row in rows)
-                {
-                    // Do we have a header
-                    var tableHeaders = row.Children.Where(p => p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
-
-                    var tdInHeader = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase));
-                    int tdCellsInHeader = 0;
-                    if (tdInHeader != null)
-                    {
-                        tdCellsInHeader = tdInHeader.Count();
-                    }
-
-                    if (tableHeaders != null && tableHeaders.Any() && tdCellsInHeader == 0)
-                    {
-                        hasHeader = true;
-                    }
-
-                    // It's allowed to mix TH and TD in a table row
-                    var tableCells = row.Children.Where(p => p.TagName.Equals("td", StringComparison.InvariantCultureIgnoreCase) || p.TagName.Equals("th", StringComparison.InvariantCultureIgnoreCase));
-                    if (tableCells != null && tableCells.Any())
-                    {
-                        int colCount = 0;
-                        foreach (var tableCell in tableCells)
-                        {
-                            var colSpan = tableCell.GetAttribute("colspan");
-                            if (!string.IsNullOrEmpty(colSpan) && colSpan != "1")
-                            {
-                                if (int.TryParse(colSpan, out int columnCellsToAdd))
-                                {
-                                    colCount = colCount + columnCellsToAdd;
-                                }
-                                else
-                                {
-                                    colCount++;
-                                }
-                            }
-                            else
-                            {
-                                colCount++;
-                            }
-                        }
-
-                        if (colCount > maxCols)
-                        {
-                            maxCols = colCount;
-                        }
-                    }
-                }
-            }
-
-            if (hasHeader)
-            {
-                // remove one row as header is handled separately
-                maxRows--;
-            }
-
-            // If there's a TR then there must be one cell
-            if (maxRows > 0 && maxCols == 0)
-            {
-                maxCols = 1;
-            }
-
-            return (maxCols, maxRows);
-        }
         #endregion
     }
 }

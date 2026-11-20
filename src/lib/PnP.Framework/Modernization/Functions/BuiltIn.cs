@@ -2,12 +2,15 @@
 using AngleSharp.Html.Parser;
 using AngleSharp.Io;
 using Microsoft.SharePoint.Client;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PnP.Framework.Modernization.Telemetry;
 using PnP.Framework.Modernization.Transform;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Xml.Linq;
 using PnPCore = PnP.Core.Model.SharePoint;
 
@@ -24,6 +27,7 @@ namespace PnP.Framework.Modernization.Functions
         private BaseTransformationInformation baseTransformationInformation;
         private UrlTransformator urlTransformator;
         private UserTransformator userTransformator;
+        private readonly Dictionary<string, string> sourceThemeColors = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         #region Construction
         /// <summary>
@@ -94,6 +98,20 @@ namespace PnP.Framework.Modernization.Functions
             }
 
             return System.Web.HttpUtility.HtmlEncode(text).Replace("&quot;", @"\&quot;").Replace(":", "&#58;").Replace("@", "%40");
+        }
+
+        /// <summary>
+        /// Escapes text for use inside a JSON string without adding surrounding quotes.
+        /// </summary>
+        /// <param name="text">Text to escape</param>
+        /// <returns>JSON string content safe for the subsequent HTML decoding step</returns>
+        [FunctionDocumentation(Description = "Escapes text inside a JSON string without adding surrounding quotes.",
+                               Example = "{EncodedText} = JsonEncode({Text})")]
+        [InputDocumentation(Name = "{Text}", Description = "Text to escape")]
+        [OutputDocumentation(Name = "{EncodedText}", Description = "Escaped JSON string content")]
+        public string JsonEncode(string text)
+        {
+            return System.Web.HttpUtility.JavaScriptStringEncode(text);
         }
 
         /// <summary>
@@ -268,7 +286,7 @@ namespace PnP.Framework.Modernization.Functions
         }
 
         /// <summary>
-        /// Wiki html rewrite to work in RTE
+        /// Wiki html rewrite to work in RTE, preserving foreground and background colors from the source web's classic theme.
         /// </summary>
         /// <param name="text">Wiki html to rewrite</param>
         /// <param name="usePlaceHolders"></param>
@@ -276,7 +294,7 @@ namespace PnP.Framework.Modernization.Functions
         [FunctionDocumentation(Description = "Rewrites wiki page html to be compliant with the html supported by the client side text part.",
                                Example = "{CleanedText} = TextCleanup({Text},{UsePlaceHolders})")]
         [InputDocumentation(Name = "{Text}", Description = "Original wiki html content")]
-        [InputDocumentation(Name = "{UsePlaceHolders}", Description = "Parameter indicating if placeholders must be included for unsupported img/iframe elements inside wiki html")]
+        [InputDocumentation(Name = "{UsePlaceHolders}", Description = "Parameter indicating if placeholders must be included for iframe elements. Images are preserved for subsequent CK5 inline conversion.")]
         [OutputDocumentation(Name = "{CleanedText}", Description = "Html compliant with client side text part")]
         public string TextCleanup(string text, string usePlaceHolders)
         {
@@ -285,17 +303,65 @@ namespace PnP.Framework.Modernization.Functions
                 return "";
             }
 
-            // Rewrite url's if needed
-            if (!this.baseTransformationInformation.SkipUrlRewrite)
-            {
-                text = this.urlTransformator.Transform(text);
-            }
-
             bool usePlaceHolder = true;
 
             bool.TryParse(usePlaceHolders, out usePlaceHolder);
 
-            return new HtmlTransformator(base.RegisteredLogObservers).Transform(text, usePlaceHolder);
+            return InlineImageTransformator.PreserveImages(text, html =>
+            {
+                if (!this.baseTransformationInformation.SkipUrlRewrite)
+                {
+                    html = this.urlTransformator.Transform(html);
+                }
+                return new HtmlTransformator(base.RegisteredLogObservers, ResolveSourceThemeColor).Transform(html, usePlaceHolder);
+            });
+        }
+
+        private string ResolveSourceThemeColor(string shadeName)
+        {
+            if (!sourceThemeColors.TryGetValue(shadeName, out var color))
+            {
+                var context = sourceClientContext ?? targetClientContext;
+                var shade = context.Web.ThemeInfo.GetThemeShadeByName(shadeName);
+                context.ExecuteQueryRetry();
+                var value = shade.Value;
+                if (string.IsNullOrEmpty(value) || (value.Length != 6 && value.Length != 8) ||
+                    !value.All(Uri.IsHexDigit))
+                {
+                    throw new InvalidOperationException($"The source theme returned an invalid color for '{shadeName}'.");
+                }
+
+                // Classic RTE foreground rules force opacity to 1, even for ARGB theme values.
+                color = "#" + value.Substring(value.Length - 6);
+                sourceThemeColors.Add(shadeName, color);
+            }
+            return color;
+        }
+
+        internal string TransformInlineImages(string text, bool externalImagesOnly = false, Func<Uri, string> importExternalImage = null)
+        {
+            var sourceUrl = new Uri((sourceClientContext ?? targetClientContext).Url.TrimEnd('/') + "/");
+            if (baseTransformationInformation.SourcePage != null &&
+                baseTransformationInformation.SourcePage.FieldValues.TryGetValue(Constants.FileRefField, out var fileRef) &&
+                fileRef is string pagePath && !string.IsNullOrEmpty(pagePath))
+            {
+                sourceUrl = new Uri(sourceUrl, pagePath);
+            }
+
+            var sourceOrigins = new[]
+            {
+                new Uri((sourceClientContext ?? targetClientContext).Url),
+                new Uri((sourceClientContext ?? targetClientContext).Web.GetUrl())
+            };
+            var targetOrigins = new[] { new Uri(targetClientContext.Url), new Uri(targetClientContext.Web.GetUrl()) };
+            return new InlineImageTransformator(clientSidePage, sourceUrl,
+                image => targetOrigins.Any(origin => origin.Authority.Equals(image.Authority, StringComparison.OrdinalIgnoreCase)) &&
+                         !sourceOrigins.Any(origin => origin.Authority.Equals(image.Authority, StringComparison.OrdinalIgnoreCase))
+                    ? image.AbsolutePath
+                    : ReturnCrossSiteRelativePath(image.AbsolutePath),
+                url => baseTransformationInformation.SkipUrlRewrite ? url : urlTransformator.Transform(url),
+                RegisteredLogObservers, ImageLookup, importExternalImage,
+                sourceOrigins.Concat(targetOrigins)).Transform(text, externalImagesOnly);
         }
 
         /// <summary>
@@ -556,7 +622,7 @@ namespace PnP.Framework.Modernization.Functions
         /// <param name="listId">Id of the list</param>
         /// <param name="xmlDefinition">Webpart view definition</param>
         /// <returns>Id of the detected view if found or otherwise the id of the default list view</returns>
-        [FunctionDocumentation(Description = "Detects the list view id that was used by the webpart by mapping the web part xmldefinition to the list views. If no view found the list default view id is returned.",
+        [FunctionDocumentation(Description = "Detects the list view id that was used by the webpart by mapping the web part xmldefinition to the visible list views. If no matching view is found, the list default view id is returned. A warning is logged when the fallback view's query, fields and row limit cannot be matched to the source.",
                                Example = "{ListViewId} = ListDetectUsedView({ListId},{XmlDefinition})")]
         [InputDocumentation(Name = "{ListId}", Description = "Guid of the list to analyze")]
         [InputDocumentation(Name = "{XmlDefinition}", Description = "XmlDefinition attribute of the XSLTListViewWebPart")]
@@ -635,8 +701,24 @@ namespace PnP.Framework.Modernization.Functions
                 return view.Id.ToString();
             }
 
-            // No matching view found, so proceed with the default view
-            return list.DefaultView.Id.ToString();
+            var defaultViewId = list.DefaultView.Id;
+            var defaultViewXml = list.Views.FirstOrDefault(view => view.Id == defaultViewId)?.ListViewXml;
+            var defaultViewElement = defaultViewXml != null ? XElement.Parse(defaultViewXml) : null;
+
+            // The matching loop can fall back even for identical views with absent optional elements.
+            bool matchesDefaultView = defaultViewElement != null && new[] { "Query", "ViewFields", "RowLimit" }.All(name =>
+            {
+                var sourceElement = webPartViewElement.Descendants(name).FirstOrDefault();
+                var defaultElement = defaultViewElement.Descendants(name).FirstOrDefault();
+                return sourceElement == null && defaultElement == null ||
+                    sourceElement != null && defaultElement != null && XmlComparer.AreEqual(sourceElement, defaultElement).Success;
+            });
+
+            if (!matchesDefaultView)
+            {
+                LogWarning($"No matching visible view was found for list '{listId}'. Using default view '{defaultViewId}'; the source web part's filters, sorting, columns and row limit may not be preserved. Review the destination web part and configure a suitable view.", LogStrings.Heading_BuiltInFunctions);
+            }
+            return defaultViewId.ToString();
         }
 
         #endregion
@@ -647,7 +729,7 @@ namespace PnP.Framework.Modernization.Functions
         /// </summary>
         /// <param name="serverRelativeImagePath">Server relative path of the image</param>
         /// <returns>A set of image properties</returns>
-        [FunctionDocumentation(Description = "Does lookup a file based on the given server relative path and return needed properties of the file. Returns null if file was not found.",
+        [FunctionDocumentation(Description = "Looks up image properties by server relative path. Returns empty file identities and numeric defaults when the image file was not found.",
                                Example = "ImageLookup({ServerRelativeFileName})")]
         [InputDocumentation(Name = "{ServerRelativeFileName}", Description = "Server relative file name of the image")]
         [OutputDocumentation(Name = "{ImageListId}", Description = "Id of the list holding the file")]
@@ -692,23 +774,27 @@ namespace PnP.Framework.Modernization.Functions
                 results.Add("ImageListId", pageHeaderImage.ListId.ToString());
                 results.Add("ImageUniqueId", pageHeaderImage.UniqueId.ToString());
 
-                if (pageHeaderImage.Properties.FieldValues.ContainsKey("vti_lastheight"))
+                // Pages and image files created entirely through programmatic flows can bypass the
+                // post-save processing that populates vti_lastheight and vti_lastwidth. Treat those
+                // dimensions as unknown so transformation can continue for these customer edge cases.
+                results.Add("ImageHeight", "-1");
+                results.Add("ImageWidth", "-1");
+
+                if (pageHeaderImage.Properties.FieldValues.TryGetValue("vti_lastheight", out var heightValue))
                 {
-                    var height = pageHeaderImage.Properties.FieldValues["vti_lastheight"].ToString();
-                    if (string.IsNullOrEmpty(height) || height == "0")
+                    var height = heightValue?.ToString();
+                    if (!string.IsNullOrEmpty(height) && height != "0")
                     {
-                        height = "-1";
+                        results["ImageHeight"] = height;
                     }
-                    results.Add("ImageHeight", height);
                 }
-                if (pageHeaderImage.Properties.FieldValues.ContainsKey("vti_lastwidth"))
+                if (pageHeaderImage.Properties.FieldValues.TryGetValue("vti_lastwidth", out var widthValue))
                 {
-                    var width = pageHeaderImage.Properties.FieldValues["vti_lastwidth"].ToString();
-                    if (string.IsNullOrEmpty(width) || width == "0")
+                    var width = widthValue?.ToString();
+                    if (!string.IsNullOrEmpty(width) && width != "0")
                     {
-                        width = "-1";
+                        results["ImageWidth"] = width;
                     }
-                    results.Add("ImageWidth", width);
                 }
 
 
@@ -718,8 +804,14 @@ namespace PnP.Framework.Modernization.Functions
             {
                 if (ex.ServerErrorTypeName == "System.IO.FileNotFoundException")
                 {
-                    // Provided image was not found, should not happen
-                    return null;
+                    // Keep the original image URL when its file is missing, but still resolve
+                    // the required numeric tokens in the modern Image web part mapping.
+                    LogWarning($"Image file was not found; retaining its source URL: {serverRelativeImagePath}", LogStrings.Heading_BuiltInFunctions);
+                    results["ImageListId"] = "";
+                    results["ImageUniqueId"] = "";
+                    results["ImageHeight"] = "-1";
+                    results["ImageWidth"] = "-1";
+                    return results;
                 }
                 else
                 {
@@ -835,23 +927,26 @@ namespace PnP.Framework.Modernization.Functions
         #endregion
 
         #region DocumentEmbed functions
-        [FunctionDocumentation(Description = "Does lookup a file based on the given server relative path and return needed properties of the file. Returns null if file was not found.",
+        [FunctionDocumentation(Description = "Looks up file properties by server relative path. Returns empty metadata when the path is empty or the file cannot be found, allowing mappings to retain the document URL. A missing file is logged as a warning; the document itself is not recovered.",
                                Example = "DocumentEmbedLookup({ServerRelativeFileName})")]
         [InputDocumentation(Name = "{ServerRelativeFileName}", Description = "Server relative file name")]
+        [OutputDocumentation(Name = "{DocumentWeb}", Description = "Server relative URL of the web holding the file")]
         [OutputDocumentation(Name = "{DocumentListId}", Description = "Id of the list holding the file")]
         [OutputDocumentation(Name = "{DocumentUniqueId}", Description = "UniqueId of the file")]
         [OutputDocumentation(Name = "{DocumentAuthor}", Description = "User principal name of the document author")]
         [OutputDocumentation(Name = "{DocumentAuthorName}", Description = "Name of the file author")]
         public Dictionary<string, string> DocumentEmbedLookup(string serverRelativeUrl)
         {
-            Dictionary<string, string> results = new Dictionary<string, string>();
+            Dictionary<string, string> results = new Dictionary<string, string>
+            {
+                ["DocumentWeb"] = "",
+                ["DocumentListId"] = "",
+                ["DocumentUniqueId"] = "",
+                ["DocumentAuthor"] = "",
+                ["DocumentAuthorName"] = ""
+            };
             if (string.IsNullOrEmpty(serverRelativeUrl))
             {
-                results.Add("DocumentWeb", "");
-                results.Add("DocumentListId", "");
-                results.Add("DocumentUniqueId", "");
-                results.Add("DocumentAuthor", "");
-                results.Add("DocumentAuthorName", "");
                 return results;
             }
 
@@ -872,15 +967,15 @@ namespace PnP.Framework.Modernization.Functions
 
                     contextToUse = this.clientContext.Clone(webUrlResult.Value);
                 }
+                catch (ServerException ex) when (ex.ServerErrorTypeName == "System.IO.FileNotFoundException")
+                {
+                    LogWarning(string.Format(LogStrings.Warning_DocumentEmbedLookupFileNotFound, serverRelativeUrl, this.clientContext.Url), LogStrings.Heading_BuiltInFunctions);
+                    return results;
+                }
                 catch (Exception ex)
                 {
-                    LogError(LogStrings.Error_DocumentEmbedLookup, LogStrings.Heading_BuiltInFunctions, ex);
+                    LogError($"{LogStrings.Error_DocumentEmbedLookup}: {serverRelativeUrl}", LogStrings.Heading_BuiltInFunctions, ex);
 
-                    results.Add("DocumentWeb", "");
-                    results.Add("DocumentListId", "");
-                    results.Add("DocumentUniqueId", "");
-                    results.Add("DocumentAuthor", "");
-                    results.Add("DocumentAuthorName", "");
                     return results;
                 }
             }
@@ -894,11 +989,11 @@ namespace PnP.Framework.Modernization.Functions
 
                 string[] authorParts = document.Author.LoginName.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
 
-                results.Add("DocumentWeb", contextToUse.Web.ServerRelativeUrl);
-                results.Add("DocumentListId", document.ListId.ToString());
-                results.Add("DocumentUniqueId", document.UniqueId.ToString());
-                results.Add("DocumentAuthor", authorParts.Length == 3 ? authorParts[2] : "");
-                results.Add("DocumentAuthorName", document.Author.Title);
+                results["DocumentWeb"] = contextToUse.Web.ServerRelativeUrl;
+                results["DocumentListId"] = document.ListId.ToString();
+                results["DocumentUniqueId"] = document.UniqueId.ToString();
+                results["DocumentAuthor"] = authorParts.Length == 3 ? authorParts[2] : "";
+                results["DocumentAuthorName"] = document.Author.Title;
 
                 return results;
             }
@@ -906,33 +1001,214 @@ namespace PnP.Framework.Modernization.Functions
             {
                 if (ex.ServerErrorTypeName == "System.IO.FileNotFoundException")
                 {
-                    // provided file is not retrievable...we're eating the exception this file not be used in the target web part
-                    LogError(LogStrings.Error_DocumentEmbedLookupFileNotRetrievable, LogStrings.Heading_BuiltInFunctions, ex);
-                    return null;
+                    LogWarning(string.Format(LogStrings.Warning_DocumentEmbedLookupFileNotFound, serverRelativeUrl, contextToUse.Url), LogStrings.Heading_BuiltInFunctions);
+                    return results;
                 }
                 else
                 {
-                    LogError(LogStrings.Error_DocumentEmbedLookup, LogStrings.Heading_BuiltInFunctions, ex);
+                    LogError($"{LogStrings.Error_DocumentEmbedLookup}: {serverRelativeUrl}", LogStrings.Heading_BuiltInFunctions, ex);
                     throw;
                 }
             }
         }
         #endregion
 
+        #region Media web part functions
+        [FunctionDocumentation(Description = "Resolves classic media configuration before selecting Embed or File and Media. Context takes precedence; VideoSet is consulted only when both explicit sources are empty.",
+                               Example = "ResolveMediaConfiguration({MediaSource},{VideoSetEmbedCode},{VideoSetSource},{ConfigureFromContext})")]
+        [InputDocumentation(Name = "{MediaSource}", Description = "Configured media file URL")]
+        [InputDocumentation(Name = "{VideoSetEmbedCode}", Description = "Configured iframe embed code")]
+        [InputDocumentation(Name = "{VideoSetSource}", Description = "Video document set URL")]
+        [InputDocumentation(Name = "{ConfigureFromContext}", Description = "Read media from the source page item")]
+        [OutputDocumentation(Name = "{MediaMapping}", Description = "EMBED or FILE")]
+        [OutputDocumentation(Name = "{ResolvedMediaSource}", Description = "Resolved, escaped source file path")]
+        [OutputDocumentation(Name = "{MediaEmbedJson}", Description = "Validated Embed JSON, without trusted cached markup")]
+        public Dictionary<string, string> ResolveMediaConfiguration(string mediaSource, string embedCode,
+            string videoSetSource, bool configureFromContext)
+        {
+            var media = new MediaWebPartMapping(this.clientContext, this.sourceClientContext,
+                this.baseTransformationInformation.SourcePage, base.RegisteredLogObservers);
+            return media.ResolveConfiguration(mediaSource, embedCode, videoSetSource, configureFromContext);
+        }
+
+        [FunctionDocumentation(Description = "Builds File and Media from the resolved asset's actual web and file identities. Run only in the FILE mapping after asset transfer; missing files are skipped, not represented by empty identities.",
+                               Example = "{MediaFileJson} = MediaToFileProperties({ResolvedMediaSource},{TransferredMediaSource})")]
+        [InputDocumentation(Name = "{ResolvedMediaSource}", Description = "Escaped source media path")]
+        [InputDocumentation(Name = "{TransferredMediaSource}", Description = "Path returned by asset transfer")]
+        [OutputDocumentation(Name = "{MediaFileJson}", Description = "HTML-encoded File and Media JSON")]
+        public string MediaToFileProperties(string resolvedMediaSource, string transferredMediaSource)
+        {
+            var media = new MediaWebPartMapping(this.clientContext, this.sourceClientContext,
+                this.baseTransformationInformation.SourcePage, base.RegisteredLogObservers);
+            return media.ToFileProperties(resolvedMediaSource, transferredMediaSource);
+        }
+        #endregion
+
+        #region Picture library slideshow functions
+        [FunctionDocumentation(Description = "Builds a dynamic Image Gallery carousel from a picture library slideshow. View filtering and random ordering are not preserved.",
+                               Example = "{ImageGalleryJson} = PictureLibrarySlideshowToImageGalleryProperties({LibraryGuid},{Layout},{Speed},{ShowToolbar},{ViewGuid},{Mode},{Title},{ChromeType})")]
+        [InputDocumentation(Name = "{LibraryGuid}", Description = "Picture library ID in the destination web")]
+        [InputDocumentation(Name = "{Layout}", Description = "Classic slideshow display style")]
+        [InputDocumentation(Name = "{Speed}", Description = "Seconds between slides")]
+        [InputDocumentation(Name = "{ShowToolbar}", Description = "Whether to show carousel navigation dots")]
+        [InputDocumentation(Name = "{ViewGuid}", Description = "Classic view ID, used to report unsupported view selection")]
+        [InputDocumentation(Name = "{Mode}", Description = "Classic sequential or random ordering")]
+        [InputDocumentation(Name = "{Title}", Description = "Web part title")]
+        [InputDocumentation(Name = "{ChromeType}", Description = "Classic web part chrome type")]
+        [OutputDocumentation(Name = "{ImageGalleryJson}", Description = "HTML-encoded Image Gallery JSON for the mapping pipeline")]
+        public string PictureLibrarySlideshowToImageGalleryProperties(Guid libraryGuid, string layout, int speed,
+            bool showToolbar, Guid viewGuid, string mode, string title, int chromeType)
+        {
+            if (libraryGuid == Guid.Empty)
+            {
+                throw new NotAvailableAtTargetException("The picture library slideshow has no configured destination library. This web part will be skipped.");
+            }
+
+            var library = this.clientContext.Web.GetListById(libraryGuid);
+            if (library == null)
+            {
+                throw new NotAvailableAtTargetException($"The picture library slideshow destination library {libraryGuid} was not found. This web part will be skipped.");
+            }
+            library.EnsureProperties(list => list.Title, list => list.RootFolder);
+            library.RootFolder.EnsureProperty(folder => folder.ServerRelativeUrl);
+            var listUrl = library.RootFolder.ServerRelativeUrl;
+            if (string.IsNullOrWhiteSpace(listUrl))
+            {
+                throw new NotAvailableAtTargetException("The picture library slideshow destination library has no root folder URL. This web part will be skipped.");
+            }
+
+            var autoplaySpeed = speed > 0 && speed <= 3600 ? Math.Max(2, Math.Min(10, speed)) : 5;
+            if (autoplaySpeed != speed)
+            {
+                LogWarning($"Picture library slideshow speed {speed} is rendered as {autoplaySpeed} seconds; Image Gallery supports 2 through 10 seconds.", LogStrings.Heading_BuiltInFunctions);
+            }
+            if (viewGuid != Guid.Empty)
+            {
+                LogWarning($"Picture library slideshow view {viewGuid} is not preserved. Image Gallery reads the library without the classic view's filtering or ordering.", LogStrings.Heading_BuiltInFunctions);
+            }
+            if (!string.Equals(mode, "Sequential", StringComparison.OrdinalIgnoreCase) && mode != "0")
+            {
+                LogWarning("Picture library slideshow random ordering is not preserved. Image Gallery uses its own library ordering.", LogStrings.Heading_BuiltInFunctions);
+            }
+
+            var showMetadata = layout != "0" && !string.Equals(layout, "NoTitleDesc", StringComparison.OrdinalIgnoreCase);
+            if (!showMetadata)
+            {
+                LogWarning("The classic slideshow's NoTitleDesc preference is recorded, but dynamic Image Gallery may still display image titles and descriptions. Verify caption visibility in the destination.", LogStrings.Heading_BuiltInFunctions);
+            }
+            var galleryTitle = string.IsNullOrWhiteSpace(title) ? library.Title : title;
+            // Classic chrome values: None = 2, BorderOnly = 4.
+            var showTitle = !string.IsNullOrWhiteSpace(title) && chromeType != 2 && chromeType != 4;
+            var data = new JObject
+            {
+                ["serverProcessedContent"] = new JObject
+                {
+                    ["htmlStrings"] = new JObject(),
+                    ["searchablePlainTexts"] = new JObject { ["title"] = galleryTitle },
+                    ["imageSources"] = new JObject(),
+                    ["links"] = new JObject { ["listUrl"] = listUrl },
+                    ["componentDependencies"] = new JObject { ["layoutComponentId"] = "8ac0c53c-e8d0-4e3e-87d0-7449eb0d4027" }
+                },
+                ["dataVersion"] = "1.11",
+                ["properties"] = new JObject
+                {
+                    ["layout"] = 1,
+                    ["carouselSettings"] = new JObject
+                    {
+                        ["autoplay"] = true,
+                        ["autoplaySpeed"] = autoplaySpeed,
+                        ["dots"] = showToolbar,
+                        ["lazyLoad"] = true,
+                        ["metadata"] = showMetadata,
+                        ["swipe"] = true
+                    },
+                    ["gridSettings"] = new JObject
+                    {
+                        ["imageSize"] = 2,
+                        ["imageCropping"] = 1,
+                        ["imageAspectRatio"] = 1,
+                        ["lightbox"] = false
+                    },
+                    ["imageSourceType"] = 2,
+                    ["isRecursive"] = false,
+                    ["isCdnEnabledForList"] = false,
+                    ["hasDynamicModeEnabled"] = true,
+                    ["canAlwaysSelectDocLibAsSource"] = true,
+                    ["maxImagesCount"] = 30,
+                    ["images"] = new JArray(),
+                    ["listId"] = libraryGuid.ToString(),
+                    ["listUrl"] = listUrl,
+                    ["title"] = galleryTitle,
+                    ["isTitleEnabled"] = showTitle
+                }
+            };
+
+            return EncodeWebPartMappingJson(data);
+        }
+        #endregion
+
         #region Content Embed functions
-        [SelectorDocumentation(Description = "Analyzes sourcetype and return recommended mapping.",
+        [SelectorDocumentation(Description = "Maps absolute (4) and relative (8) Page Viewer URLs to Embed; reports and skips other source types.",
                                Example = "ContentEmbedSelectorSourceType({SourceType})")]
         [InputDocumentation(Name = "{SourceType}", Description = "Sourcetype of the viewed page in pageviewerwebpart")]
         [OutputDocumentation(Name = "WebPage", Description = "The embedded content is a page")]
         [OutputDocumentation(Name = "ServerFolderOrFile", Description = "The embedded content points to a server folder or file")]
         public string ContentEmbedSelectorSourceType(string sourceType)
         {
-            if (sourceType == "4")
+            if (sourceType == "4" || sourceType == "8")
             {
                 return "WebPage";
             }
 
+            LogWarning($"Page Viewer source type '{sourceType}' cannot be embedded. Only absolute and relative web URLs are supported; this web part will be skipped.", LogStrings.Heading_BuiltInFunctions);
             return "ServerFolderOrFile";
+        }
+
+        [FunctionDocumentation(Description = "Resolves a Page Viewer URL and builds an Embed web part without bypassing destination embed restrictions.",
+                               Example = "{PageViewerJson} = PageViewerToEmbedProperties({ContentLink})")]
+        [InputDocumentation(Name = "{ContentLink}", Description = "An absolute, server-relative, web-relative, or protocol-relative HTTP(S) URL")]
+        [OutputDocumentation(Name = "{PageViewerJson}", Description = "HTML-encoded Embed JSON for the mapping pipeline")]
+        public string PageViewerToEmbedProperties(string contentLink)
+        {
+            var sourceWeb = new Uri((this.sourceClientContext ?? this.clientContext).Web.GetUrl().TrimEnd('/') + "/");
+            var address = contentLink?.Trim();
+            if (string.IsNullOrEmpty(address) || contentLink.Any(char.IsControl) || address.Contains("\\") ||
+                !Uri.TryCreate(sourceWeb, address, out var resolved) || !IsHttpUrl(resolved))
+            {
+                throw new NotAvailableAtTargetException("Page Viewer requires a valid HTTP(S) content URL. This web part will be skipped.");
+            }
+
+            // Default URL rewriting applies to source-site references, never to an unrelated external host.
+            if (string.Equals(resolved.GetLeftPart(UriPartial.Authority), sourceWeb.GetLeftPart(UriPartial.Authority), StringComparison.OrdinalIgnoreCase))
+            {
+                var rewritten = this.urlTransformator.Transform(resolved.AbsoluteUri);
+                if (!Uri.TryCreate(sourceWeb, rewritten, out resolved) || !IsHttpUrl(resolved))
+                {
+                    throw new NotAvailableAtTargetException("The rewritten Page Viewer URL is not an HTTP(S) URL. This web part will be skipped.");
+                }
+            }
+
+            LogWarning($"Page Viewer URL '{resolved.AbsoluteUri}' remains subject to the destination site's HTML Field Security and the embedded site's framing restrictions. Verify that the content can be embedded.", LogStrings.Heading_BuiltInFunctions);
+            var iframe = $"<iframe width=\"100%\" height=\"70%\" src=\"{WebUtility.HtmlEncode(resolved.AbsoluteUri)}\" allowfullscreen=\"\"></iframe>";
+            var data = new JObject
+            {
+                ["serverProcessedContent"] = new JObject
+                {
+                    ["htmlStrings"] = new JObject(),
+                    ["searchablePlainTexts"] = new JObject { ["captionText"] = string.Empty },
+                    ["imageSources"] = new JObject(),
+                    ["links"] = new JObject()
+                },
+                ["dataVersion"] = "1.0",
+                ["properties"] = new JObject
+                {
+                    ["embedCode"] = iframe,
+                    ["cachedEmbedCode"] = iframe,
+                    ["shouldScaleWidth"] = true,
+                    ["tempState"] = new JObject()
+                }
+            };
+            return EncodeWebPartMappingJson(data);
         }
 
         [SelectorDocumentation(Description = "Content editor can be transformed in various ways depending on whether a link was used, what file type was used, if script is used or not...",
@@ -1361,7 +1637,7 @@ namespace PnP.Framework.Modernization.Functions
                 text = this.urlTransformator.Transform(text);
             }
 
-            var summaryLinksHtmlTransformator = new SummaryLinksHtmlTransformator
+            var summaryLinksHtmlTransformator = new SummaryLinksHtmlTransformator(base.RegisteredLogObservers)
             {
                 WebPartTitle = webPartTitle
             };
@@ -1387,7 +1663,7 @@ namespace PnP.Framework.Modernization.Functions
         {
             Dictionary<string, string> results = new Dictionary<string, string>();
 
-            var links = new SummaryLinksHtmlTransformator().GetLinks(text);
+            var links = new SummaryLinksHtmlTransformator(base.RegisteredLogObservers).GetLinks(text);
 
             if (IsCrossSiteTransfer())
             {
@@ -1486,12 +1762,12 @@ namespace PnP.Framework.Modernization.Functions
         /// Looks up a person from the UserInfo list and returns the needed details
         /// </summary>
         /// <param name="person">User account to lookup (in i:0#.f|membership|joe@contoso.onmicrosoft.com format)</param>
-        /// <returns>Information about the found user</returns>
+        /// <returns>Information about the found user, or empty person properties when the account is null or empty</returns>
         [FunctionDocumentation(Description = "Looks up a person from the UserInfo list and returns the needed details",
                                Example = "LookupPerson({ContactLoginName})")]
         [InputDocumentation(Name = "{ContactLoginName}", Description = "User account to lookup (in i:0#.f|membership|joe@contoso.onmicrosoft.com format)")]
         [OutputDocumentation(Name = "PersonName", Description = "Name of the user")]
-        [OutputDocumentation(Name = "PersonEmail", Description = "User's email")]
+        [OutputDocumentation(Name = "PersonEmail", Description = "User's email, or account name when the email is empty")]
         [OutputDocumentation(Name = "PersonUPN", Description = "UPN of the user")]
         [OutputDocumentation(Name = "PersonRole", Description = "Role of the user")]
         [OutputDocumentation(Name = "PersonDepartment", Description = "User's department")]
@@ -1505,6 +1781,13 @@ namespace PnP.Framework.Modernization.Functions
 
             if (string.IsNullOrEmpty(person))
             {
+                result.Add("PersonName", "");
+                result.Add("PersonEmail", "");
+                result.Add("PersonUPN", "");
+                result.Add("PersonRole", "");
+                result.Add("PersonDepartment", "");
+                result.Add("PersonPhone", "");
+                result.Add("PersonSip", "");
                 return result;
             }
 
@@ -1551,7 +1834,8 @@ namespace PnP.Framework.Modernization.Functions
                     result.Add("PersonDepartment", loadedUser["Department"] != null ? loadedUser["Department"].ToString() : "");
                     result.Add("PersonPhone", loadedUser["WorkPhone"] != null ? loadedUser["WorkPhone"].ToString() : "");
                     result.Add("PersonSip", loadedUser["SipAddress"] != null ? loadedUser["SipAddress"].ToString() : "");
-                    result.Add("PersonEmail", loadedUser["EMail"] != null ? loadedUser["EMail"].ToString() : "");
+                    var email = loadedUser["EMail"]?.ToString();
+                    result.Add("PersonEmail", string.IsNullOrWhiteSpace(email) ? result["PersonUPN"] : email);
                     handled = true;
                 }
             }

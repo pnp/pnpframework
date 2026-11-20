@@ -82,7 +82,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             using (var scope = new PnPMonitoredScope(this.Name))
             {
-                web.Context.Load(web, w => w.AllProperties, w => w.ServerRelativeUrl);
+                web.Context.Load(web, w => w.AllProperties, w => w.Url);
                 web.Context.ExecuteQueryRetry();
 
                 var entries = new List<PropertyBagEntry>();
@@ -105,7 +105,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
                 foreach (PropertyBagEntry propbagEntry in template.PropertyBagEntries)
                 {
-                    propbagEntry.Value = Tokenize(propbagEntry.Value, web.ServerRelativeUrl);
+                    propbagEntry.Value = Tokenize(propbagEntry.Value, web.Url);
                 }
             }
             return template;

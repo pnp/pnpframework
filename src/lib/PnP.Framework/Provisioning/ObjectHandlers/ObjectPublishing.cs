@@ -333,10 +333,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
 
                 // Set allowed web templates
-                var availableWebTemplates = template.Publishing.AvailableWebTemplates.Select(t => new WebTemplateEntity() { LanguageCode = t.LanguageCode.ToString(), TemplateName = t.TemplateName }).ToList();
-                if (availableWebTemplates.Any())
+                bool propertyBagWriteBlocked = applyingInformation.PropertyBagWriteAllowed == false;
+                if (template.Publishing.AvailableWebTemplates.Any())
                 {
-                    web.SetAvailableWebTemplates(availableWebTemplates);
+                    if (propertyBagWriteBlocked)
+                    {
+                        ReportSkippedPropertyBagWrite?.Invoke("available web templates");
+                    }
+                    else
+                    {
+                        var availableWebTemplates = template.Publishing.AvailableWebTemplates.Select(t => new WebTemplateEntity() { LanguageCode = t.LanguageCode.ToString(), TemplateName = t.TemplateName }).ToList();
+                        web.SetAvailableWebTemplates(availableWebTemplates);
+                    }
                 }
 
                 if (template.Publishing.DesignPackage != null)
@@ -356,18 +364,25 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     site.InstallSolution(package.PackageGuid, tempFileName, package.MajorVersion, package.MinorVersion);
                     System.IO.File.Delete(tempFileName);
                 }
-                // Set allowed page layouts
-                var availablePageLayouts = template.Publishing.PageLayouts.Select(p => p.Path);
-                if (availablePageLayouts.Any())
+                if (!propertyBagWriteBlocked)
                 {
-                    web.SetAvailablePageLayouts(site.RootWeb, availablePageLayouts);
-                }
+                    // Set allowed page layouts
+                    var availablePageLayouts = template.Publishing.PageLayouts.Select(p => p.Path);
+                    if (availablePageLayouts.Any())
+                    {
+                        web.SetAvailablePageLayouts(site.RootWeb, availablePageLayouts);
+                    }
 
-                // Set default page layout, if any
-                var defaultPageLayout = template.Publishing.PageLayouts.FirstOrDefault(p => p.IsDefault);
-                if (defaultPageLayout != null)
+                    // Set default page layout, if any
+                    var defaultPageLayout = template.Publishing.PageLayouts.FirstOrDefault(p => p.IsDefault);
+                    if (defaultPageLayout != null)
+                    {
+                        web.SetDefaultPageLayoutForSite(site.RootWeb, defaultPageLayout.Path);
+                    }
+                }
+                else if (template.Publishing.PageLayouts.Any())
                 {
-                    web.SetDefaultPageLayoutForSite(site.RootWeb, defaultPageLayout.Path);
+                    ReportSkippedPropertyBagWrite?.Invoke("publishing page layout settings");
                 }
 
 

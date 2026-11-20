@@ -436,14 +436,36 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 }
 
                 // Detect before WillProvision caches decisions, including for progress reporting.
+                // Hierarchy options can already contain a detected value from an earlier template.
+                var callerOverride = calledFromHierarchy && provisioningInfo.ApplyConfiguration != null
+                    ? provisioningInfo.ApplyConfiguration.PropertyBag.PropertyBagWriteAllowed
+                    : provisioningInfo.PropertyBagWriteAllowed;
                 if (!provisioningInfo.PropertyBagWriteAllowed.HasValue)
                 {
-                    // Hierarchy options already belong to this site collection; copy caller-owned options.
+                    // Hierarchy options already belong to this web; copy caller-owned options.
                     if (!calledFromHierarchy)
                     {
                         provisioningInfo = provisioningInfo.Clone();
                     }
-                    provisioningInfo.PropertyBagWriteAllowed = !((ClientContext)web.Context).Site.RootWeb.IsPropertyBagWriteBlocked();
+                    provisioningInfo.PropertyBagWriteAllowed = !web.IsPropertyBagWriteBlocked();
+                }
+
+                List<string> skippedPropertyBagWrites = null;
+                Action<string> reportSkippedPropertyBagWrite = null;
+                if (provisioningInfo.PropertyBagWriteAllowed == false)
+                {
+                    skippedPropertyBagWrites = new List<string>();
+                    reportSkippedPropertyBagWrite = skippedPropertyBagWrites.Add;
+
+                    // These handlers are excluded by WillProvision, so they cannot report their own skips.
+                    if (provisioningInfo.HandlersToProcess.HasFlag(Handlers.PropertyBagEntries) && template.PropertyBagEntries.Any())
+                    {
+                        skippedPropertyBagWrites.Add("property bag entries");
+                    }
+                    if (provisioningInfo.PersistTemplateInfo)
+                    {
+                        skippedPropertyBagWrites.Add("template metadata");
+                    }
                 }
 
                 var count = objectHandlers.Count(o => o.ReportProgress && o.WillProvision(web, template, provisioningInfo)) + 1;
@@ -476,6 +498,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     if (handler.WillProvision(web, template, provisioningInfo))
                     {
+                        handler.ReportSkippedPropertyBagWrite = reportSkippedPropertyBagWrite;
                         if (messagesDelegate != null)
                         {
                             handler.MessagesDelegate = messagesDelegate;
@@ -502,6 +525,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         CallWebHooks(template, tokenParser,
                             ProvisioningTemplateWebhookKind.ObjectHandlerProvisioningCompleted,
                             handler.InternalName);
+                    }
+                }
+
+                if (skippedPropertyBagWrites?.Count > 0)
+                {
+                    var templateName = string.IsNullOrEmpty(template.Id) ? template.DisplayName : template.Id;
+                    var skipped = string.Join(", ", skippedPropertyBagWrites);
+                    if (callerOverride == false)
+                    {
+                        scope.LogDebug(CoreResources.Provisioning_WebPropertyBagWritesDisabled, web.Url, templateName, skipped);
+                    }
+                    else
+                    {
+                        var warning = string.Format(CoreResources.Provisioning_WebPropertyBagWritesSkipped, web.Url, templateName, skipped);
+                        scope.LogWarning("{0}", warning);
+                        messagesDelegate?.Invoke(warning, ProvisioningMessageType.Warning);
                     }
                 }
 

@@ -1551,10 +1551,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         {
             bool isDirty = false;
 
-            // Add any UserCustomActions
-            var existingUserCustomActions = existingList.UserCustomActions;
-            web.Context.Load(existingUserCustomActions);
-            web.Context.ExecuteQueryRetry();
+            UserCustomActionCollection existingUserCustomActions = null;
 
             foreach (CustomAction userCustomAction in templateList.UserCustomActions)
             {
@@ -1565,36 +1562,40 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     continue;
                 }
 
-                // Check for existing custom actions before adding (compare by custom action name)
-                if (!existingUserCustomActions.AsEnumerable().Any(uca => uca.Name == userCustomAction.Name))
+                // Load only when the first action can actually be processed.
+                if (existingUserCustomActions == null)
                 {
-                    CreateListCustomAction(existingList, parser, userCustomAction);
-                    isDirty = true;
+                    existingUserCustomActions = existingList.UserCustomActions;
+                    web.Context.Load(existingUserCustomActions);
+                    web.Context.ExecuteQueryRetry();
+                }
+
+                // Check for existing custom actions before adding (compare by custom action name)
+                var existingCustomAction = existingUserCustomActions.FirstOrDefault(uca => uca.Name == userCustomAction.Name);
+                if (existingCustomAction == null)
+                {
+                    if (!userCustomAction.Remove && (!isNoScriptSite || userCustomAction.Enabled))
+                    {
+                        CreateListCustomAction(existingList, parser, userCustomAction, isNoScriptSite);
+                        isDirty = true;
+                    }
                 }
                 else
                 {
-                    var existingCustomAction = existingUserCustomActions.AsEnumerable().FirstOrDefault(uca => uca.Name == userCustomAction.Name);
-                    if (existingCustomAction != null)
+                    if (userCustomAction.Remove)
                     {
-                        // If the custom action already exists
-                        if (userCustomAction.Remove)
-                        {
-                            // And if we need to remove it, we simply delete it
-                            existingCustomAction.DeleteObject();
-                        }
-                        else
-                        {
-                            // Otherwise we update it, and before we force the target
-                            // registration type and ID to avoid issues
-                            userCustomAction.RegistrationType = UserCustomActionRegistrationType.List;
-                            userCustomAction.RegistrationId = existingList.Id.ToString("B").ToUpper();
-                            ObjectCustomActions.UpdateCustomAction(parser, scope, userCustomAction, existingCustomAction, isNoScriptSite);
-                            // Blank out these values again to avoid inconsistent domain model data
-                            userCustomAction.RegistrationType = UserCustomActionRegistrationType.None;
-                            userCustomAction.RegistrationId = null;
-                        }
-                        isDirty = true;
+                        existingCustomAction.DeleteObject();
                     }
+                    else
+                    {
+                        // Force the target registration type and ID for the update.
+                        userCustomAction.RegistrationType = UserCustomActionRegistrationType.List;
+                        userCustomAction.RegistrationId = existingList.Id.ToString("B").ToUpper();
+                        ObjectCustomActions.UpdateCustomAction(parser, scope, userCustomAction, existingCustomAction, isNoScriptSite);
+                        userCustomAction.RegistrationType = UserCustomActionRegistrationType.None;
+                        userCustomAction.RegistrationId = null;
+                    }
+                    isDirty = true;
                 }
             }
 
@@ -1726,7 +1727,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             }
         }
 
-        private static void CreateListCustomAction(List existingList, TokenParser parser, CustomAction userCustomAction)
+        private static void CreateListCustomAction(List existingList, TokenParser parser, CustomAction userCustomAction, bool isNoScriptSite)
         {
             UserCustomAction newUserCustomAction = existingList.UserCustomActions.Add();
 
@@ -1752,7 +1753,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
             newUserCustomAction.Name = userCustomAction.Name;
             newUserCustomAction.ImageUrl = userCustomAction.ImageUrl;
-            newUserCustomAction.Rights = userCustomAction.Rights;
+            if (userCustomAction.Rights != null || !isNoScriptSite)
+            {
+                newUserCustomAction.Rights = userCustomAction.Rights;
+            }
             newUserCustomAction.Sequence = userCustomAction.Sequence;
             newUserCustomAction.Group = userCustomAction.Group;
             newUserCustomAction.Location = userCustomAction.Location;
@@ -2016,20 +2020,26 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 ConfigureContentTypes(web, createdList, templateList, true, scope, parser);
             }
 
-            // Add any custom action
-            if (templateList.UserCustomActions.Any())
+            var addedCustomAction = false;
+            foreach (var userCustomAction in templateList.UserCustomActions)
             {
-                foreach (var userCustomAction in templateList.UserCustomActions)
+                if (userCustomAction.Remove || (isNoScriptSite && !userCustomAction.Enabled))
                 {
-                    // Per-action NoScript guard: only block non-SPFx actions
-                    if (isNoScriptSite && !userCustomAction.IsSPFxCustomAction())
-                    {
-                        scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_CustomActions_SkippingAddUpdateDueToNoScript, userCustomAction.Name);
-                        continue;
-                    }
-                    CreateListCustomAction(createdList, parser, userCustomAction);
+                    continue;
                 }
 
+                // Per-action NoScript guard: only block non-SPFx actions
+                if (isNoScriptSite && !userCustomAction.IsSPFxCustomAction())
+                {
+                    scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_CustomActions_SkippingAddUpdateDueToNoScript, userCustomAction.Name);
+                    continue;
+                }
+                CreateListCustomAction(createdList, parser, userCustomAction, isNoScriptSite);
+                addedCustomAction = true;
+            }
+
+            if (addedCustomAction)
+            {
                 web.Context.ExecuteQueryRetry();
             }
 

@@ -32,6 +32,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
 
                 template.WebSettings = new WebSettings();
                 PnPObjectsMapper.MapProperties(webSettings, template.WebSettings, expressions, true);
+                template.WebSettings.NoCrawlSpecified = webSettings.GetPublicInstancePropertyValue(nameof(WebSettings.NoCrawlSpecified)) is true;
             }
         }
 
@@ -43,7 +44,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                 var target = Activator.CreateInstance(webSettingsType, true);
                 var expressions = new Dictionary<string, IResolver>
                 {
-                    { $"{webSettingsType}.NoCrawlSpecified", new ExpressionValueResolver(() => true) },
+                    { $"{webSettingsType}.NoCrawlSpecified", new ExpressionValueResolver(() => template.WebSettings.NoCrawlSpecified) },
                     { $"{webSettingsType}.QuickLaunchEnabledSpecified", new ExpressionValueResolver(() => true) }
                 };
 

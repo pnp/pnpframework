@@ -163,6 +163,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         navigationSettings.Update(TaxonomySession.GetTaxonomySession(web.Context));
                         web.Context.ExecuteQueryRetry();
                     }
+                    else
+                    {
+                        ReportSkippedPropertyBagWrite?.Invoke("navigation settings stored in the property bag");
+                    }
 
                     if (template.Navigation.GlobalNavigation != null)
                     {

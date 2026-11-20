@@ -131,9 +131,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         public Int32 DelayAfterModernSiteCreation { get; set; }
 
         /// <summary>
-        /// Controls whether property bag writes are allowed on NoScript sites.
-        /// When null (default), the provisioning engine auto-detects on the site collection's root web.
-        /// A provisioning sequence shares the detected result across that site collection's templates and subwebs.
+        /// Controls whether property bag writes are allowed during provisioning.
+        /// When null (default), the provisioning engine auto-detects on the target web.
+        /// A provisioning sequence shares the detected result across that web's templates.
+        /// Subwebs are checked separately because the caller's permissions can differ.
         /// Set to true to attempt property bag writes without probing. This does not grant additional permissions.
         /// Set to false to skip all property bag write operations without probing.
         /// </summary>

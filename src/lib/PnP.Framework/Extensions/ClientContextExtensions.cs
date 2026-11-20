@@ -506,7 +506,13 @@ namespace Microsoft.SharePoint.Client
                 }
                 else
                 {
-                    // In case of app only or SAML
+                    // CSOM can authenticate from the context's credentials as well as from request handlers.
+                    if (clientContext.Credentials != null && Uri.Compare(originalUri, siteUrl, UriComponents.SchemeAndServer,
+                        UriFormat.UriEscaped, StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        clonedClientContext.Credentials = clientContext.Credentials;
+                    }
+
                     clonedClientContext.ExecutingWebRequest += (sender, webRequestEventArgs) =>
                     {
                         // Call the ExecutingWebRequest delegate method from the original ClientContext object, but pass along the webRequestEventArgs of 

@@ -990,9 +990,6 @@
   <data name="Provisioning_ObjectHandlers_ContentTypes_SkipDocumentSetDefaultDocuments" xml:space="preserve">
     <value>Skipping adding default documents to document set '{0}' because this is not supported on 'noscript' sites.</value>
   </data>
-  <data name="Provisioning_ObjectHandlers_ListInstances_SkipAddingOrUpdatingCustomActions" xml:space="preserve">
-    <value>Skip adding/updating custom actions because the site has "noscript" enabled.</value>
-  </data>
   <data name="GraphExtensions_SendAsyncRetry" xml:space="preserve">
     <value>Microsoft Graph API request frequency exceeded usage limits. Sleeping for {0} milliseconds before retrying.</value>
   </data>
@@ -1020,8 +1017,11 @@
   <data name="Provisioning_ObjectHandlers_WebSettings_SkipMasterPageUpdate" xml:space="preserve">
     <value>Skipping master page update because the site is configured for noscript.</value>
   </data>
-  <data name="Provisioning_ObjectHandlers_WebSettings_SkipNoCrawlUpdate" xml:space="preserve">
-    <value>Skipping NoCrawl update because the site is configured for noscript.</value>
+  <data name="Provisioning_WebPropertyBagWritesSkipped" xml:space="preserve">
+    <value>Could not confirm web property bag write access on '{0}' while applying template '{1}'. Skipped {2}.</value>
+  </data>
+  <data name="Provisioning_WebPropertyBagWritesDisabled" xml:space="preserve">
+    <value>Skipped {2} on '{0}' while applying template '{1}' because PropertyBagWriteAllowed is false.</value>
   </data>
   <data name="Provisioning_ObjectHandlers_ComposedLooks_NoSiteCheck" xml:space="preserve">
     <value>Skipping composed look handling because the site is marked as 'nosite'.</value>

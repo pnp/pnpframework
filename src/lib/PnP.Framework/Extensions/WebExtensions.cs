@@ -12,7 +12,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
+using System.Xml.Linq;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -26,6 +28,9 @@ namespace Microsoft.SharePoint.Client
         //const string SITE_STATUS_CREATING = "Creating";
         //const string SITE_STATUS_RECYCLED = "Recycled";
         const string INDEXED_PROPERTY_KEY = "vti_indexedpropertykeys";
+        private static readonly PropertyInfo ObjectPathParent = typeof(ObjectPath).GetProperty("Parent", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static readonly PropertyInfo ObjectPathName = typeof(ObjectPath).GetProperty("ObjectName", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static readonly FieldInfo ObjectPathMethodXml = typeof(ObjectPathMethod).GetField("m_sb", BindingFlags.Instance | BindingFlags.NonPublic);
 
         #region Web (site) query, creation and deletion
 
@@ -364,48 +369,147 @@ namespace Microsoft.SharePoint.Client
         /// <returns>True if property bag writes are blocked, false otherwise</returns>
         public static bool IsPropertyBagWriteBlocked(this Web web)
         {
-            // Fast path: if the site is not NoScript, property bag ops are always allowed.
-            if (!web.IsNoScriptSite())
+            var context = web.Context;
+            // Only load permissions on the caller's context when it has no queued work.
+            bool? isNoScript = web.IsPropertyAvailable(w => w.EffectiveBasePermissions) || !context.HasPendingRequest
+                ? web.IsNoScriptSite()
+                : (bool?)null;
+            if (isNoScript == false)
             {
                 return false;
             }
 
-            // Probe: attempt a sentinel write to detect tenant override.
-            string sentinelKey = "_PnP_PropertyBagProbe_" + Guid.NewGuid().ToString("N");
-            try
+            string webUrl = web.IsPropertyAvailable(w => w.Url) ? web.Url : null;
+            if (string.IsNullOrEmpty(webUrl))
             {
-                var props = web.AllProperties;
-                web.Context.Load(props);
-                web.Context.ExecuteQueryRetry();
+                if (context is ClientContext clientContext && ReferenceEquals(clientContext.Web, web))
+                {
+                    webUrl = clientContext.Url;
+                }
+                else if (!web.IsPropertyAvailable(w => w.Id) && !context.HasPendingRequest)
+                {
+                    webUrl = web.EnsureProperty(w => w.Url);
+                }
+            }
 
-                props[sentinelKey] = "probe";
-                web.Update();
-                web.Context.ExecuteQueryRetry();
+            using (var probeContext = context.Clone(webUrl ?? context.Url))
+            {
+                var probeWeb = webUrl != null ? probeContext.Web : ResolvePropertyBagProbeWeb(web, probeContext);
+                if (probeWeb == null)
+                {
+                    return true;
+                }
+                if (!(isNoScript ?? probeWeb.IsNoScriptSite()))
+                {
+                    return false;
+                }
 
-                // Write succeeded - tenant allows property bag updates.
+                string sentinelKey = "_PnP_PropertyBagProbe_" + Guid.NewGuid().ToString("N");
+                try
+                {
+                    var props = probeWeb.AllProperties;
+                    probeContext.Load(props);
+                    probeContext.ExecuteQueryRetry();
 
-                // Clean up sentinel (both steps required — CSOM quirk, see RemovePropertyBagValueInternal).
-                props[sentinelKey] = null;
-                props.FieldValues.Remove(sentinelKey);
-                web.Update();
-                web.Context.ExecuteQueryRetry();
+                    props[sentinelKey] = "probe";
+                    probeWeb.Update();
+                    probeContext.ExecuteQueryRetry();
+                }
+                catch (Exception ex)
+                {
+                    // Keep the safe default when a write cannot be confirmed.
+                    Log.Debug(Constants.LOGGING_SOURCE, ex, "Could not confirm property bag write access on '{0}'.", webUrl ?? context.Url);
+                    return true;
+                }
+
+                try
+                {
+                    RemovePropertyBagValueInternal(probeWeb, sentinelKey, checkIndexed: false);
+                }
+                catch (Exception ex)
+                {
+                    // A cleanup error does not undo the successful write.
+                    Log.Warning(Constants.LOGGING_SOURCE, ex, "The property bag probe wrote '{0}' on '{1}', but could not remove it.", sentinelKey, webUrl ?? context.Url);
+                }
 
                 return false;
             }
-            catch (ServerException ex) when (
-                ex.ServerErrorCode == -2147024891      // E_ACCESSDENIED
-                || ex.ServerErrorCode == -1
-                || (ex.ServerErrorTypeName != null && ex.ServerErrorTypeName.Contains("UnauthorizedAccessException")))
+        }
+
+        private static Web ResolvePropertyBagProbeWeb(Web web, ClientContext probeContext)
+        {
+            if (web.IsPropertyAvailable(w => w.Id))
             {
-                // Write genuinely blocked.
-                return true;
+                return probeContext.Site.OpenWebById(web.Id);
             }
-            catch
+
+            if (!(web.Context is ClientContext context))
             {
-                // Any other error (connectivity, etc.) - assume blocked to preserve
-                // the pre-existing safe-by-default behaviour.
-                return true;
+                return null;
             }
+
+            var webPath = web.Path;
+            if (webPath is ObjectPathProperty && (string)ObjectPathName?.GetValue(webPath) == $"property {nameof(List.ParentWeb)}")
+            {
+                webPath = GetListOwningWebPath(webPath);
+            }
+
+            if (ReferenceEquals(context.Web.Path, webPath))
+            {
+                return probeContext.Web;
+            }
+
+            var site = context.Site;
+            if (site.IsObjectPropertyInstantiated(nameof(Site.RootWeb)) && ReferenceEquals(site.RootWeb.Path, webPath))
+            {
+                return probeContext.Site.RootWeb;
+            }
+
+            // CSOM queues OpenWeb when creating the reference, before a URL or ID is available.
+            // Recover only the arguments of these read-only Site calls. Never replay the caller's request.
+            if (!(webPath is ObjectPathMethod path) || !ReferenceEquals(ObjectPathParent?.GetValue(path), site.Path))
+            {
+                return null;
+            }
+
+            var buffer = ObjectPathMethodXml?.GetValue(path);
+            var writeContent = buffer?.GetType().GetMethod("WriteContentTo", new[] { typeof(TextWriter) });
+            if (writeContent == null)
+            {
+                return null;
+            }
+
+            using (var xml = new StringWriter())
+            {
+                writeContent.Invoke(buffer, new object[] { xml });
+                var method = XElement.Parse(xml.ToString());
+                var parameter = method.Element("Parameters")?.Element("Parameter");
+                switch ((string)method.Attribute("Name"))
+                {
+                    case nameof(Site.OpenWeb) when (string)parameter?.Attribute("Type") == "String":
+                        return probeContext.Site.OpenWeb(parameter.Value);
+                    case nameof(Site.OpenWebById) when Guid.TryParse(parameter?.Value, out var id):
+                        return probeContext.Site.OpenWebById(id);
+                    default:
+                        return null;
+                }
+            }
+        }
+
+        private static ObjectPath GetListOwningWebPath(ObjectPath parentWebPath)
+        {
+            // A list looked up in Web.Lists belongs to that web, which may differ from context.Web.
+            if (!(ObjectPathParent?.GetValue(parentWebPath) is ObjectPathMethod listPath) ||
+                !(ObjectPathParent.GetValue(listPath) is ObjectPathProperty listsPath) ||
+                (string)ObjectPathName?.GetValue(listsPath) != $"property {nameof(Web.Lists)}")
+            {
+                return null;
+            }
+
+            var method = (string)ObjectPathName.GetValue(listPath);
+            return method == $"method {nameof(ListCollection.GetByTitle)}" || method == $"method {nameof(ListCollection.GetById)}"
+                ? (ObjectPath)ObjectPathParent.GetValue(listsPath)
+                : null;
         }
 
         private static bool IsCannotGetSiteException(Exception ex)

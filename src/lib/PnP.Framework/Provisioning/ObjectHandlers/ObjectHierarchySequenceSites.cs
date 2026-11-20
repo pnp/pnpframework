@@ -863,6 +863,10 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         private TokenParser ApplySubSiteTemplates(ProvisioningHierarchy hierarchy, TokenParser tokenParser, Model.SiteCollection sitecollection, ClientContext siteContext, Web web, TeamNoGroupSubSite subSiteObject, ProvisioningTemplateApplyingInformation provisioningTemplateApplyingInformation)
         {
+            // Retain caller overrides and callbacks, but do not inherit a parent's detected permissions.
+            provisioningTemplateApplyingInformation = provisioningTemplateApplyingInformation.Clone();
+            provisioningTemplateApplyingInformation.PropertyBagWriteAllowed = provisioningTemplateApplyingInformation.ApplyConfiguration.PropertyBag.PropertyBagWriteAllowed;
+
             var url = tokenParser.ParseString(subSiteObject.Url);
 
             var subweb = web.Webs.FirstOrDefault(t => t.ServerRelativeUrl.Equals(UrlUtility.Combine(web.ServerRelativeUrl, "/", url.Trim(new char[] { '/' }))));

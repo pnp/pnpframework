@@ -1940,12 +1940,15 @@ references:
   isSpec: "True"
   fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetSiteToInheritPageLayouts
   nameWithType: BrandingExtensions.SetSiteToInheritPageLayouts
-- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Web,System.String,System.String,System.String,System.Boolean,System.Boolean)
-  name: SetThemeByUrl(Web, String, String, String, Boolean, Boolean)
-  href: api/Microsoft.SharePoint.Client.BrandingExtensions.html#Microsoft_SharePoint_Client_BrandingExtensions_SetThemeByUrl_Web_System_String_System_String_System_String_System_Boolean_System_Boolean_
-  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Web,System.String,System.String,System.String,System.Boolean,System.Boolean)
-  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Web, System.String, System.String, System.String, System.Boolean, System.Boolean)
-  nameWithType: BrandingExtensions.SetThemeByUrl(Web, String, String, String, Boolean, Boolean)
+- uid: Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Web,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Nullable{System.Boolean})
+  name: SetThemeByUrl(Web, String, String, String, Boolean, Boolean, Nullable<Boolean>)
+  href: api/Microsoft.SharePoint.Client.BrandingExtensions.html#Microsoft_SharePoint_Client_BrandingExtensions_SetThemeByUrl_Web_System_String_System_String_System_String_System_Boolean_System_Boolean_System_Nullable_System_Boolean__
+  commentId: M:Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Web,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Nullable{System.Boolean})
+  name.vb: SetThemeByUrl(Web, String, String, String, Boolean, Boolean, Nullable(Of Boolean))
+  fullName: Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Web, System.String, System.String, System.String, System.Boolean, System.Boolean, System.Nullable<System.Boolean>)
+  fullName.vb: Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl(Web, System.String, System.String, System.String, System.Boolean, System.Boolean, System.Nullable(Of System.Boolean))
+  nameWithType: BrandingExtensions.SetThemeByUrl(Web, String, String, String, Boolean, Boolean, Nullable<Boolean>)
+  nameWithType.vb: BrandingExtensions.SetThemeByUrl(Web, String, String, String, Boolean, Boolean, Nullable(Of Boolean))
 - uid: Microsoft.SharePoint.Client.BrandingExtensions.SetThemeByUrl*
   name: SetThemeByUrl
   href: api/Microsoft.SharePoint.Client.BrandingExtensions.html#Microsoft_SharePoint_Client_BrandingExtensions_SetThemeByUrl_
@@ -9471,6 +9474,19 @@ references:
   isSpec: "True"
   fullName: Microsoft.SharePoint.Client.WebExtensions.IsNoScriptSite
   nameWithType: WebExtensions.IsNoScriptSite
+- uid: Microsoft.SharePoint.Client.WebExtensions.IsPropertyBagWriteBlocked(Web)
+  name: IsPropertyBagWriteBlocked(Web)
+  href: api/Microsoft.SharePoint.Client.WebExtensions.html#Microsoft_SharePoint_Client_WebExtensions_IsPropertyBagWriteBlocked_Web_
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.IsPropertyBagWriteBlocked(Web)
+  fullName: Microsoft.SharePoint.Client.WebExtensions.IsPropertyBagWriteBlocked(Web)
+  nameWithType: WebExtensions.IsPropertyBagWriteBlocked(Web)
+- uid: Microsoft.SharePoint.Client.WebExtensions.IsPropertyBagWriteBlocked*
+  name: IsPropertyBagWriteBlocked
+  href: api/Microsoft.SharePoint.Client.WebExtensions.html#Microsoft_SharePoint_Client_WebExtensions_IsPropertyBagWriteBlocked_
+  commentId: Overload:Microsoft.SharePoint.Client.WebExtensions.IsPropertyBagWriteBlocked
+  isSpec: "True"
+  fullName: Microsoft.SharePoint.Client.WebExtensions.IsPropertyBagWriteBlocked
+  nameWithType: WebExtensions.IsPropertyBagWriteBlocked
 - uid: Microsoft.SharePoint.Client.WebExtensions.IsPublishingWeb(Web)
   name: IsPublishingWeb(Web)
   href: api/Microsoft.SharePoint.Client.WebExtensions.html#Microsoft_SharePoint_Client_WebExtensions_IsPublishingWeb_Web_
@@ -9523,12 +9539,15 @@ references:
   isSpec: "True"
   fullName: Microsoft.SharePoint.Client.WebExtensions.PropertyBagContainsKey
   nameWithType: WebExtensions.PropertyBagContainsKey
-- uid: Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb(Web)
-  name: ReIndexWeb(Web)
-  href: api/Microsoft.SharePoint.Client.WebExtensions.html#Microsoft_SharePoint_Client_WebExtensions_ReIndexWeb_Web_
-  commentId: M:Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb(Web)
-  fullName: Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb(Web)
-  nameWithType: WebExtensions.ReIndexWeb(Web)
+- uid: Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb(Web,System.Nullable{System.Boolean})
+  name: ReIndexWeb(Web, Nullable<Boolean>)
+  href: api/Microsoft.SharePoint.Client.WebExtensions.html#Microsoft_SharePoint_Client_WebExtensions_ReIndexWeb_Web_System_Nullable_System_Boolean__
+  commentId: M:Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb(Web,System.Nullable{System.Boolean})
+  name.vb: ReIndexWeb(Web, Nullable(Of Boolean))
+  fullName: Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb(Web, System.Nullable<System.Boolean>)
+  fullName.vb: Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb(Web, System.Nullable(Of System.Boolean))
+  nameWithType: WebExtensions.ReIndexWeb(Web, Nullable<Boolean>)
+  nameWithType.vb: WebExtensions.ReIndexWeb(Web, Nullable(Of Boolean))
 - uid: Microsoft.SharePoint.Client.WebExtensions.ReIndexWeb*
   name: ReIndexWeb
   href: api/Microsoft.SharePoint.Client.WebExtensions.html#Microsoft_SharePoint_Client_WebExtensions_ReIndexWeb_
@@ -17379,6 +17398,12 @@ references:
   commentId: F:PnP.Framework.Enums.BuiltInFieldId._EndDate
   fullName: PnP.Framework.Enums.BuiltInFieldId._EndDate
   nameWithType: BuiltInFieldId._EndDate
+- uid: PnP.Framework.Enums.BuiltInFieldId._ExtendedDescription
+  name: _ExtendedDescription
+  href: api/PnP.Framework.Enums.BuiltInFieldId.html#PnP_Framework_Enums_BuiltInFieldId__ExtendedDescription
+  commentId: F:PnP.Framework.Enums.BuiltInFieldId._ExtendedDescription
+  fullName: PnP.Framework.Enums.BuiltInFieldId._ExtendedDescription
+  nameWithType: BuiltInFieldId._ExtendedDescription
 - uid: PnP.Framework.Enums.BuiltInFieldId._Format
   name: _Format
   href: api/PnP.Framework.Enums.BuiltInFieldId.html#PnP_Framework_Enums_BuiltInFieldId__Format
@@ -45034,6 +45059,19 @@ references:
   isSpec: "True"
   fullName: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration.OverwriteSystemValues
   nameWithType: ApplyPropertyBagConfiguration.OverwriteSystemValues
+- uid: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration.PropertyBagWriteAllowed
+  name: PropertyBagWriteAllowed
+  href: api/PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration.html#PnP_Framework_Provisioning_Model_Configuration_PropertyBag_ApplyPropertyBagConfiguration_PropertyBagWriteAllowed
+  commentId: P:PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration.PropertyBagWriteAllowed
+  fullName: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration.PropertyBagWriteAllowed
+  nameWithType: ApplyPropertyBagConfiguration.PropertyBagWriteAllowed
+- uid: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration.PropertyBagWriteAllowed*
+  name: PropertyBagWriteAllowed
+  href: api/PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration.html#PnP_Framework_Provisioning_Model_Configuration_PropertyBag_ApplyPropertyBagConfiguration_PropertyBagWriteAllowed_
+  commentId: Overload:PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration.PropertyBagWriteAllowed
+  isSpec: "True"
+  fullName: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ApplyPropertyBagConfiguration.PropertyBagWriteAllowed
+  nameWithType: ApplyPropertyBagConfiguration.PropertyBagWriteAllowed
 - uid: PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ExtractPropertyBagConfiguration
   name: ExtractPropertyBagConfiguration
   href: api/PnP.Framework.Provisioning.Model.Configuration.PropertyBag.ExtractPropertyBagConfiguration.html
@@ -62616,6 +62654,19 @@ references:
   isSpec: "True"
   fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.ProgressDelegate
   nameWithType: ProvisioningTemplateApplyingInformation.ProgressDelegate
+- uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.PropertyBagWriteAllowed
+  name: PropertyBagWriteAllowed
+  href: api/PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.html#PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_PropertyBagWriteAllowed
+  commentId: P:PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.PropertyBagWriteAllowed
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.PropertyBagWriteAllowed
+  nameWithType: ProvisioningTemplateApplyingInformation.PropertyBagWriteAllowed
+- uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.PropertyBagWriteAllowed*
+  name: PropertyBagWriteAllowed
+  href: api/PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.html#PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_PropertyBagWriteAllowed_
+  commentId: Overload:PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.PropertyBagWriteAllowed
+  isSpec: "True"
+  fullName: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.PropertyBagWriteAllowed
+  nameWithType: ProvisioningTemplateApplyingInformation.PropertyBagWriteAllowed
 - uid: PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.ProvisionContentTypesToSubWebs
   name: ProvisionContentTypesToSubWebs
   href: api/PnP.Framework.Provisioning.ObjectHandlers.ProvisioningTemplateApplyingInformation.html#PnP_Framework_Provisioning_ObjectHandlers_ProvisioningTemplateApplyingInformation_ProvisionContentTypesToSubWebs

@@ -2,7 +2,9 @@
 using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PnP.Framework.Modernization.Functions;
 using PnP.Framework.Modernization.KQL;
+using PnP.Framework.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -341,7 +343,7 @@ namespace PnP.Framework.Modernization.Transform
     {
         // query scope
 
-        // ~sitecollection, ~site, ~sitecollection/sub1 to indicate scope from a given subsite or empty (= current site)    
+        // Empty selects the collection; a web URL or token selects that web and its descendants.
         public string WebUrl { get; set; }
         // will be set whenever the query is scoped to a list in the current web
         public string ListName { get; set; }
@@ -781,32 +783,19 @@ namespace PnP.Framework.Modernization.Transform
                     SetLayoutTemplate(ContentRollupLayout.List);
                 }
 
-                var contentLocation = MapToContentLocation(cbq.WebUrl);
-
-                if (contentLocation == ContentLocation.SelectedSites)
+                var scopeUrl = ResolveContentQueryScope(cbq.WebUrl);
+                if (scopeUrl != null &&
+                    ((!string.IsNullOrEmpty(cbq.FilterField1) && cbq.FilterField1Value != string.Empty) ||
+                     (!string.IsNullOrEmpty(cbq.FilterField2) && cbq.FilterField2Value != string.Empty) ||
+                     (!string.IsNullOrEmpty(cbq.FilterField3) && cbq.FilterField3Value != string.Empty)))
                 {
-                    // Fill the needed structure to scope the search query to a sub site
-                    var parts = cbq.WebUrl.Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
-                    var subSiteUrl = parts[1];
-
-                    var siteMetadata = MapToSiteMetadata(subSiteUrl, ref result);
-
-                    if (siteMetadata != null)
-                    {
-                        this.properties.Sites.Add(siteMetadata);
-                    }
-                    else
-                    {
-                        // something went wrong, fall back to full site collection
-                        contentLocation = ContentLocation.CurrentSiteCollection;
-                    }
+                    throw new NotAvailableAtTargetException("Cannot preserve Content Query web scope together with field filters: Highlighted Content combines managed-property filters with OR. This web part will be skipped.");
                 }
 
                 // construct query
                 SearchQuery query = new SearchQuery
                 {
-                    // Libraries always equal to this
-                    ContentLocation = contentLocation
+                    ContentLocation = ContentLocation.CurrentSiteCollection
                 };
 
                 // There's no document type filtering in CWQP
@@ -853,6 +842,19 @@ namespace PnP.Framework.Modernization.Transform
                     });
                 }
 
+                if (scopeUrl != null)
+                {
+                    // Path:"url/" includes descendants; WebId and Path equality do not.
+                    query.Filters.Add(new SearchQueryFilter
+                    {
+                        FilterType = FilterType.Field,
+                        Fieldname = "Path",
+                        FieldNameMatchText = "Path",
+                        Op = FilterOperator.Contains,
+                        Value = UrlUtility.EnsureTrailingSlash(scopeUrl)
+                    });
+                }
+
                 // Set sort field 
                 // Possible sort by's are: Most recent, Most viewed, Trending, Managed property ascending, Managed property descending
                 if (!string.IsNullOrEmpty(cbq.SortBy))
@@ -886,6 +888,54 @@ namespace PnP.Framework.Modernization.Transform
         }
 
         #region Helper methods
+
+        private string ResolveContentQueryScope(string webUrl)
+        {
+            if (string.IsNullOrEmpty(webUrl))
+            {
+                return null;
+            }
+
+            var rootUrl = this.clientContext.Site.RootWeb.Url.TrimEnd('/');
+            var currentUrl = this.clientContext.Web.Url.TrimEnd('/');
+            string scope = webUrl;
+            if (webUrl.Equals("~sitecollection", StringComparison.OrdinalIgnoreCase) ||
+                webUrl.StartsWith("~sitecollection/", StringComparison.OrdinalIgnoreCase))
+            {
+                scope = UrlUtility.Combine(rootUrl, webUrl.Substring("~sitecollection".Length));
+            }
+            else if (webUrl.Equals("~site", StringComparison.OrdinalIgnoreCase) ||
+                webUrl.StartsWith("~site/", StringComparison.OrdinalIgnoreCase))
+            {
+                scope = UrlUtility.Combine(currentUrl, webUrl.Substring("~site".Length));
+            }
+
+            if (string.IsNullOrWhiteSpace(scope) || scope.StartsWith("~", StringComparison.Ordinal) ||
+                scope.Any(char.IsControl) || scope.Contains("\\") || scope.Contains("\"") ||
+                !Uri.TryCreate(new Uri(currentUrl + "/"), scope, out var address) ||
+                !string.IsNullOrEmpty(address.Query) || !string.IsNullOrEmpty(address.Fragment) ||
+                !string.IsNullOrEmpty(address.UserInfo) ||
+                !(address.AbsoluteUri.TrimEnd('/').Equals(rootUrl, StringComparison.OrdinalIgnoreCase) ||
+                  address.AbsoluteUri.StartsWith(rootUrl + "/", StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new ArgumentException($"Content Query WebUrl '{webUrl}' must resolve to a web in the source site collection.", nameof(webUrl));
+            }
+
+            if (address.AbsoluteUri.TrimEnd('/').Equals(rootUrl, StringComparison.OrdinalIgnoreCase))
+            {
+                return null;
+            }
+
+            if (address.AbsoluteUri.TrimEnd('/').Equals(currentUrl, StringComparison.OrdinalIgnoreCase))
+            {
+                return currentUrl;
+            }
+
+            // Resolve the complete path, not just the first subweb, and let missing/inaccessible webs fail explicitly.
+            var web = this.clientContext.Site.OpenWeb(Uri.UnescapeDataString(address.AbsolutePath));
+            web.EnsureProperty(w => w.Url);
+            return web.Url;
+        }
 
         #region CAML Query Builder
         private string CamlQueryBuilder(List list, ContentByQuery cbq)

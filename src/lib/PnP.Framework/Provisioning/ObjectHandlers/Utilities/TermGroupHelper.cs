@@ -172,8 +172,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                     {
                                         modelTerm.Id = returnTuple.Item1;
                                         parser = returnTuple.Item2;
+                                        reusedTerms.AddRange(returnTuple.Item3); // add any potentially existing reused terms to the list to be processed later!
                                     }
-                                    reusedTerms.AddRange(returnTuple.Item3);
                                 }
                                 else
                                 {
@@ -189,7 +189,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                             if (term != null)
                             {
-                                CheckChildTerms(context, modelTerm, term, termStore, parser, scope);
+                                CheckChildTerms(context, modelTerm, term, reusedTerms, termStore, parser, scope);
                             }
                         }
                         else
@@ -199,8 +199,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                             {
                                 modelTerm.Id = returnTuple.Item1;
                                 parser = returnTuple.Item2;
+                                reusedTerms.AddRange(returnTuple.Item3); // add any potentially existing reused terms to the list to be processed later!
                             }
-                            reusedTerms.AddRange(returnTuple.Item3);
                         }
                     }
                     else
@@ -210,8 +210,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         {
                             modelTerm.Id = returnTuple.Item1;
                             parser = returnTuple.Item2;
+                            reusedTerms.AddRange(returnTuple.Item3); // add any potentially existing reused terms to the list to be processed later!
                         }
-                        reusedTerms.AddRange(returnTuple.Item3);
                     }
                 }
 
@@ -276,7 +276,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 });
                 return Tuple.Create(modelTerm.Id, parser, reusedTerms);
             }
-
+       
             // Create new term
             Term term;
             if (modelTerm.Id == Guid.Empty)
@@ -334,10 +334,30 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                 }
             }
 
-            termStore.CommitAll();
+            try
+            {
+                termStore.CommitAll();
 
-            context.Load(term);
-            context.ExecuteQueryRetry();
+                context.Load(term);
+                context.ExecuteQueryRetry();
+            }
+            catch (ServerException ex)
+            {
+                // This is a really sucky (temporary) way to handle these transient Server Exceptions (I found no other solution for now)!
+                // Maybe Server Exceptions should be included/handled in the Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry retry logic (currently it's just throwing the exception)
+                // ref: https://techcommunity.microsoft.com/t5/sharepoint-developer/inconsistent-behavior-in-using-taxonomy-api/m-p/184696
+                if (ex.Message.StartsWith("Taxonomy item instantiation failed."))
+                {
+                    Log.Debug(Constants.LOGGING_SOURCE, ex, "Possibly transient error on Term: '{0};{1}' creation! Retrying once in 10 sec ...", parent.Name, modelTerm.Name);
+                    System.Threading.Thread.Sleep(10000);
+                    context.Load(term);
+                    context.ExecuteQueryRetry();
+                }
+                else // pass trought all other exceptions!
+                {
+                    throw;
+                }
+            }
 
             // Deprecate term if needed
             if (modelTerm.IsDeprecated != term.IsDeprecated)
@@ -347,7 +367,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             }
 
 
-            parser = CreateChildTerms(context, modelTerm, term, termStore, parser, scope);
+            parser = CreateChildTerms(context, modelTerm, term, reusedTerms, termStore, parser, scope);
             return Tuple.Create(modelTerm.Id, parser, reusedTerms);
         }
 
@@ -389,18 +409,41 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
         /// <param name="context"></param>
         /// <param name="modelTerm"></param>
         /// <param name="term"></param>
+        /// <param name="reusedTerms"></param>
         /// <param name="termStore"></param>
         /// <param name="parser"></param>
         /// <param name="scope"></param>
         /// <returns>Updated parser object</returns>
-        private static TokenParser CreateChildTerms(ClientContext context, Model.Term modelTerm, Term term, TermStore termStore, TokenParser parser, PnPMonitoredScope scope)
+        private static TokenParser CreateChildTerms(ClientContext context, Model.Term modelTerm, Term term, List<ReusedTerm> reusedTerms, TermStore termStore, TokenParser parser, PnPMonitoredScope scope)
         {
             if (modelTerm.Terms.Any())
             {
                 foreach (var modelTermTerm in modelTerm.Terms)
                 {
-                    context.Load(term.Terms);
-                    context.ExecuteQueryRetry();
+                    try
+                    {
+                        context.Load(term);
+                        context.Load(term.Terms);
+                        context.ExecuteQueryRetry();
+                    }
+                    catch (ServerException ex)
+                    {
+                        // This is a really sucky (temporary) way to handle these transient Server Exceptions (I found no other solution for now)!
+                        // Maybe Server Exceptions should be included/handled in the Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry retry logic (currently it's just throwing the exception)
+                        // ref: https://techcommunity.microsoft.com/t5/sharepoint-developer/inconsistent-behavior-in-using-taxonomy-api/m-p/184696
+                        if (ex.Message.StartsWith("Taxonomy item instantiation failed."))
+                        {
+                            Log.Debug(Constants.LOGGING_SOURCE, ex, "Possibly transient error on Term: '{0}' loading! Retrying once in 10 sec ...", term.PathOfTerm);
+                            System.Threading.Thread.Sleep(10000);
+                            context.Load(term);
+                            context.Load(term.Terms);
+                            context.ExecuteQueryRetry();
+                        }
+                        else // pass trought all other exceptions!
+                        {
+                            throw;
+                        }
+                    }
                     var termTerms = term.Terms;
                     if (termTerms.Any())
                     {
@@ -415,6 +458,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 {
                                     modelTermTerm.Id = returnTuple.Item1;
                                     parser = returnTuple.Item2;
+                                    reusedTerms.AddRange(returnTuple.Item3); // add any potentially existing reused terms to the list to be processed later!
                                 }
                             }
                             else
@@ -434,6 +478,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         {
                             modelTermTerm.Id = returnTuple.Item1;
                             parser = returnTuple.Item2;
+                            reusedTerms.AddRange(returnTuple.Item3); // add any potentially existing reused terms to the list to be processed later!
                         }
                     }
                 }
@@ -456,16 +501,22 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
         /// Attempts to reuse the model term. If the term does not yet exists it will return
         /// false for the first part of the the return tuple. this will notify the system
         /// that the term should be created instead of re-used.
+        /// Any additional child reused terms are added to the reused terms list to process.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="modelTerm"></param>
         /// <param name="parent"></param>
+        /// <param name="reusedTerms"></param>
         /// <param name="termStore"></param>
         /// <param name="parser"></param>
         /// <param name="scope"></param>
         /// <returns></returns>
-        internal static TryReuseTermResult TryReuseTerm(ClientContext context, Model.Term modelTerm, TaxonomyItem parent, TermStore termStore, TokenParser parser, PnPMonitoredScope scope)
+        internal static TryReuseTermResult TryReuseTerm(ClientContext context, Model.Term modelTerm, TaxonomyItem parent, List<ReusedTerm> reusedTerms, TermStore termStore, TokenParser parser, PnPMonitoredScope scope)
         {
+            // mark the reused term being processed:
+            var reusedTerm = reusedTerms.Find(rt => rt.ModelTerm == modelTerm); // get the reference of the reused term being processed
+            reusedTerms.Remove(reusedTerm); // assume we processed the reused term (remove it from the pending reused terms list)!
+
             if (!modelTerm.IsReused) return new TryReuseTermResult() { Success = false, UpdatedParser = parser };
             if (modelTerm.Id == Guid.Empty) return new TryReuseTermResult() { Success = false, UpdatedParser = parser };
 
@@ -473,18 +524,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             termStore.CommitAll();
             context.ExecuteQueryRetry();
 
-            // Try to retrieve a matching term from the website also marked from re-use.  
-            var taxonomySession = TaxonomySession.GetTaxonomySession(context);
-            context.Load(taxonomySession);
-            context.ExecuteQueryRetry();
+            //// Try to retrieve a matching term from the website also marked from re-use.  
+            //var taxonomySession = TaxonomySession.GetTaxonomySession(context);
+            //context.Load(taxonomySession);
+            //context.ExecuteQueryRetry();
 
-            if (taxonomySession.ServerObjectIsNull())
-            {
-                return new TryReuseTermResult() { Success = false, UpdatedParser = parser };
-            }
-
-            var freshTermStore = taxonomySession.GetDefaultKeywordsTermStore();
-            Term preExistingTerm = freshTermStore.GetTerm(modelTerm.Id);
+            //if (taxonomySession.ServerObjectIsNull())
+            //{
+            //    return new TryReuseTermResult() { Success = false, UpdatedParser = parser };
+            //}
+            //
+            //var freshTermStore = taxonomySession.GetDefaultKeywordsTermStore();
+            Term preExistingTerm = termStore.GetTerm(modelTerm.Id);
 
             try
             {
@@ -504,6 +555,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
             // If the matching term is not found, return false... we can't re-use just yet  
             if (preExistingTerm == null)
             {
+                reusedTerms.Add(reusedTerm); // re-add it to the reusedTerms to process!
                 return new TryReuseTermResult() { Success = false, UpdatedParser = parser };
             }
             // if the matching term is found re-use, create child terms, and return true  
@@ -549,17 +601,34 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                 termStore.CommitAll();
                 context.Load(createdTerm);
-                context.ExecuteQueryRetry();
+                try
+                {
+                    context.ExecuteQueryRetry();
+                }
+                catch (ServerException ex)
+                {
+                    // Handle cases where terms were reused and then deprecated at the source which will generate this server exception at the target!
+                    // We'll ignore it and inform the user so that he change the source if needed!
+                    // Maybe Server Exceptions should be included/handled in the Microsoft.SharePoint.Client.ClientContextExtensions.ExecuteQueryRetry retry logic (currently it's just throwing the exception)
+                    if (ex.Message.Contains("Reusing a deprecated Term is disallowed"))
+                    {
+                        Log.Info(Constants.LOGGING_SOURCE, "Attempting to reuse the deprecated term: '{0}:{1}' which is not allowed! We'll ignore it! Please change the source if needed ...", preExistingTerm.Id, preExistingTerm.PathOfTerm);
+                    }
+                    else // pass trought all other exceptions!
+                    {
+                        throw;
+                    }
+                }
 
                 // Create any child terms
-                parser = CreateChildTerms(context, modelTerm, createdTerm, termStore, parser, scope);
+                parser = CreateChildTerms(context, modelTerm, createdTerm, reusedTerms, termStore, parser, scope);
 
                 // Return true, because our TryReuseTerm attempt succeeded!
                 return new TryReuseTermResult() { Success = true, UpdatedParser = parser };
             }
         }
 
-        private static TokenParser CheckChildTerms(ClientContext context, Model.Term modelTerm, Term parentTerm, TermStore termStore, TokenParser parser, PnPMonitoredScope scope)
+        private static TokenParser CheckChildTerms(ClientContext context, Model.Term modelTerm, Term parentTerm, List<ReusedTerm> reusedTerms, TermStore termStore, TokenParser parser, PnPMonitoredScope scope)
         {
             if (modelTerm.Terms.Any())
             {
@@ -586,6 +655,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                                 {
                                     childTerm.Id = returnTuple.Item1;
                                     parser = returnTuple.Item2;
+                                    reusedTerms.AddRange(returnTuple.Item3); // add any potentially existing reused terms to the list to be processed later!
                                 }
                             }
                             else
@@ -600,7 +670,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
 
                         if (term != null)
                         {
-                            parser = CheckChildTerms(context, childTerm, term, termStore, parser, scope);
+                            parser = CheckChildTerms(context, childTerm, term, reusedTerms, termStore, parser, scope);
                         }
                     }
                     else
@@ -610,6 +680,7 @@ namespace PnP.Framework.Provisioning.ObjectHandlers.Utilities
                         {
                             childTerm.Id = returnTuple.Item1;
                             parser = returnTuple.Item2;
+                            reusedTerms.AddRange(returnTuple.Item3); // add any potentially existing reused terms to the list to be processed later!
                         }
                     }
                 }

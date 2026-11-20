@@ -124,9 +124,9 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                                     var fieldName = xmlField.Attribute("Name").Value;
                                     var fieldDisplayName = xmlField.Attribute("DisplayName").Value;
                                     var fieldType = xmlField.Attribute("Type").Value;
-                                    var fieldRequired = xmlField.Attribute("Required").Value;
 
                                     // These may or may not be set on the XML node
+                                    var fieldRequired = xmlField.Attribute("Required") != null ? xmlField.Attribute("Required").Value : "";
                                     var fieldHidden = xmlField.Attribute("Hidden") != null ? xmlField.Attribute("Hidden").Value: "";
                                     var fieldMaxLength = xmlField.Attribute("MaxLength") != null ? xmlField.Attribute("MaxLength").Value: "";
                                     var fieldReadOnly = xmlField.Attribute("ReadOnly") != null ? xmlField.Attribute("ReadOnly").Value: "";
@@ -142,7 +142,7 @@ namespace PnP.Framework.Provisioning.Providers.Markdown.Writers
                                 detailsWriter.WriteLine("\n \\* For site column information, refer to Fields section at site-level.", detailsWriter);
                             }
                         }
-                        
+
                     }
                     writer.WriteLine(detailsWriter.ToString());
                     WriteNewLine(writer);

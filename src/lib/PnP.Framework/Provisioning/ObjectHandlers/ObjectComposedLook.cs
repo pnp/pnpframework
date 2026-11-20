@@ -1,9 +1,12 @@
 ﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PnP.Framework.Diagnostics;
+using PnP.Framework.Entities;
 using PnP.Framework.Provisioning.Connectors;
 using PnP.Framework.Provisioning.Model;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -11,6 +14,9 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 {
     internal class ObjectComposedLook : ObjectHandlerBase
     {
+        private const string ComposedLookInfoKey = "_PnP_ProvisioningTemplateComposedLookInfo";
+        private static readonly Regex AssetParameter = new Regex(@"\{(?:parameter:|\$)([^{}]+)\}", RegexOptions.IgnoreCase);
+
         public override string Name
         {
             get { return "Composed Looks"; }
@@ -38,12 +44,13 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         web.Context.ExecuteQueryRetry();
                     }
 
+                    (string Palette, string Font, string Background) appliedAssets;
                     if (String.IsNullOrEmpty(template.ComposedLook.ColorFile) &&
                         String.IsNullOrEmpty(template.ComposedLook.FontFile) &&
                         String.IsNullOrEmpty(template.ComposedLook.BackgroundFile))
                     {
                         // Apply OOB theme
-                        web.SetComposedLookByUrl(template.ComposedLook.Name, "", "", "");
+                        appliedAssets = web.SetComposedLookByUrl(template.ComposedLook.Name, "", "", "", null, false, true, applyingInformation.PropertyBagWriteAllowed);
                     }
                     else
                     {
@@ -70,12 +77,31 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                             masterUrl = parser.ParseString(template.WebSettings.MasterPageUrl);
                         }
                         web.CreateComposedLookByUrl(template.ComposedLook.Name, colorFile, fontFile, backgroundFile, masterUrl);
-                        web.SetComposedLookByUrl(template.ComposedLook.Name, colorFile, fontFile, backgroundFile, masterUrl);
+                        appliedAssets = web.SetComposedLookByUrl(template.ComposedLook.Name, colorFile, fontFile, backgroundFile, masterUrl, false, true, applyingInformation.PropertyBagWriteAllowed);
                     }
 
                     // Persist composed look info in property bag
-                    var composedLookJson = JsonConvert.SerializeObject(template.ComposedLook);
-                    web.SetPropertyBagValue("_PnP_ProvisioningTemplateComposedLookInfo", composedLookJson);
+                    if (applyingInformation.PropertyBagWriteAllowed != false)
+                    {
+                        // Keep the original template fields readable by older versions.
+                        var metadata = JObject.FromObject(template.ComposedLook);
+                        metadata["AppliedAssets"] = JObject.FromObject(new
+                        {
+                            Theme = appliedAssets.Palette,
+                            Font = appliedAssets.Font,
+                            BackgroundImage = appliedAssets.Background
+                        });
+                        var parameters = GetAssetParameters(template.ComposedLook, parser);
+                        if (parameters.Count > 0)
+                        {
+                            metadata["AssetParameters"] = JObject.FromObject(parameters);
+                        }
+                        web.SetPropertyBagValue(ComposedLookInfoKey, metadata.ToString(Formatting.None));
+                    }
+                    else
+                    {
+                        ReportSkippedPropertyBagWrite?.Invoke("composed look properties");
+                    }
                 }
             }
             return parser;
@@ -104,66 +130,61 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     spConnectorRoot = spConnector;
                 }
 
-                // Check if we have composed look info in the property bag, if so, use that, otherwise try to detect the current composed look
-                if (web.PropertyBagContainsKey("_PnP_ProvisioningTemplateComposedLookInfo"))
+                var composedLook = ReadStoredComposedLook(web, scope, out var appliedAssets, out var parameters);
+                var currentLook = web.GetCurrentComposedLookForExtraction(site.Url, composedLook?.Name);
+                bool matches = composedLook != null && MatchesCurrentLook(web, composedLook, appliedAssets, currentLook, template.Parameters);
+
+                if (currentLook != null)
+                {
+                    currentLook.Theme = ToAssetPath(currentLook.Theme);
+                    currentLook.Font = ToAssetPath(currentLook.Font);
+                    currentLook.BackgroundImage = ToAssetPath(currentLook.BackgroundImage);
+                }
+
+                if (matches)
                 {
                     scope.LogInfo(CoreResources.Provisioning_ObjectHandlers_ComposedLooks_ExtractObjects_Using_ComposedLookInfoFromPropertyBag);
 
-                    try
+                    composedLook.BackgroundFile = TokenizeAsset(composedLook.BackgroundFile, web.Url);
+                    composedLook.FontFile = TokenizeAsset(composedLook.FontFile, web.Url);
+                    composedLook.ColorFile = TokenizeAsset(composedLook.ColorFile, web.Url);
+                    template.ComposedLook = composedLook;
+
+                    if (parameters != null)
                     {
-                        var composedLook = JsonConvert.DeserializeObject<ComposedLook>(web.GetPropertyBagValueString("_PnP_ProvisioningTemplateComposedLookInfo", ""));
-                        if (composedLook.Name == null)
+                        foreach (var parameter in parameters)
                         {
-                            scope.LogError(CoreResources.Provisioning_ObjectHandlers_ComposedLooks_ExtractObjects_ComposedLookInfoFailedToDeserialize);
-                            throw new JsonSerializationException();
+                            if (!template.Parameters.ContainsKey(parameter.Key))
+                            {
+                                template.Parameters.Add(parameter.Key, parameter.Value);
+                            }
                         }
-
-                        composedLook.BackgroundFile = Tokenize(composedLook.BackgroundFile, web.Url);
-                        composedLook.FontFile = Tokenize(composedLook.FontFile, web.Url);
-                        composedLook.ColorFile = Tokenize(composedLook.ColorFile, web.Url);
-                        template.ComposedLook = composedLook;
-
-                        if (!web.IsSubSite() && creationInfo != null &&
-                                creationInfo.PersistBrandingFiles && creationInfo.FileConnector != null)
-                        {
-                            scope.LogDebug(CoreResources.Provisioning_ObjectHandlers_ComposedLooks_ExtractObjects_Creating_SharePointConnector);
-                            // Let's create a SharePoint connector since our files anyhow are in SharePoint at this moment
-                            TokenParser parser = new TokenParser(web, template);
-                            DownLoadFile(spConnector, spConnectorRoot, creationInfo.FileConnector, web.Url, parser.ParseString(composedLook.BackgroundFile), scope);
-                            DownLoadFile(spConnector, spConnectorRoot, creationInfo.FileConnector, web.Url, parser.ParseString(composedLook.ColorFile), scope);
-                            DownLoadFile(spConnector, spConnectorRoot, creationInfo.FileConnector, web.Url, parser.ParseString(composedLook.FontFile), scope);
-                        }
-                        // Create file entries for the custom theme files  
-                        if (!string.IsNullOrEmpty(template.ComposedLook.BackgroundFile))
-                        {
-                            var f = GetComposedLookFile(template.ComposedLook.BackgroundFile);
-                            f.Folder = Tokenize(f.Folder, web.Url);
-                            template.Files.Add(f);
-                        }
-                        if (!string.IsNullOrEmpty(template.ComposedLook.ColorFile))
-                        {
-                            var f = GetComposedLookFile(template.ComposedLook.ColorFile);
-                            f.Folder = Tokenize(f.Folder, web.Url);
-                            template.Files.Add(f);
-                        }
-                        if (!string.IsNullOrEmpty(template.ComposedLook.FontFile))
-                        {
-                            var f = GetComposedLookFile(template.ComposedLook.FontFile);
-                            f.Folder = Tokenize(f.Folder, web.Url);
-                            template.Files.Add(f);
-                        }
-
-                    }
-                    catch (JsonSerializationException)
-                    {
-                        // cannot deserialize the object, fall back to composed look detection
-                        template = DetectComposedLook(web, template, creationInfo, scope, spConnector, spConnectorRoot);
                     }
 
+                    bool download = creationInfo?.PersistBrandingFiles == true && creationInfo.FileConnector != null && !web.IsSubSite();
+                    var files = new[]
+                    {
+                        (composedLook.BackgroundFile, currentLook.BackgroundImage),
+                        (composedLook.ColorFile, currentLook.Theme),
+                        (composedLook.FontFile, currentLook.Font)
+                    };
+                    foreach (var (expression, path) in files)
+                    {
+                        if (!string.IsNullOrEmpty(expression) && !string.IsNullOrEmpty(path))
+                        {
+                            var file = GetComposedLookFile(path);
+                            file.Folder = Tokenize(file.Folder, web.Url);
+                            template.Files.Add(file);
+                            if (download)
+                            {
+                                DownLoadFile(spConnector, spConnectorRoot, creationInfo.FileConnector, web.Url, path, scope);
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                    template = DetectComposedLook(web, template, creationInfo, scope, spConnector, spConnectorRoot);
+                    template = ExtractCurrentComposedLook(web, template, creationInfo, scope, spConnector, spConnectorRoot, currentLook);
                 }
 
                 if (creationInfo != null && creationInfo.BaseTemplate != null)
@@ -174,14 +195,127 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
             return template;
         }
 
-        private ProvisioningTemplate DetectComposedLook(Web web, ProvisioningTemplate template,
+        private string TokenizeAsset(string asset, string webUrl)
+        {
+            return asset?.IndexOf('{') >= 0 ? asset : Tokenize(ToAssetPath(asset), webUrl);
+        }
+
+        private static string ToAssetPath(string url)
+        {
+            if (Uri.TryCreate(url, UriKind.Absolute, out var uri) &&
+                (uri.Scheme == Uri.UriSchemeHttps || uri.Scheme == Uri.UriSchemeHttp))
+            {
+                return Uri.UnescapeDataString(uri.AbsolutePath);
+            }
+
+            return url;
+        }
+
+        private static Dictionary<string, string> GetAssetParameters(ComposedLook look, TokenParser parser)
+        {
+            var parameters = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var asset in new[] { look.ColorFile, look.FontFile, look.BackgroundFile })
+            {
+                if (string.IsNullOrEmpty(asset))
+                {
+                    continue;
+                }
+                foreach (Match token in AssetParameter.Matches(asset))
+                {
+                    var value = parser.ParseString(token.Value);
+                    if (value != token.Value)
+                    {
+                        parameters[token.Groups[1].Value] = value;
+                    }
+                }
+            }
+            return parameters;
+        }
+
+        private static ComposedLook ReadStoredComposedLook(Web web, PnPMonitoredScope scope, out ThemeEntity appliedAssets, out Dictionary<string, string> parameters)
+        {
+            appliedAssets = null;
+            parameters = null;
+            var json = web.GetPropertyBagValueString(ComposedLookInfoKey, null);
+            if (string.IsNullOrEmpty(json))
+            {
+                return null;
+            }
+
+            try
+            {
+                var metadata = JObject.Parse(json);
+                var look = metadata.ToObject<ComposedLook>();
+                if (look?.Name != null)
+                {
+                    appliedAssets = metadata["AppliedAssets"]?.ToObject<ThemeEntity>();
+                    parameters = metadata["AssetParameters"]?.ToObject<Dictionary<string, string>>();
+                    return look;
+                }
+            }
+            catch (JsonException)
+            {
+                // Fall back to the active gallery entry if the saved metadata cannot be read.
+            }
+
+            scope.LogError(CoreResources.Provisioning_ObjectHandlers_ComposedLooks_ExtractObjects_ComposedLookInfoFailedToDeserialize);
+            return null;
+        }
+
+        private static bool MatchesCurrentLook(Web web, ComposedLook stored, ThemeEntity appliedAssets, ThemeEntity current,
+            Dictionary<string, string> templateParameters)
+        {
+            if (current == null || !string.Equals(stored.Name, current.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
+            if (appliedAssets == null)
+            {
+                // Older entries contain only template fields. Built-in looks can be identified by name.
+                if (!current.IsCustomComposedLook && string.IsNullOrEmpty(stored.ColorFile) &&
+                    string.IsNullOrEmpty(stored.FontFile) && string.IsNullOrEmpty(stored.BackgroundFile))
+                {
+                    return true;
+                }
+                var legacyTemplate = new ProvisioningTemplate { ComposedLook = stored };
+                foreach (var parameter in templateParameters)
+                {
+                    legacyTemplate.Parameters.Add(parameter.Key, parameter.Value);
+                }
+                var parser = new TokenParser(web, legacyTemplate);
+                appliedAssets = new ThemeEntity
+                {
+                    Theme = parser.ParseString(stored.ColorFile),
+                    Font = parser.ParseString(stored.FontFile),
+                    BackgroundImage = parser.ParseString(stored.BackgroundFile)
+                };
+            }
+
+            var baseUrl = new Uri(web.Url.TrimEnd('/') + "/");
+            return MatchesAsset(baseUrl, appliedAssets.Theme, current.Theme) &&
+                MatchesAsset(baseUrl, appliedAssets.Font, current.Font) &&
+                MatchesAsset(baseUrl, appliedAssets.BackgroundImage, current.BackgroundImage);
+        }
+
+        private static bool MatchesAsset(Uri baseUrl, string expectedUrl, string currentUrl)
+        {
+            if (string.IsNullOrEmpty(expectedUrl) || string.IsNullOrEmpty(currentUrl))
+            {
+                return string.IsNullOrEmpty(expectedUrl) && string.IsNullOrEmpty(currentUrl);
+            }
+
+            return Uri.TryCreate(baseUrl, expectedUrl, out var storedAsset) &&
+                Uri.TryCreate(baseUrl, currentUrl, out var currentAsset) &&
+                string.Equals(Uri.UnescapeDataString(storedAsset.GetLeftPart(UriPartial.Path)),
+                    Uri.UnescapeDataString(currentAsset.GetLeftPart(UriPartial.Path)), StringComparison.OrdinalIgnoreCase);
+        }
+
+        private ProvisioningTemplate ExtractCurrentComposedLook(Web web, ProvisioningTemplate template,
                                                     ProvisioningTemplateCreationInformation creationInfo,
                                                     PnPMonitoredScope scope, SharePointConnector spConnector,
-                                                    SharePointConnector spConnectorRoot)
+                                                    SharePointConnector spConnectorRoot, ThemeEntity theme)
         {
-
-            var theme = web.GetCurrentComposedLook();
-
             if (theme != null)
             {
                 if (creationInfo != null)

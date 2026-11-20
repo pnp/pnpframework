@@ -29,6 +29,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
 
         public ProvisioningMessagesDelegate MessagesDelegate { get; set; }
 
+        internal Action<string> ReportSkippedPropertyBagWrite { get; set; }
+
         public abstract bool WillProvision(Web web, ProvisioningTemplate template, ProvisioningTemplateApplyingInformation applyingInformation);
 
         public abstract bool WillExtract(Web web, ProvisioningTemplate template, ProvisioningTemplateCreationInformation creationInfo);

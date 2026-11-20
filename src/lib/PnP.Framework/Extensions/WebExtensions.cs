@@ -12,7 +12,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
+using System.Xml.Linq;
 
 namespace Microsoft.SharePoint.Client
 {
@@ -26,6 +28,9 @@ namespace Microsoft.SharePoint.Client
         //const string SITE_STATUS_CREATING = "Creating";
         //const string SITE_STATUS_RECYCLED = "Recycled";
         const string INDEXED_PROPERTY_KEY = "vti_indexedpropertykeys";
+        private static readonly PropertyInfo ObjectPathParent = typeof(ObjectPath).GetProperty("Parent", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static readonly PropertyInfo ObjectPathName = typeof(ObjectPath).GetProperty("ObjectName", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static readonly FieldInfo ObjectPathMethodXml = typeof(ObjectPathMethod).GetField("m_sb", BindingFlags.Instance | BindingFlags.NonPublic);
 
         #region Web (site) query, creation and deletion
 
@@ -350,6 +355,161 @@ namespace Microsoft.SharePoint.Client
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Returns true when web property bag writes should be blocked.
+        ///
+        /// On NoScript sites (DenyAddAndCustomizePages = Enabled), checks whether the
+        /// tenant-level override AllowWebPropertyBagUpdateWhenDenyAddAndCustomizePagesIsEnabled
+        /// permits property bag writes by probing the API with a sentinel write.
+        /// Does not require tenant-admin permissions.
+        /// </summary>
+        /// <param name="web">Web to verify</param>
+        /// <returns>True if property bag writes are blocked, false otherwise</returns>
+        public static bool IsPropertyBagWriteBlocked(this Web web)
+        {
+            var context = web.Context;
+            // Only load permissions on the caller's context when it has no queued work.
+            bool? isNoScript = web.IsPropertyAvailable(w => w.EffectiveBasePermissions) || !context.HasPendingRequest
+                ? web.IsNoScriptSite()
+                : (bool?)null;
+            if (isNoScript == false)
+            {
+                return false;
+            }
+
+            string webUrl = web.IsPropertyAvailable(w => w.Url) ? web.Url : null;
+            if (string.IsNullOrEmpty(webUrl))
+            {
+                if (context is ClientContext clientContext && ReferenceEquals(clientContext.Web, web))
+                {
+                    webUrl = clientContext.Url;
+                }
+                else if (!web.IsPropertyAvailable(w => w.Id) && !context.HasPendingRequest)
+                {
+                    webUrl = web.EnsureProperty(w => w.Url);
+                }
+            }
+
+            using (var probeContext = context.Clone(webUrl ?? context.Url))
+            {
+                var probeWeb = webUrl != null ? probeContext.Web : ResolvePropertyBagProbeWeb(web, probeContext);
+                if (probeWeb == null)
+                {
+                    return true;
+                }
+                if (!(isNoScript ?? probeWeb.IsNoScriptSite()))
+                {
+                    return false;
+                }
+
+                string sentinelKey = "_PnP_PropertyBagProbe_" + Guid.NewGuid().ToString("N");
+                try
+                {
+                    var props = probeWeb.AllProperties;
+                    probeContext.Load(props);
+                    probeContext.ExecuteQueryRetry();
+
+                    props[sentinelKey] = "probe";
+                    probeWeb.Update();
+                    probeContext.ExecuteQueryRetry();
+                }
+                catch (Exception ex)
+                {
+                    // Keep the safe default when a write cannot be confirmed.
+                    Log.Debug(Constants.LOGGING_SOURCE, ex, "Could not confirm property bag write access on '{0}'.", webUrl ?? context.Url);
+                    return true;
+                }
+
+                try
+                {
+                    RemovePropertyBagValueInternal(probeWeb, sentinelKey, checkIndexed: false);
+                }
+                catch (Exception ex)
+                {
+                    // A cleanup error does not undo the successful write.
+                    Log.Warning(Constants.LOGGING_SOURCE, ex, "The property bag probe wrote '{0}' on '{1}', but could not remove it.", sentinelKey, webUrl ?? context.Url);
+                }
+
+                return false;
+            }
+        }
+
+        private static Web ResolvePropertyBagProbeWeb(Web web, ClientContext probeContext)
+        {
+            if (web.IsPropertyAvailable(w => w.Id))
+            {
+                return probeContext.Site.OpenWebById(web.Id);
+            }
+
+            if (!(web.Context is ClientContext context))
+            {
+                return null;
+            }
+
+            var webPath = web.Path;
+            if (webPath is ObjectPathProperty && (string)ObjectPathName?.GetValue(webPath) == $"property {nameof(List.ParentWeb)}")
+            {
+                webPath = GetListOwningWebPath(webPath);
+            }
+
+            if (ReferenceEquals(context.Web.Path, webPath))
+            {
+                return probeContext.Web;
+            }
+
+            var site = context.Site;
+            if (site.IsObjectPropertyInstantiated(nameof(Site.RootWeb)) && ReferenceEquals(site.RootWeb.Path, webPath))
+            {
+                return probeContext.Site.RootWeb;
+            }
+
+            // CSOM queues OpenWeb when creating the reference, before a URL or ID is available.
+            // Recover only the arguments of these read-only Site calls. Never replay the caller's request.
+            if (!(webPath is ObjectPathMethod path) || !ReferenceEquals(ObjectPathParent?.GetValue(path), site.Path))
+            {
+                return null;
+            }
+
+            var buffer = ObjectPathMethodXml?.GetValue(path);
+            var writeContent = buffer?.GetType().GetMethod("WriteContentTo", new[] { typeof(TextWriter) });
+            if (writeContent == null)
+            {
+                return null;
+            }
+
+            using (var xml = new StringWriter())
+            {
+                writeContent.Invoke(buffer, new object[] { xml });
+                var method = XElement.Parse(xml.ToString());
+                var parameter = method.Element("Parameters")?.Element("Parameter");
+                switch ((string)method.Attribute("Name"))
+                {
+                    case nameof(Site.OpenWeb) when (string)parameter?.Attribute("Type") == "String":
+                        return probeContext.Site.OpenWeb(parameter.Value);
+                    case nameof(Site.OpenWebById) when Guid.TryParse(parameter?.Value, out var id):
+                        return probeContext.Site.OpenWebById(id);
+                    default:
+                        return null;
+                }
+            }
+        }
+
+        private static ObjectPath GetListOwningWebPath(ObjectPath parentWebPath)
+        {
+            // A list looked up in Web.Lists belongs to that web, which may differ from context.Web.
+            if (!(ObjectPathParent?.GetValue(parentWebPath) is ObjectPathMethod listPath) ||
+                !(ObjectPathParent.GetValue(listPath) is ObjectPathProperty listsPath) ||
+                (string)ObjectPathName?.GetValue(listsPath) != $"property {nameof(Web.Lists)}")
+            {
+                return null;
+            }
+
+            var method = (string)ObjectPathName.GetValue(listPath);
+            return method == $"method {nameof(ListCollection.GetByTitle)}" || method == $"method {nameof(ListCollection.GetById)}"
+                ? (ObjectPath)ObjectPathParent.GetValue(listsPath)
+                : null;
         }
 
         private static bool IsCannotGetSiteException(Exception ex)
@@ -1000,9 +1160,14 @@ namespace Microsoft.SharePoint.Client
         /// Queues a web for a full crawl the next incremental/continous crawl
         /// </summary>
         /// <param name="web">Site to be processed</param>
-        public static void ReIndexWeb(this Web web)
+        /// <param name="propertyBagWriteAllowed">When provided, skips the sentinel write probe.
+        /// True means property bag writes are allowed; false means blocked. Null (default) auto-detects.</param>
+        public static void ReIndexWeb(this Web web, bool? propertyBagWriteAllowed = null)
         {
-            if (web.IsNoScriptSite())
+            var blocked = propertyBagWriteAllowed.HasValue
+                ? !propertyBagWriteAllowed.Value
+                : web.IsPropertyBagWriteBlocked();
+            if (blocked)
             {
                 // Update individual lists instead, as web bag is no (longer) accessible
                 var context = web.Context;

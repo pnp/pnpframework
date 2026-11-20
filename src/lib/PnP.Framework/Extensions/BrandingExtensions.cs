@@ -176,6 +176,12 @@ namespace Microsoft.SharePoint.Client
         /// <param name="updateRootOnly">false to apply to subsites; true (default) to only apply to specified site</param>
         public static void SetComposedLookByUrl(this Web web, string lookName, string paletteServerRelativeUrl = null, string fontServerRelativeUrl = null, string backgroundServerRelativeUrl = null, string masterServerRelativeUrl = null, bool resetSubsitesToInherit = false, bool updateRootOnly = true)
         {
+            SetComposedLookByUrl(web, lookName, paletteServerRelativeUrl, fontServerRelativeUrl, backgroundServerRelativeUrl, masterServerRelativeUrl, resetSubsitesToInherit, updateRootOnly, null);
+        }
+
+        // Preserve the public signature while allowing provisioning to pass its resolved write option.
+        internal static (string Palette, string Font, string Background) SetComposedLookByUrl(this Web web, string lookName, string paletteServerRelativeUrl, string fontServerRelativeUrl, string backgroundServerRelativeUrl, string masterServerRelativeUrl, bool resetSubsitesToInherit, bool updateRootOnly, bool? propertyBagWriteAllowed)
+        {
             var paletteUrl = default(string);
             var fontUrl = default(string);
             var backgroundUrl = default(string);
@@ -250,18 +256,19 @@ namespace Microsoft.SharePoint.Client
 
             if (!string.IsNullOrEmpty(masterUrl))
             {
-                web.SetMasterPageByUrl(masterUrl, resetSubsitesToInherit, updateRootOnly);
-                web.SetCustomMasterPageByUrl(masterUrl, resetSubsitesToInherit, updateRootOnly);
+                web.SetMasterPageByUrl(masterUrl, resetSubsitesToInherit, updateRootOnly, propertyBagWriteAllowed != false);
+                web.SetCustomMasterPageByUrl(masterUrl, resetSubsitesToInherit, updateRootOnly, propertyBagWriteAllowed != false);
             }
 
             if (!string.IsNullOrWhiteSpace(paletteUrl))
             {
-                web.SetThemeByUrl(paletteUrl, fontUrl, backgroundUrl, resetSubsitesToInherit, updateRootOnly);
+                web.SetThemeByUrl(paletteUrl, fontUrl, backgroundUrl, resetSubsitesToInherit, updateRootOnly, propertyBagWriteAllowed);
             }
 
             // Update/create the "Current" reference in the composed looks gallery
             string currentLookName = GetLocalizedCurrentValue(web);
             web.CreateComposedLookByUrl(currentLookName, paletteUrl, fontUrl, backgroundUrl, masterUrl, displayOrder: 0);
+            return (paletteUrl, fontUrl, backgroundUrl);
         }
 
         /// <summary>
@@ -273,15 +280,20 @@ namespace Microsoft.SharePoint.Client
         /// <param name="backgroundServerRelativeUrl">URL of background image to apply</param>
         /// <param name="resetSubsitesToInherit">false (default) to apply to currently inheriting subsites only; true to force all subsites to inherit</param>
         /// <param name="updateRootOnly">false (default) to apply to subsites; true to only apply to specified site</param>
+        /// <param name="propertyBagWriteAllowed">When provided, skips the sentinel write probe.
+        /// True means property bag writes are allowed; false means blocked. Null (default) auto-detects.</param>
         [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "OfficeDevPnP.Core.Diagnostics.Log.Debug(System.String,System.String,System.Object[])")]
-        public static void SetThemeByUrl(this Web web, string paletteServerRelativeUrl, string fontServerRelativeUrl, string backgroundServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false)
+        public static void SetThemeByUrl(this Web web, string paletteServerRelativeUrl, string fontServerRelativeUrl, string backgroundServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false, bool? propertyBagWriteAllowed = null)
         {
             var websToUpdate = new List<Web>();
             web.Context.Load(web, w => w.AllProperties, w => w.ServerRelativeUrl);
             web.Context.ExecuteQueryRetry();
             Log.Info(Constants.LOGGING_SOURCE, CoreResources.BrandingExtension_ApplyTheme, paletteServerRelativeUrl, web.ServerRelativeUrl);
 
-            if (!web.IsNoScriptSite())
+            var blocked = propertyBagWriteAllowed.HasValue
+                ? !propertyBagWriteAllowed.Value
+                : web.IsPropertyBagWriteBlocked();
+            if (!blocked)
             {
                 web.AllProperties[InheritTheme] = "False";
                 web.Update();
@@ -299,7 +311,14 @@ namespace Microsoft.SharePoint.Client
                 {
                     var currentWeb = websToUpdate[index];
                     var websCollection = currentWeb.Webs;
-                    web.Context.Load(websCollection, wc => wc.Include(w => w.AllProperties, w => w.ServerRelativeUrl));
+                    if (propertyBagWriteAllowed.HasValue)
+                    {
+                        web.Context.Load(websCollection, wc => wc.Include(w => w.AllProperties, w => w.ServerRelativeUrl));
+                    }
+                    else
+                    {
+                        web.Context.Load(websCollection, wc => wc.Include(w => w.AllProperties, w => w.ServerRelativeUrl, w => w.EffectiveBasePermissions));
+                    }
                     web.Context.ExecuteQueryRetry();
                     foreach (var childWeb in websCollection)
                     {
@@ -313,7 +332,7 @@ namespace Microsoft.SharePoint.Client
                         if (resetSubsitesToInherit || inheritTheme)
                         {
                             Log.Debug(Constants.LOGGING_SOURCE, "Inherited: " + CoreResources.BrandingExtension_ApplyTheme, paletteServerRelativeUrl, childWeb.ServerRelativeUrl);
-                            if (!web.IsNoScriptSite())
+                            if (propertyBagWriteAllowed ?? !childWeb.IsPropertyBagWriteBlocked())
                             {
                                 childWeb.AllProperties[InheritTheme] = "True";
                                 //childWeb.ThemedCssFolderUrl = themedCssFolderUrl;
@@ -749,6 +768,11 @@ namespace Microsoft.SharePoint.Client
             return GetComposedLook(web, themeName);
         }
 
+        internal static ThemeEntity GetCurrentComposedLookForExtraction(this Web web, string siteCollectionUrl, string preferredName)
+        {
+            return GetComposedLook(web, GetLocalizedCurrentValue(web), matchCurrentFiles: true, siteCollectionUrl, preferredName);
+        }
+
         /// <summary>
         /// Returns the named composed look from the web gallery
         /// </summary>
@@ -756,6 +780,11 @@ namespace Microsoft.SharePoint.Client
         /// <param name="composedLookName">Name of the composed look to retrieve</param>
         /// <returns>Entity with the attributes of the composed look, or null if the composed look does not exists or cannot be determined</returns>
         public static ThemeEntity GetComposedLook(this Web web, string composedLookName)
+        {
+            return GetComposedLook(web, composedLookName, matchCurrentFiles: false);
+        }
+
+        private static ThemeEntity GetComposedLook(Web web, string composedLookName, bool matchCurrentFiles, string siteCollectionUrl = null, string preferredName = null)
         {
             // List of OOB composed looks
             List<string> defaultComposedLooks = new List<string>(new[] { "Orange", "Sea Monster", "Green", "Lime", "Nature", "Blossom", "Sketch", "City", "Orbit", "Grey", "Characters", "Office", "Breeze", "Immerse", "Red", "Purple", "Wood" });
@@ -790,17 +819,18 @@ namespace Microsoft.SharePoint.Client
             web.Context.Load(web, w => w.Url);
             web.Context.ExecuteQueryRetry();
 
-            var siteCollectionUrl = "";
-            var subSitePath = "";
-            using (var cc = web.Context.Clone(web.Url))
+            if (siteCollectionUrl == null)
             {
-                cc.Load(cc.Site, s => s.Url);
-                cc.ExecuteQueryRetry();
-                siteCollectionUrl = cc.Site.Url;
-                subSitePath = web.Url.Replace(siteCollectionUrl, "");
+                using (var cc = web.Context.Clone(web.Url))
+                {
+                    cc.Load(cc.Site, s => s.Url);
+                    cc.ExecuteQueryRetry();
+                    siteCollectionUrl = cc.Site.Url;
+                }
             }
+            var subSitePath = web.Url.Replace(siteCollectionUrl, "");
 
-            string currentLookName = GetLocalizedCurrentValue(web);
+            string currentLookName = matchCurrentFiles ? composedLookName : GetLocalizedCurrentValue(web);
 
             if (themes.Count > 0)
             {
@@ -932,28 +962,45 @@ namespace Microsoft.SharePoint.Client
                             // Exclude current from this comparison as otherwise we'll never detect the actual theme name
                             if (!name.Equals(currentLookName, StringComparison.InvariantCultureIgnoreCase) && i == 0)
                             {
-                                // Note: do not take in account the ImageUrl field as this will point to a copied image in case of a sub site
-                                if (IsMatchingTheme(theme, masterPageUrl, themeUrl, fontUrl))
+                                // For extraction, a different background can identify a different look.
+                                if (matchCurrentFiles
+                                    ? SameGalleryUrl(theme.MasterPage, masterPageUrl) && SameGalleryUrl(theme.Theme, themeUrl) &&
+                                        SameGalleryUrl(theme.Font, fontUrl) && SameGalleryUrl(theme.BackgroundImage, imageUrl)
+                                    : IsMatchingTheme(theme, masterPageUrl, themeUrl, fontUrl))
                                 {
-                                    theme.Name = name;
-                                    theme.IsCustomComposedLook = !defaultComposedLooks.Contains(theme.Name);
+                                    bool preferred = string.Equals(name, preferredName, StringComparison.OrdinalIgnoreCase);
+                                    if (!themeMatched || preferred)
+                                    {
+                                        theme.Name = name;
+                                        theme.IsCustomComposedLook = !defaultComposedLooks.Contains(theme.Name);
+                                    }
 
                                     // Restore the default composed look image URL
-                                    if (imageUrl != null)
+                                    if (!matchCurrentFiles && imageUrl != null)
                                     {
                                         theme.BackgroundImage = imageUrl;
                                     }
 
-                                    // We're taking the first matching composed look
                                     themeMatched = true;
-                                    break;
+                                    if (preferredName == null || preferred)
+                                    {
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
 
+                    // The Current entry can have valid assets even if no named look matches them.
+                    if (matchCurrentFiles && !themeMatched &&
+                        (!string.IsNullOrEmpty(theme.Theme) || !string.IsNullOrEmpty(theme.Font) || !string.IsNullOrEmpty(theme.BackgroundImage)))
+                    {
+                        theme.Name = currentLookName;
+                        theme.IsCustomComposedLook = true;
+                    }
+
                     // special case, theme files have been deployed via api and when applying the proper theme the "current" was not set
-                    if (!string.IsNullOrEmpty(theme.Name) && theme.Name.Equals(currentLookName, StringComparison.InvariantCultureIgnoreCase))
+                    if (!matchCurrentFiles && !string.IsNullOrEmpty(theme.Name) && theme.Name.Equals(currentLookName, StringComparison.InvariantCultureIgnoreCase))
                     {
                         if (!web.IsUsingOfficeTheme())
                         {
@@ -994,7 +1041,8 @@ namespace Microsoft.SharePoint.Client
                 }
             }
 
-            if (theme == null)
+            // Keep the full gallery URLs for comparison with resolved template assets.
+            if (theme == null || matchCurrentFiles)
             {
                 return theme;
             }
@@ -1029,6 +1077,11 @@ namespace Microsoft.SharePoint.Client
             }
 
             return theme;
+        }
+
+        private static bool SameGalleryUrl(string currentUrl, string decodedUrl)
+        {
+            return string.Equals(Uri.UnescapeDataString(currentUrl ?? string.Empty), decodedUrl ?? string.Empty, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -1196,6 +1249,11 @@ namespace Microsoft.SharePoint.Client
         [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "OfficeDevPnP.Core.Diagnostics.Log.Debug(System.String,System.String,System.Object[])")]
         public static void SetMasterPageByUrl(this Web web, string masterPageServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false)
         {
+            SetMasterPageByUrl(web, masterPageServerRelativeUrl, resetSubsitesToInherit, updateRootOnly, writeInheritanceProperty: true);
+        }
+
+        private static void SetMasterPageByUrl(this Web web, string masterPageServerRelativeUrl, bool resetSubsitesToInherit, bool updateRootOnly, bool writeInheritanceProperty)
+        {
             if (string.IsNullOrEmpty(masterPageServerRelativeUrl)) { throw new ArgumentNullException(nameof(masterPageServerRelativeUrl)); }
 
             var websToUpdate = new List<Web>();
@@ -1203,7 +1261,10 @@ namespace Microsoft.SharePoint.Client
             web.Context.ExecuteQueryRetry();
 
             Log.Info(Constants.LOGGING_SOURCE, CoreResources.BrandingExtension_SetMasterUrl, masterPageServerRelativeUrl, web.ServerRelativeUrl);
-            web.AllProperties[InheritMaster] = "False";
+            if (writeInheritanceProperty)
+            {
+                web.AllProperties[InheritMaster] = "False";
+            }
             web.MasterUrl = masterPageServerRelativeUrl;
             web.Update();
             web.Context.ExecuteQueryRetry();
@@ -1232,7 +1293,10 @@ namespace Microsoft.SharePoint.Client
                             if (resetSubsitesToInherit || inheritTheme)
                             {
                                 Log.Debug(Constants.LOGGING_SOURCE, "Inherited: " + CoreResources.BrandingExtension_SetMasterUrl, masterPageServerRelativeUrl, childWeb.ServerRelativeUrl);
-                                childWeb.AllProperties[InheritMaster] = "True";
+                                if (writeInheritanceProperty)
+                                {
+                                    childWeb.AllProperties[InheritMaster] = "True";
+                                }
                                 childWeb.MasterUrl = masterPageServerRelativeUrl;
                                 childWeb.Update();
                                 web.Context.ExecuteQueryRetry();
@@ -1255,6 +1319,11 @@ namespace Microsoft.SharePoint.Client
         [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "OfficeDevPnP.Core.Diagnostics.Log.Debug(System.String,System.String,System.Object[])")]
         public static void SetCustomMasterPageByUrl(this Web web, string masterPageServerRelativeUrl, bool resetSubsitesToInherit = false, bool updateRootOnly = false)
         {
+            SetCustomMasterPageByUrl(web, masterPageServerRelativeUrl, resetSubsitesToInherit, updateRootOnly, writeInheritanceProperty: true);
+        }
+
+        private static void SetCustomMasterPageByUrl(this Web web, string masterPageServerRelativeUrl, bool resetSubsitesToInherit, bool updateRootOnly, bool writeInheritanceProperty)
+        {
             if (string.IsNullOrEmpty(masterPageServerRelativeUrl)) { throw new ArgumentNullException(nameof(masterPageServerRelativeUrl)); }
 
             var websToUpdate = new List<Web>();
@@ -1262,7 +1331,10 @@ namespace Microsoft.SharePoint.Client
             web.Context.ExecuteQueryRetry();
 
             Log.Info(Constants.LOGGING_SOURCE, CoreResources.BrandingExtension_SetCustomMasterUrl, masterPageServerRelativeUrl, web.ServerRelativeUrl);
-            web.AllProperties[InheritCustomMaster] = "False";
+            if (writeInheritanceProperty)
+            {
+                web.AllProperties[InheritCustomMaster] = "False";
+            }
             web.CustomMasterUrl = masterPageServerRelativeUrl;
             web.Update();
             web.Context.ExecuteQueryRetry();
@@ -1291,7 +1363,10 @@ namespace Microsoft.SharePoint.Client
                             if (resetSubsitesToInherit || inheritTheme)
                             {
                                 Log.Debug(Constants.LOGGING_SOURCE, "Inherited: " + CoreResources.BrandingExtension_SetCustomMasterUrl, masterPageServerRelativeUrl, childWeb.ServerRelativeUrl);
-                                childWeb.AllProperties[InheritCustomMaster] = "True";
+                                if (writeInheritanceProperty)
+                                {
+                                    childWeb.AllProperties[InheritCustomMaster] = "True";
+                                }
                                 childWeb.CustomMasterUrl = masterPageServerRelativeUrl;
                                 childWeb.Update();
                                 web.Context.ExecuteQueryRetry();

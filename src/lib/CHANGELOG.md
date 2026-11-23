@@ -10,12 +10,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Improved rich-text conversion fidelity [#1328](https://github.com/pnp/pnpframework/pull/1328) [#1327](https://github.com/pnp/pnpframework/pull/1327) [YifengMao - Yifeng]
+- Fixed client-side component lookup and Contact web-part modernization for unconfigured contacts and missing email addresses [#1331](https://github.com/pnp/pnpframework/pull/1331) [#1330](https://github.com/pnp/pnpframework/pull/1330) [#1329](https://github.com/pnp/pnpframework/pull/1329) [YifengMao - Yifeng]
+- Improved modernization warnings for nonmatching list-view fallbacks and publishing failures, retaining returned server errors [#1334](https://github.com/pnp/pnpframework/pull/1334) [#1333](https://github.com/pnp/pnpframework/pull/1333) [YifengMao - Yifeng]
 - Fixed NoScript guards: respect tenant property-bag override, exempt SPFx custom actions #1227 [nicolaor - Rene Nicolao]
 
 ## [1.22.0]
 
 ### Changed
 
+- Added CK5 inline-image modernization with external HTTPS image ingestion [#1294](https://github.com/pnp/pnpframework/pull/1294) [YifengMao - Yifeng]
 - Improved rich-text conversion fidelity [#1325](https://github.com/pnp/pnpframework/pull/1325) [#1324](https://github.com/pnp/pnpframework/pull/1324) [#1323](https://github.com/pnp/pnpframework/pull/1323) [#1322](https://github.com/pnp/pnpframework/pull/1322) [#1321](https://github.com/pnp/pnpframework/pull/1321) [#1319](https://github.com/pnp/pnpframework/pull/1319) [#1318](https://github.com/pnp/pnpframework/pull/1318) [#1317](https://github.com/pnp/pnpframework/pull/1317) [#1315](https://github.com/pnp/pnpframework/pull/1315) [#1314](https://github.com/pnp/pnpframework/pull/1314) [#1312](https://github.com/pnp/pnpframework/pull/1312) [#1311](https://github.com/pnp/pnpframework/pull/1311) [#1310](https://github.com/pnp/pnpframework/pull/1310) [#1308](https://github.com/pnp/pnpframework/pull/1308) [YifengMao - Yifeng]
 - Improved web-part fidelity: preserved unresolved wiki web-part content [#1316](https://github.com/pnp/pnpframework/pull/1316), MediaWebPart mappings [#1307](https://github.com/pnp/pnpframework/pull/1307), Picture Library Slideshow and Page Viewer control data [#1304](https://github.com/pnp/pnpframework/pull/1304), and incomplete Summary Links entries [#1299](https://github.com/pnp/pnpframework/pull/1299) [YifengMao - Yifeng]
 - Extended built-in layout support for `WelcomeTOC.aspx` [#1295](https://github.com/pnp/pnpframework/pull/1295), `RollupPage` and `CuratedRollupPage` [#1298](https://github.com/pnp/pnpframework/pull/1298), document-workspace, project-site, Document Center, and basic-page layouts [#1300](https://github.com/pnp/pnpframework/pull/1300) [YifengMao - Yifeng]

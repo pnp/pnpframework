@@ -1,4 +1,5 @@
 ﻿using AngleSharp.Dom;
+using AngleSharp.Css.Parser;
 using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
 using Microsoft.SharePoint.Client;
@@ -501,6 +502,16 @@ namespace PnP.Framework.Modernization.Pages
                 {
                     // create new div node and add all current children to it
                     var div = document.CreateElement("div");
+                    if (node.HasAttribute("style"))
+                    {
+                        // Keep decoration until HtmlTransformator can materialize it on the text.
+                        var decoration = new CssParser().ParseDeclaration(node.GetAttribute("style"))
+                            .GetPropertyValue("text-decoration-line");
+                        if (!string.IsNullOrEmpty(decoration))
+                        {
+                            div.SetAttribute("style", $"text-decoration-line:{decoration}");
+                        }
+                    }
                     foreach (var child in node.ChildNodes.ToList())
                     {
                         div.AppendChild(child);

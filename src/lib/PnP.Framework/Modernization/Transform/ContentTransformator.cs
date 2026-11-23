@@ -298,10 +298,14 @@ namespace PnP.Framework.Modernization.Transform
 
                         if (map.ClientSideWebPart.Type == ClientSideWebPartType.Custom)
                         {
-                            // Parse the control ID to support generic web part placement scenarios
-                            map.ClientSideWebPart.ControlId = TokenParser.ReplaceTokens(map.ClientSideWebPart.ControlId, webPart);
+                            // Resolve per web part without changing the reusable mapping token.
+                            var controlId = TokenParser.ReplaceTokens(map.ClientSideWebPart.ControlId, webPart);
                             // Check if this web part belongs to the list of "usable" web parts for this site
-                            baseControl = componentsToAdd.FirstOrDefault(p => p.Id.Equals($"{{{map.ClientSideWebPart.ControlId}}}", StringComparison.InvariantCultureIgnoreCase));
+                            if (Guid.TryParse(controlId, out var webPartId))
+                            {
+                                baseControl = componentsToAdd.FirstOrDefault(p =>
+                                    Guid.TryParse(p.Id, out var componentId) && componentId == webPartId);
+                            }
                             LogInfo(LogStrings.UsingCustomModernWebPart, LogStrings.Heading_AddingWebPartsToPage);
                         }
                         else

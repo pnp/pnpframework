@@ -87,6 +87,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
 
             ai.ProvisionContentTypesToSubWebs = this.ContentTypes.ProvisionContentTypesToSubWebs;
             ai.OverwriteSystemPropertyBagValues = this.PropertyBag.OverwriteSystemValues;
+            ai.PropertyBagWriteAllowed = this.PropertyBag.PropertyBagWriteAllowed;
             ai.IgnoreDuplicateDataRowErrors = this.Lists.IgnoreDuplicateDataRowErrors;
             ai.ClearNavigation = this.Navigation.ClearNavigation;
             ai.ProvisionFieldsToSubWebs = this.Fields.ProvisionFieldsToSubWebs;
@@ -174,6 +175,7 @@ namespace PnP.Framework.Provisioning.Model.Configuration
             config.Lists.IgnoreDuplicateDataRowErrors = information.IgnoreDuplicateDataRowErrors;
             config.MessagesDelegate = information.MessagesDelegate;
             config.PropertyBag.OverwriteSystemValues = information.OverwriteSystemPropertyBagValues;
+            config.PropertyBag.PropertyBagWriteAllowed = information.PropertyBagWriteAllowed;
             config.ProgressDelegate = information.ProgressDelegate;
             config.ContentTypes.ProvisionContentTypesToSubWebs = information.ProvisionContentTypesToSubWebs;
             config.Fields.ProvisionFieldsToSubWebs = information.ProvisionFieldsToSubWebs;

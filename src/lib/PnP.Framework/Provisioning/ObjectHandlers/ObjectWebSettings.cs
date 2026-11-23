@@ -343,13 +343,17 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         }
                     }
 
-                    if (!isNoScriptSite)
+                    // On NoScript webs, only apply a crawl setting the template actually supplies.
+                    if (!isNoScriptSite || webSettings.NoCrawlSpecified)
                     {
-                        web.NoCrawl = webSettings.NoCrawl;
-                    }
-                    else
-                    {
-                        scope.LogWarning(CoreResources.Provisioning_ObjectHandlers_WebSettings_SkipNoCrawlUpdate);
+                        if (applyingInformation.PropertyBagWriteAllowed != false)
+                        {
+                            web.NoCrawl = webSettings.NoCrawl;
+                        }
+                        else
+                        {
+                            ReportSkippedPropertyBagWrite?.Invoke(nameof(web.NoCrawl));
+                        }
                     }
 
                     if (web.CommentsOnSitePagesDisabled != webSettings.CommentsOnSitePagesDisabled)

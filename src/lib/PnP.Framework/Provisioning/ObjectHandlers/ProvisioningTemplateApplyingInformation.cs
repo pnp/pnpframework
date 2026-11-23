@@ -129,5 +129,20 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
         /// Defines a delay to wait for after modern site creation
         /// </summary>
         public Int32 DelayAfterModernSiteCreation { get; set; }
+
+        /// <summary>
+        /// Controls whether property bag writes are allowed during provisioning.
+        /// When null (default), the provisioning engine auto-detects on the target web.
+        /// A provisioning sequence shares the detected result across that web's templates.
+        /// Subwebs are checked separately because the caller's permissions can differ.
+        /// Set to true to attempt property bag writes without probing. This does not grant additional permissions.
+        /// Set to false to skip all property bag write operations without probing.
+        /// </summary>
+        public bool? PropertyBagWriteAllowed { get; set; }
+
+        internal ProvisioningTemplateApplyingInformation Clone()
+        {
+            return (ProvisioningTemplateApplyingInformation)MemberwiseClone();
+        }
     }
 }

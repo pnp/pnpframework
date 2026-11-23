@@ -1,4 +1,5 @@
-﻿using PnP.Framework.Extensions;
+﻿using Newtonsoft.Json;
+using PnP.Framework.Extensions;
 using System;
 using System.Linq;
 
@@ -11,10 +12,35 @@ namespace PnP.Framework.Provisioning.Model
     {
         #region Properties
 
+        private bool noCrawl;
+        internal bool NoCrawlSpecified { get; set; }
+
         /// <summary>
         /// Defines whether the site has to be crawled or not
         /// </summary>
-        public Boolean NoCrawl { get; set; }
+        [JsonIgnore]
+        public Boolean NoCrawl
+        {
+            get => noCrawl;
+            set
+            {
+                noCrawl = value;
+                NoCrawlSpecified = true;
+            }
+        }
+
+        [JsonProperty(nameof(NoCrawl), NullValueHandling = NullValueHandling.Ignore)]
+        private bool? JsonNoCrawl
+        {
+            get => NoCrawlSpecified ? NoCrawl : (bool?)null;
+            set
+            {
+                if (value.HasValue)
+                {
+                    NoCrawl = value.Value;
+                }
+            }
+        }
 
         /// <summary>
         /// The email address to which any access request will be sent

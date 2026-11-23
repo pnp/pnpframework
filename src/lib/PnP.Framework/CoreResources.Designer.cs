@@ -1781,15 +1781,6 @@ namespace PnP.Framework {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skip adding/updating custom actions because the site has &quot;noscript&quot; enabled..
-        /// </summary>
-        internal static string Provisioning_ObjectHandlers_ListInstances_SkipAddingOrUpdatingCustomActions {
-            get {
-                return ResourceManager.GetString("Provisioning_ObjectHandlers_ListInstances_SkipAddingOrUpdatingCustomActions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Skip adding/updating list property bag because the site has &quot;noscript&quot; enabled..
         /// </summary>
         internal static string Provisioning_ObjectHandlers_ListInstances_SkipAddingOrUpdatingPropertyBag {
@@ -2357,11 +2348,20 @@ namespace PnP.Framework {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skipping NoCrawl update because the site is configured for noscript..
+        ///   Looks up a localized string similar to Could not confirm web property bag write access on '{0}' while applying template '{1}'. Skipped {2}.
         /// </summary>
-        internal static string Provisioning_ObjectHandlers_WebSettings_SkipNoCrawlUpdate {
+        internal static string Provisioning_WebPropertyBagWritesSkipped {
             get {
-                return ResourceManager.GetString("Provisioning_ObjectHandlers_WebSettings_SkipNoCrawlUpdate", resourceCulture);
+                return ResourceManager.GetString("Provisioning_WebPropertyBagWritesSkipped", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Skipped {2} on '{0}' while applying template '{1}' because PropertyBagWriteAllowed is false.
+        /// </summary>
+        internal static string Provisioning_WebPropertyBagWritesDisabled {
+            get {
+                return ResourceManager.GetString("Provisioning_WebPropertyBagWritesDisabled", resourceCulture);
             }
         }
         

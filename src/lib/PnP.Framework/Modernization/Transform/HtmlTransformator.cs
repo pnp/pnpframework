@@ -76,6 +76,8 @@ namespace PnP.Framework.Modernization.Transform
         /// Source fragment destinations are retained, with heading IDs placed on content spans because modern rendering
         /// generates its own heading IDs. Those generated IDs can collide with source IDs. The modern text editor can
         /// discard custom IDs on a subsequent edit/save; preserving them here does not prevent that editor behavior.
+        /// Ordered lists retain their inline or HTML type marker style (decimal by default) at every nesting level,
+        /// using native RTE list markup instead of the modern renderer's implicit alphabetic nested markers.
         /// </remarks>
         public string Transform(string text, bool usePlaceHolder)
         {
@@ -85,6 +87,8 @@ namespace PnP.Framework.Modernization.Transform
 
             using (var document = this.parser.ParseDocument(text))
             {
+                PreserveStrikethrough(document.Body, document);
+
                 // Process headings: RTE does h2, h3, h4 while wiki does h1, h2, h3, h4. Wiki h4 to h6 will become (formatted) text
                 TransformHeadings(document, 6, 0);
                 TransformHeadings(document, 5, 0);
@@ -114,6 +118,8 @@ namespace PnP.Framework.Modernization.Transform
 
                 // Process tables
                 TransformTables(document.QuerySelectorAll("table"), document);
+
+                TransformLists(document);
 
                 // Finalize the transformation by cleaning the html
                 // - styling information: RTE does only support a limited set of styles
@@ -183,6 +189,8 @@ namespace PnP.Framework.Modernization.Transform
             {
                 string foregroundColor = element.GetStyle().GetColor();
                 string backgroundColor = element.GetStyle().GetBackgroundColor();
+                string listStyleType = element.TagName == "OL" || element.TagName == "UL" || element.TagName == "LI"
+                    ? element.GetStyle().GetPropertyValue("list-style-type") : null;
 
                 if (string.IsNullOrEmpty(element.GetAttribute("style")))
                 {
@@ -239,8 +247,53 @@ namespace PnP.Framework.Modernization.Transform
                     {
                         element.GetStyle().SetBackgroundColor(backgroundColor);
                     }
+                    if (!string.IsNullOrEmpty(listStyleType))
+                    {
+                        element.GetStyle().SetProperty("list-style-type", listStyleType);
+                    }
                 }
             }
+        }
+
+        private static void TransformLists(IHtmlDocument document)
+        {
+            foreach (var list in document.QuerySelectorAll("ol, ul"))
+            {
+                if (list.TagName == "UL" && list.QuerySelector("ol") == null)
+                {
+                    continue;
+                }
+
+                // RTE uses this class on list containers to disable alphabetic LI and ::before overrides.
+                // Include UL ancestors so ordered lists nested inside bulleted lists inherit their own marker style.
+                list.ClassList.Add("customListStyle");
+                if (list.TagName == "OL" && string.IsNullOrEmpty(list.GetStyle().GetPropertyValue("list-style-type")))
+                {
+                    list.GetStyle().SetProperty("list-style-type", GetOrderedListStyle(list.GetAttribute("type")) ?? "decimal");
+                }
+            }
+
+            foreach (var item in document.QuerySelectorAll("ol > li[type]"))
+            {
+                var marker = GetOrderedListStyle(item.GetAttribute("type"));
+                if (marker != null && string.IsNullOrEmpty(item.GetStyle().GetPropertyValue("list-style-type")))
+                {
+                    item.GetStyle().SetProperty("list-style-type", marker);
+                }
+            }
+        }
+
+        private static string GetOrderedListStyle(string type)
+        {
+            return type switch
+            {
+                "1" => "decimal",
+                "a" => "lower-alpha",
+                "A" => "upper-alpha",
+                "i" => "lower-roman",
+                "I" => "upper-roman",
+                _ => null
+            };
         }
 
         /// <summary>
@@ -445,7 +498,10 @@ namespace PnP.Framework.Modernization.Transform
             foreach (var blockQuote in blockQuotes)
             {
                 // Only process block quotes that are used for indentation
-                if (blockQuote.OuterHtml.ToLower().Contains("margin:0px 0px 0px 40px"))
+                var style = blockQuote.GetStyle();
+                if (style.GetMarginLeft() == "40px" &&
+                    new[] { style.GetMarginTop(), style.GetMarginRight(), style.GetMarginBottom() }
+                        .All(margin => margin == "0px" || margin == "0"))
                 {
                     if ((blockQuote.ChildElementCount > 0 && blockQuote.Children[0].TagName.ToLower() == "blockquote"))
                     {
@@ -1485,6 +1541,48 @@ namespace PnP.Framework.Modernization.Transform
         }
 
         #region Helper methods
+        private static void PreserveStrikethrough(IElement element, IHtmlDocument document, bool strikeThrough = false, bool underline = false)
+        {
+            if (IsStrikeThrough(element))
+            {
+                strikeThrough = true;
+                underline |= IsUnderline(element);
+                element.GetStyle().RemoveProperty("text-decoration");
+                element.GetStyle().RemoveProperty("text-decoration-line");
+            }
+
+            // Materialize decoration on text before headings/containers lose their styles.
+            // Do not wrap blocks in <s>: that would break heading and list structure in the editor.
+            foreach (var child in element.ChildNodes.ToArray())
+            {
+                if (child is IElement childElement)
+                {
+                    if (childElement.TagName != "SCRIPT" && childElement.TagName != "STYLE" &&
+                        childElement.TagName != "TEXTAREA")
+                    {
+                        PreserveStrikethrough(childElement, document, strikeThrough, underline);
+                    }
+                }
+                else if (strikeThrough && child is IText && !string.IsNullOrWhiteSpace(child.TextContent))
+                {
+                    INode content = child;
+                    if (element.Closest("s, strike, del") == null)
+                    {
+                        var strike = document.CreateElement("s");
+                        element.ReplaceChild(strike, content);
+                        strike.AppendChild(content);
+                        content = strike;
+                    }
+                    if (underline && element.Closest("u") == null)
+                    {
+                        var underlined = document.CreateElement("u");
+                        element.ReplaceChild(underlined, content);
+                        underlined.AppendChild(content);
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Recursively loop the blockquote elements until we're at the top level, returns needed information to process:
         /// - Level: how many indents where used
@@ -1851,28 +1949,19 @@ namespace PnP.Framework.Modernization.Transform
 
         private static bool IsStrikeThrough(IElement element)
         {
-            if (element.GetStyle() != null && (!string.IsNullOrEmpty(element.GetStyle().GetTextDecoration()) && element.GetStyle().GetTextDecoration().Equals("line-through", StringComparison.InvariantCultureIgnoreCase) ||
-                                          !string.IsNullOrEmpty(element.GetStyle().GetPropertyValue("text-decoration-line")) && element.GetStyle().GetPropertyValue("text-decoration-line").Equals("line-through", StringComparison.InvariantCultureIgnoreCase)))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return HasTextDecoration(element, "line-through");
         }
 
         private static bool IsUnderline(IElement element)
         {
-            if (element.GetStyle() != null && (!string.IsNullOrEmpty(element.GetStyle().GetTextDecoration()) && element.GetStyle().GetTextDecoration().Equals("underline", StringComparison.InvariantCultureIgnoreCase) ||
-                                          !string.IsNullOrEmpty(element.GetStyle().GetPropertyValue("text-decoration-line")) && element.GetStyle().GetPropertyValue("text-decoration-line").Equals("underline", StringComparison.InvariantCultureIgnoreCase)))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return HasTextDecoration(element, "underline");
+        }
+
+        private static bool HasTextDecoration(IElement element, string decoration)
+        {
+            var lines = element.GetStyle()?.GetPropertyValue("text-decoration-line");
+            return !string.IsNullOrEmpty(lines) &&
+                lines.Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Contains(decoration, StringComparer.OrdinalIgnoreCase);
         }
 
 

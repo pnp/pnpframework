@@ -622,7 +622,7 @@ namespace PnP.Framework.Modernization.Functions
         /// <param name="listId">Id of the list</param>
         /// <param name="xmlDefinition">Webpart view definition</param>
         /// <returns>Id of the detected view if found or otherwise the id of the default list view</returns>
-        [FunctionDocumentation(Description = "Detects the list view id that was used by the webpart by mapping the web part xmldefinition to the list views. If no view found the list default view id is returned.",
+        [FunctionDocumentation(Description = "Detects the list view id that was used by the webpart by mapping the web part xmldefinition to the visible list views. If no matching view is found, the list default view id is returned. A warning is logged when the fallback view's query, fields and row limit cannot be matched to the source.",
                                Example = "{ListViewId} = ListDetectUsedView({ListId},{XmlDefinition})")]
         [InputDocumentation(Name = "{ListId}", Description = "Guid of the list to analyze")]
         [InputDocumentation(Name = "{XmlDefinition}", Description = "XmlDefinition attribute of the XSLTListViewWebPart")]
@@ -701,8 +701,24 @@ namespace PnP.Framework.Modernization.Functions
                 return view.Id.ToString();
             }
 
-            // No matching view found, so proceed with the default view
-            return list.DefaultView.Id.ToString();
+            var defaultViewId = list.DefaultView.Id;
+            var defaultViewXml = list.Views.FirstOrDefault(view => view.Id == defaultViewId)?.ListViewXml;
+            var defaultViewElement = defaultViewXml != null ? XElement.Parse(defaultViewXml) : null;
+
+            // The matching loop can fall back even for identical views with absent optional elements.
+            bool matchesDefaultView = defaultViewElement != null && new[] { "Query", "ViewFields", "RowLimit" }.All(name =>
+            {
+                var sourceElement = webPartViewElement.Descendants(name).FirstOrDefault();
+                var defaultElement = defaultViewElement.Descendants(name).FirstOrDefault();
+                return sourceElement == null && defaultElement == null ||
+                    sourceElement != null && defaultElement != null && XmlComparer.AreEqual(sourceElement, defaultElement).Success;
+            });
+
+            if (!matchesDefaultView)
+            {
+                LogWarning($"No matching visible view was found for list '{listId}'. Using default view '{defaultViewId}'; the source web part's filters, sorting, columns and row limit may not be preserved. Review the destination web part and configure a suitable view.", LogStrings.Heading_BuiltInFunctions);
+            }
+            return defaultViewId.ToString();
         }
 
         #endregion
@@ -1746,12 +1762,12 @@ namespace PnP.Framework.Modernization.Functions
         /// Looks up a person from the UserInfo list and returns the needed details
         /// </summary>
         /// <param name="person">User account to lookup (in i:0#.f|membership|joe@contoso.onmicrosoft.com format)</param>
-        /// <returns>Information about the found user</returns>
+        /// <returns>Information about the found user, or empty person properties when the account is null or empty</returns>
         [FunctionDocumentation(Description = "Looks up a person from the UserInfo list and returns the needed details",
                                Example = "LookupPerson({ContactLoginName})")]
         [InputDocumentation(Name = "{ContactLoginName}", Description = "User account to lookup (in i:0#.f|membership|joe@contoso.onmicrosoft.com format)")]
         [OutputDocumentation(Name = "PersonName", Description = "Name of the user")]
-        [OutputDocumentation(Name = "PersonEmail", Description = "User's email")]
+        [OutputDocumentation(Name = "PersonEmail", Description = "User's email, or account name when the email is empty")]
         [OutputDocumentation(Name = "PersonUPN", Description = "UPN of the user")]
         [OutputDocumentation(Name = "PersonRole", Description = "Role of the user")]
         [OutputDocumentation(Name = "PersonDepartment", Description = "User's department")]
@@ -1765,6 +1781,13 @@ namespace PnP.Framework.Modernization.Functions
 
             if (string.IsNullOrEmpty(person))
             {
+                result.Add("PersonName", "");
+                result.Add("PersonEmail", "");
+                result.Add("PersonUPN", "");
+                result.Add("PersonRole", "");
+                result.Add("PersonDepartment", "");
+                result.Add("PersonPhone", "");
+                result.Add("PersonSip", "");
                 return result;
             }
 
@@ -1811,7 +1834,8 @@ namespace PnP.Framework.Modernization.Functions
                     result.Add("PersonDepartment", loadedUser["Department"] != null ? loadedUser["Department"].ToString() : "");
                     result.Add("PersonPhone", loadedUser["WorkPhone"] != null ? loadedUser["WorkPhone"].ToString() : "");
                     result.Add("PersonSip", loadedUser["SipAddress"] != null ? loadedUser["SipAddress"].ToString() : "");
-                    result.Add("PersonEmail", loadedUser["EMail"] != null ? loadedUser["EMail"].ToString() : "");
+                    var email = loadedUser["EMail"]?.ToString();
+                    result.Add("PersonEmail", string.IsNullOrWhiteSpace(email) ? result["PersonUPN"] : email);
                     handled = true;
                 }
             }

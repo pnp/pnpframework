@@ -10,12 +10,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- Support for .NET 11.0
+- Support for .NET 11.0 [#1339](https://github.com/pnp/pnpframework/pull/1339) [gautamdsheth - Gautam Sheth]
 
 ### Changed
 
-- Dropped .NET 8.0 and .NET 9.0 support as they're not supported anymore
-
+- Dropped .NET 8.0 and .NET 9.0 support as they're not supported anymore [#1339](https://github.com/pnp/pnpframework/pull/1339) [gautamdsheth - Gautam Sheth]
+- Changed the `Text` property of the provisioning schema classes `PreferencesParameter`, `TeamTemplate` and `Theme` from `string[]` to `string` so theme palettes and Teams JSON templates keep their whitespace on .NET 11 [#1339](https://github.com/pnp/pnpframework/pull/1339) [gautamdsheth - Gautam Sheth]
+- Building the solution now requires the .NET 11.0 SDK and Visual Studio 2026 version 18.12 or later [#1339](https://github.com/pnp/pnpframework/pull/1339) [gautamdsheth - Gautam Sheth]
 - Improved rich-text conversion fidelity [#1328](https://github.com/pnp/pnpframework/pull/1328) [#1327](https://github.com/pnp/pnpframework/pull/1327) [YifengMao - Yifeng]
 - Fixed client-side component lookup and Contact web-part modernization for unconfigured contacts and missing email addresses [#1331](https://github.com/pnp/pnpframework/pull/1331) [#1330](https://github.com/pnp/pnpframework/pull/1330) [#1329](https://github.com/pnp/pnpframework/pull/1329) [YifengMao - Yifeng]
 - Improved modernization warnings for nonmatching list-view fallbacks and publishing failures, retaining returned server errors [#1334](https://github.com/pnp/pnpframework/pull/1334) [#1333](https://github.com/pnp/pnpframework/pull/1333) [YifengMao - Yifeng]

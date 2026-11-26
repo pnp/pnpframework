@@ -28,7 +28,7 @@ This library is open-source and community provided component with active communi
 
 To build PnP Framework you need the following minimal components installed:
 
-- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
+- [Visual Studio 2026 version 18.12 or later](https://visualstudio.microsoft.com/vs/)
 - [.NET SDK version 11.0](https://dotnet.microsoft.com/en-us/download/dotnet/11.0)
 
 Contributions should be made against the **dev** branch of the repository.

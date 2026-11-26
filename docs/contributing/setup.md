@@ -20,7 +20,7 @@ If you want to update your forked repo then you can either use the GitHub UI or 
 
 Using Visual Studio requires you to:
 
-- Download and install Visual Studio 2022: https://visualstudio.microsoft.com/free-developer-offers/, ensure that you install at least Visual Studio 2022 upwards as PnP Framework depends on .NET 11.0
+- Download and install Visual Studio 2026: https://visualstudio.microsoft.com/free-developer-offers/, ensure that you install at least Visual Studio 2026 version 18.12 as PnP Framework targets .NET 11.0, which older Visual Studio versions cannot build
 - Ensure you've installed the [.NET 11.0 SDK](https://dotnet.microsoft.com/download/dotnet/11.0)
 - Navigate to the `./src/lib` folder and open the **PnP.Framework.sln** solution
 

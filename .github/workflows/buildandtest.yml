@@ -23,15 +23,12 @@ jobs:
       uses: softprops/turnstyle@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
-    - name: Checkout PnP Framework dev branch
+    - name: Checkout PnP Framework
       uses: actions/checkout@v5
-      with:
-        ref: dev
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
       with:
         dotnet-version: '11.0.x'
-        include-prerelease: false
     - name: Install dependencies
       run: dotnet restore
       working-directory: src/lib

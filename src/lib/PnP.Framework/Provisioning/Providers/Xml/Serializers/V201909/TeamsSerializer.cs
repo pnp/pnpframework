@@ -36,7 +36,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201909
                         new ExpressionValueResolver((s, v) =>
 {
                     // Concatenate all the string values in the Text array of strings and return as the content of the JSON template
-                    return ((s.GetPublicInstancePropertyValue("Text") as String[])?.Aggregate(String.Empty, (acc, next) => acc += (next != null ? next : String.Empty)));
+                    return (s.GetPublicInstancePropertyValue("Text") as String);
 })
                     },
 
@@ -138,7 +138,7 @@ return HttpUtility.HtmlDecode(message);
                             new ExpressionValueResolver((s, v) =>
 {
                         // Return the JSON template as text for the node content
-                        return (new String[1] { (s as TeamTemplate)?.JsonTemplate });
+                        return ((s as TeamTemplate)?.JsonTemplate);
 })
                         },
 

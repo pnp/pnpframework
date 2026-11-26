@@ -48,10 +48,10 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201903
 
  if (s != null)
  {
-     String[] text = s.GetPublicInstancePropertyValue("Text") as String[];
+     String text = s.GetPublicInstancePropertyValue("Text") as String;
      if (text != null && text.Length > 0)
      {
-         result = text.Aggregate(String.Empty, (acc, next) => acc += (next != null ? next : String.Empty));
+         result = text;
      }
  }
 
@@ -108,7 +108,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Serializers.V201903
                         resolvers.Add($"{themeType}.Text",
                             new ExpressionValueResolver((s, v) =>
                             {
-                                return (new String[] { (String)s.GetPublicInstancePropertyValue("Palette") });
+                                return ((String)s.GetPublicInstancePropertyValue("Palette"));
                             }));
                     }
 

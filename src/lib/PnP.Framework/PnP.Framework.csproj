@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net8.0;net9.0;net10.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net10.0;net11.0</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
 		<RootNamespace>PnP.Framework</RootNamespace>
 		<AssemblyName>PnP.Framework</AssemblyName>
@@ -29,9 +29,8 @@
 		<IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
 		<!-- Set the PnPCoreSdkPath and PnPCoreSdkPathNet5 to non published PnP Core SDK binaries to load them instead of the nuget ones -->
 		<PnPCoreSdkPath Condition="'$(PnPCoreSdkPath)' == ''"></PnPCoreSdkPath>		
-		<PnPCoreSdkPathNet8 Condition="'$(PnPCoreSdkPathNet8)' == ''"></PnPCoreSdkPathNet8>
-		<PnPCoreSdkPathNet9 Condition="'$(PnPCoreSdkPathNet9)' == ''"></PnPCoreSdkPathNet9>
 		<PnPCoreSdkPathNet10 Condition="'$(PnPCoreSdkPathNet10)' == ''"></PnPCoreSdkPathNet10>
+		<PnPCoreSdkPathNet11 Condition="'$(PnPCoreSdkPathNet11)' == ''"></PnPCoreSdkPathNet11>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\pnp.core.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
@@ -203,34 +202,6 @@
 		<PackageReference Include="System.Text.Json" Version="10.0.0" />
 	</ItemGroup>	
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
-		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
-		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
-		<PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
-		<PackageReference Include="System.DirectoryServices" Version="8.0.0" />
-		<PackageReference Include="System.IO.Packaging" Version="8.0.1" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
-		<PackageReference Include="System.Text.Json" Version="8.0.5" />
-	</ItemGroup>
-
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
-		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
-		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Options" Version="9.0.0" />
-		<PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.0" />
-		<PackageReference Include="System.DirectoryServices" Version="9.0.0" />
-		<PackageReference Include="System.IO.Packaging" Version="9.0.0" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
-		<PackageReference Include="System.Text.Json" Version="9.0.0" />
-	</ItemGroup>
-
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
 		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.23.0" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.0" />
@@ -245,9 +216,23 @@
 		<PackageReference Include="System.Text.Json" Version="10.0.0" />
 	</ItemGroup>
 
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net11.0' ">
+		<PackageReference Include="Microsoft.ApplicationInsights" Version="2.23.0" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="11.0.0" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="11.0.0" />
+		<PackageReference Include="System.DirectoryServices" Version="11.0.0" />
+		<PackageReference Include="System.IO.Packaging" Version="11.0.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
+		<PackageReference Include="System.Text.Json" Version="11.0.0" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<!-- Required -->
-		<PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.0-*">
+		<PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="11.0.100-*">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -272,25 +257,17 @@
 		</Reference>
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(PnPCoreSdkPathNet8)' != ''">
-		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net8.0'">
-			<HintPath>$(PnPCoreSdkPathNet8)</HintPath>
-			<Private>true</Private>
-			<SpecificVersion>false</SpecificVersion>
-		</Reference>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(PnPCoreSdkPathNet9)' != ''">
-		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net9.0'">
-			<HintPath>$(PnPCoreSdkPathNet9)</HintPath>
-			<Private>true</Private>
-			<SpecificVersion>false</SpecificVersion>
-		</Reference>
-	</ItemGroup>
-
 	<ItemGroup Condition="'$(PnPCoreSdkPathNet10)' != ''">
 		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net10.0'">
 			<HintPath>$(PnPCoreSdkPathNet10)</HintPath>
+			<Private>true</Private>
+			<SpecificVersion>false</SpecificVersion>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(PnPCoreSdkPathNet11)' != ''">
+		<Reference Include="PnP.Core" Condition="'$(TargetFramework)' == 'net11.0'">
+			<HintPath>$(PnPCoreSdkPathNet11)</HintPath>
 			<Private>true</Private>
 			<SpecificVersion>false</SpecificVersion>
 		</Reference>

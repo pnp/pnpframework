@@ -25,8 +25,7 @@ namespace PnP.Framework.Provisioning.Providers.Xml.Resolvers
                 {
                     // TODO: Extract key and text
                     var key = (String)l.GetType().GetProperty("Key").GetValue(l);
-                    var value = ((String[])l.GetType().GetProperty("Text").GetValue(l))?
-                        .Aggregate(String.Empty, (s, v) => s += v);
+                    var value = (String)l.GetType().GetProperty("Text").GetValue(l);
                     result.Add(key, value);
                 }
             }

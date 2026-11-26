@@ -344,6 +344,11 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                         page = web.LoadClientSidePage(pageName);
                     }
 
+                    if (page == null)
+                    {
+                        throw new Exception($"Client side page '{pageName}' exists at '{url}' but could not be loaded.");
+                    }
+
                     // Clear the page
                     page.ClearPage();
                 }
@@ -1047,7 +1052,8 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                 {
                     var parsedPageName = parser.ParseString((clientSidePage as ClientSidePage).PageName);
                     var pageNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(parsedPageName);
-                    var pageFolder = System.IO.Path.GetDirectoryName(parsedPageName);
+                    // Path.GetDirectoryName returns "\" separators on Windows; the page name is a SharePoint URL, so always use "/"
+                    var pageFolder = System.IO.Path.GetDirectoryName(parsedPageName)?.Replace("\\", "/");
                     if (!string.IsNullOrEmpty(pageFolder))
                     {
                         pageFolder += "/";

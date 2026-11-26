@@ -20,8 +20,8 @@ If you want to update your forked repo then you can either use the GitHub UI or 
 
 Using Visual Studio requires you to:
 
-- Download and install Visual Studio 2022: https://visualstudio.microsoft.com/free-developer-offers/, ensure that you install at least Visual Studio 2022 upwards as PnP Framework depends on .NET 7.0
-- Ensure you've installed the [.NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
+- Download and install Visual Studio 2026: https://visualstudio.microsoft.com/free-developer-offers/, ensure that you install at least Visual Studio 2026 version 18.12 as PnP Framework targets .NET 11.0, which older Visual Studio versions cannot build
+- Ensure you've installed the [.NET 11.0 SDK](https://dotnet.microsoft.com/download/dotnet/11.0)
 - Navigate to the `./src/lib` folder and open the **PnP.Framework.sln** solution
 
 ### I want to use Visual Studio Code for development
@@ -29,7 +29,7 @@ Using Visual Studio requires you to:
 Using Visual Studio Code requires you to:
 
 - Download and install Visual Studio Code: https://visualstudio.microsoft.com/free-developer-offers/
-- Ensure you've installed the [.NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
+- Ensure you've installed the [.NET 11.0 SDK](https://dotnet.microsoft.com/download/dotnet/11.0)
 - Open Visual Studio Code and install these extensions (click on the **Extensions** button in the vertical toolbar and search for it, then click on the **Install** link) and close it again once done
   - The **C#** extension (mandatory): this extension brings support for compiling and debugging C#
   - The **.NET Core Test Explorer** (optional): this extension always you to easily navigate the test cases and run a group of test cases

@@ -12,8 +12,8 @@ The PnP Framework is maintained in the PnP GitHub repository: https://github.com
 
 To build PnP Framework you need the following minimal components installed:
 
-- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
-- [.NET SDK version 7.0](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+- [Visual Studio 2026 version 18.12 or later](https://visualstudio.microsoft.com/vs/)
+- [.NET SDK version 11.0](https://dotnet.microsoft.com/en-us/download/dotnet/11.0)
 
 ### Next steps
 

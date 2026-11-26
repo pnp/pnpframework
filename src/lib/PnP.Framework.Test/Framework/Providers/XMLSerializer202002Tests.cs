@@ -258,7 +258,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(false, template.Theme.IsInverted);
             Assert.AreEqual(false, template.Theme.Overwrite);
             Assert.AreEqual("CustomOrange", template.Theme.Name);
-            Assert.IsTrue(template.Theme.Text[0].Contains("\"neutralQuaternaryAlt\": \"#dadada\""));
+            Assert.IsTrue(template.Theme.Text.Contains("\"neutralQuaternaryAlt\": \"#dadada\""));
         }
 
         [TestMethod]
@@ -640,7 +640,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual("Desc", teamTempaltes[0].Description);
             Assert.AreEqual("MyTemplate", teamTempaltes[0].DisplayName);
             Assert.AreEqual(BaseTeamVisibility.Private, teamTempaltes[0].Visibility);
-            Assert.IsTrue(teamTempaltes[0].Text[0].Contains("JSON template here"));
+            Assert.IsTrue(teamTempaltes[0].Text.Contains("JSON template here"));
         }
 
         [TestMethod]
@@ -1707,7 +1707,7 @@ namespace PnP.Framework.Test.Framework.Providers
             Assert.AreEqual(false, themes[0].IsInverted);
             Assert.AreEqual(false, themes[0].Overwrite);
             Assert.AreEqual("CustomOrange", themes[0].Name);
-            Assert.IsTrue(themes[0].Text[0].Contains("\"neutralQuaternaryAlt\": \"#dadada\""));
+            Assert.IsTrue(themes[0].Text.Contains("\"neutralQuaternaryAlt\": \"#dadada\""));
         }
 
         [TestMethod]

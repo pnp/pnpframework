@@ -1,6 +1,6 @@
 # PnP Framework documentation
 
-**PnP Framework** is a .NET Standard 2.0 / .NET 5.0 / .NET 6.0 / .NET 7.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions. This library is the cross platform successor of the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library. 
+**PnP Framework** is a .NET Standard 2.0 / .NET 10.0 / .NET 11.0 library targeting Microsoft 365 containing the PnP Provisioning engine and a ton of other useful extensions. This library is the cross platform successor of the [PnP-Sites-Core](https://github.com/PnP/PnP-Sites-Core) library. 
 
 ## History and Roadmap
 

@@ -60,9 +60,18 @@ namespace PnP.Framework.Provisioning.ObjectHandlers
                     this.reusedTerms.AddRange(TermGroupHelper.ProcessGroup(web.Context as ClientContext, taxSession, termStore, modelTermGroup, siteCollectionTermGroup, parser, scope));
                 }
 
-                foreach (var reusedTerm in this.reusedTerms)
+                // process the pending Reused Terms list:
+                TermGroupHelper.ReusedTerm reusedTerm;
+                List<TermGroupHelper.ReusedTerm> triedReusedTerms = new List<TermGroupHelper.ReusedTerm>();
+                while (this.reusedTerms.Count > 0 && (reusedTerm = this.reusedTerms[0]) != null)
                 {
-                    TermGroupHelper.TryReuseTerm(web.Context as ClientContext, reusedTerm.ModelTerm, reusedTerm.Parent, reusedTerm.TermStore, parser, scope);
+                    if(!this.reusedTerms.Except(triedReusedTerms).Any())
+                    {
+                        Log.Warning(Constants.LOGGING_SOURCE, "We were not able to resolve {0} reused Terms in the processing scope to their source terms which are not in the processed scope or present in the TermStore (maybe they are provisioned in a different scope)! We'll need to give up! The following Reused Terms hierarchies were not created: {1}", this.reusedTerms.Count, string.Join(";", this.reusedTerms.Select(x => string.Concat(x.ModelTerm.Id, ":", x.ModelTerm.Name)).ToArray()));
+                        break;
+                    }
+                    var reuseTermTrialResult = TermGroupHelper.TryReuseTerm(web.Context as ClientContext, reusedTerm.ModelTerm, reusedTerm.Parent, this.reusedTerms, reusedTerm.TermStore, parser, scope);
+                    triedReusedTerms.Add(reusedTerm);
                 }
             }
             return parser;

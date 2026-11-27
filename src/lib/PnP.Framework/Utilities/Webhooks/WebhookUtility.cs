@@ -147,10 +147,11 @@ namespace PnP.Framework.Utilities
         /// <param name="expirationDateTime">New web hook expiration date</param>
         /// <param name="accessToken">Access token to authenticate against SharePoint</param>
         /// <param name="context">ClientContext instance to use for authentication</param>
+        /// <param name="clientState">New web hook client state</param>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when expiration date is out of valid range.</exception>
         /// <returns>true if succesful, exception in case something went wrong</returns>
         public static async Task<bool> UpdateWebhookSubscriptionAsync(string webUrl, WebHookResourceType resourceType, string resourceId, string subscriptionId,
-            string webHookEndPoint, DateTime expirationDateTime, string accessToken, ClientContext context)
+            string webHookEndPoint, DateTime expirationDateTime, string accessToken, ClientContext context, string clientState = null)
         {
             if (!ValidateExpirationDateTime(expirationDateTime))
                 throw new ArgumentOutOfRangeException(nameof(expirationDateTime), "The specified expiration date is invalid. Should be greater than today and within 6 months");
@@ -182,7 +183,8 @@ namespace PnP.Framework.Utilities
                 {
                     webhookSubscription = new WebhookSubscription()
                     {
-                        ExpirationDateTime = expirationDateTime
+                        ExpirationDateTime = expirationDateTime,
+                        ClientState = clientState
                     };
                 }
                 else
@@ -190,7 +192,8 @@ namespace PnP.Framework.Utilities
                     webhookSubscription = new WebhookSubscription()
                     {
                         NotificationUrl = webHookEndPoint,
-                        ExpirationDateTime = expirationDateTime
+                        ExpirationDateTime = expirationDateTime,
+                        ClientState = clientState
                     };
                 }
 
